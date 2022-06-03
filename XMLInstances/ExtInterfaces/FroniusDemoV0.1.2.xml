@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sgr:SGrModbusDeviceDescriptionType deviceName="FroniusSymo" isLocalControl="true" manufacturerID="IBT"	manufacturerName="Fronius" 	xmlns:sgr="http://www.smartgridready.ch/sgr/ns/V0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.smartgridready.ch/sgr/ns/V0/ ../../SchemaDatabase/SGr/EI-Modbus/SGrModbusEIDeviceFrame.xsd">
+	
+	<sgr:deviceProfile>
+		<sgr:transportService>Modbus</sgr:transportService>
+		<sgr:deviceKind>Inverter</sgr:deviceKind>
+        <sgr:softwareRevision>
+          <sgr:primaryVersionNumber>1</sgr:primaryVersionNumber>
+          <sgr:secondaryVersionNumber>0</sgr:secondaryVersionNumber>
+          <sgr:subReleaseVersionNumber>0</sgr:subReleaseVersionNumber>
+        </sgr:softwareRevision>
+        <sgr:hardwareRevision>
+         <sgr:primaryVersionNumber>1</sgr:primaryVersionNumber>
+         <sgr:secondaryVersionNumber>0</sgr:secondaryVersionNumber>
+         <sgr:subReleaseVersionNumber>0</sgr:subReleaseVersionNumber>
+        </sgr:hardwareRevision>
+		<sgr:remAuthorID>IBT/cb for test purpose only</sgr:remAuthorID>
+	</sgr:deviceProfile>
+	<sgr:modbusInterfaceDesc>
+		<sgr:modbusInterfaceSelection>TCP/IP</sgr:modbusInterfaceSelection>
+		<sgr:firstRegisterAddressIsOne>true
+		</sgr:firstRegisterAddressIsOne>
+		<sgr:conversionScheme>BigEndian</sgr:conversionScheme>
+	</sgr:modbusInterfaceDesc>
+	<sgr:fpListElement>
+		<sgr:functionalProfile
+			mroVisibilityIndicator="M" profileName="SunspInvModel">
+			<sgr:profileNumber>
+				<sgr:specsOwnerId>0</sgr:specsOwnerId>
+				<sgr:profileIdentification>Inverter</sgr:profileIdentification>
+				<sgr:subProfileIdent>CurrentAC</sgr:subProfileIdent>
+				<sgr:sgrLevelOfOperation>4</sgr:sgrLevelOfOperation>
+				<sgr:versionNumber>
+					<sgr:primaryVersionNumber>0
+					</sgr:primaryVersionNumber>
+					<sgr:secondaryVersionNumber>1
+					</sgr:secondaryVersionNumber>
+					<sgr:subReleaseVersionNumber>1
+					</sgr:subReleaseVersionNumber>
+				</sgr:versionNumber>
+			</sgr:profileNumber>
+		</sgr:functionalProfile>
+		<sgr:dpListElement>
+			<sgr:dataPoint datapointName="CurrentACL1"
+				mroVisibilityIndicator="M" rwpDatadirection="R" unit="AMPERES">
+				<sgr:basicDataType><sgr:float32>0</sgr:float32></sgr:basicDataType>
+			</sgr:dataPoint>
+			<sgr:modbusDataPoint>
+				<sgr:modbusDataType><sgr:int32U>0</sgr:int32U></sgr:modbusDataType>				
+				<sgr:modbusFirstRegisterReference
+					registerType="HoldRegister" addr="40072" bitRank="0" />
+				<sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
+				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
+			</sgr:modbusDataPoint>
+			<sgr:dpMbAttrReference>
+				<sgr:modbusAttr>
+					<sgr:scalingByMulPwr>
+						<sgr:multiplicator>1</sgr:multiplicator>
+						<sgr:powerof10>-2</sgr:powerof10>
+					</sgr:scalingByMulPwr></sgr:modbusAttr></sgr:dpMbAttrReference>
+		</sgr:dpListElement>
+		<sgr:dpListElement>
+			<sgr:dataPoint datapointName="CurrentACL2"	mroVisibilityIndicator="M" unit="AMPERES" rwpDatadirection="R">
+				<sgr:basicDataType><sgr:float32>0</sgr:float32></sgr:basicDataType>
+			</sgr:dataPoint>
+			<sgr:modbusDataPoint>
+				<sgr:modbusDataType><sgr:int32>0</sgr:int32></sgr:modbusDataType>
+				<sgr:modbusFirstRegisterReference addr="40073"	bitRank="0" registerType="HoldRegister" ></sgr:modbusFirstRegisterReference>
+				<sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
+				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
+			</sgr:modbusDataPoint>
+			<sgr:dpMbAttrReference>
+				<sgr:modbusAttr>
+					<sgr:scalingByMulPwr>
+						<sgr:multiplicator>1</sgr:multiplicator>
+						<sgr:powerof10>-2</sgr:powerof10>
+					</sgr:scalingByMulPwr></sgr:modbusAttr></sgr:dpMbAttrReference>
+		</sgr:dpListElement>
+		<sgr:dpListElement>
+			<sgr:dataPoint datapointName="CurrentACL3" mroVisibilityIndicator="M" unit="AMPERES" rwpDatadirection="R"> 	
+			<sgr:basicDataType><sgr:float32>0</sgr:float32></sgr:basicDataType>
+			</sgr:dataPoint>
+			<sgr:modbusDataPoint>
+				<sgr:modbusDataType><sgr:int32>0</sgr:int32></sgr:modbusDataType>
+				<sgr:modbusFirstRegisterReference addr="40074"
+					registerType="HoldRegister" bitRank="0" />
+				<sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
+				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
+			</sgr:modbusDataPoint>
+			<sgr:dpMbAttrReference>
+				<sgr:modbusAttr>
+					<sgr:scalingByMulPwr>
+						<sgr:multiplicator>1</sgr:multiplicator>
+						<sgr:powerof10>-2</sgr:powerof10>
+					</sgr:scalingByMulPwr></sgr:modbusAttr></sgr:dpMbAttrReference>
+		</sgr:dpListElement>
+	</sgr:fpListElement>
+</sgr:SGrModbusDeviceDescriptionType>

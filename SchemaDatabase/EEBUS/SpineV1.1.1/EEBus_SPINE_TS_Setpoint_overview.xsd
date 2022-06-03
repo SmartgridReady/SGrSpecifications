@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--
+    Smart Premises Interoperable Neutral-Message Exchange (SPINE)
+    Version 1.1.1
+    2018-12-21
+    Copyright (c) 2018 EEBus Initiative e.V.  All Rights Reserved.
+    Source: https://www.eebus.org/en/specifications/
+--><xs:schema xmlns:ns_p="http://docs.eebus.org/spine/xsd/v1" xmlns:xs="http://www.w3.org/2001/XMLSchema" blockDefault="#all" elementFormDefault="qualified" targetNamespace="http://docs.eebus.org/spine/xsd/v1" version="1.1.1">
+    
+  <xs:annotation>
+        
+    <xs:documentation>EEBus SPINE Specification schema. Copyright 2018 EEBus Initiative e.V.  All rights reserved.</xs:documentation>
+      
+  </xs:annotation>
+    
+  <xs:include schemaLocation="EEBus_SPINE_TS_Setpoint.xsd"/>
+    
+  <xs:group name="group_setpoint">
+        
+    <xs:sequence>
+            
+      <xs:group ref="ns_p:setpoint"/>
+            
+      <xs:group ref="ns_p:setpointConstraints"/>
+            
+      <xs:group ref="ns_p:setpointDescription"/>
+          
+    </xs:sequence>
+      
+  </xs:group>
+    
+  <xs:group name="setpoint">
+        
+    <xs:sequence>
+            
+      <xs:element ref="ns_p:setpointListData"/>
+            
+      <xs:element ref="ns_p:setpointListDataSelectors"/>
+          
+    </xs:sequence>
+      
+  </xs:group>
+    
+  <xs:group name="setpointConstraints">
+        
+    <xs:sequence>
+            
+      <xs:element ref="ns_p:setpointConstraintsListData"/>
+            
+      <xs:element ref="ns_p:setpointConstraintsListDataSelectors"/>
+          
+    </xs:sequence>
+      
+  </xs:group>
+    
+  <xs:group name="setpointDescription">
+        
+    <xs:sequence>
+            
+      <xs:element ref="ns_p:setpointDescriptionListData"/>
+            
+      <xs:element ref="ns_p:setpointDescriptionListDataSelectors"/>
+          
+    </xs:sequence>
+      
+  </xs:group>
+  
+</xs:schema>
