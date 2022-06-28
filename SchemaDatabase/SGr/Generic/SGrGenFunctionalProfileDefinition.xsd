@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!-- edited with Eclipse Modeling Tools - 2020-10 by Christoph Broennimann 
 	(IBT Ing. Buero Broennimann Thun) --><!-- Copyright (c) Verein SmartGridready, Switzerland Version 0.2.1 2022-5-25 
-	All Rights Reserved. Source: https://www.SmartGridready.ch/ --><schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:sgr="http://www.smartgridready.ch/sgr/ns/V0/" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.smartgridready.ch/sgr/ns/V0/" version="0.2.1">
+	All Rights Reserved. Source: https://www.SmartGridready.ch/ --><schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:sgr="http://www.smartgridready.com/ns/V0/" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.smartgridready.com/ns/V0/" version="0.2.1">
   <include schemaLocation="SGrGenDataPointDefinition.xsd"/>
   <simpleType name="ProfileTypeEnumType">
     <restriction base="string">
@@ -345,8 +345,14 @@
       <element maxOccurs="1" minOccurs="1" name="versionNumber" type="sgr:SGrVersionNumberType"/>
     </sequence>
   </complexType>
+  
   <simpleType name="SubProfileTypeEnumType">
     <restriction base="string">
+      <enumeration value="UNDEF">
+        <annotation>
+          <documentation>0: not yet defined</documentation>
+        </annotation>
+      </enumeration>
       <enumeration value="ActiveEnergyAC">
         <annotation>
           <documentation>1: WirkEnergie</documentation>
@@ -512,17 +518,17 @@
           <documentation>33:</documentation>
         </annotation>
       </enumeration>
-      <enumeration value="ph33">
+      <enumeration value="ph34">
         <annotation>
           <documentation>34:</documentation>
         </annotation>
       </enumeration>
-      <enumeration value="ph34">
+      <enumeration value="ph35">
         <annotation>
           <documentation>35:</documentation>
         </annotation>
       </enumeration>
-      <enumeration value="FlexSysOpState">
+      <enumeration value="ph36">
         <annotation>
           <documentation>36:</documentation>
         </annotation>
@@ -537,12 +543,12 @@
           <documentation>38:</documentation>
         </annotation>
       </enumeration>
-      <enumeration value="ph39">
+      <enumeration value="PowerMonitor">
         <annotation>
           <documentation>39:</documentation>
         </annotation>
       </enumeration>
-      <enumeration value="Monitoring">
+      <enumeration value="EnergyMonitor">
         <annotation>
           <documentation>40:</documentation>
         </annotation>
@@ -562,7 +568,7 @@
           <documentation>43:</documentation>
         </annotation>
       </enumeration>
-      <enumeration value="CompressorPwrCtrl">
+      <enumeration value="PowerCtrl">
         <annotation>
           <documentation>44:</documentation>
         </annotation>
@@ -652,7 +658,7 @@
           <documentation>61:</documentation>
         </annotation>
       </enumeration>
-      <enumeration value="ph62">
+      <enumeration value="EEGCurtailment">
         <annotation>
           <documentation>62:</documentation>
         </annotation>
@@ -692,22 +698,22 @@
           <documentation>69:</documentation>
         </annotation>
       </enumeration>
-      <enumeration value="elFlexTotal">
+      <enumeration value="BiDirCharging">
         <annotation>
           <documentation>70:</documentation>
         </annotation>
       </enumeration>
-      <enumeration value="elFlexHeating">
+      <enumeration value="EVSEState">
         <annotation>
           <documentation>71:</documentation>
         </annotation>
       </enumeration>
-      <enumeration value="elFlexCooling">
+      <enumeration value="EVState">
         <annotation>
           <documentation>72:</documentation>
         </annotation>
       </enumeration>
-      <enumeration value="elFlexVentilation">
+      <enumeration value="ph73">
         <annotation>
           <documentation>73:</documentation>
         </annotation>
