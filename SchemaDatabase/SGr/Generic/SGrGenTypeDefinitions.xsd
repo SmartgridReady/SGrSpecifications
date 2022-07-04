@@ -964,6 +964,84 @@
       <enumeration value="OL_MAY"/>
   </restriction>
  </simpleType>
+ 
+  <simpleType name="SGrOCPPStateType"> 
+  <annotation>
+    <documentation>E0015:
+	Available (0): 
+	  When a Connector becomes available for a new
+	  user (Operative)
+	  
+	Charging (1): 
+	  When the contactor of a Connector closes,
+	  allowing the vehicle to charge
+	(Operative)
+
+	Preparing(not yet observed ?): 
+	  When a Connector becomes no longer available
+	  for a new user but no charging session is active.
+	  Typically a Connector is occupied when a user
+	  presents a tag, inserts a cable or a vehicle
+	  occupies the parking bay
+	  (Operative)
+
+	Finishing(not yet observed ?): 
+	  When a charging session has stopped at a
+	  Connector, but the Connector is not yet available
+	  for a new user, e.g. the cable has not been
+	  removed or the vehicle has not left the parking
+	  bay
+	  (Operative)
+
+	Reserved(not yet observed ?): 
+	  When a Connector becomes reserved as a result of
+	  a Reserve Now command
+	  (Operative)
+	
+	Unavailable(not yet observed ?): 
+	  When a Connector becomes unavailable as the
+	  result of a Change Availability command or an
+	  event upon which the Charge Point transitions to
+	  unavailable at its discretion. Upon receipt of a
+	  Change Availability command, the status MAY
+	  change immediately or the change MAY be
+	  scheduled. When scheduled, the Status
+	  Notification shall be send when the availability
+	  change becomes effective
+	  (Inoperative)
+
+	Faulted(not yet observed ?): 
+	  When a Charge Point or connector has reported
+	  an error and is not available for energy delivery .
+	  (Inoperative).
+	
+	SuspendedEVSE (7): 
+	  When the contactor of a Connector opens upon
+	  request of the EVSE, e.g. due to a smart charging
+	  restriction or as the result of
+	  StartTransaction.conf indicating that charging is
+	  not allowed
+	  (Operative)
+
+	SuspendedEV(8): 
+	  When the EVSE is ready to deliver energy but
+	  contactor is open, e.g. the EV is not ready.
+	  (Operative)
+	
+	</documentation>
+  </annotation>
+  <restriction base="string">
+      <enumeration value="Available"/>
+      <enumeration value="Charging"/>
+      <enumeration value="Preparing"/>
+      <enumeration value="Finishing"/>
+      <enumeration value="Reserved"/>
+      <enumeration value="Unavailable"/>
+      <enumeration value="Faulted"/>
+      <enumeration value="SuspendedEVSE"/>
+      <enumeration value="SuspendedEV"/>
+    </restriction>
+   </simpleType>
 
   <complexType name="SGrEnumListType">
     <choice>
@@ -981,6 +1059,7 @@
       <element maxOccurs="1" minOccurs="1" name="sgrEVState"              type="sgr:SGrEVStateType"/>
       <element maxOccurs="1" minOccurs="1" name="sgrSGCPService"          type="sgr:SGrSGCPServiceType"/>
       <element maxOccurs="1" minOccurs="1" name="sgrObligLvl"             type="sgr:SGrObligLvlType"/>
+      <element maxOccurs="1" minOccurs="1" name="sgrOCPPState"            type="sgr:SGrOCPPStateType"/>
     </choice>
   </complexType>
            
