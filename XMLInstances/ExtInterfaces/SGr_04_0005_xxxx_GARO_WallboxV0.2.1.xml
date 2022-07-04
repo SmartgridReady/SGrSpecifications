@@ -1,21 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<sgr:SGrModbusDeviceDescriptionType deviceName="GaroWallbox" isLocalControl="true" manufacturerID="IBT"	manufacturerName="Garo" 	xmlns:sgr="http://www.smartgridready.com/ns/V0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/EI-Modbus/SGrModbusEIDeviceFrame.xsd">
-	
+<sgr:SGrModbusDeviceDescriptionType deviceName="GARO Wallbox GLB" isLocalControl="true" manufacturerID="thirdPartySrcInfo"	manufacturerName="Garo / Optex AG" 	xmlns:sgr="http://www.smartgridready.com/ns/V0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/EI-Modbus/SGrModbusEIDeviceFrame.xsd">
 	<sgr:deviceProfile>
+		<sgr:devLegibDesc>
+			<sgr:textElement>Die GARO Wallbox ist ein Wechselstrom-Ladegerät zur Mode-3-Aufladung, das die Anforderungen von IEC 61851-1 und IEC TS 61439-7 erfüllt. Mit geschlossener Abdeckung entspricht das Produkt der Schutzart IP44. Das Ladegerät ist zur Wandmontage oder zur Standmontage auf einem GARO Wallbox- Ständer vorgesehen.</sgr:textElement>
+			<sgr:language>de</sgr:language>
+			<sgr:uri>http://tempuri.org</sgr:uri>
+		</sgr:devLegibDesc>
+		<sgr:devLegibDesc>
+			<sgr:textElement>The GARO Wallbox is an AC charger enabling Mode 3 charging which complies fully with the requirements of IEC 61851-1 and IEC TS 61439-7. The product complies with IP Code IP44, with a closed front.  It is to be fitted to a wall or GARO Wallbox stand, and all installation must be carried out by an authorised installer and comply with local installation regulations. </sgr:textElement>
+			<sgr:language>en</sgr:language>
+			<sgr:uri>http://tempuri.org</sgr:uri>
+		</sgr:devLegibDesc>
+		<sgr:devLegibDesc>
+			<sgr:textElement>La wallbox de GARO est un chargeur secteur compatible avec une recharge en mode 3 entièrement conforme aux exigences des normes CEI 61851-1 et CEI TS 61439-7. Le produit est conforme à l’indice de protection IP44 lorsque le panneau avant est fermé. Il est conçu pour être fixé à un mur ou monté sur un support pour wallbox GARO, et l’installation doit toujours être effectuée par un installateur qualifié qui doit respecter la réglementation locale.</sgr:textElement>
+			<sgr:language>fr</sgr:language>
+			<sgr:uri>http://tempuri.org</sgr:uri>
+		</sgr:devLegibDesc>
 		<sgr:transportService>Modbus</sgr:transportService>
 		<sgr:deviceKind>ChargingStation</sgr:deviceKind>
         <sgr:softwareRevision>
-          <sgr:primaryVersionNumber>1</sgr:primaryVersionNumber>
-          <sgr:secondaryVersionNumber>0</sgr:secondaryVersionNumber>
-          <sgr:subReleaseVersionNumber>0</sgr:subReleaseVersionNumber>
+          <sgr:primaryVersionNumber>5</sgr:primaryVersionNumber>
+          <sgr:secondaryVersionNumber>12</sgr:secondaryVersionNumber>
+          <sgr:subReleaseVersionNumber>1</sgr:subReleaseVersionNumber>
         </sgr:softwareRevision>
         <sgr:hardwareRevision>
-         <sgr:primaryVersionNumber>1</sgr:primaryVersionNumber>
-         <sgr:secondaryVersionNumber>0</sgr:secondaryVersionNumber>
-         <sgr:subReleaseVersionNumber>0</sgr:subReleaseVersionNumber>
+         <sgr:primaryVersionNumber>6</sgr:primaryVersionNumber>
+         <sgr:secondaryVersionNumber>1</sgr:secondaryVersionNumber>
+         <sgr:subReleaseVersionNumber>2</sgr:subReleaseVersionNumber>
         </sgr:hardwareRevision>
-		<sgr:remAuthorID>IBT/cb</sgr:remAuthorID>
+        <sgr:brandName>GARO GLB</sgr:brandName>
+        <sgr:powerSource>mains3Phase</sgr:powerSource>
+        <sgr:nominalPower>22 kW</sgr:nominalPower>
+        <sgr:manufSpecIdent>GLB-T222WO</sgr:manufSpecIdent>
+        <sgr:manufacturerLabel>GLB+</sgr:manufacturerLabel>
+        <sgr:remAuthorID>IBT/cb (no warranty on this EI)</sgr:remAuthorID>
+		<sgr:devLevelofOperation>4</sgr:devLevelofOperation>
 	</sgr:deviceProfile>
+	<sgr:devMbAttrReference>
+		<sgr:modbusAttr>
+			<sgr:pollLatencyMS>350</sgr:pollLatencyMS></sgr:modbusAttr></sgr:devMbAttrReference>
 	<sgr:modbusInterfaceDesc>
 		<sgr:modbusInterfaceSelection>TCP/IP</sgr:modbusInterfaceSelection>
 		<sgr:firstRegisterAddressIsOne>false
@@ -23,44 +46,27 @@
 		<sgr:conversionScheme>BigEndian</sgr:conversionScheme>
 	</sgr:modbusInterfaceDesc>
 	<sgr:fpListElement>
-		<sgr:functionalProfile profileName="SmartEV"
-			mroVisibilityIndicator="M">
+		<sgr:functionalProfile mroVisibilityIndicator="M"
+			profileName="EVState">
 			<sgr:profileNumber>
 				<sgr:specsOwnerId>0</sgr:specsOwnerId>
 				<sgr:profileIdentification>EVSE</sgr:profileIdentification>
-				<sgr:subProfileIdent>Curtailment</sgr:subProfileIdent>
+				<sgr:subProfileIdent>EVState</sgr:subProfileIdent>
 				<sgr:sgrLevelOfOperation>4</sgr:sgrLevelOfOperation>
 				<sgr:versionNumber>
 					<sgr:primaryVersionNumber>
 						0
 					</sgr:primaryVersionNumber>
-					<sgr:secondaryVersionNumber>1</sgr:secondaryVersionNumber>
-					<sgr:subReleaseVersionNumber>2</sgr:subReleaseVersionNumber>
+					<sgr:secondaryVersionNumber>
+						2
+					</sgr:secondaryVersionNumber>
+					<sgr:subReleaseVersionNumber>
+						1
+					</sgr:subReleaseVersionNumber>
 				</sgr:versionNumber>
 			</sgr:profileNumber>
 		</sgr:functionalProfile>
-		<sgr:dpListElement>
-			<sgr:dataPoint datapointName="EV-StatusCode"
-				mroVisibilityIndicator="M" rwpDatadirection="R"
-				unit="NONE">
-				<sgr:basicDataType>
-					<sgr:enum>
-						<sgr:sgrEVState>EV_STANDBY</sgr:sgrEVState>
-					</sgr:enum>
-				</sgr:basicDataType>
-			</sgr:dataPoint>
-			<sgr:modbusDataPoint>
-				<sgr:modbusDataType>
-					<sgr:enum>
-						<sgr:sgrEVState>EV_STANDBY</sgr:sgrEVState>
-					</sgr:enum>
-				</sgr:modbusDataType>
-				<sgr:modbusFirstRegisterReference
-					registerType="HoldRegister" addr="122" bitRank="0" />
-				<sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
-				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
-			</sgr:modbusDataPoint>
-		</sgr:dpListElement>
+
 		<sgr:dpListElement>
 			<sgr:dataPoint datapointName="isSmartEV15188"
 				mroVisibilityIndicator="O" rwpDatadirection="R"
@@ -98,6 +104,186 @@
 		</sgr:dpListElement>
 	</sgr:fpListElement>
 	<sgr:fpListElement>
+		<sgr:functionalProfile profileName="EVSEState"
+			mroVisibilityIndicator="M">
+			<sgr:profileNumber>
+				<sgr:specsOwnerId>0</sgr:specsOwnerId>
+				<sgr:profileIdentification>EVSE</sgr:profileIdentification>
+				<sgr:subProfileIdent>EVSEState</sgr:subProfileIdent>
+				<sgr:sgrLevelOfOperation>4</sgr:sgrLevelOfOperation>
+				<sgr:versionNumber>
+					<sgr:primaryVersionNumber>
+						0
+					</sgr:primaryVersionNumber>
+					<sgr:secondaryVersionNumber>2</sgr:secondaryVersionNumber>
+					<sgr:subReleaseVersionNumber>1</sgr:subReleaseVersionNumber>
+				</sgr:versionNumber>
+			</sgr:profileNumber>
+		</sgr:functionalProfile>
+		<sgr:dpListElement>
+			<sgr:dataPoint datapointName="EV-StatusCode"
+				mroVisibilityIndicator="M" rwpDatadirection="R"
+				unit="NONE">
+				<sgr:basicDataType>
+					<sgr:enum>
+						<sgr:sgrEVState>EV_STANDBY</sgr:sgrEVState>
+					</sgr:enum>
+				</sgr:basicDataType>
+			</sgr:dataPoint>
+			<sgr:modbusDataPoint>
+				<sgr:modbusDataType>
+					<sgr:enum>
+						<sgr:sgrEVState>EV_STANDBY</sgr:sgrEVState>
+					</sgr:enum>
+				</sgr:modbusDataType>
+				<sgr:modbusFirstRegisterReference
+					registerType="HoldRegister" addr="122" bitRank="0" />
+				<sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
+				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
+			</sgr:modbusDataPoint>
+		</sgr:dpListElement>
+		<sgr:dpListElement>
+			<sgr:dataPoint datapointName="ocppState"
+				mroVisibilityIndicator="O" unit="NONE">
+				<sgr:basicDataType>
+					<sgr:enum>
+						<sgr:sgrOCPPState>Available</sgr:sgrOCPPState>
+					</sgr:enum>
+
+				</sgr:basicDataType>
+			</sgr:dataPoint>
+			<sgr:modbusDataPoint>
+				<sgr:modbusDataType>
+					<sgr:enum>
+						<sgr:sgrOCPPState>Available</sgr:sgrOCPPState>
+					</sgr:enum>
+				</sgr:modbusDataType>
+				<sgr:modbusFirstRegisterReference registerType="HoldRegister"
+					addr="104" ></sgr:modbusFirstRegisterReference>
+				<sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
+				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
+			</sgr:modbusDataPoint>
+		</sgr:dpListElement>
+	</sgr:fpListElement>
+	<sgr:fpListElement>
+		<sgr:functionalProfile mroVisibilityIndicator="M"
+			profileName="Curtailment">
+			<sgr:profileNumber>
+				<sgr:specsOwnerId>0</sgr:specsOwnerId>
+				<sgr:profileIdentification>EVSE</sgr:profileIdentification>
+				<sgr:subProfileIdent>Curtailment</sgr:subProfileIdent>
+				<sgr:sgrLevelOfOperation>4</sgr:sgrLevelOfOperation>
+				<sgr:versionNumber>
+					<sgr:primaryVersionNumber>
+						0
+					</sgr:primaryVersionNumber>
+					<sgr:secondaryVersionNumber>2</sgr:secondaryVersionNumber>
+					<sgr:subReleaseVersionNumber>1</sgr:subReleaseVersionNumber>
+				</sgr:versionNumber>
+			</sgr:profileNumber>
+		</sgr:functionalProfile>
+		<sgr:fpMbAttrReference>
+			<sgr:genAttribute>
+				<sgr:stabilityFallback>
+					<sgr:maxReceiveTime>00:20:00</sgr:maxReceiveTime>
+					<sgr:initValue>8.0</sgr:initValue>
+					<sgr:fallbackValue>8.0</sgr:fallbackValue>
+				</sgr:stabilityFallback></sgr:genAttribute></sgr:fpMbAttrReference>
+		<sgr:dpListElement>
+			<sgr:dataPoint datapointName="SafeCurrent"
+				mroVisibilityIndicator="M" rwpDatadirection="RW"
+				unit="AMPERES">
+				<sgr:basicDataType>
+					<sgr:float32>0.0</sgr:float32>
+
+				</sgr:basicDataType>
+				<sgr:dpNameList>
+					<sgr:nameType>DataPoint</sgr:nameType>
+					<sgr:sLV1Name>fallbackValue</sgr:sLV1Name>
+				</sgr:dpNameList>
+			</sgr:dataPoint>
+			<sgr:modbusDataPoint>
+				<sgr:modbusDataType>
+					<sgr:int16>0</sgr:int16>
+					
+				</sgr:modbusDataType>
+				<sgr:modbusFirstRegisterReference registerType="HoldRegister"
+					addr="131" />
+				<sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
+				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
+			</sgr:modbusDataPoint>
+		</sgr:dpListElement>
+		<sgr:dpListElement>
+			<sgr:dataPoint datapointName="HemsCurrentLimit"
+				rwpDatadirection="RW" mroVisibilityIndicator="M"
+				unit="AMPERES">
+				<sgr:basicDataType>
+					<sgr:float32>0.0</sgr:float32>
+
+				</sgr:basicDataType>
+				<sgr:dpNameList>
+					<sgr:nameType>DataPoint</sgr:nameType>
+					<sgr:sLV1Name>initValue</sgr:sLV1Name>
+				</sgr:dpNameList>
+			</sgr:dataPoint>
+			<sgr:modbusDataPoint>
+				<sgr:modbusDataType>
+					<sgr:int16>0</sgr:int16>
+					
+				</sgr:modbusDataType>
+				<sgr:modbusFirstRegisterReference registerType="HoldRegister"
+					addr="1000" />
+				<sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
+				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
+			</sgr:modbusDataPoint>
+		</sgr:dpListElement>
+		<sgr:dpListElement>
+			<sgr:dataPoint datapointName="maxReceiveTimeSec"
+				mroVisibilityIndicator="M" rwpDatadirection="RW"
+				unit="SECONDS">
+				<sgr:basicDataType>
+					<sgr:int16U>0</sgr:int16U>
+
+				</sgr:basicDataType>
+				<sgr:dpLegibDesc>
+					<sgr:textElement>Programmers hint: This maxReceiveTimeSec represents the timeout of the stabilityFallback Attribute. Hovewer, the timeout will be set to 0 whenever the Modbus interface is polled vor any data transaction</sgr:textElement>
+					<sgr:language>en</sgr:language>
+					<sgr:uri>http://tempuri.org</sgr:uri>
+				</sgr:dpLegibDesc>
+			</sgr:dataPoint>
+			<sgr:modbusDataPoint>
+				<sgr:modbusDataType>
+					<sgr:int16U>0</sgr:int16U>
+					
+				</sgr:modbusDataType>
+				<sgr:modbusFirstRegisterReference registerType="HoldRegister"
+					addr="132" />
+				<sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
+				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
+			</sgr:modbusDataPoint>
+		</sgr:dpListElement>
+		<sgr:dpListElement>
+			<sgr:dataPoint datapointName="HWCurrentLimit"
+				mroVisibilityIndicator="R" unit="AMPERES">
+				<sgr:basicDataType>
+					<sgr:float32>0.0</sgr:float32>
+					
+					
+				</sgr:basicDataType>
+			</sgr:dataPoint>
+			<sgr:modbusDataPoint>
+				<sgr:modbusDataType>
+					<sgr:int16>0</sgr:int16>
+					
+				</sgr:modbusDataType>
+				<sgr:modbusFirstRegisterReference registerType="HoldRegister"
+					addr="133" />
+				<sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
+				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
+			</sgr:modbusDataPoint>
+		</sgr:dpListElement>
+	</sgr:fpListElement>
+	<sgr:fpListElement>
 		<sgr:functionalProfile
 			mroVisibilityIndicator="M" profileName="CurrentAC">
 			<sgr:profileNumber>
@@ -108,7 +294,7 @@
 				<sgr:versionNumber>
 					<sgr:primaryVersionNumber>0
 					</sgr:primaryVersionNumber>
-					<sgr:secondaryVersionNumber>1
+					<sgr:secondaryVersionNumber>2
 					</sgr:secondaryVersionNumber>
 					<sgr:subReleaseVersionNumber>1</sgr:subReleaseVersionNumber>
 				</sgr:versionNumber>
@@ -195,9 +381,9 @@
 				<sgr:versionNumber>
 					<sgr:primaryVersionNumber>0
 					</sgr:primaryVersionNumber>
-					<sgr:secondaryVersionNumber>1
+					<sgr:secondaryVersionNumber>2
 					</sgr:secondaryVersionNumber>
-					<sgr:subReleaseVersionNumber>3</sgr:subReleaseVersionNumber>
+					<sgr:subReleaseVersionNumber>1</sgr:subReleaseVersionNumber>
 				</sgr:versionNumber>
 			</sgr:profileNumber>
 		</sgr:functionalProfile>
