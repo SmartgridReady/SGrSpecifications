@@ -1042,7 +1042,24 @@
       <enumeration value="SuspendedEV"/>
     </restriction>
    </simpleType>
-
+  <simpleType name="SGrHPOpModeType"> 
+  <annotation>
+    <documentation>E0016:
+     Basic operation type of a heat pump
+     Bereitschaft, Programm, Komfort, Eco, Warmwasser, Notbetrieb     
+	</documentation>
+  </annotation>
+  <restriction base="string">
+      <enumeration value="WP_EMERG_OP"/>
+      <enumeration value="WP_READY"/>
+      <enumeration value="WP_PROG_OP"/>
+      <enumeration value="WP_COMFORT_OP"/>
+      <enumeration value="WP_ECO_OP"/>
+      <enumeration value="WP_DOM_WATER_OP"/>
+   </restriction>
+ </simpleType>
+      
+     
   <complexType name="SGrEnumListType">
     <choice>
       <element maxOccurs="1" minOccurs="1" name="sgrMeasValueState"       type="sgr:SGrMeasValueStateType"/>
@@ -1060,7 +1077,9 @@
       <element maxOccurs="1" minOccurs="1" name="sgrSGCPService"          type="sgr:SGrSGCPServiceType"/>
       <element maxOccurs="1" minOccurs="1" name="sgrObligLvl"             type="sgr:SGrObligLvlType"/>
       <element maxOccurs="1" minOccurs="1" name="sgrOCPPState"            type="sgr:SGrOCPPStateType"/>
+      <element maxOccurs="1" minOccurs="1" name="sgrHPOpMode"             type="sgr:SGrHPOpModeType"/>   
     </choice>
   </complexType>
-           
+          
+
 </schema>

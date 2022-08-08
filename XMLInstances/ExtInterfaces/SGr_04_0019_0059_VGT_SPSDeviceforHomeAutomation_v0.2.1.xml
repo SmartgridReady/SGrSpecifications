@@ -25,11 +25,35 @@
 		<sgr:manufSpecIdent>CPU 1212C AC/DC/RLY</sgr:manufSpecIdent>
 		<sgr:manufacturerLabel>gibt es ein Label fuer eine Systemlösung</sgr:manufacturerLabel>
 		<sgr:remAuthorID>Ersteller dieses Templates: SGr/cb</sgr:remAuthorID>
-		<sgr:devLevelofOperation>4</sgr:devLevelofOperation>
+		<sgr:devLevelofOperation>4</sgr:devLevelofOperation>		
+		<sgr:devPrgDesc>
+			<sgr:textElement>Dieses Geraet muss mit der IP-Adresse des Clients konfiguriert werden, da  das Modbus-Port aus Sicherheitsgruenden nur für eine einzige Adresse geoeffnet wird</sgr:textElement>
+			<sgr:language>de</sgr:language>
+			<sgr:uri>http://tempuri.org</sgr:uri>
+		</sgr:devPrgDesc>	
+		<sgr:devPrgDesc>
+			<sgr:textElement>This device must be configured with the client's IP address, as the Modbus port is only opened to a single address for security reasons.</sgr:textElement>
+			<sgr:language>en</sgr:language>
+			<sgr:uri>http://tempuri.org</sgr:uri>
+		</sgr:devPrgDesc>
+		<sgr:devPrgDesc>
+			<sgr:textElement>Cet appareil doit être configuré avec l'adresse IP du client, car le port Modbus n'est ouvert qu'à une seule adresse pour des raisons de sécurité.</sgr:textElement>
+			<sgr:language>fr</sgr:language>
+			<sgr:uri>http://tempuri.org</sgr:uri>
+		</sgr:devPrgDesc>
+		<sgr:devPrgDesc>
+			<sgr:textElement>Questo dispositivo deve essere configurato con l'indirizzo IP del client, poiché la porta Modbus è aperta solo a un unico indirizzo per motivi di sicurezza.</sgr:textElement>
+			<sgr:language>it</sgr:language>
+			<sgr:uri>http://tempuri.org</sgr:uri>
+		</sgr:devPrgDesc>
 	</sgr:deviceProfile>
 	<sgr:devMbAttrReference>
 		<sgr:modbusAttr>
 			<sgr:pollLatencyMS>150</sgr:pollLatencyMS>
+			<sgr:accessProtection isEnabled="true">
+				<sgr:modbusException>IllegalFunction</sgr:modbusException>
+				<sgr:modbusException>IllegalAddress</sgr:modbusException>
+			</sgr:accessProtection>
 		</sgr:modbusAttr>
 	</sgr:devMbAttrReference>
 	<sgr:modbusInterfaceDesc>
@@ -99,10 +123,6 @@
 					addr="20" bitRank="0" registerType="HoldRegister" />
 				<sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
 				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
-				<sgr:dpAccessProtectionEnabled
-					isEnabled="true">
-					<sgr:modbusException>IllegalFunction</sgr:modbusException>
-				</sgr:dpAccessProtectionEnabled>
 			</sgr:modbusDataPoint>
 			<sgr:dpMbAttrReference>
 				<sgr:genAttribute></sgr:genAttribute>
@@ -138,10 +158,6 @@
 					addr="00" bitRank="0" registerType="HoldRegister" />
 				<sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
 				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
-				<sgr:dpAccessProtectionEnabled
-					isEnabled="true">
-					<sgr:modbusException>IllegalFunction</sgr:modbusException>
-				</sgr:dpAccessProtectionEnabled>
 			</sgr:modbusDataPoint>
 			<sgr:dpMbAttrReference>
 				<sgr:genAttribute />
@@ -177,10 +193,6 @@
 					addr="01" bitRank="0" registerType="HoldRegister" />
 				<sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
 				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
-				<sgr:dpAccessProtectionEnabled
-					isEnabled="true">
-					<sgr:modbusException>IllegalFunction</sgr:modbusException>
-				</sgr:dpAccessProtectionEnabled>
 			</sgr:modbusDataPoint>
 			<sgr:dpMbAttrReference>
 				<sgr:genAttribute/>
@@ -217,10 +229,6 @@
 					addr="10" bitRank="0" registerType="HoldRegister" />
 				<sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
 				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
-				<sgr:dpAccessProtectionEnabled
-					isEnabled="true">
-					<sgr:modbusException>IllegalFunction</sgr:modbusException>
-				</sgr:dpAccessProtectionEnabled>
 			</sgr:modbusDataPoint>
 			<sgr:dpMbAttrReference>
 				<sgr:genAttribute>

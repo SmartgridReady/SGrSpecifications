@@ -42,7 +42,7 @@
     		type="sgr:bitmaskType">
     		<annotation>
     			<documentation>
-    				Hexadecimal bitmask for mask to elmininta non used
+    				Hexadecimal bitmask for mask to elmininate non used
     				bit frames
     			</documentation>
     		</annotation>
@@ -77,12 +77,7 @@
     		<annotation>
     			<documentation />
     		</annotation>
-    	</element>
-    	<element maxOccurs="unbounded" minOccurs="0"
-    		name="dpAccessProtectionEnabled"
-    		type="sgr:dpAccessProtectionEnabledType" />
-            <element name="dpPrgDescr" type="sgr:SGrLegibDocumentationType" maxOccurs="4" minOccurs="0">
-    	</element>
+    	</element>
         </sequence>
   </complexType>
   <element name="SGr_ModbusDataPointDescription" type="sgr:SGrModbusDataPointDescriptionType"/>
@@ -209,7 +204,7 @@
       </enumeration>
     </restriction>
   </simpleType>
-  <complexType name="dpAccessProtectionEnabledType">
+  <complexType name="SGrAccessProtectionEnabledType">
     <annotation>
       <documentation>Modbus datapoints may be protected by execptions. If
 				this is the case, a datapoint may be selected as true with a range
@@ -218,7 +213,7 @@
 			</documentation>
     </annotation>
     <sequence>
-      <element name="modbusException" type="sgr:tEnumExceptionCodeType"/>
+      <element name="modbusException" type="sgr:tEnumExceptionCodeType" maxOccurs="unbounded" minOccurs="1"/>
     </sequence>
     <attribute name="isEnabled" type="boolean"/>
   </complexType>
