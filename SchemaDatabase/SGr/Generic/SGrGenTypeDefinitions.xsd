@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!-- edited with Eclipse Modeling Tools - 2020-10 by Christoph Broennimann 
-	(IBT Ing. Buero Broennimann Thun) --><!-- Copyright (c) Verein SmartGridready, Switzerland Version 0.2.1 2022-5-25 
-	All Rights Reserved. Source: https://www.SmartGridready.ch/ --><schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:sgr="http://www.smartgridready.com/ns/V0/" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.smartgridready.com/ns/V0/" version="0.2.1">
+	(IBT Ing. Buero Broennimann Thun) --><!-- Copyright (c) Verein SmartGridready, Switzerland Version 0.2.2 2022-8-22 
+	All Rights Reserved. Source: https://www.SmartGridready.ch/ --><schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:sgr="http://www.smartgridready.com/ns/V0/" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.smartgridready.com/ns/V0/" version="0.2.2">
   <include schemaLocation="SGrGenDeviceFrame.xsd"/>
   <simpleType name="SGrSpecialQualityReqType">
     <annotation>
@@ -115,8 +115,8 @@
       <documentation xml:lang="de"/>
       <documentation/>
     </annotation>
-    <choice>
-        <element maxOccurs="1" minOccurs="1" name="boolean" type="boolean"/>
+    <choice>        
+    	<element maxOccurs="1" minOccurs="1" name="boolean" type="boolean"/>
         <element maxOccurs="1" minOccurs="1" name="int8" type="byte"/>
         <element maxOccurs="1" minOccurs="1" name="int16" type="short"/>
         <element maxOccurs="1" minOccurs="1" name="int32" type="integer"/>
@@ -130,7 +130,46 @@
         <element maxOccurs="1" minOccurs="1" name="enum" type="sgr:SGrEnumListType"/>
         <element maxOccurs="1" minOccurs="1" name="dateTime" type="dateTime"/>
         <element maxOccurs="1" minOccurs="1" name="string" type="string"/>
-        <!-- weitere aus IEC61850 übertragbare Datentypen: Achtung: Elemente ohne "_" , müssen mit Kleinbuschtsaben beginnen
+        <!-- weitere aus IEC61850 übertragbare Datentypen: Achtung: Elemente müssen ohne "_" sein und mit Kleinbuschtsaben beginnen
+        		     <enumeration value="Dbpos"/> 
+					<enumeration value="Tcmd"/> <enumeration value="Quality"/> <enumeration value="VisString32"/> 
+					<enumeration value="VisString64"/> <enumeration value="VisString65"/> <enumeration 
+					value="VisString129"/> <enumeration value="VisString255"/> <enumeration value="Octet64"/> 
+					<enumeration value="Unicode255"/> <enumeration value="Struct"/> <enumeration 
+					value="EntryTime"/> <enumeration value="Check"/> <enumeration value="ObjRef"/> 
+					<enumeration value="Currency"/> <enumeration value="PhyComAddr"/> <enumeration 
+					value="TrgOps"/> <enumeration value="OptFlds"/> <enumeration value="SvOptFlds"/> 
+					<enumeration value="LogOptFlds"/> <enumeration value="EntryID"/> <enumeration 
+					value="Octet6"/> <enumeration value="Octet16"/> -->
+    </choice>
+  </complexType>
+  
+  <complexType name="SGrBasicGenArrayDPTypeType">
+  
+    <annotation>
+      <documentation xml:lang="en"> These are the basic generic
+				data array  types must remain high level definitions for to be supported.
+				The definition focuses on the programming languages used at the
+				level of the communicators. So far Java and Python.
+			</documentation>
+      <documentation xml:lang="de"/>
+      <documentation/>
+    </annotation>
+    <choice>        
+        <element maxOccurs="unbounded" minOccurs="1" name="boolean" type="boolean"/>
+        <element maxOccurs="unbounded" minOccurs="1" name="int8" type="byte"/>
+        <element maxOccurs="unbounded" minOccurs="1" name="int16" type="short"/>
+        <element maxOccurs="unbounded" minOccurs="1" name="int32" type="integer"/>
+        <element maxOccurs="unbounded" minOccurs="1" name="int64" type="long"/>
+        <element maxOccurs="unbounded" minOccurs="1" name="int8U" type="unsignedByte"/>
+        <element maxOccurs="unbounded" minOccurs="1" name="int16U" type="unsignedShort"/>
+        <element maxOccurs="unbounded" minOccurs="1" name="int32U" type="unsignedInt"/>
+        <element maxOccurs="unbounded" minOccurs="1" name="int64U" type="unsignedLong"/>
+        <element maxOccurs="unbounded" minOccurs="1" name="float32" type="float"/>
+        <element maxOccurs="unbounded" minOccurs="1" name="float64" type="double"/>
+        <element maxOccurs="unbounded" minOccurs="1" name="dateTime" type="dateTime"/>
+        <element maxOccurs="unbounded" minOccurs="1" name="string" type="string"/>
+        <!-- weitere aus IEC61850 übertragbare Datentypen: Achtung: Elemente müssen ohne "_" sein und mit Kleinbuschtsaben beginnen
         		     <enumeration value="Dbpos"/> 
 					<enumeration value="Tcmd"/> <enumeration value="Quality"/> <enumeration value="VisString32"/> 
 					<enumeration value="VisString64"/> <enumeration value="VisString65"/> <enumeration 
