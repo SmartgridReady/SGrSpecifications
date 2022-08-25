@@ -41,91 +41,70 @@
 				<div style="display:inline-block; text-align:right; width:100%">Device Profil</div>
 			</div>
 			
-			<h2><xsl:value-of select="/*/@manufacturerName"/> - <xsl:value-of select="/*/@deviceName"/></h2>
-			<table>
-				<colgroup>
-					<col style="width:25%"/>
-				</colgroup>	
-				<tr><td>Name</td><td><xsl:value-of select="/*/@deviceName"/></td></tr>
-				<tr><td>Manufacturer</td><td><xsl:value-of select="/*/@manufacturerName"/></td></tr>
-				<tr><td>Manufacturer ID</td><td><xsl:value-of select="/*/@manufacturerID"/></td></tr>
-				<tr><td>Local / Cloud</td><td><xsl:value-of select="/*/@isLocalControl"/></td></tr>
-			</table>
-
-			<xsl:for-each select="*/sgr:deviceProfile">
-				<!-- devNameList -->
-				<xsl:apply-templates select="sgr:devNameList"/>
-			
-				<!-- devLegibDesc (4x opt) -->
+			<div class="externalInterface">
+				<h2><xsl:value-of select="/*/@manufacturerName"/> - <xsl:value-of select="/*/@deviceName"/></h2>
 				<table>
-					<xsl:apply-templates select="sgr:devLegibDesc"/>	
-				</table>
-
-				<table style="width:100%">
 					<colgroup>
-						<col style="width:20%"/>
-					</colgroup>
-
-					<!-- Transport Service -->
-					<tr><td>Transport Service</td><td><xsl:value-of select="sgr:transportService"/></td></tr>
-					
-					<!-- Device Kind -->
-					<tr><td>Device Typ</td><td><xsl:value-of select="sgr:deviceKind"/></td></tr>
-					
-					<!-- serialNumber (1x opt)-->
-					<xsl:if test="sgr:serialNumber">
-						<tr><td>Serial No.</td><td><xsl:value-of select="sgr:serialNumber"/></td></tr>
-					</xsl:if>
-
-					<!-- softwareRevision -->
-					<tr><td>Software Rev.</td><td><xsl:apply-templates select="sgr:softwareRevision"/></td></tr>
-					
-					<!-- hardwareRevision (1x opt)-->
-					<xsl:if test="sgr:hardwareRevision">
-						<tr><td>Hardware Rev.</td><td><xsl:apply-templates select="sgr:hardwareRevision"/></td></tr>
-					</xsl:if>
-
-					<!-- brandName -->
-					<xsl:if test="sgr:brandName">
-						<tr><td>Brand</td><td><xsl:value-of select="sgr:brandName"/></td></tr>
-					</xsl:if>
-
-					<!-- powerSource (1x opt) -->
-					<xsl:if test="sgr:powerSource">
-						<tr><td>Power Source</td><td><xsl:value-of select="sgr:powerSource"/></td></tr>
-					</xsl:if>
-
-					<!-- nominalPower (1x opt) -->
-					<xsl:if test="sgr:nominalPower">
-						<tr><td>Nominal Power</td><td><xsl:value-of select="sgr:nominalPower"/></td></tr>
-					</xsl:if>
-
-					<!-- manufSpecIdent (1x opt) -->
-					<xsl:if test="sgr:manufSpecIdent">
-						<tr><td>Secification ID</td><td><xsl:value-of select="sgr:manufSpecIdent"/></td></tr>
-					</xsl:if>
-
-					<!-- manufacturerLabel (1x opt) -->
-					<xsl:if test="sgr:manufacturerLabel">
-						<tr><td>Manufcaturer Label</td><td><xsl:value-of select="sgr:manufacturerLabel"/></td></tr>
-					</xsl:if>
-					
-					<!-- remAuthorID (1x opt) -->
-					<xsl:if test="sgr:remAuthorID">
-						<tr><td>Author Remarks</td><td><xsl:value-of select="sgr:remAuthorID"/></td></tr>
-					</xsl:if>
-					
-					<!-- devLevelofOperation (1x opt) -->
-					<xsl:if test="sgr:devLevelofOperation">
-						<tr><td>SGr Level</td><td><xsl:value-of select="sgr:devLevelofOperation"/></td></tr>
-					</xsl:if>
+						<col style="width:30%"/>
+					</colgroup>	
+					<tr><td>Name</td><td><xsl:value-of select="/*/@deviceName"/></td></tr>
+					<tr><td>Manufacturer</td><td><xsl:value-of select="/*/@manufacturerName"/></td></tr>
+					<tr><td>Manufacturer ID</td><td><xsl:value-of select="/*/@manufacturerID"/></td></tr>
+					<tr><td>Local / Cloud</td><td><xsl:value-of select="/*/@isLocalControl"/></td></tr>
 				</table>
-			</xsl:for-each>
+
+				<xsl:apply-templates select="*/sgr:deviceProfile"/>
+
+				<!-- TODO name="devMbAttrReference" type="sgr:SGrModbusAttrFrameType" (0-unbound)-->
+				<!-- TODO name="modbusInterfaceDesc" type="sgr:SGrModbusInterfaceDescriptionType"-->
+				<!-- TODO name="networkConnectionState" type="sgr:networkConnectionStateType" (opt 1x)-->
+			</div>
 
 			<!-- Functiol Profiles -->
 			<xsl:for-each select="*/sgr:fpListElement">
-				<xsl:apply-templates select="sgr:functionalProfile"/>
+				<div class="functionalProfile">
+					<xsl:apply-templates select="sgr:functionalProfile"/>
+
+					<!-- TODO name="fpMbAttrReference" type="sgr:SGrModbusAttrFrameType" (0-unbound)-->
+
+					<table>
+						<colgroup>
+							<col style="width:30%"/>
+							<col style="width:30%"/>
+							<col style="width:20%"/>
+							<col style="width:20%"/>
+						</colgroup>			
+						<tr>
+							<th>Datapoint</th>
+							<th>Einh.</th>
+							<th>MRO</th>
+							<th>RWP</th>
+						</tr>
+						<xsl:apply-templates select="sgr:dpListElement"/>
+					</table>
+				</div>
 			</xsl:for-each>
+
+			<!-- Additional Datapoints -->
+			<!--div class="dataPoints">
+				<h2>Other Data Points</h2>
+				<table>
+					<colgroup>
+						<col style="width:30%"/>
+						<col style="width:30%"/>
+						<col style="width:20%"/>
+						<col style="width:20%"/>
+					</colgroup>			
+					<tr>
+						<th>Datapoint</th>
+						<th>Einh.</th>
+						<th>MRO</th>
+						<th>RWP</th>
+					</tr>
+					<xsl:apply-templates select="*/sgr:fpListElement"/>
+				</table>
+			</div-->
+
 		</div>
 	</body>
 	</html>
@@ -153,11 +132,14 @@
 <xsl:template match="sgr:fpNameList">
 	<xsl:call-template name="SGrNamelistType"/>
 </xsl:template>
+<xsl:template match="sgr:dpNameList">
+	<xsl:call-template name="SGrNamelistType"/>
+</xsl:template>
 <xsl:template name="SGrNamelistType">
 	<h3><xsl:value-of select="sgr:nameType"/> Ontology</h3>
 	<table>
 		<colgroup>
-			<col style="width:25%"/>
+			<col style="width:30%"/>
 		</colgroup>	
 		
 		<xsl:if test="sgr:sLV1Name">
@@ -197,12 +179,88 @@
 <xsl:template match="sgr:fpLegibDesc">
 	<xsl:call-template name="SGrLegibDocumentationType"/>
 </xsl:template>
+<xsl:template match="sgr:fpPrgDesc">
+	<xsl:call-template name="SGrLegibDocumentationType"/>
+</xsl:template>
+<xsl:template match="sgr:dpLegibDesc">
+	<xsl:call-template name="SGrLegibDocumentationType"/>
+</xsl:template>
 <xsl:template name="SGrLegibDocumentationType">
-	<tr><td>
+	<div style="padding:0.5em">
 		<img width="20px" height="14px"><xsl:attribute name="src">xsl/<xsl:value-of select="sgr:language"/>.png</xsl:attribute></img>
 		&#160;<xsl:value-of select="sgr:textElement"/>&#160;
 		<a><xsl:attribute name="href"><xsl:value-of select="sgr:uri"/></xsl:attribute><img alt="Link.." src="xsl/link.png" width="16pt" height="16pt" /></a>
-	</td></tr>
+	</div>
+</xsl:template>
+
+<!-- SGrDeviceProfileType -->
+<xsl:template match="sgr:deviceProfile">	
+
+	<!-- devNameList -->
+	<xsl:apply-templates select="sgr:devNameList"/>
+
+	<!-- devLegibDesc (4x opt) -->
+	<xsl:apply-templates select="sgr:devLegibDesc"/>	
+
+	<table style="width:100%">
+		<colgroup>
+			<col style="width:30%"/>
+		</colgroup>
+
+		<!-- Transport Service -->
+		<tr><td>Transport Service</td><td><xsl:value-of select="sgr:transportService"/></td></tr>
+		
+		<!-- Device Kind -->
+		<tr><td>Device Typ</td><td><xsl:value-of select="sgr:deviceKind"/></td></tr>
+		
+		<!-- serialNumber (1x opt)-->
+		<xsl:if test="sgr:serialNumber">
+			<tr><td>Serial No.</td><td><xsl:value-of select="sgr:serialNumber"/></td></tr>
+		</xsl:if>
+
+		<!-- softwareRevision -->
+		<tr><td>Software Rev.</td><td><xsl:apply-templates select="sgr:softwareRevision"/></td></tr>
+		
+		<!-- hardwareRevision (1x opt)-->
+		<xsl:if test="sgr:hardwareRevision">
+			<tr><td>Hardware Rev.</td><td><xsl:apply-templates select="sgr:hardwareRevision"/></td></tr>
+		</xsl:if>
+
+		<!-- brandName -->
+		<xsl:if test="sgr:brandName">
+			<tr><td>Brand</td><td><xsl:value-of select="sgr:brandName"/></td></tr>
+		</xsl:if>
+
+		<!-- powerSource (1x opt) -->
+		<xsl:if test="sgr:powerSource">
+			<tr><td>Power Source</td><td><xsl:value-of select="sgr:powerSource"/></td></tr>
+		</xsl:if>
+
+		<!-- nominalPower (1x opt) -->
+		<xsl:if test="sgr:nominalPower">
+			<tr><td>Nominal Power</td><td><xsl:value-of select="sgr:nominalPower"/></td></tr>
+		</xsl:if>
+
+		<!-- manufSpecIdent (1x opt) -->
+		<xsl:if test="sgr:manufSpecIdent">
+			<tr><td>Secification ID</td><td><xsl:value-of select="sgr:manufSpecIdent"/></td></tr>
+		</xsl:if>
+
+		<!-- manufacturerLabel (1x opt) -->
+		<xsl:if test="sgr:manufacturerLabel">
+			<tr><td>Manufcaturer Label</td><td><xsl:value-of select="sgr:manufacturerLabel"/></td></tr>
+		</xsl:if>
+		
+		<!-- remAuthorID (1x opt) -->
+		<xsl:if test="sgr:remAuthorID">
+			<tr><td>Author Remarks</td><td><xsl:value-of select="sgr:remAuthorID"/></td></tr>
+		</xsl:if>
+		
+		<!-- devLevelofOperation (1x opt) -->
+		<xsl:if test="sgr:devLevelofOperation">
+			<tr><td>SGr Level</td><td><xsl:value-of select="sgr:devLevelofOperation"/></td></tr>
+		</xsl:if>
+	</table>
 </xsl:template>
 
 <!-- Function Profile-->
@@ -211,7 +269,7 @@
 
 	<table>
 		<colgroup>
-			<col style="width:20%"/>
+			<col style="width:30%"/>
 		</colgroup>	
 		<xsl:for-each select="sgr:profileNumber">
 			<tr><td>Profil-ID</td><td><xsl:value-of select="sgr:specsOwnerId"/> - <xsl:value-of select="sgr:profileIdentification"/> - <xsl:value-of select="sgr:subProfileIdent"/></td></tr>
@@ -223,49 +281,42 @@
 		<!-- fpNameList -->
 	<xsl:apply-templates select="sgr:fpNameList"/>
 
-	<!--xsl:apply-templates select="sgr:fpNameList"/-->
-	
 	<!-- fpLegibDesc (4x opt) -->
-	<table>
-		<xsl:apply-templates select="sgr:fpLegibDesc"/>	
-	</table>
+	<xsl:apply-templates select="sgr:fpLegibDesc"/>	
 
-		
-	<table>
-	<colgroup>
-	<col style="width:10%"/>
-	<col style="width:20%"/>
-	<col style="width:20%"/>
-	<col style="width:10%"/>
-	<col style="width:20%"/>
-	<col style="width:10%"/>
-	<col style="width:10%"/>
-	</colgroup>			
-	<tr>
-	<td  colspan="7">eque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...</td>
-	</tr>
-	<tr>
-	<th>Ind./attr.</th>
-	<th>Datenpunkt</th>
-	<th>Beschreibung</th>
-	<th>Typ</th>
-	<th>Einh.</th>
-	<th>MRO</th>
-	<th>RWP</th>
-	</tr>
-	<xsl:for-each select="*[local-name()='dpListElement']">
-	<tr>
-	<td>(t.b.d)</td>
-	<td><xsl:value-of select="*[local-name()='dataPoint']/@datapointName"/></td>
-	<td>(t.b.d)</td>
-	<td>(t.b.d)</td>
-	<td><xsl:value-of select="*[local-name()='dataPoint']/@unit"/></td>
-	<td><xsl:value-of select="*[local-name()='dataPoint']/@mroVisibilityIndicator"/></td>
-	<td><xsl:value-of select="*[local-name()='dataPoint']/@rwpDatadirection"/></td>
-	</tr>
-	</xsl:for-each>
-	</table>
+	<!-- fpPrgDesc (4x opt)-->
+	<xsl:apply-templates select="sgr:fpPrgDesc"/>	
 </xsl:template>
+
+<!-- SGrDataPointDescriptionType -->
+<xsl:template match="sgr:dpListElement">
+	<tr>
+		<td><xsl:value-of select="sgr:dataPoint/@datapointName"/></td>
+		<td><xsl:value-of select="sgr:dataPoint/@unit"/></td>
+		<td><xsl:value-of select="sgr:dataPoint/@mroVisibilityIndicator"/></td>
+		<td><xsl:value-of select="sgr:dataPoint/@rwpDatadirection"/></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td colspan="3">
+			<!-- dpNameList (1x opt)-->
+			<xsl:if test="sgr:dataPoint/sgr:dpNameList">
+				<xsl:apply-templates select="sgr:dataPoint/sgr:dpNameList"/>
+			</xsl:if>
+
+			<!-- dpLegibDesc (4x opt) -->
+			<xsl:apply-templates select="sgr:dataPoint/sgr:dpLegibDesc"/>
+		</td>
+	</tr>
+
+	<!-- TODO name="basicDataType" type="sgr:SGrBasicGenDataPointTypeType" (opt 1x) -->
+	<!-- TODO name="basicArrayDataType" type="sgr:SGrBasicGenArrayDPTypeType" (opt 1x) -->	
+
+	<!-- TODO name="modbusDataPoint" type="sgr:SGrModbusDataPointDescriptionType" (1-unbound)-->
+
+	<!-- TODO name="dpMbAttrReference" type="sgr:SGrModbusAttrFrameType" (0-unbound)-->
+</xsl:template>
+
 
 </xsl:stylesheet>
 
