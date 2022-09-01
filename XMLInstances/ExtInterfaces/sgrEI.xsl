@@ -9,17 +9,17 @@
 <xsl:include href="xsl/SGrDataPoint.xsl" />
 
 <xsl:template match="/">
-	<html lang="en">
+	<html lang="any">
 	<head>
 		<title>SGr EI <xsl:value-of select="/*/@manufacturerName"/> - <xsl:value-of select="/*/@deviceName"/></title>
 		<meta name="viewport" content="width=device-width, initial-scale=1"/>
 		<style>
-		body { font-family: sans-serif; width: 900px; margin-right: auto; margin-left: auto; background-color:lightgray;}
+		body { font-family: sans-serif; width: 900px; margin-top: 1em; margin-right: auto; margin-left: auto; background-color:lightgray;}
 		.document { background-color:white; padding:4em;}
 		h1 { font-size: 1.55em; margin-bottom: 1.5em }
 		h2 { font-size: 1.44em; margin-bottom: 0.2em; margin-top: 2em; }
 		h3 { font-size: 1.0em; margin-bottom: 0.2em; margin-top: 1em; }
-		table { border-spacing: 0px; border-collapse: collapse; width:100%; margin-bottom:0.5em;}
+		table { border-spacing: 0px; border-collapse: collapse; width:100%; margin-bottom:0.0em;}
 		th { padding: 0.5em; text-align:left; border: 1px solid black; }
 		td { padding: 0.5em; border: 1px solid black; vertical-align:text-top;}
 		td.noborder { border: none; }
@@ -31,29 +31,35 @@
 			background-color:darkgrey;
 		}
 		div.navigation > div { padding: 0.1em; }
-		body:before{
-			content: 'Work in Progress';
-			top: -30%;
-			bottom: 0;
-			left: 0;
-			right: 0;
-						
-			color: #0d745e;
-			font-size: 60px;
-			font-weight: 500px;
-			display: grid;
-			justify-content: center;
-			align-content: center;
-			opacity: 0.1;
-			transform: rotate(0deg);
+		@media print {
+			div.navigation { display: none; }
 		}
+		body.en :lang(de) { display: none; }
+		body.en :lang(fr) { display: none; }
+		body.en :lang(it) { display: none; }
+		body.de :lang(en) { display: none; }
+		body.de :lang(fr) { display: none; }
+		body.de :lang(it) { display: none; }
+		body.fr :lang(en) { display: none; }
+		body.fr :lang(de) { display: none; }
+		body.fr :lang(it) { display: none; }
+		body.it :lang(en) { display: none; }
+		body.it :lang(de) { display: none; }
+		body.it :lang(fr) { display: none; }
+		body.none :lang(en) { display: none; }
+		body.none :lang(de) { display: none; }
+		body.none :lang(fr) { display: none; }
+		body.none :lang(it) { display: none; }
 		.profileheader { }
-		.externalInterface { } 
+		.externalInterface { }
+		.genericDetails {}
+		.ontologyDetails {} 
 		.functionalProfile { }
-		.dataPoint { }
+		.dataPoint { margin-top: 2em;}
+		.dataPointDetails { }
 		</style>
 	</head>
-	<body>
+	<body class="any">
 		<script type="text/javascript">
 			function toggleClass(className) {
 				const collection = document.getElementsByClassName(className);
@@ -61,11 +67,29 @@
 				  collection[i].style.display == "none" ? collection[i].style.display = "block" : collection[i].style.display = "none";
 				}
 			}
+			function toggleClassRow(className) {
+				const collection = document.getElementsByClassName(className);
+				for (let i = 0; i &lt; collection.length; i++) {
+				  collection[i].style.display == "none" ? collection[i].style.display = "table-row" : collection[i].style.display = "none";
+				}
+			}
 		</script>
 		<div class="navigation">
-			Navigation
-			<div><button onclick="toggleClass('functionalProfile')">Toggle FP</button></div>
-			<div><button onclick="toggleClass('dataPoint')">Toggle DP</button></div>
+			<h2>Details</h2>
+			<div><input type="checkbox" onclick="toggleClassRow('dataPointDetails')" name="showDPDetails" value="1" checked="checked"/>Data Points</div>
+			<div><input type="checkbox" onclick="toggleClassRow('genericDetails')" name="showDPDetails" value="1" checked="checked"/>Generic Info</div>
+			<div><input type="checkbox" onclick="toggleClassRow('ontologyDetails')" name="showDPDetails" value="1" checked="checked"/>Ontology</div>
+			<div><input type="checkbox" onclick="toggleClassRow('transportDetails')" name="showDPDetails" value="1" checked="checked"/>Transport Layer</div>
+			<div>
+				<select name="language" id="language" title="Language" onchange="document.body.className = this.value">
+					<option value="any">All Languages</option>
+					<option value="en">English</option>
+					<option value="de">Deutsch</option>
+					<option value="fr">Francais</option>
+					<option value="it">Italiano</option>
+					<option value="none">(none)</option>
+				</select>
+			</div>
 		</div>
 		<div class="document">
 			<div class="profileheader">
@@ -73,8 +97,7 @@
 					<img src="https://smartgridready.ch/media/images/Logos/SGR_LOGO_REDESIGN_RGB.svg" alt="SGr" width="240" height="134" />
 				</div>
 				<div style="display:inline-block; text-align:right; width:100%">Device Profil</div>
-			</div>
-			
+			</div>	
 			<div class="externalInterface">
 				<h1><xsl:value-of select="/*/@manufacturerName"/> - <xsl:value-of select="/*/@deviceName"/></h1>
 				<table>
@@ -94,7 +117,7 @@
 						</td>
 					</tr>
 
-					<tr><td class="noborder"></td></tr>
+					<tr><td class="noborder">&#160;</td></tr>
 				
 					<!-- Device Profile (nameList, legibDesc-->
 					<xsl:apply-templates select="*/sgr:deviceProfile"/>
@@ -105,14 +128,14 @@
 				
 					<!-- Modbus Device -->
 					<xsl:if test="*/sgr:modbusInterfaceDesc">
-						<tr><td colspan="2" class="noborder"><h3><img src="xsl/modbus.png" alt="Modbus" width="100px"/></h3></td></tr>
+						<tr class="transportDetails"><td colspan="2" class="noborder"><h3><img src="xsl/modbus.png" alt="Modbus" width="100px"/></h3></td></tr>
 						<xsl:apply-templates select="*/sgr:modbusInterfaceDesc"/>
 						<xsl:apply-templates select="*/sgr:devMbAttrReference/sgr:modbusAttr"/>
 					</xsl:if>
 
 					<!-- Rest Device -->
 					<xsl:if test="*/sgr:restAPIInterfaceDesc">
-						<tr><td colspan="2" class="noborder"><h3><img src="xsl/rest.png" alt="Rest" width="100px"/></h3></td></tr>
+						<tr class="transportDetails"><td colspan="2" class="noborder"><h3><img src="xsl/rest.png" alt="Rest" width="100px"/></h3></td></tr>
 						<xsl:apply-templates select="*/sgr:restAPIInterfaceDesc"/>
 						<xsl:apply-templates select="*/sgr:devRestAPIAttrReference/sgr:restAPIAttr"/>
 					</xsl:if>
@@ -146,31 +169,31 @@
 <!-- SGrNamelistType-->
 <xsl:template name="SGrNamelistType">
 	<xsl:if test="sgr:sLV1Name">
-	<tr><td>SGr label V1 (legacy)</td><td><xsl:value-of select="sgr:sLV1Name"/></td></tr>
+	<tr class="ontologyDetails"><td>SGr label V1 (legacy)</td><td><xsl:value-of select="sgr:sLV1Name"/></td></tr>
 	</xsl:if>
 	
 	<xsl:if test="sgr:sWorkName">
-	<tr><td>Temporary Work Name</td><td><xsl:value-of select="sgr:sWorkName"/></td></tr>
+	<tr class="ontologyDetails"><td>Temporary Work Name</td><td><xsl:value-of select="sgr:sWorkName"/></td></tr>
 	</xsl:if>
 	
 	<xsl:if test="sgr:sManufName">
-	<tr><td>Manufacturer</td><td><xsl:value-of select="sgr:sManufName"/></td></tr>
+	<tr class="ontologyDetails"><td>Manufacturer</td><td><xsl:value-of select="sgr:sManufName"/></td></tr>
 	</xsl:if>
 
 	<xsl:if test="sgr:sIEC61850Name">
-	<tr><td>IEC 61850 Name </td><td><xsl:value-of select="sgr:sIEC61850Name"/></td></tr>
+	<tr class="ontologyDetails"><td>IEC 61850 Name </td><td><xsl:value-of select="sgr:sIEC61850Name"/></td></tr>
 	</xsl:if>
 
 	<xsl:if test="sgr:sSAREFName">
-	<tr><td>SAREF Name</td><td><xsl:value-of select="sgr:sSAREFName"/></td></tr>
+	<tr class="ontologyDetails"><td>SAREF Name</td><td><xsl:value-of select="sgr:sSAREFName"/></td></tr>
 	</xsl:if>
 
 	<xsl:if test="sgr:sEEBUSName">
-	<tr><td>EEBUS Name</td><td><xsl:value-of select="sgr:sEEBUSName"/></td></tr>
+	<tr class="ontologyDetails"><td>EEBUS Name</td><td><xsl:value-of select="sgr:sEEBUSName"/></td></tr>
 	</xsl:if>
 	
 	<xsl:if test="sgr:sHPbwpName">
-	<tr><td>bwp HP Name</td><td><xsl:value-of select="sgr:sHPbwpName"/></td></tr>
+	<tr class="ontologyDetails"><td>bwp HP Name</td><td><xsl:value-of select="sgr:sHPbwpName"/></td></tr>
 	</xsl:if>
 </xsl:template>
 
@@ -183,11 +206,11 @@
 
 <!-- modbusInterfaceDesc -->
 <xsl:template match="sgr:modbusInterfaceDesc">
-	<tr><td>Interface Type</td><td><xsl:value-of select="sgr:modbusInterfaceSelection"/></td></tr>
+	<tr class="genericDetails"><td>Interface Type</td><td><xsl:value-of select="sgr:modbusInterfaceSelection"/></td></tr>
 
 	<!-- trspSrvModbusTCPoutOfBox (1x opt) -->
 	<xsl:if test="sgr:trspSrvModbusTCPoutOfBox">
-		<tr><td>TCP</td><td>
+		<tr class="transportDetails"><td>TCP</td><td>
 			<xsl:call-template name="join">
 				<xsl:with-param name="valueList" select="sgr:trspSrvModbusTCPoutOfBox/sgr:address/*"/>
 				<xsl:with-param name="separator" select="'.'"/>
@@ -200,7 +223,7 @@
 
 	<!-- trspSrvModbusRTUoutOfBox (1x opt) -->
 	<xsl:if test="sgr:trspSrvModbusRTUoutOfBox">
-		<tr><td>RTU</td><td>
+		<tr class="transportDetails"><td>RTU</td><td>
 			Slave Adress: <xsl:value-of select="sgr:trspSrvModbusRTUoutOfBox/sgr:slaveAddr"/><br/>
 			
 			Baud Rate: <xsl:value-of select="sgr:trspSrvModbusRTUoutOfBox/sgr:baudRateSelected"/><br/>
@@ -234,7 +257,7 @@
 	</xsl:if>
 
 	<!-- firstRegisterAddressIsOne -->
-	<tr>
+	<tr class="transportDetails">
 		<td>First Register Address</td>
 		<td>
 			<xsl:choose>
@@ -245,7 +268,7 @@
 	</tr>
 
 	<!-- conversionScheme -->
-	<tr><td>Conversion Scheme</td><td>
+	<tr class="transportDetails"><td>Conversion Scheme</td><td>
 		<xsl:call-template name="join">
 			<xsl:with-param name="valueList" select="sgr:conversionScheme"/>
 			<xsl:with-param name="separator" select="', '"/>
@@ -255,11 +278,11 @@
 
 <!-- restAPIInterfaceDesc -->
 <xsl:template match="sgr:restAPIInterfaceDesc">
-	<tr><td>Interface Type</td><td><xsl:value-of select="sgr:restAPIInterfaceSelection"/></td></tr>
+	<tr class="transportDetails"><td>Interface Type</td><td><xsl:value-of select="sgr:restAPIInterfaceSelection"/></td></tr>
 
 	<!-- trspSrvRestTCPV4outOfBox (1x opt )-->
 	<xsl:if test="sgr:trspSrvRestTCPV4outOfBox">
-		<tr>
+		<tr class="transportDetails">
 			<td>TCP/IP v4 Adress</td>
 			<td><xsl:value-of select="sgr:trspSrvRestTCPV4outOfBox/sgr:ipV4n1"/>.<xsl:value-of select="sgr:trspSrvRestTCPV4outOfBox/sgr:ipV4n2"/>.<xsl:value-of select="sgr:trspSrvRestTCPV4outOfBox/sgr:ipV4n3"/>.<xsl:value-of select="sgr:trspSrvRestTCPV4outOfBox/sgr:ipV4n4"/>:<xsl:value-of select="sgr:trspSrvRestTCPV4outOfBox/sgr:ipV4portNr"/></td>
 		</tr>
@@ -267,20 +290,20 @@
 	
 	<!-- trspSrvRestTCPV6outOfBox (1x opt )-->
 	<xsl:if test="sgr:trspSrvRestTCPV6outOfBox">
-		<tr><td>TCP/IP v6 Adress</td><td><xsl:value-of select="sgr:trspSrvRestTCPV6outOfBox/sgr:prelimStringDef"/></td></tr>
+		<tr class="transportDetails"><td>TCP/IP v6 Adress</td><td><xsl:value-of select="sgr:trspSrvRestTCPV6outOfBox/sgr:prelimStringDef"/></td></tr>
 	</xsl:if>
 
 	<!-- trspSrvRestURIoutOfBox (1x opt )-->
 	<xsl:if test="sgr:trspSrvRestURIoutOfBox">
-		<tr><td>TCP/IP URI</td><td><xsl:value-of select="sgr:trspSrvRestURIoutOfBox"/></td></tr>
+		<tr class="transportDetails"><td>TCP/IP URI</td><td><xsl:value-of select="sgr:trspSrvRestURIoutOfBox"/></td></tr>
 	</xsl:if>
 
-	<tr><td>Authentication Method</td><td><xsl:value-of select="sgr:restAPIAuthenticationMethod"/></td></tr>
+	<tr class="transportDetails"><td>Authentication Method</td><td><xsl:value-of select="sgr:restAPIAuthenticationMethod"/></td></tr>
 
 
 	<!-- restAPIBearer (1x opt )-->
 	<xsl:if test="sgr:restAPIBearer">
-		<tr>
+		<tr class="transportDetails">
 			<td>Bearer Security</td>
 			<td>
 				End Point: <xsl:value-of select="sgr:restAPIBearer/sgr:restAPIEndPoint"/><br/>
@@ -291,7 +314,7 @@
 
 	<!-- restAPIBasic (1x opt )-->
 	<xsl:if test="sgr:restAPIBasic">
-		<tr>
+		<tr class="transportDetails">
 			<td>Basic Security</td>
 			<td>
 				Username: <xsl:value-of select="sgr:restAPIBasic/sgr:restBasicUsername"/><br/>
@@ -307,8 +330,8 @@
 		<colgroup>
 			<col style="width:30%"/>
 		</colgroup>	
-		<tr><td>Connected</td><td><xsl:value-of select="sgr:isConnected"/></td></tr>
-		<tr><td>Next Attempt</td><td><xsl:value-of select="sgr:nextAttempt"/></td></tr>
+		<tr class="transportDetails"><td>Connected</td><td><xsl:value-of select="sgr:isConnected"/></td></tr>
+		<tr class="transportDetails"><td>Next Attempt</td><td><xsl:value-of select="sgr:nextAttempt"/></td></tr>
 	</table>
 </xsl:template>
 
@@ -333,27 +356,27 @@
 <xsl:template name="SGrAttr4GenericType">
 	<!--maxVal-->
 	<xsl:if test="sgr:maxVal">
-		<tr><td><img src="xsl/genattr.png" alt="" width="16pt" height="16pt" /> Upper Range Limit</td><td><xsl:value-of select="sgr:maxVal"/></td></tr>
+		<tr class="genericDetails"><td><img src="xsl/genattr.png" alt="" width="16pt" height="16pt" /> Upper Range Limit</td><td><xsl:value-of select="sgr:maxVal"/></td></tr>
 	</xsl:if>	
 
 	<!--minVal-->
 	<xsl:if test="sgr:minVal">
-		<tr><td><img src="xsl/genattr.png" alt="" width="16pt" height="16pt" /> Lower Range Limit</td><td><xsl:value-of select="sgr:minVal"/></td></tr>
+		<tr class="genericDetails"><td><img src="xsl/genattr.png" alt="" width="16pt" height="16pt" /> Lower Range Limit</td><td><xsl:value-of select="sgr:minVal"/></td></tr>
 	</xsl:if>	
 
 	<!--specQualityRequirement-->
 	<xsl:if test="sgr:specQualityRequirement">
-		<tr><td><img src="xsl/genattr.png" alt="" width="16pt" height="16pt" /> Quality Requirements</td><td><xsl:value-of select="sgr:specQualityRequirement"/></td></tr>
+		<tr class="genericDetails"><td><img src="xsl/genattr.png" alt="" width="16pt" height="16pt" /> Quality Requirements</td><td><xsl:value-of select="sgr:specQualityRequirement"/></td></tr>
 	</xsl:if>	
 
 	<!--precision-->
 	<xsl:if test="sgr:precision">
-		<tr><td><img src="xsl/genattr.png" alt="" width="16pt" height="16pt" /> Precision</td><td><xsl:value-of select="sgr:precision"/></td></tr>
+		<tr class="genericDetails"><td><img src="xsl/genattr.png" alt="" width="16pt" height="16pt" /> Precision</td><td><xsl:value-of select="sgr:precision"/></td></tr>
 	</xsl:if>
 
 	<!--stabilityFallback-->
 	<xsl:if test="sgr:stabilityFallback">
-		<tr><td><img src="xsl/genattr.png" alt="" width="16pt" height="16pt" /> Stability Fallback</td><td>
+		<tr class="genericDetails"><td><img src="xsl/genattr.png" alt="" width="16pt" height="16pt" /> Stability Fallback</td><td>
 			Max recieve time: <xsl:value-of select="sgr:stabilityFallback/sgr:maxReceiveTime"/><br/>
 			Init Value: <xsl:value-of select="sgr:stabilityFallback/sgr:initValue"/><br/>
 			Fallback Value: <xsl:value-of select="sgr:stabilityFallback/sgr:fallbackValue"/><br/>
@@ -362,7 +385,7 @@
 
 	<!--smoothTransition-->
 	<xsl:if test="sgr:smoothTransition">
-		<tr><td><img src="xsl/genattr.png" alt="" width="16pt" height="16pt" /> Stability Fallback</td><td>
+		<tr class="genericDetails"><td><img src="xsl/genattr.png" alt="" width="16pt" height="16pt" /> Stability Fallback</td><td>
 			<xsl:if test="sgr:smoothTransition/sgr:winTms">
 				Window: <xsl:value-of select="sgr:smoothTransition/sgr:winTms"/> ms&#160;
 			</xsl:if>
@@ -377,87 +400,87 @@
 
 	<!--minSendDelta-->
 	<xsl:if test="sgr:minSendDelta">
-		<tr><td><img src="xsl/genattr.png" alt="" width="16pt" height="16pt" /> Min. Delta for Notification</td><td><xsl:value-of select="sgr:minSendDelta"/></td></tr>
+		<tr class="genericDetails"><td><img src="xsl/genattr.png" alt="" width="16pt" height="16pt" /> Min. Delta for Notification</td><td><xsl:value-of select="sgr:minSendDelta"/></td></tr>
 	</xsl:if>
 
 	<!--maxSendTime-->
 	<xsl:if test="sgr:maxSendTime">
-		<tr><td><img src="xsl/genattr.png" alt="" width="16pt" height="16pt" /> Max. Time between Notification</td><td><xsl:value-of select="sgr:maxSendTime"/></td></tr>
+		<tr class="genericDetails"><td><img src="xsl/genattr.png" alt="" width="16pt" height="16pt" /> Max. Time between Notification</td><td><xsl:value-of select="sgr:maxSendTime"/></td></tr>
 	</xsl:if>
 
 	<!--maxReceiveTime-->
 	<xsl:if test="sgr:maxReceiveTime">
-		<tr><td><img src="xsl/genattr.png" alt="" width="16pt" height="16pt" /> Max. Recieve Time</td><td><xsl:value-of select="sgr:maxReceiveTime"/></td></tr>
+		<tr class="genericDetails"><td><img src="xsl/genattr.png" alt="" width="16pt" height="16pt" /> Max. Recieve Time</td><td><xsl:value-of select="sgr:maxReceiveTime"/></td></tr>
 	</xsl:if>
 
 	<!--minSendTime-->
 	<xsl:if test="sgr:minSendTime">
-		<tr><td><img src="xsl/genattr.png" alt="" width="16pt" height="16pt" /> Min. Time between Notification</td><td><xsl:value-of select="sgr:minSendTime"/></td></tr>
+		<tr class="genericDetails"><td><img src="xsl/genattr.png" alt="" width="16pt" height="16pt" /> Min. Time between Notification</td><td><xsl:value-of select="sgr:minSendTime"/></td></tr>
 	</xsl:if>
 
 	<!--maxLatencyTime-->
 	<xsl:if test="sgr:maxLatencyTime">
-		<tr><td><img src="xsl/genattr.png" alt="" width="16pt" height="16pt" /> Max. Latency</td><td><xsl:value-of select="sgr:maxLatencyTime"/></td></tr>
+		<tr class="genericDetails"><td><img src="xsl/genattr.png" alt="" width="16pt" height="16pt" /> Max. Latency</td><td><xsl:value-of select="sgr:maxLatencyTime"/></td></tr>
 	</xsl:if>
 
 	<!--timeStampLog-->
 	<xsl:if test="sgr:timeStampLog">
-		<tr><td><img src="xsl/genattr.png" alt="" width="16pt" height="16pt" /> Time Stamp Log</td><td><xsl:value-of select="sgr:timeStampLog"/></td></tr>
+		<tr class="genericDetails"><td><img src="xsl/genattr.png" alt="" width="16pt" height="16pt" /> Time Stamp Log</td><td><xsl:value-of select="sgr:timeStampLog"/></td></tr>
 	</xsl:if>
 		
 	<!--timeRange-->
 	<xsl:if test="sgr:timeRange">
-		<tr><td><img src="xsl/genattr.png" alt="" width="16pt" height="16pt" /> Time Range</td><td><xsl:value-of select="sgr:timeRange/sgr:startTime"/> - <xsl:value-of select="sgr:timeRange/sgr:endTime"/></td></tr>
+		<tr class="genericDetails"><td><img src="xsl/genattr.png" alt="" width="16pt" height="16pt" /> Time Range</td><td><xsl:value-of select="sgr:timeRange/sgr:startTime"/> - <xsl:value-of select="sgr:timeRange/sgr:endTime"/></td></tr>
 	</xsl:if>
 
 	<!--valueState-->
 	<xsl:if test="sgr:valueState">
-		<tr><td><img src="xsl/genattr.png" alt="" width="16pt" height="16pt" /> Value Statue</td><td><xsl:value-of select="sgr:valueState"/></td></tr>
+		<tr class="genericDetails"><td><img src="xsl/genattr.png" alt="" width="16pt" height="16pt" /> Value Statue</td><td><xsl:value-of select="sgr:valueState"/></td></tr>
 	</xsl:if>
 
 	<!--valueTendency-->
 	<xsl:if test="sgr:valueTendency">
-		<tr><td><img src="xsl/genattr.png" alt="" width="16pt" height="16pt" /> Value Tendency</td><td><xsl:value-of select="sgr:valueTendency"/></td></tr>
+		<tr class="genericDetails"><td><img src="xsl/genattr.png" alt="" width="16pt" height="16pt" /> Value Tendency</td><td><xsl:value-of select="sgr:valueTendency"/></td></tr>
 	</xsl:if>
 
 	<!--valueSource-->
 	<xsl:if test="sgr:valueSource">
-		<tr><td><img src="xsl/genattr.png" alt="" width="16pt" height="16pt" /> Value Source</td><td><xsl:value-of select="sgr:valueSource"/></td></tr>
+		<tr class="genericDetails"><td><img src="xsl/genattr.png" alt="" width="16pt" height="16pt" /> Value Source</td><td><xsl:value-of select="sgr:valueSource"/></td></tr>
 	</xsl:if>
 
 	<!--sampleRate-->
 	<xsl:if test="sgr:sampleRate">
-		<tr><td><img src="xsl/genattr.png" alt="" width="16pt" height="16pt" /> Sample Rate</td><td><xsl:value-of select="sgr:sampleRate"/> ms</td></tr>
+		<tr class="genericDetails"><td><img src="xsl/genattr.png" alt="" width="16pt" height="16pt" /> Sample Rate</td><td><xsl:value-of select="sgr:sampleRate"/> ms</td></tr>
 	</xsl:if>
 
 	<!--curtailment-->
 	<xsl:if test="sgr:curtailment">
-		<tr><td><img src="xsl/genattr.png" alt="" width="16pt" height="16pt" /> Curtailment</td><td><xsl:value-of select="sgr:curtailment"/></td></tr>
+		<tr class="genericDetails"><td><img src="xsl/genattr.png" alt="" width="16pt" height="16pt" /> Curtailment</td><td><xsl:value-of select="sgr:curtailment"/></td></tr>
 	</xsl:if>
 
 	<!--minLoad-->
 	<xsl:if test="sgr:minLoad">
-		<tr><td><img src="xsl/genattr.png" alt="" width="16pt" height="16pt" /> Min. Load</td><td><xsl:value-of select="sgr:minLoad"/></td></tr>
+		<tr class="genericDetails"><td><img src="xsl/genattr.png" alt="" width="16pt" height="16pt" /> Min. Load</td><td><xsl:value-of select="sgr:minLoad"/></td></tr>
 	</xsl:if>
 
 	<!--maxLockTimeMinutes-->
 	<xsl:if test="sgr:maxLockTimeMinutes">
-		<tr><td><img src="xsl/genattr.png" alt="" width="16pt" height="16pt" /> Max. Lock Time</td><td><xsl:value-of select="sgr:maxLockTimeMinutes"/> min</td></tr>
+		<tr class="genericDetails"><td><img src="xsl/genattr.png" alt="" width="16pt" height="16pt" /> Max. Lock Time</td><td><xsl:value-of select="sgr:maxLockTimeMinutes"/> min</td></tr>
 	</xsl:if>
 
 	<!--minRunTimeMinutes-->
 	<xsl:if test="sgr:minRunTimeMinutes">
-		<tr><td><img src="xsl/genattr.png" alt="" width="16pt" height="16pt" /> Min. Run Time</td><td><xsl:value-of select="sgr:minRunTimeMinutes"/> min</td></tr>
+		<tr class="genericDetails"><td><img src="xsl/genattr.png" alt="" width="16pt" height="16pt" /> Min. Run Time</td><td><xsl:value-of select="sgr:minRunTimeMinutes"/> min</td></tr>
 	</xsl:if>
 
 	<!--valueByTimeTableMinutes-->
 	<xsl:if test="sgr:valueByTimeTableMinutes">
-		<tr><td><img src="xsl/genattr.png" alt="" width="16pt" height="16pt" /> Value by time Table</td><td><xsl:value-of select="sgr:valueByTimeTableMinutes"/>min</td></tr>
+		<tr class="genericDetails"><td><img src="xsl/genattr.png" alt="" width="16pt" height="16pt" /> Value by time Table</td><td><xsl:value-of select="sgr:valueByTimeTableMinutes"/>min</td></tr>
 	</xsl:if>
 
 	<!--flexAssistance-->
 	<xsl:if test="sgr:flexAssistance">
-		<tr><td><img src="xsl/genattr.png" alt="" width="16pt" height="16pt" /> Flex Assistance</td><td>Assists <xsl:value-of select="sgr:flexAssistance/sgr:assists"/>, obliged to <xsl:value-of select="sgr:flexAssistance/sgr:obliged_to"/></td></tr>
+		<tr class="genericDetails"><td><img src="xsl/genattr.png" alt="" width="16pt" height="16pt" /> Flex Assistance</td><td>Assists <xsl:value-of select="sgr:flexAssistance/sgr:assists"/>, obliged to <xsl:value-of select="sgr:flexAssistance/sgr:obliged_to"/></td></tr>
 	</xsl:if>
 
 </xsl:template>
@@ -465,32 +488,32 @@
 <xsl:template match="sgr:modbusAttr">
 	<!--scalingByMulPwr-->
 	<xsl:if test="sgr:scalingByMulPwr">
-		<tr><td><img src="xsl/modbus.png" alt="Modbus" width="60px"/> Scaling</td><td><xsl:value-of select="sgr:scalingByMulPwr/sgr:multiplicator"/> x 10e<xsl:value-of select="sgr:scalingByMulPwr/sgr:powerof10"/></td></tr>
+		<tr class="transportDetails"><td><img src="xsl/modbus.png" alt="Modbus" width="60px"/> Scaling</td><td><xsl:value-of select="sgr:scalingByMulPwr/sgr:multiplicator"/> x 10e<xsl:value-of select="sgr:scalingByMulPwr/sgr:powerof10"/></td></tr>
 	</xsl:if>	
 
 	<!--stepByIncrement-->
 	<xsl:if test="sgr:stepByIncrement">
-		<tr><td><img src="xsl/modbus.png" alt="Modbus" width="60px"/> Step by Increment</td><td><xsl:value-of select="sgr:stepByIncrement"/> ms</td></tr>
+		<tr class="transportDetails"><td><img src="xsl/modbus.png" alt="Modbus" width="60px"/> Step by Increment</td><td><xsl:value-of select="sgr:stepByIncrement"/> ms</td></tr>
 	</xsl:if>	
 
 	<!--sunssf-->
 	<xsl:if test="sgr:sunssf">
-		<tr><td><img src="xsl/modbus.png" alt="Modbus" width="60px"/> Sunspec Scale Factor</td><td><xsl:value-of select="sgr:sunssf"/> ms</td></tr>
+		<tr class="transportDetails"><td><img src="xsl/modbus.png" alt="Modbus" width="60px"/> Sunspec Scale Factor</td><td><xsl:value-of select="sgr:sunssf"/> ms</td></tr>
 	</xsl:if>	
 
 	<!--pollLatencyMS-->
 	<xsl:if test="sgr:pollLatencyMS">
-		<tr><td><img src="xsl/modbus.png" alt="Modbus" width="60px"/> Polling Latency</td><td><xsl:value-of select="sgr:pollLatencyMS"/> ms</td></tr>
+		<tr class="transportDetails"><td><img src="xsl/modbus.png" alt="Modbus" width="60px"/> Polling Latency</td><td><xsl:value-of select="sgr:pollLatencyMS"/> ms</td></tr>
 	</xsl:if>
 
 	<!--timeSyncBlockNotification-->
 	<xsl:if test="sgr:timeSyncBlockNotification">
-		<tr><td><img src="xsl/modbus.png" alt="Modbus" width="60px"/> Time Sync Block Notification</td><td>Block <xsl:value-of select="sgr:timeSyncBlockNotification/sgr:blockNumber"/>: <xsl:value-of select="sgr:timeSyncBlockNotification/sgr:timeoutMs"/> ms</td></tr>
+		<tr class="transportDetails"><td><img src="xsl/modbus.png" alt="Modbus" width="60px"/> Time Sync Block Notification</td><td>Block <xsl:value-of select="sgr:timeSyncBlockNotification/sgr:blockNumber"/>: <xsl:value-of select="sgr:timeSyncBlockNotification/sgr:timeoutMs"/> ms</td></tr>
 	</xsl:if>	
 
 	<!--accessProtection-->
 	<xsl:if test="sgr:accessProtection">
-		<tr><td><img src="xsl/modbus.png" alt="Modbus" width="60px"/> Access Protection</td><td>
+		<tr class="transportDetails"><td><img src="xsl/modbus.png" alt="Modbus" width="60px"/> Access Protection</td><td>
 		<xsl:choose>
 			<xsl:when test="sgr:accessProtection/@isEnabled">Enabled: </xsl:when>
 			<xsl:otherwise>Disabled: </xsl:otherwise>
@@ -503,7 +526,7 @@
 
 	<!--layer6Deviation-->
 	<xsl:if test="sgr:layer6Deviation">
-		<tr><td><img src="xsl/modbus.png" alt="Modbus" width="60px"/> ISO/OSI Layer 6 Data Type</td><td><xsl:value-of select="sgr:layer6Deviation"/></td></tr>
+		<tr class="transportDetails"><td><img src="xsl/modbus.png" alt="Modbus" width="60px"/> ISO/OSI Layer 6 Data Type</td><td><xsl:value-of select="sgr:layer6Deviation"/></td></tr>
 	</xsl:if>
 
 </xsl:template>
