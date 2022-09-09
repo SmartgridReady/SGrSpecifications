@@ -3,7 +3,7 @@
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:sgr="http://www.smartgridready.com/ns/V0/">
 
 <!--
-    Contains the style sheets for the generic function profile, including
+    Contains the style sheets for the generic functional profile, including
     - sgr:fpNameList
 
     Depends on named templates:
@@ -17,7 +17,7 @@
 	<div class="functionalProfile">
         <h2><xsl:value-of select="sgr:functionalProfile/@profileName"/> (<xsl:value-of select="sgr:functionalProfile/@mroVisibilityIndicator"/>)</h2>
 
-        <!-- Function Profile Block -->
+        <!-- Functional Profile Block -->
         <table>
             <colgroup>
                 <col style="width:30%"/>
@@ -58,7 +58,7 @@
 	</div>
 </xsl:template>
 
-<!-- Generic Function Profile -->
+<!-- Generic Functional Profile -->
 <xsl:template match="sgr:functionalProfile">
     
     <tr><td>Profil-ID</td><td><xsl:value-of select="sgr:profileNumber/sgr:specsOwnerId"/> - <xsl:value-of select="sgr:profileNumber/sgr:profileIdentification"/> - <xsl:value-of select="sgr:profileNumber/sgr:subProfileIdent"/></td></tr>
