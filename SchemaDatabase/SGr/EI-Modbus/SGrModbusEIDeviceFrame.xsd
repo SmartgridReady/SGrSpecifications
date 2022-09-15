@@ -68,18 +68,8 @@
     <sequence>
     	<element maxOccurs="1" minOccurs="1" name="functionalProfile"
     		type="sgr:SGrProfileDescriptionType" />
-
-    	<element maxOccurs="unbounded" minOccurs="0"
-    		name="fpMbAttrReference" type="sgr:SGrModbusAttrFrameType">
-    		<annotation>
-    			<documentation>
-    				ModbusAttrFrameTypes contain two branches of
-    				SmartGridready attributes: Modbus related and
-    				Generic fpMbAttrRefernce values are valid for a
-    				whole functional profile
-    			</documentation>
-    		</annotation>
-    	</element>
+		<element maxOccurs="unbounded" minOccurs="0" name="genAttribute" type="sgr:SGrAttr4GenericType"/>
+		<element maxOccurs="unbounded" minOccurs="0" name="modbusAttr" type="sgr:SGrAttr4ModbusType"/>
     	<element maxOccurs="unbounded" minOccurs="1"
     		name="dpListElement" type="sgr:SGrModbusDataPointsFrameType" />
     </sequence>
