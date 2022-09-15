@@ -155,32 +155,10 @@
       <documentation xml:lang="de"/>
       <documentation/>
     </annotation>
-    <choice>        
-        <element maxOccurs="unbounded" minOccurs="1" name="boolean" type="boolean"/>
-        <element maxOccurs="unbounded" minOccurs="1" name="int8" type="byte"/>
-        <element maxOccurs="unbounded" minOccurs="1" name="int16" type="short"/>
-        <element maxOccurs="unbounded" minOccurs="1" name="int32" type="integer"/>
-        <element maxOccurs="unbounded" minOccurs="1" name="int64" type="long"/>
-        <element maxOccurs="unbounded" minOccurs="1" name="int8U" type="unsignedByte"/>
-        <element maxOccurs="unbounded" minOccurs="1" name="int16U" type="unsignedShort"/>
-        <element maxOccurs="unbounded" minOccurs="1" name="int32U" type="unsignedInt"/>
-        <element maxOccurs="unbounded" minOccurs="1" name="int64U" type="unsignedLong"/>
-        <element maxOccurs="unbounded" minOccurs="1" name="float32" type="float"/>
-        <element maxOccurs="unbounded" minOccurs="1" name="float64" type="double"/>
-        <element maxOccurs="unbounded" minOccurs="1" name="dateTime" type="dateTime"/>
-        <element maxOccurs="unbounded" minOccurs="1" name="string" type="string"/>
-        <!-- weitere aus IEC61850 übertragbare Datentypen: Achtung: Elemente müssen ohne "_" sein und mit Kleinbuschtsaben beginnen
-        		     <enumeration value="Dbpos"/> 
-					<enumeration value="Tcmd"/> <enumeration value="Quality"/> <enumeration value="VisString32"/> 
-					<enumeration value="VisString64"/> <enumeration value="VisString65"/> <enumeration 
-					value="VisString129"/> <enumeration value="VisString255"/> <enumeration value="Octet64"/> 
-					<enumeration value="Unicode255"/> <enumeration value="Struct"/> <enumeration 
-					value="EntryTime"/> <enumeration value="Check"/> <enumeration value="ObjRef"/> 
-					<enumeration value="Currency"/> <enumeration value="PhyComAddr"/> <enumeration 
-					value="TrgOps"/> <enumeration value="OptFlds"/> <enumeration value="SvOptFlds"/> 
-					<enumeration value="LogOptFlds"/> <enumeration value="EntryID"/> <enumeration 
-					value="Octet6"/> <enumeration value="Octet16"/> -->
-    </choice>
+    <sequence>
+      <element name="type" type="sgr:SGrBasicGenDataPointTypeType"/>
+      <element name="lenght" type="integer"/>
+    </sequence>
   </complexType>
   <!-- enumeration to select mandatory, optional or recommended use of elements -->
   <simpleType name="SGrMROPresenceLevelIndicationType">
