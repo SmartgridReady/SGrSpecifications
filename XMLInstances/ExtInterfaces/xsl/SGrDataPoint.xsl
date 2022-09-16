@@ -50,21 +50,20 @@
                 <!-- TODO name="basicArrayDataType" type="sgr:SGrBasicGenArrayDPTypeType" (opt 1x) -->	
 
                 <!-- Generic Attributes -->
-                <xsl:apply-templates select="sgr:dpMbAttrReference/sgr:genAttribute"/>
-                <xsl:apply-templates select="sgr:dpRestAPIAttrReference/sgr:genAttribute"/>
+                <xsl:apply-templates select="sgr:genAttribute"/>
             
                 <!-- Modbus Device -->
                 <xsl:if test="sgr:modbusDataPoint">
                     <tr class="transportDetails"><td colspan="2" class="noborder"><h3><img src="xsl/modbus.png" alt="Modbus" width="100px"/></h3></td></tr>
                     <xsl:apply-templates select="sgr:modbusDataPoint"/>
-                    <xsl:apply-templates select="sgr:dpMbAttrReference/sgr:modbusAttr"/>
+                    <xsl:apply-templates select="sgr:modbusAttr"/>
                 </xsl:if>
 
                 <!-- Rest Device -->
                 <xsl:if test="sgr:restAPIDataPoint">
                     <tr class="transportDetails"><td colspan="2" class="noborder"><h3><img src="xsl/rest.png" alt="Rest" width="100px"/></h3></td></tr>
                     <xsl:apply-templates select="sgr:restAPIDataPoint"/>
-                    <xsl:apply-templates select="sgr:dpRestAPIAttrReference/sgr:restAPIAttr"/>
+                    <xsl:apply-templates select="sgr:restAPIAttr"/>
                 </xsl:if>
             </table>
 		</td>
