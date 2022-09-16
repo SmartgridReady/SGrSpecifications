@@ -26,12 +26,11 @@
             <xsl:apply-templates select="sgr:functionalProfile"/>
 
             <!-- Generic Attributes -->
-            <xsl:apply-templates select="sgr:fpMbAttrReference/sgr:genAttribute"/>
-            <xsl:apply-templates select="sgr:fpRestAPIAttrReference/sgr:genAttribute"/>
+            <xsl:apply-templates select="sgr:genAttribute"/>
 
             <!-- Modbus and Rest Attributes -->
-            <xsl:apply-templates select="sgr:fpMbAttrReference/sgr:modbusAttr"/>
-            <xsl:apply-templates select="sgr:fpRestAPIAttrReference/sgr:restAPIAttr"/>
+            <xsl:apply-templates select="sgr:modbusAttr"/>
+            <xsl:apply-templates select="sgr:restAPIAttr"/>
         </table>
         
 		<!-- Data Points -->
@@ -40,8 +39,8 @@
                 <colgroup>
                     <col style="width:5%"/>
                     <col style="width:25%"/>
-                    <col style="width:40%"/>
-                    <col style="width:10%"/>
+                    <col style="width:35%"/>
+                    <col style="width:15%"/>
                     <col style="width:10%"/>
                     <col style="width:10%"/>
                 </colgroup>			
