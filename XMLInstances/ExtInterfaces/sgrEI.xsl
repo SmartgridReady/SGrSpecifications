@@ -339,6 +339,14 @@
 	<xsl:call-template name="SGrBasicGenDataPointTypeType" />
 </xsl:template>
 
+<xsl:template match="sgr:basicArrayDataType">
+	<xsl:value-of select="sgr:lenght"/>x
+	<xsl:for-each select="sgr:type">
+		<xsl:call-template name="SGrBasicGenDataPointTypeType"/>
+	</xsl:for-each>
+</xsl:template>
+
+
 <xsl:template match="sgr:modbusDataType">
 	<xsl:call-template name="SGrBasicGenDataPointTypeType"/>
 </xsl:template>

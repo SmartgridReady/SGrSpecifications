@@ -19,7 +19,15 @@
 	<tr>
 		<td colspan="2"><xsl:value-of select="sgr:dataPoint/@datapointName"/></td>
 		<td><xsl:value-of select="sgr:dataPoint/@unit"/></td>
-		<td><xsl:apply-templates select="sgr:dataPoint/sgr:basicDataType"/></td>
+		<td>
+			<xsl:if test="sgr:dataPoint/sgr:basicDataType">
+				<xsl:apply-templates select="sgr:dataPoint/sgr:basicDataType"/>
+			</xsl:if>
+
+			<xsl:if test="sgr:dataPoint/sgr:basicArrayDataType">
+				<xsl:apply-templates select="sgr:dataPoint/sgr:basicArrayDataType"/>
+			</xsl:if>
+		</td>
 		<td><xsl:value-of select="sgr:dataPoint/@mroVisibilityIndicator"/></td>
 		<td><xsl:value-of select="sgr:dataPoint/@rwpDatadirection"/></td>
 	</tr>
