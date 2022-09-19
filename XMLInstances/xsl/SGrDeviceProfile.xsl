@@ -28,14 +28,13 @@
 	<!-- Transport Service -->
 	<tr class="genericDetails"><td>Transport Service</td><td>
 		<xsl:choose>
-			<xsl:when test="sgr:transportService='Modbus'"><img src="/xsl/modbus.png" alt="Modbus" width="60px"/></xsl:when>
-			<xsl:when test="sgr:transportService='RESTfulJSON'"><img src="/xsl/rest.png" alt="JsonRest" width="80px"/></xsl:when>
-			<xsl:when test="sgr:transportService='Contacts'"><img src="/xsl/contacts.png" alt="Contacts" width="20px"/> Contacts</xsl:when>
+			<xsl:when test="sgr:transportService='Modbus'"><img src="/xsl/modbus.png" alt="Modbus" height="17px"/></xsl:when>
+			<xsl:when test="sgr:transportService='RESTfulJSON'"><img src="/xsl/rest.png" alt="JsonRest" height="17px"/>></xsl:when>
+			<xsl:when test="sgr:transportService='Contacts'"><img src="/xsl/contacts.png" alt="Contacts" height="17px"/></xsl:when>
 			<xsl:otherwise>
 				<!--enumeration value="EEBUS"/>
 				<enumeration value="OCPP1.6"/>
 				<enumeration value="OCPP2.01"/>
-				<enumeration value="Contacts"/>
 				<enumeration value="WoT"/>
 				<enumeration value="proprietary"/>
 				<enumeration value="generic"/-->
