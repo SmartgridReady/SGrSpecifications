@@ -47,21 +47,19 @@
                 <!-- dpLegibDesc (4x opt) -->
 			    <xsl:apply-templates select="sgr:dataPoint/sgr:dpLegibDesc"/>
 
-                <!-- TODO name="basicArrayDataType" type="sgr:SGrBasicGenArrayDPTypeType" (opt 1x) -->	
-
                 <!-- Generic Attributes -->
                 <xsl:apply-templates select="sgr:genAttribute"/>
             
                 <!-- Modbus Device -->
                 <xsl:if test="sgr:modbusDataPoint">
-                    <tr class="transportDetails"><td colspan="2" class="noborder"><h3><img src="xsl/modbus.png" alt="Modbus" width="100px"/></h3></td></tr>
+                    <tr class="transportDetails"><td colspan="2" class="noborder"><h3><img src="/xsl/modbus.png" alt="Modbus" width="100px"/></h3></td></tr>
                     <xsl:apply-templates select="sgr:modbusDataPoint"/>
                     <xsl:apply-templates select="sgr:modbusAttr"/>
                 </xsl:if>
 
                 <!-- Rest Device -->
                 <xsl:if test="sgr:restAPIDataPoint">
-                    <tr class="transportDetails"><td colspan="2" class="noborder"><h3><img src="xsl/rest.png" alt="Rest" width="100px"/></h3></td></tr>
+                    <tr class="transportDetails"><td colspan="2" class="noborder"><h3><img src="/xsl/rest.png" alt="Rest" width="100px"/></h3></td></tr>
                     <xsl:apply-templates select="sgr:restAPIDataPoint"/>
                     <xsl:apply-templates select="sgr:restAPIAttr"/>
                 </xsl:if>
@@ -130,7 +128,7 @@
 <xsl:template match="sgr:restAPIAttr">
 	<!--flexAssistance-->
 	<xsl:if test="sgr:placeHolder4futureExtensions">
-		<tr class="transportDetails"><td><img src="xsl/rest.png" width="60px"/> Fut.Ext. ??</td><td><xsl:value-of select="sgr:placeHolder4futureExtensions"/></td></tr>
+		<tr class="transportDetails"><td><img src="/xsl/rest.png" width="60px"/> Fut.Ext. ??</td><td><xsl:value-of select="sgr:placeHolder4futureExtensions"/></td></tr>
 	</xsl:if>
 </xsl:template>
 

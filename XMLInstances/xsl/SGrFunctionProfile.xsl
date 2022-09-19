@@ -14,9 +14,16 @@
 -->
 
 <xsl:template match="sgr:fpListElement">
-	<div class="functionalProfile">
-        <h2><xsl:value-of select="sgr:functionalProfile/@profileName"/> (<xsl:value-of select="sgr:functionalProfile/@mroVisibilityIndicator"/>)</h2>
+    <xsl:call-template name="sgrFunctionProfile"/>
+</xsl:template>
+<xsl:template match="sgr:functionalProfiles">
+    <xsl:call-template name="sgrFunctionProfile"/>
+</xsl:template>
 
+<xsl:template name="sgrFunctionProfile">
+	<div class="functionalProfile">
+        <h2 style="float:left;"><xsl:value-of select="sgr:functionalProfile/@profileName"/> (<xsl:value-of select="sgr:functionalProfile/@mroVisibilityIndicator"/>)</h2>
+        
         <!-- Functional Profile Block -->
         <table>
             <colgroup>

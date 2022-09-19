@@ -16,7 +16,7 @@ The external interface XML can be visualized through xslt. As most browsers rest
 - https://ergozeller.github.io/sgrTest/ contains a shadow copy that is manually updated by @ergozeller
 - Alternatively you can easily setup a local web server.
 
-Start the python webserver in the directory containg your local copy of the external interfaces
+Start the python webserver in the directory containg your local copy of /XMLInstances
 
 ```
 python -m http.server 8080
