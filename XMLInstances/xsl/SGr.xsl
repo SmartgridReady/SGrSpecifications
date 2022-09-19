@@ -165,8 +165,7 @@
 
 			<!-- Generic Attributes -->
 			<xsl:apply-templates select="*/sgr:genAttribute"/>
-			<xsl:apply-templates select="*/sgr:devAttr4Generic"/>
-		
+			
 			<!-- Modbus Device -->
 			<xsl:if test="sgr:modbusInterfaceDesc">
 				<tr class="transportDetails"><td colspan="2" class="noborder"><h3><img src="/xsl/modbus.png" alt="Modbus" width="100px"/></h3></td></tr>
