@@ -110,6 +110,7 @@
 			<!-- Device Types -->
 			<xsl:apply-templates select="sgr:SGrModbusDeviceDescriptionType"/>
 			<xsl:apply-templates select="sgr:SGrRESTAPIDeviceDescriptionType"/>
+			<xsl:apply-templates select="sgr:SGrContactAPIDeviceDescriptionType"/>
 
 			<!-- Functiol Profiles -->
 			<xsl:apply-templates select="*/sgr:fpListElement"/>
@@ -131,7 +132,9 @@
 	<xsl:call-template name="SGrDeviceType"/>
 </xsl:template>
 <xsl:template match="sgr:SGrRESTAPIDeviceDescriptionType">
-	<p>Hello Resty</p>
+	<xsl:call-template name="SGrDeviceType"/>
+</xsl:template>
+<xsl:template match="sgr:SGrContactAPIDeviceDescriptionType">
 	<xsl:call-template name="SGrDeviceType"/>
 </xsl:template>
 <xsl:template name="SGrDeviceType">
@@ -162,6 +165,7 @@
 
 			<!-- Generic Attributes -->
 			<xsl:apply-templates select="*/sgr:genAttribute"/>
+			<xsl:apply-templates select="*/sgr:devAttr4Generic"/>
 		
 			<!-- Modbus Device -->
 			<xsl:if test="sgr:modbusInterfaceDesc">
@@ -176,6 +180,13 @@
 				<xsl:apply-templates select="sgr:restAPIInterfaceDesc"/>
 				<xsl:apply-templates select="sgr:restAPIAttr"/>
 			</xsl:if>
+			
+			<!-- Contact Device -->
+			<xsl:if test="sgr:contactApiInterfaceDesc">
+				<tr class="transportDetails"><td colspan="2" class="noborder"><h3><img src="/xsl/contacts.png" alt="Contacts" width="40px"/></h3></td></tr>
+				<xsl:apply-templates select="sgr:contactApiInterfaceDesc"/>
+			</xsl:if>			
+
 		</table>
 
 		<xsl:apply-templates select="sgr:networkConnectionState"/>
@@ -353,6 +364,12 @@
 			</td>
 		</tr>
 	</xsl:if>
+</xsl:template>
+
+<!-- contactApiInterfaceDesc -->
+<xsl:template match="sgr:contactApiInterfaceDesc">
+	<tr class="transportDetails"><td>Number of Contacts</td><td><xsl:value-of select="sgr:numContacts"/></td></tr>
+	<tr class="transportDetails"><td>Contact Stabilization Time</td><td><xsl:value-of select="sgr:contactStabilisationTimeMs"/> ms</td></tr>
 </xsl:template>
 
 <xsl:template match="sgr:networkConnectionState">
