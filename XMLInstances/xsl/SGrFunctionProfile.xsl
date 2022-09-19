@@ -16,9 +16,6 @@
 <xsl:template match="sgr:fpListElement">
     <xsl:call-template name="sgrFunctionProfile"/>
 </xsl:template>
-<xsl:template match="sgr:functionalProfiles">
-    <xsl:call-template name="sgrFunctionProfile"/>
-</xsl:template>
 
 <xsl:template name="sgrFunctionProfile">
 	<div class="functionalProfile">

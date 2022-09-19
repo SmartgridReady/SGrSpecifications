@@ -100,7 +100,7 @@
 				</div>
 				<div style="float:left; width:50%; text-align:right; height: 134px">
 					<xsl:choose>
-						<xsl:when test="/sgr:functionalProfiles">Definition Functional Profile</xsl:when>
+						<xsl:when test="/sgr:SGrFunctionalProfileDescriptionType">Definition Functional Profile</xsl:when>
 						<xsl:otherwise>Device Profile</xsl:otherwise>
 					</xsl:choose>
 				</div>
@@ -112,11 +112,11 @@
 			<xsl:apply-templates select="sgr:SGrRESTAPIDeviceDescriptionType"/>
 			<xsl:apply-templates select="sgr:SGrContactAPIDeviceDescriptionType"/>
 
+			<!-- generic functional Profiles -->
+			<xsl:apply-templates select="/sgr:SGrFunctionalProfileDescriptionType"/>
+
 			<!-- Functiol Profiles -->
 			<xsl:apply-templates select="*/sgr:fpListElement"/>
-
-			<!-- generic functional Profiles -->
-			<xsl:apply-templates select="/sgr:functionalProfiles"/>
 
 			<!-- Footer-->
 			<div class="profilefooter">
@@ -128,6 +128,7 @@
 	</html>
 </xsl:template>
 
+<!-- Device Profiles -->
 <xsl:template match="sgr:SGrModbusDeviceDescriptionType">
 	<xsl:call-template name="SGrDeviceType"/>
 </xsl:template>
@@ -190,6 +191,11 @@
 
 		<xsl:apply-templates select="sgr:networkConnectionState"/>
 	</div>
+</xsl:template>
+
+<!-- Generic Functional Profiles -->
+<xsl:template match="sgr:SGrFunctionalProfileDescriptionType">
+    <xsl:call-template name="sgrFunctionProfile"/>
 </xsl:template>
 
 <!-- SGrVersionNumberType -->
