@@ -28,8 +28,8 @@
 	<!-- Transport Service -->
 	<tr class="genericDetails"><td>Transport Service</td><td>
 		<xsl:choose>
-			<xsl:when test="sgr:transportService='Modbus'"><img src="xsl/modbus.png" alt="Modbus" width="60px"/></xsl:when>
-			<xsl:when test="sgr:transportService='RESTfulJSON'"><img src="xsl/rest.png" alt="JsonRest" width="80px"/></xsl:when>
+			<xsl:when test="sgr:transportService='Modbus'"><img src="/xsl/modbus.png" alt="Modbus" width="60px"/></xsl:when>
+			<xsl:when test="sgr:transportService='RESTfulJSON'"><img src="/xsl/rest.png" alt="JsonRest" width="80px"/></xsl:when>
 			<xsl:otherwise>
 				<!--enumeration value="EEBUS"/>
 				<enumeration value="OCPP1.6"/>
