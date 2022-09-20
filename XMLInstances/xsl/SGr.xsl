@@ -195,8 +195,83 @@
 
 <!-- Generic Functional Profiles -->
 <xsl:template match="sgr:SGrFunctionalProfileDescriptionType">
-    <xsl:call-template name="sgrFunctionProfile"/>
+	<div class="functionalProfile">
+		<h2 style="float:left;"><xsl:value-of select="sgr:functionalProfile/@profileName"/></h2>
+
+		<xsl:apply-templates select="sgr:releaseNotes" />
+	
+		
+		<h2>Functional Profile</h2>
+
+		<!-- Functional Profile Block -->
+		<table>
+			<colgroup>
+				<col style="width:30%"/>
+			</colgroup>	
+			
+			<xsl:apply-templates select="sgr:functionalProfile"/>
+
+			<!-- Generic Attributes -->
+			<xsl:apply-templates select="sgr:genAttribute"/>
+
+		</table>
+
+		<!-- Data Points -->
+        <div class="dataPoint">
+            <table>
+                <colgroup>
+                    <col style="width:5%"/>
+                    <col style="width:25%"/>
+                    <col style="width:35%"/>
+                    <col style="width:15%"/>
+                    <col style="width:10%"/>
+                    <col style="width:10%"/>
+                </colgroup>			
+                <tr>
+                    <th colspan="2">Datapoint</th>
+                    <th>Unit</th>
+                    <th>Type</th>
+                    <th>MRO</th>
+                    <th>RWP</th>
+                </tr>
+                <xsl:apply-templates select="sgr:dpListElement"/>
+            </table>
+        </div>
+
+		<!--xsl:call-template name="sgrFunctionProfile"/-->
+	</div>
 </xsl:template>
+
+<!-- SGrReleaseNotes -->
+<xsl:template match="sgr:releaseNotes">
+	<table>
+		<colgroup>
+			<col style="width:5%"/>
+			<col style="width:25%"/>
+			<col style="width:20%"/>
+			<col style="width:20%"/>
+			<col style="width:30%"/>
+		</colgroup>	
+		<tr><td colspan="2">State</td><td colspan="3"><xsl:value-of select="sgr:state"/></td></tr>
+		<tr>
+			<td class="noborder"></td>
+			<th>Version</th>
+			<th>Date</th>
+			<th>Author</th>
+			<th>Comment</th>
+		</tr>
+		<xsl:for-each select="sgr:changelog">
+			<tr>
+				<td class="noborder"></td>
+				<td><xsl:value-of select="sgr:version"/></td>
+				<td><xsl:value-of select="sgr:date"/></td>
+				<td><xsl:value-of select="sgr:author"/></td>
+				<td><xsl:value-of select="sgr:comment"/></td>
+			</tr>
+		</xsl:for-each>
+	</table>
+</xsl:template>
+
 
 <!-- SGrVersionNumberType -->
 <xsl:template match="sgr:softwareRevision">
@@ -432,7 +507,7 @@
 
 	<!--precision-->
 	<xsl:if test="sgr:precision">
-		<tr class="genericDetails"><td><img src="/xsl/genattr.png" alt="" width="16pt" height="16pt" /> Precision</td><td><xsl:value-of select="sgr:precision"/></td></tr>
+		<tr class="genericDetails"><td><img src="/xsl/genattr.png" alt="" width="16pt" height="16pt" /> Precision</td><td><xsl:value-of select="sgr:precision"/>%</td></tr>
 	</xsl:if>
 
 	<!--stabilityFallback-->
