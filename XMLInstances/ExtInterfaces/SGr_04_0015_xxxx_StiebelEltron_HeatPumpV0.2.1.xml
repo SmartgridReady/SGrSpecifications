@@ -1196,11 +1196,12 @@ die Einbindung in ein intelligentes Stromnetz
 			</sgr:fpLegibDesc>
 		</sgr:functionalProfile>
 		<sgr:dpListElement>
-			<sgr:dataPoint datapointName="ThermalEnergyHeat"
+			<sgr:dataPoint datapointName="ThermalEnergyHeat_MWh"
 				mroVisibilityIndicator="R" rwpDatadirection="R"
 				unit="MEGAWATT_HOURS">
 				<sgr:basicDataType>
-					<sgr:float32>0.0</sgr:float32>
+					<sgr:int16U>0</sgr:int16U>
+					
 				</sgr:basicDataType>
 				<sgr:dpNameList>
 					<sgr:nameType>DataPoint</sgr:nameType>
@@ -1230,6 +1231,44 @@ die Einbindung in ein intelligentes Stromnetz
 				</sgr:modbusAttr>
 			</sgr:dpMbAttrReference>
 		</sgr:dpListElement>
+		<sgr:dpListElement>
+			<sgr:dataPoint datapointName="ThermalEnergyHeat_kWh"
+				mroVisibilityIndicator="R" rwpDatadirection="R"
+				unit="KILOWATT_HOURS">
+				<sgr:basicDataType>
+					<sgr:int16U>0</sgr:int16U>
+					
+				</sgr:basicDataType>
+				<sgr:dpNameList>
+					<sgr:nameType>DataPoint</sgr:nameType>
+					<sgr:sLV1Name>ThermalEnergyHeat</sgr:sLV1Name>
+				</sgr:dpNameList>
+				<sgr:dpLegibDesc>
+					<sgr:textElement>Summe der abgegebenen thermischen Energie für das Heizen.</sgr:textElement>
+					<sgr:language>de</sgr:language>
+					<sgr:uri>http://tempuri.org</sgr:uri>
+				</sgr:dpLegibDesc>
+			</sgr:dataPoint>
+			<sgr:modbusDataPoint>
+				<sgr:modbusDataType>
+					<sgr:int16U>0</sgr:int16U>
+				</sgr:modbusDataType>
+				<sgr:modbusFirstRegisterReference
+					registerType="InputRegister" addr="3502" bitRank="0" />
+				<sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
+				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
+			</sgr:modbusDataPoint>
+			<sgr:dpMbAttrReference>
+				<sgr:modbusAttr>
+					<sgr:scalingByMulPwr>
+						<sgr:multiplicator>1</sgr:multiplicator>
+						<sgr:powerof10>0</sgr:powerof10>
+					</sgr:scalingByMulPwr>
+				</sgr:modbusAttr>
+			</sgr:dpMbAttrReference>
+		</sgr:dpListElement>
+		
+		
 		<sgr:dpListElement>
 			<sgr:dataPoint datapointName="RuntimeCompressor"
 				mroVisibilityIndicator="R" rwpDatadirection="R" unit="HOURS">
