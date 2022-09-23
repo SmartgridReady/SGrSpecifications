@@ -1,20 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/SGr.xsl"?>
 <sgr:SGrModbusDeviceDescriptionType deviceName="GARO Wallbox GLB" isLocalControl="true" manufacturerID="thirdPartySrcInfo"	manufacturerName="Garo / Optex AG" 	xmlns:sgr="http://www.smartgridready.com/ns/V0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/EI-Modbus/SGrModbusEIDeviceFrame.xsd">
 	<sgr:deviceProfile>
 		<sgr:devLegibDesc>
 			<sgr:textElement>Die GARO Wallbox ist ein Wechselstrom-Ladegerät zur Mode-3-Aufladung, das die Anforderungen von IEC 61851-1 und IEC TS 61439-7 erfüllt. Mit geschlossener Abdeckung entspricht das Produkt der Schutzart IP44. Das Ladegerät ist zur Wandmontage oder zur Standmontage auf einem GARO Wallbox- Ständer vorgesehen.</sgr:textElement>
 			<sgr:language>de</sgr:language>
-			<sgr:uri>http://tempuri.org</sgr:uri>
 		</sgr:devLegibDesc>
 		<sgr:devLegibDesc>
 			<sgr:textElement>The GARO Wallbox is an AC charger enabling Mode 3 charging which complies fully with the requirements of IEC 61851-1 and IEC TS 61439-7. The product complies with IP Code IP44, with a closed front.  It is to be fitted to a wall or GARO Wallbox stand, and all installation must be carried out by an authorised installer and comply with local installation regulations. </sgr:textElement>
 			<sgr:language>en</sgr:language>
-			<sgr:uri>http://tempuri.org</sgr:uri>
 		</sgr:devLegibDesc>
 		<sgr:devLegibDesc>
 			<sgr:textElement>La wallbox de GARO est un chargeur secteur compatible avec une recharge en mode 3 entièrement conforme aux exigences des normes CEI 61851-1 et CEI TS 61439-7. Le produit est conforme à l’indice de protection IP44 lorsque le panneau avant est fermé. Il est conçu pour être fixé à un mur ou monté sur un support pour wallbox GARO, et l’installation doit toujours être effectuée par un installateur qualifié qui doit respecter la réglementation locale.</sgr:textElement>
 			<sgr:language>fr</sgr:language>
-			<sgr:uri>http://tempuri.org</sgr:uri>
 		</sgr:devLegibDesc>
 		<sgr:transportService>Modbus</sgr:transportService>
 		<sgr:deviceKind>ChargingStation</sgr:deviceKind>
@@ -36,9 +34,9 @@
         <sgr:remAuthorID>IBT/cb (no warranty on this EI)</sgr:remAuthorID>
 		<sgr:devLevelofOperation>4</sgr:devLevelofOperation>
 	</sgr:deviceProfile>
-	<sgr:devMbAttrReference>
-		<sgr:modbusAttr>
-			<sgr:pollLatencyMS>350</sgr:pollLatencyMS></sgr:modbusAttr></sgr:devMbAttrReference>
+	<sgr:modbusAttr>
+		<sgr:pollLatencyMS>350</sgr:pollLatencyMS>
+	</sgr:modbusAttr>
 	<sgr:modbusInterfaceDesc>
 		<sgr:modbusInterfaceSelection>TCP/IP</sgr:modbusInterfaceSelection>
 		<sgr:firstRegisterAddressIsOne>false
@@ -182,13 +180,13 @@
 				</sgr:versionNumber>
 			</sgr:profileNumber>
 		</sgr:functionalProfile>
-		<sgr:fpMbAttrReference>
-			<sgr:genAttribute>
-				<sgr:stabilityFallback>
-					<sgr:maxReceiveTime>00:20:00</sgr:maxReceiveTime>
-					<sgr:initValue>8.0</sgr:initValue>
-					<sgr:fallbackValue>8.0</sgr:fallbackValue>
-				</sgr:stabilityFallback></sgr:genAttribute></sgr:fpMbAttrReference>
+		<sgr:genAttribute>
+			<sgr:stabilityFallback>
+				<sgr:maxReceiveTime>00:20:00</sgr:maxReceiveTime>
+				<sgr:initValue>8.0</sgr:initValue>
+				<sgr:fallbackValue>8.0</sgr:fallbackValue>
+			</sgr:stabilityFallback>
+		</sgr:genAttribute>
 		<sgr:dpListElement>
 			<sgr:dataPoint datapointName="SafeCurrent"
 				mroVisibilityIndicator="M" rwpDatadirection="RW"
@@ -248,7 +246,6 @@
 				<sgr:dpLegibDesc>
 					<sgr:textElement>Programmers hint: This maxReceiveTimeSec represents the timeout of the stabilityFallback Attribute. Hovewer, the timeout will be set to 0 whenever the Modbus interface is polled vor any data transaction</sgr:textElement>
 					<sgr:language>en</sgr:language>
-					<sgr:uri>http://tempuri.org</sgr:uri>
 				</sgr:dpLegibDesc>
 			</sgr:dataPoint>
 			<sgr:modbusDataPoint>
@@ -312,16 +309,16 @@
 				<sgr:dpSizeNrRegisters>2</sgr:dpSizeNrRegisters>
 				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
 			</sgr:modbusDataPoint>
-			<sgr:dpMbAttrReference>
-				<sgr:modbusAttr>
-					<sgr:scalingByMulPwr>
-						<sgr:multiplicator>1</sgr:multiplicator>
-						<sgr:powerof10>-3</sgr:powerof10>
-					</sgr:scalingByMulPwr>
-					<sgr:timeSyncBlockNotification>
-						<sgr:blockNumber>1</sgr:blockNumber>
-						<sgr:timeoutMs>3000</sgr:timeoutMs>
-					</sgr:timeSyncBlockNotification></sgr:modbusAttr></sgr:dpMbAttrReference>
+			<sgr:modbusAttr>
+				<sgr:scalingByMulPwr>
+					<sgr:multiplicator>1</sgr:multiplicator>
+					<sgr:powerof10>-3</sgr:powerof10>
+				</sgr:scalingByMulPwr>
+				<sgr:timeSyncBlockNotification>
+					<sgr:blockNumber>1</sgr:blockNumber>
+					<sgr:timeoutMs>3000</sgr:timeoutMs>
+				</sgr:timeSyncBlockNotification>
+			</sgr:modbusAttr>
 		</sgr:dpListElement>
 		<sgr:dpListElement>
 			<sgr:dataPoint datapointName="CurrentACL2"
@@ -335,16 +332,16 @@
 				<sgr:dpSizeNrRegisters>2</sgr:dpSizeNrRegisters>
 				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
 			</sgr:modbusDataPoint>
-			<sgr:dpMbAttrReference>
-				<sgr:modbusAttr>
-					<sgr:scalingByMulPwr>
-						<sgr:multiplicator>1</sgr:multiplicator>
-						<sgr:powerof10>-3</sgr:powerof10>
-					</sgr:scalingByMulPwr>
-					<sgr:timeSyncBlockNotification>
-						<sgr:blockNumber>1</sgr:blockNumber>
-						<sgr:timeoutMs>3000</sgr:timeoutMs>
-					</sgr:timeSyncBlockNotification></sgr:modbusAttr></sgr:dpMbAttrReference>
+			<sgr:modbusAttr>
+				<sgr:scalingByMulPwr>
+					<sgr:multiplicator>1</sgr:multiplicator>
+					<sgr:powerof10>-3</sgr:powerof10>
+				</sgr:scalingByMulPwr>
+				<sgr:timeSyncBlockNotification>
+					<sgr:blockNumber>1</sgr:blockNumber>
+					<sgr:timeoutMs>3000</sgr:timeoutMs>
+				</sgr:timeSyncBlockNotification>
+			</sgr:modbusAttr>
 		</sgr:dpListElement>
 		<sgr:dpListElement>
 			<sgr:dataPoint datapointName="CurrentACL3"
@@ -358,16 +355,16 @@
 				<sgr:dpSizeNrRegisters>2</sgr:dpSizeNrRegisters>
 				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
 			</sgr:modbusDataPoint>
-			<sgr:dpMbAttrReference>
-				<sgr:modbusAttr>
-					<sgr:scalingByMulPwr>
-						<sgr:multiplicator>1</sgr:multiplicator>
-						<sgr:powerof10>-3</sgr:powerof10>
-					</sgr:scalingByMulPwr>
-					<sgr:timeSyncBlockNotification>
-						<sgr:blockNumber>1</sgr:blockNumber>
-						<sgr:timeoutMs>3000</sgr:timeoutMs>
-					</sgr:timeSyncBlockNotification></sgr:modbusAttr></sgr:dpMbAttrReference>
+			<sgr:modbusAttr>
+				<sgr:scalingByMulPwr>
+					<sgr:multiplicator>1</sgr:multiplicator>
+					<sgr:powerof10>-3</sgr:powerof10>
+				</sgr:scalingByMulPwr>
+				<sgr:timeSyncBlockNotification>
+					<sgr:blockNumber>1</sgr:blockNumber>
+					<sgr:timeoutMs>3000</sgr:timeoutMs>
+				</sgr:timeSyncBlockNotification>
+			</sgr:modbusAttr>
 		</sgr:dpListElement>
 	</sgr:fpListElement>
 	<sgr:fpListElement>
@@ -399,16 +396,16 @@
 				<sgr:dpSizeNrRegisters>2</sgr:dpSizeNrRegisters>
 				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
 			</sgr:modbusDataPoint>
-			<sgr:dpMbAttrReference>
-				<sgr:modbusAttr>
-					<sgr:scalingByMulPwr>
-						<sgr:multiplicator>1</sgr:multiplicator>
-						<sgr:powerof10>0</sgr:powerof10>
-					</sgr:scalingByMulPwr>
-					<sgr:timeSyncBlockNotification>
-						<sgr:blockNumber>2</sgr:blockNumber>
-						<sgr:timeoutMs>5000</sgr:timeoutMs>
-					</sgr:timeSyncBlockNotification></sgr:modbusAttr></sgr:dpMbAttrReference>
+			<sgr:modbusAttr>
+				<sgr:scalingByMulPwr>
+					<sgr:multiplicator>1</sgr:multiplicator>
+					<sgr:powerof10>0</sgr:powerof10>
+				</sgr:scalingByMulPwr>
+				<sgr:timeSyncBlockNotification>
+					<sgr:blockNumber>2</sgr:blockNumber>
+					<sgr:timeoutMs>5000</sgr:timeoutMs>
+				</sgr:timeSyncBlockNotification>
+			</sgr:modbusAttr>
 		</sgr:dpListElement>
 		<sgr:dpListElement>
 			<sgr:dataPoint datapointName="ActivePowerACL2"
@@ -422,16 +419,16 @@
 				<sgr:dpSizeNrRegisters>2</sgr:dpSizeNrRegisters>
 				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
 			</sgr:modbusDataPoint>
-			<sgr:dpMbAttrReference>
-				<sgr:modbusAttr>
-					<sgr:scalingByMulPwr>
-						<sgr:multiplicator>1</sgr:multiplicator>
-						<sgr:powerof10>0</sgr:powerof10>
-					</sgr:scalingByMulPwr>
-					<sgr:timeSyncBlockNotification>
-						<sgr:blockNumber>2</sgr:blockNumber>
-						<sgr:timeoutMs>5000</sgr:timeoutMs>
-					</sgr:timeSyncBlockNotification></sgr:modbusAttr></sgr:dpMbAttrReference>
+			<sgr:modbusAttr>
+				<sgr:scalingByMulPwr>
+					<sgr:multiplicator>1</sgr:multiplicator>
+					<sgr:powerof10>0</sgr:powerof10>
+				</sgr:scalingByMulPwr>
+				<sgr:timeSyncBlockNotification>
+					<sgr:blockNumber>2</sgr:blockNumber>
+					<sgr:timeoutMs>5000</sgr:timeoutMs>
+				</sgr:timeSyncBlockNotification>
+			</sgr:modbusAttr>
 		</sgr:dpListElement>
 		<sgr:dpListElement>
 			<sgr:dataPoint datapointName="ActivePowerACL3"
@@ -445,16 +442,16 @@
 				<sgr:dpSizeNrRegisters>2</sgr:dpSizeNrRegisters>
 				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
 			</sgr:modbusDataPoint>
-			<sgr:dpMbAttrReference>
-				<sgr:modbusAttr>
-					<sgr:scalingByMulPwr>
-						<sgr:multiplicator>1</sgr:multiplicator>
-						<sgr:powerof10>-3</sgr:powerof10>
-					</sgr:scalingByMulPwr>
-					<sgr:timeSyncBlockNotification>
-						<sgr:blockNumber>0</sgr:blockNumber>
-						<sgr:timeoutMs>0</sgr:timeoutMs>
-					</sgr:timeSyncBlockNotification></sgr:modbusAttr></sgr:dpMbAttrReference>
+			<sgr:modbusAttr>
+				<sgr:scalingByMulPwr>
+					<sgr:multiplicator>1</sgr:multiplicator>
+					<sgr:powerof10>-3</sgr:powerof10>
+				</sgr:scalingByMulPwr>
+				<sgr:timeSyncBlockNotification>
+					<sgr:blockNumber>0</sgr:blockNumber>
+					<sgr:timeoutMs>0</sgr:timeoutMs>
+				</sgr:timeSyncBlockNotification>
+			</sgr:modbusAttr>
 		</sgr:dpListElement>
 	</sgr:fpListElement>
 	<sgr:fpListElement>
@@ -485,12 +482,12 @@
 				<sgr:dpSizeNrRegisters>2</sgr:dpSizeNrRegisters>
 				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
 			</sgr:modbusDataPoint>
-			<sgr:dpMbAttrReference>
-				<sgr:modbusAttr>
-					<sgr:scalingByMulPwr>
-						<sgr:multiplicator>1</sgr:multiplicator>
-						<sgr:powerof10>-3</sgr:powerof10>
-					</sgr:scalingByMulPwr></sgr:modbusAttr></sgr:dpMbAttrReference>
+			<sgr:modbusAttr>
+				<sgr:scalingByMulPwr>
+					<sgr:multiplicator>1</sgr:multiplicator>
+					<sgr:powerof10>-3</sgr:powerof10>
+				</sgr:scalingByMulPwr>
+			</sgr:modbusAttr>
 		</sgr:dpListElement>
 		<sgr:dpListElement>
 			<sgr:dataPoint datapointName="ActiveEnergyACL2"
@@ -504,12 +501,12 @@
 				<sgr:dpSizeNrRegisters>2</sgr:dpSizeNrRegisters>
 				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
 			</sgr:modbusDataPoint>
-			<sgr:dpMbAttrReference>
-				<sgr:modbusAttr>
-					<sgr:scalingByMulPwr>
-						<sgr:multiplicator>1</sgr:multiplicator>
-						<sgr:powerof10>-3</sgr:powerof10>
-					</sgr:scalingByMulPwr></sgr:modbusAttr></sgr:dpMbAttrReference>
+			<sgr:modbusAttr>
+				<sgr:scalingByMulPwr>
+					<sgr:multiplicator>1</sgr:multiplicator>
+					<sgr:powerof10>-3</sgr:powerof10>
+				</sgr:scalingByMulPwr>
+			</sgr:modbusAttr>
 		</sgr:dpListElement>
 		<sgr:dpListElement>
 			<sgr:dataPoint datapointName="ActiveEnergyACL3"
@@ -524,12 +521,12 @@
 				<sgr:dpSizeNrRegisters>2</sgr:dpSizeNrRegisters>
 				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
 			</sgr:modbusDataPoint>
-			<sgr:dpMbAttrReference>
-				<sgr:modbusAttr>
-					<sgr:scalingByMulPwr>
-						<sgr:multiplicator>1</sgr:multiplicator>
-						<sgr:powerof10>-3</sgr:powerof10>
-					</sgr:scalingByMulPwr></sgr:modbusAttr></sgr:dpMbAttrReference>
+			<sgr:modbusAttr>
+				<sgr:scalingByMulPwr>
+					<sgr:multiplicator>1</sgr:multiplicator>
+					<sgr:powerof10>-3</sgr:powerof10>
+				</sgr:scalingByMulPwr>
+			</sgr:modbusAttr>
 		</sgr:dpListElement>
 	</sgr:fpListElement>
 </sgr:SGrModbusDeviceDescriptionType>	

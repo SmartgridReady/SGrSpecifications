@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/SGr.xsl"?>
 <sgr:SGrModbusDeviceDescriptionType deviceName="betaABBMeterV0.1.2" isLocalControl="true" manufacturerID="IBT" manufacturerName="ABB"  xmlns:sgr="http://www.smartgridready.com/ns/V0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/EI-Modbus/SGrModbusEIDeviceFrame.xsd ">
   <sgr:deviceProfile>
     <sgr:devNameList>
@@ -41,12 +42,11 @@
     <sgr:brandName>B23</sgr:brandName>
     <sgr:remAuthorID>sgr:remAuthorID</sgr:remAuthorID>
   </sgr:deviceProfile>
-  <sgr:devMbAttrReference>
-  	<sgr:genAttribute>
-  		<sgr:specQualityRequirement>METAS</sgr:specQualityRequirement>
-  		<sgr:precision>2.0</sgr:precision></sgr:genAttribute>
-  </sgr:devMbAttrReference>
-  <sgr:modbusInterfaceDesc>
+  <sgr:genAttribute>
+    <sgr:specQualityRequirement>METAS</sgr:specQualityRequirement>
+    <sgr:precision>2.0</sgr:precision>
+  </sgr:genAttribute>
+<sgr:modbusInterfaceDesc>
     <sgr:modbusInterfaceSelection>RTU</sgr:modbusInterfaceSelection>
     <sgr:trspSrvModbusTCPoutOfBox>
       <sgr:port>520</sgr:port>
@@ -111,13 +111,11 @@
       <sgr:fpLegibDesc>
         <sgr:textElement>Bilanzmessung Energie: Die Datenaufnahme erfolgt typischerweise periodisch durch den CEM (oder eine Abrechnungssoftware), welche Messung aufnimmt und mit dem Zeitwert ergänzt.</sgr:textElement>
         <sgr:language>de</sgr:language>
-        <sgr:uri>http://tempuri.org</sgr:uri>
       </sgr:fpLegibDesc>
     </sgr:functionalProfile>
-    <sgr:fpMbAttrReference>
-      <sgr:genAttribute>
-      	<sgr:specQualityRequirement>2014/32/EU : MeasuRIng Instruments Directive, B(Cl.1)</sgr:specQualityRequirement></sgr:genAttribute>
-    </sgr:fpMbAttrReference>
+    <sgr:genAttribute>
+      <sgr:specQualityRequirement>2014/32/EU : MeasuRIng Instruments Directive, B(Cl.1)</sgr:specQualityRequirement>
+    </sgr:genAttribute>
     <sgr:dpListElement>
       <sgr:dataPoint datapointName="ActiveImportAC" mroVisibilityIndicator="M" rwpDatadirection="R" unit="KILOWATT_HOURS">
         <sgr:basicDataType>
@@ -135,8 +133,7 @@
         <sgr:dpLegibDesc>
           <sgr:textElement>Totalbezug seit Messbeginn</sgr:textElement>
           <sgr:language>de</sgr:language>
-          <sgr:uri>http://tempuRI.org</sgr:uri>
-        </sgr:dpLegibDesc>
+          </sgr:dpLegibDesc>
       </sgr:dataPoint>
       <sgr:modbusDataPoint>
         <sgr:modbusDataType>
@@ -146,7 +143,6 @@
         <sgr:dpSizeNrRegisters>4</sgr:dpSizeNrRegisters>
         <sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
       </sgr:modbusDataPoint>
-      <sgr:dpMbAttrReference>        
         <sgr:genAttribute>
         	<sgr:precision>1.0</sgr:precision>
         	<sgr:timeStampLog>2001-12-31T12:00:00<!--must be supplied by communuicator--></sgr:timeStampLog>
@@ -156,7 +152,7 @@
       			<sgr:multiplicator>1</sgr:multiplicator>
       			<sgr:powerof10>-2</sgr:powerof10>
       		</sgr:scalingByMulPwr>
-      	</sgr:modbusAttr></sgr:dpMbAttrReference>
+      	</sgr:modbusAttr>
     </sgr:dpListElement>
     <sgr:dpListElement>
       <sgr:dataPoint datapointName="ActiveExportAC" mroVisibilityIndicator="M" rwpDatadirection="R" unit="KILOWATT_HOURS">
@@ -175,8 +171,7 @@
         <sgr:dpLegibDesc>
           <sgr:textElement>Totale Rückspeisung seit Messbeginn</sgr:textElement>
           <sgr:language>de</sgr:language>
-          <sgr:uri>http://tempuri.org</sgr:uri>
-        </sgr:dpLegibDesc>
+          </sgr:dpLegibDesc>
       </sgr:dataPoint>
       <sgr:modbusDataPoint>
         <sgr:modbusDataType>
@@ -186,7 +181,6 @@
         <sgr:dpSizeNrRegisters>4</sgr:dpSizeNrRegisters>
         <sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
       </sgr:modbusDataPoint>
-      <sgr:dpMbAttrReference>        
         <sgr:genAttribute>
         	<sgr:precision>1.0</sgr:precision>
         	<sgr:timeStampLog>2001-12-31T12:00:00<!--must be supplied by communuicator--></sgr:timeStampLog>
@@ -196,7 +190,7 @@
       			<sgr:multiplicator>1</sgr:multiplicator>
       			<sgr:powerof10>-2</sgr:powerof10>
       		</sgr:scalingByMulPwr>
-      	</sgr:modbusAttr></sgr:dpMbAttrReference>
+      	</sgr:modbusAttr>
     </sgr:dpListElement>
     <sgr:dpListElement>
       <sgr:dataPoint datapointName="ActiveNetAC" mroVisibilityIndicator="M" rwpDatadirection="R" unit="KILOWATT_HOURS">
@@ -215,8 +209,7 @@
         <sgr:dpLegibDesc>
           <sgr:textElement>Nettobilanz seit Messbeginn , negative Werte = Rückspeisungsüberschuss</sgr:textElement>
           <sgr:language>de</sgr:language>
-          <sgr:uri>http://tempuri.org</sgr:uri>
-        </sgr:dpLegibDesc>
+          </sgr:dpLegibDesc>
         </sgr:dataPoint>
       <sgr:modbusDataPoint>
         <sgr:modbusDataType>
@@ -226,7 +219,6 @@
         <sgr:dpSizeNrRegisters>4</sgr:dpSizeNrRegisters>
         <sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
       </sgr:modbusDataPoint>     
-      <sgr:dpMbAttrReference>        
         <sgr:genAttribute>
         	<sgr:precision>1.0</sgr:precision>
         	<sgr:timeStampLog>2001-12-31T12:00:00<!--must be supplied by communuicator--></sgr:timeStampLog>
@@ -237,7 +229,6 @@
       			<sgr:powerof10>-2</sgr:powerof10>
       		</sgr:scalingByMulPwr>
       	</sgr:modbusAttr>
-      	</sgr:dpMbAttrReference>
     </sgr:dpListElement>
   </sgr:fpListElement>
   <sgr:fpListElement>
@@ -265,7 +256,6 @@
       <sgr:fpLegibDesc>
         <sgr:textElement>Bilanzmessung Energie: Die Datenaufnahme erfolgt typischerweise periodisch durch den CEM (oder eine Abrechnungssoftware), welche Messung aufnimmt und mit dem Zeitwert ergänzt.</sgr:textElement>
         <sgr:language>de</sgr:language>
-        <sgr:uri>http://tempuri.org</sgr:uri>
       </sgr:fpLegibDesc>
     </sgr:functionalProfile>
     <sgr:dpListElement>
@@ -285,8 +275,7 @@
         <sgr:dpLegibDesc>
           <sgr:textElement>sgr:textElement</sgr:textElement>
           <sgr:language>de</sgr:language>
-          <sgr:uri>http://tempuri.org</sgr:uri>
-        </sgr:dpLegibDesc>
+          </sgr:dpLegibDesc>
       </sgr:dataPoint>
       <sgr:modbusDataPoint>
         <sgr:modbusDataType>
@@ -296,14 +285,12 @@
         <sgr:dpSizeNrRegisters>2</sgr:dpSizeNrRegisters>
         <sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
       </sgr:modbusDataPoint>      
-      <sgr:dpMbAttrReference>        
       	<sgr:modbusAttr>
       		<sgr:scalingByMulPwr>
       			<sgr:multiplicator>1</sgr:multiplicator>
       			<sgr:powerof10>-2</sgr:powerof10>
       		</sgr:scalingByMulPwr>
       	</sgr:modbusAttr>
-      	</sgr:dpMbAttrReference>
     </sgr:dpListElement>
     <sgr:dpListElement>
       <sgr:dataPoint datapointName="ActivePowerACL1" mroVisibilityIndicator="M" rwpDatadirection="R" unit="KILOWATT_HOURS">
@@ -322,8 +309,7 @@
         <sgr:dpLegibDesc>
           <sgr:textElement>sgr:textElement</sgr:textElement>
           <sgr:language>de</sgr:language>
-          <sgr:uri>http://tempuri.org</sgr:uri>
-        </sgr:dpLegibDesc>
+          </sgr:dpLegibDesc>
       </sgr:dataPoint>
       <sgr:modbusDataPoint>
         <sgr:modbusDataType>
@@ -333,14 +319,12 @@
         <sgr:dpSizeNrRegisters>2</sgr:dpSizeNrRegisters>
         <sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
       </sgr:modbusDataPoint>         
-      <sgr:dpMbAttrReference>        
       	<sgr:modbusAttr>
       		<sgr:scalingByMulPwr>
       			<sgr:multiplicator>1</sgr:multiplicator>
       			<sgr:powerof10>-2</sgr:powerof10>
       		</sgr:scalingByMulPwr>
       	</sgr:modbusAttr>
-      	</sgr:dpMbAttrReference>
     </sgr:dpListElement>
     <sgr:dpListElement>
       <sgr:dataPoint datapointName="ActivePowerACL2" mroVisibilityIndicator="M" rwpDatadirection="R" unit="KILOWATT_HOURS">
@@ -359,8 +343,7 @@
         <sgr:dpLegibDesc>
           <sgr:textElement>sgr:textElement</sgr:textElement>
           <sgr:language>de</sgr:language>
-          <sgr:uri>http://tempuri.org</sgr:uri>
-        </sgr:dpLegibDesc>
+          </sgr:dpLegibDesc>
       </sgr:dataPoint>
       <sgr:modbusDataPoint>
         <sgr:modbusDataType>
@@ -370,14 +353,12 @@
         <sgr:dpSizeNrRegisters>2</sgr:dpSizeNrRegisters>
         <sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
       </sgr:modbusDataPoint>  
-      	<sgr:dpMbAttrReference>
       	<sgr:modbusAttr>
       		<sgr:scalingByMulPwr>
       			<sgr:multiplicator>1</sgr:multiplicator>
       			<sgr:powerof10>-2</sgr:powerof10>
       		</sgr:scalingByMulPwr>
       	</sgr:modbusAttr>
-      	</sgr:dpMbAttrReference>
     </sgr:dpListElement>
     <sgr:dpListElement>
       <sgr:dataPoint datapointName="ActivePowerACL3" mroVisibilityIndicator="M" rwpDatadirection="R" unit="KILOWATT_HOURS">
@@ -396,8 +377,7 @@
         <sgr:dpLegibDesc>
           <sgr:textElement>sgr:textElement</sgr:textElement>
           <sgr:language>de</sgr:language>
-          <sgr:uri>http://tempuri.org</sgr:uri>
-        </sgr:dpLegibDesc>
+          </sgr:dpLegibDesc>
       </sgr:dataPoint>
       <sgr:modbusDataPoint>
         <sgr:modbusDataType>
@@ -407,14 +387,12 @@
         <sgr:dpSizeNrRegisters>2</sgr:dpSizeNrRegisters>
         <sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
       </sgr:modbusDataPoint>  
-      	<sgr:dpMbAttrReference>
       	<sgr:modbusAttr>
       		<sgr:scalingByMulPwr>
       			<sgr:multiplicator>1</sgr:multiplicator>
       			<sgr:powerof10>-2</sgr:powerof10>
       		</sgr:scalingByMulPwr>
       	</sgr:modbusAttr>
-      	</sgr:dpMbAttrReference>
     </sgr:dpListElement>
   </sgr:fpListElement>
   <sgr:fpListElement>
@@ -442,7 +420,6 @@
       <sgr:fpLegibDesc>
         <sgr:textElement>Bilanzmessung Energie: Die Datenaufnahme erfolgt typischerweise periodisch durch den CEM (oder eine Abrechnungssoftware), welche Messung aufnimmt und mit dem Zeitwert ergänzt.</sgr:textElement>
         <sgr:language>de</sgr:language>
-        <sgr:uri>http://tempuri.org</sgr:uri>
       </sgr:fpLegibDesc>
     </sgr:functionalProfile>
     <sgr:dpListElement>
@@ -462,8 +439,7 @@
         <sgr:dpLegibDesc>
           <sgr:textElement>sgr:textElement</sgr:textElement>
           <sgr:language>de</sgr:language>
-          <sgr:uri>http://tempuri.org</sgr:uri>
-        </sgr:dpLegibDesc>
+          </sgr:dpLegibDesc>
       </sgr:dataPoint>
       <sgr:modbusDataPoint>
         <sgr:modbusDataType>
@@ -473,14 +449,12 @@
         <sgr:dpSizeNrRegisters>2</sgr:dpSizeNrRegisters>
         <sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
       </sgr:modbusDataPoint>   
-      	<sgr:dpMbAttrReference>
       	<sgr:modbusAttr>
       		<sgr:scalingByMulPwr>
       			<sgr:multiplicator>1</sgr:multiplicator>
       			<sgr:powerof10>-2</sgr:powerof10>
       		</sgr:scalingByMulPwr>
       	</sgr:modbusAttr>
-      	</sgr:dpMbAttrReference>
     </sgr:dpListElement>
     <sgr:dpListElement>
       <sgr:dataPoint datapointName="CurrentACL2" mroVisibilityIndicator="M" rwpDatadirection="R" unit="KILOWATT_HOURS">
@@ -499,8 +473,7 @@
         <sgr:dpLegibDesc>
           <sgr:textElement>sgr:textElement</sgr:textElement>
           <sgr:language>de</sgr:language>
-          <sgr:uri>http://tempuri.org</sgr:uri>
-        </sgr:dpLegibDesc>
+          </sgr:dpLegibDesc>
       </sgr:dataPoint>
       <sgr:modbusDataPoint>
         <sgr:modbusDataType>
@@ -510,14 +483,12 @@
         <sgr:dpSizeNrRegisters>2</sgr:dpSizeNrRegisters>
         <sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
       </sgr:modbusDataPoint>  
-      	<sgr:dpMbAttrReference>
       	<sgr:modbusAttr>
       		<sgr:scalingByMulPwr>
       			<sgr:multiplicator>1</sgr:multiplicator>
       			<sgr:powerof10>-2</sgr:powerof10>
       		</sgr:scalingByMulPwr>
       	</sgr:modbusAttr>
-      	</sgr:dpMbAttrReference>
     </sgr:dpListElement>
     <sgr:dpListElement>
       <sgr:dataPoint datapointName="CurrentACL3" mroVisibilityIndicator="M" rwpDatadirection="R" unit="KILOWATT_HOURS">
@@ -536,8 +507,7 @@
         <sgr:dpLegibDesc>
           <sgr:textElement>sgr:textElement</sgr:textElement>
           <sgr:language>de</sgr:language>
-          <sgr:uri>http://tempuri.org</sgr:uri>
-        </sgr:dpLegibDesc>
+          </sgr:dpLegibDesc>
       </sgr:dataPoint>
       <sgr:modbusDataPoint>
         <sgr:modbusDataType>        
@@ -547,14 +517,12 @@
         <sgr:dpSizeNrRegisters>2</sgr:dpSizeNrRegisters>
         <sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
       </sgr:modbusDataPoint>     
-      	<sgr:dpMbAttrReference>
       	<sgr:modbusAttr>
       		<sgr:scalingByMulPwr>
       			<sgr:multiplicator>1</sgr:multiplicator>
       			<sgr:powerof10>-2</sgr:powerof10>
       		</sgr:scalingByMulPwr>
       	</sgr:modbusAttr>
-      	</sgr:dpMbAttrReference>
     </sgr:dpListElement>
     <sgr:dpListElement>
       <sgr:dataPoint datapointName="CurrentACN" mroVisibilityIndicator="M" rwpDatadirection="R" unit="KILOWATT_HOURS">
@@ -573,8 +541,7 @@
         <sgr:dpLegibDesc>
           <sgr:textElement>sgr:textElement</sgr:textElement>
           <sgr:language>de</sgr:language>
-          <sgr:uri>http://tempuri.org</sgr:uri>
-        </sgr:dpLegibDesc>
+          </sgr:dpLegibDesc>
       </sgr:dataPoint>
       <sgr:modbusDataPoint>
         <sgr:modbusDataType> 
@@ -584,12 +551,12 @@
         <sgr:dpSizeNrRegisters>2</sgr:dpSizeNrRegisters>
         <sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
       </sgr:modbusDataPoint>
-      <sgr:dpMbAttrReference>
       	<sgr:modbusAttr>
       		<sgr:scalingByMulPwr>
       			<sgr:multiplicator>1</sgr:multiplicator>
       			<sgr:powerof10>-2</sgr:powerof10>
-      		</sgr:scalingByMulPwr></sgr:modbusAttr></sgr:dpMbAttrReference>
+      		</sgr:scalingByMulPwr>
+        </sgr:modbusAttr>
     </sgr:dpListElement>
   </sgr:fpListElement>
 </sgr:SGrModbusDeviceDescriptionType>

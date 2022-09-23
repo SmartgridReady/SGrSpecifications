@@ -1,61 +1,91 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<sgr:functionalProfiles xmlns:sgr="http://www.smartgridready.com/ns/V0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/EI-Contacts/SGrContactsDeviceFrame.xsd ">
-		<sgr:functionalProfile
-			mroVisibilityIndicator="M" profileName="ActivePowerAC">
-			<sgr:profileNumber>
-				<sgr:specsOwnerId>0</sgr:specsOwnerId>
-				<sgr:profileIdentification>SubMeterElectricity</sgr:profileIdentification>
-				<sgr:subProfileIdent>ActivePowerAC</sgr:subProfileIdent>
-				<sgr:sgrLevelOfOperation>4</sgr:sgrLevelOfOperation>
-				<sgr:versionNumber>
-					<sgr:primaryVersionNumber>0
-					</sgr:primaryVersionNumber>
-					<sgr:secondaryVersionNumber>1
-					</sgr:secondaryVersionNumber>
-					<sgr:subReleaseVersionNumber>2
-					</sgr:subReleaseVersionNumber>
-				</sgr:versionNumber>
-			</sgr:profileNumber>
-		</sgr:functionalProfile>
-		<sgr:dpListElement>
-			<sgr:dataPoint datapointName="ActivePowerACtot"
-				rwpDatadirection="R" unit="KILOWATTS">
-				<sgr:basicDataType><sgr:float32>0</sgr:float32></sgr:basicDataType>
-			</sgr:dataPoint>
-				<sgr:dpAttr4Generic>
-					<sgr:valueSource>measuredValue</sgr:valueSource>
-					<sgr:sampleRate>10.0</sgr:sampleRate>
-				</sgr:dpAttr4Generic>
-		</sgr:dpListElement>
-		<sgr:dpListElement>
-			<sgr:dataPoint datapointName="ActivePowerACL1"
-				rwpDatadirection="R" unit="KILOWATTS" mroVisibilityIndicator="M">
-				<sgr:basicDataType><sgr:float32>0</sgr:float32></sgr:basicDataType>
-			</sgr:dataPoint>
-				<sgr:dpAttr4Generic>
-					<sgr:valueSource>measuredValue</sgr:valueSource>
-					<sgr:sampleRate>10.0</sgr:sampleRate>
-				</sgr:dpAttr4Generic>
-		</sgr:dpListElement>
-		<sgr:dpListElement>
-			<sgr:dataPoint datapointName="ActivePowerACL2"
-				rwpDatadirection="R" unit="KILOWATTS" mroVisibilityIndicator="R">
-				<sgr:basicDataType><sgr:float32>0</sgr:float32></sgr:basicDataType>
-			</sgr:dataPoint>
-				<sgr:dpAttr4Generic>
-					<sgr:valueSource>measuredValue</sgr:valueSource>
-					<sgr:sampleRate>10.0</sgr:sampleRate>
-				</sgr:dpAttr4Generic>
-		</sgr:dpListElement>
-		<sgr:dpListElement>
-<sgr:dataPoint mroVisibilityIndicator="R"
-				datapointName="ActivePowerACL3" rwpDatadirection="R"
-				unit="KILOWATTS">
-				<sgr:basicDataType><sgr:float32>0</sgr:float32></sgr:basicDataType>
-			</sgr:dataPoint>
-				<sgr:dpAttr4Generic>
-					<sgr:valueSource>measuredValue</sgr:valueSource>
-					<sgr:sampleRate>10.0</sgr:sampleRate>
-				</sgr:dpAttr4Generic>
-		</sgr:dpListElement>
-</sgr:functionalProfiles>
+<?xml-stylesheet type="text/xsl" href="/xsl/SGr.xsl"?>
+<sgr:SGrFunctionalProfileDescriptionType xmlns:sgr="http://www.smartgridready.com/ns/V0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/Generic/SGrGenFunctionalProfileDefinition.xsd">
+	<sgr:releaseNotes>
+		<sgr:state>Review</sgr:state>
+		<sgr:changelog>
+			<sgr:version>0.1.1</sgr:version>
+			<sgr:date>2021-04-03</sgr:date>
+			<sgr:author>IBT/cb</sgr:author>
+			<sgr:comment>Vorbereitung beta test</sgr:comment>
+		</sgr:changelog>
+		<sgr:changelog>
+			<sgr:version>0.1.2</sgr:version>
+			<sgr:date>2022-09-20</sgr:date>
+			<sgr:author>Ergo/sz</sgr:author>
+			<sgr:comment>Finalisierung Go-Live</sgr:comment>
+		</sgr:changelog>
+	</sgr:releaseNotes>
+	<sgr:functionalProfile mroVisibilityIndicator="M" profileName="ActivePowerAC">
+		<sgr:profileNumber>
+			<sgr:specsOwnerId>0</sgr:specsOwnerId>
+			<sgr:profileIdentification>SubMeterElectricity</sgr:profileIdentification>
+			<sgr:subProfileIdent>ActivePowerAC</sgr:subProfileIdent>
+			<sgr:sgrLevelOfOperation>4</sgr:sgrLevelOfOperation>
+			<sgr:versionNumber>
+				<sgr:primaryVersionNumber>0</sgr:primaryVersionNumber>
+				<sgr:secondaryVersionNumber>1</sgr:secondaryVersionNumber>
+				<sgr:subReleaseVersionNumber>2</sgr:subReleaseVersionNumber>
+			</sgr:versionNumber>
+		</sgr:profileNumber>
+		<sgr:fpNameList>
+			<sgr:nameType>FunctionalProfile</sgr:nameType>
+			<sgr:sLV1Name>Messung der Wirkleistung</sgr:sLV1Name>
+		</sgr:fpNameList>
+		<sgr:fpLegibDesc>
+			<sgr:textElement>Die Messung der Wirkleistung erfolgt zur Kontrolle der Systemlast für regeltechnische Zwecke oder
+				netzfreundliche Funktionen wie Peak Limiting oder Einspeisebegrenzung. Je nach Optimierungsanwendung
+				muss diese Erfassung zuverlässig im Takt von 10 Mal/Sekunde bis zum Minutentakt erfolgen.
+				Bei der Einführung von Leistungstarifen müssen für diese Messung auch regulatorische Vorgaben
+				beachtet werden. Typische Nachbarprofile sind Controller oder Datenlogger</sgr:textElement>
+			<sgr:language>de</sgr:language>
+		</sgr:fpLegibDesc>
+	</sgr:functionalProfile>
+	<sgr:genAttribute>
+		<sgr:precision>2.5</sgr:precision>
+	</sgr:genAttribute>
+	<sgr:dpListElement>
+		<sgr:dataPoint datapointName="ActivePowerACtot" rwpDatadirection="R" unit="KILOWATTS" mroVisibilityIndicator="R">
+			<sgr:basicDataType>
+				<sgr:float32>0</sgr:float32>
+			</sgr:basicDataType>
+			<sgr:dpLegibDesc>
+				<sgr:textElement>Erfassung der gesamten Wirkleistung</sgr:textElement>
+				<sgr:language>de</sgr:language>
+			</sgr:dpLegibDesc>
+		</sgr:dataPoint>
+	</sgr:dpListElement>
+	<sgr:dpListElement>
+		<sgr:dataPoint datapointName="ActivePowerACL1" rwpDatadirection="R" unit="KILOWATTS" mroVisibilityIndicator="R">
+			<sgr:basicDataType>
+				<sgr:float32>0</sgr:float32>
+			</sgr:basicDataType>
+			<sgr:dpLegibDesc>
+				<sgr:textElement>Erfassung der Wirkleistung Phase A</sgr:textElement>
+				<sgr:language>de</sgr:language>
+			</sgr:dpLegibDesc>
+		</sgr:dataPoint>
+	</sgr:dpListElement>
+	<sgr:dpListElement>
+		<sgr:dataPoint datapointName="ActivePowerACL2" rwpDatadirection="R" unit="KILOWATTS" mroVisibilityIndicator="R">
+			<sgr:basicDataType>
+				<sgr:float32>0</sgr:float32>
+			</sgr:basicDataType>
+			<sgr:dpLegibDesc>
+				<sgr:textElement>Erfassung der Wirkleistung Phase B</sgr:textElement>
+				<sgr:language>de</sgr:language>
+			</sgr:dpLegibDesc>
+		</sgr:dataPoint>
+	</sgr:dpListElement>
+	<sgr:dpListElement>
+		<sgr:dataPoint datapointName="ActivePowerACL3" rwpDatadirection="R" unit="KILOWATTS" mroVisibilityIndicator="R">
+			<sgr:basicDataType>
+				<sgr:float32>0</sgr:float32>
+			</sgr:basicDataType>
+			<sgr:dpLegibDesc>
+				<sgr:textElement>Erfassung der Wirkleistung Phase C</sgr:textElement>
+				<sgr:language>de</sgr:language>
+			</sgr:dpLegibDesc>
+		</sgr:dataPoint>
+	</sgr:dpListElement>
+</sgr:SGrFunctionalProfileDescriptionType>

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/SGr.xsl"?>
 <sgr:SGrModbusDeviceDescriptionType deviceName="VGTSiemensSPSV0.1.1" isLocalControl="true"	manufacturerID="VirtualGlobalTrading" 	manufacturerName="Virtual Global Trading AG" xmlns:sgr="http://www.smartgridready.com/ns/V0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 	xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/EI-Modbus/SGrModbusEIDeviceFrame.xsd ">
 	<sgr:deviceProfile>
 		<sgr:devLegibDesc>
 			<sgr:textElement>SPS Device for HomeAutomation</sgr:textElement>
 			<sgr:language>en</sgr:language>
-			<sgr:uri>http://tempuri.org</sgr:uri>
 		</sgr:devLegibDesc>
 		<sgr:transportService>Modbus</sgr:transportService>
 		<sgr:deviceKind>SGCP</sgr:deviceKind>
@@ -29,33 +29,27 @@
 		<sgr:devPrgDesc>
 			<sgr:textElement>Dieses Geraet muss mit der IP-Adresse des Clients konfiguriert werden, da  das Modbus-Port aus Sicherheitsgruenden nur für eine einzige Adresse geoeffnet wird</sgr:textElement>
 			<sgr:language>de</sgr:language>
-			<sgr:uri>http://tempuri.org</sgr:uri>
 		</sgr:devPrgDesc>	
 		<sgr:devPrgDesc>
 			<sgr:textElement>This device must be configured with the client's IP address, as the Modbus port is only opened to a single address for security reasons.</sgr:textElement>
 			<sgr:language>en</sgr:language>
-			<sgr:uri>http://tempuri.org</sgr:uri>
 		</sgr:devPrgDesc>
 		<sgr:devPrgDesc>
 			<sgr:textElement>Cet appareil doit être configuré avec l'adresse IP du client, car le port Modbus n'est ouvert qu'à une seule adresse pour des raisons de sécurité.</sgr:textElement>
 			<sgr:language>fr</sgr:language>
-			<sgr:uri>http://tempuri.org</sgr:uri>
 		</sgr:devPrgDesc>
 		<sgr:devPrgDesc>
 			<sgr:textElement>Questo dispositivo deve essere configurato con l'indirizzo IP del client, poiché la porta Modbus è aperta solo a un unico indirizzo per motivi di sicurezza.</sgr:textElement>
 			<sgr:language>it</sgr:language>
-			<sgr:uri>http://tempuri.org</sgr:uri>
 		</sgr:devPrgDesc>
 	</sgr:deviceProfile>
-	<sgr:devMbAttrReference>
-		<sgr:modbusAttr>
-			<sgr:pollLatencyMS>150</sgr:pollLatencyMS>
-			<sgr:accessProtection isEnabled="true">
-				<sgr:modbusException>IllegalFunction</sgr:modbusException>
-				<sgr:modbusException>IllegalAddress</sgr:modbusException>
-			</sgr:accessProtection>
-		</sgr:modbusAttr>
-	</sgr:devMbAttrReference>
+	<sgr:modbusAttr>
+		<sgr:pollLatencyMS>150</sgr:pollLatencyMS>
+		<sgr:accessProtection isEnabled="true">
+			<sgr:modbusException>IllegalFunction</sgr:modbusException>
+			<sgr:modbusException>IllegalAddress</sgr:modbusException>
+		</sgr:accessProtection>
+	</sgr:modbusAttr>
 	<sgr:modbusInterfaceDesc>
 		<sgr:modbusInterfaceSelection>TCP/IP</sgr:modbusInterfaceSelection>
 		<sgr:trspSrvModbusTCPoutOfBox>
@@ -94,8 +88,7 @@
 			<sgr:fpLegibDesc>
 				<sgr:textElement>Der Grid seitige Flex Manager steuert die Anlage über die Datenpunkte ReadinessState, ActivePowerActivation und RunState und liest ActualActivePower. </sgr:textElement>
 				<sgr:language>de</sgr:language>
-				<sgr:uri>http://tempuri.org</sgr:uri>
-			</sgr:fpLegibDesc>
+				</sgr:fpLegibDesc>
 		</sgr:functionalProfile>
 		<sgr:dpListElement>
 			<sgr:dataPoint datapointName="ActivePowerActivation"
@@ -112,7 +105,6 @@
 -Activation = true: Die Latenzeit beginnt mit dem Empfang dieses Befehls (WinTms)  
 -Activation= false: Die Leistungsanpassung wird über eine definierte Rampe zurückgenommen (RmpTms)</sgr:textElement>
 					<sgr:language>de</sgr:language>
-					<sgr:uri>http://tempuri.org</sgr:uri>
 				</sgr:dpLegibDesc>
 			</sgr:dataPoint>
 			<sgr:modbusDataPoint>
@@ -124,7 +116,6 @@
 				<sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
 				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
 			</sgr:modbusDataPoint>
-			<sgr:dpMbAttrReference>
 				<sgr:genAttribute></sgr:genAttribute>
 				<sgr:modbusAttr>
 					<sgr:scalingByMulPwr>
@@ -132,7 +123,6 @@
 						<sgr:powerof10>0</sgr:powerof10>
 					</sgr:scalingByMulPwr>
 				</sgr:modbusAttr>
-			</sgr:dpMbAttrReference>
 		</sgr:dpListElement>
 		<sgr:dpListElement>
 			<sgr:dataPoint datapointName="ReadinessState"
@@ -147,7 +137,6 @@
 				<sgr:dpLegibDesc>
 					<sgr:textElement>Status ready for flexibility. True wenn Anlage für den nächsten Flexibilitäts-Event bereit ist.</sgr:textElement>
 					<sgr:language>de</sgr:language>
-					<sgr:uri>http://tempuri.org</sgr:uri>
 				</sgr:dpLegibDesc>
 			</sgr:dataPoint>
 			<sgr:modbusDataPoint>
@@ -159,7 +148,6 @@
 				<sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
 				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
 			</sgr:modbusDataPoint>
-			<sgr:dpMbAttrReference>
 				<sgr:genAttribute />
 				<sgr:modbusAttr>
 					<sgr:scalingByMulPwr>
@@ -167,7 +155,6 @@
 						<sgr:powerof10>0</sgr:powerof10>
 					</sgr:scalingByMulPwr>
 				</sgr:modbusAttr>
-			</sgr:dpMbAttrReference>
 		</sgr:dpListElement>
 		<sgr:dpListElement>
 			<sgr:dataPoint datapointName="RunState"
@@ -182,7 +169,6 @@
 				<sgr:dpLegibDesc>
 					<sgr:textElement>Status running for flexibility. True wenn Anlage läuft für Flexibilität.</sgr:textElement>
 					<sgr:language>de</sgr:language>
-					<sgr:uri>http://tempuri.org</sgr:uri>
 				</sgr:dpLegibDesc>
 			</sgr:dataPoint>
 			<sgr:modbusDataPoint>
@@ -194,7 +180,6 @@
 				<sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
 				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
 			</sgr:modbusDataPoint>
-			<sgr:dpMbAttrReference>
 				<sgr:genAttribute/>
 				<sgr:modbusAttr>
 					<sgr:scalingByMulPwr>
@@ -202,7 +187,6 @@
 						<sgr:powerof10>0</sgr:powerof10>
 					</sgr:scalingByMulPwr>
 				</sgr:modbusAttr>
-			</sgr:dpMbAttrReference>
 		</sgr:dpListElement>
 		<sgr:dpListElement>
 			<sgr:dataPoint datapointName="ActualActivePower"
@@ -218,7 +202,6 @@
 					<sgr:textElement>Momentane Leistung. Betrag und Richtung des Energieflusses.
 + entspricht Energiebezug aus dem Netz oder Erhöhung des Bezugs</sgr:textElement>
 					<sgr:language>de</sgr:language>
-					<sgr:uri>http://tempuri.org</sgr:uri>
 				</sgr:dpLegibDesc>
 			</sgr:dataPoint>
 			<sgr:modbusDataPoint>
@@ -230,7 +213,6 @@
 				<sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
 				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
 			</sgr:modbusDataPoint>
-			<sgr:dpMbAttrReference>
 				<sgr:genAttribute>
 					<sgr:maxSendTime>00:00:10</sgr:maxSendTime>
 					<sgr:minSendTime>00:00:02</sgr:minSendTime>
@@ -241,7 +223,6 @@
 						<sgr:powerof10>-1</sgr:powerof10>
 					</sgr:scalingByMulPwr>
 				</sgr:modbusAttr>
-			</sgr:dpMbAttrReference>
 		</sgr:dpListElement>
 	</sgr:fpListElement>
 </sgr:SGrModbusDeviceDescriptionType>
