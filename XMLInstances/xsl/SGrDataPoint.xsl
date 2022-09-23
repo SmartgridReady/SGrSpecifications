@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:sgr="http://www.smartgridready.com/ns/V0/">
+<xsl:stylesheet version="1.1" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:sgr="http://www.smartgridready.com/ns/V0/">
 
 <!--
     Contains the style sheets for data point, including
     - sgr:dpNameList
-
-    Depends on named templates:
-    - SGrNamelistType
-    - SGrLegibDocumentationType
-    - 
-
 -->
+
+<xsl:import href="SGrDeviceTypeModbus.xsl" />
+<xsl:import href="SGrDeviceTypeRestAPI.xsl" />
+
+<xsl:import href="SGrGenericAttributes.xsl" />
+<xsl:import href="SGrGenericDataPointDefinitions.xsl" />
+<xsl:import href="SgrGenericHelpers.xsl"/>
+<xsl:import href="SGrGenericLegibDocumentationType.xsl" />
+
 
 
 <!-- SGrDataPointDescriptionType -->
@@ -122,14 +124,6 @@
     <tr class="transportDetails"><td>Data Type</td><td><xsl:apply-templates select="./@dataType"/></td></tr>
     <tr class="transportDetails"><td>End Point</td><td><xsl:value-of select="sgr:restAPIEndPoint"/></td></tr>
     <tr class="transportDetails"><td>JMES Path</td><td><xsl:value-of select="sgr:restAPIJMESPath"/></td></tr>
-</xsl:template>
-
-<!-- Attributes RestAPI -->
-<xsl:template match="sgr:restAPIAttr">
-	<!--flexAssistance-->
-	<xsl:if test="sgr:placeHolder4futureExtensions">
-		<tr class="transportDetails"><td><img src="/xsl/rest.png" width="60px"/> Fut.Ext. ??</td><td><xsl:value-of select="sgr:placeHolder4futureExtensions"/></td></tr>
-	</xsl:if>
 </xsl:template>
 
 </xsl:stylesheet>

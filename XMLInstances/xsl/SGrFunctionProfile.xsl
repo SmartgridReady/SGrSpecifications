@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:sgr="http://www.smartgridready.com/ns/V0/">
+<xsl:stylesheet version="1.1" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:sgr="http://www.smartgridready.com/ns/V0/">
 
 <!--
     Contains the style sheets for the generic functional profile, including
     - sgr:fpNameList
-
-    Depends on named templates:
-    - SGrNamelistType
-    - SGrLegibDocumentationType
-    - 
-
 -->
+
+<xsl:import href="SGrDeviceTypeModbus.xsl" />
+<xsl:import href="SGrDeviceTypeRestAPI.xsl" />
+
+<xsl:import href="SGrGenericAttributes.xsl" />
+<xsl:import href="SGrGenericNamelistType.xsl" />
+<xsl:import href="SGrGenericLegibDocumentationType.xsl" />
 
 <xsl:template match="sgr:fpListElement">
     <xsl:call-template name="sgrFunctionProfile"/>

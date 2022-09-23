@@ -1,0 +1,184 @@
+/* Include SGr fonts */
+@font-face {
+    font-family: source-sans-pro-light;
+    src: url(/xsl/SourceSansPro-Light.otf)
+}
+
+@font-face {
+    font-family: source-sans-pro;
+    src: url(/xsl/SourceSansPro-Regular.otf)
+}
+
+/* Document background */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: source-sans-pro-light, sans-serif;
+    font-size: 16px;
+    width: 900px;
+    margin-top: 1em;
+    margin-right: auto;
+    margin-left: auto;
+    background-color: lightgray;
+}
+
+.document {
+    background-color: white;
+    padding-left: 4em;
+    padding-right: 4em;
+    padding-top: 3em;
+    padding-bottom: 1em;
+}
+
+/* Standard headers */
+h1 {
+    font-family: source-sans-pro, sans-serif;
+    font-size: 1.55em;
+    color: blue;
+    font-weight: bold;
+    margin-bottom: 1.5em
+}
+
+h2 {
+    font-family: source-sans-pro, sans-serif;
+    font-size: 1.44em;
+    margin-bottom: 0.2em;
+    margin-top: 2em;
+}
+
+h3 {
+    font-family: source-sans-pro, sans-serif;
+    font-size: 1.0em;
+    margin-bottom: 0.2em;
+    margin-top: 1em;
+}
+
+/* Table with solid black grid lines */
+table {
+    border-spacing: 0px;
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom: 0.0em;
+}
+
+th {
+    padding: 0.3em;
+    text-align: left;
+    border: 1px solid black;
+}
+
+td {
+    padding: 0.3em;
+    border: 1px solid black;
+    vertical-align: text-top;
+}
+
+td.noborder {
+    border: none;
+}
+
+div.navigation {
+    padding: 0.5em;
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    background-color: darkgrey;
+}
+
+/* Navigation box (not visisble on print) */
+div.navigation>div {
+    padding: 0.1em;
+}
+
+@media print {
+    div.navigation {
+        display: none;
+    }
+}
+
+/* Multi language selectors */
+body.en :lang(de) {
+    display: none;
+}
+
+body.en :lang(fr) {
+    display: none;
+}
+
+body.en :lang(it) {
+    display: none;
+}
+
+body.de :lang(en) {
+    display: none;
+}
+
+body.de :lang(fr) {
+    display: none;
+}
+
+body.de :lang(it) {
+    display: none;
+}
+
+body.fr :lang(en) {
+    display: none;
+}
+
+body.fr :lang(de) {
+    display: none;
+}
+
+body.fr :lang(it) {
+    display: none;
+}
+
+body.it :lang(en) {
+    display: none;
+}
+
+body.it :lang(de) {
+    display: none;
+}
+
+body.it :lang(fr) {
+    display: none;
+}
+
+body.none :lang(en) {
+    display: none;
+}
+
+body.none :lang(de) {
+    display: none;
+}
+
+body.none :lang(fr) {
+    display: none;
+}
+
+body.none :lang(it) {
+    display: none;
+}
+
+/* Document sections */
+
+/* .profileheader { } */
+.profilefooter {
+    margin-top: 6em;
+    border-top: 1px solid black;
+    padding-top: 0.3em;
+    font-size: 0.9em;
+}
+
+/* .externalInterface { } */
+/* .genericDetails {} */
+/* .ontologyDetails {} */
+/* .functionalProfile { } */
+.dataPoint {
+    margin-top: 2em;
+}
+
+/* .dataPointDetails { } */
