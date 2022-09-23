@@ -261,8 +261,6 @@
 				</table>
 			</div>
 
-			<xsl:call-template name="sgrFunctionProfile" />
-
 			<!-- Footer-->
 			<div class="profilefooter">
 				Konzept und Spezifikation Funktionsprofile siehe separates Dokument "Funktionsprofile_Spezifikation_vx.x.pdf"
