@@ -20,4 +20,4 @@ Alternatively you can setup a local web server.
 ```
 python -m http.server 8080
 ```
-  - and open your broser http://localhost:8080
+  - and open your browser http://localhost:8080
