@@ -211,9 +211,9 @@
                     <!-- Generic Attributes -->
                     <table>
                         <colgroup>
+                            <col style="width:20%" />
                             <col style="width:30%" />
-                            <col style="width:30%" />
-                            <col style="width:40%" />
+                            <col style="width:60%" />
                         </colgroup>
                         <tr>
                             <th>SGr Attribute</th>
