@@ -457,7 +457,9 @@
                     adjustment (positive as well as negative) can be determined by
                     several time values, so that this starts with a random time delay,
                     changes via a ramp and an expiry time with return to the initial
-                    value.</td>
+                    value (see IEC-61850-90-7).
+                    <img src="/xsl/genAttribute_smoothTransition.png"/>
+                </td>
             </tr>
         </xsl:if>
 
