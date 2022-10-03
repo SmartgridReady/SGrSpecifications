@@ -194,7 +194,7 @@
 
                                         <!-- Generic Attributes -->
                                         <xsl:apply-templates select="sgr:genAttribute">
-                                            <xsl:with-param name="type" select="'EI'" />
+                                            <xsl:with-param name="type" select="'FP'" />
                                         </xsl:apply-templates>
 
                                     </table>

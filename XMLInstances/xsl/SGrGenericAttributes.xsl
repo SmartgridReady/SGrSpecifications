@@ -208,6 +208,19 @@
             </tr>
         </xsl:if>
 
+        <!--valueType-->
+        <xsl:if test="sgr:valueType">
+            <tr class="genericDetails">
+                <td>
+                    <img src="/xsl/genattr.png" alt="" width="16pt" height="16pt" />
+                    ValueType
+                </td>
+                <td>
+                    <xsl:value-of select="sgr:valueState" />
+                </td>
+            </tr>
+        </xsl:if>
+
         <!--valueState-->
         <xsl:if test="sgr:valueState">
             <tr class="genericDetails">
@@ -407,9 +420,12 @@
                     stabilityFallback
                 </td>
                 <td>
-                    Max recieve time: float,<br />
-                    Init Value: float, <br />
-                    Fallback Value: float<br />
+                    Max recieve time: float,
+                    <br />
+                    Init Value: float,
+                    <br />
+                    Fallback Value: float
+                    <br />
                 </td>
                 <td>A consumer or a generating system receives the
                     permit for a load change for a certain period of time. This time
@@ -536,6 +552,18 @@
             </tr>
         </xsl:if>
 
+        <!--valueType-->
+        <xsl:if test="sgr:valueType">
+            <tr class="genericDetails">
+                <td>
+                    <img src="/xsl/genattr.png" alt="" width="16pt" height="16pt" />
+                    valueType
+                </td>
+                <td>min, max, average, stdDev</td>
+                <td>Type of data point collection.</td>
+            </tr>
+        </xsl:if>
+
         <!--valueState-->
         <xsl:if test="sgr:valueState">
             <tr class="genericDetails">
@@ -592,7 +620,8 @@
                     curtailment
                 </td>
                 <td>float</td>
-                <td></td>
+                <td>Absenkung der Rückspeisung: Wert in % der aktuell gelieferten Rückspeisung beim Übergang in den Betriebsmode reduziert</td>
+                <!-- TODO: translate to english -->
             </tr>
         </xsl:if>
 
