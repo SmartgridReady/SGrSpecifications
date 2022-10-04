@@ -11,6 +11,7 @@
 	<xsl:include href="SGrDeviceTypeContact.xsl" />
 	<xsl:include href="SGrDeviceTypeModbus.xsl" />
 	<xsl:include href="SGrDeviceTypeRestAPI.xsl" />
+	<xsl:include href="SGrDeviceTypeFunctionalProfile.xsl"/>
 
 	<xsl:include href="SGrGenericAttributes.xsl" />
 	<xsl:include href="SGrGenericDataPointDefinitions.xsl" />
@@ -90,9 +91,9 @@
 					<p></p>
 
 					<!-- Device Types -->
-					<xsl:apply-templates select="sgr:SGrModbusDeviceDescriptionType" />
-					<xsl:apply-templates select="sgr:SGrRESTAPIDeviceDescriptionType" />
-					<xsl:apply-templates select="sgr:SGrContactAPIDeviceDescriptionType" />
+					<xsl:apply-templates select="sgr:SGrModbusDeviceFrame" />
+					<xsl:apply-templates select="sgr:SGrRestAPIDeviceFrame" />
+					<xsl:apply-templates select="sgr:SGrContactAPIDeviceFrame" />
 
 					<!-- generic functional Profiles -->
 					<xsl:apply-templates select="sgr:SGrFunctionalProfileDescriptionType" />
@@ -102,13 +103,13 @@
 	</xsl:template>
 
 	<!-- Device Profiles -->
-	<xsl:template match="sgr:SGrModbusDeviceDescriptionType">
+	<xsl:template match="sgr:SGrModbusDeviceFrame">
 		<xsl:call-template name="SGrDeviceType" />
 	</xsl:template>
-	<xsl:template match="sgr:SGrRESTAPIDeviceDescriptionType">
+	<xsl:template match="sgr:SGrRestAPIDeviceFrame">
 		<xsl:call-template name="SGrDeviceType" />
 	</xsl:template>
-	<xsl:template match="sgr:SGrContactAPIDeviceDescriptionType">
+	<xsl:template match="sgr:SGrContactAPIDeviceFrame">
 		<xsl:call-template name="SGrDeviceType" />
 	</xsl:template>
 	<xsl:template name="SGrDeviceType">
@@ -213,62 +214,7 @@
 			<xsl:apply-templates select="sgr:fpListElement" />
 		</div>
 	</xsl:template>
-
-	<!-- Generic Functional Profiles -->
-	<xsl:template match="sgr:SGrFunctionalProfileDescriptionType">
-		<div class="functionalProfile">
-			<h2>
-				<xsl:value-of select="sgr:functionalProfile/@profileName" />
-			</h2>
-
-			<xsl:apply-templates select="sgr:releaseNotes" />
-
-
-			<h2>Functional Profile</h2>
-
-			<!-- Functional Profile Block -->
-			<table>
-				<colgroup>
-					<col style="width:30%" />
-				</colgroup>
-
-				<xsl:apply-templates select="sgr:functionalProfile" />
-
-				<!-- Generic Attributes -->
-				<xsl:apply-templates select="sgr:genAttribute" />
-
-			</table>
-
-			<!-- Data Points -->
-			<div class="dataPoint">
-				<table>
-					<colgroup>
-						<col style="width:5%" />
-						<col style="width:25%" />
-						<col style="width:35%" />
-						<col style="width:15%" />
-						<col style="width:10%" />
-						<col style="width:10%" />
-					</colgroup>
-					<tr>
-						<th colspan="2">Datapoint</th>
-						<th>Unit</th>
-						<th>Type</th>
-						<th>MRO</th>
-						<th>RWP</th>
-					</tr>
-					<xsl:apply-templates select="sgr:dpListElement" />
-				</table>
-			</div>
-
-			<!-- Footer-->
-			<div class="profilefooter">
-				Konzept und Spezifikation Funktionsprofile siehe separates Dokument "Funktionsprofile_Spezifikation_vx.x.pdf"
-				Informationen und Support unter www.smartgridready.ch, deklaration@smartgridready.ch
-			</div>
-		</div>
-	</xsl:template>
-
+	
 	<xsl:template match="sgr:networkConnectionState">
 		<h3>Network Connection State</h3>
 		<table>

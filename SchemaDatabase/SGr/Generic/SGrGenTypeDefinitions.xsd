@@ -240,7 +240,7 @@
         <simpleType>
           <restriction base="string">
             <minLength value="0"/>
-            <maxLength value="750"/>
+            <maxLength value="4000"/>
           </restriction>
         </simpleType>
       </element>
@@ -662,6 +662,11 @@
           <documentation>time range min…max</documentation>
         </annotation>
       </element>
+      <element maxOccurs="1" minOccurs="0" name="valueType" type="sgr:SGrMeasValueType">
+        <annotation>
+          <documentation> MeasValueType: type of measurement. Possbile values are "min", max", "average", "stdDev"</documentation>
+        </annotation>
+      </element>
       <element maxOccurs="1" minOccurs="0" name="valueState" type="sgr:SGrMeasValueStateType">
         <annotation>
           <documentation> MeasValueState: Status / validity of the
@@ -794,6 +799,14 @@
   
  <!--  generic Enumeration Definitions  -->
   
+  <simpleType name="SGrMeasValueType">
+    <restriction base="string">
+      <enumeration value="min" />
+      <enumeration value="max" />
+      <enumeration value="average" />
+      <enumeration value="stdDev" />
+    </restriction>
+  </simpleType>
   <simpleType name="SGrMeasValueStateType">
     <annotation>
       <documentation>E0001</documentation>

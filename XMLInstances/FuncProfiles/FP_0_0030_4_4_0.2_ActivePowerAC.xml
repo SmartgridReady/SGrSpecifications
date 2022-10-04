@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="/xsl/SGr.xsl"?>
-<sgr:SGrFunctionalProfileDescriptionType xmlns:sgr="http://www.smartgridready.com/ns/V0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/Generic/SGrGenFunctionalProfileDefinition.xsd">
+<sgr:SGrFunctionalProfileFrame xmlns:sgr="http://www.smartgridready.com/ns/V0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/Generic/SGrGenFunctionalProfileDefinition.xsd">
 	<sgr:releaseNotes>
-		<sgr:state>Draft</sgr:state>
+		<sgr:state>Review</sgr:state>
 		<sgr:changelog>
 			<sgr:version>0.1.1</sgr:version>
 			<sgr:date>2021-04-03</sgr:date>
@@ -10,7 +10,7 @@
 			<sgr:comment>Vorbereitung beta test</sgr:comment>
 		</sgr:changelog>
 		<sgr:changelog>
-			<sgr:version>0.1.2</sgr:version>
+			<sgr:version>0.2.2</sgr:version>
 			<sgr:date>2022-09-20</sgr:date>
 			<sgr:author>Ergo/sz</sgr:author>
 			<sgr:comment>Finalisierung Go-Live</sgr:comment>
@@ -19,12 +19,12 @@
 	<sgr:functionalProfile mroVisibilityIndicator="M" profileName="ActivePowerAC">
 		<sgr:profileNumber>
 			<sgr:specsOwnerId>0</sgr:specsOwnerId>
-			<sgr:profileIdentification>Inverter</sgr:profileIdentification>
+			<sgr:profileIdentification>SubMeterElectricity</sgr:profileIdentification>
 			<sgr:subProfileIdent>ActivePowerAC</sgr:subProfileIdent>
 			<sgr:sgrLevelOfOperation>4</sgr:sgrLevelOfOperation>
 			<sgr:versionNumber>
 				<sgr:primaryVersionNumber>0</sgr:primaryVersionNumber>
-				<sgr:secondaryVersionNumber>1</sgr:secondaryVersionNumber>
+				<sgr:secondaryVersionNumber>2</sgr:secondaryVersionNumber>
 				<sgr:subReleaseVersionNumber>2</sgr:subReleaseVersionNumber>
 			</sgr:versionNumber>
 		</sgr:profileNumber>
@@ -33,11 +33,15 @@
 			<sgr:sLV1Name>Messung der Wirkleistung</sgr:sLV1Name>
 		</sgr:fpNameList>
 		<sgr:fpLegibDesc>
-			<sgr:textElement>Die Messung der Wirkleistung erfolgt zur Kontrolle der Systemlast für regeltechnische Zwecke oder
+			<sgr:textElement>
+				<![CDATA[	
+				<img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
+				Die Messung der Wirkleistung erfolgt zur Kontrolle der Systemlast für regeltechnische Zwecke oder
 				netzfreundliche Funktionen wie Peak Limiting oder Einspeisebegrenzung. Je nach Optimierungsanwendung
 				muss diese Erfassung zuverlässig im Takt von 10 Mal/Sekunde bis zum Minutentakt erfolgen.
 				Bei der Einführung von Leistungstarifen müssen für diese Messung auch regulatorische Vorgaben
-				beachtet werden. Typische Nachbarprofile sind Controller oder Datenlogger.</sgr:textElement>
+				beachtet werden. Typische Nachbarprofile sind Controller oder Datenlogger.]]>
+			</sgr:textElement>
 			<sgr:language>de</sgr:language>
 		</sgr:fpLegibDesc>
 	</sgr:functionalProfile>
@@ -45,7 +49,7 @@
 		<sgr:precision>2.5</sgr:precision>
 	</sgr:genAttribute>
 	<sgr:dpListElement>
-		<sgr:dataPoint datapointName="ActivePowerACtot" rwpDatadirection="R" unit="KILOWATTS" mroVisibilityIndicator="R">
+		<sgr:dataPoint datapointName="ActivePowerACtot" rwpDatadirection="R" unit="KILOWATTS" mroVisibilityIndicator="M">
 			<sgr:basicDataType>
 				<sgr:float32>0</sgr:float32>
 			</sgr:basicDataType>
@@ -88,4 +92,4 @@
 			</sgr:dpLegibDesc>
 		</sgr:dataPoint>
 	</sgr:dpListElement>
-</sgr:SGrFunctionalProfileDescriptionType>
+</sgr:SGrFunctionalProfileFrame>

@@ -33,47 +33,4 @@
         <xsl:value-of select="sgr:primaryVersionNumber" />.<xsl:value-of select="sgr:secondaryVersionNumber" />.<xsl:value-of select="sgr:subReleaseVersionNumber" />
     </xsl:template>
 
-    <!-- SGrReleaseNotes -->
-    <xsl:template match="sgr:releaseNotes">
-        <table>
-            <colgroup>
-                <col style="width:5%" />
-                <col style="width:25%" />
-                <col style="width:20%" />
-                <col style="width:20%" />
-                <col style="width:30%" />
-            </colgroup>
-            <tr>
-                <td colspan="2">State</td>
-                <td colspan="3">
-                    <xsl:value-of select="sgr:state" />
-                </td>
-            </tr>
-            <tr>
-                <td class="noborder"></td>
-                <th>Version</th>
-                <th>Date</th>
-                <th>Author</th>
-                <th>Comment</th>
-            </tr>
-            <xsl:for-each select="sgr:changelog">
-                <tr>
-                    <td class="noborder"></td>
-                    <td>
-                        <xsl:value-of select="sgr:version" />
-                    </td>
-                    <td>
-                        <xsl:value-of select="sgr:date" />
-                    </td>
-                    <td>
-                        <xsl:value-of select="sgr:author" />
-                    </td>
-                    <td>
-                        <xsl:value-of select="sgr:comment" />
-                    </td>
-                </tr>
-            </xsl:for-each>
-        </table>
-    </xsl:template>
-
 </xsl:stylesheet> 
