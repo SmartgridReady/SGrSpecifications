@@ -154,7 +154,7 @@
                                         <xsl:attribute name="lang">
                                             <xsl:value-of select="sgr:language" />
                                         </xsl:attribute>
-                                        <xsl:value-of select="sgr:textElement" />
+                                        <xsl:value-of select="sgr:textElement" disable-output-escaping="yes" />
                                     </div>
                                 </xsl:for-each>
                             </td>

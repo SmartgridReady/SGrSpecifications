@@ -91,9 +91,9 @@
 					<p></p>
 
 					<!-- Device Types -->
-					<xsl:apply-templates select="sgr:SGrModbusDeviceDescriptionType" />
-					<xsl:apply-templates select="sgr:SGrRESTAPIDeviceDescriptionType" />
-					<xsl:apply-templates select="sgr:SGrContactAPIDeviceDescriptionType" />
+					<xsl:apply-templates select="sgr:SGrModbusDeviceFrame" />
+					<xsl:apply-templates select="sgr:SGrRestAPIDeviceFrame" />
+					<xsl:apply-templates select="sgr:SGrContactAPIDeviceFrame" />
 
 					<!-- generic functional Profiles -->
 					<xsl:apply-templates select="sgr:SGrFunctionalProfileDescriptionType" />
@@ -103,13 +103,13 @@
 	</xsl:template>
 
 	<!-- Device Profiles -->
-	<xsl:template match="sgr:SGrModbusDeviceDescriptionType">
+	<xsl:template match="sgr:SGrModbusDeviceFrame">
 		<xsl:call-template name="SGrDeviceType" />
 	</xsl:template>
-	<xsl:template match="sgr:SGrRESTAPIDeviceDescriptionType">
+	<xsl:template match="sgr:SGrRestAPIDeviceFrame">
 		<xsl:call-template name="SGrDeviceType" />
 	</xsl:template>
-	<xsl:template match="sgr:SGrContactAPIDeviceDescriptionType">
+	<xsl:template match="sgr:SGrContactAPIDeviceFrame">
 		<xsl:call-template name="SGrDeviceType" />
 	</xsl:template>
 	<xsl:template name="SGrDeviceType">
