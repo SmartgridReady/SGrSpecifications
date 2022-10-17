@@ -2,7 +2,7 @@
 <xsl:stylesheet version="1.1" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:sgr="http://www.smartgridready.com/ns/V0/">
 
     <!-- Generic Functional Profiles -->
-    <xsl:template match="sgr:SGrFunctionalProfileDescriptionType">
+    <xsl:template match="sgr:SGrFunctionalProfileFrame">
         <div class="functionalProfile">
             <h2>
                 <xsl:value-of select="sgr:functionalProfile/@profileName" />

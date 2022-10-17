@@ -83,7 +83,7 @@
 						</div>
 						<div style="float:left; width:50%; text-align:right; height: 134px">
 							<xsl:choose>
-								<xsl:when test="/sgr:SGrFunctionalProfileDescriptionType">Definition Functional Profile</xsl:when>
+								<xsl:when test="/sgr:SGrFunctionalProfileFrame">Definition Functional Profile</xsl:when>
 								<xsl:otherwise>Device Profile</xsl:otherwise>
 							</xsl:choose>
 						</div>
@@ -96,7 +96,7 @@
 					<xsl:apply-templates select="sgr:SGrContactAPIDeviceFrame" />
 
 					<!-- generic functional Profiles -->
-					<xsl:apply-templates select="sgr:SGrFunctionalProfileDescriptionType" />
+					<xsl:apply-templates select="sgr:SGrFunctionalProfileFrame" />
 				</div>
 			</body>
 		</html>
