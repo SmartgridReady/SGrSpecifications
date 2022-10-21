@@ -129,8 +129,8 @@
                     <colgroup>
                         <col style="width:5%" />
                         <col style="width:15%" />
-                        <col style="width:43%" />
-                        <col style="width:15%" />
+                        <col style="width:52%" />
+                        <col style="width:6%" />
                         <col style="width:10%" />
                         <col style="width:6%" />
                         <col style="width:6%" />
@@ -157,9 +157,20 @@
                                         <xsl:value-of select="sgr:textElement" disable-output-escaping="yes" />
                                     </div>
                                 </xsl:for-each>
+                                <xsl:if test="sgr:genAttribute/*">
+                                    <p style="margin-bottom:0;">Attributes:</p>
+                                    <xsl:for-each select="sgr:genAttribute/*">
+                                        <div style="padding-left:1em;">
+                                            <img src="/xsl/genattr.png" alt="" width="16pt" height="16pt" />&#160;
+                                            <xsl:value-of select="local-name(.)" />
+                                        </div>
+                                    </xsl:for-each>
+                                </xsl:if>
                             </td>
                             <td>
-                                <xsl:value-of select="sgr:dataPoint/@unit" />
+                                <xsl:call-template name="SGrUnits">
+                                    <xsl:with-param name="value" select="sgr:dataPoint/@unit" />
+                                </xsl:call-template>
                             </td>
                             <td>
                                 <xsl:if test="sgr:dataPoint/sgr:basicDataType">
@@ -178,7 +189,7 @@
                             </td>
                         </tr>
 
-                        <xsl:if test="sgr:dataPoint/sgr:dpNameList or sgr:genAttribute">
+                        <xsl:if test="sgr:dataPoint/sgr:dpNameList">
                             <tr class="dataPointDetails">
                                 <td class="noborder"></td>
                                 <td colspan="6">
@@ -191,11 +202,6 @@
                                         <xsl:if test="sgr:dataPoint/sgr:dpNameList">
                                             <xsl:apply-templates select="sgr:dataPoint/sgr:dpNameList" />
                                         </xsl:if>
-
-                                        <!-- Generic Attributes -->
-                                        <xsl:apply-templates select="sgr:genAttribute">
-                                            <xsl:with-param name="type" select="'FP'" />
-                                        </xsl:apply-templates>
 
                                     </table>
                                 </td>
@@ -221,6 +227,30 @@
                             <th>Description</th>
                         </tr>
                         <xsl:apply-templates select="sgr:genAttribute">
+                            <xsl:with-param name="type" select="'FP'" />
+                        </xsl:apply-templates>
+
+                    </table>
+                </div>
+            </xsl:if>
+
+            <xsl:if test="sgr:dpListElement/sgr:genAttribute">
+                <div class="functionalProfile">
+                    <h2>Datapoint Attibutes</h2>
+                    <p>Work in Progress: Doubletten entfernen, mit sgr:functionalProfile/sgr:genAttribute zusammenführen...</p>
+                    <!-- Generic Attributes -->
+                    <table>
+                        <colgroup>
+                            <col style="width:20%" />
+                            <col style="width:30%" />
+                            <col style="width:60%" />
+                        </colgroup>
+                        <tr>
+                            <th>SGr Attribute</th>
+                            <th>Type</th>
+                            <th>Description</th>
+                        </tr>
+                        <xsl:apply-templates select="sgr:dpListElement/sgr:genAttribute">
                             <xsl:with-param name="type" select="'FP'" />
                         </xsl:apply-templates>
 
