@@ -671,7 +671,7 @@
                     valueByTimeTableMinutes
                 </td>
                 <td>float</td>
-                <td></td>
+                <td>Step width in minutes</td>
             </tr>
         </xsl:if>
 
