@@ -514,7 +514,7 @@
                                     minLoad
                                 </td>
                                 <td>float</td>
-                                <td></td>
+                                <td>Minimale Last in kW, welche im Sperrbetrieb nicht überschritten werden darf.</td>
                             </tr>
                         </xsl:if>
 
@@ -526,7 +526,7 @@
                                     maxLockTimeMinutes
                                 </td>
                                 <td>float</td>
-                                <td></td>
+                                <td>Wert in Minuten für die maximale Sperrzeit.</td>
                             </tr>
                         </xsl:if>
 
