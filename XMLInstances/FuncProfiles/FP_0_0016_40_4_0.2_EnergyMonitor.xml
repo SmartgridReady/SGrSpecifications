@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/SGr.xsl"?>
+<sgr:SGrFunctionalProfileFrame xmlns:sgr="http://www.smartgridready.com/ns/V0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/SGrIncluder.xsd">
+    <sgr:releaseNotes>
+        <sgr:state>Draft</sgr:state>
+        <sgr:changelog>
+            <sgr:version>0.1.2</sgr:version>
+            <sgr:date>2021-04-05</sgr:date>
+            <sgr:author>IBT/cb</sgr:author>
+            <sgr:comment>Vorbereitung beta test</sgr:comment>
+        </sgr:changelog>
+        <sgr:changelog>
+            <sgr:version>0.2.2</sgr:version>
+            <sgr:date>2022-10-31</sgr:date>
+            <sgr:author>Ergo/sz</sgr:author>
+            <sgr:comment>Finalisierung Go-Live</sgr:comment>
+        </sgr:changelog>
+    </sgr:releaseNotes>
+    <sgr:functionalProfile mroVisibilityIndicator="M" profileName="HeatPump_Monitoring">
+        <sgr:profileNumber>
+            <sgr:specsOwnerId>0</sgr:specsOwnerId>
+            <sgr:profileIdentification>HeatPumpControl</sgr:profileIdentification>
+            <sgr:subProfileIdent>EnergyMonitor</sgr:subProfileIdent>
+            <sgr:sgrLevelOfOperation>4</sgr:sgrLevelOfOperation>
+            <sgr:versionNumber>
+                <sgr:primaryVersionNumber>0</sgr:primaryVersionNumber>
+                <sgr:secondaryVersionNumber>2</sgr:secondaryVersionNumber>
+                <sgr:subReleaseVersionNumber>2</sgr:subReleaseVersionNumber>
+            </sgr:versionNumber>
+        </sgr:profileNumber>
+        <sgr:fpLegibDesc>
+            <sgr:textElement>
+                <![CDATA[	
+				<img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
+                <p>Aufzeichnen der Warmepumpen-Betriebsdaten durch den CEM.</p>
+
+                <p>Bemerkungen:</p>
+                <ol>
+                    <li>Energiewerte, Laufzeiten und Anzahl Starts werden typischerweise 1x täglich abgefragt. Die Leistungsmessungen
+                        werden häufiger abgefragt und können zur Regelung dienen. Deshalb die Anforderung einer maximalen Abtastzeit.</li>
+                    <li>Die intern ermittelten Energiewerte ersetzen externe Zähler für Monitoring-Zwecke. Es wird erwünscht,
+                        dass der Hersteller Genauigkeitsangaben zu seinen intern ermittelten Werten macht. Dies ist eine wichtige
+                        Information für Monitoring-Systeme, um die Fehlertoleranz der energetischen Auswertungen abzuschätzen</li>
+                </ol>
+                ]]>
+            </sgr:textElement>
+            <sgr:language>de</sgr:language>
+        </sgr:fpLegibDesc>
+    </sgr:functionalProfile>
+    <sgr:dpListElement>
+        <sgr:dataPoint datapointName="ActiveEnergyTot" rwpDatadirection="R" unit="KILOWATT_HOURS" mroVisibilityIndicator="R">
+            <sgr:basicDataType>
+                <sgr:float32>0</sgr:float32>
+            </sgr:basicDataType>
+            <sgr:dpLegibDesc>
+                <sgr:textElement>Summe der aufgenommenen elektrischen Energie des Verdichters inkl. Hilfsaggregate total.</sgr:textElement>
+                <sgr:language>de</sgr:language>
+            </sgr:dpLegibDesc>
+        </sgr:dataPoint>
+        <sgr:genAttribute>
+            <sgr:precision>2</sgr:precision>
+        </sgr:genAttribute>
+    </sgr:dpListElement>
+    <sgr:dpListElement>
+        <sgr:dataPoint datapointName="HeatingEnergyByElectro" rwpDatadirection="R" unit="KILOWATT_HOURS" mroVisibilityIndicator="R">
+            <sgr:basicDataType>
+                <sgr:float32>0</sgr:float32>
+            </sgr:basicDataType>
+            <sgr:dpLegibDesc>
+                <sgr:textElement>Summe der aufgenommenen elektrischen Energie des Verdichters für das Heizen.</sgr:textElement>
+                <sgr:language>de</sgr:language>
+            </sgr:dpLegibDesc>
+        </sgr:dataPoint>
+        <sgr:genAttribute>
+            <sgr:precision>2</sgr:precision>
+        </sgr:genAttribute>
+    </sgr:dpListElement>
+    <sgr:dpListElement>
+        <sgr:dataPoint datapointName="CoolingEnergyByElectro" rwpDatadirection="R" unit="KILOWATT_HOURS" mroVisibilityIndicator="R">
+            <sgr:basicDataType>
+                <sgr:float32>0</sgr:float32>
+            </sgr:basicDataType>
+            <sgr:dpLegibDesc>
+                <sgr:textElement>Summe der aufgenommenen elektrischen Energie des Verdichters für das Kühlen (nur bei aktiver Kühlung über Verdichter).</sgr:textElement>
+                <sgr:language>de</sgr:language>
+            </sgr:dpLegibDesc>
+        </sgr:dataPoint>
+        <sgr:genAttribute>
+            <sgr:precision>2</sgr:precision>
+        </sgr:genAttribute>
+    </sgr:dpListElement>
+    <sgr:dpListElement>
+        <sgr:dataPoint datapointName="HotWaterEnergyByElectro" rwpDatadirection="R" unit="KILOWATT_HOURS" mroVisibilityIndicator="R">
+            <sgr:basicDataType>
+                <sgr:float32>0</sgr:float32>
+            </sgr:basicDataType>
+            <sgr:dpLegibDesc>
+                <sgr:textElement>Summe der aufgenommenen elektrischen Energie des Verdichters für die Brauchwarmwasser-Erwärmung.</sgr:textElement>
+                <sgr:language>de</sgr:language>
+            </sgr:dpLegibDesc>
+        </sgr:dataPoint>
+        <sgr:genAttribute>
+            <sgr:precision>2</sgr:precision>
+        </sgr:genAttribute>
+    </sgr:dpListElement>
+    <sgr:dpListElement>
+        <sgr:dataPoint datapointName="ThermalEnergyTot " rwpDatadirection="R" unit="KILOWATT_HOURS" mroVisibilityIndicator="R">
+            <sgr:basicDataType>
+                <sgr:float32>0</sgr:float32>
+            </sgr:basicDataType>
+            <sgr:dpLegibDesc>
+                <sgr:textElement>Summe der abgegebenen thermischen Energie total</sgr:textElement>
+                <sgr:language>de</sgr:language>
+            </sgr:dpLegibDesc>
+        </sgr:dataPoint>
+        <sgr:genAttribute>
+            <sgr:precision>2</sgr:precision>
+        </sgr:genAttribute>
+    </sgr:dpListElement>
+    <sgr:dpListElement>
+        <sgr:dataPoint datapointName="HeatingEnergieByThermal " rwpDatadirection="R" unit="KILOWATT_HOURS" mroVisibilityIndicator="R">
+            <sgr:basicDataType>
+                <sgr:float32>0</sgr:float32>
+            </sgr:basicDataType>
+            <sgr:dpLegibDesc>
+                <sgr:textElement>Summe der abgegebenen thermischen Energie für das Heizen.</sgr:textElement>
+                <sgr:language>de</sgr:language>
+            </sgr:dpLegibDesc>
+        </sgr:dataPoint>
+        <sgr:genAttribute>
+            <sgr:precision>2</sgr:precision>
+        </sgr:genAttribute>
+    </sgr:dpListElement>   
+    <sgr:dpListElement>
+        <sgr:dataPoint datapointName="CoolingEnergieByThermal" rwpDatadirection="R" unit="KILOWATT_HOURS" mroVisibilityIndicator="R">
+            <sgr:basicDataType>
+                <sgr:float32>0</sgr:float32>
+            </sgr:basicDataType>
+            <sgr:dpLegibDesc>
+                <sgr:textElement>Summe der aufgenommenen thermischen Energie für das Kühlen (nur bei aktiver Kühlung über Verdichter).</sgr:textElement>
+                <sgr:language>de</sgr:language>
+            </sgr:dpLegibDesc>
+        </sgr:dataPoint>
+        <sgr:genAttribute>
+            <sgr:precision>2</sgr:precision>
+        </sgr:genAttribute>
+    </sgr:dpListElement>   
+    <sgr:dpListElement>
+        <sgr:dataPoint datapointName="HotWaterEnergieByThermal" rwpDatadirection="R" unit="KILOWATT_HOURS" mroVisibilityIndicator="R">
+            <sgr:basicDataType>
+                <sgr:float32>0</sgr:float32>
+            </sgr:basicDataType>
+            <sgr:dpLegibDesc>
+                <sgr:textElement>Summe der abgegebenen thermischen Energie für die Brauchwarmwasser-Erwärmung.</sgr:textElement>
+                <sgr:language>de</sgr:language>
+            </sgr:dpLegibDesc>
+        </sgr:dataPoint>
+        <sgr:genAttribute>
+            <sgr:precision>2</sgr:precision>
+        </sgr:genAttribute>
+    </sgr:dpListElement>   
+    <sgr:dpListElement>
+        <sgr:dataPoint datapointName="AvtivePowerAC" rwpDatadirection="R" unit="KILOWATTS" mroVisibilityIndicator="O">
+            <sgr:basicDataType>
+                <sgr:float32>0</sgr:float32>
+            </sgr:basicDataType>
+            <sgr:dpLegibDesc>
+                <sgr:textElement>Aktuell aufgenommene elektrische Leistung des Verdichters.</sgr:textElement>
+                <sgr:language>de</sgr:language>
+            </sgr:dpLegibDesc>
+        </sgr:dataPoint>
+        <sgr:genAttribute>
+            <sgr:precision>2</sgr:precision>
+            <sgr:maxSendTime>1</sgr:maxSendTime>
+        </sgr:genAttribute>
+    </sgr:dpListElement>   
+    <sgr:dpListElement>
+        <sgr:dataPoint datapointName="ActivePowerThermal" rwpDatadirection="R" unit="KILOWATTS" mroVisibilityIndicator="O">
+            <sgr:basicDataType>
+                <sgr:float32>0</sgr:float32>
+            </sgr:basicDataType>
+            <sgr:dpLegibDesc>
+                <sgr:textElement>Aktuell abgegebene thermische Leistung der Wärmepumpe</sgr:textElement>
+                <sgr:language>de</sgr:language>
+            </sgr:dpLegibDesc>
+        </sgr:dataPoint>
+        <sgr:genAttribute>
+            <sgr:precision>2</sgr:precision>
+            <sgr:maxSendTime>1</sgr:maxSendTime>
+        </sgr:genAttribute>
+    </sgr:dpListElement>   
+    <sgr:dpListElement>
+        <sgr:dataPoint datapointName="CompressorRuntime" rwpDatadirection="R" unit="HOURS" mroVisibilityIndicator="O">
+            <sgr:basicDataType>
+                <sgr:float32>0</sgr:float32>
+            </sgr:basicDataType>
+            <sgr:dpLegibDesc>
+                <sgr:textElement>Summe der Laufzeit des Verdichters seit Inbetrieb-nahme.</sgr:textElement>
+                <sgr:language>de</sgr:language>
+            </sgr:dpLegibDesc>
+        </sgr:dataPoint>
+    </sgr:dpListElement>       
+    <sgr:dpListElement>
+        <sgr:dataPoint datapointName="HeatingRuntime" rwpDatadirection="R" unit="HOURS" mroVisibilityIndicator="O">
+            <sgr:basicDataType>
+                <sgr:float32>0</sgr:float32>
+            </sgr:basicDataType>
+            <sgr:dpLegibDesc>
+                <sgr:textElement>Summe der Laufzeit in der Heizphase.</sgr:textElement>
+                <sgr:language>de</sgr:language>
+            </sgr:dpLegibDesc>
+        </sgr:dataPoint>
+    </sgr:dpListElement>       
+    <sgr:dpListElement>
+        <sgr:dataPoint datapointName="CoolingRuntime" rwpDatadirection="R" unit="HOURS" mroVisibilityIndicator="O">
+            <sgr:basicDataType>
+                <sgr:float32>0</sgr:float32>
+            </sgr:basicDataType>
+            <sgr:dpLegibDesc>
+                <sgr:textElement>Summe der Laufzeit in der Kühlphase.</sgr:textElement>
+                <sgr:language>de</sgr:language>
+            </sgr:dpLegibDesc>
+        </sgr:dataPoint>
+    </sgr:dpListElement>       
+    <sgr:dpListElement>
+        <sgr:dataPoint datapointName="HotWaterRuntime" rwpDatadirection="R" unit="HOURS" mroVisibilityIndicator="O">
+            <sgr:basicDataType>
+                <sgr:float32>0</sgr:float32>
+            </sgr:basicDataType>
+            <sgr:dpLegibDesc>
+                <sgr:textElement>Summe der Laufzeit in der Brauchwarmwasser-Phase.</sgr:textElement>
+                <sgr:language>de</sgr:language>
+            </sgr:dpLegibDesc>
+        </sgr:dataPoint>
+    </sgr:dpListElement>       
+    <sgr:dpListElement>
+        <sgr:dataPoint datapointName="NumberOfCompressors" rwpDatadirection="R" unit="NONE" mroVisibilityIndicator="O">
+            <sgr:basicDataType>
+                <sgr:int32U>0</sgr:int32U>
+            </sgr:basicDataType>
+            <sgr:dpLegibDesc>
+                <sgr:textElement>Anzahl Starts des Verdichters seit Inbetriebnahme.</sgr:textElement>
+                <sgr:language>de</sgr:language>
+            </sgr:dpLegibDesc>
+        </sgr:dataPoint>
+    </sgr:dpListElement>       
+</sgr:SGrFunctionalProfileFrame>
