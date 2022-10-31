@@ -29,6 +29,24 @@
                     </td>
                 </tr>
 
+                <!-- Remarks -->
+                <xsl:if test="sgr:releaseNotes/sgr:remarks">
+                    <tr>
+                        <td class="fpHeader">
+                            <h4>Remarks</h4>
+                        </td>
+                        <td class="fpHeader">
+                            <table>
+                                <tr>
+                                    <td>
+                                        <xsl:value-of select="sgr:releaseNotes/sgr:remarks" />
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </xsl:if>
+
                 <!-- Change Log -->
                 <tr>
                     <td class="fpHeader">
@@ -133,7 +151,7 @@
                             </div>
                         </xsl:for-each>
                     </td>
-            </xsl:if>
+                </xsl:if>
             </table>
 
             <!-- Data Points -->
