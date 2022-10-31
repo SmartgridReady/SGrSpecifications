@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/SGr.xsl"?>
+<sgr:SGrFunctionalProfileFrame xmlns:sgr="http://www.smartgridready.com/ns/V0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/SGrIncluder.xsd">
+    <sgr:releaseNotes>
+        <sgr:state>Review</sgr:state>
+        <sgr:changelog>
+            <sgr:version>0.1.1</sgr:version>
+            <sgr:date>2021-04-05</sgr:date>
+            <sgr:author>IBT/cb</sgr:author>
+            <sgr:comment>Vorbereitung beta test</sgr:comment>
+        </sgr:changelog>
+        <sgr:changelog>
+            <sgr:version>0.2.2</sgr:version>
+            <sgr:date>2022-10-31</sgr:date>
+            <sgr:author>Ergo/sz</sgr:author>
+            <sgr:comment>Finalisierung Go-Live</sgr:comment>
+        </sgr:changelog>
+    </sgr:releaseNotes>
+    <sgr:functionalProfile mroVisibilityIndicator="M" profileName="BatterySys_Monitoring">
+        <sgr:profileNumber>
+            <sgr:specsOwnerId>0</sgr:specsOwnerId>
+            <sgr:profileIdentification>BatterySystem</sgr:profileIdentification>
+            <sgr:subProfileIdent>EnergyMonitor</sgr:subProfileIdent>
+            <sgr:sgrLevelOfOperation>4</sgr:sgrLevelOfOperation>
+            <sgr:versionNumber>
+                <sgr:primaryVersionNumber>0</sgr:primaryVersionNumber>
+                <sgr:secondaryVersionNumber>2</sgr:secondaryVersionNumber>
+                <sgr:subReleaseVersionNumber>2</sgr:subReleaseVersionNumber>
+            </sgr:versionNumber>
+        </sgr:profileNumber>
+        <sgr:fpLegibDesc>
+            <sgr:textElement>
+                <![CDATA[	
+				<img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
+                <p>Aufzeichnen der Daten eines Batteriesystems mit einphasigem Inverter durch den CEM.</p>
+                ]]>
+            </sgr:textElement>
+            <sgr:language>de</sgr:language>
+        </sgr:fpLegibDesc>
+    </sgr:functionalProfile>
+    <sgr:dpListElement>
+        <sgr:dataPoint datapointName="SoC" rwpDatadirection="R" unit="PERCENT" mroVisibilityIndicator="M">
+            <sgr:basicDataType>
+                <sgr:float32>0</sgr:float32>
+            </sgr:basicDataType>
+            <sgr:dpLegibDesc>
+                <sgr:textElement>State of Charge</sgr:textElement>
+                <sgr:language>de</sgr:language>
+            </sgr:dpLegibDesc>
+        </sgr:dataPoint>
+        <sgr:genAttribute>
+            <sgr:maxVal>0</sgr:maxVal>
+            <sgr:minVal>0</sgr:minVal>
+        </sgr:genAttribute>
+    </sgr:dpListElement>
+    <sgr:dpListElement>
+        <sgr:dataPoint datapointName="SoH" rwpDatadirection="R" unit="PERCENT" mroVisibilityIndicator="R">
+            <sgr:basicDataType>
+                <sgr:float32>0</sgr:float32>
+            </sgr:basicDataType>
+            <sgr:dpLegibDesc>
+                <sgr:textElement>State of Health</sgr:textElement>
+                <sgr:language>de</sgr:language>
+            </sgr:dpLegibDesc>
+        </sgr:dataPoint>
+        <sgr:genAttribute>
+            <sgr:maxVal>0</sgr:maxVal>
+            <sgr:minVal>0</sgr:minVal>
+        </sgr:genAttribute>
+    </sgr:dpListElement>
+    <sgr:dpListElement>
+        <sgr:dataPoint datapointName="VoltateAC" rwpDatadirection="R" unit="VOLTS" mroVisibilityIndicator="R">
+            <sgr:basicDataType>
+                <sgr:float32>0</sgr:float32>
+            </sgr:basicDataType>
+            <sgr:dpLegibDesc>
+                <sgr:textElement>Messung der aktuellen Spannung</sgr:textElement>
+                <sgr:language>de</sgr:language>
+            </sgr:dpLegibDesc>
+        </sgr:dataPoint>
+    </sgr:dpListElement>
+    <sgr:dpListElement>
+        <sgr:dataPoint datapointName="CurrentAC" rwpDatadirection="R" unit="AMPERES" mroVisibilityIndicator="R">
+            <sgr:basicDataType>
+                <sgr:float32>0</sgr:float32>
+            </sgr:basicDataType>
+            <sgr:dpLegibDesc>
+                <sgr:textElement>Messung des aktuellen Stroms</sgr:textElement>
+                <sgr:language>de</sgr:language>
+            </sgr:dpLegibDesc>
+        </sgr:dataPoint>
+        <sgr:genAttribute>
+            <sgr:maxVal>0</sgr:maxVal>
+            <sgr:minVal>0</sgr:minVal>
+        </sgr:genAttribute>
+    </sgr:dpListElement>
+    <sgr:dpListElement>
+        <sgr:dataPoint datapointName="Frequency" rwpDatadirection="R" unit="HERTZ" mroVisibilityIndicator="M">
+            <sgr:basicDataType>
+                <sgr:float32>0</sgr:float32>
+            </sgr:basicDataType>
+            <sgr:dpLegibDesc>
+                <sgr:textElement>Frequenzmessung am Kopplungspunkt</sgr:textElement>
+                <sgr:language>de</sgr:language>
+            </sgr:dpLegibDesc>
+        </sgr:dataPoint>
+        <sgr:genAttribute>
+            <sgr:maxVal>0</sgr:maxVal>
+            <sgr:minVal>0</sgr:minVal>
+        </sgr:genAttribute>
+    </sgr:dpListElement>
+    <sgr:dpListElement>
+        <sgr:dataPoint datapointName="EnergyAvailable" rwpDatadirection="R" unit="KILOWATT_HOURS" mroVisibilityIndicator="M">
+            <sgr:basicDataType>
+                <sgr:float32>0</sgr:float32>
+            </sgr:basicDataType>
+            <sgr:dpLegibDesc>
+                <sgr:textElement>Aktuell noch nutzbare Energie</sgr:textElement>
+                <sgr:language>de</sgr:language>
+            </sgr:dpLegibDesc>
+        </sgr:dataPoint>
+        <sgr:genAttribute>
+            <sgr:maxVal>0</sgr:maxVal>
+            <sgr:minVal>0</sgr:minVal>
+        </sgr:genAttribute>
+    </sgr:dpListElement>
+</sgr:SGrFunctionalProfileFrame>
