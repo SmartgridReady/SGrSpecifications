@@ -2,7 +2,7 @@
 <?xml-stylesheet type="text/xsl" href="/xsl/SGr.xsl"?>
 <sgr:SGrFunctionalProfileFrame xmlns:sgr="http://www.smartgridready.com/ns/V0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/SGrIncluder.xsd">
     <sgr:releaseNotes>
-        <sgr:state>Draft</sgr:state>
+        <sgr:state>Review</sgr:state>
         <sgr:changelog>
             <sgr:version>0.1.2</sgr:version>
             <sgr:date>2021-08-17</sgr:date>
@@ -62,6 +62,12 @@
                 <h4>Warmwasserwärmepumpen</h4>
                 <p>Warmwasserwärmepumpen müssen über einen Regler verfügen, welches mittels einer automatischen Ansteuerung eine
                     Erhöhung der Warmwasser-Solltemperatur zum Zweck der thermischen Speicherung ermöglicht.</p>
+
+                <p>Hinweis</p>
+                <ul>
+                    <li>Geräte mit 2 Klemmenkontakte setzen die Klemmen-Datenpunkt SG-Ready Eingang 1 und 2 um.</li>
+                    <li>Geräte mit Modbus oder RestAPI setzen bevorzugt den Enum-basierten Datenpunkt SGReadyState um.</li>
+                </ul>
                 ]]>
             </sgr:textElement>
             <sgr:language>de</sgr:language>
@@ -72,7 +78,7 @@
         <sgr:minRunTimeMinutes>20</sgr:minRunTimeMinutes>
     </sgr:genAttribute>
     <sgr:dpListElement>
-        <sgr:dataPoint datapointName="SGReadyInp1isON" rwpDatadirection="W" unit="NONE" mroVisibilityIndicator="M">
+        <sgr:dataPoint datapointName="SG-Ready Eingang 1" rwpDatadirection="W" unit="NONE" mroVisibilityIndicator="R">
             <sgr:basicDataType>
                 <sgr:boolean>true</sgr:boolean>
             </sgr:basicDataType>
@@ -83,7 +89,7 @@
         </sgr:dataPoint>
     </sgr:dpListElement>
     <sgr:dpListElement>
-        <sgr:dataPoint datapointName="SGReadyInp2isON" rwpDatadirection="W" unit="NONE" mroVisibilityIndicator="M">
+        <sgr:dataPoint datapointName="SG-Ready Eingang 2" rwpDatadirection="W" unit="NONE" mroVisibilityIndicator="R">
             <sgr:basicDataType>
                 <sgr:boolean>true</sgr:boolean>
             </sgr:basicDataType>
@@ -94,7 +100,7 @@
         </sgr:dataPoint>
     </sgr:dpListElement>
     <sgr:dpListElement>
-        <sgr:dataPoint datapointName="SGReadyState" mroVisibilityIndicator="R" rwpDatadirection="R" unit="NONE">
+        <sgr:dataPoint datapointName="SGReadyState" rwpDatadirection="R" unit="NONE" mroVisibilityIndicator="O">
             <sgr:basicDataType>
                 <sgr:enum>
                     <sgr:sgreadyStateLv2>HP_NORMAL</sgr:sgreadyStateLv2>

@@ -2,10 +2,7 @@
 <?xml-stylesheet type="text/xsl" href="/xsl/SGr.xsl"?>
 <sgr:SGrFunctionalProfileFrame xmlns:sgr="http://www.smartgridready.com/ns/V0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/SGrIncluder.xsd">
 	<sgr:releaseNotes>
-		<sgr:state>Draft</sgr:state>
-        <sgr:remarks>TODO: Beschreibungstext erwähnt 4 Zustände, erklärt aber nur 2. Wieso?
-            Sollen die genAttr nicht eher auf Stufe FP (gleich wie Level2)?
-        </sgr:remarks>
+		<sgr:state>Review</sgr:state>
 		<sgr:changelog>
 			<sgr:version>0.1.2</sgr:version>
 			<sgr:date>2021-08-17</sgr:date>
@@ -43,20 +40,20 @@
 				<![CDATA[	
 				<img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
                 <h4>Heizungswärmepumpen</h4>
-                <p>Heizungswärmepumpen müssen über einen Regler verfügen, der vier Betriebszustände abdeckt:</p>
+                <p>Heizungswärmepumpen in Stufe 1 müssen über einen Regler verfügen, der zwei Betriebszustände abdeckt:</p>
                 <ol>
                 <li>Betriebszustand 1 (Schaltzustand, bei Klemmenlösung: 1): Dieser Betriebszustand ist kompatibel häufig zu festen Uhrzeiten geschalteten <strong>EVU-Sperre</strong> und umfasst im Normalfall maximal 2 Stunden „harte“ Sperrzeit.</li>
                 <li>Betriebszustand 2 (Schaltzustand, bei Klemmenlösungen: 0): In dieser Schaltung läuft die Wärmepumpe im energieeffizienten <strong>Normalbetrieb</strong> mit anteiliger Wärmespeicher-Füllung für die maximal zweistündige EVU-Sperre.</li>
                 </ol>
 
-                <p>Hinweis: ein SG-ReadyStates_bwp Funktionsprofil kann im Stufe 1 Betrieb genutzt werden, wenn Kontakt 2 fest auf den Zustand 0 verdrahtet wird. SG-Ready Eingang 1 einer Stufe 2 Wärmepumpe wird in diese Betriebsmode nicht angeschlossen.</p>
+                <p>Hinweis: Geräte mit SG-ReadyStates_bwp Stufe 2 können im Stufe 1 Betrieb genutzt werden, wenn der zweite Kontakt fest auf den Zustand 0 verdrahtet wird.</p>
                 ]]>	
 			</sgr:textElement>
 			<sgr:language>de</sgr:language>
 		</sgr:fpLegibDesc>
 	</sgr:functionalProfile>
 	<sgr:dpListElement>
-		<sgr:dataPoint datapointName="SGReadyInp1isON" rwpDatadirection="W" unit="NONE" mroVisibilityIndicator="M">
+		<sgr:dataPoint datapointName="SG-Ready Eingang 1" rwpDatadirection="W" unit="NONE" mroVisibilityIndicator="M">
             <sgr:basicDataType>
                 <sgr:boolean>true</sgr:boolean>
             </sgr:basicDataType>
