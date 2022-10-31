@@ -538,7 +538,7 @@
                                     minRunTimeMinutes
                                 </td>
                                 <td>float</td>
-                                <td></td>
+                                <td>Wert in Minuten für die minimale Laufzeit</td>
                             </tr>
                         </xsl:if>
 
