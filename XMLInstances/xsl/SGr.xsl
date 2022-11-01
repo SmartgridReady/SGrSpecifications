@@ -11,7 +11,7 @@
 	<xsl:include href="SGrDeviceTypeContact.xsl" />
 	<xsl:include href="SGrDeviceTypeModbus.xsl" />
 	<xsl:include href="SGrDeviceTypeRestAPI.xsl" />
-	<xsl:include href="SGrDeviceTypeFunctionalProfile.xsl"/>
+	<xsl:include href="SGrDeviceTypeFunctionalProfile.xsl" />
 
 	<xsl:include href="SGrGenericAttributes.xsl" />
 	<xsl:include href="SGrGenericDataPointDefinitions.xsl" />
@@ -24,10 +24,18 @@
 		<html lang="any">
 			<head>
 				<title>
-					SGr EI
-					<xsl:value-of select="/*/@manufacturerName" />
-					-
-					<xsl:value-of select="/*/@deviceName" />
+					<xsl:choose>
+						<xsl:when test="/sgr:SGrFunctionalProfileFrame">
+							SGr FP
+							<xsl:value-of select="/*/*/@profileName" />
+						</xsl:when>
+						<xsl:otherwise>
+							SGr EI
+							<xsl:value-of select="/*/@manufacturerName" />
+							-
+							<xsl:value-of select="/*/@deviceName" />
+						</xsl:otherwise>
+					</xsl:choose>
 				</title>
 				<meta name="viewport" content="width=device-width, initial-scale=1" />
 				<link rel="stylesheet" type="text/css" href="/xsl/SGr.css" />
@@ -83,7 +91,7 @@
 						</div>
 						<div style="float:left; width:50%; text-align:right; height: 134px">
 							<xsl:choose>
-								<xsl:when test="/sgr:SGrFunctionalProfileDescriptionType">Definition Functional Profile</xsl:when>
+								<xsl:when test="/sgr:SGrFunctionalProfileFrame">Definition Functional Profile</xsl:when>
 								<xsl:otherwise>Device Profile</xsl:otherwise>
 							</xsl:choose>
 						</div>
@@ -96,7 +104,7 @@
 					<xsl:apply-templates select="sgr:SGrContactAPIDeviceFrame" />
 
 					<!-- generic functional Profiles -->
-					<xsl:apply-templates select="sgr:SGrFunctionalProfileDescriptionType" />
+					<xsl:apply-templates select="sgr:SGrFunctionalProfileFrame" />
 				</div>
 			</body>
 		</html>
@@ -214,7 +222,7 @@
 			<xsl:apply-templates select="sgr:fpListElement" />
 		</div>
 	</xsl:template>
-	
+
 	<xsl:template match="sgr:networkConnectionState">
 		<h3>Network Connection State</h3>
 		<table>

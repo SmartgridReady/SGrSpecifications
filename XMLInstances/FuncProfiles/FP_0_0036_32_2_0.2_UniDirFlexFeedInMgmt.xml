@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="/xsl/SGr.xsl"?>
-<sgr:SGrFunctionalProfileFrame xmlns:sgr="http://www.smartgridready.com/ns/V0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/EI-Contacts/SGrContactsDeviceFrame.xsd ">
+<sgr:SGrFunctionalProfileFrame xmlns:sgr="http://www.smartgridready.com/ns/V0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/SGrIncluder.xsd">
 	<sgr:releaseNotes>
 		<sgr:state>Review</sgr:state>
 		<sgr:changelog>
@@ -43,6 +43,12 @@
 					<li>Betriebszustand 4 (Schaltzustand, bei Klemmenlösung: 1:1): <strong>Maximal</strong>: Die Anlage ermöglicht die maximale Rückspeisung
 					unter Einsatz aller Stromquellen.</li>
 				</ol>
+				
+				<p>Hinweis</p>
+                <ul>
+                    <li>Geräte mit 2 Klemmenkontakte setzen die Klemmen-Datenpunkte  um.</li>
+                    <li>Geräte mit Modbus oder RestAPI setzen bevorzugt den Enum-basierten Datenpunkt um.</li>
+                </ul>
 				]]>
 			</sgr:textElement>
 			<sgr:language>de</sgr:language>
@@ -55,16 +61,40 @@
 			<sgr:rmpTms>0</sgr:rmpTms>
 		</sgr:smoothTransition>
 		<sgr:curtailment>30</sgr:curtailment>
-		<sgr:minLoad>0.0</sgr:minLoad>
-		<sgr:maxLockTimeMinutes>0.0</sgr:maxLockTimeMinutes>
 	</sgr:genAttribute>
 	<sgr:dpListElement>
-		<sgr:dataPoint datapointName="SGCP_FeedInStateLv2" mroVisibilityIndicator="R" rwpDatadirection="R" unit="NONE">
+		<sgr:dataPoint datapointName="SGCP_FeedInStateLv2" mroVisibilityIndicator="O" rwpDatadirection="R" unit="NONE">
 			<sgr:basicDataType>
 				<sgr:enum>
 					<sgr:sgrSGCPFeedInStateLv2>FI_NORMAL</sgr:sgrSGCPFeedInStateLv2>
 				</sgr:enum>
 			</sgr:basicDataType>
+			<sgr:dpLegibDesc>
+				<sgr:textElement>FI_Normal, FI_Reduced, FI_Locked, FI_Max</sgr:textElement>
+				<sgr:language>de</sgr:language>
+			</sgr:dpLegibDesc>
+		</sgr:dataPoint>
+	</sgr:dpListElement>
+	<sgr:dpListElement>
+		<sgr:dataPoint datapointName="SGrFlexFeedIn1" mroVisibilityIndicator="M" rwpDatadirection="W" unit="NONE">
+			<sgr:basicDataType>
+				<sgr:boolean>true</sgr:boolean>
+			</sgr:basicDataType>
+			<sgr:dpLegibDesc>
+				<sgr:textElement>Schaltzustand erste Klemme (0 oder 1)</sgr:textElement>
+				<sgr:language>de</sgr:language>
+			</sgr:dpLegibDesc>
+		</sgr:dataPoint>
+	</sgr:dpListElement>
+	<sgr:dpListElement>
+		<sgr:dataPoint datapointName="SGrFlexFeedIn2" mroVisibilityIndicator="M" rwpDatadirection="W" unit="NONE">
+			<sgr:basicDataType>
+				<sgr:boolean>true</sgr:boolean>
+			</sgr:basicDataType>
+			<sgr:dpLegibDesc>
+				<sgr:textElement>Schaltzustand zweite Klemme (0 oder 1)</sgr:textElement>
+				<sgr:language>de</sgr:language>
+			</sgr:dpLegibDesc>
 		</sgr:dataPoint>
 	</sgr:dpListElement>
 </sgr:SGrFunctionalProfileFrame>

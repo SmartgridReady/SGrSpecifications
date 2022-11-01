@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="/xsl/SGr.xsl"?>
-<sgr:SGrRestAPIDeviceFrame 
-	deviceName="Smart Charge Controller" isLocalControl="true"
-	manufacturerID="LehmannAG" manufacturerName="A. Lehmann Elektro AG"
-    xmlns:sgr="http://www.smartgridready.com/ns/V0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/EI-RestAPI/SGrRestAPI_EIDeviceFrame.xsd ">
-
+<sgr:SGrRestAPIDeviceFrame deviceName="Smart Charge Controller" isLocalControl="true" manufacturerID="LehmannAG" manufacturerName="A. Lehmann Elektro AG" xmlns:sgr="http://www.smartgridready.com/ns/V0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/EI-RestAPI/SGrRestAPI_EIDeviceFrame.xsd ">
+    <!-- TODO: broken XML, this EI needs fixing... -->
     <sgr:deviceProfile>
         <sgr:transportService>RESTfulJSON</sgr:transportService>
         <sgr:deviceKind>SubMeterElectricity</sgr:deviceKind>
@@ -30,8 +27,10 @@
             </sgr:profileNumber>
         </sgr:functionalProfile>
         <sgr:dpListElement>
-            <sgr:dataPoint	datapointName="ActivePowerACtot" mroVisibilityInidicator="M"  rwpDatadirection="R" 	unit="WATTS">
-                <sgr:basicDataType ><sgr:float32>0.0</sgr:float32></sgr:basicDataType>
+            <sgr:dataPoint datapointName="ActivePowerACtot" mroVisibilityInidicator="M" rwpDatadirection="R" unit="WATTS">
+                <sgr:basicDataType>
+                    <sgr:float32>0.0</sgr:float32>
+                </sgr:basicDataType>
             </sgr:dataPoint>
             <sgr:restAPIDataPoint dataType="JSON_number">
                 <sgr:restAPIEndPoint>/edges/{{edgeid}}/metrics/momentaryMeterValues</sgr:restAPIEndPoint>
@@ -43,11 +42,10 @@
             </sgr:dpAttr4Generic>
         </sgr:dpListElement>
         <sgr:dpListElement>
-            <sgr:dataPoint
-			datapointName="ActivePowerACL1"
-			mroVisibilityInidicator="R" rwpDatadirection="R"
-			unit="WATTS">
-                <sgr:basicDataType ><sgr:float32>0.0</sgr:float32></sgr:basicDataType>
+            <sgr:dataPoint datapointName="ActivePowerACL1" mroVisibilityInidicator="R" rwpDatadirection="R" unit="WATTS">
+                <sgr:basicDataType>
+                    <sgr:float32>0.0</sgr:float32>
+                </sgr:basicDataType>
             </sgr:dataPoint>
             <sgr:restAPIDataPoint dataType="JSON_number">
                 <sgr:restAPIEndPoint>/edges/{{edgeid}}/metrics/momentaryMeterValues</sgr:restAPIEndPoint>
@@ -57,13 +55,12 @@
                 <sgr:valueSource>measuredValue</sgr:valueSource>
                 <sgr:sampleRate>10.0</sgr:sampleRate>
             </sgr:dpAttr4Generic>
-       </sgr:dpListElement>
+        </sgr:dpListElement>
         <sgr:dpListElement>
-            <sgr:dataPoint
-			datapointName="ActivePowerACL2"
-			mroVisibilityInidicator="R" rwpDatadirection="R"
-			unit="WATTS">
-                <sgr:basicDataType ><sgr:float32>0.0</sgr:float32></sgr:basicDataType>
+            <sgr:dataPoint datapointName="ActivePowerACL2" mroVisibilityInidicator="R" rwpDatadirection="R" unit="WATTS">
+                <sgr:basicDataType>
+                    <sgr:float32>0.0</sgr:float32>
+                </sgr:basicDataType>
             </sgr:dataPoint>
             <sgr:restAPIDataPoint dataType="JSON_number">
                 <sgr:restAPIEndPoint>/edges/{{edgeid}}/metrics/momentaryMeterValues</sgr:restAPIEndPoint>
@@ -75,11 +72,10 @@
             </sgr:dpAttr4Generic>
         </sgr:dpListElement>
         <sgr:dpListElement>
-            <sgr:dataPoint
-			datapointName="ActivePowerACL3"
-			mroVisibilityInidicator="R" rwpDatadirection="R"
-			unit="WATTS">
-                <sgr:basicDataType ><sgr:float32>0.0</sgr:float32></sgr:basicDataType>
+            <sgr:dataPoint datapointName="ActivePowerACL3" mroVisibilityInidicator="R" rwpDatadirection="R" unit="WATTS">
+                <sgr:basicDataType>
+                    <sgr:float32>0.0</sgr:float32>
+                </sgr:basicDataType>
             </sgr:dataPoint>
             <sgr:restAPIDataPoint dataType="JSON_number">
                 <sgr:restAPIEndPoint>/edges/{{edgeid}}/metrics/momentaryMeterValues</sgr:restAPIEndPoint>
@@ -104,11 +100,10 @@
             </sgr:profileNumber>
         </sgr:functionalProfile>
         <sgr:dpListElement>
-            <sgr:dataPoint
-			datapointName="VoltageACL1_N"
-			mroVisibilityInidicator="R" rwpDatadirection="R"
-			unit="VOLTS">
-                <sgr:basicDataType ><sgr:float32>0.0</sgr:float32></sgr:basicDataType>
+            <sgr:dataPoint datapointName="VoltageACL1_N" mroVisibilityInidicator="R" rwpDatadirection="R" unit="VOLTS">
+                <sgr:basicDataType>
+                    <sgr:float32>0.0</sgr:float32>
+                </sgr:basicDataType>
             </sgr:dataPoint>
             <sgr:restAPIDataPoint dataType="JSON_number">
                 <sgr:restAPIEndPoint>/edges/{{edgeid}}/metrics/momentaryMeterValues</sgr:restAPIEndPoint>
@@ -118,13 +113,12 @@
                 <sgr:valueSource>measuredValue</sgr:valueSource>
                 <sgr:sampleRate>10.0</sgr:sampleRate>
             </sgr:dpAttr4Generic>
-       </sgr:dpListElement>
+        </sgr:dpListElement>
         <sgr:dpListElement>
-            <sgr:dataPoint
-			datapointName="VoltageACL2_N"
-			mroVisibilityInidicator="R" rwpDatadirection="R"
-			unit="VOLTS">
-                <sgr:basicDataType ><sgr:float32>0.0</sgr:float32></sgr:basicDataType>
+            <sgr:dataPoint datapointName="VoltageACL2_N" mroVisibilityInidicator="R" rwpDatadirection="R" unit="VOLTS">
+                <sgr:basicDataType>
+                    <sgr:float32>0.0</sgr:float32>
+                </sgr:basicDataType>
             </sgr:dataPoint>
             <sgr:restAPIDataPoint dataType="JSON_number">
                 <sgr:restAPIEndPoint>/edges/{{edgeid}}/metrics/momentaryMeterValues</sgr:restAPIEndPoint>
@@ -136,12 +130,10 @@
             </sgr:dpAttr4Generic>
         </sgr:dpListElement>
         <sgr:dpListElement>
-            <sgr:dataPoint
-			datapointName="VoltageACL3_N"
-			mroVisibilityInidicator="R" rwpDatadirection="R"
-			unit="VOLTS">
+            <sgr:dataPoint datapointName="VoltageACL3_N" mroVisibilityInidicator="R" rwpDatadirection="R" unit="VOLTS">
                 <sgr:basicDataType>
-                	<sgr:float32>0.0</sgr:float32></sgr:basicDataType>
+                    <sgr:float32>0.0</sgr:float32>
+                </sgr:basicDataType>
             </sgr:dataPoint>
             <sgr:restAPIDataPoint dataType="JSON_number">
                 <sgr:restAPIEndPoint>/edges/{{edgeid}}/metrics/momentaryMeterValues</sgr:restAPIEndPoint>
@@ -166,11 +158,10 @@
             </sgr:profileNumber>
         </sgr:functionalProfile>
         <sgr:dpListElement>
-            <sgr:dataPoint
-			datapointName="CurrentACL1"
-			mroVisibilityInidicator="R" rwpDatadirection="R"
-			unit="AMPERES">
-                <sgr:basicDataType ><sgr:float32>0.0</sgr:float32></sgr:basicDataType>
+            <sgr:dataPoint datapointName="CurrentACL1" mroVisibilityInidicator="R" rwpDatadirection="R" unit="AMPERES">
+                <sgr:basicDataType>
+                    <sgr:float32>0.0</sgr:float32>
+                </sgr:basicDataType>
             </sgr:dataPoint>
             <sgr:restAPIDataPoint dataType="JSON_number">
                 <sgr:restAPIEndPoint>/edges/{{edgeid}}/metrics/momentaryMeterValues</sgr:restAPIEndPoint>
@@ -180,13 +171,12 @@
                 <sgr:valueSource>measuredValue</sgr:valueSource>
                 <sgr:sampleRate>10.0</sgr:sampleRate>
             </sgr:dpAttr4Generic>
-       </sgr:dpListElement>
+        </sgr:dpListElement>
         <sgr:dpListElement>
-            <sgr:dataPoint
-			datapointName="CurrentACL2"
-			mroVisibilityIndicator="R" rwpDatadirection="R"
-			unit="AMPERES">
-                <sgr:basicDataType ><sgr:float32>0.0</sgr:float32></sgr:basicDataType>
+            <sgr:dataPoint datapointName="CurrentACL2" mroVisibilityIndicator="R" rwpDatadirection="R" unit="AMPERES">
+                <sgr:basicDataType>
+                    <sgr:float32>0.0</sgr:float32>
+                </sgr:basicDataType>
             </sgr:dataPoint>
             <sgr:restAPIDataPoint dataType="JSON_number">
                 <sgr:restAPIEndPoint>/edges/{{edgeid}}/metrics/momentaryMeterValues</sgr:restAPIEndPoint>
@@ -198,11 +188,10 @@
             </sgr:dpAttr4Generic>
         </sgr:dpListElement>
         <sgr:dpListElement>
-            <sgr:dataPoint
-			datapointName="CurrentACL3"
-			mroVisibilityInidicator="R" rwpDatadirection="R"
-			unit="AMPERES">
-                <sgr:basicDataType ><sgr:float32>0.0</sgr:float32></sgr:basicDataType>
+            <sgr:dataPoint datapointName="CurrentACL3" mroVisibilityInidicator="R" rwpDatadirection="R" unit="AMPERES">
+                <sgr:basicDataType>
+                    <sgr:float32>0.0</sgr:float32>
+                </sgr:basicDataType>
             </sgr:dataPoint>
             <sgr:restAPIDataPoint dataType="JSON_number">
                 <sgr:restAPIEndPoint>/edges/{{edgeid}}/metrics/momentaryMeterValues</sgr:restAPIEndPoint>

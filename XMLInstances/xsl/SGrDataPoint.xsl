@@ -15,7 +15,7 @@
 	<xsl:import href="SGrGenericLegibDocumentationType.xsl" />
 
 
-	<!-- SGrDataPointDescriptionType -->
+	<!-- SGrDataPointType -->
 	<xsl:template match="sgr:dpListElement">
 		<tr>
 			<td colspan="2">
