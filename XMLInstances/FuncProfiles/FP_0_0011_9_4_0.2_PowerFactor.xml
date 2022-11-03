@@ -5,22 +5,22 @@
 		<sgr:state>Review</sgr:state>
 		<sgr:changelog>
 			<sgr:version>0.1.1</sgr:version>
-			<sgr:date>2021-04-03</sgr:date>
+			<sgr:date>2021-04-05</sgr:date>
 			<sgr:author>IBT/cb</sgr:author>
 			<sgr:comment>Vorbereitung beta test</sgr:comment>
 		</sgr:changelog>
 		<sgr:changelog>
 			<sgr:version>0.2.2</sgr:version>
-			<sgr:date>2022-09-30</sgr:date>
+			<sgr:date>2022-10-27</sgr:date>
 			<sgr:author>Ergo/sz</sgr:author>
 			<sgr:comment>Finalisierung Go-Live</sgr:comment>
 		</sgr:changelog>
 	</sgr:releaseNotes>
-	<sgr:functionalProfile mroVisibilityIndicator="M" profileName="VoltageAC">
+	<sgr:functionalProfile mroVisibilityIndicator="M" profileName="PowerFactor">
 		<sgr:profileNumber>
 			<sgr:specsOwnerId>0</sgr:specsOwnerId>
 			<sgr:profileIdentification>NonSpecific</sgr:profileIdentification>
-			<sgr:subProfileIdent>VoltageAC</sgr:subProfileIdent>
+			<sgr:subProfileIdent>PowerFactor</sgr:subProfileIdent>
 			<sgr:sgrLevelOfOperation>4</sgr:sgrLevelOfOperation>
 			<sgr:versionNumber>
 				<sgr:primaryVersionNumber>0</sgr:primaryVersionNumber>
@@ -30,78 +30,74 @@
 		</sgr:profileNumber>
 		<sgr:fpNameList>
 			<sgr:nameType>FunctionalProfile</sgr:nameType>
-			<sgr:sLV1Name>Messung der Wechselspannung</sgr:sLV1Name>
+			<sgr:sLV1Name>Messung PowerFactor</sgr:sLV1Name>
 		</sgr:fpNameList>
 		<sgr:fpLegibDesc>
-			<sgr:textElement>Die Messung der Spannung pro Phase und Nullleiter. Typische Nachbarprofile sind Controller für Wallbox, Communicator.</sgr:textElement>
+			<sgr:textElement>
+				<![CDATA[	
+				<img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
+				Der PowerFactor entspricht der Division der Wirkleistung durch die Scheinleistung.
+                Er ist nicht zu verwechseln mit dem Klirrfaktor, welcher den Oberwellenanteil misst. In einem overwellenfreien System entspricht der Power Faktor
+                genau arccos(phi) und wird mit zunehmenden Oberwellen schlechter.
+				]]>	
+			</sgr:textElement>
 			<sgr:language>de</sgr:language>
 		</sgr:fpLegibDesc>
 	</sgr:functionalProfile>
 	<sgr:dpListElement>
-		<sgr:dataPoint datapointName="VoltageACL1_L2" rwpDatadirection="R" unit="VOLTS" mroVisibilityIndicator="R">
+		<sgr:dataPoint datapointName="PowerFactorACtot" rwpDatadirection="R" unit="PERCENT" mroVisibilityIndicator="R">
 			<sgr:basicDataType>
 				<sgr:float32>0</sgr:float32>
 			</sgr:basicDataType>
 			<sgr:dpLegibDesc>
-				<sgr:textElement>Erfassung der Spannung zwischen Phase A-B</sgr:textElement>
+				<sgr:textElement>Erfassung des gesamten Powerfactors</sgr:textElement>
 				<sgr:language>de</sgr:language>
 			</sgr:dpLegibDesc>
 		</sgr:dataPoint>
+		<sgr:genAttribute>
+			<sgr:valueType>average</sgr:valueType>
+		</sgr:genAttribute>
 	</sgr:dpListElement>
 	<sgr:dpListElement>
-		<sgr:dataPoint datapointName="VoltageACL1_L3" rwpDatadirection="R" unit="VOLTS" mroVisibilityIndicator="R">
+		<sgr:dataPoint datapointName="PowerFactorACL1" rwpDatadirection="R" unit="PERCENT" mroVisibilityIndicator="R">
 			<sgr:basicDataType>
 				<sgr:float32>0</sgr:float32>
 			</sgr:basicDataType>
 			<sgr:dpLegibDesc>
-				<sgr:textElement>Erfassung der Spannung zwischen Phase A-C</sgr:textElement>
+				<sgr:textElement>Erfassung des Power Factors in Phase A</sgr:textElement>
 				<sgr:language>de</sgr:language>
 			</sgr:dpLegibDesc>
 		</sgr:dataPoint>
+		<sgr:genAttribute>
+			<sgr:valueTendency>stable</sgr:valueTendency>
+		</sgr:genAttribute>
 	</sgr:dpListElement>
 	<sgr:dpListElement>
-		<sgr:dataPoint datapointName="VoltageACL2_L3" rwpDatadirection="R" unit="VOLTS" mroVisibilityIndicator="R">
+		<sgr:dataPoint datapointName="PowerFactorACL2" rwpDatadirection="R" unit="PERCENT" mroVisibilityIndicator="R">
 			<sgr:basicDataType>
 				<sgr:float32>0</sgr:float32>
 			</sgr:basicDataType>
 			<sgr:dpLegibDesc>
-				<sgr:textElement>Erfassung der Spannung zwischen Phase B-C</sgr:textElement>
+				<sgr:textElement>Erfassung des Power Factors in Phase B</sgr:textElement>
 				<sgr:language>de</sgr:language>
 			</sgr:dpLegibDesc>
 		</sgr:dataPoint>
-	</sgr:dpListElement>
-
-	<sgr:dpListElement>
-		<sgr:dataPoint datapointName="VoltageACL1_N" rwpDatadirection="R" unit="VOLTS" mroVisibilityIndicator="R">
-			<sgr:basicDataType>
-				<sgr:float32>0</sgr:float32>
-			</sgr:basicDataType>
-			<sgr:dpLegibDesc>
-				<sgr:textElement>Erfassung der Spannung im Nullleiter</sgr:textElement>
-				<sgr:language>de</sgr:language>
-			</sgr:dpLegibDesc>
-		</sgr:dataPoint>
+		<sgr:genAttribute>
+			<sgr:valueTendency>stable</sgr:valueTendency>
+		</sgr:genAttribute>
 	</sgr:dpListElement>
 	<sgr:dpListElement>
-		<sgr:dataPoint datapointName="VoltageACL2_N" rwpDatadirection="R" unit="VOLTS" mroVisibilityIndicator="R">
+		<sgr:dataPoint datapointName="PowerFactorACL3" rwpDatadirection="R" unit="PERCENT" mroVisibilityIndicator="R">
 			<sgr:basicDataType>
 				<sgr:float32>0</sgr:float32>
 			</sgr:basicDataType>
 			<sgr:dpLegibDesc>
-				<sgr:textElement>Erfassung der Spannung im Nullleiter</sgr:textElement>
+				<sgr:textElement>Erfassung des Power Factors in Phase C</sgr:textElement>
 				<sgr:language>de</sgr:language>
 			</sgr:dpLegibDesc>
 		</sgr:dataPoint>
-	</sgr:dpListElement>
-	<sgr:dpListElement>
-		<sgr:dataPoint datapointName="VoltageACL3_N" rwpDatadirection="R" unit="VOLTS" mroVisibilityIndicator="R">
-			<sgr:basicDataType>
-				<sgr:float32>0</sgr:float32>
-			</sgr:basicDataType>
-			<sgr:dpLegibDesc>
-				<sgr:textElement>Erfassung der Spannung im Nullleiter</sgr:textElement>
-				<sgr:language>de</sgr:language>
-			</sgr:dpLegibDesc>
-		</sgr:dataPoint>
+		<sgr:genAttribute>
+			<sgr:valueTendency>stable</sgr:valueTendency>
+		</sgr:genAttribute>
 	</sgr:dpListElement>
 </sgr:SGrFunctionalProfileFrame>

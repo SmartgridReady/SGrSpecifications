@@ -11,16 +11,16 @@
 		</sgr:changelog>
 		<sgr:changelog>
 			<sgr:version>0.2.2</sgr:version>
-			<sgr:date>2022-09-30</sgr:date>
-			<sgr:author>Ergo/sz</sgr:author>
+			<sgr:date>2022-10-20</sgr:date>
+			<sgr:author>Ergo/mm</sgr:author>
 			<sgr:comment>Finalisierung Go-Live</sgr:comment>
 		</sgr:changelog>
 	</sgr:releaseNotes>
-	<sgr:functionalProfile mroVisibilityIndicator="M" profileName="VoltageAC">
+	<sgr:functionalProfile mroVisibilityIndicator="M" profileName="CurrentAC">
 		<sgr:profileNumber>
 			<sgr:specsOwnerId>0</sgr:specsOwnerId>
-			<sgr:profileIdentification>NonSpecific</sgr:profileIdentification>
-			<sgr:subProfileIdent>VoltageAC</sgr:subProfileIdent>
+			<sgr:profileIdentification>SubMeterElectricity</sgr:profileIdentification>
+			<sgr:subProfileIdent>CurrentAC</sgr:subProfileIdent>
 			<sgr:sgrLevelOfOperation>4</sgr:sgrLevelOfOperation>
 			<sgr:versionNumber>
 				<sgr:primaryVersionNumber>0</sgr:primaryVersionNumber>
@@ -30,78 +30,75 @@
 		</sgr:profileNumber>
 		<sgr:fpNameList>
 			<sgr:nameType>FunctionalProfile</sgr:nameType>
-			<sgr:sLV1Name>Messung der Wechselspannung</sgr:sLV1Name>
+			<sgr:sLV1Name>Messung des Stromes pro Phase und Nullleiter</sgr:sLV1Name>
 		</sgr:fpNameList>
 		<sgr:fpLegibDesc>
-			<sgr:textElement>Die Messung der Spannung pro Phase und Nullleiter. Typische Nachbarprofile sind Controller für Wallbox, Communicator.</sgr:textElement>
+			<sgr:textElement>
+				<![CDATA[	
+				<img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
+				Die Messung des Stromes pro Phase und Nullleiter. Typische Nachbarprofile sind Controller für Wallbox, Communicator.
+				]]>	
+			</sgr:textElement>
 			<sgr:language>de</sgr:language>
 		</sgr:fpLegibDesc>
 	</sgr:functionalProfile>
+	<sgr:genAttribute>
+        <sgr:precision>2.5</sgr:precision>
+	</sgr:genAttribute>
 	<sgr:dpListElement>
-		<sgr:dataPoint datapointName="VoltageACL1_L2" rwpDatadirection="R" unit="VOLTS" mroVisibilityIndicator="R">
+		<sgr:dataPoint datapointName="CurrentACL1" rwpDatadirection="R" unit="AMPERES" mroVisibilityIndicator="R">
 			<sgr:basicDataType>
 				<sgr:float32>0</sgr:float32>
 			</sgr:basicDataType>
 			<sgr:dpLegibDesc>
-				<sgr:textElement>Erfassung der Spannung zwischen Phase A-B</sgr:textElement>
+				<sgr:textElement>Erfassung des Stromes in Phase A</sgr:textElement>
 				<sgr:language>de</sgr:language>
 			</sgr:dpLegibDesc>
 		</sgr:dataPoint>
+		<sgr:genAttribute>
+			<sgr:precision>2.5</sgr:precision>
+		</sgr:genAttribute>
 	</sgr:dpListElement>
 	<sgr:dpListElement>
-		<sgr:dataPoint datapointName="VoltageACL1_L3" rwpDatadirection="R" unit="VOLTS" mroVisibilityIndicator="R">
+		<sgr:dataPoint datapointName="CurrentACL2" rwpDatadirection="R" unit="AMPERES" mroVisibilityIndicator="R">
 			<sgr:basicDataType>
 				<sgr:float32>0</sgr:float32>
 			</sgr:basicDataType>
 			<sgr:dpLegibDesc>
-				<sgr:textElement>Erfassung der Spannung zwischen Phase A-C</sgr:textElement>
+				<sgr:textElement>Erfassung des Stromes in Phase B</sgr:textElement>
 				<sgr:language>de</sgr:language>
 			</sgr:dpLegibDesc>
 		</sgr:dataPoint>
+		<sgr:genAttribute>
+			<sgr:precision>2.5</sgr:precision>
+		</sgr:genAttribute>
 	</sgr:dpListElement>
 	<sgr:dpListElement>
-		<sgr:dataPoint datapointName="VoltageACL2_L3" rwpDatadirection="R" unit="VOLTS" mroVisibilityIndicator="R">
+		<sgr:dataPoint datapointName="CurrentACL3" rwpDatadirection="R" unit="AMPERES" mroVisibilityIndicator="R">
 			<sgr:basicDataType>
 				<sgr:float32>0</sgr:float32>
 			</sgr:basicDataType>
 			<sgr:dpLegibDesc>
-				<sgr:textElement>Erfassung der Spannung zwischen Phase B-C</sgr:textElement>
+				<sgr:textElement>Erfassung des Stromes in Phase C</sgr:textElement>
 				<sgr:language>de</sgr:language>
 			</sgr:dpLegibDesc>
 		</sgr:dataPoint>
-	</sgr:dpListElement>
-
-	<sgr:dpListElement>
-		<sgr:dataPoint datapointName="VoltageACL1_N" rwpDatadirection="R" unit="VOLTS" mroVisibilityIndicator="R">
-			<sgr:basicDataType>
-				<sgr:float32>0</sgr:float32>
-			</sgr:basicDataType>
-			<sgr:dpLegibDesc>
-				<sgr:textElement>Erfassung der Spannung im Nullleiter</sgr:textElement>
-				<sgr:language>de</sgr:language>
-			</sgr:dpLegibDesc>
-		</sgr:dataPoint>
+		<sgr:genAttribute>
+			<sgr:precision>2.5</sgr:precision>
+		</sgr:genAttribute>
 	</sgr:dpListElement>
 	<sgr:dpListElement>
-		<sgr:dataPoint datapointName="VoltageACL2_N" rwpDatadirection="R" unit="VOLTS" mroVisibilityIndicator="R">
+		<sgr:dataPoint datapointName="CurrentACN" rwpDatadirection="R" unit="AMPERES" mroVisibilityIndicator="R">
 			<sgr:basicDataType>
 				<sgr:float32>0</sgr:float32>
 			</sgr:basicDataType>
 			<sgr:dpLegibDesc>
-				<sgr:textElement>Erfassung der Spannung im Nullleiter</sgr:textElement>
+				<sgr:textElement>Erfassung des Stromes im Nullleiter</sgr:textElement>
 				<sgr:language>de</sgr:language>
 			</sgr:dpLegibDesc>
 		</sgr:dataPoint>
-	</sgr:dpListElement>
-	<sgr:dpListElement>
-		<sgr:dataPoint datapointName="VoltageACL3_N" rwpDatadirection="R" unit="VOLTS" mroVisibilityIndicator="R">
-			<sgr:basicDataType>
-				<sgr:float32>0</sgr:float32>
-			</sgr:basicDataType>
-			<sgr:dpLegibDesc>
-				<sgr:textElement>Erfassung der Spannung im Nullleiter</sgr:textElement>
-				<sgr:language>de</sgr:language>
-			</sgr:dpLegibDesc>
-		</sgr:dataPoint>
+		<sgr:genAttribute>
+			<sgr:precision>2.5</sgr:precision>
+		</sgr:genAttribute>
 	</sgr:dpListElement>
 </sgr:SGrFunctionalProfileFrame>

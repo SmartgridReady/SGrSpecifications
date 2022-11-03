@@ -2,7 +2,7 @@
 <?xml-stylesheet type="text/xsl" href="/xsl/SGr.xsl"?>
 <sgr:SGrFunctionalProfileFrame xmlns:sgr="http://www.smartgridready.com/ns/V0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/SGrIncluder.xsd">
 	<sgr:releaseNotes>
-		<sgr:state>Draft</sgr:state>
+		<sgr:state>Review</sgr:state>
 		<sgr:changelog>
 			<sgr:version>0.1.1</sgr:version>
 			<sgr:date>2021-04-03</sgr:date>
@@ -33,19 +33,18 @@
 			<sgr:sLV1Name>Bilanzmessung Energie</sgr:sLV1Name>
 		</sgr:fpNameList>
 		<sgr:fpLegibDesc>
-			<sgr:textElement>Bilanzmessung Energie: Die Datenaufnahme erfolgt typischerweise periodisch durch den CEM (oder eine Abrechnungssoftware), welche Messung aufnimmt und mit dem Zeitwert ergänzt.
+			<sgr:textElement>
+				<![CDATA[	
+				<img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
+				Bilanzmessung Energie: Die Datenaufnahme erfolgt typischerweise periodisch durch den CEM (oder eine Abrechnungssoftware), welche Messung aufnimmt und mit dem Zeitwert ergänzt.<br>
 				Auch auf Seite der Netzbetreiber oder Aggregatoren braucht ein Energiewert zu Bilanzierungszwecken immer den Zeitstempel. Typische Nachbarprofile sind Communicator.
-				</sgr:textElement>
+				]]>	
+			</sgr:textElement>
 			<sgr:language>de</sgr:language>
 		</sgr:fpLegibDesc>
 	</sgr:functionalProfile>
 	<sgr:genAttribute>
-        <sgr:precision>1.5</sgr:precision>
         <sgr:valueState>normal</sgr:valueState>
-        <sgr:valueTendency>rising</sgr:valueTendency>
-        <sgr:valueSource>measuredValue</sgr:valueSource>
-        <!-- TODO: Attribute ValueType??? -->
-        <!-- TODO: Attribute DateTime -->
 	</sgr:genAttribute>
 	<sgr:dpListElement>
 		<sgr:dataPoint datapointName="ActiveEnergyACtot" rwpDatadirection="R" unit="KILOWATT_HOURS" mroVisibilityIndicator="R">
@@ -57,6 +56,9 @@
 				<sgr:language>de</sgr:language>
 			</sgr:dpLegibDesc>
 		</sgr:dataPoint>
+		<sgr:genAttribute>
+			<sgr:valueType>average</sgr:valueType>
+		</sgr:genAttribute>
 	</sgr:dpListElement>
 	<sgr:dpListElement>
 		<sgr:dataPoint datapointName="ActiveEnergyACL1" rwpDatadirection="R" unit="KILOWATT_HOURS" mroVisibilityIndicator="R">
@@ -68,6 +70,9 @@
 				<sgr:language>de</sgr:language>
 			</sgr:dpLegibDesc>
 		</sgr:dataPoint>
+		<sgr:genAttribute>
+			<sgr:valueTendency>stable</sgr:valueTendency>
+		</sgr:genAttribute>
 	</sgr:dpListElement>
 	<sgr:dpListElement>
 		<sgr:dataPoint datapointName="ActiveEnergyACL2" rwpDatadirection="R" unit="KILOWATT_HOURS" mroVisibilityIndicator="R">
@@ -79,6 +84,9 @@
 				<sgr:language>de</sgr:language>
 			</sgr:dpLegibDesc>
 		</sgr:dataPoint>
+		<sgr:genAttribute>
+			<sgr:valueTendency>stable</sgr:valueTendency>
+		</sgr:genAttribute>
 	</sgr:dpListElement>
 	<sgr:dpListElement>
 		<sgr:dataPoint datapointName="ActiveEnergyACL3" rwpDatadirection="R" unit="KILOWATT_HOURS" mroVisibilityIndicator="R">
@@ -90,5 +98,8 @@
 				<sgr:language>de</sgr:language>
 			</sgr:dpLegibDesc>
 		</sgr:dataPoint>
+		<sgr:genAttribute>
+			<sgr:valueTendency>stable</sgr:valueTendency>
+		</sgr:genAttribute>
 	</sgr:dpListElement>
 </sgr:SGrFunctionalProfileFrame>
