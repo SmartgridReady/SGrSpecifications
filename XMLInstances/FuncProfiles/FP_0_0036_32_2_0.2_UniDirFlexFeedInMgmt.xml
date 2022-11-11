@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/SGr.xsl"?>
+<sgr:SGrFunctionalProfileFrame xmlns:sgr="http://www.smartgridready.com/ns/V0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/SGrIncluder.xsd">
+	<sgr:releaseNotes>
+		<sgr:state>Review</sgr:state>
+		<sgr:changelog>
+			<sgr:version>0.1.1</sgr:version>
+			<sgr:date>2021-09-02</sgr:date>
+			<sgr:author>IBT/cb</sgr:author>
+			<sgr:comment>Vorbereitung beta test</sgr:comment>
+		</sgr:changelog>
+		<sgr:changelog>
+			<sgr:version>0.2.2</sgr:version>
+			<sgr:date>2022-09-23</sgr:date>
+			<sgr:author>Ergo/sz</sgr:author>
+			<sgr:comment>Finalisierung Go-Live</sgr:comment>
+		</sgr:changelog>
+	</sgr:releaseNotes>
+	<sgr:functionalProfile mroVisibilityIndicator="M" profileName="SGCPFlexFeedIn">
+		<sgr:profileNumber>
+			<sgr:specsOwnerId>0</sgr:specsOwnerId>
+			<sgr:profileIdentification>SGCP</sgr:profileIdentification>
+			<sgr:subProfileIdent>UniDirFlexFeedInMgmt</sgr:subProfileIdent>
+			<sgr:sgrLevelOfOperation>2</sgr:sgrLevelOfOperation>
+			<sgr:versionNumber>
+				<sgr:primaryVersionNumber>0</sgr:primaryVersionNumber>
+				<sgr:secondaryVersionNumber>2</sgr:secondaryVersionNumber>
+				<sgr:subReleaseVersionNumber>2</sgr:subReleaseVersionNumber>
+			</sgr:versionNumber>
+		</sgr:profileNumber>
+		<sgr:fpLegibDesc>
+			<sgr:textElement>
+				<![CDATA[
+				<img src="ressources/fp_cem_to_flexmgr.svg"/>
+				Anlagen, welche dieses Funktionsprofil nutzen verfügen in der Regel über einen CEM (Customer Energy Manager). Diese Software stellt sicher, dass der Energiebezug der Geräte entsprechend den Betriebsmodi beim Moduswechsel neu aufeinander abgestimmt wird. Beim Wechsel reagiert eine Anlage gemäss den in SGr-Attribut b) vereinbarten Parametern.
+				<ol>
+					<li>Betriebszustand 3 (Schaltzustand, bei Klemmenlösung: 0:0): <strong>Normal</strong>: Im Normalbetrieb folgt die Rückspeisung entsprechend
+					der Anlagemöglichkeiten innerhalb des zugelassenen Leistungsbereichs.</li>
+					<li>Betriebszustand 2 (Schaltzustand, bei Klemmenlösung: 0:1): <strong>Reduziert (Wunsch)</strong>: Die Rückspeisung soll um einen vereinbarten
+					Betrag (in Prozent, siehe SGrAttribut a) gesenkt werden, falls dies möglich ist.</li>
+					<li>Betriebszustand 1 (Schaltzustand, bei Klemmenlösung: 1:0): <strong>Gesperrt</strong>: In diesen Betriebsmode darf keine Energie ins Netz
+					eingespeist werden. Dies kann mittels Lasterhöhung, Batterieladung oder Sperrbetrieb der Stromquelle sichergestellt werden.</li>
+					<li>Betriebszustand 4 (Schaltzustand, bei Klemmenlösung: 1:1): <strong>Maximal</strong>: Die Anlage ermöglicht die maximale Rückspeisung
+					unter Einsatz aller Stromquellen.</li>
+				</ol>
+				
+				<p>Hinweis</p>
+                <ul>
+                    <li>Geräte mit 2 Klemmenkontakte setzen die Klemmen-Datenpunkte  um.</li>
+                    <li>Geräte mit Modbus oder RestAPI setzen bevorzugt den Enum-basierten Datenpunkt um.</li>
+                </ul>
+				]]>
+			</sgr:textElement>
+			<sgr:language>de</sgr:language>
+		</sgr:fpLegibDesc>
+	</sgr:functionalProfile>
+	<sgr:genAttribute>
+		<sgr:smoothTransition>
+			<sgr:winTms>0</sgr:winTms>
+			<sgr:rvrtTms>0</sgr:rvrtTms>
+			<sgr:rmpTms>0</sgr:rmpTms>
+		</sgr:smoothTransition>
+		<sgr:curtailment>30</sgr:curtailment>
+	</sgr:genAttribute>
+	<sgr:dpListElement>
+		<sgr:dataPoint datapointName="SGCP_FeedInStateLv2" mroVisibilityIndicator="O" rwpDatadirection="R" unit="NONE">
+			<sgr:basicDataType>
+				<sgr:enum>
+					<sgr:sgrSGCPFeedInStateLv2>FI_NORMAL</sgr:sgrSGCPFeedInStateLv2>
+				</sgr:enum>
+			</sgr:basicDataType>
+			<sgr:dpLegibDesc>
+				<sgr:textElement>FI_Normal, FI_Reduced, FI_Locked, FI_Max</sgr:textElement>
+				<sgr:language>de</sgr:language>
+			</sgr:dpLegibDesc>
+		</sgr:dataPoint>
+	</sgr:dpListElement>
+	<sgr:dpListElement>
+		<sgr:dataPoint datapointName="SGrFlexFeedIn1" mroVisibilityIndicator="M" rwpDatadirection="W" unit="NONE">
+			<sgr:basicDataType>
+				<sgr:boolean>true</sgr:boolean>
+			</sgr:basicDataType>
+			<sgr:dpLegibDesc>
+				<sgr:textElement>Schaltzustand erste Klemme (0 oder 1)</sgr:textElement>
+				<sgr:language>de</sgr:language>
+			</sgr:dpLegibDesc>
+		</sgr:dataPoint>
+	</sgr:dpListElement>
+	<sgr:dpListElement>
+		<sgr:dataPoint datapointName="SGrFlexFeedIn2" mroVisibilityIndicator="M" rwpDatadirection="W" unit="NONE">
+			<sgr:basicDataType>
+				<sgr:boolean>true</sgr:boolean>
+			</sgr:basicDataType>
+			<sgr:dpLegibDesc>
+				<sgr:textElement>Schaltzustand zweite Klemme (0 oder 1)</sgr:textElement>
+				<sgr:language>de</sgr:language>
+			</sgr:dpLegibDesc>
+		</sgr:dataPoint>
+	</sgr:dpListElement>
+</sgr:SGrFunctionalProfileFrame>

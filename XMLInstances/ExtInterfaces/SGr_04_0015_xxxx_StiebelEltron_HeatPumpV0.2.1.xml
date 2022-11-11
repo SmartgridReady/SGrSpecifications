@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="/xsl/SGr.xsl"?>
-<sgr:SGrModbusDeviceDescriptionType
-	deviceName="Internet Service Gateway ISG" isLocalControl="true"
-	manufacturerID="thirdPartySrcInfo" manufacturerName="Stiebel-Eltron"
-	xmlns:sgr="http://www.smartgridready.com/ns/V0/"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/EI-Modbus/SGrModbusEIDeviceFrame.xsd ">
+<sgr:SGrModbusDeviceFrame deviceName="Internet Service Gateway ISG" isLocalControl="true" manufacturerID="thirdPartySrcInfo" manufacturerName="Stiebel-Eltron" xmlns:sgr="http://www.smartgridready.com/ns/V0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/EI-Modbus/SGrModbusEIDeviceFrame.xsd ">
 	<sgr:deviceProfile>
 		<sgr:devLegibDesc>
 			<sgr:textElement>Das Internet Service Gateway ISG web ist der Eintritt in die Servicewelt von STIEBEL ELTRON. 
@@ -34,7 +29,7 @@ Benefits:
 - Data security through encrypted data transmission
 - Software updates of the ISG about the SERVICE WORLD portal
             </sgr:textElement>
-		  <sgr:language>en</sgr:language>
+			<sgr:language>en</sgr:language>
 		</sgr:devLegibDesc>
 		<sgr:transportService>Modbus</sgr:transportService>
 		<sgr:deviceKind>HeatPumpAppliance</sgr:deviceKind>
@@ -77,10 +72,9 @@ Benefits:
 		<sgr:firstRegisterAddressIsOne>true</sgr:firstRegisterAddressIsOne>
 		<sgr:conversionScheme>BigEndian</sgr:conversionScheme>
 	</sgr:modbusInterfaceDesc>
-	
+
 	<sgr:fpListElement>
-		<sgr:functionalProfile
-			mroVisibilityIndicator="M" profileName="HeatPumpBase">
+		<sgr:functionalProfile mroVisibilityIndicator="M" profileName="HeatPumpBase">
 			<sgr:profileNumber>
 				<sgr:specsOwnerId>0</sgr:specsOwnerId>
 				<sgr:profileIdentification>HeatPumpControl</sgr:profileIdentification>
@@ -114,8 +108,7 @@ werden, während der andere Parameter fest definiert wird</sgr:textElement>
 			</sgr:fpPrgDesc>
 		</sgr:functionalProfile>
 		<sgr:dpListElement>
-			<sgr:dataPoint datapointName="HPOpModeCmd"
-				mroVisibilityIndicator="M" rwpDatadirection="RW" unit="NONE">
+			<sgr:dataPoint datapointName="HPOpModeCmd" mroVisibilityIndicator="M" rwpDatadirection="RW" unit="NONE">
 				<sgr:basicDataType>
 					<sgr:enum>
 						<sgr:sgrHPOpMode>WP_EMERG_OP</sgr:sgrHPOpMode>
@@ -139,18 +132,16 @@ werden, während der andere Parameter fest definiert wird</sgr:textElement>
 			<sgr:modbusDataPoint>
 				<sgr:modbusDataType>
 					<sgr:enum>
-						<sgr:sgrHPOpMode>WP_EMERG_OP</sgr:sgrHPOpMode>						
-					</sgr:enum>					
+						<sgr:sgrHPOpMode>WP_EMERG_OP</sgr:sgrHPOpMode>
+					</sgr:enum>
 				</sgr:modbusDataType>
-				<sgr:modbusFirstRegisterReference
-					registerType="HoldRegister" addr="1501" bitRank="0" />
+				<sgr:modbusFirstRegisterReference registerType="HoldRegister" addr="1501" bitRank="0" />
 				<sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
 				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
 			</sgr:modbusDataPoint>
 		</sgr:dpListElement>
 		<sgr:dpListElement>
-			<sgr:dataPoint datapointName="HPOpState"
-				mroVisibilityIndicator="M" rwpDatadirection="R" unit="NONE">
+			<sgr:dataPoint datapointName="HPOpState" mroVisibilityIndicator="M" rwpDatadirection="R" unit="NONE">
 				<sgr:basicDataType>
 					<sgr:int16U>1</sgr:int16U>
 				</sgr:basicDataType>
@@ -186,20 +177,18 @@ B11: SILENTMODE 2 AKTIV (WP AUS)
 				<sgr:modbusDataType>
 					<sgr:int16U>0</sgr:int16U>
 				</sgr:modbusDataType>
-				<sgr:modbusFirstRegisterReference
-					registerType="InputRegister" addr="2501" bitRank="0" />
+				<sgr:modbusFirstRegisterReference registerType="InputRegister" addr="2501" bitRank="0" />
 				<sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
 				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
 			</sgr:modbusDataPoint>
 		</sgr:dpListElement>
-		
+
 		<sgr:dpListElement>
-			<sgr:dataPoint datapointName="HPOpState.SummerModeActive"
-				mroVisibilityIndicator="M" rwpDatadirection="R" unit="NONE">
+			<sgr:dataPoint datapointName="HPOpState.SummerModeActive" mroVisibilityIndicator="M" rwpDatadirection="R" unit="NONE">
 				<sgr:basicDataType>
 					<sgr:boolean>true</sgr:boolean>
-					
-					
+
+
 				</sgr:basicDataType>
 				<sgr:dpNameList>
 					<sgr:nameType>DataPoint</sgr:nameType>
@@ -233,8 +222,7 @@ B11: SILENTMODE 2 AKTIV (WP AUS)
 				<sgr:modbusDataType>
 					<sgr:int16U>0</sgr:int16U>
 				</sgr:modbusDataType>
-				<sgr:modbusFirstRegisterReference
-					registerType="InputRegister" addr="2501" bitRank="0" />
+				<sgr:modbusFirstRegisterReference registerType="InputRegister" addr="2501" bitRank="0" />
 				<sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
 				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
 			</sgr:modbusDataPoint>
@@ -242,11 +230,10 @@ B11: SILENTMODE 2 AKTIV (WP AUS)
 				<sgr:layer6Deviation>2RegBase1000_L2H</sgr:layer6Deviation>
 			</sgr:modbusAttr>
 		</sgr:dpListElement>
-		
-		
+
+
 		<sgr:dpListElement>
-			<sgr:dataPoint datapointName="ErrorNrSGr"
-				mroVisibilityIndicator="M" rwpDatadirection="R" unit="NONE">
+			<sgr:dataPoint datapointName="ErrorNrSGr" mroVisibilityIndicator="M" rwpDatadirection="R" unit="NONE">
 				<sgr:basicDataType>
 					<sgr:boolean>false</sgr:boolean>
 				</sgr:basicDataType>
@@ -269,22 +256,19 @@ B11: SILENTMODE 2 AKTIV (WP AUS)
 				<sgr:modbusDataType>
 					<sgr:boolean>true</sgr:boolean>
 				</sgr:modbusDataType>
-				<sgr:modbusFirstRegisterReference
-					registerType="InputRegister" addr="2504" bitRank="0" />
+				<sgr:modbusFirstRegisterReference registerType="InputRegister" addr="2504" bitRank="0" />
 				<sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
 				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
 			</sgr:modbusDataPoint>
-				<sgr:modbusAttr>
-					<sgr:scalingByMulPwr>
-						<sgr:multiplicator>1</sgr:multiplicator>
-						<sgr:powerof10>0</sgr:powerof10>
-					</sgr:scalingByMulPwr>
-				</sgr:modbusAttr>
+			<sgr:modbusAttr>
+				<sgr:scalingByMulPwr>
+					<sgr:multiplicator>1</sgr:multiplicator>
+					<sgr:powerof10>0</sgr:powerof10>
+				</sgr:scalingByMulPwr>
+			</sgr:modbusAttr>
 		</sgr:dpListElement>
 		<sgr:dpListElement>
-			<sgr:dataPoint datapointName="OutsideAirTemp"
-				mroVisibilityIndicator="M" rwpDatadirection="R"
-				unit="DEGREES_CELSIUS">
+			<sgr:dataPoint datapointName="OutsideAirTemp" mroVisibilityIndicator="M" rwpDatadirection="R" unit="DEGREES_CELSIUS">
 				<sgr:basicDataType>
 					<sgr:float32>0</sgr:float32>
 				</sgr:basicDataType>
@@ -301,30 +285,27 @@ B11: SILENTMODE 2 AKTIV (WP AUS)
 					<sgr:language>de</sgr:language>
 				</sgr:dpLegibDesc>
 			</sgr:dataPoint>
+			<sgr:genAttribute>
+				<sgr:maxVal>80.0</sgr:maxVal>
+				<sgr:minVal>-60.0</sgr:minVal>
+			</sgr:genAttribute>
 			<sgr:modbusDataPoint>
 				<sgr:modbusDataType>
 					<sgr:int16>0</sgr:int16>
 				</sgr:modbusDataType>
-				<sgr:modbusFirstRegisterReference
-					registerType="InputRegister" addr="507" bitRank="0" />
+				<sgr:modbusFirstRegisterReference registerType="InputRegister" addr="507" bitRank="0" />
 				<sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
 				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
 			</sgr:modbusDataPoint>
-				<sgr:genAttribute>
-					<sgr:maxVal>80.0</sgr:maxVal>
-					<sgr:minVal>-60.0</sgr:minVal>
-				</sgr:genAttribute>
-				<sgr:modbusAttr>
-					<sgr:scalingByMulPwr>
-						<sgr:multiplicator>1</sgr:multiplicator>
-						<sgr:powerof10>-1</sgr:powerof10>
-					</sgr:scalingByMulPwr>
-				</sgr:modbusAttr>
+			<sgr:modbusAttr>
+				<sgr:scalingByMulPwr>
+					<sgr:multiplicator>1</sgr:multiplicator>
+					<sgr:powerof10>-1</sgr:powerof10>
+				</sgr:scalingByMulPwr>
+			</sgr:modbusAttr>
 		</sgr:dpListElement>
 		<sgr:dpListElement>
-			<sgr:dataPoint datapointName="FlowWaterTemp"
-				mroVisibilityIndicator="M" rwpDatadirection="R"
-				unit="DEGREES_CELSIUS">
+			<sgr:dataPoint datapointName="FlowWaterTemp" mroVisibilityIndicator="M" rwpDatadirection="R" unit="DEGREES_CELSIUS">
 				<sgr:basicDataType>
 					<sgr:float32>0.0</sgr:float32>
 				</sgr:basicDataType>
@@ -339,22 +320,19 @@ B11: SILENTMODE 2 AKTIV (WP AUS)
 				<sgr:modbusDataType>
 					<sgr:int16>0</sgr:int16>
 				</sgr:modbusDataType>
-				<sgr:modbusFirstRegisterReference
-					registerType="InputRegister" addr="515" bitRank="0" />
+				<sgr:modbusFirstRegisterReference registerType="InputRegister" addr="515" bitRank="0" />
 				<sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
 				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
 			</sgr:modbusDataPoint>
-				<sgr:modbusAttr>
-					<sgr:scalingByMulPwr>
-						<sgr:multiplicator>1</sgr:multiplicator>
-						<sgr:powerof10>-1</sgr:powerof10>
-					</sgr:scalingByMulPwr>
-				</sgr:modbusAttr>
+			<sgr:modbusAttr>
+				<sgr:scalingByMulPwr>
+					<sgr:multiplicator>1</sgr:multiplicator>
+					<sgr:powerof10>-1</sgr:powerof10>
+				</sgr:scalingByMulPwr>
+			</sgr:modbusAttr>
 		</sgr:dpListElement>
 		<sgr:dpListElement>
-			<sgr:dataPoint datapointName="BackFlowWaterTemp"
-				mroVisibilityIndicator="O" rwpDatadirection="R"
-				unit="DEGREES_CELSIUS">
+			<sgr:dataPoint datapointName="BackFlowWaterTemp" mroVisibilityIndicator="O" rwpDatadirection="R" unit="DEGREES_CELSIUS">
 				<sgr:basicDataType>
 					<sgr:float32>0.0</sgr:float32>
 				</sgr:basicDataType>
@@ -369,30 +347,27 @@ B11: SILENTMODE 2 AKTIV (WP AUS)
 					<sgr:language>de</sgr:language>
 				</sgr:dpLegibDesc>
 			</sgr:dataPoint>
+			<sgr:genAttribute>
+				<sgr:maxVal>90.0</sgr:maxVal>
+				<sgr:minVal>0.0</sgr:minVal>
+			</sgr:genAttribute>			
 			<sgr:modbusDataPoint>
 				<sgr:modbusDataType>
-					<sgr:int16>0</sgr:int16>					
+					<sgr:int16>0</sgr:int16>
 				</sgr:modbusDataType>
-				<sgr:modbusFirstRegisterReference
-					registerType="InputRegister" addr="516" bitRank="0" />
+				<sgr:modbusFirstRegisterReference registerType="InputRegister" addr="516" bitRank="0" />
 				<sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
 				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
 			</sgr:modbusDataPoint>
-				<sgr:genAttribute>
-					<sgr:maxVal>90.0</sgr:maxVal>
-					<sgr:minVal>0.0</sgr:minVal>
-				</sgr:genAttribute>
-				<sgr:modbusAttr>
-					<sgr:scalingByMulPwr>
-						<sgr:multiplicator>1</sgr:multiplicator>
-						<sgr:powerof10>-1</sgr:powerof10>
-					</sgr:scalingByMulPwr>
-				</sgr:modbusAttr>
+			<sgr:modbusAttr>
+				<sgr:scalingByMulPwr>
+					<sgr:multiplicator>1</sgr:multiplicator>
+					<sgr:powerof10>-1</sgr:powerof10>
+				</sgr:scalingByMulPwr>
+			</sgr:modbusAttr>
 		</sgr:dpListElement>
 		<sgr:dpListElement>
-			<sgr:dataPoint datapointName="SourceTemp"
-				mroVisibilityIndicator="O" rwpDatadirection="R"
-				unit="DEGREES_CELSIUS">
+			<sgr:dataPoint datapointName="SourceTemp" mroVisibilityIndicator="O" rwpDatadirection="R" unit="DEGREES_CELSIUS">
 				<sgr:basicDataType>
 					<sgr:float32>0.0</sgr:float32>
 				</sgr:basicDataType>
@@ -411,23 +386,21 @@ B11: SILENTMODE 2 AKTIV (WP AUS)
 				<sgr:modbusDataType>
 					<sgr:int16>0</sgr:int16>
 				</sgr:modbusDataType>
-				<sgr:modbusFirstRegisterReference
-					registerType="InputRegister" addr="536" />
+				<sgr:modbusFirstRegisterReference registerType="InputRegister" addr="536" />
 				<sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
 				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
 			</sgr:modbusDataPoint>
-				<sgr:modbusAttr>
-					<sgr:scalingByMulPwr>
-						<sgr:multiplicator>1</sgr:multiplicator>
-						<sgr:powerof10>-1</sgr:powerof10>
-					</sgr:scalingByMulPwr>
-				</sgr:modbusAttr>
+			<sgr:modbusAttr>
+				<sgr:scalingByMulPwr>
+					<sgr:multiplicator>1</sgr:multiplicator>
+					<sgr:powerof10>-1</sgr:powerof10>
+				</sgr:scalingByMulPwr>
+			</sgr:modbusAttr>
 		</sgr:dpListElement>
 	</sgr:fpListElement>
-	
+
 	<sgr:fpListElement>
-		<sgr:functionalProfile
-			mroVisibilityIndicator="M" profileName="HeatCoolCtrl_1">
+		<sgr:functionalProfile mroVisibilityIndicator="M" profileName="HeatCoolCtrl_1">
 			<sgr:profileNumber>
 				<sgr:specsOwnerId>0</sgr:specsOwnerId>
 				<sgr:profileIdentification>HeatPumpControl</sgr:profileIdentification>
@@ -449,9 +422,7 @@ B11: SILENTMODE 2 AKTIV (WP AUS)
 			</sgr:fpLegibDesc>
 		</sgr:functionalProfile>
 		<sgr:dpListElement>
-			<sgr:dataPoint datapointName="FlowWaterTemp"
-				mroVisibilityIndicator="O" rwpDatadirection="R"
-				unit="DEGREES_CELSIUS">
+			<sgr:dataPoint datapointName="FlowWaterTemp" mroVisibilityIndicator="O" rwpDatadirection="R" unit="DEGREES_CELSIUS">
 				<sgr:basicDataType>
 					<sgr:float32>0.0</sgr:float32>
 				</sgr:basicDataType>
@@ -464,30 +435,27 @@ B11: SILENTMODE 2 AKTIV (WP AUS)
 					<sgr:language>de</sgr:language>
 				</sgr:dpLegibDesc>
 			</sgr:dataPoint>
+			<sgr:genAttribute>
+				<sgr:maxVal>40.0</sgr:maxVal>
+				<sgr:minVal>0.0</sgr:minVal>
+			</sgr:genAttribute>
 			<sgr:modbusDataPoint>
 				<sgr:modbusDataType>
 					<sgr:int16>0</sgr:int16>
 				</sgr:modbusDataType>
-				<sgr:modbusFirstRegisterReference
-					registerType="InputRegister" addr="508" bitRank="0" />
+				<sgr:modbusFirstRegisterReference registerType="InputRegister" addr="508" bitRank="0" />
 				<sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
 				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
 			</sgr:modbusDataPoint>
-				<sgr:genAttribute>
-					<sgr:maxVal>40.0</sgr:maxVal>
-					<sgr:minVal>0.0</sgr:minVal>
-				</sgr:genAttribute>
-				<sgr:modbusAttr>
-					<sgr:scalingByMulPwr>
-						<sgr:multiplicator>1</sgr:multiplicator>
-						<sgr:powerof10>-1</sgr:powerof10>
-					</sgr:scalingByMulPwr>
-				</sgr:modbusAttr>
+			<sgr:modbusAttr>
+				<sgr:scalingByMulPwr>
+					<sgr:multiplicator>1</sgr:multiplicator>
+					<sgr:powerof10>-1</sgr:powerof10>
+				</sgr:scalingByMulPwr>
+			</sgr:modbusAttr>
 		</sgr:dpListElement>
 		<sgr:dpListElement>
-			<sgr:dataPoint datapointName="FlowWaterTempStptFb"
-				mroVisibilityIndicator="O" rwpDatadirection="R"
-				unit="DEGREES_CELSIUS">
+			<sgr:dataPoint datapointName="FlowWaterTempStptFb" mroVisibilityIndicator="O" rwpDatadirection="R" unit="DEGREES_CELSIUS">
 				<sgr:basicDataType>
 					<sgr:float32>0.0</sgr:float32>
 				</sgr:basicDataType>
@@ -500,30 +468,27 @@ B11: SILENTMODE 2 AKTIV (WP AUS)
 					<sgr:language>de</sgr:language>
 				</sgr:dpLegibDesc>
 			</sgr:dataPoint>
+			<sgr:genAttribute>
+				<sgr:maxVal>40.0</sgr:maxVal>
+				<sgr:minVal>0.0</sgr:minVal>
+			</sgr:genAttribute>
 			<sgr:modbusDataPoint>
 				<sgr:modbusDataType>
 					<sgr:int16>0</sgr:int16>
 				</sgr:modbusDataType>
-				<sgr:modbusFirstRegisterReference
-					registerType="InputRegister" addr="510" bitRank="0" />
+				<sgr:modbusFirstRegisterReference registerType="InputRegister" addr="510" bitRank="0" />
 				<sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
 				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
 			</sgr:modbusDataPoint>
-				<sgr:genAttribute>
-					<sgr:maxVal>40.0</sgr:maxVal>
-					<sgr:minVal>0.0</sgr:minVal>
-				</sgr:genAttribute>
-				<sgr:modbusAttr>
-					<sgr:scalingByMulPwr>
-						<sgr:multiplicator>1</sgr:multiplicator>
-						<sgr:powerof10>-1</sgr:powerof10>
-					</sgr:scalingByMulPwr>
-				</sgr:modbusAttr>
+			<sgr:modbusAttr>
+				<sgr:scalingByMulPwr>
+					<sgr:multiplicator>1</sgr:multiplicator>
+					<sgr:powerof10>-1</sgr:powerof10>
+				</sgr:scalingByMulPwr>
+			</sgr:modbusAttr>
 		</sgr:dpListElement>
 		<sgr:dpListElement>
-			<sgr:dataPoint datapointName="FlowWaterTempStpComf"
-				mroVisibilityIndicator="O" rwpDatadirection="RW"
-				unit="DEGREES_CELSIUS">
+			<sgr:dataPoint datapointName="FlowWaterTempStpComf" mroVisibilityIndicator="O" rwpDatadirection="RW" unit="DEGREES_CELSIUS">
 				<sgr:basicDataType>
 					<sgr:float32>0.0</sgr:float32>
 				</sgr:basicDataType>
@@ -538,30 +503,27 @@ B11: SILENTMODE 2 AKTIV (WP AUS)
 					<sgr:language>de</sgr:language>
 				</sgr:dpLegibDesc>
 			</sgr:dataPoint>
+			<sgr:genAttribute>
+				<sgr:maxVal>30.0</sgr:maxVal>
+				<sgr:minVal>5.0</sgr:minVal>
+			</sgr:genAttribute>
 			<sgr:modbusDataPoint>
 				<sgr:modbusDataType>
 					<sgr:int16>0</sgr:int16>
 				</sgr:modbusDataType>
-				<sgr:modbusFirstRegisterReference
-					registerType="HoldRegister" addr="1502" bitRank="0" />
+				<sgr:modbusFirstRegisterReference registerType="HoldRegister" addr="1502" bitRank="0" />
 				<sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
 				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
 			</sgr:modbusDataPoint>
-				<sgr:genAttribute>
-					<sgr:maxVal>30.0</sgr:maxVal>
-					<sgr:minVal>5.0</sgr:minVal>
-				</sgr:genAttribute>
-				<sgr:modbusAttr>
-					<sgr:scalingByMulPwr>
-						<sgr:multiplicator>1</sgr:multiplicator>
-						<sgr:powerof10>-1</sgr:powerof10>
-					</sgr:scalingByMulPwr>
-				</sgr:modbusAttr>
+			<sgr:modbusAttr>
+				<sgr:scalingByMulPwr>
+					<sgr:multiplicator>1</sgr:multiplicator>
+					<sgr:powerof10>-1</sgr:powerof10>
+				</sgr:scalingByMulPwr>
+			</sgr:modbusAttr>
 		</sgr:dpListElement>
 		<sgr:dpListElement>
-			<sgr:dataPoint datapointName="FlowWaterTempStpEco"
-				mroVisibilityIndicator="O" rwpDatadirection="R"
-				unit="DEGREES_CELSIUS">
+			<sgr:dataPoint datapointName="FlowWaterTempStpEco" mroVisibilityIndicator="O" rwpDatadirection="R" unit="DEGREES_CELSIUS">
 				<sgr:basicDataType>
 					<sgr:float32>0.0</sgr:float32>
 				</sgr:basicDataType>
@@ -574,31 +536,29 @@ B11: SILENTMODE 2 AKTIV (WP AUS)
 					<sgr:language>de</sgr:language>
 				</sgr:dpLegibDesc>
 			</sgr:dataPoint>
+			<sgr:genAttribute>
+				<sgr:maxVal>30.0</sgr:maxVal>
+				<sgr:minVal>5.0</sgr:minVal>
+			</sgr:genAttribute>
 			<sgr:modbusDataPoint>
 				<sgr:modbusDataType>
 					<sgr:int16>0</sgr:int16>
 				</sgr:modbusDataType>
-				<sgr:modbusFirstRegisterReference
-					registerType="HoldRegister" addr="1503" bitRank="0" />
+				<sgr:modbusFirstRegisterReference registerType="HoldRegister" addr="1503" bitRank="0" />
 				<sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
 				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
 			</sgr:modbusDataPoint>
-				<sgr:genAttribute>
-					<sgr:maxVal>30.0</sgr:maxVal>
-					<sgr:minVal>5.0</sgr:minVal>
-				</sgr:genAttribute>
-				<sgr:modbusAttr>
-					<sgr:scalingByMulPwr>
-						<sgr:multiplicator>1</sgr:multiplicator>
-						<sgr:powerof10>-1</sgr:powerof10>
-					</sgr:scalingByMulPwr>
-				</sgr:modbusAttr>
+			<sgr:modbusAttr>
+				<sgr:scalingByMulPwr>
+					<sgr:multiplicator>1</sgr:multiplicator>
+					<sgr:powerof10>-1</sgr:powerof10>
+				</sgr:scalingByMulPwr>
+			</sgr:modbusAttr>
 		</sgr:dpListElement>
 	</sgr:fpListElement>
-	
+
 	<sgr:fpListElement>
-		<sgr:functionalProfile
-			mroVisibilityIndicator="M" profileName="HeatCoolCtrl_2">
+		<sgr:functionalProfile mroVisibilityIndicator="M" profileName="HeatCoolCtrl_2">
 			<sgr:profileNumber>
 				<sgr:specsOwnerId>0</sgr:specsOwnerId>
 				<sgr:profileIdentification>HeatPumpControl</sgr:profileIdentification>
@@ -620,9 +580,7 @@ B11: SILENTMODE 2 AKTIV (WP AUS)
 			</sgr:fpLegibDesc>
 		</sgr:functionalProfile>
 		<sgr:dpListElement>
-			<sgr:dataPoint datapointName="FlowWaterTemp"
-				mroVisibilityIndicator="O" rwpDatadirection="R"
-				unit="DEGREES_CELSIUS">
+			<sgr:dataPoint datapointName="FlowWaterTemp" mroVisibilityIndicator="O" rwpDatadirection="R" unit="DEGREES_CELSIUS">
 				<sgr:basicDataType>
 					<sgr:float32>0.0</sgr:float32>
 				</sgr:basicDataType>
@@ -635,30 +593,27 @@ B11: SILENTMODE 2 AKTIV (WP AUS)
 					<sgr:language>de</sgr:language>
 				</sgr:dpLegibDesc>
 			</sgr:dataPoint>
+			<sgr:genAttribute>
+				<sgr:maxVal>40.0</sgr:maxVal>
+				<sgr:minVal>0.0</sgr:minVal>
+			</sgr:genAttribute>
 			<sgr:modbusDataPoint>
 				<sgr:modbusDataType>
 					<sgr:int16>0</sgr:int16>
 				</sgr:modbusDataType>
-				<sgr:modbusFirstRegisterReference
-					registerType="InputRegister" addr="511" bitRank="0" />
+				<sgr:modbusFirstRegisterReference registerType="InputRegister" addr="511" bitRank="0" />
 				<sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
 				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
 			</sgr:modbusDataPoint>
-				<sgr:genAttribute>
-					<sgr:maxVal>40.0</sgr:maxVal>
-					<sgr:minVal>0.0</sgr:minVal>
-				</sgr:genAttribute>
-				<sgr:modbusAttr>
-					<sgr:scalingByMulPwr>
-						<sgr:multiplicator>1</sgr:multiplicator>
-						<sgr:powerof10>-1</sgr:powerof10>
-					</sgr:scalingByMulPwr>
-				</sgr:modbusAttr>
+			<sgr:modbusAttr>
+				<sgr:scalingByMulPwr>
+					<sgr:multiplicator>1</sgr:multiplicator>
+					<sgr:powerof10>-1</sgr:powerof10>
+				</sgr:scalingByMulPwr>
+			</sgr:modbusAttr>
 		</sgr:dpListElement>
 		<sgr:dpListElement>
-			<sgr:dataPoint datapointName="FlowWaterTempStptFb"
-				mroVisibilityIndicator="O" rwpDatadirection="R"
-				unit="DEGREES_CELSIUS">
+			<sgr:dataPoint datapointName="FlowWaterTempStptFb" mroVisibilityIndicator="O" rwpDatadirection="R" unit="DEGREES_CELSIUS">
 				<sgr:basicDataType>
 					<sgr:float32>0.0</sgr:float32>
 				</sgr:basicDataType>
@@ -671,30 +626,27 @@ B11: SILENTMODE 2 AKTIV (WP AUS)
 					<sgr:language>de</sgr:language>
 				</sgr:dpLegibDesc>
 			</sgr:dataPoint>
+			<sgr:genAttribute>
+				<sgr:maxVal>40.0</sgr:maxVal>
+				<sgr:minVal>0.0</sgr:minVal>
+			</sgr:genAttribute>
 			<sgr:modbusDataPoint>
 				<sgr:modbusDataType>
 					<sgr:int16>0</sgr:int16>
 				</sgr:modbusDataType>
-				<sgr:modbusFirstRegisterReference
-					registerType="InputRegister" addr="512" bitRank="0" />
+				<sgr:modbusFirstRegisterReference registerType="InputRegister" addr="512" bitRank="0" />
 				<sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
 				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
 			</sgr:modbusDataPoint>
-				<sgr:genAttribute>
-					<sgr:maxVal>40.0</sgr:maxVal>
-					<sgr:minVal>0.0</sgr:minVal>
-				</sgr:genAttribute>
-				<sgr:modbusAttr>
-					<sgr:scalingByMulPwr>
-						<sgr:multiplicator>1</sgr:multiplicator>
-						<sgr:powerof10>-1</sgr:powerof10>
-					</sgr:scalingByMulPwr>
-				</sgr:modbusAttr>
+			<sgr:modbusAttr>
+				<sgr:scalingByMulPwr>
+					<sgr:multiplicator>1</sgr:multiplicator>
+					<sgr:powerof10>-1</sgr:powerof10>
+				</sgr:scalingByMulPwr>
+			</sgr:modbusAttr>
 		</sgr:dpListElement>
 		<sgr:dpListElement>
-			<sgr:dataPoint datapointName="FlowWaterTempStpComf"
-				mroVisibilityIndicator="O" rwpDatadirection="RW"
-				unit="DEGREES_CELSIUS">
+			<sgr:dataPoint datapointName="FlowWaterTempStpComf" mroVisibilityIndicator="O" rwpDatadirection="RW" unit="DEGREES_CELSIUS">
 				<sgr:basicDataType>
 					<sgr:float32>0.0</sgr:float32>
 				</sgr:basicDataType>
@@ -707,30 +659,27 @@ B11: SILENTMODE 2 AKTIV (WP AUS)
 					<sgr:language>de</sgr:language>
 				</sgr:dpLegibDesc>
 			</sgr:dataPoint>
+			<sgr:genAttribute>
+				<sgr:maxVal>30.0</sgr:maxVal>
+				<sgr:minVal>5.0</sgr:minVal>
+			</sgr:genAttribute>
 			<sgr:modbusDataPoint>
 				<sgr:modbusDataType>
 					<sgr:int16>0</sgr:int16>
 				</sgr:modbusDataType>
-				<sgr:modbusFirstRegisterReference
-					registerType="HoldRegister" addr="1505" bitRank="0" />
+				<sgr:modbusFirstRegisterReference registerType="HoldRegister" addr="1505" bitRank="0" />
 				<sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
 				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
 			</sgr:modbusDataPoint>
-				<sgr:genAttribute>
-					<sgr:maxVal>30.0</sgr:maxVal>
-					<sgr:minVal>5.0</sgr:minVal>
-				</sgr:genAttribute>
-				<sgr:modbusAttr>
-					<sgr:scalingByMulPwr>
-						<sgr:multiplicator>1</sgr:multiplicator>
-						<sgr:powerof10>-1</sgr:powerof10>
-					</sgr:scalingByMulPwr>
-				</sgr:modbusAttr>
+			<sgr:modbusAttr>
+				<sgr:scalingByMulPwr>
+					<sgr:multiplicator>1</sgr:multiplicator>
+					<sgr:powerof10>-1</sgr:powerof10>
+				</sgr:scalingByMulPwr>
+			</sgr:modbusAttr>
 		</sgr:dpListElement>
 		<sgr:dpListElement>
-			<sgr:dataPoint datapointName="FlowWaterTempStpEco"
-				mroVisibilityIndicator="O" rwpDatadirection="R"
-				unit="DEGREES_CELSIUS">
+			<sgr:dataPoint datapointName="FlowWaterTempStpEco" mroVisibilityIndicator="O" rwpDatadirection="R" unit="DEGREES_CELSIUS">
 				<sgr:basicDataType>
 					<sgr:float32>0.0</sgr:float32>
 				</sgr:basicDataType>
@@ -743,31 +692,29 @@ B11: SILENTMODE 2 AKTIV (WP AUS)
 					<sgr:language>de</sgr:language>
 				</sgr:dpLegibDesc>
 			</sgr:dataPoint>
+			<sgr:genAttribute>
+				<sgr:maxVal>30.0</sgr:maxVal>
+				<sgr:minVal>5.0</sgr:minVal>
+			</sgr:genAttribute>
 			<sgr:modbusDataPoint>
 				<sgr:modbusDataType>
 					<sgr:int16>0</sgr:int16>
 				</sgr:modbusDataType>
-				<sgr:modbusFirstRegisterReference
-					registerType="HoldRegister" addr="1506" bitRank="0" />
+				<sgr:modbusFirstRegisterReference registerType="HoldRegister" addr="1506" bitRank="0" />
 				<sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
 				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
 			</sgr:modbusDataPoint>
-				<sgr:genAttribute>
-					<sgr:maxVal>30.0</sgr:maxVal>
-					<sgr:minVal>5.0</sgr:minVal>
-				</sgr:genAttribute>
-				<sgr:modbusAttr>
-					<sgr:scalingByMulPwr>
-						<sgr:multiplicator>1</sgr:multiplicator>
-						<sgr:powerof10>-1</sgr:powerof10>
-					</sgr:scalingByMulPwr>
-				</sgr:modbusAttr>
+			<sgr:modbusAttr>
+				<sgr:scalingByMulPwr>
+					<sgr:multiplicator>1</sgr:multiplicator>
+					<sgr:powerof10>-1</sgr:powerof10>
+				</sgr:scalingByMulPwr>
+			</sgr:modbusAttr>
 		</sgr:dpListElement>
 	</sgr:fpListElement>
-	
+
 	<sgr:fpListElement>
-		<sgr:functionalProfile
-			mroVisibilityIndicator="M" profileName="DomHotWaterCtrl">
+		<sgr:functionalProfile mroVisibilityIndicator="M" profileName="DomHotWaterCtrl">
 			<sgr:profileNumber>
 				<sgr:specsOwnerId>0</sgr:specsOwnerId>
 				<sgr:profileIdentification>HeatPumpControl</sgr:profileIdentification>
@@ -789,9 +736,7 @@ B11: SILENTMODE 2 AKTIV (WP AUS)
 			</sgr:fpLegibDesc>
 		</sgr:functionalProfile>
 		<sgr:dpListElement>
-			<sgr:dataPoint datapointName="ActDomHotWaterTemp"
-				mroVisibilityIndicator="M" rwpDatadirection="R"
-				unit="DEGREES_CELSIUS">
+			<sgr:dataPoint datapointName="ActDomHotWaterTemp" mroVisibilityIndicator="M" rwpDatadirection="R" unit="DEGREES_CELSIUS">
 				<sgr:basicDataType>
 					<sgr:float32>0</sgr:float32>
 				</sgr:basicDataType>
@@ -808,22 +753,19 @@ B11: SILENTMODE 2 AKTIV (WP AUS)
 				<sgr:modbusDataType>
 					<sgr:int16>0</sgr:int16>
 				</sgr:modbusDataType>
-				<sgr:modbusFirstRegisterReference
-					registerType="InputRegister" addr="522" bitRank="0" />
+				<sgr:modbusFirstRegisterReference registerType="InputRegister" addr="522" bitRank="0" />
 				<sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
 				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
 			</sgr:modbusDataPoint>
-				<sgr:modbusAttr>
-					<sgr:scalingByMulPwr>
-						<sgr:multiplicator>1</sgr:multiplicator>
-						<sgr:powerof10>-1</sgr:powerof10>
-					</sgr:scalingByMulPwr>
-				</sgr:modbusAttr>
+			<sgr:modbusAttr>
+				<sgr:scalingByMulPwr>
+					<sgr:multiplicator>1</sgr:multiplicator>
+					<sgr:powerof10>-1</sgr:powerof10>
+				</sgr:scalingByMulPwr>
+			</sgr:modbusAttr>
 		</sgr:dpListElement>
 		<sgr:dpListElement>
-			<sgr:dataPoint datapointName="DomHotWTempStptFb"
-				mroVisibilityIndicator="M" rwpDatadirection="R"
-				unit="DEGREES_CELSIUS">
+			<sgr:dataPoint datapointName="DomHotWTempStptFb" mroVisibilityIndicator="M" rwpDatadirection="R" unit="DEGREES_CELSIUS">
 				<sgr:basicDataType>
 					<sgr:float32>0</sgr:float32>
 				</sgr:basicDataType>
@@ -836,30 +778,27 @@ B11: SILENTMODE 2 AKTIV (WP AUS)
 					<sgr:language>de</sgr:language>
 				</sgr:dpLegibDesc>
 			</sgr:dataPoint>
+			<sgr:genAttribute>
+				<sgr:maxVal>65.0</sgr:maxVal>
+				<sgr:minVal>10.0</sgr:minVal>
+			</sgr:genAttribute>
 			<sgr:modbusDataPoint>
 				<sgr:modbusDataType>
 					<sgr:int16>0</sgr:int16>
 				</sgr:modbusDataType>
-				<sgr:modbusFirstRegisterReference
-					registerType="InputRegister" addr="523" bitRank="0" />
+				<sgr:modbusFirstRegisterReference registerType="InputRegister" addr="523" bitRank="0" />
 				<sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
 				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
 			</sgr:modbusDataPoint>
-				<sgr:genAttribute>
-					<sgr:maxVal>65.0</sgr:maxVal>
-					<sgr:minVal>10.0</sgr:minVal>
-				</sgr:genAttribute>
-				<sgr:modbusAttr>
-					<sgr:scalingByMulPwr>
-						<sgr:multiplicator>1</sgr:multiplicator>
-						<sgr:powerof10>-1</sgr:powerof10>
-					</sgr:scalingByMulPwr>
-				</sgr:modbusAttr>
+			<sgr:modbusAttr>
+				<sgr:scalingByMulPwr>
+					<sgr:multiplicator>1</sgr:multiplicator>
+					<sgr:powerof10>-1</sgr:powerof10>
+				</sgr:scalingByMulPwr>
+			</sgr:modbusAttr>
 		</sgr:dpListElement>
 		<sgr:dpListElement>
-			<sgr:dataPoint datapointName="DomHotWTempStptComf"
-				mroVisibilityIndicator="M" rwpDatadirection="RW"
-				unit="DEGREES_CELSIUS">
+			<sgr:dataPoint datapointName="DomHotWTempStptComf" mroVisibilityIndicator="M" rwpDatadirection="RW" unit="DEGREES_CELSIUS">
 				<sgr:basicDataType>
 					<sgr:float32>0</sgr:float32>
 				</sgr:basicDataType>
@@ -872,30 +811,27 @@ B11: SILENTMODE 2 AKTIV (WP AUS)
 					<sgr:language>de</sgr:language>
 				</sgr:dpLegibDesc>
 			</sgr:dataPoint>
+			<sgr:genAttribute>
+				<sgr:maxVal>60.0</sgr:maxVal>
+				<sgr:minVal>10.0</sgr:minVal>
+			</sgr:genAttribute>
 			<sgr:modbusDataPoint>
 				<sgr:modbusDataType>
 					<sgr:int16>0</sgr:int16>
 				</sgr:modbusDataType>
-				<sgr:modbusFirstRegisterReference
-					registerType="HoldRegister" addr="1510" bitRank="0" />
+				<sgr:modbusFirstRegisterReference registerType="HoldRegister" addr="1510" bitRank="0" />
 				<sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
 				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
 			</sgr:modbusDataPoint>
-				<sgr:genAttribute>
-					<sgr:maxVal>60.0</sgr:maxVal>
-					<sgr:minVal>10.0</sgr:minVal>
-				</sgr:genAttribute>
-				<sgr:modbusAttr>
-					<sgr:scalingByMulPwr>
-						<sgr:multiplicator>1</sgr:multiplicator>
-						<sgr:powerof10>-1</sgr:powerof10>
-					</sgr:scalingByMulPwr>
-				</sgr:modbusAttr>
+			<sgr:modbusAttr>
+				<sgr:scalingByMulPwr>
+					<sgr:multiplicator>1</sgr:multiplicator>
+					<sgr:powerof10>-1</sgr:powerof10>
+				</sgr:scalingByMulPwr>
+			</sgr:modbusAttr>
 		</sgr:dpListElement>
 		<sgr:dpListElement>
-			<sgr:dataPoint datapointName="DomHotWTempStptEco"
-				mroVisibilityIndicator="M" rwpDatadirection="RW"
-				unit="DEGREES_CELSIUS">
+			<sgr:dataPoint datapointName="DomHotWTempStptEco" mroVisibilityIndicator="M" rwpDatadirection="RW" unit="DEGREES_CELSIUS">
 				<sgr:basicDataType>
 					<sgr:float32>0</sgr:float32>
 				</sgr:basicDataType>
@@ -912,23 +848,21 @@ B11: SILENTMODE 2 AKTIV (WP AUS)
 				<sgr:modbusDataType>
 					<sgr:int16>0</sgr:int16>
 				</sgr:modbusDataType>
-				<sgr:modbusFirstRegisterReference
-					registerType="HoldRegister" addr="1511" bitRank="0" />
+				<sgr:modbusFirstRegisterReference registerType="HoldRegister" addr="1511" bitRank="0" />
 				<sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
 				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
 			</sgr:modbusDataPoint>
-				<sgr:modbusAttr>
-					<sgr:scalingByMulPwr>
-						<sgr:multiplicator>1</sgr:multiplicator>
-						<sgr:powerof10>-1</sgr:powerof10>
-					</sgr:scalingByMulPwr>
-				</sgr:modbusAttr>
+			<sgr:modbusAttr>
+				<sgr:scalingByMulPwr>
+					<sgr:multiplicator>1</sgr:multiplicator>
+					<sgr:powerof10>-1</sgr:powerof10>
+				</sgr:scalingByMulPwr>
+			</sgr:modbusAttr>
 		</sgr:dpListElement>
 	</sgr:fpListElement>
-	
+
 	<sgr:fpListElement>
-		<sgr:functionalProfile
-			mroVisibilityIndicator="M" profileName="BufferStorageCtrl">
+		<sgr:functionalProfile mroVisibilityIndicator="M" profileName="BufferStorageCtrl">
 			<sgr:profileNumber>
 				<sgr:specsOwnerId>0</sgr:specsOwnerId>
 				<sgr:profileIdentification>HeatPumpControl</sgr:profileIdentification>
@@ -951,9 +885,7 @@ B11: SILENTMODE 2 AKTIV (WP AUS)
 			</sgr:fpLegibDesc>
 		</sgr:functionalProfile>
 		<sgr:dpListElement>
-			<sgr:dataPoint datapointName="ActHeatBufferTempStpFb"
-				mroVisibilityIndicator="M" rwpDatadirection="R"
-				unit="DEGREES_CELSIUS">
+			<sgr:dataPoint datapointName="ActHeatBufferTempStpFb" mroVisibilityIndicator="M" rwpDatadirection="R" unit="DEGREES_CELSIUS">
 				<sgr:basicDataType>
 					<sgr:float32>0.0</sgr:float32>
 				</sgr:basicDataType>
@@ -975,22 +907,19 @@ B11: SILENTMODE 2 AKTIV (WP AUS)
 				<sgr:modbusDataType>
 					<sgr:int16>0</sgr:int16>
 				</sgr:modbusDataType>
-				<sgr:modbusFirstRegisterReference
-					registerType="InputRegister" addr="519" bitRank="0" />
+				<sgr:modbusFirstRegisterReference registerType="InputRegister" addr="519" bitRank="0" />
 				<sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
 				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
 			</sgr:modbusDataPoint>
-				<sgr:modbusAttr>
-					<sgr:scalingByMulPwr>
-						<sgr:multiplicator>1</sgr:multiplicator>
-						<sgr:powerof10>0</sgr:powerof10>
-					</sgr:scalingByMulPwr>
-				</sgr:modbusAttr>
+			<sgr:modbusAttr>
+				<sgr:scalingByMulPwr>
+					<sgr:multiplicator>1</sgr:multiplicator>
+					<sgr:powerof10>0</sgr:powerof10>
+				</sgr:scalingByMulPwr>
+			</sgr:modbusAttr>
 		</sgr:dpListElement>
 		<sgr:dpListElement>
-			<sgr:dataPoint datapointName="ActHeatBufferTemp"
-				mroVisibilityIndicator="M" rwpDatadirection="R"
-				unit="DEGREES_CELSIUS">
+			<sgr:dataPoint datapointName="ActHeatBufferTemp" mroVisibilityIndicator="M" rwpDatadirection="R" unit="DEGREES_CELSIUS">
 				<sgr:basicDataType>
 					<sgr:float32>0</sgr:float32>
 				</sgr:basicDataType>
@@ -1004,31 +933,29 @@ B11: SILENTMODE 2 AKTIV (WP AUS)
 					<sgr:language>de</sgr:language>
 				</sgr:dpLegibDesc>
 			</sgr:dataPoint>
+			<sgr:genAttribute>
+				<sgr:maxVal>90.0</sgr:maxVal>
+				<sgr:minVal>0.0</sgr:minVal>
+			</sgr:genAttribute>
 			<sgr:modbusDataPoint>
 				<sgr:modbusDataType>
 					<sgr:int16>0</sgr:int16>
 				</sgr:modbusDataType>
-				<sgr:modbusFirstRegisterReference
-					registerType="InputRegister" addr="522" bitRank="0" />
+				<sgr:modbusFirstRegisterReference registerType="InputRegister" addr="522" bitRank="0" />
 				<sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
 				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
 			</sgr:modbusDataPoint>
-				<sgr:genAttribute>
-					<sgr:maxVal>90.0</sgr:maxVal>
-					<sgr:minVal>0.0</sgr:minVal>
-				</sgr:genAttribute>
-				<sgr:modbusAttr>
-					<sgr:scalingByMulPwr>
-						<sgr:multiplicator>1</sgr:multiplicator>
-						<sgr:powerof10>-1</sgr:powerof10>
-					</sgr:scalingByMulPwr>
-				</sgr:modbusAttr>
+			<sgr:modbusAttr>
+				<sgr:scalingByMulPwr>
+					<sgr:multiplicator>1</sgr:multiplicator>
+					<sgr:powerof10>-1</sgr:powerof10>
+				</sgr:scalingByMulPwr>
+			</sgr:modbusAttr>
 		</sgr:dpListElement>
 	</sgr:fpListElement>
 
 	<sgr:fpListElement>
-		<sgr:functionalProfile
-			mroVisibilityIndicator="M" profileName="SG-ReadyStates_bwp">
+		<sgr:functionalProfile mroVisibilityIndicator="M" profileName="SG-ReadyStates_bwp">
 			<sgr:profileNumber>
 				<sgr:specsOwnerId>0</sgr:specsOwnerId>
 				<sgr:profileIdentification>HeatPumpControl</sgr:profileIdentification>
@@ -1055,8 +982,7 @@ die Einbindung in ein intelligentes Stromnetz
 			</sgr:fpLegibDesc>
 		</sgr:functionalProfile>
 		<sgr:dpListElement>
-			<sgr:dataPoint datapointName="SGReadyState"
-				mroVisibilityIndicator="R" rwpDatadirection="R" unit="NONE">
+			<sgr:dataPoint datapointName="SGReadyState" mroVisibilityIndicator="R" rwpDatadirection="R" unit="NONE">
 				<sgr:basicDataType>
 					<sgr:enum>
 						<sgr:sgreadyStateLv2>HP_NORMAL</sgr:sgreadyStateLv2>
@@ -1085,21 +1011,19 @@ die Einbindung in ein intelligentes Stromnetz
 						<sgr:sgreadyStateLv2>HP_NORMAL</sgr:sgreadyStateLv2>
 					</sgr:enum>
 				</sgr:modbusDataType>
-				<sgr:modbusFirstRegisterReference
-					registerType="InputRegister" addr="5001" bitRank="0" />
+				<sgr:modbusFirstRegisterReference registerType="InputRegister" addr="5001" bitRank="0" />
 				<sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
 				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
 			</sgr:modbusDataPoint>
-				<sgr:modbusAttr>
-					<sgr:scalingByMulPwr>
-						<sgr:multiplicator>1</sgr:multiplicator>
-						<sgr:powerof10>0</sgr:powerof10>
-					</sgr:scalingByMulPwr>
-				</sgr:modbusAttr>
+			<sgr:modbusAttr>
+				<sgr:scalingByMulPwr>
+					<sgr:multiplicator>1</sgr:multiplicator>
+					<sgr:powerof10>0</sgr:powerof10>
+				</sgr:scalingByMulPwr>
+			</sgr:modbusAttr>
 		</sgr:dpListElement>
 		<sgr:dpListElement>
-			<sgr:dataPoint datapointName="SGReadyEnabled"
-				unit="NONE" rwpDatadirection="RW" mroVisibilityIndicator="M">
+			<sgr:dataPoint datapointName="SGReadyEnabled" unit="NONE" rwpDatadirection="RW" mroVisibilityIndicator="M">
 				<sgr:basicDataType>
 					<sgr:boolean>true</sgr:boolean>
 				</sgr:basicDataType>
@@ -1108,15 +1032,13 @@ die Einbindung in ein intelligentes Stromnetz
 				<sgr:modbusDataType>
 					<sgr:boolean>true</sgr:boolean>
 				</sgr:modbusDataType>
-				<sgr:modbusFirstRegisterReference
-					registerType="HoldRegister" addr="4001" />
+				<sgr:modbusFirstRegisterReference registerType="HoldRegister" addr="4001" />
 				<sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
 				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
 			</sgr:modbusDataPoint>
 		</sgr:dpListElement>
 		<sgr:dpListElement>
-			<sgr:dataPoint datapointName="SGReadyInp1isON"
-				unit="NONE" rwpDatadirection="RW" mroVisibilityIndicator="M">
+			<sgr:dataPoint datapointName="SGReadyInp1isON" unit="NONE" rwpDatadirection="RW" mroVisibilityIndicator="M">
 				<sgr:basicDataType>
 					<sgr:boolean>true</sgr:boolean>
 				</sgr:basicDataType>
@@ -1125,15 +1047,13 @@ die Einbindung in ein intelligentes Stromnetz
 				<sgr:modbusDataType>
 					<sgr:boolean>true</sgr:boolean>
 				</sgr:modbusDataType>
-				<sgr:modbusFirstRegisterReference
-					registerType="HoldRegister" addr="4002" />
+				<sgr:modbusFirstRegisterReference registerType="HoldRegister" addr="4002" />
 				<sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
 				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
 			</sgr:modbusDataPoint>
 		</sgr:dpListElement>
 		<sgr:dpListElement>
-			<sgr:dataPoint datapointName="SGReadyInp2isON"
-				unit="NONE" rwpDatadirection="RW" mroVisibilityIndicator="M">
+			<sgr:dataPoint datapointName="SGReadyInp2isON" unit="NONE" rwpDatadirection="RW" mroVisibilityIndicator="M">
 				<sgr:basicDataType>
 					<sgr:boolean>true</sgr:boolean>
 				</sgr:basicDataType>
@@ -1142,8 +1062,7 @@ die Einbindung in ein intelligentes Stromnetz
 				<sgr:modbusDataType>
 					<sgr:boolean>true</sgr:boolean>
 				</sgr:modbusDataType>
-				<sgr:modbusFirstRegisterReference
-					registerType="HoldRegister" addr="4003" />
+				<sgr:modbusFirstRegisterReference registerType="HoldRegister" addr="4003" />
 				<sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
 				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
 			</sgr:modbusDataPoint>
@@ -1151,8 +1070,7 @@ die Einbindung in ein intelligentes Stromnetz
 	</sgr:fpListElement>
 
 	<sgr:fpListElement>
-		<sgr:functionalProfile
-			mroVisibilityIndicator="M" profileName="EnergyMonitor">
+		<sgr:functionalProfile mroVisibilityIndicator="M" profileName="EnergyMonitor">
 			<sgr:profileNumber>
 				<sgr:specsOwnerId>0</sgr:specsOwnerId>
 				<sgr:profileIdentification>HeatPumpControl</sgr:profileIdentification>
@@ -1174,9 +1092,7 @@ die Einbindung in ein intelligentes Stromnetz
 			</sgr:fpLegibDesc>
 		</sgr:functionalProfile>
 		<sgr:dpListElement>
-			<sgr:dataPoint datapointName="ThermalEnergyHeat_MWh"
-				mroVisibilityIndicator="R" rwpDatadirection="R"
-				unit="MEGAWATT_HOURS">
+			<sgr:dataPoint datapointName="ThermalEnergyHeat_MWh" mroVisibilityIndicator="R" rwpDatadirection="R" unit="MEGAWATT_HOURS">
 				<sgr:basicDataType>
 					<sgr:int16U>0</sgr:int16U>
 				</sgr:basicDataType>
@@ -1193,26 +1109,23 @@ die Einbindung in ein intelligentes Stromnetz
 				<sgr:modbusDataType>
 					<sgr:int16U>0</sgr:int16U>
 				</sgr:modbusDataType>
-				<sgr:modbusFirstRegisterReference
-					registerType="InputRegister" addr="3503" bitRank="0" />
+				<sgr:modbusFirstRegisterReference registerType="InputRegister" addr="3503" bitRank="0" />
 				<sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
 				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
 			</sgr:modbusDataPoint>
 
-				<sgr:modbusAttr>
-					<sgr:scalingByMulPwr>
-						<sgr:multiplicator>1</sgr:multiplicator>
-						<sgr:powerof10>0</sgr:powerof10>
-					</sgr:scalingByMulPwr>
-				</sgr:modbusAttr>
+			<sgr:modbusAttr>
+				<sgr:scalingByMulPwr>
+					<sgr:multiplicator>1</sgr:multiplicator>
+					<sgr:powerof10>0</sgr:powerof10>
+				</sgr:scalingByMulPwr>
+			</sgr:modbusAttr>
 		</sgr:dpListElement>
 		<sgr:dpListElement>
-			<sgr:dataPoint datapointName="ThermalEnergyHeat_kWh"
-				mroVisibilityIndicator="R" rwpDatadirection="R"
-				unit="KILOWATT_HOURS">
+			<sgr:dataPoint datapointName="ThermalEnergyHeat_kWh" mroVisibilityIndicator="R" rwpDatadirection="R" unit="KILOWATT_HOURS">
 				<sgr:basicDataType>
 					<sgr:int16U>0</sgr:int16U>
-					
+
 				</sgr:basicDataType>
 				<sgr:dpNameList>
 					<sgr:nameType>DataPoint</sgr:nameType>
@@ -1228,23 +1141,21 @@ die Einbindung in ein intelligentes Stromnetz
 				<sgr:modbusDataType>
 					<sgr:int16U>0</sgr:int16U>
 				</sgr:modbusDataType>
-				<sgr:modbusFirstRegisterReference
-					registerType="InputRegister" addr="3502" bitRank="0" />
+				<sgr:modbusFirstRegisterReference registerType="InputRegister" addr="3502" bitRank="0" />
 				<sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
 				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
 			</sgr:modbusDataPoint>
-				<sgr:modbusAttr>
-					<sgr:scalingByMulPwr>
-						<sgr:multiplicator>1</sgr:multiplicator>
-						<sgr:powerof10>0</sgr:powerof10>
-					</sgr:scalingByMulPwr>
-				</sgr:modbusAttr>
+			<sgr:modbusAttr>
+				<sgr:scalingByMulPwr>
+					<sgr:multiplicator>1</sgr:multiplicator>
+					<sgr:powerof10>0</sgr:powerof10>
+				</sgr:scalingByMulPwr>
+			</sgr:modbusAttr>
 		</sgr:dpListElement>
-		
-		
+
+
 		<sgr:dpListElement>
-			<sgr:dataPoint datapointName="RuntimeCompressor"
-				mroVisibilityIndicator="R" rwpDatadirection="R" unit="HOURS">
+			<sgr:dataPoint datapointName="RuntimeCompressor" mroVisibilityIndicator="R" rwpDatadirection="R" unit="HOURS">
 				<sgr:basicDataType>
 					<sgr:float32>0.0</sgr:float32>
 				</sgr:basicDataType>
@@ -1262,18 +1173,16 @@ die Einbindung in ein intelligentes Stromnetz
 				<sgr:modbusDataType>
 					<sgr:int16U>0</sgr:int16U>
 				</sgr:modbusDataType>
-				<sgr:modbusFirstRegisterReference
-					registerType="InputRegister" addr="3539" bitRank="0" />
+				<sgr:modbusFirstRegisterReference registerType="InputRegister" addr="3539" bitRank="0" />
 				<sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
 				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
 			</sgr:modbusDataPoint>
-				<sgr:modbusAttr>
-					<sgr:scalingByMulPwr>
-						<sgr:multiplicator>1</sgr:multiplicator>
-						<sgr:powerof10>0</sgr:powerof10>
-					</sgr:scalingByMulPwr>
-				</sgr:modbusAttr>
+			<sgr:modbusAttr>
+				<sgr:scalingByMulPwr>
+					<sgr:multiplicator>1</sgr:multiplicator>
+					<sgr:powerof10>0</sgr:powerof10>
+				</sgr:scalingByMulPwr>
+			</sgr:modbusAttr>
 		</sgr:dpListElement>
 	</sgr:fpListElement>
-</sgr:SGrModbusDeviceDescriptionType>
-
+</sgr:SGrModbusDeviceFrame>
