@@ -200,6 +200,19 @@
             </tr>
         </xsl:if>
 
+        <!--valueType-->
+        <xsl:if test="sgr:valueType">
+            <tr class="genericDetails">
+                <td>
+                    <img src="/xsl/genattr.png" alt="" width="16pt" height="16pt" />
+                    ValueType
+                </td>
+                <td>
+                    <xsl:value-of select="sgr:valueState" />
+                </td>
+            </tr>
+        </xsl:if>
+
         <!--valueState-->
         <xsl:if test="sgr:valueState">
             <tr class="genericDetails">
@@ -337,4 +350,5 @@
             </tr>
         </xsl:if>
     </xsl:template>
+
 </xsl:stylesheet>  

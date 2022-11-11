@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/SGr.xsl"?>
+<sgr:SGrFunctionalProfileFrame xmlns:sgr="http://www.smartgridready.com/ns/V0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/SGrIncluder.xsd">
+	<sgr:releaseNotes>
+		<sgr:state>Review</sgr:state>
+		<sgr:changelog>
+			<sgr:version>0.1.2</sgr:version>
+			<sgr:date>2021-08-17</sgr:date>
+			<sgr:author>IBT/cb</sgr:author>
+			<sgr:comment>Vorbereitung beta test</sgr:comment>
+		</sgr:changelog>
+		<sgr:changelog>
+			<sgr:version>0.2.2</sgr:version>
+			<sgr:date>2022-10-31</sgr:date>
+			<sgr:author>Ergo/sz</sgr:author>
+			<sgr:comment>Finalisierung Go-Live</sgr:comment>
+		</sgr:changelog>
+	</sgr:releaseNotes>
+	<sgr:functionalProfile mroVisibilityIndicator="M" profileName="SG-ReadyStates_bwp">
+		<sgr:profileNumber>
+			<sgr:specsOwnerId>0</sgr:specsOwnerId>
+			<sgr:profileIdentification>HeatPumpControl</sgr:profileIdentification>
+			<sgr:subProfileIdent>SG-ReadyStates_bwp</sgr:subProfileIdent>
+			<sgr:sgrLevelOfOperation>1</sgr:sgrLevelOfOperation>
+			<sgr:versionNumber>
+				<sgr:primaryVersionNumber>0</sgr:primaryVersionNumber>
+				<sgr:secondaryVersionNumber>2</sgr:secondaryVersionNumber>
+				<sgr:subReleaseVersionNumber>2</sgr:subReleaseVersionNumber>
+			</sgr:versionNumber>
+		</sgr:profileNumber>
+		<sgr:fpNameList>
+			<sgr:nameType>FunctionalProfile</sgr:nameType>
+			<sgr:sLV1Name>SG-Ready 1.0 für Wärmepumpen (bwp)</sgr:sLV1Name>
+		</sgr:fpNameList>
+		<sgr:fpLegibDesc>
+            <!-- TODO: Beschreibung unklar. Ist SGReadyInp2isON von Level2 wirklich SGReadyInp1isON von Level1????
+                       Besser beschreiben dass nur 2 der 4 Zustände abgedeckt werden, und welche.
+            -->
+			<sgr:textElement>
+				<![CDATA[	
+				<img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
+                <h4>Heizungswärmepumpen</h4>
+                <p>Heizungswärmepumpen in Stufe 1 müssen über einen Regler verfügen, der zwei Betriebszustände abdeckt:</p>
+                <ol>
+                <li>Betriebszustand 1 (Schaltzustand, bei Klemmenlösung: 1): Dieser Betriebszustand ist kompatibel häufig zu festen Uhrzeiten geschalteten <strong>EVU-Sperre</strong> und umfasst im Normalfall maximal 2 Stunden „harte“ Sperrzeit.</li>
+                <li>Betriebszustand 2 (Schaltzustand, bei Klemmenlösungen: 0): In dieser Schaltung läuft die Wärmepumpe im energieeffizienten <strong>Normalbetrieb</strong> mit anteiliger Wärmespeicher-Füllung für die maximal zweistündige EVU-Sperre.</li>
+                </ol>
+
+                <p>Hinweis: Geräte mit Stufe 2 können im Stufe 1 Betrieb genutzt werden, wenn der zweite Kontakt fest auf den Zustand 0 verdrahtet wird.</p>
+                ]]>	
+			</sgr:textElement>
+			<sgr:language>de</sgr:language>
+		</sgr:fpLegibDesc>
+	</sgr:functionalProfile>
+	<sgr:dpListElement>
+		<sgr:dataPoint datapointName="SG-Ready Eingang 1" rwpDatadirection="W" unit="NONE" mroVisibilityIndicator="M">
+            <sgr:basicDataType>
+                <sgr:boolean>true</sgr:boolean>
+            </sgr:basicDataType>
+			<sgr:dpLegibDesc>
+				<sgr:textElement>Schaltzustand erste Klemme (0 oder 1)</sgr:textElement>
+				<sgr:language>de</sgr:language>
+			</sgr:dpLegibDesc>
+		</sgr:dataPoint>
+        <sgr:genAttribute>
+            <sgr:maxLockTimeMinutes>120</sgr:maxLockTimeMinutes>
+            <sgr:minRunTimeMinutes>20</sgr:minRunTimeMinutes>
+        </sgr:genAttribute>
+	</sgr:dpListElement>
+</sgr:SGrFunctionalProfileFrame>
