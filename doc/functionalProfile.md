@@ -50,7 +50,7 @@ The release note section contains meta data that descibe history and current sta
 | fpPrgDesc   | optional, can occure multiple times, but ideally just a once per language. Contains details for the programmer. |
 
 ## Generic Attributes
-SGr allows to associate attributes to a functional profile (i.e. concerning every data point). See [SGrAttr4GenericType](SGrAttr4GenericType.md) for details]
+SGr allows to associate attributes to a functional profile (i.e. concerning every data point). See [SGrAttr4GenericType](SGrAttr4GenericType.md) for details.
 
 # Data Point Attributes
 | Element     | Description |
@@ -66,8 +66,7 @@ SGr allows to associate attributes to a functional profile (i.e. concerning ever
 
 
 ## Generic Attributes
-SGr allows to associate attributes to a data point. See [SGrAttr4GenericType](SGrAttr4GenericType.md) for details]
-
+SGr allows to associate attributes to a data point. See [SGrAttr4GenericType](SGrAttr4GenericType.md) for details.
 
 
 ## Open Points
