@@ -4,7 +4,6 @@ A list of relevant namespaces list for to display names used in different standa
 
 | Element | Optional | Description |
 |---------|----------|-------------|
-| nameType | mandatory | One of Device, FunctionalProfile, DataPoint, Other |
 | sLV1Name | optional | names used for SGr label V1 used to secure legacy compatibility |
 | sWorkName | optional | work names for temporary use |
 | sManufName | optional | manufacturers may use an internal wording |
