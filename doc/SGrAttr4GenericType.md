@@ -14,11 +14,7 @@ These attributes are generally used to search for devices that fullfil a set of 
 | specQualityRequirement | string | indicates Quality requirements fullfilled like formal certifications | METAS  |
 | precision | float | the precision of a measurement, calculation result or result of a controls process | 2.0% |
 
-## Configuration attributes concerning data point communication
-These values give further information on how to use the data points.
-
-
-### Stability Fallback
+## Stability Fallback
 A consumer or a generating system receives the permit for a load change for a certain period of time. This time is always set to 0 each time a confirmation message is received (HeartBeat).
 
 | Stability Fallback Value | Data Type | Description | Example |
@@ -27,10 +23,16 @@ A consumer or a generating system receives the permit for a load change for a ce
 | initValue | | | |
 | fallbackValue | | | |
 
-### Smooth Transition
+## Smooth Transition
 The time behavior of a transition from a power adjustment (positive as well as negative) can be determined by several time values, so that this starts with a random time delay, changes via a ramp and an expiry time with return to the initial value.
 
+The figure below depicts the typical flow
+1. the command for the new target value is received
+2. the device starts the ramp randomly within the specified time window
+3. the ramp reaches the new target value within the specified ramp time
+
 ![SGr Smooth Transition](genAttributes_smoothTransition.drawio.png)
+
 
 | Smooth Transition Value | Data Type | Description | Example |
 |---------------|-----------|-------------|---------|
@@ -39,11 +41,15 @@ The time behavior of a transition from a power adjustment (positive as well as n
 | rvrtTms | unsigned long | determines how long the operating mode should be active. When the time has elapsed, the operating mode is automatically terminated. If rvrtTms = 0 (standard value), the operating mode remains active until a new command is received.| |
 
 
-
 ## Communication Timing Attributes
 Timing attributes describe the details of asynchronous sampling, where the product itself pushes data point measurements to its suscribers (e.g. communicator). Especially in larger networks these attributes are absolutely necessary to avoid cluttering and overloading of the transport layer.
 
 The SGr timing attributes allow for heart-beat based data point sampling as well as interrupt-based sampling if the measured value changes beyond a configured threshold.
+
+The figure below depicts typical situations
+1. a new value is sent if it changes at least by minSendDelta
+2. for large changes in value the device waits at least for minSendTime
+3. for small changes the device sends a new value at least after maxSendTime
 
 ![SGr Timing Attributes](genAttributes_timing.drawio.png)
 
@@ -55,40 +61,30 @@ The SGr timing attributes allow for heart-beat based data point sampling as well
 | maxReceiveTime | float | The maximum time between 2 notifications in seconds, after which a timeout has to be generated including a reset to the default value. | 20 s |
 | maxLatencyTime | unsignedLong | Maximum occurring or permitted delay time, e.g. of a data transaction |0.1 s |
 
-## Time stamps
-- timeStampLog
-- timeRange
+## Time Stamps
+| SGr Attribute | Data Type | Description | Example |
+|---------------|-----------|-------------|---------|
+| timeStampLog  | ISO date time | Time stamp of the measured value, either in UTC zulu time, or including a time zone. The usage of local time is supported, but discouraged | 2001-12-31T12:00:00 |
+| timeRange | startTime, endTime | time range min…max | |
 
-## Data point state
-- valueType
-- valueTendency
-- valueState
+## Data Point Quality
+
+SGr has attributes to denote the quality of the mesaured value. The presence of any quality attributes either on functional profile or data point level indicate that the com handler will provide these dynamic attributes at run time (see documentation of SGr com handler libs)
 
 
-## Transport Layer: Modbus
-- scalingByMulPwr
-- stepByIncrement
-- sunssf
-- pollLatencyMS
-- timeAlignedNotification
-
-## Transport Layer: Contact
-- stabilisationTime
-
+| SGr Attribute | Data Type | Description | Example |
+|---------------|-----------|-------------|---------|
+| valueType | enum | MeasValueType: type of measurement. Possbile values are "min", max", "average", "stdDev" | average |
+| valueState | enum | MeasValueState: Status / validity of the measurement. Possible values are "normal", "error" | normal |
+| valueTendency | enum | value trend based on timely changes, potential values are rising, stable, falling | stable |
+| valueSource | enum | Value source kind related to SGr level 6 applications. Potential values are measuredValue, calculatedValue, empiricalValue | measuredValue |
 
 ## TODO
 Curtailment, MinLoad, MaxLoad MaxLockTime MinRuntime
 
 
 
-| SGr Attribute | Data Type | Description | Example |
-|---------------|-----------|-------------|---------|
-| timeStampLog | dateTime | This is the date Time Value indicates that any value generation must be paired with the time of either a measuement was taken or where a higher controls software level indicates when it got the value |
-| timeRange | sgr:SGrTimeRangeType |  time range min…max |
-| valueType | sgr:SGrMeasValueType | MeasValueType: type of measurement. Possbile values are "min", max", "average", "stdDev" |
-| valueState | sgr:SGrMeasValueStateType | MeasValueState: Status / validity of the measurement. Possible values are "normal", "outOfRange", "error" |
-| valueTendency | sgr:SGrMeasValueTendencyType | value trend based on timely changes, potential values are rising, stable, falling |
-| valueSource | sgr:SGrMeasValueSourceType | Value source kind related to SGr level 6 applications. Potential values are measuredValue, calculatedValue, empiricalValue |
+empiricalValue |
 | sampleRate | float | SampleRate in milliseconds |
 | curtailment | float |  |
 | minLoad | float |  |
@@ -99,5 +95,18 @@ Curtailment, MinLoad, MaxLoad MaxLockTime MinRuntime
 
 
 ## Open Points
-- maxLatencyTime unit should be float (for consistency, and sub-second latency should be supported)
-- maxReceiveTime - can we remove this?
+- Stability Fallback
+  - document!
+- Timing attributes
+  - maxLatencyTime unit should be float (for consistency, and sub-second latency should be supported)
+  - currently neither RestAPI nor Modbus support these attributes. Correct?
+- Smooth Transition
+  - maxReceiveTime - can we remove this? Otherwise show in figure
+  - Does the device support this functionality? who absorbes the randomness?
+- Timestamp
+  - timeStampLog should not be a generic attribute, but delivered automatically by the com handler. Generate an issue for java / python
+  - what is the intent of timeRange?
+- Quality
+  - the com handler implementations should provide the values of these attributes. Generate an issue for java / python
+  - valueState: enum outOfRange is documented, but not defined in schema. Remove from doc, or extend schema.
+  - valueType & valueSource should be moved to static data point attributes
