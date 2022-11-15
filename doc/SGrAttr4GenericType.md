@@ -59,7 +59,7 @@ The figure below depicts typical situations
 | minSendTime | float | The fastest possible or allowable sequence of notifications in seconds (i.e. maximum sampling frequency) | 1.0 s |
 | maxSendTime | float | The maximum time between 2 notifications in seconds (heart-beat based sampling)| 10 s |
 | maxReceiveTime | float | The maximum time between 2 notifications in seconds, after which a timeout has to be generated including a reset to the default value. | 20 s |
-| maxLatencyTime | unsignedLong | Maximum occurring or permitted delay time, e.g. of a data transaction |0.1 s |
+| maxLatencyTimeMs | unsignedLong | Maximum occurring or permitted delay time in Milliseconds, e.g. of a data transaction | 10 ms |
 
 ## Time Stamps
 | SGr Attribute | Data Type | Description | Example |
@@ -98,8 +98,7 @@ empiricalValue |
 - Stability Fallback
   - document!
 - Timing attributes
-  - maxLatencyTime unit should be float (for consistency, and sub-second latency should be supported)
-  - currently neither RestAPI nor Modbus support these attributes. Correct?
+    - currently neither RestAPI nor Modbus support these attributes. Correct?
 - Smooth Transition
   - maxReceiveTime - can we remove this? Otherwise show in figure
   - Does the device support this functionality? who absorbes the randomness?

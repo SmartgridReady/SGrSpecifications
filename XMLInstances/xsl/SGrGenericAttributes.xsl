@@ -160,14 +160,14 @@
         </xsl:if>
 
         <!--maxLatencyTime-->
-        <xsl:if test="sgr:maxLatencyTime">
+        <xsl:if test="sgr:maxLatencyTimeMs">
             <tr class="genericDetails">
                 <td>
                     <img src="/xsl/genattr.png" alt="" width="16pt" height="16pt" />
                     Max. Latency
                 </td>
                 <td>
-                    <xsl:value-of select="sgr:maxLatencyTime" />
+                    <xsl:value-of select="sgr:maxLatencyTimeMs" />
                 </td>
             </tr>
         </xsl:if>
