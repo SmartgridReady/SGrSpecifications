@@ -47,7 +47,8 @@ The release note section contains meta data that descibe history and current sta
 |-------------|-------------|
 | fpNameList  | a list of relevant namespaces list for to display names used in different standards like EEBUS, IEC6850,, SAREF4ENER etc. (see [SGrNamelistType](SGrNamelistType.md))|
 | fpLegibDesc | optional, can occure multiple times, but ideally just a once per language. Contains details concerning the intended use case of the functional profile. |
-| fpPrgDesc   | optional, can occure multiple times, but ideally just a once per language. Contains details for the programmer. |
+| fpPrgDesc   | optional, can occure multiple times, but ideally just a once per language. Contains details for the programmer. This element should only be used in external interfaces, not in functional profiles. (see #28) |
+
 
 ## Generic Attributes
 SGr allows to associate attributes to a functional profile (i.e. concerning every data point). See [SGrAttr4GenericType](SGrAttr4GenericType.md) for details.
@@ -62,7 +63,7 @@ SGr allows to associate attributes to a functional profile (i.e. concerning ever
 | DataType |  Data point type|
 | dpNameList | a list of relevant namespaces list for to display names used in different standards like EEBUS, IEC6850,, SAREF4ENER etc. (see [SGrNamelistType](SGrNamelistType.md))|
 | dpLegibDesc | optional, can occure multiple times, but ideally just a once per language. Contains details concerning the intended use case of the functional profile. |
-| dpPrgDesc | optional, can occure multiple times, but ideally just a once per language. Contains details for the programmer. |
+| dpPrgDesc | optional, can occure multiple times, but ideally just a once per language. Contains details for the programmer. This element should only be used in external interfaces, not in functional profiles. (see #28) |
 
 
 ## Generic Attributes
@@ -72,5 +73,3 @@ SGr allows to associate attributes to a data point. See [SGrAttr4GenericType](SG
 ## Open Points
 - What is the intent of the attribute sgr:functionalProfile@mroVisibilityIndicator? Optionality on the device is handled by the fact that the functional profile is either present or not.
 - What are the rules for naming a functional profile (sgr:functionalProfile@profileName)? Is this strict (then it should be part of the classification), or loose (then it should be part of the legibDesc)?
-- fpNameList: why do we need the nameType? This is clear implicidtly by the context of usage.
-- fpPrgDesc: on which level? functionality (if yes this should be part of legibDesc)? device specifica (if yes this should be part of external interface)
