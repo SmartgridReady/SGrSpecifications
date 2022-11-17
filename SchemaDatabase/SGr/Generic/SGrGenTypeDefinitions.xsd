@@ -77,14 +77,6 @@
 			</documentation>
     </annotation>
     <sequence maxOccurs="1" minOccurs="1">
-      <element maxOccurs="1" minOccurs="1" name="nameType" type="sgr:SGrNamelistKindOfType">
-        <annotation>
-          <documentation>is used to define where this naming is place in a
-						device-architecture hierarchy way Device; FunctionalProfile;
-						DataPoint
-					</documentation>
-        </annotation>
-      </element>
       <element maxOccurs="1" minOccurs="0" name="sLV1Name" type="string">
         <annotation>
           <documentation>names used for SGr label V1 used to secure legacy
@@ -271,23 +263,6 @@
       <enumeration value="en" />
       <enumeration value="fr" />
       <enumeration value="it" />
-    </restriction>
-  </simpleType>
-  <simpleType name="SGrNamelistKindOfType">
-    <annotation>
-      <documentation />
-    </annotation>
-    <restriction base="Name">
-      <enumeration value="Device">
-        <annotation>
-          <documentation>Identifies the level of the names used -Device
-						-FunctionalProfile -DataPoint -other
-					</documentation>
-        </annotation>
-      </enumeration>
-      <enumeration value="FunctionalProfile" />
-      <enumeration value="DataPoint" />
-      <enumeration value="other" />
     </restriction>
   </simpleType>
   <complexType name="SGrVersionNumberType">
@@ -663,10 +638,10 @@
 					</documentation>
         </annotation>
       </element>
-      <element maxOccurs="1" minOccurs="0" name="maxLatencyTime" type="unsignedLong">
+      <element maxOccurs="1" minOccurs="0" name="maxLatencyTimeMs" type="unsignedLong">
         <annotation>
           <documentation> Maximum occurring or permitted delay time, e.g. of
-						a data transaction
+						a data transaction in milliseconds
 					</documentation>
         </annotation>
       </element>
@@ -692,7 +667,7 @@
       <element maxOccurs="1" minOccurs="0" name="valueState" type="sgr:SGrMeasValueStateType">
         <annotation>
           <documentation> MeasValueState: Status / validity of the
-						measurement. Possible values are "normal", "outOfRange", "error"
+						measurement. Possible values are "normal", "error"
 					</documentation>
         </annotation>
       </element>
@@ -796,7 +771,7 @@
   </complexType>
   <complexType name="SGrTimeRangeType">
     <annotation>
-      <documentation>ime range min…max</documentation>
+      <documentation>time range min…max</documentation>
     </annotation>
     <sequence>
       <element maxOccurs="1" minOccurs="1" name="startTime" type="time">

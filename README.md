@@ -5,7 +5,8 @@ Contains the schema, functional profiles and external interface descriptions for
 For schema details see /SchemaDatabase/SGr/
 
 #### Functional Profiles
-/XMLInstances/FuncProfiles/ contains the published function profiles
+/XMLInstances/FuncProfiles/ contains the published function profiles.
+See [doc/functionalProfile.md](doc/functionalProfile.md) for details.
 
 #### External Interfaces
 XMLInstances/ExtInterfaces/ contains the defined external interfaces.

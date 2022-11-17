@@ -409,15 +409,15 @@
                             </tr>
                         </xsl:if>
 
-                        <!--maxLatencyTime-->
-                        <xsl:if test="//sgr:maxLatencyTime">
+                        <!--maxLatencyTimeM-->
+                        <xsl:if test="//sgr:maxLatencyTimeMs">
                             <tr class="genericDetails">
                                 <td>
                                     <img src="/xsl/genattr.png" alt="" width="16pt" height="16pt" />
-                                    maxLatencyTime
+                                    maxLatencyTimeMs
                                 </td>
                                 <td>unsigned long</td>
-                                <td>Maximum occurring or permitted delay time, e.g. of a data transaction</td>
+                                <td>Maximum occurring or permitted delay time in milliseconds, e.g. of a data transaction</td>
                             </tr>
                         </xsl:if>
 
