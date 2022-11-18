@@ -17,7 +17,7 @@
 	</sgr:deviceProfile>
 	<sgr:restAPIInterfaceDesc>
 		<sgr:restAPIInterfaceSelection>trspSrvRestURI</sgr:restAPIInterfaceSelection>
-		<sgr:trspSrvRestURIoutOfBox>https://cloud.clemap.com:3032</sgr:trspSrvRestURIoutOfBox>
+		<sgr:trspSrvRestURIoutOfBox>{{baseUri}}</sgr:trspSrvRestURIoutOfBox>
 		<sgr:restAPIAuthenticationMethod>BearerSecurityScheme</sgr:restAPIAuthenticationMethod>
 		<sgr:restAPIBearer>
 			<sgr:serviceCall>
@@ -83,7 +83,6 @@
 				<sgr:restServiceCall>
 					<sgr:requestHeader>
 						<sgr:header headerName="Accept" value="application/json" />
-						<sgr:header headerName="Authentication" value="Bearer {{bearerToken}}" />
 					</sgr:requestHeader>
 					<sgr:requestMethod>GET</sgr:requestMethod>
 					<sgr:requestPath>/digitaltwins/?sensor_id={{sensor_id}}</sgr:requestPath>
@@ -104,7 +103,6 @@
 				<sgr:restServiceCall>
 					<sgr:requestHeader>
 						<sgr:header headerName="Accept" value="application/json" />
-						<sgr:header headerName="Authentication" value="Bearer {{bearerToken}}" />
 					</sgr:requestHeader>
 					<sgr:requestMethod>GET</sgr:requestMethod>
 					<sgr:requestPath>/digitaltwins/?sensor_id={{sensor_id}}</sgr:requestPath>
@@ -113,8 +111,7 @@
 						<sgr:query>[0].ten_sec.p_l2</sgr:query>
 					</sgr:responseQuery>
 				</sgr:restServiceCall>
-			</sgr:restAPIDataPoint>
-
+			</sgr:restAPIDataPoint>			
 		</sgr:dpListElement>
 		<sgr:dpListElement>
 			<sgr:dataPoint mroVisibilityIndicator="R"
@@ -126,7 +123,6 @@
 				<sgr:restServiceCall>
 					<sgr:requestHeader>
 						<sgr:header headerName="Accept" value="application/json" />
-						<sgr:header headerName="Authentication" value="Bearer {{bearerToken}}" />
 					</sgr:requestHeader>
 					<sgr:requestMethod>GET</sgr:requestMethod>
 					<sgr:requestPath>/digitaltwins/?sensor_id={{sensor_id}}</sgr:requestPath>
