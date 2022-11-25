@@ -83,9 +83,9 @@ SGr has attributes to denote the quality of the mesaured value. The presence of 
 | valueSource | enum | Value source kind related to SGr level 6 applications. Potential values are measuredValue, calculatedValue, empiricalValue | measuredValue |
 
 ## TODO
-| SGr Attribute | Data Type | Description |
-|---------------|-----------|-------------|
-| curtailment | float |  |
+| SGr Attribute | Data Type | Description | Example |
+|---------------|-----------|-------------|---------|
+| curtailment | float | Used in state-based reduction schemes. This value specifies the reduction in percent for the reduced operation mode. | 40% | 
 | minLoad | float |  |
 | maxLockTimeMinutes | float |  |
 | minRunTimeMinutes | float |  |

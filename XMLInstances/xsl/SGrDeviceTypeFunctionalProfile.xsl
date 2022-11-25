@@ -518,8 +518,7 @@
                                     curtailment
                                 </td>
                                 <td>float</td>
-                                <td>Absenkung der Rückspeisung: Wert in % der aktuell gelieferten Rückspeisung beim Übergang in den Betriebsmode reduziert</td>
-                                <!-- TODO: translate to english -->
+                                <td>Used in state-based reduction schemes. This value specifies the reduction in percent for the reduced operation mode.</td>
                             </tr>
                         </xsl:if>
 
