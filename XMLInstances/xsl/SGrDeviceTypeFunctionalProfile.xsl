@@ -339,16 +339,16 @@
                                     smoothTransition
                                 </td>
                                 <td>
-                                    <p>Window: optional, ms, unsigned long. (Indicates a time window in which the new operating
+                                    <p>Window: optional, seconds, unsigned long. (Indicates a time window in which the new operating
                                     mode is started randomly. The time window begins with the start
                                     command of the operating mode. The value 0 means immediate.)</p>
-                                    <p>rvrt:  optional, ms, unsigned long. (determines how long the operating mode should be
+                                    <p>rmp: optional, seconds, unsigned long. (specifies how quickly the changes should be made.
+                                        The corresponding value is gradually changed from the old to the
+                                        new value in the specified time.)</p>
+                                    <p>rvrt:  optional, seconds, unsigned long. (determines how long the operating mode should be
                                     active. When the time has elapsed, the operating mode is
                                     automatically terminated. If rvrtTms = 0 (standard value), the
                                     operating mode remains active until a new command is received.)</p>
-                                    <p>rmp: optional, ms, unsigned long. (specifies how quickly the changes should be made.
-                                    The corresponding value is gradually changed from the old to the
-                                    new value in the specified time.)</p>
                                 </td>
                                 <td>
                                     The time behavior of a transition from a power
@@ -356,7 +356,6 @@
                                     several time values, so that this starts with a random time delay,
                                     changes via a ramp and an expiry time with return to the initial
                                     value (see IEC-61850-90-7).
-                                    <img src="/xsl/genAttribute_smoothTransition.png" />
                                 </td>
                             </tr>
                         </xsl:if>
@@ -589,6 +588,11 @@
                         </xsl:if>
 
                     </table>
+
+                    <xsl:if test="//sgr:smoothTransition">
+                        <h3>Smooth Transition Timing</h3>
+                        <img src="/xsl/genAttributes_smoothTransition.drawio.png" width="100%"/>
+                    </xsl:if>
                 </div>
             </xsl:if>
 

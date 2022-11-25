@@ -85,23 +85,23 @@
             <tr class="genericDetails">
                 <td>
                     <img src="/xsl/genattr.png" alt="" width="16pt" height="16pt" />
-                    Stability Fallback
+                    Smooth Transition
                 </td>
                 <td>
                     <xsl:if test="sgr:smoothTransition/sgr:winTms">
                         Window:
                         <xsl:value-of select="sgr:smoothTransition/sgr:winTms" />
-                        ms&#160;
+                        s&#160;
                     </xsl:if>
                     <xsl:if test="sgr:smoothTransition/sgr:rvrtTms">
                         rvrt:
                         <xsl:value-of select="sgr:smoothTransition/sgr:rvrtTms" />
-                        ms&#160;
+                        s&#160;
                     </xsl:if>
                     <xsl:if test="sgr:smoothTransition/sgr:rmpTms">
                         rmp:
                         <xsl:value-of select="sgr:smoothTransition/sgr:rmpTms" />
-                        ms&#160;
+                        s&#160;
                     </xsl:if>
                 </td>
             </tr>
