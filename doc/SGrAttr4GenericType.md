@@ -67,7 +67,6 @@ SGr has attributes to denote the quality of the mesaured value. The presence of 
 
 | SGr Attribute | Data Type | Description | Example |
 |---------------|-----------|-------------|---------|
-| valueTendency | enum | value trend based on timely changes, potential values are rising, stable, falling | stable |
 | valueSource | enum | Value source kind related to SGr level 6 applications. Potential values are measuredValue, calculatedValue, empiricalValue | measuredValue |
 
 ## TODO

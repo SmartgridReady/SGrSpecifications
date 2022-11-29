@@ -385,18 +385,6 @@
                             </tr>
                         </xsl:if>
 
-                        <!--valueTendency-->
-                        <xsl:if test="//sgr:valueTendency">
-                            <tr class="genericDetails">
-                                <td>
-                                    <img src="/xsl/genattr.png" alt="" width="16pt" height="16pt" />
-                                    valueTendency
-                                </td>
-                                <td>rising, stable, falling</td>
-                                <td>value trend based on timely changes</td>
-                            </tr>
-                        </xsl:if>
-
                         <!--valueSource-->
                         <xsl:if test="//sgr:valueSource">
                             <tr class="genericDetails">

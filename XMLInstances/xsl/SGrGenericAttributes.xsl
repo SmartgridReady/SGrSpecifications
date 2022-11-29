@@ -119,7 +119,7 @@
                 </td>
             </tr>
         </xsl:if>
-
+        
         <!--valueType-->
         <xsl:if test="sgr:valueType">
             <tr class="genericDetails">
@@ -129,19 +129,6 @@
                 </td>
                 <td>
                     <xsl:value-of select="sgr:valueType" />
-                </td>
-            </tr>
-        </xsl:if>
-
-        <!--valueTendency-->
-        <xsl:if test="sgr:valueTendency">
-            <tr class="genericDetails">
-                <td>
-                    <img src="/xsl/genattr.png" alt="" width="16pt" height="16pt" />
-                    Value Tendency
-                </td>
-                <td>
-                    <xsl:value-of select="sgr:valueTendency" />
                 </td>
             </tr>
         </xsl:if>
