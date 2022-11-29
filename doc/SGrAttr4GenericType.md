@@ -23,11 +23,19 @@ These attributes are generally used to search for devices that fullfil a set of 
 ## Stability Fallback
 A consumer or a generating system receives the permit for a load change for a certain period of time. This time is always set to 0 each time a confirmation message is received (HeartBeat).
 
+The figure below depicts the typical flow
+1. the device starts at initial value.
+2. regular communication starts. The communicator periodically sets new set values.
+3. communication breaks. The device recieves its last set value.
+4. after reaching the timeout the device automatically sets the fallback value.
+
+![SGr Stability Fallback](genAttributes_sstabilityFallback.drawio.png)
+
 | Stability Fallback Value | Data Type | Description | Example |
 |---------------|-----------|-------------|---------|
-| maxReceiveTime | | | |
-| initValue | | | |
-| fallbackValue | | | |
+| maxReceiveTime | float | If the device does not receive any communication within this time the device applies the fallback.| 3600.0 s |
+| initValue | float | Initial value the device before the communicator sets this value (e.g.  at startup, or beginning of cycle).| 6.0 A |
+| fallbackValue | float | Value the device uses in case of a fallback | 6.0 A |
 
 ## Smooth Transition
 The time behavior of a transition from a power adjustment (positive as well as negative) can be determined by several time values, so that this starts with a random time delay, changes via a ramp and an expiry time with return to the initial value. To avoid return to the initial value the device must either specify the revert time to zero (i.e. no return), or the communicator must repeat the target value before the revert time window expires.
