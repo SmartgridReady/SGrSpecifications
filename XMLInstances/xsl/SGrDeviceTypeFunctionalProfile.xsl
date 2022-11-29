@@ -380,7 +380,7 @@
                                     <img src="/xsl/genattr.png" alt="" width="16pt" height="16pt" />
                                     valueType
                                 </td>
-                                <td>min, max, average, stdDev</td>
+                                <td>value, min, max, average, stdDev</td>
                                 <td>Type of data point collection.</td>
                             </tr>
                         </xsl:if>
