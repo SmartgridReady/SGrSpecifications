@@ -624,13 +624,6 @@
           <documentation> MeasValueType: type of measurement. Possbile values are "value", "min", max", "average", "stdDev"</documentation>
         </annotation>
       </element>
-      <element maxOccurs="1" minOccurs="0" name="valueState" type="sgr:SGrMeasValueStateType">
-        <annotation>
-          <documentation> MeasValueState: Status / validity of the
-						measurement. Possible values are "normal", "error"
-					</documentation>
-        </annotation>
-      </element>
       <element maxOccurs="1" minOccurs="0" name="valueTendency" type="sgr:SGrMeasValueTendencyType">
         <annotation>
           <documentation> value trend based on timely changes, potential
@@ -750,15 +743,6 @@
       <enumeration value="max" />
       <enumeration value="average" />
       <enumeration value="stdDev" />
-    </restriction>
-  </simpleType>
-  <simpleType name="SGrMeasValueStateType">
-    <annotation>
-      <documentation>E0001</documentation>
-    </annotation>
-    <restriction base="string">
-      <enumeration value="normal" />
-      <enumeration value="error" />
     </restriction>
   </simpleType>
   <simpleType name="SGrMeasValueTendencyType">
@@ -1065,7 +1049,6 @@
 
   <complexType name="SGrEnumListType">
     <choice>
-      <element maxOccurs="1" minOccurs="1" name="sgrMeasValueState" type="sgr:SGrMeasValueStateType" />
       <element maxOccurs="1" minOccurs="1" name="sgrMeasValueTendency" type="sgr:SGrMeasValueTendencyType" />
       <element maxOccurs="1" minOccurs="1" name="sgrMeasValueSource" type="sgr:SGrMeasValueSourceType" />
       <element maxOccurs="1" minOccurs="1" name="sgrPowerSource" type="sgr:SGrPowerSourceType" />

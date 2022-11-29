@@ -128,20 +128,7 @@
                     ValueType
                 </td>
                 <td>
-                    <xsl:value-of select="sgr:valueState" />
-                </td>
-            </tr>
-        </xsl:if>
-
-        <!--valueState-->
-        <xsl:if test="sgr:valueState">
-            <tr class="genericDetails">
-                <td>
-                    <img src="/xsl/genattr.png" alt="" width="16pt" height="16pt" />
-                    Value Statue
-                </td>
-                <td>
-                    <xsl:value-of select="sgr:valueState" />
+                    <xsl:value-of select="sgr:valueType" />
                 </td>
             </tr>
         </xsl:if>

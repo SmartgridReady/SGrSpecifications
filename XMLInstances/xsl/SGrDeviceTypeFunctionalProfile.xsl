@@ -385,18 +385,6 @@
                             </tr>
                         </xsl:if>
 
-                        <!--valueState-->
-                        <xsl:if test="//sgr:valueState">
-                            <tr class="genericDetails">
-                                <td>
-                                    <img src="/xsl/genattr.png" alt="" width="16pt" height="16pt" />
-                                    valueState
-                                </td>
-                                <td>normal, error</td>
-                                <td>Status / validity of the measurement.</td>
-                            </tr>
-                        </xsl:if>
-
                         <!--valueTendency-->
                         <xsl:if test="//sgr:valueTendency">
                             <tr class="genericDetails">

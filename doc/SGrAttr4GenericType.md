@@ -67,7 +67,6 @@ SGr has attributes to denote the quality of the mesaured value. The presence of 
 
 | SGr Attribute | Data Type | Description | Example |
 |---------------|-----------|-------------|---------|
-| valueState | enum | MeasValueState: Status / validity of the measurement. Possible values are "normal", "error" | normal |
 | valueTendency | enum | value trend based on timely changes, potential values are rising, stable, falling | stable |
 | valueSource | enum | Value source kind related to SGr level 6 applications. Potential values are measuredValue, calculatedValue, empiricalValue | measuredValue |
 
@@ -83,12 +82,6 @@ SGr has attributes to denote the quality of the mesaured value. The presence of 
 
 
 ## Open Points
-- Stability Fallback
-  - document!
-- Timing attributes
-    - currently neither RestAPI nor Modbus support these attributes. Correct?
-- Smooth Transition
-  - Does the device support this functionality? who absorbes the randomness?
 - Quality
   - the com handler implementations should provide the values of these attributes. Generate an issue for java / python
-  - valueState: enum outOfRange is documented, but not defined in schema. Remove from doc, or extend schema.
+  

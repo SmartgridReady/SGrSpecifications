@@ -37,7 +37,6 @@
     </xsl:template>
     <xsl:template name="SGrEnumListTyp">
         <xsl:choose>
-            <xsl:when test="sgr:sgrMeasValueState">MeasValueState</xsl:when>
             <xsl:when test="sgr:sgrMeasValueTendency">MeasValueTendency</xsl:when>
             <xsl:when test="sgr:sgrMeasValueSource">MeasValueSource</xsl:when>
             <xsl:when test="sgr:sgrPowerSource">PowerSource</xsl:when>
