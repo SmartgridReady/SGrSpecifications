@@ -373,21 +373,6 @@
                             </tr>
                         </xsl:if>
 
-                        <!--timeStampLog-->
-                        <xsl:if test="//sgr:timeStampLog">
-                            <tr class="genericDetails">
-                                <td>
-                                    <img src="/xsl/genattr.png" alt="" width="16pt" height="16pt" />
-                                    timeStampLog
-                                </td>
-                                <td>dateTime</td>
-                                <td>This is the date Time Value indicates that any
-                                value generation must be paired with the time of either a
-                                measuement was taken or where a higher controls software level
-                                indicates when it got the value</td>
-                            </tr>
-                        </xsl:if>
-
                         <!--timeRange-->
                         <xsl:if test="//sgr:timeRange">
                             <tr class="genericDetails">

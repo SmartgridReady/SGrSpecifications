@@ -62,7 +62,6 @@ The figure below depicts the typical flow
 ## Time Stamps
 | SGr Attribute | Data Type | Description | Example |
 |---------------|-----------|-------------|---------|
-| timeStampLog  | ISO date time | Time stamp of the measured value, either in UTC zulu time, or including a time zone. The usage of local time is supported, but discouraged | 2001-12-31T12:00:00 |
 | timeRange | startTime, endTime | time range min…max | |
 
 ## Data Point Quality
@@ -96,7 +95,6 @@ SGr has attributes to denote the quality of the mesaured value. The presence of 
 - Smooth Transition
   - Does the device support this functionality? who absorbes the randomness?
 - Timestamp
-  - timeStampLog should not be a generic attribute, but delivered automatically by the com handler. Generate an issue for java / python
   - what is the intent of timeRange?
 - Quality
   - the com handler implementations should provide the values of these attributes. Generate an issue for java / python
