@@ -120,21 +120,6 @@
             </tr>
         </xsl:if>
 
-        <!--timeRange-->
-        <xsl:if test="sgr:timeRange">
-            <tr class="genericDetails">
-                <td>
-                    <img src="/xsl/genattr.png" alt="" width="16pt" height="16pt" />
-                    Time Range
-                </td>
-                <td>
-                    <xsl:value-of select="sgr:timeRange/sgr:startTime" />
-                    -
-                    <xsl:value-of select="sgr:timeRange/sgr:endTime" />
-                </td>
-            </tr>
-        </xsl:if>
-
         <!--valueType-->
         <xsl:if test="sgr:valueType">
             <tr class="genericDetails">

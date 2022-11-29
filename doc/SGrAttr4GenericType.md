@@ -59,11 +59,6 @@ The figure below depicts the typical flow
 | rvrtTms | unsigned long | determines how long the operating mode should be active. When the time has elapsed, the operating mode is automatically terminated. If rvrtTms = 0 (standard value), the operating mode remains active until a new command is received.| 7'200 s|
 
 
-## Time Stamps
-| SGr Attribute | Data Type | Description | Example |
-|---------------|-----------|-------------|---------|
-| timeRange | startTime, endTime | time range min…max | |
-
 ## Data Point Quality
 
 SGr has attributes to denote the quality of the mesaured value. The presence of any quality attributes either on functional profile or data point level indicate that the com handler will provide these dynamic attributes at run time (see documentation of SGr com handler libs)
@@ -94,8 +89,6 @@ SGr has attributes to denote the quality of the mesaured value. The presence of 
     - currently neither RestAPI nor Modbus support these attributes. Correct?
 - Smooth Transition
   - Does the device support this functionality? who absorbes the randomness?
-- Timestamp
-  - what is the intent of timeRange?
 - Quality
   - the com handler implementations should provide the values of these attributes. Generate an issue for java / python
   - valueState: enum outOfRange is documented, but not defined in schema. Remove from doc, or extend schema.

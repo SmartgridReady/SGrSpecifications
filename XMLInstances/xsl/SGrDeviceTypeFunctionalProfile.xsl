@@ -373,21 +373,6 @@
                             </tr>
                         </xsl:if>
 
-                        <!--timeRange-->
-                        <xsl:if test="//sgr:timeRange">
-                            <tr class="genericDetails">
-                                <td>
-                                    <img src="/xsl/genattr.png" alt="" width="16pt" height="16pt" />
-                                    timeRange
-                                </td>
-                                <td>
-                                    <p>startTime: time</p>
-                                    <p>endTime: time</p>
-                                </td>
-                                <td>time range min…max</td>
-                            </tr>
-                        </xsl:if>
-
                         <!--valueType-->
                         <xsl:if test="//sgr:valueType">
                             <tr class="genericDetails">
