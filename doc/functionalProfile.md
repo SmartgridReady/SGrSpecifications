@@ -4,9 +4,9 @@
 
 A functional profile contains a set of data points that support implementation of a specific use case. It thereby
 focuses entirely on the functionality. Any transport-specific details are not part of the functional profile (e.g.
-on how to get or set a data point on a specfic device).
+on how to get or set a data point on a specfic product).
 
-The main intent is to allow communicator manufacturers to easily implement their use cases based on logically grouped data points, while device-specific communication details to the SGr communicator library. Any devices that support the functional profiles required for a specific use case are therefore  automatically compatible, and can be used whithout changing the implementation.
+The main intent is to allow communicator manufacturers to easily implement their use cases based on logically grouped data points, while device-specific communication details to the SGr communicator library. Any product that support the functional profiles required for a specific use case are therefore  automatically compatible, and can be used whithout changing the implementation.
 
 ## General Structure
 The schema of the functional profile is structured on two levels:
@@ -51,7 +51,7 @@ The release note section contains meta data that descibe history and current sta
 
 
 ## Generic Attributes
-SGr allows to associate attributes to a functional profile (i.e. concerning every data point). See [SGrAttr4GenericType](SGrAttr4GenericType.md) for details.
+SGr allows to associate attributes to a functional profile (i.e. concerning every data point). See [SGrAttr4GenericType](SGrAttr4GenericType.md) for details. Any attribute defined on the functional profile level are mandatory to any product that implements this functional profile. However, the product can optionally add further attributes based on its own needs.
 
 # Data Point Attributes
 | Element     | Description |
@@ -68,8 +68,7 @@ SGr allows to associate attributes to a functional profile (i.e. concerning ever
 
 ## Generic Attributes
 SGr allows to associate attributes to a data point. See [SGrAttr4GenericType](SGrAttr4GenericType.md) for details.
-
+Any attribute defined on the functional profile level are mandatory to any product that implements this functional profile. However, the product can optionally add further attributes based on its own needs.
 
 ## Open Points
-- What is the intent of the attribute sgr:functionalProfile@mroVisibilityIndicator? Optionality on the device is handled by the fact that the functional profile is either present or not.
 - What are the rules for naming a functional profile (sgr:functionalProfile@profileName)? Is this strict (then it should be part of the classification), or loose (then it should be part of the legibDesc)?

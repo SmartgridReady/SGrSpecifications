@@ -1,6 +1,12 @@
 # SGr Attributes
 
-This documentation describes the list of generic attributes. The attributes always apply to the data point. In case a generic attribute applies to every data point of a functional profile the SGr XML allows to specify the generic attribute once on functional profile level. Vice versa if the attribute applies to every data point of an entire device, the attribute can be defined on device level.
+This documentation describes the list of generic attributes.
+
+ Generic attributes incorporate hierarchical inheritance as follows:
+- Generic attributes always apply to the data point
+- Generic attributes defined on functional profile level apply to all data points of the same functional profile.
+- Generic attributes defined on device level apply to all functional profiles, and thus to all data points of the device
+If the same attribute is defined on multiple levels the most specific definition superseeds any other definition (i.e. data point over functional profile over).
 
 ## Static Data Point Attributes
 These values describe the measurement limits for data points. Depending on the definition level they apply either to a specific data point, every data point of a functional profile, or the the entire device.
