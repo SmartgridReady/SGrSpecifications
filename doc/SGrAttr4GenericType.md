@@ -19,6 +19,8 @@ These attributes are generally used to search for devices that fullfil a set of 
 | minVal | float | lower range limit. | 0.0 |
 | specQualityRequirement | string | indicates Quality requirements fullfilled like formal certifications | METAS  |
 | precision | float | the precision of a measurement, calculation result or result of a controls process | 2.0% |
+| maxLatencyTimeMs | unsignedLong | Maximum time in milliseconds from capturing of measured value until ready at the external interface (i.e. analog-digital conversion time) | 10 ms |
+| sampleRate | unsignedLong | SampleRate in milliseconds | 200 ms |
 
 ## Stability Fallback
 A consumer or a generating system receives the permit for a load change for a certain period of time. This time is always set to 0 each time a confirmation message is received (HeartBeat).
@@ -56,27 +58,6 @@ The figure below depicts the typical flow
 | rmpTms | unsigned long | specifies how quickly the changes should be made. The corresponding value is gradually changed from the old to the new value in the specified time.| 450 s |
 | rvrtTms | unsigned long | determines how long the operating mode should be active. When the time has elapsed, the operating mode is automatically terminated. If rvrtTms = 0 (standard value), the operating mode remains active until a new command is received.| 7'200 s|
 
-
-## Communication Timing Attributes
-Timing attributes describe the details of asynchronous sampling, where the product itself pushes data point measurements to its suscribers (e.g. communicator). Especially in larger networks these attributes are absolutely necessary to avoid cluttering and overloading of the transport layer.
-
-The SGr timing attributes allow for heart-beat based data point sampling as well as interrupt-based sampling if the measured value changes beyond a configured threshold.
-
-The figure below depicts typical situations
-1. a new value is sent if it changes at least by minSendDelta
-2. for large changes in value the device waits at least for minSendTime
-3. for small changes the device sends a new value at least after maxSendTime
-
-![SGr Timing Attributes](genAttributes_timing.drawio.png)
-
-| SGr Attribute | Data Type | Description | Example |
-|---------------|-----------|-------------|---------|
-| minSendDelta | float | A measured value difference that must lead to a notification (interrupt-based sampling). Note that the device will wait at least minSendTime before resending a new value. | 200 mV |
-| minSendTime | float | The fastest possible or allowable sequence of notifications in seconds (i.e. maximum sampling frequency) | 1.0 s |
-| maxSendTime | float | The maximum time between 2 notifications in seconds (heart-beat based sampling)| 10 s |
-| maxReceiveTime | float | The maximum time between 2 notifications in seconds, after which a timeout has to be generated including a reset to the default value. | 20 s |
-| maxLatencyTimeMs | unsignedLong | Maximum occurring or permitted delay time in Milliseconds, e.g. of a data transaction | 10 ms |
-| sampleRate | float | SampleRate in milliseconds | 200 ms |
 
 ## Time Stamps
 | SGr Attribute | Data Type | Description | Example |

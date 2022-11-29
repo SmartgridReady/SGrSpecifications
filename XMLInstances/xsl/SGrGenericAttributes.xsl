@@ -68,7 +68,7 @@
                 </td>
                 <td>
                     Max recieve time:
-                    <xsl:value-of select="sgr:stabilityFallback/sgr:maxReceiveTime" />
+                    <xsl:value-of select="sgr:stabilityFallback/sgr:maxReceiveTime" />&#160;s
                     <br />
                     Init Value:
                     <xsl:value-of select="sgr:stabilityFallback/sgr:initValue" />
@@ -107,58 +107,6 @@
             </tr>
         </xsl:if>
 
-        <!--minSendDelta-->
-        <xsl:if test="sgr:minSendDelta">
-            <tr class="genericDetails">
-                <td>
-                    <img src="/xsl/genattr.png" alt="" width="16pt" height="16pt" />
-                    Min. Delta for Notification
-                </td>
-                <td>
-                    <xsl:value-of select="sgr:minSendDelta" />
-                </td>
-            </tr>
-        </xsl:if>
-
-        <!--maxSendTime-->
-        <xsl:if test="sgr:maxSendTime">
-            <tr class="genericDetails">
-                <td>
-                    <img src="/xsl/genattr.png" alt="" width="16pt" height="16pt" />
-                    Max. Time between Notification
-                </td>
-                <td>
-                    <xsl:value-of select="sgr:maxSendTime" />
-                </td>
-            </tr>
-        </xsl:if>
-
-        <!--maxReceiveTime-->
-        <xsl:if test="sgr:maxReceiveTime">
-            <tr class="genericDetails">
-                <td>
-                    <img src="/xsl/genattr.png" alt="" width="16pt" height="16pt" />
-                    Max. Recieve Time
-                </td>
-                <td>
-                    <xsl:value-of select="sgr:maxReceiveTime" />
-                </td>
-            </tr>
-        </xsl:if>
-
-        <!--minSendTime-->
-        <xsl:if test="sgr:minSendTime">
-            <tr class="genericDetails">
-                <td>
-                    <img src="/xsl/genattr.png" alt="" width="16pt" height="16pt" />
-                    Min. Time between Notification
-                </td>
-                <td>
-                    <xsl:value-of select="sgr:minSendTime" />
-                </td>
-            </tr>
-        </xsl:if>
-
         <!--maxLatencyTime-->
         <xsl:if test="sgr:maxLatencyTimeMs">
             <tr class="genericDetails">
@@ -167,7 +115,7 @@
                     Max. Latency
                 </td>
                 <td>
-                    <xsl:value-of select="sgr:maxLatencyTimeMs" />
+                    <xsl:value-of select="sgr:maxLatencyTimeMs" />&#160;ms
                 </td>
             </tr>
         </xsl:if>

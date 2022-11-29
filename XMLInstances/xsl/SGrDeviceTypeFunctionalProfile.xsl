@@ -317,7 +317,7 @@
                                     stabilityFallback
                                 </td>
                                 <td>
-                                    Max recieve time: float,
+                                    Max recieve time: float, seconds
                                     <br />
                                     Init Value: float,
                                     <br />
@@ -360,55 +360,7 @@
                             </tr>
                         </xsl:if>
 
-                        <!--minSendDelta-->
-                        <xsl:if test="//sgr:minSendDelta">
-                            <tr class="genericDetails">
-                                <td>
-                                    <img src="/xsl/genattr.png" alt="" width="16pt" height="16pt" />
-                                    minSendDelta
-                                </td>
-                                <td>float</td>
-                                <td>A measured value difference that must lead to a notification.</td>
-                            </tr>
-                        </xsl:if>
-
-                        <!--maxSendTime-->
-                        <xsl:if test="//sgr:maxSendTime">
-                            <tr class="genericDetails">
-                                <td>
-                                    <img src="/xsl/genattr.png" alt="" width="16pt" height="16pt" />
-                                    maxSendTime
-                                </td>
-                                <td>time</td>
-                                <td>The maximum time between 2 notifications.</td>
-                            </tr>
-                        </xsl:if>
-
-                        <!--maxReceiveTime-->
-                        <xsl:if test="//sgr:maxReceiveTime">
-                            <tr class="genericDetails">
-                                <td>
-                                    <img src="/xsl/genattr.png" alt="" width="16pt" height="16pt" />
-                                    maxReceiveTime
-                                </td>
-                                <td>time</td>
-                                <td>The maximum time a response takes.</td>
-                            </tr>
-                        </xsl:if>
-
-                        <!--minSendTime-->
-                        <xsl:if test="//sgr:minSendTime">
-                            <tr class="genericDetails">
-                                <td>
-                                    <img src="/xsl/genattr.png" alt="" width="16pt" height="16pt" />
-                                    minSendTime
-                                </td>
-                                <td>time</td>
-                                <td>The min time between 2 notifications.</td>
-                            </tr>
-                        </xsl:if>
-
-                        <!--maxLatencyTimeM-->
+                        <!--maxLatencyTime-->
                         <xsl:if test="//sgr:maxLatencyTimeMs">
                             <tr class="genericDetails">
                                 <td>
@@ -416,7 +368,8 @@
                                     maxLatencyTimeMs
                                 </td>
                                 <td>unsigned long</td>
-                                <td>Maximum occurring or permitted delay time in milliseconds, e.g. of a data transaction</td>
+                                <td>Maximum time in milliseconds from capturing of measured value until ready at the external interface 
+                                    (i.e. analog-digital conversion time)</td>
                             </tr>
                         </xsl:if>
 
