@@ -69,14 +69,17 @@ SGr has attributes to denote the quality of the mesaured value. The presence of 
 |---------------|-----------|-------------|---------|
 | valueSource | enum | Value source kind related to SGr level 6 applications. Potential values are measuredValue, calculatedValue, empiricalValue | measuredValue |
 
-## TODO
+## Curtailment
+Various function profiles require boundaries to set points with respect to curtailment or home energy management systems.
+
+
 | SGr Attribute | Data Type | Description | Example |
 |---------------|-----------|-------------|---------|
 | curtailment | float | Used in state-based reduction schemes. This value specifies the reduction in percent for the reduced operation mode. | 40% | 
-| minLoad | float |  |
-| maxLockTimeMinutes | float |  |
-| minRunTimeMinutes | float |  |
-| valueByTimeTableMinutes | float |  |
+| minLoad | float |  Used in state-based reduction schemes. In locked mode the product will not reduce its load below this minimum value | 2 kW |
+| maxLockTimeMinutes | float | used in state-based reduction schemes. A reduction command to reduced or locked mode shall not be applied longer than this specified duration | 20 min |
+| minRunTimeMinutes | float | Used in state-based reduction schemes. When returning to normal mode the normal mode must be guaranteed for at least the specified duration | 15 min|
+| valueByTimeTableMinutes | float | Used for time tables to specifiy the temporal separation of data curve points | 1 min |
 | flexAssistance | sgr:SGrFlexAssistanceType | Systems with more than One communicator need a definition of the priority of the commands / demands for a flexibility requirement. This element defines the kind of a such a command (servicable for net (DSO), energy or system (TNO)) and its priority (SHALL / SHOULD / MAY) |
 
 
