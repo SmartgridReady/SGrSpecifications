@@ -47,7 +47,7 @@
 					<sgr:int32U>0</sgr:int32U>
 				</sgr:basicDataType>
 				<sgr:dpNameList>
-					<sgr:sWorkName>C_SunSpec_ID</sgr:sWorkName>
+					<sgr:sSUNSPECName>C_SunSpec_ID</sgr:sSUNSPECName>
 				</sgr:dpNameList>
 			</sgr:dataPoint>
 			<sgr:modbusDataPoint>
@@ -71,7 +71,7 @@
 				<sgr:basicDataType>
 					<sgr:int16U>0</sgr:int16U></sgr:basicDataType>
 				<sgr:dpNameList>
-					<sgr:sWorkName>C_SunSpec_Length</sgr:sWorkName>
+					<sgr:sSUNSPECName>C_SunSpec_Length</sgr:sSUNSPECName>
 				</sgr:dpNameList>
 			</sgr:dataPoint>
 			<sgr:modbusDataPoint>
@@ -96,7 +96,7 @@
 				<sgr:basicDataType>
 					<sgr:float32>0.0</sgr:float32></sgr:basicDataType>
 				<sgr:dpNameList>
-					<sgr:sWorkName>I_AC_Current</sgr:sWorkName>
+					<sgr:sSUNSPECName>I_AC_Current</sgr:sSUNSPECName>
 				</sgr:dpNameList>
 			</sgr:dataPoint>
 			<sgr:modbusDataPoint>
@@ -113,6 +113,10 @@
 					<sgr:multiplicator>1</sgr:multiplicator>
 					<sgr:powerof10>-2</sgr:powerof10>
 				</sgr:scalingByMulPwr>
+				<sgr:timeSyncBlockNotification>
+					<sgr:blockNumber>1</sgr:blockNumber>
+					<sgr:timeoutMs>0</sgr:timeoutMs>
+				</sgr:timeSyncBlockNotification>
 			</sgr:modbusAttr>
 		</sgr:dpListElement>
 		<sgr:dpListElement>
@@ -121,7 +125,7 @@
 				<sgr:basicDataType>
 					<sgr:float32>0.0</sgr:float32></sgr:basicDataType>
 				<sgr:dpNameList>
-					<sgr:sWorkName>I_AC_CurrentA</sgr:sWorkName>
+					<sgr:sSUNSPECName>I_AC_CurrentA</sgr:sSUNSPECName>
 				</sgr:dpNameList>
 			</sgr:dataPoint>
 			<sgr:modbusDataPoint>
@@ -144,7 +148,7 @@
 				<sgr:basicDataType>
 					<sgr:float32>0.0</sgr:float32></sgr:basicDataType>
 				<sgr:dpNameList>
-					<sgr:sWorkName>I_AC_CurrentB</sgr:sWorkName>
+					<sgr:sSUNSPECName>I_AC_CurrentB</sgr:sSUNSPECName>
 				</sgr:dpNameList>
 			</sgr:dataPoint>
 			<sgr:modbusDataPoint>
@@ -165,7 +169,7 @@
 			<sgr:basicDataType>
  		<sgr:float32>0.0</sgr:float32></sgr:basicDataType>
  	<sgr:dpNameList>
- 		<sgr:sWorkName>I_AC_CurrentB</sgr:sWorkName>
+ 		<sgr:sSUNSPECName>I_AC_CurrentC</sgr:sSUNSPECName>
  	</sgr:dpNameList>
 			</sgr:dataPoint>
 			<sgr:modbusDataPoint>
@@ -182,5 +186,393 @@
 				</sgr:scalingByMulPwr>
 			</sgr:modbusAttr>
 		</sgr:dpListElement>
+		<sgr:dpListElement>		
+			<sgr:dataPoint datapointName="VoltageACL1L2"	mroVisibilityIndicator="O" unit="VOLTS" rwpDatadirection="R">
+				<sgr:basicDataType>
+					<sgr:float32>0.0</sgr:float32></sgr:basicDataType>
+				<sgr:dpNameList>
+					<sgr:sSUNSPECName>I_AC_VoltageAB</sgr:sSUNSPECName>
+				</sgr:dpNameList>
+			</sgr:dataPoint>
+			<sgr:modbusDataPoint>
+				<sgr:modbusDataType><sgr:int16>0</sgr:int16></sgr:modbusDataType>
+				<sgr:modbusFirstRegisterReference addr="40077"	bitRank="0" registerType="HoldRegister" ></sgr:modbusFirstRegisterReference>
+				<sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
+				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
+			</sgr:modbusDataPoint>
+			<sgr:modbusAttr>
+				<sgr:scalingByMulPwr>
+					<sgr:multiplicator>1</sgr:multiplicator>
+					<sgr:powerof10>-2</sgr:powerof10>
+				</sgr:scalingByMulPwr>
+			</sgr:modbusAttr>
+		</sgr:dpListElement>
+		<sgr:dpListElement>
+			<sgr:dataPoint datapointName="VoltageACL2L3" mroVisibilityIndicator="O" unit="VOLTS" rwpDatadirection="R"> 	
+			<sgr:basicDataType>
+ 		<sgr:float32>0.0</sgr:float32></sgr:basicDataType>
+ 	<sgr:dpNameList>
+ 		<sgr:sSUNSPECName></sgr:sSUNSPECName>
+ 	</sgr:dpNameList>
+			</sgr:dataPoint>
+			<sgr:modbusDataPoint>
+				<sgr:modbusDataType><sgr:int16>0</sgr:int16></sgr:modbusDataType>
+				<sgr:modbusFirstRegisterReference addr="40"
+					registerType="HoldRegister" bitRank="0" />
+				<sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
+				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
+			</sgr:modbusDataPoint>
+			<sgr:modbusAttr>
+				<sgr:scalingByMulPwr>
+					<sgr:multiplicator>1</sgr:multiplicator>
+					<sgr:powerof10>-2</sgr:powerof10>
+				</sgr:scalingByMulPwr>
+			</sgr:modbusAttr>
+		</sgr:dpListElement>	
+		<sgr:dpListElement>
+			<sgr:dataPoint datapointName="VoltageACL3L1"	mroVisibilityIndicator="O" unit="VOLTS" rwpDatadirection="R">
+				<sgr:basicDataType>
+					<sgr:float32>0.0</sgr:float32></sgr:basicDataType>
+				<sgr:dpNameList>
+					<sgr:sSUNSPECName>I_AC_CurrentB</sgr:sSUNSPECName>
+				</sgr:dpNameList>
+			</sgr:dataPoint>
+			<sgr:modbusDataPoint>
+				<sgr:modbusDataType><sgr:int16>0</sgr:int16></sgr:modbusDataType>
+				<sgr:modbusFirstRegisterReference addr="40"	bitRank="0" registerType="HoldRegister" ></sgr:modbusFirstRegisterReference>
+				<sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
+				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
+			</sgr:modbusDataPoint>
+			<sgr:modbusAttr>
+				<sgr:scalingByMulPwr>
+					<sgr:multiplicator>1</sgr:multiplicator>
+					<sgr:powerof10>-2</sgr:powerof10>
+				</sgr:scalingByMulPwr>
+			</sgr:modbusAttr>
+		</sgr:dpListElement>
+		<sgr:dpListElement>
+			<sgr:dataPoint datapointName="VoltageACL1N" mroVisibilityIndicator="O" unit="VOLTS" rwpDatadirection="R"> 	
+			<sgr:basicDataType>
+ 		<sgr:float32>0.0</sgr:float32></sgr:basicDataType>
+ 	<sgr:dpNameList>
+ 		<sgr:sSUNSPECName></sgr:sSUNSPECName>
+ 	</sgr:dpNameList>
+			</sgr:dataPoint>
+			<sgr:modbusDataPoint>
+				<sgr:modbusDataType><sgr:int16>0</sgr:int16></sgr:modbusDataType>
+				<sgr:modbusFirstRegisterReference addr="40"
+					registerType="HoldRegister" bitRank="0" />
+				<sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
+				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
+			</sgr:modbusDataPoint>
+			<sgr:modbusAttr>
+				<sgr:scalingByMulPwr>
+					<sgr:multiplicator>1</sgr:multiplicator>
+					<sgr:powerof10>-2</sgr:powerof10>
+				</sgr:scalingByMulPwr>
+			</sgr:modbusAttr>
+		</sgr:dpListElement>
+		<sgr:dpListElement>
+			<sgr:dataPoint datapointName="VoltageACL2N"	mroVisibilityIndicator="O" unit="VOLTS" rwpDatadirection="R">
+				<sgr:basicDataType>
+					<sgr:float32>0.0</sgr:float32></sgr:basicDataType>
+				<sgr:dpNameList>
+					<sgr:sSUNSPECName>I_AC_CurrentB</sgr:sSUNSPECName>
+				</sgr:dpNameList>
+			</sgr:dataPoint>
+			<sgr:modbusDataPoint>
+				<sgr:modbusDataType><sgr:int16>0</sgr:int16></sgr:modbusDataType>
+				<sgr:modbusFirstRegisterReference addr="40"	bitRank="0" registerType="HoldRegister" ></sgr:modbusFirstRegisterReference>
+				<sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
+				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
+			</sgr:modbusDataPoint>
+			<sgr:modbusAttr>
+				<sgr:scalingByMulPwr>
+					<sgr:multiplicator>1</sgr:multiplicator>
+					<sgr:powerof10>-2</sgr:powerof10>
+				</sgr:scalingByMulPwr>
+			</sgr:modbusAttr>
+		</sgr:dpListElement>
+		<sgr:dpListElement>
+			<sgr:dataPoint datapointName="VoltageACL3N" mroVisibilityIndicator="O" unit="VOLTS" rwpDatadirection="R"> 	
+			<sgr:basicDataType>
+ 		<sgr:float32>0.0</sgr:float32></sgr:basicDataType>
+ 	<sgr:dpNameList>
+ 		<sgr:sSUNSPECName></sgr:sSUNSPECName>
+ 	</sgr:dpNameList>
+			</sgr:dataPoint>
+			<sgr:modbusDataPoint>
+				<sgr:modbusDataType><sgr:int16>0</sgr:int16></sgr:modbusDataType>
+				<sgr:modbusFirstRegisterReference addr="40"
+					registerType="HoldRegister" bitRank="0" />
+				<sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
+				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
+			</sgr:modbusDataPoint>
+			<sgr:modbusAttr>
+				<sgr:scalingByMulPwr>
+					<sgr:multiplicator>1</sgr:multiplicator>
+					<sgr:powerof10>-2</sgr:powerof10>
+				</sgr:scalingByMulPwr>
+			</sgr:modbusAttr>
+		</sgr:dpListElement>	
+		<sgr:dpListElement>
+			<sgr:dataPoint datapointName="Frequency"	mroVisibilityIndicator="O" unit="HERTZ" rwpDatadirection="R">
+				<sgr:basicDataType>
+					<sgr:float32>0.0</sgr:float32></sgr:basicDataType>
+				<sgr:dpNameList>
+					<sgr:sSUNSPECName>I_AC_CurrentB</sgr:sSUNSPECName>
+				</sgr:dpNameList>
+			</sgr:dataPoint>
+			<sgr:modbusDataPoint>
+				<sgr:modbusDataType><sgr:int16>0</sgr:int16></sgr:modbusDataType>
+				<sgr:modbusFirstRegisterReference addr="40"	bitRank="0" registerType="HoldRegister" ></sgr:modbusFirstRegisterReference>
+				<sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
+				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
+			</sgr:modbusDataPoint>
+			<sgr:modbusAttr>
+				<sgr:scalingByMulPwr>
+					<sgr:multiplicator>1</sgr:multiplicator>
+					<sgr:powerof10>-2</sgr:powerof10>
+				</sgr:scalingByMulPwr>
+			</sgr:modbusAttr>
+		</sgr:dpListElement>
+		<sgr:dpListElement>
+			<sgr:dataPoint datapointName="ApparentPowerACtot" mroVisibilityIndicator="O" unit="VOLT_AMPERES" rwpDatadirection="R"> 	
+			<sgr:basicDataType>
+ 		<sgr:float32>0.0</sgr:float32></sgr:basicDataType>
+ 	<sgr:dpNameList>
+ 		<sgr:sSUNSPECName></sgr:sSUNSPECName>
+ 	</sgr:dpNameList>
+			</sgr:dataPoint>
+			<sgr:modbusDataPoint>
+				<sgr:modbusDataType><sgr:int16>0</sgr:int16></sgr:modbusDataType>
+				<sgr:modbusFirstRegisterReference addr="40"
+					registerType="HoldRegister" bitRank="0" />
+				<sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
+				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
+			</sgr:modbusDataPoint>
+			<sgr:modbusAttr>
+				<sgr:scalingByMulPwr>
+					<sgr:multiplicator>1</sgr:multiplicator>
+					<sgr:powerof10>-2</sgr:powerof10>
+				</sgr:scalingByMulPwr>
+			</sgr:modbusAttr>
+		</sgr:dpListElement>
+		<sgr:dpListElement>		
+			<sgr:dataPoint datapointName="ReactivePowerACTot"	mroVisibilityIndicator="O" unit="VOLT_AMPERES_REACTIVE" rwpDatadirection="R">
+				<sgr:basicDataType>
+					<sgr:float32>0.0</sgr:float32></sgr:basicDataType>
+				<sgr:dpNameList>
+					<sgr:sSUNSPECName>I_AC_CurrentB</sgr:sSUNSPECName>
+				</sgr:dpNameList>
+			</sgr:dataPoint>
+			<sgr:modbusDataPoint>
+				<sgr:modbusDataType><sgr:int16>0</sgr:int16></sgr:modbusDataType>
+				<sgr:modbusFirstRegisterReference addr="40"	bitRank="0" registerType="HoldRegister" ></sgr:modbusFirstRegisterReference>
+				<sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
+				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
+			</sgr:modbusDataPoint>
+			<sgr:modbusAttr>
+				<sgr:scalingByMulPwr>
+					<sgr:multiplicator>1</sgr:multiplicator>
+					<sgr:powerof10>-2</sgr:powerof10>
+				</sgr:scalingByMulPwr>
+			</sgr:modbusAttr>
+		</sgr:dpListElement>
+		<sgr:dpListElement>
+			<sgr:dataPoint datapointName="PowerFactor" mroVisibilityIndicator="O" unit="NONE" rwpDatadirection="R"> 	
+			<sgr:basicDataType>
+ 		<sgr:float32>0.0</sgr:float32></sgr:basicDataType>
+ 	<sgr:dpNameList>
+ 		<sgr:sSUNSPECName></sgr:sSUNSPECName>
+ 	</sgr:dpNameList>
+			</sgr:dataPoint>
+			<sgr:modbusDataPoint>
+				<sgr:modbusDataType><sgr:int16>0</sgr:int16></sgr:modbusDataType>
+				<sgr:modbusFirstRegisterReference addr="40"
+					registerType="HoldRegister" bitRank="0" />
+				<sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
+				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
+			</sgr:modbusDataPoint>
+			<sgr:modbusAttr>
+				<sgr:scalingByMulPwr>
+					<sgr:multiplicator>1</sgr:multiplicator>
+					<sgr:powerof10>-2</sgr:powerof10>
+				</sgr:scalingByMulPwr>
+			</sgr:modbusAttr>
+		</sgr:dpListElement>
+		<sgr:dpListElement>	
+			<sgr:dataPoint datapointName="TempCabinet"	mroVisibilityIndicator="O" unit="DEGREES_CELSIUS" rwpDatadirection="R">
+				<sgr:basicDataType>
+					<sgr:float32>0.0</sgr:float32></sgr:basicDataType>
+				<sgr:dpNameList>
+					<sgr:sSUNSPECName>I_AC_CurrentB</sgr:sSUNSPECName>
+				</sgr:dpNameList>
+			</sgr:dataPoint>
+			<sgr:modbusDataPoint>
+				<sgr:modbusDataType><sgr:int16>0</sgr:int16></sgr:modbusDataType>
+				<sgr:modbusFirstRegisterReference addr="40"	bitRank="0" registerType="HoldRegister" ></sgr:modbusFirstRegisterReference>
+				<sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
+				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
+			</sgr:modbusDataPoint>
+			<sgr:modbusAttr>
+				<sgr:scalingByMulPwr>
+					<sgr:multiplicator>1</sgr:multiplicator>
+					<sgr:powerof10>-2</sgr:powerof10>
+				</sgr:scalingByMulPwr>
+			</sgr:modbusAttr>
+		</sgr:dpListElement>
+		<sgr:dpListElement>
+			<sgr:dataPoint datapointName="HeatThinkTemp" mroVisibilityIndicator="O" unit="DEGREES_CELSIUS" rwpDatadirection="R"> 	
+			<sgr:basicDataType>
+ 		<sgr:float32>0.0</sgr:float32></sgr:basicDataType>
+ 	<sgr:dpNameList>
+ 		<sgr:sSUNSPECName></sgr:sSUNSPECName>
+ 	</sgr:dpNameList>
+			</sgr:dataPoint>
+			<sgr:modbusDataPoint>
+				<sgr:modbusDataType><sgr:int16>0</sgr:int16></sgr:modbusDataType>
+				<sgr:modbusFirstRegisterReference addr="40"
+					registerType="HoldRegister" bitRank="0" />
+				<sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
+				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
+			</sgr:modbusDataPoint>
+			<sgr:modbusAttr>
+				<sgr:scalingByMulPwr>
+					<sgr:multiplicator>1</sgr:multiplicator>
+					<sgr:powerof10>-2</sgr:powerof10>
+				</sgr:scalingByMulPwr>
+			</sgr:modbusAttr>
+		</sgr:dpListElement>
+		<sgr:dpListElement>	
+			<sgr:dataPoint datapointName="TransformerTemp"	mroVisibilityIndicator="O" unit="DEGREES_CELSIUS" rwpDatadirection="R">
+				<sgr:basicDataType>
+					<sgr:float32>0.0</sgr:float32></sgr:basicDataType>
+				<sgr:dpNameList>
+					<sgr:sSUNSPECName>I_AC_CurrentB</sgr:sSUNSPECName>
+				</sgr:dpNameList>
+			</sgr:dataPoint>
+			<sgr:modbusDataPoint>
+				<sgr:modbusDataType><sgr:int16>0</sgr:int16></sgr:modbusDataType>
+				<sgr:modbusFirstRegisterReference addr="40"	bitRank="0" registerType="HoldRegister" ></sgr:modbusFirstRegisterReference>
+				<sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
+				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
+			</sgr:modbusDataPoint>
+			<sgr:modbusAttr>
+				<sgr:scalingByMulPwr>
+					<sgr:multiplicator>1</sgr:multiplicator>
+					<sgr:powerof10>-2</sgr:powerof10>
+				</sgr:scalingByMulPwr>
+			</sgr:modbusAttr>
+		</sgr:dpListElement>
+		<sgr:dpListElement>
+			<sgr:dataPoint datapointName="OtherTemp" mroVisibilityIndicator="O" unit="DEGREES_CELSIUS" rwpDatadirection="R"> 	
+			<sgr:basicDataType>
+ 		<sgr:float32>0.0</sgr:float32></sgr:basicDataType>
+ 	<sgr:dpNameList>
+ 		<sgr:sSUNSPECName></sgr:sSUNSPECName>
+ 	</sgr:dpNameList>
+			</sgr:dataPoint>
+			<sgr:modbusDataPoint>
+				<sgr:modbusDataType><sgr:int16>0</sgr:int16></sgr:modbusDataType>
+				<sgr:modbusFirstRegisterReference addr="40"
+					registerType="HoldRegister" bitRank="0" />
+				<sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
+				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
+			</sgr:modbusDataPoint>
+			<sgr:modbusAttr>
+				<sgr:scalingByMulPwr>
+					<sgr:multiplicator>1</sgr:multiplicator>
+					<sgr:powerof10>-2</sgr:powerof10>
+				</sgr:scalingByMulPwr>
+			</sgr:modbusAttr>
+		</sgr:dpListElement>
+		<sgr:dpListElement>	
+			<sgr:dataPoint datapointName="OperatingState"	mroVisibilityIndicator="O" unit="NONE" rwpDatadirection="R">
+				<sgr:basicDataType>
+					<sgr:enum>
+						<sgr:sgrSunspStateCodes>I_STATUS_OFF</sgr:sgrSunspStateCodes>
+						
+					</sgr:enum>
+				</sgr:basicDataType>
+				<sgr:dpNameList>
+					<sgr:sSUNSPECName>I_AC_CurrentB</sgr:sSUNSPECName>
+				</sgr:dpNameList>
+			</sgr:dataPoint>
+			<sgr:modbusDataPoint>
+				<sgr:modbusDataType><sgr:int16>0</sgr:int16></sgr:modbusDataType>
+				<sgr:modbusFirstRegisterReference addr="40"	bitRank="0" registerType="HoldRegister" ></sgr:modbusFirstRegisterReference>
+				<sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
+				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
+			</sgr:modbusDataPoint>
+			<sgr:modbusAttr>
+				<sgr:scalingByMulPwr>
+					<sgr:multiplicator>1</sgr:multiplicator>
+					<sgr:powerof10>-2</sgr:powerof10>
+				</sgr:scalingByMulPwr>
+			</sgr:modbusAttr>
+		</sgr:dpListElement>
+		<sgr:dpListElement>
+			<sgr:dataPoint datapointName="EventList1" mroVisibilityIndicator="O" unit="NONE" rwpDatadirection="R">
+ 	<sgr:basicArrayDataType>
+ 		<sgr:dpInstance>
+ 			<sgr:boolean>false</sgr:boolean>
+ 		</sgr:dpInstance>
+ 		<sgr:arrLen>32</sgr:arrLen>
+ 		<sgr:enum2ArrIndex>
+ 			<sgr:sgrBool2BitRank>Bit0</sgr:sgrBool2BitRank>
+ 			
+ 		</sgr:enum2ArrIndex>
+ 	</sgr:basicArrayDataType>
+ 	<sgr:dpNameList>
+ 		<sgr:sSUNSPECName>Evt1</sgr:sSUNSPECName>
+ 	</sgr:dpNameList>
+			</sgr:dataPoint>
+			<sgr:genAttribute>
+				<sgr:timeStampLog>2001-12-31T12:00:00</sgr:timeStampLog>
+				<sgr:sampleRate>1500</sgr:sampleRate></sgr:genAttribute>
+			<sgr:modbusDataPoint>
+				<sgr:modbusDataType>
+					<sgr:int32U>0</sgr:int32U></sgr:modbusDataType>
+				<sgr:modbusFirstRegisterReference addr="400110"
+					registerType="HoldRegister" bitRank="0" />
+				<sgr:dpSizeNrRegisters>2</sgr:dpSizeNrRegisters>
+				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
+			</sgr:modbusDataPoint>
+			<sgr:modbusAttr>
+				<sgr:layer6Deviation>bitmap32</sgr:layer6Deviation>
+			</sgr:modbusAttr>
+		</sgr:dpListElement>	
+		<sgr:dpListElement>
+			<sgr:dataPoint datapointName="EventList2"	mroVisibilityIndicator="O" unit="NONE" rwpDatadirection="R">
+				<sgr:basicArrayDataType>
+					<sgr:dpInstance>
+						<sgr:boolean>false</sgr:boolean>
+					</sgr:dpInstance>
+					<sgr:arrLen>32</sgr:arrLen>
+					<sgr:enum2ArrIndex>
+						<sgr:sgrBool2BitRank>Bit0</sgr:sgrBool2BitRank>						
+					</sgr:enum2ArrIndex>
+				</sgr:basicArrayDataType>
+				<sgr:dpNameList>
+					<sgr:sSUNSPECName>Evt1</sgr:sSUNSPECName>
+				</sgr:dpNameList>
+			</sgr:dataPoint>
+			<sgr:genAttribute>
+				<sgr:timeStampLog>2001-12-31T12:00:00</sgr:timeStampLog>
+				<sgr:sampleRate>150</sgr:sampleRate>
+			</sgr:genAttribute>
+			<sgr:modbusDataPoint>
+				<sgr:modbusDataType>
+					<sgr:int32U>0</sgr:int32U></sgr:modbusDataType>
+				<sgr:modbusFirstRegisterReference addr="40112"	bitRank="0" registerType="HoldRegister" ></sgr:modbusFirstRegisterReference>
+				<sgr:dpSizeNrRegisters>2</sgr:dpSizeNrRegisters>
+				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
+			</sgr:modbusDataPoint>
+			<sgr:modbusAttr>
+				<sgr:layer6Deviation>bitmap32</sgr:layer6Deviation>
+			</sgr:modbusAttr>
+		</sgr:dpListElement>	
+		
 	</sgr:fpListElement>
 </sgr:SGrModbusDeviceFrame>

@@ -114,7 +114,14 @@
           <documentation>EEBUS for terminology place to add the EEBUS
 						abreviations if an overlap exists
 					</documentation>
-        </annotation>
+        </annotation>       
+      </element>
+      <element maxOccurs="1" minOccurs="0" name="sSUNSPECName" type="string">
+        <annotation>
+          <documentation>sSUNSPEC for terminology place to add the www.sunspec.org
+						abreviations if an overlap exists
+					</documentation>
+        </annotation>       
       </element>
       <element maxOccurs="1" minOccurs="0" name="sHPbwpName" type="string">
         <annotation>
@@ -167,7 +174,6 @@
   </complexType>
 
   <complexType name="SGrBasicGenArrayDPTypeType">
-
     <annotation>
       <documentation xml:lang="en"> These are the basic generic
 				data array  types must remain high level definitions for to be supported.
@@ -178,8 +184,9 @@
       <documentation />
     </annotation>
     <sequence>
-      <element name="type" type="sgr:SGrBasicGenDataPointTypeType" />
-      <element name="lenght" type="integer" />
+      <element name="dpInstance" type="sgr:SGrBasicGenDataPointTypeType" maxOccurs="unbounded" minOccurs="1"/>
+      <element name="arrLen" type="unsignedInt" maxOccurs="1" minOccurs="1"/>
+      <element name="enum2ArrIndex" type= "sgr:SGrEnumListType" maxOccurs="1" minOccurs="0"/>
     </sequence>
   </complexType>
   <!-- enumeration to select mandatory, optional or recommended use of elements -->
@@ -619,6 +626,15 @@
 					</documentation>
         </annotation>
       </element>
+     <element maxOccurs="1" minOccurs="0" name="timeStampLog" type="dateTime">
+ 	 <annotation>   
+ 	 	<documentation> This is the date Time Value indicates that any
+						value generation must be paired with the time of either a
+						measuement was taken or where a higher controls software level
+						indicates when it got the value
+		</documentation> 
+		</annotation>
+      </element>
       <element maxOccurs="1" minOccurs="0" name="valueType" type="sgr:SGrMeasValueType">
         <annotation>
           <documentation> MeasValueType: type of measurement. Possbile values are "value", "min", max", "average", "stdDev"</documentation>
@@ -1027,6 +1043,47 @@
     </restriction>
   </simpleType>
 
+  <simpleType name="SGrBool2BitRankType">
+    <annotation>
+      <documentation>E0017:
+     BitRank map for bitfiedl32
+	</documentation>
+    </annotation>
+    <restriction base="string">
+      <enumeration value="Bit0" />
+      <enumeration value="Bit1" />
+      <enumeration value="Bit2" />
+      <enumeration value="Bit3" />
+      <enumeration value="Bit4" />
+      <enumeration value="Bit5" />
+      <enumeration value="Bit6" />
+      <enumeration value="Bit7" />
+      <enumeration value="Bit8" />
+      <enumeration value="Bit9" />
+      <enumeration value="Bit10" />
+      <enumeration value="Bit11" />
+      <enumeration value="Bit12" />
+      <enumeration value="Bit13" />
+      <enumeration value="Bit14" />
+      <enumeration value="Bit15" />
+      <enumeration value="Bit16" />
+      <enumeration value="Bit17" />
+      <enumeration value="Bit18" />
+      <enumeration value="Bit19" />
+      <enumeration value="Bit20" />
+      <enumeration value="Bit21" />
+      <enumeration value="Bit22" />
+      <enumeration value="Bit23" />
+      <enumeration value="Bit24" />
+      <enumeration value="Bit25" />
+      <enumeration value="Bit26" />
+      <enumeration value="Bit27" />
+      <enumeration value="Bit28" />
+      <enumeration value="Bit29" />
+      <enumeration value="Bit30" />
+      <enumeration value="Bit31" />
+    </restriction>
+  </simpleType>
 
   <complexType name="SGrEnumListType">
     <choice>
@@ -1044,6 +1101,7 @@
       <element maxOccurs="1" minOccurs="1" name="sgrObligLvl" type="sgr:SGrObligLvlType" />
       <element maxOccurs="1" minOccurs="1" name="sgrOCPPState" type="sgr:SGrOCPPStateType" />
       <element maxOccurs="1" minOccurs="1" name="sgrHPOpMode" type="sgr:SGrHPOpModeType" />
+      <element maxOccurs="1" minOccurs="1" name="sgrBool2BitRank" type="sgr:SGrBool2BitRankType" />
     </choice>
   </complexType>
 
