@@ -39,6 +39,22 @@
 				</sgr:versionNumber>
 			</sgr:profileNumber>
 		</sgr:functionalProfile>
+		<sgr:timeSyncBlockNotification>
+			<sgr:blockNumber>1</sgr:blockNumber>
+			<sgr:lastAccessTime>0</sgr:lastAccessTime>
+			<sgr:timeToLive>0</sgr:timeToLive>
+			<sgr:firstAddr>0</sgr:firstAddr>
+			<sgr:registerType>Coil</sgr:registerType>
+			<sgr:size>0</sgr:size>
+		</sgr:timeSyncBlockNotification>
+		<sgr:timeSyncBlockNotification>
+			<sgr:blockNumber>0</sgr:blockNumber>
+			<sgr:lastAccessTime>0</sgr:lastAccessTime>
+			<sgr:timeToLive>0</sgr:timeToLive>
+			<sgr:firstAddr>0</sgr:firstAddr>
+			<sgr:registerType>Coil</sgr:registerType>
+			<sgr:size>0</sgr:size>
+		</sgr:timeSyncBlockNotification>
 		<sgr:dpListElement>
 			<sgr:dataPoint datapointName="SunspecID"
 				mroVisibilityIndicator="M" rwpDatadirection="R"
@@ -113,10 +129,6 @@
 					<sgr:multiplicator>1</sgr:multiplicator>
 					<sgr:powerof10>-2</sgr:powerof10>
 				</sgr:scalingByMulPwr>
-				<sgr:timeSyncBlockNotification>
-					<sgr:blockNumber>1</sgr:blockNumber>
-					<sgr:timeoutMs>0</sgr:timeoutMs>
-				</sgr:timeSyncBlockNotification>
 			</sgr:modbusAttr>
 		</sgr:dpListElement>
 		<sgr:dpListElement>
@@ -491,8 +503,7 @@
 			<sgr:dataPoint datapointName="OperatingState"	mroVisibilityIndicator="O" unit="NONE" rwpDatadirection="R">
 				<sgr:basicDataType>
 					<sgr:enum>
-						<sgr:sgrSunspStateCodes>I_STATUS_OFF</sgr:sgrSunspStateCodes>
-						
+						<sgr:sgrSunspStateCodes>I_STATUS_OFF</sgr:sgrSunspStateCodes>						
 					</sgr:enum>
 				</sgr:basicDataType>
 				<sgr:dpNameList>
@@ -508,12 +519,16 @@
 			<sgr:modbusAttr>
 				<sgr:scalingByMulPwr>
 					<sgr:multiplicator>1</sgr:multiplicator>
-					<sgr:powerof10>-2</sgr:powerof10>
+					<sgr:powerof10>0</sgr:powerof10>
 				</sgr:scalingByMulPwr>
 			</sgr:modbusAttr>
 		</sgr:dpListElement>
 		<sgr:dpListElement>
 			<sgr:dataPoint datapointName="EventList1" mroVisibilityIndicator="O" unit="NONE" rwpDatadirection="R">
+ 	<sgr:basicDataType>
+ 		<sgr:int32U>0</sgr:int32U>
+ 		
+ 	</sgr:basicDataType>
  	<sgr:basicArrayDataType>
  		<sgr:dpInstance>
  			<sgr:boolean>false</sgr:boolean>
@@ -529,22 +544,30 @@
  	</sgr:dpNameList>
 			</sgr:dataPoint>
 			<sgr:genAttribute>
-				<sgr:timeStampLog>2001-12-31T12:00:00</sgr:timeStampLog>
 				<sgr:sampleRate>1500</sgr:sampleRate></sgr:genAttribute>
 			<sgr:modbusDataPoint>
 				<sgr:modbusDataType>
 					<sgr:int32U>0</sgr:int32U></sgr:modbusDataType>
-				<sgr:modbusFirstRegisterReference addr="400110"
+				<sgr:modbusFirstRegisterReference addr="40110"
 					registerType="HoldRegister" bitRank="0" />
 				<sgr:dpSizeNrRegisters>2</sgr:dpSizeNrRegisters>
 				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
 			</sgr:modbusDataPoint>
+			<sgr:timeToLive>0</sgr:timeToLive>
 			<sgr:modbusAttr>
 				<sgr:layer6Deviation>bitmap32</sgr:layer6Deviation>
+				<sgr:scalingByMulPwr>
+					<sgr:multiplicator>1</sgr:multiplicator>
+					<sgr:powerof10>0</sgr:powerof10>
+				</sgr:scalingByMulPwr>
 			</sgr:modbusAttr>
 		</sgr:dpListElement>	
 		<sgr:dpListElement>
 			<sgr:dataPoint datapointName="EventList2"	mroVisibilityIndicator="O" unit="NONE" rwpDatadirection="R">
+				<sgr:basicDataType>
+					<sgr:int32U>0</sgr:int32U>
+					
+				</sgr:basicDataType>
 				<sgr:basicArrayDataType>
 					<sgr:dpInstance>
 						<sgr:boolean>false</sgr:boolean>
@@ -559,8 +582,6 @@
 				</sgr:dpNameList>
 			</sgr:dataPoint>
 			<sgr:genAttribute>
-				<sgr:timeStampLog>2001-12-31T12:00:00</sgr:timeStampLog>
-				<sgr:sampleRate>150</sgr:sampleRate>
 			</sgr:genAttribute>
 			<sgr:modbusDataPoint>
 				<sgr:modbusDataType>
@@ -569,8 +590,13 @@
 				<sgr:dpSizeNrRegisters>2</sgr:dpSizeNrRegisters>
 				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
 			</sgr:modbusDataPoint>
+			<sgr:timeToLive>2000</sgr:timeToLive>
 			<sgr:modbusAttr>
 				<sgr:layer6Deviation>bitmap32</sgr:layer6Deviation>
+				<sgr:scalingByMulPwr>
+					<sgr:multiplicator>1</sgr:multiplicator>
+					<sgr:powerof10>0</sgr:powerof10>
+				</sgr:scalingByMulPwr>
 			</sgr:modbusAttr>
 		</sgr:dpListElement>	
 		
