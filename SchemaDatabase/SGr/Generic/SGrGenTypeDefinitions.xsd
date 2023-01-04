@@ -145,50 +145,47 @@
       <documentation />
     </annotation>
     <choice>
-      <element maxOccurs="1" minOccurs="1" name="boolean" type="boolean" />
-      <element maxOccurs="1" minOccurs="1" name="int8" type="byte" />
-      <element maxOccurs="1" minOccurs="1" name="int16" type="short" />
-      <element maxOccurs="1" minOccurs="1" name="int32" type="integer" />
-      <element maxOccurs="1" minOccurs="1" name="int64" type="long" />
-      <element maxOccurs="1" minOccurs="1" name="int8U" type="unsignedByte" />
-      <element maxOccurs="1" minOccurs="1" name="int16U" type="unsignedShort" />
-      <element maxOccurs="1" minOccurs="1" name="int32U" type="unsignedInt" />
-      <element maxOccurs="1" minOccurs="1" name="int64U" type="unsignedLong" />
-      <element maxOccurs="1" minOccurs="1" name="float32" type="float" />
-      <element maxOccurs="1" minOccurs="1" name="float64" type="double" />
-      <element maxOccurs="1" minOccurs="1" name="enum" type="sgr:SGrEnumListType" />
-      <element maxOccurs="1" minOccurs="1" name="dateTime" type="dateTime" />
-      <element maxOccurs="1" minOccurs="1" name="string" type="string" />
-      <!-- weitere aus IEC61850 übertragbare Datentypen: Achtung: Elemente müssen ohne "_" sein und mit Kleinbuschtsaben beginnen
-        		     <enumeration value="Dbpos"/> 
-					<enumeration value="Tcmd"/> <enumeration value="Quality"/> <enumeration value="VisString32"/> 
-					<enumeration value="VisString64"/> <enumeration value="VisString65"/> <enumeration 
-					value="VisString129"/> <enumeration value="VisString255"/> <enumeration value="Octet64"/> 
-					<enumeration value="Unicode255"/> <enumeration value="Struct"/> <enumeration 
-					value="EntryTime"/> <enumeration value="Check"/> <enumeration value="ObjRef"/> 
-					<enumeration value="Currency"/> <enumeration value="PhyComAddr"/> <enumeration 
-					value="TrgOps"/> <enumeration value="OptFlds"/> <enumeration value="SvOptFlds"/> 
-					<enumeration value="LogOptFlds"/> <enumeration value="EntryID"/> <enumeration 
-					value="Octet6"/> <enumeration value="Octet16"/> -->
+    	<element name="bit" type="boolean" maxOccurs="1" minOccurs="1"></element>
+    	<element maxOccurs="1" minOccurs="1" name="boolean"
+    		type="boolean" />
+    	<element maxOccurs="1" minOccurs="1" name="int8" type="byte" />
+    	<element maxOccurs="1" minOccurs="1" name="int16" type="short" />
+    	<element maxOccurs="1" minOccurs="1" name="int32"
+    		type="integer" />
+    	<element maxOccurs="1" minOccurs="1" name="int64" type="long" />
+    	<element maxOccurs="1" minOccurs="1" name="int8U"
+    		type="unsignedByte" />
+    	<element maxOccurs="1" minOccurs="1" name="int16U"
+    		type="unsignedShort" />
+    	<element maxOccurs="1" minOccurs="1" name="int32U"
+    		type="unsignedInt" />
+    	<element maxOccurs="1" minOccurs="1" name="int64U"
+    		type="unsignedLong" />
+    	<element maxOccurs="1" minOccurs="1" name="float32"
+    		type="float" />
+    	<element maxOccurs="1" minOccurs="1" name="float64"
+    		type="double" />
+    	<element maxOccurs="1" minOccurs="1" name="enum"
+    		type="sgr:SGrEnumListType" />
+    	<element maxOccurs="1" minOccurs="1" name="dateTime"
+    		type="dateTime" />
+    	<element maxOccurs="1" minOccurs="1" name="string"
+    		type="string" />
+    	<!-- weitere aus IEC61850 übertragbare Datentypen: Achtung: Elemente müssen ohne "_" sein und mit Kleinbuschtsaben beginnen
+    		<enumeration value="Dbpos"/> 
+    		<enumeration value="Tcmd"/> <enumeration value="Quality"/> <enumeration value="VisString32"/> 
+    		<enumeration value="VisString64"/> <enumeration value="VisString65"/> <enumeration 
+    		value="VisString129"/> <enumeration value="VisString255"/> <enumeration value="Octet64"/> 
+    		<enumeration value="Unicode255"/> <enumeration value="Struct"/> <enumeration 
+    		value="EntryTime"/> <enumeration value="Check"/> <enumeration value="ObjRef"/> 
+    		<enumeration value="Currency"/> <enumeration value="PhyComAddr"/> <enumeration 
+    		value="TrgOps"/> <enumeration value="OptFlds"/> <enumeration value="SvOptFlds"/> 
+    		<enumeration value="LogOptFlds"/> <enumeration value="EntryID"/> <enumeration 
+    		value="Octet6"/> <enumeration value="Octet16"/> -->
     </choice>
   </complexType>
 
-  <complexType name="SGrBasicGenArrayDPTypeType">
-    <annotation>
-      <documentation xml:lang="en"> These are the basic generic
-				data array  types must remain high level definitions for to be supported.
-				The definition focuses on the programming languages used at the
-				level of the communicators. So far Java and Python.
-			</documentation>
-      <documentation xml:lang="de" />
-      <documentation />
-    </annotation>
-    <sequence>
-      <element name="type" type="sgr:SGrBasicGenDataPointTypeType" />
-      <element name="lenght" type="integer" />
-      <element name="enum2ArrIndex" type= "sgr:SGrEnumListType" maxOccurs="1" minOccurs="0"/>
-    </sequence>
-  </complexType>
+
   <!-- enumeration to select mandatory, optional or recommended use of elements -->
   <simpleType name="SGrMROPresenceLevelIndicationType">
     <annotation>
