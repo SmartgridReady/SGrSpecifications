@@ -69,8 +69,8 @@
     <sequence>
     	<element maxOccurs="1" minOccurs="0" name="modbusDataType"
     		type="sgr:SGrBasicGenDataPointTypeType" />    		
-        <element name="lenght" type="int" maxOccurs="1" minOccurs="0"/>
-        <element name="enum2ArrIndex" type= "sgr:SGrEnumListType" maxOccurs="1" minOccurs="0"/>
+        <element name="arrLen" type="int" maxOccurs="1" minOccurs="0"/>
+        <element name="enum2bitmapIndex" type= "sgr:SGrEnumListType" maxOccurs="1" minOccurs="0"/>
     	<element maxOccurs="1" minOccurs="1"
     		name="modbusFirstRegisterReference"
     		type="sgr:tSGrModbus_RegisterRef" />
@@ -274,12 +274,6 @@
       <annotation>
           <documentation>
           <documentation>2 Registers show a combined value, as example in kWh and MWh beginning with lower range @ higher address</documentation></documentation>
-        </annotation>
-      </enumeration>      
-      <enumeration value="bitmapRegister">       
-      <annotation>
-          <documentation>
-          <documentation>bitmap for Registers (typical: Status Bits). For to be visible as generic boolean array or unsigned integer mapped in parallel towards one data single point definition. To manage this like a block transfer for the booleans is highly recommended.</documentation></documentation>
         </annotation>
       </enumeration>      
     </restriction>

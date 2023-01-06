@@ -145,7 +145,12 @@
       <documentation />
     </annotation>
     <choice>
-    	<element name="bit" type="boolean" maxOccurs="1" minOccurs="1"></element>
+    	<element maxOccurs="32" minOccurs="1" name="bitmap" type="boolean">
+    	  <annotation>
+          <documentation>bitmap for Registers (typical: Status Bits). For to be visible as generic boolean array or unsigned integer mapped in parallel towards one data single point definition. Depending on the TransportService,  this requires specialized sw coding.
+          </documentation>
+        </annotation>
+    	</element>
     	<element maxOccurs="1" minOccurs="1" name="boolean"
     		type="boolean" />
     	<element maxOccurs="1" minOccurs="1" name="int8" type="byte" />
