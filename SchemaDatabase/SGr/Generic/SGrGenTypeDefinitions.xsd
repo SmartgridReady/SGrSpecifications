@@ -145,7 +145,7 @@
       <documentation />
     </annotation>
     <choice>
-    	<element maxOccurs="1" minOccurs="1" name="enum2bitmapIndex" type= "sgr:SGrEnumListType">
+    	<element maxOccurs="1" minOccurs="1" name="enum2bitmapIndex" type= "sgr:SGrBitmapperListType">
     	  <annotation>
           <documentation>bitmap for Registers (typical: Status Bits). For to be visible as generic boolean array or unsigned integer mapped in parallel towards one data single point definition. Depending on the TransportService,  this requires specialized sw coding.
           </documentation>
@@ -1045,9 +1045,29 @@
     </restriction>
   </simpleType>
 
+
+  <complexType name="SGrEnumListType">
+    <choice>
+      <element maxOccurs="1" minOccurs="1" name="sgrMeasValueSource" type="sgr:SGrMeasValueSourceType" />
+      <element maxOccurs="1" minOccurs="1" name="sgrPowerSource" type="sgr:SGrPowerSourceType" />
+      <element maxOccurs="1" minOccurs="1" name="sgreadyStateLv2" type="sgr:SGReadyStateLv2Type" />
+      <element maxOccurs="1" minOccurs="1" name="sgreadyStateLv1" type="sgr:SGReadyStateLv1Type" />
+      <element maxOccurs="1" minOccurs="1" name="sgrSunspStateCodes" type="sgr:SGrSunspStateCodesType" />
+      <element maxOccurs="1" minOccurs="1" name="sgrEVSEStateLv2" type="sgr:SGrEVSEStateLv2Type" />
+      <element maxOccurs="1" minOccurs="1" name="sgrEVSEStateLv1" type="sgr:SGrEVSEStateLv1Type" />
+      <element maxOccurs="1" minOccurs="1" name="sgrSGCPLoadStateLv2" type="sgr:SGrSGCPLoadStateLv2Type" />
+      <element maxOccurs="1" minOccurs="1" name="sgrSGCPFeedInStateLv2" type="sgr:SGrSGCPFeedInStateLv2Type" />
+      <element maxOccurs="1" minOccurs="1" name="sgrEVState" type="sgr:SGrEVStateType" />
+      <element maxOccurs="1" minOccurs="1" name="sgrSGCPService" type="sgr:SGrSGCPServiceType" />
+      <element maxOccurs="1" minOccurs="1" name="sgrObligLvl" type="sgr:SGrObligLvlType" />
+      <element maxOccurs="1" minOccurs="1" name="sgrOCPPState" type="sgr:SGrOCPPStateType" />
+      <element maxOccurs="1" minOccurs="1" name="sgrHPOpMode" type="sgr:SGrHPOpModeType" />
+    </choice>
+  </complexType>
+
   <simpleType name="SGrBool2BitRankType">
     <annotation>
-      <documentation>E0017:
+      <documentation>BM0001:
      BitRank map for bitfiedl32
 	</documentation>
     </annotation>
@@ -1086,26 +1106,15 @@
       <enumeration value="Bit31" />
     </restriction>
   </simpleType>
-
-  <complexType name="SGrEnumListType">
+  <complexType name="SGrBitmapperListType">
+    <annotation>
+      <documentation>BM0001:
+     Field of enumeration where endum index is used as bitmap flag
+     Unsigned int value  [and]  ( 1 [2 *  shift left] enum_index_value means bit is set
+	</documentation>
+	</annotation>
     <choice>
-      <element maxOccurs="1" minOccurs="1" name="sgrMeasValueSource" type="sgr:SGrMeasValueSourceType" />
-      <element maxOccurs="1" minOccurs="1" name="sgrPowerSource" type="sgr:SGrPowerSourceType" />
-      <element maxOccurs="1" minOccurs="1" name="sgreadyStateLv2" type="sgr:SGReadyStateLv2Type" />
-      <element maxOccurs="1" minOccurs="1" name="sgreadyStateLv1" type="sgr:SGReadyStateLv1Type" />
-      <element maxOccurs="1" minOccurs="1" name="sgrSunspStateCodes" type="sgr:SGrSunspStateCodesType" />
-      <element maxOccurs="1" minOccurs="1" name="sgrEVSEStateLv2" type="sgr:SGrEVSEStateLv2Type" />
-      <element maxOccurs="1" minOccurs="1" name="sgrEVSEStateLv1" type="sgr:SGrEVSEStateLv1Type" />
-      <element maxOccurs="1" minOccurs="1" name="sgrSGCPLoadStateLv2" type="sgr:SGrSGCPLoadStateLv2Type" />
-      <element maxOccurs="1" minOccurs="1" name="sgrSGCPFeedInStateLv2" type="sgr:SGrSGCPFeedInStateLv2Type" />
-      <element maxOccurs="1" minOccurs="1" name="sgrEVState" type="sgr:SGrEVStateType" />
-      <element maxOccurs="1" minOccurs="1" name="sgrSGCPService" type="sgr:SGrSGCPServiceType" />
-      <element maxOccurs="1" minOccurs="1" name="sgrObligLvl" type="sgr:SGrObligLvlType" />
-      <element maxOccurs="1" minOccurs="1" name="sgrOCPPState" type="sgr:SGrOCPPStateType" />
-      <element maxOccurs="1" minOccurs="1" name="sgrHPOpMode" type="sgr:SGrHPOpModeType" />
       <element maxOccurs="1" minOccurs="1" name="sgrBool2BitRank" type="sgr:SGrBool2BitRankType" />
     </choice>
   </complexType>
-
-
 </schema>
