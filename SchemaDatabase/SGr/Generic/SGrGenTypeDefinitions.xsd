@@ -1105,7 +1105,28 @@
       <enumeration value="Bit30" />
       <enumeration value="Bit31" />
     </restriction>
-  </simpleType>
+  </simpleType>  
+  <simpleType name="SGrHPOpstateStiebelType">
+    <annotation>
+      <documentation>BM0002:
+     BitRank map for Heat Pump Stiebel-Eltron
+	</documentation>
+	</annotation>
+    <restriction base="string">
+      <enumeration value="HP_1_PUMP_ON" />
+      <enumeration value="HP_2_PUMP_ON" />
+      <enumeration value="HEATUP_PROGRAM" />
+      <enumeration value="NHZ_STAGES_RUNNING" />
+      <enumeration value="HP_IN_HEATING_MODE" />
+      <enumeration value="HP_IN_DHW_MODE" />
+      <enumeration value="COMPRESSOR_RUNNING" />
+      <enumeration value="SUMMER_MODE_ACTIVE" />
+      <enumeration value="COOLING_MODE_ACTIVE" />
+      <enumeration value="MIN_ONE_IWS_IN_DEFROST_MODE" />
+      <enumeration value="SILENT_MODE_1_ACTIVE" />
+      <enumeration value="SILENT_MODE_2_ACTIVE" />
+    </restriction>
+  </simpleType>   
   <complexType name="SGrBitmapperListType">
     <annotation>
       <documentation>BM0001:
@@ -1115,6 +1136,7 @@
 	</annotation>
     <choice>
       <element maxOccurs="1" minOccurs="1" name="sgrBool2BitRank" type="sgr:SGrBool2BitRankType" />
+      <element maxOccurs="1" minOccurs="1" name="sgrHPOpstateStiebel" type="sgr:SGrHPOpstateStiebelType" />
     </choice>
   </complexType>
 </schema>
