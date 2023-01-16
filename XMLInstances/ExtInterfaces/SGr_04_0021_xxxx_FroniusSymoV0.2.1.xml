@@ -23,19 +23,17 @@
 	</sgr:modbusInterfaceDesc>
 	<sgr:fpListElement>
 		<sgr:functionalProfile
-			mroVisibilityIndicator="M" profileName="SunspInvModel">
+			mroVisibilityIndicator="M" profileName="SunspCommon">
 			<sgr:profileNumber>
 				<sgr:specsOwnerId>0</sgr:specsOwnerId>
 				<sgr:profileIdentification>Inverter</sgr:profileIdentification>
-				<sgr:subProfileIdent>CurrentAC</sgr:subProfileIdent>
+				<sgr:subProfileIdent>SunspCommon001</sgr:subProfileIdent>
 				<sgr:sgrLevelOfOperation>4</sgr:sgrLevelOfOperation>
 				<sgr:versionNumber>
 					<sgr:primaryVersionNumber>0
 					</sgr:primaryVersionNumber>
-					<sgr:secondaryVersionNumber>1
-					</sgr:secondaryVersionNumber>
-					<sgr:subReleaseVersionNumber>1
-					</sgr:subReleaseVersionNumber>
+					<sgr:secondaryVersionNumber>2</sgr:secondaryVersionNumber>
+					<sgr:subReleaseVersionNumber>2</sgr:subReleaseVersionNumber>
 				</sgr:versionNumber>
 			</sgr:profileNumber>
 		</sgr:functionalProfile>
@@ -47,8 +45,16 @@
 					<sgr:int32U>0</sgr:int32U>
 				</sgr:basicDataType>
 				<sgr:dpNameList>
-					<sgr:sSUNSPECName>C_SunSpec_ID</sgr:sSUNSPECName>
+					<sgr:sSUNSPECName>SID</sgr:sSUNSPECName>
 				</sgr:dpNameList>
+				<sgr:dpLegibDesc>
+					<sgr:textElement>Well-known value. Uniquely identifies this as a SunSpec Modbus Map. </sgr:textElement>
+					<sgr:language>en</sgr:language>
+				</sgr:dpLegibDesc>
+				<sgr:dpPrgDesc>
+					<sgr:textElement>recommendation: use this field to identfy that this device's communication works well: readout 0x53756e53 ('SunS')</sgr:textElement>
+					<sgr:language>en</sgr:language>
+				</sgr:dpPrgDesc>
 			</sgr:dataPoint>
 			<sgr:modbusDataPoint>
 				<sgr:modbusDataType>
@@ -66,6 +72,96 @@
 			</sgr:modbusAttr>
 		</sgr:dpListElement>
 		<sgr:dpListElement>
+			<sgr:dataPoint datapointName="SunspCommonID"
+				rwpDatadirection="R" mroVisibilityIndicator="M"
+				unit="NONE">
+				<sgr:dpNameList>
+					<sgr:sSUNSPECName>ID</sgr:sSUNSPECName></sgr:dpNameList>
+			</sgr:dataPoint>
+			<sgr:genAttribute></sgr:genAttribute>
+			<sgr:modbusDataPoint>
+				<sgr:modbusFirstRegisterReference registerType="HoldRegister" 
+					addr="40003" />
+				<sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
+				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
+			</sgr:modbusDataPoint>
+		</sgr:dpListElement>
+		<sgr:dpListElement>
+			<sgr:dataPoint datapointName="CommonModelBlockLen"
+				unit="NONE">
+			</sgr:dataPoint>
+			<sgr:modbusDataPoint>
+				<sgr:modbusFirstRegisterReference registerType="HoldRegister"
+					addr="4004" />
+				<sgr:dpSizeNrRegisters>2</sgr:dpSizeNrRegisters>
+				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
+			</sgr:modbusDataPoint>
+		</sgr:dpListElement>
+		<sgr:dpListElement>
+			<sgr:dataPoint datapointName="InvModelBlockLen" mroVisibilityIndicator="M"
+				rwpDatadirection="R" unit="NONE">
+				<sgr:basicDataType>
+					<sgr:int16U>0</sgr:int16U></sgr:basicDataType>
+				<sgr:dpNameList>
+					<sgr:sManufName>C_SunSpec_Length</sgr:sManufName>
+					<sgr:sSUNSPECName>ID</sgr:sSUNSPECName>
+				</sgr:dpNameList>
+			</sgr:dataPoint>
+			<sgr:modbusDataPoint>
+				<sgr:modbusDataType>
+					<sgr:int16U>0</sgr:int16U>
+				</sgr:modbusDataType>
+				<sgr:modbusFirstRegisterReference
+					registerType="HoldRegister" addr="40004" bitRank="0" />
+				<sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
+				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
+			</sgr:modbusDataPoint>
+			<sgr:modbusAttr>
+				<sgr:scalingByMulPwr>
+					<sgr:multiplicator>1</sgr:multiplicator>
+					<sgr:powerof10>0</sgr:powerof10>
+				</sgr:scalingByMulPwr>
+			</sgr:modbusAttr>
+		</sgr:dpListElement>
+	</sgr:fpListElement>
+		
+		
+		
+	<sgr:fpListElement>
+		<sgr:functionalProfile
+			mroVisibilityIndicator="M" profileName="SunspInvModel">
+			<sgr:profileNumber>
+				<sgr:specsOwnerId>0</sgr:specsOwnerId>
+				<sgr:profileIdentification>Inverter</sgr:profileIdentification>
+				<sgr:subProfileIdent>SunspInverter103</sgr:subProfileIdent>
+				<sgr:sgrLevelOfOperation>4</sgr:sgrLevelOfOperation>
+				<sgr:versionNumber>
+					<sgr:primaryVersionNumber>0
+					</sgr:primaryVersionNumber>
+					<sgr:secondaryVersionNumber>2</sgr:secondaryVersionNumber>
+					<sgr:subReleaseVersionNumber>2</sgr:subReleaseVersionNumber>
+				</sgr:versionNumber>
+			</sgr:profileNumber>
+		</sgr:functionalProfile>
+		<sgr:dpListElement>
+			<sgr:dataPoint datapointName="SunspInverterID"
+				rwpDatadirection="R" mroVisibilityIndicator="M"
+				unit="NONE">
+				<sgr:basicDataType>
+					<sgr:int16U>0</sgr:int16U>
+					
+				</sgr:basicDataType>
+				<sgr:dpNameList>
+					<sgr:sSUNSPECName>ID</sgr:sSUNSPECName></sgr:dpNameList>
+			</sgr:dataPoint>
+			<sgr:modbusDataPoint>
+				<sgr:modbusFirstRegisterReference registerType="HoldRegister"
+					addr="40070" />
+				<sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
+				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
+			</sgr:modbusDataPoint>
+		</sgr:dpListElement>
+		<sgr:dpListElement>
 			<sgr:dataPoint datapointName="InvModelBlockLen" mroVisibilityIndicator="M"
 				rwpDatadirection="R" unit="NONE">
 				<sgr:basicDataType>
@@ -79,7 +175,7 @@
 					<sgr:int16U>0</sgr:int16U>
 				</sgr:modbusDataType>
 				<sgr:modbusFirstRegisterReference
-					registerType="HoldRegister" addr="40004" bitRank="0" />
+					registerType="HoldRegister" addr="40071" bitRank="0" />
 				<sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
 				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
 			</sgr:modbusDataPoint>
@@ -566,4 +662,180 @@
 		</sgr:dpListElement>	
 		
 	</sgr:fpListElement>
+	<sgr:fpListElement>
+		<sgr:functionalProfile>
+			<sgr:profileNumber>
+				<sgr:specsOwnerId>0</sgr:specsOwnerId>
+				<sgr:profileIdentification>Inverter</sgr:profileIdentification>
+				<sgr:subProfileIdent>SunspNameplate120</sgr:subProfileIdent>
+				<sgr:sgrLevelOfOperation>4</sgr:sgrLevelOfOperation>
+				<sgr:versionNumber>
+					<sgr:primaryVersionNumber>
+						0
+					</sgr:primaryVersionNumber>
+					<sgr:secondaryVersionNumber>2</sgr:secondaryVersionNumber>
+					<sgr:subReleaseVersionNumber>2</sgr:subReleaseVersionNumber>
+				</sgr:versionNumber>
+			</sgr:profileNumber>
+		</sgr:functionalProfile>
+		<sgr:dpListElement>
+			<sgr:dataPoint datapointName="SunspNameplateID"
+				mroVisibilityIndicator="M" rwpDatadirection="R"
+				unit="NONE">
+				<sgr:basicDataType>
+					<sgr:int16U>120</sgr:int16U>
+					
+				</sgr:basicDataType>
+				<sgr:dpNameList>
+					<sgr:sSUNSPECName>ID</sgr:sSUNSPECName></sgr:dpNameList>
+			</sgr:dataPoint>
+			<sgr:modbusDataPoint>
+				<sgr:modbusFirstRegisterReference registerType="HoldRegister" 
+					addr="0" />
+				<sgr:dpSizeNrRegisters>0</sgr:dpSizeNrRegisters>
+				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
+			</sgr:modbusDataPoint>
+		</sgr:dpListElement>
+	</sgr:fpListElement>
+	<sgr:fpListElement>
+		<sgr:functionalProfile>
+			<sgr:profileNumber>
+				<sgr:specsOwnerId>0</sgr:specsOwnerId>
+				<sgr:profileIdentification>Inverter</sgr:profileIdentification>
+				<sgr:subProfileIdent>SunspBasicSettings121</sgr:subProfileIdent>
+				<sgr:sgrLevelOfOperation>4</sgr:sgrLevelOfOperation>
+				<sgr:versionNumber>
+					<sgr:primaryVersionNumber>
+						0
+					</sgr:primaryVersionNumber>
+					<sgr:secondaryVersionNumber>2</sgr:secondaryVersionNumber>
+					<sgr:subReleaseVersionNumber>2</sgr:subReleaseVersionNumber>
+				</sgr:versionNumber>
+			</sgr:profileNumber>
+		</sgr:functionalProfile>
+		<sgr:dpListElement>
+			<sgr:dataPoint datapointName="SunspBasicSettingsID"
+				mroVisibilityIndicator="M" rwpDatadirection="R"
+				unit="NONE">
+			</sgr:dataPoint>
+			<sgr:modbusDataPoint>
+				<sgr:modbusFirstRegisterReference registerType="HoldRegister" 
+					addr="40150" />
+				<sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
+				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
+			</sgr:modbusDataPoint>
+		</sgr:dpListElement>
+	</sgr:fpListElement>
+	
+	<sgr:fpListElement>
+			<sgr:functionalProfile>
+			<sgr:profileNumber>
+				<sgr:specsOwnerId>0</sgr:specsOwnerId>
+				<sgr:profileIdentification>Inverter</sgr:profileIdentification>
+				<sgr:subProfileIdent>SunspMeasurementStatus122</sgr:subProfileIdent>
+				<sgr:sgrLevelOfOperation>4</sgr:sgrLevelOfOperation>
+				<sgr:versionNumber>
+					<sgr:primaryVersionNumber>
+						0
+					</sgr:primaryVersionNumber>
+					<sgr:secondaryVersionNumber>
+						0
+					</sgr:secondaryVersionNumber>
+					<sgr:subReleaseVersionNumber>
+						0
+					</sgr:subReleaseVersionNumber>
+				</sgr:versionNumber>
+			</sgr:profileNumber>
+		</sgr:functionalProfile>
+		<sgr:dpListElement>
+			<sgr:dataPoint datapointName="SunspMeasurementStatusID"
+				mroVisibilityIndicator="M" rwpDatadirection="R"
+				unit="NONE">
+				<sgr:dpNameList>
+					<sgr:sSUNSPECName>ID</sgr:sSUNSPECName></sgr:dpNameList>
+			</sgr:dataPoint>
+			<sgr:modbusDataPoint>
+				<sgr:modbusFirstRegisterReference registerType="HoldRegister" 
+					addr="40150" />
+				<sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
+				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
+			</sgr:modbusDataPoint>
+		</sgr:dpListElement>
+	</sgr:fpListElement>
+	<sgr:fpListElement>
+		<sgr:functionalProfile>
+			<sgr:profileNumber>
+				<sgr:specsOwnerId>0</sgr:specsOwnerId>
+				<sgr:profileIdentification>Inverter</sgr:profileIdentification>
+				<sgr:subProfileIdent>SunspImmControl123</sgr:subProfileIdent>
+				<sgr:sgrLevelOfOperation>4</sgr:sgrLevelOfOperation>
+				<sgr:versionNumber>
+					<sgr:primaryVersionNumber>
+						0
+					</sgr:primaryVersionNumber>
+					<sgr:secondaryVersionNumber>2</sgr:secondaryVersionNumber>
+					<sgr:subReleaseVersionNumber>2</sgr:subReleaseVersionNumber>
+				</sgr:versionNumber>
+			</sgr:profileNumber>
+		</sgr:functionalProfile>
+		<sgr:dpListElement>
+			<sgr:dataPoint datapointName="SunspImmControlID"
+				mroVisibilityIndicator="M" rwpDatadirection="R"
+				unit="NONE">
+				<sgr:basicDataType>
+					<sgr:int16U>123</sgr:int16U>
+					
+				</sgr:basicDataType>
+				<sgr:dpNameList>
+					<sgr:sSUNSPECName>ID</sgr:sSUNSPECName></sgr:dpNameList>
+			</sgr:dataPoint>
+			<sgr:modbusDataPoint>
+				<sgr:modbusFirstRegisterReference registerType="HoldRegister" 
+					addr="40228" />
+				<sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
+				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
+			</sgr:modbusDataPoint>
+		</sgr:dpListElement>
+	</sgr:fpListElement>	
+	<sgr:fpListElement>
+		<sgr:functionalProfile>
+			<sgr:profileNumber>
+				<sgr:specsOwnerId>0</sgr:specsOwnerId>
+				<sgr:profileIdentification>Inverter</sgr:profileIdentification>
+				<sgr:subProfileIdent>SunspMultMPP160</sgr:subProfileIdent>
+				<sgr:sgrLevelOfOperation>4</sgr:sgrLevelOfOperation>
+				<sgr:versionNumber>
+					<sgr:primaryVersionNumber>
+						0
+					</sgr:primaryVersionNumber>
+					<sgr:secondaryVersionNumber>2</sgr:secondaryVersionNumber>
+					<sgr:subReleaseVersionNumber>2</sgr:subReleaseVersionNumber>
+				</sgr:versionNumber>
+			</sgr:profileNumber>
+		</sgr:functionalProfile>
+		<sgr:dpListElement>
+			<sgr:dataPoint datapointName="SunspMultMPPID" mroVisibilityIndicator="M"
+				rwpDatadirection="R" unit="NONE">
+				<sgr:basicDataType>
+					<sgr:int16U>160</sgr:int16U>					
+				</sgr:basicDataType>
+				<sgr:dpNameList>
+					<sgr:sSUNSPECName>ID</sgr:sSUNSPECName></sgr:dpNameList>
+				<sgr:dpLegibDesc>
+					<sgr:textElement>
+						Uniquely identifies this as a SunSpec Multiple
+						MPPT Inverter Extension Model Mode
+					</sgr:textElement>
+					<sgr:language>en</sgr:language>
+				</sgr:dpLegibDesc>
+			</sgr:dataPoint>
+			<sgr:modbusDataPoint>
+				<sgr:modbusFirstRegisterReference registerType="HoldRegister" 
+					addr="40254" />
+				<sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
+				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
+			</sgr:modbusDataPoint>
+		</sgr:dpListElement>
+	</sgr:fpListElement>
+	
 </sgr:SGrModbusDeviceFrame>
