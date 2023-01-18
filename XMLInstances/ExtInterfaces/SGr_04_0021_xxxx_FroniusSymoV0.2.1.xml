@@ -147,6 +147,59 @@
 				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
 			</sgr:modbusDataPoint>
 		</sgr:dpListElement>
+		<sgr:dpListElement>
+			<sgr:dataPoint datapointName="Options"
+				mroVisibilityIndicator="O" rwpDatadirection="R"
+				unit="NONE">
+				<sgr:basicDataType>
+					<sgr:string>sgr:string</sgr:string>
+					
+				</sgr:basicDataType>
+				<sgr:dpNameList>
+					<sgr:sSUNSPECName>Opt</sgr:sSUNSPECName></sgr:dpNameList>
+			</sgr:dataPoint>
+			<sgr:modbusDataPoint>
+				<sgr:modbusFirstRegisterReference registerType="HoldRegister"
+					addr="20037" />
+				<sgr:dpSizeNrRegisters>8</sgr:dpSizeNrRegisters>
+				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
+			</sgr:modbusDataPoint>
+		</sgr:dpListElement>
+		<sgr:dpListElement>
+			<sgr:dataPoint datapointName="SWVersion"
+				mroVisibilityIndicator="R" rwpDatadirection="R"
+				unit="NONE">
+				<sgr:basicDataType>
+					<sgr:string>sgr:string</sgr:string>					
+				</sgr:basicDataType>
+				<sgr:dpNameList>
+					<sgr:sSUNSPECName>Vr</sgr:sSUNSPECName></sgr:dpNameList>
+			</sgr:dataPoint>
+			<sgr:modbusDataPoint>
+				<sgr:modbusFirstRegisterReference registerType="HoldRegister"
+					addr="40045" />
+				<sgr:dpSizeNrRegisters>8</sgr:dpSizeNrRegisters>
+				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
+			</sgr:modbusDataPoint>
+		</sgr:dpListElement>
+		<sgr:dpListElement>
+			<sgr:dataPoint datapointName="SerialNumber"
+				mroVisibilityIndicator="M" rwpDatadirection="R"
+				unit="NONE">
+				<sgr:basicDataType>
+					<sgr:string>sgr:string</sgr:string>
+					
+				</sgr:basicDataType>
+				<sgr:dpNameList>
+					<sgr:sSUNSPECName>SN</sgr:sSUNSPECName></sgr:dpNameList>
+			</sgr:dataPoint>
+			<sgr:modbusDataPoint>
+				<sgr:modbusFirstRegisterReference registerType="HoldRegister"
+					addr="40053" />
+				<sgr:dpSizeNrRegisters>16</sgr:dpSizeNrRegisters>
+				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
+			</sgr:modbusDataPoint>
+		</sgr:dpListElement>
 	</sgr:fpListElement>		
 		
 	<sgr:fpListElement>
@@ -189,7 +242,8 @@
 				<sgr:basicDataType>
 					<sgr:int16U>0</sgr:int16U></sgr:basicDataType>
 				<sgr:dpNameList>
-					<sgr:sSUNSPECName>C_SunSpec_Length</sgr:sSUNSPECName>
+					<sgr:sManufName>C_SunSpec_Length</sgr:sManufName>
+					<sgr:sSUNSPECName>L</sgr:sSUNSPECName>
 				</sgr:dpNameList>
 			</sgr:dataPoint>
 			<sgr:modbusDataPoint>
@@ -214,7 +268,8 @@
 				<sgr:basicDataType>
 					<sgr:float32>0.0</sgr:float32></sgr:basicDataType>
 				<sgr:dpNameList>
-					<sgr:sSUNSPECName>I_AC_Current</sgr:sSUNSPECName>
+					<sgr:sManufName>I_AC_Current</sgr:sManufName>
+					<sgr:sSUNSPECName>A</sgr:sSUNSPECName>
 				</sgr:dpNameList>
 			</sgr:dataPoint>
 			<sgr:modbusDataPoint>
@@ -226,6 +281,7 @@
 				<sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
 				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
 			</sgr:modbusDataPoint>
+			<sgr:blockCashName>Block4Current</sgr:blockCashName> 
 			<sgr:modbusAttr>
 				<sgr:scalingByMulPwr>
 					<sgr:multiplicator>1</sgr:multiplicator>
@@ -239,7 +295,8 @@
 				<sgr:basicDataType>
 					<sgr:float32>0.0</sgr:float32></sgr:basicDataType>
 				<sgr:dpNameList>
-					<sgr:sSUNSPECName>I_AC_CurrentA</sgr:sSUNSPECName>
+					<sgr:sManufName>I_AC_CurrentA</sgr:sManufName>
+					<sgr:sSUNSPECName>AphA</sgr:sSUNSPECName>
 				</sgr:dpNameList>
 			</sgr:dataPoint>
 			<sgr:modbusDataPoint>
@@ -262,7 +319,8 @@
 				<sgr:basicDataType>
 					<sgr:float32>0.0</sgr:float32></sgr:basicDataType>
 				<sgr:dpNameList>
-					<sgr:sSUNSPECName>I_AC_CurrentB</sgr:sSUNSPECName>
+					<sgr:sManufName>I_AC_CurrentB</sgr:sManufName>
+					<sgr:sSUNSPECName>AphB</sgr:sSUNSPECName>
 				</sgr:dpNameList>
 			</sgr:dataPoint>
 			<sgr:modbusDataPoint>
@@ -271,6 +329,7 @@
 				<sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
 				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
 			</sgr:modbusDataPoint>
+ 			<sgr:blockCashName>Block4Current</sgr:blockCashName>  
 			<sgr:modbusAttr>
 				<sgr:scalingByMulPwr>
 					<sgr:multiplicator>1</sgr:multiplicator>
@@ -283,22 +342,40 @@
 			<sgr:basicDataType>
  		<sgr:float32>0.0</sgr:float32></sgr:basicDataType>
  	<sgr:dpNameList>
- 		<sgr:sSUNSPECName>I_AC_CurrentC</sgr:sSUNSPECName>
+ 		<sgr:sManufName>I_AC_CurrentC</sgr:sManufName>
+ 		<sgr:sSUNSPECName>AphC</sgr:sSUNSPECName>
  	</sgr:dpNameList>
 			</sgr:dataPoint>
 			<sgr:modbusDataPoint>
 				<sgr:modbusDataType><sgr:int16>0</sgr:int16></sgr:modbusDataType>
-				<sgr:modbusFirstRegisterReference addr="40075"
-					registerType="HoldRegister" bitRank="0" />
+				<sgr:modbusFirstRegisterReference registerType="HoldRegister" 	addr="40075" />
 				<sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
 				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
 			</sgr:modbusDataPoint>
+  			<sgr:blockCashName>Block4Current</sgr:blockCashName> 
 			<sgr:modbusAttr>
 				<sgr:scalingByMulPwr>
 					<sgr:multiplicator>1</sgr:multiplicator>
 					<sgr:powerof10>-2</sgr:powerof10>
 				</sgr:scalingByMulPwr>
 			</sgr:modbusAttr>
+		</sgr:dpListElement>
+		<sgr:dpListElement>
+			<sgr:dataPoint datapointName="sunssf4Current"
+				mroVisibilityIndicator="M" rwpDatadirection="R"
+				unit="NONE">
+				<sgr:basicDataType>
+					<sgr:int16U>0</sgr:int16U>
+					
+				</sgr:basicDataType>
+			</sgr:dataPoint>
+			<sgr:modbusDataPoint>
+				<sgr:modbusFirstRegisterReference registerType="HoldRegister"
+					addr="40076" />
+				<sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
+				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
+			</sgr:modbusDataPoint>
+  			<sgr:blockCashName>Block4Current</sgr:blockCashName> 
 		</sgr:dpListElement>
 		<sgr:dpListElement>		
 			<sgr:dataPoint datapointName="VoltageACL1L2"	mroVisibilityIndicator="O" unit="VOLTS" rwpDatadirection="R">
@@ -859,5 +936,13 @@
 			</sgr:modbusDataPoint>
 		</sgr:dpListElement>
 	</sgr:fpListElement>
-	
+ <sgr:timeSyncBlockNotification>
+		<sgr:lastAccessTime>0</sgr:lastAccessTime>
+		<sgr:timeToLive>5000</sgr:timeToLive>
+		<sgr:firstAddr>40072</sgr:firstAddr>
+		<sgr:registerType>HoldRegister</sgr:registerType>
+		<sgr:blockCashName>Block4Current</sgr:blockCashName>
+		<sgr:size>5</sgr:size>
+	</sgr:timeSyncBlockNotification>
+
 </sgr:SGrModbusDeviceFrame>
