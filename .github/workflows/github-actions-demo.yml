@@ -45,19 +45,20 @@ jobs:
         for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
           echo "$file was changed"
         done
-  upload:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@master
-      with:
-        fetch-depth: 0
-    - name: Get changed files
-      id: changed-files
-      uses: tj-actions/changed-files@v35
-    - name: curl
-      run: |
-        for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
-          uses: wei/curl@v1.1.1
-          with:
-            args: --upload-file $file https://smartgridready.ergonomics.ch/$file?upload
-        done
+#  upload:
+#    runs-on: ubuntu-latest
+#    steps:
+#    - uses: actions/checkout@v3
+#      with:
+#        fetch-depth: 0
+#    - name: Get changed files
+#      id: changed-files
+#      uses: tj-actions/changed-files@v35
+#    - name: curl
+#      run: |
+#        for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
+#          echo "$file was changed"
+#          uses: wei/curl@v1.1.1
+#          with:
+#            args: --upload-file $file https://smartgridready.ergonomics.ch/$file?upload
+#        done
