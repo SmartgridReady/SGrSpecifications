@@ -57,7 +57,7 @@ jobs:
     - name: curl
       run: |
         for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
-          uses: wei/curl@v1
+          uses: wei/curl@v1.1.1
           with:
             args: --upload-file $file https://smartgridready.ergonomics.ch/$file?upload
         done
