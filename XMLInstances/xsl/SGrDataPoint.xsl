@@ -11,7 +11,7 @@
 
 	<xsl:import href="SGrGenericAttributes.xsl" />
 	<xsl:import href="SGrGenericDataPointDefinitions.xsl" />
-	<xsl:import href="SgrGenericHelpers.xsl" />
+	<xsl:import href="SGrGenericHelpers.xsl" />
 	<xsl:import href="SGrGenericLegibDocumentationType.xsl" />
 
 
