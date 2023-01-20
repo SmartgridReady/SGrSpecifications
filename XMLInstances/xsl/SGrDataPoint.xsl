@@ -151,9 +151,7 @@
 			<tr class="transportDetails">
 				<td>Bit Mask</td>
 				<td>
-					<xsl:value-of select="sgr:bitmask" />
-					h
-				</td>
+					<xsl:value-of select="sgr:bitmask" /> h </td>
 			</tr>
 		</xsl:if>
 
@@ -172,33 +170,20 @@
 			<tr class="transportDetails">
 				<td>JMES Path</td>
 				<td>
-					<xsl:value-of select="sgr:modbusJMESPath" />
-					h
-				</td>
+					<xsl:value-of select="sgr:modbusJMESPath" /> h </td>
 			</tr>
 		</xsl:if>
 	</xsl:template>
 
 	<!-- SGrRestAPIDataPointDescriptionType -->
 	<xsl:template match="sgr:restAPIDataPoint">
-		<tr class="transportDetails">
+		<tr	class="transportDetails">
 			<td>Data Type</td>
 			<td>
 				<xsl:apply-templates select="./@dataType" />
 			</td>
 		</tr>
-		<tr class="transportDetails">
-			<td>End Point</td>
-			<td>
-				<xsl:value-of select="sgr:restAPIEndPoint" />
-			</td>
-		</tr>
-		<tr class="transportDetails">
-			<td>JMES Path</td>
-			<td>
-				<xsl:value-of select="sgr:restAPIJMESPath" />
-			</td>
-		</tr>
+		<xsl:apply-templates select="sgr:restServiceCall" />
 	</xsl:template>
 
 </xsl:stylesheet>

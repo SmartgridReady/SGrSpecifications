@@ -61,11 +61,9 @@
             <tr class="transportDetails">
                 <td>Bearer Security</td>
                 <td>
-                    End Point:
-                    <xsl:value-of select="sgr:restAPIBearer/sgr:restAPIEndPoint" />
-                    <br />
-                    JMES Path:
-                    <xsl:value-of select="sgr:restAPIBearer/sgr:restAPIJMESPath" />
+                    <table>
+                        <xsl:apply-templates select="sgr:restAPIBearer/sgr:serviceCall" />
+                    </table>
                 </td>
             </tr>
         </xsl:if>
@@ -99,6 +97,48 @@
                 </td>
             </tr>
         </xsl:if>
+    </xsl:template>
+
+    <!-- Rest Service Call -->
+    <xsl:template match="sgr:restServiceCall">
+		<xsl:call-template name="SGrRestServiceCall" />
+	</xsl:template>
+    <xsl:template match="sgr:serviceCall">
+		<xsl:call-template name="SGrRestServiceCall" />
+	</xsl:template>    
+    <xsl:template name="SGrRestServiceCall">
+        <tr class="transportDetails">
+			<td>End Point</td>
+			<td>
+				<xsl:value-of select="sgr:requestMethod" /> &#160; 
+				<xsl:value-of select="sgr:requestPath" />
+			</td>
+		</tr>
+        <xsl:if test="sgr:requestHeader">
+            <tr class="transportDetails">
+                <td>Header</td>
+                <td>
+    				<xsl:for-each select="sgr:requestHeader/sgr:header">
+                        <xsl:value-of select="./@headerName" /> : <xsl:value-of select="@value" />
+                    </xsl:for-each>
+                </td>
+            </tr>
+        </xsl:if>
+        <xsl:if test="sgr:requestBody">
+		    <tr class="transportDetails">
+			    <td>Body</td>
+			    <td>
+                    <xsl:value-of select="sgr:requestBody" />
+			    </td>
+		    </tr>		
+        </xsl:if>
+		<tr class="transportDetails">
+			<td>Response</td>
+			<td>
+				<xsl:value-of select="sgr:responseQuery/sgr:queryType" /> &#160;
+				<xsl:value-of select="sgr:responseQuery/sgr:query" />
+			</td>
+		</tr>
     </xsl:template>
     
 </xsl:stylesheet>

@@ -35,7 +35,7 @@
 	<tr class="genericDetails"><td>Transport Service</td><td>
 		<xsl:choose>
 			<xsl:when test="sgr:transportService='Modbus'"><img src="/xsl/modbus.png" alt="Modbus" height="17px"/></xsl:when>
-			<xsl:when test="sgr:transportService='RESTfulJSON'"><img src="/xsl/rest.png" alt="JsonRest" height="17px"/>></xsl:when>
+			<xsl:when test="sgr:transportService='RESTfulJSON'"><img src="/xsl/rest.png" alt="JsonRest" height="17px"/></xsl:when>
 			<xsl:when test="sgr:transportService='Contacts'"><img src="/xsl/contacts.png" alt="Contacts" height="17px"/></xsl:when>
 			<xsl:otherwise>
 				<!--enumeration value="EEBUS"/>
