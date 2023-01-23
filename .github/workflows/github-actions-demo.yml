@@ -15,5 +15,5 @@ jobs:
       run: |
         for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
           echo "try to upload $file"
-          curl --upload-file $file https://smartgridready.ergonomics.ch/$file?upload
+          curl --upload-file $file https://smartgridready.ergonomics.ch/$file?update
         done
