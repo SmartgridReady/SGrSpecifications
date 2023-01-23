@@ -13,7 +13,19 @@ jobs:
       uses: tj-actions/changed-files@v35
     - name: curl
       run: |
-        for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
-          echo "try to upload $file"
+        # for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
+        # echo "try to upload $file"
+        # curl --upload-file $file https://smartgridready.ergonomics.ch/$file?update
+        # done
+        for file in ${{ steps.changed-files.outputs.added_files }}; do
+          echo "try to upload added $file"
+          curl --upload-file $file https://smartgridready.ergonomics.ch/$file?add
+        done
+        for file in ${{ steps.changed-files.outputs.modified_files }}; do
+          echo "try to upload modified $file"
           curl --upload-file $file https://smartgridready.ergonomics.ch/$file?update
+        done
+        for file in ${{ steps.changed-files.deleted_files }}; do
+          echo "try to upload modified $file"
+          curl --upload-file $file https://smartgridready.ergonomics.ch/$file?delete
         done
