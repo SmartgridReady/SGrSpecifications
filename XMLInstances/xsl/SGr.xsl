@@ -132,6 +132,81 @@
 				<colgroup>
 					<col style="width:30%" />
 				</colgroup>
+				<!-- Release State -->
+                <tr>
+                    <td class="fpHeader">
+                        <h4>Release State</h4>
+                    </td>
+                    <td class="fpHeader">
+                        <table>
+                            <tr>
+                                <td>
+                                    <xsl:value-of select="sgr:releaseNotes/sgr:state" />
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+
+				<!-- Remarks -->
+                <xsl:if test="sgr:releaseNotes/sgr:remarks">
+                    <tr>
+                        <td class="fpHeader">
+                            <h4>Remarks</h4>
+                        </td>
+                        <td class="fpHeader">
+                            <table>
+                                <tr>
+                                    <td>
+                                        <xsl:value-of select="sgr:releaseNotes/sgr:remarks" />
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </xsl:if>
+
+                <!-- Change Log -->
+                <xsl:if test="sgr:releaseNotes/sgr:changelog">
+					<tr>
+						<td class="fpHeader">
+							<h4>Change Log</h4>
+						</td>
+						<td class="fpHeader">
+							<table>
+								<colgroup>
+									<col style="width:16%" />
+									<col style="width:16%" />
+									<col style="width:16%" />
+									<col style="width:52%" />
+								</colgroup>
+								<tr>
+									<th>Version</th>
+									<th>Date</th>
+									<th>Author</th>
+									<th>Comment</th>
+								</tr>
+								<xsl:for-each select="sgr:releaseNotes/sgr:changelog">
+									<tr>
+										<td>
+											<xsl:value-of select="sgr:version" />
+										</td>
+										<td>
+											<xsl:value-of select="sgr:date" />
+										</td>
+										<td>
+											<xsl:value-of select="sgr:author" />
+										</td>
+										<td>
+											<xsl:value-of select="sgr:comment" />
+										</td>
+									</tr>
+								</xsl:for-each>
+							</table>
+						</td>
+					</tr>
+				</xsl:if>
+
 				<tr>
 					<td>Name</td>
 					<td>
