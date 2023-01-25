@@ -31,11 +31,11 @@
 			<sgr:secondaryVersionNumber>1</sgr:secondaryVersionNumber>
 			<sgr:subReleaseVersionNumber>0</sgr:subReleaseVersionNumber>
 		</sgr:hardwareRevision>
-		<sgr:brandName>OptiHeat Inverta</sgr:brandName>
+		<sgr:brandName>myHeatPumpName</sgr:brandName>
 		<sgr:powerSource>mains3Phase</sgr:powerSource>
 		<sgr:nominalPower>sgr:nominalPower</sgr:nominalPower>
 		<sgr:manufacturerLabel>add Label</sgr:manufacturerLabel>
-		<sgr:remAuthorID>CTA/mz  IBT/cb</sgr:remAuthorID>
+		<sgr:remAuthorID>add Author</sgr:remAuthorID>
 		<sgr:devLevelofOperation>4</sgr:devLevelofOperation>
 	</sgr:deviceProfile>
 	<sgr:modbusInterfaceDesc>
@@ -85,18 +85,26 @@
 			</sgr:fpLegibDesc>
 		</sgr:functionalProfile>
 		<sgr:dpListElement>
-			<sgr:dataPoint datapointName="HPOpModeCmd" mroVisibilityIndicator="M" rwpDatadirection="R" unit="NONE">
+			<sgr:dataPoint datapointName="HPOpModeCmd" mroVisibilityIndicator="M" rwpDatadirection="RW" unit="NONE">
 				<sgr:basicDataType>
-					<sgr:int16>0</sgr:int16>
+					<sgr:enum>
+						<sgr:sgrHPOpMode>WP_EMERG_OP</sgr:sgrHPOpMode>
+						
+					</sgr:enum>
+					
 				</sgr:basicDataType>
 				<sgr:dpNameList>
 					<sgr:sLV1Name>HPOpModeCmd</sgr:sLV1Name>
-					<sgr:sManufName>CTA_HeatPump_FSM</sgr:sManufName>
+					<sgr:sHPbwpName>Betriebsmodus</sgr:sHPbwpName>
 				</sgr:dpNameList>
 				<sgr:dpLegibDesc>
-					<sgr:textElement>?checkDoku TODO: enum.  Grund-Betriebsart der Wärmepumpe (Bereitschaft, Programm, Komfort, Eco, Warmwasser, Kühlen aktiv, Kühlen passiv, Notbetrieb)</sgr:textElement>
+					<sgr:textElement> Grund-Betriebsart der Wärmepumpe (Bereitschaft, Programm, Komfort, Eco, Warmwasser, Kühlen aktiv, Kühlen passiv, Notbetrieb)</sgr:textElement>
 					<sgr:language>de</sgr:language>
 				</sgr:dpLegibDesc>
+				<sgr:dpPrgDesc>
+					<sgr:textElement>some of the devices do either not allow setting OpMode setting(the name should the ne named "HPOpModeCmdFB") or allow it in a special mode only.</sgr:textElement>
+					<sgr:language>en</sgr:language>
+				</sgr:dpPrgDesc>
 			</sgr:dataPoint>
 			<sgr:modbusDataPoint>
 				<sgr:modbusDataType>
@@ -116,10 +124,13 @@
 		<sgr:dpListElement>
 			<sgr:dataPoint datapointName="HPOpState" mroVisibilityIndicator="M" rwpDatadirection="R" unit="NONE">
 				<sgr:basicDataType>
-					<sgr:int32>0</sgr:int32>
+					<sgr:enum2bitmapIndex>
+						<sgr:sgrHPOpstate>HP_PUMP_ON</sgr:sgrHPOpstate>
+					</sgr:enum2bitmapIndex>					
 				</sgr:basicDataType>
 				<sgr:dpNameList>
 					<sgr:sLV1Name>HPOpState</sgr:sLV1Name>
+					<sgr:sEN17609Name>Aktive Funktion</sgr:sEN17609Name>
 				</sgr:dpNameList>
 				<sgr:dpLegibDesc>
 					<sgr:textElement>?check: enum oder Bit-Array? TODO: enum. Auslesen des aktuellen Status der Wärmepumpe (Bereitschaft, Programm, Komfort, Eco, Warmwasser, Kühlen aktiv, Kühlen passiv,Notbetrieb)</sgr:textElement>
@@ -147,12 +158,16 @@
 					<sgr:int16>0</sgr:int16>
 				</sgr:basicDataType>
 				<sgr:dpNameList>
-					<sgr:sLV1Name>Fault_HP_SGr</sgr:sLV1Name>
+					<sgr:sLV1Name>ErrorNrSGr</sgr:sLV1Name>
 				</sgr:dpNameList>
 				<sgr:dpLegibDesc>
-					<sgr:textElement>?check: enum oder Bit-Array? Fehlerliste gem. Standard</sgr:textElement>
-					<sgr:language>de</sgr:language>
+					<sgr:textElement>0 means no errors. </sgr:textElement>
+					<sgr:language>en</sgr:language>
 				</sgr:dpLegibDesc>
+				<sgr:dpPrgDesc>
+					<sgr:textElement>Check the manufaturer error list for its proprietary error analytics</sgr:textElement>
+					<sgr:language>en</sgr:language>
+				</sgr:dpPrgDesc>
 			</sgr:dataPoint>
 			<sgr:modbusDataPoint>
 				<sgr:modbusDataType>
@@ -176,6 +191,8 @@
 				</sgr:basicDataType>
 				<sgr:dpNameList>
 					<sgr:sLV1Name>OutsideAirTemp</sgr:sLV1Name>
+					<sgr:sIEC61850Name>Outside Air Temperatur</sgr:sIEC61850Name>
+					<sgr:sHPbwpName>Temperatur Außen</sgr:sHPbwpName>
 				</sgr:dpNameList>
 				<sgr:dpLegibDesc>
 					<sgr:textElement>
@@ -201,10 +218,14 @@
 
 		</sgr:dpListElement>
 		<sgr:dpListElement>
-			<sgr:dataPoint datapointName="FlowWaterTemp" mroVisibilityIndicator="M" rwpDatadirection="R" unit="DEGREES_CELSIUS">
+			<sgr:dataPoint datapointName="SupplyWaterTemp" mroVisibilityIndicator="M" rwpDatadirection="R" unit="DEGREES_CELSIUS">
 				<sgr:basicDataType>
 					<sgr:float32>0.0</sgr:float32>
 				</sgr:basicDataType>
+				<sgr:dpNameList>
+					<sgr:sLV1Name>SupplyWaterTemp</sgr:sLV1Name>
+					<sgr:sHPbwpName>Temperatur Vorlauf</sgr:sHPbwpName>
+					<sgr:sEN17609Name>SupplyWaterTemp</sgr:sEN17609Name></sgr:dpNameList>
 			</sgr:dataPoint>
 			<sgr:modbusDataPoint>
 				<sgr:modbusDataType>
@@ -222,12 +243,14 @@
 			</sgr:modbusAttr>
 		</sgr:dpListElement>
 		<sgr:dpListElement>
-			<sgr:dataPoint datapointName="BackFlowWaterTemp" mroVisibilityIndicator="O" rwpDatadirection="R" unit="DEGREES_CELSIUS">
+			<sgr:dataPoint datapointName="BackSupplyWaterTemp" mroVisibilityIndicator="O" rwpDatadirection="R" unit="DEGREES_CELSIUS">
 				<sgr:basicDataType>
 					<sgr:float32>0.0</sgr:float32>
 				</sgr:basicDataType>
 				<sgr:dpNameList>
-					<sgr:sLV1Name>BackFlowWaterTemp</sgr:sLV1Name>
+					<sgr:sLV1Name>BackSupplyWaterTemp</sgr:sLV1Name>
+					<sgr:sHPbwpName>Temperatur Rücklauf</sgr:sHPbwpName>
+					<sgr:sEN17609Name>Return Water Temperature</sgr:sEN17609Name>
 				</sgr:dpNameList>
 				<sgr:dpLegibDesc>
 					<sgr:textElement>Auslesen der aktuellen aktuellen-Temperatur des Rücklaufs.</sgr:textElement>
@@ -248,6 +271,63 @@
 					<sgr:powerof10>0</sgr:powerof10>
 				</sgr:scalingByMulPwr>
 			</sgr:modbusAttr>
+		</sgr:dpListElement>
+		<sgr:dpListElement>
+			<sgr:dataPoint datapointName="SupplyWaterTempStpt"
+				mroVisibilityIndicator="R" unit="DEGREES_CELSIUS"
+				rwpDatadirection="RW">
+				<sgr:basicDataType>
+					<sgr:float32>0.0</sgr:float32>
+
+				</sgr:basicDataType>
+				<sgr:dpNameList>
+					<sgr:sLV1Name>SupplyWaterTempStpt</sgr:sLV1Name>
+					<sgr:sHPbwpName>
+						Solltemperatur für Anforderungsfühler
+					</sgr:sHPbwpName>
+					<sgr:sEN17609Name>
+						Supply Water Temperature Setpoint
+					</sgr:sEN17609Name>
+				</sgr:dpNameList>
+				<sgr:dpPrgDesc>
+					<sgr:textElement>
+						some of the devices do either not allow setting
+						Setpoints (the name should the ne named
+						"SupplyWaterTempStptFB") or allow it in a
+						special mode only.
+					</sgr:textElement>
+					<sgr:language>en</sgr:language>
+				</sgr:dpPrgDesc>
+			</sgr:dataPoint>
+			<sgr:modbusDataPoint>
+				<sgr:modbusFirstRegisterReference registerType="HoldRegister"
+					addr="0" ></sgr:modbusFirstRegisterReference>
+				<sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
+				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
+			</sgr:modbusDataPoint>
+		</sgr:dpListElement>
+		<sgr:dpListElement>
+			<sgr:dataPoint datapointName="SourceTemp"
+				mroVisibilityIndicator="O" rwpDatadirection="R"
+				unit="DEGREES_CELSIUS">
+				<sgr:basicDataType>
+					<sgr:float32>0.0</sgr:float32>
+					
+				</sgr:basicDataType>
+				<sgr:dpNameList>
+					<sgr:sLV1Name>SourceTemp</sgr:sLV1Name>
+					<sgr:sHPbwpName>Temperatur Wärmequelleneintritt</sgr:sHPbwpName></sgr:dpNameList>
+				<sgr:dpLegibDesc>
+					<sgr:textElement>Die Temperatur am Wärmequelleneintritt (Umgebungsluft, Wasser oder Erdsonde) erlaubt eine genauere Analyse der Energieprognose,  </sgr:textElement>
+					<sgr:language>de</sgr:language>
+				</sgr:dpLegibDesc>
+			</sgr:dataPoint>
+			<sgr:modbusDataPoint>
+				<sgr:modbusFirstRegisterReference registerType="HoldRegister"
+					addr="1" />
+				<sgr:dpSizeNrRegisters>2</sgr:dpSizeNrRegisters>
+				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
+			</sgr:modbusDataPoint>
 		</sgr:dpListElement>
 	</sgr:fpListElement>
 
@@ -319,7 +399,7 @@
 				</sgr:dpNameList>
 				<sgr:dpLegibDesc>
 					<sgr:textElement>
-						?check: Adress durch cb? Effektive Drehzahl des Verdichters
+						 Effektive Drehzahl des Verdichters
 					</sgr:textElement>
 					<sgr:language>de</sgr:language>
 				</sgr:dpLegibDesc>
@@ -854,6 +934,142 @@
 					<sgr:powerof10>0</sgr:powerof10>
 				</sgr:scalingByMulPwr>
 			</sgr:modbusAttr>
+		</sgr:dpListElement>
+	</sgr:fpListElement>
+
+<sgr:fpListElement>
+		<sgr:functionalProfile mroVisibilityIndicator="M" profileName="SG-ReadyStates_bwp">
+			<sgr:profileNumber>
+				<sgr:specsOwnerId>0</sgr:specsOwnerId>
+				<sgr:profileIdentification>HeatPumpControl</sgr:profileIdentification>
+				<sgr:subProfileIdent>SG-ReadyStates_bwp</sgr:subProfileIdent>
+				<sgr:sgrLevelOfOperation>2</sgr:sgrLevelOfOperation>
+				<sgr:versionNumber>
+					<sgr:primaryVersionNumber>0</sgr:primaryVersionNumber>
+					<sgr:secondaryVersionNumber>2</sgr:secondaryVersionNumber>
+					<sgr:subReleaseVersionNumber>1</sgr:subReleaseVersionNumber>
+				</sgr:versionNumber>
+			</sgr:profileNumber>
+			<sgr:fpNameList>
+				<sgr:sLV1Name>SG-ReadyStates_bwp</sgr:sLV1Name>
+				<sgr:sHPbwpName>sgr:sHPbwpName</sgr:sHPbwpName>
+			</sgr:fpNameList>
+			<sgr:fpLegibDesc>
+				<sgr:textElement>„SG Ready“ ist ein Markenzeichen des Bundesverbands Wärmepumpe e. V.
+Es bezeichnet eine Eigenschaft von Wärmepumpen, deren Regelungstechnik
+die Einbindung in ein intelligentes Stromnetz
+(Smart Grid) ermöglicht</sgr:textElement>
+				<sgr:language>de</sgr:language>
+				<sgr:uri>https://www.waermepumpe.de/normen-technik/sg-ready/</sgr:uri>
+			</sgr:fpLegibDesc>
+		</sgr:functionalProfile>
+		<sgr:dpListElement>
+			<sgr:dataPoint datapointName="SGReadyCmd"
+				mroVisibilityIndicator="M" rwpDatadirection="RW"
+				unit="NONE">
+				<sgr:basicDataType>
+					<sgr:enum>
+						<sgr:sgreadyStateLv2>HP_NORMAL</sgr:sgreadyStateLv2>
+					</sgr:enum>
+
+				</sgr:basicDataType>
+				<sgr:dpLegibDesc>
+					<sgr:textElement>this the command acccording the bwp SG-Ready definition  https://www.waermepumpe.de/normen-technik/sg-ready/</sgr:textElement>
+					<sgr:language>en</sgr:language>
+				</sgr:dpLegibDesc>
+			</sgr:dataPoint>
+			<!-- TODO/cb:   map layer 6 exception for writing into 2 Holding Register SGReadyInp1isON and SGReadyInp2isON -->
+			<sgr:modbusDataPoint>
+				<sgr:modbusFirstRegisterReference registerType="HoldRegister"
+					addr="4002" />
+				<sgr:dpSizeNrRegisters>2</sgr:dpSizeNrRegisters>
+				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
+			</sgr:modbusDataPoint>
+		</sgr:dpListElement>
+		<sgr:dpListElement>
+			<sgr:dataPoint datapointName="SGReadyState" mroVisibilityIndicator="R" rwpDatadirection="R" unit="NONE">
+				<sgr:basicDataType>
+					<sgr:enum>
+						<sgr:sgreadyStateLv2>HP_NORMAL</sgr:sgreadyStateLv2>
+					</sgr:enum>
+				</sgr:basicDataType>
+				<sgr:dpNameList>
+					<sgr:sLV1Name>SG-ReadyState</sgr:sLV1Name>
+				</sgr:dpNameList>
+				<sgr:dpLegibDesc>
+					<sgr:textElement>SG-ReadyState of the current operation</sgr:textElement>
+					<sgr:language>de</sgr:language>
+				</sgr:dpLegibDesc>
+				<sgr:dpPrgDesc>
+					<sgr:textElement>SG READY BETRIEBSZUSTAND 
+1: Die Anlage darf nicht starten. Nur der Frostschutz wird gewährleistet.
+2: Normaler Betrieb der Anlage. Automatik- / Programmbetrieb gemäß BI der angeschlossenen Wärmepumpe
+3: Forcierter Betrieb der Anlage mit erhöhten Werten für Heiz- und/oder Warmwassertemperatur
+4: Sofortige Ansteuerung der Maximalwerte für Heiz- und Warmwassertemperatur</sgr:textElement>
+					<sgr:language>de</sgr:language>
+				</sgr:dpPrgDesc>
+			</sgr:dataPoint>
+			<sgr:modbusDataPoint>
+				<sgr:modbusDataType>
+					<sgr:enum>
+						<sgr:sgreadyStateLv2>HP_NORMAL</sgr:sgreadyStateLv2>
+					</sgr:enum>
+				</sgr:modbusDataType>
+				<sgr:modbusFirstRegisterReference registerType="InputRegister" addr="5001" bitRank="0" />
+				<sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
+				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
+			</sgr:modbusDataPoint>
+			<sgr:modbusAttr>
+				<sgr:scalingByMulPwr>
+					<sgr:multiplicator>1</sgr:multiplicator>
+					<sgr:powerof10>0</sgr:powerof10>
+				</sgr:scalingByMulPwr>
+			</sgr:modbusAttr>
+		</sgr:dpListElement>
+		<sgr:dpListElement>
+			<sgr:dataPoint datapointName="SGReadyEnabled" unit="NONE" rwpDatadirection="RW" mroVisibilityIndicator="M">
+				<sgr:basicDataType>
+					<sgr:boolean>true</sgr:boolean>
+				</sgr:basicDataType>
+			</sgr:dataPoint>
+			<sgr:modbusDataPoint>
+				<sgr:modbusDataType>
+					<sgr:boolean>true</sgr:boolean>
+				</sgr:modbusDataType>
+				<sgr:modbusFirstRegisterReference registerType="HoldRegister" addr="4001" />
+				<sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
+				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
+			</sgr:modbusDataPoint>
+		</sgr:dpListElement>
+		<sgr:dpListElement>
+			<sgr:dataPoint datapointName="SGReadyInp1isON" unit="NONE" rwpDatadirection="RW" mroVisibilityIndicator="M">
+				<sgr:basicDataType>
+					<sgr:boolean>true</sgr:boolean>
+				</sgr:basicDataType>
+			</sgr:dataPoint>
+			<sgr:modbusDataPoint>
+				<sgr:modbusDataType>
+					<sgr:boolean>true</sgr:boolean>
+				</sgr:modbusDataType>
+				<sgr:modbusFirstRegisterReference registerType="HoldRegister" addr="4002" />
+				<sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
+				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
+			</sgr:modbusDataPoint>
+		</sgr:dpListElement>
+		<sgr:dpListElement>
+			<sgr:dataPoint datapointName="SGReadyInp2isON" unit="NONE" rwpDatadirection="RW" mroVisibilityIndicator="M">
+				<sgr:basicDataType>
+					<sgr:boolean>true</sgr:boolean>
+				</sgr:basicDataType>
+			</sgr:dataPoint>
+			<sgr:modbusDataPoint>
+				<sgr:modbusDataType>
+					<sgr:boolean>true</sgr:boolean>
+				</sgr:modbusDataType>
+				<sgr:modbusFirstRegisterReference registerType="HoldRegister" addr="4003" />
+				<sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
+				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
+			</sgr:modbusDataPoint>
 		</sgr:dpListElement>
 	</sgr:fpListElement>
 
