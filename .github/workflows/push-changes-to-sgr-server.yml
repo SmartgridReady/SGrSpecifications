@@ -1,5 +1,5 @@
-name: GitHub Actions Demo
-run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+name: Push changed files to SGr server
+run-name: ${{ github.actor }} is pushing changed files to SGr server 🚀
 on: [push]
 jobs:
   upload:
@@ -13,10 +13,6 @@ jobs:
       uses: tj-actions/changed-files@v35
     - name: curl
       run: |
-        # for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
-        # echo "try to upload $file"
-        # curl --upload-file $file https://smartgridready.ergonomics.ch/$file?update
-        # done
         for file in ${{ steps.changed-files.outputs.added_files }}; do
           echo "try to upload added $file"
           curl --upload-file $file https://smartgridready.ergonomics.ch/$file?add
@@ -26,6 +22,6 @@ jobs:
           curl --upload-file $file https://smartgridready.ergonomics.ch/$file?update
         done
         for file in ${{ steps.changed-files.deleted_files }}; do
-          echo "try to upload modified $file"
+          echo "try to upload deleted $file"
           curl --upload-file $file https://smartgridready.ergonomics.ch/$file?delete
         done
