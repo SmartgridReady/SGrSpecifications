@@ -10,4 +10,5 @@ A list of relevant namespaces list for to display names used in different standa
 | sIEC61850Name | optional | IEC 61850 termonoligy place to add the 61850 abreviatuions if an overlap exists |
 | sSAREFName | optional | SAREF for ENER termonoligy place to add the SAREF abreviations if an overlap exists |
 | sEEBUSName | optional | EEBUS for terminology place to add the EEBUS abreviations if an overlap exists |
+| sSUNSPECName | optional | sSUNSPEC for terminology place to add the www.sunspec.org abreviations if an overlap exists|
 | sHPbwpName | optional | bwp (German Heat Pump Association) for terminology place to add the bwp naming for HVAC if an overlap exists |

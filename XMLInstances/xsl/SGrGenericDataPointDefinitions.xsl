@@ -15,6 +15,7 @@
 
     <xsl:template name="SGrBasicGenDataPointTypeType">
         <xsl:choose>
+            <xsl:when test="sgr:enum2bitmapIndex">bitmap</xsl:when> <!-- TODO Simon: render the differnet bitmap types -->
             <xsl:when test="sgr:boolean">boolean</xsl:when>
             <xsl:when test="sgr:int8">byte</xsl:when>
             <xsl:when test="sgr:int16">short</xsl:when>
