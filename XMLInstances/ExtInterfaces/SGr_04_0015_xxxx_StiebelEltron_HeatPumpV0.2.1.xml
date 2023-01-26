@@ -144,7 +144,11 @@ werden, während der andere Parameter fest definiert wird</sgr:textElement>
 		<sgr:dpListElement>
 			<sgr:dataPoint datapointName="HPOpState" mroVisibilityIndicator="M" rwpDatadirection="R" unit="NONE">
 				<sgr:basicDataType>
-					<sgr:int16U>1</sgr:int16U>
+					<sgr:enum2bitmapIndex>
+						<sgr:sgrHPOpstateStiebel>SILENT_MODE_1_ACTIVE</sgr:sgrHPOpstateStiebel>
+						
+					</sgr:enum2bitmapIndex>
+					
 				</sgr:basicDataType>
 				<sgr:dpNameList>
 					<sgr:sLV1Name>HPOpState</sgr:sLV1Name>
@@ -157,8 +161,8 @@ werden, während der andere Parameter fest definiert wird</sgr:textElement>
 				</sgr:dpLegibDesc>
 				<sgr:dpPrgDesc>
 					<sgr:textElement>Bitcodierte Statusinformation
-B0: HK 1 PUMPE
-B1: HK 2 PUMPE 
+B0: HC 1 PUMP ein
+B1: HC 2 PUMP ein
 B2: AUFHEIZPROGRAMM 
 B3: NHZ STUFEN IN BETRIEB 
 B4: WP IM HEIZBETRIEB 
@@ -171,50 +175,22 @@ B10: SILENTMODE 1 AKTIV
 B11: SILENTMODE 2 AKTIV (WP AUS) 
 					</sgr:textElement>
 					<sgr:language>de</sgr:language>
-				</sgr:dpPrgDesc>
-			</sgr:dataPoint>
-			<sgr:modbusDataPoint>
-				<sgr:modbusDataType>
-					<sgr:int16U>0</sgr:int16U>
-				</sgr:modbusDataType>
-				<sgr:modbusFirstRegisterReference registerType="InputRegister" addr="2501" bitRank="0" />
-				<sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
-				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
-			</sgr:modbusDataPoint>
-		</sgr:dpListElement>
-
-		<sgr:dpListElement>
-			<sgr:dataPoint datapointName="HPOpState.SummerModeActive" mroVisibilityIndicator="M" rwpDatadirection="R" unit="NONE">
-				<sgr:basicDataType>
-					<sgr:boolean>true</sgr:boolean>
-
-
-				</sgr:basicDataType>
-				<sgr:dpNameList>
-					<sgr:sLV1Name>HPOpState</sgr:sLV1Name>
-					<sgr:sManufName>Betriebsstatus</sgr:sManufName>
-					<sgr:sHPbwpName>sgr:sHPbwpName</sgr:sHPbwpName>
-				</sgr:dpNameList>
-				<sgr:dpLegibDesc>
-					<sgr:textElement> Auslesen des aktuellen Status der Wärmepumpe (HK 1 PUMPE,HK 2 PUMPE, AUFHEIZPROGRAMM, NHZ STUFEN IN BETRIEB, WP IM HEIZBETRIEB, WP IM WARMWASSERBETRIEB, VERDICHTER IN BETRIEB, SOMMERBETRIEB AKTIV, KUEHLBETRIEB AKTIV,  MIN. EINE IWS IM ABTAUBETRIEB, SILENTMODE 1 AKTIV, SILENTMODE 2 AKTIV (WP AUS)</sgr:textElement>
-					<sgr:language>de</sgr:language>
-				</sgr:dpLegibDesc>
-				<sgr:dpPrgDesc>
-					<sgr:textElement>Bitcodierte Statusinformation
-B0: HK 1 PUMPE
-B1: HK 2 PUMPE 
-B2: AUFHEIZPROGRAMM 
-B3: NHZ STUFEN IN BETRIEB 
-B4: WP IM HEIZBETRIEB 
-B5: WP IM WARMWASSERBETRIEB 
-B6: VERDICHTER IN BETRIEB 
-B7: SOMMERBETRIEB AKTIV 
-B8: KUEHLBETRIEB AKTIV 
-B9: MIN. EINE IWS IM ABTAUBETRIEB
-B10: SILENTMODE 1 AKTIV 
-B11: SILENTMODE 2 AKTIV (WP AUS) 
+				</sgr:dpPrgDesc>				<sgr:dpPrgDesc>
+					<sgr:textElement>Bit code status information
+B0: HC 1 PUMP on
+B1: HC 2 PUMP on
+B2: HEAT-UP PROGRAM 
+B3: NHZ STAGES RUNNING 
+B4: HP IN HEATING MODE 
+B5: HP IN DHW MODE 
+B6: COMPRESSOR RUNNING 
+B7: SUMMER MODE ACTIVE 
+B8: COOLING MODE ACTIVE 
+B9: MIN. ONE IWS IN DEFROST MODE
+B10: SILENT MODE 1 ACTIVE 0
+B11: SILENT MODE 2 ACTIVE (HP OFF)
 					</sgr:textElement>
-					<sgr:language>de</sgr:language>
+					<sgr:language>en</sgr:language>
 				</sgr:dpPrgDesc>
 			</sgr:dataPoint>
 			<sgr:modbusDataPoint>
@@ -225,11 +201,7 @@ B11: SILENTMODE 2 AKTIV (WP AUS)
 				<sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
 				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
 			</sgr:modbusDataPoint>
-			<sgr:modbusAttr>
-				<sgr:layer6Deviation>2RegBase1000_L2H</sgr:layer6Deviation>
-			</sgr:modbusAttr>
 		</sgr:dpListElement>
-
 
 		<sgr:dpListElement>
 			<sgr:dataPoint datapointName="ErrorNrSGr" mroVisibilityIndicator="M" rwpDatadirection="R" unit="NONE">
@@ -957,6 +929,29 @@ die Einbindung in ein intelligentes Stromnetz
 			</sgr:fpLegibDesc>
 		</sgr:functionalProfile>
 		<sgr:dpListElement>
+			<sgr:dataPoint datapointName="SGReadyCmd"
+				mroVisibilityIndicator="M" rwpDatadirection="RW"
+				unit="NONE">
+				<sgr:basicDataType>
+					<sgr:enum>
+						<sgr:sgreadyStateLv2>HP_NORMAL</sgr:sgreadyStateLv2>
+					</sgr:enum>
+
+				</sgr:basicDataType>
+				<sgr:dpLegibDesc>
+					<sgr:textElement>this the command acccording the bwp SG-Ready definition  https://www.waermepumpe.de/normen-technik/sg-ready/</sgr:textElement>
+					<sgr:language>en</sgr:language>
+				</sgr:dpLegibDesc>
+			</sgr:dataPoint>
+			<!-- TODO/cb:   map layer 6 exception for writing into 2 Holding Register SGReadyInp1isON and SGReadyInp2isON -->
+			<sgr:modbusDataPoint>
+				<sgr:modbusFirstRegisterReference registerType="HoldRegister"
+					addr="4002" />
+				<sgr:dpSizeNrRegisters>2</sgr:dpSizeNrRegisters>
+				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
+			</sgr:modbusDataPoint>
+		</sgr:dpListElement>
+		<sgr:dpListElement>
 			<sgr:dataPoint datapointName="SGReadyState" mroVisibilityIndicator="R" rwpDatadirection="R" unit="NONE">
 				<sgr:basicDataType>
 					<sgr:enum>
@@ -1063,11 +1058,15 @@ die Einbindung in ein intelligentes Stromnetz
 				<sgr:textElement>Das Profil definiert den Monitoriungbaustein zur dynamischen Ansteuerung von Wärmepumpen über eine variable Beeinflussung der Sollwerte nach SGr Level 4. </sgr:textElement>
 				<sgr:language>de</sgr:language>
 			</sgr:fpLegibDesc>
+			<sgr:fpPrgDesc>
+				<sgr:textElement>Some configuration may not support parts or all of the datapoints of this functional profile. Such data points report a value of -32768</sgr:textElement>
+				<sgr:language>en</sgr:language>
+			</sgr:fpPrgDesc>
 		</sgr:functionalProfile>
 		<sgr:dpListElement>
-			<sgr:dataPoint datapointName="ThermalEnergyHeat_MWh" mroVisibilityIndicator="R" rwpDatadirection="R" unit="MEGAWATT_HOURS">
+			<sgr:dataPoint datapointName="ThermalEnergyHeat" mroVisibilityIndicator="R" rwpDatadirection="R" unit="KILOWATT_HOURS">
 				<sgr:basicDataType>
-					<sgr:int16U>0</sgr:int16U>
+					<sgr:float32>0.0</sgr:float32>					
 				</sgr:basicDataType>
 				<sgr:dpNameList>
 					<sgr:sLV1Name>ThermalEnergyHeat</sgr:sLV1Name>
@@ -1079,41 +1078,10 @@ die Einbindung in ein intelligentes Stromnetz
 			</sgr:dataPoint>
 			<sgr:modbusDataPoint>
 				<sgr:modbusDataType>
-					<sgr:int16U>0</sgr:int16U>
-				</sgr:modbusDataType>
-				<sgr:modbusFirstRegisterReference registerType="InputRegister" addr="3503" bitRank="0" />
-				<sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
-				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
-			</sgr:modbusDataPoint>
-
-			<sgr:modbusAttr>
-				<sgr:scalingByMulPwr>
-					<sgr:multiplicator>1</sgr:multiplicator>
-					<sgr:powerof10>0</sgr:powerof10>
-				</sgr:scalingByMulPwr>
-			</sgr:modbusAttr>
-		</sgr:dpListElement>
-		<sgr:dpListElement>
-			<sgr:dataPoint datapointName="ThermalEnergyHeat_kWh" mroVisibilityIndicator="R" rwpDatadirection="R" unit="KILOWATT_HOURS">
-				<sgr:basicDataType>
-					<sgr:int16U>0</sgr:int16U>
-
-				</sgr:basicDataType>
-				<sgr:dpNameList>
-					<sgr:sLV1Name>ThermalEnergyHeat</sgr:sLV1Name>
-				</sgr:dpNameList>
-				<sgr:dpLegibDesc>
-					<sgr:textElement>Summe der abgegebenen thermischen Energie für das Heizen.</sgr:textElement>
-					<sgr:language>de</sgr:language>
-					<sgr:uri>http://tempuri.org</sgr:uri>
-				</sgr:dpLegibDesc>
-			</sgr:dataPoint>
-			<sgr:modbusDataPoint>
-				<sgr:modbusDataType>
-					<sgr:int16U>0</sgr:int16U>
+					<sgr:int16U>0</sgr:int16U>			
 				</sgr:modbusDataType>
 				<sgr:modbusFirstRegisterReference registerType="InputRegister" addr="3502" bitRank="0" />
-				<sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
+				<sgr:dpSizeNrRegisters>2</sgr:dpSizeNrRegisters>
 				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
 			</sgr:modbusDataPoint>
 			<sgr:modbusAttr>
@@ -1121,12 +1089,101 @@ die Einbindung in ein intelligentes Stromnetz
 					<sgr:multiplicator>1</sgr:multiplicator>
 					<sgr:powerof10>0</sgr:powerof10>
 				</sgr:scalingByMulPwr>
+				<sgr:layer6Deviation>2RegBase1000_L2H</sgr:layer6Deviation>
+			</sgr:modbusAttr>
+		</sgr:dpListElement>	
+			
+		<sgr:dpListElement>
+			<sgr:dataPoint datapointName="ThermalEnergyDomHotWater" mroVisibilityIndicator="R" rwpDatadirection="R" unit="KILOWATT_HOURS">
+				<sgr:basicDataType>
+					<sgr:float32>0.0</sgr:float32>		
+				</sgr:basicDataType>
+				<sgr:dpNameList>
+					<sgr:sLV1Name>ThermalEnergyDomHotWater</sgr:sLV1Name>
+				</sgr:dpNameList>
+				<sgr:dpLegibDesc>
+					<sgr:textElement>Summe der abgegebenen thermischen Energie für das Heizen.</sgr:textElement>
+					<sgr:language>de</sgr:language>
+				</sgr:dpLegibDesc>
+			</sgr:dataPoint>
+			<sgr:modbusDataPoint>
+				<sgr:modbusDataType>
+					<sgr:int16U>0</sgr:int16U>
+				</sgr:modbusDataType>
+				<sgr:modbusFirstRegisterReference registerType="InputRegister" addr="3505" bitRank="0" />
+				<sgr:dpSizeNrRegisters>2</sgr:dpSizeNrRegisters>
+				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
+			</sgr:modbusDataPoint>
+			<sgr:modbusAttr>
+				<sgr:scalingByMulPwr>
+					<sgr:multiplicator>1</sgr:multiplicator>
+					<sgr:powerof10>0</sgr:powerof10>
+				</sgr:scalingByMulPwr>
+				<sgr:layer6Deviation>2RegBase1000_L2H</sgr:layer6Deviation>
 			</sgr:modbusAttr>
 		</sgr:dpListElement>
-
-
+		
+				<sgr:dpListElement>
+			<sgr:dataPoint datapointName="ActiveEnergyACheat" mroVisibilityIndicator="R" rwpDatadirection="R" unit="KILOWATT_HOURS">
+				<sgr:basicDataType>
+					<sgr:float32>0.0</sgr:float32>					
+				</sgr:basicDataType>
+				<sgr:dpNameList>
+					<sgr:sLV1Name>ThermalEnergyHeat</sgr:sLV1Name>
+				</sgr:dpNameList>
+				<sgr:dpLegibDesc>
+					<sgr:textElement>Summe der abgegebenen thermischen Energie für das Heizen.</sgr:textElement>
+					<sgr:language>de</sgr:language>
+				</sgr:dpLegibDesc>
+			</sgr:dataPoint>
+			<sgr:modbusDataPoint>
+				<sgr:modbusDataType>
+					<sgr:int16U>0</sgr:int16U>			
+				</sgr:modbusDataType>
+				<sgr:modbusFirstRegisterReference registerType="InputRegister" addr="3512" bitRank="0" />
+				<sgr:dpSizeNrRegisters>2</sgr:dpSizeNrRegisters>
+				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
+			</sgr:modbusDataPoint>
+			<sgr:modbusAttr>
+				<sgr:scalingByMulPwr>
+					<sgr:multiplicator>1</sgr:multiplicator>
+					<sgr:powerof10>0</sgr:powerof10>
+				</sgr:scalingByMulPwr>
+				<sgr:layer6Deviation>2RegBase1000_L2H</sgr:layer6Deviation>
+			</sgr:modbusAttr>
+		</sgr:dpListElement>	
+			
 		<sgr:dpListElement>
-			<sgr:dataPoint datapointName="RuntimeCompressor" mroVisibilityIndicator="R" rwpDatadirection="R" unit="HOURS">
+			<sgr:dataPoint datapointName="ActivelEnergyACdomWater" mroVisibilityIndicator="R" rwpDatadirection="R" unit="KILOWATT_HOURS">
+				<sgr:basicDataType>
+					<sgr:float32>0.0</sgr:float32>		
+				</sgr:basicDataType>
+				<sgr:dpNameList>
+					<sgr:sLV1Name>ThermalEnergyDomHotWater</sgr:sLV1Name>
+				</sgr:dpNameList>
+				<sgr:dpLegibDesc>
+					<sgr:textElement>Summe der abgegebenen thermischen Energie für das Heizen.</sgr:textElement>
+					<sgr:language>de</sgr:language>
+				</sgr:dpLegibDesc>
+			</sgr:dataPoint>
+			<sgr:modbusDataPoint>
+				<sgr:modbusDataType>
+					<sgr:int16U>0</sgr:int16U>
+				</sgr:modbusDataType>
+				<sgr:modbusFirstRegisterReference registerType="InputRegister" addr="3515" bitRank="0" />
+				<sgr:dpSizeNrRegisters>2</sgr:dpSizeNrRegisters>
+				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
+			</sgr:modbusDataPoint>
+			<sgr:modbusAttr>
+				<sgr:scalingByMulPwr>
+					<sgr:multiplicator>1</sgr:multiplicator>
+					<sgr:powerof10>0</sgr:powerof10>
+				</sgr:scalingByMulPwr>
+				<sgr:layer6Deviation>2RegBase1000_L2H</sgr:layer6Deviation>
+			</sgr:modbusAttr>
+		</sgr:dpListElement>
+		<sgr:dpListElement>
+			<sgr:dataPoint datapointName="RuntimeHeating" mroVisibilityIndicator="R" rwpDatadirection="R" unit="HOURS">
 				<sgr:basicDataType>
 					<sgr:float32>0.0</sgr:float32>
 				</sgr:basicDataType>
@@ -1144,6 +1201,35 @@ die Einbindung in ein intelligentes Stromnetz
 					<sgr:int16U>0</sgr:int16U>
 				</sgr:modbusDataType>
 				<sgr:modbusFirstRegisterReference registerType="InputRegister" addr="3539" bitRank="0" />
+				<sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
+				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
+			</sgr:modbusDataPoint>
+			<sgr:modbusAttr>
+				<sgr:scalingByMulPwr>
+					<sgr:multiplicator>1</sgr:multiplicator>
+					<sgr:powerof10>0</sgr:powerof10>
+				</sgr:scalingByMulPwr>
+			</sgr:modbusAttr>
+		</sgr:dpListElement>
+		<sgr:dpListElement>
+			<sgr:dataPoint datapointName="RuntimeDomHotWater" mroVisibilityIndicator="R" rwpDatadirection="R" unit="HOURS">
+				<sgr:basicDataType>
+					<sgr:float32>0.0</sgr:float32>
+				</sgr:basicDataType>
+				<sgr:dpNameList>
+					<sgr:sLV1Name>RuntimeCompressor</sgr:sLV1Name>
+				</sgr:dpNameList>
+				<sgr:dpLegibDesc>
+					<sgr:textElement>Summe der Laufzeit des Verdichters seit Inbetriebnahme.</sgr:textElement>
+					<sgr:language>de</sgr:language>
+					<sgr:uri>http://tempuri.org</sgr:uri>
+				</sgr:dpLegibDesc>
+			</sgr:dataPoint>
+			<sgr:modbusDataPoint>
+				<sgr:modbusDataType>
+					<sgr:int16U>0</sgr:int16U>
+				</sgr:modbusDataType>
+				<sgr:modbusFirstRegisterReference registerType="InputRegister" addr="3542" bitRank="0" />
 				<sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
 				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
 			</sgr:modbusDataPoint>

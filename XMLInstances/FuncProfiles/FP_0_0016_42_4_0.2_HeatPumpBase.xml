@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/SGr.xsl"?>
+<sgr:SGrFunctionalProfileFrame xmlns:sgr="http://www.smartgridready.com/ns/V0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/SGrIncluder.xsd">
+    <sgr:releaseNotes>
+        <sgr:state>Review</sgr:state>
+        <sgr:remarks>This functional profile is in preliminary state. Before implementing external-interfaces or any other
+            functionality, the detailed functionality must be verified with the battery manufacturer.
+        </sgr:remarks>
+        <sgr:changelog>
+            <sgr:version>0.1.1</sgr:version>
+            <sgr:date>2023-01-25</sgr:date>
+            <sgr:author>IBT/cb</sgr:author>
+            <sgr:comment>Vorbereitung Soft Start</sgr:comment>
+        </sgr:changelog>
+        <sgr:changelog>
+            <sgr:version>0.2.2</sgr:version>
+            <sgr:date>2022-10-31</sgr:date>
+            <sgr:author>Ergo/sz</sgr:author>
+            <sgr:comment>Finalisierung Go-Live</sgr:comment>
+        </sgr:changelog>
+    </sgr:releaseNotes>
+		<sgr:functionalProfile mroVisibilityIndicator="M" profileName="HeatPumpBase">
+
+			<sgr:profileNumber>
+				<sgr:specsOwnerId>0</sgr:specsOwnerId>
+				<sgr:profileIdentification>HeatPumpControl</sgr:profileIdentification>
+				<sgr:subProfileIdent>HeatPumpBase</sgr:subProfileIdent>
+				<sgr:sgrLevelOfOperation>4</sgr:sgrLevelOfOperation>
+				<sgr:versionNumber>
+					<sgr:primaryVersionNumber>
+						0
+					</sgr:primaryVersionNumber>
+					<sgr:secondaryVersionNumber>
+						2
+					</sgr:secondaryVersionNumber>
+					<sgr:subReleaseVersionNumber>
+						1
+					</sgr:subReleaseVersionNumber>
+				</sgr:versionNumber>
+			</sgr:profileNumber>
+			<sgr:fpNameList>
+				<sgr:sLV1Name>HeatPumpBase</sgr:sLV1Name>
+			</sgr:fpNameList>
+			<sgr:fpLegibDesc>
+				<sgr:textElement>Das Profil definiert den Grundbaustein zur dynamischen Ansteuerung von Wärmepumpen über eine variable Beeinflussung der Sollwerte nach SGr Level 4. Der Betrieb der Wärmepumpe muss in sich sicher sein, unabhängig von den äusseren Vorgaben. Dieses Grundprofil definiert die Datenpunkte, welche zur Steuerung des Gerätes «Wärmepumpe» auf Level 4 grundsätzlich zur Verfügung gestellt werden und stellen die Version einer typischen EInfamilienhauswärmepumpe miz Aussentemperaturfühler dar. Für die einzelnen Heizkreise, Warmwasser, Pufferspeicher und das Energie-Monitoring  sowie eine Verdichterdrehzahl / Leistungsregelung werden separate Profile zur Verfügung gestellt.
+ 				</sgr:textElement>
+				<sgr:language>de</sgr:language>
+			</sgr:fpLegibDesc>
+		</sgr:functionalProfile>
+		
+		<sgr:dpListElement>
+			<sgr:dataPoint datapointName="HPOpModeCmd" mroVisibilityIndicator="M" rwpDatadirection="RW" unit="NONE">
+				<sgr:basicDataType>
+					<sgr:enum>
+						<sgr:sgrHPOpMode>WP_EMERG_OP</sgr:sgrHPOpMode>					
+					</sgr:enum>			
+				</sgr:basicDataType>
+				<sgr:dpNameList>
+					<sgr:sLV1Name>HPOpModeCmd</sgr:sLV1Name>
+					<sgr:sHPbwpName>Betriebsmodus</sgr:sHPbwpName>
+				</sgr:dpNameList>
+				<sgr:dpLegibDesc>
+					<sgr:textElement> Grund-Betriebsart der Wärmepumpe (Bereitschaft, Programm, Komfort, Eco, Warmwasser, Kühlen aktiv, Kühlen passiv, Notbetrieb)</sgr:textElement>
+					<sgr:language>de</sgr:language>
+				</sgr:dpLegibDesc>
+				<sgr:dpPrgDesc>
+					<sgr:textElement>some of the devices do either not allow setting OpMode setting(the name should the ne named "HPOpModeCmdFB") or allow it in a special mode only.</sgr:textElement>
+					<sgr:language>en</sgr:language>
+				</sgr:dpPrgDesc>
+			</sgr:dataPoint>
+		</sgr:dpListElement>
+		
+		<sgr:dpListElement>
+			<sgr:dataPoint datapointName="HPOpState" mroVisibilityIndicator="M" rwpDatadirection="R" unit="NONE">
+				<sgr:basicDataType>
+					<sgr:enum2bitmapIndex>
+						<sgr:sgrHPOpstate>HP_PUMP_ON</sgr:sgrHPOpstate>
+					</sgr:enum2bitmapIndex>					
+				</sgr:basicDataType>
+				<sgr:dpNameList>
+					<sgr:sLV1Name>HPOpState</sgr:sLV1Name>
+					<sgr:sEN17609Name>Aktive Funktion</sgr:sEN17609Name>
+				</sgr:dpNameList>
+				<sgr:dpLegibDesc>
+					<sgr:textElement>?check: enum oder Bit-Array? TODO: enum. Auslesen des aktuellen Status der Wärmepumpe (Bereitschaft, Programm, Komfort, Eco, Warmwasser, Kühlen aktiv, Kühlen passiv,Notbetrieb)</sgr:textElement>
+					<sgr:language>de</sgr:language>
+				</sgr:dpLegibDesc>
+			</sgr:dataPoint>
+		</sgr:dpListElement>
+		
+		<sgr:dpListElement>
+			<sgr:dataPoint datapointName="ErrorNrSGr" mroVisibilityIndicator="M" rwpDatadirection="R" unit="NONE">
+				<sgr:basicDataType>
+					<sgr:int16>0</sgr:int16>
+				</sgr:basicDataType>
+				<sgr:dpNameList>
+					<sgr:sLV1Name>ErrorNrSGr</sgr:sLV1Name>
+				</sgr:dpNameList>
+				<sgr:dpLegibDesc>
+					<sgr:textElement>0 means no errors. </sgr:textElement>
+					<sgr:language>en</sgr:language>
+				</sgr:dpLegibDesc>
+				<sgr:dpPrgDesc>
+					<sgr:textElement>Check the manufaturer error list for its proprietary error analytics</sgr:textElement>
+					<sgr:language>en</sgr:language>
+				</sgr:dpPrgDesc>
+			</sgr:dataPoint>
+		</sgr:dpListElement>
+		
+		<sgr:dpListElement>
+			<sgr:dataPoint datapointName="OutsideAirTemp" mroVisibilityIndicator="M" rwpDatadirection="R" unit="DEGREES_CELSIUS">
+				<sgr:basicDataType>
+					<sgr:float32>0</sgr:float32>
+				</sgr:basicDataType>
+				<sgr:dpNameList>
+					<sgr:sLV1Name>OutsideAirTemp</sgr:sLV1Name>
+					<sgr:sIEC61850Name>Outside Air Temperatur</sgr:sIEC61850Name>
+					<sgr:sHPbwpName>Temperatur Außen</sgr:sHPbwpName>
+				</sgr:dpNameList>
+				<sgr:dpLegibDesc>
+					<sgr:textElement>
+						Aktuelle Aussentemperatur (gemessen über Aussenfühler)
+					</sgr:textElement>
+					<sgr:language>de</sgr:language>
+				</sgr:dpLegibDesc>
+			</sgr:dataPoint>
+		</sgr:dpListElement>
+		
+		<sgr:dpListElement>
+			<sgr:dataPoint datapointName="SupplyWaterTemp" mroVisibilityIndicator="M" rwpDatadirection="R" unit="DEGREES_CELSIUS">
+				<sgr:basicDataType>
+					<sgr:float32>0.0</sgr:float32>
+				</sgr:basicDataType>
+				<sgr:dpNameList>
+					<sgr:sLV1Name>SupplyWaterTemp</sgr:sLV1Name>
+					<sgr:sHPbwpName>Temperatur Vorlauf</sgr:sHPbwpName>
+					<sgr:sEN17609Name>SupplyWaterTemp</sgr:sEN17609Name></sgr:dpNameList>
+			</sgr:dataPoint>
+		</sgr:dpListElement>
+		
+		<sgr:dpListElement>
+			<sgr:dataPoint datapointName="BackSupplyWaterTemp" mroVisibilityIndicator="O" rwpDatadirection="R" unit="DEGREES_CELSIUS">
+				<sgr:basicDataType>
+					<sgr:float32>0.0</sgr:float32>
+				</sgr:basicDataType>
+				<sgr:dpNameList>
+					<sgr:sLV1Name>BackSupplyWaterTemp</sgr:sLV1Name>
+					<sgr:sHPbwpName>Temperatur Rücklauf</sgr:sHPbwpName>
+					<sgr:sEN17609Name>Return Water Temperature</sgr:sEN17609Name>
+				</sgr:dpNameList>
+				<sgr:dpLegibDesc>
+					<sgr:textElement>Auslesen der aktuellen aktuellen-Temperatur des Rücklaufs.</sgr:textElement>
+					<sgr:language>de</sgr:language>
+				</sgr:dpLegibDesc>
+			</sgr:dataPoint>
+		</sgr:dpListElement>
+		
+		<sgr:dpListElement>
+			<sgr:dataPoint datapointName="SupplyWaterTempStpt"
+				mroVisibilityIndicator="R" unit="DEGREES_CELSIUS"
+				rwpDatadirection="RW">
+				<sgr:basicDataType>
+					<sgr:float32>0.0</sgr:float32>
+				</sgr:basicDataType>
+				<sgr:dpNameList>
+					<sgr:sLV1Name>SupplyWaterTempStpt</sgr:sLV1Name>
+					<sgr:sHPbwpName>
+						Solltemperatur für Anforderungsfühler
+					</sgr:sHPbwpName>
+					<sgr:sEN17609Name>
+						Supply Water Temperature Setpoint
+					</sgr:sEN17609Name>
+				</sgr:dpNameList>
+				<sgr:dpPrgDesc>
+					<sgr:textElement>
+						some of the devices do either not allow setting
+						Setpoints (the name should the ne named
+						"SupplyWaterTempStptFB") or allow it in a
+						special mode only.
+					</sgr:textElement>
+					<sgr:language>en</sgr:language>
+				</sgr:dpPrgDesc>
+			</sgr:dataPoint>
+		</sgr:dpListElement>
+		
+	</sgr:SGrFunctionalProfileFrame>
