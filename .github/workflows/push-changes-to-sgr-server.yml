@@ -15,13 +15,13 @@ jobs:
       run: |
         for file in ${{ steps.changed-files.outputs.added_files }}; do
           echo "try to upload added $file"
-          curl --upload-file $file https://smartgridready.ergonomics.ch/$file?add
+          curl --upload-file "$file" https://smartgridready.ergonomics.ch/$file?add
         done
         for file in ${{ steps.changed-files.outputs.modified_files }}; do
           echo "try to upload modified $file"
-          curl --upload-file $file https://smartgridready.ergonomics.ch/$file?update
+          curl --upload-file "$file" https://smartgridready.ergonomics.ch/$file?update
         done
         for file in ${{ steps.changed-files.deleted_files }}; do
           echo "try to upload deleted $file"
-          curl --upload-file $file https://smartgridready.ergonomics.ch/$file?delete
+          curl --upload-file "$file" https://smartgridready.ergonomics.ch/$file?delete
         done
