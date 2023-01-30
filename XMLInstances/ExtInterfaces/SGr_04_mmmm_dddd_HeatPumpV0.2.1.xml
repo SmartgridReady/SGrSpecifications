@@ -191,8 +191,8 @@
 				</sgr:basicDataType>
 				<sgr:dpNameList>
 					<sgr:sLV1Name>OutsideAirTemp</sgr:sLV1Name>
-					<sgr:sIEC61850Name>Outside Air Temperatur</sgr:sIEC61850Name>
 					<sgr:sHPbwpName>Temperatur Außen</sgr:sHPbwpName>
+					<sgr:sEN17609Name>Outside Air Temperatur</sgr:sEN17609Name>
 				</sgr:dpNameList>
 				<sgr:dpLegibDesc>
 					<sgr:textElement>
@@ -332,22 +332,16 @@
 	</sgr:fpListElement>
 
 	<sgr:fpListElement>
-		<sgr:functionalProfile mroVisibilityIndicator="M" profileName="CompressorPwrCtrl">
+		<sgr:functionalProfile mroVisibilityIndicator="M" profileName="PowerCtrl">
 			<sgr:profileNumber>
 				<sgr:specsOwnerId>0</sgr:specsOwnerId>
 				<sgr:profileIdentification>HeatPumpControl</sgr:profileIdentification>
 				<sgr:subProfileIdent>PowerCtrl</sgr:subProfileIdent>
 				<sgr:sgrLevelOfOperation>4</sgr:sgrLevelOfOperation>
 				<sgr:versionNumber>
-					<sgr:primaryVersionNumber>
-						0
-					</sgr:primaryVersionNumber>
-					<sgr:secondaryVersionNumber>
-						2
-					</sgr:secondaryVersionNumber>
-					<sgr:subReleaseVersionNumber>
-						1
-					</sgr:subReleaseVersionNumber>
+					<sgr:primaryVersionNumber>0</sgr:primaryVersionNumber>
+					<sgr:secondaryVersionNumber>2</sgr:secondaryVersionNumber>
+					<sgr:subReleaseVersionNumber>1</sgr:subReleaseVersionNumber>
 				</sgr:versionNumber>
 			</sgr:profileNumber>
 			<sgr:fpNameList>
@@ -374,6 +368,10 @@
 					<sgr:language>de</sgr:language>
 				</sgr:dpLegibDesc>
 			</sgr:dataPoint>
+			<sgr:genAttribute></sgr:genAttribute>
+			<sgr:genAttribute>
+				<sgr:maxVal>0.0</sgr:maxVal>
+				<sgr:minVal>0.0</sgr:minVal></sgr:genAttribute>
 			<sgr:modbusDataPoint>
 				<sgr:modbusDataType>
 					<sgr:float32>0.0</sgr:float32>
@@ -418,6 +416,18 @@
 					<sgr:powerof10>0</sgr:powerof10>
 				</sgr:scalingByMulPwr>
 			</sgr:modbusAttr>
+		</sgr:dpListElement>
+		<sgr:dpListElement>
+			<sgr:dataPoint datapointName="PowerCtrlStpt"
+				mroVisibilityIndicator="O" rwpDatadirection="RW"
+				unit="PERCENT">
+			</sgr:dataPoint>
+			<sgr:modbusDataPoint>
+				<sgr:modbusFirstRegisterReference registerType="HoldRegister"
+					addr="0" />
+				<sgr:dpSizeNrRegisters>0</sgr:dpSizeNrRegisters>
+				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
+			</sgr:modbusDataPoint>
 		</sgr:dpListElement>
 		<sgr:dpListElement>
 			<sgr:dataPoint datapointName="ActPowerACtot" mroVisibilityIndicator="O" rwpDatadirection="R" unit="KILOWATTS">
