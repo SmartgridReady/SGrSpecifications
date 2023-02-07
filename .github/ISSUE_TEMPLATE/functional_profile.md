@@ -1,7 +1,7 @@
 ---
-name: FP (profilId) - (subProfilId)
+name: Functional Profile
 about: New functional profile
-title: ''
+title: 'FP (profilId) - (subProfilId)'
 labels: ''
 assignees: ''
 
