@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/SGr.xsl"?>
+<sgr:SGrFunctionalProfileFrame xmlns:sgr="http://www.smartgridready.com/ns/V0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/SGrIncluder.xsd">
+	<sgr:releaseNotes>
+		<sgr:state>Review</sgr:state>
+		<sgr:changelog>
+			<sgr:version>0.2.2</sgr:version>
+			<sgr:date>2022-11-17</sgr:date>
+			<sgr:author>Ergo/mm</sgr:author>
+			<sgr:comment>Vorbereitung beta test</sgr:comment>
+		</sgr:changelog>
+	</sgr:releaseNotes>
+	<sgr:functionalProfile mroVisibilityIndicator="M">
+		<sgr:profileNumber>
+			<sgr:specsOwnerId>0</sgr:specsOwnerId>
+			<sgr:profileIdentification>NonSpecific</sgr:profileIdentification>
+			<sgr:subProfileIdent>ReactivePowerAC</sgr:subProfileIdent>
+			<sgr:sgrLevelOfOperation>4</sgr:sgrLevelOfOperation>
+			<sgr:versionNumber>
+				<sgr:primaryVersionNumber>0</sgr:primaryVersionNumber>
+				<sgr:secondaryVersionNumber>2</sgr:secondaryVersionNumber>
+				<sgr:subReleaseVersionNumber>2</sgr:subReleaseVersionNumber>
+			</sgr:versionNumber>
+		</sgr:profileNumber>
+		<sgr:fpNameList>
+			<sgr:sLV1Name>Messung der Blindleistung</sgr:sLV1Name>
+		</sgr:fpNameList>
+		<sgr:fpLegibDesc>
+			<sgr:textElement>
+				<![CDATA[	
+				<img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
+				Die Messung der Blindleistung erfolgt zur Messung Blindleistung im Wechselstromnetz, für regeltechnische Zwecke.
+				
+				Je nach Optimierungsanwendung muss diese Erfassung zuverlässig im Takt von 10 Mal/Sekunde bis zum Minutentakt erfolgen.
+				Bei der Einführung von Leistungstarifen müssen für diese Messung auch regulatorische Vorgaben
+				beachtet werden. Typische Nachbarprofile sind Controller oder Datenlogger.
+				]]>
+			</sgr:textElement>
+			<sgr:language>de</sgr:language>
+		</sgr:fpLegibDesc>
+	</sgr:functionalProfile>
+	<sgr:dpListElement>
+		<sgr:dataPoint datapointName="ReactivePowerACtot" rwpDatadirection="R" unit="KILOVOLT_AMPERES_REACTIVE" mroVisibilityIndicator="M">
+			<sgr:basicDataType>
+				<sgr:float32>0</sgr:float32>
+			</sgr:basicDataType>
+			<sgr:dpLegibDesc>
+				<sgr:textElement>Erfassung der gesamten Blindleistung</sgr:textElement>
+				<sgr:language>de</sgr:language>
+			</sgr:dpLegibDesc>
+		</sgr:dataPoint>
+	</sgr:dpListElement>
+	<sgr:dpListElement>
+		<sgr:dataPoint datapointName="ReactivePowerACL1" rwpDatadirection="R" unit="KILOVOLT_AMPERES_REACTIVE" mroVisibilityIndicator="R">
+			<sgr:basicDataType>
+				<sgr:float32>0</sgr:float32>
+			</sgr:basicDataType>
+			<sgr:dpLegibDesc>
+				<sgr:textElement>Erfassung der Blindleistung Phase A</sgr:textElement>
+				<sgr:language>de</sgr:language>
+			</sgr:dpLegibDesc>
+		</sgr:dataPoint>
+	</sgr:dpListElement>
+	<sgr:dpListElement>
+		<sgr:dataPoint datapointName="ReactivePowerACL2" rwpDatadirection="R" unit="KILOVOLT_AMPERES_REACTIVE" mroVisibilityIndicator="R">
+			<sgr:basicDataType>
+				<sgr:float32>0</sgr:float32>
+			</sgr:basicDataType>
+			<sgr:dpLegibDesc>
+				<sgr:textElement>Erfassung der Blindleistung Phase B</sgr:textElement>
+				<sgr:language>de</sgr:language>
+			</sgr:dpLegibDesc>
+		</sgr:dataPoint>
+	</sgr:dpListElement>
+	<sgr:dpListElement>
+		<sgr:dataPoint datapointName="ReactivePowerACL3" rwpDatadirection="R" unit="KILOVOLT_AMPERES_REACTIVE" mroVisibilityIndicator="R">
+			<sgr:basicDataType>
+				<sgr:float32>0</sgr:float32>
+			</sgr:basicDataType>
+			<sgr:dpLegibDesc>
+				<sgr:textElement>Erfassung der Blindleistung Phase C</sgr:textElement>
+				<sgr:language>de</sgr:language>
+			</sgr:dpLegibDesc>
+		</sgr:dataPoint>
+	</sgr:dpListElement>
+</sgr:SGrFunctionalProfileFrame>

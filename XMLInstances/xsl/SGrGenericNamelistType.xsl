@@ -57,6 +57,15 @@
             </tr>
         </xsl:if>
 
+        <xsl:if test="sgr:sSUNSPECName">
+            <tr class="ontologyDetails">
+                <td>SUNSPEC Name</td>
+                <td>
+                    <xsl:value-of select="sgr:sSUNSPECName" />
+                </td>
+            </tr>
+        </xsl:if>
+
         <xsl:if test="sgr:sHPbwpName">
             <tr class="ontologyDetails">
                 <td>bwp HP Name</td>
