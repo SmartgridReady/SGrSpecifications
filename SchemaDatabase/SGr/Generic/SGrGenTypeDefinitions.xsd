@@ -1063,6 +1063,23 @@
       <enumeration value="WP_DOM_WATER_OP" />
     </restriction>
   </simpleType>
+  <simpleType name="SGrHCOpModeType">
+    <annotation>
+      <documentation>E0017:
+     Basic operation type of a heat cool valve operation mode
+     Bereitschaft, Programm, Komfort, Eco, Warmwasser, Kühlen     
+	</documentation>
+    </annotation>
+    <restriction base="string">
+      <enumeration value="HC_READY" />
+      <enumeration value="HC_PROG_OP" />
+      <enumeration value="HC_COMFORT_OP" />
+      <enumeration value="HC_ECO_OP" />
+      <enumeration value="HC_DOM_WATER_OP" />
+      <enumeration value="HC_COOL_OP" />
+    </restriction>
+  </simpleType>
+
 
 
   <complexType name="SGrEnumListType">
@@ -1081,6 +1098,7 @@
       <element maxOccurs="1" minOccurs="1" name="sgrObligLvl" type="sgr:SGrObligLvlType" />
       <element maxOccurs="1" minOccurs="1" name="sgrOCPPState" type="sgr:SGrOCPPStateType" />
       <element maxOccurs="1" minOccurs="1" name="sgrHPOpMode" type="sgr:SGrHPOpModeType" />
+      <element maxOccurs="1" minOccurs="1" name="sgrHCOpMode" type="sgr:SGrHCOpModeType" />
     </choice>
   </complexType>
 
@@ -1143,7 +1161,7 @@
   </simpleType>   
   <simpleType name="SGrHPOpstateStiebelType">
     <annotation>
-      <documentation>BM000r:
+      <documentation>BM0003:
      BitRank map for Heat Pump Stiebel-Eltron
 	</documentation>
 	</annotation>
@@ -1161,7 +1179,40 @@
       <enumeration value="SILENT_MODE_1_ACTIVE" />
       <enumeration value="SILENT_MODE_2_ACTIVE" />
     </restriction>
-  </simpleType>   
+  </simpleType>  
+  
+  <simpleType name="SGrHCOpStateType">
+    <annotation>
+      <documentation>BM0004:
+     BitRank map for HeatPump HeatCoolState
+	</documentation>
+	</annotation>
+    <restriction base="string">
+      <enumeration value="HC_OFF" />
+		<enumeration value="HC_HEAT" />
+		<enumeration value="HC_HEAT_COMFORT" />
+		<enumeration value="HC_HEAT_ECO" />
+		<enumeration value="HC_DEFROST" />
+		<enumeration value="HC_INTESIVIED_50p" />
+		<enumeration value="HC_REDUCED_50p" />
+		<enumeration value="HC_HOLIDAY" />
+		<enumeration value="HC_PARTY_HEAT" />
+		<enumeration value="HC_COOL" />
+		<enumeration value="HC_COOL_COMFORT" />
+		<enumeration value="HC_COOL_ECO" />
+		<enumeration value="HC_ERROR" />
+		<enumeration value="HC_MANUAL" />
+		<enumeration value="HC_PROT_COOL" />
+		<enumeration value="HC_PARTY_COOL" />
+		<enumeration value="HC_DRYING_HEAT_UP" />
+		<enumeration value="HC_DRYING_STATIONARY" />
+		<enumeration value="HC_DRYING_COOL_DOWN" />
+		<enumeration value="HC_DRYING_FINAL" />
+		<enumeration value="HC_COOL_EXTERNAL_CMD" />
+		<enumeration value="HC_HEAT_EXTERNAL_CMD" />
+		<enumeration value="HC_SGRID_INTENSIVIED"/>
+    </restriction>
+  </simpleType>  
   <complexType name="SGrBitmapperListType">
     <annotation>
       <documentation>BM0001:
@@ -1173,6 +1224,7 @@
       <element maxOccurs="1" minOccurs="1" name="sgrBool2BitRank" type="sgr:SGrBool2BitRankType" />
       <element maxOccurs="1" minOccurs="1" name="sgrHPOpstate" type="sgr:SGrHPOpstateType" />
       <element maxOccurs="1" minOccurs="1" name="sgrHPOpstateStiebel" type="sgr:SGrHPOpstateStiebelType" />
+      <element maxOccurs="1" minOccurs="1" name="sgrHCOpstate" type="sgr:SGrHCOpStateType" />
     </choice>
   </complexType>
 </schema>

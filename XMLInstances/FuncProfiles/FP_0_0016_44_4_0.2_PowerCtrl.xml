@@ -20,4 +20,90 @@
         </sgr:changelog>
     </sgr:releaseNotes>
 
+		<sgr:functionalProfile mroVisibilityIndicator="M" profileName="PowerCtrl">
+			<sgr:profileNumber>
+				<sgr:specsOwnerId>0</sgr:specsOwnerId>
+				<sgr:profileIdentification>HeatPumpControl</sgr:profileIdentification>
+				<sgr:subProfileIdent>PowerCtrl</sgr:subProfileIdent>
+				<sgr:sgrLevelOfOperation>4</sgr:sgrLevelOfOperation>
+				<sgr:versionNumber>
+					<sgr:primaryVersionNumber>0</sgr:primaryVersionNumber>
+					<sgr:secondaryVersionNumber>2</sgr:secondaryVersionNumber>
+					<sgr:subReleaseVersionNumber>1</sgr:subReleaseVersionNumber>
+				</sgr:versionNumber>
+			</sgr:profileNumber>
+			<sgr:fpNameList>
+				<sgr:sLV1Name>CompressorPwrCtrl</sgr:sLV1Name>
+			</sgr:fpNameList>
+			<sgr:fpLegibDesc>
+				<sgr:textElement>Dieses Profil definiert die erweiterten Datenpunkte zum Grundprofil, welche zur direkten Steuerung der Drehzahl oder Leistung der Wärmepumpe zur Verfügung gestellt werden. Dieses Profil muss immer in Kombination mit dem Grundprofil der Wärmepumpe (HeatPumpBase) bewirtschaftet werden. Es kann nur 1 Drehzahl-/Leistungsvorgabe-Profil pro Kompressor definiert werden (oder auch gar kein Profil, wenn keine Drehzahl-/Leistungsvorgabe möglich ist).
+Diese Vorgabe  braucht eine doppelte Absicherung falscher Vorgaben durch den WP-Hersteller und den CEM. Siehe auch Attribute minVal / maxVal. Der Communicator fragt zuerst den erlaubten Bereich und die Betriebsart ab und passt die entsprechenden Wunschgrössen an. Die WP überwacht intern die vorgegebenen Wunschgrössen und korrigiert, wenn aus Sicherheitsgründen notwendig
+</sgr:textElement>
+<sgr:language>de</sgr:language>
+			</sgr:fpLegibDesc>
+		</sgr:functionalProfile>
+		<sgr:dpListElement>
+			<sgr:dataPoint datapointName="SpeedCtrlSetpt" mroVisibilityIndicator="R" rwpDatadirection="RW" unit="PERCENT">
+				<sgr:basicDataType>
+					<sgr:float32>0</sgr:float32>
+				</sgr:basicDataType>
+				<sgr:dpNameList>
+					<sgr:sLV1Name>SpeedCtrlSetpt</sgr:sLV1Name>
+				</sgr:dpNameList>
+				<sgr:dpLegibDesc>
+					<sgr:textElement>Wunschvorgabe für die Verdichter-Drehzahl in Prozent (0% = aus, 100% = maximale Drehzahl). Erlaubter Bereich und Wirkung wird durch Attribute näher beschrieben.</sgr:textElement>
+					<sgr:language>de</sgr:language>
+				</sgr:dpLegibDesc>
+			</sgr:dataPoint>
+			<sgr:genAttribute></sgr:genAttribute>
+			<sgr:genAttribute>
+				<sgr:maxVal>0.0</sgr:maxVal>
+				<sgr:minVal>100.0</sgr:minVal>
+		</sgr:genAttribute>
+		</sgr:dpListElement>
+		<sgr:dpListElement>
+			<sgr:dataPoint datapointName="ActSpeed" mroVisibilityIndicator="O" rwpDatadirection="R" unit="PERCENT">
+				<sgr:basicDataType>
+					<sgr:float32>0</sgr:float32>
+				</sgr:basicDataType>
+				<sgr:dpNameList>
+					<sgr:sLV1Name>ActSpeed</sgr:sLV1Name>
+				</sgr:dpNameList>
+				<sgr:dpLegibDesc>
+					<sgr:textElement>Effektive Drehzahl des Verdichters in Prozent</sgr:textElement>
+					<sgr:language>de</sgr:language>
+				</sgr:dpLegibDesc>
+			</sgr:dataPoint>
+		</sgr:dpListElement>
+		<sgr:dpListElement>
+			<sgr:dataPoint datapointName="PowerCtrlStpt"
+				mroVisibilityIndicator="O" rwpDatadirection="RW"
+				unit="KILOWATTS">
+				<sgr:dpNameList>
+					<sgr:sLV1Name>PowerCtrlStpt</sgr:sLV1Name>
+					<sgr:sHPbwpName>Soll-Aufnahmeleistung</sgr:sHPbwpName></sgr:dpNameList>
+				<sgr:dpLegibDesc>
+					<sgr:textElement>Wunschvorgabe für die elektrische Aufnahmeleistung des Verdichters in Kilowatt (kW). Erlaubter Bereich und Wirkung wird durch Attribute näher beschrieben.</sgr:textElement>
+					<sgr:language>de</sgr:language>
+				</sgr:dpLegibDesc>
+			</sgr:dataPoint>
+			<sgr:genAttribute>
+				<sgr:minVal>0.0</sgr:minVal>
+				<sgr:maxVal>0.0</sgr:maxVal></sgr:genAttribute>
+		</sgr:dpListElement>
+		<sgr:dpListElement>
+			<sgr:dataPoint datapointName="ActPowerACtot" mroVisibilityIndicator="O" rwpDatadirection="R" unit="KILOWATTS">
+				<sgr:basicDataType>
+					<sgr:float32>0</sgr:float32>
+				</sgr:basicDataType>
+				<sgr:dpNameList>
+					<sgr:sLV1Name>ActPowerACtot</sgr:sLV1Name>
+					<sgr:sHPbwpName>Wärmeleistung</sgr:sHPbwpName>
+				</sgr:dpNameList>
+				<sgr:dpLegibDesc>
+					<sgr:textElement>Effektive elektrische Aufnahmeleistung des Verdichters in Kilowatt (kW). Kann von Soll-Leistung abweichen aufgrund von Lebensdauerbeschränkungen, Betriebsart, usw.</sgr:textElement>
+					<sgr:language>de</sgr:language>
+				</sgr:dpLegibDesc>
+			</sgr:dataPoint>
+		</sgr:dpListElement>
   </sgr:SGrFunctionalProfileFrame>

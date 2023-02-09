@@ -254,7 +254,7 @@
 	</sgr:fpListElement>
 
 	<sgr:fpListElement>
-		<sgr:functionalProfile mroVisibilityIndicator="M" profileName="CompressorPwrCtrl">
+		<sgr:functionalProfile mroVisibilityIndicator="M" profileName="PowerCtrl">
 			<sgr:profileNumber>
 				<sgr:specsOwnerId>0</sgr:specsOwnerId>
 				<sgr:profileIdentification>HeatPumpControl</sgr:profileIdentification>
@@ -441,6 +441,16 @@
 					<sgr:textElement>Auslesen des aktuellen Status des Heiz-/Kühlkreises (Aus, Bereitschaft, Programm, Comfort, Eco)</sgr:textElement>
 					<sgr:language>de</sgr:language>
 				</sgr:dpLegibDesc>
+				<sgr:dpPrgDesc>
+					<sgr:textElement>aktuell auf Modbus 0=extern, 2=Komfort, 3= Reduziert, 4= Aus; Vorschlag Gruppe = Auslesen des Status des Heizkreises
+Binärcodiert, zum Beispiel:
+Bit 0 = Umwälzpumpe Heizkreis läuft (1)
+Bit 1 = Heizmodus aktiv (1)
+Bit 2 = Kühlmodus aktiv (1)
+usw.
+</sgr:textElement>
+					<sgr:language>de</sgr:language>
+				</sgr:dpPrgDesc>
 			</sgr:dataPoint>
 			<sgr:modbusDataPoint>
 				<sgr:modbusDataType>

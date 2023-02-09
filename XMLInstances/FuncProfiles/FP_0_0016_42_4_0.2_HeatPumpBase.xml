@@ -20,7 +20,6 @@
         </sgr:changelog>
     </sgr:releaseNotes>
 		<sgr:functionalProfile mroVisibilityIndicator="M" profileName="HeatPumpBase">
-
 			<sgr:profileNumber>
 				<sgr:specsOwnerId>0</sgr:specsOwnerId>
 				<sgr:profileIdentification>HeatPumpControl</sgr:profileIdentification>
@@ -42,18 +41,16 @@
 				<sgr:sLV1Name>HeatPumpBase</sgr:sLV1Name>
 			</sgr:fpNameList>
 			<sgr:fpLegibDesc>
-				<sgr:textElement>Das Profil definiert den Grundbaustein zur dynamischen Ansteuerung von Wärmepumpen über eine variable Beeinflussung der Sollwerte nach SGr Level 4. Der Betrieb der Wärmepumpe muss in sich sicher sein, unabhängig von den äusseren Vorgaben. Dieses Grundprofil definiert die Datenpunkte, welche zur Steuerung des Gerätes «Wärmepumpe» auf Level 4 grundsätzlich zur Verfügung gestellt werden und stellen die Version einer typischen EInfamilienhauswärmepumpe miz Aussentemperaturfühler dar. Für die einzelnen Heizkreise, Warmwasser, Pufferspeicher und das Energie-Monitoring  sowie eine Verdichterdrehzahl / Leistungsregelung werden separate Profile zur Verfügung gestellt.
- 				</sgr:textElement>
+				<sgr:textElement>Das Profil definiert den Grundbaustein zur dynamischen Ansteuerung von Wärmepumpen über eine variable Beeinflussung der Sollwerte nach SGr Stufe 2 oder 4 (wenn variable Setpoints bestehen). Der Betrieb der Wärmepumpe muss in sich sicher sein, unabhängig von den äusseren Vorgaben. Dieses Grundprofil definiert die Datenpunkte, welche zur Steuerung des Gerätes «Wärmepumpe» auf Level 4 grundsätzlich zur Verfügung gestellt werden und stellen die Version einer typischen EInfamilienhauswärmepumpe miz Aussentemperaturfühler dar. Für die einzelnen Heizkreise, Warmwasser, Pufferspeicher und das Energie-Monitoring  sowie eine Verdichterdrehzahl / Leistungsregelung werden separate Profile zur Verfügung gestellt.</sgr:textElement>
 				<sgr:language>de</sgr:language>
 			</sgr:fpLegibDesc>
 		</sgr:functionalProfile>
-		
 		<sgr:dpListElement>
-			<sgr:dataPoint datapointName="HPOpModeCmd" mroVisibilityIndicator="M" rwpDatadirection="RW" unit="NONE">
+			<sgr:dataPoint datapointName="HPOpModeCmd" mroVisibilityIndicator="R" rwpDatadirection="RW" unit="NONE">
 				<sgr:basicDataType>
 					<sgr:enum>
 						<sgr:sgrHPOpMode>WP_EMERG_OP</sgr:sgrHPOpMode>					
-					</sgr:enum>			
+					</sgr:enum>
 				</sgr:basicDataType>
 				<sgr:dpNameList>
 					<sgr:sLV1Name>HPOpModeCmd</sgr:sLV1Name>
@@ -69,7 +66,6 @@
 				</sgr:dpPrgDesc>
 			</sgr:dataPoint>
 		</sgr:dpListElement>
-		
 		<sgr:dpListElement>
 			<sgr:dataPoint datapointName="HPOpState" mroVisibilityIndicator="M" rwpDatadirection="R" unit="NONE">
 				<sgr:basicDataType>
@@ -79,7 +75,7 @@
 				</sgr:basicDataType>
 				<sgr:dpNameList>
 					<sgr:sLV1Name>HPOpState</sgr:sLV1Name>
-					<sgr:sEN17609Name>Aktive Funktion</sgr:sEN17609Name>
+					<sgr:sHPbwpName>Aktive Funktion</sgr:sHPbwpName>
 				</sgr:dpNameList>
 				<sgr:dpLegibDesc>
 					<sgr:textElement>?check: enum oder Bit-Array? TODO: enum. Auslesen des aktuellen Status der Wärmepumpe (Bereitschaft, Programm, Komfort, Eco, Warmwasser, Kühlen aktiv, Kühlen passiv,Notbetrieb)</sgr:textElement>
@@ -87,11 +83,10 @@
 				</sgr:dpLegibDesc>
 			</sgr:dataPoint>
 		</sgr:dpListElement>
-		
 		<sgr:dpListElement>
 			<sgr:dataPoint datapointName="ErrorNrSGr" mroVisibilityIndicator="M" rwpDatadirection="R" unit="NONE">
 				<sgr:basicDataType>
-					<sgr:int16>0</sgr:int16>
+					<sgr:boolean>false</sgr:boolean>					
 				</sgr:basicDataType>
 				<sgr:dpNameList>
 					<sgr:sLV1Name>ErrorNrSGr</sgr:sLV1Name>
@@ -101,21 +96,20 @@
 					<sgr:language>en</sgr:language>
 				</sgr:dpLegibDesc>
 				<sgr:dpPrgDesc>
-					<sgr:textElement>Check the manufaturer error list for its proprietary error analytics</sgr:textElement>
+					<sgr:textElement>Check the manufaturer error list for its proprietary error analytics. This datapoint can be replaced by UINT_16 in this case. FALSE = 0 MUST be fullfilled in any case.</sgr:textElement>
 					<sgr:language>en</sgr:language>
 				</sgr:dpPrgDesc>
 			</sgr:dataPoint>
 		</sgr:dpListElement>
-		
 		<sgr:dpListElement>
-			<sgr:dataPoint datapointName="OutsideAirTemp" mroVisibilityIndicator="M" rwpDatadirection="R" unit="DEGREES_CELSIUS">
+			<sgr:dataPoint datapointName="OutsideAirTemp" mroVisibilityIndicator="O" rwpDatadirection="R" unit="DEGREES_CELSIUS">
 				<sgr:basicDataType>
 					<sgr:float32>0</sgr:float32>
 				</sgr:basicDataType>
 				<sgr:dpNameList>
 					<sgr:sLV1Name>OutsideAirTemp</sgr:sLV1Name>
-					<sgr:sIEC61850Name>Outside Air Temperatur</sgr:sIEC61850Name>
 					<sgr:sHPbwpName>Temperatur Außen</sgr:sHPbwpName>
+					<sgr:sEN17609Name>Outside Air Temperatur</sgr:sEN17609Name>
 				</sgr:dpNameList>
 				<sgr:dpLegibDesc>
 					<sgr:textElement>
@@ -125,7 +119,6 @@
 				</sgr:dpLegibDesc>
 			</sgr:dataPoint>
 		</sgr:dpListElement>
-		
 		<sgr:dpListElement>
 			<sgr:dataPoint datapointName="SupplyWaterTemp" mroVisibilityIndicator="M" rwpDatadirection="R" unit="DEGREES_CELSIUS">
 				<sgr:basicDataType>
@@ -134,10 +127,13 @@
 				<sgr:dpNameList>
 					<sgr:sLV1Name>SupplyWaterTemp</sgr:sLV1Name>
 					<sgr:sHPbwpName>Temperatur Vorlauf</sgr:sHPbwpName>
-					<sgr:sEN17609Name>SupplyWaterTemp</sgr:sEN17609Name></sgr:dpNameList>
+					<sgr:sEN17609Name>Supply WaterTemperat</sgr:sEN17609Name></sgr:dpNameList>
+				<sgr:dpLegibDesc>
+					<sgr:textElement>Auslesen der aktuellen Ist-Temperatur des Vorlaufs des Heizkreises.</sgr:textElement>
+					<sgr:language>de</sgr:language>
+				</sgr:dpLegibDesc>
 			</sgr:dataPoint>
 		</sgr:dpListElement>
-		
 		<sgr:dpListElement>
 			<sgr:dataPoint datapointName="BackSupplyWaterTemp" mroVisibilityIndicator="O" rwpDatadirection="R" unit="DEGREES_CELSIUS">
 				<sgr:basicDataType>
@@ -154,7 +150,6 @@
 				</sgr:dpLegibDesc>
 			</sgr:dataPoint>
 		</sgr:dpListElement>
-		
 		<sgr:dpListElement>
 			<sgr:dataPoint datapointName="SupplyWaterTempStpt"
 				mroVisibilityIndicator="R" unit="DEGREES_CELSIUS"
@@ -171,6 +166,10 @@
 						Supply Water Temperature Setpoint
 					</sgr:sEN17609Name>
 				</sgr:dpNameList>
+				<sgr:dpLegibDesc>
+					<sgr:textElement>Setzen oder nur Auslesen der aktuellen Soll-Temperatur des Vorlaufs des Heizkreises.</sgr:textElement>
+					<sgr:language>de</sgr:language>
+				</sgr:dpLegibDesc>
 				<sgr:dpPrgDesc>
 					<sgr:textElement>
 						some of the devices do either not allow setting
@@ -182,5 +181,20 @@
 				</sgr:dpPrgDesc>
 			</sgr:dataPoint>
 		</sgr:dpListElement>
-		
+		<sgr:dpListElement>
+			<sgr:dataPoint datapointName="SourceTemp"
+				mroVisibilityIndicator="O" rwpDatadirection="R"
+				unit="DEGREES_CELSIUS">
+				<sgr:basicDataType>
+					<sgr:float32>0.0</sgr:float32>					
+				</sgr:basicDataType>
+				<sgr:dpNameList>
+					<sgr:sLV1Name>SourceTemp</sgr:sLV1Name>
+					<sgr:sHPbwpName>Temperatur Wärmequelleneintritt</sgr:sHPbwpName></sgr:dpNameList>
+				<sgr:dpLegibDesc>
+					<sgr:textElement>Die Temperatur am Wärmequelleneintritt (Umgebungsluft, Wasser oder Erdsonde) erlaubt eine genauere Analyse der Energieprognose,  </sgr:textElement>
+					<sgr:language>de</sgr:language>
+				</sgr:dpLegibDesc>
+			</sgr:dataPoint>
+		</sgr:dpListElement>		
 	</sgr:SGrFunctionalProfileFrame>
