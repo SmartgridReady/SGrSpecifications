@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="/xsl/SGr.xsl"?>
-<sgr:SGrModbusDeviceFrame deviceName="BitteGeraetnamenSetzen" isLocalControl="true" manufacturerID="thirdPartySrcInfo" manufacturerName="TODO: Hersteller als text" xmlns:sgr="http://www.smartgridready.com/ns/V0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/EI-Modbus/SGrModbusEIDeviceFrame.xsd ">
+<sgr:SGrModbusDeviceFrame deviceName="Waermepumpe" isLocalControl="true" manufacturerID="thirdPartySrcInfo" manufacturerName="Vorlage fuer Hersteller" xmlns:sgr="http://www.smartgridready.com/ns/V0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/EI-Modbus/SGrModbusEIDeviceFrame.xsd ">
 	<sgr:releaseNotes>
 		<sgr:state>Draft</sgr:state>
 	</sgr:releaseNotes>
@@ -808,7 +808,7 @@ Diese Vorgabe  braucht eine doppelte Absicherung falscher Vorgaben durch den WP-
 		</sgr:functionalProfile>
 
 		<sgr:dpListElement>
-			<sgr:dataPoint datapointName="DomHotWOpMode" mroVisibilityIndicator="M" rwpDatadirection="RW" unit="NONE">
+			<sgr:dataPoint datapointName="DomHotWOpMode" mroVisibilityIndicator="R" rwpDatadirection="RW" unit="NONE">
 				<sgr:basicDataType>
 					<sgr:int32U>0</sgr:int32U>
 				</sgr:basicDataType>
@@ -835,6 +835,37 @@ Diese Vorgabe  braucht eine doppelte Absicherung falscher Vorgaben durch den WP-
 				</sgr:scalingByMulPwr>
 			</sgr:modbusAttr>
 		</sgr:dpListElement>
+			
+		<sgr:dpListElement>
+			<sgr:dataPoint datapointName="DomHotWState"
+				mroVisibilityIndicator="O" rwpDatadirection="R" unit="NONE">
+				<sgr:basicDataType>
+					<sgr:int16>0</sgr:int16>
+				</sgr:basicDataType>
+				<sgr:dpNameList>
+					<sgr:sLV1Name>HeatCoolOpState</sgr:sLV1Name>
+				</sgr:dpNameList>
+				<sgr:dpLegibDesc>
+					<sgr:textElement>Auslesen des aktuellen Status des Heiz-/Kühlkreises (Aus, Bereitschaft, Programm, Comfort, Eco)</sgr:textElement>
+					<sgr:language>de</sgr:language>
+				</sgr:dpLegibDesc>
+			</sgr:dataPoint>
+			<sgr:modbusDataPoint>
+				<sgr:modbusDataType>
+					<sgr:int16>0</sgr:int16>
+				</sgr:modbusDataType>
+				<sgr:modbusFirstRegisterReference
+					registerType="HoldRegister" addr="1" bitRank="0" />
+				<sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
+				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
+			</sgr:modbusDataPoint>
+				<sgr:modbusAttr>
+					<sgr:scalingByMulPwr>
+						<sgr:multiplicator>1</sgr:multiplicator>
+						<sgr:powerof10>0</sgr:powerof10>
+					</sgr:scalingByMulPwr></sgr:modbusAttr>
+		</sgr:dpListElement>
+		
 		<sgr:dpListElement>
 			<sgr:dataPoint datapointName="DomHotWTempStpt" mroVisibilityIndicator="M" rwpDatadirection="RW" unit="DEGREES_CELSIUS">
 				<sgr:basicDataType>
@@ -865,6 +896,105 @@ Diese Vorgabe  braucht eine doppelte Absicherung falscher Vorgaben durch den WP-
 				</sgr:scalingByMulPwr>
 			</sgr:modbusAttr>
 		</sgr:dpListElement>
+		
+		
+		<sgr:dpListElement>
+			<sgr:dataPoint datapointName="DomHotWTempStptOffset" mroVisibilityIndicator="R" rwpDatadirection="RW" unit="DEGREES_CELSIUS">
+				<sgr:basicDataType>
+					<sgr:float32>0</sgr:float32>
+				</sgr:basicDataType>
+				<sgr:dpNameList>
+					<sgr:sLV1Name>DomHotWTempStptOffset</sgr:sLV1Name>
+				</sgr:dpNameList>
+				<sgr:dpLegibDesc>
+					<sgr:textElement>
+						Relative Anhebung/Absenkung der Solltemperatur (+/-) für den Brauchwarmwasserspeicher.
+					</sgr:textElement>
+					<sgr:language>de</sgr:language>
+				</sgr:dpLegibDesc>
+			</sgr:dataPoint>
+			<sgr:modbusDataPoint>
+				<sgr:modbusDataType>
+					<sgr:float32>0.0</sgr:float32>
+				</sgr:modbusDataType>
+				<sgr:modbusFirstRegisterReference registerType="HoldRegister" addr="0" bitRank="0" />
+				<sgr:dpSizeNrRegisters>2</sgr:dpSizeNrRegisters>
+				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
+			</sgr:modbusDataPoint>
+			<sgr:modbusAttr>
+				<sgr:scalingByMulPwr>
+					<sgr:multiplicator>1</sgr:multiplicator>
+					<sgr:powerof10>0</sgr:powerof10>
+				</sgr:scalingByMulPwr>
+			</sgr:modbusAttr>
+		</sgr:dpListElement>
+		
+		
+		
+		<sgr:dpListElement>
+			<sgr:dataPoint datapointName="DomHotWTempStptComfort" mroVisibilityIndicator="O" rwpDatadirection="RW" unit="DEGREES_CELSIUS">
+				<sgr:basicDataType>
+					<sgr:float32>0</sgr:float32>
+				</sgr:basicDataType>
+				<sgr:dpNameList>
+					<sgr:sLV1Name>DomHotWTempStptOffset</sgr:sLV1Name>
+				</sgr:dpNameList>
+				<sgr:dpLegibDesc>
+					<sgr:textElement>
+						Relative Anhebung/Absenkung der Solltemperatur (+/-) für den Brauchwarmwasserspeicher.
+					</sgr:textElement>
+					<sgr:language>de</sgr:language>
+				</sgr:dpLegibDesc>
+			</sgr:dataPoint>
+			<sgr:modbusDataPoint>
+				<sgr:modbusDataType>
+					<sgr:float32>0.0</sgr:float32>
+				</sgr:modbusDataType>
+				<sgr:modbusFirstRegisterReference registerType="HoldRegister" addr="0" bitRank="0" />
+				<sgr:dpSizeNrRegisters>2</sgr:dpSizeNrRegisters>
+				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
+			</sgr:modbusDataPoint>
+			<sgr:modbusAttr>
+				<sgr:scalingByMulPwr>
+					<sgr:multiplicator>1</sgr:multiplicator>
+					<sgr:powerof10>0</sgr:powerof10>
+				</sgr:scalingByMulPwr>
+			</sgr:modbusAttr>
+		</sgr:dpListElement>
+		
+		
+		
+		<sgr:dpListElement>
+			<sgr:dataPoint datapointName="DomHotWTempStptEco" mroVisibilityIndicator="O" rwpDatadirection="RW" unit="DEGREES_CELSIUS">
+				<sgr:basicDataType>
+					<sgr:float32>0</sgr:float32>
+				</sgr:basicDataType>
+				<sgr:dpNameList>
+					<sgr:sLV1Name>DomHotWTempStptOffset</sgr:sLV1Name>
+				</sgr:dpNameList>
+				<sgr:dpLegibDesc>
+					<sgr:textElement>
+						Relative Anhebung/Absenkung der Solltemperatur (+/-) für den Brauchwarmwasserspeicher.
+					</sgr:textElement>
+					<sgr:language>de</sgr:language>
+				</sgr:dpLegibDesc>
+			</sgr:dataPoint>
+			<sgr:modbusDataPoint>
+				<sgr:modbusDataType>
+					<sgr:float32>0.0</sgr:float32>
+				</sgr:modbusDataType>
+				<sgr:modbusFirstRegisterReference registerType="HoldRegister" addr="0" bitRank="0" />
+				<sgr:dpSizeNrRegisters>2</sgr:dpSizeNrRegisters>
+				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
+			</sgr:modbusDataPoint>
+			<sgr:modbusAttr>
+				<sgr:scalingByMulPwr>
+					<sgr:multiplicator>1</sgr:multiplicator>
+					<sgr:powerof10>0</sgr:powerof10>
+				</sgr:scalingByMulPwr>
+			</sgr:modbusAttr>
+		</sgr:dpListElement>
+		
 		<sgr:dpListElement>
 			<sgr:dataPoint datapointName="ActDomHotWaterTemp" mroVisibilityIndicator="M" rwpDatadirection="R" unit="DEGREES_CELSIUS">
 				<sgr:basicDataType>
@@ -1094,8 +1224,7 @@ Diese Vorgabe  braucht eine doppelte Absicherung falscher Vorgaben durch den WP-
 			</sgr:modbusAttr>
 		</sgr:dpListElement>
 	</sgr:fpListElement>
-
-<sgr:fpListElement>
+	<sgr:fpListElement>
 		<sgr:functionalProfile mroVisibilityIndicator="M" profileName="SG-ReadyStates_bwp">
 			<sgr:profileNumber>
 				<sgr:specsOwnerId>0</sgr:specsOwnerId>
