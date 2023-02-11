@@ -19,5 +19,182 @@
             <sgr:comment>Finalisierung Go-Live</sgr:comment>
         </sgr:changelog>
     </sgr:releaseNotes>
+		<sgr:functionalProfile mroVisibilityIndicator="M" profileName="DomHotWaterCtrl">
+			<sgr:profileNumber>
+				<sgr:specsOwnerId>0</sgr:specsOwnerId>
+				<sgr:profileIdentification>HeatPumpControl</sgr:profileIdentification>
+				<sgr:subProfileIdent>DomHotWaterCtrl</sgr:subProfileIdent>
+				<sgr:sgrLevelOfOperation>4</sgr:sgrLevelOfOperation>
+				<sgr:versionNumber>
+					<sgr:primaryVersionNumber>
+						0
+					</sgr:primaryVersionNumber>
+					<sgr:secondaryVersionNumber>
+						2
+					</sgr:secondaryVersionNumber>
+					<sgr:subReleaseVersionNumber>
+						1
+					</sgr:subReleaseVersionNumber>
+				</sgr:versionNumber>
+			</sgr:profileNumber>
+			<sgr:fpNameList>
+				<sgr:sLV1Name>DomHotWaterCtrl</sgr:sLV1Name>
+			</sgr:fpNameList>
+			<sgr:fpLegibDesc>
+				<sgr:textElement>Dieses Profil definiert die erweiterten Datenpunkte zum Grundprofil "HeatPumpBase", welche zur Steuerung eines Brauchwarmwasserkreises zur Verfügung gestellt werden. Das Brauchwarmwasser-Profil muss immer in Kombination mit dem Grundprofil der Wärmepumpe bewirtschaftet werden. Es können mehrere Brauchwarmwasser-Profile definiert werden.</sgr:textElement>
+				<sgr:language>de</sgr:language>
+			</sgr:fpLegibDesc>
+		</sgr:functionalProfile>
 
+		<sgr:dpListElement>
+			<sgr:dataPoint datapointName="DomHotWOpMode" mroVisibilityIndicator="R" rwpDatadirection="RW" unit="NONE">
+				<sgr:basicDataType>
+					<sgr:enum>
+						<sgr:sgrDHWOpMode>DHW_STANDBY</sgr:sgrDHWOpMode>												
+					</sgr:enum>					
+				</sgr:basicDataType>
+				<sgr:dpNameList>
+					<sgr:sLV1Name>HPOpModeCmd</sgr:sLV1Name>
+				</sgr:dpNameList>
+				<sgr:dpLegibDesc>
+					<sgr:textElement>Festlegen der Betriebsart für den Brauchwarmwasserkreis (Bereitschaft, Programm 1, Programm 1, Konstant, Eco )</sgr:textElement>
+					<sgr:language>de</sgr:language>
+				</sgr:dpLegibDesc>
+			</sgr:dataPoint>
+		</sgr:dpListElement>
+			
+		<sgr:dpListElement>
+			<sgr:dataPoint datapointName="DomHotWState"
+				mroVisibilityIndicator="O" rwpDatadirection="R" unit="NONE">
+				<sgr:basicDataType>
+					<sgr:int16>0</sgr:int16>
+				</sgr:basicDataType>
+				<sgr:dpNameList>
+					<sgr:sLV1Name>DomHotWState</sgr:sLV1Name>
+					<sgr:sHPbwpName>Warmwasserbereitung in Betrieb</sgr:sHPbwpName>
+				</sgr:dpNameList>
+				<sgr:dpLegibDesc>
+					<sgr:textElement>Auslesen des aktuellen Status des Brauchwarmwasserkreises</sgr:textElement>
+					<sgr:language>de</sgr:language>
+				</sgr:dpLegibDesc>
+			</sgr:dataPoint>
+		</sgr:dpListElement>
+		
+		<sgr:dpListElement>
+			<sgr:dataPoint datapointName="DomHotWTempStpt" mroVisibilityIndicator="M" rwpDatadirection="RW" unit="DEGREES_CELSIUS">
+				<sgr:basicDataType>
+					<sgr:float32>0.0</sgr:float32>
+					
+					
+				</sgr:basicDataType>
+				<sgr:dpNameList>
+					<sgr:sLV1Name>DomHotWTempStpt</sgr:sLV1Name>
+					<sgr:sEEBUSName>Setpoint_DhwTemperature</sgr:sEEBUSName>
+					<sgr:sHPbwpName>Warmwassersolltemperatur</sgr:sHPbwpName>
+					<sgr:sEN17609Name>Hot Water Setpoint Temperature</sgr:sEN17609Name>
+				</sgr:dpNameList>
+				<sgr:dpLegibDesc>
+					<sgr:textElement>Setzen der Soll-Temperatur des Speichers für Warmwasser.</sgr:textElement>
+					<sgr:language>de</sgr:language>
+				</sgr:dpLegibDesc>
+			</sgr:dataPoint>
+			<sgr:genAttribute>
+				<sgr:minVal>45.0</sgr:minVal>
+				<sgr:maxVal>60.0</sgr:maxVal></sgr:genAttribute>
+		</sgr:dpListElement>
+		
+		
+		<sgr:dpListElement>
+			<sgr:dataPoint datapointName="DomHotWTempStptOffset" mroVisibilityIndicator="R" rwpDatadirection="RW" unit="DEGREES_CELSIUS">
+				<sgr:basicDataType>
+					<sgr:float32>0</sgr:float32>
+				</sgr:basicDataType>
+				<sgr:dpNameList>
+					<sgr:sLV1Name>DomHotWTempStptOffset</sgr:sLV1Name>
+				</sgr:dpNameList>
+				<sgr:dpLegibDesc>
+					<sgr:textElement>Relative Anhebung/Absenkung der Solltemperatur (+/-) für den Brauchwarmwasserspeicher. Eignet sich für eine Flexibilitätssteuerung.</sgr:textElement>
+					<sgr:language>de</sgr:language>
+				</sgr:dpLegibDesc>
+			</sgr:dataPoint>
+			<sgr:genAttribute>
+				<sgr:maxVal>5.0</sgr:maxVal>
+				<sgr:minVal>-5.0</sgr:minVal></sgr:genAttribute>
+		</sgr:dpListElement>
+		
+		
+		
+		<sgr:dpListElement>
+			<sgr:dataPoint datapointName="DomHotWTempStptComfort" mroVisibilityIndicator="O" rwpDatadirection="RW" unit="DEGREES_CELSIUS">
+				<sgr:basicDataType>
+					<sgr:float32>0</sgr:float32>
+				</sgr:basicDataType>
+				<sgr:dpNameList>
+					<sgr:sLV1Name>DomHotWTempStptComfort</sgr:sLV1Name>
+					<sgr:sEEBUSName>SetpointRangeMax_DhwTemperature</sgr:sEEBUSName>
+					<sgr:sHPbwpName>Warmwassertemperatur max</sgr:sHPbwpName>
+					<sgr:sEN17609Name>Hot Water Setpoint Temperature Comfort</sgr:sEN17609Name>
+				</sgr:dpNameList>
+				<sgr:dpLegibDesc>
+					<sgr:textElement>Setzen der Soll-Temperatur des Speichers für Warmwasser im Comfortbetrieb</sgr:textElement>
+					<sgr:language>de</sgr:language>
+				</sgr:dpLegibDesc>
+			</sgr:dataPoint>
+		</sgr:dpListElement>
+		
+		
+		
+		<sgr:dpListElement>
+			<sgr:dataPoint datapointName="DomHotWTempStptEco" mroVisibilityIndicator="O" rwpDatadirection="RW" unit="DEGREES_CELSIUS">
+				<sgr:basicDataType>
+					<sgr:float32>0</sgr:float32>
+				</sgr:basicDataType>
+				<sgr:dpNameList>
+					<sgr:sLV1Name>DomHotWTempStptEco</sgr:sLV1Name>
+					<sgr:sEEBUSName>SetpointRangeMin_DhwTemperature</sgr:sEEBUSName>
+					<sgr:sHPbwpName>Warmwassertemperatur min</sgr:sHPbwpName>
+					<sgr:sEN17609Name>Hot Water Setpoint Temperature Eco</sgr:sEN17609Name>
+				</sgr:dpNameList>
+				<sgr:dpLegibDesc>
+					<sgr:textElement>Setzen der Soll-Temperatur des Speichers für Warmwasser im Ecobetrieb</sgr:textElement>
+					<sgr:language>de</sgr:language>
+				</sgr:dpLegibDesc>
+			</sgr:dataPoint>
+		</sgr:dpListElement>
+		
+		<sgr:dpListElement>
+			<sgr:dataPoint datapointName="ActDomHotWaterTemp" mroVisibilityIndicator="M" rwpDatadirection="R" unit="DEGREES_CELSIUS">
+				<sgr:basicDataType>
+					<sgr:float32>0</sgr:float32>
+				</sgr:basicDataType>
+				<sgr:dpNameList>
+					<sgr:sLV1Name>ActDomHotWaterTemp</sgr:sLV1Name>
+					<sgr:sEEBUSName>Measurement_DhwTemperature</sgr:sEEBUSName>
+					<sgr:sHPbwpName>Temperatur Warmwasser</sgr:sHPbwpName>
+				</sgr:dpNameList>
+				<sgr:dpLegibDesc>
+					<sgr:textElement>Setzen der Soll-Temperatur des Speichers für Warmwasser im Eco Betrieb</sgr:textElement>
+					<sgr:language>de</sgr:language>
+				</sgr:dpLegibDesc>
+			</sgr:dataPoint>
+		</sgr:dpListElement>
+		
+				<sgr:dpListElement>
+			<sgr:dataPoint datapointName="DomHotWTempStptFB" mroVisibilityIndicator="O" rwpDatadirection="R" unit="DEGREES_CELSIUS">
+				<sgr:basicDataType>
+					<sgr:float32>0.0</sgr:float32>			
+				</sgr:basicDataType>
+				<sgr:dpNameList>
+					<sgr:sLV1Name>DomHotWTempStptFB</sgr:sLV1Name>
+				</sgr:dpNameList>
+				<sgr:dpLegibDesc>
+					<sgr:textElement>Ruecklesen des gestezten Soll-Temperatur des Speichers für Warmwasser.</sgr:textElement>
+					<sgr:language>de</sgr:language>
+				</sgr:dpLegibDesc>
+				<sgr:dpPrgDesc>
+					<sgr:textElement>Remark: some Heat Pumps may not allow to set the DomHotWater temperature due to its own optimization strategy. In this case it may be helpful to at least monitor this process.</sgr:textElement>
+					<sgr:language>en</sgr:language>
+				</sgr:dpPrgDesc>
+			</sgr:dataPoint>
+		</sgr:dpListElement>
   </sgr:SGrFunctionalProfileFrame>

@@ -900,22 +900,25 @@ Hoval Wärmepumpen mit TopTronic(r) E in Kombination mit dem HovalConnect Modbus
 				<sgr:sLV1Name>DomHotWaterCtrl</sgr:sLV1Name>
 			</sgr:fpNameList>
 			<sgr:fpLegibDesc>
-				<sgr:textElement>Dieses Profil definiert die erweiterten Datenpunkte zum Grundprofil "HeatPumpBase", welche zur Steuerung eines Brauchwarmwasserkreises zur Verfügung gestellt werden. Das Brauchwarmwasser-Profil muss immer in Kombination mit dem Grundprofil der Wärmepumpe bewirtschaftet werden. Es können mehrere Brauchwarmwasser-Profile definiert werden.</sgr:textElement>
+				<sgr:textElement>Dieses Profil definiert die erweiterten Datenpunkte zum Grundprofil "HeatPumpBase", welche zur Steuerung eines Brauchwarmwasserkreises zur Verfügung gestellt werden. Das Brauchwarmwasser-Profil muss immer in Kombination mit dem Grundprofil der Wärmepumpe bewirtschaftet werden. Es können mehrere Brauchwarmwasser-Profile definiert werden.
+				</sgr:textElement>
 				<sgr:language>de</sgr:language>
 				</sgr:fpLegibDesc>
 		</sgr:functionalProfile>	
 		
 		<sgr:dpListElement>
 			<sgr:dataPoint datapointName="DomHotWOpMode"
-				mroVisibilityIndicator="M" rwpDatadirection="RW" unit="NONE">
+				mroVisibilityIndicator="O" rwpDatadirection="RW" unit="NONE">
 				<sgr:basicDataType>
-					<sgr:int16U>0</sgr:int16U>
+					<sgr:enum>
+						<sgr:sgrDHWOpMode>DHW_STANDBY</sgr:sgrDHWOpMode>						
+					</sgr:enum>					
 				</sgr:basicDataType>
 				<sgr:dpNameList>
-					<sgr:sLV1Name>HPOpModeCmd</sgr:sLV1Name>
+					<sgr:sLV1Name>DomHotWOpMode</sgr:sLV1Name>
 				</sgr:dpNameList>
 				<sgr:dpLegibDesc>
-					<sgr:textElement>?checkDoku TODO: enum.  Grund-Betriebsart der Brauchwasseranlage (Bereitschaft, Programm, Komfort, Eco, Warmwasser, Kühlen aktiv, Kühlen passiv, Notbetrieb)</sgr:textElement>
+					<sgr:textElement>Festlegen der Betriebsart für den Brauchwarmwasserkreis (Bereitschaft, Programm 1, Programm 1, Konstant, Eco )</sgr:textElement>
 					<sgr:language>de</sgr:language>
 				</sgr:dpLegibDesc>
 			</sgr:dataPoint>
@@ -937,15 +940,18 @@ Hoval Wärmepumpen mit TopTronic(r) E in Kombination mit dem HovalConnect Modbus
 		
 		<sgr:dpListElement>
 			<sgr:dataPoint datapointName="DomHotWState"
-				mroVisibilityIndicator="M" rwpDatadirection="R" unit="NONE">
+				mroVisibilityIndicator="R" rwpDatadirection="R" unit="NONE">
 				<sgr:basicDataType>
-					<sgr:int16>0</sgr:int16>
+					<sgr:enum>
+						<sgr:sgrDHWOpMode>DHW_STANDBY</sgr:sgrDHWOpMode>						
+					</sgr:enum>
 				</sgr:basicDataType>
 				<sgr:dpNameList>
-					<sgr:sLV1Name>HeatCoolOpState</sgr:sLV1Name>
+					<sgr:sLV1Name>DomHotWState</sgr:sLV1Name>
+					<sgr:sHPbwpName>Warmwasserbereitung in Betrieb</sgr:sHPbwpName>
 				</sgr:dpNameList>
 				<sgr:dpLegibDesc>
-					<sgr:textElement>Auslesen des aktuellen Status des Heiz-/Kühlkreises (Aus, Bereitschaft, Programm, Comfort, Eco)</sgr:textElement>
+					<sgr:textElement>Auslesen des aktuellen Status des Brauchwarmwasserkreises</sgr:textElement>
 					<sgr:language>de</sgr:language>
 				</sgr:dpLegibDesc>
 			</sgr:dataPoint>
@@ -966,7 +972,7 @@ Hoval Wärmepumpen mit TopTronic(r) E in Kombination mit dem HovalConnect Modbus
 		</sgr:dpListElement>
 		<sgr:dpListElement>
 			<sgr:dataPoint datapointName="DomHotWTempStpt"
-				mroVisibilityIndicator="M" rwpDatadirection="W" unit="DEGREES_CELSIUS">
+				mroVisibilityIndicator="R" rwpDatadirection="W" unit="DEGREES_CELSIUS">
 				<sgr:basicDataType>
 					<sgr:float32>0</sgr:float32>
 				</sgr:basicDataType>

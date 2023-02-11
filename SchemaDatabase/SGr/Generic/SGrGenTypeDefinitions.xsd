@@ -1072,7 +1072,21 @@
       <enumeration value="HC_COOL_OP" />
     </restriction>
   </simpleType>
-
+  <simpleType name="SGrDHWOpModeType">
+    <annotation>
+      <documentation>E0018:
+     Basic operation type of a Domestic Hot Water Heat Pump operation mode
+     Standby	week 1 	week 2		Constant		Eco mode    
+	</documentation>
+    </annotation>
+    <restriction base="string">
+      <enumeration value="DHW_STANDBY" />
+      <enumeration value="DHW_SCHEDULE_1_OP" />
+      <enumeration value="DHW_SCHEDULE_2_OP" />
+      <enumeration value="DHW_CONST_OP" />
+      <enumeration value="DHW_ECO_OP" />
+    </restriction>
+  </simpleType>
 
 
   <complexType name="SGrEnumListType">
@@ -1092,6 +1106,7 @@
       <element maxOccurs="1" minOccurs="1" name="sgrOCPPState" type="sgr:SGrOCPPStateType" />
       <element maxOccurs="1" minOccurs="1" name="sgrHPOpMode" type="sgr:SGrHPOpModeType" />
       <element maxOccurs="1" minOccurs="1" name="sgrHCOpMode" type="sgr:SGrHCOpModeType" />
+      <element maxOccurs="1" minOccurs="1" name="sgrDHWOpMode" type="sgr:SGrDHWOpModeType" />
     </choice>
   </complexType>
 

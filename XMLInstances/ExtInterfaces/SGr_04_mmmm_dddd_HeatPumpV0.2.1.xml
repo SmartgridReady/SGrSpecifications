@@ -810,13 +810,15 @@ Diese Vorgabe  braucht eine doppelte Absicherung falscher Vorgaben durch den WP-
 		<sgr:dpListElement>
 			<sgr:dataPoint datapointName="DomHotWOpMode" mroVisibilityIndicator="R" rwpDatadirection="RW" unit="NONE">
 				<sgr:basicDataType>
-					<sgr:int32U>0</sgr:int32U>
+					<sgr:enum>
+						<sgr:sgrDHWOpMode>DHW_STANDBY</sgr:sgrDHWOpMode>												
+					</sgr:enum>					
 				</sgr:basicDataType>
 				<sgr:dpNameList>
 					<sgr:sLV1Name>HPOpModeCmd</sgr:sLV1Name>
 				</sgr:dpNameList>
 				<sgr:dpLegibDesc>
-					<sgr:textElement>?checkDoku TODO: enum.  Grund-Betriebsart der Brauchwasseranlage (Bereitschaft, Programm, Komfort, Eco, Warmwasser, Kühlen aktiv, Kühlen passiv, Notbetrieb)</sgr:textElement>
+					<sgr:textElement>Festlegen der Betriebsart für den Brauchwarmwasserkreis (Bereitschaft, Programm 1, Programm 1, Konstant, Eco )</sgr:textElement>
 					<sgr:language>de</sgr:language>
 				</sgr:dpLegibDesc>
 			</sgr:dataPoint>
@@ -843,10 +845,11 @@ Diese Vorgabe  braucht eine doppelte Absicherung falscher Vorgaben durch den WP-
 					<sgr:int16>0</sgr:int16>
 				</sgr:basicDataType>
 				<sgr:dpNameList>
-					<sgr:sLV1Name>HeatCoolOpState</sgr:sLV1Name>
+					<sgr:sLV1Name>DomHotWState</sgr:sLV1Name>
+					<sgr:sHPbwpName>Warmwasserbereitung in Betrieb</sgr:sHPbwpName>
 				</sgr:dpNameList>
 				<sgr:dpLegibDesc>
-					<sgr:textElement>Auslesen des aktuellen Status des Heiz-/Kühlkreises (Aus, Bereitschaft, Programm, Comfort, Eco)</sgr:textElement>
+					<sgr:textElement>Auslesen des aktuellen Status des Brauchwarmwasserkreises</sgr:textElement>
 					<sgr:language>de</sgr:language>
 				</sgr:dpLegibDesc>
 			</sgr:dataPoint>
@@ -869,18 +872,24 @@ Diese Vorgabe  braucht eine doppelte Absicherung falscher Vorgaben durch den WP-
 		<sgr:dpListElement>
 			<sgr:dataPoint datapointName="DomHotWTempStpt" mroVisibilityIndicator="M" rwpDatadirection="RW" unit="DEGREES_CELSIUS">
 				<sgr:basicDataType>
-					<sgr:float32>0</sgr:float32>
+					<sgr:float32>0.0</sgr:float32>
+					
+					
 				</sgr:basicDataType>
 				<sgr:dpNameList>
-					<sgr:sLV1Name>DomHotWTempStptOffset</sgr:sLV1Name>
+					<sgr:sLV1Name>DomHotWTempStpt</sgr:sLV1Name>
+					<sgr:sEEBUSName>Setpoint_DhwTemperature</sgr:sEEBUSName>
+					<sgr:sHPbwpName>Warmwassersolltemperatur</sgr:sHPbwpName>
+					<sgr:sEN17609Name>Hot Water Setpoint Temperature</sgr:sEN17609Name>
 				</sgr:dpNameList>
 				<sgr:dpLegibDesc>
-					<sgr:textElement>
-						Relative Anhebung/Absenkung der Solltemperatur (+/-) für den Brauchwarmwasserspeicher.
-					</sgr:textElement>
+					<sgr:textElement>Setzen der Soll-Temperatur des Speichers für Warmwasser.</sgr:textElement>
 					<sgr:language>de</sgr:language>
 				</sgr:dpLegibDesc>
 			</sgr:dataPoint>
+			<sgr:genAttribute>
+				<sgr:minVal>45.0</sgr:minVal>
+				<sgr:maxVal>60.0</sgr:maxVal></sgr:genAttribute>
 			<sgr:modbusDataPoint>
 				<sgr:modbusDataType>
 					<sgr:float32>0.0</sgr:float32>
@@ -907,12 +916,13 @@ Diese Vorgabe  braucht eine doppelte Absicherung falscher Vorgaben durch den WP-
 					<sgr:sLV1Name>DomHotWTempStptOffset</sgr:sLV1Name>
 				</sgr:dpNameList>
 				<sgr:dpLegibDesc>
-					<sgr:textElement>
-						Relative Anhebung/Absenkung der Solltemperatur (+/-) für den Brauchwarmwasserspeicher.
-					</sgr:textElement>
+					<sgr:textElement>Relative Anhebung/Absenkung der Solltemperatur (+/-) für den Brauchwarmwasserspeicher. Eignet sich für eine Flexibilitätssteuerung.</sgr:textElement>
 					<sgr:language>de</sgr:language>
 				</sgr:dpLegibDesc>
 			</sgr:dataPoint>
+			<sgr:genAttribute>
+				<sgr:maxVal>5.0</sgr:maxVal>
+				<sgr:minVal>-5.0</sgr:minVal></sgr:genAttribute>
 			<sgr:modbusDataPoint>
 				<sgr:modbusDataType>
 					<sgr:float32>0.0</sgr:float32>
@@ -937,12 +947,13 @@ Diese Vorgabe  braucht eine doppelte Absicherung falscher Vorgaben durch den WP-
 					<sgr:float32>0</sgr:float32>
 				</sgr:basicDataType>
 				<sgr:dpNameList>
-					<sgr:sLV1Name>DomHotWTempStptOffset</sgr:sLV1Name>
+					<sgr:sLV1Name>DomHotWTempStptComfort</sgr:sLV1Name>
+					<sgr:sEEBUSName>SetpointRangeMax_DhwTemperature</sgr:sEEBUSName>
+					<sgr:sHPbwpName>Warmwassertemperatur max</sgr:sHPbwpName>
+					<sgr:sEN17609Name>Hot Water Setpoint Temperature Comfort</sgr:sEN17609Name>
 				</sgr:dpNameList>
 				<sgr:dpLegibDesc>
-					<sgr:textElement>
-						Relative Anhebung/Absenkung der Solltemperatur (+/-) für den Brauchwarmwasserspeicher.
-					</sgr:textElement>
+					<sgr:textElement>Setzen der Soll-Temperatur des Speichers für Warmwasser im Comfortbetrieb</sgr:textElement>
 					<sgr:language>de</sgr:language>
 				</sgr:dpLegibDesc>
 			</sgr:dataPoint>
@@ -970,12 +981,13 @@ Diese Vorgabe  braucht eine doppelte Absicherung falscher Vorgaben durch den WP-
 					<sgr:float32>0</sgr:float32>
 				</sgr:basicDataType>
 				<sgr:dpNameList>
-					<sgr:sLV1Name>DomHotWTempStptOffset</sgr:sLV1Name>
+					<sgr:sLV1Name>DomHotWTempStptEco</sgr:sLV1Name>
+					<sgr:sEEBUSName>SetpointRangeMin_DhwTemperature</sgr:sEEBUSName>
+					<sgr:sHPbwpName>Warmwassertemperatur min</sgr:sHPbwpName>
+					<sgr:sEN17609Name>Hot Water Setpoint Temperature Eco</sgr:sEN17609Name>
 				</sgr:dpNameList>
 				<sgr:dpLegibDesc>
-					<sgr:textElement>
-						Relative Anhebung/Absenkung der Solltemperatur (+/-) für den Brauchwarmwasserspeicher.
-					</sgr:textElement>
+					<sgr:textElement>Setzen der Soll-Temperatur des Speichers für Warmwasser im Ecobetrieb</sgr:textElement>
 					<sgr:language>de</sgr:language>
 				</sgr:dpLegibDesc>
 			</sgr:dataPoint>
@@ -1002,9 +1014,11 @@ Diese Vorgabe  braucht eine doppelte Absicherung falscher Vorgaben durch den WP-
 				</sgr:basicDataType>
 				<sgr:dpNameList>
 					<sgr:sLV1Name>ActDomHotWaterTemp</sgr:sLV1Name>
+					<sgr:sEEBUSName>Measurement_DhwTemperature</sgr:sEEBUSName>
+					<sgr:sHPbwpName>Temperatur Warmwasser</sgr:sHPbwpName>
 				</sgr:dpNameList>
 				<sgr:dpLegibDesc>
-					<sgr:textElement>Aktuelle Ist-Temperatur des Brauchwarmwasserspeichers</sgr:textElement>
+					<sgr:textElement>Setzen der Soll-Temperatur des Speichers für Warmwasser im Eco Betrieb</sgr:textElement>
 					<sgr:language>de</sgr:language>
 				</sgr:dpLegibDesc>
 			</sgr:dataPoint>
@@ -1023,7 +1037,41 @@ Diese Vorgabe  braucht eine doppelte Absicherung falscher Vorgaben durch den WP-
 				</sgr:scalingByMulPwr>
 			</sgr:modbusAttr>
 		</sgr:dpListElement>
+		
+				<sgr:dpListElement>
+			<sgr:dataPoint datapointName="DomHotWTempStptFB" mroVisibilityIndicator="O" rwpDatadirection="R" unit="DEGREES_CELSIUS">
+				<sgr:basicDataType>
+					<sgr:float32>0.0</sgr:float32>			
+				</sgr:basicDataType>
+				<sgr:dpNameList>
+					<sgr:sLV1Name>DomHotWTempStptFB</sgr:sLV1Name>
+				</sgr:dpNameList>
+				<sgr:dpLegibDesc>
+					<sgr:textElement>Ruecklesen des gestezten Soll-Temperatur des Speichers für Warmwasser.</sgr:textElement>
+					<sgr:language>de</sgr:language>
+				</sgr:dpLegibDesc>
+				<sgr:dpPrgDesc>
+					<sgr:textElement>Remark: some Heat Pumps may not allow to set the DomHotWater temperature due to its own optimization strategy. In this case it may be helpful to at least monitor this process.</sgr:textElement>
+					<sgr:language>en</sgr:language>
+				</sgr:dpPrgDesc>
+			</sgr:dataPoint>
+			<sgr:modbusDataPoint>
+				<sgr:modbusDataType>
+					<sgr:float32>0.0</sgr:float32>
+				</sgr:modbusDataType>
+				<sgr:modbusFirstRegisterReference registerType="HoldRegister" addr="0" bitRank="0" />
+				<sgr:dpSizeNrRegisters>2</sgr:dpSizeNrRegisters>
+				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
+			</sgr:modbusDataPoint>
+			<sgr:modbusAttr>
+				<sgr:scalingByMulPwr>
+					<sgr:multiplicator>1</sgr:multiplicator>
+					<sgr:powerof10>0</sgr:powerof10>
+				</sgr:scalingByMulPwr>
+			</sgr:modbusAttr>
+		</sgr:dpListElement>		
 	</sgr:fpListElement>
+	
 	<sgr:fpListElement>
 		<sgr:functionalProfile mroVisibilityIndicator="M" profileName="BufferStorageCtrl">
 			<sgr:profileNumber>
