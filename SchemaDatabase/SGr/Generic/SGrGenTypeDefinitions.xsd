@@ -1220,10 +1220,44 @@
 		<enumeration value="HC_HEAT_EXTERNAL_CMD" />
 		<enumeration value="HC_SGRID_INTENSIVIED"/>
     </restriction>
-  </simpleType>  
+  </simpleType>    
+  <simpleType name="SGrHPActBufferStateType">
+    <annotation>
+      <documentation>BM0005:
+     BitRank map for Heat Pump Buffer state 
+     source: Hoval  (ER) means "Entladeregelung"
+     Bit0 = keine Anforderung, AUS
+     Bit0 = (ER) keine Anforderung (WEZ-Freigabe)
+     Bit1 = Anforderung, Temp. tief, PLP aus (Entladeschutz)
+     Bit2 = Anforderung, Ladung läuft
+     Bit2 = (ER) Anforderung, Sollwert nicht erfüllt, UPE steht Richtung WEZ bzw. YPEL regelt stetig auf PEF
+     Bit3 = Anforderung, Sollwert erfüllt, Nachlauf aktiv
+     Bit3 = (ER) Anforderung UPE-Umschaltverzögerung, UPE/YPEL steht Richtung WEZ
+     Bit4 = Anforderung, Sollwert erfüllt
+     Bit4 = (ER) Anforderung, Sollwert erfüllt, UPE/YPEL steht Richtung Puffer
+     Bit6 = Energiezwang
+     Bit7=  Abschöpffunktion
+     Bit8 = (ER)Vorzugsbetrieb SmartGrid
+     Bit9 = (ER)Abnahmezwang Smart Grid
+	</documentation>
+	</annotation>
+    <restriction base="string">
+      <enumeration value="HPB_OFF" />
+      <enumeration value="HPB_TEMP_LOW" />
+      <enumeration value="HPB_RUNNING" />
+      <enumeration value="HPB_RUN_HOLD" />
+      <enumeration value="HPB_ON_TARGET" />
+      <enumeration value="HPB_" />
+      <enumeration value="HPB_ENER_COMPULSION" />
+      <enumeration value="HPB_SKIMMING" />
+      <enumeration value="HPB_SGR_INTENSIVIED" />
+      <enumeration value="HPB_SGR_FORCED_" />
+    </restriction>
+  </simpleType>   
+  
   <complexType name="SGrBitmapperListType">
     <annotation>
-      <documentation>BM0001:
+      <documentation>BMxxxx:
      Field of enumeration where endum index is used as bitmap flag
      Unsigned int value  [and]  ( 1 [2 *  shift left] enum_index_value means bit is set
 	</documentation>
@@ -1233,6 +1267,7 @@
       <element maxOccurs="1" minOccurs="1" name="sgrHPOpstate" type="sgr:SGrHPOpstateType" />
       <element maxOccurs="1" minOccurs="1" name="sgrHPOpstateStiebel" type="sgr:SGrHPOpstateStiebelType" />
       <element maxOccurs="1" minOccurs="1" name="sgrHCOpstate" type="sgr:SGrHCOpStateType" />
+      <element maxOccurs="1" minOccurs="1" name="sgrHPActBufferState" type="sgr:SGrHPActBufferStateType" />
     </choice>
   </complexType>
 </schema>

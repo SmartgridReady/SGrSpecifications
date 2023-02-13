@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="/xsl/SGr.xsl"?>
-<sgr:SGrModbusDeviceFrame deviceName="ToDo:BitteGeraetnamenSetzen" isLocalControl="true" manufacturerID="Hoval" manufacturerName="Hoval AG"  xmlns:sgr="http://www.smartgridready.com/ns/V0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/EI-Modbus/SGrModbusEIDeviceFrame.xsd ">
+<sgr:SGrModbusDeviceFrame deviceName="HovalConnect" isLocalControl="true" manufacturerID="Hoval" manufacturerName="Hoval AG"  xmlns:sgr="http://www.smartgridready.com/ns/V0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/EI-Modbus/SGrModbusEIDeviceFrame.xsd ">
 	<sgr:releaseNotes>
 		<sgr:state>Draft</sgr:state>
 	</sgr:releaseNotes>
@@ -1118,10 +1118,14 @@ Hoval Wärmepumpen mit TopTronic(r) E in Kombination mit dem HovalConnect Modbus
 					</sgr:scalingByMulPwr></sgr:modbusAttr>
 		</sgr:dpListElement>	
 		<sgr:dpListElement>
-			<sgr:dataPoint datapointName="BufferState"
+			<sgr:dataPoint datapointName="ActStorageBufferState"
 				mroVisibilityIndicator="M" rwpDatadirection="R" unit="NONE">
 				<sgr:basicDataType>
-					<sgr:int16>0</sgr:int16>
+					<sgr:enum2bitmapIndex>
+						<sgr:sgrBool2BitRank>Bit0</sgr:sgrBool2BitRank>
+					</sgr:enum2bitmapIndex>
+					
+					
 				</sgr:basicDataType>
 				<sgr:dpNameList>
 					<sgr:sLV1Name>BufferState</sgr:sLV1Name>
