@@ -496,8 +496,7 @@
 
             <!-- Footer-->
             <div class="profilefooter">
-            Konzept und Spezifikation Funktionsprofile siehe separates Dokument "Funktionsprofile_Spezifikation_vx.x.pdf"
-            Informationen und Support unter www.smartgridready.ch, deklaration@smartgridready.ch
+            Informationen und Support unter www.smartgridready.ch, support@smartgridready.ch
         </div>
         </div>
     </xsl:template>
