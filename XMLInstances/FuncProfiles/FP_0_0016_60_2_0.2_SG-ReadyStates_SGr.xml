@@ -31,10 +31,46 @@
 				<sgr:sHPbwpName>sgr:sHPbwpName</sgr:sHPbwpName>
 			</sgr:fpNameList>
 			<sgr:fpLegibDesc>
-				<sgr:textElement>„SG Ready“ ist ein Markenzeichen des Bundesverbands Wärmepumpe e. V.
+				<sgr:textElement>                <![CDATA[	
+				<img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
+                <h4>Heizungswärmepumpen</h4>
+                „SG Ready“ ist ein Markenzeichen des Bundesverbands Wärmepumpe e. V.
 Es bezeichnet eine Eigenschaft von Wärmepumpen, deren Regelungstechnik
 die Einbindung in ein intelligentes Stromnetz
-(Smart Grid) ermöglicht</sgr:textElement>
+(Smart Grid) ermöglicht
+                <p>Heizungswärmepumpen müssen über einen Regler verfügen, der vier Betriebszustände abdeckt:</p>
+                <ol>
+                <li>Betriebszustand 1 (Schaltzustand, bei Klemmenlösung: 1:0): Dieser Betriebszustand ist kompatibel häufig zu festen
+                    Uhrzeiten geschalteten <strong>EVU-Sperre</strong> und umfasst im Normalfall maximal 2 Stunden „harte“ Sperrzeit.</li>
+                <li>Betriebszustand 2 (Schaltzustand, bei Klemmenlösungen: 0:0): In dieser Schaltung läuft die Wärmepumpe im energieeffizienten
+                    <strong>Normalbetrieb</strong> mit anteiliger Wärmespeicher-Füllung für die maximal zweistündige EVU-Sperre.</li>
+                <li>Betriebszustand 3 (Schaltzustand, bei Klemmenlösung 0:1):  In diesem Betriebszustand läuft die Wärmepumpe innerhalb
+                    des Reglers im <strong>verstärkten Betrieb</strong> für Raumheizung und Warmwasserbereitung. Es handelt sich dabei
+                    nicht um einen definitiven Anlaufbefehl, sondern um eine Einschaltempfehlung entsprechend der heutigen Anhebung.</li>
+                <li>Betriebszustand 4 (Schaltzustand, bei Klemmenlösung 1:1):  Hierbei handelt es sich um einen definitiven Anlaufbefehl,
+                    insofern dieser im Rahmen der Regeleinstellungen möglich ist. Für diesen Betriebszustand müssen für verschiedene
+                    Tarif- und Nutzungsmodelle verschiedene Regelungsmodelle am Regler einstellbar sein:
+                    <ul>
+                        <li>Variante 1: Die Wärmepumpe (Verdichter) wird aktiv eingeschaltet.</li>
+                        <li>Variante 2: Die Wärmepumpe (Verdichter und elektrische Zusatzheizungen) wird aktiv eingeschaltet, optional:
+                            höhere Temperatur in den Wärmespeichern</li>
+                    </ul>
+                </li>
+                <p>Optional kann die Raumtemperatur als Führungsgröße für die Regelung der Systemtemperaturen (Vor- bzw. Rücklauftemperatur)
+                    herangezogen werden. Eine Sperrung der Wärmepumpe durch einen Raumthermostaten in Abhängigkeit von der Raumtemperatur
+                    ist nicht ausreichend.</p>
+
+                <h4>Warmwasserwärmepumpen</h4>
+                <p>Warmwasserwärmepumpen müssen über einen Regler verfügen, welches mittels einer automatischen Ansteuerung eine
+                    Erhöhung der Warmwasser-Solltemperatur zum Zweck der thermischen Speicherung ermöglicht.</p>
+
+                <p>Hinweis</p>
+                <ul>
+                    <li>Geräte mit 2 Klemmenkontakte setzen die Klemmen-Datenpunkte um.</li>
+                    <li>Geräte mit Modbus oder RestAPI setzen bevorzugt den Enum-basierten Datenpunkt um.</li>
+                </ul>
+                ]]>
+                </sgr:textElement>
 				<sgr:language>de</sgr:language>
 				<sgr:uri>https://www.waermepumpe.de/normen-technik/sg-ready/</sgr:uri>
 			</sgr:fpLegibDesc>
@@ -45,9 +81,27 @@ die Einbindung in ein intelligentes Stromnetz
 				unit="NONE">
 				<sgr:basicDataType>
 					<sgr:enum>
-						<sgr:sgreadyStateLv2>HP_NORMAL</sgr:sgreadyStateLv2>
+						<sgr:sgreadyStateLv2>HP_INTENSIVIED</sgr:sgreadyStateLv2>
 					</sgr:enum>
 				</sgr:basicDataType>
+				<sgr:dpNameList>
+					<sgr:sLV1Name>SGReadyCmd</sgr:sLV1Name>
+					<sgr:sHPbwpName>Betriebsmodus</sgr:sHPbwpName></sgr:dpNameList>
+				<sgr:dpLegibDesc>
+					<sgr:textElement> 
+                Betriebszustand 1 (HP_LOCKED, bei Klemmenlösung: 1:0): Dieser Betriebszustand ist kompatibel häufig zu festen
+                    Uhrzeiten geschalteten EVU-Sperreund umfasst im Normalfall maximal 2 Stunden „harte“ Sperrzeit.
+                Betriebszustand 2 (HP_NORMAL bei Klemmenlösung 0:0): In dieser Schaltung läuft die Wärmepumpe im energieeffizienten
+                    Normalbetrieb mit anteiliger Wärmespeicher-Füllung für die maximal zweistündige EVU-Sperre.
+                Betriebszustand 3 (HP_INTENSIVIED, bei Klemmenlösung 0:1):  In diesem Betriebszustand läuft die Wärmepumpe innerhalb
+                    des Reglers im verstärkten Betrieb für Raumheizung und Warmwasserbereitung. Es handelt sich dabei
+                    nicht um einen definitiven Anlaufbefehl, sondern um eine Einschaltempfehlung entsprechend der heutigen Anhebung.
+                Betriebszustand 4 (HP_FORCED, bei Klemmenlösung 1:1):  Hierbei handelt es sich um einen definitiven Anlaufbefehl,
+                    insofern dieser im Rahmen der Regeleinstellungen möglich ist. Für diesen Betriebszustand müssen für verschiedene
+                    Tarif- und Nutzungsmodelle verschiedene Regelungsmodelle am Regler einstellbar.
+                </sgr:textElement>
+					<sgr:language>de</sgr:language>
+				</sgr:dpLegibDesc>
 				<sgr:dpLegibDesc>
 					<sgr:textElement>this the command acccording the bwp SG-Ready definition  https://www.waermepumpe.de/normen-technik/sg-ready/</sgr:textElement>
 					<sgr:language>en</sgr:language>
@@ -63,6 +117,7 @@ die Einbindung in ein intelligentes Stromnetz
 				</sgr:basicDataType>
 				<sgr:dpNameList>
 					<sgr:sLV1Name>SG-ReadyState</sgr:sLV1Name>
+					<sgr:sHPbwpName>Statusmeldungen</sgr:sHPbwpName>
 				</sgr:dpNameList>
 				<sgr:dpLegibDesc>
 					<sgr:textElement>SG-ReadyState of the current operation</sgr:textElement>
@@ -70,19 +125,25 @@ die Einbindung in ein intelligentes Stromnetz
 				</sgr:dpLegibDesc>
 				<sgr:dpPrgDesc>
 					<sgr:textElement>SG READY BETRIEBSZUSTAND 
-1: Die Anlage darf nicht starten. Nur der Frostschutz wird gewährleistet.
-2: Normaler Betrieb der Anlage. Automatik- / Programmbetrieb gemäß BI der angeschlossenen Wärmepumpe
-3: Forcierter Betrieb der Anlage mit erhöhten Werten für Heiz- und/oder Warmwassertemperatur
-4: Sofortige Ansteuerung der Maximalwerte für Heiz- und Warmwassertemperatur</sgr:textElement>
+1 (HP_LOCKED):     Die Anlage darf nicht starten. Nur der Frostschutz wird gewährleistet.
+2 (HP_NORMAL):     Normaler Betrieb der Anlage. Automatik- / Programmbetrieb gemäß BI der angeschlossenen Wärmepumpe
+3 (HP_INTENSIVIED):Forcierter Betrieb der Anlage mit erhöhten Werten für Heiz- und/oder Warmwassertemperatur
+4 (HP_FORCED):     Sofortige Ansteuerung der Maximalwerte für Heiz- und Warmwassertemperatur</sgr:textElement>
 					<sgr:language>de</sgr:language>
 				</sgr:dpPrgDesc>
 			</sgr:dataPoint>
 		</sgr:dpListElement>
 		<sgr:dpListElement>
-			<sgr:dataPoint datapointName="SGReadyEnabled" unit="NONE" rwpDatadirection="RW" mroVisibilityIndicator="M">
+			<sgr:dataPoint datapointName="SGReadyEnabled" unit="NONE" rwpDatadirection="RW" mroVisibilityIndicator="O">
 				<sgr:basicDataType>
 					<sgr:boolean>true</sgr:boolean>
 				</sgr:basicDataType>
+				<sgr:dpNameList>
+					<sgr:sLV1Name>SGReadyEnabled</sgr:sLV1Name></sgr:dpNameList>
+				<sgr:dpLegibDesc>
+					<sgr:textElement>Aktivierung der SG-Ready Funktion</sgr:textElement>
+					<sgr:language>de</sgr:language>
+				</sgr:dpLegibDesc>
 			</sgr:dataPoint>
 		</sgr:dpListElement>
 		<sgr:dpListElement>
@@ -90,6 +151,12 @@ die Einbindung in ein intelligentes Stromnetz
 				<sgr:basicDataType>
 					<sgr:boolean>true</sgr:boolean>
 				</sgr:basicDataType>
+				<sgr:dpNameList>
+					<sgr:sLV1Name>SGReadyInp1isON</sgr:sLV1Name></sgr:dpNameList>
+				<sgr:dpLegibDesc>
+					<sgr:textElement>Datenpunkt  für die Schaltung eines I/O Kontaktes</sgr:textElement>
+					<sgr:language>de</sgr:language>
+				</sgr:dpLegibDesc>
 			</sgr:dataPoint>
 		</sgr:dpListElement>
 		<sgr:dpListElement>
@@ -97,6 +164,12 @@ die Einbindung in ein intelligentes Stromnetz
 				<sgr:basicDataType>
 					<sgr:boolean>true</sgr:boolean>
 				</sgr:basicDataType>
+				<sgr:dpNameList>
+					<sgr:sLV1Name>SGReadyInp2isON</sgr:sLV1Name></sgr:dpNameList>
+				<sgr:dpLegibDesc>
+					<sgr:textElement>Datenpunkt für die Schaltung eines I/O Kontaktes </sgr:textElement>
+					<sgr:language>de</sgr:language>
+				</sgr:dpLegibDesc>
 			</sgr:dataPoint>
 		</sgr:dpListElement>
   </sgr:SGrFunctionalProfileFrame>
