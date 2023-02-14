@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/SGr.xsl"?>
+<sgr:SGrFunctionalProfileFrame xmlns:sgr="http://www.smartgridready.com/ns/V0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/SGrIncluder.xsd">
+     <sgr:releaseNotes>
+        <sgr:state>Review</sgr:state>
+        <sgr:remarks>This functional profile is in preliminary state. Before implementing external-interfaces or any other
+            functionality, the detailed functionality must be verified with the battery manufacturer.
+        </sgr:remarks>
+        <sgr:changelog>
+            <sgr:version>0.1.1</sgr:version>
+            <sgr:date>2023-02-12</sgr:date>
+            <sgr:author>IBT/cb</sgr:author>
+            <sgr:comment>Vorbereitung Soft Start</sgr:comment>
+        </sgr:changelog>
+    </sgr:releaseNotes>
+
+		<sgr:functionalProfile mroVisibilityIndicator="M" profileName="SG-ReadyStates_bwp">
+			<sgr:profileNumber>
+				<sgr:specsOwnerId>0</sgr:specsOwnerId>
+				<sgr:profileIdentification>HeatPumpControl</sgr:profileIdentification>
+				<sgr:subProfileIdent>SG-ReadyStates_bwp</sgr:subProfileIdent>
+				<sgr:sgrLevelOfOperation>2</sgr:sgrLevelOfOperation>
+				<sgr:versionNumber>
+					<sgr:primaryVersionNumber>0</sgr:primaryVersionNumber>
+					<sgr:secondaryVersionNumber>2</sgr:secondaryVersionNumber>
+					<sgr:subReleaseVersionNumber>1</sgr:subReleaseVersionNumber>
+				</sgr:versionNumber>
+			</sgr:profileNumber>
+			<sgr:fpNameList>
+				<sgr:sLV1Name>SG-ReadyStates_bwp</sgr:sLV1Name>
+				<sgr:sHPbwpName>sgr:sHPbwpName</sgr:sHPbwpName>
+			</sgr:fpNameList>
+			<sgr:fpLegibDesc>
+				<sgr:textElement>„SG Ready“ ist ein Markenzeichen des Bundesverbands Wärmepumpe e. V.
+Es bezeichnet eine Eigenschaft von Wärmepumpen, deren Regelungstechnik
+die Einbindung in ein intelligentes Stromnetz
+(Smart Grid) ermöglicht</sgr:textElement>
+				<sgr:language>de</sgr:language>
+				<sgr:uri>https://www.waermepumpe.de/normen-technik/sg-ready/</sgr:uri>
+			</sgr:fpLegibDesc>
+		</sgr:functionalProfile>
+		<sgr:dpListElement>
+			<sgr:dataPoint datapointName="SGReadyCmd"
+				mroVisibilityIndicator="M" rwpDatadirection="RW"
+				unit="NONE">
+				<sgr:basicDataType>
+					<sgr:enum>
+						<sgr:sgreadyStateLv2>HP_NORMAL</sgr:sgreadyStateLv2>
+					</sgr:enum>
+				</sgr:basicDataType>
+				<sgr:dpLegibDesc>
+					<sgr:textElement>this the command acccording the bwp SG-Ready definition  https://www.waermepumpe.de/normen-technik/sg-ready/</sgr:textElement>
+					<sgr:language>en</sgr:language>
+				</sgr:dpLegibDesc>
+			</sgr:dataPoint>
+		</sgr:dpListElement>
+		<sgr:dpListElement>
+			<sgr:dataPoint datapointName="SGReadyState" mroVisibilityIndicator="M" rwpDatadirection="R" unit="NONE">
+				<sgr:basicDataType>
+					<sgr:enum>
+						<sgr:sgreadyStateLv2>HP_NORMAL</sgr:sgreadyStateLv2>
+					</sgr:enum>
+				</sgr:basicDataType>
+				<sgr:dpNameList>
+					<sgr:sLV1Name>SG-ReadyState</sgr:sLV1Name>
+				</sgr:dpNameList>
+				<sgr:dpLegibDesc>
+					<sgr:textElement>SG-ReadyState of the current operation</sgr:textElement>
+					<sgr:language>de</sgr:language>
+				</sgr:dpLegibDesc>
+				<sgr:dpPrgDesc>
+					<sgr:textElement>SG READY BETRIEBSZUSTAND 
+1: Die Anlage darf nicht starten. Nur der Frostschutz wird gewährleistet.
+2: Normaler Betrieb der Anlage. Automatik- / Programmbetrieb gemäß BI der angeschlossenen Wärmepumpe
+3: Forcierter Betrieb der Anlage mit erhöhten Werten für Heiz- und/oder Warmwassertemperatur
+4: Sofortige Ansteuerung der Maximalwerte für Heiz- und Warmwassertemperatur</sgr:textElement>
+					<sgr:language>de</sgr:language>
+				</sgr:dpPrgDesc>
+			</sgr:dataPoint>
+		</sgr:dpListElement>
+		<sgr:dpListElement>
+			<sgr:dataPoint datapointName="SGReadyEnabled" unit="NONE" rwpDatadirection="RW" mroVisibilityIndicator="M">
+				<sgr:basicDataType>
+					<sgr:boolean>true</sgr:boolean>
+				</sgr:basicDataType>
+			</sgr:dataPoint>
+		</sgr:dpListElement>
+		<sgr:dpListElement>
+			<sgr:dataPoint datapointName="SGReadyInp1isON" unit="NONE" rwpDatadirection="RW" mroVisibilityIndicator="O">
+				<sgr:basicDataType>
+					<sgr:boolean>true</sgr:boolean>
+				</sgr:basicDataType>
+			</sgr:dataPoint>
+		</sgr:dpListElement>
+		<sgr:dpListElement>
+			<sgr:dataPoint datapointName="SGReadyInp2isON" unit="NONE" rwpDatadirection="RW" mroVisibilityIndicator="O">
+				<sgr:basicDataType>
+					<sgr:boolean>true</sgr:boolean>
+				</sgr:basicDataType>
+			</sgr:dataPoint>
+		</sgr:dpListElement>
+  </sgr:SGrFunctionalProfileFrame>
