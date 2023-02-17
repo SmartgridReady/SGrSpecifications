@@ -38,7 +38,7 @@
 		<sgr:powerSource>mains3Phase</sgr:powerSource>
 		<sgr:nominalPower>sgr:nominalPower</sgr:nominalPower>
 		<sgr:manufacturerLabel>add Label</sgr:manufacturerLabel>
-		<sgr:remAuthorID>add Author</sgr:remAuthorID>
+		<sgr:remAuthorID>IBT/cb (no warranty)</sgr:remAuthorID>
 		<sgr:devLevelofOperation>4</sgr:devLevelofOperation>
 	</sgr:deviceProfile>
 	<sgr:modbusInterfaceDesc>
@@ -1101,7 +1101,7 @@ Diese Vorgabe  braucht eine doppelte Absicherung falscher Vorgaben durch den WP-
 			</sgr:fpLegibDesc>
 		</sgr:functionalProfile>
 		<sgr:dpListElement>
-			<sgr:dataPoint datapointName="HeatWTempStptOffset" mroVisibilityIndicator="M" rwpDatadirection="W" unit="DEGREES_CELSIUS">
+			<sgr:dataPoint datapointName="HeatWTempStptOffset" mroVisibilityIndicator="R" rwpDatadirection="W" unit="DEGREES_CELSIUS">
 				<sgr:basicDataType>
 					<sgr:float32>0.0</sgr:float32>
 				</sgr:basicDataType>
@@ -1134,8 +1134,42 @@ Diese Vorgabe  braucht eine doppelte Absicherung falscher Vorgaben durch den WP-
 				</sgr:scalingByMulPwr>
 			</sgr:modbusAttr>
 		</sgr:dpListElement>
+		
 		<sgr:dpListElement>
-			<sgr:dataPoint datapointName="ActHeatBufferTempUpper" mroVisibilityIndicator="M" rwpDatadirection="R" unit="DEGREES_CELSIUS">
+			<sgr:dataPoint datapointName="ActBufferState" mroVisibilityIndicator="O" rwpDatadirection="R" unit="NONE">
+				<sgr:basicDataType>
+					<sgr:enum2bitmapIndex>
+						<sgr:sgrHPActBufferState>HPB_OFF</sgr:sgrHPActBufferState>
+					</sgr:enum2bitmapIndex>
+					
+				</sgr:basicDataType>
+				<sgr:dpNameList>
+					<sgr:sLV1Name>ActHeatBufferTempUpper</sgr:sLV1Name>
+				</sgr:dpNameList>
+				<sgr:dpLegibDesc>
+					<sgr:textElement>?check addr 16518 doppelt: Aktuelle Ist-Temperatur des Heiz-Pufferspeichers oben</sgr:textElement>
+					<sgr:language>de</sgr:language>
+				</sgr:dpLegibDesc>
+			</sgr:dataPoint>
+			<sgr:modbusDataPoint>
+				<sgr:modbusDataType>
+					<sgr:float32>0.0</sgr:float32>
+				</sgr:modbusDataType>
+				<sgr:modbusFirstRegisterReference registerType="InputRegister" addr="0" bitRank="0" />
+				<sgr:dpSizeNrRegisters>2</sgr:dpSizeNrRegisters>
+				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
+			</sgr:modbusDataPoint>
+			<sgr:modbusAttr>
+				<sgr:scalingByMulPwr>
+					<sgr:multiplicator>1</sgr:multiplicator>
+					<sgr:powerof10>0</sgr:powerof10>
+				</sgr:scalingByMulPwr>
+			</sgr:modbusAttr>
+		</sgr:dpListElement>
+		
+		
+		<sgr:dpListElement>
+			<sgr:dataPoint datapointName="ActHeatBufferTemp" mroVisibilityIndicator="M" rwpDatadirection="R" unit="DEGREES_CELSIUS">
 				<sgr:basicDataType>
 					<sgr:float32>0</sgr:float32>
 				</sgr:basicDataType>
@@ -1162,13 +1196,43 @@ Diese Vorgabe  braucht eine doppelte Absicherung falscher Vorgaben durch den WP-
 				</sgr:scalingByMulPwr>
 			</sgr:modbusAttr>
 		</sgr:dpListElement>
+		
 		<sgr:dpListElement>
-			<sgr:dataPoint datapointName="ActHeatBufferTempLower" mroVisibilityIndicator="M" rwpDatadirection="R" unit="DEGREES_CELSIUS">
+			<sgr:dataPoint datapointName="ActHeatBufferTempUpper" mroVisibilityIndicator="O" rwpDatadirection="R" unit="DEGREES_CELSIUS">
 				<sgr:basicDataType>
 					<sgr:float32>0</sgr:float32>
 				</sgr:basicDataType>
 				<sgr:dpNameList>
-					<sgr:sLV1Name>ctHeatBufferTempLower</sgr:sLV1Name>
+					<sgr:sLV1Name>ActHeatBufferTempUpper</sgr:sLV1Name>
+				</sgr:dpNameList>
+				<sgr:dpLegibDesc>
+					<sgr:textElement>?check addr 16518 doppelt: Aktuelle Ist-Temperatur des Heiz-Pufferspeichers oben</sgr:textElement>
+					<sgr:language>de</sgr:language>
+				</sgr:dpLegibDesc>
+			</sgr:dataPoint>
+			<sgr:modbusDataPoint>
+				<sgr:modbusDataType>
+					<sgr:float32>0.0</sgr:float32>
+				</sgr:modbusDataType>
+				<sgr:modbusFirstRegisterReference registerType="InputRegister" addr="0" bitRank="0" />
+				<sgr:dpSizeNrRegisters>2</sgr:dpSizeNrRegisters>
+				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
+			</sgr:modbusDataPoint>
+			<sgr:modbusAttr>
+				<sgr:scalingByMulPwr>
+					<sgr:multiplicator>1</sgr:multiplicator>
+					<sgr:powerof10>0</sgr:powerof10>
+				</sgr:scalingByMulPwr>
+			</sgr:modbusAttr>
+		</sgr:dpListElement>
+		
+		<sgr:dpListElement>
+			<sgr:dataPoint datapointName="ActHeatBufferTempLower" mroVisibilityIndicator="O" rwpDatadirection="R" unit="DEGREES_CELSIUS">
+				<sgr:basicDataType>
+					<sgr:float32>0</sgr:float32>
+				</sgr:basicDataType>
+				<sgr:dpNameList>
+					<sgr:sLV1Name>ActHeatBufferTempLower</sgr:sLV1Name>
 				</sgr:dpNameList>
 				<sgr:dpLegibDesc>
 					<sgr:textElement>
@@ -1192,6 +1256,98 @@ Diese Vorgabe  braucht eine doppelte Absicherung falscher Vorgaben durch den WP-
 				</sgr:scalingByMulPwr>
 			</sgr:modbusAttr>
 		</sgr:dpListElement>
+		
+				
+		<sgr:dpListElement>
+			<sgr:dataPoint datapointName="ActCoolBufferTemp" mroVisibilityIndicator="M" rwpDatadirection="R" unit="DEGREES_CELSIUS">
+				<sgr:basicDataType>
+					<sgr:float32>0</sgr:float32>
+				</sgr:basicDataType>
+				<sgr:dpNameList>
+					<sgr:sLV1Name>ActCoolBufferTempUpper</sgr:sLV1Name>
+				</sgr:dpNameList>
+				<sgr:dpLegibDesc>
+					<sgr:textElement>?check addr 16518 doppelt: Aktuelle Ist-Temperatur des Heiz-Pufferspeichers oben</sgr:textElement>
+					<sgr:language>de</sgr:language>
+				</sgr:dpLegibDesc>
+			</sgr:dataPoint>
+			<sgr:modbusDataPoint>
+				<sgr:modbusDataType>
+					<sgr:float32>0.0</sgr:float32>
+				</sgr:modbusDataType>
+				<sgr:modbusFirstRegisterReference registerType="InputRegister" addr="0" bitRank="0" />
+				<sgr:dpSizeNrRegisters>2</sgr:dpSizeNrRegisters>
+				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
+			</sgr:modbusDataPoint>
+			<sgr:modbusAttr>
+				<sgr:scalingByMulPwr>
+					<sgr:multiplicator>1</sgr:multiplicator>
+					<sgr:powerof10>0</sgr:powerof10>
+				</sgr:scalingByMulPwr>
+			</sgr:modbusAttr>
+		</sgr:dpListElement>
+		
+		<sgr:dpListElement>
+			<sgr:dataPoint datapointName="ActCoolBufferTempUpper" mroVisibilityIndicator="O" rwpDatadirection="R" unit="DEGREES_CELSIUS">
+				<sgr:basicDataType>
+					<sgr:float32>0</sgr:float32>
+				</sgr:basicDataType>
+				<sgr:dpNameList>
+					<sgr:sLV1Name>ActCoolBufferTempUpper</sgr:sLV1Name>
+				</sgr:dpNameList>
+				<sgr:dpLegibDesc>
+					<sgr:textElement>?check addr 16518 doppelt: Aktuelle Ist-Temperatur des Heiz-Pufferspeichers oben</sgr:textElement>
+					<sgr:language>de</sgr:language>
+				</sgr:dpLegibDesc>
+			</sgr:dataPoint>
+			<sgr:modbusDataPoint>
+				<sgr:modbusDataType>
+					<sgr:float32>0.0</sgr:float32>
+				</sgr:modbusDataType>
+				<sgr:modbusFirstRegisterReference registerType="InputRegister" addr="0" bitRank="0" />
+				<sgr:dpSizeNrRegisters>2</sgr:dpSizeNrRegisters>
+				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
+			</sgr:modbusDataPoint>
+			<sgr:modbusAttr>
+				<sgr:scalingByMulPwr>
+					<sgr:multiplicator>1</sgr:multiplicator>
+					<sgr:powerof10>0</sgr:powerof10>
+				</sgr:scalingByMulPwr>
+			</sgr:modbusAttr>
+		</sgr:dpListElement>
+		
+		<sgr:dpListElement>
+			<sgr:dataPoint datapointName="ActCoolBufferTempLower" mroVisibilityIndicator="O" rwpDatadirection="R" unit="DEGREES_CELSIUS">
+				<sgr:basicDataType>
+					<sgr:float32>0</sgr:float32>
+				</sgr:basicDataType>
+				<sgr:dpNameList>
+					<sgr:sLV1Name>ActCoolBufferTempLower</sgr:sLV1Name>
+				</sgr:dpNameList>
+				<sgr:dpLegibDesc>
+					<sgr:textElement>
+						Aktuelle Ist-Temperatur des Heiz-Pufferspeichers unten
+					</sgr:textElement>
+					<sgr:language>de</sgr:language>
+				</sgr:dpLegibDesc>
+			</sgr:dataPoint>
+			<sgr:modbusDataPoint>
+				<sgr:modbusDataType>
+					<sgr:float32>0.0</sgr:float32>
+				</sgr:modbusDataType>
+				<sgr:modbusFirstRegisterReference registerType="InputRegister" addr="0" bitRank="0" />
+				<sgr:dpSizeNrRegisters>2</sgr:dpSizeNrRegisters>
+				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
+			</sgr:modbusDataPoint>
+			<sgr:modbusAttr>
+				<sgr:scalingByMulPwr>
+					<sgr:multiplicator>1</sgr:multiplicator>
+					<sgr:powerof10>0</sgr:powerof10>
+				</sgr:scalingByMulPwr>
+			</sgr:modbusAttr>
+		</sgr:dpListElement>
+		
+		
 	</sgr:fpListElement>
 
 	<sgr:fpListElement>
@@ -1438,7 +1594,7 @@ die Einbindung in ein intelligentes Stromnetz
 			</sgr:fpLegibDesc>
 		</sgr:functionalProfile>
 		<sgr:dpListElement>
-			<sgr:dataPoint datapointName=" ActiveEnergyACtot" mroVisibilityIndicator="R" rwpDatadirection="R" unit="KILOWATT_HOURS">
+			<sgr:dataPoint datapointName="ActiveEnergyACtot" mroVisibilityIndicator="R" rwpDatadirection="R" unit="KILOWATT_HOURS">
 				<sgr:basicDataType>
 					<sgr:float32>0.0</sgr:float32>
 				</sgr:basicDataType>
@@ -1450,6 +1606,8 @@ die Einbindung in ein intelligentes Stromnetz
 					<sgr:language>de</sgr:language>
 				</sgr:dpLegibDesc>
 			</sgr:dataPoint>
+			<sgr:genAttribute>
+				<sgr:precision>5.0</sgr:precision></sgr:genAttribute>
 			<sgr:modbusDataPoint>
 				<sgr:modbusDataType>
 					<sgr:int16>0</sgr:int16>
@@ -1468,7 +1626,7 @@ die Einbindung in ein intelligentes Stromnetz
 
 
 		<sgr:dpListElement>
-			<sgr:dataPoint datapointName=" ActiveEnergyACheat" mroVisibilityIndicator="R" rwpDatadirection="R" unit="KILOWATT_HOURS">
+			<sgr:dataPoint datapointName="ActiveEnergyACheat" mroVisibilityIndicator="R" rwpDatadirection="R" unit="KILOWATT_HOURS">
 				<sgr:basicDataType>
 					<sgr:float32>0.0</sgr:float32>
 				</sgr:basicDataType>
@@ -1480,6 +1638,8 @@ die Einbindung in ein intelligentes Stromnetz
 					<sgr:language>de</sgr:language>
 				</sgr:dpLegibDesc>
 			</sgr:dataPoint>
+			<sgr:genAttribute>
+				<sgr:precision>5.0</sgr:precision></sgr:genAttribute>
 			<sgr:modbusDataPoint>
 				<sgr:modbusDataType>
 					<sgr:int16>0</sgr:int16>
@@ -1498,7 +1658,7 @@ die Einbindung in ein intelligentes Stromnetz
 		<sgr:dpListElement>
 			<sgr:dataPoint datapointName="ActiveEnergyACcool" mroVisibilityIndicator="R" rwpDatadirection="R" unit="KILOWATT_HOURS">
 				<sgr:basicDataType>
-					<sgr:float32>0.0</sgr:float32>
+					<sgr:float64>0.0</sgr:float64>					
 				</sgr:basicDataType>
 				<sgr:dpNameList>
 					<sgr:sLV1Name>ActiveEnergyACcool</sgr:sLV1Name>
@@ -1508,6 +1668,8 @@ die Einbindung in ein intelligentes Stromnetz
 					<sgr:language>de</sgr:language>
 				</sgr:dpLegibDesc>
 			</sgr:dataPoint>
+			<sgr:genAttribute>
+				<sgr:precision>5.0</sgr:precision></sgr:genAttribute>
 			<sgr:modbusDataPoint>
 				<sgr:modbusDataType>
 					<sgr:int16>0</sgr:int16>
@@ -1524,20 +1686,21 @@ die Einbindung in ein intelligentes Stromnetz
 			</sgr:modbusAttr>
 		</sgr:dpListElement>
 
-
 		<sgr:dpListElement>
 			<sgr:dataPoint datapointName="ActivelEnergyACdomWater" mroVisibilityIndicator="R" rwpDatadirection="R" unit="KILOWATT_HOURS">
 				<sgr:basicDataType>
-					<sgr:float32>0.0</sgr:float32>
+					<sgr:float64>0.0</sgr:float64>					
 				</sgr:basicDataType>
 				<sgr:dpNameList>
-					<sgr:sLV1Name>ThermalEnergyDomWater</sgr:sLV1Name>
+					<sgr:sLV1Name>ActiveEnergyACDomWater</sgr:sLV1Name>
 				</sgr:dpNameList>
 				<sgr:dpLegibDesc>
 					<sgr:textElement>Summe der aufgenommenen elektrischen Energie des Verdichters für die Brauchwarmwasser-Erwärmung.</sgr:textElement>
 					<sgr:language>de</sgr:language>
 				</sgr:dpLegibDesc>
 			</sgr:dataPoint>
+			<sgr:genAttribute>
+				<sgr:precision>5.0</sgr:precision></sgr:genAttribute>
 			<sgr:modbusDataPoint>
 				<sgr:modbusDataType>
 					<sgr:int16>0</sgr:int16>
@@ -1557,7 +1720,7 @@ die Einbindung in ein intelligentes Stromnetz
 		<sgr:dpListElement>
 			<sgr:dataPoint datapointName="ThermalEnergyTot" mroVisibilityIndicator="R" rwpDatadirection="R" unit="KILOWATT_HOURS">
 				<sgr:basicDataType>
-					<sgr:float32>0.0</sgr:float32>
+					<sgr:float64>0.0</sgr:float64>					
 				</sgr:basicDataType>
 				<sgr:dpNameList>
 					<sgr:sLV1Name>ThermalEnergyTot</sgr:sLV1Name>
@@ -1567,6 +1730,8 @@ die Einbindung in ein intelligentes Stromnetz
 					<sgr:language>de</sgr:language>
 				</sgr:dpLegibDesc>
 			</sgr:dataPoint>
+			<sgr:genAttribute>
+				<sgr:precision>5.0</sgr:precision></sgr:genAttribute>
 			<sgr:modbusDataPoint>
 				<sgr:modbusDataType>
 					<sgr:int16>0</sgr:int16>
@@ -1586,7 +1751,7 @@ die Einbindung in ein intelligentes Stromnetz
 		<sgr:dpListElement>
 			<sgr:dataPoint datapointName="ThermalEnergyHeat" mroVisibilityIndicator="R" rwpDatadirection="R" unit="KILOWATT_HOURS">
 				<sgr:basicDataType>
-					<sgr:float32>0.0</sgr:float32>
+					<sgr:float64>0.0</sgr:float64>					
 				</sgr:basicDataType>
 				<sgr:dpNameList>
 					<sgr:sLV1Name>ThermalEnergyHeat</sgr:sLV1Name>
@@ -1596,6 +1761,8 @@ die Einbindung in ein intelligentes Stromnetz
 					<sgr:language>de</sgr:language>
 				</sgr:dpLegibDesc>
 			</sgr:dataPoint>
+			<sgr:genAttribute>
+				<sgr:precision>5.0</sgr:precision></sgr:genAttribute>
 			<sgr:modbusDataPoint>
 				<sgr:modbusDataType>
 					<sgr:int32U>0</sgr:int32U>
@@ -1614,7 +1781,7 @@ die Einbindung in ein intelligentes Stromnetz
 		<sgr:dpListElement>
 			<sgr:dataPoint datapointName="ThermalEnergyCool" mroVisibilityIndicator="R" rwpDatadirection="R" unit="KILOWATT_HOURS">
 				<sgr:basicDataType>
-					<sgr:float32>0.0</sgr:float32>
+					<sgr:float64>0.0</sgr:float64>					
 				</sgr:basicDataType>
 				<sgr:dpNameList>
 					<sgr:sLV1Name>ThermalEnergyCool</sgr:sLV1Name>
@@ -1624,6 +1791,8 @@ die Einbindung in ein intelligentes Stromnetz
 					<sgr:language>de</sgr:language>
 				</sgr:dpLegibDesc>
 			</sgr:dataPoint>
+			<sgr:genAttribute>
+				<sgr:precision>5.0</sgr:precision></sgr:genAttribute>
 			<sgr:modbusDataPoint>
 				<sgr:modbusDataType>
 					<sgr:int32U>0</sgr:int32U>
@@ -1642,7 +1811,7 @@ die Einbindung in ein intelligentes Stromnetz
 		<sgr:dpListElement>
 			<sgr:dataPoint datapointName="ThermalEnergyDomWater" mroVisibilityIndicator="R" rwpDatadirection="R" unit="KILOWATT_HOURS">
 				<sgr:basicDataType>
-					<sgr:float32>0.0</sgr:float32>
+					<sgr:float64>0.0</sgr:float64>					
 				</sgr:basicDataType>
 				<sgr:dpNameList>
 					<sgr:sLV1Name>ThermalEnergyDomWater</sgr:sLV1Name>
@@ -1652,6 +1821,8 @@ die Einbindung in ein intelligentes Stromnetz
 					<sgr:language>de</sgr:language>
 				</sgr:dpLegibDesc>
 			</sgr:dataPoint>
+			<sgr:genAttribute>
+				<sgr:precision>5.0</sgr:precision></sgr:genAttribute>
 			<sgr:modbusDataPoint>
 				<sgr:modbusDataType>
 					<sgr:int16>0</sgr:int16>
@@ -1681,6 +1852,8 @@ die Einbindung in ein intelligentes Stromnetz
 					<sgr:language>de</sgr:language>
 				</sgr:dpLegibDesc>
 			</sgr:dataPoint>
+			<sgr:genAttribute>
+				<sgr:precision>5.0</sgr:precision></sgr:genAttribute>
 			<sgr:modbusDataPoint>
 				<sgr:modbusDataType>
 					<sgr:int16>0</sgr:int16>
@@ -1706,12 +1879,13 @@ die Einbindung in ein intelligentes Stromnetz
 					<sgr:sLV1Name>ThermalPower</sgr:sLV1Name>
 				</sgr:dpNameList>
 				<sgr:dpLegibDesc>
-					<sgr:textElement>
-						TODO Text
+					<sgr:textElement>Aktuell abgegebene thermische Leistung der Wärmepumpe
 					</sgr:textElement>
 					<sgr:language>de</sgr:language>
 				</sgr:dpLegibDesc>
 			</sgr:dataPoint>
+			<sgr:genAttribute>
+				<sgr:precision>5.0</sgr:precision></sgr:genAttribute>
 			<sgr:modbusDataPoint>
 				<sgr:modbusDataType>
 					<sgr:int16>0</sgr:int16>
