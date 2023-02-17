@@ -7,8 +7,9 @@ A list of relevant namespaces list for to display names used in different standa
 | sLV1Name | optional | names used for SGr label V1 used to secure legacy compatibility |
 | sWorkName | optional | work names for temporary use |
 | sManufName | optional | manufacturers may use an internal wording |
-| sIEC61850Name | optional | IEC 61850 termonoligy place to add the 61850 abreviatuions if an overlap exists |
-| sSAREFName | optional | SAREF for ENER termonoligy place to add the SAREF abreviations if an overlap exists |
+| sIEC61850Name | optional | IEC 61850 terminology place to add the 61850 abreviatuions if an overlap exists |
+| sSAREFName | optional | SAREF for ENER terminology place to add the SAREF abreviations if an overlap exists |
 | sEEBUSName | optional | EEBUS for terminology place to add the EEBUS abreviations if an overlap exists |
 | sSUNSPECName | optional | sSUNSPEC for terminology place to add the www.sunspec.org abreviations if an overlap exists|
 | sHPbwpName | optional | bwp (German Heat Pump Association) for terminology place to add the bwp naming for HVAC if an overlap exists |
+| sEN17609Name | optional | EN 17609 terminology|

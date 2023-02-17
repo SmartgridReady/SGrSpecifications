@@ -74,6 +74,16 @@
                 </td>
             </tr>
         </xsl:if>
+
+        <xsl:if test="sgr:sEN17609Name">
+            <tr class="ontologyDetails">
+                <td>EN17609 Name</td>
+                <td>
+                    <xsl:value-of select="sgr:sEN17609Name" />
+                </td>
+            </tr>
+        </xsl:if>
+
     </xsl:template>
 
 </xsl:stylesheet>
