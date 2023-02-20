@@ -46,7 +46,7 @@
 			</sgr:fpLegibDesc>
 		</sgr:functionalProfile>
 		<sgr:dpListElement>
-			<sgr:dataPoint datapointName="HeatWTempStptOffset" mroVisibilityIndicator="R" rwpDatadirection="W" unit="DEGREES_CELSIUS">
+			<sgr:dataPoint datapointName="HeatWTempStptOffset" mroVisibilityIndicator="R" rwpDatadirection="RW" unit="DEGREES_CELSIUS">
 				<sgr:basicDataType>
 					<sgr:float32>0.0</sgr:float32>
 				</sgr:basicDataType>
@@ -61,8 +61,8 @@
 				</sgr:dpLegibDesc>
 			</sgr:dataPoint>
 			<sgr:genAttribute>
-				<sgr:maxVal>50.0</sgr:maxVal>
-				<sgr:minVal>-50.0</sgr:minVal>
+				<sgr:maxVal>5.0</sgr:maxVal>
+				<sgr:minVal>-5.0</sgr:minVal>
 			</sgr:genAttribute>
 		</sgr:dpListElement>
 		
@@ -75,10 +75,25 @@
 					
 				</sgr:basicDataType>
 				<sgr:dpNameList>
-					<sgr:sLV1Name>ActHeatBufferTempUpper</sgr:sLV1Name>
+					<sgr:sLV1Name>ActBufferState</sgr:sLV1Name>
 				</sgr:dpNameList>
 				<sgr:dpLegibDesc>
-					<sgr:textElement>?check addr 16518 doppelt: Aktuelle Ist-Temperatur des Heiz-Pufferspeichers oben</sgr:textElement>
+					<sgr:textElement><![CDATA[
+					<ol>
+					<p>Auslesen des aktuellen Status des Bufferspeichers (BitmapRegister)</p>
+					<li><strong>HPB_OFF:</strong>keine Anforderung, AUS </li>
+					<li><strong>HPB_TEMP_LOW:</strong>Anforderung, Temp. tief, PLP aus (Entladeschutz)</li>
+					<li><strong>HPB_RUNNING:</strong>Anforderung, Ladung läuft </li>
+					<li><strong>HPB_RUN_HOLD:</strong>Anforderung, Sollwert erfüllt, Nachlauf aktiv</li>
+					<li><strong>HPB_ON_TARGET:</strong>Anforderung, Sollwert erfüllt</li>
+					<li><strong>HPB_RESERVE:</strong>  </li>
+					<li><strong>HPB_ENER_COMPULSION:</strong>Energiezwang  </li>
+					<li><strong>HPB_SKIMMING:</strong>Abschöpffunktion </li>
+					<li><strong>HPB_SGR_INTENSIVIED:</strong>Vorzugsbetrieb SG-Ready bwp</li>
+					<li><strong>HPB_SGR_FORCED:</strong>Abnahmezwang SG-Ready bwp </li>
+					</ol>
+					]]>
+					</sgr:textElement>
 					<sgr:language>de</sgr:language>
 				</sgr:dpLegibDesc>
 			</sgr:dataPoint>
@@ -91,10 +106,10 @@
 					<sgr:float32>0</sgr:float32>
 				</sgr:basicDataType>
 				<sgr:dpNameList>
-					<sgr:sLV1Name>ActHeatBufferTempUpper</sgr:sLV1Name>
+					<sgr:sLV1Name>ActHeatBufferTemp</sgr:sLV1Name>
 				</sgr:dpNameList>
 				<sgr:dpLegibDesc>
-					<sgr:textElement>?check addr 16518 doppelt: Aktuelle Ist-Temperatur des Heiz-Pufferspeichers oben</sgr:textElement>
+					<sgr:textElement>Aktuelle Ist-Temperatur des Heiz-Pufferspeichers oben</sgr:textElement>
 					<sgr:language>de</sgr:language>
 				</sgr:dpLegibDesc>
 			</sgr:dataPoint>
@@ -109,7 +124,7 @@
 					<sgr:sLV1Name>ActHeatBufferTempUpper</sgr:sLV1Name>
 				</sgr:dpNameList>
 				<sgr:dpLegibDesc>
-					<sgr:textElement>?check addr 16518 doppelt: Aktuelle Ist-Temperatur des Heiz-Pufferspeichers oben</sgr:textElement>
+					<sgr:textElement>Aktuelle Ist-Temperatur des Heiz-Pufferspeichers oben</sgr:textElement>
 					<sgr:language>de</sgr:language>
 				</sgr:dpLegibDesc>
 			</sgr:dataPoint>
@@ -134,15 +149,15 @@
 		
 				
 		<sgr:dpListElement>
-			<sgr:dataPoint datapointName="ActCoolBufferTemp" mroVisibilityIndicator="M" rwpDatadirection="R" unit="DEGREES_CELSIUS">
+			<sgr:dataPoint datapointName="ActCoolBufferTemp" mroVisibilityIndicator="O" rwpDatadirection="R" unit="DEGREES_CELSIUS">
 				<sgr:basicDataType>
 					<sgr:float32>0</sgr:float32>
 				</sgr:basicDataType>
 				<sgr:dpNameList>
-					<sgr:sLV1Name>ActCoolBufferTempUpper</sgr:sLV1Name>
+					<sgr:sLV1Name>ActCoolBufferTemp</sgr:sLV1Name>
 				</sgr:dpNameList>
 				<sgr:dpLegibDesc>
-					<sgr:textElement>?check addr 16518 doppelt: Aktuelle Ist-Temperatur des Heiz-Pufferspeichers oben</sgr:textElement>
+					<sgr:textElement>Aktuelle Ist-Temperatur des Kaelte-Pufferspeichers oben</sgr:textElement>
 					<sgr:language>de</sgr:language>
 				</sgr:dpLegibDesc>
 			</sgr:dataPoint>
@@ -157,7 +172,7 @@
 					<sgr:sLV1Name>ActCoolBufferTempUpper</sgr:sLV1Name>
 				</sgr:dpNameList>
 				<sgr:dpLegibDesc>
-					<sgr:textElement>?check addr 16518 doppelt: Aktuelle Ist-Temperatur des Heiz-Pufferspeichers oben</sgr:textElement>
+					<sgr:textElement>Aktuelle Ist-Temperatur des Kaelte-Pufferspeichers oben</sgr:textElement>
 					<sgr:language>de</sgr:language>
 				</sgr:dpLegibDesc>
 			</sgr:dataPoint>
@@ -172,9 +187,7 @@
 					<sgr:sLV1Name>ActCoolBufferTempLower</sgr:sLV1Name>
 				</sgr:dpNameList>
 				<sgr:dpLegibDesc>
-					<sgr:textElement>
-						Aktuelle Ist-Temperatur des Heiz-Pufferspeichers unten
-					</sgr:textElement>
+					<sgr:textElement>Aktuelle Ist-Temperatur des Kaelte-Pufferspeichers unten</sgr:textElement>
 					<sgr:language>de</sgr:language>
 				</sgr:dpLegibDesc>
 			</sgr:dataPoint>

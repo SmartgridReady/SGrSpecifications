@@ -74,7 +74,19 @@ die Einbindung in ein intelligentes Stromnetz (Smart Grid) ermöglicht
 			</sgr:fpLegibDesc>
 		</sgr:functionalProfile>
 		<sgr:dpListElement>
-			<sgr:dataPoint datapointName="SGReadyCmd"
+			<sgr:dataPoint datapointName="SGReadyEnabled" unit="NONE" rwpDatadirection="RW" mroVisibilityIndicator="O">
+				<sgr:basicDataType>
+					<sgr:boolean>true</sgr:boolean>
+				</sgr:basicDataType>
+				<sgr:dpNameList>
+					<sgr:sLV1Name>SGReadyEnabled</sgr:sLV1Name></sgr:dpNameList>
+				<sgr:dpLegibDesc>
+					<sgr:textElement>Aktivierung der SG-Ready Funktion</sgr:textElement>
+					<sgr:language>de</sgr:language>
+				</sgr:dpLegibDesc>
+			</sgr:dataPoint>
+		</sgr:dpListElement><sgr:dpListElement>
+			<sgr:dataPoint datapointName="SGReadyOpModeCmd"
 				mroVisibilityIndicator="M" rwpDatadirection="RW"
 				unit="NONE">
 				<sgr:basicDataType>
@@ -89,20 +101,14 @@ die Einbindung in ein intelligentes Stromnetz (Smart Grid) ermöglicht
 					<sgr:textElement>              
 				   <![CDATA[
 				   <ol>
-                <li>Betriebszustand 1 (<strong>HP_LOCKED</strong>, bei Klemmenlösung: 1:0): Dieser Betriebszustand ist kompatibel häufig zu festen
-                    Uhrzeiten geschalteten EVU-Sperreund umfasst im Normalfall maximal 2 Stunden „harte“ Sperrzeit.</li>
-                <li>Betriebszustand 2 (<strong>HP_NORMAL<strong> bei Klemmenlösung 0:0): In dieser Schaltung läuft die Wärmepumpe im energieeffizienten
-                    Normalbetrieb mit anteiliger Wärmespeicher-Füllung für die maximal zweistündige EVU-Sperre.</li>
-                <li>Betriebszustand 3 (<strong>HP_INTENSIVIED</strong>, bei Klemmenlösung 0:1):  In diesem Betriebszustand läuft die Wärmepumpe innerhalb
-                    des Reglers im verstärkten Betrieb für Raumheizung und Warmwasserbereitung. Es handelt sich dabei
-                    nicht um einen definitiven Anlaufbefehl, sondern um eine Einschaltempfehlung entsprechend der heutigen Anhebung.</li>
-                <li>Betriebszustand 4 (<strong>HP_FORCED</strong>, bei Klemmenlösung 1:1):  Hierbei handelt es sich um einen definitiven Anlaufbefehl,
-                    insofern dieser im Rahmen der Regeleinstellungen möglich ist. Für diesen Betriebszustand müssen für verschiedene
-                    Tarif- und Nutzungsmodelle verschiedene Regelungsmodelle am Regler einstellbar.</li>
-                    <url>https://www.waermepumpe.de/normen-technik/sg-ready/
-                    </url>
-                    </ol>
-                     ]]>
+					<![CDATA[
+					<ol><p>Festlegen der Uebersteuerungsmoeglichkeit der Waermepumpe</p>
+   					<li><strong>HP_LOCKED:</strong> EVU-Sperre und umfasst im Normalfall maximal 2 Stunden „harte“ Sperrzeit </li>
+   					<li><strong>HP_NORMAL:</strong> Wärmepumpe im energieeffizienten Normalbetrieb</li>
+   					<li><strong>HP_INTENSIVIED:</strong>Einschaltempfehlung mit Anhebung</li>
+   					<li><strong>HP_FORCED:</strong> Anlaufbefehl im Rahmen der moeglich Regeleinstellungen </li>  
+					</ol>
+					]]>
                 </sgr:textElement>
 					<sgr:language>de</sgr:language>
 				</sgr:dpLegibDesc>
@@ -120,32 +126,27 @@ die Einbindung in ein intelligentes Stromnetz (Smart Grid) ermöglicht
 					<sgr:sHPbwpName>Statusmeldungen</sgr:sHPbwpName>
 				</sgr:dpNameList>
 				<sgr:dpLegibDesc>
-					<sgr:textElement>SG-ReadyState of the current operation</sgr:textElement>
+					<sgr:textElement>           
+				   <![CDATA[
+				   <ol>
+					<![CDATA[
+					<ol><p>Rueckmeldung der aktuellen laufenden Uebersteuerungsmoeglichkeit der Waermepumpe</p>
+   					<li><strong>HP_LOCKED:</strong> EVU-Sperre und umfasst im Normalfall maximal 2 Stunden „harte“ Sperrzeit </li>
+   					<li><strong>HP_NORMAL:</strong> Wärmepumpe im energieeffizienten Normalbetrieb</li>
+   					<li><strong>HP_INTENSIVIED:</strong>Einschaltempfehlung mit Anhebung</li>
+   					<li><strong>HP_FORCED:</strong> Anlaufbefehl im Rahmen der moeglich Regeleinstellungen </li>  
+					</ol>
+					]]></sgr:textElement>
 					<sgr:language>de</sgr:language>
 				</sgr:dpLegibDesc>
 				<sgr:dpPrgDesc>
-					<sgr:textElement>SG READY BETRIEBSZUSTAND 
-1 (HP_LOCKED):     Die Anlage darf nicht starten. Nur der Frostschutz wird gewährleistet.
-2 (HP_NORMAL):     Normaler Betrieb der Anlage. Automatik- / Programmbetrieb gemäß BI der angeschlossenen Wärmepumpe
-3 (HP_INTENSIVIED):Forcierter Betrieb der Anlage mit erhöhten Werten für Heiz- und/oder Warmwassertemperatur
-4 (HP_FORCED):     Sofortige Ansteuerung der Maximalwerte für Heiz- und Warmwassertemperatur</sgr:textElement>
-					<sgr:language>de</sgr:language>
+					<sgr:textElement>This data point is intended to confirm the actuel ACCEPTED operation stae of the Heat pump. Please check for the correct implentation.			
+					</sgr:textElement>
+					<sgr:language>en</sgr:language>
 				</sgr:dpPrgDesc>
 			</sgr:dataPoint>
 		</sgr:dpListElement>
-		<sgr:dpListElement>
-			<sgr:dataPoint datapointName="SGReadyEnabled" unit="NONE" rwpDatadirection="RW" mroVisibilityIndicator="O">
-				<sgr:basicDataType>
-					<sgr:boolean>true</sgr:boolean>
-				</sgr:basicDataType>
-				<sgr:dpNameList>
-					<sgr:sLV1Name>SGReadyEnabled</sgr:sLV1Name></sgr:dpNameList>
-				<sgr:dpLegibDesc>
-					<sgr:textElement>Aktivierung der SG-Ready Funktion</sgr:textElement>
-					<sgr:language>de</sgr:language>
-				</sgr:dpLegibDesc>
-			</sgr:dataPoint>
-		</sgr:dpListElement>
+		
 		<sgr:dpListElement>
 			<sgr:dataPoint datapointName="SGReadyInp1isON" unit="NONE" rwpDatadirection="RW" mroVisibilityIndicator="O">
 				<sgr:basicDataType>

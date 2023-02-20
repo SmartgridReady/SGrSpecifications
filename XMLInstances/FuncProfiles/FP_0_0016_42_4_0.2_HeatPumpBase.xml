@@ -54,10 +54,23 @@
 				</sgr:basicDataType>
 				<sgr:dpNameList>
 					<sgr:sLV1Name>HPOpModeCmd</sgr:sLV1Name>
-					<sgr:sHPbwpName>Betriebsmodus</sgr:sHPbwpName>
+					<sgr:sHPbwpName>Betriebsmodus</sgr:sHPbwpName>      
 				</sgr:dpNameList>
 				<sgr:dpLegibDesc>
-					<sgr:textElement> Grund-Betriebsart der Wärmepumpe (Bereitschaft, Programm, Komfort, Eco, Warmwasser, Kühlen aktiv, Kühlen passiv, Notbetrieb)</sgr:textElement>
+					<sgr:textElement> 
+					<![CDATA[
+					<ol><p>Grund-Betriebsart der Wärmepumpe (, , Komfort, , , , Kühlen passiv, )</pl>
+   					<li><strong>WP_EMERG_OP:</strong>Notbetrieb</li>
+   					<li><strong>WP_READY:</strong>Bereitschaft</li>
+   					<li><strong>WP_PROG_OP:</strong>Programm</li>
+   					<li><strong>WP_COMFORT:</strong></li>
+   					<li><strong>WP_ECO_OP:</strong>Eco</li>
+   					<li><strong>WP_DOM_WATER_OP:</strong>Warmwasser</li>  
+   					<li><strong>WP_COOL_ACTIVE_OP:</strong>Kuehlen aktiv</li>  
+   					<li><strong>WP_COOL_PASSIVE_OP:</strong>Kuehlen passic</li>   
+					</ol>
+					]]>					
+					</sgr:textElement>
 					<sgr:language>de</sgr:language>
 				</sgr:dpLegibDesc>
 				<sgr:dpPrgDesc>
@@ -81,17 +94,16 @@
 					<sgr:textElement>            
 				<![CDATA[	
 					<ol>
-					Auslesen des aktuellen Status der Wärmepumpe (BIT0: HP_2_PUMP_ON
-<li><strong>BIT1:</strong> HEATUP_PROGRAM</li>
-<li><strong>BIT2:</strong HNHZ_STAGES_RUNNING/li>
-<li><strong>BIT3:</strong HHP_IN_HEATING_MODE/li>
-<li><strong>BIT4:</strong HHP_IN_DHW_MODE/li>
-<li><strong>BIT5:</strong HCOMPRESSOR_RUNNING/li>
-<li><strong>BIT6:</strong HSUMMER_MODE_ACTIVE/li>
-<li><strong>BIT7:</strong HCOOLING_MODE_ACTIVE/li>
-<li><strong>BIT8:</strong HMIN_ONE_IWS_IN_DEFROST_MOD/li>
-</ol>
-]]></sgr:textElement>
+					<p>Auslesen des aktuellen Status der Wärmepumpe<\p>N
+   					<li><strong>HP_PUMP_ON:</strong>Waermepumpe EIN</li>
+   					<li><strong>HP_IN_HEATING_MODE:</strong>Waermepumpe heizt</li>
+   					<li><strong>HP_IN_DHW_MODE:</strong>Waermepumpe im Warmwassermode</li>
+   					<li><strong>COMPRESSOR_RUNNING:</strong>Kompressor laeuft</li>
+   					<li><strong>SUMMER_MODE_ACTIVE:</strong>Waermepumpe im Sommernodus</li>
+   					<li><strong>COOLING_MODE_ACTIVE:</strong>Waermepumpe kuehlt</li>
+   					<li><strong>IN_DEFROST_MODE:</strong>Waermepumpe im Gefrierschutzmode</li>
+					</ol>
+				]]></sgr:textElement>
 					<sgr:language>de</sgr:language>
 				</sgr:dpLegibDesc>
 			</sgr:dataPoint>
@@ -187,8 +199,37 @@
 					<sgr:textElement>
 						some of the devices do either not allow setting
 						Setpoints (the name should the ne named
-						"SupplyWaterTempStptFB") or allow it in a
+						"SupplyWaterTempStptFb") or allow it in a
 						special mode only.
+					</sgr:textElement>
+					<sgr:language>en</sgr:language>
+				</sgr:dpPrgDesc>
+			</sgr:dataPoint>
+		</sgr:dpListElement>
+		<sgr:dpListElement>
+			<sgr:dataPoint datapointName="SupplyWaterTempStptFb"
+				mroVisibilityIndicator="O" unit="DEGREES_CELSIUS"
+				rwpDatadirection="R">
+				<sgr:basicDataType>
+					<sgr:float32>0.0</sgr:float32>
+				</sgr:basicDataType>
+				<sgr:dpNameList>
+					<sgr:sLV1Name>SupplyWaterTempStpt</sgr:sLV1Name>
+					<sgr:sHPbwpName>
+						Solltemperatur für Anforderungsfühler
+					</sgr:sHPbwpName>
+					<sgr:sEN17609Name>
+						Supply Water Temperature Setpoint
+					</sgr:sEN17609Name>
+				</sgr:dpNameList>
+				<sgr:dpLegibDesc>
+					<sgr:textElement>Auslesen der aktuellen Soll-Temperatur des Vorlaufs des Heizkreises.</sgr:textElement>
+					<sgr:language>de</sgr:language>
+				</sgr:dpLegibDesc>
+				<sgr:dpPrgDesc>
+					<sgr:textElement>
+						some of the devices not allow setting
+						Setpoints.
 					</sgr:textElement>
 					<sgr:language>en</sgr:language>
 				</sgr:dpPrgDesc>
