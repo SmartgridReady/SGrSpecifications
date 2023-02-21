@@ -52,6 +52,8 @@
             <xsl:when test="sgr:sgrObligLvl">ObligLvl</xsl:when>
             <xsl:when test="sgr:sgrOCPPState">OCPPState</xsl:when>
             <xsl:when test="sgr:sgrHPOpMode">HPOpMode</xsl:when>
+            <xsl:when test="sgr:sgrHCOpMode">HCOpMode</xsl:when>
+            <xsl:when test="sgr:sgrDHWOpMode">DHWOpMode</xsl:when>        
             <xsl:otherwise>unknown</xsl:otherwise>
         </xsl:choose>
     </xsl:template>
