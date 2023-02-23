@@ -496,7 +496,7 @@
 
             <!-- Footer-->
             <div class="profilefooter">
-            Informationen und Support unter www.smartgridready.ch, support@smartgridready.ch
+            Informationen und Support unter <a href="http://www.smartgridready.ch">www.smartgridready.ch</a>, oder Mail <a href="mailto:info@smartgridready.ch">info@smartgridready.ch</a>
         </div>
         </div>
     </xsl:template>
