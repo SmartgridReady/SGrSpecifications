@@ -19,7 +19,7 @@
 
 <xsl:template name="sgrFunctionProfile">
 	<div class="functionalProfile">
-        <h2 style="float:left;"><xsl:value-of select="sgr:functionalProfile/@profileName"/> (<xsl:value-of select="sgr:functionalProfile/@mroVisibilityIndicator"/>)</h2>
+        <h2 style="float:left;"><xsl:value-of select="sgr:functionalProfile/@profileName"/></h2>
         
         <!-- Functional Profile Block -->
         <table>
