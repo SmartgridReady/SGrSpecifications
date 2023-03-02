@@ -26,8 +26,8 @@
 				<title>
 					<xsl:choose>
 						<xsl:when test="/sgr:SGrFunctionalProfileFrame">
-							SGr FP
-							<xsl:value-of select="/*/*/@profileName" />
+							SGr FP 
+							<xsl:value-of select="/*/sgr:functionalProfile/sgr:profileNumber/sgr:specsOwnerId" />.<xsl:value-of select="/*/sgr:functionalProfile/sgr:profileNumber/sgr:profileIdentification" />.<xsl:value-of select="/*/sgr:functionalProfile/sgr:profileNumber/sgr:subProfileIdent" />.<xsl:value-of select="/*/sgr:functionalProfile/sgr:profileNumber/sgr:sgrLevelOfOperation" />
 						</xsl:when>
 						<xsl:otherwise>
 							SGr EI

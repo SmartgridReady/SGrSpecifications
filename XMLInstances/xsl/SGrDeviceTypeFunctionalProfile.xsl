@@ -5,8 +5,15 @@
     <xsl:template match="sgr:SGrFunctionalProfileFrame">
         <div class="functionalProfile">
             <h2>
-                <xsl:value-of select="sgr:functionalProfile/@profileName" />
+                <xsl:value-of select="sgr:functionalProfile/sgr:profileNumber/sgr:specsOwnerId" /> 
+                -
+                <xsl:value-of select="sgr:functionalProfile/sgr:profileNumber/sgr:profileIdentification" />
+                -
+                <xsl:value-of select="sgr:functionalProfile/sgr:profileNumber/sgr:subProfileIdent" />
+                -
+                <xsl:value-of select="sgr:functionalProfile/sgr:profileNumber/sgr:sgrLevelOfOperation" />
             </h2>
+            <br/>
 
             <table>
                 <colgroup>
