@@ -67,7 +67,7 @@
    					<li><strong>HC_READY:</strong> Bereitschaft</li>
    					<li><strong>HC_PROG_OP:</strong> Programm</li>
    					<li><strong>HC_COMFORT_OP:</strong> Komfort Betrieb</li>  
-   					<li><strong>HC_ECO_OP:</strong> Spar Heizbetrieb</li>
+   					<li><strong>HC_ECO_OP:</strong> Eco Heizbetrieb</li>
 					</ol>
 					]]>
 					</sgr:textElement>
@@ -80,7 +80,8 @@
 			rwpDatadirection="RW" unit="NONE">
 			<sgr:basicDataType>
 				<sgr:enum2bitmapIndex>
-					<sgr:sgrBool2BitRank>Bit0</sgr:sgrBool2BitRank>
+					<sgr:sgrHCOpstate>HC_OFF</sgr:sgrHCOpstate>
+					
 				</sgr:enum2bitmapIndex>
 
 			</sgr:basicDataType>
@@ -95,15 +96,15 @@
 					<li><strong>HC_OFF:</strong> Abgeschaltet </li>
 					<li><strong>HC_HEAT:</strong> Normal Heizbetrieb</li>
 					<li><strong>HC_HEAT_COMFORT:</strong> Komfort Heizbetrieb</li>
-					<li><strong>HC_HEAT_ECO:</strong> Spar Heizbetrieb</li>
+					<li><strong>HC_HEAT_ECO:</strong> Eco Heizbetrieb</li>
 					<li><strong>HC_DEFROST:</strong> Frostbetrieb</li>
-					<li><strong>HC_INTESIVIED_50p:</strong> Zwangsabnahme (bei Zwang kleiner plus 50 prozent)</li>
+					<li><strong>HC_INTENSIFIED_50p:</strong> Zwangsabnahme (bei Zwang kleiner plus 50 prozent)</li>
 					<li><strong>HC_REDUCED_50p:</strong> Zwangsdrosselung  (bei Zwang kleiner abs  minus 50 prozent)</li>
 					<li><strong>HC_HOLIDAY:</strong> Ferienbetrieb</li>
 					<li><strong>HC_PARTY_HEAT:</strong> Partybetrieb</li>
 					<li><strong>HC_COOL:</strong> Normal Kuehlbetrieb</li>
 					<li><strong>HC_COOL_COMFORT:</strong> Komfort Kuehlbetrieb</li>
-					<li><strong>HC_COOL_ECO:</strong> Spar Kuehlbetrieb</li>
+					<li><strong>HC_COOL_ECO:</strong> Eco Kuehlbetrieb</li>
 					<li><strong>HC_ERROR:</strong> Stoerung</li>
 					<li><strong>HC_MANUAL:</strong> Handbetrieb</li>
 					<li><strong>HC_PROT_COOL:</strong> Schutz Kuehlbetrieb</li>
@@ -114,7 +115,7 @@
 					<li><strong>HC_DRYING_FINAL:</strong> Austrocknung Endphase</li>
 					<li><strong>HC_COOL_EXTERNAL_CMD:</strong> Kuehlbetrieb Extern/Konstantanforderung</li>
 					<li><strong>HC_HEAT_EXTERNAL_CMD:</strong> Heizbetrieb Extern/Konstantanforderung</li>
-					<li><strong>HC_SGRID_INTENSIVIED:</strong> Vorzugsbetrieb SmartGrid</li>
+					<li><strong>HC_SGRID_INTENSIFIED:</strong> Vorzugsbetrieb SmartGrid</li>
 					</ol>
 					]]>
 				</sgr:textElement>
@@ -128,13 +129,13 @@
 		</sgr:dataPoint>
 	</sgr:dpListElement>
 	<sgr:dpListElement>
-		<sgr:dataPoint datapointName="FlowWaterTemp" mroVisibilityIndicator="M" rwpDatadirection="R"
+		<sgr:dataPoint datapointName="SupplyWaterTemp" mroVisibilityIndicator="M" rwpDatadirection="R"
 			unit="DEGREES_CELSIUS">
 			<sgr:basicDataType>
 				<sgr:float32>0.0</sgr:float32>
 			</sgr:basicDataType>
 			<sgr:dpNameList>
-				<sgr:sLV1Name>FlowWaterTemp</sgr:sLV1Name>
+				<sgr:sLV1Name>SupplyWaterTemp</sgr:sLV1Name>
 				<sgr:sEN17609Name>Supply Water Temperature</sgr:sEN17609Name>
 			</sgr:dpNameList>
 			<sgr:dpLegibDesc>
@@ -144,13 +145,13 @@
 		</sgr:dataPoint>
 	</sgr:dpListElement>
 	<sgr:dpListElement>
-		<sgr:dataPoint datapointName="FlowWaterTempStpt" mroVisibilityIndicator="O"
+		<sgr:dataPoint datapointName="SupplyWaterTempStpt" mroVisibilityIndicator="R"
 			rwpDatadirection="RW" unit="DEGREES_CELSIUS">
 			<sgr:basicDataType>
 				<sgr:float32>0.0</sgr:float32>
 			</sgr:basicDataType>
 			<sgr:dpNameList>
-				<sgr:sLV1Name>FlowWaterTempStpt</sgr:sLV1Name>
+				<sgr:sLV1Name>SupplyWaterTempStpt</sgr:sLV1Name>
 				<sgr:sEN17609Name>Supply Water Temperature Setpoint</sgr:sEN17609Name>
 			</sgr:dpNameList>
 			<sgr:dpLegibDesc>
@@ -160,13 +161,13 @@
 		</sgr:dataPoint>
 	</sgr:dpListElement>
 	<sgr:dpListElement>
-		<sgr:dataPoint datapointName="FlowWaterTempStptOffs" mroVisibilityIndicator="R"
+		<sgr:dataPoint datapointName="SupplyWaterTempStptOffs" mroVisibilityIndicator="R"
 			rwpDatadirection="RW" unit="DEGREES_CELSIUS">
 			<sgr:basicDataType>
 				<sgr:float32>0.0</sgr:float32>
 			</sgr:basicDataType>
 			<sgr:dpNameList>
-				<sgr:sLV1Name>FlowWaterTempStptOffs</sgr:sLV1Name>
+				<sgr:sLV1Name>SupplyWaterTempStptOffs</sgr:sLV1Name>
 			</sgr:dpNameList>
 			<sgr:dpLegibDesc>
 				<sgr:textElement>Setzen der aktuellen Soll-Temperatur Differenz des Vorlaufs (Offset
@@ -182,13 +183,13 @@
 	</sgr:dpListElement>
 
 	<sgr:dpListElement>
-		<sgr:dataPoint datapointName="FlowWaterTempStptComfort" mroVisibilityIndicator="O"
+		<sgr:dataPoint datapointName="SupplyWaterTempStptComfort" mroVisibilityIndicator="O"
 			rwpDatadirection="RW" unit="DEGREES_CELSIUS">
 			<sgr:basicDataType>
 				<sgr:float32>0.0</sgr:float32>
 			</sgr:basicDataType>
 			<sgr:dpNameList>
-				<sgr:sLV1Name>FlowWaterTempStptComfort</sgr:sLV1Name>
+				<sgr:sLV1Name>SupplyWaterTempStptComfort</sgr:sLV1Name>
 				<sgr:sEN17609Name>Supply Water Temperature Setpoint Comfort</sgr:sEN17609Name>
 			</sgr:dpNameList>
 			<sgr:dpLegibDesc>
@@ -196,17 +197,21 @@
 					Komfortbetrieb (Grundwert).</sgr:textElement>
 				<sgr:language>de</sgr:language>
 			</sgr:dpLegibDesc>
+			<sgr:dpPrgDesc>
+				<sgr:textElement>this data point is only used in Comfort mode</sgr:textElement>
+				<sgr:language>en</sgr:language>
+			</sgr:dpPrgDesc>
 		</sgr:dataPoint>
 	</sgr:dpListElement>
 
 	<sgr:dpListElement>
-		<sgr:dataPoint datapointName="FlowWaterTempStptEco" mroVisibilityIndicator="O"
+		<sgr:dataPoint datapointName="SupplyWaterTempStptEco" mroVisibilityIndicator="O"
 			rwpDatadirection="RW" unit="DEGREES_CELSIUS">
 			<sgr:basicDataType>
 				<sgr:float32>0.0</sgr:float32>
 			</sgr:basicDataType>
 			<sgr:dpNameList>
-				<sgr:sLV1Name>FlowWaterTempStptEco</sgr:sLV1Name>
+				<sgr:sLV1Name>SupplyWaterTempStptEco</sgr:sLV1Name>
 				<sgr:sEN17609Name>Supply Water Temperature Setpoint Eco</sgr:sEN17609Name>
 			</sgr:dpNameList>
 			<sgr:dpLegibDesc>
@@ -214,16 +219,20 @@
 					Ecobetrieb (Grundwert).</sgr:textElement>
 				<sgr:language>de</sgr:language>
 			</sgr:dpLegibDesc>
+			<sgr:dpPrgDesc>
+				<sgr:textElement>this data point is only used in Eco mode</sgr:textElement>
+				<sgr:language>en</sgr:language>
+			</sgr:dpPrgDesc>
 		</sgr:dataPoint>
 	</sgr:dpListElement>
 	<sgr:dpListElement>
-		<sgr:dataPoint datapointName="ReturnFlowWaterTemp" mroVisibilityIndicator="O"
+		<sgr:dataPoint datapointName="ReturnSupplyWaterTemp" mroVisibilityIndicator="O"
 			rwpDatadirection="R" unit="DEGREES_CELSIUS">
 			<sgr:basicDataType>
 				<sgr:float32>0.0</sgr:float32>
 			</sgr:basicDataType>
 			<sgr:dpNameList>
-				<sgr:sLV1Name>ReturnFlowWaterTemp</sgr:sLV1Name>
+				<sgr:sLV1Name>ReturnSupplyWaterTemp</sgr:sLV1Name>
 				<sgr:sEN17609Name>Return Water Temperature Setpoint</sgr:sEN17609Name>
 			</sgr:dpNameList>
 			<sgr:dpLegibDesc>

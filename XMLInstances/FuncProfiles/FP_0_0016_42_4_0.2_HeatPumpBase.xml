@@ -24,7 +24,7 @@
 				<sgr:specsOwnerId>0</sgr:specsOwnerId>
 				<sgr:profileIdentification>HeatPumpControl</sgr:profileIdentification>
 				<sgr:subProfileIdent>HeatPumpBase</sgr:subProfileIdent>
-				<sgr:sgrLevelOfOperation>m</sgr:sgrLevelOfOperation>
+				<sgr:sgrLevelOfOperation>2m</sgr:sgrLevelOfOperation>
 				<sgr:versionNumber>
 					<sgr:primaryVersionNumber>0</sgr:primaryVersionNumber>
 					<sgr:secondaryVersionNumber>2</sgr:secondaryVersionNumber>
@@ -35,12 +35,13 @@
 				<sgr:sLV1Name>HeatPumpBase</sgr:sLV1Name>
 			</sgr:fpNameList>
 			<sgr:fpLegibDesc>
-				<sgr:textElement>Das Profil definiert den Grundbaustein zur dynamischen Ansteuerung von Wärmepumpen über eine Betriebsmodus gestützt Beeinflussung der Sollwerte nach SGr Stufe 2. Der Betrieb der Wärmepumpe muss in sich sicher sein, unabhängig von den äusseren Vorgaben. Dieses Grundprofil definiert die Datenpunkte, welche zur Steuerung des Gerätes «Wärmepumpe» auf Level 4 grundsätzlich zur Verfügung gestellt werden und stellen die Version einer typischen EInfamilienhauswärmepumpe miz Aussentemperaturfühler dar. Für die einzelnen Heizkreise, Warmwasser, Pufferspeicher und das Energie-Monitoring  sowie eine Verdichterdrehzahl / Leistungsregelung werden separate Profile zur Verfügung gestellt.</sgr:textElement>
+				<sgr:textElement>Das Profil definiert den Grundbaustein zur dynamischen Ansteuerung von Wärmepumpen über eine Betriebsmodus gestützt Beeinflussung der Sollwerte nach SGr Stufe 2. Der Betrieb der Wärmepumpe muss in sich sicher sein, unabhängig von den äusseren Vorgaben. Dieses Grundprofil definiert die Datenpunkte, welche zur Steuerung des Gerätes «Wärmepumpe» mit zusätzlichen Stufe 4 Funktionsprofilen grundsätzlich zur Verfügung gestellt werden. Sie stellen die Version einer typischen Einfamilienhauswärmepumpe mit Aussentemperaturfühler dar. Für die einzelnen Heizkreise, Warmwasser, Pufferspeicher und das Energie-Monitoring sowie eine Verdichterdrehzahl / Leistungsregelung können in weiteren Funktionsprofilen zur Verfügung gestellt werden.</sgr:textElement>
+				
 				<sgr:language>de</sgr:language>
 			</sgr:fpLegibDesc>
 		</sgr:functionalProfile>
 		<sgr:dpListElement>
-			<sgr:dataPoint datapointName="HPOpModeCmd" mroVisibilityIndicator="R" rwpDatadirection="RW" unit="NONE">
+			<sgr:dataPoint datapointName="HPOpModeCmd" mroVisibilityIndicator="M" rwpDatadirection="RW" unit="NONE">
 				<sgr:basicDataType>
 					<sgr:enum>
 						<sgr:sgrHPOpMode>WP_EMERG_OP</sgr:sgrHPOpMode>					
@@ -58,8 +59,8 @@
    					<li><strong>WP_EMERG_OP:</strong> Notbetrieb</li>
    					<li><strong>WP_READY:</strong> Bereitschaft</li>
    					<li><strong>WP_PROG_OP:</strong> Programmbetrieb</li>
-   					<li><strong>WP_COMFORT:</strong> Komfortbetrieb</li>
-   					<li><strong>WP_ECO_OP:</strong> Sparbetrieb</li>
+   					<li><strong>WP_COMFORT_OP:</strong> Komfortbetrieb</li>
+   					<li><strong>WP_ECO_OP:</strong> ECO Betrieb</li>
    					<li><strong>WP_DOM_WATER_OP:</strong> Warmwassererzeugung</li>  
    					<li><strong>WP_COOL_ACTIVE_OP:</strong> Kuehlen aktiv</li>  
    					<li><strong>WP_COOL_PASSIVE_OP:</strong> Kuehlen passic</li>   
@@ -69,7 +70,7 @@
 					<sgr:language>de</sgr:language>
 				</sgr:dpLegibDesc>
 				<sgr:dpPrgDesc>
-					<sgr:textElement>some of the devices do either not allow setting OpMode setting(the name should the ne named "HPOpModeCmdFB") or allow it in a special mode only.</sgr:textElement>
+					<sgr:textElement>some of the devices do either not allow OpMode setting(then it should be named "HPOpModeCmdFB") or allow it in a special conditions only.</sgr:textElement>
 					<sgr:language>en</sgr:language>
 				</sgr:dpPrgDesc>
 			</sgr:dataPoint>
@@ -112,8 +113,8 @@
 					<sgr:sLV1Name>ErrorNrSGr</sgr:sLV1Name>
 				</sgr:dpNameList>
 				<sgr:dpLegibDesc>
-					<sgr:textElement>0 means no errors. </sgr:textElement>
-					<sgr:language>en</sgr:language>
+					<sgr:textElement>FALSE oder 0 bedeuted keine Fehler</sgr:textElement>
+					<sgr:language>de</sgr:language>
 				</sgr:dpLegibDesc>
 				<sgr:dpPrgDesc>
 					<sgr:textElement>Check the manufaturer error list for its proprietary error analytics. This datapoint can be replaced by UINT_16 in this case. FALSE = 0 MUST be fullfilled in any case.</sgr:textElement>
@@ -155,12 +156,12 @@
 			</sgr:dataPoint>
 		</sgr:dpListElement>
 		<sgr:dpListElement>
-			<sgr:dataPoint datapointName="BackSupplyWaterTemp" mroVisibilityIndicator="O" rwpDatadirection="R" unit="DEGREES_CELSIUS">
+			<sgr:dataPoint datapointName="ReturnSupplyWaterTemp" mroVisibilityIndicator="R" rwpDatadirection="R" unit="DEGREES_CELSIUS">
 				<sgr:basicDataType>
 					<sgr:float32>0.0</sgr:float32>
 				</sgr:basicDataType>
 				<sgr:dpNameList>
-					<sgr:sLV1Name>BackSupplyWaterTemp</sgr:sLV1Name>
+					<sgr:sLV1Name>ReturnSupplyWaterTemp</sgr:sLV1Name>
 					<sgr:sHPbwpName>Temperatur Rücklauf</sgr:sHPbwpName>
 					<sgr:sEN17609Name>Return Water Temperature</sgr:sEN17609Name>
 				</sgr:dpNameList>
@@ -168,66 +169,6 @@
 					<sgr:textElement>Auslesen der aktuellen aktuellen-Temperatur des Rücklaufs.</sgr:textElement>
 					<sgr:language>de</sgr:language>
 				</sgr:dpLegibDesc>
-			</sgr:dataPoint>
-		</sgr:dpListElement>
-		<sgr:dpListElement>
-			<sgr:dataPoint datapointName="SupplyWaterTempStpt"
-				mroVisibilityIndicator="R" unit="DEGREES_CELSIUS"
-				rwpDatadirection="RW">
-				<sgr:basicDataType>
-					<sgr:float32>0.0</sgr:float32>
-				</sgr:basicDataType>
-				<sgr:dpNameList>
-					<sgr:sLV1Name>SupplyWaterTempStpt</sgr:sLV1Name>
-					<sgr:sHPbwpName>
-						Solltemperatur für Anforderungsfühler
-					</sgr:sHPbwpName>
-					<sgr:sEN17609Name>
-						Supply Water Temperature Setpoint
-					</sgr:sEN17609Name>
-				</sgr:dpNameList>
-				<sgr:dpLegibDesc>
-					<sgr:textElement>Setzen oder nur Auslesen der aktuellen Soll-Temperatur des Vorlaufs des Heizkreises.</sgr:textElement>
-					<sgr:language>de</sgr:language>
-				</sgr:dpLegibDesc>
-				<sgr:dpPrgDesc>
-					<sgr:textElement>
-						some of the devices do either not allow setting
-						Setpoints (the name should the ne named
-						"SupplyWaterTempStptFb") or allow it in a
-						special mode only.
-					</sgr:textElement>
-					<sgr:language>en</sgr:language>
-				</sgr:dpPrgDesc>
-			</sgr:dataPoint>
-		</sgr:dpListElement>
-		<sgr:dpListElement>
-			<sgr:dataPoint datapointName="SupplyWaterTempStptFb"
-				mroVisibilityIndicator="O" unit="DEGREES_CELSIUS"
-				rwpDatadirection="R">
-				<sgr:basicDataType>
-					<sgr:float32>0.0</sgr:float32>
-				</sgr:basicDataType>
-				<sgr:dpNameList>
-					<sgr:sLV1Name>SupplyWaterTempStpt</sgr:sLV1Name>
-					<sgr:sHPbwpName>
-						Solltemperatur für Anforderungsfühler
-					</sgr:sHPbwpName>
-					<sgr:sEN17609Name>
-						Supply Water Temperature Setpoint
-					</sgr:sEN17609Name>
-				</sgr:dpNameList>
-				<sgr:dpLegibDesc>
-					<sgr:textElement>Auslesen der aktuellen Soll-Temperatur des Vorlaufs des Heizkreises.</sgr:textElement>
-					<sgr:language>de</sgr:language>
-				</sgr:dpLegibDesc>
-				<sgr:dpPrgDesc>
-					<sgr:textElement>
-						some of the devices not allow setting
-						Setpoints.
-					</sgr:textElement>
-					<sgr:language>en</sgr:language>
-				</sgr:dpPrgDesc>
 			</sgr:dataPoint>
 		</sgr:dpListElement>
 		<sgr:dpListElement>
