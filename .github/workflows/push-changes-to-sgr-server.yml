@@ -17,13 +17,13 @@ jobs:
       run: |
         for file in ${{ steps.changed-files.outputs.added_files }}; do
           echo "try to upload added $file"
-          curl --upload-file "$file" https://library.smartgridready.ch/$file?add || true
+          curl --upload-file "$file" https://library.smartgridready.ch/$file?add
         done
         for file in ${{ steps.changed-files.outputs.modified_files }}; do
           echo "try to upload modified $file"
-          curl --upload-file "$file" https://library.smartgridready.ch/$file?update || true
+          curl --upload-file "$file" https://library.smartgridready.ch/$file?update
         done
         for file in ${{ steps.changed-files.deleted_files }}; do
           echo "try to upload deleted $file"
-          curl --upload-file "$file" https://library.smartgridready.ch/$file?delete || true
+          curl --upload-file "$file" https://library.smartgridready.ch/$file?delete
         done
