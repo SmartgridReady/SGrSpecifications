@@ -26,8 +26,10 @@
 				<title>
 					<xsl:choose>
 						<xsl:when test="/sgr:SGrFunctionalProfileFrame">
-							SGr FP 
-							<xsl:value-of select="/*/sgr:functionalProfile/sgr:profileNumber/sgr:specsOwnerId" />.<xsl:value-of select="/*/sgr:functionalProfile/sgr:profileNumber/sgr:profileIdentification" />.<xsl:value-of select="/*/sgr:functionalProfile/sgr:profileNumber/sgr:subProfileIdent" />.<xsl:value-of select="/*/sgr:functionalProfile/sgr:profileNumber/sgr:sgrLevelOfOperation" />
+							<xsl:apply-templates select="/*/sgr:functionalProfile/sgr:profileNumber">
+								<xsl:with-param name="separator" select="'.'" />
+								<xsl:with-param name="displayShortLevel" select="'true'" />
+							</xsl:apply-templates>
 						</xsl:when>
 						<xsl:otherwise>
 							SGr EI

@@ -234,4 +234,35 @@
         <xsl:value-of select="sgr:primaryVersionNumber" />.<xsl:value-of select="sgr:secondaryVersionNumber" />.<xsl:value-of select="sgr:subReleaseVersionNumber" />
     </xsl:template>
 
+    <!-- SGrprofileNumber -->
+    <xsl:template match="sgr:profileNumber">
+        <xsl:param name="separator" select="'.'" />
+        <xsl:param name="displayFullLevel" select="''"/>
+        <xsl:param name="displayShortLevel" select="''"/>
+        <xsl:call-template name="SGrProfileNumber">
+            <xsl:with-param name="separator" select="$separator" />
+            <xsl:with-param name="displayShortLevel" select="$displayShortLevel" />
+            <xsl:with-param name="displayFullLevel" select="$displayFullLevel" />
+        </xsl:call-template>
+    </xsl:template>
+    <xsl:template name="SGrProfileNumber">
+        <xsl:param name="separator" select="'.'" />
+        <xsl:param name="displayFullLevel" select="''"/>
+        <xsl:param name="displayShortLevel" select="''"/>
+        <xsl:choose>
+            <xsl:when test="sgr:specsOwnerId = 0">SGr</xsl:when>
+            <xsl:otherwise><xsl:value-of select="sgr:specsOwnerId" /></xsl:otherwise>
+        </xsl:choose>
+        <xsl:value-of select="$separator" />
+
+        <xsl:value-of select="sgr:profileIdentification" /><xsl:value-of select="$separator" /><xsl:value-of select="sgr:subProfileIdent" />
+        <xsl:if test="$displayShortLevel">
+            <xsl:value-of select="$separator" /><xsl:value-of select="sgr:sgrLevelOfOperation" />
+        </xsl:if>
+
+        <xsl:if test="$displayFullLevel">
+            (Level <xsl:value-of select="sgr:sgrLevelOfOperation" />)
+        </xsl:if>
+    </xsl:template>
+
 </xsl:stylesheet> 
