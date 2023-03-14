@@ -19,15 +19,12 @@ The figure below shows the entity relation model of the functional profile
 
 ## Functional Profile Attributes
 
-### Name
-An arbitary name describing the use case of the functional profile. 
-
 ### Classification
 SGr classifies and identifies any functional profile by the following values
 
 | Element               | Description |
 |-----------------------|-------------|
-| specsOwnerId          | Identifier of the functional profile owner. 0 means this is a SGr functional profile |
+| specsOwnerId          | Identifier of the functional profile owner. |
 | profileIdentification | Functional profile class (see [SGrEnumProfileType.xsd](/SchemaDatabase/SGr/Generic/SGrEnumProfileType.xsd) ) |
 | subProfileIdent       | Functional profile subclass (see [SGrEnumSubProfileType.xsd](/SchemaDatabase/SGr/Generic/SGrEnumSubProfileType.xsd) ) |
 | sgrLevelOfOperation   | SGrLevelOfOperation defines a controls complexity  (see [SGrLevelOfOperation.md](SGrLevelOfOperation.md) ) |
