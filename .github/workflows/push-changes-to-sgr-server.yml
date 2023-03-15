@@ -14,16 +14,18 @@ jobs:
       id: changed-files
       uses: tj-actions/changed-files@v35
     - name: curl
+      env:
+        SGR_WEB_APP_TOKEN: ${{ secrets.SGR_WEB_APP_TOKEN }}
       run: |
         for file in ${{ steps.changed-files.outputs.added_files }}; do
           echo "try to upload added $file"
-          curl --silent --upload-file "$file" https://library.smartgridready.ch/$file?add
+          curl --silent --upload-file "$file" https://library.smartgridready.ch/$file?add&$token=$SGR_WEB_APP_TOKEN
         done
         for file in ${{ steps.changed-files.outputs.modified_files }}; do
           echo "try to upload modified $file"
-          curl --silent --upload-file "$file" https://library.smartgridready.ch/$file?update
+          curl --silent --upload-file "$file" https://library.smartgridready.ch/$file?update$token=$SGR_WEB_APP_TOKEN
         done
         for file in ${{ steps.changed-files.deleted_files }}; do
           echo "try to upload deleted $file"
-          curl --silent --upload-file "$file" https://library.smartgridready.ch/$file?delete
+          curl --silent --upload-file "$file" https://library.smartgridready.ch/$file?delete$token=$SGR_WEB_APP_TOKEN
         done
