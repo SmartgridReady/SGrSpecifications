@@ -9,6 +9,12 @@
 			<sgr:author>Ergo/mm</sgr:author>
 			<sgr:comment>Vorbereitung beta test</sgr:comment>
 		</sgr:changelog>
+		<sgr:changelog>
+			<sgr:version>1.0.0</sgr:version>
+			<sgr:date>2023-03-16</sgr:date>
+			<sgr:author>SGr/sz</sgr:author>
+			<sgr:comment>Finalisierung</sgr:comment>
+		</sgr:changelog>		
 	</sgr:releaseNotes>
 	<sgr:functionalProfile>
 		<sgr:profileNumber>
@@ -17,23 +23,29 @@
 			<sgr:subProfileIdent>ReactivePowerAC</sgr:subProfileIdent>
 			<sgr:sgrLevelOfOperation>m</sgr:sgrLevelOfOperation>
 			<sgr:versionNumber>
-				<sgr:primaryVersionNumber>0</sgr:primaryVersionNumber>
-				<sgr:secondaryVersionNumber>2</sgr:secondaryVersionNumber>
-				<sgr:subReleaseVersionNumber>2</sgr:subReleaseVersionNumber>
+				<sgr:primaryVersionNumber>1</sgr:primaryVersionNumber>
+				<sgr:secondaryVersionNumber>0</sgr:secondaryVersionNumber>
+				<sgr:subReleaseVersionNumber>0</sgr:subReleaseVersionNumber>
 			</sgr:versionNumber>
 		</sgr:profileNumber>
 		<sgr:fpNameList>
-			<sgr:sLV1Name>Messung der Blindleistung</sgr:sLV1Name>
+			<sgr:sLV1Name>ReactivePowerAC</sgr:sLV1Name>
 		</sgr:fpNameList>
 		<sgr:fpLegibDesc>
 			<sgr:textElement>
 				<![CDATA[	
-				<img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
-				Die Messung der Blindleistung erfolgt zur Messung Blindleistung im Wechselstromnetz, für regeltechnische Zwecke.
-				
-				Je nach Optimierungsanwendung muss diese Erfassung zuverlässig im Takt von 10 Mal/Sekunde bis zum Minutentakt erfolgen.
-				Bei der Einführung von Leistungstarifen müssen für diese Messung auch regulatorische Vorgaben
-				beachtet werden. Typische Nachbarprofile sind Controller oder Datenlogger.
+					<img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
+					<strong>Messung der Blindleistung</strong><br>
+					Monitoring Funktionsprofil für Stromverbraucher zur Messung Blindleistung im Wechselstromnetz, für
+					regeltechnische Zwecke und/oder zur Überwachung von regulatorischen Vorgaben bei Leistungstarifen.
+		
+					<p>Über dieses Funktionsprofil können sowohl die Messung der Totale wie auch einzeln 3-phasig angegeben werden.
+						<ul>
+							<li>Einphasige Geräte geben die Totale an</li>
+							<li>3-phasige Geräte ohne Totale geben die Messung pro Phase an</li>
+							<li>3-phasige Geräte mit Einzelphasen- und Totalmessung geben alle Datenpunkte an</li>
+						</ul>
+					</p>
 				]]>
 			</sgr:textElement>
 			<sgr:language>de</sgr:language>
@@ -56,7 +68,7 @@
 				<sgr:float32>0</sgr:float32>
 			</sgr:basicDataType>
 			<sgr:dpLegibDesc>
-				<sgr:textElement>Erfassung der Blindleistung Phase A</sgr:textElement>
+				<sgr:textElement>Erfassung der Blindleistung Phase 1</sgr:textElement>
 				<sgr:language>de</sgr:language>
 			</sgr:dpLegibDesc>
 		</sgr:dataPoint>
@@ -67,7 +79,7 @@
 				<sgr:float32>0</sgr:float32>
 			</sgr:basicDataType>
 			<sgr:dpLegibDesc>
-				<sgr:textElement>Erfassung der Blindleistung Phase B</sgr:textElement>
+				<sgr:textElement>Erfassung der Blindleistung Phase 2</sgr:textElement>
 				<sgr:language>de</sgr:language>
 			</sgr:dpLegibDesc>
 		</sgr:dataPoint>
@@ -78,7 +90,7 @@
 				<sgr:float32>0</sgr:float32>
 			</sgr:basicDataType>
 			<sgr:dpLegibDesc>
-				<sgr:textElement>Erfassung der Blindleistung Phase C</sgr:textElement>
+				<sgr:textElement>Erfassung der Blindleistung Phase 3</sgr:textElement>
 				<sgr:language>de</sgr:language>
 			</sgr:dpLegibDesc>
 		</sgr:dataPoint>
