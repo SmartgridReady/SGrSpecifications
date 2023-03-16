@@ -3,6 +3,7 @@
 <sgr:SGrFunctionalProfileFrame xmlns:sgr="http://www.smartgridready.com/ns/V0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/SGrIncluder.xsd">
 	<sgr:releaseNotes>
 		<sgr:state>Review</sgr:state>
+		<sgr:remarks>Todo: File needs to be renamed to reflect v1.0. EIDs using this FP need to be quality-checked.</sgr:remarks>
 		<sgr:changelog>
 			<sgr:version>0.1.1</sgr:version>
 			<sgr:date>2021-04-03</sgr:date>
@@ -15,6 +16,12 @@
 			<sgr:author>Ergo/mm</sgr:author>
 			<sgr:comment>Finalisierung Go-Live</sgr:comment>
 		</sgr:changelog>
+		<sgr:changelog>
+			<sgr:version>1.0.0</sgr:version>
+			<sgr:date>2023-03-16</sgr:date>
+			<sgr:author>SGr/sz</sgr:author>
+			<sgr:comment>Finalisierung</sgr:comment>
+		</sgr:changelog>		
 	</sgr:releaseNotes>
 	<sgr:functionalProfile>
 		<sgr:profileNumber>
@@ -23,9 +30,9 @@
 			<sgr:subProfileIdent>CurrentAC</sgr:subProfileIdent>
 			<sgr:sgrLevelOfOperation>m</sgr:sgrLevelOfOperation>
 			<sgr:versionNumber>
-				<sgr:primaryVersionNumber>0</sgr:primaryVersionNumber>
-				<sgr:secondaryVersionNumber>2</sgr:secondaryVersionNumber>
-				<sgr:subReleaseVersionNumber>2</sgr:subReleaseVersionNumber>
+				<sgr:primaryVersionNumber>1</sgr:primaryVersionNumber>
+				<sgr:secondaryVersionNumber>0</sgr:secondaryVersionNumber>
+				<sgr:subReleaseVersionNumber>0</sgr:subReleaseVersionNumber>
 			</sgr:versionNumber>
 		</sgr:profileNumber>
 		<sgr:fpNameList>
@@ -35,7 +42,12 @@
 			<sgr:textElement>
 				<![CDATA[	
 				<img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
-				Die Messung des Stromes pro Phase und Nullleiter. Typische Nachbarprofile sind Controller für Wallbox, Communicator.
+				<strong>Messung des Stromes pro Phase und Nullleiter</strong><br>
+					Monitoring Funktionsprofil für Stromerzeuger und -Verbraucher zur Kontrolle der Systemlast und/oder für regeltechnische 
+					Zwecke.
+	
+					<p>Für Regelzwecke ist die Kenntnis der Messpräzision zwingend und wird daher pro Datenpunkt als
+					obligatorisches Attribut angegeben.</p>
 				]]>	
 			</sgr:textElement>
 			<sgr:language>de</sgr:language>
@@ -47,7 +59,7 @@
 				<sgr:float32>0</sgr:float32>
 			</sgr:basicDataType>
 			<sgr:dpLegibDesc>
-				<sgr:textElement>Erfassung des Stromes in Phase A</sgr:textElement>
+				<sgr:textElement>Erfassung des Stromes in Phase 1</sgr:textElement>
 				<sgr:language>de</sgr:language>
 			</sgr:dpLegibDesc>
 		</sgr:dataPoint>
@@ -61,7 +73,7 @@
 				<sgr:float32>0</sgr:float32>
 			</sgr:basicDataType>
 			<sgr:dpLegibDesc>
-				<sgr:textElement>Erfassung des Stromes in Phase B</sgr:textElement>
+				<sgr:textElement>Erfassung des Stromes in Phase 2</sgr:textElement>
 				<sgr:language>de</sgr:language>
 			</sgr:dpLegibDesc>
 		</sgr:dataPoint>
@@ -75,7 +87,7 @@
 				<sgr:float32>0</sgr:float32>
 			</sgr:basicDataType>
 			<sgr:dpLegibDesc>
-				<sgr:textElement>Erfassung des Stromes in Phase C</sgr:textElement>
+				<sgr:textElement>Erfassung des Stromes in Phase 3</sgr:textElement>
 				<sgr:language>de</sgr:language>
 			</sgr:dpLegibDesc>
 		</sgr:dataPoint>
