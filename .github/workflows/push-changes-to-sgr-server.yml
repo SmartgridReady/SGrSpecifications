@@ -13,8 +13,6 @@ jobs:
     - name: Get changed files
       id: changed-files
       uses: tj-actions/changed-files@v35
-      with:
-        include_all_old_new_renamed_files: true
     - name: curl
       env:
         SGR_WEB_APP_TOKEN: ${{ secrets.SGR_WEB_APP_TOKEN }}
@@ -33,9 +31,9 @@ jobs:
         done
         for file in ${{ steps.changed-files.renamed_files }}; do
           echo "try to upload renamed $file"
-          # curl --silent --upload-file "$file" https://library.smartgridready.ch/$file?delete$token=$SGR_WEB_APP_TOKEN
+          # curl --silent --upload-file "$file" https://library.smartgridready.ch/$file?rename$token=$SGR_WEB_APP_TOKEN
         done
         for file in ${{ steps.changed-files.all_old_new_renamed_files }}; do
-          echo "try to upload renamed $file"
-          # curl --silent --upload-file "$file" https://library.smartgridready.ch/$file?delete$token=$SGR_WEB_APP_TOKEN
+          echo "try to upload renamed (old/new) $file"
+          # curl --silent --upload-file "$file" https://library.smartgridready.ch/$file?rename$token=$SGR_WEB_APP_TOKEN
         done
