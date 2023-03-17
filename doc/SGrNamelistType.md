@@ -4,7 +4,7 @@ A list of relevant namespaces list for to display names used in different standa
 
 | Element | Optional | Description |
 |---------|----------|-------------|
-| sLV1Name | optional | names used for SGr label V1 used to secure legacy compatibility |
+| sLV1Name | optional | Currently not used. Reserved for the future to secure legacy compatibility one we start renaming in future SGr label versions |
 | sWorkName | optional | work names for temporary use |
 | sManufName | optional | manufacturers may use an internal wording |
 | sIEC61850Name | optional | IEC 61850 terminology place to add the 61850 abreviatuions if an overlap exists |
