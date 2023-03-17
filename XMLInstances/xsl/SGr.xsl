@@ -26,8 +26,10 @@
 				<title>
 					<xsl:choose>
 						<xsl:when test="/sgr:SGrFunctionalProfileFrame">
-							SGr FP
-							<xsl:value-of select="/*/*/@profileName" />
+							<xsl:apply-templates select="/*/sgr:functionalProfile/sgr:profileNumber">
+								<xsl:with-param name="separator" select="'.'" />
+								<xsl:with-param name="displayShortLevel" select="'true'" />
+							</xsl:apply-templates>
 						</xsl:when>
 						<xsl:otherwise>
 							SGr EI

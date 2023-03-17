@@ -3,6 +3,7 @@
 <sgr:SGrFunctionalProfileFrame xmlns:sgr="http://www.smartgridready.com/ns/V0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/SGrIncluder.xsd">
 	<sgr:releaseNotes>
 		<sgr:state>Review</sgr:state>
+		<sgr:remarks>Todo: File needs to be renamed to reflect v1.0. EIDs using this FP need to be quality-checked.</sgr:remarks>
 		<sgr:changelog>
 			<sgr:version>0.1.1</sgr:version>
 			<sgr:date>2021-04-03</sgr:date>
@@ -15,28 +16,46 @@
 			<sgr:author>Ergo/mm</sgr:author>
 			<sgr:comment>Finalisierung Go-Live</sgr:comment>
 		</sgr:changelog>
+		<sgr:changelog>
+			<sgr:version>1.0.0</sgr:version>
+			<sgr:date>2023-03-16</sgr:date>
+			<sgr:author>SGr/sz</sgr:author>
+			<sgr:comment>Finalisierung</sgr:comment>
+		</sgr:changelog>
 	</sgr:releaseNotes>
-	<sgr:functionalProfile profileName="ActiveEnergyAC">
+	<sgr:functionalProfile>
 		<sgr:profileNumber>
 			<sgr:specsOwnerId>0</sgr:specsOwnerId>
 			<sgr:profileIdentification>NonSpecific</sgr:profileIdentification>
 			<sgr:subProfileIdent>ActiveEnergyAC</sgr:subProfileIdent>
 			<sgr:sgrLevelOfOperation>m</sgr:sgrLevelOfOperation>
 			<sgr:versionNumber>
-				<sgr:primaryVersionNumber>0</sgr:primaryVersionNumber>
-				<sgr:secondaryVersionNumber>2</sgr:secondaryVersionNumber>
-				<sgr:subReleaseVersionNumber>2</sgr:subReleaseVersionNumber>
+				<sgr:primaryVersionNumber>1</sgr:primaryVersionNumber>
+				<sgr:secondaryVersionNumber>0</sgr:secondaryVersionNumber>
+				<sgr:subReleaseVersionNumber>0</sgr:subReleaseVersionNumber>
 			</sgr:versionNumber>
 		</sgr:profileNumber>
-		<sgr:fpNameList>
-			<sgr:sLV1Name>Bilanzmessung Energie</sgr:sLV1Name>
-		</sgr:fpNameList>
 		<sgr:fpLegibDesc>
 			<sgr:textElement>
 				<![CDATA[	
 				<img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
-				Bilanzmessung Energie: Die Datenaufnahme erfolgt typischerweise periodisch durch den CEM (oder eine Abrechnungssoftware), welche Messung aufnimmt und mit dem Zeitwert ergänzt.<br>
-				Auch auf Seite der Netzbetreiber oder Aggregatoren braucht ein Energiewert zu Bilanzierungszwecken immer den Zeitstempel. Typische Nachbarprofile sind Communicator.
+					<strong>Bilanzmessung Energie</strong><br>
+					Monitoring Funktionsprofil für Stromerzeuger und -Verbraucher zur Bilanzierung der Energiemenge.
+					
+					<p>Die Datenaufnahme erfolgt typischerweise periodisch durch den CEM (oder eine Abrechnungssoftware), welche Messung aufnimmt und mit dem Zeitwert ergänzt.<br>
+						Auch auf Seite der Netzbetreiber oder Aggregatoren braucht ein Energiewert zu Bilanzierungszwecken immer den Zeitstempel.</p>
+	
+					<p>Für Abrechnungszwecke ist die Kenntnis der Messpräzision zwingend und wird daher pro Datenpunkt als
+					obligatorisches Attribut angegeben. Dies berücksichtigt insb. die Möglichkeit unterschiedlicher
+					Präzision auf Einzelphase und Totale.</p>
+	
+					<p>Über dieses Funktionsprofil können sowohl die Messung der Totale wie auch einzeln 3-phasig angegeben werden. Eine der folgenden Varianten ist zwingend:
+					<ul>
+						<li>Einphasige Geräte geben die Totale an</li>
+						<li>3-phasige Geräte ohne Totale geben die Messung pro Phase an</li>
+						<li>3-phasige Geräte mit Einzelphasen- und Totalmessung geben alle Datenpunkte an</li>
+					</ul>
+					</p>
 				]]>	
 			</sgr:textElement>
 			<sgr:language>de</sgr:language>
@@ -45,7 +64,7 @@
 	<sgr:dpListElement>
 		<sgr:dataPoint datapointName="ActiveEnergyACtot" rwpDatadirection="R" unit="KILOWATT_HOURS" mroVisibilityIndicator="R">
 			<sgr:basicDataType>
-				<sgr:float32>0</sgr:float32>
+				<sgr:float64>0</sgr:float64>
 			</sgr:basicDataType>
 			<sgr:dpLegibDesc>
 				<sgr:textElement>Erfassung der gesamten Wirkenergie</sgr:textElement>
@@ -59,10 +78,10 @@
 	<sgr:dpListElement>
 		<sgr:dataPoint datapointName="ActiveEnergyACL1" rwpDatadirection="R" unit="KILOWATT_HOURS" mroVisibilityIndicator="R">
 			<sgr:basicDataType>
-				<sgr:float32>0</sgr:float32>
+				<sgr:float64>0</sgr:float64>
 			</sgr:basicDataType>
 			<sgr:dpLegibDesc>
-				<sgr:textElement>Erfassung der Wirkenergie Phase A</sgr:textElement>
+				<sgr:textElement>Erfassung der Wirkenergie Phase 1</sgr:textElement>
 				<sgr:language>de</sgr:language>
 			</sgr:dpLegibDesc>
 		</sgr:dataPoint>
@@ -73,10 +92,10 @@
 	<sgr:dpListElement>
 		<sgr:dataPoint datapointName="ActiveEnergyACL2" rwpDatadirection="R" unit="KILOWATT_HOURS" mroVisibilityIndicator="R">
 			<sgr:basicDataType>
-				<sgr:float32>0</sgr:float32>
+				<sgr:float64>0</sgr:float64>
 			</sgr:basicDataType>
 			<sgr:dpLegibDesc>
-				<sgr:textElement>Erfassung der Wirkenergie Phase B</sgr:textElement>
+				<sgr:textElement>Erfassung der Wirkenergie Phase 2</sgr:textElement>
 				<sgr:language>de</sgr:language>
 			</sgr:dpLegibDesc>
 		</sgr:dataPoint>
@@ -87,10 +106,10 @@
 	<sgr:dpListElement>
 		<sgr:dataPoint datapointName="ActiveEnergyACL3" rwpDatadirection="R" unit="KILOWATT_HOURS" mroVisibilityIndicator="R">
 			<sgr:basicDataType>
-				<sgr:float32>0</sgr:float32>
+				<sgr:float64>0</sgr:float64>
 			</sgr:basicDataType>
 			<sgr:dpLegibDesc>
-				<sgr:textElement>Erfassung der Wirkenergie Phase C</sgr:textElement>
+				<sgr:textElement>Erfassung der Wirkenergie Phase 3</sgr:textElement>
 				<sgr:language>de</sgr:language>
 			</sgr:dpLegibDesc>
 		</sgr:dataPoint>

@@ -5,8 +5,12 @@
     <xsl:template match="sgr:SGrFunctionalProfileFrame">
         <div class="functionalProfile">
             <h2>
-                <xsl:value-of select="sgr:functionalProfile/@profileName" />
+                <xsl:apply-templates select="sgr:functionalProfile/sgr:profileNumber">
+                    <xsl:with-param name="separator" select="' - '" />
+                    <xsl:with-param name="displayFullLevel" select="'true'" />
+                </xsl:apply-templates>
             </h2>
+            <br/>
 
             <table>
                 <colgroup>
@@ -99,11 +103,9 @@
                             <tr>
                                 <td>Profil-ID</td>
                                 <td>
-                                    <xsl:value-of select="sgr:functionalProfile/sgr:profileNumber/sgr:specsOwnerId" />
-                                    -
-                                    <xsl:value-of select="sgr:functionalProfile/sgr:profileNumber/sgr:profileIdentification" />
-                                    -
-                                    <xsl:value-of select="sgr:functionalProfile/sgr:profileNumber/sgr:subProfileIdent" />
+                                    <xsl:apply-templates select="/*/sgr:functionalProfile/sgr:profileNumber">
+                                        <xsl:with-param name="separator" select="' - '" />
+                                    </xsl:apply-templates>
                                 </td>
                             </tr>
                             <tr>
@@ -122,8 +124,7 @@
                     </td>
                 </tr>
             </table>
-
-            <h2>Functional Profile</h2>
+            <br/>
 
             <!-- Functional Profile Block -->
             <table>
