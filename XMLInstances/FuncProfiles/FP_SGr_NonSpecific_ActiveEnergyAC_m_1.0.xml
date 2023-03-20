@@ -3,18 +3,11 @@
 <sgr:SGrFunctionalProfileFrame xmlns:sgr="http://www.smartgridready.com/ns/V0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/SGrIncluder.xsd">
 	<sgr:releaseNotes>
 		<sgr:state>Review</sgr:state>
-		<sgr:remarks>Todo: File needs to be renamed to reflect v1.0. EIDs using this FP need to be quality-checked.</sgr:remarks>
 		<sgr:changelog>
 			<sgr:version>0.1.1</sgr:version>
 			<sgr:date>2021-04-03</sgr:date>
 			<sgr:author>IBT/cb</sgr:author>
 			<sgr:comment>Vorbereitung beta test</sgr:comment>
-		</sgr:changelog>
-		<sgr:changelog>
-			<sgr:version>0.2.2</sgr:version>
-			<sgr:date>2022-09-29</sgr:date>
-			<sgr:author>Ergo/mm</sgr:author>
-			<sgr:comment>Finalisierung Go-Live</sgr:comment>
 		</sgr:changelog>
 		<sgr:changelog>
 			<sgr:version>1.0.0</sgr:version>
@@ -38,22 +31,23 @@
 		<sgr:fpLegibDesc>
 			<sgr:textElement>
 				<![CDATA[	
-				<img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
-					<strong>Bilanzmessung Energie</strong><br>
-					Monitoring Funktionsprofil für Stromerzeuger und -Verbraucher zur Bilanzierung der Energiemenge.
+					<img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
+					<strong>Messung der Energiebilanz</strong><br>
+					Monitoring Funktionsprofil für Stromerzeuger und Stromverbraucher zur Bilanzierung der Energiemenge.
 					
-					<p>Die Datenaufnahme erfolgt typischerweise periodisch durch den CEM (oder eine Abrechnungssoftware), welche Messung aufnimmt und mit dem Zeitwert ergänzt.<br>
-						Auch auf Seite der Netzbetreiber oder Aggregatoren braucht ein Energiewert zu Bilanzierungszwecken immer den Zeitstempel.</p>
+					<p>Die Datenaufnahme erfolgt typischerweise durch einen Energiemanager (oder eine Abrechnungssoftware).</p>
 	
-					<p>Für Abrechnungszwecke ist die Kenntnis der Messpräzision zwingend und wird daher pro Datenpunkt als
-					obligatorisches Attribut angegeben. Dies berücksichtigt insb. die Möglichkeit unterschiedlicher
-					Präzision auf Einzelphase und Totale.</p>
+					<p>Die Kenntnis der Messgenauigkeit notwendig und wird daher pro Datenpunkt als obligatorisches
+						Attribut angegeben. Somit ist es möglich unterschiedliche Messgenauigkeiten für die Datenpunkte
+						zu definieren.</p>
 	
-					<p>Über dieses Funktionsprofil können sowohl die Messung der Totale wie auch einzeln 3-phasig angegeben werden. Eine der folgenden Varianten ist zwingend:
+					<p>Dieses Funktionsprofil erlaubt sowohl die Messung der Gesamtenergie wie auch die Energie der drei
+						einzelnen Phasen. Eine der folgenden Varianten muss bei der Implementierung des Funktionsprofiles
+						umgesetzt werden:
 					<ul>
-						<li>Einphasige Geräte geben die Totale an</li>
-						<li>3-phasige Geräte ohne Totale geben die Messung pro Phase an</li>
-						<li>3-phasige Geräte mit Einzelphasen- und Totalmessung geben alle Datenpunkte an</li>
+						<li>1-phasige Geräte geben die Gesamtenergie an (ActiveEnergyACtot)</li>
+						<li>3-phasige Geräte ohne Gesamtenergiemessung geben die Energiemenge pro Phase an (ActiveEnergyACL1, ActiveEnergyACL2, ActiveEnergyACL3)</li>
+						<li>3-phasige Geräte mit Einzelphasen- und Gesamtenergiemessung geben alle Datenpunkte an</li>
 					</ul>
 					</p>
 				]]>	
