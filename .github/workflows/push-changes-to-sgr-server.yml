@@ -2,19 +2,22 @@ name: Push changed files to SGr server
 run-name: ${{ github.actor }} is pushing changed files to SGr server 🚀
 on:
   push:
-    branches: [ master ]
+    branches:
+      - 'master'
 jobs:
   upload:
     runs-on: ubuntu-latest
+    name: Push uploaded files to SGr server
     steps:
-    - name: Checkout
-      uses: actions/checkout@v3.4.0
+    - uses: actions/checkout@v3
       with:
         fetch-depth: 0
-    - name: Changed Files
-      uses: tj-actions/changed-files@v35.7.1
+      
+    - name: Get changed files
+      uses: tj-actions/changed-files@v35
       id: changed-files
-    - name: curl
+      
+    - name: push changed files via curl to SGrWebApp
       env:
         SGR_WEB_APP_TOKEN: ${{ secrets.SGR_WEB_APP_TOKEN }}
       run: |
