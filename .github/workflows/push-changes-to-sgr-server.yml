@@ -23,21 +23,21 @@ jobs:
       run: |
         for file in ${{ steps.changed-files.outputs.added_files }}; do
           echo "try to upload added $file"
-          curl --upload-file "$file" "https://library.smartgridready.ch/$file?add&$token=$SGR_WEB_APP_TOKEN"
+          curl --upload-file "$file" "https://library.smartgridready.ch/$file?add&token=$SGR_WEB_APP_TOKEN"
         done
         for file in ${{ steps.changed-files.outputs.modified_files }}; do
           echo "try to upload modified $file"
-          curl --upload-file "$file" "https://library.smartgridready.ch/$file?update$token=$SGR_WEB_APP_TOKEN"
+          curl --upload-file "$file" "https://library.smartgridready.ch/$file?update&token=$SGR_WEB_APP_TOKEN"
         done
         for file in ${{ steps.changed-files.deleted_files }}; do
           echo "try to upload deleted $file"
-          curl --upload-file "$file" "https://library.smartgridready.ch/$file?delete$token=$SGR_WEB_APP_TOKEN"
+          curl --upload-file "$file" "https://library.smartgridready.ch/$file?delete&token=$SGR_WEB_APP_TOKEN"
         done
         for file in ${{ steps.changed-files.renamed_files }}; do
           echo "try to upload renamed $file"
-          # curl --silent --upload-file "$file" "https://library.smartgridready.ch/$file?rename$token=$SGR_WEB_APP_TOKEN"
+          # curl --silent --upload-file "$file" "https://library.smartgridready.ch/$file?rename&token=$SGR_WEB_APP_TOKEN"
         done
         for file in ${{ steps.changed-files.all_old_new_renamed_files }}; do
           echo "try to upload renamed (old/new) $file"
-          # curl --silent --upload-file "$file" "https://library.smartgridready.ch/$file?rename$token=$SGR_WEB_APP_TOKEN"
+          # curl --silent --upload-file "$file" "https://library.smartgridready.ch/$file?rename&token=$SGR_WEB_APP_TOKEN"
         done
