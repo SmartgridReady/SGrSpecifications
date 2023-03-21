@@ -15,6 +15,8 @@ jobs:
       
     - name: Get changed files
       uses: tj-actions/changed-files@v35
+      with:
+        include_all_old_new_renamed_files: true
       id: changed-files
       
     - name: push changed files via curl to SGrWebApp
@@ -23,6 +25,9 @@ jobs:
       run: |
         for file in ${{ steps.changed-files.outputs.all_changed_and_modified_files }}; do
           echo "detected changed file: $file"
+        done
+        for file in ${{ steps.changed-files.outputs.all_old_new_renamed_files }}; do
+          echo "detected renamed file: $file"
         done
         for file in ${{ steps.changed-files.outputs.added_files }}; do
           echo "try to upload added $file"
