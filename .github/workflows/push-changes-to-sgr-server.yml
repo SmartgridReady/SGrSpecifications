@@ -36,8 +36,8 @@ jobs:
           curl --silent --upload-file "$file" "https://library.smartgridready.ch/$file?update&token=$SGR_WEB_APP_TOKEN"
         done
         for file in ${{ steps.changed-files.outputs.deleted_files }}; do
-          echo "try to upload deleted file: $file"
-          curl --silent --upload-file "$file" "https://library.smartgridready.ch/$file?delete&token=$SGR_WEB_APP_TOKEN"
+          echo "try to delete file: $file"
+          curl --silent "$file" "https://library.smartgridready.ch/$file?delete&token=$SGR_WEB_APP_TOKEN"
         done
         for file in ${{ steps.changed-files.outputs.renamed_files }}; do
           echo "try to upload renamed file: $file (as update as we do not know the old name)"
