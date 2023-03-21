@@ -21,6 +21,9 @@ jobs:
       env:
         SGR_WEB_APP_TOKEN: ${{ secrets.SGR_WEB_APP_TOKEN }}
       run: |
+        for file in ${{ steps.changed-files.outputs.all_changed_and_modified_files }}; do
+          echo "detected changed file: $file"
+        done
         for file in ${{ steps.changed-files.outputs.added_files }}; do
           echo "try to upload added $file"
           curl --upload-file "$file" "https://library.smartgridready.ch/$file?add&token=$SGR_WEB_APP_TOKEN"
