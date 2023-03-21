@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="1.1" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:sgr="http://www.smartgridready.com/ns/V0/">
 
+    <xsl:import href="SGrGenericDataPointDefinitions.xsl" />
+    <xsl:import href="SGrGenericHelpers.xsl" />
+
     <!-- Generic Functional Profiles -->
     <xsl:template match="sgr:SGrFunctionalProfileFrame">
         <div class="functionalProfile">
