@@ -13,8 +13,8 @@
 		<sgr:deviceKind>HeatPumpAppliance</sgr:deviceKind>
 		<sgr:serialNumber>0</sgr:serialNumber>
 		<sgr:softwareRevision>
-			<sgr:primaryVersionNumber>1</sgr:primaryVersionNumber>
-			<sgr:secondaryVersionNumber>0</sgr:secondaryVersionNumber>
+			<sgr:primaryVersionNumber>2</sgr:primaryVersionNumber>
+			<sgr:secondaryVersionNumber>1</sgr:secondaryVersionNumber>
 			<sgr:subReleaseVersionNumber>0</sgr:subReleaseVersionNumber>
 		</sgr:softwareRevision>
 		<sgr:hardwareRevision>
@@ -43,9 +43,7 @@
 			</sgr:address>
 			<sgr:slaveID>1</sgr:slaveID>
 		</sgr:trspSrvModbusTCPoutOfBox>
-		<sgr:firstRegisterAddressIsOne>
-			true
-		</sgr:firstRegisterAddressIsOne>
+		<sgr:firstRegisterAddressIsOne>false</sgr:firstRegisterAddressIsOne>
 		<sgr:conversionScheme>ChangeWordOrder</sgr:conversionScheme>
 	</sgr:modbusInterfaceDesc>
 	<sgr:fpListElement>
@@ -188,7 +186,7 @@
 
 		</sgr:dpListElement>
 		<sgr:dpListElement>
-			<sgr:dataPoint datapointName="FlowWaterTemp" mroVisibilityIndicator="M" rwpDatadirection="R" unit="DEGREES_CELSIUS">
+			<sgr:dataPoint datapointName="SupplyWaterTemp" mroVisibilityIndicator="M" rwpDatadirection="R" unit="DEGREES_CELSIUS">
 				<sgr:basicDataType>
 					<sgr:float32>0.0</sgr:float32>
 				</sgr:basicDataType>
@@ -209,12 +207,12 @@
 			</sgr:modbusAttr>
 		</sgr:dpListElement>
 		<sgr:dpListElement>
-			<sgr:dataPoint datapointName="ReturnFlowWaterTemp" mroVisibilityIndicator="O" rwpDatadirection="R" unit="DEGREES_CELSIUS">
+			<sgr:dataPoint datapointName="ReturnSupplyWaterTemp" mroVisibilityIndicator="O" rwpDatadirection="R" unit="DEGREES_CELSIUS">
 				<sgr:basicDataType>
 					<sgr:float32>0.0</sgr:float32>
 				</sgr:basicDataType>
 				<sgr:dpNameList>
-					<sgr:sLV1Name>ReturnFlowWaterTemp</sgr:sLV1Name>
+					<sgr:sLV1Name>ReturnSupplyWaterTemp</sgr:sLV1Name>
 				</sgr:dpNameList>
 				<sgr:dpLegibDesc>
 					<sgr:textElement>Auslesen der aktuellen aktuellen-Temperatur des Rücklaufs.</sgr:textElement>
@@ -441,12 +439,12 @@ usw.
 			</sgr:modbusAttr>
 		</sgr:dpListElement>
 		<sgr:dpListElement>
-			<sgr:dataPoint datapointName="FlowWaterTemp" mroVisibilityIndicator="O" rwpDatadirection="R" unit="DEGREES_CELSIUS">
+			<sgr:dataPoint datapointName="SupplyWaterTemp" mroVisibilityIndicator="O" rwpDatadirection="R" unit="DEGREES_CELSIUS">
 				<sgr:basicDataType>
 					<sgr:float32>0.0</sgr:float32>
 				</sgr:basicDataType>
 				<sgr:dpNameList>
-					<sgr:sLV1Name>FlowWaterTemp</sgr:sLV1Name>
+					<sgr:sLV1Name>SupplyWaterTemp</sgr:sLV1Name>
 				</sgr:dpNameList>
 				<sgr:dpLegibDesc>
 					<sgr:textElement>Auslesen der aktuellen aktuellen-Temperatur des Vorlaufs.</sgr:textElement>
@@ -469,12 +467,12 @@ usw.
 			</sgr:modbusAttr>
 		</sgr:dpListElement>
 		<sgr:dpListElement>
-			<sgr:dataPoint datapointName="FlowWaterTempStpt" mroVisibilityIndicator="O" rwpDatadirection="RW" unit="DEGREES_CELSIUS">
+			<sgr:dataPoint datapointName="SupplyWaterTempStpt" mroVisibilityIndicator="O" rwpDatadirection="RW" unit="DEGREES_CELSIUS">
 				<sgr:basicDataType>
 					<sgr:float32>0.0</sgr:float32>
 				</sgr:basicDataType>
 				<sgr:dpNameList>
-					<sgr:sLV1Name>FlowWaterTempStpt</sgr:sLV1Name>
+					<sgr:sLV1Name>SupplyWaterTempStpt</sgr:sLV1Name>
 				</sgr:dpNameList>
 				<sgr:dpLegibDesc>
 					<sgr:textElement>Setzen der aktuellen Soll-Temperatur des Vorlaufs (Grundwert).</sgr:textElement>
@@ -497,12 +495,12 @@ usw.
 			</sgr:modbusAttr>
 		</sgr:dpListElement>
 		<sgr:dpListElement>
-			<sgr:dataPoint datapointName="ReturnFlowWaterTemp" mroVisibilityIndicator="O" rwpDatadirection="R" unit="DEGREES_CELSIUS">
+			<sgr:dataPoint datapointName="ReturnSupplyWaterTemp" mroVisibilityIndicator="O" rwpDatadirection="R" unit="DEGREES_CELSIUS">
 				<sgr:basicDataType>
 					<sgr:float32>0.0</sgr:float32>
 				</sgr:basicDataType>
 				<sgr:dpNameList>
-					<sgr:sLV1Name>ReturnFlowWaterTemp</sgr:sLV1Name>
+					<sgr:sLV1Name>ReturnSupplyWaterTemp</sgr:sLV1Name>
 				</sgr:dpNameList>
 				<sgr:dpLegibDesc>
 					<sgr:textElement>Auslesen der aktuellen aktuellen-Temperatur des Rücklaufs.</sgr:textElement>
@@ -551,7 +549,12 @@ usw.
 		<sgr:dpListElement>
 			<sgr:dataPoint datapointName="DomHotWOpMode" mroVisibilityIndicator="M" rwpDatadirection="RW" unit="NONE">
 				<sgr:basicDataType>
-					<sgr:int32U>0</sgr:int32U>
+					<sgr:enum>
+						<sgr:ctaDHWOpMode>DHW_UNDEF</sgr:ctaDHWOpMode>
+						
+						
+					</sgr:enum>
+					
 				</sgr:basicDataType>
 				<sgr:dpNameList>
 					<sgr:sLV1Name>HPOpModeCmd</sgr:sLV1Name>
@@ -563,10 +566,14 @@ usw.
 			</sgr:dataPoint>
 			<sgr:modbusDataPoint>
 				<sgr:modbusDataType>
-					<sgr:int32U>0</sgr:int32U>
+					<sgr:enum>
+						<sgr:ctaDHWOpMode>DHW_UNDEF</sgr:ctaDHWOpMode>
+						
+					</sgr:enum>
+					
 				</sgr:modbusDataType>
 				<sgr:modbusFirstRegisterReference registerType="HoldRegister" addr="1013" bitRank="0" />
-				<sgr:dpSizeNrRegisters>2</sgr:dpSizeNrRegisters>
+				<sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
 				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
 			</sgr:modbusDataPoint>
 			<sgr:modbusAttr>

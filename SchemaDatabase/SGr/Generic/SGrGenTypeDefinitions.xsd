@@ -1087,6 +1087,22 @@
       <enumeration value="DHW_ECO_OP" />
     </restriction>
   </simpleType>
+  <simpleType name="ctaDHWOpModeType">
+    <annotation>
+      <documentation>E0019:
+     Basic operation type of CTA Domestic Hot Water Heat Pump operation mode
+      	ON OFF Push  temporary-off emergency-op      
+	</documentation>
+    </annotation>
+    <restriction base="string">
+      <enumeration value="DHW_UNDEF" />
+      <enumeration value="DHW_ON" />
+      <enumeration value="DHW_OFF" />
+      <enumeration value="DHW_PUSH" />
+      <enumeration value="DHW_TMP_OFF" />
+      <enumeration value="DHW_EMERGENCY" />
+    </restriction>
+  </simpleType>
 
 
   <complexType name="SGrEnumListType">
@@ -1107,6 +1123,7 @@
       <element maxOccurs="1" minOccurs="1" name="sgrHPOpMode" type="sgr:SGrHPOpModeType" />
       <element maxOccurs="1" minOccurs="1" name="sgrHCOpMode" type="sgr:SGrHCOpModeType" />
       <element maxOccurs="1" minOccurs="1" name="sgrDHWOpMode" type="sgr:SGrDHWOpModeType" />
+      <element maxOccurs="1" minOccurs="1" name="ctaDHWOpMode" type="sgr:ctaDHWOpModeType" />
     </choice>
   </complexType>
 
