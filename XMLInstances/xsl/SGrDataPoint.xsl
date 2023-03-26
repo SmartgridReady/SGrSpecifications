@@ -13,6 +13,7 @@
 	<xsl:import href="SGrGenericDataPointDefinitions.xsl" />
 	<xsl:import href="SGrGenericHelpers.xsl" />
 	<xsl:import href="SGrGenericLegibDocumentationType.xsl" />
+	<xsl:import href="SGrGenericNamelistType.xsl" />
 
 
 	<!-- SGrDataPointType -->
@@ -22,7 +23,9 @@
 				<xsl:value-of select="sgr:dataPoint/@datapointName" />
 			</td>
 			<td>
-				<xsl:value-of select="sgr:dataPoint/@unit" />
+				<xsl:call-template name="SGrUnits">
+					<xsl:with-param name="value" select="sgr:dataPoint/@unit" />
+				</xsl:call-template>
 			</td>
 			<td>
 				<xsl:if test="sgr:dataPoint/sgr:basicDataType">

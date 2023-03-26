@@ -2,39 +2,44 @@ name: Push changed files to SGr server
 run-name: ${{ github.actor }} is pushing changed files to SGr server 🚀
 on:
   push:
-    branches: [ master ]
+    branches:
+      - 'master'
 jobs:
   upload:
     runs-on: ubuntu-latest
+    name: Push uploaded files to SGr server
     steps:
-    - name: Checkout
-      uses: actions/checkout@v3.4.0
+    - uses: actions/checkout@v3
       with:
         fetch-depth: 0
-    - name: Changed Files
-      uses: tj-actions/changed-files@v35.7.1
+      
+    - name: Get changed files
+      uses: tj-actions/changed-files@v35
+      with:
+        # include_all_old_new_renamed_files: true
+        fetch_depth: 1
       id: changed-files
-    - name: curl
+      
+    - name: push changed files via curl to SGrWebApp
       env:
         SGR_WEB_APP_TOKEN: ${{ secrets.SGR_WEB_APP_TOKEN }}
       run: |
+        for file in ${{ steps.changed-files.outputs.all_changed_and_modified_files }}; do # detects deleted files, too
+          echo "detected changed file: $file"
+        done
         for file in ${{ steps.changed-files.outputs.added_files }}; do
-          echo "try to upload added $file"
-          curl --silent --upload-file "$file" https://library.smartgridready.ch/$file?add&$token=$SGR_WEB_APP_TOKEN
+          echo "try to upload added file: $file"
+          curl --silent --upload-file "$file" "https://library.smartgridready.ch/$file?add&token=$SGR_WEB_APP_TOKEN"
         done
         for file in ${{ steps.changed-files.outputs.modified_files }}; do
-          echo "try to upload modified $file"
-          curl --silent --upload-file "$file" https://library.smartgridready.ch/$file?update$token=$SGR_WEB_APP_TOKEN
+          echo "try to upload modified file: $file"
+          curl --silent --upload-file "$file" "https://library.smartgridready.ch/$file?update&token=$SGR_WEB_APP_TOKEN"
         done
-        for file in ${{ steps.changed-files.deleted_files }}; do
-          echo "try to upload deleted $file"
-          curl --silent --upload-file "$file" https://library.smartgridready.ch/$file?delete$token=$SGR_WEB_APP_TOKEN
+        for file in ${{ steps.changed-files.outputs.deleted_files }}; do
+          echo "try to delete file: $file"
+          curl --silent "$file" "https://library.smartgridready.ch/$file?delete&token=$SGR_WEB_APP_TOKEN"
         done
-        for file in ${{ steps.changed-files.renamed_files }}; do
-          echo "try to upload renamed $file"
-          # curl --silent --upload-file "$file" https://library.smartgridready.ch/$file?rename$token=$SGR_WEB_APP_TOKEN
-        done
-        for file in ${{ steps.changed-files.all_old_new_renamed_files }}; do
-          echo "try to upload renamed (old/new) $file"
-          # curl --silent --upload-file "$file" https://library.smartgridready.ch/$file?rename$token=$SGR_WEB_APP_TOKEN
+        for file in ${{ steps.changed-files.outputs.renamed_files }}; do
+          echo "try to upload renamed file: $file (as update as we do not know the old name)"
+          curl --silent --upload-file "$file" "https://library.smartgridready.ch/$file?update&token=$SGR_WEB_APP_TOKEN"
         done
