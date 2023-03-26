@@ -82,7 +82,7 @@ Benefits:
 				<sgr:specsOwnerId>0</sgr:specsOwnerId>
 				<sgr:profileIdentification>HeatPumpControl</sgr:profileIdentification>
 				<sgr:subProfileIdent>HeatPumpBase</sgr:subProfileIdent>
-				<sgr:sgrLevelOfOperation>4</sgr:sgrLevelOfOperation>
+				<sgr:sgrLevelOfOperation>2m</sgr:sgrLevelOfOperation>
 				<sgr:versionNumber>
 					<sgr:primaryVersionNumber>0</sgr:primaryVersionNumber>
 					<sgr:secondaryVersionNumber>2</sgr:secondaryVersionNumber>
@@ -122,7 +122,21 @@ werden, während der andere Parameter fest definiert wird</sgr:textElement>
 					<sgr:sHPbwpName>sgr:sHPbwpName</sgr:sHPbwpName>
 				</sgr:dpNameList>
 				<sgr:dpLegibDesc>
-					<sgr:textElement>Grund-Betriebsart der Wärmepumpe (Bereitschaft, Programm, Komfort, Eco, Warmwasser, Notbetrieb)</sgr:textElement>
+					<sgr:textElement> 
+					<![CDATA[
+					<p>Grund-Betriebsart der Wärmepumpe</pl>
+					<ol>
+   					<li><strong>WP_EMERG_OP:</strong> Notbetrieb</li>
+   					<li><strong>WP_READY:</strong> Bereitschaft</li>
+   					<li><strong>WP_PROG_OP:</strong> Programmbetrieb</li>
+   					<li><strong>WP_COMFORT_OP:</strong> Komfortbetrieb</li>
+   					<li><strong>WP_ECO_OP:</strong> ECO Betrieb</li>
+   					<li><strong>WP_DOM_WATER_OP:</strong> Warmwassererzeugung</li>  
+   					<li><strong>WP_COOL_ACTIVE_OP:</strong> Kuehlen aktiv</li>  
+   					<li><strong>WP_COOL_PASSIVE_OP:</strong> Kuehlen passic</li>   
+					</ol>
+					]]>					
+					</sgr:textElement>
 					<sgr:language>de</sgr:language>
 				</sgr:dpLegibDesc>
 				<sgr:dpPrgDesc>
@@ -145,9 +159,8 @@ werden, während der andere Parameter fest definiert wird</sgr:textElement>
 			<sgr:dataPoint datapointName="HPOpState" mroVisibilityIndicator="M" rwpDatadirection="R" unit="NONE">
 				<sgr:basicDataType>
 					<sgr:enum2bitmapIndex>
-						<sgr:sgrHPOpstateStiebel>SILENT_MODE_1_ACTIVE</sgr:sgrHPOpstateStiebel>						
-					</sgr:enum2bitmapIndex>
-					
+						<sgr:sgrHPOpstate>HP_PUMP_ON</sgr:sgrHPOpstate>						
+					</sgr:enum2bitmapIndex>					
 				</sgr:basicDataType>
 				<sgr:dpNameList>
 					<sgr:sLV1Name>HPOpState</sgr:sLV1Name>
@@ -155,27 +168,23 @@ werden, während der andere Parameter fest definiert wird</sgr:textElement>
 					<sgr:sHPbwpName>Aktive Funktion</sgr:sHPbwpName>
 				</sgr:dpNameList>
 				<sgr:dpLegibDesc>
-					<sgr:textElement> Auslesen des aktuellen Status der Wärmepumpe (HK 1 PUMPE,HK 2 PUMPE, AUFHEIZPROGRAMM, NHZ STUFEN IN BETRIEB, WP IM HEIZBETRIEB, WP IM WARMWASSERBETRIEB, VERDICHTER IN BETRIEB, SOMMERBETRIEB AKTIV, KUEHLBETRIEB AKTIV,  MIN. EINE IWS IM ABTAUBETRIEB, SILENTMODE 1 AKTIV, SILENTMODE 2 AKTIV (WP AUS)</sgr:textElement>
+					<sgr:textElement>            
+				<![CDATA[	
+					<p>Auslesen des aktuellen Status der Wärmepumpe</p>
+					<ol>
+   					<li><strong>HP_PUMP_ON:</strong> Waermepumpe EIN</li>
+   					<li><strong>HP_IN_HEATING_MODE:</strong> Waermepumpe heizt</li>
+   					<li><strong>HP_IN_DHW_MODE:</strong> Waermepumpe im Warmwassermode</li>
+   					<li><strong>COMPRESSOR_RUNNING:</strong> Kompressor laeuft</li>
+   					<li><strong>SUMMER_MODE_ACTIVE:</strong> Waermepumpe im Sommermodus</li>
+   					<li><strong>COOLING_MODE_ACTIVE:</strong> Waermepumpe kuehlt</li>
+   					<li><strong>IN_DEFROST_MODE:</strong> Waermepumpe im Gefrierschutzmode</li>
+					</ol>
+				]]></sgr:textElement>
 					<sgr:language>de</sgr:language>
-				</sgr:dpLegibDesc>
+				</sgr:dpLegibDesc>	
 				<sgr:dpPrgDesc>
-					<sgr:textElement>Bitcodierte Statusinformation
-B0: HC 1 PUMP ein
-B1: HC 2 PUMP ein
-B2: AUFHEIZPROGRAMM 
-B3: NHZ STUFEN IN BETRIEB 
-B4: WP IM HEIZBETRIEB 
-B5: WP IM WARMWASSERBETRIEB 
-B6: VERDICHTER IN BETRIEB 
-B7: SOMMERBETRIEB AKTIV 
-B8: KUEHLBETRIEB AKTIV 
-B9: MIN. EINE IWS IM ABTAUBETRIEB
-B10: SILENTMODE 1 AKTIV 
-B11: SILENTMODE 2 AKTIV (WP AUS) 
-					</sgr:textElement>
-					<sgr:language>de</sgr:language>
-				</sgr:dpPrgDesc>				<sgr:dpPrgDesc>
-					<sgr:textElement>Bit code status information
+					<sgr:textElement>manufacturer Bit code status information mapped directly
 B0: HC 1 PUMP on
 B1: HC 2 PUMP on
 B2: HEAT-UP PROGRAM 
@@ -202,6 +211,67 @@ B11: SILENT MODE 2 ACTIVE (HP OFF)
 			</sgr:modbusDataPoint>
 		</sgr:dpListElement>
 
+		<sgr:dpListElement>
+			<sgr:dataPoint datapointName="HPOpStateStiebel" mroVisibilityIndicator="M" rwpDatadirection="R" unit="NONE">
+				<sgr:basicDataType>
+					<sgr:enum2bitmapIndex>
+						<sgr:stiHPOpstateStiebel>SILENT_MODE_1_ACTIVE</sgr:stiHPOpstateStiebel>						
+					</sgr:enum2bitmapIndex>					
+				</sgr:basicDataType>
+				<sgr:dpNameList>
+					<sgr:sLV1Name>HPOpState</sgr:sLV1Name>
+					<sgr:sManufName>Betriebsstatus</sgr:sManufName>
+					<sgr:sHPbwpName>Aktive Funktion</sgr:sHPbwpName>
+				</sgr:dpNameList>
+				<sgr:dpLegibDesc>
+					<sgr:textElement>            
+				<![CDATA[	
+					<p>Auslesen des aktuellen Status der Wärmepumpe</p>
+					<ol>
+   					<li><strong>HP_1_PUMP_ON:</strong> Waermepumpe 1 EIN</li>
+   					<li><strong>HP_2_PUMP_ON:</strong> Waermepumpe 2 EIN</li>
+   					<li><strong>HEATUP_PROGRAM:</strong> </li>
+   					<li><strong>NHZ_STAGES_RUNNING:</strong> </li>
+   					<li><strong>HP_IN_HEATING_MODE:</strong> Waermepumpe heizt</li>
+   					<li><strong>HP_IN_DHW_MODE:</strong> Waermepumpe im Warmwassermode</li>
+   					<li><strong>COMPRESSOR_RUNNING:</strong> Kompressor laeuft</li>
+   					<li><strong>SUMMER_MODE_ACTIVE:</strong> Waermepumpe im Sommermodus</li>
+   					<li><strong>COOLING_MODE_ACTIVE:</strong> Waermepumpe kuehlt</li>   					
+   					<li><strong>MIN_ONE_IWS_IN_DEFROST_MODE:</strong> Waermepumpe im Gefrierschutzmode</li>
+   					<li><strong>SILENT_MODE_1_ACTIVE:</strong> </li>
+   					<li><strong>SILENT_MODE_2_ACTIVE:</strong> WP AUS </li>
+   					HP_1_PUMP_ON
+					</ol>
+				]]></sgr:textElement>
+					<sgr:language>de</sgr:language>
+				</sgr:dpLegibDesc>				
+				<sgr:dpPrgDesc>
+					<sgr:textElement>>manufacturer Bit code status information mapped directly
+B0: HC 1 PUMP on
+B1: HC 2 PUMP on
+B2: HEAT-UP PROGRAM 
+B3: NHZ STAGES RUNNING 
+B4: HP IN HEATING MODE 
+B5: HP IN DHW MODE 
+B6: COMPRESSOR RUNNING 
+B7: SUMMER MODE ACTIVE 
+B8: COOLING MODE ACTIVE 
+B9: MIN. ONE IWS IN DEFROST MODE
+B10: SILENT MODE 1 ACTIVE 0
+B11: SILENT MODE 2 ACTIVE (HP OFF)
+					</sgr:textElement>
+					<sgr:language>en</sgr:language>
+				</sgr:dpPrgDesc>
+			</sgr:dataPoint>
+			<sgr:modbusDataPoint>
+				<sgr:modbusDataType>
+					<sgr:int16U>0</sgr:int16U>
+				</sgr:modbusDataType>
+				<sgr:modbusFirstRegisterReference registerType="InputRegister" addr="2501" bitRank="0" />
+				<sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
+				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
+			</sgr:modbusDataPoint>
+		</sgr:dpListElement>
 		<sgr:dpListElement>
 			<sgr:dataPoint datapointName="ErrorNrSGr" mroVisibilityIndicator="M" rwpDatadirection="R" unit="NONE">
 				<sgr:basicDataType>
@@ -523,7 +593,7 @@ B11: SILENT MODE 2 ACTIVE (HP OFF)
 				<sgr:specsOwnerId>0</sgr:specsOwnerId>
 				<sgr:profileIdentification>HeatPumpControl</sgr:profileIdentification>
 				<sgr:subProfileIdent>HeatCoolCtrl</sgr:subProfileIdent>
-				<sgr:sgrLevelOfOperation>4</sgr:sgrLevelOfOperation>
+				<sgr:sgrLevelOfOperation>4m</sgr:sgrLevelOfOperation>
 				<sgr:versionNumber>
 					<sgr:primaryVersionNumber>0</sgr:primaryVersionNumber>
 					<sgr:secondaryVersionNumber>2</sgr:secondaryVersionNumber>
@@ -674,7 +744,7 @@ B11: SILENT MODE 2 ACTIVE (HP OFF)
 				<sgr:specsOwnerId>0</sgr:specsOwnerId>
 				<sgr:profileIdentification>HeatPumpControl</sgr:profileIdentification>
 				<sgr:subProfileIdent>DomHotWaterCtrl</sgr:subProfileIdent>
-				<sgr:sgrLevelOfOperation>4</sgr:sgrLevelOfOperation>
+				<sgr:sgrLevelOfOperation>4m</sgr:sgrLevelOfOperation>
 				<sgr:versionNumber>
 					<sgr:primaryVersionNumber>0</sgr:primaryVersionNumber>
 					<sgr:secondaryVersionNumber>2</sgr:secondaryVersionNumber>
@@ -817,7 +887,7 @@ B11: SILENT MODE 2 ACTIVE (HP OFF)
 				<sgr:specsOwnerId>0</sgr:specsOwnerId>
 				<sgr:profileIdentification>HeatPumpControl</sgr:profileIdentification>
 				<sgr:subProfileIdent>BufferStorageCtrl</sgr:subProfileIdent>
-				<sgr:sgrLevelOfOperation>4</sgr:sgrLevelOfOperation>
+				<sgr:sgrLevelOfOperation>m</sgr:sgrLevelOfOperation>
 				<sgr:versionNumber>
 					<sgr:primaryVersionNumber>0</sgr:primaryVersionNumber>
 					<sgr:secondaryVersionNumber>2</sgr:secondaryVersionNumber>
@@ -907,7 +977,7 @@ B11: SILENT MODE 2 ACTIVE (HP OFF)
 				<sgr:specsOwnerId>0</sgr:specsOwnerId>
 				<sgr:profileIdentification>HeatPumpControl</sgr:profileIdentification>
 				<sgr:subProfileIdent>SG-ReadyStates_bwp</sgr:subProfileIdent>
-				<sgr:sgrLevelOfOperation>2</sgr:sgrLevelOfOperation>
+				<sgr:sgrLevelOfOperation>2m</sgr:sgrLevelOfOperation>
 				<sgr:versionNumber>
 					<sgr:primaryVersionNumber>0</sgr:primaryVersionNumber>
 					<sgr:secondaryVersionNumber>2</sgr:secondaryVersionNumber>
@@ -1057,7 +1127,7 @@ die Einbindung in ein intelligentes Stromnetz
 				<sgr:specsOwnerId>0</sgr:specsOwnerId>
 				<sgr:profileIdentification>HeatPumpControl</sgr:profileIdentification>
 				<sgr:subProfileIdent>EnergyMonitor</sgr:subProfileIdent>
-				<sgr:sgrLevelOfOperation>4</sgr:sgrLevelOfOperation>
+				<sgr:sgrLevelOfOperation>m</sgr:sgrLevelOfOperation>
 				<sgr:versionNumber>
 					<sgr:primaryVersionNumber>0</sgr:primaryVersionNumber>
 					<sgr:secondaryVersionNumber>1</sgr:secondaryVersionNumber>
