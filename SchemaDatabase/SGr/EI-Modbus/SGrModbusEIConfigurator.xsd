@@ -11,39 +11,55 @@
 			</documentation>
 		</annotation>
 		<all>
-			<element maxOccurs="1" minOccurs="0" name="scalingByMulPwr" type="sgr:SGrScalingType">
+			<element maxOccurs="1" minOccurs="0" name="scalingByMulPwr"
+				type="sgr:SGrScalingType">
 				<annotation>
 					<documentation>
-    				generic value = dataPoint * m * 10^p
-    			</documentation>
+						generic value = dataPoint * m * 10^p
+					</documentation>
 				</annotation>
 			</element>
-			<element maxOccurs="1" minOccurs="0" name="stepByIncrement" type="unsignedInt">
+			<element maxOccurs="1" minOccurs="0" name="stepByIncrement"
+				type="unsignedInt">
 				<annotation>
 					<documentation>each didgit</documentation>
 				</annotation>
 			</element>
-			<element maxOccurs="1" minOccurs="0" name="sunssf" type="unsignedInt">
+			<element maxOccurs="1" minOccurs="0" name="sunssf"
+				type="unsignedInt">
 				<annotation>
 					<documentation>
-    				a Sunpec specific attribute (scalefactor p -10 ...
-    				+10) generic value = dataPoint * 10^p note: Sunspec
-    				uses sunssf usually as Modbus Register with dynamic
-    				values check attribute "timeAlignedNotification"
-    			</documentation>
+						a Sunpec specific attribute (scalefactor p -10
+						... +10) generic value = dataPoint * 10^p note:
+						Sunspec uses sunssf usually as Modbus Register
+						with dynamic values check attribute
+						"timeAlignedNotification"
+					</documentation>
 				</annotation>
 			</element>
-			<element maxOccurs="1" minOccurs="0" name="pollLatencyMS" type="unsignedInt">
+			<element maxOccurs="1" minOccurs="0" name="pollLatencyMS"
+				type="unsignedInt">
 				<annotation>
 					<documentation>
-    				the time for a master slave communication cycle in ms
-    			</documentation>
+						the time for a master slave communication cycle
+						in ms
+					</documentation>
 				</annotation>
 			</element>
-			<element name="accessProtection" type="sgr:SGrAccessProtectionEnabledType" maxOccurs="1" minOccurs="0"></element>
-			<element name="layer6Deviation" type="sgr:SGrModbusLayer6DeviationType" maxOccurs="1" minOccurs="0"></element>
+			<element name="accessProtection"
+				type="sgr:SGrAccessProtectionEnabledType" maxOccurs="1"
+				minOccurs="0">
+			</element>
+			<element name="layer6Deviation"
+				type="sgr:SGrModbusLayer6DeviationType" maxOccurs="1"
+				minOccurs="0">
+			</element>
+			<element name="iopEnumMapper"
+				type="sgr:SGrModbusEnumMapperType" maxOccurs="1" minOccurs="0">
+			</element>
+			<element name="iopBitmapMapper" type="sgr:SGrModbusBitmapMapperType" maxOccurs="1" minOccurs="0"></element>
 		</all>
-	</complexType>
+  </complexType>
   <complexType name="SGrModbusInterfaceDescriptionType">
     <sequence>
       <element maxOccurs="1" minOccurs="1" name="modbusInterfaceSelection" type="sgr:ModbusInterfaceSelectionType"/>
@@ -53,6 +69,7 @@
       <element maxOccurs="unbounded" minOccurs="1" name="conversionScheme" type="sgr:tEnumConversionFct"/>
     </sequence>
   </complexType>
+ 	
   <simpleType name="ModbusInterfaceSelectionType">
     <restriction base="string">
       <enumeration value="RTU"/>
@@ -288,5 +305,53 @@
         </annotation>
       </enumeration>              
     </restriction>
-  </simpleType>       
+  </simpleType>      
+    <complexType name="SGrModbusEnumMapperType">   
+      <annotation>
+         <documentation>
+          Enumerations typically define operation modes or singlular states. Devices use different control schemes, SmartGridrady defines a commmon information model for interoperable behaviour.
+          At interface class level, enums may use different binary values. 
+         </documentation>
+        </annotation>
+    <sequence> 
+      <annotation>
+         <documentation>
+            modbusEnumMapper uses indexes as the value of the generic definition, the value of shows the proprietary value.
+           (Write data direction)
+           genEnumMapper  uses indexes as the  value of the proprietary definition, the value shows the generic value
+           (Read data direction)
+          </documentation>
+      </annotation>        
+	  <element name="modbusEnumMapper" type="unsignedInt"
+				maxOccurs="unbounded" minOccurs="1">
+	  </element>
+	  <element name="genEnumMapper" type="unsignedInt"
+				maxOccurs="unbounded" minOccurs="1">
+		</element>
+	</sequence>
+  </complexType>	
+  <complexType name="SGrModbusBitmapMapperType">   
+      <annotation>
+         <documentation>
+          Bitmaps typically define operation modes or parallel active states. Devices use different control schemes, SmartGridrady defines a commmon information model for interoperable behaviour.
+          At interface class level, Bitmaps may use different binary values. 
+         </documentation>
+        </annotation>
+    <sequence>		
+      <annotation>
+         <documentation>
+            modbusBitMapper uses indexes as the value of the generic definition, the value of shows the proprietary value.
+           (Write data direction)
+           genBitMapper  uses indexes as the  value of the proprietary definition, the value shows the generic value
+           (Read data direction)
+          </documentation>
+      </annotation>       
+	  <element name="modbusBitMapper" type="unsignedInt"
+				maxOccurs="unbounded" minOccurs="1">
+	  </element>
+	  <element name="genBitMapper" type="unsignedInt"
+				maxOccurs="unbounded" minOccurs="1">
+		</element> 
+		</sequence>
+ </complexType>		 
 </schema>
