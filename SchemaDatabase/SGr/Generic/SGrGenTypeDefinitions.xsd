@@ -797,6 +797,18 @@
 			</documentation>
     </annotation>
     <restriction base="string">
+      <enumeration value="HP_NULL">
+        <annotation>
+          <documentation> value 0 is not vslid
+					</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="HP_LOCKED">
+        <annotation>
+          <documentation> Locked operation for a maximum of 2 hours
+					</documentation>
+        </annotation>
+      </enumeration>
       <enumeration value="HP_NORMAL">
         <annotation>
           <documentation>Normal operation, optimized according to customer
@@ -807,12 +819,6 @@
       <enumeration value="HP_INTENSIFIED">
         <annotation>
           <documentation>Increased operation</documentation>
-        </annotation>
-      </enumeration>
-      <enumeration value="HP_LOCKED">
-        <annotation>
-          <documentation> Locked operation for a maximum of 2 hours
-					</documentation>
         </annotation>
       </enumeration>
       <enumeration value="HP_FORCED">
@@ -924,7 +930,7 @@
 	 </documentation>
     </annotation>
     <restriction base="string">
-      <enumeration value="EV_STATE_NUL" />
+      <enumeration value="EV_STATE_NULL" />
       <enumeration value="EV_STANDBY" />
       <enumeration value="EV_DETECTED" />
       <enumeration value="EV_READY4CHARGING" />
@@ -1089,13 +1095,13 @@
   </simpleType>
   <simpleType name="ctaDHWOpModeType">
     <annotation>
-      <documentation>E0019:
+      <documentation>Ecta001:
      Basic operation type of CTA Domestic Hot Water Heat Pump operation mode
       	ON OFF Push  temporary-off emergency-op      
 	</documentation>
     </annotation>
     <restriction base="string">
-      <enumeration value="DHW_NUL" />
+      <enumeration value="DHW_NULL" />
       <enumeration value="DHW_ON" />
       <enumeration value="DHW_OFF" />
       <enumeration value="DHW_PUSH" />
@@ -1105,9 +1111,8 @@
   </simpleType>    
   <simpleType name="ctaHPOpStateType">
     <annotation>
-      <documentation>BMcta001:
+      <documentation>Ecta002:
      BitRank (or enum?) map for CTA Heatpump status information
-     Register address 2202 Size 2 (int32U, Input Register)
 #1 =   Stand by
 #2 =   Alarm Aus
 #3 =   Ext. aus
@@ -1130,7 +1135,7 @@
 	</documentation>
 	</annotation>
     <restriction base="string">
-      <enumeration value="HP_NUL"/>
+      <enumeration value="HP_NULL"/>
       <enumeration value="HP_STANDBY"/>
       <enumeration value="HP_ALARM_OFF"/>
       <enumeration value="HP_EXTERNAL_OFF"/>
@@ -1153,10 +1158,9 @@
     </restriction>
   </simpleType>  
     <simpleType name="ctaHPOpModeType">
-    <annotation>
-      <documentation>BMcta002:
-     BitRank (or enum?) map for CTA Heatpump status information
-     Register address 2204 Size 1 (int16U, Input Register)
+       <annotation>
+          <documentation>Ecta003:
+     map for CTA Heatpump HeatCool modes information
 #1 =	WP in Stand by Modus
 #2 =	Heizbetrieb aktiv
 #3 =	Notbetrieb Heizen aktiv
@@ -1174,7 +1178,7 @@
 </documentation>
 	</annotation>
     <restriction base="string">
-      <enumeration value="HP_NUL"/>
+      <enumeration value="HP_NULL"/>
       <enumeration value="HP_STANDBY"/>
       <enumeration value="HP_HEATING_OP"/>
       <enumeration value="HP_EMERG_HEATING_ACTIVE"/>
@@ -1189,6 +1193,25 @@
       <enumeration value="HP_PASSIVE_COOLING_OP"/>
       <enumeration value="HP_RESERVE"/>
       <enumeration value="HP_COMBINDED_BUFFER_LOADING"/>
+      </restriction>
+  </simpleType>  
+
+  <simpleType name="ctaHCOpModeType">
+   <annotation>
+     <documentation>Ecta004:
+     map for CTA Heatpump HeatCool modes Automatik
+#1 Komfort
+#2 Reduziert
+#3 Frostschutz/Aus
+#4 Notbetrieb
+</documentation>
+	</annotation>
+    <restriction base="string">
+      <enumeration value="HP_NULL"/>
+      <enumeration value="HP_COMFORT"/>
+      <enumeration value="HP_ECO"/>
+      <enumeration value="HP_DEFROST"/>
+      <enumeration value="HP_EMERGENCY_OP"/>
       </restriction>
   </simpleType>  
 
@@ -1213,6 +1236,7 @@
       <element maxOccurs="1" minOccurs="1" name="ctaDHWOpMode" type="sgr:ctaDHWOpModeType" />
       <element maxOccurs="1" minOccurs="1" name="ctaHPOpState" type="sgr:ctaHPOpStateType" />
       <element maxOccurs="1" minOccurs="1" name="ctaHPOpMode" type="sgr:ctaHPOpModeType" />
+      <element maxOccurs="1" minOccurs="1" name="ctaHCOpMode" type="sgr:ctaHCOpModeType" />
     </choice>
   </complexType>
 
