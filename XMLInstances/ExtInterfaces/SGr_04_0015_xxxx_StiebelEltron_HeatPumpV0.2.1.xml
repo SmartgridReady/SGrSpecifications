@@ -540,12 +540,12 @@ B11: SILENT MODE 2 ACTIVE (HP OFF)
 			</sgr:modbusAttr>
 		</sgr:dpListElement>
 		<sgr:dpListElement>
-			<sgr:dataPoint datapointName="SupplyWaterTempStpComf" mroVisibilityIndicator="O" rwpDatadirection="RW" unit="DEGREES_CELSIUS">
+			<sgr:dataPoint datapointName="SupplyWaterTempStptComf" mroVisibilityIndicator="O" rwpDatadirection="RW" unit="DEGREES_CELSIUS">
 				<sgr:basicDataType>
 					<sgr:float32>0.0</sgr:float32>
 				</sgr:basicDataType>
 				<sgr:dpNameList>
-					<sgr:sLV1Name>SupplyWaterTempStpComf</sgr:sLV1Name>
+					<sgr:sLV1Name>SupplyWaterTempStptComf</sgr:sLV1Name>
 					<sgr:sManufName>sgr:sManufName</sgr:sManufName>
 					<sgr:sHPbwpName>sgr:sHPbwpName</sgr:sHPbwpName>
 				</sgr:dpNameList>
@@ -574,12 +574,12 @@ B11: SILENT MODE 2 ACTIVE (HP OFF)
 			</sgr:modbusAttr>
 		</sgr:dpListElement>
 		<sgr:dpListElement>
-			<sgr:dataPoint datapointName="SupplyWaterTempStpEco" mroVisibilityIndicator="O" rwpDatadirection="R" unit="DEGREES_CELSIUS">
+			<sgr:dataPoint datapointName="SupplyWaterTempStptEco" mroVisibilityIndicator="O" rwpDatadirection="R" unit="DEGREES_CELSIUS">
 				<sgr:basicDataType>
 					<sgr:float32>0.0</sgr:float32>
 				</sgr:basicDataType>
 				<sgr:dpNameList>
-					<sgr:sLV1Name>SupplyWaterTempStpEco</sgr:sLV1Name>
+					<sgr:sLV1Name>SupplyWaterTempStptEco</sgr:sLV1Name>
 				</sgr:dpNameList>
 				<sgr:dpLegibDesc>
 					<sgr:textElement>Setzen des  aktuellen Temperatusollwerts für Bertiebsart ECO</sgr:textElement>
@@ -693,12 +693,12 @@ B11: SILENT MODE 2 ACTIVE (HP OFF)
 			</sgr:modbusAttr>
 		</sgr:dpListElement>
 		<sgr:dpListElement>
-			<sgr:dataPoint datapointName="SupplyWaterTempStpComf" mroVisibilityIndicator="O" rwpDatadirection="RW" unit="DEGREES_CELSIUS">
+			<sgr:dataPoint datapointName="SupplyWaterTempStptComf" mroVisibilityIndicator="O" rwpDatadirection="RW" unit="DEGREES_CELSIUS">
 				<sgr:basicDataType>
 					<sgr:float32>0.0</sgr:float32>
 				</sgr:basicDataType>
 				<sgr:dpNameList>
-					<sgr:sLV1Name>SupplyWaterTempStpComf</sgr:sLV1Name>
+					<sgr:sLV1Name>SupplyWaterTempStptComf</sgr:sLV1Name>
 				</sgr:dpNameList>
 				<sgr:dpLegibDesc>
 					<sgr:textElement>Setzen des  aktuellen Temperatusollwerts für Bertiebsart Comfort</sgr:textElement>
@@ -725,12 +725,12 @@ B11: SILENT MODE 2 ACTIVE (HP OFF)
 			</sgr:modbusAttr>
 		</sgr:dpListElement>
 		<sgr:dpListElement>
-			<sgr:dataPoint datapointName="SupplyWaterTempStpEco" mroVisibilityIndicator="O" rwpDatadirection="R" unit="DEGREES_CELSIUS">
+			<sgr:dataPoint datapointName="SupplyWaterTempStptEco" mroVisibilityIndicator="O" rwpDatadirection="R" unit="DEGREES_CELSIUS">
 				<sgr:basicDataType>
 					<sgr:float32>0.0</sgr:float32>
 				</sgr:basicDataType>
 				<sgr:dpNameList>
-					<sgr:sLV1Name>SupplyWaterTempStpEco</sgr:sLV1Name>
+					<sgr:sLV1Name>SupplyWaterTempStptEco</sgr:sLV1Name>
 				</sgr:dpNameList>
 				<sgr:dpLegibDesc>
 					<sgr:textElement>Setzen des  aktuellen Temperatusollwerts für Bertiebsart ECO</sgr:textElement>
@@ -828,7 +828,7 @@ B11: SILENT MODE 2 ACTIVE (HP OFF)
 				<sgr:modbusDataType>
 					<sgr:int16>0</sgr:int16>
 				</sgr:modbusDataType>
-				<sgr:modbusFirstRegisterReference registerType="InputRegister" addr="523" bitRank="0" />
+				<sgr:modbusFirstRegisterReference registerType="HoldRegister" addr="523" bitRank="0" />
 				<sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
 				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
 			</sgr:modbusDataPoint>
@@ -845,7 +845,7 @@ B11: SILENT MODE 2 ACTIVE (HP OFF)
 					<sgr:float32>0</sgr:float32>
 				</sgr:basicDataType>
 				<sgr:dpNameList>
-					<sgr:sLV1Name>DomHotWTempStptOffset</sgr:sLV1Name>
+					<sgr:sLV1Name>DomHotWTempStptComf</sgr:sLV1Name>
 				</sgr:dpNameList>
 				<sgr:dpLegibDesc>
 					<sgr:textElement>Setpoint für Brauchwarnwasserspeicher im Comfort-Betrieb</sgr:textElement>
@@ -884,6 +884,9 @@ B11: SILENT MODE 2 ACTIVE (HP OFF)
 					<sgr:language>de</sgr:language>
 				</sgr:dpLegibDesc>
 			</sgr:dataPoint>
+			<sgr:genAttribute>
+				<sgr:minVal>10.0</sgr:minVal>
+				<sgr:maxVal>60.0</sgr:maxVal></sgr:genAttribute>
 			<sgr:modbusDataPoint>
 				<sgr:modbusDataType>
 					<sgr:int16>0</sgr:int16>
@@ -924,12 +927,12 @@ B11: SILENT MODE 2 ACTIVE (HP OFF)
 			</sgr:fpLegibDesc>
 		</sgr:functionalProfile>
 		<sgr:dpListElement>
-			<sgr:dataPoint datapointName="ActHeatBufferTempStpFb" mroVisibilityIndicator="M" rwpDatadirection="R" unit="DEGREES_CELSIUS">
+			<sgr:dataPoint datapointName="ActHeatBufferTempStptFb" mroVisibilityIndicator="M" rwpDatadirection="R" unit="DEGREES_CELSIUS">
 				<sgr:basicDataType>
 					<sgr:float32>0.0</sgr:float32>
 				</sgr:basicDataType>
 				<sgr:dpNameList>
-					<sgr:sLV1Name>ActHeatBufferTempStpFb</sgr:sLV1Name>
+					<sgr:sLV1Name>ActHeatBufferTempStptFb</sgr:sLV1Name>
 					<sgr:sHPbwpName>sgr:sHPbwpName</sgr:sHPbwpName>
 				</sgr:dpNameList>
 				<sgr:dpLegibDesc>
@@ -978,7 +981,7 @@ B11: SILENT MODE 2 ACTIVE (HP OFF)
 				<sgr:modbusDataType>
 					<sgr:int16>0</sgr:int16>
 				</sgr:modbusDataType>
-				<sgr:modbusFirstRegisterReference registerType="InputRegister" addr="522" bitRank="0" />
+				<sgr:modbusFirstRegisterReference registerType="InputRegister" addr="518" bitRank="0" />
 				<sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
 				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
 			</sgr:modbusDataPoint>
@@ -1034,7 +1037,11 @@ die Einbindung in ein intelligentes Stromnetz
 			</sgr:dataPoint>
 			<sgr:modbusDataPoint>
 				<sgr:modbusDataType>
-					<sgr:int16U>0</sgr:int16U>
+					<sgr:enum>
+						<sgr:sgreadyStateLv2>HP_NORMAL</sgr:sgreadyStateLv2>
+						
+					</sgr:enum>
+					
 				</sgr:modbusDataType>
 				<sgr:modbusFirstRegisterReference registerType="HoldRegister"
 					addr="4002" />
