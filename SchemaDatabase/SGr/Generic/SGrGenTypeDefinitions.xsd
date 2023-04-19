@@ -1213,7 +1213,215 @@
       <enumeration value="HP_DEFROST"/>
       <enumeration value="HP_EMERGENCY_OP"/>
       </restriction>
+  </simpleType>    
+  
+  <simpleType name="hovHPOpModeType">
+   <annotation>
+     <documentation>Ehov:
+     map for Hoval H 
+     // #0=Wärmeerzeuger aus
+	 // #1=Automatikbetrieb
+	 // #4=Manueller Heizbetrieb
+	 // #5=Manueller Kühlbetrieb 
+</documentation>
+	</annotation>
+    <restriction base="string">
+      <enumeration value="HP_OFF"/>
+      <enumeration value="HP_AUTOMATIC"/>
+      <enumeration value="HP_MAN_HEAT"/>
+      <enumeration value="HP_MAN_COOL"/>
+      </restriction>
   </simpleType>  
+  
+  
+  <simpleType name="hovHCOpModeType">
+   <annotation>
+     <documentation>Ehov:
+     map for Hoval H 
+     // #0=Standbybetrieb
+	 // #1=Woche 1
+	 // #2=Woche 2
+	 // #4=Konstant
+	 // #5=Sparbetrieb
+	 // #7=Handbetrieb Heizen
+	 // #8=Handbetrieb Kühlen
+</documentation>
+	</annotation>
+    <restriction base="string">
+      <enumeration value="HC_STANDBY"/>
+      <enumeration value="HC_PLAN_W1"/>
+      <enumeration value="HC_PLAN_W2"/>
+      <enumeration value="HC_CONSTANT"/>
+      <enumeration value="HC_ECO"/>
+      <enumeration value="HC_MAN_HEAT"/>
+      <enumeration value="HC_MAN_COOL"/>
+      </restriction>
+  </simpleType>  
+  
+  
+  <simpleType name="hovSGReadySrcSelType">
+   <annotation>
+     <documentation>Ehov:
+     map for Hoval H 
+     #0=AUS
+     #1=Eingangskontakte
+     #2=Systembus
+     #3=Verfügbare Leistung gedämpft
+</documentation>
+	</annotation>
+    <restriction base="string">
+      <enumeration value="SGR_src_OFF"/>
+      <enumeration value="SRC_src_CONTACTS"/>
+      <enumeration value="SRC_src_SysBUS"/>
+      <enumeration value="SRC_src_DAMPED"/>
+      </restriction>
+  </simpleType>  
+  
+  
+   <simpleType name="hovBufferStateType">
+   <annotation>
+     <documentation>Ehov: 
+	#0 = keine Anforderung, AUS
+	#1 = Anforderung, Temp. tief, PLP aus (Entladeschutz)
+	#2 = Anforderung, Ladung läuft
+	#3 = Anforderung, Sollwert erfüllt, Nachlauf aktiv
+	#4 = Anforderung, Sollwert erfüllt
+	#6 = Energiezwang
+	#7= Abschöpffunktion
+	
+	#Entladeregelung :
+	#0 = keine Anforderung (WEZ-Freigabe)
+	#2 = Anforderung, Sollwert nicht erfüllt, UPE steht Richtung WEZ bzw. YPEL regelt stetig auf PEF
+	#3 = Anforderung UPE-Umschaltverzögerung, UPE/YPEL steht Richtung WEZ
+	#4 = Anforderung, Sollwert erfüllt, UPE/YPEL steht Richtung Puffer
+	#6 = Energiezwang
+	#8 = Vorzugsbetrieb SmartGrid
+	#9 = Abnahmezwang Smart Grid
+	
+	für Modi manuell heizen / kühlen
+</documentation>
+	</annotation>
+    <restriction base="string">
+      <enumeration value="BUF_OFF"/>
+      <enumeration value="BUF_REQ_PROTECTED"/>
+      <enumeration value="BUF_REQ_ACTIVE"/>
+      <enumeration value="BUF_REQ_FINALIZING"/>
+      <enumeration value="BUF_REQ_DONE"/>
+      <enumeration value="BUF_RES"/>
+      <enumeration value="BUF_FORCED"/>
+      <enumeration value="BUF_SKIMMING"/>
+      <enumeration value="BUF_INTENSIFIED_EXT"/>
+      <enumeration value="BUF_FORCED_EXT"/>
+      </restriction>
+  </simpleType>  
+  
+   
+   <simpleType name="hovHCOpStateType">
+   <annotation>
+     <documentation>Ehov: 
+     Zustand Heizkreisregelung
+#0 = Abgeschaltet
+#1 = Normal Heizbetrieb
+#2 = Komfort Heizbetrieb
+#3 = Spar Heizbetrieb
+#4 = Frostbetrieb
+#5 = Zwangsabnahme (bei Zwang groesser +50p)
+#6 = Zwangsdrosselung  (bei Zwang kleiner -50p)
+#7 = Ferienbetrieb
+#8 = Partybetrieb
+#9 = Normal Kuehlbetrieb
+#10 = Komfort K?hlbetrieb
+#11 = Spar Kuehlbetrieb
+#12 = Stoerung
+#13 = Handbetrieb
+#14 = Schutz Kuehlbetrieb
+#15 = Partybetrieb Kuehlen
+#16 = Austrocknung Aufheizphase
+#17 = Austrocknung Stationaerphase
+#18 = Austrocknung Abkuehlphase
+#19 = Austrocknung Endphase
+#22 = Kuehlbetrieb Extern/Konstantanforderung
+#23 = Heizbetrieb Extern/Konstantanforderung
+#26 = Vorzugsbetrieb SmartGrid
+</documentation>
+	</annotation>
+    <restriction base="string">
+      <enumeration value="HC_OFF"/>
+      <enumeration value="HC_NORMAL_HEAT_OP"/>
+      <enumeration value="HC_COMFORT_HEAT_OP"/>
+      <enumeration value="HC_ECO_HEAT_OP"/>
+      <enumeration value="HC_DEFROST"/>
+      <enumeration value="HC_FORCED_OP"/>
+      <enumeration value="HC_FORCE_CURTAIL"/>
+      <enumeration value="HC_VACATION_OP"/>
+      <enumeration value="HC_PARTY_OP"/>
+      <enumeration value="HC_NORMAL_COOL_OP"/>
+      <enumeration value="HC_COMFORT_COOL_OP"/>
+      <enumeration value="HC_ECO_COOL_OP"/>
+      <enumeration value="HC_ERROR"/>
+      <enumeration value="HC_MANUAL_OP"/>
+      <enumeration value="HC_COOL_PROT"/>
+      <enumeration value="HC_PARTY_COOL_OP"/>
+      <enumeration value="HC_DRY_HEATING"/>
+      <enumeration value="HC_DRY_STATIONARY"/>
+      <enumeration value="HC_DRY_COOLING"/>
+      <enumeration value="HC_DRY_FINALIZING"/>
+      <enumeration value="HC_RES1"/>
+      <enumeration value="HC_RES2"/>
+      <enumeration value="HC_COOLING_EXT_CMD"/>
+      <enumeration value="HC_HEATING_EXT_CMD"/>
+      <enumeration value="HC_INTENSIFIED_EXT"/>
+      </restriction>
+  </simpleType>  
+ 
+  
+   <simpleType name="hovDomHotWaterStateType">
+   <annotation>
+     <documentation>Ehov: 
+     Zustand Warmwasserregelung:
+     #0 = Abgeschaltet
+     #1 = Normal Ladebetrieb
+     #2 = Komfort Ladebetrieb
+     #3 = Zwangsdrosselung (bei E-Zwang kleiner -50p)#4 = Zwangsladung  (bei E-Zwang groesser +50p)
+     #5 = Stoerung
+     #6 = WW-Entnahme (Entnahme von Trinkwarmwasser aktiv)
+     #7 = Warnung
+     #8 = Reduzierter Ladebetrieb
+     #12 = Vorzugsbetrieb SmartGrid
+     #13 = Abnahmezwang SmartGrid
+</documentation>
+	</annotation>
+    <restriction base="string">
+      <enumeration value="DHW_OFF"/>
+      <enumeration value="DHW_CHARGING"/>
+      <enumeration value="DHW_CHARGE_COMF"/>
+      <enumeration value="DHW_FORCED_CURTAIL"/>
+      <enumeration value="DHW_ERROR"/>
+      <enumeration value="DHW_WITHDRAWING"/>
+      <enumeration value="DHW_WARNING_ACTIVE"/>
+      <enumeration value="DHW_REDUCED"/>
+      <enumeration value="DHW_RES1"/>
+      <enumeration value="DHW_RES2"/>
+      <enumeration value="DHW_RES2"/>
+      <enumeration value="DHW_RES4"/>
+      <enumeration value="DHW_INTENSIFIED_EXT"/>
+      <enumeration value="DHW_FORCED_EXT"/>
+      </restriction>
+  </simpleType>  
+  
+  
+  
+   <simpleType name="hovType">
+   <annotation>
+     <documentation>Ehov: 
+</documentation>
+	</annotation>
+    <restriction base="string">
+      <enumeration value="tbd"/>
+      </restriction>
+  </simpleType>  
+  
+
 
   <complexType name="SGrEnumListType">
     <choice>

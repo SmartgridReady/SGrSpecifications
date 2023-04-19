@@ -85,7 +85,7 @@ Hoval Wärmepumpen mit TopTronic(r) E in Kombination mit dem HovalConnect Modbus
 				</sgr:fpLegibDesc>
 		</sgr:functionalProfile>
 		<sgr:dpListElement>
-			<sgr:dataPoint datapointName="HPOpModeCmd"
+			<sgr:dataPoint datapointName="hovHPOpModeCmd"
 				mroVisibilityIndicator="M" rwpDatadirection="RW" unit="NONE">
 				<sgr:basicDataType>
 					<sgr:int16U>0</sgr:int16U>
@@ -1121,9 +1121,7 @@ Hoval Wärmepumpen mit TopTronic(r) E in Kombination mit dem HovalConnect Modbus
 				<sgr:basicDataType>
 					<sgr:enum2bitmapIndex>
 						<sgr:sgrBool2BitRank>Bit0</sgr:sgrBool2BitRank>
-					</sgr:enum2bitmapIndex>
-					
-					
+					</sgr:enum2bitmapIndex>					
 				</sgr:basicDataType>
 				<sgr:dpNameList>
 					<sgr:sLV1Name>BufferState</sgr:sLV1Name>
@@ -1273,6 +1271,148 @@ Hoval Wärmepumpen mit TopTronic(r) E in Kombination mit dem HovalConnect Modbus
 	</sgr:fpListElement>
 	
 	
+	<sgr:fpListElement>
+		<sgr:functionalProfile profileName="SG-ReadyStates_bwp">
+			<sgr:profileNumber>
+				<sgr:specsOwnerId>0</sgr:specsOwnerId>
+				<sgr:profileIdentification>HeatPumpControl</sgr:profileIdentification>
+				<sgr:subProfileIdent>SG-ReadyStates_bwp</sgr:subProfileIdent>
+				<sgr:sgrLevelOfOperation>2m</sgr:sgrLevelOfOperation>
+				<sgr:versionNumber>
+					<sgr:primaryVersionNumber>0</sgr:primaryVersionNumber>
+					<sgr:secondaryVersionNumber>2</sgr:secondaryVersionNumber>
+					<sgr:subReleaseVersionNumber>1</sgr:subReleaseVersionNumber>
+				</sgr:versionNumber>
+			</sgr:profileNumber>
+			<sgr:fpNameList>
+				<sgr:sLV1Name>SG-ReadyStates_bwp</sgr:sLV1Name>
+				<sgr:sHPbwpName>sgr:sHPbwpName</sgr:sHPbwpName>
+			</sgr:fpNameList>
+			<sgr:fpLegibDesc>
+				<sgr:textElement>„SG Ready“ ist ein Markenzeichen des Bundesverbands Wärmepumpe e. V.
+Es bezeichnet eine Eigenschaft von Wärmepumpen, deren Regelungstechnik
+die Einbindung in ein intelligentes Stromnetz
+(Smart Grid) ermöglicht</sgr:textElement>
+				<sgr:language>de</sgr:language>
+				<sgr:uri>https://www.waermepumpe.de/normen-technik/sg-ready/</sgr:uri>
+			</sgr:fpLegibDesc>
+		</sgr:functionalProfile>
+		<sgr:dpListElement>
+			<sgr:dataPoint datapointName="SGReadyCmd"
+				mroVisibilityIndicator="M" rwpDatadirection="RW"
+				unit="NONE">
+				<sgr:basicDataType>
+					<sgr:enum>
+						<sgr:sgreadyStateLv2>HP_NORMAL</sgr:sgreadyStateLv2>
+					</sgr:enum>
+
+				</sgr:basicDataType>
+				<sgr:dpLegibDesc>
+					<sgr:textElement>this the command acccording the bwp SG-Ready definition  https://www.waermepumpe.de/normen-technik/sg-ready/</sgr:textElement>
+					<sgr:language>en</sgr:language>
+				</sgr:dpLegibDesc>
+			</sgr:dataPoint>
+			<sgr:modbusDataPoint>
+				<sgr:modbusDataType>
+					<sgr:enum>
+						<sgr:sgreadyStateLv2>HP_NORMAL</sgr:sgreadyStateLv2>
+						
+					</sgr:enum>
+					
+				</sgr:modbusDataType>
+				<sgr:modbusFirstRegisterReference registerType="HoldRegister"
+					addr="27545" />
+				<sgr:dpSizeNrRegisters>2</sgr:dpSizeNrRegisters>
+				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
+			</sgr:modbusDataPoint>
+			<sgr:modbusAttr>
+				<sgr:iopEnumMapper>
+					<sgr:modbusEnumMapper>255</sgr:modbusEnumMapper>
+					<sgr:modbusEnumMapper>2</sgr:modbusEnumMapper>
+					<sgr:modbusEnumMapper>0</sgr:modbusEnumMapper>
+					<sgr:modbusEnumMapper>1</sgr:modbusEnumMapper>
+					<sgr:modbusEnumMapper>3</sgr:modbusEnumMapper>
+					<sgr:genEnumMapper>2</sgr:genEnumMapper>
+					<sgr:genEnumMapper>3</sgr:genEnumMapper>
+					<sgr:genEnumMapper>1</sgr:genEnumMapper>
+					<sgr:genEnumMapper>4</sgr:genEnumMapper>
+					<sgr:genEnumMapper>0</sgr:genEnumMapper>
+				</sgr:iopEnumMapper>
+			</sgr:modbusAttr>
+		</sgr:dpListElement>
+		<sgr:dpListElement>
+			<sgr:dataPoint mroVisibilityIndicator="R"
+				rwpDatadirection="R" unit="NONE" datapointName="SGReadyState">
+				<sgr:basicDataType>
+					<sgr:enum>
+						<sgr:sgreadyStateLv2>HP_NORMAL</sgr:sgreadyStateLv2>						
+					</sgr:enum>
+				</sgr:basicDataType>
+				<sgr:dpNameList>
+					<sgr:sLV1Name>SG-ReadyState</sgr:sLV1Name>
+				</sgr:dpNameList>
+				<sgr:dpLegibDesc>
+					<sgr:textElement>
+						SG-ReadyState of the current operation
+					</sgr:textElement>
+					<sgr:language>de</sgr:language>
+				</sgr:dpLegibDesc>
+				<sgr:dpPrgDesc>
+					<sgr:textElement>
+						SG READY BETRIEBSZUSTAND 1: Die Anlage darf
+						nicht starten. Nur der Frostschutz wird
+						gewährleistet. 2: Normaler Betrieb der Anlage.
+						Automatik- / Programmbetrieb gemäß BI der
+						angeschlossenen Wärmepumpe 3: Forcierter Betrieb
+						der Anlage mit erhöhten Werten für Heiz-
+						und/oder Warmwassertemperatur 4: Sofortige
+						Ansteuerung der Maximalwerte für Heiz- und
+						Warmwassertemperatur
+					</sgr:textElement>
+					<sgr:language>de</sgr:language>
+				</sgr:dpPrgDesc>
+			</sgr:dataPoint>
+			<sgr:modbusDataPoint>
+				<sgr:modbusDataType>
+					<sgr:enum>
+						<sgr:sgreadyStateLv2>HP_NORMAL</sgr:sgreadyStateLv2>
+					</sgr:enum>
+				</sgr:modbusDataType>
+				<sgr:modbusFirstRegisterReference registerType="InputRegister" addr="27537" bitRank="0" />
+				<sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
+				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
+			</sgr:modbusDataPoint>
+			<sgr:modbusAttr>
+				<sgr:iopEnumMapper>
+					<sgr:modbusEnumMapper>255</sgr:modbusEnumMapper>
+					<sgr:modbusEnumMapper>2</sgr:modbusEnumMapper>
+					<sgr:modbusEnumMapper>0</sgr:modbusEnumMapper>
+					<sgr:modbusEnumMapper>1</sgr:modbusEnumMapper>
+					<sgr:modbusEnumMapper>3</sgr:modbusEnumMapper>
+					<sgr:genEnumMapper>2</sgr:genEnumMapper>
+					<sgr:genEnumMapper>3</sgr:genEnumMapper>
+					<sgr:genEnumMapper>1</sgr:genEnumMapper>
+					<sgr:genEnumMapper>4</sgr:genEnumMapper>
+					<sgr:genEnumMapper>0</sgr:genEnumMapper>
+				</sgr:iopEnumMapper>
+			</sgr:modbusAttr>
+		</sgr:dpListElement>
+		<sgr:dpListElement>
+			<sgr:dataPoint datapointName="hovSGReadySrcSelect" unit="NONE" rwpDatadirection="RW" mroVisibilityIndicator="M">
+				<sgr:basicDataType>
+					<sgr:boolean>true</sgr:boolean>
+				</sgr:basicDataType>
+			</sgr:dataPoint>
+			<sgr:modbusDataPoint>
+				<sgr:modbusDataType>
+					<sgr:boolean>true</sgr:boolean>
+				</sgr:modbusDataType>
+				<sgr:modbusFirstRegisterReference registerType="HoldRegister" addr="27546" />
+				<sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
+				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
+			</sgr:modbusDataPoint>
+		</sgr:dpListElement>
+	</sgr:fpListElement>		
 	<sgr:fpListElement>
 		<sgr:functionalProfile
 			profileName="EnergyMonitor">
