@@ -88,7 +88,11 @@ Hoval Wärmepumpen mit TopTronic(r) E in Kombination mit dem HovalConnect Modbus
 			<sgr:dataPoint datapointName="hovHPOpModeCmd"
 				mroVisibilityIndicator="M" rwpDatadirection="RW" unit="NONE">
 				<sgr:basicDataType>
-					<sgr:int16U>0</sgr:int16U>
+					<sgr:enum>
+						<sgr:hovHPOpMode>HP_OFF</sgr:hovHPOpMode>
+						
+					</sgr:enum>
+					
 				</sgr:basicDataType>
 				<sgr:dpNameList>
 					<sgr:sLV1Name>HPOpModeCmd</sgr:sLV1Name>
@@ -100,7 +104,11 @@ Hoval Wärmepumpen mit TopTronic(r) E in Kombination mit dem HovalConnect Modbus
 			</sgr:dataPoint>
 			<sgr:modbusDataPoint>
 				<sgr:modbusDataType>
-					<sgr:int16>0</sgr:int16>
+					<sgr:enum>
+						<sgr:hovHPOpMode>HP_OFF</sgr:hovHPOpMode>
+						
+					</sgr:enum>
+					
 				</sgr:modbusDataType>
 				<sgr:modbusFirstRegisterReference
 					registerType="HoldRegister" addr="1561" bitRank="0" />
@@ -114,7 +122,7 @@ Hoval Wärmepumpen mit TopTronic(r) E in Kombination mit dem HovalConnect Modbus
 					</sgr:scalingByMulPwr></sgr:modbusAttr>
 		</sgr:dpListElement>	
 		<sgr:dpListElement>
-			<sgr:dataPoint datapointName="HPOpState"
+			<sgr:dataPoint datapointName="hovHPOpState"
 				mroVisibilityIndicator="M" rwpDatadirection="R" unit="NONE">
 				<sgr:basicDataType>
 					<sgr:int16U>0</sgr:int16U>
@@ -937,11 +945,11 @@ Hoval Wärmepumpen mit TopTronic(r) E in Kombination mit dem HovalConnect Modbus
 		</sgr:dpListElement>	
 		
 		<sgr:dpListElement>
-			<sgr:dataPoint datapointName="DomHotWState"
+			<sgr:dataPoint datapointName="hovDomHotWState"
 				mroVisibilityIndicator="R" rwpDatadirection="R" unit="NONE">
 				<sgr:basicDataType>
 					<sgr:enum>
-						<sgr:sgrDHWOpMode>DHW_STANDBY</sgr:sgrDHWOpMode>						
+						<sgr:hovDomHotWaterState>DHW_OFF</sgr:hovDomHotWaterState>												
 					</sgr:enum>
 				</sgr:basicDataType>
 				<sgr:dpNameList>
@@ -955,7 +963,10 @@ Hoval Wärmepumpen mit TopTronic(r) E in Kombination mit dem HovalConnect Modbus
 			</sgr:dataPoint>
 			<sgr:modbusDataPoint>
 				<sgr:modbusDataType>
-					<sgr:int16>0</sgr:int16>
+					<sgr:enum>
+						<sgr:hovDomHotWaterState>DHW_OFF</sgr:hovDomHotWaterState>						
+					</sgr:enum>
+					
 				</sgr:modbusDataType>
 				<sgr:modbusFirstRegisterReference
 					registerType="HoldRegister" addr="1504" bitRank="0" />
