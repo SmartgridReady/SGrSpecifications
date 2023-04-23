@@ -213,7 +213,7 @@ Hoval Wärmepumpen mit TopTronic(r) E in Kombination mit dem HovalConnect Modbus
 			
 		</sgr:dpListElement>
 		<sgr:dpListElement>
-			<sgr:dataPoint datapointName="FlowWaterTemp"
+			<sgr:dataPoint datapointName="SupplyWaterTemp"
 				mroVisibilityIndicator="M" rwpDatadirection="R"
 				unit="DEGREES_CELSIUS">
 				<sgr:basicDataType>
@@ -234,13 +234,13 @@ Hoval Wärmepumpen mit TopTronic(r) E in Kombination mit dem HovalConnect Modbus
 					</sgr:scalingByMulPwr></sgr:modbusAttr>
 		</sgr:dpListElement>
 		<sgr:dpListElement>
-			<sgr:dataPoint datapointName="FlowWaterTempStpt"
+			<sgr:dataPoint datapointName="SupplyWaterTempStpt"
 				mroVisibilityIndicator="O" rwpDatadirection="R" unit="DEGREES_CELSIUS">
 				<sgr:basicDataType>
 					<sgr:float32>0.0</sgr:float32>
 				</sgr:basicDataType>
 				<sgr:dpNameList>
-					<sgr:sLV1Name>FlowWaterTempStpt</sgr:sLV1Name>
+					<sgr:sLV1Name>SupplyWaterTempStpt</sgr:sLV1Name>
 				</sgr:dpNameList>
 				<sgr:dpLegibDesc>
 					<sgr:textElement>Setzen der aktuellen Soll-Temperatur des Vorlaufs (Grundwert).Wirkt nur für die OpMode "manuell"</sgr:textElement>
@@ -265,13 +265,13 @@ Hoval Wärmepumpen mit TopTronic(r) E in Kombination mit dem HovalConnect Modbus
 			
 		</sgr:dpListElement>
 		<sgr:dpListElement>
-			<sgr:dataPoint datapointName="ReturnFlowWaterTemp"
+			<sgr:dataPoint datapointName="ReturnSupplyWaterTemp"
 				mroVisibilityIndicator="O" rwpDatadirection="R" unit="DEGREES_CELSIUS">
 				<sgr:basicDataType>
 					<sgr:float32>0.0</sgr:float32>
 				</sgr:basicDataType>
 				<sgr:dpNameList>
-					<sgr:sLV1Name>ReturnFlowWaterTemp</sgr:sLV1Name>
+					<sgr:sLV1Name>ReturnSupplyWaterTemp</sgr:sLV1Name>
 				</sgr:dpNameList>
 				<sgr:dpLegibDesc>
 					<sgr:textElement>Auslesen der aktuellen aktuellen-Temperatur des Rücklaufs.</sgr:textElement>
@@ -294,13 +294,13 @@ Hoval Wärmepumpen mit TopTronic(r) E in Kombination mit dem HovalConnect Modbus
 					</sgr:scalingByMulPwr></sgr:modbusAttr>
 		</sgr:dpListElement>			
 		<sgr:dpListElement>
-			<sgr:dataPoint datapointName="FlowWaterTempStptFb"
+			<sgr:dataPoint datapointName="SupplyWaterTempStptFb"
 				mroVisibilityIndicator="O" rwpDatadirection="R" unit="DEGREES_CELSIUS">
 				<sgr:basicDataType>
 					<sgr:float32>0.0</sgr:float32>
 				</sgr:basicDataType>
 				<sgr:dpNameList>
-					<sgr:sLV1Name>FlowWaterTempStpt</sgr:sLV1Name>
+					<sgr:sLV1Name>SupplyWaterTempStpt</sgr:sLV1Name>
 				</sgr:dpNameList>
 				<sgr:dpLegibDesc>
 					<sgr:textElement>Setzen der aktuellen Soll-Temperatur des Vorlaufs (Grundwert).Wirkt nur für die OpMode "manuell"</sgr:textElement>
@@ -406,10 +406,12 @@ Hoval Wärmepumpen mit TopTronic(r) E in Kombination mit dem HovalConnect Modbus
 				</sgr:fpLegibDesc>
 		</sgr:functionalProfile>
 		<sgr:dpListElement>
-			<sgr:dataPoint datapointName="HeatCoolCtrlOpModeCmd"
+			<sgr:dataPoint datapointName="hovHeatCoolCtrlOpModeCmd"
 				mroVisibilityIndicator="M" rwpDatadirection="RW" unit="NONE">
 				<sgr:basicDataType>
-					<sgr:int16>0</sgr:int16>				
+					<sgr:enum>
+						<sgr:hovHCOpMode>HC_STANDBY</sgr:hovHCOpMode>						
+					</sgr:enum>									
 				</sgr:basicDataType>
 				<sgr:dpNameList>
 					<sgr:sLV1Name>HeatCoolCtrlOpModeCmd</sgr:sLV1Name>
@@ -421,7 +423,9 @@ Hoval Wärmepumpen mit TopTronic(r) E in Kombination mit dem HovalConnect Modbus
 			</sgr:dataPoint>
 			<sgr:modbusDataPoint>
 				<sgr:modbusDataType>
-					<sgr:int16>0</sgr:int16>
+					<sgr:enum>
+						<sgr:hovHCOpMode>HC_STANDBY</sgr:hovHCOpMode>						
+					</sgr:enum>					
 				</sgr:modbusDataType>
 				<sgr:modbusFirstRegisterReference
 					registerType="HoldRegister" addr="1478" bitRank="0" />
@@ -435,10 +439,12 @@ Hoval Wärmepumpen mit TopTronic(r) E in Kombination mit dem HovalConnect Modbus
 					</sgr:scalingByMulPwr></sgr:modbusAttr>
 		</sgr:dpListElement>
 		<sgr:dpListElement>
-			<sgr:dataPoint datapointName="HeatCoolOpState"
+			<sgr:dataPoint datapointName="hovHeatCoolOpState"
 				mroVisibilityIndicator="M" rwpDatadirection="R" unit="NONE">
 				<sgr:basicDataType>
-					<sgr:int16>0</sgr:int16>
+					<sgr:enum>
+						<sgr:hovHCOpState>HC_OFF</sgr:hovHCOpState>						
+					</sgr:enum>					
 				</sgr:basicDataType>
 				<sgr:dpNameList>
 					<sgr:sLV1Name>HeatCoolOpState</sgr:sLV1Name>
@@ -450,7 +456,9 @@ Hoval Wärmepumpen mit TopTronic(r) E in Kombination mit dem HovalConnect Modbus
 			</sgr:dataPoint>
 			<sgr:modbusDataPoint>
 				<sgr:modbusDataType>
-					<sgr:int16>0</sgr:int16>
+					<sgr:enum>
+						<sgr:hovHCOpState>HC_OFF</sgr:hovHCOpState>						
+					</sgr:enum>					
 				</sgr:modbusDataType>
 				<sgr:modbusFirstRegisterReference
 					registerType="HoldRegister" addr="1501" bitRank="0" />
@@ -464,13 +472,13 @@ Hoval Wärmepumpen mit TopTronic(r) E in Kombination mit dem HovalConnect Modbus
 					</sgr:scalingByMulPwr></sgr:modbusAttr>
 		</sgr:dpListElement>	
 		<sgr:dpListElement>
-			<sgr:dataPoint datapointName="FlowWaterTemp"
+			<sgr:dataPoint datapointName="SupplyWaterTemp"
 				mroVisibilityIndicator="O" rwpDatadirection="R" unit="DEGREES_CELSIUS">
 				<sgr:basicDataType>
 					<sgr:float32>0.0</sgr:float32>
 				</sgr:basicDataType>
 				<sgr:dpNameList>
-					<sgr:sLV1Name>FlowWaterTemp</sgr:sLV1Name>
+					<sgr:sLV1Name>SupplyWaterTemp</sgr:sLV1Name>
 				</sgr:dpNameList>
 				<sgr:dpLegibDesc>
 					<sgr:textElement>Auslesen der aktuellen aktuellen-Temperatur des Vorlaufs.</sgr:textElement>
@@ -493,13 +501,13 @@ Hoval Wärmepumpen mit TopTronic(r) E in Kombination mit dem HovalConnect Modbus
 					</sgr:scalingByMulPwr></sgr:modbusAttr>
 		</sgr:dpListElement>	
 		<sgr:dpListElement>
-			<sgr:dataPoint datapointName="FlowWaterTempStpt"
+			<sgr:dataPoint datapointName="SupplyWaterTempStpt"
 				mroVisibilityIndicator="O" rwpDatadirection="RW" unit="DEGREES_CELSIUS">
 				<sgr:basicDataType>
 					<sgr:float32>0.0</sgr:float32>
 				</sgr:basicDataType>
 				<sgr:dpNameList>
-					<sgr:sLV1Name>FlowWaterTempStpt</sgr:sLV1Name>
+					<sgr:sLV1Name>SupplyWaterTempStpt</sgr:sLV1Name>
 				</sgr:dpNameList>
 				<sgr:dpLegibDesc>
 					<sgr:textElement>Setzen der aktuellen Soll-Temperatur des Vorlaufs (Grundwert). TODO:  Hinweis "geht nur bei Mode Konstant" </sgr:textElement>
@@ -522,13 +530,13 @@ Hoval Wärmepumpen mit TopTronic(r) E in Kombination mit dem HovalConnect Modbus
 					</sgr:scalingByMulPwr></sgr:modbusAttr>
 		</sgr:dpListElement>
 		<sgr:dpListElement>
-			<sgr:dataPoint datapointName="ReturnFlowWaterTemp"
+			<sgr:dataPoint datapointName="ReturnSupplyWaterTemp"
 				mroVisibilityIndicator="O" rwpDatadirection="R" unit="DEGREES_CELSIUS">
 				<sgr:basicDataType>
 					<sgr:float32>0.0</sgr:float32>
 				</sgr:basicDataType>
 				<sgr:dpNameList>
-					<sgr:sLV1Name>ReturnFlowWaterTemp</sgr:sLV1Name>
+					<sgr:sLV1Name>ReturnSupplyWaterTemp</sgr:sLV1Name>
 				</sgr:dpNameList>
 				<sgr:dpLegibDesc>
 					<sgr:textElement>Auslesen der aktuellen aktuellen-Temperatur des Rücklaufs.</sgr:textElement>
@@ -574,22 +582,26 @@ Hoval Wärmepumpen mit TopTronic(r) E in Kombination mit dem HovalConnect Modbus
 				</sgr:fpLegibDesc>
 		</sgr:functionalProfile>
 		<sgr:dpListElement>
-			<sgr:dataPoint datapointName="HeatCoolCtrlOpModeCmd"
+			<sgr:dataPoint datapointName="hovHeatCoolCtrlOpModeCmd"
 				mroVisibilityIndicator="M" rwpDatadirection="RW" unit="NONE">
 				<sgr:basicDataType>
-				<sgr:int16>0</sgr:int16>
+					<sgr:enum>
+						<sgr:hovHCOpMode>HC_STANDBY</sgr:hovHCOpMode>						
+					</sgr:enum>									
 				</sgr:basicDataType>
 				<sgr:dpNameList>
 					<sgr:sLV1Name>HeatCoolCtrlOpModeCmd</sgr:sLV1Name>
 				</sgr:dpNameList>
 				<sgr:dpLegibDesc>
-					<sgr:textElement>Festlegen der Betriebsart des Heiz-/Kühlkreises  [Aus Bereitschaft, Programm, Komfort, Eco]              </sgr:textElement>
+					<sgr:textElement>Festlegen der Betriebsart des Heiz-/Kühlkreises  [Aus, Bereitschaft, Programm, Komfort, Eco]</sgr:textElement>
 					<sgr:language>de</sgr:language>
 				</sgr:dpLegibDesc>
 			</sgr:dataPoint>
 			<sgr:modbusDataPoint>
 				<sgr:modbusDataType>
-					<sgr:int16>0</sgr:int16>
+					<sgr:enum>
+						<sgr:hovHCOpMode>HC_STANDBY</sgr:hovHCOpMode>						
+					</sgr:enum>			
 				</sgr:modbusDataType>
 				<sgr:modbusFirstRegisterReference
 					registerType="HoldRegister" addr="1479" bitRank="0" />
@@ -603,10 +615,12 @@ Hoval Wärmepumpen mit TopTronic(r) E in Kombination mit dem HovalConnect Modbus
 					</sgr:scalingByMulPwr></sgr:modbusAttr>
 		</sgr:dpListElement>
 		<sgr:dpListElement>
-			<sgr:dataPoint datapointName="HeatCoolOpState"
+			<sgr:dataPoint datapointName="hovHeatCoolOpState"
 				mroVisibilityIndicator="M" rwpDatadirection="R" unit="NONE">
 				<sgr:basicDataType>
-				<sgr:int16>0</sgr:int16>
+					<sgr:enum>
+						<sgr:hovHCOpState>HC_OFF</sgr:hovHCOpState>						
+					</sgr:enum>					
 				</sgr:basicDataType>
 				<sgr:dpNameList>
 					<sgr:sLV1Name>HeatCoolOpState</sgr:sLV1Name>
@@ -618,7 +632,9 @@ Hoval Wärmepumpen mit TopTronic(r) E in Kombination mit dem HovalConnect Modbus
 			</sgr:dataPoint>
 			<sgr:modbusDataPoint>
 				<sgr:modbusDataType>
-					<sgr:int16>0</sgr:int16>
+					<sgr:enum>
+						<sgr:hovHCOpState>HC_OFF</sgr:hovHCOpState>						
+					</sgr:enum>				
 				</sgr:modbusDataType>
 				<sgr:modbusFirstRegisterReference
 					registerType="HoldRegister" addr="1502" bitRank="0" />
@@ -632,13 +648,13 @@ Hoval Wärmepumpen mit TopTronic(r) E in Kombination mit dem HovalConnect Modbus
 					</sgr:scalingByMulPwr></sgr:modbusAttr>
 		</sgr:dpListElement>	
 		<sgr:dpListElement>
-			<sgr:dataPoint datapointName="FlowWaterTemp"
+			<sgr:dataPoint datapointName="SupplyWaterTemp"
 				mroVisibilityIndicator="O" rwpDatadirection="R" unit="DEGREES_CELSIUS">
 				<sgr:basicDataType>
 					<sgr:float32>0.0</sgr:float32>
 				</sgr:basicDataType>
 				<sgr:dpNameList>
-					<sgr:sLV1Name>FlowWaterTemp</sgr:sLV1Name>
+					<sgr:sLV1Name>SupplyWaterTemp</sgr:sLV1Name>
 				</sgr:dpNameList>
 				<sgr:dpLegibDesc>
 					<sgr:textElement>Auslesen der aktuellen aktuellen-Temperatur des Vorlaufs.</sgr:textElement>
@@ -661,13 +677,13 @@ Hoval Wärmepumpen mit TopTronic(r) E in Kombination mit dem HovalConnect Modbus
 					</sgr:scalingByMulPwr></sgr:modbusAttr>
 		</sgr:dpListElement>
 		<sgr:dpListElement>
-			<sgr:dataPoint datapointName="FlowWaterTempStpt"
+			<sgr:dataPoint datapointName="SupplyWaterTempStpt"
 				mroVisibilityIndicator="O" rwpDatadirection="RW" unit="DEGREES_CELSIUS">
 				<sgr:basicDataType>
 					<sgr:float32>0.0</sgr:float32>
 				</sgr:basicDataType>
 				<sgr:dpNameList>
-					<sgr:sLV1Name>FlowWaterTempStpt</sgr:sLV1Name>
+					<sgr:sLV1Name>SupplyWaterTempStpt</sgr:sLV1Name>
 				</sgr:dpNameList>
 				<sgr:dpLegibDesc>
 					<sgr:textElement>Setzen der aktuellen Soll-Temperatur des Vorlaufs (Grundwert). TODO:  Hinweis "geht nur bei Mode Konstant"</sgr:textElement>
@@ -690,13 +706,13 @@ Hoval Wärmepumpen mit TopTronic(r) E in Kombination mit dem HovalConnect Modbus
 					</sgr:scalingByMulPwr></sgr:modbusAttr>
 		</sgr:dpListElement>
 		<sgr:dpListElement>
-			<sgr:dataPoint datapointName="ReturnFlowWaterTemp"
+			<sgr:dataPoint datapointName="ReturnSupplyWaterTemp"
 				mroVisibilityIndicator="O" rwpDatadirection="R" unit="DEGREES_CELSIUS">
 				<sgr:basicDataType>
 					<sgr:float32>0.0</sgr:float32>
 				</sgr:basicDataType>
 				<sgr:dpNameList>
-					<sgr:sLV1Name>ReturnFlowWaterTemp</sgr:sLV1Name>
+					<sgr:sLV1Name>ReturnSupplyWaterTemp</sgr:sLV1Name>
 				</sgr:dpNameList>
 				<sgr:dpLegibDesc>
 					<sgr:textElement>Auslesen der aktuellen aktuellen-Temperatur des Rücklaufs.</sgr:textElement>
@@ -742,22 +758,26 @@ Hoval Wärmepumpen mit TopTronic(r) E in Kombination mit dem HovalConnect Modbus
 				</sgr:fpLegibDesc>
 		</sgr:functionalProfile>		
 		<sgr:dpListElement>
-			<sgr:dataPoint datapointName="HeatCoolCtrlOpModeCmd"
+			<sgr:dataPoint datapointName="hovHeatCoolCtrlOpModeCmd"
 				mroVisibilityIndicator="M" rwpDatadirection="RW" unit="NONE">
 				<sgr:basicDataType>
-					<sgr:int16>0</sgr:int16>
+					<sgr:enum>
+						<sgr:hovHCOpMode>HC_STANDBY</sgr:hovHCOpMode>						
+					</sgr:enum>									
 				</sgr:basicDataType>
 				<sgr:dpNameList>
 					<sgr:sLV1Name>HeatCoolCtrlOpModeCmd</sgr:sLV1Name>
 				</sgr:dpNameList>
 				<sgr:dpLegibDesc>
-					<sgr:textElement>Festlegen der Betriebsart des Heiz-/Kühlkreises  [Aus Bereitschaft, Programm, Komfort, Eco]              </sgr:textElement>
+					<sgr:textElement>Festlegen der Betriebsart des Heiz-/Kühlkreises  [Aus, Bereitschaft, Programm, Komfort, Eco]</sgr:textElement>
 					<sgr:language>de</sgr:language>
 				</sgr:dpLegibDesc>
 			</sgr:dataPoint>
 			<sgr:modbusDataPoint>
 				<sgr:modbusDataType>
-					<sgr:int16>0</sgr:int16>
+					<sgr:enum>
+						<sgr:hovHCOpMode>HC_STANDBY</sgr:hovHCOpMode>						
+					</sgr:enum>			
 				</sgr:modbusDataType>
 				<sgr:modbusFirstRegisterReference
 					registerType="HoldRegister" addr="1480" bitRank="0" />
@@ -771,10 +791,12 @@ Hoval Wärmepumpen mit TopTronic(r) E in Kombination mit dem HovalConnect Modbus
 					</sgr:scalingByMulPwr></sgr:modbusAttr>
 		</sgr:dpListElement>
 		<sgr:dpListElement>
-			<sgr:dataPoint datapointName="HeatCoolOpState"
+			<sgr:dataPoint datapointName="hovHeatCoolOpState"
 				mroVisibilityIndicator="M" rwpDatadirection="R" unit="NONE">
 				<sgr:basicDataType>
-					<sgr:int16>0</sgr:int16>
+					<sgr:enum>
+						<sgr:hovHCOpState>HC_OFF</sgr:hovHCOpState>						
+					</sgr:enum>					
 				</sgr:basicDataType>
 				<sgr:dpNameList>
 					<sgr:sLV1Name>HeatCoolOpState</sgr:sLV1Name>
@@ -786,7 +808,9 @@ Hoval Wärmepumpen mit TopTronic(r) E in Kombination mit dem HovalConnect Modbus
 			</sgr:dataPoint>
 			<sgr:modbusDataPoint>
 				<sgr:modbusDataType>
-					<sgr:int16>0</sgr:int16>
+					<sgr:enum>
+						<sgr:hovHCOpState>HC_OFF</sgr:hovHCOpState>						
+					</sgr:enum>				
 				</sgr:modbusDataType>
 				<sgr:modbusFirstRegisterReference
 					registerType="HoldRegister" addr="1503" bitRank="0" />
@@ -800,13 +824,13 @@ Hoval Wärmepumpen mit TopTronic(r) E in Kombination mit dem HovalConnect Modbus
 					</sgr:scalingByMulPwr></sgr:modbusAttr>
 		</sgr:dpListElement>
 		<sgr:dpListElement>
-			<sgr:dataPoint datapointName="FlowWaterTemp"
+			<sgr:dataPoint datapointName="SupplyWaterTemp"
 				mroVisibilityIndicator="O" rwpDatadirection="R" unit="DEGREES_CELSIUS">
 				<sgr:basicDataType>
 					<sgr:float32>0.0</sgr:float32>
 				</sgr:basicDataType>
 				<sgr:dpNameList>
-					<sgr:sLV1Name>FlowWaterTemp</sgr:sLV1Name>
+					<sgr:sLV1Name>SupplyWaterTemp</sgr:sLV1Name>
 				</sgr:dpNameList>
 				<sgr:dpLegibDesc>
 					<sgr:textElement>Auslesen der aktuellen aktuellen-Temperatur des Vorlaufs.</sgr:textElement>
@@ -829,13 +853,13 @@ Hoval Wärmepumpen mit TopTronic(r) E in Kombination mit dem HovalConnect Modbus
 					</sgr:scalingByMulPwr></sgr:modbusAttr>
 		</sgr:dpListElement>
 		<sgr:dpListElement>
-			<sgr:dataPoint datapointName="FlowWaterTempStpt"
+			<sgr:dataPoint datapointName="SupplyWaterTempStpt"
 				mroVisibilityIndicator="O" rwpDatadirection="RW" unit="DEGREES_CELSIUS">
 				<sgr:basicDataType>
 					<sgr:float32>0.0</sgr:float32>
 				</sgr:basicDataType>
 				<sgr:dpNameList>
-					<sgr:sLV1Name>FlowWaterTempStpt</sgr:sLV1Name>
+					<sgr:sLV1Name>SupplyWaterTempStpt</sgr:sLV1Name>
 				</sgr:dpNameList>
 				<sgr:dpLegibDesc>
 					<sgr:textElement>Setzen der aktuellen Soll-Temperatur des Vorlaufs (Grundwert). TODO:  Hinweis "geht nur bei Mode Konstant"</sgr:textElement>
@@ -858,13 +882,13 @@ Hoval Wärmepumpen mit TopTronic(r) E in Kombination mit dem HovalConnect Modbus
 					</sgr:scalingByMulPwr></sgr:modbusAttr>
 		</sgr:dpListElement>
 		<sgr:dpListElement>
-			<sgr:dataPoint datapointName="ReturnFlowWaterTemp"
+			<sgr:dataPoint datapointName="ReturnSupplyWaterTemp"
 				mroVisibilityIndicator="O" rwpDatadirection="R" unit="DEGREES_CELSIUS">
 				<sgr:basicDataType>
 					<sgr:float32>0.0</sgr:float32>
 				</sgr:basicDataType>
 				<sgr:dpNameList>
-					<sgr:sLV1Name>ReturnFlowWaterTemp</sgr:sLV1Name>
+					<sgr:sLV1Name>ReturnSupplyWaterTemp</sgr:sLV1Name>
 				</sgr:dpNameList>
 				<sgr:dpLegibDesc>
 					<sgr:textElement>Auslesen der aktuellen aktuellen-Temperatur des Rücklaufs.</sgr:textElement>
@@ -930,7 +954,9 @@ Hoval Wärmepumpen mit TopTronic(r) E in Kombination mit dem HovalConnect Modbus
 			</sgr:dataPoint>
 			<sgr:modbusDataPoint>
 				<sgr:modbusDataType>
-					<sgr:int16>0</sgr:int16>
+					<sgr:enum>
+						<sgr:sgrDHWOpMode>DHW_STANDBY</sgr:sgrDHWOpMode>						
+					</sgr:enum>					
 				</sgr:modbusDataType>
 				<sgr:modbusFirstRegisterReference
 					registerType="HoldRegister" addr="1496" bitRank="0" />
@@ -965,8 +991,7 @@ Hoval Wärmepumpen mit TopTronic(r) E in Kombination mit dem HovalConnect Modbus
 				<sgr:modbusDataType>
 					<sgr:enum>
 						<sgr:hovDomHotWaterState>DHW_OFF</sgr:hovDomHotWaterState>						
-					</sgr:enum>
-					
+					</sgr:enum>					
 				</sgr:modbusDataType>
 				<sgr:modbusFirstRegisterReference
 					registerType="HoldRegister" addr="1504" bitRank="0" />
@@ -1127,12 +1152,12 @@ Hoval Wärmepumpen mit TopTronic(r) E in Kombination mit dem HovalConnect Modbus
 					</sgr:scalingByMulPwr></sgr:modbusAttr>
 		</sgr:dpListElement>	
 		<sgr:dpListElement>
-			<sgr:dataPoint datapointName="ActStorageBufferState"
+			<sgr:dataPoint datapointName="hovActBufferState"
 				mroVisibilityIndicator="M" rwpDatadirection="R" unit="NONE">
 				<sgr:basicDataType>
-					<sgr:enum2bitmapIndex>
-						<sgr:sgrBool2BitRank>Bit0</sgr:sgrBool2BitRank>
-					</sgr:enum2bitmapIndex>					
+					<sgr:enum>
+						<sgr:hovBufferState>BUF_OFF</sgr:hovBufferState>						
+					</sgr:enum>										
 				</sgr:basicDataType>
 				<sgr:dpNameList>
 					<sgr:sLV1Name>BufferState</sgr:sLV1Name>
@@ -1144,7 +1169,9 @@ Hoval Wärmepumpen mit TopTronic(r) E in Kombination mit dem HovalConnect Modbus
 			</sgr:dataPoint>
 			<sgr:modbusDataPoint>
 				<sgr:modbusDataType>
-					<sgr:int16>0</sgr:int16>
+					<sgr:enum>
+						<sgr:hovBufferState>BUF_OFF</sgr:hovBufferState>						
+					</sgr:enum>					
 				</sgr:modbusDataType>
 				<sgr:modbusFirstRegisterReference
 					registerType="HoldRegister" addr="17384" bitRank="0" />
@@ -1316,7 +1343,6 @@ die Einbindung in ein intelligentes Stromnetz
 					<sgr:enum>
 						<sgr:sgreadyStateLv2>HP_NORMAL</sgr:sgreadyStateLv2>
 					</sgr:enum>
-
 				</sgr:basicDataType>
 				<sgr:dpLegibDesc>
 					<sgr:textElement>this the command acccording the bwp SG-Ready definition  https://www.waermepumpe.de/normen-technik/sg-ready/</sgr:textElement>
@@ -1326,14 +1352,12 @@ die Einbindung in ein intelligentes Stromnetz
 			<sgr:modbusDataPoint>
 				<sgr:modbusDataType>
 					<sgr:enum>
-						<sgr:sgreadyStateLv2>HP_NORMAL</sgr:sgreadyStateLv2>
-						
-					</sgr:enum>
-					
+						<sgr:sgreadyStateLv2>HP_NORMAL</sgr:sgreadyStateLv2>						
+					</sgr:enum>					
 				</sgr:modbusDataType>
 				<sgr:modbusFirstRegisterReference registerType="HoldRegister"
 					addr="27545" />
-				<sgr:dpSizeNrRegisters>2</sgr:dpSizeNrRegisters>
+				<sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
 				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
 			</sgr:modbusDataPoint>
 			<sgr:modbusAttr>
@@ -1389,7 +1413,7 @@ die Einbindung in ein intelligentes Stromnetz
 						<sgr:sgreadyStateLv2>HP_NORMAL</sgr:sgreadyStateLv2>
 					</sgr:enum>
 				</sgr:modbusDataType>
-				<sgr:modbusFirstRegisterReference registerType="InputRegister" addr="27537" bitRank="0" />
+				<sgr:modbusFirstRegisterReference registerType="InputRegister" addr="27545" bitRank="0" />
 				<sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
 				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
 			</sgr:modbusDataPoint>
@@ -1411,12 +1435,16 @@ die Einbindung in ein intelligentes Stromnetz
 		<sgr:dpListElement>
 			<sgr:dataPoint datapointName="hovSGReadySrcSelect" unit="NONE" rwpDatadirection="RW" mroVisibilityIndicator="M">
 				<sgr:basicDataType>
-					<sgr:boolean>true</sgr:boolean>
+					<sgr:enum>
+						<sgr:hovSGReadySrcSel>SGR_src_OFF</sgr:hovSGReadySrcSel>						
+					</sgr:enum>					
 				</sgr:basicDataType>
 			</sgr:dataPoint>
 			<sgr:modbusDataPoint>
 				<sgr:modbusDataType>
-					<sgr:boolean>true</sgr:boolean>
+					<sgr:enum>
+						<sgr:hovSGReadySrcSel>SGR_src_OFF</sgr:hovSGReadySrcSel>						
+					</sgr:enum>	
 				</sgr:modbusDataType>
 				<sgr:modbusFirstRegisterReference registerType="HoldRegister" addr="27546" />
 				<sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
