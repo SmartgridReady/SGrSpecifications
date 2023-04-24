@@ -2,7 +2,7 @@
 <?xml-stylesheet type="text/xsl" href="/xsl/SGr.xsl"?>
 <sgr:SGrFunctionalProfileFrame xmlns:sgr="http://www.smartgridready.com/ns/V0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/SGrIncluder.xsd">
 	<sgr:releaseNotes>
-		<sgr:state>Review</sgr:state>
+		<sgr:state>Published</sgr:state>
 		<sgr:changelog>
 			<sgr:version>0.1.1</sgr:version>
 			<sgr:date>2021-04-03</sgr:date>
@@ -36,22 +36,44 @@
 					Monitoring Funktionsprofil für Stromerzeuger und Stromverbraucher zur Kontrolle der Systemlast und/oder für regeltechnische 
 					Zwecke.
 
-					<p>Die Kenntnis der Messgenauigkeit ist notwendig und wird daher pro Datenpunkt als obligatorisches
+					<p>Für Regelzwecke ist di eKenntnissder Messgenauigkeit zwingend und wird daher pro Datenpunkt als obligatorisches
 						Attribut angegeben. Somit ist es möglich unterschiedliche Messgenauigkeiten für die Datenpunkte
 						zu definieren.</p>
 
-					<p>Dieses Funktionsprofil erlaubt sowohl die Messung der Gesamtleistung wie auch die Leistung der drei
+					<p>Dieses Funktionsprofil erlaubt sowohl die Messung der Totalleistung wie auch die Leistung der drei
 						einzelnen Phasen. Eine der folgenden Varianten muss bei der Implementierung des Funktionsprofiles
 						umgesetzt werden:
 					<ul>
-						<li>1-phasige Geräte geben die Gesamtleistung an (ActivePowerACtot)</li>
-						<li>3-phasige Geräte ohne Gesamtleistungsmessung geben die Leistung pro Phase an (ActivePowerACL1, ActivePowerACL2, ActivePowerACL3)</li>
-						<li>3-phasige Geräte mit Einzelphasen- und Gesamtleistungsmessung geben alle Datenpunkte an</li>
+						<li>Einphasige Geräte geben die Totalleistung an (ActivePowerACtot)</li>
+						<li>3-phasige Geräte ohne Totalleistungsmessung geben die Leistung pro Phase an (ActivePowerACL1, ActivePowerACL2, ActivePowerACL3)</li>
+						<li>3-phasige Geräte mit Einzelphasen- und Totalleistungsmessung geben alle Datenpunkte an</li>
 					</ul>
 					</p>
 				]]>
 			</sgr:textElement>
 			<sgr:language>de</sgr:language>
+		</sgr:fpLegibDesc>
+		<sgr:fpLegibDesc>
+			<sgr:textElement>
+				<![CDATA[	
+					<img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
+					<strong>Active Power Measurement</strong><br>
+					Monitoring functional profile for power generators and consumers for reflecting the active power.
+
+					<p>Knowing the precision of measurements is necessary and therefore specified as a mandatory attribute
+						per data point. Thus, different measurement precisions can be defined for the data points.</p>
+
+					<p>With this functional profile you can measure the total active power as well as the active power of
+						the three individual phases. One of the following options must be implemented for fulfilling the functional profile:
+					<ul>
+						<li>Single-phase devices use the total active power data point (ActivePowerACtot)</li>
+						<li>Three-phase devices without measurement of the total active power use the data points per phase (ActivePowerACL1, ActivePowerACL2, ActivePowerACL3)</li>
+						<li>Three-phase devices with measurement of the total active power use all data points</li>
+					</ul>
+					</p>
+				]]>			
+			</sgr:textElement>
+			<sgr:language>en</sgr:language>
 		</sgr:fpLegibDesc>
 	</sgr:functionalProfile>
 	<sgr:dpListElement>
@@ -63,6 +85,10 @@
 				<sgr:textElement>Erfassung der gesamten Wirkleistung</sgr:textElement>
 				<sgr:language>de</sgr:language>
 			</sgr:dpLegibDesc>
+			<sgr:dpLegibDesc>
+				<sgr:textElement>Total active power measurement</sgr:textElement>
+				<sgr:language>en</sgr:language>
+			</sgr:dpLegibDesc>			
 		</sgr:dataPoint>
 		<sgr:genAttribute>
 			<sgr:precision>2.0</sgr:precision>
@@ -76,6 +102,10 @@
 			<sgr:dpLegibDesc>
 				<sgr:textElement>Erfassung der Wirkleistung Phase 1</sgr:textElement>
 				<sgr:language>de</sgr:language>
+			</sgr:dpLegibDesc>
+			<sgr:dpLegibDesc>
+				<sgr:textElement>Active power measurement of phase 1</sgr:textElement>
+				<sgr:language>en</sgr:language>
 			</sgr:dpLegibDesc>
 		</sgr:dataPoint>
 		<sgr:genAttribute>
@@ -91,6 +121,10 @@
 				<sgr:textElement>Erfassung der Wirkleistung Phase 2</sgr:textElement>
 				<sgr:language>de</sgr:language>
 			</sgr:dpLegibDesc>
+			<sgr:dpLegibDesc>
+				<sgr:textElement>Active power measurement of phase 2</sgr:textElement>
+				<sgr:language>en</sgr:language>
+			</sgr:dpLegibDesc>			
 		</sgr:dataPoint>
 		<sgr:genAttribute>
 			<sgr:precision>2.0</sgr:precision>
@@ -105,6 +139,10 @@
 				<sgr:textElement>Erfassung der Wirkleistung Phase 3</sgr:textElement>
 				<sgr:language>de</sgr:language>
 			</sgr:dpLegibDesc>
+			<sgr:dpLegibDesc>
+				<sgr:textElement>Active power measurement of phase 3</sgr:textElement>
+				<sgr:language>en</sgr:language>
+			</sgr:dpLegibDesc>			
 		</sgr:dataPoint>
 		<sgr:genAttribute>
 			<sgr:precision>2.0</sgr:precision>
