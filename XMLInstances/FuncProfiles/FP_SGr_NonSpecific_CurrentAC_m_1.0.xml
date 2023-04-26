@@ -2,7 +2,7 @@
 <?xml-stylesheet type="text/xsl" href="/xsl/SGr.xsl"?>
 <sgr:SGrFunctionalProfileFrame xmlns:sgr="http://www.smartgridready.com/ns/V0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/SGrIncluder.xsd">
 	<sgr:releaseNotes>
-		<sgr:state>Review</sgr:state>
+		<sgr:state>Published</sgr:state>
 		<sgr:changelog>
 			<sgr:version>0.1.1</sgr:version>
 			<sgr:date>2021-04-03</sgr:date>
@@ -10,14 +10,8 @@
 			<sgr:comment>Vorbereitung beta test</sgr:comment>
 		</sgr:changelog>
 		<sgr:changelog>
-			<sgr:version>0.2.2</sgr:version>
-			<sgr:date>2022-10-20</sgr:date>
-			<sgr:author>Ergo/mm</sgr:author>
-			<sgr:comment>Finalisierung Go-Live</sgr:comment>
-		</sgr:changelog>
-		<sgr:changelog>
 			<sgr:version>1.0.0</sgr:version>
-			<sgr:date>2023-03-16</sgr:date>
+			<sgr:date>2023-04-21</sgr:date>
 			<sgr:author>SGr/sz</sgr:author>
 			<sgr:comment>Finalisierung</sgr:comment>
 		</sgr:changelog>		
@@ -42,22 +36,44 @@
 						Monitoring Funktionsprofil für Stromerzeuger und Stromverbraucher zur Kontrolle der Systemlast und/oder für regeltechnische 
 						Zwecke.
 	
-					<p>Die Kenntnis der Messgenauigkeit notwendig und wird daher pro Datenpunkt als obligatorisches
+					<p>Für Regelzwecke ist die Kenntnissder Messgenauigkeit zwingend und wird daher pro Datenpunkt als obligatorisches
 						Attribut angegeben. Somit ist es möglich unterschiedliche Messgenauigkeiten für die Datenpunkte
 						zu definieren.</p>
 					
 					<p>Dieses Funktionsprofil erlaubt sowohl die Messung der Stromstärke auf einer Phase wie auch auf drei Phasen.
 						Eine der folgenden Varianten muss bei der Implementierung des Funktionsprofiles umgesetzt werden:
 					<ul>
-						<li>1-phasige Geräte geben die Stromstärke auf der ersten Phase an (CurrentAC1)</li>
+						<li>Einphasige Geräte geben die Stromstärke über die erste Phase an (CurrentAC1)</li>
 						<li>3-phasige Geräte geben die Stromstärke pro Phase an (CurrentAC1, CurrentAC2, CurrentAC3)</li>
 					</ul>
-					Die Implementierung der Stromstärke auf den Nulleiter (CurrentACN) ist optional möglich.
+					Die Implementierung der Messung der Stromstärke auf dem Nulleiter (CurrentACN) ist optional möglich.
 					</p>
 				]]>	
 			</sgr:textElement>
 			<sgr:language>de</sgr:language>
 		</sgr:fpLegibDesc>
+		<sgr:fpLegibDesc>
+			<sgr:textElement>
+				<![CDATA[	
+					<img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
+					<strong>Current measurement</strong><br>
+						Monitoring functional profile for power generators and consumers for reflecting the current. 
+	
+					<p>Knowing the precision of measurements is necessary and therefore specified as a mandatory attribute per data point.
+					Thus, different measurement precisions can be defined for the data points. </p>
+					
+					<p>Dieses Funktionsprofil erlaubt sowohl die Messung der Stromstärke auf einer Phase wie auch auf drei Phasen.
+						Eine der folgenden Varianten muss bei der Implementierung des Funktionsprofiles umgesetzt werden:
+					<ul>
+						<li>Single-phase devices use the total current with the first data point (CurrentAC1)</li>
+						<li>Three-phase devices give the current per phase  using three data points (ActivePowerACL1, ActivePowerACL2, ActivePowerACL3)</li>
+					</ul>
+					
+					<p>The implementation of a datapoint measuring the current on the neutral conductor is optional (via datapoint CurrentACN).</p>
+				]]>	
+			</sgr:textElement>
+			<sgr:language>en</sgr:language>
+		</sgr:fpLegibDesc>		
 	</sgr:functionalProfile>
 	<sgr:dpListElement>
 		<sgr:dataPoint datapointName="CurrentACL1" rwpDatadirection="R" unit="AMPERES" mroVisibilityIndicator="M">
@@ -68,6 +84,10 @@
 				<sgr:textElement>Erfassung des Stromes in Phase 1</sgr:textElement>
 				<sgr:language>de</sgr:language>
 			</sgr:dpLegibDesc>
+			<sgr:dpLegibDesc>
+				<sgr:textElement>Current measurement of phase 1</sgr:textElement>
+				<sgr:language>en</sgr:language>
+			</sgr:dpLegibDesc>			
 		</sgr:dataPoint>
 		<sgr:genAttribute>
 			<sgr:precision>2.0</sgr:precision>
@@ -82,6 +102,10 @@
 				<sgr:textElement>Erfassung des Stromes in Phase 2</sgr:textElement>
 				<sgr:language>de</sgr:language>
 			</sgr:dpLegibDesc>
+			<sgr:dpLegibDesc>
+				<sgr:textElement>Current measurement of phase 2</sgr:textElement>
+				<sgr:language>en</sgr:language>
+			</sgr:dpLegibDesc>			
 		</sgr:dataPoint>
 		<sgr:genAttribute>
 			<sgr:precision>2.0</sgr:precision>
@@ -96,6 +120,10 @@
 				<sgr:textElement>Erfassung des Stromes in Phase 3</sgr:textElement>
 				<sgr:language>de</sgr:language>
 			</sgr:dpLegibDesc>
+			<sgr:dpLegibDesc>
+				<sgr:textElement>Current measurement of phase 3</sgr:textElement>
+				<sgr:language>en</sgr:language>
+			</sgr:dpLegibDesc>			
 		</sgr:dataPoint>
 		<sgr:genAttribute>
 			<sgr:precision>2.0</sgr:precision>
@@ -110,6 +138,10 @@
 				<sgr:textElement>Erfassung des Stromes im Nullleiter</sgr:textElement>
 				<sgr:language>de</sgr:language>
 			</sgr:dpLegibDesc>
+			<sgr:dpLegibDesc>
+				<sgr:textElement>Current measurement of neutral conductor</sgr:textElement>
+				<sgr:language>en</sgr:language>
+			</sgr:dpLegibDesc>			
 		</sgr:dataPoint>
 		<sgr:genAttribute>
 			<sgr:precision>2.0</sgr:precision>
