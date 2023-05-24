@@ -30,6 +30,13 @@
 		</sgr:manufacturerLabel>
 		<sgr:remAuthorID>CTA/mz  IBT/cb</sgr:remAuthorID>
 		<sgr:devLevelofOperation>4</sgr:devLevelofOperation>
+		<sgr:devPrgDesc>
+					<sgr:textElement>There is a timer "remoteCtrlTimeSec" (CTA_Ext_Heating_Command) aligned to all external commands that counts down for lifetime management. It's value must be > 0 for keeping the external command / Setpoint valid.
+					CTA_Ext_Heating_Setpoint, CTA_Ext_SG, CTA_Ext_PwrReq, CTA_Ext_Cooling_Command, CTA_Ext_Cooling_Setpoint. 
+					It must be set through the controlling functional profile. 
+					</sgr:textElement>
+					<sgr:language>en</sgr:language>
+		</sgr:devPrgDesc>
 	</sgr:deviceProfile>
 	<sgr:modbusInterfaceDesc>
 		<sgr:modbusInterfaceSelection>TCP/IP</sgr:modbusInterfaceSelection>
@@ -39,7 +46,7 @@
 				<sgr:ipV4n1>192</sgr:ipV4n1>
 				<sgr:ipV4n2>168</sgr:ipV4n2>
 				<sgr:ipV4n3>1</sgr:ipV4n3>
-				<sgr:ipV4n4>51</sgr:ipV4n4>
+				<sgr:ipV4n4>55</sgr:ipV4n4>
 			</sgr:address>
 			<sgr:slaveID>1</sgr:slaveID>
 		</sgr:trspSrvModbusTCPoutOfBox>
@@ -48,7 +55,6 @@
 	</sgr:modbusInterfaceDesc>
 	<sgr:fpListElement>
 		<sgr:functionalProfile profileName="HeatPumpBase">
-
 			<sgr:profileNumber>
 				<sgr:specsOwnerId>0</sgr:specsOwnerId>
 				<sgr:profileIdentification>HeatPumpControl</sgr:profileIdentification>
@@ -495,18 +501,12 @@ usw.
 			</sgr:dataPoint>
 			<sgr:modbusDataPoint>
 				<sgr:modbusDataType>
-					<sgr:int32U>0</sgr:int32U>
+					<sgr:float32>0.0</sgr:float32>
 				</sgr:modbusDataType>
 				<sgr:modbusFirstRegisterReference registerType="InputRegister" addr="2002" bitRank="0" />
 				<sgr:dpSizeNrRegisters>2</sgr:dpSizeNrRegisters>
 				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
 			</sgr:modbusDataPoint>
-			<sgr:modbusAttr>
-				<sgr:scalingByMulPwr>
-					<sgr:multiplicator>1</sgr:multiplicator>
-					<sgr:powerof10>0</sgr:powerof10>
-				</sgr:scalingByMulPwr>
-			</sgr:modbusAttr>
 		</sgr:dpListElement>
 		<sgr:dpListElement>
 			<sgr:dataPoint datapointName="SupplyWaterTempStpt" mroVisibilityIndicator="O" rwpDatadirection="RW" unit="DEGREES_CELSIUS">
@@ -937,58 +937,35 @@ die Einbindung in ein intelligentes Stromnetz
 				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
 			</sgr:modbusDataPoint>
 		</sgr:dpListElement>
-	</sgr:fpListElement>
-	
-	
-	<sgr:fpListElement>
-		<sgr:functionalProfile profileName="SG-ReadyStates_bwp">
-			<sgr:profileNumber>
-				<sgr:specsOwnerId>0</sgr:specsOwnerId>
-				<sgr:profileIdentification>HeatPumpControl</sgr:profileIdentification>
-				<sgr:subProfileIdent>SG-ReadyStates_bwp</sgr:subProfileIdent>
-				<sgr:sgrLevelOfOperation>2m</sgr:sgrLevelOfOperation>
-				<sgr:versionNumber>
-					<sgr:primaryVersionNumber>0</sgr:primaryVersionNumber>
-					<sgr:secondaryVersionNumber>2</sgr:secondaryVersionNumber>
-					<sgr:subReleaseVersionNumber>1</sgr:subReleaseVersionNumber>
-				</sgr:versionNumber>
-			</sgr:profileNumber>
-			<sgr:fpNameList>
-				<sgr:sLV1Name>SG-ReadyStates_bwp</sgr:sLV1Name>
-				<sgr:sHPbwpName>sgr:sHPbwpName</sgr:sHPbwpName>
-			</sgr:fpNameList>
-			<sgr:fpLegibDesc>
-				<sgr:textElement>„SG Ready“ ist ein Markenzeichen des Bundesverbands Wärmepumpe e. V.
-Es bezeichnet eine Eigenschaft von Wärmepumpen, deren Regelungstechnik
-die Einbindung in ein intelligentes Stromnetz
-(Smart Grid) ermöglicht</sgr:textElement>
-				<sgr:language>de</sgr:language>
-				<sgr:uri>https://www.waermepumpe.de/normen-technik/sg-ready/</sgr:uri>
-			</sgr:fpLegibDesc>
-		</sgr:functionalProfile>
 		<sgr:dpListElement>
-			<sgr:dataPoint datapointName="SGReadyCmd"
+			<sgr:dataPoint datapointName="remoteCtrlTimeSec"
 				mroVisibilityIndicator="M" rwpDatadirection="RW"
-				unit="NONE">
+				unit="SECONDS">
 				<sgr:basicDataType>
-					<sgr:enum>
-						<sgr:sgreadyStateLv2>HP_NORMAL</sgr:sgreadyStateLv2>
-					</sgr:enum>
-
+					<sgr:int16U>0</sgr:int16U>
 				</sgr:basicDataType>
+				<sgr:dpNameList>
+					<sgr:sLV1Name>remoteCtrlTimeSec </sgr:sLV1Name>
+					<sgr:sManufName>CTA_Ext_Communication_Handler</sgr:sManufName></sgr:dpNameList>
 				<sgr:dpLegibDesc>
-					<sgr:textElement>this the command acccording the bwp SG-Ready definition  https://www.waermepumpe.de/normen-technik/sg-ready/</sgr:textElement>
-					<sgr:language>en</sgr:language>
+					<sgr:textElement>Countdown Variable in sec. Wenn 0, dann Ext. Kommunikation inaktiv., Max. Wert 3000</sgr:textElement>
+					<sgr:language>de</sgr:language>
 				</sgr:dpLegibDesc>
+				<sgr:dpPrgDesc>
+					<sgr:textElement>remoteCtrlTimeSec is valid for all external commands and settings of the device. It must be > 0 for keeping the external command / Setpoint valid.
+					CTA_Ext_Heating_Command, CTA_Ext_Heating_Setpoint, CTA_Ext_SG, CTA_Ext_PwrReq, CTA_Ext_Cooling_Command, CTA_Ext_Cooling_Setpoint </sgr:textElement>
+					<sgr:language>en</sgr:language>
+				</sgr:dpPrgDesc>
 			</sgr:dataPoint>
+			<sgr:genAttribute>
+				<sgr:maxVal>3000</sgr:maxVal></sgr:genAttribute>
 			<sgr:modbusDataPoint>
 				<sgr:modbusDataType>
-					<sgr:enum>
-						<sgr:sgreadyStateLv2>HP_NORMAL</sgr:sgreadyStateLv2>						
-					</sgr:enum>					
+					<sgr:int16U>0</sgr:int16U>
+					
 				</sgr:modbusDataType>
 				<sgr:modbusFirstRegisterReference registerType="HoldRegister"
-					addr="1054" />
+					addr="990" />
 				<sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
 				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
 			</sgr:modbusDataPoint>
