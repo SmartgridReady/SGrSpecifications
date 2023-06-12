@@ -364,13 +364,13 @@
   <complexType name="SGrModbusBooleanMapperType">
         <annotation>
          <documentation>
-          Booleans at modbus level may be true if 1, 0, 0xff, -1 , all but not a certain value .
-          isPositiveLogic is true if a number must contain a specific value to be valid
-          isPositiveLogic is false if a number must contain any  but NOT a specific value to be valid  
+          If this attribute is not set, true means 1, false means 0
+          Booleans at modbus register level may use different schemas like anyvalue but x = true 
+          in this case, set  assignedValueMeans=false and value=x
          </documentation>
         </annotation>
   	<sequence>
-  		<element name="isPositiveLogic" type="boolean" maxOccurs="1" minOccurs="1"></element>
+  		<element name="assignedValueMeans" type="boolean" maxOccurs="1" minOccurs="1"></element>
   		<element name="value" type="unsignedInt" maxOccurs="1" minOccurs="1"></element>
   	</sequence>
   </complexType>

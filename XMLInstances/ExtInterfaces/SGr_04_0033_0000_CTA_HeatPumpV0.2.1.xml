@@ -76,7 +76,7 @@
 			</sgr:fpLegibDesc>
 		</sgr:functionalProfile>
 		<sgr:dpListElement>
-			<sgr:dataPoint datapointName="ctaHPOpModeCmd" mroVisibilityIndicator="M" rwpDatadirection="R" unit="NONE">
+			<sgr:dataPoint datapointName="ctaHPOpModeCmdFb" mroVisibilityIndicator="O" rwpDatadirection="R" unit="NONE">
 				<sgr:basicDataType>
 					<sgr:enum>
 						<sgr:ctaHPOpMode>HP_NULL</sgr:ctaHPOpMode>								
@@ -101,12 +101,6 @@
 				<sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
 				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
 			</sgr:modbusDataPoint>
-			<sgr:modbusAttr>
-				<sgr:scalingByMulPwr>
-					<sgr:multiplicator>1</sgr:multiplicator>
-					<sgr:powerof10>0</sgr:powerof10>
-				</sgr:scalingByMulPwr>
-			</sgr:modbusAttr>
 		</sgr:dpListElement>
 		<sgr:dpListElement>
 			<sgr:dataPoint datapointName="ctaHPOpState" mroVisibilityIndicator="M" rwpDatadirection="R" unit="NONE">
@@ -188,13 +182,6 @@
 				<sgr:dpSizeNrRegisters>2</sgr:dpSizeNrRegisters>
 				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
 			</sgr:modbusDataPoint>
-			<sgr:modbusAttr>
-				<sgr:scalingByMulPwr>
-					<sgr:multiplicator>1</sgr:multiplicator>
-					<sgr:powerof10>0</sgr:powerof10>
-				</sgr:scalingByMulPwr>
-			</sgr:modbusAttr>
-
 		</sgr:dpListElement>
 		<sgr:dpListElement>
 			<sgr:dataPoint datapointName="SupplyWaterTemp" mroVisibilityIndicator="M" rwpDatadirection="R" unit="DEGREES_CELSIUS">
@@ -217,12 +204,6 @@
 				<sgr:dpSizeNrRegisters>2</sgr:dpSizeNrRegisters>
 				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
 			</sgr:modbusDataPoint>
-			<sgr:modbusAttr>
-				<sgr:scalingByMulPwr>
-					<sgr:multiplicator>1</sgr:multiplicator>
-					<sgr:powerof10>0</sgr:powerof10>
-				</sgr:scalingByMulPwr>
-			</sgr:modbusAttr>
 		</sgr:dpListElement>
 		<sgr:dpListElement>
 			<sgr:dataPoint datapointName="ReturnSupplyWaterTemp" mroVisibilityIndicator="O" rwpDatadirection="R" unit="DEGREES_CELSIUS">
@@ -246,12 +227,6 @@
 				<sgr:dpSizeNrRegisters>2</sgr:dpSizeNrRegisters>
 				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
 			</sgr:modbusDataPoint>
-			<sgr:modbusAttr>
-				<sgr:scalingByMulPwr>
-					<sgr:multiplicator>1</sgr:multiplicator>
-					<sgr:powerof10>0</sgr:powerof10>
-				</sgr:scalingByMulPwr>
-			</sgr:modbusAttr>
 		</sgr:dpListElement>		
 		<sgr:dpListElement>
 			<sgr:dataPoint datapointName="SourceTemp" mroVisibilityIndicator="O" rwpDatadirection="R" unit="DEGREES_CELSIUS">
@@ -275,12 +250,6 @@
 				<sgr:dpSizeNrRegisters>2</sgr:dpSizeNrRegisters>
 				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
 			</sgr:modbusDataPoint>
-			<sgr:modbusAttr>
-				<sgr:scalingByMulPwr>
-					<sgr:multiplicator>1</sgr:multiplicator>
-					<sgr:powerof10>0</sgr:powerof10>
-				</sgr:scalingByMulPwr>
-			</sgr:modbusAttr>
 		</sgr:dpListElement>
 	</sgr:fpListElement>
 
@@ -298,7 +267,7 @@
 				</sgr:versionNumber>
 			</sgr:profileNumber>
 			<sgr:fpNameList>
-				<sgr:sLV1Name>CompressorPwrCtrl</sgr:sLV1Name>
+				<sgr:sLV1Name>PowerCtrl</sgr:sLV1Name>
 			</sgr:fpNameList>
 			<sgr:fpLegibDesc>
 				<sgr:textElement>x
@@ -307,33 +276,31 @@
 			</sgr:fpLegibDesc>
 		</sgr:functionalProfile>
 		<sgr:dpListElement>
-			<sgr:dataPoint datapointName="SpeedCtrlSetpt" mroVisibilityIndicator="M" rwpDatadirection="W" unit="PERCENT">
+			<sgr:dataPoint datapointName="PowerCtrlStpt" mroVisibilityIndicator="M" rwpDatadirection="W" unit="NONE">
 				<sgr:basicDataType>
 					<sgr:float32>0</sgr:float32>
 				</sgr:basicDataType>
 				<sgr:dpNameList>
-					<sgr:sLV1Name>SpeedCtrlSetpt</sgr:sLV1Name>
+					<sgr:sLV1Name>PowerCtrlStpt</sgr:sLV1Name>
+					<sgr:sManufName>CTA_DWRequest</sgr:sManufName>
 				</sgr:dpNameList>
 				<sgr:dpLegibDesc>
-					<sgr:textElement>
-						?check: Adress durch cb? Absolute Vorgabe der Drehzahl in der gewählten Betriebsart
-					</sgr:textElement>
+					<sgr:textElement>VD-Drehzahl in % bei TWW Ladung (Empfehlung 38)</sgr:textElement>
 					<sgr:language>de</sgr:language>
 				</sgr:dpLegibDesc>
 			</sgr:dataPoint>
+			<sgr:genAttribute>
+				<sgr:maxVal>100.0</sgr:maxVal>
+				<sgr:minVal>25.0</sgr:minVal></sgr:genAttribute>
 			<sgr:modbusDataPoint>
 				<sgr:modbusDataType>
 					<sgr:float32>0.0</sgr:float32>
 				</sgr:modbusDataType>
-				<sgr:modbusFirstRegisterReference registerType="InputRegister" addr="1056" bitRank="0" />
+				<sgr:modbusFirstRegisterReference registerType="HoldRegister" addr="1028" bitRank="0" />
 				<sgr:dpSizeNrRegisters>2</sgr:dpSizeNrRegisters>
 				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
 			</sgr:modbusDataPoint>
 			<sgr:modbusAttr>
-				<sgr:scalingByMulPwr>
-					<sgr:multiplicator>1</sgr:multiplicator>
-					<sgr:powerof10>2</sgr:powerof10>
-				</sgr:scalingByMulPwr>
 			</sgr:modbusAttr>
 		</sgr:dpListElement>
 		<sgr:dpListElement>
@@ -361,13 +328,12 @@
 			</sgr:modbusDataPoint>
 			<sgr:modbusAttr>
 				<sgr:scalingByMulPwr>
-					<sgr:multiplicator>1</sgr:multiplicator>
+					<sgr:multiplicator>60</sgr:multiplicator>
 					<sgr:powerof10>0</sgr:powerof10>
-				</sgr:scalingByMulPwr>
-			</sgr:modbusAttr>
+				</sgr:scalingByMulPwr></sgr:modbusAttr>
 		</sgr:dpListElement>
 		<sgr:dpListElement>
-			<sgr:dataPoint datapointName="ActPowerACtot" mroVisibilityIndicator="O" rwpDatadirection="R" unit="KILOWATTS">
+			<sgr:dataPoint datapointName="ActPowerACtot" mroVisibilityIndicator="O" rwpDatadirection="R" unit="KILOWATT_HOURS">
 				<sgr:basicDataType>
 					<sgr:float32>0</sgr:float32>
 				</sgr:basicDataType>
@@ -389,12 +355,38 @@
 				<sgr:dpSizeNrRegisters>2</sgr:dpSizeNrRegisters>
 				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
 			</sgr:modbusDataPoint>
-			<sgr:modbusAttr>
-				<sgr:scalingByMulPwr>
-					<sgr:multiplicator>1</sgr:multiplicator>
-					<sgr:powerof10>0</sgr:powerof10>
-				</sgr:scalingByMulPwr>
-			</sgr:modbusAttr>
+		</sgr:dpListElement>
+		<sgr:dpListElement>
+			<sgr:dataPoint datapointName="ctaRemoteCtrlTimeSec"
+				mroVisibilityIndicator="M" rwpDatadirection="RW"
+				unit="SECONDS">
+				<sgr:basicDataType>
+					<sgr:int16U>0</sgr:int16U>
+				</sgr:basicDataType>
+				<sgr:dpNameList>
+					<sgr:sLV1Name>ctaRemoteCtrlTimeSec</sgr:sLV1Name>
+					<sgr:sManufName>CTA_Ext_Communication_Handler</sgr:sManufName></sgr:dpNameList>
+				<sgr:dpLegibDesc>
+					<sgr:textElement>Countdown Variable in sec. Wenn 0, dann Ext. Kommunikation inaktiv., Max. Wert 3000</sgr:textElement>
+					<sgr:language>de</sgr:language>
+				</sgr:dpLegibDesc>
+				<sgr:dpPrgDesc>
+					<sgr:textElement>remoteCtrlTimeSec is valid for all external commands and settings of the device. It must be > 0 for keeping the external command / Setpoint valid.
+					CTA_Ext_Heating_Command, CTA_Ext_Heating_Setpoint, CTA_Ext_SG, CTA_Ext_PwrReq, CTA_Ext_Cooling_Command, CTA_Ext_Cooling_Setpoint </sgr:textElement>
+					<sgr:language>en</sgr:language>
+				</sgr:dpPrgDesc>
+			</sgr:dataPoint>
+			<sgr:genAttribute>
+				<sgr:maxVal>3000</sgr:maxVal></sgr:genAttribute>
+			<sgr:modbusDataPoint>
+				<sgr:modbusDataType>
+					<sgr:int16U>0</sgr:int16U>					
+				</sgr:modbusDataType>
+				<sgr:modbusFirstRegisterReference registerType="HoldRegister"
+					addr="990" />
+				<sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
+				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
+			</sgr:modbusDataPoint>
 		</sgr:dpListElement>
 	</sgr:fpListElement>
 
@@ -564,6 +556,38 @@ usw.
 				</sgr:scalingByMulPwr>
 			</sgr:modbusAttr>
 		</sgr:dpListElement>
+		<sgr:dpListElement>
+			<sgr:dataPoint datapointName="ctaRemoteCtrlTimeSec"
+				mroVisibilityIndicator="M" rwpDatadirection="RW"
+				unit="SECONDS">
+				<sgr:basicDataType>
+					<sgr:int16U>0</sgr:int16U>
+				</sgr:basicDataType>
+				<sgr:dpNameList>
+					<sgr:sLV1Name>ctaRemoteCtrlTimeSec</sgr:sLV1Name>
+					<sgr:sManufName>CTA_Ext_Communication_Handler</sgr:sManufName></sgr:dpNameList>
+				<sgr:dpLegibDesc>
+					<sgr:textElement>Countdown Variable in sec. Wenn 0, dann Ext. Kommunikation inaktiv., Max. Wert 3000</sgr:textElement>
+					<sgr:language>de</sgr:language>
+				</sgr:dpLegibDesc>
+				<sgr:dpPrgDesc>
+					<sgr:textElement>remoteCtrlTimeSec is valid for all external commands and settings of the device. It must be > 0 for keeping the external command / Setpoint valid.
+					CTA_Ext_Heating_Command, CTA_Ext_Heating_Setpoint, CTA_Ext_SG, CTA_Ext_PwrReq, CTA_Ext_Cooling_Command, CTA_Ext_Cooling_Setpoint </sgr:textElement>
+					<sgr:language>en</sgr:language>
+				</sgr:dpPrgDesc>
+			</sgr:dataPoint>
+			<sgr:genAttribute>
+				<sgr:maxVal>3000</sgr:maxVal></sgr:genAttribute>
+			<sgr:modbusDataPoint>
+				<sgr:modbusDataType>
+					<sgr:int16U>0</sgr:int16U>					
+				</sgr:modbusDataType>
+				<sgr:modbusFirstRegisterReference registerType="HoldRegister"
+					addr="990" />
+				<sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
+				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
+			</sgr:modbusDataPoint>
+		</sgr:dpListElement>
 	</sgr:fpListElement>
 
 	<sgr:fpListElement>
@@ -589,14 +613,14 @@ usw.
 		</sgr:functionalProfile>
 
 		<sgr:dpListElement>
-			<sgr:dataPoint datapointName="ctaDHWOpMode" mroVisibilityIndicator="M" rwpDatadirection="RW" unit="NONE">
+			<sgr:dataPoint datapointName="ctaDomHotWOpModeCmd" mroVisibilityIndicator="M" rwpDatadirection="RW" unit="NONE">
 				<sgr:basicDataType>
 					<sgr:enum>
 						<sgr:ctaDHWOpMode>DHW_NULL</sgr:ctaDHWOpMode>						
 					</sgr:enum>					
 				</sgr:basicDataType>
 				<sgr:dpNameList>
-					<sgr:sLV1Name>HPOpModeCmd</sgr:sLV1Name>
+					<sgr:sLV1Name>ctaDHWOpMode</sgr:sLV1Name>
 				</sgr:dpNameList>
 				<sgr:dpLegibDesc>
 					<sgr:textElement>?checkDoku TODO: enum.  Grund-Betriebsart der Brauchwasseranlage (Bereitschaft, Programm, Komfort, Eco, Warmwasser, Kühlen aktiv, Kühlen passiv, Notbetrieb)</sgr:textElement>
@@ -613,12 +637,6 @@ usw.
 				<sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
 				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
 			</sgr:modbusDataPoint>
-			<sgr:modbusAttr>
-				<sgr:scalingByMulPwr>
-					<sgr:multiplicator>1</sgr:multiplicator>
-					<sgr:powerof10>0</sgr:powerof10>
-				</sgr:scalingByMulPwr>
-			</sgr:modbusAttr>
 		</sgr:dpListElement>
 		<sgr:dpListElement>
 			<sgr:dataPoint datapointName="DomHotWTempStpt" mroVisibilityIndicator="M" rwpDatadirection="RW" unit="DEGREES_CELSIUS">
@@ -626,11 +644,11 @@ usw.
 					<sgr:float32>0</sgr:float32>
 				</sgr:basicDataType>
 				<sgr:dpNameList>
-					<sgr:sLV1Name>DomHotWTempStptOffset</sgr:sLV1Name>
+					<sgr:sLV1Name>DomHotWTempStpt</sgr:sLV1Name>
 				</sgr:dpNameList>
 				<sgr:dpLegibDesc>
 					<sgr:textElement>
-						Relative Anhebung/Absenkung der Solltemperatur (+/-) für den Brauchwarmwasserspeicher.
+						Zieltemperatur fuer den Brauchwarmwasserspeicher.
 					</sgr:textElement>
 					<sgr:language>de</sgr:language>
 				</sgr:dpLegibDesc>
@@ -639,7 +657,7 @@ usw.
 				<sgr:modbusDataType>
 					<sgr:float32>0.0</sgr:float32>
 				</sgr:modbusDataType>
-				<sgr:modbusFirstRegisterReference registerType="HoldRegister" addr="2156" bitRank="0" />
+				<sgr:modbusFirstRegisterReference registerType="HoldRegister" addr="1015" bitRank="0" />
 				<sgr:dpSizeNrRegisters>2</sgr:dpSizeNrRegisters>
 				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
 			</sgr:modbusDataPoint>
@@ -657,6 +675,7 @@ usw.
 				</sgr:basicDataType>
 				<sgr:dpNameList>
 					<sgr:sLV1Name>ActDomHotWaterTemp</sgr:sLV1Name>
+					<sgr:sManufName>CTA_B3_Temp</sgr:sManufName>
 				</sgr:dpNameList>
 				<sgr:dpLegibDesc>
 					<sgr:textElement>Aktuelle Ist-Temperatur des Brauchwarmwasserspeichers</sgr:textElement>
@@ -667,16 +686,42 @@ usw.
 				<sgr:modbusDataType>
 					<sgr:float32>0.0</sgr:float32>
 				</sgr:modbusDataType>
-				<sgr:modbusFirstRegisterReference registerType="InputRegister" addr="2156" bitRank="0" />
+				<sgr:modbusFirstRegisterReference registerType="InputRegister" addr="2010" bitRank="0" />
+				<sgr:dpSizeNrRegisters>2</sgr:dpSizeNrRegisters>
+				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
+			</sgr:modbusDataPoint>
+		</sgr:dpListElement>
+		<sgr:dpListElement>
+			<sgr:dataPoint datapointName="ctaRemoteCtrlTimeSec"
+				mroVisibilityIndicator="M" rwpDatadirection="RW"
+				unit="SECONDS">
+				<sgr:basicDataType>
+					<sgr:int16U>0</sgr:int16U>
+				</sgr:basicDataType>
+				<sgr:dpNameList>
+					<sgr:sLV1Name>ctaRemoteCtrlTimeSec</sgr:sLV1Name>
+					<sgr:sManufName>CTA_Ext_Communication_Handler</sgr:sManufName></sgr:dpNameList>
+				<sgr:dpLegibDesc>
+					<sgr:textElement>Countdown Variable in sec. Wenn 0, dann Ext. Kommunikation inaktiv., Max. Wert 3000</sgr:textElement>
+					<sgr:language>de</sgr:language>
+				</sgr:dpLegibDesc>
+				<sgr:dpPrgDesc>
+					<sgr:textElement>remoteCtrlTimeSec is valid for all external commands and settings of the device. It must be > 0 for keeping the external command / Setpoint valid.
+					CTA_Ext_Heating_Command, CTA_Ext_Heating_Setpoint, CTA_Ext_SG, CTA_Ext_PwrReq, CTA_Ext_Cooling_Command, CTA_Ext_Cooling_Setpoint </sgr:textElement>
+					<sgr:language>en</sgr:language>
+				</sgr:dpPrgDesc>
+			</sgr:dataPoint>
+			<sgr:genAttribute>
+				<sgr:maxVal>3000</sgr:maxVal></sgr:genAttribute>
+			<sgr:modbusDataPoint>
+				<sgr:modbusDataType>
+					<sgr:int16U>0</sgr:int16U>					
+				</sgr:modbusDataType>
+				<sgr:modbusFirstRegisterReference registerType="HoldRegister"
+					addr="990" />
 				<sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
 				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
 			</sgr:modbusDataPoint>
-			<sgr:modbusAttr>
-				<sgr:scalingByMulPwr>
-					<sgr:multiplicator>1</sgr:multiplicator>
-					<sgr:powerof10>0</sgr:powerof10>
-				</sgr:scalingByMulPwr>
-			</sgr:modbusAttr>
 		</sgr:dpListElement>
 	</sgr:fpListElement>
 	<sgr:fpListElement>
@@ -702,12 +747,13 @@ usw.
 			</sgr:fpLegibDesc>
 		</sgr:functionalProfile>
 		<sgr:dpListElement>
-			<sgr:dataPoint datapointName="HeatWTempStptOffset" mroVisibilityIndicator="M" rwpDatadirection="W" unit="DEGREES_CELSIUS">
+			<sgr:dataPoint datapointName="HeatBufferTempStptOffset" mroVisibilityIndicator="M" rwpDatadirection="W" unit="DEGREES_CELSIUS">
 				<sgr:basicDataType>
 					<sgr:float32>0.0</sgr:float32>
 				</sgr:basicDataType>
 				<sgr:dpNameList>
-					<sgr:sLV1Name>HeatWTempStptOffset</sgr:sLV1Name>
+					<sgr:sLV1Name>HeatBufferTempStptOffset</sgr:sLV1Name>
+					<sgr:sManufName>CTA_CFG_Buffer_Overcharge_dT</sgr:sManufName>
 				</sgr:dpNameList>
 				<sgr:dpLegibDesc>
 					<sgr:textElement>
@@ -793,6 +839,38 @@ usw.
 				</sgr:scalingByMulPwr>
 			</sgr:modbusAttr>
 		</sgr:dpListElement>
+		<sgr:dpListElement>
+			<sgr:dataPoint datapointName="ctaRemoteCtrlTimeSec"
+				mroVisibilityIndicator="M" rwpDatadirection="RW"
+				unit="SECONDS">
+				<sgr:basicDataType>
+					<sgr:int16U>0</sgr:int16U>
+				</sgr:basicDataType>
+				<sgr:dpNameList>
+					<sgr:sLV1Name>ctaRemoteCtrlTimeSec</sgr:sLV1Name>
+					<sgr:sManufName>CTA_Ext_Communication_Handler</sgr:sManufName></sgr:dpNameList>
+				<sgr:dpLegibDesc>
+					<sgr:textElement>Countdown Variable in sec. Wenn 0, dann Ext. Kommunikation inaktiv., Max. Wert 3000</sgr:textElement>
+					<sgr:language>de</sgr:language>
+				</sgr:dpLegibDesc>
+				<sgr:dpPrgDesc>
+					<sgr:textElement>remoteCtrlTimeSec is valid for all external commands and settings of the device. It must be > 0 for keeping the external command / Setpoint valid.
+					CTA_Ext_Heating_Command, CTA_Ext_Heating_Setpoint, CTA_Ext_SG, CTA_Ext_PwrReq, CTA_Ext_Cooling_Command, CTA_Ext_Cooling_Setpoint </sgr:textElement>
+					<sgr:language>en</sgr:language>
+				</sgr:dpPrgDesc>
+			</sgr:dataPoint>
+			<sgr:genAttribute>
+				<sgr:maxVal>3000</sgr:maxVal></sgr:genAttribute>
+			<sgr:modbusDataPoint>
+				<sgr:modbusDataType>
+					<sgr:int16U>0</sgr:int16U>					
+				</sgr:modbusDataType>
+				<sgr:modbusFirstRegisterReference registerType="HoldRegister"
+					addr="990" />
+				<sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
+				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
+			</sgr:modbusDataPoint>
+		</sgr:dpListElement>
 	</sgr:fpListElement>
 
 	<sgr:fpListElement>
@@ -846,7 +924,7 @@ usw.
 			</sgr:modbusAttr>
 		</sgr:dpListElement>
 		<sgr:dpListElement>
-			<sgr:dataPoint datapointName="RoomZoneTempSetpt" mroVisibilityIndicator="M" rwpDatadirection="RW" unit="DEGREES_CELSIUS">
+			<sgr:dataPoint datapointName="RoomZoneTempStpt" mroVisibilityIndicator="M" rwpDatadirection="RW" unit="DEGREES_CELSIUS">
 				<sgr:basicDataType>
 					<sgr:float32>0.0</sgr:float32>
 				</sgr:basicDataType>
@@ -855,7 +933,7 @@ usw.
 				<sgr:modbusDataType>
 					<sgr:float32>0.0</sgr:float32>
 				</sgr:modbusDataType>
-				<sgr:modbusFirstRegisterReference registerType="HoldRegister" addr="1005" bitRank="0" />
+				<sgr:modbusFirstRegisterReference registerType="HoldRegister" addr="1065" bitRank="0" />
 				<sgr:dpSizeNrRegisters>2</sgr:dpSizeNrRegisters>
 				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
 			</sgr:modbusDataPoint>
@@ -938,7 +1016,7 @@ die Einbindung in ein intelligentes Stromnetz
 			</sgr:modbusDataPoint>
 		</sgr:dpListElement>
 		<sgr:dpListElement>
-			<sgr:dataPoint datapointName="remoteCtrlTimeSec"
+			<sgr:dataPoint datapointName="ctaRemoteCtrlTimeSec"
 				mroVisibilityIndicator="M" rwpDatadirection="RW"
 				unit="SECONDS">
 				<sgr:basicDataType>
@@ -961,8 +1039,7 @@ die Einbindung in ein intelligentes Stromnetz
 				<sgr:maxVal>3000</sgr:maxVal></sgr:genAttribute>
 			<sgr:modbusDataPoint>
 				<sgr:modbusDataType>
-					<sgr:int16U>0</sgr:int16U>
-					
+					<sgr:int16U>0</sgr:int16U>					
 				</sgr:modbusDataType>
 				<sgr:modbusFirstRegisterReference registerType="HoldRegister"
 					addr="990" />
