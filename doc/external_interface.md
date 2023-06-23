@@ -22,4 +22,4 @@ The figure below shows the entity relation model of the external interface descr
 
 | Element | Description |
 | ------- | ----------- |
-| devLevelOfOperation | SGrLevelOfOperation defines a controls complexity  (see [SGrLevelOfOperation.md](SGrLevelOfOperation.md) ), and is defined by the highest level of the devices functional profile |
+| sgrLevelOfOperation | SGrLevelOfOperation defines a controls complexity  (see [SGrLevelOfOperation.md](SGrLevelOfOperation.md) ), and is defined by the highest level of the devices functional profile |

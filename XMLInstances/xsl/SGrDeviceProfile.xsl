@@ -95,9 +95,9 @@
 		<tr class="genericDetails"><td>Author Remarks</td><td><xsl:value-of select="sgr:remAuthorID"/></td></tr>
 	</xsl:if>
 	
-	<!-- devLevelofOperation (1x opt) -->
-	<xsl:if test="sgr:devLevelofOperation">
-		<tr class="genericDetails"><td>SGr Level</td><td><xsl:value-of select="sgr:devLevelofOperation"/></td></tr>
+	<!-- sgrLevelOfOperation (1x opt) -->
+	<xsl:if test="sgr:sgrLevelOfOperation">
+		<tr class="genericDetails"><td>Level</td><td><xsl:value-of select="sgr:sgrLevelOfOperation"/></td></tr>
 	</xsl:if>
 </xsl:template>
 
