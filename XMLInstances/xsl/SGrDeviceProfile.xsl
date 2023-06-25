@@ -52,11 +52,6 @@
 	<!-- Device Kind -->
 	<tr class="genericDetails"><td>Device Type</td><td><xsl:value-of select="sgr:deviceKind"/></td></tr>
 	
-	<!-- serialNumber (1x opt)-->
-	<xsl:if test="sgr:serialNumber">
-		<tr class="genericDetails"><td>Serial No.</td><td><xsl:value-of select="sgr:serialNumber"/></td></tr>
-	</xsl:if>
-
 	<!-- softwareRevision -->
 	<tr class="genericDetails"><td>Software Rev.</td><td><xsl:apply-templates select="sgr:softwareRevision"/></td></tr>
 	
@@ -95,9 +90,9 @@
 		<tr class="genericDetails"><td>Author Remarks</td><td><xsl:value-of select="sgr:remAuthorID"/></td></tr>
 	</xsl:if>
 	
-	<!-- devLevelofOperation (1x opt) -->
-	<xsl:if test="sgr:devLevelofOperation">
-		<tr class="genericDetails"><td>SGr Level</td><td><xsl:value-of select="sgr:devLevelofOperation"/></td></tr>
+	<!-- sgrLevelOfOperation (1x opt) -->
+	<xsl:if test="sgr:sgrLevelOfOperation">
+		<tr class="genericDetails"><td>Level</td><td><xsl:value-of select="sgr:sgrLevelOfOperation"/></td></tr>
 	</xsl:if>
 </xsl:template>
 

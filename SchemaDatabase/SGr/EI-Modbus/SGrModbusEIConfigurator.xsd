@@ -2,7 +2,7 @@
 <!-- edited with Eclipse Modeling Tools - 2020-10 by Christoph Broennimann 
 	(IBT Ing. Buero Broennimann Thun) --><!-- Copyright (c) Verein SmartGridready, Switzerland Version 0.2.2 2022-8-22 
 	All Rights Reserved. Source: https://www.SmartGridready.ch/ --><schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:sgr="http://www.smartgridready.com/ns/V0/" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.smartgridready.com/ns/V0/" version="0.2.2">
-  <include schemaLocation="../Generic/SGrGenTypeDefinitions.xsd"/> 
+  <include schemaLocation="../Generic/SGrGenTypeDefinitions.xsd"/>
   <include schemaLocation="SGrModbusEIDataTypes.xsd"/>
   <complexType name="SGrAttr4ModbusType">
 		<annotation>
@@ -364,13 +364,13 @@
   <complexType name="SGrModbusBooleanMapperType">
         <annotation>
          <documentation>
-          If this attribute is not set, true means 1, false means 0
-          Booleans at modbus register level may use different schemas like anyvalue but x = true 
-          in this case, set  assignedValueMeans=false and value=x
+          Booleans at modbus level may be true if 1, 0, 0xff, -1 , all but not a certain value .
+          isPositiveLogic is true if a number must contain a specific value to be valid
+          isPositiveLogic is false if a number must contain any  but NOT a specific value to be valid  
          </documentation>
         </annotation>
   	<sequence>
-  		<element name="assignedValueMeans" type="boolean" maxOccurs="1" minOccurs="1"></element>
+  		<element name="isPositiveLogic" type="boolean" maxOccurs="1" minOccurs="1"></element>
   		<element name="value" type="unsignedInt" maxOccurs="1" minOccurs="1"></element>
   	</sequence>
   </complexType>
