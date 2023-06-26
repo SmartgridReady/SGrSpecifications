@@ -596,90 +596,125 @@
 			</documentation>
     </annotation>
     <all>
-      <element maxOccurs="1" minOccurs="0" name="maxVal" type="float">
-        <annotation>
-          <documentation> upper range limit. Unit:inherited
-					</documentation>
-        </annotation>
-      </element>
-      <element maxOccurs="1" minOccurs="0" name="minVal" type="float">
-        <annotation>
-          <documentation> lower range limit. Unit:inherited
-					</documentation>
-        </annotation>
-      </element>
-      <element maxOccurs="1" minOccurs="0" name="specQualityRequirement" type="sgr:SGrSpecialQualityReqType">
-        <annotation>
-          <documentation> indicates Quality requirements fullfilled like
-						formal certifications
-					</documentation>
-        </annotation>
-      </element>
-      <element maxOccurs="1" minOccurs="0" name="precision" type="sgr:SGrPrecisionType">
-        <annotation>
-          <documentation> the precision of a measurement, calculation result
-						or result of a controls process
-					</documentation>
-        </annotation>
-      </element>
-      <element maxOccurs="1" minOccurs="0" name="stabilityFallback" type="sgr:SGrStabilityFallbackType">
-        <annotation>
-          <documentation> A consumer or a generating system receives the
-						permit for a load change for a certain period of time. This time
-						is always set to 0 each time a confirmation message is received
-						(HeartBeat).
-					</documentation>
-        </annotation>
-      </element>
-      <element maxOccurs="1" minOccurs="0" name="smoothTransition" type="sgr:SGrSmoothTransitionType">
-        <annotation>
-          <documentation> The time behavior of a transition from a power
-						adjustment (positive as well as negative) can be determined by
-						several time values, so that this starts with a random time delay,
-						changes via a ramp and an expiry time with return to the initial
-						value.
-					</documentation>
-        </annotation>
-      </element>
-      <element maxOccurs="1" minOccurs="0" name="maxLatencyTimeMs" type="unsignedLong">
-        <annotation>
-          <documentation> Maximum time in milliseconds from capturing of measured value 
-            until ready at the external interface (i.e. analog-digital conversion time)
-					</documentation>
-        </annotation>
-      </element>
-      <element maxOccurs="1" minOccurs="0" name="valueType" type="sgr:SGrMeasValueType">
-        <annotation>
-          <documentation> MeasValueType: type of measurement. Possbile values are "value", "min", max", "average", "stdDev"</documentation>
-        </annotation>
-      </element>
-      <element maxOccurs="1" minOccurs="0" name="valueSource" type="sgr:SGrMeasValueSourceType">
-        <annotation>
-          <documentation> Value source kind related to SGr level 6
-						applications. Potential values are measuredValue, calculatedValue,
-						empiricalValue
-					</documentation>
-        </annotation>
-      </element>
-      <element maxOccurs="1" minOccurs="0" name="sampleRate" type="unsignedLong">
-        <annotation>
-          <documentation> SampleRate in milliseconds
-					</documentation>
-        </annotation>
-      </element>
-      <element maxOccurs="1" minOccurs="0" name="curtailment" type="float" />
-      <element maxOccurs="1" minOccurs="0" name="minLoad" type="float" />
-      <element maxOccurs="1" minOccurs="0" name="maxLockTimeMinutes" type="float" />
-      <element maxOccurs="1" minOccurs="0" name="minRunTimeMinutes" type="float" />
-      <element maxOccurs="1" minOccurs="0" name="valueByTimeTableMinutes" type="float" />
-      <element maxOccurs="1" minOccurs="0" name="flexAssistance" type="sgr:SGrFlexAssistanceType">
-        <annotation>
-          <documentation> Systems with more than One communicator need a definition of the priority of the commands / demands for a flexibility
-          requirement.
-          This element defines the kind of a such a command (servicable for net (DSO), energy or system (TNO)) and its priority (SHALL / SHOULD / MAY)
-		 </documentation>
-        </annotation>
-      </element>
+    	<element maxOccurs="1" minOccurs="0" name="maxVal"
+    		type="float">    
+    		<annotation>
+    			<documentation>
+    				upper range limit. Unit:inherited
+    			</documentation>
+    		</annotation>
+    	</element>
+    	<element maxOccurs="1" minOccurs="0" name="minVal"
+    		type="float">
+    		<annotation>
+    			<documentation>
+    				lower range limit. Unit:inherited
+    			</documentation>
+    		</annotation>
+    	</element>
+    	<element maxOccurs="1" minOccurs="0"
+    		name="specQualityRequirement"
+    		type="sgr:SGrSpecialQualityReqType">
+    		<annotation>
+    			<documentation>
+    				indicates Quality requirements fullfilled like
+    				formal certifications
+    			</documentation>
+    		</annotation>
+    	</element>
+    	<element maxOccurs="1" minOccurs="0" name="precision"
+    		type="sgr:SGrPrecisionType">
+    		<annotation>
+    			<documentation>
+    				the precision of a measurement, calculation result
+    				or result of a controls process
+    			</documentation>
+    		</annotation>
+    	</element>
+    	<element maxOccurs="1" minOccurs="0" name="stabilityFallback"
+    		type="sgr:SGrStabilityFallbackType">
+    		<annotation>
+    			<documentation>
+    				A consumer or a generating system receives the
+    				permit for a load change for a certain period of
+    				time. This time is always set to 0 each time a
+    				confirmation message is received (HeartBeat).
+    			</documentation>
+    		</annotation>
+    	</element>
+    	<element maxOccurs="1" minOccurs="0" name="smoothTransition"
+    		type="sgr:SGrSmoothTransitionType">
+    		<annotation>
+    			<documentation>
+    				The time behavior of a transition from a power
+    				adjustment (positive as well as negative) can be
+    				determined by several time values, so that this
+    				starts with a random time delay, changes via a ramp
+    				and an expiry time with return to the initial value.
+    			</documentation>
+    		</annotation>
+    	</element>
+    	<element maxOccurs="1" minOccurs="0" name="maxLatencyTimeMs"
+    		type="unsignedLong">
+    		<annotation>
+    			<documentation>
+    				Maximum time in milliseconds from capturing of
+    				measured value until ready at the external interface
+    				(i.e. analog-digital conversion time)
+    			</documentation>
+    		</annotation>
+    	</element>
+    	<element maxOccurs="1" minOccurs="0" name="valueType"
+    		type="sgr:SGrMeasValueType">
+    		<annotation>
+    			<documentation>
+    				MeasValueType: type of measurement. Possbile values
+    				are "value", "min", max", "average", "stdDev"
+    			</documentation>
+    		</annotation>
+    	</element>
+    	<element maxOccurs="1" minOccurs="0" name="valueSource"
+    		type="sgr:SGrMeasValueSourceType">
+    		<annotation>
+    			<documentation>
+    				Value source kind related to SGr level 6
+    				applications. Potential values are measuredValue,
+    				calculatedValue, empiricalValue
+    			</documentation>
+    		</annotation>
+    	</element>
+    	<element maxOccurs="1" minOccurs="0" name="sampleRate"
+    		type="unsignedLong">
+    		<annotation>
+    			<documentation>
+    				SampleRate in milliseconds
+    			</documentation>
+    		</annotation>
+    	</element>
+    	<element maxOccurs="1" minOccurs="0" name="curtailment"
+    		type="float" />
+    	<element maxOccurs="1" minOccurs="0" name="minLoad"
+    		type="float" />
+    	<element maxOccurs="1" minOccurs="0" name="maxLockTimeMinutes"
+    		type="float" />
+    	<element maxOccurs="1" minOccurs="0" name="minRunTimeMinutes"
+    		type="float" />
+    	<element maxOccurs="1" minOccurs="0"
+    		name="valueByTimeTableMinutes" type="float" />
+    	<element maxOccurs="1" minOccurs="0" name="flexAssistance"
+    		type="sgr:SGrFlexAssistanceType">
+    		<annotation>
+    			<documentation>
+    				Systems with more than One communicator need a
+    				definition of the priority of the commands / demands
+    				for a flexibility requirement. This element defines
+    				the kind of a such a command (servicable for net
+    				(DSO), energy or system (TNO)) and its priority
+    				(SHALL / SHOULD / MAY)
+    			</documentation>
+    		</annotation>
+    	</element>
+    	<element name="unitConversionMultiplicator" type="float" maxOccurs="1" minOccurs="0"></element>
     </all>
   </complexType>
   <complexType name="SGrStabilityFallbackType">
@@ -1078,22 +1113,7 @@
       <enumeration value="HC_ECO_OP" />
     </restriction>
   </simpleType>
-  <simpleType name="SGrDHWOpModeType">
-    <annotation>
-      <documentation>E0018:
-     Basic operation type of a Domestic Hot Water Heat Pump operation mode
-     Standby	week 1 	week 2		Constant		Eco mode    
-	</documentation>
-    </annotation>
-    <restriction base="string">
-      <enumeration value="DHW_STANDBY" />
-      <enumeration value="DHW_SCHEDULE_1_OP" />
-      <enumeration value="DHW_SCHEDULE_2_OP" />
-      <enumeration value="DHW_CONST_OP" />
-      <enumeration value="DHW_ECO_OP" />
-    </restriction>
-  </simpleType>
-  <simpleType name="ctaDHWOpModeType">
+  <simpleType name="ctaDomHotWOpModeType">
     <annotation>
       <documentation>Ecta001:
      Basic operation type of CTA Domestic Hot Water Heat Pump operation mode
@@ -1217,7 +1237,7 @@
   
   <simpleType name="hovHPOpModeType">
    <annotation>
-     <documentation>Ehov:
+     <documentation>Ehov1:
      map for Hoval H 
      // #0=Wärmeerzeuger aus
 	 // #1=Automatikbetrieb
@@ -1236,7 +1256,7 @@
   
   <simpleType name="hovHCOpModeType">
    <annotation>
-     <documentation>Ehov:
+     <documentation>Ehov2:
      map for Hoval H 
      // #0=Standbybetrieb
 	 // #1=Woche 1
@@ -1261,7 +1281,7 @@
   
   <simpleType name="hovSGReadySrcSelType">
    <annotation>
-     <documentation>Ehov:
+     <documentation>Ehov3:
      map for Hoval H 
      #0=AUS
      #1=Eingangskontakte
@@ -1280,7 +1300,7 @@
   
    <simpleType name="hovBufferStateType">
    <annotation>
-     <documentation>Ehov: 
+     <documentation>Ehov4: 
 	#0 = keine Anforderung, AUS
 	#1 = Anforderung, Temp. tief, PLP aus (Entladeschutz)
 	#2 = Anforderung, Ladung läuft
@@ -1318,7 +1338,7 @@
    
    <simpleType name="hovHCOpStateType">
    <annotation>
-     <documentation>Ehov: 
+     <documentation>Ehov5: 
      Zustand Heizkreisregelung
 #0 = Abgeschaltet
 #1 = Normal Heizbetrieb
@@ -1374,10 +1394,25 @@
       </restriction>
   </simpleType>  
  
+  <simpleType name="hovDomHotWOpModeType">
+    <annotation>
+      <documentation>Ehov6:
+     Basic operation type of a Domestic Hot Water Heat Pump operation mode
+     Standby	week 1 	week 2		Constant		Eco mode    
+	</documentation>
+    </annotation>
+    <restriction base="string">
+      <enumeration value="DHW_STANDBY" />
+      <enumeration value="DHW_SCHEDULE_1_OP" />
+      <enumeration value="DHW_SCHEDULE_2_OP" />
+      <enumeration value="DHW_CONST_OP" />
+      <enumeration value="DHW_ECO_OP" />
+    </restriction>
+  </simpleType>
   
-   <simpleType name="hovDomHotWaterStateType">
+   <simpleType name="hovDomHotWStateType">
    <annotation>
-     <documentation>Ehov: 
+     <documentation>Ehov7: 
      Zustand Warmwasserregelung:
      #0 = Abgeschaltet
      #1 = Normal Ladebetrieb
@@ -1411,9 +1446,87 @@
   
   
   
+   <simpleType name="hovHPOpStateType">
+   <annotation>
+     <documentation>Ehov8: 
+     #0=Abgeschaltet
+     #1=Heizbetrieb
+     #2=Vorlaufzeit Heizbetrieb
+     #3=Extern gesperrt (auch bei SmartGrid Sperrbetrieb) 
+     #4=Kuehlbetrieb 
+     #5=Vorlaufzeit Kuehlbetrieb 
+     #15=Alarm 
+     #16=Stoerung
+     #17=Blockiert
+     #21=WFmax Abschaltung 
+     #22=WFsoll Abschaltung
+     #26=Bivalenzabschaltung
+     #27=Warmwasser Ladesperre
+     #28=Minimale Auszeit
+     #29=Minimale Einzeit
+     #32=Nachlauf
+     #33=Verzoegerung Folge WE 
+     #34=Betrieb Uebertemperatur
+     #42=Manueller/Handebtrieb Heizen
+     #43=Manueller/Handebtrieb Warmwasser
+     #44=Manueller/Handebtrieb Kuehlen
+     
+</documentation>
+	</annotation>
+    <restriction base="string">
+      <enumeration value="HP_OFF"/>
+      <enumeration value="HP_HEATING"/>
+      <enumeration value="HP_PREHEAT"/>
+      <enumeration value="HP_LOCK_EXTERN"/>
+      <enumeration value="HP_COOLING"/>
+      <enumeration value="HP_PRECOOL"/>
+      <enumeration value="HP_6"/>
+      <enumeration value="HP_7"/>
+      <enumeration value="HP_8"/>
+      <enumeration value="HP_9"/>
+      <enumeration value="HP_10"/>
+      <enumeration value="HP_11"/>
+      <enumeration value="HP_12"/>
+      <enumeration value="HP_13"/>
+      <enumeration value="HP_14"/>
+      <enumeration value="HP_ALARM"/>
+      <enumeration value="HP_ERROR"/>
+      <enumeration value="HP_BLOCKING"/>
+      <enumeration value="HP_18"/>
+      <enumeration value="HP_19"/>
+      <enumeration value="HP_20"/>
+      <enumeration value="HP_WFmax_SWITCHOFF"/>
+      <enumeration value="HP_WFset_SWITCHOFF"/>
+      <enumeration value="HP_23"/>
+      <enumeration value="HP_24"/>
+      <enumeration value="HP_25"/>
+      <enumeration value="HP_BIVALENCE_SWITCHOFF"/>
+      <enumeration value="HP_MIN_OFF_TIME"/>
+      <enumeration value="HP_MIN_ON_TIME"/>
+      <enumeration value="HP_30"/>
+      <enumeration value="HP_31"/>
+      <enumeration value="HP_TRAILING"/>
+      <enumeration value="HP_DELAY_AFTER_WE"/>
+      <enumeration value="HP_TEMPERATURE_HIGH_OP"/>
+      <enumeration value="HP_35"/>
+      <enumeration value="HP_36"/>
+      <enumeration value="HP_37"/>
+      <enumeration value="HP_38"/>
+      <enumeration value="HP_39"/>
+      <enumeration value="HP_40"/>
+      <enumeration value="HP_41"/>
+      <enumeration value="HP_"/>
+      <enumeration value="HP_MAN_OP_HEATING"/>
+      <enumeration value="HP_MAN_OP_DOM_HOT_WATER"/>
+      <enumeration value="HP_MAN_OP_COOLING"/>
+      </restriction>
+  </simpleType>  
+  
+  
+  
    <simpleType name="hovType">
    <annotation>
-     <documentation>Ehov: 
+     <documentation>Ehov8: 
 </documentation>
 	</annotation>
     <restriction base="string">
@@ -1440,8 +1553,7 @@
       <element maxOccurs="1" minOccurs="1" name="sgrOCPPState" type="sgr:SGrOCPPStateType" />
       <element maxOccurs="1" minOccurs="1" name="sgrHPOpMode" type="sgr:SGrHPOpModeType" />
       <element maxOccurs="1" minOccurs="1" name="sgrHCOpMode" type="sgr:SGrHCOpModeType" />
-      <element maxOccurs="1" minOccurs="1" name="sgrDHWOpMode" type="sgr:SGrDHWOpModeType" />
-      <element maxOccurs="1" minOccurs="1" name="ctaDHWOpMode" type="sgr:ctaDHWOpModeType" />
+      <element maxOccurs="1" minOccurs="1" name="ctaDomHotWOpMode" type="sgr:ctaDomHotWOpModeType" />
       <element maxOccurs="1" minOccurs="1" name="ctaHPOpState" type="sgr:ctaHPOpStateType" />
       <element maxOccurs="1" minOccurs="1" name="ctaHPOpMode" type="sgr:ctaHPOpModeType" />
       <element maxOccurs="1" minOccurs="1" name="ctaHCOpMode" type="sgr:ctaHCOpModeType" />
@@ -1450,7 +1562,9 @@
       <element maxOccurs="1" minOccurs="1" name="hovSGReadySrcSel" type="sgr:hovSGReadySrcSelType" />
       <element maxOccurs="1" minOccurs="1" name="hovBufferState" type="sgr:hovBufferStateType" />
       <element maxOccurs="1" minOccurs="1" name="hovHCOpState" type="sgr:hovHCOpStateType" />
-      <element maxOccurs="1" minOccurs="1" name="hovDomHotWaterState" type="sgr:hovDomHotWaterStateType" />    
+      <element maxOccurs="1" minOccurs="1" name="hovDomHotWOpMode" type="sgr:hovDomHotWOpModeType" />
+      <element maxOccurs="1" minOccurs="1" name="hovDomHotWState" type="sgr:hovDomHotWStateType" />
+      <element maxOccurs="1" minOccurs="1" name="hovHPOpState" type="sgr:hovHPOpStateType" />     
     </choice>
   </complexType>
 
