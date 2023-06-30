@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/SGr.xsl"?>
+<sgr:SGrFunctionalProfileFrame xmlns:sgr="http://www.smartgridready.com/ns/V0/"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/SGrIncluder.xsd">
+	<sgr:releaseNotes>
+		<sgr:state>Review</sgr:state>
+		<sgr:changelog>
+			<sgr:version>0.9.1</sgr:version>
+			<sgr:date>2023-02-12</sgr:date>
+			<sgr:author>IBT/cb</sgr:author>
+			<sgr:comment>Vorbereitung Soft Start</sgr:comment>
+		</sgr:changelog>
+		<sgr:changelog>
+			<sgr:version>1.0.0</sgr:version>
+			<sgr:date>2023-06-30</sgr:date>
+			<sgr:author>Ergo/sz</sgr:author>
+			<sgr:comment>Finalisierung</sgr:comment>
+		</sgr:changelog>
+	</sgr:releaseNotes>
+	<sgr:functionalProfile>
+		<sgr:profileNumber>
+			<sgr:specsOwnerId>0</sgr:specsOwnerId>
+			<sgr:profileIdentification>HeatPumpControl</sgr:profileIdentification>
+			<sgr:subProfileIdent>SG-ReadyStates_bwp</sgr:subProfileIdent>
+			<sgr:sgrLevelOfOperation>2m</sgr:sgrLevelOfOperation>
+			<sgr:versionNumber>
+				<sgr:primaryVersionNumber>1</sgr:primaryVersionNumber>
+				<sgr:secondaryVersionNumber>0</sgr:secondaryVersionNumber>
+				<sgr:subReleaseVersionNumber>0</sgr:subReleaseVersionNumber>
+			</sgr:versionNumber>
+		</sgr:profileNumber>
+		<sgr:fpLegibDesc>
+			<sgr:textElement>                
+				<![CDATA[	
+				<img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
+                <h4>Heizungswärmepumpen - SG-Ready 1.0 für Wärmepumpen (bwp) </h4>
+				<p>Stufe 2m Schalt-Funktionsprofil mit Rücklesefunktion für Heizungswärmepumpen</p>
+				<p>Dieses Funktionsprofil bildet die beiden SG-Ready Klemmenkontakte auf einen maschinenlesbaren Zustand ab</p>
+				<ul>
+					<li><strong>HP_LOCKED:</strong> EVU-Sperre und umfasst im Normalfall maximal 2 Stunden „harte“ Sperrzeit </li>
+					<li><strong>HP_NORMAL:</strong> Wärmepumpe im energieeffizienten Normalbetrieb</li>
+					<li><strong>HP_INTENSIVIED:</strong> Einschaltempfehlung mit Anhebung</li>
+					<li><strong>HP_FORCED:</strong> Definitiver Anlaufbefehl (insofern dieser im Rahmen der Regeleinstellungen möglich ist)</li>  				
+				</ul>
+                <p>Optional kann die Raumtemperatur als Führungsgröße für die Regelung der Systemtemperaturen (Vor- bzw. Rücklauftemperatur)
+                    herangezogen werden. Eine Sperrung der Wärmepumpe durch einen Raumthermostaten in Abhängigkeit von der Raumtemperatur
+                    ist nicht ausreichend.</p>
+                <p>Warmwasserwärmepumpen müssen über einen Regler verfügen, welches mittels einer automatischen Ansteuerung eine
+                    Erhöhung der Warmwasser-Solltemperatur zum Zweck der thermischen Speicherung ermöglicht.</p>
+				<p>Der Communicator (z.B. CEM) berücksichtigt die Gerätevorgaben zur Schaltfrequenz (Attribute maxLockTimeMintues und minRunTimeMinutes).</p>
+				<p>„SG Ready“ ist ein Markenzeichen des Bundesverbands Wärmepumpe e. V. Es bezeichnet eine Eigenschaft von Wärmepumpen,
+				deren Regelungstechnik die Einbindung in ein intelligentes Stromnetz (Smart Grid) ermöglicht.</p>
+                ]]>
+                </sgr:textElement>
+			<sgr:language>de</sgr:language>
+			<sgr:uri>https://www.waermepumpe.de/normen-technik/sg-ready/</sgr:uri>
+		</sgr:fpLegibDesc>
+	</sgr:functionalProfile>
+	<sgr:dpListElement>
+		<sgr:dataPoint datapointName="SGReadyEnabled" unit="NONE" rwpDatadirection="RW" mroVisibilityIndicator="R">
+			<sgr:basicDataType>
+				<sgr:boolean>true</sgr:boolean>
+			</sgr:basicDataType>
+			<sgr:dpLegibDesc>
+				<sgr:textElement>Aktivierung der SG-Ready Funktion</sgr:textElement>
+				<sgr:language>de</sgr:language>
+			</sgr:dpLegibDesc>
+		</sgr:dataPoint>
+	</sgr:dpListElement>
+	<sgr:dpListElement>
+		<sgr:dataPoint datapointName="SGReadyOpModeCmd" mroVisibilityIndicator="M" rwpDatadirection="RW" unit="NONE">
+			<sgr:basicDataType>
+				<sgr:enum>
+					<sgr:sgreadyStateLv2>HP_NORMAL</sgr:sgreadyStateLv2>
+				</sgr:enum>
+			</sgr:basicDataType>
+			<sgr:dpNameList>
+				<sgr:sHPbwpName>Betriebsmodus</sgr:sHPbwpName>
+			</sgr:dpNameList>
+			<sgr:dpLegibDesc>
+				<sgr:textElement>Festlegen der Übersteuerungsmoeglichkeit der Wärmepumpe</sgr:textElement>
+				<sgr:language>de</sgr:language>
+			</sgr:dpLegibDesc>
+		</sgr:dataPoint>
+	</sgr:dpListElement>
+	<sgr:dpListElement>
+		<sgr:dataPoint datapointName="SGReadyState" mroVisibilityIndicator="M" rwpDatadirection="R" unit="NONE">
+			<sgr:basicDataType>
+				<sgr:enum>
+					<sgr:sgreadyStateLv2>HP_NORMAL</sgr:sgreadyStateLv2>
+				</sgr:enum>
+			</sgr:basicDataType>
+			<sgr:dpNameList>
+				<sgr:sHPbwpName>Statusmeldungen</sgr:sHPbwpName>
+			</sgr:dpNameList>
+			<sgr:dpLegibDesc>
+				<sgr:textElement>Rückmeldung der aktuellen laufenden Übersteuerungsmoeglichkeit der Wärmepumpe</sgr:textElement>
+				<sgr:language>de</sgr:language>
+			</sgr:dpLegibDesc>
+		</sgr:dataPoint>
+	</sgr:dpListElement>
+</sgr:SGrFunctionalProfileFrame>

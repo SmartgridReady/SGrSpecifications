@@ -17,7 +17,23 @@ The figure below shows the entity relation model of the functional profile
 
 ![Functional Profile Entity Relation](functionalProfile.drawio.png)
 
-## Functional Profile Attributes
+## Conventions
+
+### XML File Names
+Functional profile XMLs are named as follows:
+
+```FP_[specsOwnerId]_[profileIdentification]_[subProfileIdent]_[sgrLevelOfOperation]_[2-diit-versionNumber].xml```
+
+Examples:
+- ```FP_SGr_NonSpecific_ActiveEnergyAC_m_1.0.xml```
+- ```FP_SGr_HeatPumpControl_SG-ReadyStates_bwp_1_1.0.xml```
+
+### Descriptions
+Descriptions should be structured as follows:
+- Bold title: Functional profile title
+- Paragraph: A longer explanation of the title, describing the typical applications
+- Paragraph: Explanation of any requred generic attributes
+- Paragraph: Explanation of how optional datapoints should be treated
 
 ### Classification
 SGr classifies and identifies any functional profile by the following values
@@ -66,6 +82,7 @@ SGr allows to associate attributes to a functional profile (i.e. concerning ever
 ## Generic Attributes
 SGr allows to associate attributes to a data point. See [SGrAttr4GenericType](SGrAttr4GenericType.md) for details.
 Any attribute defined on the functional profile level are mandatory to any product that implements this functional profile. However, the product can optionally add further attributes based on its own needs.
+
 
 ## Open Points
 - What are the rules for naming a functional profile (sgr:functionalProfile@profileName)? Is this strict (then it should be part of the classification), or loose (then it should be part of the legibDesc)?

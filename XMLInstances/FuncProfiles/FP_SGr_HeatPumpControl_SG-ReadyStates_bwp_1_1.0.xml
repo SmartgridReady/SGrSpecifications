@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/SGr.xsl"?>
+<sgr:SGrFunctionalProfileFrame xmlns:sgr="http://www.smartgridready.com/ns/V0/"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/SGrIncluder.xsd">
+	<sgr:releaseNotes>
+		<sgr:state>Review</sgr:state>
+		<sgr:changelog>
+			<sgr:version>0.1.2</sgr:version>
+			<sgr:date>2021-08-17</sgr:date>
+			<sgr:author>IBT/cb</sgr:author>
+			<sgr:comment>Vorbereitung beta test</sgr:comment>
+		</sgr:changelog>
+		<sgr:changelog>
+			<sgr:version>1.0.0</sgr:version>
+			<sgr:date>2023-06-30</sgr:date>
+			<sgr:author>Ergo/sz</sgr:author>
+			<sgr:comment>Finalisierung</sgr:comment>
+		</sgr:changelog>
+	</sgr:releaseNotes>
+	<sgr:functionalProfile>
+		<sgr:profileNumber>
+			<sgr:specsOwnerId>0</sgr:specsOwnerId>
+			<sgr:profileIdentification>HeatPumpControl</sgr:profileIdentification>
+			<sgr:subProfileIdent>SG-ReadyStates_bwp</sgr:subProfileIdent>
+			<sgr:sgrLevelOfOperation>1</sgr:sgrLevelOfOperation>
+			<sgr:versionNumber>
+				<sgr:primaryVersionNumber>1</sgr:primaryVersionNumber>
+				<sgr:secondaryVersionNumber>0</sgr:secondaryVersionNumber>
+				<sgr:subReleaseVersionNumber>0</sgr:subReleaseVersionNumber>
+			</sgr:versionNumber>
+		</sgr:profileNumber>
+		<sgr:fpLegibDesc>
+			<sgr:textElement>
+				<![CDATA[	
+				<img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
+                <h4>Heizungswärmepumpen - SG-Ready 1.0 für Wärmepumpen (bwp) </h4>
+				<p>Stufe 1 Schalt-Funktionsprofil für Heizungswärmepumpen</p>
+                <p>Heizungswärmepumpen in Stufe 1 müssen über einen Regler verfügen, der zwei Betriebszustände abdeckt:</p>
+                <ol>
+					<li>Betriebszustand 1 (Schaltzustand, bei Klemmenlösung: 1): Dieser Betriebszustand ist kompatibel häufig zu festen Uhrzeiten geschalteten <strong>EVU-Sperre</strong> und umfasst im Normalfall maximal 2 Stunden „harte“ Sperrzeit.</li>
+					<li>Betriebszustand 2 (Schaltzustand, bei Klemmenlösung: 0): In dieser Schaltung läuft die Wärmepumpe im energieeffizienten <strong>Normalbetrieb</strong> mit anteiliger Wärmespeicher-Füllung für die maximal zweistündige EVU-Sperre.</li>
+                </ol>
+                <p>Geräte mit Stufe 2 können im Stufe 1 Betrieb genutzt werden, wenn der zweite Kontakt fest auf den Zustand 0 verdrahtet wird.</p>
+				<p>Der Communicator (z.B. CEM) berücksichtigt die Gerätevorgaben zur Schaltfrequenz (Attribute maxLockTimeMintues und minRunTimeMinutes).</p>
+				<p>„SG Ready“ ist ein Markenzeichen des Bundesverbands Wärmepumpe e. V. Es bezeichnet eine Eigenschaft von Wärmepumpen,
+				deren Regelungstechnik die Einbindung in ein intelligentes Stromnetz (Smart Grid) ermöglicht.</p>
+                ]]>	
+			</sgr:textElement>
+			<sgr:language>de</sgr:language>
+			<sgr:uri>https://www.waermepumpe.de/normen-technik/sg-ready/</sgr:uri>
+		</sgr:fpLegibDesc>
+	</sgr:functionalProfile>
+	<sgr:genAttribute>
+		<sgr:maxLockTimeMinutes>120</sgr:maxLockTimeMinutes>
+		<sgr:minRunTimeMinutes>20</sgr:minRunTimeMinutes>
+	</sgr:genAttribute>
+	<sgr:dpListElement>
+		<sgr:dataPoint datapointName="SGReadyInp1isON" rwpDatadirection="W" unit="NONE" mroVisibilityIndicator="M">
+			<sgr:basicDataType>
+				<sgr:boolean>true</sgr:boolean>
+			</sgr:basicDataType>
+			<sgr:dpLegibDesc>
+				<sgr:textElement>Schaltzustand erste Klemme</sgr:textElement>
+				<sgr:language>de</sgr:language>
+			</sgr:dpLegibDesc>
+		</sgr:dataPoint>
+	</sgr:dpListElement>
+</sgr:SGrFunctionalProfileFrame>
