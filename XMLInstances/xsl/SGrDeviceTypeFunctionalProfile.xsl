@@ -494,13 +494,20 @@
                     <xsl:if test="//sgr:smoothTransition">
                         <h3>Smooth Transition Timing</h3>
                         <img src="/xsl/genAttributes_smoothTransition.drawio.png" width="100%"/>
+                        <ol>
+                            <li>Command for a new set value is recieved (e.g. 60%)</li>
+                            <li>Within the maximum delay the product starts the ramp to the new set value</li>
+                            <li>Within the specified ramp time the product reaches the new set value</li>
+                            <li>The product initiates a revert to the old set value (e.g. 100%) if now new set value is recieved within the revert time window</li>
+                            <li>Within the specified ramp time the product reverts to the old set value</li>
+                        </ol>
                     </xsl:if>
                 </div>
             </xsl:if>
 
             <!-- Footer-->
             <div class="profilefooter">
-            Informationen und Support unter <a href="http://www.smartgridready.ch">www.smartgridready.ch</a>, oder Mail <a href="mailto:info@smartgridready.ch">info@smartgridready.ch</a>
+            Informationen und Support unter <a href="http://www.smartgridready.ch">www.smartgridready.ch</a>, oder Mail <a href="mailto:deklaration@smartgridready.ch">deklaration@smartgridready.ch</a>
         </div>
         </div>
     </xsl:template>
