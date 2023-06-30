@@ -27,6 +27,7 @@
             <xsl:when test="sgr:int64U">unsigned long</xsl:when>
             <xsl:when test="sgr:float32">float</xsl:when>
             <xsl:when test="sgr:float64">double</xsl:when>
+            <xsl:when test="sgr:decimal">decimal</xsl:when>
             <xsl:when test="sgr:enum"><xsl:apply-templates select="sgr:enum" /></xsl:when> <!-- TODO Simon: map enum -->
             <xsl:when test="sgr:dateTime">date time</xsl:when>
             <xsl:when test="sgr:string">string</xsl:when>

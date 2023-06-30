@@ -55,7 +55,7 @@
 				einer Stellgrössenumsetzung
 			</documentation>
     </annotation>
-    <restriction base="double">
+    <restriction base="decimal">
       <minInclusive value="0.001" />
       <maxInclusive value="15" />
     </restriction>
@@ -188,6 +188,8 @@
     		type="float" />
     	<element maxOccurs="1" minOccurs="1" name="float64"
     		type="double" />
+      <element maxOccurs="1" minOccurs="1" name="decimal"
+    		type="decimal" />
     	<element maxOccurs="1" minOccurs="1" name="enum"
     		type="sgr:SGrEnumListType" />
     	<element maxOccurs="1" minOccurs="1" name="dateTime"
@@ -597,7 +599,7 @@
     </annotation>
     <all>
     	<element maxOccurs="1" minOccurs="0" name="maxVal"
-    		type="float">    
+    		type="decimal">    
     		<annotation>
     			<documentation>
     				upper range limit. Unit:inherited
@@ -605,7 +607,7 @@
     		</annotation>
     	</element>
     	<element maxOccurs="1" minOccurs="0" name="minVal"
-    		type="float">
+    		type="decimal">
     		<annotation>
     			<documentation>
     				lower range limit. Unit:inherited
@@ -692,9 +694,9 @@
     		</annotation>
     	</element>
     	<element maxOccurs="1" minOccurs="0" name="curtailment"
-    		type="float" />
+    		type="decimal" />
     	<element maxOccurs="1" minOccurs="0" name="minLoad"
-    		type="float" />
+    		type="decimal" />
     	<element maxOccurs="1" minOccurs="0" name="maxLockTimeMinutes"
     		type="float" />
     	<element maxOccurs="1" minOccurs="0" name="minRunTimeMinutes"
@@ -730,14 +732,14 @@
           <documentation>Time in seconds. If the device does not recieve any communication within this specified time the device automatically initiates the fallback. 0 indicates no fallback will be performed.</documentation>
         </annotation>
       </element>
-      <element name="initValue" type="float">
+      <element name="initValue" type="decimal">
         <annotation>
           <documentation>Value of the reference variable at the start of the
 						process cycle. Unit: inherited
 					</documentation>
         </annotation>
       </element>
-      <element name="fallbackValue" type="float">
+      <element name="fallbackValue" type="decimal">
         <annotation>
           <documentation>Value of the reference variable in the event of a
 						communication failure . Unit:inherited
