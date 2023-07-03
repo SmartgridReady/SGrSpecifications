@@ -2,14 +2,13 @@
 Contains the schema, functional profiles and external interface descriptions for SmartgridReady.
 
 #### Schema
-/SchemaDatabase/SGr/ containts the [XML schema](doc/SGrSchema.md).
+/SchemaDatabase/SGr/ contains the [XML schema](doc/SGrSchema.md).
 
 #### Functional Profiles
-/XMLInstances/FuncProfiles/ contains the published function profiles.
-See [doc/functionalProfile.md](doc/functionalProfile.md) for details.
+/XMLInstances/FuncProfiles/ contains the published [function profiles](doc/functionalProfile.md).
 
 #### External Interfaces
-XMLInstances/ExtInterfaces/ contains the defined external interfaces.
+XMLInstances/ExtInterfaces/ contains the [external interfaces](doc/externalInterface.md).
 
 ## Visualization
 
