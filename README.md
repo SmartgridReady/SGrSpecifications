@@ -1,8 +1,8 @@
 # SGrSpecifications
-Contains the schema, functional profiles and external interface descriptions for SmartgridReady
+Contains the schema, functional profiles and external interface descriptions for SmartgridReady.
 
 #### Schema
-For schema details see /SchemaDatabase/SGr/
+/SchemaDatabase/SGr/ containts the [XML schema](doc/SGrSchema.md).
 
 #### Functional Profiles
 /XMLInstances/FuncProfiles/ contains the published function profiles.
@@ -13,12 +13,7 @@ XMLInstances/ExtInterfaces/ contains the defined external interfaces.
 
 ## Visualization
 
-The external interface XML can be visualized through xslt. As most browsers restrict access to cross-sites or local file systems, the XMLs need to be hosted.
-- https://ergozeller.github.io/sgrTest/ contains a shadow copy that is manually updated by @ergozeller
+The external interface XML and funcitonal profile XMLs are visuzalized through XSLT. 
+See https://library.smartgridready.ch.
 
-Alternatively you can setup a local web server.
-  - Start the webserver in the directory containg your local copy of /XMLInstances, for example with
-```
-python -m http.server 8080
-```
-  - and open your browser http://localhost:8080
+Any changes on XML files of this repository are pushed through gitub actions to the SGr Library.
