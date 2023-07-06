@@ -209,12 +209,12 @@
                                 </xsl:call-template>
                             </td>
                             <td>
-                                <xsl:if test="sgr:dataPoint/sgr:basicDataType">
-                                    <xsl:apply-templates select="sgr:dataPoint/sgr:basicDataType" />
+                                <xsl:if test="sgr:dataPoint/sgr:arrLen">
+                                    <xsl:value-of select="sgr:dataPoint/sgr:arrLen" /> x
                                 </xsl:if>
 
-                                <xsl:if test="sgr:dataPoint/sgr:basicArrayDataType">
-                                    <xsl:apply-templates select="sgr:dataPoint/sgr:basicArrayDataType" />
+                                <xsl:if test="sgr:dataPoint/sgr:basicDataType">
+                                    <xsl:apply-templates select="sgr:dataPoint/sgr:basicDataType" />
                                 </xsl:if>
                             </td>
                             <td>

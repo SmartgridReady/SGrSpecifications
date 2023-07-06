@@ -4,15 +4,7 @@
     <xsl:template match="sgr:basicDataType">
         <xsl:call-template name="SGrBasicGenDataPointTypeType" />
     </xsl:template>
-
-    <xsl:template match="sgr:basicArrayDataType">
-        <xsl:value-of select="sgr:lenght" />
-        x
-        <xsl:for-each select="sgr:type">
-            <xsl:call-template name="SGrBasicGenDataPointTypeType" />
-        </xsl:for-each>
-    </xsl:template>
-
+    
     <xsl:template name="SGrBasicGenDataPointTypeType">
         <xsl:choose>
             <xsl:when test="sgr:enum2bitmapIndex">bitmap</xsl:when> <!-- TODO Simon: render the differnet bitmap types -->
@@ -27,6 +19,7 @@
             <xsl:when test="sgr:int64U">unsigned long</xsl:when>
             <xsl:when test="sgr:float32">float</xsl:when>
             <xsl:when test="sgr:float64">double</xsl:when>
+            <xsl:when test="sgr:integer">integer</xsl:when>
             <xsl:when test="sgr:decimal">decimal</xsl:when>
             <xsl:when test="sgr:enum"><xsl:apply-templates select="sgr:enum" /></xsl:when> <!-- TODO Simon: map enum -->
             <xsl:when test="sgr:dateTime">date time</xsl:when>

@@ -215,10 +215,27 @@
     </xsl:template>
 
     <xsl:template match="sgr:modbusDataType">
-        <xsl:call-template name="SGrBasicGenDataPointTypeType" />
+        <xsl:call-template name="SGrModbusDataPointTypeType" />
     </xsl:template>
-    <xsl:template match="sgr:modbusArrayDataType">
-        <xsl:call-template name="SGrBasicGenDataPointTypeType" />
+
+    <xsl:template name="SGrModbusDataPointTypeType">
+        <xsl:choose>
+            <xsl:when test="sgr:enum2bitmapIndex">bitmap</xsl:when> <!-- TODO Simon: render the differnet bitmap types -->
+            <xsl:when test="sgr:boolean">boolean</xsl:when>
+            <xsl:when test="sgr:int8">byte</xsl:when>
+            <xsl:when test="sgr:int16">short</xsl:when>
+            <xsl:when test="sgr:int32">integer</xsl:when>
+            <xsl:when test="sgr:int64">long</xsl:when>
+            <xsl:when test="sgr:int8U">unsigned byte</xsl:when>
+            <xsl:when test="sgr:int16U">unsigned short</xsl:when>
+            <xsl:when test="sgr:int32U">unsigned int</xsl:when>
+            <xsl:when test="sgr:int64U">unsigned long</xsl:when>
+            <xsl:when test="sgr:float32">float</xsl:when>
+            <xsl:when test="sgr:float64">double</xsl:when>
+            <xsl:when test="sgr:enum"><xsl:apply-templates select="sgr:enum" /></xsl:when> <!-- TODO Simon: map enum -->
+            <xsl:when test="sgr:dateTime">date time</xsl:when>
+            <xsl:when test="sgr:string">string</xsl:when>
+        </xsl:choose>
     </xsl:template>
 
 </xsl:stylesheet>  

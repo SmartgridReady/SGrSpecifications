@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsl:stylesheet version="1.1" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:sgr="http://www.smartgridready.com/ns/V0/">
+<xsl:stylesheet version="1.1" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+	xmlns:sgr="http://www.smartgridready.com/ns/V0/">
 
 	<!--
     Contains the style sheets for data point, including
@@ -28,12 +29,12 @@
 				</xsl:call-template>
 			</td>
 			<td>
-				<xsl:if test="sgr:dataPoint/sgr:basicDataType">
-					<xsl:apply-templates select="sgr:dataPoint/sgr:basicDataType" />
+				<xsl:if test="sgr:dataPoint/sgr:arrLen">
+					<xsl:value-of select="sgr:dataPoint/sgr:arrLen" /> x
 				</xsl:if>
 
-				<xsl:if test="sgr:dataPoint/sgr:basicArrayDataType">
-					<xsl:apply-templates select="sgr:dataPoint/sgr:basicArrayDataType" />
+				<xsl:if test="sgr:dataPoint/sgr:basicDataType">
+					<xsl:apply-templates select="sgr:dataPoint/sgr:basicDataType" />
 				</xsl:if>
 			</td>
 			<td>
@@ -112,41 +113,34 @@
 	<!-- SGrModbusDataPointDescriptionType -->
 	<xsl:template match="sgr:modbusDataPoint">
 		<!-- modbusDataType (opt 1x) -->
-		<xsl:if test="sgr:modbusDataType">
-			<tr class="transportDetails">
-				<td>Data Type</td>
-				<td>
+		<tr class="transportDetails">
+			<td>Data Type</td>
+			<td>
+				<xsl:if test="sgr:arrLen">
+					<xsl:value-of select="sgr:arrLen" /> x
+				</xsl:if>
+				<xsl:if test="sgr:modbusDataType">
 					<xsl:apply-templates select="sgr:modbusDataType" />
-				</td>
-			</tr>
-		</xsl:if>
-
-		<!-- modbusArrayDataType (opt 1x) -->
-		<xsl:if test="sgr:modbusArrayDataType">
-			<tr class="transportDetails">
-				<td>Array Data Type</td>
-				<td>
-					<xsl:apply-templates select="sgr:modbusArrayDataType" />
-				</td>
-			</tr>
-		</xsl:if>
+				</xsl:if>
+			</td>
+		</tr>
 
 		<tr class="transportDetails">
 			<td>Register</td>
 			<td>
-				<xsl:value-of select="sgr:modbusFirstRegisterReference/@registerType" />&#160;
-				<xsl:value-of select="sgr:modbusFirstRegisterReference/@addr" />
+				<xsl:value-of select="sgr:modbusFirstRegisterReference/@registerType" />&#160; <xsl:value-of
+					select="sgr:modbusFirstRegisterReference/@addr" />
 				<xsl:choose>
-					<xsl:when test="sgr:modbusFirstRegisterReference/@registerType = 'Coil'">
-						bit <xsl:value-of select="sgr:modbusFirstRegisterReference/@bitRank" />
+					<xsl:when test="sgr:modbusFirstRegisterReference/@registerType = 'Coil'"> bit <xsl:value-of
+							select="sgr:modbusFirstRegisterReference/@bitRank" />
 					</xsl:when>
 
-					<xsl:when test="sgr:modbusFirstRegisterReference/@registerType = 'DiscreteInput'">
-						bit <xsl:value-of select="sgr:modbusFirstRegisterReference/@bitRank" />
+					<xsl:when
+						test="sgr:modbusFirstRegisterReference/@registerType = 'DiscreteInput'"> bit <xsl:value-of
+							select="sgr:modbusFirstRegisterReference/@bitRank" />
 					</xsl:when>
 				</xsl:choose>
-				(Size <xsl:value-of select="sgr:dpSizeNrRegisters" />)
-			</td>
+				(Size <xsl:value-of select="sgr:dpSizeNrRegisters" />) </td>
 		</tr>
 
 		<!-- bitmask (opt 1x) -->
@@ -180,7 +174,7 @@
 
 	<!-- SGrRestAPIDataPointDescriptionType -->
 	<xsl:template match="sgr:restAPIDataPoint">
-		<tr	class="transportDetails">
+		<tr class="transportDetails">
 			<td>Data Type</td>
 			<td>
 				<xsl:apply-templates select="./@dataType" />
