@@ -73,6 +73,12 @@
 							</td>
 						</tr>
 						<xsl:apply-templates select="sgr:modbusDataPoint" />
+						<xsl:if test="sgr:blockCacheId">
+							<tr>
+								<td>Time Sync Block</td>
+								<td><xsl:value-of select="sgr:blockCacheId" /></td>
+							</tr>
+						</xsl:if>
 						<xsl:apply-templates select="sgr:modbusAttr" />
 					</xsl:if>
 

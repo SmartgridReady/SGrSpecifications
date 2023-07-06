@@ -162,23 +162,6 @@
             </tr>
         </xsl:if>
 
-        <!--timeSyncBlockNotification-->
-        <xsl:if test="sgr:timeSyncBlockNotification">
-            <tr class="transportDetails">
-                <td>
-                    <img src="/xsl/modbus.png" alt="Modbus" width="60px" />
-                    Time Sync Block Notification
-                </td>
-                <td>
-                    Block
-                    <xsl:value-of select="sgr:timeSyncBlockNotification/sgr:blockNumber" />
-                    :
-                    <xsl:value-of select="sgr:timeSyncBlockNotification/sgr:timeoutMs" />
-                    ms
-                </td>
-            </tr>
-        </xsl:if>
-
         <!--accessProtection-->
         <xsl:if test="sgr:accessProtection">
             <tr class="transportDetails">
@@ -212,6 +195,36 @@
             </tr>
         </xsl:if>
 
+    </xsl:template>
+
+    <!-- Time Sync Blocks -->
+    <xsl:template match="sgr:timeSyncBlockNotification">
+        <tr class="transportDetails">
+                <td>
+                    <img src="/xsl/modbus.png" alt="Modbus" width="60px" />
+                    Time Sync Block
+                </td>
+                <td>
+                    <table>
+                        <tr>
+                            <td>Identifier</td>
+                            <td><xsl:value-of select="sgr:blockCacheId" /></td>
+                        </tr>
+                        <tr>
+                            <td>Register</td>
+                            <td>
+                                <xsl:value-of select="sgr:registerType" />&#160;
+                                <xsl:value-of select="sgr:firstAddr" />
+				                (Size <xsl:value-of select="sgr:size" />)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Time to Live</td>
+                            <td><xsl:value-of select="sgr:timeToLiveMs" /> ms</td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
     </xsl:template>
 
     <xsl:template match="sgr:modbusDataType">
