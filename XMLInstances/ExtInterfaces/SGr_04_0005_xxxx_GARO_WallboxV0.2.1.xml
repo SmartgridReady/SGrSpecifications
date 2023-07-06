@@ -66,9 +66,9 @@
 			<sgr:dataPoint datapointName="isSmartEV15188"
 				mroVisibilityIndicator="O" rwpDatadirection="R"
 				unit="NONE">
-				<sgr:basicDataType>
+				<sgr:dataType>
 					<sgr:boolean>false</sgr:boolean>
-				</sgr:basicDataType>
+				</sgr:dataType>
 			</sgr:dataPoint>
 			<sgr:modbusDataPoint>
 				<sgr:modbusDataType>
@@ -83,9 +83,9 @@
 		<sgr:dpListElement>
 			<sgr:dataPoint datapointName="EVCCID"	mroVisibilityIndicator="O" rwpDatadirection="R"
 				unit="NONE">
-				<sgr:basicDataType>
+				<sgr:dataType>
 				<sgr:string>not set</sgr:string>			
-				</sgr:basicDataType>
+				</sgr:dataType>
 			</sgr:dataPoint>
 			<sgr:modbusDataPoint>
 				<sgr:modbusDataType>
@@ -116,11 +116,11 @@
 			<sgr:dataPoint datapointName="EV-StatusCode"
 				mroVisibilityIndicator="M" rwpDatadirection="R"
 				unit="NONE">
-				<sgr:basicDataType>
+				<sgr:dataType>
 					<sgr:enum>
 						<sgr:sgrEVState>EV_STANDBY</sgr:sgrEVState>
 					</sgr:enum>
-				</sgr:basicDataType>
+				</sgr:dataType>
 			</sgr:dataPoint>
 			<sgr:modbusDataPoint>
 				<sgr:modbusDataType>
@@ -137,12 +137,12 @@
 		<sgr:dpListElement>
 			<sgr:dataPoint datapointName="ocppState"
 				mroVisibilityIndicator="O" unit="NONE">
-				<sgr:basicDataType>
+				<sgr:dataType>
 					<sgr:enum>
 						<sgr:sgrOCPPState>Available</sgr:sgrOCPPState>
 					</sgr:enum>
 
-				</sgr:basicDataType>
+				</sgr:dataType>
 			</sgr:dataPoint>
 			<sgr:modbusDataPoint>
 				<sgr:modbusDataType>
@@ -183,10 +183,9 @@
 			<sgr:dataPoint datapointName="SafeCurrent"
 				mroVisibilityIndicator="M" rwpDatadirection="RW"
 				unit="AMPERES">
-				<sgr:basicDataType>
-					<sgr:float32>0.0</sgr:float32>
-
-				</sgr:basicDataType>
+				<sgr:dataType>
+                    <sgr:decimal>0.0</sgr:decimal>
+                </sgr:dataType>
 				<sgr:dpNameList>
 					<sgr:sLV1Name>fallbackValue</sgr:sLV1Name>
 				</sgr:dpNameList>
@@ -206,10 +205,9 @@
 			<sgr:dataPoint datapointName="HemsCurrentLimit"
 				rwpDatadirection="RW" mroVisibilityIndicator="M"
 				unit="AMPERES">
-				<sgr:basicDataType>
-					<sgr:float32>0.0</sgr:float32>
-
-				</sgr:basicDataType>
+				<sgr:dataType>
+                    <sgr:decimal>0.0</sgr:decimal>
+                </sgr:dataType>
 				<sgr:dpNameList>
 					<sgr:sLV1Name>initValue</sgr:sLV1Name>
 				</sgr:dpNameList>
@@ -228,9 +226,9 @@
 			<sgr:dataPoint datapointName="maxReceiveTimeSec"
 				mroVisibilityIndicator="M" rwpDatadirection="RW"
 				unit="SECONDS">
-				<sgr:basicDataType>
-					<sgr:int16U>2000</sgr:int16U>
-				</sgr:basicDataType>
+				<sgr:dataType>
+					<sgr:integer>2000</sgr:integer>
+				</sgr:dataType>
 				<sgr:dpLegibDesc>
 					<sgr:textElement>Programmers hint: This maxReceiveTimeSec represents the timeout of the stabilityFallback Attribute. Hovewer, the timeout will be set to 0 whenever the Modbus interface is polled vor any data transaction</sgr:textElement>
 					<sgr:language>en</sgr:language>
@@ -253,9 +251,9 @@
 		<sgr:dpListElement>
 			<sgr:dataPoint datapointName="HWCurrentLimit"
 				mroVisibilityIndicator="R" unit="AMPERES">
-				<sgr:basicDataType>
-					<sgr:float32>0.0</sgr:float32>			
-				</sgr:basicDataType>
+				<sgr:dataType>
+                    <sgr:decimal>0.0</sgr:decimal>
+                </sgr:dataType>
 			</sgr:dataPoint>
 			<sgr:modbusDataPoint>
 				<sgr:modbusDataType>
@@ -286,7 +284,9 @@
 		<sgr:dpListElement>
 			<sgr:dataPoint datapointName="CurrentACL1"
 				mroVisibilityIndicator="M" rwpDatadirection="R" unit="AMPERES">
-				<sgr:basicDataType><sgr:float32>0</sgr:float32></sgr:basicDataType>
+				<sgr:dataType>
+                    <sgr:decimal>0.0</sgr:decimal>
+                </sgr:dataType>
 			</sgr:dataPoint>
 			<sgr:modbusDataPoint>
 				<sgr:modbusDataType><sgr:int32>0</sgr:int32></sgr:modbusDataType>
@@ -306,7 +306,9 @@
 		<sgr:dpListElement>
 			<sgr:dataPoint datapointName="CurrentACL2"
 				mroVisibilityIndicator="R" unit="AMPERES" rwpDatadirection="R">
-				<sgr:basicDataType><sgr:float32>0</sgr:float32></sgr:basicDataType>
+				<sgr:dataType>
+                    <sgr:decimal>0.0</sgr:decimal>
+                </sgr:dataType>
 			</sgr:dataPoint>
 			<sgr:modbusDataPoint>
 				<sgr:modbusDataType><sgr:int32>0</sgr:int32></sgr:modbusDataType>
@@ -326,7 +328,9 @@
 		<sgr:dpListElement>
 			<sgr:dataPoint datapointName="CurrentACL3"
 				mroVisibilityIndicator="R" unit="AMPERES" rwpDatadirection="R">
-				<sgr:basicDataType><sgr:float32>0</sgr:float32></sgr:basicDataType>
+				<sgr:dataType>
+                    <sgr:decimal>0.0</sgr:decimal>
+                </sgr:dataType>
 			</sgr:dataPoint>
 			<sgr:modbusDataPoint>
 				<sgr:modbusDataType><sgr:int32>0</sgr:int32></sgr:modbusDataType>
@@ -361,7 +365,9 @@
 		<sgr:dpListElement>
 			<sgr:dataPoint datapointName="ActivePowerACL1"
 				mroVisibilityIndicator="R" rwpDatadirection="R" unit="KILOWATTS">
-				<sgr:basicDataType><sgr:float32>0</sgr:float32></sgr:basicDataType>
+				<sgr:dataType>
+                    <sgr:decimal>0.0</sgr:decimal>
+                </sgr:dataType>
 			</sgr:dataPoint>
 			<sgr:modbusDataPoint>
 				<sgr:modbusDataType><sgr:int32>0</sgr:int32></sgr:modbusDataType>
@@ -381,7 +387,9 @@
 		<sgr:dpListElement>
 			<sgr:dataPoint datapointName="ActivePowerACL2"
 				mroVisibilityIndicator="R" unit="KILOWATTS" rwpDatadirection="R">
-				<sgr:basicDataType><sgr:float32>0</sgr:float32></sgr:basicDataType>
+				<sgr:dataType>
+                    <sgr:decimal>0.0</sgr:decimal>
+                </sgr:dataType>
 			</sgr:dataPoint>
 			<sgr:modbusDataPoint>
 				<sgr:modbusDataType><sgr:int32>0</sgr:int32></sgr:modbusDataType>
@@ -401,7 +409,9 @@
 		<sgr:dpListElement>
 			<sgr:dataPoint datapointName="ActivePowerACL3"
 				mroVisibilityIndicator="R" unit="KILOWATTS" rwpDatadirection="R">
-				<sgr:basicDataType><sgr:float32>0</sgr:float32></sgr:basicDataType>
+				<sgr:dataType>
+                    <sgr:decimal>0.0</sgr:decimal>
+                </sgr:dataType>
 			</sgr:dataPoint>
 			<sgr:modbusDataPoint>
 				<sgr:modbusDataType><sgr:int32>0</sgr:int32></sgr:modbusDataType>
@@ -436,7 +446,9 @@
 		<sgr:dpListElement>
 			<sgr:dataPoint datapointName="ActiveEnergyACL1"
 				mroVisibilityIndicator="R" rwpDatadirection="R" unit="KILOWATT_HOURS">
-				<sgr:basicDataType><sgr:float64>0</sgr:float64></sgr:basicDataType>
+				<sgr:dataType>
+                    <sgr:decimal>0.0</sgr:decimal>
+                </sgr:dataType>
 			</sgr:dataPoint>
 			<sgr:modbusDataPoint>
 				<sgr:modbusDataType><sgr:int32>0</sgr:int32></sgr:modbusDataType>
@@ -455,7 +467,9 @@
 		<sgr:dpListElement>
 			<sgr:dataPoint datapointName="ActiveEnergyACL2"
 				mroVisibilityIndicator="R" unit="KILOWATT_HOURS" rwpDatadirection="R">
-				<sgr:basicDataType><sgr:float64>0</sgr:float64></sgr:basicDataType>
+				<sgr:dataType>
+                    <sgr:decimal>0.0</sgr:decimal>
+                </sgr:dataType>
 			</sgr:dataPoint>
 			<sgr:modbusDataPoint>
 				<sgr:modbusDataType><sgr:int32>0</sgr:int32></sgr:modbusDataType>
@@ -474,7 +488,9 @@
 		<sgr:dpListElement>
 			<sgr:dataPoint datapointName="ActiveEnergyACL3"
 				mroVisibilityIndicator="R" unit="KILOWATT_HOURS" rwpDatadirection="R">
-				<sgr:basicDataType><sgr:float64>0</sgr:float64></sgr:basicDataType>
+				<sgr:dataType>
+                    <sgr:decimal>0.0</sgr:decimal>
+                </sgr:dataType>
 			</sgr:dataPoint>
 			<sgr:modbusDataPoint>
 				<sgr:modbusDataType>

@@ -213,8 +213,8 @@
                                     <xsl:value-of select="sgr:dataPoint/sgr:arrLen" /> x
                                 </xsl:if>
 
-                                <xsl:if test="sgr:dataPoint/sgr:basicDataType">
-                                    <xsl:apply-templates select="sgr:dataPoint/sgr:basicDataType" />
+                                <xsl:if test="sgr:dataPoint/sgr:dataType">
+                                    <xsl:apply-templates select="sgr:dataPoint/sgr:dataType" />
                                 </xsl:if>
                             </td>
                             <td>

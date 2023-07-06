@@ -152,9 +152,9 @@
   </complexType>
 
   <!-- the basic data based used für the generic level of a communicator -->
-  <complexType name="SGrBasicGenDataPointTypeType">
+  <complexType name="SGrGenDataType">
     <annotation>
-      <documentation xml:lang="en"> These are the basic generic
+      <documentation xml:lang="en"> These are the generic
 				data types must remain high level definitions for to be supported.
 				The definition focuses on the programming languages used at the
 				level of the communicators. So far Java and Python.
@@ -171,27 +171,16 @@
     	</element>
     	<element maxOccurs="1" minOccurs="1" name="boolean"
     		type="boolean" />
-    	<element maxOccurs="1" minOccurs="1" name="int8" type="byte" />
-    	<element maxOccurs="1" minOccurs="1" name="int16" type="short" />
-    	<element maxOccurs="1" minOccurs="1" name="int32"
-    		type="integer" />
-    	<element maxOccurs="1" minOccurs="1" name="int64" type="long" />
-    	<element maxOccurs="1" minOccurs="1" name="int8U"
-    		type="unsignedByte" />
-    	<element maxOccurs="1" minOccurs="1" name="int16U"
-    		type="unsignedShort" />
-    	<element maxOccurs="1" minOccurs="1" name="int32U"
-    		type="unsignedInt" />
-    	<element maxOccurs="1" minOccurs="1" name="int64U"
-    		type="unsignedLong" />
-    	<element maxOccurs="1" minOccurs="1" name="float32"
-    		type="float" />
-    	<element maxOccurs="1" minOccurs="1" name="float64"
-    		type="double" />
-    	<element maxOccurs="1" minOccurs="1" name="integer"
-    		type="long" />
-      <element maxOccurs="1" minOccurs="1" name="decimal"
-    		type="decimal" />
+    	<element maxOccurs="1" minOccurs="1" name="integer" type="long" >
+        <annotation>
+          <documentation>Integer number (64bit signed)</documentation>
+        </annotation>
+      </element>
+      <element maxOccurs="1" minOccurs="1" name="decimal" type="decimal" >
+        <annotation>
+          <documentation>Decimal number (at least double precision, or big decimal)</documentation>
+        </annotation>
+      </element>
     	<element maxOccurs="1" minOccurs="1" name="enum"
     		type="sgr:SGrEnumListType" />
     	<element maxOccurs="1" minOccurs="1" name="dateTime"
