@@ -28,26 +28,19 @@ offering services for flexible load mangement).
 ![SmartGridready architecture](doc/architecture.png)
 
 ## Buiding Blocks
-| External Interface Description | A machine- and human-readable description of the products communication interface |
-| Functional Profile | A set of use-case related datapoints (read or write) offered by the product. |
+| Block | Description |
+|-------|-------------|
+| [External Interface Description](doc/externalInterface.md) | A machine- and human-readable description of the products communication interface. |
+| [Functional Profile](doc/functionalProfile.md) | A set of use-case related datapoints (read or write) offered by the product. |
 | Communicator Description | A machine- and human-readable description of the communicators capabilities |
 
-Every building block is described through a common XML schema.
-
-## Repository Content
-
-#### Schema
-/SchemaDatabase/SGr/ contains the [XML schema](doc/SGrSchema.md).
-
-#### Functional Profiles
-/XMLInstances/FuncProfiles/ contains the published [function profiles](doc/functionalProfile.md).
-
-#### External Interfaces
-XMLInstances/ExtInterfaces/ contains the [external interfaces](doc/externalInterface.md).
+Every building block is described through a common [XML schema](doc/SGrSchema.md).
 
 ## Visualization
 
 The external interface XML and funcitonal profile XMLs are visuzalized through XSLT. 
 See https://library.smartgridready.ch.
 
+## Processes
+This repository contains the XML schema, as well as the device description XMLs and functional profile XMLs.
 Any changes on XML files of this repository are pushed through gitub actions to the SGr Library.
