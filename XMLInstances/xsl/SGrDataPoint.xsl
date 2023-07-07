@@ -29,8 +29,8 @@
 				</xsl:call-template>
 			</td>
 			<td>
-				<xsl:if test="sgr:dataPoint/sgr:arrLen">
-					<xsl:value-of select="sgr:dataPoint/sgr:arrLen" /> x
+				<xsl:if test="sgr:dataPoint/sgr:arrayLength">
+					<xsl:value-of select="sgr:dataPoint/sgr:arrayLength" /> x
 				</xsl:if>
 
 				<xsl:if test="sgr:dataPoint/sgr:dataType">
@@ -122,9 +122,6 @@
 		<tr class="transportDetails">
 			<td>Data Type</td>
 			<td>
-				<xsl:if test="sgr:arrLen">
-					<xsl:value-of select="sgr:arrLen" /> x
-				</xsl:if>
 				<xsl:if test="sgr:modbusDataType">
 					<xsl:apply-templates select="sgr:modbusDataType" />
 				</xsl:if>
