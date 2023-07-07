@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/SGr.xsl"?>
+<sgr:SGrFunctionalProfileFrame xmlns:sgr="http://www.smartgridready.com/ns/V0/"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/SGrIncluder.xsd">
+    <sgr:releaseNotes>
+        <sgr:state>Review</sgr:state>
+        <sgr:changelog>
+            <sgr:version>0.1.2</sgr:version>
+            <sgr:date>2021-08-17</sgr:date>
+            <sgr:author>IBT/cb</sgr:author>
+            <sgr:comment>Vorbereitung beta test</sgr:comment>
+        </sgr:changelog>
+        <sgr:changelog>
+            <sgr:version>1.0.0</sgr:version>
+            <sgr:date>2023-06-30</sgr:date>
+            <sgr:author>Ergo/sz</sgr:author>
+            <sgr:comment>Finalisierung</sgr:comment>
+        </sgr:changelog>
+    </sgr:releaseNotes>
+    <sgr:functionalProfile>
+        <sgr:profileNumber>
+            <sgr:specsOwnerId>0</sgr:specsOwnerId>
+            <sgr:profileIdentification>HeatPumpControl</sgr:profileIdentification>
+            <sgr:subProfileIdent>SG-ReadyStates_bwp</sgr:subProfileIdent>
+            <sgr:sgrLevelOfOperation>2</sgr:sgrLevelOfOperation>
+            <sgr:versionNumber>
+                <sgr:primaryVersionNumber>1</sgr:primaryVersionNumber>
+                <sgr:secondaryVersionNumber>0</sgr:secondaryVersionNumber>
+                <sgr:subReleaseVersionNumber>0</sgr:subReleaseVersionNumber>
+            </sgr:versionNumber>
+        </sgr:profileNumber>
+        <sgr:fpLegibDesc>
+            <sgr:textElement>
+                <![CDATA[	
+				<img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
+                <h4>Wärmepumpen mit 4 Betriebszuständen</h4>
+				<p>Stufe 2 Funktionsprofil für Wärmepumpen mit 4 Betriebszuständen (SG Ready Wärmepumpen)</p>
+                <p>Wärmepumpen müssen für die Umsetzung über einen Regler verfügen, der vier Betriebszustände abdeckt:</p>
+                <ol>
+                    <li>Betriebszustand 1 (Schaltzustand, bei Klemmenlösung: 1:0): <strong>Wärmepumpe gesperrt</strong></li>
+                    <li>Betriebszustand 2 (Schaltzustand, bei Klemmenlösungen: 0:0): <strong>Normalbetrieb</strong></li>
+                    <li>Betriebszustand 3 (Schaltzustand, bei Klemmenlösung 0:1):  <strong>Einschaltempfehlung</strong></li>
+                    <li>Betriebszustand 4 (Schaltzustand, bei Klemmenlösung 1:1):  <strong>Anlaufbefehl</strong> (Optional
+                        mit Zusatzheizung und/oder Anhebung der Speichertemperatur</li>
+                </ol>
+                <p>Der Communicator (z.B. CEM) berücksichtigt die Gerätevorgaben zur Schaltfrequenz (Attribute maxLockTimeMintues und minRunTimeMinutes).</p>
+                <p>„SG Ready“ ist ein Markenzeichen des Bundesverbands Wärmepumpe e. V.<br/>
+                   Weiterführende Infomrationen unter <a href="https://www.waermepumpe.de/normen-technik/sg-ready/">https://www.waermepumpe.de/normen-technik/sg-ready/</a>).</p>
+                ]]>
+            </sgr:textElement>
+            <sgr:language>de</sgr:language>
+        </sgr:fpLegibDesc>
+    </sgr:functionalProfile>
+    <sgr:genAttribute>
+        <sgr:maxLockTimeMinutes>120</sgr:maxLockTimeMinutes>
+        <sgr:minRunTimeMinutes>20</sgr:minRunTimeMinutes>
+    </sgr:genAttribute>
+    <sgr:dpListElement>
+        <sgr:dataPoint datapointName="SGReadyInp1isON" rwpDatadirection="W" unit="NONE" mroVisibilityIndicator="M">
+            <sgr:basicDataType>
+                <sgr:boolean>true</sgr:boolean>
+            </sgr:basicDataType>
+            <sgr:dpLegibDesc>
+                <sgr:textElement>Schaltzustand erste Klemme (0 oder 1)</sgr:textElement>
+                <sgr:language>de</sgr:language>
+            </sgr:dpLegibDesc>
+        </sgr:dataPoint>
+    </sgr:dpListElement>
+    <sgr:dpListElement>
+        <sgr:dataPoint datapointName="SGReadyInp2isON" rwpDatadirection="W" unit="NONE" mroVisibilityIndicator="M">
+            <sgr:basicDataType>
+                <sgr:boolean>true</sgr:boolean>
+            </sgr:basicDataType>
+            <sgr:dpLegibDesc>
+                <sgr:textElement>Schaltzustand zweite Klemme (0 oder 1)</sgr:textElement>
+                <sgr:language>de</sgr:language>
+            </sgr:dpLegibDesc>
+        </sgr:dataPoint>
+    </sgr:dpListElement>
+</sgr:SGrFunctionalProfileFrame>
