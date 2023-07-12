@@ -38,14 +38,80 @@
                                         this functional profile </documentation>
                                 </annotation>
                             </element>
-
-                            <element maxOccurs="4" minOccurs="0" name="fpPrgDesc"
-                                type="sgr:SGrLegibDocumentationType"></element>
                         </sequence>
                     </complexType>
                 </element>
-                <element maxOccurs="unbounded" minOccurs="0" name="genAttribute" type="sgr:SGrAttr4GenericType" />
-                <element maxOccurs="unbounded" minOccurs="1" name="dpListElement" type="sgr:SGrDataPointBaseType" />
+                <element maxOccurs="unbounded" minOccurs="0" name="genAttribute"
+                    type="sgr:SGrAttr4GenericType" />
+                <element maxOccurs="unbounded" minOccurs="1" name="dpListElement">
+                    <complexType>
+
+                        <annotation>
+                            <documentation>Base data point type</documentation>
+                        </annotation>
+                        <sequence>
+                            <element name="dataPoint">
+                                <complexType>
+                                    <annotation>
+                                        <documentation xml:lang="en"> This schema sheet serves the
+                                            generation of the data point for to define a single data
+                                            point, its type and links to potential attributes. </documentation>
+                                        <documentation xml:lang="de"> Dieses Schema dient der
+                                            Erzeugung eines einzelnen Datenpunktes zur Definition
+                                            des Datentyps und der Verbindung mit möglichen
+                                            Attributen. </documentation>
+                                    </annotation>
+                                    <sequence>
+                                        <element maxOccurs="1" minOccurs="1" name="basicDataType"
+                                            type="sgr:SGrBasicGenDataPointTypeType" />
+                                        <element name="arrLen" type="int" maxOccurs="1"
+                                            minOccurs="0" />
+                                        <element maxOccurs="1" minOccurs="0" name="dpNameList"
+                                            type="sgr:SGrNamelistType" />
+                                        <element maxOccurs="4" minOccurs="0" name="dpLegibDesc"
+                                            type="sgr:SGrLegibDocumentationType">
+                                            <annotation>
+                                                <documentation> this is the public explanation of
+                                                    the functionlity of this Datapoint </documentation>
+                                            </annotation>
+                                        </element>
+                                    </sequence>
+                                    <attribute name="datapointName" type="string">
+                                        <annotation>
+                                            <documentation> Bezeichnung des Datenpunktes:
+                                                «Schlagwort», welches die Bedeutung identifiziert.
+                                                Diese Bezeichnung gilt neben der Indexnummer als
+                                                Definition für den SmartGridready Namespace für die
+                                                maschinenlesbaren Daten. </documentation>
+                                        </annotation>
+                                    </attribute>
+                                    <attribute name="rwpDatadirection" type="sgr:SGrRWPType">
+                                        <annotation>
+                                            <documentation> RWP (Eigenschaft des Datenpunktes)
+                                                bezeichnet die Datenrichtung und die Datenhaltung R
+                                                = lesen aus Sicht des Profilnutzers W = schreiben
+                                                aus Sicht der Profilnutzers P = persistente
+                                                Speicherung der Daten </documentation>
+                                        </annotation>
+                                    </attribute>
+                                    <attribute name="mroVisibilityIndicator"
+                                        type="sgr:SGrMROPresenceLevelIndicationType">
+                                        <annotation>
+                                            <documentation> MRO (Relevanz) Die Gewichtung der
+                                                Variable bezüglich des Nutzens M = muss (mandatory)
+                                                Datenpunkt R = empfohlener (recommended) Datenpunkt
+                                                O = optionaler Datenpunkt </documentation>
+                                        </annotation>
+                                    </attribute>
+                                    <attribute name="unit" type="sgr:SGrUnits" />
+                                </complexType>
+
+                            </element>
+                            <element maxOccurs="unbounded" minOccurs="0" name="genAttribute"
+                                type="sgr:SGrAttr4GenericType" />
+                        </sequence>
+                    </complexType>
+                </element>
             </sequence>
         </complexType>
     </element>

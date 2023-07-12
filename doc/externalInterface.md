@@ -65,6 +65,8 @@ Each device contains a list of functional profiles.
 |-------------|-------------|
 | profileName | Instance name of the specified functional profile, containing Release Notes, Classification, Description |
 | functionalProfile | Copy of the standardized [functional profile](functionalProfile.md) |
+| fpPrgDesc   | optional, can occure multiple times, but ideally just a once per language. Contains details for the programmer. |
+
 
 ## Data Points
 Each functional profile instance contains a list of data points in accordance with the standardized functional profile.
@@ -72,6 +74,8 @@ Each functional profile instance contains a list of data points in accordance wi
 |-------------|-------------|
 | Data point | Data point of the standardized [functional profile](functionalProfile.md), containing name, description, units, data type, read/write, mandatory/recommended/optional information |
 | Transport Layer Info| transport-service specific information on how to access the data point |
+| dpPrgDesc   | optional, can occure multiple times, but ideally just a once per language. Contains details for the programmer. |
+
 
 
 
