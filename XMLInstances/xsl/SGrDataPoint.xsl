@@ -59,6 +59,10 @@
 					<!-- dpLegibDesc (4x opt) -->
 					<xsl:apply-templates select="sgr:dataPoint/sgr:dpLegibDesc" />
 
+					<!-- dpPrgDesc (4x opt)-->
+	                <xsl:apply-templates select="sgr:dataPoint/sgr:dpPrgDesc" />
+
+
 					<!-- Generic Attributes -->
 					<xsl:apply-templates select="sgr:genAttribute" />
 
@@ -99,6 +103,18 @@
 
 	<!-- SGrLegibDocumentationType -->
 	<xsl:template match="sgr:dpLegibDesc">
+		<tr>
+			<xsl:attribute name="lang">
+				<xsl:value-of select="sgr:language" />
+			</xsl:attribute>
+			<td colspan="2">
+				<xsl:call-template name="SGrLegibDocumentationType" />
+			</td>
+		</tr>
+	</xsl:template>
+
+	<!-- SGrLegibDocumentationType -->
+	<xsl:template match="sgr:dpPrgDesc">
 		<tr>
 			<xsl:attribute name="lang">
 				<xsl:value-of select="sgr:language" />
