@@ -1,6 +1,8 @@
 # SGrSpecifications
 Contains the schema, functional profiles and external interface descriptions for SmartgridReady.
 
+License see LICENSE file
+
 ## Vision
 To reach the gobal climate goals energy production from renewable sources will gain an increased share. But
 renewables can be erratic and less predictable in production. On the consumer side energy consumption will increase
