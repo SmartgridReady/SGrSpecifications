@@ -3,13 +3,13 @@
 	(IBT Ing. Buero Broennimann Thun) -->
 <!-- Copyright (c) Verein SmartGridready, Switzerland Version 0.2.2 2022-8-22 
 	All Rights Reserved. Source: https://www.SmartGridready.ch/ -->
-<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:sgr="http://www.smartgridready.com/ns/V0/" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.smartgridready.com/ns/V0/" version="0.2.2">
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:sgr="http://www.smartgridready.com/ns/V0/"
+  attributeFormDefault="unqualified" elementFormDefault="qualified"
+  targetNamespace="http://www.smartgridready.com/ns/V0/" version="0.2.2">
 
   <complexType name="SGrReleaseNotes">
     <annotation>
-      <documentation xml:lang="en">
-        Contains versioning, history and release states
-      </documentation>
+      <documentation xml:lang="en"> Contains versioning, history and release states </documentation>
     </annotation>
     <sequence>
       <element maxOccurs="1" minOccurs="1" name="state" type="sgr:SGrReleaseState" />
@@ -35,10 +35,8 @@
   </complexType>
   <simpleType name="SGrSpecialQualityReqType">
     <annotation>
-      <documentation xml:lang="en">the special quality requirement
-				describes a test to be applied like a quality certification for
-				SmartMeters
-			</documentation>
+      <documentation xml:lang="en">the special quality requirement describes a test to be applied
+        like a quality certification for SmartMeters </documentation>
       <documentation xml:lang="de" />
     </annotation>
     <restriction base="string" />
@@ -46,14 +44,10 @@
   <!-- data value with precision range -->
   <simpleType name="SGrPrecisionType">
     <annotation>
-      <documentation xml:lang="en"> Precision defines the accuracy
-				of a data point either related to a measurement value, a simulation
-				result or of a setpoint value
-			</documentation>
-      <documentation xml:lang="de"> Der Parameter Präzision
-				definiert die Genauigkeit eines Messwertes, einer Simulation oder
-				einer Stellgrössenumsetzung
-			</documentation>
+      <documentation xml:lang="en"> Precision defines the accuracy of a data point either related to
+        a measurement value, a simulation result or of a setpoint value </documentation>
+      <documentation xml:lang="de"> Der Parameter Präzision definiert die Genauigkeit eines
+        Messwertes, einer Simulation oder einer Stellgrössenumsetzung </documentation>
     </annotation>
     <restriction base="decimal">
       <minInclusive value="0.001" />
@@ -63,130 +57,105 @@
   <!-- Namelist Type for listing the relevant name references -->
   <complexType name="SGrNamelistType">
     <annotation>
-      <documentation xml:lang="en">a list of relevant namespaces
-				list for to display names used in different standards like EEBUS,
-				IEC6850,, SAREF4ENER etc this list type is used for devices,
-				functional profiles and datapoints. This namespace naming framework
-				is typically used by the SGr association in order to tailer web
-				based information tools. This complex data type is intended to be
-				extended for future relevant standarrds in order to secure
-				information over technology live cycles
-			</documentation>
-      <documentation xml:lang="de"> List der für ein Profil
-				relevanten Namen von benutzten Standards
-			</documentation>
+      <documentation xml:lang="en">a list of relevant namespaces list for to display names used in
+        different standards like EEBUS, IEC6850,, SAREF4ENER etc this list type is used for devices,
+        functional profiles and datapoints. This namespace naming framework is typically used by the
+        SGr association in order to tailer web based information tools. This complex data type is
+        intended to be extended for future relevant standarrds in order to secure information over
+        technology live cycles </documentation>
+      <documentation xml:lang="de"> List der für ein Profil relevanten Namen von benutzten Standards </documentation>
     </annotation>
     <sequence maxOccurs="1" minOccurs="1">
-    	<element maxOccurs="1" minOccurs="0" name="sLV1Name"
-    		type="string">
-    		<annotation>
-    			<documentation>
-            Currently not used. Reserved for the future to secure legacy compatibility one we start renaming in future SGr label versions
-    			</documentation>
-    		</annotation>
-    	</element>
-    	<element maxOccurs="1" minOccurs="0" name="sWorkName"
-    		type="string">
-    		<annotation>
-    			<documentation>
-    				work names for temporary use
-    			</documentation>
-    		</annotation>
-    	</element>
-    	<element maxOccurs="1" minOccurs="0" name="sManufName"
-    		type="string">
-    		<annotation>
-    			<documentation>
-    				manufacturers may use an internal wording
-    			</documentation>
-    		</annotation>
-    	</element>
-    	<element maxOccurs="1" minOccurs="0" name="sIEC61850Name"
-    		type="string">
-    		<annotation>
-    			<documentation>
-    				IEC 61850 termonoligy place to add the 61850
-    				abreviatuions if an overlap exists
-    			</documentation>
-    		</annotation>
-    	</element>
-    	<element maxOccurs="1" minOccurs="0" name="sSAREFName"
-    		type="string">
-    		<annotation>
-    			<documentation>
-    				SAREF for ENER termonoligy place to add the SAREF
-    				abreviations if an overlap exists
-    			</documentation>
-    		</annotation>
-    	</element>
-    	<element maxOccurs="1" minOccurs="0" name="sEEBUSName"
-    		type="string">
-    		<annotation>
-    			<documentation>
-    				EEBUS for terminology place to add the EEBUS
-    				abreviations if an overlap exists
-    			</documentation>
-    		</annotation>
-    	</element>
-    	<element maxOccurs="1" minOccurs="0" name="sSUNSPECName"
-    		type="string">
-    		<annotation>
-    			<documentation>
-    				sSUNSPEC for terminology place to add the
-    				www.sunspec.org abreviations if an overlap exists
-    			</documentation>
-    		</annotation>
-    	</element>
-    	<element maxOccurs="1" minOccurs="0" name="sHPbwpName"
-    		type="string">
-    		<annotation>
-    			<documentation>
-    				bwp (German Heat Pump Association) for terminology
-    				place to add the bwp naming for HVAC if an overlap
-    				exists
-    			</documentation>
-    		</annotation>
-    	</element>
-    	<element name="sEN17609Name" type="string" maxOccurs="1" minOccurs="0"></element>
+      <element maxOccurs="1" minOccurs="0" name="sLV1Name"
+        type="string">
+        <annotation>
+          <documentation> Currently not used. Reserved for the future to secure legacy compatibility
+            one we start renaming in future SGr label versions </documentation>
+        </annotation>
+      </element>
+      <element maxOccurs="1" minOccurs="0" name="sWorkName"
+        type="string">
+        <annotation>
+          <documentation> work names for temporary use </documentation>
+        </annotation>
+      </element>
+      <element maxOccurs="1" minOccurs="0" name="sManufName"
+        type="string">
+        <annotation>
+          <documentation> manufacturers may use an internal wording </documentation>
+        </annotation>
+      </element>
+      <element maxOccurs="1" minOccurs="0" name="sIEC61850Name"
+        type="string">
+        <annotation>
+          <documentation> IEC 61850 termonoligy place to add the 61850 abreviatuions if an overlap
+            exists </documentation>
+        </annotation>
+      </element>
+      <element maxOccurs="1" minOccurs="0" name="sSAREFName"
+        type="string">
+        <annotation>
+          <documentation> SAREF for ENER termonoligy place to add the SAREF abreviations if an
+            overlap exists </documentation>
+        </annotation>
+      </element>
+      <element maxOccurs="1" minOccurs="0" name="sEEBUSName"
+        type="string">
+        <annotation>
+          <documentation> EEBUS for terminology place to add the EEBUS abreviations if an overlap
+            exists </documentation>
+        </annotation>
+      </element>
+      <element maxOccurs="1" minOccurs="0" name="sSUNSPECName"
+        type="string">
+        <annotation>
+          <documentation> sSUNSPEC for terminology place to add the www.sunspec.org abreviations if
+            an overlap exists </documentation>
+        </annotation>
+      </element>
+      <element maxOccurs="1" minOccurs="0" name="sHPbwpName"
+        type="string">
+        <annotation>
+          <documentation> bwp (German Heat Pump Association) for terminology place to add the bwp
+            naming for HVAC if an overlap exists </documentation>
+        </annotation>
+      </element>
+      <element name="sEN17609Name" type="string" maxOccurs="1" minOccurs="0"></element>
     </sequence>
   </complexType>
 
   <!-- the basic data based used für the generic level of a communicator -->
-  <complexType name="SGrGenDataType">
+  <complexType name="dataTypeType">
     <annotation>
-      <documentation xml:lang="en"> These are the generic
-				data types must remain high level definitions for to be supported.
-				The definition focuses on the programming languages used at the
-				level of the communicators. So far Java and Python.
-			</documentation>
+      <documentation xml:lang="en"> These are the generic data types must remain high level
+        definitions for to be supported. The definition focuses on the programming languages used at
+        the level of the communicators. So far Java and Python. </documentation>
       <documentation xml:lang="de" />
       <documentation />
     </annotation>
     <choice>
-    	<element maxOccurs="1" minOccurs="1" name="enum2bitmapIndex" type= "sgr:SGrBitmapperListType">
-    	  <annotation>
-          <documentation>bitmap for Registers (typical: Status Bits). For to be visible as generic boolean array or unsigned integer mapped in parallel towards one data single point definition. Depending on the TransportService,  this requires specialized sw coding.
-          </documentation>
-        </annotation>
-    	</element>
-    	<element maxOccurs="1" minOccurs="1" name="boolean"
-    		type="boolean" />
-    	<element maxOccurs="1" minOccurs="1" name="integer" type="long" >
+      <element maxOccurs="1" minOccurs="1" name="boolean"
+        type="boolean" />
+      <element maxOccurs="1" minOccurs="1" name="int8" type="byte" />
+      <element maxOccurs="1" minOccurs="1" name="int16" type="short" />
+      <element maxOccurs="1" minOccurs="1" name="int32" type="integer" />
+      <element maxOccurs="1" minOccurs="1" name="int64" type="long" />
+      <element maxOccurs="1" minOccurs="1" name="int8U" type="unsignedByte" />
+      <element maxOccurs="1" minOccurs="1" name="int16U" type="unsignedShort" />
+      <element maxOccurs="1" minOccurs="1" name="int32U" type="unsignedInt" />
+      <element maxOccurs="1" minOccurs="1" name="int64U" type="unsignedLong" />
+      <element maxOccurs="1" minOccurs="1" name="float32" type="float" />
+      <element maxOccurs="1" minOccurs="1" name="float64" type="double" />
+      <element maxOccurs="1" minOccurs="1" name="dateTime" type="dateTime" />
+      <element maxOccurs="1" minOccurs="1" name="string" type="string" />
+      <element maxOccurs="1" minOccurs="1" name="enum" type="sgr:SGrEnumListType" />
+      <element maxOccurs="1" minOccurs="1" name="enum2bitmapIndex" type="sgr:SGrBitmapperListType">
         <annotation>
-          <documentation>Integer number (64bit signed)</documentation>
+          <documentation>bitmap for Registers (typical: Status Bits). For to be visible as generic
+            boolean array or unsigned integer mapped in parallel towards one data single point
+            definition. Depending on the TransportService, this requires specialized sw coding. </documentation>
         </annotation>
       </element>
-      <element maxOccurs="1" minOccurs="1" name="decimal" type="decimal" >
-        <annotation>
-          <documentation>Decimal number (at least double precision, or big decimal)</documentation>
-        </annotation>
-      </element>
-    	<element maxOccurs="1" minOccurs="1" name="enum"
-    		type="sgr:SGrEnumListType" />
-    	<element maxOccurs="1" minOccurs="1" name="dateTime"
-    		type="dateTime" />
-    	<element maxOccurs="1" minOccurs="1" name="string"
-    		type="string" />
     </choice>
   </complexType>
 
@@ -194,11 +163,9 @@
   <!-- enumeration to select mandatory, optional or recommended use of elements -->
   <simpleType name="SGrMROPresenceLevelIndicationType">
     <annotation>
-      <documentation xml:lang="en"> Names for the presence
-				indication of Elements listed in the tables are defined as follows
-				(using the EEBUS terminology): "M" mandatotory use (IEC:SHALL), "R"
-				recommended use (IEC:SHOULD) and "O" optional use (IEC:MAY)
-			</documentation>
+      <documentation xml:lang="en"> Names for the presence indication of Elements listed in the
+        tables are defined as follows (using the EEBUS terminology): "M" mandatotory use
+        (IEC:SHALL), "R" recommended use (IEC:SHOULD) and "O" optional use (IEC:MAY) </documentation>
       <documentation xml:lang="de" />
       <documentation />
     </annotation>
@@ -212,11 +179,9 @@
 		use of elements -->
   <simpleType name="SGrRWPType">
     <annotation>
-      <documentation xml:lang="en"> Names for the data direction
-				indication. "R" read only data, "W" rite only data, "RW" readible
-				and writable data, "RWP" readible and writable data with persistent
-				storage
-			</documentation>
+      <documentation xml:lang="en"> Names for the data direction indication. "R" read only data, "W"
+        rite only data, "RW" readible and writable data, "RWP" readible and writable data with
+        persistent storage </documentation>
       <documentation xml:lang="de" />
       <documentation />
     </annotation>
@@ -230,11 +195,9 @@
   <!-- create a new title as separator in between type definitions -->
   <complexType name="SGrLegibDocumentationType">
     <annotation>
-      <documentation>This element us used to extend the definitions with
-				legible text elements: a short understandbale explanation of the
-				items addressed. These elements are used for printed and published
-				information
-			</documentation>
+      <documentation>This element us used to extend the definitions with legible text elements: a
+        short understandbale explanation of the items addressed. These elements are used for printed
+        and published information </documentation>
     </annotation>
     <sequence>
       <element name="textElement">
@@ -255,17 +218,15 @@
       </element>
       <element maxOccurs="1" minOccurs="0" name="uri" type="anyURI">
         <annotation>
-          <documentation>URI pointong towards additional information
-					</documentation>
+          <documentation>URI pointong towards additional information </documentation>
         </annotation>
       </element>
     </sequence>
   </complexType>
   <simpleType name="SGrLanguageType">
     <annotation>
-      <documentation>this is the identification of the language for
-				information to be published. So far en, de, fr and it is possible
-			</documentation>
+      <documentation>this is the identification of the language for information to be published. So
+        far en, de, fr and it is possible </documentation>
     </annotation>
     <restriction base="Name">
       <enumeration value="de" />
@@ -276,8 +237,7 @@
   </simpleType>
   <complexType name="SGrVersionNumberType">
     <annotation>
-      <documentation>a three digit version mumber system.
-			</documentation>
+      <documentation>a three digit version mumber system. </documentation>
     </annotation>
     <sequence>
       <element name="primaryVersionNumber" type="int" />
@@ -287,9 +247,7 @@
   </complexType>
   <simpleType name="SGrDeviceKindType">
     <annotation>
-      <documentation>Device Kind is inherited from EEBUS, a growing list of
-				supported Devices
-			</documentation>
+      <documentation>Device Kind is inherited from EEBUS, a growing list of supported Devices </documentation>
     </annotation>
     <restriction base="string">
       <enumeration value="Battery" />
@@ -544,10 +502,8 @@
   </simpleType>
   <complexType name="SGrScalingType">
     <annotation>
-      <documentation>scaled_value = value * multiplicator * 10^powerof10
-				This type is used for to convert intereger datapoint values into
-				floats only
-			</documentation>
+      <documentation>scaled_value = value * multiplicator * 10^powerof10 This type is used for to
+        convert intereger datapoint values into floats only </documentation>
     </annotation>
     <sequence>
       <element name="multiplicator" type="int" />
@@ -572,195 +528,157 @@
   <!--  generic Attribute Definitions  -->
   <complexType name="SGrAttr4GenericType">
     <annotation>
-      <documentation>these attributes are defined for the generic interface
-				for the application programmer. An attribute can be aligned to
-				either a device, a functional Profile or a datapoint
-			</documentation>
+      <documentation>these attributes are defined for the generic interface for the application
+        programmer. An attribute can be aligned to either a device, a functional Profile or a
+        datapoint </documentation>
     </annotation>
     <all>
-    	<element maxOccurs="1" minOccurs="0" name="maxVal"
-    		type="decimal">    
-    		<annotation>
-    			<documentation>
-    				upper range limit. Unit:inherited
-    			</documentation>
-    		</annotation>
-    	</element>
-    	<element maxOccurs="1" minOccurs="0" name="minVal"
-    		type="decimal">
-    		<annotation>
-    			<documentation>
-    				lower range limit. Unit:inherited
-    			</documentation>
-    		</annotation>
-    	</element>
-    	<element maxOccurs="1" minOccurs="0"
-    		name="specQualityRequirement"
-    		type="sgr:SGrSpecialQualityReqType">
-    		<annotation>
-    			<documentation>
-    				indicates Quality requirements fullfilled like
-    				formal certifications
-    			</documentation>
-    		</annotation>
-    	</element>
-    	<element maxOccurs="1" minOccurs="0" name="precision"
-    		type="sgr:SGrPrecisionType">
-    		<annotation>
-    			<documentation>
-    				the precision of a measurement, calculation result
-    				or result of a controls process
-    			</documentation>
-    		</annotation>
-    	</element>
-    	<element maxOccurs="1" minOccurs="0" name="stabilityFallback"
-    		type="sgr:SGrStabilityFallbackType">
-    		<annotation>
-    			<documentation>
-    				A consumer or a generating system receives the
-    				permit for a load change for a certain period of
-    				time. This time is always set to 0 each time a
-    				confirmation message is received (HeartBeat).
-    			</documentation>
-    		</annotation>
-    	</element>
-    	<element maxOccurs="1" minOccurs="0" name="smoothTransition"
-    		type="sgr:SGrSmoothTransitionType">
-    		<annotation>
-    			<documentation>
-    				The time behavior of a transition from a power
-    				adjustment (positive as well as negative) can be
-    				determined by several time values, so that this
-    				starts with a random time delay, changes via a ramp
-    				and an expiry time with return to the initial value.
-    			</documentation>
-    		</annotation>
-    	</element>
-    	<element maxOccurs="1" minOccurs="0" name="maxLatencyTimeMs"
-    		type="unsignedLong">
-    		<annotation>
-    			<documentation>
-    				Maximum time in milliseconds from capturing of
-    				measured value until ready at the external interface
-    				(i.e. analog-digital conversion time)
-    			</documentation>
-    		</annotation>
-    	</element>
-    	<element maxOccurs="1" minOccurs="0" name="valueType"
-    		type="sgr:SGrMeasValueType">
-    		<annotation>
-    			<documentation>
-    				MeasValueType: type of measurement. Possbile values
-    				are "value", "min", max", "average", "stdDev"
-    			</documentation>
-    		</annotation>
-    	</element>
-    	<element maxOccurs="1" minOccurs="0" name="valueSource"
-    		type="sgr:SGrMeasValueSourceType">
-    		<annotation>
-    			<documentation>
-    				Value source kind related to SGr level 6
-    				applications. Potential values are measuredValue,
-    				calculatedValue, empiricalValue
-    			</documentation>
-    		</annotation>
-    	</element>
-    	<element maxOccurs="1" minOccurs="0" name="sampleRate"
-    		type="unsignedLong">
-    		<annotation>
-    			<documentation>
-    				SampleRate in milliseconds
-    			</documentation>
-    		</annotation>
-    	</element>
-    	<element maxOccurs="1" minOccurs="0" name="curtailment"
-    		type="decimal" />
-    	<element maxOccurs="1" minOccurs="0" name="minLoad"
-    		type="decimal" />
-    	<element maxOccurs="1" minOccurs="0" name="maxLockTimeMinutes"
-    		type="float" />
-    	<element maxOccurs="1" minOccurs="0" name="minRunTimeMinutes"
-    		type="float" />
-    	<element maxOccurs="1" minOccurs="0"
-    		name="valueByTimeTableMinutes" type="float" />
-    	<element maxOccurs="1" minOccurs="0" name="flexAssistance"
-    		type="sgr:SGrFlexAssistanceType">
-    		<annotation>
-    			<documentation>
-    				Systems with more than One communicator need a
-    				definition of the priority of the commands / demands
-    				for a flexibility requirement. This element defines
-    				the kind of a such a command (servicable for net
-    				(DSO), energy or system (TNO)) and its priority
-    				(SHALL / SHOULD / MAY)
-    			</documentation>
-    		</annotation>
-    	</element>
-    	<element name="unitConversionMultiplicator" type="float" maxOccurs="1" minOccurs="0"></element>
+      <element maxOccurs="1" minOccurs="0" name="maxVal"
+        type="decimal">
+        <annotation>
+          <documentation> upper range limit. Unit:inherited </documentation>
+        </annotation>
+      </element>
+      <element maxOccurs="1" minOccurs="0" name="minVal"
+        type="decimal">
+        <annotation>
+          <documentation> lower range limit. Unit:inherited </documentation>
+        </annotation>
+      </element>
+      <element maxOccurs="1" minOccurs="0"
+        name="specQualityRequirement"
+        type="sgr:SGrSpecialQualityReqType">
+        <annotation>
+          <documentation> indicates Quality requirements fullfilled like formal certifications </documentation>
+        </annotation>
+      </element>
+      <element maxOccurs="1" minOccurs="0" name="precision"
+        type="sgr:SGrPrecisionType">
+        <annotation>
+          <documentation> the precision of a measurement, calculation result or result of a controls
+            process </documentation>
+        </annotation>
+      </element>
+      <element maxOccurs="1" minOccurs="0" name="stabilityFallback"
+        type="sgr:SGrStabilityFallbackType">
+        <annotation>
+          <documentation> A consumer or a generating system receives the permit for a load change
+            for a certain period of time. This time is always set to 0 each time a confirmation
+            message is received (HeartBeat). </documentation>
+        </annotation>
+      </element>
+      <element maxOccurs="1" minOccurs="0" name="smoothTransition"
+        type="sgr:SGrSmoothTransitionType">
+        <annotation>
+          <documentation> The time behavior of a transition from a power adjustment (positive as
+            well as negative) can be determined by several time values, so that this starts with a
+            random time delay, changes via a ramp and an expiry time with return to the initial
+            value. </documentation>
+        </annotation>
+      </element>
+      <element maxOccurs="1" minOccurs="0" name="maxLatencyTimeMs"
+        type="unsignedLong">
+        <annotation>
+          <documentation> Maximum time in milliseconds from capturing of measured value until ready
+            at the external interface (i.e. analog-digital conversion time) </documentation>
+        </annotation>
+      </element>
+      <element maxOccurs="1" minOccurs="0" name="valueType"
+        type="sgr:SGrMeasValueType">
+        <annotation>
+          <documentation> MeasValueType: type of measurement. Possbile values are "value", "min",
+            max", "average", "stdDev" </documentation>
+        </annotation>
+      </element>
+      <element maxOccurs="1" minOccurs="0" name="valueSource"
+        type="sgr:SGrMeasValueSourceType">
+        <annotation>
+          <documentation> Value source kind related to SGr level 6 applications. Potential values
+            are measuredValue, calculatedValue, empiricalValue </documentation>
+        </annotation>
+      </element>
+      <element maxOccurs="1" minOccurs="0" name="sampleRate"
+        type="unsignedLong">
+        <annotation>
+          <documentation> SampleRate in milliseconds </documentation>
+        </annotation>
+      </element>
+      <element maxOccurs="1" minOccurs="0" name="curtailment"
+        type="decimal" />
+      <element maxOccurs="1" minOccurs="0" name="minLoad"
+        type="decimal" />
+      <element maxOccurs="1" minOccurs="0" name="maxLockTimeMinutes"
+        type="float" />
+      <element maxOccurs="1" minOccurs="0" name="minRunTimeMinutes"
+        type="float" />
+      <element maxOccurs="1" minOccurs="0"
+        name="valueByTimeTableMinutes" type="float" />
+      <element maxOccurs="1" minOccurs="0" name="flexAssistance"
+        type="sgr:SGrFlexAssistanceType">
+        <annotation>
+          <documentation> Systems with more than One communicator need a definition of the priority
+            of the commands / demands for a flexibility requirement. This element defines the kind
+            of a such a command (servicable for net (DSO), energy or system (TNO)) and its priority
+            (SHALL / SHOULD / MAY) </documentation>
+        </annotation>
+      </element>
+      <element name="unitConversionMultiplicator" type="float" maxOccurs="1" minOccurs="0"></element>
     </all>
   </complexType>
   <complexType name="SGrStabilityFallbackType">
     <annotation>
-      <documentation>A consumer or a generating system receives the permit
-				for a load change for a certain period of time. This time is always
-				set to 0 each time a confirmation message is received (HeartBeat).
-			</documentation>
+      <documentation>A consumer or a generating system receives the permit for a load change for a
+        certain period of time. This time is always set to 0 each time a confirmation message is
+        received (HeartBeat). </documentation>
     </annotation>
     <sequence>
-      <element name="maxReceiveTime" type="float" >
+      <element name="maxReceiveTime" type="float">
         <annotation>
-          <documentation>Time in seconds. If the device does not recieve any communication within this specified time the device automatically initiates the fallback. 0 indicates no fallback will be performed.</documentation>
+          <documentation>Time in seconds. If the device does not recieve any communication within
+            this specified time the device automatically initiates the fallback. 0 indicates no
+            fallback will be performed.</documentation>
         </annotation>
       </element>
       <element name="initValue" type="decimal">
         <annotation>
-          <documentation>Value of the reference variable at the start of the
-						process cycle. Unit: inherited
-					</documentation>
+          <documentation>Value of the reference variable at the start of the process cycle. Unit:
+            inherited </documentation>
         </annotation>
       </element>
       <element name="fallbackValue" type="decimal">
         <annotation>
-          <documentation>Value of the reference variable in the event of a
-						communication failure . Unit:inherited
-					</documentation>
+          <documentation>Value of the reference variable in the event of a communication failure .
+            Unit:inherited </documentation>
         </annotation>
       </element>
     </sequence>
   </complexType>
   <complexType name="SGrSmoothTransitionType">
     <annotation>
-      <documentation>The time behavior of a transition from a power
-				adjustment (positive as well as negative) can be determined by
-				several time values, so that this starts with a random time delay,
-				changes via a ramp and an expiry time with return to the initial
-				value.
-			</documentation>
+      <documentation>The time behavior of a transition from a power adjustment (positive as well as
+        negative) can be determined by several time values, so that this starts with a random time
+        delay, changes via a ramp and an expiry time with return to the initial value. </documentation>
     </annotation>
     <sequence>
       <element maxOccurs="1" minOccurs="0" name="winTms" type="unsignedLong">
         <annotation>
-          <documentation>indicates a time window in seconds in which the new operating
-						mode is started randomly. The time window begins with the start
-						command of the operating mode. The value 0 means immediate
-					</documentation>
+          <documentation>indicates a time window in seconds in which the new operating mode is
+            started randomly. The time window begins with the start command of the operating mode.
+            The value 0 means immediate </documentation>
         </annotation>
       </element>
       <element maxOccurs="1" minOccurs="0" name="rvrtTms" type="unsignedLong">
         <annotation>
-          <documentation>determines how long the operating mode should be
-						active in seconds. When the time has elapsed, the operating mode is
-						automatically terminated. If rvrtTms = 0 (standard value), the
-						operating mode remains active until a new command is received.
-					</documentation>
+          <documentation>determines how long the operating mode should be active in seconds. When
+            the time has elapsed, the operating mode is automatically terminated. If rvrtTms = 0
+            (standard value), the operating mode remains active until a new command is received. </documentation>
         </annotation>
       </element>
       <element maxOccurs="1" minOccurs="0" name="rmpTms" type="unsignedLong">
         <annotation>
-          <documentation>specifies how quickly the changes should be made in seconds.
-						The corresponding value is gradually changed from the old to the
-						new value in the specified time.
-					</documentation>
+          <documentation>specifies how quickly the changes should be made in seconds. The
+            corresponding value is gradually changed from the old to the new value in the specified
+            time. </documentation>
         </annotation>
       </element>
     </sequence>
@@ -808,29 +726,23 @@
   </simpleType>
   <simpleType name="SGReadyStateLv2Type">
     <annotation>
-      <documentation>E0005 SG-Ready states according the German heatpump
-				association bwp normal, intensified, EVU_LOCK, forced
-				https://www.waermepumpe.de/normen-technik/sg-ready/
-			</documentation>
+      <documentation>E0005 SG-Ready states according the German heatpump association bwp normal,
+        intensified, EVU_LOCK, forced https://www.waermepumpe.de/normen-technik/sg-ready/ </documentation>
     </annotation>
     <restriction base="string">
       <enumeration value="HP_NULL">
         <annotation>
-          <documentation> value 0 is not vslid
-					</documentation>
+          <documentation> value 0 is not vslid </documentation>
         </annotation>
       </enumeration>
       <enumeration value="HP_LOCKED">
         <annotation>
-          <documentation> Locked operation for a maximum of 2 hours
-					</documentation>
+          <documentation> Locked operation for a maximum of 2 hours </documentation>
         </annotation>
       </enumeration>
       <enumeration value="HP_NORMAL">
         <annotation>
-          <documentation>Normal operation, optimized according to customer
-						requirements
-					</documentation>
+          <documentation>Normal operation, optimized according to customer requirements </documentation>
         </annotation>
       </enumeration>
       <enumeration value="HP_INTENSIFIED">
@@ -847,33 +759,26 @@
   </simpleType>
   <simpleType name="SGReadyStateLv1Type">
     <annotation>
-      <documentation>E0006 simple heat pump blocking
-				association bwp normal,EVU_LOCK
-			</documentation>
+      <documentation>E0006 simple heat pump blocking association bwp normal,EVU_LOCK </documentation>
     </annotation>
     <restriction base="string">
       <enumeration value="HP_NORMAL">
         <annotation>
-          <documentation> Normal operation, optimized according to customer
-						requirements
-					</documentation>
+          <documentation> Normal operation, optimized according to customer requirements </documentation>
         </annotation>
       </enumeration>
       <enumeration value="HP_LOCK">
         <annotation>
-          <documentation> Locked operation for a maximum of 2 hours
-					</documentation>
+          <documentation> Locked operation for a maximum of 2 hours </documentation>
         </annotation>
       </enumeration>
     </restriction>
   </simpleType>
   <simpleType name="SGrSunspStateCodesType">
     <annotation>
-      <documentation> E0007 : SunspecInvStates I_STATUS_OFF,
-				I_STATUS_SLEEPING , I_STATUS_STARTING ,I_STATUS_MPPT ,
-				I_STATUS_THROTTLED, I_STATUS_SHUTING_DOWN ,I_STATUS_FAULT ,
-				I_STATUS_STANDBY
-			</documentation>
+      <documentation> E0007 : SunspecInvStates I_STATUS_OFF, I_STATUS_SLEEPING , I_STATUS_STARTING
+        ,I_STATUS_MPPT , I_STATUS_THROTTLED, I_STATUS_SHUTING_DOWN ,I_STATUS_FAULT ,
+        I_STATUS_STANDBY </documentation>
     </annotation>
     <restriction base="string">
       <enumeration value="I_STATUS_OFF" />
@@ -888,9 +793,8 @@
   </simpleType>
   <simpleType name="SGrEVSEStateLv2Type">
     <annotation>
-      <documentation> E0008 : 0:0 = EV_NORMAL, 0:1 = EV_REDUCED , 1:0 =
-				EV_MINIMAL , 1:1 = EV_NONE_OR_FEEDIN
-			</documentation>
+      <documentation> E0008 : 0:0 = EV_NORMAL, 0:1 = EV_REDUCED , 1:0 = EV_MINIMAL , 1:1 =
+        EV_NONE_OR_FEEDIN </documentation>
     </annotation>
     <restriction base="string">
       <enumeration value="EV_NORMAL" />
@@ -901,8 +805,7 @@
   </simpleType>
   <simpleType name="SGrEVSEStateLv1Type">
     <annotation>
-      <documentation> E0009 : 0 = EV_NORMAL, 1 = EV_REDUCED
-			</documentation>
+      <documentation> E0009 : 0 = EV_NORMAL, 1 = EV_REDUCED </documentation>
     </annotation>
     <restriction base="string">
       <enumeration value="EV_NORMAL" />
@@ -911,9 +814,7 @@
   </simpleType>
   <simpleType name="SGrSGCPLoadStateLv2Type">
     <annotation>
-      <documentation> E0010 : 0:0 = LD_NORMAL, 0:1 = LD_REDUCED , 1:0 =
-				LD_LOCKED , 1:1 = LD_MAX
-			</documentation>
+      <documentation> E0010 : 0:0 = LD_NORMAL, 0:1 = LD_REDUCED , 1:0 = LD_LOCKED , 1:1 = LD_MAX </documentation>
     </annotation>
     <restriction base="string">
       <enumeration value="LD_NORMAL" />
@@ -924,9 +825,7 @@
   </simpleType>
   <simpleType name="SGrSGCPFeedInStateLv2Type">
     <annotation>
-      <documentation> E0011 : 0:0 = FI_NORMAL, 0:1 = FI_REDUCED , 1:0 =
-				FI_LOCKED , 1:1 = FI_MAX
-			</documentation>
+      <documentation> E0011 : 0:0 = FI_NORMAL, 0:1 = FI_REDUCED , 1:0 = FI_LOCKED , 1:1 = FI_MAX </documentation>
     </annotation>
     <restriction base="string">
       <enumeration value="FI_NORMAL" />
@@ -937,14 +836,8 @@
   </simpleType>
   <simpleType name="SGrEVStateType">
     <annotation>
-      <documentation>E0012 IEC EVSE_61851_State  for Wallbox
-      A: standby, 
-      B: vehicle detected, 
-      C: ready (charging), 
-      D: with ventilation, 
-      E: no power (shut off), 
-      F: error
-	 </documentation>
+      <documentation>E0012 IEC EVSE_61851_State for Wallbox A: standby, B: vehicle detected, C:
+        ready (charging), D: with ventilation, E: no power (shut off), F: error </documentation>
     </annotation>
     <restriction base="string">
       <enumeration value="EV_STATE_NULL" />
@@ -958,11 +851,10 @@
   </simpleType>
   <simpleType name="SGrSGCPServiceType">
     <annotation>
-      <documentation>E0013: Assistance type of a reaction / function. This Attribute indicates the type of Flexibility Entity of the operation 
-      NET  servicable: Operation for the benefit of a distribution network operator (DSO) 
-      SYS  servicable: Operation of the total system operators (TSO) 
-      ENER servicable: Operation for energy optimization
-    </documentation>
+      <documentation>E0013: Assistance type of a reaction / function. This Attribute indicates the
+        type of Flexibility Entity of the operation NET servicable: Operation for the benefit of a
+        distribution network operator (DSO) SYS servicable: Operation of the total system operators
+        (TSO) ENER servicable: Operation for energy optimization </documentation>
     </annotation>
     <restriction base="string">
       <enumeration value="AT_NetServicable" />
@@ -972,11 +864,8 @@
   </simpleType>
   <simpleType name="SGrObligLvlType">
     <annotation>
-      <documentation>E0014:  Obligation level of a reaction / function.
-      SHALL:  action is required
-      SHOULD: action is strongly recommended
-      MAY: action is permitted
-    </documentation>
+      <documentation>E0014: Obligation level of a reaction / function. SHALL: action is required
+        SHOULD: action is strongly recommended MAY: action is permitted </documentation>
     </annotation>
     <restriction base="string">
       <enumeration value="OL_SHALL" />
@@ -987,68 +876,26 @@
 
   <simpleType name="SGrOCPPStateType">
     <annotation>
-      <documentation>E0015:
-	Available (0): 
-	  When a Connector becomes available for a new
-	  user (Operative)
-	  
-	Charging (1): 
-	  When the contactor of a Connector closes,
-	  allowing the vehicle to charge
-	(Operative)
-
-	Preparing(not yet observed ?): 
-	  When a Connector becomes no longer available
-	  for a new user but no charging session is active.
-	  Typically a Connector is occupied when a user
-	  presents a tag, inserts a cable or a vehicle
-	  occupies the parking bay
-	  (Operative)
-
-	Finishing(not yet observed ?): 
-	  When a charging session has stopped at a
-	  Connector, but the Connector is not yet available
-	  for a new user, e.g. the cable has not been
-	  removed or the vehicle has not left the parking
-	  bay
-	  (Operative)
-
-	Reserved(not yet observed ?): 
-	  When a Connector becomes reserved as a result of
-	  a Reserve Now command
-	  (Operative)
-	
-	Unavailable(not yet observed ?): 
-	  When a Connector becomes unavailable as the
-	  result of a Change Availability command or an
-	  event upon which the Charge Point transitions to
-	  unavailable at its discretion. Upon receipt of a
-	  Change Availability command, the status MAY
-	  change immediately or the change MAY be
-	  scheduled. When scheduled, the Status
-	  Notification shall be send when the availability
-	  change becomes effective
-	  (Inoperative)
-
-	Faulted(not yet observed ?): 
-	  When a Charge Point or connector has reported
-	  an error and is not available for energy delivery .
-	  (Inoperative).
-	
-	SuspendedEVSE (7): 
-	  When the contactor of a Connector opens upon
-	  request of the EVSE, e.g. due to a smart charging
-	  restriction or as the result of
-	  StartTransaction.conf indicating that charging is
-	  not allowed
-	  (Operative)
-
-	SuspendedEV(8): 
-	  When the EVSE is ready to deliver energy but
-	  contactor is open, e.g. the EV is not ready.
-	  (Operative)
-	
-	</documentation>
+      <documentation>E0015: Available (0): When a Connector becomes available for a new user
+        (Operative) Charging (1): When the contactor of a Connector closes, allowing the vehicle to
+        charge (Operative) Preparing(not yet observed ?): When a Connector becomes no longer
+        available for a new user but no charging session is active. Typically a Connector is
+        occupied when a user presents a tag, inserts a cable or a vehicle occupies the parking bay
+        (Operative) Finishing(not yet observed ?): When a charging session has stopped at a
+        Connector, but the Connector is not yet available for a new user, e.g. the cable has not
+        been removed or the vehicle has not left the parking bay (Operative) Reserved(not yet
+        observed ?): When a Connector becomes reserved as a result of a Reserve Now command
+        (Operative) Unavailable(not yet observed ?): When a Connector becomes unavailable as the
+        result of a Change Availability command or an event upon which the Charge Point transitions
+        to unavailable at its discretion. Upon receipt of a Change Availability command, the status
+        MAY change immediately or the change MAY be scheduled. When scheduled, the Status
+        Notification shall be send when the availability change becomes effective (Inoperative)
+        Faulted(not yet observed ?): When a Charge Point or connector has reported an error and is
+        not available for energy delivery . (Inoperative). SuspendedEVSE (7): When the contactor of
+        a Connector opens upon request of the EVSE, e.g. due to a smart charging restriction or as
+        the result of StartTransaction.conf indicating that charging is not allowed (Operative)
+        SuspendedEV(8): When the EVSE is ready to deliver energy but contactor is open, e.g. the EV
+        is not ready. (Operative) </documentation>
     </annotation>
     <restriction base="string">
       <enumeration value="Available" />
@@ -1064,10 +911,8 @@
   </simpleType>
   <simpleType name="SGrHPOpModeType">
     <annotation>
-      <documentation>E0016:
-     Basic operation type of a heat pump
-     Bereitschaft, Programm, Komfort, Eco, Warmwasser, Notbetrieb     
-	</documentation>
+      <documentation>E0016: Basic operation type of a heat pump Bereitschaft, Programm, Komfort,
+        Eco, Warmwasser, Notbetrieb </documentation>
     </annotation>
     <restriction base="string">
       <enumeration value="WP_EMERG_OP" />
@@ -1082,13 +927,11 @@
   </simpleType>
   <simpleType name="SGrHCOpModeType">
     <annotation>
-      <documentation>E0017:
-     Basic operation type of a heat cool valve operation mode
-     Bereitschaft, Programm, Komfort, Eco, Warmwasser, Kühlen     
-	</documentation>
+      <documentation>E0017: Basic operation type of a heat cool valve operation mode Bereitschaft,
+        Programm, Komfort, Eco, Warmwasser, Kühlen </documentation>
     </annotation>
     <restriction base="string">
-      <enumeration value="HC_OFF" />				
+      <enumeration value="HC_OFF" />
       <enumeration value="HC_READY" />
       <enumeration value="HC_PROG_OP" />
       <enumeration value="HC_COMFORT_OP" />
@@ -1097,10 +940,8 @@
   </simpleType>
   <simpleType name="ctaDomHotWOpModeType">
     <annotation>
-      <documentation>Ecta001:
-     Basic operation type of CTA Domestic Hot Water Heat Pump operation mode
-      	ON OFF Push  temporary-off emergency-op      
-	</documentation>
+      <documentation>Ecta001: Basic operation type of CTA Domestic Hot Water Heat Pump operation
+        mode ON OFF Push temporary-off emergency-op </documentation>
     </annotation>
     <restriction base="string">
       <enumeration value="DHW_NULL" />
@@ -1109,279 +950,197 @@
       <enumeration value="DHW_PUSH" />
       <enumeration value="DHW_TMP_OFF" />
       <enumeration value="DHW_EMERGENCY" />
-    </restriction>  
-  </simpleType>    
+    </restriction>
+  </simpleType>
   <simpleType name="ctaHPOpStateType">
     <annotation>
-      <documentation>Ecta002:
-     BitRank (or enum?) map for CTA Heatpump status information
-#1 =   Stand by
-#2 =   Alarm Aus
-#3 =   Ext. aus
-#4 =   Aus Zeitlimite
-#5 =   Aus Gesperrt (EW-Sperre)
-#6 =   Manuell Aus
-#7 =   Manueller Betrieb
-#8 =   Startphase
-#9 =   Stopp Phase
-#10 = Sicherh. Abschaltung
-#11 = Start Abtauphase
-#12 = Abtauphase
-#13 = Ende Abtauphase
-#14 = Gesperrt Druckd. Bei Start
-#15 = Kühlbetrieb aktiv
-#16 = Heizbetrieb aktiv
-#17 = Start nach VD Startfehler
-#18 = Aus Begrenzung aktiv
-#19 = Ol Rückführung aktiv     
-	</documentation>
-	</annotation>
+      <documentation>Ecta002: BitRank (or enum?) map for CTA Heatpump status information #1 = Stand
+        by #2 = Alarm Aus #3 = Ext. aus #4 = Aus Zeitlimite #5 = Aus Gesperrt (EW-Sperre) #6 =
+        Manuell Aus #7 = Manueller Betrieb #8 = Startphase #9 = Stopp Phase #10 = Sicherh.
+        Abschaltung #11 = Start Abtauphase #12 = Abtauphase #13 = Ende Abtauphase #14 = Gesperrt
+        Druckd. Bei Start #15 = Kühlbetrieb aktiv #16 = Heizbetrieb aktiv #17 = Start nach VD
+        Startfehler #18 = Aus Begrenzung aktiv #19 = Ol Rückführung aktiv </documentation>
+    </annotation>
     <restriction base="string">
-      <enumeration value="HP_NULL"/>
-      <enumeration value="HP_STANDBY"/>
-      <enumeration value="HP_ALARM_OFF"/>
-      <enumeration value="HP_EXTERNAL_OFF"/>
-      <enumeration value="HP_TIMEOUT_OFF"/>
-      <enumeration value="HP_DSO_OFF"/>
-      <enumeration value="HP_MANUAL_OFF"/>
-      <enumeration value="HP_MANUAL_OP"/>
-      <enumeration value="HP_STARTING"/>
-      <enumeration value="HP_STOPPING"/>
-      <enumeration value="HP_SECURE_OFF"/>
-      <enumeration value="HP_START_DEFROST"/>
-      <enumeration value="HP_DEFROSTING"/>
-      <enumeration value="HP_DEFROST_END"/>
-      <enumeration value="HP_PRESSURE_DIFF"/>
-      <enumeration value="HP_COOLING"/>
-      <enumeration value="HP_HEATING"/>
-      <enumeration value="HP_COMP_START_ERR"/>
-      <enumeration value="HP_OFF_OUT_OF_LIMITS"/>
-      <enumeration value="HP_OIL_RECIRCUL_ACTIVE"/>
+      <enumeration value="HP_NULL" />
+      <enumeration value="HP_STANDBY" />
+      <enumeration value="HP_ALARM_OFF" />
+      <enumeration value="HP_EXTERNAL_OFF" />
+      <enumeration value="HP_TIMEOUT_OFF" />
+      <enumeration value="HP_DSO_OFF" />
+      <enumeration value="HP_MANUAL_OFF" />
+      <enumeration value="HP_MANUAL_OP" />
+      <enumeration value="HP_STARTING" />
+      <enumeration value="HP_STOPPING" />
+      <enumeration value="HP_SECURE_OFF" />
+      <enumeration value="HP_START_DEFROST" />
+      <enumeration value="HP_DEFROSTING" />
+      <enumeration value="HP_DEFROST_END" />
+      <enumeration value="HP_PRESSURE_DIFF" />
+      <enumeration value="HP_COOLING" />
+      <enumeration value="HP_HEATING" />
+      <enumeration value="HP_COMP_START_ERR" />
+      <enumeration value="HP_OFF_OUT_OF_LIMITS" />
+      <enumeration value="HP_OIL_RECIRCUL_ACTIVE" />
     </restriction>
-  </simpleType>  
-    <simpleType name="ctaHPOpModeType">
-       <annotation>
-          <documentation>Ecta003:
-     map for CTA Heatpump HeatCool modes information
-#1 =	WP in Stand by Modus
-#2 =	Heizbetrieb aktiv
-#3 =	Notbetrieb Heizen aktiv
-#4 =	TWW Ladung aktiv
-#5 =	Notbetrieb TWW aktiv
-#6 =	Aktivkühlbetrieb aktiv
-#7 =	Manueller Betrieb
-#8 =	Heizungsspeicher Ladebetrieb ein
-#9 =	Externer Betrieb ein
-#10 =	Verteilkreis-ohne Puffer Betrieb
-#11 =	Abtaubetrieb aktiv
-#12 =	Kältegeführter Betrieb (Prozesskühlen)	
-#13 =	Reserve
-#14 =	TWW Legio mit El. Einsatz K6 und parallel Heizungsbetrieb (Pufferladung)
-</documentation>
-	</annotation>
+  </simpleType>
+  <simpleType name="ctaHPOpModeType">
+    <annotation>
+      <documentation>Ecta003: map for CTA Heatpump HeatCool modes information #1 = WP in Stand by
+        Modus #2 = Heizbetrieb aktiv #3 = Notbetrieb Heizen aktiv #4 = TWW Ladung aktiv #5 =
+        Notbetrieb TWW aktiv #6 = Aktivkühlbetrieb aktiv #7 = Manueller Betrieb #8 =
+        Heizungsspeicher Ladebetrieb ein #9 = Externer Betrieb ein #10 = Verteilkreis-ohne Puffer
+        Betrieb #11 = Abtaubetrieb aktiv #12 = Kältegeführter Betrieb (Prozesskühlen) #13 = Reserve
+        #14 = TWW Legio mit El. Einsatz K6 und parallel Heizungsbetrieb (Pufferladung) </documentation>
+    </annotation>
     <restriction base="string">
-      <enumeration value="HP_NULL"/>
-      <enumeration value="HP_STANDBY"/>
-      <enumeration value="HP_HEATING_OP"/>
-      <enumeration value="HP_EMERG_HEATING_ACTIVE"/>
-      <enumeration value="HP_DOMHW_ACTIVE"/>
-      <enumeration value="HP_OMHW_EMERG_ACTIVE"/>      
-      <enumeration value="HP_ACTIVE_COOLING_OP"/>
-      <enumeration value="HP_MANUAL_OP"/>
-      <enumeration value="HP_BUFFER_LOAD_ACTIVE"/>
-      <enumeration value="HP_EXTERNAL_CTRL"/>
-      <enumeration value="HP_DIRECT_DISTRIBUTION"/>
-      <enumeration value="HP_DEFROST_ACTIVE"/>
-      <enumeration value="HP_PASSIVE_COOLING_OP"/>
-      <enumeration value="HP_RESERVE"/>
-      <enumeration value="HP_COMBINDED_BUFFER_LOADING"/>
-      </restriction>
-  </simpleType>  
+      <enumeration value="HP_NULL" />
+      <enumeration value="HP_STANDBY" />
+      <enumeration value="HP_HEATING_OP" />
+      <enumeration value="HP_EMERG_HEATING_ACTIVE" />
+      <enumeration value="HP_DOMHW_ACTIVE" />
+      <enumeration value="HP_OMHW_EMERG_ACTIVE" />
+      <enumeration value="HP_ACTIVE_COOLING_OP" />
+      <enumeration value="HP_MANUAL_OP" />
+      <enumeration value="HP_BUFFER_LOAD_ACTIVE" />
+      <enumeration value="HP_EXTERNAL_CTRL" />
+      <enumeration value="HP_DIRECT_DISTRIBUTION" />
+      <enumeration value="HP_DEFROST_ACTIVE" />
+      <enumeration value="HP_PASSIVE_COOLING_OP" />
+      <enumeration value="HP_RESERVE" />
+      <enumeration value="HP_COMBINDED_BUFFER_LOADING" />
+    </restriction>
+  </simpleType>
 
   <simpleType name="ctaHCOpModeType">
-   <annotation>
-     <documentation>Ecta004:
-     map for CTA Heatpump HeatCool modes Automatik
-#1 Komfort
-#2 Reduziert
-#3 Frostschutz/Aus
-#4 Notbetrieb
-</documentation>
-	</annotation>
+    <annotation>
+      <documentation>Ecta004: map for CTA Heatpump HeatCool modes Automatik #1 Komfort #2 Reduziert
+        #3 Frostschutz/Aus #4 Notbetrieb </documentation>
+    </annotation>
     <restriction base="string">
-      <enumeration value="HP_NULL"/>
-      <enumeration value="HP_COMFORT"/>
-      <enumeration value="HP_ECO"/>
-      <enumeration value="HP_DEFROST"/>
-      <enumeration value="HP_EMERGENCY_OP"/>
-      </restriction>
-  </simpleType>    
-  
+      <enumeration value="HP_NULL" />
+      <enumeration value="HP_COMFORT" />
+      <enumeration value="HP_ECO" />
+      <enumeration value="HP_DEFROST" />
+      <enumeration value="HP_EMERGENCY_OP" />
+    </restriction>
+  </simpleType>
+
   <simpleType name="hovHPOpModeType">
-   <annotation>
-     <documentation>Ehov1:
-     map for Hoval H 
-     // #0=Wärmeerzeuger aus
-	 // #1=Automatikbetrieb
-	 // #4=Manueller Heizbetrieb
-	 // #5=Manueller Kühlbetrieb 
-</documentation>
-	</annotation>
+    <annotation>
+      <documentation>Ehov1: map for Hoval H // #0=Wärmeerzeuger aus // #1=Automatikbetrieb //
+        #4=Manueller Heizbetrieb // #5=Manueller Kühlbetrieb </documentation>
+    </annotation>
     <restriction base="string">
-      <enumeration value="HP_OFF"/>
-      <enumeration value="HP_AUTOMATIC"/>
-      <enumeration value="HP_MAN_HEAT"/>
-      <enumeration value="HP_MAN_COOL"/>
-      </restriction>
-  </simpleType>  
-  
-  
+      <enumeration value="HP_OFF" />
+      <enumeration value="HP_AUTOMATIC" />
+      <enumeration value="HP_MAN_HEAT" />
+      <enumeration value="HP_MAN_COOL" />
+    </restriction>
+  </simpleType>
+
+
   <simpleType name="hovHCOpModeType">
-   <annotation>
-     <documentation>Ehov2:
-     map for Hoval H 
-     // #0=Standbybetrieb
-	 // #1=Woche 1
-	 // #2=Woche 2
-	 // #4=Konstant
-	 // #5=Sparbetrieb
-	 // #7=Handbetrieb Heizen
-	 // #8=Handbetrieb Kühlen
-</documentation>
-	</annotation>
+    <annotation>
+      <documentation>Ehov2: map for Hoval H // #0=Standbybetrieb // #1=Woche 1 // #2=Woche 2 //
+        #4=Konstant // #5=Sparbetrieb // #7=Handbetrieb Heizen // #8=Handbetrieb Kühlen </documentation>
+    </annotation>
     <restriction base="string">
-      <enumeration value="HC_STANDBY"/>
-      <enumeration value="HC_PLAN_W1"/>
-      <enumeration value="HC_PLAN_W2"/>
-      <enumeration value="HC_CONSTANT"/>
-      <enumeration value="HC_ECO"/>
-      <enumeration value="HC_MAN_HEAT"/>
-      <enumeration value="HC_MAN_COOL"/>
-      </restriction>
-  </simpleType>  
-  
-  
+      <enumeration value="HC_STANDBY" />
+      <enumeration value="HC_PLAN_W1" />
+      <enumeration value="HC_PLAN_W2" />
+      <enumeration value="HC_CONSTANT" />
+      <enumeration value="HC_ECO" />
+      <enumeration value="HC_MAN_HEAT" />
+      <enumeration value="HC_MAN_COOL" />
+    </restriction>
+  </simpleType>
+
+
   <simpleType name="hovSGReadySrcSelType">
-   <annotation>
-     <documentation>Ehov3:
-     map for Hoval H 
-     #0=AUS
-     #1=Eingangskontakte
-     #2=Systembus
-     #3=Verfügbare Leistung gedämpft
-</documentation>
-	</annotation>
+    <annotation>
+      <documentation>Ehov3: map for Hoval H #0=AUS #1=Eingangskontakte #2=Systembus #3=Verfügbare
+        Leistung gedämpft </documentation>
+    </annotation>
     <restriction base="string">
-      <enumeration value="SGR_src_OFF"/>
-      <enumeration value="SRC_src_CONTACTS"/>
-      <enumeration value="SRC_src_SysBUS"/>
-      <enumeration value="SRC_src_DAMPED"/>
-      </restriction>
-  </simpleType>  
-  
-  
-   <simpleType name="hovBufferStateType">
-   <annotation>
-     <documentation>Ehov4: 
-	#0 = keine Anforderung, AUS
-	#1 = Anforderung, Temp. tief, PLP aus (Entladeschutz)
-	#2 = Anforderung, Ladung läuft
-	#3 = Anforderung, Sollwert erfüllt, Nachlauf aktiv
-	#4 = Anforderung, Sollwert erfüllt
-	#6 = Energiezwang
-	#7= Abschöpffunktion
-	
-	#Entladeregelung :
-	#0 = keine Anforderung (WEZ-Freigabe)
-	#2 = Anforderung, Sollwert nicht erfüllt, UPE steht Richtung WEZ bzw. YPEL regelt stetig auf PEF
-	#3 = Anforderung UPE-Umschaltverzögerung, UPE/YPEL steht Richtung WEZ
-	#4 = Anforderung, Sollwert erfüllt, UPE/YPEL steht Richtung Puffer
-	#6 = Energiezwang
-	#8 = Vorzugsbetrieb SmartGrid
-	#9 = Abnahmezwang Smart Grid
-	
-	für Modi manuell heizen / kühlen
-</documentation>
-	</annotation>
+      <enumeration value="SGR_src_OFF" />
+      <enumeration value="SRC_src_CONTACTS" />
+      <enumeration value="SRC_src_SysBUS" />
+      <enumeration value="SRC_src_DAMPED" />
+    </restriction>
+  </simpleType>
+
+
+  <simpleType name="hovBufferStateType">
+    <annotation>
+      <documentation>Ehov4: #0 = keine Anforderung, AUS #1 = Anforderung, Temp. tief, PLP aus
+        (Entladeschutz) #2 = Anforderung, Ladung läuft #3 = Anforderung, Sollwert erfüllt, Nachlauf
+        aktiv #4 = Anforderung, Sollwert erfüllt #6 = Energiezwang #7= Abschöpffunktion
+        #Entladeregelung : #0 = keine Anforderung (WEZ-Freigabe) #2 = Anforderung, Sollwert nicht
+        erfüllt, UPE steht Richtung WEZ bzw. YPEL regelt stetig auf PEF #3 = Anforderung
+        UPE-Umschaltverzögerung, UPE/YPEL steht Richtung WEZ #4 = Anforderung, Sollwert erfüllt,
+        UPE/YPEL steht Richtung Puffer #6 = Energiezwang #8 = Vorzugsbetrieb SmartGrid #9 =
+        Abnahmezwang Smart Grid für Modi manuell heizen / kühlen </documentation>
+    </annotation>
     <restriction base="string">
-      <enumeration value="BUF_OFF"/>
-      <enumeration value="BUF_REQ_PROTECTED"/>
-      <enumeration value="BUF_REQ_ACTIVE"/>
-      <enumeration value="BUF_REQ_FINALIZING"/>
-      <enumeration value="BUF_REQ_DONE"/>
-      <enumeration value="BUF_RES"/>
-      <enumeration value="BUF_FORCED"/>
-      <enumeration value="BUF_SKIMMING"/>
-      <enumeration value="BUF_INTENSIFIED_EXT"/>
-      <enumeration value="BUF_FORCED_EXT"/>
-      </restriction>
-  </simpleType>  
-  
-   
-   <simpleType name="hovHCOpStateType">
-   <annotation>
-     <documentation>Ehov5: 
-     Zustand Heizkreisregelung
-#0 = Abgeschaltet
-#1 = Normal Heizbetrieb
-#2 = Komfort Heizbetrieb
-#3 = Spar Heizbetrieb
-#4 = Frostbetrieb
-#5 = Zwangsabnahme (bei Zwang groesser +50p)
-#6 = Zwangsdrosselung  (bei Zwang kleiner -50p)
-#7 = Ferienbetrieb
-#8 = Partybetrieb
-#9 = Normal Kuehlbetrieb
-#10 = Komfort K?hlbetrieb
-#11 = Spar Kuehlbetrieb
-#12 = Stoerung
-#13 = Handbetrieb
-#14 = Schutz Kuehlbetrieb
-#15 = Partybetrieb Kuehlen
-#16 = Austrocknung Aufheizphase
-#17 = Austrocknung Stationaerphase
-#18 = Austrocknung Abkuehlphase
-#19 = Austrocknung Endphase
-#22 = Kuehlbetrieb Extern/Konstantanforderung
-#23 = Heizbetrieb Extern/Konstantanforderung
-#26 = Vorzugsbetrieb SmartGrid
-</documentation>
-	</annotation>
+      <enumeration value="BUF_OFF" />
+      <enumeration value="BUF_REQ_PROTECTED" />
+      <enumeration value="BUF_REQ_ACTIVE" />
+      <enumeration value="BUF_REQ_FINALIZING" />
+      <enumeration value="BUF_REQ_DONE" />
+      <enumeration value="BUF_RES" />
+      <enumeration value="BUF_FORCED" />
+      <enumeration value="BUF_SKIMMING" />
+      <enumeration value="BUF_INTENSIFIED_EXT" />
+      <enumeration value="BUF_FORCED_EXT" />
+    </restriction>
+  </simpleType>
+
+
+  <simpleType name="hovHCOpStateType">
+    <annotation>
+      <documentation>Ehov5: Zustand Heizkreisregelung #0 = Abgeschaltet #1 = Normal Heizbetrieb #2 =
+        Komfort Heizbetrieb #3 = Spar Heizbetrieb #4 = Frostbetrieb #5 = Zwangsabnahme (bei Zwang
+        groesser +50p) #6 = Zwangsdrosselung (bei Zwang kleiner -50p) #7 = Ferienbetrieb #8 =
+        Partybetrieb #9 = Normal Kuehlbetrieb #10 = Komfort K?hlbetrieb #11 = Spar Kuehlbetrieb #12
+        = Stoerung #13 = Handbetrieb #14 = Schutz Kuehlbetrieb #15 = Partybetrieb Kuehlen #16 =
+        Austrocknung Aufheizphase #17 = Austrocknung Stationaerphase #18 = Austrocknung Abkuehlphase
+        #19 = Austrocknung Endphase #22 = Kuehlbetrieb Extern/Konstantanforderung #23 = Heizbetrieb
+        Extern/Konstantanforderung #26 = Vorzugsbetrieb SmartGrid </documentation>
+    </annotation>
     <restriction base="string">
-      <enumeration value="HC_OFF"/>
-      <enumeration value="HC_NORMAL_HEAT_OP"/>
-      <enumeration value="HC_COMFORT_HEAT_OP"/>
-      <enumeration value="HC_ECO_HEAT_OP"/>
-      <enumeration value="HC_DEFROST"/>
-      <enumeration value="HC_FORCED_OP"/>
-      <enumeration value="HC_FORCE_CURTAIL"/>
-      <enumeration value="HC_VACATION_OP"/>
-      <enumeration value="HC_PARTY_OP"/>
-      <enumeration value="HC_NORMAL_COOL_OP"/>
-      <enumeration value="HC_COMFORT_COOL_OP"/>
-      <enumeration value="HC_ECO_COOL_OP"/>
-      <enumeration value="HC_ERROR"/>
-      <enumeration value="HC_MANUAL_OP"/>
-      <enumeration value="HC_COOL_PROT"/>
-      <enumeration value="HC_PARTY_COOL_OP"/>
-      <enumeration value="HC_DRY_HEATING"/>
-      <enumeration value="HC_DRY_STATIONARY"/>
-      <enumeration value="HC_DRY_COOLING"/>
-      <enumeration value="HC_DRY_FINALIZING"/>
-      <enumeration value="HC_RES1"/>
-      <enumeration value="HC_RES2"/>
-      <enumeration value="HC_COOLING_EXT_CMD"/>
-      <enumeration value="HC_HEATING_EXT_CMD"/>
-      <enumeration value="HC_INTENSIFIED_EXT"/>
-      </restriction>
-  </simpleType>  
- 
+      <enumeration value="HC_OFF" />
+      <enumeration value="HC_NORMAL_HEAT_OP" />
+      <enumeration value="HC_COMFORT_HEAT_OP" />
+      <enumeration value="HC_ECO_HEAT_OP" />
+      <enumeration value="HC_DEFROST" />
+      <enumeration value="HC_FORCED_OP" />
+      <enumeration value="HC_FORCE_CURTAIL" />
+      <enumeration value="HC_VACATION_OP" />
+      <enumeration value="HC_PARTY_OP" />
+      <enumeration value="HC_NORMAL_COOL_OP" />
+      <enumeration value="HC_COMFORT_COOL_OP" />
+      <enumeration value="HC_ECO_COOL_OP" />
+      <enumeration value="HC_ERROR" />
+      <enumeration value="HC_MANUAL_OP" />
+      <enumeration value="HC_COOL_PROT" />
+      <enumeration value="HC_PARTY_COOL_OP" />
+      <enumeration value="HC_DRY_HEATING" />
+      <enumeration value="HC_DRY_STATIONARY" />
+      <enumeration value="HC_DRY_COOLING" />
+      <enumeration value="HC_DRY_FINALIZING" />
+      <enumeration value="HC_RES1" />
+      <enumeration value="HC_RES2" />
+      <enumeration value="HC_COOLING_EXT_CMD" />
+      <enumeration value="HC_HEATING_EXT_CMD" />
+      <enumeration value="HC_INTENSIFIED_EXT" />
+    </restriction>
+  </simpleType>
+
   <simpleType name="hovDomHotWOpModeType">
     <annotation>
-      <documentation>Ehov6:
-     Basic operation type of a Domestic Hot Water Heat Pump operation mode
-     Standby	week 1 	week 2		Constant		Eco mode    
-	</documentation>
+      <documentation>Ehov6: Basic operation type of a Domestic Hot Water Heat Pump operation mode
+        Standby week 1 week 2 Constant Eco mode </documentation>
     </annotation>
     <restriction base="string">
       <enumeration value="DHW_STANDBY" />
@@ -1391,144 +1150,118 @@
       <enumeration value="DHW_ECO_OP" />
     </restriction>
   </simpleType>
-  
-   <simpleType name="hovDomHotWStateType">
-   <annotation>
-     <documentation>Ehov7: 
-     Zustand Warmwasserregelung:
-     #0 = Abgeschaltet
-     #1 = Normal Ladebetrieb
-     #2 = Komfort Ladebetrieb
-     #3 = Zwangsdrosselung (bei E-Zwang kleiner -50p)#4 = Zwangsladung  (bei E-Zwang groesser +50p)
-     #5 = Stoerung
-     #6 = WW-Entnahme (Entnahme von Trinkwarmwasser aktiv)
-     #7 = Warnung
-     #8 = Reduzierter Ladebetrieb
-     #12 = Vorzugsbetrieb SmartGrid
-     #13 = Abnahmezwang SmartGrid
-</documentation>
-	</annotation>
+
+  <simpleType name="hovDomHotWStateType">
+    <annotation>
+      <documentation>Ehov7: Zustand Warmwasserregelung: #0 = Abgeschaltet #1 = Normal Ladebetrieb #2
+        = Komfort Ladebetrieb #3 = Zwangsdrosselung (bei E-Zwang kleiner -50p)#4 = Zwangsladung (bei
+        E-Zwang groesser +50p) #5 = Stoerung #6 = WW-Entnahme (Entnahme von Trinkwarmwasser aktiv)
+        #7 = Warnung #8 = Reduzierter Ladebetrieb #12 = Vorzugsbetrieb SmartGrid #13 = Abnahmezwang
+        SmartGrid </documentation>
+    </annotation>
     <restriction base="string">
-      <enumeration value="DHW_OFF"/>
-      <enumeration value="DHW_CHARGING"/>
-      <enumeration value="DHW_CHARGE_COMF"/>
-      <enumeration value="DHW_FORCED_CURTAIL"/>
-      <enumeration value="DHW_ERROR"/>
-      <enumeration value="DHW_WITHDRAWING"/>
-      <enumeration value="DHW_WARNING_ACTIVE"/>
-      <enumeration value="DHW_REDUCED"/>
-      <enumeration value="DHW_RES1"/>
-      <enumeration value="DHW_RES2"/>
-      <enumeration value="DHW_RES3"/>
-      <enumeration value="DHW_RES4"/>
-      <enumeration value="DHW_INTENSIFIED_EXT"/>
-      <enumeration value="DHW_FORCED_EXT"/>
-      </restriction>
-  </simpleType>  
-  
-  
-  
-   <simpleType name="hovHPOpStateType">
-   <annotation>
-     <documentation>Ehov8: 
-     #0=Abgeschaltet
-     #1=Heizbetrieb
-     #2=Vorlaufzeit Heizbetrieb
-     #3=Extern gesperrt (auch bei SmartGrid Sperrbetrieb) 
-     #4=Kuehlbetrieb 
-     #5=Vorlaufzeit Kuehlbetrieb 
-     #15=Alarm 
-     #16=Stoerung
-     #17=Blockiert
-     #21=WFmax Abschaltung 
-     #22=WFsoll Abschaltung
-     #26=Bivalenzabschaltung
-     #27=Warmwasser Ladesperre
-     #28=Minimale Auszeit
-     #29=Minimale Einzeit
-     #32=Nachlauf
-     #33=Verzoegerung Folge WE 
-     #34=Betrieb Uebertemperatur
-     #42=Manueller/Handebtrieb Heizen
-     #43=Manueller/Handebtrieb Warmwasser
-     #44=Manueller/Handebtrieb Kuehlen
-     
-</documentation>
-	</annotation>
+      <enumeration value="DHW_OFF" />
+      <enumeration value="DHW_CHARGING" />
+      <enumeration value="DHW_CHARGE_COMF" />
+      <enumeration value="DHW_FORCED_CURTAIL" />
+      <enumeration value="DHW_ERROR" />
+      <enumeration value="DHW_WITHDRAWING" />
+      <enumeration value="DHW_WARNING_ACTIVE" />
+      <enumeration value="DHW_REDUCED" />
+      <enumeration value="DHW_RES1" />
+      <enumeration value="DHW_RES2" />
+      <enumeration value="DHW_RES3" />
+      <enumeration value="DHW_RES4" />
+      <enumeration value="DHW_INTENSIFIED_EXT" />
+      <enumeration value="DHW_FORCED_EXT" />
+    </restriction>
+  </simpleType>
+
+
+  <simpleType name="hovHPOpStateType">
+    <annotation>
+      <documentation>Ehov8: #0=Abgeschaltet #1=Heizbetrieb #2=Vorlaufzeit Heizbetrieb #3=Extern
+        gesperrt (auch bei SmartGrid Sperrbetrieb) #4=Kuehlbetrieb #5=Vorlaufzeit Kuehlbetrieb
+        #15=Alarm #16=Stoerung #17=Blockiert #21=WFmax Abschaltung #22=WFsoll Abschaltung
+        #26=Bivalenzabschaltung #27=Warmwasser Ladesperre #28=Minimale Auszeit #29=Minimale Einzeit
+        #32=Nachlauf #33=Verzoegerung Folge WE #34=Betrieb Uebertemperatur #42=Manueller/Handebtrieb
+        Heizen #43=Manueller/Handebtrieb Warmwasser #44=Manueller/Handebtrieb Kuehlen </documentation>
+    </annotation>
     <restriction base="string">
-      <enumeration value="HP_OFF"/>
-      <enumeration value="HP_HEATING"/>
-      <enumeration value="HP_PREHEAT"/>
-      <enumeration value="HP_LOCK_EXTERN"/>
-      <enumeration value="HP_COOLING"/>
-      <enumeration value="HP_PRECOOL"/>
-      <enumeration value="HP_6"/>
-      <enumeration value="HP_7"/>
-      <enumeration value="HP_8"/>
-      <enumeration value="HP_9"/>
-      <enumeration value="HP_10"/>
-      <enumeration value="HP_11"/>
-      <enumeration value="HP_12"/>
-      <enumeration value="HP_13"/>
-      <enumeration value="HP_14"/>
-      <enumeration value="HP_ALARM"/>
-      <enumeration value="HP_ERROR"/>
-      <enumeration value="HP_BLOCKING"/>
-      <enumeration value="HP_18"/>
-      <enumeration value="HP_19"/>
-      <enumeration value="HP_20"/>
-      <enumeration value="HP_WFmax_SWITCHOFF"/>
-      <enumeration value="HP_WFset_SWITCHOFF"/>
-      <enumeration value="HP_23"/>
-      <enumeration value="HP_24"/>
-      <enumeration value="HP_25"/>
-      <enumeration value="HP_BIVALENCE_SWITCHOFF"/>
-      <enumeration value="HP_MIN_OFF_TIME"/>
-      <enumeration value="HP_MIN_ON_TIME"/>
-      <enumeration value="HP_30"/>
-      <enumeration value="HP_31"/>
-      <enumeration value="HP_TRAILING"/>
-      <enumeration value="HP_DELAY_AFTER_WE"/>
-      <enumeration value="HP_TEMPERATURE_HIGH_OP"/>
-      <enumeration value="HP_35"/>
-      <enumeration value="HP_36"/>
-      <enumeration value="HP_37"/>
-      <enumeration value="HP_38"/>
-      <enumeration value="HP_39"/>
-      <enumeration value="HP_40"/>
-      <enumeration value="HP_41"/>
-      <enumeration value="HP_"/>
-      <enumeration value="HP_MAN_OP_HEATING"/>
-      <enumeration value="HP_MAN_OP_DOM_HOT_WATER"/>
-      <enumeration value="HP_MAN_OP_COOLING"/>
-      </restriction>
-  </simpleType>  
-  
-  
-  
-   <simpleType name="hovType">
-   <annotation>
-     <documentation>Ehov8: 
-</documentation>
-	</annotation>
+      <enumeration value="HP_OFF" />
+      <enumeration value="HP_HEATING" />
+      <enumeration value="HP_PREHEAT" />
+      <enumeration value="HP_LOCK_EXTERN" />
+      <enumeration value="HP_COOLING" />
+      <enumeration value="HP_PRECOOL" />
+      <enumeration value="HP_6" />
+      <enumeration value="HP_7" />
+      <enumeration value="HP_8" />
+      <enumeration value="HP_9" />
+      <enumeration value="HP_10" />
+      <enumeration value="HP_11" />
+      <enumeration value="HP_12" />
+      <enumeration value="HP_13" />
+      <enumeration value="HP_14" />
+      <enumeration value="HP_ALARM" />
+      <enumeration value="HP_ERROR" />
+      <enumeration value="HP_BLOCKING" />
+      <enumeration value="HP_18" />
+      <enumeration value="HP_19" />
+      <enumeration value="HP_20" />
+      <enumeration value="HP_WFmax_SWITCHOFF" />
+      <enumeration value="HP_WFset_SWITCHOFF" />
+      <enumeration value="HP_23" />
+      <enumeration value="HP_24" />
+      <enumeration value="HP_25" />
+      <enumeration value="HP_BIVALENCE_SWITCHOFF" />
+      <enumeration value="HP_MIN_OFF_TIME" />
+      <enumeration value="HP_MIN_ON_TIME" />
+      <enumeration value="HP_30" />
+      <enumeration value="HP_31" />
+      <enumeration value="HP_TRAILING" />
+      <enumeration value="HP_DELAY_AFTER_WE" />
+      <enumeration value="HP_TEMPERATURE_HIGH_OP" />
+      <enumeration value="HP_35" />
+      <enumeration value="HP_36" />
+      <enumeration value="HP_37" />
+      <enumeration value="HP_38" />
+      <enumeration value="HP_39" />
+      <enumeration value="HP_40" />
+      <enumeration value="HP_41" />
+      <enumeration value="HP_" />
+      <enumeration value="HP_MAN_OP_HEATING" />
+      <enumeration value="HP_MAN_OP_DOM_HOT_WATER" />
+      <enumeration value="HP_MAN_OP_COOLING" />
+    </restriction>
+  </simpleType>
+
+
+  <simpleType name="hovType">
+    <annotation>
+      <documentation>Ehov8: </documentation>
+    </annotation>
     <restriction base="string">
-      <enumeration value="tbd"/>
-      </restriction>
-  </simpleType>  
-  
+      <enumeration value="tbd" />
+    </restriction>
+  </simpleType>
 
 
   <complexType name="SGrEnumListType">
     <choice>
-      <element maxOccurs="1" minOccurs="1" name="sgrMeasValueSource" type="sgr:SGrMeasValueSourceType" />
+      <element maxOccurs="1" minOccurs="1" name="sgrMeasValueSource"
+        type="sgr:SGrMeasValueSourceType" />
       <element maxOccurs="1" minOccurs="1" name="sgrPowerSource" type="sgr:SGrPowerSourceType" />
       <element maxOccurs="1" minOccurs="1" name="sgreadyStateLv2" type="sgr:SGReadyStateLv2Type" />
       <element maxOccurs="1" minOccurs="1" name="sgreadyStateLv1" type="sgr:SGReadyStateLv1Type" />
-      <element maxOccurs="1" minOccurs="1" name="sgrSunspStateCodes" type="sgr:SGrSunspStateCodesType" />
+      <element maxOccurs="1" minOccurs="1" name="sgrSunspStateCodes"
+        type="sgr:SGrSunspStateCodesType" />
       <element maxOccurs="1" minOccurs="1" name="sgrEVSEStateLv2" type="sgr:SGrEVSEStateLv2Type" />
       <element maxOccurs="1" minOccurs="1" name="sgrEVSEStateLv1" type="sgr:SGrEVSEStateLv1Type" />
-      <element maxOccurs="1" minOccurs="1" name="sgrSGCPLoadStateLv2" type="sgr:SGrSGCPLoadStateLv2Type" />
-      <element maxOccurs="1" minOccurs="1" name="sgrSGCPFeedInStateLv2" type="sgr:SGrSGCPFeedInStateLv2Type" />
+      <element maxOccurs="1" minOccurs="1" name="sgrSGCPLoadStateLv2"
+        type="sgr:SGrSGCPLoadStateLv2Type" />
+      <element maxOccurs="1" minOccurs="1" name="sgrSGCPFeedInStateLv2"
+        type="sgr:SGrSGCPFeedInStateLv2Type" />
       <element maxOccurs="1" minOccurs="1" name="sgrEVState" type="sgr:SGrEVStateType" />
       <element maxOccurs="1" minOccurs="1" name="sgrSGCPService" type="sgr:SGrSGCPServiceType" />
       <element maxOccurs="1" minOccurs="1" name="sgrObligLvl" type="sgr:SGrObligLvlType" />
@@ -1546,15 +1279,13 @@
       <element maxOccurs="1" minOccurs="1" name="hovHCOpState" type="sgr:hovHCOpStateType" />
       <element maxOccurs="1" minOccurs="1" name="hovDomHotWOpMode" type="sgr:hovDomHotWOpModeType" />
       <element maxOccurs="1" minOccurs="1" name="hovDomHotWState" type="sgr:hovDomHotWStateType" />
-      <element maxOccurs="1" minOccurs="1" name="hovHPOpState" type="sgr:hovHPOpStateType" />     
+      <element maxOccurs="1" minOccurs="1" name="hovHPOpState" type="sgr:hovHPOpStateType" />
     </choice>
   </complexType>
 
   <simpleType name="SGrBool2BitRankType">
     <annotation>
-      <documentation>BM0001:
-     BitRank map for bitfiedl32
-	</documentation>
+      <documentation>BM0001: BitRank map for bitfiedl32 </documentation>
     </annotation>
     <restriction base="string">
       <enumeration value="Bit0" />
@@ -1590,13 +1321,11 @@
       <enumeration value="Bit30" />
       <enumeration value="Bit31" />
     </restriction>
-  </simpleType>  
+  </simpleType>
   <simpleType name="SGrHPOpstateType">
     <annotation>
-      <documentation>BM0002:
-     BitRank map for interoperable Heat Pump 
-	</documentation>
-	</annotation>
+      <documentation>BM0002: BitRank map for interoperable Heat Pump </documentation>
+    </annotation>
     <restriction base="string">
       <enumeration value="HP_PUMP_ON" />
       <enumeration value="HP_IN_HEATING_MODE" />
@@ -1605,59 +1334,49 @@
       <enumeration value="COOLING_MODE_ACTIVE" />
       <enumeration value="IN_DEFROST_MODE" />
     </restriction>
-  </simpleType>     
+  </simpleType>
   <simpleType name="sgrHCOpStateType">
     <annotation>
-      <documentation>BM0003:
-     BitRank map for HeatPump HeatCoolState
-	</documentation>
-	</annotation>
+      <documentation>BM0003: BitRank map for HeatPump HeatCoolState </documentation>
+    </annotation>
     <restriction base="string">
       <enumeration value="HC_OFF" />
-		<enumeration value="HC_HEAT" />
-		<enumeration value="HC_HEAT_COMFORT" />
-		<enumeration value="HC_HEAT_ECO" />
-		<enumeration value="HC_DEFROST" />
-		<enumeration value="HC_INTESIVIED_50p" />
-		<enumeration value="HC_REDUCED_50p" />
-		<enumeration value="HC_HOLIDAY" />
-		<enumeration value="HC_PARTY_HEAT" />
-		<enumeration value="HC_COOL" />
-		<enumeration value="HC_COOL_COMFORT" />
-		<enumeration value="HC_COOL_ECO" />
-		<enumeration value="HC_ERROR" />
-		<enumeration value="HC_MANUAL" />
-		<enumeration value="HC_PROT_COOL" />
-		<enumeration value="HC_PARTY_COOL" />
-		<enumeration value="HC_DRYING_HEAT_UP" />
-		<enumeration value="HC_DRYING_STATIONARY" />
-		<enumeration value="HC_DRYING_COOL_DOWN" />
-		<enumeration value="HC_DRYING_FINAL" />
-		<enumeration value="HC_COOL_EXTERNAL_CMD" />
-		<enumeration value="HC_HEAT_EXTERNAL_CMD" />
-		<enumeration value="HC_SGRID_INTENSIVIED"/>
+      <enumeration value="HC_HEAT" />
+      <enumeration value="HC_HEAT_COMFORT" />
+      <enumeration value="HC_HEAT_ECO" />
+      <enumeration value="HC_DEFROST" />
+      <enumeration value="HC_INTESIVIED_50p" />
+      <enumeration value="HC_REDUCED_50p" />
+      <enumeration value="HC_HOLIDAY" />
+      <enumeration value="HC_PARTY_HEAT" />
+      <enumeration value="HC_COOL" />
+      <enumeration value="HC_COOL_COMFORT" />
+      <enumeration value="HC_COOL_ECO" />
+      <enumeration value="HC_ERROR" />
+      <enumeration value="HC_MANUAL" />
+      <enumeration value="HC_PROT_COOL" />
+      <enumeration value="HC_PARTY_COOL" />
+      <enumeration value="HC_DRYING_HEAT_UP" />
+      <enumeration value="HC_DRYING_STATIONARY" />
+      <enumeration value="HC_DRYING_COOL_DOWN" />
+      <enumeration value="HC_DRYING_FINAL" />
+      <enumeration value="HC_COOL_EXTERNAL_CMD" />
+      <enumeration value="HC_HEAT_EXTERNAL_CMD" />
+      <enumeration value="HC_SGRID_INTENSIVIED" />
     </restriction>
-  </simpleType>    
+  </simpleType>
   <simpleType name="hovHPActBufferStateType">
     <annotation>
-      <documentation>BMhov001:
-     BitRank map for Heat Pump Buffer state 
-     source: Hoval  (ER) means "Entladeregelung"
-     Bit0 = keine Anforderung, AUS
-     Bit0 = (ER) keine Anforderung (WEZ-Freigabe)
-     Bit1 = Anforderung, Temp. tief, PLP aus (Entladeschutz)
-     Bit2 = Anforderung, Ladung läuft
-     Bit2 = (ER) Anforderung, Sollwert nicht erfüllt, UPE steht Richtung WEZ bzw. YPEL regelt stetig auf PEF
-     Bit3 = Anforderung, Sollwert erfüllt, Nachlauf aktiv
-     Bit3 = (ER) Anforderung UPE-Umschaltverzögerung, UPE/YPEL steht Richtung WEZ
-     Bit4 = Anforderung, Sollwert erfüllt
-     Bit4 = (ER) Anforderung, Sollwert erfüllt, UPE/YPEL steht Richtung Puffer
-     Bit6 = Energiezwang
-     Bit7=  Abschöpffunktion
-     Bit8 = (ER)Vorzugsbetrieb SmartGrid
-     Bit9 = (ER)Abnahmezwang Smart Grid
-	</documentation>
-	</annotation>
+      <documentation>BMhov001: BitRank map for Heat Pump Buffer state source: Hoval (ER) means
+        "Entladeregelung" Bit0 = keine Anforderung, AUS Bit0 = (ER) keine Anforderung (WEZ-Freigabe)
+        Bit1 = Anforderung, Temp. tief, PLP aus (Entladeschutz) Bit2 = Anforderung, Ladung läuft
+        Bit2 = (ER) Anforderung, Sollwert nicht erfüllt, UPE steht Richtung WEZ bzw. YPEL regelt
+        stetig auf PEF Bit3 = Anforderung, Sollwert erfüllt, Nachlauf aktiv Bit3 = (ER) Anforderung
+        UPE-Umschaltverzögerung, UPE/YPEL steht Richtung WEZ Bit4 = Anforderung, Sollwert erfüllt
+        Bit4 = (ER) Anforderung, Sollwert erfüllt, UPE/YPEL steht Richtung Puffer Bit6 =
+        Energiezwang Bit7= Abschöpffunktion Bit8 = (ER)Vorzugsbetrieb SmartGrid Bit9 =
+        (ER)Abnahmezwang Smart Grid </documentation>
+    </annotation>
     <restriction base="string">
       <enumeration value="HPB_OFF" />
       <enumeration value="HPB_TEMP_LOW" />
@@ -1670,13 +1389,11 @@
       <enumeration value="HPB_SGR_INTENSIVIED" />
       <enumeration value="HPB_SGR_FORCED_" />
     </restriction>
-  </simpleType>   
+  </simpleType>
   <simpleType name="stiHPOpstateType">
     <annotation>
-      <documentation>BMsti001:
-     BitRank map for Heat Pump Stiebel-Eltron
-	</documentation>
-	</annotation>
+      <documentation>BMsti001: BitRank map for Heat Pump Stiebel-Eltron </documentation>
+    </annotation>
     <restriction base="string">
       <enumeration value="HP_1_PUMP_ON" />
       <enumeration value="HP_2_PUMP_ON" />
@@ -1691,19 +1408,18 @@
       <enumeration value="SILENT_MODE_1_ACTIVE" />
       <enumeration value="SILENT_MODE_2_ACTIVE" />
     </restriction>
-  </simpleType>   
+  </simpleType>
   <complexType name="SGrBitmapperListType">
     <annotation>
-      <documentation>BMxxxx:
-     Field of enumeration where endum index is used as bitmap flag
-     Unsigned int value  [and]  ( 1 [2 *  shift left] enum_index_value means bit is set
-	</documentation>
-	</annotation>
+      <documentation>BMxxxx: Field of enumeration where endum index is used as bitmap flag Unsigned
+        int value [and] ( 1 [2 * shift left] enum_index_value means bit is set </documentation>
+    </annotation>
     <choice>
       <element maxOccurs="1" minOccurs="1" name="sgrBool2BitRank" type="sgr:SGrBool2BitRankType" />
       <element maxOccurs="1" minOccurs="1" name="sgrHPOpstate" type="sgr:SGrHPOpstateType" />
       <element maxOccurs="1" minOccurs="1" name="sgrHCOpstate" type="sgr:sgrHCOpStateType" />
-      <element maxOccurs="1" minOccurs="1" name="hovHPActBufferState" type="sgr:hovHPActBufferStateType" />
+      <element maxOccurs="1" minOccurs="1" name="hovHPActBufferState"
+        type="sgr:hovHPActBufferStateType" />
       <element maxOccurs="1" minOccurs="1" name="stiHPOpstate" type="sgr:stiHPOpstateType" />
     </choice>
   </complexType>
