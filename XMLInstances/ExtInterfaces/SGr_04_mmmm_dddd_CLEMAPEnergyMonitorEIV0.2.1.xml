@@ -12,11 +12,11 @@
 	<sgr:deviceProfile>
 		<sgr:transportService>RESTfulJSON</sgr:transportService>
 		<sgr:deviceKind>SubMeterElectricity</sgr:deviceKind>
-        <sgr:softwareRevision>
-          <sgr:primaryVersionNumber>1</sgr:primaryVersionNumber>
-          <sgr:secondaryVersionNumber>0</sgr:secondaryVersionNumber>
-          <sgr:subReleaseVersionNumber>0</sgr:subReleaseVersionNumber>
-        </sgr:softwareRevision>
+		<sgr:softwareRevision>
+			<sgr:primaryVersionNumber>1</sgr:primaryVersionNumber>
+			<sgr:secondaryVersionNumber>0</sgr:secondaryVersionNumber>
+			<sgr:subReleaseVersionNumber>0</sgr:subReleaseVersionNumber>
+		</sgr:softwareRevision>
 		<sgr:manufSpecIdent>CLEMAP</sgr:manufSpecIdent>
 	</sgr:deviceProfile>
 	<sgr:restAPIInterfaceDesc>
@@ -27,7 +27,7 @@
 			<sgr:serviceCall>
 				<sgr:requestHeader>
 					<sgr:header headerName="Accept" value="application/json" />
-                    <sgr:header headerName="Content-Type" value="application/json" />
+					<sgr:header headerName="Content-Type" value="application/json" />
 				</sgr:requestHeader>
 				<sgr:requestMethod>POST</sgr:requestMethod>
 				<sgr:requestPath>/authentication</sgr:requestPath>
@@ -56,8 +56,9 @@
 		<sgr:dpListElement>
 			<sgr:dataPoint datapointName="ActivePowerACtot"
 				rwpDatadirection="R" unit="KILOWATTS" mroVisibilityIndicator="R">
-				<sgr:basicDataType>
-					<sgr:float32>0.0</sgr:float32></sgr:basicDataType>
+				<sgr:dataType>
+					<sgr:float64>0.0</sgr:float64>
+				</sgr:dataType>
 			</sgr:dataPoint>
 			<sgr:restAPIDataPoint dataType="JSON_number">
 				<sgr:restServiceCall>
@@ -65,7 +66,7 @@
 						<sgr:header headerName="Accept" value="application/json" />
 						<sgr:header headerName="Authentication" value="Bearer {{bearerToken}}" />
 					</sgr:requestHeader>
-					<sgr:requestMethod>GET</sgr:requestMethod>				
+					<sgr:requestMethod>GET</sgr:requestMethod>
 					<sgr:requestPath>/digitaltwins/?sensor_id={sensor_id}</sgr:requestPath>
 					<sgr:responseQuery>
 						<sgr:queryType>JMESPathExpression</sgr:queryType>
@@ -74,11 +75,12 @@
 				</sgr:restServiceCall>
 			</sgr:restAPIDataPoint>
 		</sgr:dpListElement>
-		<sgr:dpListElement>		
+		<sgr:dpListElement>
 			<sgr:dataPoint datapointName="ActivePowerACL1"
 				rwpDatadirection="R" unit="KILOWATTS" mroVisibilityIndicator="R">
-				<sgr:basicDataType>
-					<sgr:float32>0.0</sgr:float32></sgr:basicDataType>
+				<sgr:dataType>
+					<sgr:float64>0.0</sgr:float64>
+				</sgr:dataType>
 			</sgr:dataPoint>
 			<sgr:restAPIDataPoint dataType="JSON_number">
 				<sgr:restServiceCall>
@@ -97,8 +99,9 @@
 		<sgr:dpListElement>
 			<sgr:dataPoint datapointName="ActivePowerACL2"
 				rwpDatadirection="R" unit="KILOWATTS" mroVisibilityIndicator="R">
-				<sgr:basicDataType>
-					<sgr:float32>0.0</sgr:float32></sgr:basicDataType>
+				<sgr:dataType>
+					<sgr:float64>0.0</sgr:float64>
+				</sgr:dataType>
 			</sgr:dataPoint>
 			<sgr:restAPIDataPoint dataType="JSON_number">
 				<sgr:restServiceCall>
@@ -112,13 +115,15 @@
 						<sgr:query>[0].ten_sec.p_l2</sgr:query>
 					</sgr:responseQuery>
 				</sgr:restServiceCall>
-			</sgr:restAPIDataPoint>			
+			</sgr:restAPIDataPoint>
 		</sgr:dpListElement>
 		<sgr:dpListElement>
 			<sgr:dataPoint mroVisibilityIndicator="R"
 				datapointName="ActivePowerACL3" rwpDatadirection="R"
 				unit="KILOWATTS">
-				<sgr:basicDataType><sgr:float32>0</sgr:float32></sgr:basicDataType>
+				<sgr:dataType>
+					<sgr:float64>0.0</sgr:float64>
+				</sgr:dataType>
 			</sgr:dataPoint>
 			<sgr:restAPIDataPoint dataType="JSON_number">
 				<sgr:restServiceCall>
@@ -135,7 +140,7 @@
 			</sgr:restAPIDataPoint>
 		</sgr:dpListElement>
 	</sgr:fpListElement>
-    <sgr:fpListElement>
+	<sgr:fpListElement>
 		<sgr:functionalProfile profileName="ReactivePowerAC">
 			<sgr:profileNumber>
 				<sgr:specsOwnerId>0</sgr:specsOwnerId>
@@ -152,8 +157,9 @@
 		<sgr:dpListElement>
 			<sgr:dataPoint datapointName="ReactivePowerACtot"
 				rwpDatadirection="R" unit="KILOVOLT_AMPERES_REACTIVE" mroVisibilityIndicator="R">
-				<sgr:basicDataType>
-					<sgr:float32>0.0</sgr:float32></sgr:basicDataType>
+				<sgr:dataType>
+					<sgr:float64>0.0</sgr:float64>
+				</sgr:dataType>
 			</sgr:dataPoint>
 			<sgr:restAPIDataPoint dataType="JSON_number">
 				<sgr:restServiceCall>
@@ -161,7 +167,7 @@
 						<sgr:header headerName="Accept" value="application/json" />
 						<sgr:header headerName="Authentication" value="Bearer {{bearerToken}}" />
 					</sgr:requestHeader>
-					<sgr:requestMethod>GET</sgr:requestMethod>				
+					<sgr:requestMethod>GET</sgr:requestMethod>
 					<sgr:requestPath>/digitaltwins/?sensor_id={sensor_id}</sgr:requestPath>
 					<sgr:responseQuery>
 						<sgr:queryType>JMESPathExpression</sgr:queryType>
@@ -170,11 +176,12 @@
 				</sgr:restServiceCall>
 			</sgr:restAPIDataPoint>
 		</sgr:dpListElement>
-		<sgr:dpListElement>		
+		<sgr:dpListElement>
 			<sgr:dataPoint datapointName="ReactivePowerACL1"
 				rwpDatadirection="R" unit="KILOVOLT_AMPERES_REACTIVE" mroVisibilityIndicator="R">
-				<sgr:basicDataType>
-					<sgr:float32>0.0</sgr:float32></sgr:basicDataType>
+				<sgr:dataType>
+					<sgr:float64>0.0</sgr:float64>
+				</sgr:dataType>
 			</sgr:dataPoint>
 			<sgr:restAPIDataPoint dataType="JSON_number">
 				<sgr:restServiceCall>
@@ -193,8 +200,9 @@
 		<sgr:dpListElement>
 			<sgr:dataPoint datapointName="ReactivePowerACL2"
 				rwpDatadirection="R" unit="KILOVOLT_AMPERES_REACTIVE" mroVisibilityIndicator="R">
-				<sgr:basicDataType>
-					<sgr:float32>0.0</sgr:float32></sgr:basicDataType>
+				<sgr:dataType>
+					<sgr:float64>0.0</sgr:float64>
+				</sgr:dataType>
 			</sgr:dataPoint>
 			<sgr:restAPIDataPoint dataType="JSON_number">
 				<sgr:restServiceCall>
@@ -208,13 +216,15 @@
 						<sgr:query>[0].ten_sec.q_l2</sgr:query>
 					</sgr:responseQuery>
 				</sgr:restServiceCall>
-			</sgr:restAPIDataPoint>			
+			</sgr:restAPIDataPoint>
 		</sgr:dpListElement>
 		<sgr:dpListElement>
 			<sgr:dataPoint mroVisibilityIndicator="R"
 				datapointName="ReactivePowerACL3" rwpDatadirection="R"
 				unit="KILOVOLT_AMPERES_REACTIVE">
-				<sgr:basicDataType><sgr:float32>0</sgr:float32></sgr:basicDataType>
+				<sgr:dataType>
+					<sgr:float64>0.0</sgr:float64>
+				</sgr:dataType>
 			</sgr:dataPoint>
 			<sgr:restAPIDataPoint dataType="JSON_number">
 				<sgr:restServiceCall>
@@ -231,7 +241,7 @@
 			</sgr:restAPIDataPoint>
 		</sgr:dpListElement>
 	</sgr:fpListElement>
-    <sgr:fpListElement>
+	<sgr:fpListElement>
 		<sgr:functionalProfile profileName="ActiveEnergyAC">
 			<sgr:profileNumber>
 				<sgr:specsOwnerId>0</sgr:specsOwnerId>
@@ -248,8 +258,9 @@
 		<sgr:dpListElement>
 			<sgr:dataPoint datapointName="ActiveEnergyACTOT"
 				rwpDatadirection="R" unit="KILOWATT_HOURS" mroVisibilityIndicator="R">
-				<sgr:basicDataType>
-					<sgr:float32>0.0</sgr:float32></sgr:basicDataType>
+				<sgr:dataType>
+					<sgr:float64>0.0</sgr:float64>
+				</sgr:dataType>
 			</sgr:dataPoint>
 			<sgr:restAPIDataPoint dataType="JSON_number">
 				<sgr:restServiceCall>
@@ -257,7 +268,7 @@
 						<sgr:header headerName="Accept" value="application/json" />
 						<sgr:header headerName="Authentication" value="Bearer {{bearerToken}}" />
 					</sgr:requestHeader>
-					<sgr:requestMethod>GET</sgr:requestMethod>				
+					<sgr:requestMethod>GET</sgr:requestMethod>
 					<sgr:requestPath>/digitaltwins/?sensor_id={sensor_id}</sgr:requestPath>
 					<sgr:responseQuery>
 						<sgr:queryType>JMESPathExpression</sgr:queryType>
@@ -266,11 +277,12 @@
 				</sgr:restServiceCall>
 			</sgr:restAPIDataPoint>
 		</sgr:dpListElement>
-		<sgr:dpListElement>		
+		<sgr:dpListElement>
 			<sgr:dataPoint datapointName="ActiveEnergyACL1"
 				rwpDatadirection="R" unit="KILOWATT_HOURS" mroVisibilityIndicator="R">
-				<sgr:basicDataType>
-					<sgr:float32>0.0</sgr:float32></sgr:basicDataType>
+				<sgr:dataType>
+					<sgr:float64>0.0</sgr:float64>
+				</sgr:dataType>
 			</sgr:dataPoint>
 			<sgr:restAPIDataPoint dataType="JSON_number">
 				<sgr:restServiceCall>
@@ -286,11 +298,12 @@
 				</sgr:restServiceCall>
 			</sgr:restAPIDataPoint>
 		</sgr:dpListElement>
-		<sgr:dpListElement>		
+		<sgr:dpListElement>
 			<sgr:dataPoint datapointName="ActiveEnergyACL2"
 				rwpDatadirection="R" unit="KILOWATT_HOURS" mroVisibilityIndicator="R">
-				<sgr:basicDataType>
-					<sgr:float32>0.0</sgr:float32></sgr:basicDataType>
+				<sgr:dataType>
+					<sgr:float64>0.0</sgr:float64>
+				</sgr:dataType>
 			</sgr:dataPoint>
 			<sgr:restAPIDataPoint dataType="JSON_number">
 				<sgr:restServiceCall>
@@ -306,11 +319,12 @@
 				</sgr:restServiceCall>
 			</sgr:restAPIDataPoint>
 		</sgr:dpListElement>
-		<sgr:dpListElement>		
+		<sgr:dpListElement>
 			<sgr:dataPoint datapointName="ActiveEnergyACL3"
 				rwpDatadirection="R" unit="KILOWATT_HOURS" mroVisibilityIndicator="R">
-				<sgr:basicDataType>
-					<sgr:float32>0.0</sgr:float32></sgr:basicDataType>
+				<sgr:dataType>
+					<sgr:float64>0.0</sgr:float64>
+				</sgr:dataType>
 			</sgr:dataPoint>
 			<sgr:restAPIDataPoint dataType="JSON_number">
 				<sgr:restServiceCall>
@@ -327,7 +341,7 @@
 			</sgr:restAPIDataPoint>
 		</sgr:dpListElement>
 	</sgr:fpListElement>
-    <sgr:fpListElement>
+	<sgr:fpListElement>
 		<sgr:functionalProfile profileName="VoltageAC">
 			<sgr:profileNumber>
 				<sgr:specsOwnerId>0</sgr:specsOwnerId>
@@ -344,8 +358,9 @@
 		<sgr:dpListElement>
 			<sgr:dataPoint datapointName="VoltageTOT"
 				rwpDatadirection="R" unit="VOLTS" mroVisibilityIndicator="R">
-				<sgr:basicDataType>
-					<sgr:float32>0.0</sgr:float32></sgr:basicDataType>
+				<sgr:dataType>
+					<sgr:float64>0.0</sgr:float64>
+				</sgr:dataType>
 			</sgr:dataPoint>
 			<sgr:restAPIDataPoint dataType="JSON_number">
 				<sgr:restServiceCall>
@@ -353,7 +368,7 @@
 						<sgr:header headerName="Accept" value="application/json" />
 						<sgr:header headerName="Authentication" value="Bearer {{bearerToken}}" />
 					</sgr:requestHeader>
-					<sgr:requestMethod>GET</sgr:requestMethod>				
+					<sgr:requestMethod>GET</sgr:requestMethod>
 					<sgr:requestPath>/digitaltwins/?sensor_id={sensor_id}</sgr:requestPath>
 					<sgr:responseQuery>
 						<sgr:queryType>JMESPathExpression</sgr:queryType>
@@ -362,11 +377,12 @@
 				</sgr:restServiceCall>
 			</sgr:restAPIDataPoint>
 		</sgr:dpListElement>
-		<sgr:dpListElement>		
+		<sgr:dpListElement>
 			<sgr:dataPoint datapointName="VoltageL1"
 				rwpDatadirection="R" unit="VOLTS" mroVisibilityIndicator="R">
-				<sgr:basicDataType>
-					<sgr:float32>0.0</sgr:float32></sgr:basicDataType>
+				<sgr:dataType>
+					<sgr:float64>0.0</sgr:float64>
+				</sgr:dataType>
 			</sgr:dataPoint>
 			<sgr:restAPIDataPoint dataType="JSON_number">
 				<sgr:restServiceCall>
@@ -382,11 +398,12 @@
 				</sgr:restServiceCall>
 			</sgr:restAPIDataPoint>
 		</sgr:dpListElement>
-		<sgr:dpListElement>		
+		<sgr:dpListElement>
 			<sgr:dataPoint datapointName="VoltageL2"
 				rwpDatadirection="R" unit="VOLTS" mroVisibilityIndicator="R">
-				<sgr:basicDataType>
-					<sgr:float32>0.0</sgr:float32></sgr:basicDataType>
+				<sgr:dataType>
+					<sgr:float64>0.0</sgr:float64>
+				</sgr:dataType>
 			</sgr:dataPoint>
 			<sgr:restAPIDataPoint dataType="JSON_number">
 				<sgr:restServiceCall>
@@ -402,11 +419,12 @@
 				</sgr:restServiceCall>
 			</sgr:restAPIDataPoint>
 		</sgr:dpListElement>
-		<sgr:dpListElement>		
+		<sgr:dpListElement>
 			<sgr:dataPoint datapointName="VoltageL3"
 				rwpDatadirection="R" unit="VOLTS" mroVisibilityIndicator="R">
-				<sgr:basicDataType>
-					<sgr:float32>0.0</sgr:float32></sgr:basicDataType>
+				<sgr:dataType>
+					<sgr:float64>0.0</sgr:float64>
+				</sgr:dataType>
 			</sgr:dataPoint>
 			<sgr:restAPIDataPoint dataType="JSON_number">
 				<sgr:restServiceCall>
@@ -423,7 +441,7 @@
 			</sgr:restAPIDataPoint>
 		</sgr:dpListElement>
 	</sgr:fpListElement>
-    <sgr:fpListElement>
+	<sgr:fpListElement>
 		<sgr:functionalProfile profileName="CurrentAC">
 			<sgr:profileNumber>
 				<sgr:specsOwnerId>0</sgr:specsOwnerId>
@@ -440,8 +458,9 @@
 		<sgr:dpListElement>
 			<sgr:dataPoint datapointName="CurrentTOT"
 				rwpDatadirection="R" unit="AMPERES" mroVisibilityIndicator="R">
-				<sgr:basicDataType>
-					<sgr:float32>0.0</sgr:float32></sgr:basicDataType>
+				<sgr:dataType>
+					<sgr:float64>0.0</sgr:float64>
+				</sgr:dataType>
 			</sgr:dataPoint>
 			<sgr:restAPIDataPoint dataType="JSON_number">
 				<sgr:restServiceCall>
@@ -449,7 +468,7 @@
 						<sgr:header headerName="Accept" value="application/json" />
 						<sgr:header headerName="Authentication" value="Bearer {{bearerToken}}" />
 					</sgr:requestHeader>
-					<sgr:requestMethod>GET</sgr:requestMethod>				
+					<sgr:requestMethod>GET</sgr:requestMethod>
 					<sgr:requestPath>/digitaltwins/?sensor_id={sensor_id}</sgr:requestPath>
 					<sgr:responseQuery>
 						<sgr:queryType>JMESPathExpression</sgr:queryType>
@@ -458,11 +477,12 @@
 				</sgr:restServiceCall>
 			</sgr:restAPIDataPoint>
 		</sgr:dpListElement>
-		<sgr:dpListElement>		
+		<sgr:dpListElement>
 			<sgr:dataPoint datapointName="CurrentL1"
 				rwpDatadirection="R" unit="AMPERES" mroVisibilityIndicator="R">
-				<sgr:basicDataType>
-					<sgr:float32>0.0</sgr:float32></sgr:basicDataType>
+				<sgr:dataType>
+					<sgr:float64>0.0</sgr:float64>
+				</sgr:dataType>
 			</sgr:dataPoint>
 			<sgr:restAPIDataPoint dataType="JSON_number">
 				<sgr:restServiceCall>
@@ -478,11 +498,12 @@
 				</sgr:restServiceCall>
 			</sgr:restAPIDataPoint>
 		</sgr:dpListElement>
-		<sgr:dpListElement>		
+		<sgr:dpListElement>
 			<sgr:dataPoint datapointName="CurrentL2"
 				rwpDatadirection="R" unit="AMPERES" mroVisibilityIndicator="R">
-				<sgr:basicDataType>
-					<sgr:float32>0.0</sgr:float32></sgr:basicDataType>
+				<sgr:dataType>
+					<sgr:float64>0.0</sgr:float64>
+				</sgr:dataType>
 			</sgr:dataPoint>
 			<sgr:restAPIDataPoint dataType="JSON_number">
 				<sgr:restServiceCall>
@@ -498,11 +519,12 @@
 				</sgr:restServiceCall>
 			</sgr:restAPIDataPoint>
 		</sgr:dpListElement>
-		<sgr:dpListElement>		
+		<sgr:dpListElement>
 			<sgr:dataPoint datapointName="CurrentL3"
 				rwpDatadirection="R" unit="AMPERES" mroVisibilityIndicator="R">
-				<sgr:basicDataType>
-					<sgr:float32>0.0</sgr:float32></sgr:basicDataType>
+				<sgr:dataType>
+					<sgr:float64>0.0</sgr:float64>
+				</sgr:dataType>
 			</sgr:dataPoint>
 			<sgr:restAPIDataPoint dataType="JSON_number">
 				<sgr:restServiceCall>
@@ -519,7 +541,7 @@
 			</sgr:restAPIDataPoint>
 		</sgr:dpListElement>
 	</sgr:fpListElement>
-    <sgr:fpListElement>
+	<sgr:fpListElement>
 		<sgr:functionalProfile profileName="ApparentPowerAC">
 			<sgr:profileNumber>
 				<sgr:specsOwnerId>0</sgr:specsOwnerId>
@@ -536,8 +558,9 @@
 		<sgr:dpListElement>
 			<sgr:dataPoint datapointName="ApparentPowerTOT"
 				rwpDatadirection="R" unit="KILOVOLT_AMPERES" mroVisibilityIndicator="R">
-				<sgr:basicDataType>
-					<sgr:float32>0.0</sgr:float32></sgr:basicDataType>
+				<sgr:dataType>
+					<sgr:float64>0.0</sgr:float64>
+				</sgr:dataType>
 			</sgr:dataPoint>
 			<sgr:restAPIDataPoint dataType="JSON_number">
 				<sgr:restServiceCall>
@@ -545,7 +568,7 @@
 						<sgr:header headerName="Accept" value="application/json" />
 						<sgr:header headerName="Authentication" value="Bearer {{bearerToken}}" />
 					</sgr:requestHeader>
-					<sgr:requestMethod>GET</sgr:requestMethod>				
+					<sgr:requestMethod>GET</sgr:requestMethod>
 					<sgr:requestPath>/digitaltwins/?sensor_id={sensor_id}</sgr:requestPath>
 					<sgr:responseQuery>
 						<sgr:queryType>JMESPathExpression</sgr:queryType>
@@ -554,11 +577,12 @@
 				</sgr:restServiceCall>
 			</sgr:restAPIDataPoint>
 		</sgr:dpListElement>
-		<sgr:dpListElement>		
+		<sgr:dpListElement>
 			<sgr:dataPoint datapointName="ApparentPowerL1"
 				rwpDatadirection="R" unit="KILOVOLT_AMPERES" mroVisibilityIndicator="R">
-				<sgr:basicDataType>
-					<sgr:float32>0.0</sgr:float32></sgr:basicDataType>
+				<sgr:dataType>
+					<sgr:float64>0.0</sgr:float64>
+				</sgr:dataType>
 			</sgr:dataPoint>
 			<sgr:restAPIDataPoint dataType="JSON_number">
 				<sgr:restServiceCall>
@@ -574,11 +598,12 @@
 				</sgr:restServiceCall>
 			</sgr:restAPIDataPoint>
 		</sgr:dpListElement>
-		<sgr:dpListElement>		
+		<sgr:dpListElement>
 			<sgr:dataPoint datapointName="ApparentPowerL2"
 				rwpDatadirection="R" unit="KILOVOLT_AMPERES" mroVisibilityIndicator="R">
-				<sgr:basicDataType>
-					<sgr:float32>0.0</sgr:float32></sgr:basicDataType>
+				<sgr:dataType>
+					<sgr:float64>0.0</sgr:float64>
+				</sgr:dataType>
 			</sgr:dataPoint>
 			<sgr:restAPIDataPoint dataType="JSON_number">
 				<sgr:restServiceCall>
@@ -594,11 +619,12 @@
 				</sgr:restServiceCall>
 			</sgr:restAPIDataPoint>
 		</sgr:dpListElement>
-		<sgr:dpListElement>		
+		<sgr:dpListElement>
 			<sgr:dataPoint datapointName="ApparentPowerL3"
 				rwpDatadirection="R" unit="KILOVOLT_AMPERES" mroVisibilityIndicator="R">
-				<sgr:basicDataType>
-					<sgr:float32>0.0</sgr:float32></sgr:basicDataType>
+				<sgr:dataType>
+					<sgr:float64>0.0</sgr:float64>
+				</sgr:dataType>
 			</sgr:dataPoint>
 			<sgr:restAPIDataPoint dataType="JSON_number">
 				<sgr:restServiceCall>
@@ -615,7 +641,7 @@
 			</sgr:restAPIDataPoint>
 		</sgr:dpListElement>
 	</sgr:fpListElement>
-    <sgr:fpListElement>
+	<sgr:fpListElement>
 		<sgr:functionalProfile profileName="PowerFactor">
 			<sgr:profileNumber>
 				<sgr:specsOwnerId>0</sgr:specsOwnerId>
@@ -631,9 +657,10 @@
 		</sgr:functionalProfile>
 		<sgr:dpListElement>
 			<sgr:dataPoint datapointName="PowerFactorTOT"
-				rwpDatadirection="R" unit="NONE" mroVisibilityIndicator="R">
-				<sgr:basicDataType>
-					<sgr:float32>0.0</sgr:float32></sgr:basicDataType>
+				rwpDatadirection="R" unit="PERCENT" mroVisibilityIndicator="R">
+				<sgr:dataType>
+					<sgr:float64>0.0</sgr:float64>
+				</sgr:dataType>
 			</sgr:dataPoint>
 			<sgr:restAPIDataPoint dataType="JSON_number">
 				<sgr:restServiceCall>
@@ -641,7 +668,7 @@
 						<sgr:header headerName="Accept" value="application/json" />
 						<sgr:header headerName="Authentication" value="Bearer {{bearerToken}}" />
 					</sgr:requestHeader>
-					<sgr:requestMethod>GET</sgr:requestMethod>				
+					<sgr:requestMethod>GET</sgr:requestMethod>
 					<sgr:requestPath>/digitaltwins/?sensor_id={sensor_id}</sgr:requestPath>
 					<sgr:responseQuery>
 						<sgr:queryType>JMESPathExpression</sgr:queryType>
@@ -650,11 +677,12 @@
 				</sgr:restServiceCall>
 			</sgr:restAPIDataPoint>
 		</sgr:dpListElement>
-		<sgr:dpListElement>		
+		<sgr:dpListElement>
 			<sgr:dataPoint datapointName="PowerFactorL1"
-				rwpDatadirection="R" unit="NONE" mroVisibilityIndicator="R">
-				<sgr:basicDataType>
-					<sgr:float32>0.0</sgr:float32></sgr:basicDataType>
+				rwpDatadirection="R" unit="PERCENT" mroVisibilityIndicator="R">
+				<sgr:dataType>
+					<sgr:float64>0.0</sgr:float64>
+				</sgr:dataType>
 			</sgr:dataPoint>
 			<sgr:restAPIDataPoint dataType="JSON_number">
 				<sgr:restServiceCall>
@@ -670,11 +698,12 @@
 				</sgr:restServiceCall>
 			</sgr:restAPIDataPoint>
 		</sgr:dpListElement>
-		<sgr:dpListElement>		
+		<sgr:dpListElement>
 			<sgr:dataPoint datapointName="PowerFactorL2"
-				rwpDatadirection="R" unit="NONE" mroVisibilityIndicator="R">
-				<sgr:basicDataType>
-					<sgr:float32>0.0</sgr:float32></sgr:basicDataType>
+				rwpDatadirection="R" unit="PERCENT" mroVisibilityIndicator="R">
+				<sgr:dataType>
+					<sgr:float64>0.0</sgr:float64>
+				</sgr:dataType>
 			</sgr:dataPoint>
 			<sgr:restAPIDataPoint dataType="JSON_number">
 				<sgr:restServiceCall>
@@ -690,11 +719,12 @@
 				</sgr:restServiceCall>
 			</sgr:restAPIDataPoint>
 		</sgr:dpListElement>
-		<sgr:dpListElement>		
+		<sgr:dpListElement>
 			<sgr:dataPoint datapointName="PowerFactorL3"
-				rwpDatadirection="R" unit="NONE" mroVisibilityIndicator="R">
-				<sgr:basicDataType>
-					<sgr:float32>0.0</sgr:float32></sgr:basicDataType>
+				rwpDatadirection="R" unit="PERCENT" mroVisibilityIndicator="R">
+				<sgr:dataType>
+					<sgr:float64>0.0</sgr:float64>
+				</sgr:dataType>
 			</sgr:dataPoint>
 			<sgr:restAPIDataPoint dataType="JSON_number">
 				<sgr:restServiceCall>
