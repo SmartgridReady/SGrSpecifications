@@ -5,14 +5,6 @@
         <xsl:call-template name="SGrBasicGenDataPointTypeType" />
     </xsl:template>
 
-    <xsl:template match="sgr:basicArrayDataType">
-        <xsl:value-of select="sgr:lenght" />
-        x
-        <xsl:for-each select="sgr:type">
-            <xsl:call-template name="SGrBasicGenDataPointTypeType" />
-        </xsl:for-each>
-    </xsl:template>
-
     <xsl:template name="SGrBasicGenDataPointTypeType">
         <xsl:choose>
             <xsl:when test="sgr:enum2bitmapIndex">bitmap</xsl:when> <!-- TODO Simon: render the differnet bitmap types -->
