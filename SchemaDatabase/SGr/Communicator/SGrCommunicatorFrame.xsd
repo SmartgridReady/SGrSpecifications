@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Copyright (c) 2023, SmartGridready, Switzerland. All rights reserved. Source https://github.com/SmartgridReady/SGrSpecifications -->
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:sgr="http://www.smartgridready.com/ns/V0/" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.smartgridready.com/ns/V0/" version="0.2.2">
+  <include schemaLocation="../Generic/SGrBaseDeviceFrame.xsd" />
+  <include schemaLocation="SGrCommunicatorProfileType.xsd" />
+
+  <!-- Generic Communicator definitions -->
+  <complexType name="SGrCommGenFunctionalProfileType">
+    <annotation>
+      <documentation>Extends the base functional profile type with generic data points</documentation>
+    </annotation>
+    <complexContent>
+      <extension base="sgr:SGrFunctionalProfileBaseType">
+        <sequence>
+          <element maxOccurs="unbounded" minOccurs="1" name="dpListElement" type="sgr:SGrDataPointBaseType" />
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="SGrCommunicatorFrame">
+    <annotation>
+      <documentation>Data type definition for a Communicator Description as an EI (External Interface)</documentation>
+    </annotation>
+    <complexContent>
+      <extension base="sgr:SGrCommunicatorBaseType">
+        <sequence>
+      <element maxOccurs="unbounded" minOccurs="1" name="fpListElement" type="sgr:SGrCommGenFunctionalProfileType" />
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <element name="SGrCommunicatorFrame" type="sgr:SGrCommunicatorFrame">
+    <annotation>
+      <documentation> RPT Root Point for Communicator External Interface.</documentation>
+    </annotation>
+  </element>
+</schema>

@@ -31,10 +31,6 @@
 				<xsl:if test="sgr:dataPoint/sgr:basicDataType">
 					<xsl:apply-templates select="sgr:dataPoint/sgr:basicDataType" />
 				</xsl:if>
-
-				<xsl:if test="sgr:dataPoint/sgr:basicArrayDataType">
-					<xsl:apply-templates select="sgr:dataPoint/sgr:basicArrayDataType" />
-				</xsl:if>
 			</td>
 			<td>
 				<xsl:value-of select="sgr:dataPoint/@mroVisibilityIndicator" />

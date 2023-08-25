@@ -2,7 +2,7 @@
 
 ## Use case
 
-An external interface descripton contains information about the device, its supported functional profiles and how
+An external interface description contains information about the device, its supported functional profiles and how
 the datapoints of the functional profiles can be accessed through the transport layer.
 
 This allows potential controllers to easily integrate, implement or access any SmartGridready certified product
