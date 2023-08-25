@@ -222,9 +222,9 @@
 					</td>
 				</tr>
 				<tr>
-					<td>Manufacturer ID</td>
+					<td>Specification Owner ID</td>
 					<td>
-						<xsl:value-of select="@manufacturerID" />
+						<xsl:value-of select="@specsOwnerId" />
 					</td>
 				</tr>
 				<tr>
