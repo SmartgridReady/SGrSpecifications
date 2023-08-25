@@ -44,8 +44,6 @@ The release note section contains meta data that descibe history and current sta
 |-------------|-------------|
 | fpNameList  | a list of relevant namespaces list for to display names used in different standards like EEBUS, IEC6850,, SAREF4ENER etc. (see [SGrNamelistType](SGrNamelistType.md))|
 | fpLegibDesc | optional, can occure multiple times, but ideally just a once per language. Contains details concerning the intended use case of the functional profile. |
-| fpPrgDesc   | optional, can occure multiple times, but ideally just a once per language. Contains details for the programmer. This element should only be used in external interfaces, not in functional profiles. (see #28) |
-
 
 ## Generic Attributes
 SGr allows to associate attributes to a functional profile (i.e. concerning every data point). See [SGrAttr4GenericType](SGrAttr4GenericType.md) for details. Any attribute defined on the functional profile level are mandatory to any product that implements this functional profile. However, the product can optionally add further attributes based on its own needs.
@@ -60,8 +58,6 @@ SGr allows to associate attributes to a functional profile (i.e. concerning ever
 | DataType |  Data point type|
 | dpNameList | a list of relevant namespaces list for to display names used in different standards like EEBUS, IEC6850,, SAREF4ENER etc. (see [SGrNamelistType](SGrNamelistType.md))|
 | dpLegibDesc | optional, can occure multiple times, but ideally just a once per language. Contains details concerning the intended use case of the functional profile. |
-| dpPrgDesc | optional, can occure multiple times, but ideally just a once per language. Contains details for the programmer. This element should only be used in external interfaces, not in functional profiles. (see #28) |
-
 
 ## Generic Attributes
 SGr allows to associate attributes to a data point. See [SGrAttr4GenericType](SGrAttr4GenericType.md) for details.

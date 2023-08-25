@@ -4,7 +4,7 @@
     <xsl:template match="sgr:dataType">
         <xsl:call-template name="SGrDataType" />
     </xsl:template>
-    
+
     <xsl:template name="SGrDataType">
         <xsl:choose>
             <xsl:when test="sgr:boolean">boolean</xsl:when>

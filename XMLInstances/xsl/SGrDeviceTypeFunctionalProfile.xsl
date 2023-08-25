@@ -141,9 +141,6 @@
                 <!-- fpLegibDesc (4x opt) -->
                 <xsl:apply-templates select="sgr:functionalProfile/sgr:fpLegibDesc" />
 
-                <!-- fpPrgDesc (4x opt)-->
-                <xsl:apply-templates select="sgr:functionalProfile/sgr:fpPrgDesc" />
-
                 <xsl:if test="sgr:genAttribute/*">
                     <td>Attributes</td>
                     <td>
