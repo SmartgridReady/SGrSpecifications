@@ -221,12 +221,14 @@
 						<xsl:value-of select="@manufacturerName" />
 					</td>
 				</tr>
-				<tr>
+				<!-- specsOwnerId is very technical and of little value to the end user. dont' display. -->
+				<!--tr>
+
 					<td>Specification Owner ID</td>
 					<td>
 						<xsl:value-of select="@specsOwnerId" />
 					</td>
-				</tr>
+				</tr-->
 				<tr>
 					<td>Type</td>
 					<td>
