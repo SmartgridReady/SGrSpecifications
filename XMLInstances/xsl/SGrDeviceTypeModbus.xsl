@@ -162,23 +162,6 @@
             </tr>
         </xsl:if>
 
-        <!--timeSyncBlockNotification-->
-        <xsl:if test="sgr:timeSyncBlockNotification">
-            <tr class="transportDetails">
-                <td>
-                    <img src="/xsl/modbus.png" alt="Modbus" width="60px" />
-                    Time Sync Block Notification
-                </td>
-                <td>
-                    Block
-                    <xsl:value-of select="sgr:timeSyncBlockNotification/sgr:blockNumber" />
-                    :
-                    <xsl:value-of select="sgr:timeSyncBlockNotification/sgr:timeoutMs" />
-                    ms
-                </td>
-            </tr>
-        </xsl:if>
-
         <!--accessProtection-->
         <xsl:if test="sgr:accessProtection">
             <tr class="transportDetails">
@@ -214,11 +197,58 @@
 
     </xsl:template>
 
-    <xsl:template match="sgr:modbusDataType">
-        <xsl:call-template name="SGrBasicGenDataPointTypeType" />
+    <!-- Time Sync Blocks -->
+    <xsl:template match="sgr:timeSyncBlockNotification">
+        <tr class="transportDetails">
+                <td>
+                    <img src="/xsl/modbus.png" alt="Modbus" width="60px" />
+                    Time Sync Block
+                </td>
+                <td>
+                    <table>
+                        <tr>
+                            <td>Identifier</td>
+                            <td><xsl:value-of select="sgr:blockCacheId" /></td>
+                        </tr>
+                        <tr>
+                            <td>Register</td>
+                            <td>
+                                <xsl:value-of select="sgr:registerType" />&#160;
+                                <xsl:value-of select="sgr:firstAddr" />
+				                (Size <xsl:value-of select="sgr:size" />)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Time to Live</td>
+                            <td><xsl:value-of select="sgr:timeToLiveMs" /> ms</td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
     </xsl:template>
-    <xsl:template match="sgr:modbusArrayDataType">
-        <xsl:call-template name="SGrBasicGenDataPointTypeType" />
+
+    <xsl:template match="sgr:modbusDataType">
+        <xsl:call-template name="SGrModbusDataPointTypeType" />
+    </xsl:template>
+
+    <xsl:template name="SGrModbusDataPointTypeType">
+        <xsl:choose>
+            <xsl:when test="sgr:boolean">boolean</xsl:when>
+            <xsl:when test="sgr:int8">byte</xsl:when>
+            <xsl:when test="sgr:int16">short</xsl:when>
+            <xsl:when test="sgr:int32">integer</xsl:when>
+            <xsl:when test="sgr:int64">long</xsl:when>
+            <xsl:when test="sgr:int8U">unsigned byte</xsl:when>
+            <xsl:when test="sgr:int16U">unsigned short</xsl:when>
+            <xsl:when test="sgr:int32U">unsigned int</xsl:when>
+            <xsl:when test="sgr:int64U">unsigned long</xsl:when>
+            <xsl:when test="sgr:float32">float</xsl:when>
+            <xsl:when test="sgr:float64">double</xsl:when>
+            <xsl:when test="sgr:dateTime">date time</xsl:when>
+            <xsl:when test="sgr:string">string</xsl:when>
+            <xsl:when test="sgr:enum"><xsl:apply-templates select="sgr:enum" /></xsl:when> <!-- TODO Simon: map enum -->
+            <xsl:when test="sgr:enum2bitmapIndex">bitmap</xsl:when> <!-- TODO Simon: render the differnet bitmap types -->
+        </xsl:choose>
     </xsl:template>
 
 </xsl:stylesheet>  

@@ -266,6 +266,7 @@
 					</tr>
 					<xsl:apply-templates select="sgr:modbusInterfaceDesc" />
 					<xsl:apply-templates select="sgr:modbusAttr" />
+					<xsl:apply-templates select="sgr:timeSyncBlockNotification" />
 				</xsl:if>
 
 				<!-- Rest Device -->
