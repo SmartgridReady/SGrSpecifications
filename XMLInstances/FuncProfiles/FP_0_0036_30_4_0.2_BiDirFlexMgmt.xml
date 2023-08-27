@@ -1,304 +1,304 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="/xsl/SGr.xsl"?>
-<sgr:SGrFunctionalProfileFrame xmlns:sgr="http://www.smartgridready.com/ns/V0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/SGrIncluder.xsd">
-	<sgr:releaseNotes>
-		<sgr:state>Draft</sgr:state>
-		<sgr:changelog>
-			<sgr:version>0.1.1</sgr:version>
-			<sgr:date>2021-05-04</sgr:date>
-			<sgr:author>IBT/cb</sgr:author>
-			<sgr:comment>Vorbereitung beta test</sgr:comment>
-		</sgr:changelog>
-		<sgr:changelog>
-			<sgr:version>0.2.2</sgr:version>
-			<sgr:date>2022-10-03</sgr:date>
-			<sgr:author>Ergo/sz</sgr:author>
-			<sgr:comment>Finalisierung Go-Live</sgr:comment>
-		</sgr:changelog>
-		<sgr:changelog>
-			<sgr:version>0.2.3</sgr:version>
-			<sgr:date>2023-02-07</sgr:date>
-			<sgr:author>CLAP/ga</sgr:author>
-			<sgr:comment>Correction in profileName</sgr:comment>
-		</sgr:changelog>
-	</sgr:releaseNotes>
-	<sgr:functionalProfile>
-		<sgr:profileNumber>
-			<sgr:specsOwnerId>0</sgr:specsOwnerId>
-			<sgr:profileIdentification>SGCP</sgr:profileIdentification>
-			<sgr:subProfileIdent>BiDirFlexMgmt</sgr:subProfileIdent>
-			<sgr:sgrLevelOfOperation>1m</sgr:sgrLevelOfOperation>
-			<sgr:versionNumber>
-				<sgr:primaryVersionNumber>0</sgr:primaryVersionNumber>
-				<sgr:secondaryVersionNumber>2</sgr:secondaryVersionNumber>
-				<sgr:subReleaseVersionNumber>3</sgr:subReleaseVersionNumber>
-			</sgr:versionNumber>
-		</sgr:profileNumber>
-		<sgr:fpLegibDesc>
-			<sgr:textElement>
-				<![CDATA[
-				<img src="ressources/fp_cem_to_flexmgr.svg"/>
-				<strong>Flex Manager</strong><br>
-				Steuerndes Funktionsprofil für die flexible Steuerung des Energieverbrauchs eines Produktes.
-
-				<p>Dieses Funktionsprofil wird in der Regel vom Smart Grid Operator oder Regelenergie
-					Manager (Communicator) verwendet, um z.B. ein Customer Energy Manager (CEM) als Produkt anzusteuern.
-				Die Steuerung der Anlage erfolgt über die obligatorischen Datenpunkte:
-				<ul>
-					<li>ReadinessState (Anlage ist bereit für Flexibilität)</li>
-					<li>ActivePower-Activation (Flexibilität wird vom FlexManager abgerufen)</li>
-					<li>RunState (Flexibilitätsabruf ist aktiv)</li>
-					<li>ActualActivePower (Rückmeldung)</li>
-				</ul>
-				Die Schnittstelle ist für beliebige Speichermedien, welche elektrische Flexibilität unterstützen können,
-				nutzbar. Die weiteren Datenpunkte ermöglichen optional Blindleistung, Speicherstands-Anzeige, Lade- und Entladeprofile sowie die
-				Angabe des verfügbaren Flexibilitätsbereiches (min/max kW / kVAR). Leistungsangaben sind aus Sicht Bezüger (+ entspricht Energiebezug
-				aus dem Netz oder Erhöhung des Bezugs).
-				]]>
-			</sgr:textElement>
-			<sgr:language>de</sgr:language>
-		</sgr:fpLegibDesc>
-	</sgr:functionalProfile>
-	<sgr:dpListElement>
-		<sgr:dataPoint datapointName="ActivePowerActivation" mroVisibilityIndicator="M" rwpDatadirection="W" unit="NONE">
-			<sgr:dataType>
-				<sgr:boolean>true</sgr:boolean>
-			</sgr:dataType>
-			<sgr:dpLegibDesc>
-				<sgr:textElement>
-					<![CDATA[
-					On Off Befehl, Wirkleistung Flexibilität liefern ja/nein:
-					<ul>
-						<li>true: Die Latenzeit beginnt mit dem Empfang dieses Befehls (WinTms)</li>
-						<li>false: Die Leistungsanpassung wird über eine definierte Rampe zurückgenommen (RmpTms)</li>
-					</ul>]]>
-				</sgr:textElement>
-				<sgr:language>de</sgr:language>
-			</sgr:dpLegibDesc>
-		</sgr:dataPoint>
-		<sgr:genAttribute>
-			<sgr:smoothTransition />
-		</sgr:genAttribute>
-	</sgr:dpListElement>
-	<sgr:dpListElement>
-		<sgr:dataPoint datapointName="ReactivePowerActivation" mroVisibilityIndicator="O" rwpDatadirection="W" unit="NONE">
-			<sgr:dataType>
-				<sgr:boolean>true</sgr:boolean>
-			</sgr:dataType>
-			<sgr:dpLegibDesc>
-				<sgr:textElement>
-					On Off Befehl, Blindleistung Flexibilität liefern ja/nein:
-				</sgr:textElement>
-				<sgr:language>de</sgr:language>
-			</sgr:dpLegibDesc>
-		</sgr:dataPoint>
-		<sgr:genAttribute>
-			<sgr:smoothTransition />
-		</sgr:genAttribute>
-	</sgr:dpListElement>
-	<sgr:dpListElement>
-		<sgr:dataPoint datapointName="SetDeltaActivePower" mroVisibilityIndicator="O" rwpDatadirection="W" unit="KILOWATTS">
-			<sgr:dataType>
-                <sgr:float64>0.0</sgr:float64>
-            </sgr:dataType>
-			<sgr:dpLegibDesc>
-				<sgr:textElement>
-					Leistungsvorgabe, +/-.
-					Active power request: Angestrebte Veränderung des aktuellen Energieflusses (+/-)
-				</sgr:textElement>
-				<sgr:language>de</sgr:language>
-			</sgr:dpLegibDesc>
-		</sgr:dataPoint>
-	</sgr:dpListElement>
-	<sgr:dpListElement>
-		<sgr:dataPoint datapointName="SetDeltaReactivePower" mroVisibilityIndicator="O" rwpDatadirection="W" unit="KILOVOLT_AMPERES_REACTIVE">
-			<sgr:dataType>
-                <sgr:float64>0.0</sgr:float64>
-            </sgr:dataType>
-			<sgr:dpLegibDesc>
-				<sgr:textElement>
-					Blindleistungsvorgabe, +/-.
-					Reactive power request: Angestrebte Veränderung des aktuellen Energieflusses (+/-)
-				</sgr:textElement>
-				<sgr:language>de</sgr:language>
-			</sgr:dpLegibDesc>
-		</sgr:dataPoint>
-	</sgr:dpListElement>
-	<sgr:dpListElement>
-		<sgr:dataPoint datapointName="ReadinessState" mroVisibilityIndicator="M" rwpDatadirection="R" unit="NONE">
-			<sgr:dataType>
-				<sgr:boolean>true</sgr:boolean>
-			</sgr:dataType>
-			<sgr:dpLegibDesc>
-				<sgr:textElement>
-					Status ready for flexibility. True wenn Anlage für den nächsten Flexibilitäts-Event bereit ist
-				</sgr:textElement>
-				<sgr:language>de</sgr:language>
-			</sgr:dpLegibDesc>
-		</sgr:dataPoint>
-	</sgr:dpListElement>
-	<sgr:dpListElement>
-		<sgr:dataPoint datapointName="RunState" mroVisibilityIndicator="M" rwpDatadirection="R" unit="NONE">
-			<sgr:dataType>
-				<sgr:boolean>true</sgr:boolean>
-			</sgr:dataType>
-			<sgr:dpLegibDesc>
-				<sgr:textElement>
-					Status running for flexibility. True wenn Anlage läuft für Flexibilität.
-				</sgr:textElement>
-				<sgr:language>de</sgr:language>
-			</sgr:dpLegibDesc>
-		</sgr:dataPoint>
-	</sgr:dpListElement>
-	<sgr:dpListElement>
-		<sgr:dataPoint datapointName="ActualActivePower" mroVisibilityIndicator="M" rwpDatadirection="R" unit="KILOWATTS">
-			<sgr:dataType>
-                <sgr:float64>0.0</sgr:float64>
-            </sgr:dataType>
-			<sgr:dpLegibDesc>
-				<sgr:textElement>
-					Momentane Leistung. Betrag und Richtung des Energieflusses.
-				</sgr:textElement>
-				<sgr:language>de</sgr:language>
-			</sgr:dpLegibDesc>
-		</sgr:dataPoint>
-	</sgr:dpListElement>
-	<sgr:dpListElement>
-		<sgr:dataPoint datapointName="ActualReactivePower" mroVisibilityIndicator="O" rwpDatadirection="R" unit="KILOVOLT_AMPERES_REACTIVE">
-			<sgr:dataType>
-                <sgr:float64>0.0</sgr:float64>
-            </sgr:dataType>
-			<sgr:dpLegibDesc>
-				<sgr:textElement>
-					Momentane Blindleistung. Betrag und Richtung des Energieflusses.
-				</sgr:textElement>
-				<sgr:language>de</sgr:language>
-			</sgr:dpLegibDesc>
-		</sgr:dataPoint>
-	</sgr:dpListElement>
-	<sgr:dpListElement>
-		<sgr:dataPoint datapointName="MaxActivePower" mroVisibilityIndicator="O" rwpDatadirection="R" unit="KILOWATTS">
-			<sgr:dataType>
-                <sgr:float64>0.0</sgr:float64>
-            </sgr:dataType>
-			<sgr:dpLegibDesc>
-				<sgr:textElement>
-					Maximal steuerbare Wirkleistung (actual value)
-				</sgr:textElement>
-				<sgr:language>de</sgr:language>
-			</sgr:dpLegibDesc>
-		</sgr:dataPoint>
-	</sgr:dpListElement>
-	<sgr:dpListElement>
-		<sgr:dataPoint datapointName="MaxReactivePower" mroVisibilityIndicator="O" rwpDatadirection="R" unit="KILOVOLT_AMPERES_REACTIVE">
-			<sgr:dataType>
-                <sgr:float64>0.0</sgr:float64>
-            </sgr:dataType>
-			<sgr:dpLegibDesc>
-				<sgr:textElement>
-					Maximal steuerbare Blindleistung (actual value)
-				</sgr:textElement>
-				<sgr:language>de</sgr:language>
-			</sgr:dpLegibDesc>
-		</sgr:dataPoint>
-	</sgr:dpListElement>
-	<sgr:dpListElement>
-		<sgr:dataPoint datapointName="MinActivePower" mroVisibilityIndicator="O" rwpDatadirection="R" unit="KILOWATTS">
-			<sgr:dataType>
-                <sgr:float64>0.0</sgr:float64>
-            </sgr:dataType>
-			<sgr:dpLegibDesc>
-				<sgr:textElement>
-					Minimal steuerbare Wirkleistung (actual value)
-				</sgr:textElement>
-				<sgr:language>de</sgr:language>
-			</sgr:dpLegibDesc>
-		</sgr:dataPoint>
-	</sgr:dpListElement>
-	<sgr:dpListElement>
-		<sgr:dataPoint datapointName="MinReactivePower" mroVisibilityIndicator="O" rwpDatadirection="R" unit="KILOVOLT_AMPERES_REACTIVE">
-			<sgr:dataType>
-                <sgr:float64>0.0</sgr:float64>
-            </sgr:dataType>
-			<sgr:dpLegibDesc>
-				<sgr:textElement>
-					Minimal steuerbare Blindleistung (actual value)
-				</sgr:textElement>
-				<sgr:language>de</sgr:language>
-			</sgr:dpLegibDesc>
-		</sgr:dataPoint>
-	</sgr:dpListElement>
-	<sgr:dpListElement>
-		<sgr:dataPoint datapointName="ActualFillLevel" mroVisibilityIndicator="O" rwpDatadirection="R" unit="KILOWATT_HOURS">
-			<sgr:dataType>
-                <sgr:float64>0.0</sgr:float64>
-            </sgr:dataType>
-			<sgr:dpLegibDesc>
-				<sgr:textElement>
-					Aktueller Speicherstand
-				</sgr:textElement>
-				<sgr:language>de</sgr:language>
-			</sgr:dpLegibDesc>
-		</sgr:dataPoint>
-	</sgr:dpListElement>
-	<sgr:dpListElement>
-		<sgr:dataPoint datapointName="MinAllowedFillLevel" mroVisibilityIndicator="O" rwpDatadirection="R" unit="KILOWATT_HOURS">
-			<sgr:dataType>
-                <sgr:float64>0.0</sgr:float64>
-            </sgr:dataType>
-			<sgr:dpLegibDesc>
-				<sgr:textElement>
-					Minimaler Ladzustand (darf nicht verletzt werden)
-				</sgr:textElement>
-				<sgr:language>de</sgr:language>
-			</sgr:dpLegibDesc>
-		</sgr:dataPoint>
-	</sgr:dpListElement>	
-	<sgr:dpListElement>
-		<sgr:dataPoint datapointName="MaxAllowedFillLevel" mroVisibilityIndicator="O" rwpDatadirection="R" unit="KILOWATT_HOURS">
-			<sgr:dataType>
-                <sgr:float64>0.0</sgr:float64>
-            </sgr:dataType>
-			<sgr:dpLegibDesc>
-				<sgr:textElement>
-					Maximaler Ladzustand (darf nicht verletzt werden)
-				</sgr:textElement>
-				<sgr:language>de</sgr:language>
-			</sgr:dpLegibDesc>
-		</sgr:dataPoint>
-	</sgr:dpListElement>
-	<sgr:dpListElement>
-		<sgr:dataPoint datapointName="aValCharge" mroVisibilityIndicator="O" rwpDatadirection="R" unit="PERCENT">
-			<sgr:dataType>
-                <sgr:float64>0.0</sgr:float64>
-            </sgr:dataType>
-			<sgr:arrayLength>8</sgr:arrayLength>
-			<sgr:dpLegibDesc>
-				<sgr:textElement>
-					Ladeprofil (relativ zum Maximalwert)
-				</sgr:textElement>
-				<sgr:language>de</sgr:language>
-			</sgr:dpLegibDesc>
-		</sgr:dataPoint>
-		<sgr:genAttribute>
-			<sgr:valueByTimeTableMinutes>0</sgr:valueByTimeTableMinutes>
-		</sgr:genAttribute>
-	</sgr:dpListElement>
-	<sgr:dpListElement>
-		<sgr:dataPoint datapointName="aValDischarge" mroVisibilityIndicator="O" rwpDatadirection="R" unit="PERCENT">
-			<sgr:dataType>
-                <sgr:float64>0.0</sgr:float64>
-            </sgr:dataType>
-			<sgr:arrayLength>8</sgr:arrayLength>
-			<sgr:dpLegibDesc>
-				<sgr:textElement>
-					Entladeprofil (relativ zum Maximalwert)
-				</sgr:textElement>
-				<sgr:language>de</sgr:language>
-			</sgr:dpLegibDesc>
-		</sgr:dataPoint>
-		<sgr:genAttribute>
-			<sgr:valueByTimeTableMinutes>0</sgr:valueByTimeTableMinutes>
-		</sgr:genAttribute>
-	</sgr:dpListElement>
+<sgr:SGrFunctionalProfileFrame xmlns:sgr="http://www.smartgridready.com/ns/V0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/SGrIncluder.xsd">
+  <sgr:releaseNotes>
+    <sgr:state>Draft</sgr:state>
+    <sgr:changelog>
+      <sgr:version>0.1.1</sgr:version>
+      <sgr:date>2021-05-04</sgr:date>
+      <sgr:author>IBT/cb</sgr:author>
+      <sgr:comment>Vorbereitung beta test</sgr:comment>
+    </sgr:changelog>
+    <sgr:changelog>
+      <sgr:version>0.2.2</sgr:version>
+      <sgr:date>2022-10-03</sgr:date>
+      <sgr:author>Ergo/sz</sgr:author>
+      <sgr:comment>Finalisierung Go-Live</sgr:comment>
+    </sgr:changelog>
+    <sgr:changelog>
+      <sgr:version>0.2.3</sgr:version>
+      <sgr:date>2023-02-07</sgr:date>
+      <sgr:author>CLAP/ga</sgr:author>
+      <sgr:comment>Correction in profileName</sgr:comment>
+    </sgr:changelog>
+  </sgr:releaseNotes>
+  <sgr:functionalProfile>
+    <sgr:profileNumber>
+      <sgr:specsOwnerId>0</sgr:specsOwnerId>
+      <sgr:profileIdentification>SGCP</sgr:profileIdentification>
+      <sgr:subProfileIdent>BiDirFlexMgmt</sgr:subProfileIdent>
+      <sgr:sgrLevelOfOperation>1m</sgr:sgrLevelOfOperation>
+      <sgr:versionNumber>
+        <sgr:primaryVersionNumber>0</sgr:primaryVersionNumber>
+        <sgr:secondaryVersionNumber>2</sgr:secondaryVersionNumber>
+        <sgr:subReleaseVersionNumber>3</sgr:subReleaseVersionNumber>
+      </sgr:versionNumber>
+    </sgr:profileNumber>
+    <sgr:fpLegibDesc>
+      <sgr:textElement>
+        <![CDATA[
+          <img src="ressources/fp_cem_to_flexmgr.svg"/>
+          <strong>Flex Manager</strong><br>
+          Steuerndes Funktionsprofil für die flexible Steuerung des Energieverbrauchs eines Produktes.
+          
+          <p>Dieses Funktionsprofil wird in der Regel vom Smart Grid Operator oder Regelenergie
+             Manager (Communicator) verwendet, um z.B. ein Customer Energy Manager (CEM) als Produkt anzusteuern.
+             Die Steuerung der Anlage erfolgt über die obligatorischen Datenpunkte:
+          <ul>
+            <li>ReadinessState (Anlage ist bereit für Flexibilität)</li>
+            <li>ActivePower-Activation (Flexibilität wird vom FlexManager abgerufen)</li>
+            <li>RunState (Flexibilitätsabruf ist aktiv)</li>
+            <li>ActualActivePower (Rückmeldung)</li>
+          </ul>
+          Die Schnittstelle ist für beliebige Speichermedien, welche elektrische Flexibilität unterstützen können,
+          nutzbar. Die weiteren Datenpunkte ermöglichen optional Blindleistung, Speicherstands-Anzeige, Lade- und Entladeprofile sowie die
+          Angabe des verfügbaren Flexibilitätsbereiches (min/max kW / kVAR). Leistungsangaben sind aus Sicht Bezüger (+ entspricht Energiebezug
+          aus dem Netz oder Erhöhung des Bezugs).
+        ]]>
+      </sgr:textElement>
+      <sgr:language>de</sgr:language>
+    </sgr:fpLegibDesc>
+  </sgr:functionalProfile>
+  <sgr:dpListElement>
+    <sgr:dataPoint datapointName="ActivePowerActivation" mroVisibilityIndicator="M" rwpDatadirection="W" unit="NONE">
+      <sgr:dataType>
+        <sgr:boolean>true</sgr:boolean>
+      </sgr:dataType>
+      <sgr:dpLegibDesc>
+        <sgr:textElement>
+          <![CDATA[
+            On Off Befehl, Wirkleistung Flexibilität liefern ja/nein:
+            <ul>
+              <li>true: Die Latenzeit beginnt mit dem Empfang dieses Befehls (WinTms)</li>
+              <li>false: Die Leistungsanpassung wird über eine definierte Rampe zurückgenommen (RmpTms)</li>
+            </ul>
+          ]]>
+        </sgr:textElement>
+        <sgr:language>de</sgr:language>
+      </sgr:dpLegibDesc>
+    </sgr:dataPoint>
+    <sgr:genAttribute>
+      <sgr:smoothTransition/>
+    </sgr:genAttribute>
+  </sgr:dpListElement>
+  <sgr:dpListElement>
+    <sgr:dataPoint datapointName="ReactivePowerActivation" mroVisibilityIndicator="O" rwpDatadirection="W" unit="NONE">
+      <sgr:dataType>
+        <sgr:boolean>true</sgr:boolean>
+      </sgr:dataType>
+      <sgr:dpLegibDesc>
+        <sgr:textElement>On Off Befehl, Blindleistung Flexibilität liefern ja/nein:</sgr:textElement>
+        <sgr:language>de</sgr:language>
+      </sgr:dpLegibDesc>
+    </sgr:dataPoint>
+    <sgr:genAttribute>
+      <sgr:smoothTransition/>
+    </sgr:genAttribute>
+  </sgr:dpListElement>
+  <sgr:dpListElement>
+    <sgr:dataPoint datapointName="SetDeltaActivePower" mroVisibilityIndicator="O" rwpDatadirection="W" unit="KILOWATTS">
+      <sgr:dataType>
+        <sgr:float64>0.0</sgr:float64>
+      </sgr:dataType>
+      <sgr:dpLegibDesc>
+        <sgr:textElement>
+          Leistungsvorgabe, +/-.
+          Active power request: Angestrebte Veränderung des aktuellen Energieflusses (+/-)
+        </sgr:textElement>
+        <sgr:language>de</sgr:language>
+      </sgr:dpLegibDesc>
+    </sgr:dataPoint>
+  </sgr:dpListElement>
+  <sgr:dpListElement>
+    <sgr:dataPoint datapointName="SetDeltaReactivePower" mroVisibilityIndicator="O" rwpDatadirection="W" unit="KILOVOLT_AMPERES_REACTIVE">
+      <sgr:dataType>
+        <sgr:float64>0.0</sgr:float64>
+      </sgr:dataType>
+      <sgr:dpLegibDesc>
+        <sgr:textElement>
+          Blindleistungsvorgabe, +/-.
+          Reactive power request: Angestrebte Veränderung des aktuellen Energieflusses (+/-)
+        </sgr:textElement>
+        <sgr:language>de</sgr:language>
+      </sgr:dpLegibDesc>
+    </sgr:dataPoint>
+  </sgr:dpListElement>
+  <sgr:dpListElement>
+    <sgr:dataPoint datapointName="ReadinessState" mroVisibilityIndicator="M" rwpDatadirection="R" unit="NONE">
+      <sgr:dataType>
+        <sgr:boolean>true</sgr:boolean>
+      </sgr:dataType>
+      <sgr:dpLegibDesc>
+        <sgr:textElement>
+          Status ready for flexibility. True wenn Anlage für den nächsten Flexibilitäts-Event bereit ist
+        </sgr:textElement>
+        <sgr:language>de</sgr:language>
+      </sgr:dpLegibDesc>
+    </sgr:dataPoint>
+  </sgr:dpListElement>
+  <sgr:dpListElement>
+    <sgr:dataPoint datapointName="RunState" mroVisibilityIndicator="M" rwpDatadirection="R" unit="NONE">
+      <sgr:dataType>
+        <sgr:boolean>true</sgr:boolean>
+      </sgr:dataType>
+      <sgr:dpLegibDesc>
+        <sgr:textElement>
+          Status running for flexibility. True wenn Anlage läuft für Flexibilität.
+        </sgr:textElement>
+        <sgr:language>de</sgr:language>
+      </sgr:dpLegibDesc>
+    </sgr:dataPoint>
+  </sgr:dpListElement>
+  <sgr:dpListElement>
+    <sgr:dataPoint datapointName="ActualActivePower" mroVisibilityIndicator="M" rwpDatadirection="R" unit="KILOWATTS">
+      <sgr:dataType>
+        <sgr:float64>0.0</sgr:float64>
+      </sgr:dataType>
+      <sgr:dpLegibDesc>
+        <sgr:textElement>
+          Momentane Leistung. Betrag und Richtung des Energieflusses.
+        </sgr:textElement>
+        <sgr:language>de</sgr:language>
+      </sgr:dpLegibDesc>
+    </sgr:dataPoint>
+  </sgr:dpListElement>
+  <sgr:dpListElement>
+    <sgr:dataPoint datapointName="ActualReactivePower" mroVisibilityIndicator="O" rwpDatadirection="R" unit="KILOVOLT_AMPERES_REACTIVE">
+      <sgr:dataType>
+        <sgr:float64>0.0</sgr:float64>
+      </sgr:dataType>
+      <sgr:dpLegibDesc>
+        <sgr:textElement>
+          Momentane Blindleistung. Betrag und Richtung des Energieflusses.
+        </sgr:textElement>
+        <sgr:language>de</sgr:language>
+      </sgr:dpLegibDesc>
+    </sgr:dataPoint>
+  </sgr:dpListElement>
+  <sgr:dpListElement>
+    <sgr:dataPoint datapointName="MaxActivePower" mroVisibilityIndicator="O" rwpDatadirection="R" unit="KILOWATTS">
+      <sgr:dataType>
+        <sgr:float64>0.0</sgr:float64>
+      </sgr:dataType>
+      <sgr:dpLegibDesc>
+        <sgr:textElement>
+          Maximal steuerbare Wirkleistung (actual value)
+        </sgr:textElement>
+        <sgr:language>de</sgr:language>
+      </sgr:dpLegibDesc>
+    </sgr:dataPoint>
+  </sgr:dpListElement>
+  <sgr:dpListElement>
+    <sgr:dataPoint datapointName="MaxReactivePower" mroVisibilityIndicator="O" rwpDatadirection="R" unit="KILOVOLT_AMPERES_REACTIVE">
+      <sgr:dataType>
+        <sgr:float64>0.0</sgr:float64>
+      </sgr:dataType>
+      <sgr:dpLegibDesc>
+        <sgr:textElement>
+          Maximal steuerbare Blindleistung (actual value)
+        </sgr:textElement>
+        <sgr:language>de</sgr:language>
+      </sgr:dpLegibDesc>
+    </sgr:dataPoint>
+  </sgr:dpListElement>
+  <sgr:dpListElement>
+    <sgr:dataPoint datapointName="MinActivePower" mroVisibilityIndicator="O" rwpDatadirection="R" unit="KILOWATTS">
+      <sgr:dataType>
+        <sgr:float64>0.0</sgr:float64>
+      </sgr:dataType>
+      <sgr:dpLegibDesc>
+        <sgr:textElement>
+          Minimal steuerbare Wirkleistung (actual value)
+        </sgr:textElement>
+        <sgr:language>de</sgr:language>
+      </sgr:dpLegibDesc>
+    </sgr:dataPoint>
+  </sgr:dpListElement>
+  <sgr:dpListElement>
+    <sgr:dataPoint datapointName="MinReactivePower" mroVisibilityIndicator="O" rwpDatadirection="R" unit="KILOVOLT_AMPERES_REACTIVE">
+      <sgr:dataType>
+        <sgr:float64>0.0</sgr:float64>
+      </sgr:dataType>
+      <sgr:dpLegibDesc>
+        <sgr:textElement>
+          Minimal steuerbare Blindleistung (actual value)
+        </sgr:textElement>
+        <sgr:language>de</sgr:language>
+      </sgr:dpLegibDesc>
+    </sgr:dataPoint>
+  </sgr:dpListElement>
+  <sgr:dpListElement>
+    <sgr:dataPoint datapointName="ActualFillLevel" mroVisibilityIndicator="O" rwpDatadirection="R" unit="KILOWATT_HOURS">
+      <sgr:dataType>
+        <sgr:float64>0.0</sgr:float64>
+      </sgr:dataType>
+      <sgr:dpLegibDesc>
+        <sgr:textElement>
+          Aktueller Speicherstand
+        </sgr:textElement>
+        <sgr:language>de</sgr:language>
+      </sgr:dpLegibDesc>
+    </sgr:dataPoint>
+  </sgr:dpListElement>
+  <sgr:dpListElement>
+    <sgr:dataPoint datapointName="MinAllowedFillLevel" mroVisibilityIndicator="O" rwpDatadirection="R" unit="KILOWATT_HOURS">
+      <sgr:dataType>
+        <sgr:float64>0.0</sgr:float64>
+      </sgr:dataType>
+      <sgr:dpLegibDesc>
+        <sgr:textElement>
+          Minimaler Ladzustand (darf nicht verletzt werden)
+        </sgr:textElement>
+        <sgr:language>de</sgr:language>
+      </sgr:dpLegibDesc>
+    </sgr:dataPoint>
+  </sgr:dpListElement>
+  <sgr:dpListElement>
+    <sgr:dataPoint datapointName="MaxAllowedFillLevel" mroVisibilityIndicator="O" rwpDatadirection="R" unit="KILOWATT_HOURS">
+      <sgr:dataType>
+        <sgr:float64>0.0</sgr:float64>
+      </sgr:dataType>
+      <sgr:dpLegibDesc>
+        <sgr:textElement>
+          Maximaler Ladzustand (darf nicht verletzt werden)
+        </sgr:textElement>
+        <sgr:language>de</sgr:language>
+      </sgr:dpLegibDesc>
+    </sgr:dataPoint>
+  </sgr:dpListElement>
+  <sgr:dpListElement>
+    <sgr:dataPoint datapointName="aValCharge" mroVisibilityIndicator="O" rwpDatadirection="R" unit="PERCENT">
+      <sgr:dataType>
+        <sgr:float64>0.0</sgr:float64>
+      </sgr:dataType>
+      <sgr:arrayLength>8</sgr:arrayLength>
+      <sgr:dpLegibDesc>
+        <sgr:textElement>
+          Ladeprofil (relativ zum Maximalwert)
+        </sgr:textElement>
+        <sgr:language>de</sgr:language>
+      </sgr:dpLegibDesc>
+    </sgr:dataPoint>
+    <sgr:genAttribute>
+      <sgr:valueByTimeTableMinutes>0</sgr:valueByTimeTableMinutes>
+    </sgr:genAttribute>
+  </sgr:dpListElement>
+  <sgr:dpListElement>
+    <sgr:dataPoint datapointName="aValDischarge" mroVisibilityIndicator="O" rwpDatadirection="R" unit="PERCENT">
+      <sgr:dataType>
+        <sgr:float64>0.0</sgr:float64>
+      </sgr:dataType>
+      <sgr:arrayLength>8</sgr:arrayLength>
+      <sgr:dpLegibDesc>
+        <sgr:textElement>
+          Entladeprofil (relativ zum Maximalwert)
+        </sgr:textElement>
+        <sgr:language>de</sgr:language>
+      </sgr:dpLegibDesc>
+    </sgr:dataPoint>
+    <sgr:genAttribute>
+      <sgr:valueByTimeTableMinutes>0</sgr:valueByTimeTableMinutes>
+    </sgr:genAttribute>
+  </sgr:dpListElement>
 </sgr:SGrFunctionalProfileFrame>
