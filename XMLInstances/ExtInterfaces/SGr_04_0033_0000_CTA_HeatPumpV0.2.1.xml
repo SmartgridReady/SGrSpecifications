@@ -276,7 +276,7 @@
 			</sgr:fpLegibDesc>
 		</sgr:functionalProfile>
 		<sgr:dpListElement>
-			<sgr:dataPoint datapointName="PowerCtrlStpt" mroVisibilityIndicator="M" rwpDatadirection="W" unit="NONE">
+			<sgr:dataPoint datapointName="PowerCtrlStpt" mroVisibilityIndicator="M" rwpDatadirection="W" unit="PERCENT">
 				<sgr:basicDataType>
 					<sgr:float32>0</sgr:float32>
 				</sgr:basicDataType>
@@ -291,7 +291,8 @@
 			</sgr:dataPoint>
 			<sgr:genAttribute>
 				<sgr:maxVal>100.0</sgr:maxVal>
-				<sgr:minVal>25.0</sgr:minVal></sgr:genAttribute>
+				<sgr:minVal>38.0</sgr:minVal>
+				<sgr:unitConversionMultiplicator>2.0</sgr:unitConversionMultiplicator></sgr:genAttribute>
 			<sgr:modbusDataPoint>
 				<sgr:modbusDataType>
 					<sgr:float32>0.0</sgr:float32>
@@ -300,8 +301,6 @@
 				<sgr:dpSizeNrRegisters>2</sgr:dpSizeNrRegisters>
 				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
 			</sgr:modbusDataPoint>
-			<sgr:modbusAttr>
-			</sgr:modbusAttr>
 		</sgr:dpListElement>
 		<sgr:dpListElement>
 			<sgr:dataPoint datapointName="ActSpeed" mroVisibilityIndicator="M" rwpDatadirection="R" unit="REVOLUTIONS_PER_MINUTE">
@@ -328,11 +327,6 @@
 				<sgr:dpSizeNrRegisters>2</sgr:dpSizeNrRegisters>
 				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
 			</sgr:modbusDataPoint>
-			<sgr:modbusAttr>
-				<sgr:scalingByMulPwr>
-					<sgr:multiplicator>60</sgr:multiplicator>
-					<sgr:powerof10>0</sgr:powerof10>
-				</sgr:scalingByMulPwr></sgr:modbusAttr>
 		</sgr:dpListElement>
 		<sgr:dpListElement>
 			<sgr:dataPoint datapointName="ActPowerACtot" mroVisibilityIndicator="O" rwpDatadirection="R" unit="KILOWATT_HOURS">
@@ -417,7 +411,11 @@
 		<sgr:dpListElement>
 			<sgr:dataPoint datapointName="ctaHCOpModeCmd" mroVisibilityIndicator="M" rwpDatadirection="RW" unit="NONE">
 				<sgr:basicDataType>
-					<sgr:int16>0</sgr:int16>
+					<sgr:enum>
+						<sgr:ctaHCOpMode>HP_NULL</sgr:ctaHCOpMode>
+						
+					</sgr:enum>
+					
 				</sgr:basicDataType>
 				<sgr:dpNameList>
 					<sgr:sLV1Name>HeatCoolCtrlOpModeCmd</sgr:sLV1Name>
@@ -491,12 +489,13 @@ usw.
 			</sgr:modbusDataPoint>
 		</sgr:dpListElement>
 		<sgr:dpListElement>
-			<sgr:dataPoint datapointName="SupplyWaterTempStpt" mroVisibilityIndicator="O" rwpDatadirection="RW" unit="DEGREES_CELSIUS">
+			<sgr:dataPoint datapointName="SupplyWaterTempStptComf" mroVisibilityIndicator="O" rwpDatadirection="RW" unit="DEGREES_CELSIUS">
 				<sgr:basicDataType>
 					<sgr:float32>0.0</sgr:float32>
 				</sgr:basicDataType>
 				<sgr:dpNameList>
-					<sgr:sLV1Name>SupplyWaterTempStpt</sgr:sLV1Name>
+					<sgr:sLV1Name>SupplyWaterTempStptComf</sgr:sLV1Name>
+					<sgr:sManufName>CTA_HK1_SetpointComfort</sgr:sManufName>
 				</sgr:dpNameList>
 				<sgr:dpLegibDesc>
 					<sgr:textElement>Setzen der aktuellen Soll-Temperatur des Vorlaufs (Grundwert).</sgr:textElement>
@@ -519,6 +518,7 @@ usw.
 				</sgr:basicDataType>
 				<sgr:dpNameList>
 					<sgr:sLV1Name>ReturnSupplyWaterTemp</sgr:sLV1Name>
+					<sgr:sManufName>CTA_B71_Temp</sgr:sManufName>
 				</sgr:dpNameList>
 				<sgr:dpLegibDesc>
 					<sgr:textElement>Auslesen der aktuellen aktuellen-Temperatur des Rücklaufs.</sgr:textElement>
