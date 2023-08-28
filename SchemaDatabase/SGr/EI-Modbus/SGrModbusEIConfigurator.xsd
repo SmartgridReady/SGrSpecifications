@@ -1,66 +1,52 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!-- Copyright (c) 2023, SmartGridready, Switzerland. All rights reserved. Source https://github.com/SmartgridReady/SGrSpecifications -->
-  <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:sgr="http://www.smartgridready.com/ns/V0/" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.smartgridready.com/ns/V0/" version="0.2.2">
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:sgr="http://www.smartgridready.com/ns/V0/" attributeFormDefault="unqualified" elementFormDefault="qualified"
+  targetNamespace="http://www.smartgridready.com/ns/V0/" version="0.2.2">
   <include schemaLocation="../Generic/SGrGenTypeDefinitions.xsd"/>
   <include schemaLocation="SGrModbusEIDataTypes.xsd"/>
   <complexType name="SGrAttr4ModbusType">
-		<annotation>
-			<documentation>Modbus Attributes support TransportService specific
-				parameters
-			</documentation>
-		</annotation>
-		<all>
-			<element maxOccurs="1" minOccurs="0" name="scalingByMulPwr"
-				type="sgr:SGrScalingType">
-				<annotation>
-					<documentation>
-						generic value = dataPoint * m * 10^p
-					</documentation>
-				</annotation>
-			</element>
-			<element maxOccurs="1" minOccurs="0" name="stepByIncrement"
-				type="unsignedInt">
-				<annotation>
-					<documentation>each didgit</documentation>
-				</annotation>
-			</element>
-			<element maxOccurs="1" minOccurs="0" name="sunssf"
-				type="unsignedInt">
-				<annotation>
-					<documentation>
-						a Sunpec specific attribute (scalefactor p -10
-						... +10) generic value = dataPoint * 10^p note:
-						Sunspec uses sunssf usually as Modbus Register
-						with dynamic values check attribute
-						"timeAlignedNotification"
-					</documentation>
-				</annotation>
-			</element>
-			<element maxOccurs="1" minOccurs="0" name="pollLatencyMS"
-				type="unsignedInt">
-				<annotation>
-					<documentation>
-						the time for a master slave communication cycle
-						in ms
-					</documentation>
-				</annotation>
-			</element>
-			<element name="accessProtection"
-				type="sgr:SGrAccessProtectionEnabledType" maxOccurs="1"
-				minOccurs="0">
-			</element>
-			<element name="layer6Deviation"
-				type="sgr:SGrModbusLayer6DeviationType" maxOccurs="1"
-				minOccurs="0">
-			</element>
-			<element name="iopEnumMapper"
-				type="sgr:SGrModbusEnumMapperType" maxOccurs="1" minOccurs="0">
-			</element>
-			<element name="iopBitmapMapper"
-				type="sgr:SGrModbusBitmapMapperType" maxOccurs="1" minOccurs="0">
-			</element>
-			<element name="iopBooleanMapper" type="sgr:SGrModbusBooleanMapperType" maxOccurs="1" minOccurs="0"></element>
-		</all>
+    <annotation>
+      <documentation>Modbus Attributes support TransportService specific parameters
+      </documentation>
+    </annotation>
+    <all>
+      <element maxOccurs="1" minOccurs="0" name="scalingByMulPwr" type="sgr:SGrScalingType">
+        <annotation>
+          <documentation>
+            generic value = dataPoint * m * 10^p
+          </documentation>
+        </annotation>
+      </element>
+      <element maxOccurs="1" minOccurs="0" name="stepByIncrement" type="unsignedInt">
+        <annotation>
+          <documentation>each didgit</documentation>
+        </annotation>
+      </element>
+      <element maxOccurs="1" minOccurs="0" name="sunssf" type="unsignedInt">
+        <annotation>
+          <documentation>
+            a Sunpec specific attribute (scalefactor p -10 ... +10) generic value = dataPoint * 10^p note: Sunspec uses sunssf usually as Modbus Register with dynamic values check
+            attribute "timeAlignedNotification"
+          </documentation>
+        </annotation>
+      </element>
+      <element maxOccurs="1" minOccurs="0" name="pollLatencyMS" type="unsignedInt">
+        <annotation>
+          <documentation>
+            the time for a master slave communication cycle in ms
+          </documentation>
+        </annotation>
+      </element>
+      <element name="accessProtection" type="sgr:SGrAccessProtectionEnabledType" maxOccurs="1" minOccurs="0">
+      </element>
+      <element name="layer6Deviation" type="sgr:SGrModbusLayer6DeviationType" maxOccurs="1" minOccurs="0">
+      </element>
+      <element name="iopEnumMapper" type="sgr:SGrModbusEnumMapperType" maxOccurs="1" minOccurs="0">
+      </element>
+      <element name="iopBitmapMapper" type="sgr:SGrModbusBitmapMapperType" maxOccurs="1" minOccurs="0">
+      </element>
+      <element name="iopBooleanMapper" type="sgr:SGrModbusBooleanMapperType" maxOccurs="1" minOccurs="0"></element>
+    </all>
   </complexType>
   <complexType name="SGrModbusInterfaceDescriptionType">
     <sequence>
@@ -71,7 +57,6 @@
       <element maxOccurs="unbounded" minOccurs="1" name="conversionScheme" type="sgr:tEnumConversionFct"/>
     </sequence>
   </complexType>
- 	
   <simpleType name="ModbusInterfaceSelectionType">
     <restriction base="string">
       <enumeration value="RTU"/>
@@ -86,58 +71,37 @@
   <element name="ModbusFunctionCodesSupported" type="string"/>
   <complexType name="SGrModbusDataPointDescriptionType">
     <sequence>
-    	<element maxOccurs="1" minOccurs="1" name="modbusDataType"
-    		type="sgr:modbusDataType" />
+      <element maxOccurs="1" minOccurs="1" name="modbusDataType" type="sgr:modbusDataType"/>
       <element name="arrLen" type="int" maxOccurs="1" minOccurs="0"/>
-    	<element maxOccurs="1" minOccurs="1"
-    		name="modbusFirstRegisterReference"
-    		type="sgr:tSGrModbus_RegisterRef" />
-    	<element maxOccurs="1" minOccurs="1" name="dpSizeNrRegisters">
-    		<simpleType>
-    			<restriction base="int" />
-    		</simpleType>
-    	</element>
-    	<element maxOccurs="1" minOccurs="0" name="bitmask"
-    		type="sgr:bitmaskType">
-    		<annotation>
-    			<documentation>
-    				Hexadecimal bitmask for mask to elmininate non used
-    				bit frames
-    			</documentation>
-    		</annotation>
-    	</element>
-    	<element maxOccurs="unbounded" minOccurs="1"
-    		name="masterFunctionsSupported"
-    		type="sgr:masterFunctionsSupportedType">
-    		<annotation>
-    			<documentation>
-    				Available function/command codes for Master /
-    				Clients The various reading, writing and other
-    				operations are categorized as follows. The most
-    				"primitive" reads and writes are A number of sources
-    				use alternative terminology, for example Force
-    				Single Coil where the standard uses Write Single
-    				Coil.[11] Prominent entities within a Modbus slave
-    				are: ReadDiscreteInputs (code: 2) ReadCoils (code:
-    				1) WriteSingleCoil (code: 5) WriteMultipleCoils
-    				(code:15) ReadInputRegisters (code:4)
-    				ReadMultipleHoldingRegisters (code:3)
-    				WriteSingleHoldingRegister (code:6)
-    				WriteMultipleHoldingRegisters (code:16) the enum
-    				"Primitives" means, that the current register Type
-    				supports Single Trasnactions If dpSizeNrRegistarts
-    				is &gt;1, also the multiple access functions must be
-    				supported
-    			</documentation>
-    		</annotation>
-    	</element>
-    	<element maxOccurs="1" minOccurs="0" name="modbusJMESPath"
-    		type="sgr:modbusJMESPathType">
-    		<annotation>
-    			<documentation />
-    		</annotation>
-    	</element>
-
+      <element maxOccurs="1" minOccurs="1" name="modbusFirstRegisterReference" type="sgr:tSGrModbus_RegisterRef"/>
+      <element maxOccurs="1" minOccurs="1" name="dpSizeNrRegisters">
+        <simpleType>
+          <restriction base="int"/>
+        </simpleType>
+      </element>
+      <element maxOccurs="1" minOccurs="0" name="bitmask" type="sgr:bitmaskType">
+        <annotation>
+          <documentation>
+            Hexadecimal bitmask for mask to elmininate non used bit frames
+          </documentation>
+        </annotation>
+      </element>
+      <element maxOccurs="unbounded" minOccurs="1" name="masterFunctionsSupported" type="sgr:masterFunctionsSupportedType">
+        <annotation>
+          <documentation>
+            Available function/command codes for Master / Clients The various reading, writing and other operations are categorized as follows. The most "primitive" reads and writes are
+            A number of sources use alternative terminology, for example Force Single Coil where the standard uses Write Single Coil.[11] Prominent entities within a Modbus slave are:
+            ReadDiscreteInputs (code: 2) ReadCoils (code: 1) WriteSingleCoil (code: 5) WriteMultipleCoils (code:15) ReadInputRegisters (code:4) ReadMultipleHoldingRegisters (code:3)
+            WriteSingleHoldingRegister (code:6) WriteMultipleHoldingRegisters (code:16) the enum "Primitives" means, that the current register Type supports Single Trasnactions If dpSizeNrRegistarts
+            is &gt;1, also the multiple access functions must be supported 
+          </documentation>
+        </annotation>
+      </element>
+      <element maxOccurs="1" minOccurs="0" name="modbusJMESPath" type="sgr:modbusJMESPathType">
+        <annotation>
+          <documentation/>
+        </annotation>
+      </element>
     </sequence>
   </complexType>
   <element name="SGr_ModbusDataPointDescription" type="sgr:SGrModbusDataPointDescriptionType"/>
@@ -152,19 +116,16 @@
   <simpleType name="masterFunctionsSupportedType">
     <annotation>
       <documentation>the selection of the supported Master access functions
-			</documentation>
+      </documentation>
     </annotation>
     <restriction base="string">
       <enumeration value="Primitives">
         <annotation>
-          <documentation>"Primitives" support ReadDiscreteInputs (code: 2)
-						ReadCoils (code: 1) WriteSingleCoil (code: 5) ReadInputRegisters
-						(code:4) WriteSingleHoldingRegister (code:6) for single Register
-						access if dpSizeNrRegisters &gt; 1 "Primitives" supports
-						ReadMultipleHoldingRegisters (code:3) WriteMultipleCoils (code:15)
-						WriteMultipleHoldingRegisters (code:16) for the register Type
-						being adressed 
-					</documentation>
+          <documentation>
+            "Primitives" support ReadDiscreteInputs (code: 2) ReadCoils (code: 1) WriteSingleCoil (code: 5) ReadInputRegisters (code:4) WriteSingleHoldingRegister (code:6) for single
+            Register access if dpSizeNrRegisters &gt; 1 "Primitives" supports ReadMultipleHoldingRegisters (code:3) WriteMultipleCoils (code:15) WriteMultipleHoldingRegisters (code:16) for the
+            register Type being adressed 
+          </documentation>
         </annotation>
       </enumeration>
       <enumeration value="ReadDiscreteInputs">
@@ -266,111 +227,94 @@
   </simpleType>
   <complexType name="SGrAccessProtectionEnabledType">
     <annotation>
-      <documentation>Modbus datapoints may be protected by execptions. If
-				this is the case, a datapoint may be selected as true with a range
-				of supported exceptions. A NOT listed exception means no XY
-				exception
-			</documentation>
+      <documentation>
+        Modbus datapoints may be protected by execptions. If this is the case, a datapoint may be selected as true with a range of supported exceptions. A NOT listed exception means no XY
+        exception
+      </documentation>
     </annotation>
     <sequence>
       <element name="modbusException" type="sgr:tEnumExceptionCodeType" maxOccurs="unbounded" minOccurs="1"/>
     </sequence>
     <attribute name="isEnabled" type="boolean"/>
   </complexType>
-  
-  <simpleType name="SGrModbusLayer6DeviationType">     
-      <annotation>
-          <documentation>this type is used to manage non standard data type definitions at ISO/OSI Layer 6</documentation>
-        </annotation>
+  <simpleType name="SGrModbusLayer6DeviationType">
+    <annotation>
+      <documentation>this type is used to manage non standard data type definitions at ISO/OSI Layer 6</documentation>
+    </annotation>
     <restriction base="string">
-      <enumeration value="2RegBase1000_L2H">        
-      <annotation>
-          <documentation>2 Registers show a combined value, as example in kWh and MWh beginning  with lower range @ lower address</documentation>
+      <enumeration value="2RegBase1000_L2H">
+        <annotation>
+          <documentation>2 Registers show a combined value, as example in kWh and MWh beginning with lower range @ lower address</documentation>
         </annotation>
       </enumeration>
-      <enumeration value="2RegBase1000_H2L">       
-      <annotation>
-          <documentation>
-          <documentation>2 Registers show a combined value, as example in kWh and MWh beginning with lower range @ higher address</documentation></documentation>
-        </annotation>
-      </enumeration>  
-      <enumeration value="SGReadyEnum2IO_H2L">       
-      <annotation>
-          <documentation>
-          <documentation>2 Registers combine SGready IO1 and IO2 into the sgreadyStateLv2 enum  beginning with IO1 @ higher address</documentation></documentation>
-        </annotation>
-      </enumeration>  
-      <enumeration value="SGReadyEnum2IO_L2H">       
-      <annotation>
-          <documentation>
-          <documentation>2 Registers combine SGready IO1 and IO2 into the sgreadyStateLv2 enum  beginning with IO1 @ lower address</documentation></documentation>
-        </annotation>
-      </enumeration>              
-    </restriction>
-  </simpleType>      
-    <complexType name="SGrModbusEnumMapperType">   
-      <annotation>
-         <documentation>
-          Enumerations typically define operation modes or singlular states. Devices use different control schemes, SmartGridrady defines a commmon information model for interoperable behaviour.
-          At interface class level, enums may use different binary values. 
-         </documentation>
-        </annotation>
-    <sequence> 
-      <annotation>
-         <documentation>
-            modbusEnumMapper uses indexes as the value of the generic definition, the value of shows the proprietary value.
-           (Write data direction)
-           genEnumMapper  uses indexes as the  value of the proprietary definition, the value shows the generic value
-           (Read data direction)
-		   This value is index of the enum list representation of the bit
-			0 means BIT0
-			65535 means DO NOT MAP, UNKNOWN 
-          </documentation>
-      </annotation>        
-	  <element name="modbusEnumMapper" type="unsignedInt"
-				maxOccurs="unbounded" minOccurs="1">
-	  </element>
-	  <element name="genEnumMapper" type="unsignedInt"
-				maxOccurs="unbounded" minOccurs="1">
-		</element>
-	</sequence>
-  </complexType>	
-  <complexType name="SGrModbusBitmapMapperType">   
-      <annotation>
-         <documentation>
-          Bitmaps typically define operation modes or parallel active states. Devices use different control schemes, SmartGridrady defines a commmon information model for interoperable behaviour.
-          At interface class level, Bitmaps may use different binary values. 
-         </documentation>
-        </annotation>
-    <sequence>		
-      <annotation>
-         <documentation>
-            modbusBitMapper uses indexes as the value of the generic definition, the value of shows the proprietary value.
-           (Write data direction)
-           genBitMapper  uses indexes as the  value of the proprietary definition, the value shows the generic value
-           (Read data direction)
-          </documentation>
-      </annotation>       
-	  <element name="modbusBitMapper" type="unsignedInt"
-				maxOccurs="unbounded" minOccurs="1">
-	  </element>
-	  <element name="genBitMapper" type="unsignedInt"
-				maxOccurs="unbounded" minOccurs="1">
-		</element> 
-		</sequence>
- </complexType>		 
-
-  <complexType name="SGrModbusBooleanMapperType">
+      <enumeration value="2RegBase1000_H2L">
         <annotation>
-         <documentation>
-          Booleans at modbus level may be true if 1, 0, 0xff, -1 , all but not a certain value .
-          isPositiveLogic is true if a number must contain a specific value to be valid
-          isPositiveLogic is false if a number must contain any  but NOT a specific value to be valid  
-         </documentation>
+          <documentation>2 Registers show a combined value, as example in kWh and MWh beginning with lower range @ higher address</documentation>
         </annotation>
-  	<sequence>
-  		<element name="isPositiveLogic" type="boolean" maxOccurs="1" minOccurs="1"></element>
-  		<element name="value" type="unsignedInt" maxOccurs="1" minOccurs="1"></element>
-  	</sequence>
+      </enumeration>
+      <enumeration value="SGReadyEnum2IO_H2L">
+        <annotation>
+          <documentation>2 Registers combine SGready IO1 and IO2 into the sgreadyStateLv2 enum beginning with IO1 @ higher address</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="SGReadyEnum2IO_L2H">
+        <annotation>
+          <documentation>2 Registers combine SGready IO1 and IO2 into the sgreadyStateLv2 enum beginning with IO1 @ lower address</documentation>
+        </annotation>
+      </enumeration>
+    </restriction>
+  </simpleType>
+  <complexType name="SGrModbusEnumMapperType">
+    <annotation>
+      <documentation>
+        Enumerations typically define operation modes or singlular states. Devices use different control schemes, SmartGridrady defines a commmon information model for interoperable
+        behaviour. At interface class level, enums may use different binary values.
+      </documentation>
+    </annotation>
+    <sequence>
+      <annotation>
+        <documentation>
+          modbusEnumMapper uses indexes as the value of the generic definition, the value of shows the proprietary value. (Write data direction) genEnumMapper uses indexes as the value
+          of the proprietary definition, the value shows the generic value (Read data direction) This value is index of the enum list representation of the bit 0 means BIT0 65535 means DO NOT MAP,
+          UNKNOWN
+        </documentation>
+      </annotation>
+      <element name="modbusEnumMapper" type="unsignedInt" maxOccurs="unbounded" minOccurs="1">
+      </element>
+      <element name="genEnumMapper" type="unsignedInt" maxOccurs="unbounded" minOccurs="1">
+      </element>
+    </sequence>
+  </complexType>
+  <complexType name="SGrModbusBitmapMapperType">
+    <annotation>
+      <documentation>
+        Bitmaps typically define operation modes or parallel active states. Devices use different control schemes, SmartGridrady defines a commmon information model for interoperable
+        behaviour. At interface class level, Bitmaps may use different binary values.
+      </documentation>
+    </annotation>
+    <sequence>
+      <annotation>
+        <documentation>
+          modbusBitMapper uses indexes as the value of the generic definition, the value of shows the proprietary value. (Write data direction) genBitMapper uses indexes as the value of
+          the proprietary definition, the value shows the generic value (Read data direction)
+        </documentation>
+      </annotation>
+      <element name="modbusBitMapper" type="unsignedInt" maxOccurs="unbounded" minOccurs="1">
+      </element>
+      <element name="genBitMapper" type="unsignedInt" maxOccurs="unbounded" minOccurs="1">
+      </element>
+    </sequence>
+  </complexType>
+  <complexType name="SGrModbusBooleanMapperType">
+    <annotation>
+      <documentation>
+        Booleans at modbus level may be true if 1, 0, 0xff, -1 , all but not a certain value . isPositiveLogic is true if a number must contain a specific value to be valid
+        isPositiveLogic is false if a number must contain any but NOT a specific value to be valid
+      </documentation>
+    </annotation>
+    <sequence>
+      <element name="isPositiveLogic" type="boolean" maxOccurs="1" minOccurs="1"></element>
+      <element name="value" type="unsignedInt" maxOccurs="1" minOccurs="1"></element>
+    </sequence>
   </complexType>
 </schema>

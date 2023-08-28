@@ -1,93 +1,88 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="/xsl/SGr.xsl"?>
-<sgr:SGrFunctionalProfileFrame xmlns:sgr="http://www.smartgridready.com/ns/V0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/SGrIncluder.xsd">
-     <sgr:releaseNotes>
-        <sgr:state>Review</sgr:state>
-        <sgr:remarks>This functional profile is in preliminary state. Before implementing external-interfaces or any other
-            functionality, the detailed functionality must be verified with the inverter manufacturer.
-        </sgr:remarks>
-        <sgr:changelog>
-            <sgr:version>0.2.1</sgr:version>
-            <sgr:date>2023-02-22</sgr:date>
-            <sgr:author>IBT/cb</sgr:author>
-            <sgr:comment>Vorbereitung Go Live</sgr:comment>
-        </sgr:changelog>
-    </sgr:releaseNotes>
-    
-		<sgr:functionalProfile>
-			<sgr:profileNumber>
-				<sgr:specsOwnerId>0</sgr:specsOwnerId>
-				<sgr:profileIdentification>Inverter</sgr:profileIdentification>
-				<sgr:subProfileIdent>SunspCommon001</sgr:subProfileIdent>
-				<sgr:sgrLevelOfOperation>4</sgr:sgrLevelOfOperation>
-				<sgr:versionNumber>
-					<sgr:primaryVersionNumber>0</sgr:primaryVersionNumber>
-					<sgr:secondaryVersionNumber>2</sgr:secondaryVersionNumber>
-					<sgr:subReleaseVersionNumber>2</sgr:subReleaseVersionNumber>
-				</sgr:versionNumber>
-			</sgr:profileNumber>
-		</sgr:functionalProfile>
-		<sgr:dpListElement>
-			<sgr:dataPoint datapointName="SunspecID"
-				mroVisibilityIndicator="M" rwpDatadirection="R"
-				unit="NONE">
-				<sgr:dataType>
-					<sgr:int32U>0</sgr:int32U>
-				</sgr:dataType>
-				<sgr:dpNameList>
-					<sgr:sSUNSPECName>SID</sgr:sSUNSPECName>
-				</sgr:dpNameList>
-				<sgr:dpLegibDesc>
-					<sgr:textElement>Well-known value. Uniquely identifies this as a SunSpec Modbus Map. </sgr:textElement>
-					<sgr:language>en</sgr:language>
-				</sgr:dpLegibDesc>
-			</sgr:dataPoint>
-		</sgr:dpListElement>
-		<sgr:dpListElement>
-			<sgr:dataPoint datapointName="SunspCommonModelID"
-				rwpDatadirection="R" mroVisibilityIndicator="M"
-				unit="NONE">
-				<sgr:dataType>
-					<sgr:int16U>1</sgr:int16U>
-				</sgr:dataType>
-				<sgr:dpNameList>
-					<sgr:sSUNSPECName>ID</sgr:sSUNSPECName></sgr:dpNameList>
-			</sgr:dataPoint>
-			<sgr:genAttribute></sgr:genAttribute>
-		</sgr:dpListElement>		
-		<sgr:dpListElement>
-			<sgr:dataPoint datapointName="ManufName" mroVisibilityIndicator="M"
-				rwpDatadirection="R" unit="NONE">
-				<sgr:dataType>
-					<sgr:string>sgr:string</sgr:string>
-				</sgr:dataType>
-				<sgr:dpNameList>
-					<sgr:sManufName>Manufacturer</sgr:sManufName>
-					<sgr:sSUNSPECName>Mn</sgr:sSUNSPECName>
-				</sgr:dpNameList>
-			</sgr:dataPoint>
-		</sgr:dpListElement>	
-		<sgr:dpListElement>
-			<sgr:dataPoint datapointName="DeviceName" mroVisibilityIndicator="M"
-				rwpDatadirection="R" unit="NONE">
-				<sgr:dataType>
-					<sgr:string>sgr:string</sgr:string>
-				</sgr:dataType>
-				<sgr:dpNameList>
-					<sgr:sManufName>Device</sgr:sManufName>
-					<sgr:sSUNSPECName>Dn</sgr:sSUNSPECName>
-				</sgr:dpNameList>
-			</sgr:dataPoint>
-		</sgr:dpListElement>
-		<sgr:dpListElement>
-			<sgr:dataPoint datapointName="SWVersion"
-				mroVisibilityIndicator="R" rwpDatadirection="R"
-				unit="NONE">
-				<sgr:dataType>
-					<sgr:string>sgr:string</sgr:string>					
-				</sgr:dataType>
-				<sgr:dpNameList>
-					<sgr:sSUNSPECName>Vr</sgr:sSUNSPECName></sgr:dpNameList>
-			</sgr:dataPoint>
-		</sgr:dpListElement>
-    </sgr:SGrFunctionalProfileFrame>
+<sgr:SGrFunctionalProfileFrame xmlns:sgr="http://www.smartgridready.com/ns/V0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/SGrIncluder.xsd">
+  <sgr:releaseNotes>
+    <sgr:state>Review</sgr:state>
+    <sgr:remarks>
+      This functional profile is in preliminary state. Before implementing external-interfaces or any other
+      functionality, the detailed functionality must be verified with the inverter manufacturer.
+    </sgr:remarks>
+    <sgr:changelog>
+      <sgr:version>0.2.1</sgr:version>
+      <sgr:date>2023-02-22</sgr:date>
+      <sgr:author>IBT/cb</sgr:author>
+      <sgr:comment>Vorbereitung Go Live</sgr:comment>
+    </sgr:changelog>
+  </sgr:releaseNotes>
+  <sgr:functionalProfile>
+    <sgr:profileNumber>
+      <sgr:specsOwnerId>0</sgr:specsOwnerId>
+      <sgr:profileIdentification>Inverter</sgr:profileIdentification>
+      <sgr:subProfileIdent>SunspCommon001</sgr:subProfileIdent>
+      <sgr:sgrLevelOfOperation>4</sgr:sgrLevelOfOperation>
+      <sgr:versionNumber>
+        <sgr:primaryVersionNumber>0</sgr:primaryVersionNumber>
+        <sgr:secondaryVersionNumber>2</sgr:secondaryVersionNumber>
+        <sgr:subReleaseVersionNumber>2</sgr:subReleaseVersionNumber>
+      </sgr:versionNumber>
+    </sgr:profileNumber>
+  </sgr:functionalProfile>
+  <sgr:dpListElement>
+    <sgr:dataPoint datapointName="SunspecID" mroVisibilityIndicator="M" rwpDatadirection="R" unit="NONE">
+      <sgr:dataType>
+        <sgr:int32U>0</sgr:int32U>
+      </sgr:dataType>
+      <sgr:dpNameList>
+        <sgr:sSUNSPECName>SID</sgr:sSUNSPECName>
+      </sgr:dpNameList>
+      <sgr:dpLegibDesc>
+        <sgr:textElement>Well-known value. Uniquely identifies this as a SunSpec Modbus Map. </sgr:textElement>
+        <sgr:language>en</sgr:language>
+      </sgr:dpLegibDesc>
+    </sgr:dataPoint>
+  </sgr:dpListElement>
+  <sgr:dpListElement>
+    <sgr:dataPoint datapointName="SunspCommonModelID" rwpDatadirection="R" mroVisibilityIndicator="M" unit="NONE">
+      <sgr:dataType>
+        <sgr:int16U>1</sgr:int16U>
+      </sgr:dataType>
+      <sgr:dpNameList>
+        <sgr:sSUNSPECName>ID</sgr:sSUNSPECName>
+      </sgr:dpNameList>
+    </sgr:dataPoint>
+    <sgr:genAttribute></sgr:genAttribute>
+  </sgr:dpListElement>
+  <sgr:dpListElement>
+    <sgr:dataPoint datapointName="ManufName" mroVisibilityIndicator="M" rwpDatadirection="R" unit="NONE">
+      <sgr:dataType>
+        <sgr:string>sgr:string</sgr:string>
+      </sgr:dataType>
+      <sgr:dpNameList>
+        <sgr:sManufName>Manufacturer</sgr:sManufName>
+        <sgr:sSUNSPECName>Mn</sgr:sSUNSPECName>
+      </sgr:dpNameList>
+    </sgr:dataPoint>
+  </sgr:dpListElement>
+  <sgr:dpListElement>
+    <sgr:dataPoint datapointName="DeviceName" mroVisibilityIndicator="M" rwpDatadirection="R" unit="NONE">
+      <sgr:dataType>
+        <sgr:string>sgr:string</sgr:string>
+      </sgr:dataType>
+      <sgr:dpNameList>
+        <sgr:sManufName>Device</sgr:sManufName>
+        <sgr:sSUNSPECName>Dn</sgr:sSUNSPECName>
+      </sgr:dpNameList>
+    </sgr:dataPoint>
+  </sgr:dpListElement>
+  <sgr:dpListElement>
+    <sgr:dataPoint datapointName="SWVersion" mroVisibilityIndicator="R" rwpDatadirection="R" unit="NONE">
+      <sgr:dataType>
+        <sgr:string>sgr:string</sgr:string>
+      </sgr:dataType>
+      <sgr:dpNameList>
+        <sgr:sSUNSPECName>Vr</sgr:sSUNSPECName>
+      </sgr:dpNameList>
+    </sgr:dataPoint>
+  </sgr:dpListElement>
+</sgr:SGrFunctionalProfileFrame>

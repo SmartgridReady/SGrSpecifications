@@ -1,132 +1,133 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="/xsl/SGr.xsl"?>
-<sgr:SGrFunctionalProfileFrame xmlns:sgr="http://www.smartgridready.com/ns/V0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/SGrIncluder.xsd">
-	<sgr:releaseNotes>
-		<sgr:state>Published</sgr:state>
-		<sgr:changelog>
-			<sgr:version>0.2.2</sgr:version>
-			<sgr:date>2022-11-17</sgr:date>
-			<sgr:author>Ergo/mm</sgr:author>
-			<sgr:comment>Vorbereitung beta test</sgr:comment>
-		</sgr:changelog>
-		<sgr:changelog>
-			<sgr:version>1.0.0</sgr:version>
-			<sgr:date>2023-04-21</sgr:date>
-			<sgr:author>SGr/sz</sgr:author>
-			<sgr:comment>Finalisierung</sgr:comment>
-		</sgr:changelog>		
-	</sgr:releaseNotes>
-	<sgr:functionalProfile>
-		<sgr:profileNumber>
-			<sgr:specsOwnerId>0</sgr:specsOwnerId>
-			<sgr:profileIdentification>NonSpecific</sgr:profileIdentification>
-			<sgr:subProfileIdent>ReactivePowerAC</sgr:subProfileIdent>
-			<sgr:sgrLevelOfOperation>m</sgr:sgrLevelOfOperation>
-			<sgr:versionNumber>
-				<sgr:primaryVersionNumber>1</sgr:primaryVersionNumber>
-				<sgr:secondaryVersionNumber>0</sgr:secondaryVersionNumber>
-				<sgr:subReleaseVersionNumber>0</sgr:subReleaseVersionNumber>
-			</sgr:versionNumber>
-		</sgr:profileNumber>
-		<sgr:fpLegibDesc>
-			<sgr:textElement>
-				<![CDATA[	
-					<img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
-					<strong>Messung der Blindleistung</strong><br>
-					Monitoring Funktionsprofil für Stromerzeuger und Stromverbraucher zur Messung Blindleistung im Wechselstromnetz, für
-					regeltechnische Zwecke und/oder zur Überwachung von regulatorischen Vorgaben bei Leistungstarifen.
-		
-					<p>Dieses Funktionsprofil erlaubt sowohl die Messung der Gesamtblindleistung wie auch die Blindleistung der drei
-						einzelnen Phasen. Eine der folgenden Varianten muss bei der Implementierung des Funktionsprofiles
-						umgesetzt werden:
-					<ul>
-						<li>Einphasige Geräte geben die Gesamtblindleistung an (ReactivePowerACtot)</li>
-						<li>3-phasige Geräte ohne Gesamtblindleistungsmessung geben die Blindleistung pro Phase an (ReactivePowerACL1, ReactivePowerACL2, ReactivePowerACL3)</li>
-						<li>3-phasige Geräte mit Einzelphasen- und Gesamtblindleistungsmessung geben alle Datenpunkte an</li>
-					</ul>
-					</p>
-				]]>
-			</sgr:textElement>
-			<sgr:language>de</sgr:language>
-		</sgr:fpLegibDesc>
-		<sgr:fpLegibDesc>
-			<sgr:textElement>
-				<![CDATA[	
-					<img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
-					<strong>Reactive Power Measurement</strong><br>
-					Monitoring functional profile for power generators and consumers for reflecting the reactive power. 
-		
-					<p>With this functional profile you can measure the total active power as well as the active power of the three individual phases.
-						One of the following options must be implemented for fulfilling the functional profile:
-					<ul>
-						<li>Single-phase devices use the total reactive power data point (ReactivePowerACtot)</li>
-						<li>Three-phase devices without measurement of the total reactive power use the data points per phase (ReactivePowerACL1, ReactivePowerACL2, ReactivePowerACL3)</li>
-						<li>Three-phase devices with measurement of the total reactive power use all data points</li>
-					</ul>
-					</p>
-				]]>
-			</sgr:textElement>
-			<sgr:language>en</sgr:language>
-		</sgr:fpLegibDesc>		
-	</sgr:functionalProfile>
-	<sgr:dpListElement>
-		<sgr:dataPoint datapointName="ReactivePowerACtot" rwpDatadirection="R" unit="KILOVOLT_AMPERES_REACTIVE" mroVisibilityIndicator="R">
-			<sgr:dataType>
-				<sgr:float64>0</sgr:float64>
-			</sgr:dataType>
-			<sgr:dpLegibDesc>
-				<sgr:textElement>Erfassung der gesamten Blindleistung</sgr:textElement>
-				<sgr:language>de</sgr:language>
-			</sgr:dpLegibDesc>
-			<sgr:dpLegibDesc>
-				<sgr:textElement>Total reactive power measurement</sgr:textElement>
-				<sgr:language>en</sgr:language>
-			</sgr:dpLegibDesc>
-		</sgr:dataPoint>
-	</sgr:dpListElement>
-	<sgr:dpListElement>
-		<sgr:dataPoint datapointName="ReactivePowerACL1" rwpDatadirection="R" unit="KILOVOLT_AMPERES_REACTIVE" mroVisibilityIndicator="R">
-			<sgr:dataType>
-				<sgr:float64>0</sgr:float64>
-			</sgr:dataType>
-			<sgr:dpLegibDesc>
-				<sgr:textElement>Erfassung der Blindleistung Phase 1</sgr:textElement>
-				<sgr:language>de</sgr:language>
-			</sgr:dpLegibDesc>
-			<sgr:dpLegibDesc>
-				<sgr:textElement>Reactive power measurement of phase 1</sgr:textElement>
-				<sgr:language>en</sgr:language>
-			</sgr:dpLegibDesc>			
-		</sgr:dataPoint>
-	</sgr:dpListElement>
-	<sgr:dpListElement>
-		<sgr:dataPoint datapointName="ReactivePowerACL2" rwpDatadirection="R" unit="KILOVOLT_AMPERES_REACTIVE" mroVisibilityIndicator="R">
-			<sgr:dataType>
-				<sgr:float64>0</sgr:float64>
-			</sgr:dataType>
-			<sgr:dpLegibDesc>
-				<sgr:textElement>Erfassung der Blindleistung Phase 2</sgr:textElement>
-				<sgr:language>de</sgr:language>
-			</sgr:dpLegibDesc>
-			<sgr:dpLegibDesc>
-				<sgr:textElement>Reactive power measurement of phase 2</sgr:textElement>
-				<sgr:language>en</sgr:language>
-			</sgr:dpLegibDesc>			
-		</sgr:dataPoint>
-	</sgr:dpListElement>
-	<sgr:dpListElement>
-		<sgr:dataPoint datapointName="ReactivePowerACL3" rwpDatadirection="R" unit="KILOVOLT_AMPERES_REACTIVE" mroVisibilityIndicator="R">
-			<sgr:dataType>
-				<sgr:float64>0</sgr:float64>
-			</sgr:dataType>
-			<sgr:dpLegibDesc>
-				<sgr:textElement>Erfassung der Blindleistung Phase 3</sgr:textElement>
-				<sgr:language>de</sgr:language>
-			</sgr:dpLegibDesc>
-			<sgr:dpLegibDesc>
-				<sgr:textElement>Reactive power measurement of phase 3</sgr:textElement>
-				<sgr:language>en</sgr:language>
-			</sgr:dpLegibDesc>			
-		</sgr:dataPoint>
-	</sgr:dpListElement>
+<sgr:SGrFunctionalProfileFrame xmlns:sgr="http://www.smartgridready.com/ns/V0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/SGrIncluder.xsd">
+  <sgr:releaseNotes>
+    <sgr:state>Published</sgr:state>
+    <sgr:changelog>
+      <sgr:version>0.2.2</sgr:version>
+      <sgr:date>2022-11-17</sgr:date>
+      <sgr:author>Ergo/mm</sgr:author>
+      <sgr:comment>Vorbereitung beta test</sgr:comment>
+    </sgr:changelog>
+    <sgr:changelog>
+      <sgr:version>1.0.0</sgr:version>
+      <sgr:date>2023-04-21</sgr:date>
+      <sgr:author>SGr/sz</sgr:author>
+      <sgr:comment>Finalisierung</sgr:comment>
+    </sgr:changelog>
+  </sgr:releaseNotes>
+  <sgr:functionalProfile>
+    <sgr:profileNumber>
+      <sgr:specsOwnerId>0</sgr:specsOwnerId>
+      <sgr:profileIdentification>NonSpecific</sgr:profileIdentification>
+      <sgr:subProfileIdent>ReactivePowerAC</sgr:subProfileIdent>
+      <sgr:sgrLevelOfOperation>m</sgr:sgrLevelOfOperation>
+      <sgr:versionNumber>
+        <sgr:primaryVersionNumber>1</sgr:primaryVersionNumber>
+        <sgr:secondaryVersionNumber>0</sgr:secondaryVersionNumber>
+        <sgr:subReleaseVersionNumber>0</sgr:subReleaseVersionNumber>
+      </sgr:versionNumber>
+    </sgr:profileNumber>
+    <sgr:fpLegibDesc>
+      <sgr:textElement>
+        <![CDATA[	
+          <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
+          <strong>Messung der Blindleistung</strong><br>
+          Monitoring Funktionsprofil für Stromerzeuger und Stromverbraucher zur Messung Blindleistung im Wechselstromnetz, für
+          regeltechnische Zwecke und/oder zur Überwachung von regulatorischen Vorgaben bei Leistungstarifen.
+          
+          <p>Dieses Funktionsprofil erlaubt sowohl die Messung der Gesamtblindleistung wie auch die Blindleistung der drei
+             einzelnen Phasen. Eine der folgenden Varianten muss bei der Implementierung des Funktionsprofiles
+             umgesetzt werden:
+          <ul>
+            <li>Einphasige Geräte geben die Gesamtblindleistung an (ReactivePowerACtot)</li>
+            <li>3-phasige Geräte ohne Gesamtblindleistungsmessung geben die Blindleistung pro Phase an (ReactivePowerACL1, ReactivePowerACL2, ReactivePowerACL3)</li>
+            <li>3-phasige Geräte mit Einzelphasen- und Gesamtblindleistungsmessung geben alle Datenpunkte an</li>
+          </ul>
+          </p>
+        ]]>
+      </sgr:textElement>
+      <sgr:language>de</sgr:language>
+    </sgr:fpLegibDesc>
+    <sgr:fpLegibDesc>
+      <sgr:textElement>
+          <![CDATA[	
+          <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
+          <strong>Reactive Power Measurement</strong><br>
+          Monitoring functional profile for power generators and consumers for reflecting the reactive power. 
+          
+          <p>With this functional profile you can measure the total active power as well as the active power of the three individual phases.
+             One of the following options must be implemented for fulfilling the functional profile:
+          <ul>
+            <li>Single-phase devices use the total reactive power data point (ReactivePowerACtot)</li>
+            <li>Three-phase devices without measurement of the total reactive power use the data points per phase (ReactivePowerACL1, ReactivePowerACL2, ReactivePowerACL3)</li>
+            <li>Three-phase devices with measurement of the total reactive power use all data points</li>
+          </ul>
+          </p>
+        ]]>
+      </sgr:textElement>
+      <sgr:language>en</sgr:language>
+    </sgr:fpLegibDesc>
+  </sgr:functionalProfile>
+  <sgr:dpListElement>
+    <sgr:dataPoint datapointName="ReactivePowerACtot" rwpDatadirection="R" unit="KILOVOLT_AMPERES_REACTIVE" mroVisibilityIndicator="R">
+      <sgr:dataType>
+        <sgr:float64>0</sgr:float64>
+      </sgr:dataType>
+      <sgr:dpLegibDesc>
+        <sgr:textElement>Erfassung der gesamten Blindleistung</sgr:textElement>
+        <sgr:language>de</sgr:language>
+      </sgr:dpLegibDesc>
+      <sgr:dpLegibDesc>
+        <sgr:textElement>Total reactive power measurement</sgr:textElement>
+        <sgr:language>en</sgr:language>
+      </sgr:dpLegibDesc>
+    </sgr:dataPoint>
+  </sgr:dpListElement>
+  <sgr:dpListElement>
+    <sgr:dataPoint datapointName="ReactivePowerACL1" rwpDatadirection="R" unit="KILOVOLT_AMPERES_REACTIVE" mroVisibilityIndicator="R">
+      <sgr:dataType>
+        <sgr:float64>0</sgr:float64>
+      </sgr:dataType>
+      <sgr:dpLegibDesc>
+        <sgr:textElement>Erfassung der Blindleistung Phase 1</sgr:textElement>
+        <sgr:language>de</sgr:language>
+      </sgr:dpLegibDesc>
+      <sgr:dpLegibDesc>
+        <sgr:textElement>Reactive power measurement of phase 1</sgr:textElement>
+        <sgr:language>en</sgr:language>
+      </sgr:dpLegibDesc>
+    </sgr:dataPoint>
+  </sgr:dpListElement>
+  <sgr:dpListElement>
+    <sgr:dataPoint datapointName="ReactivePowerACL2" rwpDatadirection="R" unit="KILOVOLT_AMPERES_REACTIVE" mroVisibilityIndicator="R">
+      <sgr:dataType>
+        <sgr:float64>0</sgr:float64>
+      </sgr:dataType>
+      <sgr:dpLegibDesc>
+        <sgr:textElement>Erfassung der Blindleistung Phase 2</sgr:textElement>
+        <sgr:language>de</sgr:language>
+      </sgr:dpLegibDesc>
+      <sgr:dpLegibDesc>
+        <sgr:textElement>Reactive power measurement of phase 2</sgr:textElement>
+        <sgr:language>en</sgr:language>
+      </sgr:dpLegibDesc>
+    </sgr:dataPoint>
+  </sgr:dpListElement>
+  <sgr:dpListElement>
+    <sgr:dataPoint datapointName="ReactivePowerACL3" rwpDatadirection="R" unit="KILOVOLT_AMPERES_REACTIVE" mroVisibilityIndicator="R">
+      <sgr:dataType>
+        <sgr:float64>0</sgr:float64>
+      </sgr:dataType>
+      <sgr:dpLegibDesc>
+        <sgr:textElement>Erfassung der Blindleistung Phase 3</sgr:textElement>
+        <sgr:language>de</sgr:language>
+      </sgr:dpLegibDesc>
+      <sgr:dpLegibDesc>
+        <sgr:textElement>Reactive power measurement of phase 3</sgr:textElement>
+        <sgr:language>en</sgr:language>
+      </sgr:dpLegibDesc>
+    </sgr:dataPoint>
+  </sgr:dpListElement>
 </sgr:SGrFunctionalProfileFrame>

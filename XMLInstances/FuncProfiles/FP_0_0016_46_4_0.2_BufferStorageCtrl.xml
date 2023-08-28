@@ -1,202 +1,189 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="/xsl/SGr.xsl"?>
-<sgr:SGrFunctionalProfileFrame xmlns:sgr="http://www.smartgridready.com/ns/V0/"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/SGrIncluder.xsd">
-	<sgr:releaseNotes>
-		<sgr:state>Review</sgr:state>
-		<sgr:remarks>This functional profile is in preliminary state. Before implementing external-interfaces or any other
-            functionality, the detailed functionality must be verified with the battery manufacturer.
-        </sgr:remarks>
-		<sgr:changelog>
-			<sgr:version>0.1.1</sgr:version>
-			<sgr:date>2021-04-05</sgr:date>
-			<sgr:author>IBT/cb</sgr:author>
-			<sgr:comment>Vorbereitung beta test</sgr:comment>
-		</sgr:changelog>
-		<sgr:changelog>
-			<sgr:version>0.2.2</sgr:version>
-			<sgr:date>2022-10-31</sgr:date>
-			<sgr:author>Ergo/sz</sgr:author>
-			<sgr:comment>Finalisierung Go-Live</sgr:comment>
-		</sgr:changelog>
-	</sgr:releaseNotes>
-	<sgr:functionalProfile>
-		<sgr:profileNumber>
-			<sgr:specsOwnerId>0</sgr:specsOwnerId>
-			<sgr:profileIdentification>HeatPumpControl</sgr:profileIdentification>
-			<sgr:subProfileIdent>BufferStorageCtrl</sgr:subProfileIdent>
-			<sgr:sgrLevelOfOperation>m</sgr:sgrLevelOfOperation>
-			<sgr:versionNumber>
-				<sgr:primaryVersionNumber>0</sgr:primaryVersionNumber>
-				<sgr:secondaryVersionNumber>2</sgr:secondaryVersionNumber>
-				<sgr:subReleaseVersionNumber>2</sgr:subReleaseVersionNumber>
-			</sgr:versionNumber>
-		</sgr:profileNumber>
-		<sgr:fpNameList>
-			<sgr:sLV1Name>BufferStorageCtrl</sgr:sLV1Name>
-		</sgr:fpNameList>
-		<sgr:fpLegibDesc>
-			<sgr:textElement>Dieses Profil definiert die erweiterten Datenpunkte zum Grundprofil,
-				welche zur Steuerung eines Pufferspeichers zur Verfügung gestellt werden. Das
-				Pufferspeicher-Profil muss immer in Kombination mit dem Grundprofil der Wärmepumpe
-				(3.6.3) bewirtschaftet werden. Es können mehrere Pufferspeicher-Profile definiert
-				werden (oder auch gar kein Profil, wenn kein Pufferspeicher vorhanden).</sgr:textElement>
-			<sgr:language>de</sgr:language>
-		</sgr:fpLegibDesc>
-	</sgr:functionalProfile>
-	<sgr:dpListElement>
-		<sgr:dataPoint datapointName="HeatWTempStptOffset" mroVisibilityIndicator="R"
-			rwpDatadirection="RW" unit="DEGREES_CELSIUS">
-			<sgr:dataType>
-                <sgr:float64>0.0</sgr:float64>
-            </sgr:dataType>
-			<sgr:dpNameList>
-				<sgr:sLV1Name>HeatWTempStptOffset</sgr:sLV1Name>
-			</sgr:dpNameList>
-			<sgr:dpLegibDesc>
-				<sgr:textElement>
-					Relative Anhebung/Absenkung der Solltemperatur (+/-) für den
-					Heiz-Pufferspeicher.
-				</sgr:textElement>
-				<sgr:language>de</sgr:language>
-			</sgr:dpLegibDesc>
-		</sgr:dataPoint>
-		<sgr:genAttribute>
-			<sgr:maxVal>5.0</sgr:maxVal>
-			<sgr:minVal>-5.0</sgr:minVal>
-		</sgr:genAttribute>
-	</sgr:dpListElement>
-
-	<sgr:dpListElement>
-		<sgr:dataPoint datapointName="ActBufferState" mroVisibilityIndicator="O"
-			rwpDatadirection="R" unit="NONE">
-			<sgr:dataType>
-				<sgr:enum2bitmapIndex>
-					<sgr:hovHPActBufferState>HPB_OFF</sgr:hovHPActBufferState>
-				</sgr:enum2bitmapIndex>
-
-			</sgr:dataType>
-			<sgr:dpNameList>
-				<sgr:sLV1Name>ActBufferState</sgr:sLV1Name>
-			</sgr:dpNameList>
-			<sgr:dpLegibDesc>
-				<sgr:textElement><![CDATA[
-					<p>Auslesen des aktuellen Status des Bufferspeichers (BitmapRegister)</p>
-					<ol>				
-					<li><strong>HPB_OFF:</strong> keine Anforderung, AUS </li>
-					<li><strong>HPB_TEMP_LOW:</strong> Anforderung, Temp. tief, PLP aus (Entladeschutz)</li>
-					<li><strong>HPB_RUNNING:</strong> Anforderung, Ladung läuft </li>
-					<li><strong>HPB_RUN_HOLD:</strong> Anforderung, Sollwert erfüllt, Nachlauf aktiv</li>
-					<li><strong>HPB_ON_TARGET:</strong> Anforderung, Sollwert erfüllt</li>
-					<li><strong>HPB_RESERVE:</strong>  </li>
-					<li><strong>HPB_ENER_COMPULSION:</strong> Energiezwang  </li>
-					<li><strong>HPB_SKIMMING:</strong> Abschöpffunktion </li>
-					<li><strong>HPB_SGR_INTENSIVIED:</strong> Vorzugsbetrieb SG-Ready bwp</li>
-					<li><strong>HPB_SGR_FORCED:</strong> Abnahmezwang SG-Ready bwp </li>
-					</ol>
-					]]>
-					</sgr:textElement>
-				<sgr:language>de</sgr:language>
-			</sgr:dpLegibDesc>
-		</sgr:dataPoint>
-	</sgr:dpListElement>
-
-	<sgr:dpListElement>
-		<sgr:dataPoint datapointName="ActHeatBufferTemp" mroVisibilityIndicator="M"
-			rwpDatadirection="R" unit="DEGREES_CELSIUS">
-			<sgr:dataType>
-                <sgr:float64>0.0</sgr:float64>
-            </sgr:dataType>
-			<sgr:dpNameList>
-				<sgr:sLV1Name>ActHeatBufferTemp</sgr:sLV1Name>
-			</sgr:dpNameList>
-			<sgr:dpLegibDesc>
-				<sgr:textElement>Aktuelle Ist-Temperatur des Heiz-Pufferspeichers oben</sgr:textElement>
-				<sgr:language>de</sgr:language>
-			</sgr:dpLegibDesc>
-		</sgr:dataPoint>
-	</sgr:dpListElement>
-
-	<sgr:dpListElement>
-		<sgr:dataPoint datapointName="ActHeatBufferTempUpper" mroVisibilityIndicator="O"
-			rwpDatadirection="R" unit="DEGREES_CELSIUS">
-			<sgr:dataType>
-                <sgr:float64>0.0</sgr:float64>
-            </sgr:dataType>
-			<sgr:dpNameList>
-				<sgr:sLV1Name>ActHeatBufferTempUpper</sgr:sLV1Name>
-			</sgr:dpNameList>
-			<sgr:dpLegibDesc>
-				<sgr:textElement>Aktuelle Ist-Temperatur des Heiz-Pufferspeichers oben</sgr:textElement>
-				<sgr:language>de</sgr:language>
-			</sgr:dpLegibDesc>
-		</sgr:dataPoint>
-	</sgr:dpListElement>
-
-	<sgr:dpListElement>
-		<sgr:dataPoint datapointName="ActHeatBufferTempLower" mroVisibilityIndicator="O"
-			rwpDatadirection="R" unit="DEGREES_CELSIUS">
-			<sgr:dataType>
-                <sgr:float64>0.0</sgr:float64>
-            </sgr:dataType>
-			<sgr:dpNameList>
-				<sgr:sLV1Name>ActHeatBufferTempLower</sgr:sLV1Name>
-			</sgr:dpNameList>
-			<sgr:dpLegibDesc>
-				<sgr:textElement>
-					Aktuelle Ist-Temperatur des Heiz-Pufferspeichers unten
-				</sgr:textElement>
-				<sgr:language>de</sgr:language>
-			</sgr:dpLegibDesc>
-		</sgr:dataPoint>
-	</sgr:dpListElement>
-
-	<sgr:dpListElement>
-		<sgr:dataPoint datapointName="ActCoolBufferTemp" mroVisibilityIndicator="O"
-			rwpDatadirection="R" unit="DEGREES_CELSIUS">
-			<sgr:dataType>
-                <sgr:float64>0.0</sgr:float64>
-            </sgr:dataType>
-			<sgr:dpNameList>
-				<sgr:sLV1Name>ActCoolBufferTemp</sgr:sLV1Name>
-			</sgr:dpNameList>
-			<sgr:dpLegibDesc>
-				<sgr:textElement>Aktuelle Ist-Temperatur des Kaelte-Pufferspeichers oben</sgr:textElement>
-				<sgr:language>de</sgr:language>
-			</sgr:dpLegibDesc>
-		</sgr:dataPoint>
-	</sgr:dpListElement>
-
-	<sgr:dpListElement>
-		<sgr:dataPoint datapointName="ActCoolBufferTempUpper" mroVisibilityIndicator="O"
-			rwpDatadirection="R" unit="DEGREES_CELSIUS">
-			<sgr:dataType>
-                <sgr:float64>0.0</sgr:float64>
-            </sgr:dataType>
-			<sgr:dpNameList>
-				<sgr:sLV1Name>ActCoolBufferTempUpper</sgr:sLV1Name>
-			</sgr:dpNameList>
-			<sgr:dpLegibDesc>
-				<sgr:textElement>Aktuelle Ist-Temperatur des Kaelte-Pufferspeichers oben</sgr:textElement>
-				<sgr:language>de</sgr:language>
-			</sgr:dpLegibDesc>
-		</sgr:dataPoint>
-	</sgr:dpListElement>
-
-	<sgr:dpListElement>
-		<sgr:dataPoint datapointName="ActCoolBufferTempLower" mroVisibilityIndicator="O"
-			rwpDatadirection="R" unit="DEGREES_CELSIUS">
-			<sgr:dataType>
-                <sgr:float64>0.0</sgr:float64>
-            </sgr:dataType>
-			<sgr:dpNameList>
-				<sgr:sLV1Name>ActCoolBufferTempLower</sgr:sLV1Name>
-			</sgr:dpNameList>
-			<sgr:dpLegibDesc>
-				<sgr:textElement>Aktuelle Ist-Temperatur des Kaelte-Pufferspeichers unten</sgr:textElement>
-				<sgr:language>de</sgr:language>
-			</sgr:dpLegibDesc>
-		</sgr:dataPoint>
-	</sgr:dpListElement>
+<sgr:SGrFunctionalProfileFrame xmlns:sgr="http://www.smartgridready.com/ns/V0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/SGrIncluder.xsd">
+  <sgr:releaseNotes>
+    <sgr:state>Review</sgr:state>
+    <sgr:remarks>
+      This functional profile is in preliminary state. Before implementing external-interfaces or any other
+      functionality, the detailed functionality must be verified with the battery manufacturer.
+    </sgr:remarks>
+    <sgr:changelog>
+      <sgr:version>0.1.1</sgr:version>
+      <sgr:date>2021-04-05</sgr:date>
+      <sgr:author>IBT/cb</sgr:author>
+      <sgr:comment>Vorbereitung beta test</sgr:comment>
+    </sgr:changelog>
+    <sgr:changelog>
+      <sgr:version>0.2.2</sgr:version>
+      <sgr:date>2022-10-31</sgr:date>
+      <sgr:author>Ergo/sz</sgr:author>
+      <sgr:comment>Finalisierung Go-Live</sgr:comment>
+    </sgr:changelog>
+  </sgr:releaseNotes>
+  <sgr:functionalProfile>
+    <sgr:profileNumber>
+      <sgr:specsOwnerId>0</sgr:specsOwnerId>
+      <sgr:profileIdentification>HeatPumpControl</sgr:profileIdentification>
+      <sgr:subProfileIdent>BufferStorageCtrl</sgr:subProfileIdent>
+      <sgr:sgrLevelOfOperation>m</sgr:sgrLevelOfOperation>
+      <sgr:versionNumber>
+        <sgr:primaryVersionNumber>0</sgr:primaryVersionNumber>
+        <sgr:secondaryVersionNumber>2</sgr:secondaryVersionNumber>
+        <sgr:subReleaseVersionNumber>2</sgr:subReleaseVersionNumber>
+      </sgr:versionNumber>
+    </sgr:profileNumber>
+    <sgr:fpNameList>
+      <sgr:sLV1Name>BufferStorageCtrl</sgr:sLV1Name>
+    </sgr:fpNameList>
+    <sgr:fpLegibDesc>
+      <sgr:textElement>
+        Dieses Profil definiert die erweiterten Datenpunkte zum Grundprofil,
+        welche zur Steuerung eines Pufferspeichers zur Verfügung gestellt werden. Das
+        Pufferspeicher-Profil muss immer in Kombination mit dem Grundprofil der Wärmepumpe
+        (3.6.3) bewirtschaftet werden. Es können mehrere Pufferspeicher-Profile definiert
+        werden (oder auch gar kein Profil, wenn kein Pufferspeicher vorhanden).
+      </sgr:textElement>
+      <sgr:language>de</sgr:language>
+    </sgr:fpLegibDesc>
+  </sgr:functionalProfile>
+  <sgr:dpListElement>
+    <sgr:dataPoint datapointName="HeatWTempStptOffset" mroVisibilityIndicator="R" rwpDatadirection="RW" unit="DEGREES_CELSIUS">
+      <sgr:dataType>
+        <sgr:float64>0.0</sgr:float64>
+      </sgr:dataType>
+      <sgr:dpNameList>
+        <sgr:sLV1Name>HeatWTempStptOffset</sgr:sLV1Name>
+      </sgr:dpNameList>
+      <sgr:dpLegibDesc>
+        <sgr:textElement>
+          Relative Anhebung/Absenkung der Solltemperatur (+/-) für den
+          Heiz-Pufferspeicher.
+        </sgr:textElement>
+        <sgr:language>de</sgr:language>
+      </sgr:dpLegibDesc>
+    </sgr:dataPoint>
+    <sgr:genAttribute>
+      <sgr:maxVal>5.0</sgr:maxVal>
+      <sgr:minVal>-5.0</sgr:minVal>
+    </sgr:genAttribute>
+  </sgr:dpListElement>
+  <sgr:dpListElement>
+    <sgr:dataPoint datapointName="ActBufferState" mroVisibilityIndicator="O" rwpDatadirection="R" unit="NONE">
+      <sgr:dataType>
+        <sgr:enum2bitmapIndex>
+          <sgr:hovHPActBufferState>HPB_OFF</sgr:hovHPActBufferState>
+        </sgr:enum2bitmapIndex>
+      </sgr:dataType>
+      <sgr:dpNameList>
+        <sgr:sLV1Name>ActBufferState</sgr:sLV1Name>
+      </sgr:dpNameList>
+      <sgr:dpLegibDesc>
+        <sgr:textElement>
+          <![CDATA[
+            <p>Auslesen des aktuellen Status des Bufferspeichers (BitmapRegister)</p>
+            <ol>				
+              <li><strong>HPB_OFF:</strong> keine Anforderung, AUS </li>
+              <li><strong>HPB_TEMP_LOW:</strong> Anforderung, Temp. tief, PLP aus (Entladeschutz)</li>
+              <li><strong>HPB_RUNNING:</strong> Anforderung, Ladung läuft </li>
+              <li><strong>HPB_RUN_HOLD:</strong> Anforderung, Sollwert erfüllt, Nachlauf aktiv</li>
+              <li><strong>HPB_ON_TARGET:</strong> Anforderung, Sollwert erfüllt</li>
+              <li><strong>HPB_RESERVE:</strong>  </li>
+              <li><strong>HPB_ENER_COMPULSION:</strong> Energiezwang  </li>
+              <li><strong>HPB_SKIMMING:</strong> Abschöpffunktion </li>
+              <li><strong>HPB_SGR_INTENSIVIED:</strong> Vorzugsbetrieb SG-Ready bwp</li>
+              <li><strong>HPB_SGR_FORCED:</strong> Abnahmezwang SG-Ready bwp </li>
+            </ol>
+          ]]>
+        </sgr:textElement>
+        <sgr:language>de</sgr:language>
+      </sgr:dpLegibDesc>
+    </sgr:dataPoint>
+  </sgr:dpListElement>
+  <sgr:dpListElement>
+    <sgr:dataPoint datapointName="ActHeatBufferTemp" mroVisibilityIndicator="M" rwpDatadirection="R" unit="DEGREES_CELSIUS">
+      <sgr:dataType>
+        <sgr:float64>0.0</sgr:float64>
+      </sgr:dataType>
+      <sgr:dpNameList>
+        <sgr:sLV1Name>ActHeatBufferTemp</sgr:sLV1Name>
+      </sgr:dpNameList>
+      <sgr:dpLegibDesc>
+        <sgr:textElement>Aktuelle Ist-Temperatur des Heiz-Pufferspeichers oben</sgr:textElement>
+        <sgr:language>de</sgr:language>
+      </sgr:dpLegibDesc>
+    </sgr:dataPoint>
+  </sgr:dpListElement>
+  <sgr:dpListElement>
+    <sgr:dataPoint datapointName="ActHeatBufferTempUpper" mroVisibilityIndicator="O" rwpDatadirection="R" unit="DEGREES_CELSIUS">
+      <sgr:dataType>
+        <sgr:float64>0.0</sgr:float64>
+      </sgr:dataType>
+      <sgr:dpNameList>
+        <sgr:sLV1Name>ActHeatBufferTempUpper</sgr:sLV1Name>
+      </sgr:dpNameList>
+      <sgr:dpLegibDesc>
+        <sgr:textElement>Aktuelle Ist-Temperatur des Heiz-Pufferspeichers oben</sgr:textElement>
+        <sgr:language>de</sgr:language>
+      </sgr:dpLegibDesc>
+    </sgr:dataPoint>
+  </sgr:dpListElement>
+  <sgr:dpListElement>
+    <sgr:dataPoint datapointName="ActHeatBufferTempLower" mroVisibilityIndicator="O" rwpDatadirection="R" unit="DEGREES_CELSIUS">
+      <sgr:dataType>
+        <sgr:float64>0.0</sgr:float64>
+      </sgr:dataType>
+      <sgr:dpNameList>
+        <sgr:sLV1Name>ActHeatBufferTempLower</sgr:sLV1Name>
+      </sgr:dpNameList>
+      <sgr:dpLegibDesc>
+        <sgr:textElement>
+          Aktuelle Ist-Temperatur des Heiz-Pufferspeichers unten
+        </sgr:textElement>
+        <sgr:language>de</sgr:language>
+      </sgr:dpLegibDesc>
+    </sgr:dataPoint>
+  </sgr:dpListElement>
+  <sgr:dpListElement>
+    <sgr:dataPoint datapointName="ActCoolBufferTemp" mroVisibilityIndicator="O" rwpDatadirection="R" unit="DEGREES_CELSIUS">
+      <sgr:dataType>
+        <sgr:float64>0.0</sgr:float64>
+      </sgr:dataType>
+      <sgr:dpNameList>
+        <sgr:sLV1Name>ActCoolBufferTemp</sgr:sLV1Name>
+      </sgr:dpNameList>
+      <sgr:dpLegibDesc>
+        <sgr:textElement>Aktuelle Ist-Temperatur des Kaelte-Pufferspeichers oben</sgr:textElement>
+        <sgr:language>de</sgr:language>
+      </sgr:dpLegibDesc>
+    </sgr:dataPoint>
+  </sgr:dpListElement>
+  <sgr:dpListElement>
+    <sgr:dataPoint datapointName="ActCoolBufferTempUpper" mroVisibilityIndicator="O" rwpDatadirection="R" unit="DEGREES_CELSIUS">
+      <sgr:dataType>
+        <sgr:float64>0.0</sgr:float64>
+      </sgr:dataType>
+      <sgr:dpNameList>
+        <sgr:sLV1Name>ActCoolBufferTempUpper</sgr:sLV1Name>
+      </sgr:dpNameList>
+      <sgr:dpLegibDesc>
+        <sgr:textElement>Aktuelle Ist-Temperatur des Kaelte-Pufferspeichers oben</sgr:textElement>
+        <sgr:language>de</sgr:language>
+      </sgr:dpLegibDesc>
+    </sgr:dataPoint>
+  </sgr:dpListElement>
+  <sgr:dpListElement>
+    <sgr:dataPoint datapointName="ActCoolBufferTempLower" mroVisibilityIndicator="O" rwpDatadirection="R" unit="DEGREES_CELSIUS">
+      <sgr:dataType>
+        <sgr:float64>0.0</sgr:float64>
+      </sgr:dataType>
+      <sgr:dpNameList>
+        <sgr:sLV1Name>ActCoolBufferTempLower</sgr:sLV1Name>
+      </sgr:dpNameList>
+      <sgr:dpLegibDesc>
+        <sgr:textElement>Aktuelle Ist-Temperatur des Kaelte-Pufferspeichers unten</sgr:textElement>
+        <sgr:language>de</sgr:language>
+      </sgr:dpLegibDesc>
+    </sgr:dataPoint>
+  </sgr:dpListElement>
 </sgr:SGrFunctionalProfileFrame>

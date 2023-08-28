@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!-- Copyright (c) 2023, SmartGridready, Switzerland. All rights reserved. Source https://github.com/SmartgridReady/SGrSpecifications -->
-<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:sgr="http://www.smartgridready.com/ns/V0/" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.smartgridready.com/ns/V0/" version="0.2.2">
-  <include schemaLocation="../Generic/SGrBaseDeviceFrame.xsd" />
-  <include schemaLocation="./SGrRestAPI_EIDataTypes.xsd" />
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:sgr="http://www.smartgridready.com/ns/V0/" attributeFormDefault="unqualified" elementFormDefault="qualified"
+  targetNamespace="http://www.smartgridready.com/ns/V0/" version="0.2.2">
+  <include schemaLocation="../Generic/SGrBaseDeviceFrame.xsd"/>
+  <include schemaLocation="./SGrRestAPI_EIDataTypes.xsd"/>
   
   <!-- Rest Device Frame -->
   <complexType name="SGrRestAPIDataPointType">
@@ -12,8 +13,8 @@
     <complexContent>
       <extension base="sgr:SGrDataPointBaseType">
         <sequence>
-          <element maxOccurs="unbounded" minOccurs="1" name="restAPIDataPoint" type="sgr:SGrRestAPIDataPointDescriptionType" />
-          <element maxOccurs="unbounded" minOccurs="0" name="restAPIAttr" type="sgr:SGrAttr4RestAPIType" />
+          <element maxOccurs="unbounded" minOccurs="1" name="restAPIDataPoint" type="sgr:SGrRestAPIDataPointDescriptionType"/>
+          <element maxOccurs="unbounded" minOccurs="0" name="restAPIAttr" type="sgr:SGrAttr4RestAPIType"/>
         </sequence>
       </extension>
     </complexContent>
@@ -25,8 +26,8 @@
     <complexContent>
       <extension base="sgr:SGrFunctionalProfileBaseType">
         <sequence>
-          <element maxOccurs="unbounded" minOccurs="0" name="restAPIAttr" type="sgr:SGrAttr4RestAPIType" />
-          <element maxOccurs="unbounded" minOccurs="1" name="dpListElement" type="sgr:SGrRestAPIDataPointType" />
+          <element maxOccurs="unbounded" minOccurs="0" name="restAPIAttr" type="sgr:SGrAttr4RestAPIType"/>
+          <element maxOccurs="unbounded" minOccurs="1" name="dpListElement" type="sgr:SGrRestAPIDataPointType"/>
         </sequence>
       </extension>
     </complexContent>
@@ -38,9 +39,9 @@
     <complexContent>
       <extension base="sgr:SGrDeviceBaseType">
         <sequence>
-          <element maxOccurs="unbounded" minOccurs="0" name="restAPIAttr" type="sgr:SGrAttr4RestAPIType" />
-          <element maxOccurs="1" minOccurs="1" name="restAPIInterfaceDesc" type="sgr:SGrRestAPIInterfaceDescriptionType" />
-          <element maxOccurs="unbounded" minOccurs="1" name="fpListElement" type="sgr:SGrRestAPIFunctionalProfileType" />
+          <element maxOccurs="unbounded" minOccurs="0" name="restAPIAttr" type="sgr:SGrAttr4RestAPIType"/>
+          <element maxOccurs="1" minOccurs="1" name="restAPIInterfaceDesc" type="sgr:SGrRestAPIInterfaceDescriptionType"/>
+          <element maxOccurs="unbounded" minOccurs="1" name="fpListElement" type="sgr:SGrRestAPIFunctionalProfileType"/>
         </sequence>
       </extension>
     </complexContent>
