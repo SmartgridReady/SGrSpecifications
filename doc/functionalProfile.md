@@ -64,4 +64,4 @@ SGr allows to associate attributes to a data point. See [SGrAttr4GenericType](SG
 Any attribute defined on the functional profile level are mandatory to any product that implements this functional profile. However, the product can optionally add further attributes based on its own needs.
 
 ## Open Points
-- What are the rules for naming a functional profile (sgr:functionalProfile@profileName)? Is this strict (then it should be part of the classification), or loose (then it should be part of the legibDesc)?
+- What are the rules for naming a functional profile (sgr:functionalProfile@profileName)? Is this strict (then it should be part of the classification), or loose (then it should be part of the legibleDescription)?
