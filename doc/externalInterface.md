@@ -50,7 +50,7 @@ The release note section contains meta data that descibe history and current sta
 | Element     | Description |
 |-------------|-------------|
 | devNameList  | a list of relevant namespaces list for to display names used in different standards like EEBUS, IEC6850,, SAREF4ENER etc. (see [SGrNamelistType](SGrNamelistType.md))|
-| devLegibDesc | optional, can occure multiple times, but ideally just a once per language. Contains details concerning the intended use case of the functional profile. |
+| legibleDescription | optional, can occure multiple times, but ideally just a once per language. Contains details concerning the intended use case of the functional profile. |
 
 ### Transport Service
 | Element     | Description |

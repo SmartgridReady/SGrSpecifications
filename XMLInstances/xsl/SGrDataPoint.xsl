@@ -57,8 +57,8 @@
 						<xsl:apply-templates select="sgr:dataPoint/sgr:dpNameList" />
 					</xsl:if>
 
-					<!-- dpLegibDesc (4x opt) -->
-					<xsl:apply-templates select="sgr:dataPoint/sgr:dpLegibDesc" />
+					<!-- legibleDescription (4x opt) -->
+					<xsl:apply-templates select="sgr:dataPoint/sgr:legibleDescription" />
 
 					<!-- dpPrgDesc (4x opt)-->
 	                <xsl:apply-templates select="sgr:dataPoint/sgr:dpPrgDesc" />
@@ -109,7 +109,7 @@
 	</xsl:template>
 
 	<!-- SGrLegibDocumentationType -->
-	<xsl:template match="sgr:dpLegibDesc">
+	<xsl:template match="sgr:legibleDescription">
 		<tr>
 			<xsl:attribute name="lang">
 				<xsl:value-of select="sgr:language" />
