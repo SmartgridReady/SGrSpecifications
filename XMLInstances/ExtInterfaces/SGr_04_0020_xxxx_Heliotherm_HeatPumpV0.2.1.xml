@@ -85,7 +85,7 @@
     <sgr:dpListElement>
       <sgr:dataPoint datapointName="HPOpModeCmd" mroVisibilityIndicator="M" rwpDatadirection="W" unit="NONE">
         <sgr:dataType>
-          <sgr:int16U>0</sgr:int16U>
+          <sgr:int16U/>
         </sgr:dataType>
         <sgr:dpNameList>
           <sgr:sLV1Name>HPOpModeCmd</sgr:sLV1Name>
@@ -101,7 +101,7 @@
       </sgr:dataPoint>
       <sgr:modbusDataPoint>
         <sgr:modbusDataType>
-          <sgr:int16>0</sgr:int16>
+          <sgr:int16/>
         </sgr:modbusDataType>
         <sgr:modbusFirstRegisterReference registerType="HoldRegister" addr="100" bitRank="0"/>
         <sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
@@ -117,7 +117,7 @@
     <sgr:dpListElement>
       <sgr:dataPoint datapointName="HPOpState" mroVisibilityIndicator="M" rwpDatadirection="R" unit="NONE">
         <sgr:dataType>
-          <sgr:int16U>0</sgr:int16U>
+          <sgr:int16U/>
         </sgr:dataType>
         <sgr:dpNameList>
           <sgr:sLV1Name>HPOpState</sgr:sLV1Name>
@@ -133,7 +133,7 @@
       </sgr:dataPoint>
       <sgr:modbusDataPoint>
         <sgr:modbusDataType>
-          <sgr:int8U>0</sgr:int8U>
+          <sgr:int8U/>
         </sgr:modbusDataType>
         <sgr:modbusFirstRegisterReference registerType="HoldRegister" addr="100" bitRank="0"/>
         <sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
@@ -149,7 +149,7 @@
     <sgr:dpListElement>
       <sgr:dataPoint datapointName="ErrorNrSGr" mroVisibilityIndicator="M" rwpDatadirection="R" unit="NONE">
         <sgr:dataType>
-          <sgr:int16U>0</sgr:int16U>
+          <sgr:int16U/>
         </sgr:dataType>
         <sgr:dpNameList>
           <sgr:sLV1Name>Fault_HP_SGr</sgr:sLV1Name>
@@ -165,7 +165,7 @@
       </sgr:dataPoint>
       <sgr:modbusDataPoint>
         <sgr:modbusDataType>
-          <sgr:int8U>0</sgr:int8U>
+          <sgr:int8U/>
         </sgr:modbusDataType>
         <sgr:modbusFirstRegisterReference registerType="InputRegister" addr="26" bitRank="0"/>
         <sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
@@ -181,21 +181,21 @@
     <sgr:dpListElement>
       <sgr:dataPoint datapointName="OutsideAirTemp" mroVisibilityIndicator="M" rwpDatadirection="R" unit="DEGREES_CELSIUS">
         <sgr:dataType>
-          <sgr:float64>0</sgr:float64>
+          <sgr:float64/>
         </sgr:dataType>
         <sgr:dpNameList>
           <sgr:sLV1Name>OutsideAirTemp</sgr:sLV1Name>
         </sgr:dpNameList>
         <sgr:legibleDescription>
           <sgr:textElement>
-						Aktuelle Aussentemperatur (gemessen über Aussenfühler)
-					</sgr:textElement>
+            Aktuelle Aussentemperatur (gemessen über Aussenfühler)
+          </sgr:textElement>
           <sgr:language>de</sgr:language>
         </sgr:legibleDescription>
       </sgr:dataPoint>
       <sgr:modbusDataPoint>
         <sgr:modbusDataType>
-          <sgr:int16>0</sgr:int16>
+          <sgr:int16/>
         </sgr:modbusDataType>
         <sgr:modbusFirstRegisterReference registerType="InputRegister" addr="10" bitRank="0"/>
         <sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
@@ -211,12 +211,12 @@
     <sgr:dpListElement>
       <sgr:dataPoint datapointName="FlowWaterTemp" mroVisibilityIndicator="M" rwpDatadirection="R" unit="DEGREES_CELSIUS">
         <sgr:dataType>
-          <sgr:float64>0.0</sgr:float64>
+          <sgr:float64/>
         </sgr:dataType>
       </sgr:dataPoint>
       <sgr:modbusDataPoint>
         <sgr:modbusDataType>
-          <sgr:int16>0</sgr:int16>
+          <sgr:int16/>
         </sgr:modbusDataType>
         <sgr:modbusFirstRegisterReference registerType="InputRegister" addr="12" bitRank="0"/>
         <sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
@@ -232,12 +232,12 @@
     <sgr:dpListElement>
       <sgr:dataPoint datapointName="ReturnFlowWaterTemp" mroVisibilityIndicator="M" rwpDatadirection="R" unit="DEGREES_CELSIUS">
         <sgr:dataType>
-          <sgr:float64>0.0</sgr:float64>
+          <sgr:float64/>
         </sgr:dataType>
       </sgr:dataPoint>
       <sgr:modbusDataPoint>
         <sgr:modbusDataType>
-          <sgr:int16>0</sgr:int16>
+          <sgr:int16/>
         </sgr:modbusDataType>
         <sgr:modbusFirstRegisterReference registerType="InputRegister" addr="13" bitRank="0"/>
         <sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
@@ -268,23 +268,24 @@
         <sgr:sLV1Name>CompressorPwrCtrl</sgr:sLV1Name>
       </sgr:fpNameList>
       <sgr:legibleDescription>
-        <sgr:textElement>The compressor speed or the heat pump power can be controlled (not both). For compressor speed, a setpoint speed is sent to register 126, For power, a set point input is sent to the heat pump via register 125. The heat pump then regulates the compressor speed upwards or downwards until the setpoint is reached. However, it can take up to several minutes for the heat pump to reach the setpoint. It must also be taken into account that the heat pump does not change compressor speed during the pre-regulation time (usually between 2 and 10 minutes, depending on the heat pump type) and therefore cannot yet regulate to the setpoint.
-				</sgr:textElement>
+        <sgr:textElement>
+          The compressor speed or the heat pump power can be controlled (not both). For compressor speed, a setpoint speed is sent to register 126, For power, a set point input is sent to the heat pump via register 125. The heat pump then regulates the compressor speed upwards or downwards until the setpoint is reached. However, it can take up to several minutes for the heat pump to reach the setpoint. It must also be taken into account that the heat pump does not change compressor speed during the pre-regulation time (usually between 2 and 10 minutes, depending on the heat pump type) and therefore cannot yet regulate to the setpoint.
+        </sgr:textElement>
         <sgr:language>en</sgr:language>
       </sgr:legibleDescription>
     </sgr:functionalProfile>
     <sgr:dpListElement>
       <sgr:dataPoint datapointName="SpeedCtrlSetpt" mroVisibilityIndicator="M" rwpDatadirection="W" unit="PERCENT">
         <sgr:dataType>
-          <sgr:float64>0.0</sgr:float64>
+          <sgr:float64/>
         </sgr:dataType>
         <sgr:dpNameList>
           <sgr:sLV1Name>SpeedCtrlSetpt</sgr:sLV1Name>
         </sgr:dpNameList>
         <sgr:legibleDescription>
           <sgr:textElement>
-						?check: Adress durch cb? Absolute Vorgabe der Drehzahl in der gewählten Betriebsart
-					</sgr:textElement>
+            ?check: Adress durch cb? Absolute Vorgabe der Drehzahl in der gewählten Betriebsart
+          </sgr:textElement>
           <sgr:language>de</sgr:language>
         </sgr:legibleDescription>
       </sgr:dataPoint>
@@ -294,7 +295,7 @@
       </sgr:genAttribute>
       <sgr:modbusDataPoint>
         <sgr:modbusDataType>
-          <sgr:int16>0</sgr:int16>
+          <sgr:int16/>
         </sgr:modbusDataType>
         <sgr:modbusFirstRegisterReference registerType="HoldRegister" addr="126" bitRank="0"/>
         <sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
@@ -310,21 +311,21 @@
     <sgr:dpListElement>
       <sgr:dataPoint datapointName="ActSpeed" mroVisibilityIndicator="M" rwpDatadirection="R" unit="PERCENT">
         <sgr:dataType>
-          <sgr:float64>0.0</sgr:float64>
+          <sgr:float64/>
         </sgr:dataType>
         <sgr:dpNameList>
           <sgr:sLV1Name>ActSpeed</sgr:sLV1Name>
         </sgr:dpNameList>
         <sgr:legibleDescription>
           <sgr:textElement>
-						Effektive Drehzahl des Verdichters
-					</sgr:textElement>
+            Effektive Drehzahl des Verdichters
+          </sgr:textElement>
           <sgr:language>de</sgr:language>
         </sgr:legibleDescription>
       </sgr:dataPoint>
       <sgr:modbusDataPoint>
         <sgr:modbusDataType>
-          <sgr:int16>0</sgr:int16>
+          <sgr:int16/>
         </sgr:modbusDataType>
         <sgr:modbusFirstRegisterReference registerType="InputRegister" addr="29" bitRank="0"/>
         <sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
@@ -340,33 +341,33 @@
     <sgr:dpListElement>
       <sgr:dataPoint datapointName="PowerCtrlSetpt" mroVisibilityIndicator="O" rwpDatadirection="R" unit="WATTS">
         <sgr:dataType>
-          <sgr:float64>0.0</sgr:float64>
+          <sgr:float64/>
         </sgr:dataType>
         <sgr:dpNameList>
           <sgr:sLV1Name>ActPower</sgr:sLV1Name>
         </sgr:dpNameList>
         <sgr:legibleDescription>
           <sgr:textElement>
-						Effektive elektrischen Aufnahmeleistung des Verdichters
-					</sgr:textElement>
+            Effektive elektrischen Aufnahmeleistung des Verdichters
+          </sgr:textElement>
           <sgr:language>de</sgr:language>
         </sgr:legibleDescription>
         <sgr:legibleDescription>
           <sgr:textElement>
-						To allow setpoint control, register 117 for PV demand should be set to 1. Should we create a PowerCtrlSetptEn ?. In RCG web interface, Menu item "Photovoltaics" > PV selection on > MODBUS (TCP or RTU). Also, in web controller, Main menu > "WNA" > FU External on > ON and Hot water > DHW preparation > Parameters > DHW Max to "53" Heating circuit > Parameter> Offset to "3"; Mixer1 and 2 > Parameter> Offset to "3".
-					</sgr:textElement>
+            To allow setpoint control, register 117 for PV demand should be set to 1. Should we create a PowerCtrlSetptEn ?. In RCG web interface, Menu item "Photovoltaics" > PV selection on > MODBUS (TCP or RTU). Also, in web controller, Main menu > "WNA" > FU External on > ON and Hot water > DHW preparation > Parameters > DHW Max to "53" Heating circuit > Parameter> Offset to "3"; Mixer1 and 2 > Parameter> Offset to "3".
+          </sgr:textElement>
           <sgr:language>en</sgr:language>
         </sgr:legibleDescription>
         <sgr:dpPrgDesc>
           <sgr:textElement>
-						For power setpoint control, register 117 for PV demand should be set to 1 and register 126 should not be written.
-					</sgr:textElement>
+            For power setpoint control, register 117 for PV demand should be set to 1 and register 126 should not be written.
+          </sgr:textElement>
           <sgr:language>en</sgr:language>
         </sgr:dpPrgDesc>
       </sgr:dataPoint>
       <sgr:modbusDataPoint>
         <sgr:modbusDataType>
-          <sgr:int16>0</sgr:int16>
+          <sgr:int16/>
         </sgr:modbusDataType>
         <sgr:modbusFirstRegisterReference registerType="HoldRegister" addr="125" bitRank="0"/>
         <sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
@@ -382,21 +383,21 @@
     <sgr:dpListElement>
       <sgr:dataPoint datapointName="ActPowerACtot" mroVisibilityIndicator="O" rwpDatadirection="R" unit="WATTS">
         <sgr:dataType>
-          <sgr:float64>0.0</sgr:float64>
+          <sgr:float64/>
         </sgr:dataType>
         <sgr:dpNameList>
           <sgr:sLV1Name>ActPower</sgr:sLV1Name>
         </sgr:dpNameList>
         <sgr:legibleDescription>
           <sgr:textElement>
-						Effektive elektrischen Aufnahmeleistung des Verdichters (der WP?)
-					</sgr:textElement>
+            Effektive elektrischen Aufnahmeleistung des Verdichters (der WP?)
+          </sgr:textElement>
           <sgr:language>de</sgr:language>
         </sgr:legibleDescription>
       </sgr:dataPoint>
       <sgr:modbusDataPoint>
         <sgr:modbusDataType>
-          <sgr:int32U>0</sgr:int32U>
+          <sgr:int32U/>
         </sgr:modbusDataType>
         <sgr:modbusFirstRegisterReference registerType="InputRegister" addr="70" bitRank="0"/>
         <sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
@@ -438,7 +439,7 @@
     <sgr:dpListElement>
       <sgr:dataPoint datapointName="HeatCoolCtrlOpModeCmd" mroVisibilityIndicator="M" rwpDatadirection="RW" unit="NONE">
         <sgr:dataType>
-          <sgr:int16>0</sgr:int16>
+          <sgr:int16/>
         </sgr:dataType>
         <sgr:dpNameList>
           <sgr:sLV1Name>HeatCoolCtrlOpModeCmd</sgr:sLV1Name>
@@ -454,7 +455,7 @@
       </sgr:dataPoint>
       <sgr:modbusDataPoint>
         <sgr:modbusDataType>
-          <sgr:int16>0</sgr:int16>
+          <sgr:int16/>
         </sgr:modbusDataType>
         <sgr:modbusFirstRegisterReference registerType="HoldRegister" addr="107" bitRank="0"/>
         <sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
@@ -470,7 +471,7 @@
     <sgr:dpListElement>
       <sgr:dataPoint datapointName="HeatCoolOpState" mroVisibilityIndicator="M" rwpDatadirection="R" unit="NONE">
         <sgr:dataType>
-          <sgr:int16>0</sgr:int16>
+          <sgr:int16/>
         </sgr:dataType>
         <sgr:dpNameList>
           <sgr:sLV1Name>HeatCoolOpState</sgr:sLV1Name>
@@ -486,7 +487,7 @@
       </sgr:dataPoint>
       <sgr:modbusDataPoint>
         <sgr:modbusDataType>
-          <sgr:int16>0</sgr:int16>
+          <sgr:int16/>
         </sgr:modbusDataType>
         <sgr:modbusFirstRegisterReference registerType="HoldRegister" addr="107" bitRank="0"/>
         <sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
@@ -502,7 +503,7 @@
     <sgr:dpListElement>
       <sgr:dataPoint datapointName="FlowWaterTempStpt" mroVisibilityIndicator="O" rwpDatadirection="R" unit="DEGREES_CELSIUS">
         <sgr:dataType>
-          <sgr:float64>0.0</sgr:float64>
+          <sgr:float64/>
         </sgr:dataType>
         <sgr:dpNameList>
           <sgr:sLV1Name>FlowWaterTempStpt</sgr:sLV1Name>
@@ -518,7 +519,7 @@
       </sgr:dataPoint>
       <sgr:modbusDataPoint>
         <sgr:modbusDataType>
-          <sgr:int16>0</sgr:int16>
+          <sgr:int16/>
         </sgr:modbusDataType>
         <sgr:modbusFirstRegisterReference registerType="HoldRegister" addr="109" bitRank="0"/>
         <sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
@@ -534,7 +535,7 @@
     <sgr:dpListElement>
       <sgr:dataPoint datapointName="FlowWaterTempStptEn" mroVisibilityIndicator="O" rwpDatadirection="R" unit="NONE">
         <sgr:dataType>
-          <sgr:boolean>true</sgr:boolean>
+          <sgr:boolean/>
         </sgr:dataType>
         <sgr:dpNameList>
           <sgr:sLV1Name>FlowWaterTempStptEN</sgr:sLV1Name>
@@ -550,7 +551,7 @@
       </sgr:dataPoint>
       <sgr:modbusDataPoint>
         <sgr:modbusDataType>
-          <sgr:int16>0</sgr:int16>
+          <sgr:int16/>
         </sgr:modbusDataType>
         <sgr:modbusFirstRegisterReference registerType="HoldRegister" addr="110" bitRank="0"/>
         <sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
@@ -566,7 +567,7 @@
     <sgr:dpListElement>
       <sgr:dataPoint datapointName="ReturnFlowWaterTemp" mroVisibilityIndicator="O" rwpDatadirection="R" unit="DEGREES_CELSIUS">
         <sgr:dataType>
-          <sgr:float64>0.0</sgr:float64>
+          <sgr:float64/>
         </sgr:dataType>
         <sgr:dpNameList>
           <sgr:sLV1Name>ReturnFlowWaterTemp</sgr:sLV1Name>
@@ -578,7 +579,7 @@
       </sgr:dataPoint>
       <sgr:modbusDataPoint>
         <sgr:modbusDataType>
-          <sgr:int16>0</sgr:int16>
+          <sgr:int16/>
         </sgr:modbusDataType>
         <sgr:modbusFirstRegisterReference registerType="InputRegister" addr="12" bitRank="0"/>
         <sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
@@ -620,7 +621,7 @@
     <sgr:dpListElement>
       <sgr:dataPoint datapointName="HeatCoolCtrlOpModeCmd" mroVisibilityIndicator="M" rwpDatadirection="RW" unit="NONE">
         <sgr:dataType>
-          <sgr:int16>0</sgr:int16>
+          <sgr:int16/>
         </sgr:dataType>
         <sgr:dpNameList>
           <sgr:sLV1Name>HeatCoolCtrlOpModeCmd</sgr:sLV1Name>
@@ -632,7 +633,7 @@
       </sgr:dataPoint>
       <sgr:modbusDataPoint>
         <sgr:modbusDataType>
-          <sgr:int16>0</sgr:int16>
+          <sgr:int16/>
         </sgr:modbusDataType>
         <sgr:modbusFirstRegisterReference registerType="HoldRegister" addr="112" bitRank="0"/>
         <sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
@@ -648,7 +649,7 @@
     <sgr:dpListElement>
       <sgr:dataPoint datapointName="HeatCoolOpState" mroVisibilityIndicator="M" rwpDatadirection="R" unit="NONE">
         <sgr:dataType>
-          <sgr:int16>0</sgr:int16>
+          <sgr:int16/>
         </sgr:dataType>
         <sgr:dpNameList>
           <sgr:sLV1Name>HeatCoolOpState</sgr:sLV1Name>
@@ -664,7 +665,7 @@
       </sgr:dataPoint>
       <sgr:modbusDataPoint>
         <sgr:modbusDataType>
-          <sgr:int16>0</sgr:int16>
+          <sgr:int16/>
         </sgr:modbusDataType>
         <sgr:modbusFirstRegisterReference registerType="HoldRegister" addr="112" bitRank="0"/>
         <sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
@@ -680,7 +681,7 @@
     <sgr:dpListElement>
       <sgr:dataPoint datapointName="FlowWaterTempStpt" mroVisibilityIndicator="O" rwpDatadirection="R" unit="DEGREES_CELSIUS">
         <sgr:dataType>
-          <sgr:float64>0.0</sgr:float64>
+          <sgr:float64/>
         </sgr:dataType>
         <sgr:dpNameList>
           <sgr:sLV1Name>FlowWaterTempStpt</sgr:sLV1Name>
@@ -692,7 +693,7 @@
       </sgr:dataPoint>
       <sgr:modbusDataPoint>
         <sgr:modbusDataType>
-          <sgr:int16>0</sgr:int16>
+          <sgr:int16/>
         </sgr:modbusDataType>
         <sgr:modbusFirstRegisterReference registerType="HoldRegister" addr="114" bitRank="0"/>
         <sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
@@ -708,7 +709,7 @@
     <sgr:dpListElement>
       <sgr:dataPoint datapointName="FlowWaterTempStptEn" mroVisibilityIndicator="O" rwpDatadirection="R" unit="NONE">
         <sgr:dataType>
-          <sgr:boolean>true</sgr:boolean>
+          <sgr:boolean/>
         </sgr:dataType>
         <sgr:dpNameList>
           <sgr:sLV1Name>FlowWaterTempStptEN</sgr:sLV1Name>
@@ -720,7 +721,7 @@
       </sgr:dataPoint>
       <sgr:modbusDataPoint>
         <sgr:modbusDataType>
-          <sgr:int16>0</sgr:int16>
+          <sgr:int16/>
         </sgr:modbusDataType>
         <sgr:modbusFirstRegisterReference registerType="HoldRegister" addr="115" bitRank="0"/>
         <sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
@@ -736,7 +737,7 @@
     <sgr:dpListElement>
       <sgr:dataPoint datapointName="ReturnFlowWaterTemp" mroVisibilityIndicator="O" rwpDatadirection="R" unit="DEGREES_CELSIUS">
         <sgr:dataType>
-          <sgr:float64>0.0</sgr:float64>
+          <sgr:float64/>
         </sgr:dataType>
         <sgr:dpNameList>
           <sgr:sLV1Name>ReturnFlowWaterTemp</sgr:sLV1Name>
@@ -748,7 +749,7 @@
       </sgr:dataPoint>
       <sgr:modbusDataPoint>
         <sgr:modbusDataType>
-          <sgr:int16>0</sgr:int16>
+          <sgr:int16/>
         </sgr:modbusDataType>
         <sgr:modbusFirstRegisterReference registerType="InputRegister" addr="12" bitRank="0"/>
         <sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
@@ -786,7 +787,7 @@
     <sgr:dpListElement>
       <sgr:dataPoint datapointName="ActDomHotWaterTemp" mroVisibilityIndicator="M" rwpDatadirection="R" unit="DEGREES_CELSIUS">
         <sgr:dataType>
-          <sgr:float64>0.0</sgr:float64>
+          <sgr:float64/>
         </sgr:dataType>
         <sgr:dpNameList>
           <sgr:sLV1Name>ActDomHotWaterTemp</sgr:sLV1Name>
@@ -802,7 +803,7 @@
       </sgr:dataPoint>
       <sgr:modbusDataPoint>
         <sgr:modbusDataType>
-          <sgr:int16U>0</sgr:int16U>
+          <sgr:int16U/>
         </sgr:modbusDataType>
         <sgr:modbusFirstRegisterReference registerType="InputRegister" addr="11" bitRank="0"/>
         <sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
@@ -818,27 +819,27 @@
     <sgr:dpListElement>
       <sgr:dataPoint datapointName="DomHotWTempStpt" mroVisibilityIndicator="M" rwpDatadirection="W" unit="DEGREES_CELSIUS">
         <sgr:dataType>
-          <sgr:float64>0.0</sgr:float64>
+          <sgr:float64/>
         </sgr:dataType>
         <sgr:dpNameList>
           <sgr:sLV1Name>DomHotWTempStpt</sgr:sLV1Name>
         </sgr:dpNameList>
         <sgr:legibleDescription>
           <sgr:textElement>
-						Domestic hot water temperature setpoint. Another register also available for minimum allowed temp
-					</sgr:textElement>
+            Domestic hot water temperature setpoint. Another register also available for minimum allowed temp
+          </sgr:textElement>
           <sgr:language>de</sgr:language>
         </sgr:legibleDescription>
         <sgr:legibleDescription>
           <sgr:textElement>
-						Domestic hot water temperature setpoint. also 133 work fo reading. Set 134 to 0 to have effect by having temperature active.
-					</sgr:textElement>
+            Domestic hot water temperature setpoint. also 133 work fo reading. Set 134 to 0 to have effect by having temperature active.
+          </sgr:textElement>
           <sgr:language>en</sgr:language>
         </sgr:legibleDescription>
       </sgr:dataPoint>
       <sgr:modbusDataPoint>
         <sgr:modbusDataType>
-          <sgr:int16U>0</sgr:int16U>
+          <sgr:int16U/>
         </sgr:modbusDataType>
         <sgr:modbusFirstRegisterReference registerType="HoldRegister" addr="105" bitRank="0"/>
         <sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
@@ -869,35 +870,34 @@
         <sgr:sLV1Name>BufferStorageCtrl</sgr:sLV1Name>
       </sgr:fpNameList>
       <sgr:legibleDescription>
-        <sgr:textElement>x
-				</sgr:textElement>
+        <sgr:textElement>x</sgr:textElement>
         <sgr:language>de</sgr:language>
       </sgr:legibleDescription>
     </sgr:functionalProfile>
     <sgr:dpListElement>
       <sgr:dataPoint datapointName="HeatWTempStptOffset" mroVisibilityIndicator="M" rwpDatadirection="W" unit="DEGREES_CELSIUS">
         <sgr:dataType>
-          <sgr:float64>0.0</sgr:float64>
+          <sgr:float64/>
         </sgr:dataType>
         <sgr:dpNameList>
           <sgr:sLV1Name>HeatWTempStpt</sgr:sLV1Name>
         </sgr:dpNameList>
         <sgr:legibleDescription>
           <sgr:textElement>
-						Sollwerte der Solltemperatur (+/-) für den Heiz-Pufferspeicher.
-					</sgr:textElement>
+            Sollwerte der Solltemperatur (+/-) für den Heiz-Pufferspeicher.
+          </sgr:textElement>
           <sgr:language>de</sgr:language>
         </sgr:legibleDescription>
         <sgr:legibleDescription>
           <sgr:textElement>
-						Setpoint for tank temperature. to be considered, depends on the WNA settings of the heat pump which should be on Puffer Speicher mode. Otherwise, it will be used for return temperature setpoint setting
-					</sgr:textElement>
+            Setpoint for tank temperature. to be considered, depends on the WNA settings of the heat pump which should be on Puffer Speicher mode. Otherwise, it will be used for return temperature setpoint setting
+          </sgr:textElement>
           <sgr:language>en</sgr:language>
         </sgr:legibleDescription>
       </sgr:dataPoint>
       <sgr:modbusDataPoint>
         <sgr:modbusDataType>
-          <sgr:int16>0</sgr:int16>
+          <sgr:int16/>
         </sgr:modbusDataType>
         <sgr:modbusFirstRegisterReference registerType="HoldRegister" addr="102" bitRank="0"/>
         <sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
@@ -913,7 +913,7 @@
     <sgr:dpListElement>
       <sgr:dataPoint datapointName="HeatWTempStptOffsetEn" mroVisibilityIndicator="O" rwpDatadirection="R" unit="NONE">
         <sgr:dataType>
-          <sgr:boolean>true</sgr:boolean>
+          <sgr:boolean/>
         </sgr:dataType>
         <sgr:dpNameList>
           <sgr:sLV1Name>FlowWaterTempStptEN</sgr:sLV1Name>
@@ -929,7 +929,7 @@
       </sgr:dataPoint>
       <sgr:modbusDataPoint>
         <sgr:modbusDataType>
-          <sgr:int16>0</sgr:int16>
+          <sgr:int16/>
         </sgr:modbusDataType>
         <sgr:modbusFirstRegisterReference registerType="HoldRegister" addr="103" bitRank="0"/>
         <sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
@@ -945,7 +945,7 @@
     <sgr:dpListElement>
       <sgr:dataPoint datapointName="ActHeatBufferTemp" mroVisibilityIndicator="M" rwpDatadirection="R" unit="DEGREES_CELSIUS">
         <sgr:dataType>
-          <sgr:float64>0.0</sgr:float64>
+          <sgr:float64/>
         </sgr:dataType>
         <sgr:dpNameList>
           <sgr:sLV1Name>ActHeatBufferTemp</sgr:sLV1Name>
@@ -957,7 +957,7 @@
       </sgr:dataPoint>
       <sgr:modbusDataPoint>
         <sgr:modbusDataType>
-          <sgr:int16>0</sgr:int16>
+          <sgr:int16/>
         </sgr:modbusDataType>
         <sgr:modbusFirstRegisterReference registerType="InputRegister" addr="14" bitRank="0"/>
         <sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
@@ -996,7 +996,7 @@
     <sgr:dpListElement>
       <sgr:dataPoint datapointName="RoomZoneTempSetpt" mroVisibilityIndicator="R" rwpDatadirection="RW" unit="DEGREES_CELSIUS">
         <sgr:dataType>
-          <sgr:float64>0.0</sgr:float64>
+          <sgr:float64/>
         </sgr:dataType>
         <sgr:dpNameList>
           <sgr:sLV1Name>RoomZoneTemp</sgr:sLV1Name>
@@ -1008,7 +1008,7 @@
       </sgr:dataPoint>
       <sgr:modbusDataPoint>
         <sgr:modbusDataType>
-          <sgr:int16>0</sgr:int16>
+          <sgr:int16/>
         </sgr:modbusDataType>
         <sgr:modbusFirstRegisterReference registerType="HoldRegister" addr="108" bitRank="0"/>
         <sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
@@ -1039,15 +1039,14 @@
         <sgr:sLV1Name>RoomTempCtrl</sgr:sLV1Name>
       </sgr:fpNameList>
       <sgr:legibleDescription>
-        <sgr:textElement>x
-				</sgr:textElement>
+        <sgr:textElement>x</sgr:textElement>
         <sgr:language>de</sgr:language>
       </sgr:legibleDescription>
     </sgr:functionalProfile>
     <sgr:dpListElement>
       <sgr:dataPoint datapointName="RoomZoneTempSetpt" mroVisibilityIndicator="R" rwpDatadirection="RW" unit="DEGREES_CELSIUS">
         <sgr:dataType>
-          <sgr:float64>0.0</sgr:float64>
+          <sgr:float64/>
         </sgr:dataType>
         <sgr:dpNameList>
           <sgr:sLV1Name>RoomZoneTemp</sgr:sLV1Name>
@@ -1059,7 +1058,7 @@
       </sgr:dataPoint>
       <sgr:modbusDataPoint>
         <sgr:modbusDataType>
-          <sgr:int16>0</sgr:int16>
+          <sgr:int16/>
         </sgr:modbusDataType>
         <sgr:modbusFirstRegisterReference registerType="HoldRegister" addr="113" bitRank="0"/>
         <sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
@@ -1097,7 +1096,7 @@
     <sgr:dpListElement>
       <sgr:dataPoint datapointName=" ActiveEnergyACtot" mroVisibilityIndicator="R" rwpDatadirection="R" unit="KILOWATT_HOURS">
         <sgr:dataType>
-          <sgr:float64>0.0</sgr:float64>
+          <sgr:float64/>
         </sgr:dataType>
         <sgr:dpNameList>
           <sgr:sLV1Name> ActiveEnergyACtot</sgr:sLV1Name>
@@ -1109,7 +1108,7 @@
       </sgr:dataPoint>
       <sgr:modbusDataPoint>
         <sgr:modbusDataType>
-          <sgr:int32U>0</sgr:int32U>
+          <sgr:int32U/>
         </sgr:modbusDataType>
         <sgr:modbusFirstRegisterReference registerType="InputRegister" addr="68" bitRank="0"/>
         <sgr:dpSizeNrRegisters>2</sgr:dpSizeNrRegisters>
@@ -1125,7 +1124,7 @@
     <sgr:dpListElement>
       <sgr:dataPoint datapointName=" ActiveEnergyACheat" mroVisibilityIndicator="R" rwpDatadirection="R" unit="KILOWATT_HOURS">
         <sgr:dataType>
-          <sgr:float64>0.0</sgr:float64>
+          <sgr:float64/>
         </sgr:dataType>
         <sgr:dpNameList>
           <sgr:sLV1Name>ActiveEnergyACheat</sgr:sLV1Name>
@@ -1137,7 +1136,7 @@
       </sgr:dataPoint>
       <sgr:modbusDataPoint>
         <sgr:modbusDataType>
-          <sgr:int32U>0</sgr:int32U>
+          <sgr:int32U/>
         </sgr:modbusDataType>
         <sgr:modbusFirstRegisterReference registerType="InputRegister" addr="62" bitRank="0"/>
         <sgr:dpSizeNrRegisters>2</sgr:dpSizeNrRegisters>
@@ -1153,7 +1152,7 @@
     <sgr:dpListElement>
       <sgr:dataPoint datapointName="ThermalEnergyDomWater" mroVisibilityIndicator="R" rwpDatadirection="R" unit="KILOWATT_HOURS">
         <sgr:dataType>
-          <sgr:float64>0.0</sgr:float64>
+          <sgr:float64/>
         </sgr:dataType>
         <sgr:dpNameList>
           <sgr:sLV1Name>ThermalEnergyDomWater</sgr:sLV1Name>
@@ -1165,7 +1164,7 @@
       </sgr:dataPoint>
       <sgr:modbusDataPoint>
         <sgr:modbusDataType>
-          <sgr:int32U>0</sgr:int32U>
+          <sgr:int32U/>
         </sgr:modbusDataType>
         <sgr:modbusFirstRegisterReference registerType="InputRegister" addr="62" bitRank="0"/>
         <sgr:dpSizeNrRegisters>2</sgr:dpSizeNrRegisters>
@@ -1181,7 +1180,7 @@
     <sgr:dpListElement>
       <sgr:dataPoint datapointName="ThermalEnergyTot" mroVisibilityIndicator="R" rwpDatadirection="R" unit="KILOWATT_HOURS">
         <sgr:dataType>
-          <sgr:float64>0.0</sgr:float64>
+          <sgr:float64/>
         </sgr:dataType>
         <sgr:dpNameList>
           <sgr:sLV1Name>ThermalEnergyTot</sgr:sLV1Name>
@@ -1193,7 +1192,7 @@
       </sgr:dataPoint>
       <sgr:modbusDataPoint>
         <sgr:modbusDataType>
-          <sgr:int32U>0</sgr:int32U>
+          <sgr:int32U/>
         </sgr:modbusDataType>
         <sgr:modbusFirstRegisterReference registerType="InputRegister" addr="72" bitRank="0"/>
         <sgr:dpSizeNrRegisters>2</sgr:dpSizeNrRegisters>
@@ -1209,7 +1208,7 @@
     <sgr:dpListElement>
       <sgr:dataPoint datapointName="ThermalEnergyHeat" mroVisibilityIndicator="R" rwpDatadirection="R" unit="KILOWATT_HOURS">
         <sgr:dataType>
-          <sgr:float64>0.0</sgr:float64>
+          <sgr:float64/>
         </sgr:dataType>
         <sgr:dpNameList>
           <sgr:sLV1Name>ThermalEnergyHeat</sgr:sLV1Name>
@@ -1221,7 +1220,7 @@
       </sgr:dataPoint>
       <sgr:modbusDataPoint>
         <sgr:modbusDataType>
-          <sgr:int32U>0</sgr:int32U>
+          <sgr:int32U/>
         </sgr:modbusDataType>
         <sgr:modbusFirstRegisterReference registerType="InputRegister" addr="60" bitRank="0"/>
         <sgr:dpSizeNrRegisters>2</sgr:dpSizeNrRegisters>
@@ -1237,7 +1236,7 @@
     <sgr:dpListElement>
       <sgr:dataPoint datapointName="ThermalEnergyDomWater" mroVisibilityIndicator="R" rwpDatadirection="R" unit="KILOWATT_HOURS">
         <sgr:dataType>
-          <sgr:float64>0.0</sgr:float64>
+          <sgr:float64/>
         </sgr:dataType>
         <sgr:dpNameList>
           <sgr:sLV1Name>ThermalEnergyDomWater</sgr:sLV1Name>
@@ -1249,7 +1248,7 @@
       </sgr:dataPoint>
       <sgr:modbusDataPoint>
         <sgr:modbusDataType>
-          <sgr:int32U>0</sgr:int32U>
+          <sgr:int32U/>
         </sgr:modbusDataType>
         <sgr:modbusFirstRegisterReference registerType="InputRegister" addr="62" bitRank="0"/>
         <sgr:dpSizeNrRegisters>2</sgr:dpSizeNrRegisters>
@@ -1265,7 +1264,7 @@
     <sgr:dpListElement>
       <sgr:dataPoint datapointName="ActivePowerACtot" mroVisibilityIndicator="R" rwpDatadirection="R" unit="WATTS">
         <sgr:dataType>
-          <sgr:float64>0.0</sgr:float64>
+          <sgr:float64/>
         </sgr:dataType>
         <sgr:dpNameList>
           <sgr:sLV1Name>ActivePowerACtot</sgr:sLV1Name>
@@ -1277,7 +1276,7 @@
       </sgr:dataPoint>
       <sgr:modbusDataPoint>
         <sgr:modbusDataType>
-          <sgr:int32U>0</sgr:int32U>
+          <sgr:int32U/>
         </sgr:modbusDataType>
         <sgr:modbusFirstRegisterReference registerType="InputRegister" addr="70" bitRank="0"/>
         <sgr:dpSizeNrRegisters>2</sgr:dpSizeNrRegisters>
@@ -1293,27 +1292,27 @@
     <sgr:dpListElement>
       <sgr:dataPoint datapointName="ThermalPower" mroVisibilityIndicator="R" rwpDatadirection="R" unit="KILOWATTS">
         <sgr:dataType>
-          <sgr:float64>0.0</sgr:float64>
+          <sgr:float64/>
         </sgr:dataType>
         <sgr:dpNameList>
           <sgr:sLV1Name>ThermalPower</sgr:sLV1Name>
         </sgr:dpNameList>
         <sgr:legibleDescription>
           <sgr:textElement>
-						Thermisch Leistung total
-					</sgr:textElement>
+            Thermisch Leistung total
+          </sgr:textElement>
           <sgr:language>de</sgr:language>
         </sgr:legibleDescription>
         <sgr:legibleDescription>
           <sgr:textElement>
-						Total thermal power
-					</sgr:textElement>
+            Total thermal power
+          </sgr:textElement>
           <sgr:language>en</sgr:language>
         </sgr:legibleDescription>
       </sgr:dataPoint>
       <sgr:modbusDataPoint>
         <sgr:modbusDataType>
-          <sgr:int32U>0</sgr:int32U>
+          <sgr:int32U/>
         </sgr:modbusDataType>
         <sgr:modbusFirstRegisterReference registerType="InputRegister" addr="68" bitRank="0"/>
         <sgr:dpSizeNrRegisters>2</sgr:dpSizeNrRegisters>
@@ -1329,7 +1328,7 @@
     <sgr:dpListElement>
       <sgr:dataPoint datapointName="RuntimeHeating" mroVisibilityIndicator="R" rwpDatadirection="R" unit="HOURS">
         <sgr:dataType>
-          <sgr:float64>0.0</sgr:float64>
+          <sgr:float64/>
         </sgr:dataType>
         <sgr:dpNameList>
           <sgr:sLV1Name>RuntimeHeating</sgr:sLV1Name>
@@ -1341,7 +1340,7 @@
       </sgr:dataPoint>
       <sgr:modbusDataPoint>
         <sgr:modbusDataType>
-          <sgr:int32U>0</sgr:int32U>
+          <sgr:int32U/>
         </sgr:modbusDataType>
         <sgr:modbusFirstRegisterReference registerType="InputRegister" addr="68" bitRank="0"/>
         <sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
@@ -1357,7 +1356,7 @@
     <sgr:dpListElement>
       <sgr:dataPoint datapointName="RuntimeDomHotWater " mroVisibilityIndicator="R" rwpDatadirection="R" unit="HOURS">
         <sgr:dataType>
-          <sgr:float64>0.0</sgr:float64>
+          <sgr:float64/>
         </sgr:dataType>
         <sgr:dpNameList>
           <sgr:sLV1Name>RuntimeDomHotWater </sgr:sLV1Name>
@@ -1369,7 +1368,7 @@
       </sgr:dataPoint>
       <sgr:modbusDataPoint>
         <sgr:modbusDataType>
-          <sgr:int32U>0</sgr:int32U>
+          <sgr:int32U/>
         </sgr:modbusDataType>
         <sgr:modbusFirstRegisterReference registerType="HoldRegister" addr="42" bitRank="0"/>
         <sgr:dpSizeNrRegisters>2</sgr:dpSizeNrRegisters>
