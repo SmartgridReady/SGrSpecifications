@@ -1,6 +1,6 @@
 # SGr Level of Operation
 
-SGrLevelOfOperation defines a controls complexity level
+levelOfOperation defines a controls complexity level
 
 | Level | Description | Example |
 | ----- | ----------- | ------- |

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="/xsl/SGr.xsl"?>
-<sgr:SGrRestAPIDeviceFrame deviceName="CLEMAP Energy Monitor" isLocalControl="false" specsOwnerId="0" manufacturerName="CLEMAP"
+<sgr:RestApiDeviceFrame deviceName="CLEMAP Energy Monitor" isLocalControl="false" specificationOwnerIdentification="0" manufacturerName="CLEMAP"
   xmlns:sgr="http://www.smartgridready.com/ns/V0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/EI-RestAPI/SGrRestAPI_EIDeviceFrame.xsd ">
   <sgr:releaseNotes>
@@ -9,14 +9,10 @@
   <sgr:deviceProfile>
     <sgr:transportService>RESTfulJSON</sgr:transportService>
     <sgr:deviceKind>SubMeterElectricity</sgr:deviceKind>
-    <sgr:softwareRevision>
-      <sgr:primaryVersionNumber>1</sgr:primaryVersionNumber>
-      <sgr:secondaryVersionNumber>0</sgr:secondaryVersionNumber>
-      <sgr:subReleaseVersionNumber>0</sgr:subReleaseVersionNumber>
-    </sgr:softwareRevision>
+    <sgr:softwareRevision>1.0.0</sgr:softwareRevision>
     <sgr:manufSpecIdent>CLEMAP</sgr:manufSpecIdent>
   </sgr:deviceProfile>
-  <sgr:restAPIInterfaceDesc>
+  <sgr:restApiInterfaceDescription>
     <sgr:restAPIInterfaceSelection>trspSrvRestURI</sgr:restAPIInterfaceSelection>
     <sgr:trspSrvRestURIoutOfBox>{{baseUri}}</sgr:trspSrvRestURIoutOfBox>
     <sgr:restAPIAuthenticationMethod>BearerSecurityScheme</sgr:restAPIAuthenticationMethod>
@@ -34,14 +30,14 @@
         </sgr:responseQuery>
       </sgr:serviceCall>
     </sgr:restAPIBearer>
-  </sgr:restAPIInterfaceDesc>
-  <sgr:fpListElement>
+  </sgr:restApiInterfaceDescription>
+  <sgr:functionalProfileListElement>
     <sgr:functionalProfile profileName="ActivePowerAC">
       <sgr:profileNumber>
-        <sgr:specsOwnerId>0</sgr:specsOwnerId>
-        <sgr:profileIdentification>NonSpecific</sgr:profileIdentification>
-        <sgr:subProfileIdent>ActivePowerAC</sgr:subProfileIdent>
-        <sgr:sgrLevelOfOperation>m</sgr:sgrLevelOfOperation>
+        <sgr:specificationOwnerIdentification>0</sgr:specificationOwnerIdentification>
+        <sgr:functionalProfileCategory>NonSpecific</sgr:functionalProfileCategory>
+        <sgr:functionalProfileType>ActivePowerAC</sgr:functionalProfileType>
+        <sgr:levelOfOperation>m</sgr:levelOfOperation>
         <sgr:versionNumber>
           <sgr:primaryVersionNumber>1</sgr:primaryVersionNumber>
           <sgr:secondaryVersionNumber>0</sgr:secondaryVersionNumber>
@@ -49,13 +45,13 @@
         </sgr:versionNumber>
       </sgr:profileNumber>
     </sgr:functionalProfile>
-    <sgr:dpListElement>
+    <sgr:dataPointListElement>
       <sgr:dataPoint datapointName="ActivePowerACtot" rwpDatadirection="R" unit="KILOWATTS" mroVisibilityIndicator="R">
         <sgr:dataType>
           <sgr:float64/>
         </sgr:dataType>
       </sgr:dataPoint>
-      <sgr:restAPIDataPoint dataType="JSON_number">
+      <sgr:restApiDataPoint dataType="JSON_number">
         <sgr:restServiceCall>
           <sgr:requestHeader>
             <sgr:header headerName="Accept" value="application/json"/>
@@ -68,15 +64,15 @@
             <sgr:query>sum([[0].ten_sec.p_l1,[0].ten_sec.p_l2,[0].ten_sec.p_l3])</sgr:query>
           </sgr:responseQuery>
         </sgr:restServiceCall>
-      </sgr:restAPIDataPoint>
-    </sgr:dpListElement>
-    <sgr:dpListElement>
+      </sgr:restApiDataPoint>
+    </sgr:dataPointListElement>
+    <sgr:dataPointListElement>
       <sgr:dataPoint datapointName="ActivePowerACL1" rwpDatadirection="R" unit="KILOWATTS" mroVisibilityIndicator="R">
         <sgr:dataType>
           <sgr:float64/>
         </sgr:dataType>
       </sgr:dataPoint>
-      <sgr:restAPIDataPoint dataType="JSON_number">
+      <sgr:restApiDataPoint dataType="JSON_number">
         <sgr:restServiceCall>
           <sgr:requestHeader>
             <sgr:header headerName="Accept" value="application/json"/>
@@ -88,15 +84,15 @@
             <sgr:query>[0].ten_sec.p_l1</sgr:query>
           </sgr:responseQuery>
         </sgr:restServiceCall>
-      </sgr:restAPIDataPoint>
-    </sgr:dpListElement>
-    <sgr:dpListElement>
+      </sgr:restApiDataPoint>
+    </sgr:dataPointListElement>
+    <sgr:dataPointListElement>
       <sgr:dataPoint datapointName="ActivePowerACL2" rwpDatadirection="R" unit="KILOWATTS" mroVisibilityIndicator="R">
         <sgr:dataType>
           <sgr:float64/>
         </sgr:dataType>
       </sgr:dataPoint>
-      <sgr:restAPIDataPoint dataType="JSON_number">
+      <sgr:restApiDataPoint dataType="JSON_number">
         <sgr:restServiceCall>
           <sgr:requestHeader>
             <sgr:header headerName="Accept" value="application/json"/>
@@ -108,15 +104,15 @@
             <sgr:query>[0].ten_sec.p_l2</sgr:query>
           </sgr:responseQuery>
         </sgr:restServiceCall>
-      </sgr:restAPIDataPoint>
-    </sgr:dpListElement>
-    <sgr:dpListElement>
+      </sgr:restApiDataPoint>
+    </sgr:dataPointListElement>
+    <sgr:dataPointListElement>
       <sgr:dataPoint mroVisibilityIndicator="R" datapointName="ActivePowerACL3" rwpDatadirection="R" unit="KILOWATTS">
         <sgr:dataType>
           <sgr:float64/>
         </sgr:dataType>
       </sgr:dataPoint>
-      <sgr:restAPIDataPoint dataType="JSON_number">
+      <sgr:restApiDataPoint dataType="JSON_number">
         <sgr:restServiceCall>
           <sgr:requestHeader>
             <sgr:header headerName="Accept" value="application/json"/>
@@ -128,7 +124,7 @@
             <sgr:query>[0].ten_sec.p_l3</sgr:query>
           </sgr:responseQuery>
         </sgr:restServiceCall>
-      </sgr:restAPIDataPoint>
-    </sgr:dpListElement>
-  </sgr:fpListElement>
-</sgr:SGrRestAPIDeviceFrame>
+      </sgr:restApiDataPoint>
+    </sgr:dataPointListElement>
+  </sgr:functionalProfileListElement>
+</sgr:RestApiDeviceFrame>

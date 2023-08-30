@@ -13,7 +13,7 @@
     <xsl:import href="SGrGenericNamelistType.xsl" />
     <xsl:import href="SGrGenericLegibDocumentationType.xsl" />
 
-    <xsl:template match="sgr:fpListElement">
+    <xsl:template match="sgr:functionalProfileListElement">
         <xsl:call-template name="sgrFunctionProfile" />
     </xsl:template>
 
@@ -36,7 +36,7 @@
 
                 <!-- Modbus and Rest Attributes -->
                 <xsl:apply-templates select="sgr:modbusAttr" />
-                <xsl:apply-templates select="sgr:restAPIAttr" />
+                <xsl:apply-templates select="sgr:restApiAttribute" />
             </table>
 
             <!-- Data Points -->
@@ -57,7 +57,7 @@
                         <th>MRO</th>
                         <th>RWP</th>
                     </tr>
-                    <xsl:apply-templates select="sgr:dpListElement" />
+                    <xsl:apply-templates select="sgr:dataPointListElement" />
                 </table>
             </div>
         </div>
@@ -77,7 +77,7 @@
         <tr>
             <td>Level</td>
             <td>
-                <xsl:value-of select="sgr:profileNumber/sgr:sgrLevelOfOperation" />
+                <xsl:value-of select="sgr:profileNumber/sgr:levelOfOperation" />
             </td>
         </tr>
         <tr>
@@ -101,19 +101,19 @@
         <xsl:apply-templates select="sgr:fpPrgDesc" />
     </xsl:template>
 
-    <!-- SGrNamelistType -->
+    <!-- NameList -->
     <xsl:template match="sgr:fpNameList">
-        <xsl:call-template name="SGrNamelistType" />
+        <xsl:call-template name="NameList" />
     </xsl:template>
 
-    <!-- SGrLegibDocumentationType -->
+    <!-- LegibleDocumentationType -->
     <xsl:template match="sgr:legibleDescription">
         <tr>
             <xsl:attribute name="lang">
                 <xsl:value-of select="sgr:language" />
             </xsl:attribute>
             <td colspan="2">
-                <xsl:call-template name="SGrLegibDocumentationType" />
+                <xsl:call-template name="LegibleDocumentationType" />
             </td>
         </tr>
     </xsl:template>
@@ -123,7 +123,7 @@
                 <xsl:value-of select="sgr:language" />
             </xsl:attribute>
             <td colspan="2">
-                <xsl:call-template name="SGrLegibDocumentationType" />
+                <xsl:call-template name="LegibleDocumentationType" />
             </td>
         </tr>
     </xsl:template>

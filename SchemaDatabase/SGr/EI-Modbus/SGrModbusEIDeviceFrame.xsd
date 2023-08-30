@@ -12,7 +12,7 @@
       <documentation>Extends the base data point type with Modbus attributes and data points</documentation>
     </annotation>
     <complexContent>
-      <extension base="sgr:SGrDataPointBaseType">
+      <extension base="sgr:DataPointBaseType">
         <sequence>
           <element maxOccurs="unbounded" minOccurs="1" name="modbusDataPoint" type="sgr:SGrModbusDataPointDescriptionType">
           </element>
@@ -75,10 +75,10 @@
       </documentation>
     </annotation>
     <complexContent>
-      <extension base="sgr:SGrFunctionalProfileBaseType">
+      <extension base="sgr:FunctionalProfileBaseType">
         <sequence>
           <element maxOccurs="1" minOccurs="0" name="modbusAttr" type="sgr:SGrAttr4ModbusType"/>
-          <element maxOccurs="unbounded" minOccurs="1" name="dpListElement" type="sgr:SGrModbusDataPointType"/>
+          <element maxOccurs="unbounded" minOccurs="1" name="dataPointListElement" type="sgr:SGrModbusDataPointType"/>
         </sequence>
       </extension>
     </complexContent>
@@ -89,11 +89,11 @@
       </documentation>
     </annotation>
     <complexContent>
-      <extension base="sgr:SGrDeviceBaseType">
+      <extension base="sgr:DeviceBaseType">
         <sequence>
           <element maxOccurs="1" minOccurs="0" name="modbusAttr" type="sgr:SGrAttr4ModbusType"/>
           <element maxOccurs="1" minOccurs="1" name="modbusInterfaceDesc" type="sgr:SGrModbusInterfaceDescriptionType"/>
-          <element maxOccurs="unbounded" minOccurs="1" name="fpListElement" type="sgr:SGrModbusFunctionalProfileType"/>
+          <element maxOccurs="unbounded" minOccurs="1" name="functionalProfileListElement" type="sgr:SGrModbusFunctionalProfileType"/>
           <element maxOccurs="unbounded" minOccurs="0" name="timeSyncBlockNotification" type="sgr:SGrTimeSyncBlockNotificationType">
             <annotation>
               <documentation> 

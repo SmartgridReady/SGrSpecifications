@@ -12,5 +12,5 @@ Welcome to SGr Technical Documentation
 
    functionalProfile
    SGrAttr4GenericType
-   SGrLevelOfOperation
-   SGrNamelistType
+   levelOfOperation
+   NameList

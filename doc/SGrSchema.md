@@ -41,4 +41,4 @@ Currently the schema defines the following root elements
 | SGrGenDeviceFrame        | Generic device without any specified transport service |
 | SGrContactAPIDeviceFrame | Device with electrical contacts |
 | SGrModbusDeviceFrame     | Modbus device  |
-| SGrRestAPIDeviceFrame    | RestAPI device |
+| RestApiDeviceFrame    | RestAPI device |

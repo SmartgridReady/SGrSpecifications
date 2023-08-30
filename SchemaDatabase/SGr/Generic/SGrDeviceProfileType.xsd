@@ -6,21 +6,21 @@
   <include schemaLocation="SGrEnumLevelOfOperationType.xsd"/>
   <complexType name="SGrDeviceProfileType">
     <sequence>
-      <element maxOccurs="1" minOccurs="0" name="devNameList" type="sgr:SGrNamelistType">
+      <element maxOccurs="1" minOccurs="0" name="devNameList" type="sgr:NameList">
         <annotation>
           <documentation>Ontology naming support</documentation>
         </annotation>
       </element>
-      <element maxOccurs="4" minOccurs="0" name="legibleDescription" type="sgr:SGrLegibDocumentationType">
+      <element maxOccurs="4" minOccurs="0" name="legibleDescription" type="sgr:LegibleDocumentationType">
         <annotation>
           <documentation> this is the published information related to this device
           </documentation>
         </annotation>
       </element>
-      <element maxOccurs="1" minOccurs="1" name="transportService" type="sgr:SGrTransportServicesUsedListType"/>
+      <element maxOccurs="1" minOccurs="1" name="transportService" type="sgr:TransportServicesUsedList"/>
       <element maxOccurs="1" minOccurs="1" name="deviceKind" type="sgr:SGrDeviceKindType"/>
-      <element maxOccurs="1" minOccurs="1" name="softwareRevision" type="sgr:SGrVersionNumberType"/>
-      <element maxOccurs="1" minOccurs="0" name="hardwareRevision" type="sgr:SGrVersionNumberType"/>
+      <element maxOccurs="1" minOccurs="1" name="softwareRevision" type="string"/>
+      <element maxOccurs="1" minOccurs="0" name="hardwareRevision" type="string"/>
       <element minOccurs="0" name="brandName" type="string">
         <annotation>
           <documentation>branding information</documentation>
@@ -57,13 +57,13 @@
           </documentation>
         </annotation>
       </element>
-      <element maxOccurs="1" minOccurs="0" name="sgrLevelOfOperation" type="sgr:LevelOfOperationType">
+      <element maxOccurs="1" minOccurs="0" name="levelOfOperation" type="sgr:LevelOfOperationType">
         <annotation>
           <documentation> defines the SGr Label Level 1...6 of the highest level functional profile of this device
           </documentation>
         </annotation>
       </element>
-      <element maxOccurs="4" minOccurs="0" name="devPrgDesc" type="sgr:SGrLegibDocumentationType"></element>
+      <element maxOccurs="4" minOccurs="0" name="devPrgDesc" type="sgr:LegibleDocumentationType"></element>
     </sequence>
   </complexType>
 </schema>

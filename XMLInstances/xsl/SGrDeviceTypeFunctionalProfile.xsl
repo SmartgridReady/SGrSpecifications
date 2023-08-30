@@ -114,7 +114,7 @@
                             <tr>
                                 <td>Level</td>
                                 <td>
-                                    <xsl:value-of select="sgr:functionalProfile/sgr:profileNumber/sgr:sgrLevelOfOperation" />
+                                    <xsl:value-of select="sgr:functionalProfile/sgr:profileNumber/sgr:levelOfOperation" />
                                 </td>
                             </tr>
                             <tr>
@@ -175,7 +175,7 @@
                         <th>MRO</th>
                         <th>RWP</th>
                     </tr>
-                    <xsl:for-each select="sgr:dpListElement">
+                    <xsl:for-each select="sgr:dataPointListElement">
                         <tr>
                             <td colspan="2">
                                 <xsl:value-of select="sgr:dataPoint/@datapointName" />

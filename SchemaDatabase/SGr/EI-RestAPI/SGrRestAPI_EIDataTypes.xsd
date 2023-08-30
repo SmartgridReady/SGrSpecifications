@@ -5,9 +5,9 @@
   <include schemaLocation="../Generic/SGrTspSrvTCP_IP.xsd"/>
   <include schemaLocation="../Generic/SGrGenTypeDefinitions.xsd"/>
   <include schemaLocation="SGrRestAPI_RestServiceCall.xsd"/>
-  <complexType name="SGrRestAPIInterfaceDescriptionType">
+  <complexType name="RestApiInterfaceDescription">
     <sequence>
-      <element maxOccurs="1" minOccurs="1" name="restAPIInterfaceSelection" type="sgr:SGrRestAPIInterfaceSelectiontype"/>
+      <element maxOccurs="1" minOccurs="1" name="restAPIInterfaceSelection" type="sgr:RestApiInterfaceSelection"/>
       <element maxOccurs="1" minOccurs="0" name="trspSrvRestTCPV4outOfBox" type="sgr:tPipV4genAddrType"/>
       <element maxOccurs="1" minOccurs="0" name="trspSrvRestTCPV6outOfBox" type="sgr:tPipV6genAddrType"/>
       <element maxOccurs="1" minOccurs="0" name="trspSrvRestURIoutOfBox" type="anyURI"/>
@@ -16,14 +16,14 @@
       <element maxOccurs="1" minOccurs="0" name="restAPIBasic" type="sgr:SGrRestBasicType"/>
     </sequence>
   </complexType>
-  <simpleType name="SGrRestAPIInterfaceSelectiontype">
+  <simpleType name="RestApiInterfaceSelection">
     <restriction base="string">
       <enumeration value="trspSrvRestTCPV4"/>
       <enumeration value="trspSrvRestTCPV6"/>
       <enumeration value="trspSrvRestURI"/>
     </restriction>
   </simpleType>
-  <complexType name="SGrAttr4RestAPIType">
+  <complexType name="RestApiAttribute">
     <sequence>
       <element maxOccurs="1" minOccurs="1" name="placeHolder4futureExtensions">
         <simpleType>
@@ -32,7 +32,7 @@
       </element>
     </sequence>
   </complexType>
-  <complexType name="SGrRestAPIDataPointDescriptionType">
+  <complexType name="RestApiDataPointDescription">
     <sequence>
       <element minOccurs="1" maxOccurs="1" name="restServiceCall" type="sgr:RestServiceCall"/>
     </sequence>

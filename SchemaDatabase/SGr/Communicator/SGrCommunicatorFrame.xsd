@@ -11,26 +11,26 @@
       <documentation>Extends the base functional profile type with generic data points</documentation>
     </annotation>
     <complexContent>
-      <extension base="sgr:SGrFunctionalProfileBaseType">
+      <extension base="sgr:FunctionalProfileBaseType">
         <sequence>
-          <element maxOccurs="unbounded" minOccurs="1" name="dpListElement" type="sgr:SGrDataPointBaseType"/>
+          <element maxOccurs="unbounded" minOccurs="1" name="dataPointListElement" type="sgr:DataPointBaseType"/>
         </sequence>
       </extension>
     </complexContent>
   </complexType>
-  <complexType name="SGrCommunicatorFrame">
+  <complexType name="CommunicatorFrame">
     <annotation>
       <documentation>Data type definition for a Communicator Description as an EI (External Interface)</documentation>
     </annotation>
     <complexContent>
-      <extension base="sgr:SGrCommunicatorBaseType">
+      <extension base="sgr:CommunicatorBase">
         <sequence>
-          <element maxOccurs="unbounded" minOccurs="1" name="fpListElement" type="sgr:SGrCommGenFunctionalProfileType"/>
+          <element maxOccurs="unbounded" minOccurs="1" name="functionalProfileListElement" type="sgr:SGrCommGenFunctionalProfileType"/>
         </sequence>
       </extension>
     </complexContent>
   </complexType>
-  <element name="SGrCommunicatorFrame" type="sgr:SGrCommunicatorFrame">
+  <element name="communicatorFrame" type="sgr:CommunicatorFrame">
     <annotation>
       <documentation> RPT Root Point for Communicator External Interface.</documentation>
     </annotation>

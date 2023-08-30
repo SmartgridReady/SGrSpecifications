@@ -24,10 +24,10 @@ SGr classifies and identifies any functional profile by the following values
 
 | Element               | Description |
 |-----------------------|-------------|
-| specsOwnerId          | Identifier of the functional profile owner. |
-| profileIdentification | Functional profile class (see [SGrEnumProfileType.xsd](/SchemaDatabase/SGr/Generic/SGrEnumProfileType.xsd) ) |
-| subProfileIdent       | Functional profile subclass (see [SGrEnumSubProfileType.xsd](/SchemaDatabase/SGr/Generic/SGrEnumSubProfileType.xsd) ) |
-| sgrLevelOfOperation   | SGrLevelOfOperation defines a controls complexity  (see [SGrLevelOfOperation.md](SGrLevelOfOperation.md) ) |
+| specificationOwnerIdentification          | Identifier of the functional profile owner. |
+| functionalProfileCategory | Functional profile class (see [SGrEnumProfileType.xsd](/SchemaDatabase/SGr/Generic/SGrEnumProfileType.xsd) ) |
+| functionalProfileType       | Functional profile subclass (see [SGrEnumSubProfileType.xsd](/SchemaDatabase/SGr/Generic/SGrEnumSubProfileType.xsd) ) |
+| levelOfOperation   | levelOfOperation defines a controls complexity  (see [levelOfOperation.md](levelOfOperation.md) ) |
 | versionNumber         | Version of the functional profile. Changes in primaryVersionNumber indicate breaking changes, changes in secondaryVersionNumber indicate complimentary changes, changes in subReleaseVersionNumber are without impact on the functionality | 
 
 ### Release Notes
@@ -42,7 +42,7 @@ The release note section contains meta data that descibe history and current sta
 ### Descriptions
 | Element     | Description |
 |-------------|-------------|
-| fpNameList  | a list of relevant namespaces list for to display names used in different standards like EEBUS, IEC6850,, SAREF4ENER etc. (see [SGrNamelistType](SGrNamelistType.md))|
+| fpNameList  | a list of relevant namespaces list for to display names used in different standards like EEBUS, IEC6850,, SAREF4ENER etc. (see [NameList](NameList.md))|
 | legibleDescription | optional, can occure multiple times, but ideally just a once per language. Contains details concerning the intended use case of the functional profile. |
 
 ## Generic Attributes
@@ -56,7 +56,7 @@ SGr allows to associate attributes to a functional profile (i.e. concerning ever
 | mroVisibilityIndicator | Datapoint optionality: Mandatory, Recommended, Optional |
 | unit | Physical unit of data point |
 | DataType |  Data point type|
-| dpNameList | a list of relevant namespaces list for to display names used in different standards like EEBUS, IEC6850,, SAREF4ENER etc. (see [SGrNamelistType](SGrNamelistType.md))|
+| dpNameList | a list of relevant namespaces list for to display names used in different standards like EEBUS, IEC6850,, SAREF4ENER etc. (see [NameList](NameList.md))|
 | legibleDescription | optional, can occure multiple times, but ideally just a once per language. Contains details concerning the intended use case of the functional profile. |
 
 ## Generic Attributes

@@ -6,47 +6,47 @@
   <include schemaLocation="./SGrRestAPI_EIDataTypes.xsd"/>
   
   <!-- Rest Device Frame -->
-  <complexType name="SGrRestAPIDataPointType">
+  <complexType name="RestApiDataPoint">
     <annotation>
       <documentation>Extends the base data point type with Rest API attributes and data points</documentation>
     </annotation>
     <complexContent>
-      <extension base="sgr:SGrDataPointBaseType">
+      <extension base="sgr:DataPointBaseType">
         <sequence>
-          <element maxOccurs="unbounded" minOccurs="1" name="restAPIDataPoint" type="sgr:SGrRestAPIDataPointDescriptionType"/>
-          <element maxOccurs="unbounded" minOccurs="0" name="restAPIAttr" type="sgr:SGrAttr4RestAPIType"/>
+          <element maxOccurs="unbounded" minOccurs="1" name="restApiDataPoint" type="sgr:RestApiDataPointDescription"/>
+          <element maxOccurs="unbounded" minOccurs="0" name="restApiAttribute" type="sgr:RestApiAttribute"/>
         </sequence>
       </extension>
     </complexContent>
   </complexType>
-  <complexType name="SGrRestAPIFunctionalProfileType">
+  <complexType name="RestApiFunctionalProfile">
     <annotation>
       <documentation>Extends the base functional profile type with Rest API attributes and data points</documentation>
     </annotation>
     <complexContent>
-      <extension base="sgr:SGrFunctionalProfileBaseType">
+      <extension base="sgr:FunctionalProfileBaseType">
         <sequence>
-          <element maxOccurs="unbounded" minOccurs="0" name="restAPIAttr" type="sgr:SGrAttr4RestAPIType"/>
-          <element maxOccurs="unbounded" minOccurs="1" name="dpListElement" type="sgr:SGrRestAPIDataPointType"/>
+          <element maxOccurs="unbounded" minOccurs="0" name="restApiAttribute" type="sgr:RestApiAttribute"/>
+          <element maxOccurs="unbounded" minOccurs="1" name="dataPointListElement" type="sgr:RestApiDataPoint"/>
         </sequence>
       </extension>
     </complexContent>
   </complexType>
-  <complexType name="SGrRestAPIDeviceFrame">
+  <complexType name="RestApiDeviceFrame">
     <annotation>
       <documentation>Data type definition for a Rest API Device Description as an EI (External Interface)</documentation>
     </annotation>
     <complexContent>
-      <extension base="sgr:SGrDeviceBaseType">
+      <extension base="sgr:DeviceBaseType">
         <sequence>
-          <element maxOccurs="unbounded" minOccurs="0" name="restAPIAttr" type="sgr:SGrAttr4RestAPIType"/>
-          <element maxOccurs="1" minOccurs="1" name="restAPIInterfaceDesc" type="sgr:SGrRestAPIInterfaceDescriptionType"/>
-          <element maxOccurs="unbounded" minOccurs="1" name="fpListElement" type="sgr:SGrRestAPIFunctionalProfileType"/>
+          <element maxOccurs="unbounded" minOccurs="0" name="restApiAttribute" type="sgr:RestApiAttribute"/>
+          <element maxOccurs="1" minOccurs="1" name="restApiInterfaceDescription" type="sgr:RestApiInterfaceDescription"/>
+          <element maxOccurs="unbounded" minOccurs="1" name="functionalProfileListElement" type="sgr:RestApiFunctionalProfile"/>
         </sequence>
       </extension>
     </complexContent>
   </complexType>
-  <element name="SGrRestAPIDeviceFrame" type="sgr:SGrRestAPIDeviceFrame">
+  <element name="RestApiDeviceFrame" type="sgr:RestApiDeviceFrame">
     <annotation>
       <documentation> RPT Root Point for Rest API Device External Interface.</documentation>
     </annotation>

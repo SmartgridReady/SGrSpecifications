@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="/xsl/SGr.xsl"?>
-<sgr:SGrModbusDeviceFrame deviceName="Internet Service Gateway ISG" isLocalControl="true" specsOwnerId="0" manufacturerName="Stiebel-Eltron"
+<sgr:SGrModbusDeviceFrame deviceName="Internet Service Gateway ISG" isLocalControl="true" specificationOwnerIdentification="0" manufacturerName="Stiebel-Eltron"
   xmlns:sgr="http://www.smartgridready.com/ns/V0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/EI-Modbus/SGrModbusEIDeviceFrame.xsd ">
   <sgr:releaseNotes>
@@ -44,21 +44,13 @@
     </sgr:legibleDescription>
     <sgr:transportService>Modbus</sgr:transportService>
     <sgr:deviceKind>HeatPumpAppliance</sgr:deviceKind>
-    <sgr:softwareRevision>
-      <sgr:primaryVersionNumber>1</sgr:primaryVersionNumber>
-      <sgr:secondaryVersionNumber>0</sgr:secondaryVersionNumber>
-      <sgr:subReleaseVersionNumber>0</sgr:subReleaseVersionNumber>
-    </sgr:softwareRevision>
-    <sgr:hardwareRevision>
-      <sgr:primaryVersionNumber>1</sgr:primaryVersionNumber>
-      <sgr:secondaryVersionNumber>1</sgr:secondaryVersionNumber>
-      <sgr:subReleaseVersionNumber>0</sgr:subReleaseVersionNumber>
-    </sgr:hardwareRevision>
+    <sgr:softwareRevision>1.0.0</sgr:softwareRevision>
+    <sgr:hardwareRevision>1.1.0</sgr:hardwareRevision>
     <sgr:brandName>ISG web</sgr:brandName>
     <sgr:powerSource>dc</sgr:powerSource>
     <sgr:manufacturerLabel>ISG web, Bestellnummer 229336</sgr:manufacturerLabel>
     <sgr:remAuthorID>IBT/cb</sgr:remAuthorID>
-    <sgr:sgrLevelOfOperation>4</sgr:sgrLevelOfOperation>
+    <sgr:levelOfOperation>4</sgr:levelOfOperation>
   </sgr:deviceProfile>
   <sgr:modbusAttr>
     <sgr:pollLatencyMS>500</sgr:pollLatencyMS>
@@ -82,13 +74,13 @@
     <sgr:firstRegisterAddressIsOne>true</sgr:firstRegisterAddressIsOne>
     <sgr:conversionScheme>BigEndian</sgr:conversionScheme>
   </sgr:modbusInterfaceDesc>
-  <sgr:fpListElement>
+  <sgr:functionalProfileListElement>
     <sgr:functionalProfile profileName="HeatPumpBase">
       <sgr:profileNumber>
-        <sgr:specsOwnerId>0</sgr:specsOwnerId>
-        <sgr:profileIdentification>HeatPumpControl</sgr:profileIdentification>
-        <sgr:subProfileIdent>HeatPumpBase</sgr:subProfileIdent>
-        <sgr:sgrLevelOfOperation>2m</sgr:sgrLevelOfOperation>
+        <sgr:specificationOwnerIdentification>0</sgr:specificationOwnerIdentification>
+        <sgr:functionalProfileCategory>HeatPumpControl</sgr:functionalProfileCategory>
+        <sgr:functionalProfileType>HeatPumpBase</sgr:functionalProfileType>
+        <sgr:levelOfOperation>2m</sgr:levelOfOperation>
         <sgr:versionNumber>
           <sgr:primaryVersionNumber>0</sgr:primaryVersionNumber>
           <sgr:secondaryVersionNumber>9</sgr:secondaryVersionNumber>
@@ -147,7 +139,7 @@
         <sgr:language>de</sgr:language>
       </sgr:fpPrgDesc>
     </sgr:functionalProfile>
-    <sgr:dpListElement>
+    <sgr:dataPointListElement>
       <sgr:dataPoint datapointName="HPOpModeCmd" mroVisibilityIndicator="M" rwpDatadirection="RW" unit="NONE">
         <sgr:dataType>
           <sgr:enum>
@@ -192,8 +184,8 @@
         <sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
         <sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
       </sgr:modbusDataPoint>
-    </sgr:dpListElement>
-    <sgr:dpListElement>
+    </sgr:dataPointListElement>
+    <sgr:dataPointListElement>
       <sgr:dataPoint datapointName="HPOpState" mroVisibilityIndicator="M" rwpDatadirection="R" unit="NONE">
         <sgr:dataType>
           <sgr:enum2bitmapIndex>
@@ -271,8 +263,8 @@
           <sgr:genBitMapper>65535</sgr:genBitMapper>
         </sgr:iopBitmapMapper>
       </sgr:modbusAttr>
-    </sgr:dpListElement>
-    <sgr:dpListElement>
+    </sgr:dataPointListElement>
+    <sgr:dataPointListElement>
       <sgr:dataPoint datapointName="stiHPOpState" mroVisibilityIndicator="O" rwpDatadirection="R" unit="NONE">
         <sgr:dataType>
           <sgr:enum2bitmapIndex>
@@ -333,8 +325,8 @@
         <sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
         <sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
       </sgr:modbusDataPoint>
-    </sgr:dpListElement>
-    <sgr:dpListElement>
+    </sgr:dataPointListElement>
+    <sgr:dataPointListElement>
       <sgr:dataPoint datapointName="ErrorNrSGr" mroVisibilityIndicator="M" rwpDatadirection="R" unit="NONE">
         <sgr:dataType>
           <sgr:boolean/>
@@ -366,8 +358,8 @@
           <sgr:powerof10>0</sgr:powerof10>
         </sgr:scalingByMulPwr>
       </sgr:modbusAttr>
-    </sgr:dpListElement>
-    <sgr:dpListElement>
+    </sgr:dataPointListElement>
+    <sgr:dataPointListElement>
       <sgr:dataPoint datapointName="OutsideAirTemp" mroVisibilityIndicator="M" rwpDatadirection="R" unit="DEGREES_CELSIUS">
         <sgr:dataType>
           <sgr:float64/>
@@ -401,8 +393,8 @@
           <sgr:powerof10>-1</sgr:powerof10>
         </sgr:scalingByMulPwr>
       </sgr:modbusAttr>
-    </sgr:dpListElement>
-    <sgr:dpListElement>
+    </sgr:dataPointListElement>
+    <sgr:dataPointListElement>
       <sgr:dataPoint datapointName="SupplyWaterTemp" mroVisibilityIndicator="M" rwpDatadirection="R" unit="DEGREES_CELSIUS">
         <sgr:dataType>
           <sgr:float64/>
@@ -428,8 +420,8 @@
           <sgr:powerof10>-1</sgr:powerof10>
         </sgr:scalingByMulPwr>
       </sgr:modbusAttr>
-    </sgr:dpListElement>
-    <sgr:dpListElement>
+    </sgr:dataPointListElement>
+    <sgr:dataPointListElement>
       <sgr:dataPoint datapointName="ReturnSupplyWaterTemp" mroVisibilityIndicator="O" rwpDatadirection="R" unit="DEGREES_CELSIUS">
         <sgr:dataType>
           <sgr:float64/>
@@ -463,8 +455,8 @@
           <sgr:powerof10>-1</sgr:powerof10>
         </sgr:scalingByMulPwr>
       </sgr:modbusAttr>
-    </sgr:dpListElement>
-    <sgr:dpListElement>
+    </sgr:dataPointListElement>
+    <sgr:dataPointListElement>
       <sgr:dataPoint datapointName="SourceTemp" mroVisibilityIndicator="O" rwpDatadirection="R" unit="DEGREES_CELSIUS">
         <sgr:dataType>
           <sgr:float64/>
@@ -493,15 +485,15 @@
           <sgr:powerof10>-1</sgr:powerof10>
         </sgr:scalingByMulPwr>
       </sgr:modbusAttr>
-    </sgr:dpListElement>
-  </sgr:fpListElement>
-  <sgr:fpListElement>
+    </sgr:dataPointListElement>
+  </sgr:functionalProfileListElement>
+  <sgr:functionalProfileListElement>
     <sgr:functionalProfile profileName="HeatCoolCtrl_1">
       <sgr:profileNumber>
-        <sgr:specsOwnerId>0</sgr:specsOwnerId>
-        <sgr:profileIdentification>HeatPumpControl</sgr:profileIdentification>
-        <sgr:subProfileIdent>HeatCoolCtrl</sgr:subProfileIdent>
-        <sgr:sgrLevelOfOperation>4</sgr:sgrLevelOfOperation>
+        <sgr:specificationOwnerIdentification>0</sgr:specificationOwnerIdentification>
+        <sgr:functionalProfileCategory>HeatPumpControl</sgr:functionalProfileCategory>
+        <sgr:functionalProfileType>HeatCoolCtrl</sgr:functionalProfileType>
+        <sgr:levelOfOperation>4</sgr:levelOfOperation>
         <sgr:versionNumber>
           <sgr:primaryVersionNumber>0</sgr:primaryVersionNumber>
           <sgr:secondaryVersionNumber>2</sgr:secondaryVersionNumber>
@@ -517,7 +509,7 @@
         <sgr:language>de</sgr:language>
       </sgr:legibleDescription>
     </sgr:functionalProfile>
-    <sgr:dpListElement>
+    <sgr:dataPointListElement>
       <sgr:dataPoint datapointName="SupplyWaterTemp" mroVisibilityIndicator="O" rwpDatadirection="R" unit="DEGREES_CELSIUS">
         <sgr:dataType>
           <sgr:float64/>
@@ -550,8 +542,8 @@
           <sgr:powerof10>-1</sgr:powerof10>
         </sgr:scalingByMulPwr>
       </sgr:modbusAttr>
-    </sgr:dpListElement>
-    <sgr:dpListElement>
+    </sgr:dataPointListElement>
+    <sgr:dataPointListElement>
       <sgr:dataPoint datapointName="SupplyWaterTempStptFb" mroVisibilityIndicator="O" rwpDatadirection="R" unit="DEGREES_CELSIUS">
         <sgr:dataType>
           <sgr:float64/>
@@ -588,8 +580,8 @@
           <sgr:powerof10>-1</sgr:powerof10>
         </sgr:scalingByMulPwr>
       </sgr:modbusAttr>
-    </sgr:dpListElement>
-    <sgr:dpListElement>
+    </sgr:dataPointListElement>
+    <sgr:dataPointListElement>
       <sgr:dataPoint datapointName="SupplyWaterTempStptComf" mroVisibilityIndicator="O" rwpDatadirection="RW" unit="DEGREES_CELSIUS">
         <sgr:dataType>
           <sgr:float64/>
@@ -622,8 +614,8 @@
           <sgr:powerof10>-1</sgr:powerof10>
         </sgr:scalingByMulPwr>
       </sgr:modbusAttr>
-    </sgr:dpListElement>
-    <sgr:dpListElement>
+    </sgr:dataPointListElement>
+    <sgr:dataPointListElement>
       <sgr:dataPoint datapointName="SupplyWaterTempStptEco" mroVisibilityIndicator="O" rwpDatadirection="R" unit="DEGREES_CELSIUS">
         <sgr:dataType>
           <sgr:float64/>
@@ -656,15 +648,15 @@
           <sgr:powerof10>-1</sgr:powerof10>
         </sgr:scalingByMulPwr>
       </sgr:modbusAttr>
-    </sgr:dpListElement>
-  </sgr:fpListElement>
-  <sgr:fpListElement>
+    </sgr:dataPointListElement>
+  </sgr:functionalProfileListElement>
+  <sgr:functionalProfileListElement>
     <sgr:functionalProfile profileName="HeatCoolCtrl_2">
       <sgr:profileNumber>
-        <sgr:specsOwnerId>0</sgr:specsOwnerId>
-        <sgr:profileIdentification>HeatPumpControl</sgr:profileIdentification>
-        <sgr:subProfileIdent>HeatCoolCtrl</sgr:subProfileIdent>
-        <sgr:sgrLevelOfOperation>4m</sgr:sgrLevelOfOperation>
+        <sgr:specificationOwnerIdentification>0</sgr:specificationOwnerIdentification>
+        <sgr:functionalProfileCategory>HeatPumpControl</sgr:functionalProfileCategory>
+        <sgr:functionalProfileType>HeatCoolCtrl</sgr:functionalProfileType>
+        <sgr:levelOfOperation>4m</sgr:levelOfOperation>
         <sgr:versionNumber>
           <sgr:primaryVersionNumber>0</sgr:primaryVersionNumber>
           <sgr:secondaryVersionNumber>2</sgr:secondaryVersionNumber>
@@ -679,7 +671,7 @@
         <sgr:language>de</sgr:language>
       </sgr:legibleDescription>
     </sgr:functionalProfile>
-    <sgr:dpListElement>
+    <sgr:dataPointListElement>
       <sgr:dataPoint datapointName="SupplyWaterTemp" mroVisibilityIndicator="O" rwpDatadirection="R" unit="DEGREES_CELSIUS">
         <sgr:dataType>
           <sgr:float64/>
@@ -712,8 +704,8 @@
           <sgr:powerof10>-1</sgr:powerof10>
         </sgr:scalingByMulPwr>
       </sgr:modbusAttr>
-    </sgr:dpListElement>
-    <sgr:dpListElement>
+    </sgr:dataPointListElement>
+    <sgr:dataPointListElement>
       <sgr:dataPoint datapointName="SupplyWaterTempStptFb" mroVisibilityIndicator="O" rwpDatadirection="R" unit="DEGREES_CELSIUS">
         <sgr:dataType>
           <sgr:float64/>
@@ -750,8 +742,8 @@
           <sgr:powerof10>-1</sgr:powerof10>
         </sgr:scalingByMulPwr>
       </sgr:modbusAttr>
-    </sgr:dpListElement>
-    <sgr:dpListElement>
+    </sgr:dataPointListElement>
+    <sgr:dataPointListElement>
       <sgr:dataPoint datapointName="SupplyWaterTempStptComf" mroVisibilityIndicator="O" rwpDatadirection="RW" unit="DEGREES_CELSIUS">
         <sgr:dataType>
           <sgr:float64/>
@@ -784,8 +776,8 @@
           <sgr:powerof10>-1</sgr:powerof10>
         </sgr:scalingByMulPwr>
       </sgr:modbusAttr>
-    </sgr:dpListElement>
-    <sgr:dpListElement>
+    </sgr:dataPointListElement>
+    <sgr:dataPointListElement>
       <sgr:dataPoint datapointName="SupplyWaterTempStptEco" mroVisibilityIndicator="O" rwpDatadirection="R" unit="DEGREES_CELSIUS">
         <sgr:dataType>
           <sgr:float64/>
@@ -818,15 +810,15 @@
           <sgr:powerof10>-1</sgr:powerof10>
         </sgr:scalingByMulPwr>
       </sgr:modbusAttr>
-    </sgr:dpListElement>
-  </sgr:fpListElement>
-  <sgr:fpListElement>
+    </sgr:dataPointListElement>
+  </sgr:functionalProfileListElement>
+  <sgr:functionalProfileListElement>
     <sgr:functionalProfile profileName="DomHotWaterCtrl">
       <sgr:profileNumber>
-        <sgr:specsOwnerId>0</sgr:specsOwnerId>
-        <sgr:profileIdentification>HeatPumpControl</sgr:profileIdentification>
-        <sgr:subProfileIdent>DomHotWaterCtrl</sgr:subProfileIdent>
-        <sgr:sgrLevelOfOperation>4m</sgr:sgrLevelOfOperation>
+        <sgr:specificationOwnerIdentification>0</sgr:specificationOwnerIdentification>
+        <sgr:functionalProfileCategory>HeatPumpControl</sgr:functionalProfileCategory>
+        <sgr:functionalProfileType>DomHotWaterCtrl</sgr:functionalProfileType>
+        <sgr:levelOfOperation>4m</sgr:levelOfOperation>
         <sgr:versionNumber>
           <sgr:primaryVersionNumber>0</sgr:primaryVersionNumber>
           <sgr:secondaryVersionNumber>2</sgr:secondaryVersionNumber>
@@ -841,7 +833,7 @@
         <sgr:language>de</sgr:language>
       </sgr:legibleDescription>
     </sgr:functionalProfile>
-    <sgr:dpListElement>
+    <sgr:dataPointListElement>
       <sgr:dataPoint datapointName="ActDomHotWaterTemp" mroVisibilityIndicator="M" rwpDatadirection="R" unit="DEGREES_CELSIUS">
         <sgr:dataType>
           <sgr:float64/>
@@ -872,8 +864,8 @@
           <sgr:powerof10>-1</sgr:powerof10>
         </sgr:scalingByMulPwr>
       </sgr:modbusAttr>
-    </sgr:dpListElement>
-    <sgr:dpListElement>
+    </sgr:dataPointListElement>
+    <sgr:dataPointListElement>
       <sgr:dataPoint datapointName="DomHotWTempStptFb" mroVisibilityIndicator="M" rwpDatadirection="R" unit="DEGREES_CELSIUS">
         <sgr:dataType>
           <sgr:float64/>
@@ -909,8 +901,8 @@
           <sgr:powerof10>-1</sgr:powerof10>
         </sgr:scalingByMulPwr>
       </sgr:modbusAttr>
-    </sgr:dpListElement>
-    <sgr:dpListElement>
+    </sgr:dataPointListElement>
+    <sgr:dataPointListElement>
       <sgr:dataPoint datapointName="DomHotWTempStptComf" mroVisibilityIndicator="M" rwpDatadirection="RW" unit="DEGREES_CELSIUS">
         <sgr:dataType>
           <sgr:float64/>
@@ -945,8 +937,8 @@
           <sgr:powerof10>-1</sgr:powerof10>
         </sgr:scalingByMulPwr>
       </sgr:modbusAttr>
-    </sgr:dpListElement>
-    <sgr:dpListElement>
+    </sgr:dataPointListElement>
+    <sgr:dataPointListElement>
       <sgr:dataPoint datapointName="DomHotWTempStptEco" mroVisibilityIndicator="M" rwpDatadirection="RW" unit="DEGREES_CELSIUS">
         <sgr:dataType>
           <sgr:float64/>
@@ -981,15 +973,15 @@
           <sgr:powerof10>-1</sgr:powerof10>
         </sgr:scalingByMulPwr>
       </sgr:modbusAttr>
-    </sgr:dpListElement>
-  </sgr:fpListElement>
-  <sgr:fpListElement>
+    </sgr:dataPointListElement>
+  </sgr:functionalProfileListElement>
+  <sgr:functionalProfileListElement>
     <sgr:functionalProfile profileName="BufferStorageCtrl">
       <sgr:profileNumber>
-        <sgr:specsOwnerId>0</sgr:specsOwnerId>
-        <sgr:profileIdentification>HeatPumpControl</sgr:profileIdentification>
-        <sgr:subProfileIdent>BufferStorageCtrl</sgr:subProfileIdent>
-        <sgr:sgrLevelOfOperation>m</sgr:sgrLevelOfOperation>
+        <sgr:specificationOwnerIdentification>0</sgr:specificationOwnerIdentification>
+        <sgr:functionalProfileCategory>HeatPumpControl</sgr:functionalProfileCategory>
+        <sgr:functionalProfileType>BufferStorageCtrl</sgr:functionalProfileType>
+        <sgr:levelOfOperation>m</sgr:levelOfOperation>
         <sgr:versionNumber>
           <sgr:primaryVersionNumber>0</sgr:primaryVersionNumber>
           <sgr:secondaryVersionNumber>2</sgr:secondaryVersionNumber>
@@ -1005,7 +997,7 @@
         <sgr:language>de</sgr:language>
       </sgr:legibleDescription>
     </sgr:functionalProfile>
-    <sgr:dpListElement>
+    <sgr:dataPointListElement>
       <sgr:dataPoint datapointName="ActHeatBufferTempStptFb" mroVisibilityIndicator="M" rwpDatadirection="R" unit="DEGREES_CELSIUS">
         <sgr:dataType>
           <sgr:float64/>
@@ -1041,8 +1033,8 @@
           <sgr:powerof10>-1</sgr:powerof10>
         </sgr:scalingByMulPwr>
       </sgr:modbusAttr>
-    </sgr:dpListElement>
-    <sgr:dpListElement>
+    </sgr:dataPointListElement>
+    <sgr:dataPointListElement>
       <sgr:dataPoint datapointName="ActHeatBufferTemp" mroVisibilityIndicator="M" rwpDatadirection="R" unit="DEGREES_CELSIUS">
         <sgr:dataType>
           <sgr:float64/>
@@ -1074,15 +1066,15 @@
           <sgr:powerof10>-1</sgr:powerof10>
         </sgr:scalingByMulPwr>
       </sgr:modbusAttr>
-    </sgr:dpListElement>
-  </sgr:fpListElement>
-  <sgr:fpListElement>
+    </sgr:dataPointListElement>
+  </sgr:functionalProfileListElement>
+  <sgr:functionalProfileListElement>
     <sgr:functionalProfile profileName="SG-ReadyStates_bwp">
       <sgr:profileNumber>
-        <sgr:specsOwnerId>0</sgr:specsOwnerId>
-        <sgr:profileIdentification>HeatPumpControl</sgr:profileIdentification>
-        <sgr:subProfileIdent>SG-ReadyStates_bwp</sgr:subProfileIdent>
-        <sgr:sgrLevelOfOperation>2m</sgr:sgrLevelOfOperation>
+        <sgr:specificationOwnerIdentification>0</sgr:specificationOwnerIdentification>
+        <sgr:functionalProfileCategory>HeatPumpControl</sgr:functionalProfileCategory>
+        <sgr:functionalProfileType>SG-ReadyStates_bwp</sgr:functionalProfileType>
+        <sgr:levelOfOperation>2m</sgr:levelOfOperation>
         <sgr:versionNumber>
           <sgr:primaryVersionNumber>0</sgr:primaryVersionNumber>
           <sgr:secondaryVersionNumber>2</sgr:secondaryVersionNumber>
@@ -1104,7 +1096,7 @@
         <sgr:uri>https://www.waermepumpe.de/normen-technik/sg-ready/</sgr:uri>
       </sgr:legibleDescription>
     </sgr:functionalProfile>
-    <sgr:dpListElement>
+    <sgr:dataPointListElement>
       <sgr:dataPoint datapointName="SGReadyCmd" mroVisibilityIndicator="M" rwpDatadirection="RW" unit="NONE">
         <sgr:dataType>
           <sgr:enum>
@@ -1197,8 +1189,8 @@
       <sgr:modbusAttr>
         <sgr:layer6Deviation>SGReadyEnum2IO_L2H</sgr:layer6Deviation>
       </sgr:modbusAttr>
-    </sgr:dpListElement>
-    <sgr:dpListElement>
+    </sgr:dataPointListElement>
+    <sgr:dataPointListElement>
       <sgr:dataPoint mroVisibilityIndicator="R" rwpDatadirection="R" unit="NONE" datapointName="SGReadyState">
         <sgr:dataType>
           <sgr:enum>
@@ -1245,8 +1237,8 @@
           <sgr:powerof10>0</sgr:powerof10>
         </sgr:scalingByMulPwr>
       </sgr:modbusAttr>
-    </sgr:dpListElement>
-    <sgr:dpListElement>
+    </sgr:dataPointListElement>
+    <sgr:dataPointListElement>
       <sgr:dataPoint datapointName="SGReadyEnabled" unit="NONE" rwpDatadirection="RW" mroVisibilityIndicator="M">
         <sgr:dataType>
           <sgr:boolean/>
@@ -1264,8 +1256,8 @@
         <sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
         <sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
       </sgr:modbusDataPoint>
-    </sgr:dpListElement>
-    <sgr:dpListElement>
+    </sgr:dataPointListElement>
+    <sgr:dataPointListElement>
       <sgr:dataPoint datapointName="SGReadyInp1isON" unit="NONE" rwpDatadirection="RW" mroVisibilityIndicator="M">
         <sgr:dataType>
           <sgr:boolean/>
@@ -1283,8 +1275,8 @@
         <sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
         <sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
       </sgr:modbusDataPoint>
-    </sgr:dpListElement>
-    <sgr:dpListElement>
+    </sgr:dataPointListElement>
+    <sgr:dataPointListElement>
       <sgr:dataPoint datapointName="SGReadyInp2isON" unit="NONE" rwpDatadirection="RW" mroVisibilityIndicator="M">
         <sgr:dataType>
           <sgr:boolean/>
@@ -1302,15 +1294,15 @@
         <sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
         <sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
       </sgr:modbusDataPoint>
-    </sgr:dpListElement>
-  </sgr:fpListElement>
-  <sgr:fpListElement>
+    </sgr:dataPointListElement>
+  </sgr:functionalProfileListElement>
+  <sgr:functionalProfileListElement>
     <sgr:functionalProfile profileName="EnergyMonitor">
       <sgr:profileNumber>
-        <sgr:specsOwnerId>0</sgr:specsOwnerId>
-        <sgr:profileIdentification>HeatPumpControl</sgr:profileIdentification>
-        <sgr:subProfileIdent>EnergyMonitor</sgr:subProfileIdent>
-        <sgr:sgrLevelOfOperation>m</sgr:sgrLevelOfOperation>
+        <sgr:specificationOwnerIdentification>0</sgr:specificationOwnerIdentification>
+        <sgr:functionalProfileCategory>HeatPumpControl</sgr:functionalProfileCategory>
+        <sgr:functionalProfileType>EnergyMonitor</sgr:functionalProfileType>
+        <sgr:levelOfOperation>m</sgr:levelOfOperation>
         <sgr:versionNumber>
           <sgr:primaryVersionNumber>0</sgr:primaryVersionNumber>
           <sgr:secondaryVersionNumber>1</sgr:secondaryVersionNumber>
@@ -1329,7 +1321,7 @@
         <sgr:language>en</sgr:language>
       </sgr:fpPrgDesc>
     </sgr:functionalProfile>
-    <sgr:dpListElement>
+    <sgr:dataPointListElement>
       <sgr:dataPoint datapointName="ThermalEnergyHeat" mroVisibilityIndicator="R" rwpDatadirection="R" unit="KILOWATT_HOURS">
         <sgr:dataType>
           <sgr:float64/>
@@ -1362,8 +1354,8 @@
         </sgr:scalingByMulPwr>
         <sgr:layer6Deviation>2RegBase1000_L2H</sgr:layer6Deviation>
       </sgr:modbusAttr>
-    </sgr:dpListElement>
-    <sgr:dpListElement>
+    </sgr:dataPointListElement>
+    <sgr:dataPointListElement>
       <sgr:dataPoint datapointName="ThermalEnergyDomHotWater" mroVisibilityIndicator="R" rwpDatadirection="R" unit="KILOWATT_HOURS">
         <sgr:dataType>
           <sgr:float64/>
@@ -1396,8 +1388,8 @@
         </sgr:scalingByMulPwr>
         <sgr:layer6Deviation>2RegBase1000_L2H</sgr:layer6Deviation>
       </sgr:modbusAttr>
-    </sgr:dpListElement>
-    <sgr:dpListElement>
+    </sgr:dataPointListElement>
+    <sgr:dataPointListElement>
       <sgr:dataPoint datapointName="ActiveEnergyACheat" mroVisibilityIndicator="R" rwpDatadirection="R" unit="KILOWATT_HOURS">
         <sgr:dataType>
           <sgr:float64/>
@@ -1430,8 +1422,8 @@
         </sgr:scalingByMulPwr>
         <sgr:layer6Deviation>2RegBase1000_L2H</sgr:layer6Deviation>
       </sgr:modbusAttr>
-    </sgr:dpListElement>
-    <sgr:dpListElement>
+    </sgr:dataPointListElement>
+    <sgr:dataPointListElement>
       <sgr:dataPoint datapointName="ActivelEnergyACdomWater" mroVisibilityIndicator="R" rwpDatadirection="R" unit="KILOWATT_HOURS">
         <sgr:dataType>
           <sgr:float64/>
@@ -1464,8 +1456,8 @@
         </sgr:scalingByMulPwr>
         <sgr:layer6Deviation>2RegBase1000_L2H</sgr:layer6Deviation>
       </sgr:modbusAttr>
-    </sgr:dpListElement>
-    <sgr:dpListElement>
+    </sgr:dataPointListElement>
+    <sgr:dataPointListElement>
       <sgr:dataPoint datapointName="RuntimeHeating" mroVisibilityIndicator="R" rwpDatadirection="R" unit="HOURS">
         <sgr:dataType>
           <sgr:float64/>
@@ -1495,8 +1487,8 @@
           <sgr:powerof10>0</sgr:powerof10>
         </sgr:scalingByMulPwr>
       </sgr:modbusAttr>
-    </sgr:dpListElement>
-    <sgr:dpListElement>
+    </sgr:dataPointListElement>
+    <sgr:dataPointListElement>
       <sgr:dataPoint datapointName="RuntimeDomHotWater" mroVisibilityIndicator="R" rwpDatadirection="R" unit="HOURS">
         <sgr:dataType>
           <sgr:float64/>
@@ -1526,6 +1518,6 @@
           <sgr:powerof10>0</sgr:powerof10>
         </sgr:scalingByMulPwr>
       </sgr:modbusAttr>
-    </sgr:dpListElement>
-  </sgr:fpListElement>
+    </sgr:dataPointListElement>
+  </sgr:functionalProfileListElement>
 </sgr:SGrModbusDeviceFrame>

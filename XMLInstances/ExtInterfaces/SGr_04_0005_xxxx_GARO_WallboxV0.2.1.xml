@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="/xsl/SGr.xsl"?>
-<sgr:SGrModbusDeviceFrame deviceName="GARO Wallbox GLB" isLocalControl="true" specsOwnerId="0" manufacturerName="Garo / Optex AG"
+<sgr:SGrModbusDeviceFrame deviceName="GARO Wallbox GLB" isLocalControl="true" specificationOwnerIdentification="0" manufacturerName="Garo / Optex AG"
   xmlns:sgr="http://www.smartgridready.com/ns/V0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/EI-Modbus/SGrModbusEIDeviceFrame.xsd">
   <sgr:releaseNotes>
@@ -39,23 +39,15 @@
     </sgr:legibleDescription>
     <sgr:transportService>Modbus</sgr:transportService>
     <sgr:deviceKind>ChargingStation</sgr:deviceKind>
-    <sgr:softwareRevision>
-      <sgr:primaryVersionNumber>5</sgr:primaryVersionNumber>
-      <sgr:secondaryVersionNumber>12</sgr:secondaryVersionNumber>
-      <sgr:subReleaseVersionNumber>1</sgr:subReleaseVersionNumber>
-    </sgr:softwareRevision>
-    <sgr:hardwareRevision>
-      <sgr:primaryVersionNumber>6</sgr:primaryVersionNumber>
-      <sgr:secondaryVersionNumber>1</sgr:secondaryVersionNumber>
-      <sgr:subReleaseVersionNumber>2</sgr:subReleaseVersionNumber>
-    </sgr:hardwareRevision>
+    <sgr:softwareRevision>5.12.1</sgr:softwareRevision>
+    <sgr:hardwareRevision>6.1.2</sgr:hardwareRevision>
     <sgr:brandName>GARO GLB</sgr:brandName>
     <sgr:powerSource>mains3Phase</sgr:powerSource>
     <sgr:nominalPower>22 kW</sgr:nominalPower>
     <sgr:manufSpecIdent>GLB-T222WO</sgr:manufSpecIdent>
     <sgr:manufacturerLabel>GLB+</sgr:manufacturerLabel>
     <sgr:remAuthorID>IBT/cb (no warranty on this EI)</sgr:remAuthorID>
-    <sgr:sgrLevelOfOperation>4</sgr:sgrLevelOfOperation>
+    <sgr:levelOfOperation>4</sgr:levelOfOperation>
   </sgr:deviceProfile>
   <sgr:modbusAttr>
     <sgr:pollLatencyMS>350</sgr:pollLatencyMS>
@@ -66,13 +58,13 @@
     </sgr:firstRegisterAddressIsOne>
     <sgr:conversionScheme>BigEndian</sgr:conversionScheme>
   </sgr:modbusInterfaceDesc>
-  <sgr:fpListElement>
+  <sgr:functionalProfileListElement>
     <sgr:functionalProfile profileName="EVState">
       <sgr:profileNumber>
-        <sgr:specsOwnerId>0</sgr:specsOwnerId>
-        <sgr:profileIdentification>EVSE</sgr:profileIdentification>
-        <sgr:subProfileIdent>EVState</sgr:subProfileIdent>
-        <sgr:sgrLevelOfOperation>4</sgr:sgrLevelOfOperation>
+        <sgr:specificationOwnerIdentification>0</sgr:specificationOwnerIdentification>
+        <sgr:functionalProfileCategory>EVSE</sgr:functionalProfileCategory>
+        <sgr:functionalProfileType>EVState</sgr:functionalProfileType>
+        <sgr:levelOfOperation>4</sgr:levelOfOperation>
         <sgr:versionNumber>
           <sgr:primaryVersionNumber>0</sgr:primaryVersionNumber>
           <sgr:secondaryVersionNumber>2</sgr:secondaryVersionNumber>
@@ -80,7 +72,7 @@
         </sgr:versionNumber>
       </sgr:profileNumber>
     </sgr:functionalProfile>
-    <sgr:dpListElement>
+    <sgr:dataPointListElement>
       <sgr:dataPoint datapointName="isSmartEV15188" mroVisibilityIndicator="O" rwpDatadirection="R" unit="NONE">
         <sgr:dataType>
           <sgr:boolean/>
@@ -94,8 +86,8 @@
         <sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
         <sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
       </sgr:modbusDataPoint>
-    </sgr:dpListElement>
-    <sgr:dpListElement>
+    </sgr:dataPointListElement>
+    <sgr:dataPointListElement>
       <sgr:dataPoint datapointName="EVCCID" mroVisibilityIndicator="O" rwpDatadirection="R" unit="NONE">
         <sgr:dataType>
           <sgr:string/>
@@ -109,15 +101,15 @@
         <sgr:dpSizeNrRegisters>6</sgr:dpSizeNrRegisters>
         <sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
       </sgr:modbusDataPoint>
-    </sgr:dpListElement>
-  </sgr:fpListElement>
-  <sgr:fpListElement>
+    </sgr:dataPointListElement>
+  </sgr:functionalProfileListElement>
+  <sgr:functionalProfileListElement>
     <sgr:functionalProfile profileName="EVSEState">
       <sgr:profileNumber>
-        <sgr:specsOwnerId>0</sgr:specsOwnerId>
-        <sgr:profileIdentification>EVSE</sgr:profileIdentification>
-        <sgr:subProfileIdent>EVSEState</sgr:subProfileIdent>
-        <sgr:sgrLevelOfOperation>4</sgr:sgrLevelOfOperation>
+        <sgr:specificationOwnerIdentification>0</sgr:specificationOwnerIdentification>
+        <sgr:functionalProfileCategory>EVSE</sgr:functionalProfileCategory>
+        <sgr:functionalProfileType>EVSEState</sgr:functionalProfileType>
+        <sgr:levelOfOperation>4</sgr:levelOfOperation>
         <sgr:versionNumber>
           <sgr:primaryVersionNumber>0</sgr:primaryVersionNumber>
           <sgr:secondaryVersionNumber>2</sgr:secondaryVersionNumber>
@@ -125,7 +117,7 @@
         </sgr:versionNumber>
       </sgr:profileNumber>
     </sgr:functionalProfile>
-    <sgr:dpListElement>
+    <sgr:dataPointListElement>
       <sgr:dataPoint datapointName="EV-StatusCode" mroVisibilityIndicator="M" rwpDatadirection="R" unit="NONE">
         <sgr:dataType>
           <sgr:enum>
@@ -143,8 +135,8 @@
         <sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
         <sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
       </sgr:modbusDataPoint>
-    </sgr:dpListElement>
-    <sgr:dpListElement>
+    </sgr:dataPointListElement>
+    <sgr:dataPointListElement>
       <sgr:dataPoint datapointName="ocppState" mroVisibilityIndicator="O" unit="NONE">
         <sgr:dataType>
           <sgr:enum>
@@ -162,15 +154,15 @@
         <sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
         <sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
       </sgr:modbusDataPoint>
-    </sgr:dpListElement>
-  </sgr:fpListElement>
-  <sgr:fpListElement>
+    </sgr:dataPointListElement>
+  </sgr:functionalProfileListElement>
+  <sgr:functionalProfileListElement>
     <sgr:functionalProfile profileName="Curtailment">
       <sgr:profileNumber>
-        <sgr:specsOwnerId>0</sgr:specsOwnerId>
-        <sgr:profileIdentification>EVSE</sgr:profileIdentification>
-        <sgr:subProfileIdent>Curtailment</sgr:subProfileIdent>
-        <sgr:sgrLevelOfOperation>4</sgr:sgrLevelOfOperation>
+        <sgr:specificationOwnerIdentification>0</sgr:specificationOwnerIdentification>
+        <sgr:functionalProfileCategory>EVSE</sgr:functionalProfileCategory>
+        <sgr:functionalProfileType>Curtailment</sgr:functionalProfileType>
+        <sgr:levelOfOperation>4</sgr:levelOfOperation>
         <sgr:versionNumber>
           <sgr:primaryVersionNumber>0</sgr:primaryVersionNumber>
           <sgr:secondaryVersionNumber>2</sgr:secondaryVersionNumber>
@@ -185,7 +177,7 @@
         <sgr:fallbackValue>8.0</sgr:fallbackValue>
       </sgr:stabilityFallback>
     </sgr:genAttribute>
-    <sgr:dpListElement>
+    <sgr:dataPointListElement>
       <sgr:dataPoint datapointName="SafeCurrent" mroVisibilityIndicator="M" rwpDatadirection="RW" unit="AMPERES">
         <sgr:dataType>
           <sgr:float64/>
@@ -202,8 +194,8 @@
         <sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
         <sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
       </sgr:modbusDataPoint>
-    </sgr:dpListElement>
-    <sgr:dpListElement>
+    </sgr:dataPointListElement>
+    <sgr:dataPointListElement>
       <sgr:dataPoint datapointName="HemsCurrentLimit" rwpDatadirection="RW" mroVisibilityIndicator="M" unit="AMPERES">
         <sgr:dataType>
           <sgr:float64/>
@@ -220,8 +212,8 @@
         <sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
         <sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
       </sgr:modbusDataPoint>
-    </sgr:dpListElement>
-    <sgr:dpListElement>
+    </sgr:dataPointListElement>
+    <sgr:dataPointListElement>
       <sgr:dataPoint datapointName="maxReceiveTimeSec" mroVisibilityIndicator="M" rwpDatadirection="RW" unit="SECONDS">
         <sgr:dataType>
           <sgr:int16U/>
@@ -247,8 +239,8 @@
         <sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
         <sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
       </sgr:modbusDataPoint>
-    </sgr:dpListElement>
-    <sgr:dpListElement>
+    </sgr:dataPointListElement>
+    <sgr:dataPointListElement>
       <sgr:dataPoint datapointName="HWCurrentLimit" mroVisibilityIndicator="R" unit="AMPERES">
         <sgr:dataType>
           <sgr:float64/>
@@ -262,15 +254,15 @@
         <sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
         <sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
       </sgr:modbusDataPoint>
-    </sgr:dpListElement>
-  </sgr:fpListElement>
-  <sgr:fpListElement>
+    </sgr:dataPointListElement>
+  </sgr:functionalProfileListElement>
+  <sgr:functionalProfileListElement>
     <sgr:functionalProfile profileName="CurrentAC">
       <sgr:profileNumber>
-        <sgr:specsOwnerId>0</sgr:specsOwnerId>
-        <sgr:profileIdentification>SubMeterElectricity</sgr:profileIdentification>
-        <sgr:subProfileIdent>CurrentAC</sgr:subProfileIdent>
-        <sgr:sgrLevelOfOperation>4</sgr:sgrLevelOfOperation>
+        <sgr:specificationOwnerIdentification>0</sgr:specificationOwnerIdentification>
+        <sgr:functionalProfileCategory>SubMeterElectricity</sgr:functionalProfileCategory>
+        <sgr:functionalProfileType>CurrentAC</sgr:functionalProfileType>
+        <sgr:levelOfOperation>4</sgr:levelOfOperation>
         <sgr:versionNumber>
           <sgr:primaryVersionNumber>0</sgr:primaryVersionNumber>
           <sgr:secondaryVersionNumber>2</sgr:secondaryVersionNumber>
@@ -278,7 +270,7 @@
         </sgr:versionNumber>
       </sgr:profileNumber>
     </sgr:functionalProfile>
-    <sgr:dpListElement>
+    <sgr:dataPointListElement>
       <sgr:dataPoint datapointName="CurrentACL1" mroVisibilityIndicator="M" rwpDatadirection="R" unit="AMPERES">
         <sgr:dataType>
           <sgr:float64/>
@@ -299,8 +291,8 @@
           <sgr:powerof10>-3</sgr:powerof10>
         </sgr:scalingByMulPwr>
       </sgr:modbusAttr>
-    </sgr:dpListElement>
-    <sgr:dpListElement>
+    </sgr:dataPointListElement>
+    <sgr:dataPointListElement>
       <sgr:dataPoint datapointName="CurrentACL2" mroVisibilityIndicator="R" unit="AMPERES" rwpDatadirection="R">
         <sgr:dataType>
           <sgr:float64/>
@@ -321,8 +313,8 @@
           <sgr:powerof10>-3</sgr:powerof10>
         </sgr:scalingByMulPwr>
       </sgr:modbusAttr>
-    </sgr:dpListElement>
-    <sgr:dpListElement>
+    </sgr:dataPointListElement>
+    <sgr:dataPointListElement>
       <sgr:dataPoint datapointName="CurrentACL3" mroVisibilityIndicator="R" unit="AMPERES" rwpDatadirection="R">
         <sgr:dataType>
           <sgr:float64/>
@@ -343,15 +335,15 @@
           <sgr:powerof10>-3</sgr:powerof10>
         </sgr:scalingByMulPwr>
       </sgr:modbusAttr>
-    </sgr:dpListElement>
-  </sgr:fpListElement>
-  <sgr:fpListElement>
+    </sgr:dataPointListElement>
+  </sgr:functionalProfileListElement>
+  <sgr:functionalProfileListElement>
     <sgr:functionalProfile profileName="ActivePowerAC">
       <sgr:profileNumber>
-        <sgr:specsOwnerId>0</sgr:specsOwnerId>
-        <sgr:profileIdentification>NonSpecific</sgr:profileIdentification>
-        <sgr:subProfileIdent>ActivePowerAC</sgr:subProfileIdent>
-        <sgr:sgrLevelOfOperation>m</sgr:sgrLevelOfOperation>
+        <sgr:specificationOwnerIdentification>0</sgr:specificationOwnerIdentification>
+        <sgr:functionalProfileCategory>NonSpecific</sgr:functionalProfileCategory>
+        <sgr:functionalProfileType>ActivePowerAC</sgr:functionalProfileType>
+        <sgr:levelOfOperation>m</sgr:levelOfOperation>
         <sgr:versionNumber>
           <sgr:primaryVersionNumber>1</sgr:primaryVersionNumber>
           <sgr:secondaryVersionNumber>0</sgr:secondaryVersionNumber>
@@ -359,7 +351,7 @@
         </sgr:versionNumber>
       </sgr:profileNumber>
     </sgr:functionalProfile>
-    <sgr:dpListElement>
+    <sgr:dataPointListElement>
       <sgr:dataPoint datapointName="ActivePowerACL1" mroVisibilityIndicator="R" rwpDatadirection="R" unit="KILOWATTS">
         <sgr:dataType>
           <sgr:float64/>
@@ -380,8 +372,8 @@
           <sgr:powerof10>-3</sgr:powerof10>
         </sgr:scalingByMulPwr>
       </sgr:modbusAttr>
-    </sgr:dpListElement>
-    <sgr:dpListElement>
+    </sgr:dataPointListElement>
+    <sgr:dataPointListElement>
       <sgr:dataPoint datapointName="ActivePowerACL2" mroVisibilityIndicator="R" unit="KILOWATTS" rwpDatadirection="R">
         <sgr:dataType>
           <sgr:float64/>
@@ -402,8 +394,8 @@
           <sgr:powerof10>-3</sgr:powerof10>
         </sgr:scalingByMulPwr>
       </sgr:modbusAttr>
-    </sgr:dpListElement>
-    <sgr:dpListElement>
+    </sgr:dataPointListElement>
+    <sgr:dataPointListElement>
       <sgr:dataPoint datapointName="ActivePowerACL3" mroVisibilityIndicator="R" unit="KILOWATTS" rwpDatadirection="R">
         <sgr:dataType>
           <sgr:float64/>
@@ -424,15 +416,15 @@
           <sgr:powerof10>-3</sgr:powerof10>
         </sgr:scalingByMulPwr>
       </sgr:modbusAttr>
-    </sgr:dpListElement>
-  </sgr:fpListElement>
-  <sgr:fpListElement>
+    </sgr:dataPointListElement>
+  </sgr:functionalProfileListElement>
+  <sgr:functionalProfileListElement>
     <sgr:functionalProfile profileName="ActiveEnergyAC">
       <sgr:profileNumber>
-        <sgr:specsOwnerId>0</sgr:specsOwnerId>
-        <sgr:profileIdentification>NonSpecific</sgr:profileIdentification>
-        <sgr:subProfileIdent>ActiveEnergyAC</sgr:subProfileIdent>
-        <sgr:sgrLevelOfOperation>m</sgr:sgrLevelOfOperation>
+        <sgr:specificationOwnerIdentification>0</sgr:specificationOwnerIdentification>
+        <sgr:functionalProfileCategory>NonSpecific</sgr:functionalProfileCategory>
+        <sgr:functionalProfileType>ActiveEnergyAC</sgr:functionalProfileType>
+        <sgr:levelOfOperation>m</sgr:levelOfOperation>
         <sgr:versionNumber>
           <sgr:primaryVersionNumber>1</sgr:primaryVersionNumber>
           <sgr:secondaryVersionNumber>0</sgr:secondaryVersionNumber>
@@ -440,7 +432,7 @@
         </sgr:versionNumber>
       </sgr:profileNumber>
     </sgr:functionalProfile>
-    <sgr:dpListElement>
+    <sgr:dataPointListElement>
       <sgr:dataPoint datapointName="ActiveEnergyACL1" mroVisibilityIndicator="R" rwpDatadirection="R" unit="KILOWATT_HOURS">
         <sgr:dataType>
           <sgr:float64/>
@@ -460,8 +452,8 @@
           <sgr:powerof10>-3</sgr:powerof10>
         </sgr:scalingByMulPwr>
       </sgr:modbusAttr>
-    </sgr:dpListElement>
-    <sgr:dpListElement>
+    </sgr:dataPointListElement>
+    <sgr:dataPointListElement>
       <sgr:dataPoint datapointName="ActiveEnergyACL2" mroVisibilityIndicator="R" unit="KILOWATT_HOURS" rwpDatadirection="R">
         <sgr:dataType>
           <sgr:float64/>
@@ -481,8 +473,8 @@
           <sgr:powerof10>-3</sgr:powerof10>
         </sgr:scalingByMulPwr>
       </sgr:modbusAttr>
-    </sgr:dpListElement>
-    <sgr:dpListElement>
+    </sgr:dataPointListElement>
+    <sgr:dataPointListElement>
       <sgr:dataPoint datapointName="ActiveEnergyACL3" mroVisibilityIndicator="R" unit="KILOWATT_HOURS" rwpDatadirection="R">
         <sgr:dataType>
           <sgr:float64/>
@@ -502,8 +494,8 @@
           <sgr:powerof10>-3</sgr:powerof10>
         </sgr:scalingByMulPwr>
       </sgr:modbusAttr>
-    </sgr:dpListElement>
-  </sgr:fpListElement>
+    </sgr:dataPointListElement>
+  </sgr:functionalProfileListElement>
   <sgr:timeSyncBlockNotification>
     <sgr:blockCacheId>block4Power</sgr:blockCacheId>
     <sgr:firstAddr>206</sgr:firstAddr>
