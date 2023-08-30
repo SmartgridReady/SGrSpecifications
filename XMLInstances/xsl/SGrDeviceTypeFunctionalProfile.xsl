@@ -138,8 +138,8 @@
                 <!-- fpNameList -->
                 <xsl:apply-templates select="sgr:functionalProfile/sgr:fpNameList" />
 
-                <!-- fpLegibDesc (4x opt) -->
-                <xsl:apply-templates select="sgr:functionalProfile/sgr:fpLegibDesc" />
+                <!-- legibleDescription (4x opt) -->
+                <xsl:apply-templates select="sgr:functionalProfile/sgr:legibleDescription" />
 
                 <xsl:if test="sgr:genAttribute/*">
                     <td>Attributes</td>
@@ -181,7 +181,7 @@
                                 <xsl:value-of select="sgr:dataPoint/@datapointName" />
                             </td>
                             <td>
-                                <xsl:for-each select="sgr:dataPoint/sgr:dpLegibDesc">
+                                <xsl:for-each select="sgr:dataPoint/sgr:legibleDescription">
                                     <div>
                                         <xsl:attribute name="lang">
                                             <xsl:value-of select="sgr:language" />

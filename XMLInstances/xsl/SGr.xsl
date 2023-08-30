@@ -249,7 +249,7 @@
 					<td class="noborder">&#160;</td>
 				</tr>
 
-				<!-- Device Profile (nameList, legibDesc-->
+				<!-- Device Profile (nameList, legibleDescription -->
 				<xsl:apply-templates select="sgr:deviceProfile" />
 
 				<!-- Generic Attributes -->

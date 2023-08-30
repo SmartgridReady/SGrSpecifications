@@ -46,7 +46,7 @@ The release note section contains meta data that descibe history and current sta
 | Element     | Description |
 |-------------|-------------|
 | commNameList  | a list of relevant namespaces list for to display names used in different standards like EEBUS, IEC6850,, SAREF4ENER etc. (see [SGrNamelistType](SGrNamelistType.md))|
-| commLegibDesc | optional, can occure multiple times, but ideally just a once per language. Contains details concerning the intended use case of the communicator. |
+| legibleDescription | optional, can occur multiple times, but ideally just a once per language. Contains details concerning the intended use case of the communicator. |
 
 ### Transport Services
 | Element     | Description |
@@ -59,11 +59,11 @@ Each communicator contains a list of functional profiles.
 |-------------|-------------|
 | profileName | Instance name of the specified functional profile, containing Release Notes, Classification, Description |
 | functionalProfile | Copy of the standardized [functional profile](functionalProfile.md) |
-| fpPrgDesc   | optional, can occure multiple times, but ideally just a once per language. Contains details for the programmer. |
+| fpPrgDesc   | optional, can occur multiple times, but ideally just a once per language. Contains details for the programmer. |
 
 ## Data Points
 Each functional profile instance contains a list of data points in accordance with the standardized functional profile.
 | Element     | Description |
 |-------------|-------------|
 | Data point | Data point of the standardized [functional profile](functionalProfile.md), containing name, description, and basic data type |
-| dpPrgDesc   | optional, can occure multiple times, but ideally just a once per language. Contains details for the programmer. |
+| dpPrgDesc   | optional, can occur multiple times, but ideally just a once per language. Contains details for the programmer. |

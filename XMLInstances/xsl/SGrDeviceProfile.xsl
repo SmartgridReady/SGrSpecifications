@@ -6,7 +6,7 @@
     Contains the style sheets for the generic device profile, including
     - sgr:deviceProfile
     - sgr:devNameList
-    - sgr:devLegibDesc
+    - sgr:legibleDescription
 
 	This template renders 2 conlum table rows for the device profile, and thus depends on
 	a table element that must be created outside this template
@@ -28,8 +28,8 @@
 	<!-- devNameList -->
 	<xsl:apply-templates select="sgr:devNameList"/>
 
-	<!-- devLegibDesc (4x opt) -->
-	<xsl:apply-templates select="sgr:devLegibDesc"/>	
+	<!-- legibleDescription (4x opt) -->
+	<xsl:apply-templates select="sgr:legibleDescription"/>	
 
 	<!-- Transport Service -->
 	<tr class="genericDetails"><td>Transport Service</td><td>
@@ -100,7 +100,7 @@
 	<xsl:call-template name="SGrNamelistType"/>
 </xsl:template>
 
-<xsl:template match="sgr:devLegibDesc">
+<xsl:template match="sgr:legibleDescription">
 	<tr><xsl:attribute name="lang"><xsl:value-of select="sgr:language"/></xsl:attribute><td colspan="2"><xsl:call-template name="SGrLegibDocumentationType"/></td></tr>	
 </xsl:template>
 

@@ -94,8 +94,8 @@
         <!-- fpNameList -->
         <xsl:apply-templates select="sgr:fpNameList" />
 
-        <!-- fpLegibDesc (4x opt) -->
-        <xsl:apply-templates select="sgr:fpLegibDesc" />
+        <!-- legibleDescription (4x opt) -->
+        <xsl:apply-templates select="sgr:legibleDescription" />
 
         <!-- fpPrgDesc (4x opt)-->
         <xsl:apply-templates select="sgr:fpPrgDesc" />
@@ -107,7 +107,7 @@
     </xsl:template>
 
     <!-- SGrLegibDocumentationType -->
-    <xsl:template match="sgr:fpLegibDesc">
+    <xsl:template match="sgr:legibleDescription">
         <tr>
             <xsl:attribute name="lang">
                 <xsl:value-of select="sgr:language" />
