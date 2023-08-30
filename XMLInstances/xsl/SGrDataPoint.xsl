@@ -132,14 +132,14 @@
 		</tr>
 	</xsl:template>
 
-	<!-- SGrModbusDataPointDescriptionType -->
+	<!-- ModbusDataPointDescription -->
 	<xsl:template match="sgr:modbusDataPoint">
-		<!-- modbusDataType (opt 1x) -->
+		<!-- ModbusDataType (opt 1x) -->
 		<tr class="transportDetails">
 			<td>Data Type</td>
 			<td>
-				<xsl:if test="sgr:modbusDataType">
-					<xsl:apply-templates select="sgr:modbusDataType" />
+				<xsl:if test="sgr:ModbusDataType">
+					<xsl:apply-templates select="sgr:ModbusDataType" />
 				</xsl:if>
 			</td>
 		</tr>

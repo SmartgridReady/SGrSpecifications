@@ -1,54 +1,54 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- Copyright (c) 2023, SmartGridready, Switzerland. All rights reserved. Source https://github.com/SmartgridReady/SGrSpecifications -->
+<!-- Copyright (c) 2023, SmartGridready, Switzerland. All rights reserved. Source https://github.com/SmartgridReady/ModbusRtuTransportServiceInstance -->
 <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:sgr="http://www.smartgridready.com/ns/V0/" attributeFormDefault="unqualified" elementFormDefault="qualified"
   targetNamespace="http://www.smartgridready.com/ns/V0/" version="0.2.2">
   <include schemaLocation="SGrModbusEIDataTypes.xsd"/>
   <include schemaLocation="../Generic/SGrSerialIntCapability.xsd"/>
-  <element name="TrspServiceModbus" type="sgr:TrspServiceModbusType"/>
-  <complexType name="TrspServiceModbusType">
+  <element name="modbusTransportService" type="sgr:ModbusTransportService"/>
+  <complexType name="ModbusTransportService">
     <sequence>
-      <element name="rtu" type="sgr:RTUType"/>
-      <element name="tcp" type="sgr:TCPType"/>
+      <element name="rtu" type="sgr:ModbusRtu"/>
+      <element name="tcp" type="sgr:ModbusTcp"/>
     </sequence>
   </complexType>
-  <complexType name="RTUType">
+  <complexType name="ModbusRtu">
     <sequence>
-      <element name="rtuTrspSrvInstance" type="sgr:RTUtrspSrvInstanceType"/>
-      <element maxOccurs="unbounded" minOccurs="0" name="rtuDevInstance" type="sgr:RTUDevInstanceType"/>
+      <element name="rtuTrspSrvInstance" type="sgr:ModbusRtuTransportServiceInstance"/>
+      <element maxOccurs="unbounded" minOccurs="0" name="rtuDevInstance" type="sgr:ModbusRtuDevInstance"/>
     </sequence>
   </complexType>
-  <complexType name="TCPType">
+  <complexType name="ModbusTcp">
     <sequence>
-      <element name="tcpTrspSrvInstance" type="sgr:TCPtrspSrvInstanceType"/>
-      <element maxOccurs="unbounded" minOccurs="0" name="tcpDevInstance" type="sgr:TCPDevInstanceType"/>
+      <element name="tcpTrspSrvInstance" type="sgr:ModbusTcpTransportServiceInstance"/>
+      <element maxOccurs="unbounded" minOccurs="0" name="tcpDevInstance" type="sgr:ModbusTcpDevInstance"/>
     </sequence>
   </complexType>
-  <complexType name="RTUDevInstanceType">
+  <complexType name="ModbusRtuDevInstance">
     <sequence>
       <element name="deviceInstName" type="string"/>
-      <element name="slaveAddr" type="sgr:tSlaveIDType"/>
+      <element name="slaveAddr" type="sgr:ModbusSlaveId"/>
     </sequence>
   </complexType>
-  <complexType name="TCPtrspSrvInstanceType"/>
-  <complexType name="TCPDevInstanceType">
+  <complexType name="ModbusTcpTransportServiceInstance"/>
+  <complexType name="ModbusTcpDevInstance">
     <sequence>
       <element name="devInstName" type="string"/>
-      <element name="devAddr" type="sgr:tP_IPModbus"/>
+      <element name="devAddr" type="sgr:ModbusIp"/>
     </sequence>
   </complexType>
-  <complexType name="RTUtrspSrvInstanceType">
+  <complexType name="ModbusRtuTransportServiceInstance">
     <sequence>
-      <element name="baudRate" type="sgr:eBaudRateType"/>
-      <element name="byteLen" type="sgr:eByteLenType"/>
-      <element name="parity" type="sgr:eParityType"/>
-      <element name="stopBitLen" type="sgr:eStopBitLenType"/>
+      <element name="baudRate" type="sgr:EnumBaudRate"/>
+      <element name="byteLen" type="sgr:EnumByteLen"/>
+      <element name="parity" type="sgr:EnumParityTyp"/>
+      <element name="stopBitLen" type="sgr:EnumStopBitLength"/>
     </sequence>
   </complexType>
-  <element name="netConnectionState" type="sgr:networkConnectionStateType"/>
-  <complexType name="networkConnectionStateType">
+  <element name="networkConnectionState" type="sgr:NetworkConnectionState"/>
+  <complexType name="NetworkConnectionState">
     <annotation>
       <documentation>
-        This status shows, if a device is connected or not and when next connection attemption should be done. Adressing a PV Inverter e.g., this may be at the next sunrise.
+        This status shows, if a device is connected or not and when next connection attempt should be done. Addressing a PV Inverter e.g., this may be at the next sunrise.
       </documentation>
     </annotation>
     <sequence>

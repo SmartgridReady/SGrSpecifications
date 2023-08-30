@@ -220,17 +220,17 @@
     </xsl:template>
 
 
-    <!-- SGrVersionNumberType -->
+    <!-- VersionNumberType -->
     <xsl:template match="sgr:softwareRevision">
-        <xsl:call-template name="SGrVersionNumberType" />
+        <xsl:call-template name="VersionNumberType" />
     </xsl:template>
     <xsl:template match="sgr:hardwareRevision">
-        <xsl:call-template name="SGrVersionNumberType" />
+        <xsl:call-template name="VersionNumberType" />
     </xsl:template>
     <xsl:template match="sgr:versionNumber">
-        <xsl:call-template name="SGrVersionNumberType" />
+        <xsl:call-template name="VersionNumberType" />
     </xsl:template>
-    <xsl:template name="SGrVersionNumberType">
+    <xsl:template name="VersionNumberType">
         <xsl:value-of select="sgr:primaryVersionNumber" />.<xsl:value-of select="sgr:secondaryVersionNumber" />.<xsl:value-of select="sgr:subReleaseVersionNumber" />
     </xsl:template>
 

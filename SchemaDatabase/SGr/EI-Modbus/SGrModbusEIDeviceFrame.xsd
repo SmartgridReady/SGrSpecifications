@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- Copyright (c) 2023, SmartGridready, Switzerland. All rights reserved. Source https://github.com/SmartgridReady/SGrSpecifications -->
+<!-- Copyright (c) 2023, SmartGridready, Switzerland. All rights reserved. Source https://github.com/SmartgridReady/ModbusRtuTransportServiceInstance -->
 <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:sgr="http://www.smartgridready.com/ns/V0/" attributeFormDefault="unqualified" elementFormDefault="qualified"
   targetNamespace="http://www.smartgridready.com/ns/V0/" version="0.2.2">
   <include schemaLocation="../Generic/SGrBaseDeviceFrame.xsd"/>
@@ -7,14 +7,14 @@
   <include schemaLocation="SGrModbusHelpers.xsd"/>
 
 	<!-- Modbus Device Frame -->
-  <complexType name="SGrModbusDataPointType">
+  <complexType name="ModbusDataPoint">
     <annotation>
       <documentation>Extends the base data point type with Modbus attributes and data points</documentation>
     </annotation>
     <complexContent>
-      <extension base="sgr:DataPointBaseType">
+      <extension base="sgr:DataPointBase">
         <sequence>
-          <element maxOccurs="unbounded" minOccurs="1" name="modbusDataPoint" type="sgr:SGrModbusDataPointDescriptionType">
+          <element maxOccurs="unbounded" minOccurs="1" name="modbusDataPoint" type="sgr:ModbusDataPointDescription">
           </element>
           <element name="lastAccessTime" type="long" maxOccurs="1" minOccurs="0">
             <annotation>
@@ -31,12 +31,12 @@
             </annotation>
           </element>
           <element name="blockCacheId" type="string" maxOccurs="1" minOccurs="0"></element>
-          <element maxOccurs="unbounded" minOccurs="0" name="modbusAttr" type="sgr:SGrAttr4ModbusType"/>
+          <element maxOccurs="unbounded" minOccurs="0" name="modbusAttr" type="sgr:ModbusAttribute"/>
         </sequence>
       </extension>
     </complexContent>
   </complexType>
-  <complexType name="SGrTimeSyncBlockNotificationType">
+  <complexType name="TimeSyncBlockNotification">
     <annotation>
       <documentation>Block cache description</documentation>
     </annotation>
@@ -56,7 +56,7 @@
           <documentation>Number of registers</documentation>
         </annotation>
       </element>
-      <element name="registerType" type="sgr:tEnumObjectType" maxOccurs="1" minOccurs="1">
+      <element name="registerType" type="sgr:EnumObjectType" maxOccurs="1" minOccurs="1">
         <annotation>
           <documentation>Modbus register type</documentation>
         </annotation>
@@ -68,7 +68,7 @@
       </element>
     </sequence>
   </complexType>
-  <complexType name="SGrModbusFunctionalProfileType">
+  <complexType name="ModbusFunctionalProfile">
     <annotation>
       <documentation>
         Extends the base functional profile type with Modbus attributes and data points
@@ -77,13 +77,13 @@
     <complexContent>
       <extension base="sgr:FunctionalProfileBaseType">
         <sequence>
-          <element maxOccurs="1" minOccurs="0" name="modbusAttr" type="sgr:SGrAttr4ModbusType"/>
-          <element maxOccurs="unbounded" minOccurs="1" name="dataPointListElement" type="sgr:SGrModbusDataPointType"/>
+          <element maxOccurs="1" minOccurs="0" name="modbusAttr" type="sgr:ModbusAttribute"/>
+          <element maxOccurs="unbounded" minOccurs="1" name="dataPointListElement" type="sgr:ModbusDataPoint"/>
         </sequence>
       </extension>
     </complexContent>
   </complexType>
-  <complexType name="SGrModbusDeviceFrame">
+  <complexType name="ModbusDeviceFrame">
     <annotation>
       <documentation>Data type definition for a Modbus Device Description as an EI (External Interface)
       </documentation>
@@ -91,23 +91,23 @@
     <complexContent>
       <extension base="sgr:DeviceBaseType">
         <sequence>
-          <element maxOccurs="1" minOccurs="0" name="modbusAttr" type="sgr:SGrAttr4ModbusType"/>
-          <element maxOccurs="1" minOccurs="1" name="modbusInterfaceDesc" type="sgr:SGrModbusInterfaceDescriptionType"/>
-          <element maxOccurs="unbounded" minOccurs="1" name="functionalProfileListElement" type="sgr:SGrModbusFunctionalProfileType"/>
-          <element maxOccurs="unbounded" minOccurs="0" name="timeSyncBlockNotification" type="sgr:SGrTimeSyncBlockNotificationType">
+          <element maxOccurs="1" minOccurs="0" name="modbusAttr" type="sgr:ModbusAttribute"/>
+          <element maxOccurs="1" minOccurs="1" name="modbusInterfaceDesc" type="sgr:ModbusInterfaceDescription"/>
+          <element maxOccurs="unbounded" minOccurs="1" name="functionalProfileListElement" type="sgr:ModbusFunctionalProfile"/>
+          <element maxOccurs="unbounded" minOccurs="0" name="timeSyncBlockNotification" type="sgr:TimeSyncBlockNotification">
             <annotation>
               <documentation> 
                 a transaction number for a sequence of Registeres (usually transmitted by Blocktransfers) to be transferred together
               </documentation>
             </annotation>
           </element>
-          <element maxOccurs="1" minOccurs="0" name="networkConnectionState" type="sgr:networkConnectionStateType"/>
+          <element maxOccurs="1" minOccurs="0" name="networkConnectionState" type="sgr:NetworkConnectionState"/>
         </sequence>
       </extension>
     </complexContent>
   </complexType>
 	<!-- Instance of Device Frame -->
-  <element name="SGrModbusDeviceFrame" type="sgr:SGrModbusDeviceFrame">
+  <element name="ModbusDeviceFrame" type="sgr:ModbusDeviceFrame">
     <annotation>
       <documentation> RPT Root Point for Modbus Device External Interface.</documentation>
     </annotation>

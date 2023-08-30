@@ -101,7 +101,7 @@
 					<p></p>
 
 					<!-- Device Types -->
-					<xsl:apply-templates select="sgr:SGrModbusDeviceFrame" />
+					<xsl:apply-templates select="sgr:ModbusDeviceFrame" />
 					<xsl:apply-templates select="sgr:RestApiDeviceFrame" />
 					<xsl:apply-templates select="sgr:SGrContactAPIDeviceFrame" />
 
@@ -113,7 +113,7 @@
 	</xsl:template>
 
 	<!-- Device Profiles -->
-	<xsl:template match="sgr:SGrModbusDeviceFrame">
+	<xsl:template match="sgr:ModbusDeviceFrame">
 		<xsl:call-template name="SGrDeviceType" />
 	</xsl:template>
 	<xsl:template match="sgr:RestApiDeviceFrame">

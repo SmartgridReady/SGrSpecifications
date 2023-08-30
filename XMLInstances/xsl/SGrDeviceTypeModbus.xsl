@@ -227,7 +227,7 @@
             </tr>
     </xsl:template>
 
-    <xsl:template match="sgr:modbusDataType">
+    <xsl:template match="sgr:ModbusDataType">
         <xsl:call-template name="SGrModbusDataPointTypeType" />
     </xsl:template>
 

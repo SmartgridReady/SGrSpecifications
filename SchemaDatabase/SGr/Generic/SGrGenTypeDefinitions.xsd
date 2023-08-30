@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- Copyright (c) 2023, SmartGridready, Switzerland. All rights reserved. Source https://github.com/SmartgridReady/SGrSpecifications -->
+<!-- Copyright (c) 2023, SmartGridready, Switzerland. All rights reserved. Source https://github.com/SmartgridReady/ModbusRtuTransportServiceInstance -->
 <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:sgr="http://www.smartgridready.com/ns/V0/" attributeFormDefault="unqualified" elementFormDefault="qualified"
   targetNamespace="http://www.smartgridready.com/ns/V0/" version="0.2.2">
-  <complexType name="SGrReleaseNotes">
+  <complexType name="ReleaseNotes">
     <annotation>
       <documentation xml:lang="en"> Contains versioning, history and release states</documentation>
     </annotation>
     <sequence>
-      <element maxOccurs="1" minOccurs="1" name="state" type="sgr:SGrReleaseState"/>
+      <element maxOccurs="1" minOccurs="1" name="state" type="sgr:ReleaseState"/>
       <element maxOccurs="1" minOccurs="0" name="remarks" type="string"/>
-      <element maxOccurs="unbounded" minOccurs="0" name="changelog" type="sgr:SGrChangeLog"/>
+      <element maxOccurs="unbounded" minOccurs="0" name="changelog" type="sgr:ChangeLog"/>
     </sequence>
   </complexType>
-  <simpleType name="SGrReleaseState">
+  <simpleType name="ReleaseState">
     <restriction base="string">
       <enumeration value="Draft"/>
       <enumeration value="Review"/>
@@ -20,7 +20,7 @@
       <enumeration value="Revoked"/>
     </restriction>
   </simpleType>
-  <complexType name="SGrChangeLog">
+  <complexType name="ChangeLog">
     <sequence>
       <element name="version" type="string"/>
       <element name="date" type="date"/>
@@ -28,7 +28,7 @@
       <element name="comment" type="string"/>
     </sequence>
   </complexType>
-  <simpleType name="SpecsOwnerId">
+  <simpleType name="SpecificationOwnerIdentification">
     <annotation>
       <documentation>
         This number identifies the organisation that owns the specification. 0 is reserved for SmartGridready specifications, any other company will receive a number by the
@@ -37,7 +37,7 @@
     </annotation>
     <restriction base="string"></restriction>
   </simpleType>
-  <simpleType name="SGrSpecialQualityReqType">
+  <simpleType name="SpecialQualityRequirement">
     <annotation>
       <documentation xml:lang="en">the special quality requirement describes a test to be applied like a quality certification for SmartMeters
       </documentation>
@@ -46,7 +46,7 @@
     <restriction base="string"/>
   </simpleType>
   <!-- data value with precision range -->
-  <simpleType name="SGrPrecisionType">
+  <simpleType name="PrecisionType">
     <annotation>
       <documentation xml:lang="en"> Precision defines the accuracy of a data point either related to a measurement value, a simulation result or of a setpoint value
       </documentation>
@@ -120,12 +120,12 @@
   </complexType>
 
   <!-- help construct to support definition of types valid for the code generator -->
-  <complexType name="emptyType">
+  <complexType name="EmptyType">
     <sequence></sequence>
   </complexType>
 
   <!-- the basic data based used für the generic level of a communicator -->
-  <complexType name="dataType">
+  <complexType name="DataType">
     <annotation>
       <documentation xml:lang="en">
         These are the generic data types must remain high level definitions for to be supported. The definition focuses on the programming languages used at the
@@ -135,21 +135,21 @@
       <documentation/>
     </annotation>
     <choice>
-      <element maxOccurs="1" minOccurs="1" name="boolean"   type="sgr:emptyType"/>
-      <element maxOccurs="1" minOccurs="1" name="int8"      type="sgr:emptyType"/>
-      <element maxOccurs="1" minOccurs="1" name="int16"     type="sgr:emptyType"/>
-      <element maxOccurs="1" minOccurs="1" name="int32"     type="sgr:emptyType"/>
-      <element maxOccurs="1" minOccurs="1" name="int64"     type="sgr:emptyType"/>
-      <element maxOccurs="1" minOccurs="1" name="int8U"     type="sgr:emptyType"/>
-      <element maxOccurs="1" minOccurs="1" name="int16U"    type="sgr:emptyType"/>
-      <element maxOccurs="1" minOccurs="1" name="int32U"    type="sgr:emptyType"/>
-      <element maxOccurs="1" minOccurs="1" name="int64U"    type="sgr:emptyType"/>
-      <element maxOccurs="1" minOccurs="1" name="float32"   type="sgr:emptyType"/>
-      <element maxOccurs="1" minOccurs="1" name="float64"   type="sgr:emptyType"/>
-      <element maxOccurs="1" minOccurs="1" name="dateTime"  type="sgr:emptyType"/>
-      <element maxOccurs="1" minOccurs="1" name="string"    type="sgr:emptyType"/>
-      <element maxOccurs="1" minOccurs="1" name="enum"      type="sgr:SGrEnumListType"/>
-      <element maxOccurs="1" minOccurs="1" name="enum2bitmapIndex" type="sgr:SGrBitmapperListType">
+      <element maxOccurs="1" minOccurs="1" name="boolean"   type="sgr:EmptyType"/>
+      <element maxOccurs="1" minOccurs="1" name="int8"      type="sgr:EmptyType"/>
+      <element maxOccurs="1" minOccurs="1" name="int16"     type="sgr:EmptyType"/>
+      <element maxOccurs="1" minOccurs="1" name="int32"     type="sgr:EmptyType"/>
+      <element maxOccurs="1" minOccurs="1" name="int64"     type="sgr:EmptyType"/>
+      <element maxOccurs="1" minOccurs="1" name="int8U"     type="sgr:EmptyType"/>
+      <element maxOccurs="1" minOccurs="1" name="int16U"    type="sgr:EmptyType"/>
+      <element maxOccurs="1" minOccurs="1" name="int32U"    type="sgr:EmptyType"/>
+      <element maxOccurs="1" minOccurs="1" name="int64U"    type="sgr:EmptyType"/>
+      <element maxOccurs="1" minOccurs="1" name="float32"   type="sgr:EmptyType"/>
+      <element maxOccurs="1" minOccurs="1" name="float64"   type="sgr:EmptyType"/>
+      <element maxOccurs="1" minOccurs="1" name="dateTime"  type="sgr:EmptyType"/>
+      <element maxOccurs="1" minOccurs="1" name="string"    type="sgr:EmptyType"/>
+      <element maxOccurs="1" minOccurs="1" name="enum"      type="sgr:EnumListType"/>
+      <element maxOccurs="1" minOccurs="1" name="enum2bitmapIndex" type="sgr:BitmapperListType">
         <annotation>
           <documentation>
             bitmap for Registers (typical: Status Bits). For to be visible as generic boolean array or unsigned integer mapped in parallel towards one data single point definition.
@@ -162,7 +162,7 @@
 
 
   <!-- enumeration to select mandatory, optional or recommended use of elements -->
-  <simpleType name="SGrMROPresenceLevelIndicationType">
+  <simpleType name="DataPointMroPresenceLevelIndicator">
     <annotation>
       <documentation xml:lang="en">
         Names for the presence indication of Elements listed in the tables are defined as follows (using the EEBUS terminology): "M" mandatotory use (IEC:SHALL),
@@ -179,7 +179,7 @@
   </simpleType>
   <!-- enumeration to select data direction (Read Write) and persistent storage 
 		use of elements -->
-  <simpleType name="SGrRWPType">
+  <simpleType name="DataPointRwpType">
     <annotation>
       <documentation xml:lang="en">
         Names for the data direction indication. "R" read only data, "W" rite only data, "RW" readible and writable data, "RWP" readible and writable data with
@@ -215,7 +215,7 @@
           </restriction>
         </simpleType>
       </element>
-      <element name="language" type="sgr:SGrLanguageType">
+      <element name="language" type="sgr:LanguageType">
         <annotation>
           <documentation>language identifier de, en, fr, it</documentation>
         </annotation>
@@ -227,7 +227,7 @@
       </element>
     </sequence>
   </complexType>
-  <simpleType name="SGrLanguageType">
+  <simpleType name="LanguageType">
     <annotation>
       <documentation>this is the identification of the language for information to be published. So far en, de, fr and it is possible
       </documentation>
@@ -239,7 +239,7 @@
       <enumeration value="it"/>
     </restriction>
   </simpleType>
-  <complexType name="SGrVersionNumberType">
+  <complexType name="VersionNumberType">
     <annotation>
       <documentation>a three digit version mumber system.</documentation>
     </annotation>
@@ -249,7 +249,7 @@
       <element name="subReleaseVersionNumber" type="int"/>
     </sequence>
   </complexType>
-  <simpleType name="SGrDeviceKindType">
+  <simpleType name="DeviceKind">
     <annotation>
       <documentation>Device Kind is inherited from EEBUS, a growing list of supported Devices</documentation>
     </annotation>
@@ -306,7 +306,7 @@
       <enumeration value="CEM"/>
     </restriction>
   </simpleType>
-  <simpleType name="SGrUnits">
+  <simpleType name="Units">
     <restriction base="string">
       <enumeration value="AMPERE_SQUARE_METERS"/>
       <enumeration value="AMPERES"/>
@@ -504,7 +504,7 @@
       <enumeration value="NONE"/>
     </restriction>
   </simpleType>
-  <complexType name="SGrScalingType">
+  <complexType name="ScalingType">
     <annotation>
       <documentation>scaled_value = value * multiplicator * 10^powerof10 This type is used for to convert intereger datapoint values into floats only
       </documentation>
@@ -529,7 +529,7 @@
   </simpleType>
 
   <!--  generic Attribute Definitions  -->
-  <complexType name="SGrAttr4GenericType">
+  <complexType name="GenericAttributeType">
     <annotation>
       <documentation>these attributes are defined for the generic interface for the application programmer. An attribute can be aligned to either a device, a functional Profile or a datapoint
       </documentation>
@@ -545,18 +545,18 @@
           <documentation> lower range limit. Unit:inherited</documentation>
         </annotation>
       </element>
-      <element maxOccurs="1" minOccurs="0" name="specQualityRequirement" type="sgr:SGrSpecialQualityReqType">
+      <element maxOccurs="1" minOccurs="0" name="specQualityRequirement" type="sgr:SpecialQualityRequirement">
         <annotation>
           <documentation> indicates Quality requirements fullfilled like formal certifications</documentation>
         </annotation>
       </element>
-      <element maxOccurs="1" minOccurs="0" name="precision" type="sgr:SGrPrecisionType">
+      <element maxOccurs="1" minOccurs="0" name="precision" type="sgr:PrecisionType">
         <annotation>
           <documentation> the precision of a measurement, calculation result or result of a controls process
           </documentation>
         </annotation>
       </element>
-      <element maxOccurs="1" minOccurs="0" name="stabilityFallback" type="sgr:SGrStabilityFallbackType">
+      <element maxOccurs="1" minOccurs="0" name="stabilityFallback" type="sgr:StabilityFallback">
         <annotation>
           <documentation>
             A consumer or a generating system receives the permit for a load change for a certain period of time. This time is always set to 0 each time a confirmation message is
@@ -564,7 +564,7 @@
           </documentation>
         </annotation>
       </element>
-      <element maxOccurs="1" minOccurs="0" name="smoothTransition" type="sgr:SGrSmoothTransitionType">
+      <element maxOccurs="1" minOccurs="0" name="smoothTransition" type="sgr:SmoothTransition">
         <annotation>
           <documentation>
             The time behavior of a transition from a power adjustment (positive as well as negative) can be determined by several time values, so that this starts with a random time
@@ -578,7 +578,7 @@
           </documentation>
         </annotation>
       </element>
-      <element maxOccurs="1" minOccurs="0" name="valueType" type="sgr:SGrMeasValueType">
+      <element maxOccurs="1" minOccurs="0" name="valueType" type="sgr:MeasuredValueType">
         <annotation>
           <documentation> MeasValueType: type of measurement. Possbile values are "value", "min", max", "average", "stdDev"
           </documentation>
@@ -600,7 +600,7 @@
       <element maxOccurs="1" minOccurs="0" name="maxLockTimeMinutes" type="float"/>
       <element maxOccurs="1" minOccurs="0" name="minRunTimeMinutes" type="float"/>
       <element maxOccurs="1" minOccurs="0" name="valueByTimeTableMinutes" type="float"/>
-      <element maxOccurs="1" minOccurs="0" name="flexAssistance" type="sgr:SGrFlexAssistanceType">
+      <element maxOccurs="1" minOccurs="0" name="flexAssistance" type="sgr:FlexAssistance">
         <annotation>
           <documentation>
             Systems with more than One communicator need a definition of the priority of the commands / demands for a flexibility requirement. This element defines the kind of a such a
@@ -611,7 +611,7 @@
       <element name="unitConversionMultiplicator" type="float" maxOccurs="1" minOccurs="0"></element>
     </all>
   </complexType>
-  <complexType name="SGrStabilityFallbackType">
+  <complexType name="StabilityFallback">
     <annotation>
       <documentation>
         A consumer or a generating system receives the permit for a load change for a certain period of time. This time is always set to 0 each time a confirmation message is received
@@ -641,7 +641,7 @@
       </element>
     </sequence>
   </complexType>
-  <complexType name="SGrSmoothTransitionType">
+  <complexType name="SmoothTransition">
     <annotation>
       <documentation>
         The time behavior of a transition from a power adjustment (positive as well as negative) can be determined by several time values, so that this starts with a random time delay,
@@ -672,16 +672,16 @@
       </element>
     </sequence>
   </complexType>
-  <complexType name="SGrFlexAssistanceType">
+  <complexType name="FlexAssistance">
     <sequence>
-      <element maxOccurs="1" minOccurs="1" name="assists" type="sgr:SGrSGCPServiceType"/>
-      <element maxOccurs="1" minOccurs="1" name="obligedTo" type="sgr:SGrObligLvlType"/>
+      <element maxOccurs="1" minOccurs="1" name="assists" type="sgr:SGCPServiceType"/>
+      <element maxOccurs="1" minOccurs="1" name="obligedTo" type="sgr:ObligLVlType"/>
     </sequence>
   </complexType>
 
 
   <!--  generic Enumeration Definitions  -->
-  <simpleType name="SGrMeasValueType">
+  <simpleType name="MeasuredValueType">
     <restriction base="string">
       <enumeration value="value"/>
       <enumeration value="min"/>
@@ -700,7 +700,7 @@
       <enumeration value="empiricalValue"/>
     </restriction>
   </simpleType>
-  <simpleType name="SGrPowerSourceType">
+  <simpleType name="PowerSource">
     <annotation>
       <documentation>E0004</documentation>
     </annotation>
@@ -712,7 +712,7 @@
       <enumeration value="dc"/>
     </restriction>
   </simpleType>
-  <simpleType name="SGReadyStateLv2Type">
+  <simpleType name="ReadyStateLV2">
     <annotation>
       <documentation>E0005 SG-Ready states according the German heatpump association bwp normal, intensified, EVU_LOCK, forced https://www.waermepumpe.de/normen-technik/sg-ready/
       </documentation>
@@ -745,7 +745,7 @@
       </enumeration>
     </restriction>
   </simpleType>
-  <simpleType name="SGReadyStateLv1Type">
+  <simpleType name="ReadyStateLV1">
     <annotation>
       <documentation>E0006 simple heat pump blocking association bwp normal,EVU_LOCK</documentation>
     </annotation>
@@ -762,7 +762,7 @@
       </enumeration>
     </restriction>
   </simpleType>
-  <simpleType name="SGrSunspStateCodesType">
+  <simpleType name="SunspStateCodesType">
     <annotation>
       <documentation> E0007 : SunspecInvStates I_STATUS_OFF, I_STATUS_SLEEPING , I_STATUS_STARTING ,I_STATUS_MPPT , I_STATUS_THROTTLED, I_STATUS_SHUTING_DOWN ,I_STATUS_FAULT , I_STATUS_STANDBY
       </documentation>
@@ -790,7 +790,7 @@
       <enumeration value="EV_NONE_OR_FEEDIN"/>
     </restriction>
   </simpleType>
-  <simpleType name="SGrEVSEStateLv1Type">
+  <simpleType name="EVSEStateLV1Type">
     <annotation>
       <documentation> E0009 : 0 = EV_NORMAL, 1 = EV_REDUCED</documentation>
     </annotation>
@@ -799,7 +799,7 @@
       <enumeration value="EV_REDUCED"/>
     </restriction>
   </simpleType>
-  <simpleType name="SGrSGCPLoadStateLv2Type">
+  <simpleType name="SGCPLoadStateLV2Type">
     <annotation>
       <documentation> E0010 : 0:0 = LD_NORMAL, 0:1 = LD_REDUCED , 1:0 = LD_LOCKED , 1:1 = LD_MAX</documentation>
     </annotation>
@@ -810,7 +810,7 @@
       <enumeration value="LD_MAX"/>
     </restriction>
   </simpleType>
-  <simpleType name="SGrSGCPFeedInStateLv2Type">
+  <simpleType name="SGCPFeedInStateLV2Type">
     <annotation>
       <documentation> E0011 : 0:0 = FI_NORMAL, 0:1 = FI_REDUCED , 1:0 = FI_LOCKED , 1:1 = FI_MAX</documentation>
     </annotation>
@@ -821,7 +821,7 @@
       <enumeration value="FI_MAX"/>
     </restriction>
   </simpleType>
-  <simpleType name="SGrEVStateType">
+  <simpleType name="EVStateType">
     <annotation>
       <documentation>E0012 IEC EVSE_61851_State for Wallbox A: standby, B: vehicle detected, C: ready (charging), D: with ventilation, E: no power (shut off), F: error
       </documentation>
@@ -836,7 +836,7 @@
       <enumeration value="EV_ERROR"/>
     </restriction>
   </simpleType>
-  <simpleType name="SGrSGCPServiceType">
+  <simpleType name="SGCPServiceType">
     <annotation>
       <documentation>
         E0013: Assistance type of a reaction / function. This Attribute indicates the type of Flexibility Entity of the operation NET servicable: Operation for the benefit of a
@@ -849,7 +849,7 @@
       <enumeration value="AT_EnerServiceable"/>
     </restriction>
   </simpleType>
-  <simpleType name="SGrObligLvlType">
+  <simpleType name="ObligLVlType">
     <annotation>
       <documentation>E0014: Obligation level of a reaction / function. SHALL: action is required SHOULD: action is strongly recommended MAY: action is permitted
       </documentation>
@@ -860,7 +860,7 @@
       <enumeration value="OL_MAY"/>
     </restriction>
   </simpleType>
-  <simpleType name="SGrOCPPStateType">
+  <simpleType name="OCPPStateType">
     <annotation>
       <documentation>
         E0015: Available (0): When a Connector becomes available for a new user (Operative) Charging (1): When the contactor of a Connector closes, allowing the vehicle to charge
@@ -886,7 +886,7 @@
       <enumeration value="SuspendedEV"/>
     </restriction>
   </simpleType>
-  <simpleType name="SGrHPOpModeType">
+  <simpleType name="HPOpModeType">
     <annotation>
       <documentation>E0016: Basic operation type of a heat pump Bereitschaft, Programm, Komfort, Eco, Warmwasser, Notbetrieb
       </documentation>
@@ -902,7 +902,7 @@
       <enumeration value="WP_COOL_PASSIVE_OP"/>
     </restriction>
   </simpleType>
-  <simpleType name="SGrHCOpModeType">
+  <simpleType name="HCOpModeType">
     <annotation>
       <documentation>E0017: Basic operation type of a heat cool valve operation mode Bereitschaft, Programm, Komfort, Eco, Warmwasser, Kühlen
       </documentation>
@@ -915,7 +915,7 @@
       <enumeration value="HC_ECO_OP"/>
     </restriction>
   </simpleType>
-  <simpleType name="ctaDomHotWOpModeType">
+  <simpleType name="CtaDomHotWOpModeType">
     <annotation>
       <documentation>Ecta001: Basic operation type of CTA Domestic Hot Water Heat Pump operation mode ON OFF Push temporary-off emergency-op
       </documentation>
@@ -929,7 +929,7 @@
       <enumeration value="DHW_EMERGENCY"/>
     </restriction>
   </simpleType>
-  <simpleType name="ctaHPOpStateType">
+  <simpleType name="CtaHPOpStateType">
     <annotation>
       <documentation>
         Ecta002: BitRank (or enum?) map for CTA Heatpump status information #1 = Stand by #2 = Alarm Aus #3 = Ext. aus #4 = Aus Zeitlimite #5 = Aus Gesperrt (EW-Sperre) #6 = Manuell Aus
@@ -960,7 +960,7 @@
       <enumeration value="HP_OIL_RECIRCUL_ACTIVE"/>
     </restriction>
   </simpleType>
-  <simpleType name="ctaHPOpModeType">
+  <simpleType name="CtaHPOpModeType">
     <annotation>
       <documentation>
         Ecta003: map for CTA Heatpump HeatCool modes information #1 = WP in Stand by Modus #2 = Heizbetrieb aktiv #3 = Notbetrieb Heizen aktiv #4 = TWW Ladung aktiv #5 = Notbetrieb TWW
@@ -986,7 +986,7 @@
       <enumeration value="HP_COMBINDED_BUFFER_LOADING"/>
     </restriction>
   </simpleType>
-  <simpleType name="ctaHCOpModeType">
+  <simpleType name="CtaHCOpModeType">
     <annotation>
       <documentation>Ecta004: map for CTA Heatpump HeatCool modes Automatik #1 Komfort #2 Reduziert #3 Frostschutz/Aus #4 Notbetrieb
       </documentation>
@@ -999,7 +999,7 @@
       <enumeration value="HP_EMERGENCY_OP"/>
     </restriction>
   </simpleType>
-  <simpleType name="hovHPOpModeType">
+  <simpleType name="HovHPOpModeType">
     <annotation>
       <documentation>Ehov1: map for Hoval H // #0=Wärmeerzeuger aus // #1=Automatikbetrieb // #4=Manueller Heizbetrieb // #5=Manueller Kühlbetrieb
       </documentation>
@@ -1011,7 +1011,7 @@
       <enumeration value="HP_MAN_COOL"/>
     </restriction>
   </simpleType>
-  <simpleType name="hovHCOpModeType">
+  <simpleType name="HovHCOpModeType">
     <annotation>
       <documentation>Ehov2: map for Hoval H // #0=Standbybetrieb // #1=Woche 1 // #2=Woche 2 // #4=Konstant // #5=Sparbetrieb // #7=Handbetrieb Heizen // #8=Handbetrieb Kühlen
       </documentation>
@@ -1026,7 +1026,7 @@
       <enumeration value="HC_MAN_COOL"/>
     </restriction>
   </simpleType>
-  <simpleType name="hovSGReadySrcSelType">
+  <simpleType name="HovSGReadySrcSelType">
     <annotation>
       <documentation>Ehov3: map for Hoval H #0=AUS #1=Eingangskontakte #2=Systembus #3=Verfügbare Leistung gedämpft
       </documentation>
@@ -1038,7 +1038,7 @@
       <enumeration value="SRC_src_DAMPED"/>
     </restriction>
   </simpleType>
-  <simpleType name="hovBufferStateType">
+  <simpleType name="HovBufferStateType">
     <annotation>
       <documentation>
         Ehov4: #0 = keine Anforderung, AUS #1 = Anforderung, Temp. tief, PLP aus (Entladeschutz) #2 = Anforderung, Ladung läuft #3 = Anforderung, Sollwert erfüllt, Nachlauf aktiv #4 =
@@ -1097,7 +1097,7 @@
       <enumeration value="HC_INTENSIFIED_EXT"/>
     </restriction>
   </simpleType>
-  <simpleType name="hovDomHotWOpModeType">
+  <simpleType name="HovDomHotWOpModeType">
     <annotation>
       <documentation>Ehov6: Basic operation type of a Domestic Hot Water Heat Pump operation mode Standby week 1 week 2 Constant Eco mode
       </documentation>
@@ -1110,7 +1110,7 @@
       <enumeration value="DHW_ECO_OP"/>
     </restriction>
   </simpleType>
-  <simpleType name="hovDomHotWStateType">
+  <simpleType name="HovDomHotWStateType">
     <annotation>
       <documentation>
         Ehov7: Zustand Warmwasserregelung: #0 = Abgeschaltet #1 = Normal Ladebetrieb #2 = Komfort Ladebetrieb #3 = Zwangsdrosselung (bei E-Zwang kleiner -50p)#4 = Zwangsladung (bei
@@ -1134,7 +1134,7 @@
       <enumeration value="DHW_FORCED_EXT"/>
     </restriction>
   </simpleType>
-  <simpleType name="hovHPOpStateType">
+  <simpleType name="HovHPOpStateType">
     <annotation>
       <documentation>
         Ehov8: #0=Abgeschaltet #1=Heizbetrieb #2=Vorlaufzeit Heizbetrieb #3=Extern gesperrt (auch bei SmartGrid Sperrbetrieb) #4=Kuehlbetrieb #5=Vorlaufzeit Kuehlbetrieb #15=Alarm
@@ -1190,7 +1190,7 @@
       <enumeration value="HP_MAN_OP_COOLING"/>
     </restriction>
   </simpleType>
-  <simpleType name="hovType">
+  <simpleType name="HovType">
     <annotation>
       <documentation>Ehov8:</documentation>
     </annotation>
@@ -1198,38 +1198,38 @@
       <enumeration value="tbd"/>
     </restriction>
   </simpleType>
-  <complexType name="SGrEnumListType">
+  <complexType name="EnumListType">
     <choice>
       <element maxOccurs="1" minOccurs="1" name="sgrMeasValueSource" type="sgr:SGrMeasValueSourceType"/>
-      <element maxOccurs="1" minOccurs="1" name="sgrPowerSource" type="sgr:SGrPowerSourceType"/>
-      <element maxOccurs="1" minOccurs="1" name="sgreadyStateLv2" type="sgr:SGReadyStateLv2Type"/>
-      <element maxOccurs="1" minOccurs="1" name="sgreadyStateLv1" type="sgr:SGReadyStateLv1Type"/>
-      <element maxOccurs="1" minOccurs="1" name="sgrSunspStateCodes" type="sgr:SGrSunspStateCodesType"/>
+      <element maxOccurs="1" minOccurs="1" name="sgrPowerSource" type="sgr:PowerSource"/>
+      <element maxOccurs="1" minOccurs="1" name="sgreadyStateLv2" type="sgr:ReadyStateLV2"/>
+      <element maxOccurs="1" minOccurs="1" name="sgreadyStateLv1" type="sgr:ReadyStateLV1"/>
+      <element maxOccurs="1" minOccurs="1" name="sgrSunspStateCodes" type="sgr:SunspStateCodesType"/>
       <element maxOccurs="1" minOccurs="1" name="sgrEVSEStateLv2" type="sgr:SGrEVSEStateLv2Type"/>
-      <element maxOccurs="1" minOccurs="1" name="sgrEVSEStateLv1" type="sgr:SGrEVSEStateLv1Type"/>
-      <element maxOccurs="1" minOccurs="1" name="sgrSGCPLoadStateLv2" type="sgr:SGrSGCPLoadStateLv2Type"/>
-      <element maxOccurs="1" minOccurs="1" name="sgrSGCPFeedInStateLv2" type="sgr:SGrSGCPFeedInStateLv2Type"/>
-      <element maxOccurs="1" minOccurs="1" name="sgrEVState" type="sgr:SGrEVStateType"/>
-      <element maxOccurs="1" minOccurs="1" name="sgrSGCPService" type="sgr:SGrSGCPServiceType"/>
-      <element maxOccurs="1" minOccurs="1" name="sgrObligLvl" type="sgr:SGrObligLvlType"/>
-      <element maxOccurs="1" minOccurs="1" name="sgrOCPPState" type="sgr:SGrOCPPStateType"/>
-      <element maxOccurs="1" minOccurs="1" name="sgrHPOpMode" type="sgr:SGrHPOpModeType"/>
-      <element maxOccurs="1" minOccurs="1" name="sgrHCOpMode" type="sgr:SGrHCOpModeType"/>
-      <element maxOccurs="1" minOccurs="1" name="ctaDomHotWOpMode" type="sgr:ctaDomHotWOpModeType"/>
-      <element maxOccurs="1" minOccurs="1" name="ctaHPOpState" type="sgr:ctaHPOpStateType"/>
-      <element maxOccurs="1" minOccurs="1" name="ctaHPOpMode" type="sgr:ctaHPOpModeType"/>
-      <element maxOccurs="1" minOccurs="1" name="ctaHCOpMode" type="sgr:ctaHCOpModeType"/>
-      <element maxOccurs="1" minOccurs="1" name="hovHPOpMode" type="sgr:hovHPOpModeType"/>
-      <element maxOccurs="1" minOccurs="1" name="hovHCOpMode" type="sgr:hovHCOpModeType"/>
-      <element maxOccurs="1" minOccurs="1" name="hovSGReadySrcSel" type="sgr:hovSGReadySrcSelType"/>
-      <element maxOccurs="1" minOccurs="1" name="hovBufferState" type="sgr:hovBufferStateType"/>
+      <element maxOccurs="1" minOccurs="1" name="sgrEVSEStateLv1" type="sgr:EVSEStateLV1Type"/>
+      <element maxOccurs="1" minOccurs="1" name="sgrSGCPLoadStateLv2" type="sgr:SGCPLoadStateLV2Type"/>
+      <element maxOccurs="1" minOccurs="1" name="sgrSGCPFeedInStateLv2" type="sgr:SGCPFeedInStateLV2Type"/>
+      <element maxOccurs="1" minOccurs="1" name="sgrEVState" type="sgr:EVStateType"/>
+      <element maxOccurs="1" minOccurs="1" name="sgrSGCPService" type="sgr:SGCPServiceType"/>
+      <element maxOccurs="1" minOccurs="1" name="sgrObligLvl" type="sgr:ObligLVlType"/>
+      <element maxOccurs="1" minOccurs="1" name="sgrOCPPState" type="sgr:OCPPStateType"/>
+      <element maxOccurs="1" minOccurs="1" name="sgrHPOpMode" type="sgr:HPOpModeType"/>
+      <element maxOccurs="1" minOccurs="1" name="sgrHCOpMode" type="sgr:HCOpModeType"/>
+      <element maxOccurs="1" minOccurs="1" name="ctaDomHotWOpMode" type="sgr:CtaDomHotWOpModeType"/>
+      <element maxOccurs="1" minOccurs="1" name="ctaHPOpState" type="sgr:CtaHPOpStateType"/>
+      <element maxOccurs="1" minOccurs="1" name="ctaHPOpMode" type="sgr:CtaHPOpModeType"/>
+      <element maxOccurs="1" minOccurs="1" name="ctaHCOpMode" type="sgr:CtaHCOpModeType"/>
+      <element maxOccurs="1" minOccurs="1" name="hovHPOpMode" type="sgr:HovHPOpModeType"/>
+      <element maxOccurs="1" minOccurs="1" name="hovHCOpMode" type="sgr:HovHCOpModeType"/>
+      <element maxOccurs="1" minOccurs="1" name="hovSGReadySrcSel" type="sgr:HovSGReadySrcSelType"/>
+      <element maxOccurs="1" minOccurs="1" name="hovBufferState" type="sgr:HovBufferStateType"/>
       <element maxOccurs="1" minOccurs="1" name="hovHCOpState" type="sgr:hovHCOpStateType"/>
-      <element maxOccurs="1" minOccurs="1" name="hovDomHotWOpMode" type="sgr:hovDomHotWOpModeType"/>
-      <element maxOccurs="1" minOccurs="1" name="hovDomHotWState" type="sgr:hovDomHotWStateType"/>
-      <element maxOccurs="1" minOccurs="1" name="hovHPOpState" type="sgr:hovHPOpStateType"/>
+      <element maxOccurs="1" minOccurs="1" name="hovDomHotWOpMode" type="sgr:HovDomHotWOpModeType"/>
+      <element maxOccurs="1" minOccurs="1" name="hovDomHotWState" type="sgr:HovDomHotWStateType"/>
+      <element maxOccurs="1" minOccurs="1" name="hovHPOpState" type="sgr:HovHPOpStateType"/>
     </choice>
   </complexType>
-  <simpleType name="SGrBool2BitRankType">
+  <simpleType name="Bool2BitRankType">
     <annotation>
       <documentation>BM0001: BitRank map for bitfiedl32</documentation>
     </annotation>
@@ -1268,7 +1268,7 @@
       <enumeration value="Bit31"/>
     </restriction>
   </simpleType>
-  <simpleType name="SGrHPOpstateType">
+  <simpleType name="HPOpstateType">
     <annotation>
       <documentation>BM0002: BitRank map for interoperable Heat Pump</documentation>
     </annotation>
@@ -1281,7 +1281,7 @@
       <enumeration value="IN_DEFROST_MODE"/>
     </restriction>
   </simpleType>
-  <simpleType name="sgrHCOpStateType">
+  <simpleType name="HCOpStateType">
     <annotation>
       <documentation>BM0003: BitRank map for HeatPump HeatCoolState</documentation>
     </annotation>
@@ -1311,7 +1311,7 @@
       <enumeration value="HC_SGRID_INTENSIVIED"/>
     </restriction>
   </simpleType>
-  <simpleType name="hovHPActBufferStateType">
+  <simpleType name="HovHPActBufferStateType">
     <annotation>
       <documentation>
         BMhov001: BitRank map for Heat Pump Buffer state source: Hoval (ER) means "Entladeregelung" Bit0 = keine Anforderung, AUS Bit0 = (ER) keine Anforderung (WEZ-Freigabe) Bit1 =
@@ -1333,7 +1333,7 @@
       <enumeration value="HPB_SGR_FORCED_"/>
     </restriction>
   </simpleType>
-  <simpleType name="stiHPOpstateType">
+  <simpleType name="StiHPOpstateType">
     <annotation>
       <documentation>BMsti001: BitRank map for Heat Pump Stiebel-Eltron</documentation>
     </annotation>
@@ -1352,17 +1352,17 @@
       <enumeration value="SILENT_MODE_2_ACTIVE"/>
     </restriction>
   </simpleType>
-  <complexType name="SGrBitmapperListType">
+  <complexType name="BitmapperListType">
     <annotation>
       <documentation>BMxxxx: Field of enumeration where endum index is used as bitmap flag Unsigned int value [and] ( 1 [2 * shift left] enum_index_value means bit is set
       </documentation>
     </annotation>
     <choice>
-      <element maxOccurs="1" minOccurs="1" name="sgrBool2BitRank" type="sgr:SGrBool2BitRankType"/>
-      <element maxOccurs="1" minOccurs="1" name="sgrHPOpstate" type="sgr:SGrHPOpstateType"/>
-      <element maxOccurs="1" minOccurs="1" name="sgrHCOpstate" type="sgr:sgrHCOpStateType"/>
-      <element maxOccurs="1" minOccurs="1" name="hovHPActBufferState" type="sgr:hovHPActBufferStateType"/>
-      <element maxOccurs="1" minOccurs="1" name="stiHPOpstate" type="sgr:stiHPOpstateType"/>
+      <element maxOccurs="1" minOccurs="1" name="sgrBool2BitRank" type="sgr:Bool2BitRankType"/>
+      <element maxOccurs="1" minOccurs="1" name="sgrHPOpstate" type="sgr:HPOpstateType"/>
+      <element maxOccurs="1" minOccurs="1" name="sgrHCOpstate" type="sgr:HCOpStateType"/>
+      <element maxOccurs="1" minOccurs="1" name="hovHPActBufferState" type="sgr:HovHPActBufferStateType"/>
+      <element maxOccurs="1" minOccurs="1" name="stiHPOpstate" type="sgr:StiHPOpstateType"/>
     </choice>
   </complexType>
 </schema>

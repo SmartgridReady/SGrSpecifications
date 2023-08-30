@@ -46,7 +46,7 @@ The release note section contains meta data that descibe history and current sta
 | legibleDescription | optional, can occure multiple times, but ideally just a once per language. Contains details concerning the intended use case of the functional profile. |
 
 ## Generic Attributes
-SGr allows to associate attributes to a functional profile (i.e. concerning every data point). See [SGrAttr4GenericType](SGrAttr4GenericType.md) for details. Any attribute defined on the functional profile level are mandatory to any product that implements this functional profile. However, the product can optionally add further attributes based on its own needs.
+SGr allows to associate attributes to a functional profile (i.e. concerning every data point). See [GenericAttributeType](GenericAttributeType.md) for details. Any attribute defined on the functional profile level are mandatory to any product that implements this functional profile. However, the product can optionally add further attributes based on its own needs.
 
 # Data Point Attributes
 | Element     | Description |
@@ -60,7 +60,7 @@ SGr allows to associate attributes to a functional profile (i.e. concerning ever
 | legibleDescription | optional, can occure multiple times, but ideally just a once per language. Contains details concerning the intended use case of the functional profile. |
 
 ## Generic Attributes
-SGr allows to associate attributes to a data point. See [SGrAttr4GenericType](SGrAttr4GenericType.md) for details.
+SGr allows to associate attributes to a data point. See [GenericAttributeType](GenericAttributeType.md) for details.
 Any attribute defined on the functional profile level are mandatory to any product that implements this functional profile. However, the product can optionally add further attributes based on its own needs.
 
 ## Open Points
