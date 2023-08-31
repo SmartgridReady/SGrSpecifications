@@ -17,11 +17,11 @@ These attributes are generally used to search for devices that fullfil a set of 
 |---------------|-----------|-------------|---------|
 | maxVal | float | upper range limit. | 200.0 |
 | minVal | float | lower range limit. | 0.0 |
-| valueType | enum | MeasValueType: type of measurement. Possbile values are "value", "min", max", "average", "stdDev" | value |
-| specQualityRequirement | string | indicates Quality requirements fullfilled like formal certifications | METAS  |
-| precision | float | the precision of a measurement, calculation result or result of a controls process | 2.0% |
+| measuredValueType | enum | MeasValueType: type of measurement. Possbile values are "value", "min", max", "average", "stdDev" | value |
+| specialQualityRequirement | string | indicates Quality requirements fullfilled like formal certifications | METAS  |
+| precisionPercent | float | the precisionPercent of a measurement, calculation result or result of a controls process | 2.0% |
 | maxLatencyTimeMs | unsignedLong | Maximum time in milliseconds from capturing of measured value until ready at the external interface (i.e. analog-digital conversion time) | 10 ms |
-| sampleRate | unsignedLong | SampleRate in milliseconds | 200 ms |
+| sampleRateHz | unsignedLong | SampleRate in milliseconds | 200 ms |
 
 ## Stability Fallback
 A consumer or a generating system receives the permit for a load change for a certain period of time. This time is always set to 0 each time a confirmation message is received (HeartBeat).
@@ -67,7 +67,7 @@ SGr has attributes to denote the quality of the mesaured value. The presence of 
 
 | SGr Attribute | Data Type | Description | Example |
 |---------------|-----------|-------------|---------|
-| valueSource | enum | Value source kind related to SGr level 6 applications. Potential values are measuredValue, calculatedValue, empiricalValue | measuredValue |
+| measuredValueSource | enum | Value source kind related to SGr level 6 applications. Potential values are measuredValue, calculatedValue, empiricalValue | measuredValue |
 
 ## Curtailment
 Various function profiles require boundaries to set points with respect to curtailment or home energy management systems.

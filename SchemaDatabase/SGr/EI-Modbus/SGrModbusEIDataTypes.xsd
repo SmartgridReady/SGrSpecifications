@@ -21,18 +21,11 @@
       </documentation>
     </annotation>
     <sequence>
-      <element maxOccurs="1" minOccurs="1" name="port" type="sgr:ModbusIpPortNumber"/>
+      <element maxOccurs="1" minOccurs="1" name="port" type="unsignedInt"/>
       <element maxOccurs="1" minOccurs="1" name="address" type="sgr:ModbusIpAddress"/>
-      <element maxOccurs="1" minOccurs="1" name="slaveID" type="sgr:ModbusSlaveId"/>
+      <element maxOccurs="1" minOccurs="1" name="slaveId" type="unsignedShort"/>
     </sequence>
   </complexType>
-  <simpleType name="ModbusIpPortNumber">
-    <annotation>
-      <documentation> Modbus Port number, default use is Port 502</documentation>
-    </annotation>
-    <restriction base="unsignedInt">
-    </restriction>
-  </simpleType>
   <complexType name="ModbusIpAddress">
     <annotation>
       <documentation>Modbus device address</documentation>
@@ -72,18 +65,11 @@
       </element>
     </sequence>
   </complexType>
-  <simpleType name="ModbusSlaveId">
-    <annotation>
-      <documentation>Modbus Slave Address</documentation>
-    </annotation>
-    <restriction base="unsignedShort">
-    </restriction>
-  </simpleType>
   <!-- ****************************************** -->
   <!-- Modbus Conversion function section -->
   <!-- ****************************************** -->
   <!-- Conversion functions -->
-  <simpleType name="EnumConversionFunction">
+  <simpleType name="BitOrder">
     <annotation>
       <documentation>
         Modbus conversion functions are used to apply different transformations to data between Modbus device and IEC61850 devices. There are different kind of conversions, depending on
@@ -101,7 +87,7 @@
   <!-- **************************** -->
   <!-- Modbus Address section -->
   <!-- **************************** -->
-  <simpleType name="EnumRegisterType">
+  <simpleType name="RegisterType">
     <annotation>
       <documentation>
         Type of the Modbus Data. For slave-role, definition of the Object Type of the data: Discretes Input: Single bit, Read-Only; Coils: Single bit, Read-Write; Input Registers: 16-bit
@@ -144,7 +130,7 @@
         <documentation>The bit rank used to define a bit address (bitAddress = addr x 16 + bitRank)</documentation>
       </annotation>
     </attribute>
-    <attribute name="registerType" type="sgr:EnumRegisterType" use="required">
+    <attribute name="registerType" type="sgr:RegisterType" use="required">
       <annotation>
         <documentation>
           For slave-role, definition of the Object Type of the data: Discretes Input: Single bit, Read-Only; Coils: Single bit, Read-Write; Input Registers: 16-bit word, Read-Only;
@@ -153,7 +139,7 @@
       </annotation>
     </attribute>
   </complexType>
-  <simpleType name="EnumExceptionCode">
+  <simpleType name="ModbusExceptionCode">
     <annotation>
       <documentation>Type of the Modbus Exceptions sent by Slave (Server) responses.</documentation>
     </annotation>
@@ -232,11 +218,11 @@
   <!-- actual serial interface configuration -->
   <complexType name="ModbusRtu">
     <sequence>
-      <element maxOccurs="1" minOccurs="1" name="slaveAddr" type="sgr:ModbusSlaveId"/>
-      <element maxOccurs="1" minOccurs="1" name="baudRateSelected" type="sgr:EnumBaudRate"/>
-      <element maxOccurs="1" minOccurs="1" name="byteLenSelected" type="sgr:EnumByteLen"/>
-      <element maxOccurs="1" minOccurs="1" name="paritySelected" type="sgr:EnumParityTyp"/>
-      <element maxOccurs="1" minOccurs="1" name="stopBitLenSelected" type="sgr:EnumStopBitLength"/>
+      <element maxOccurs="1" minOccurs="1" name="slaveAddr" type="unsignedShort"/>
+      <element maxOccurs="1" minOccurs="1" name="baudRateSelected" type="sgr:BaudRate"/>
+      <element maxOccurs="1" minOccurs="1" name="byteLenSelected" type="sgr:ByteLength"/>
+      <element maxOccurs="1" minOccurs="1" name="paritySelected" type="sgr:Parity"/>
+      <element maxOccurs="1" minOccurs="1" name="stopBitLenSelected" type="sgr:StopBitLength"/>
       <element name="serialInterfaceCapability" type="sgr:SerialInterfaceCapability"/>
     </sequence>
   </complexType>

@@ -13,4 +13,4 @@ Welcome to SGr Technical Documentation
    functionalProfile
    GenericAttributes
    levelOfOperation
-   AlternativeNameList
+   AlternativeNames

@@ -3,8 +3,8 @@
 <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:sgr="http://www.smartgridready.com/ns/V0/" attributeFormDefault="unqualified" elementFormDefault="qualified"
   targetNamespace="http://www.smartgridready.com/ns/V0/" version="0.2.2">
   <include schemaLocation="SGrGenTypeDefinitions.xsd"/>
-  <include schemaLocation="SGrEnumProfileType.xsd"/>
-  <include schemaLocation="SGrEnumSubProfileType.xsd"/>
+  <include schemaLocation="SGrFunctionalProfileCategory.xsd"/>
+  <include schemaLocation="SGrFunctionalProfileType.xsd"/>
   <include schemaLocation="SGrEnumLevelOfOperationType.xsd"/>
   <complexType name="FunctionalProfileDescription">
     <annotation>
@@ -15,7 +15,7 @@
     </annotation>
     <sequence>
       <element maxOccurs="1" minOccurs="1" name="functionalProfileIdentification" type="sgr:FunctionalProfileIdentification"/>
-      <element maxOccurs="1" minOccurs="0" name="alternativeNames" type="sgr:AlternativeNameList"/>
+      <element maxOccurs="1" minOccurs="0" name="alternativeNames" type="sgr:AlternativeNames"/>
       <element maxOccurs="4" minOccurs="0" name="legibleDescription" type="sgr:LegibleDescription">
         <annotation>
           <documentation> this is the published information related to this functional profile
@@ -39,14 +39,14 @@
     </annotation>
     <sequence>
       <element maxOccurs="1" minOccurs="1" name="specificationOwnerIdentification" type="sgr:SpecificationOwnerIdentification"/>
-      <element maxOccurs="1" minOccurs="1" name="functionalProfileCategory" type="sgr:EnumProfileType">
+      <element maxOccurs="1" minOccurs="1" name="functionalProfileCategory" type="sgr:FunctionalProfileCategory">
         <annotation>
           <documentation>The Profile Identfication identiofis the main profile classes. The enumeration text is also documented with numbers being referenced in the profile number
             hhhh.nnnn.uuuu.ss.VV.vv as nnnn
           </documentation>
         </annotation>
       </element>
-      <element maxOccurs="1" minOccurs="1" name="functionalProfileType" type="sgr:EnumSubProfileType"/>
+      <element maxOccurs="1" minOccurs="1" name="functionalProfileType" type="sgr:FunctionalProfileType"/>
       <element maxOccurs="1" minOccurs="1" name="levelOfOperation" type="sgr:LevelOfOperation">
         <annotation>
           <documentation>
@@ -56,7 +56,7 @@
           </documentation>
         </annotation>
       </element>
-      <element maxOccurs="1" minOccurs="1" name="versionNumber" type="sgr:VersionNumberType"/>
+      <element maxOccurs="1" minOccurs="1" name="versionNumber" type="sgr:VersionNumber"/>
     </sequence>
   </complexType>
 </schema>

@@ -5,13 +5,13 @@
   <include schemaLocation="../Generic/SGrBaseDeviceFrame.xsd"/>
 
   <!-- Contact driven Device Frame -->
-  <complexType name="ContactApiInterfaceDescription">
+  <complexType name="ContactInterfaceDescription">
     <sequence>
       <element name="numberOfContacts" type="int"/>
       <element name="contactStabilisationTimeMs" type="unsignedInt"/>
     </sequence>
   </complexType>
-  <complexType name="ContactApiFunctionalProfileType">
+  <complexType name="ContactFunctionalProfile">
     <annotation>
       <documentation>Extends the base functional profile type with Contact API data points</documentation>
     </annotation>
@@ -23,20 +23,20 @@
       </extension>
     </complexContent>
   </complexType>
-  <complexType name="ContactApiDeviceFrame">
+  <complexType name="ContactDeviceFrame">
     <annotation>
       <documentation>Data type definition for a Contact API Device Description as an EI (External Interface)</documentation>
     </annotation>
     <complexContent>
       <extension base="sgr:DeviceBase">
         <sequence>
-          <element maxOccurs="1" minOccurs="1" name="contactApiInterfaceDescription" type="sgr:ContactApiInterfaceDescription"/>
-          <element maxOccurs="unbounded" minOccurs="1" name="functionalProfileListElement" type="sgr:ContactApiFunctionalProfileType"/>
+          <element maxOccurs="1" minOccurs="1" name="contactInterfaceDescription" type="sgr:ContactInterfaceDescription"/>
+          <element maxOccurs="unbounded" minOccurs="1" name="functionalProfileListElement" type="sgr:ContactFunctionalProfile"/>
         </sequence>
       </extension>
     </complexContent>
   </complexType>
-  <element name="ContactApiDeviceFrame" type="sgr:ContactApiDeviceFrame">
+  <element name="ContactDeviceFrame" type="sgr:ContactDeviceFrame">
     <annotation>
       <documentation> RPT Root Point for Contact API Device External Interface.</documentation>
     </annotation>

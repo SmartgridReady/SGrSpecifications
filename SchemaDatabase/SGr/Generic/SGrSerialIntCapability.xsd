@@ -2,19 +2,8 @@
 <!-- Copyright (c) 2023, SmartGridready, Switzerland. All rights reserved. Source https://github.com/SmartgridReady/SGrSpecifications  -->
 <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:sgr="http://www.smartgridready.com/ns/V0/" attributeFormDefault="unqualified" elementFormDefault="qualified"
   targetNamespace="http://www.smartgridready.com/ns/V0/" version="0.2.2">
-  <!-- ************************************** -->
-  <!-- Schema Versioning -->
-  <!-- ************************************** -->
-  <!-- <attribute fixed="0" name="version" type="string"> <annotation> <documentation> 
-		Attribute used to identify version of SGrModbusEIxxx XSD.To be added to headers 
-		(todo) </documentation> </annotation> </attribute> <attribute fixed="0" name="revision" 
-		type="string"> <annotation> <documentation> Attribute used to identify revision 
-		of SGrModbusEIxxx XSD. To be added to headers (todo) </documentation> </annotation> 
-		</attribute> <attribute fixed="0" name="release" type="string"> <annotation> 
-		<documentation> Attribute used to identify release of SGrModbusEIxxx XSD. 
-		To be added to headers (todo) or omitted as default value </documentation> 
-		</annotation> </attribute> -->
-  <simpleType name="EnumBaudRate">
+
+  <simpleType name="BaudRate">
     <restriction base="string">
       <enumeration value="300"/>
       <enumeration value="600"/>
@@ -33,20 +22,20 @@
       <enumeration value="256000"/>
     </restriction>
   </simpleType>
-  <simpleType name="EnumByteLen">
+  <simpleType name="ByteLength">
     <restriction base="string">
       <enumeration value="7"/>
       <enumeration value="8"/>
     </restriction>
   </simpleType>
-  <simpleType name="EnumParityTyp">
+  <simpleType name="Parity">
     <restriction base="string">
       <enumeration value="EVEN"/>
       <enumeration value="ODD"/>
       <enumeration value="NONE"/>
     </restriction>
   </simpleType>
-  <simpleType name="EnumStopBitLength">
+  <simpleType name="StopBitLength">
     <restriction base="string">
       <enumeration value="0"/>
       <enumeration value="1"/>
@@ -54,17 +43,12 @@
       <enumeration value="2"/>
     </restriction>
   </simpleType>
-  <element name="baudRatesSupported" type="sgr:EnumBaudRate"/>
-  <element name="byteLenSupported" type="sgr:EnumByteLen"/>
-  <element name="paritySupported" type="sgr:EnumParityTyp"/>
-  <element name="stopBitLenSupported" type="sgr:EnumStopBitLength"/>
   <complexType name="SerialInterfaceCapability">
     <sequence>
-      <element maxOccurs="unbounded" minOccurs="1" ref="sgr:baudRatesSupported"/>
-      <element maxOccurs="unbounded" minOccurs="1" ref="sgr:byteLenSupported"/>
-      <element maxOccurs="unbounded" minOccurs="1" ref="sgr:paritySupported"/>
-      <element maxOccurs="unbounded" minOccurs="1" ref="sgr:stopBitLenSupported"/>
+      <element maxOccurs="unbounded" minOccurs="1" name="baudRatesSupported" type="sgr:BaudRate"/>
+      <element maxOccurs="unbounded" minOccurs="1" name="byteLenSupported" type="sgr:ByteLength"/>
+      <element maxOccurs="unbounded" minOccurs="1" name="paritySupported" type="sgr:Parity"/>
+      <element maxOccurs="unbounded" minOccurs="1" name="stopBitLenSupported" type="sgr:StopBitLength"/>
     </sequence>
   </complexType>
-  <element name="SerialInterfaceCapability" type="sgr:SerialInterfaceCapability"/>
 </schema>

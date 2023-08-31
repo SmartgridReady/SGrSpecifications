@@ -11,7 +11,7 @@
     </annotation>
     <sequence>
       <element maxOccurs="1" minOccurs="1" name="releaseNotes" type="sgr:ReleaseNotes"/>
-      <element maxOccurs="1" minOccurs="1" name="communicatorProfile" type="sgr:CommunicatorProfile"/>
+      <element maxOccurs="1" minOccurs="1" name="communicatorInformation" type="sgr:CommunicatorInformation"/>
       <element maxOccurs="1" minOccurs="0" name="genericAttributes" type="sgr:GenericAttributes"/>
     </sequence>
     <attribute name="communicatorName" type="string">
@@ -41,9 +41,9 @@
       </annotation>
     </attribute>
   </complexType>
-  <complexType name="CommunicatorProfile">
+  <complexType name="CommunicatorInformation">
     <sequence>
-      <element maxOccurs="1" minOccurs="0" name="communicatorNameList" type="sgr:AlternativeNameList">
+      <element maxOccurs="1" minOccurs="0" name="alternativeNames" type="sgr:AlternativeNames">
         <annotation>
           <documentation>Ontology naming support</documentation>
         </annotation>
@@ -55,8 +55,8 @@
           </documentation>
         </annotation>
       </element>
-      <element minOccurs="1" name="supportedTransportServices" type="sgr:TransportServicesList"/>
-      <element maxOccurs="1" minOccurs="1" name="communicatorKind" type="sgr:CommunicatorKind"/>
+      <element minOccurs="1" name="supportedTransportServices" type="sgr:TransportServices"/>
+      <element maxOccurs="1" minOccurs="1" name="communicatorCategory" type="sgr:CommunicatorCategory"/>
       <element maxOccurs="1" minOccurs="1" name="versionNumber" type="string"/>
       <element minOccurs="0" name="brandName" type="string">
         <annotation>
@@ -89,7 +89,7 @@
       </element>
     </sequence>
   </complexType>
-  <simpleType name="CommunicatorKind">
+  <simpleType name="CommunicatorCategory">
     <annotation>
       <documentation>Communicator types, a growing list of supported Communicators
       </documentation>
@@ -101,19 +101,18 @@
       <enumeration value="AccountingSystem"/>
     </restriction>
   </simpleType>
-  <complexType name="TransportServicesSpecific">
+  <complexType name="CommunicatorTransportService">
     <choice>
-      <element name="modbus" type="sgr:ModbusInterfaceSelectionType"/>
+      <element name="modbus" type="sgr:ModbusInterfaceSelection"/>
       <element name="rest" type="sgr:RestApiInterfaceSelection"/>
-      <element name="generic" type="sgr:TransportServiceList"/>
     </choice>
   </complexType>
-  <complexType name="TransportServicesList">
+  <complexType name="TransportServices">
     <annotation>
       <documentation>A list of supported transport services.</documentation>
     </annotation>
     <sequence>
-      <element maxOccurs="unbounded" minOccurs="1" name="transportService" type="sgr:TransportServicesSpecific"/>
+      <element maxOccurs="unbounded" minOccurs="0" name="transportService" type="sgr:CommunicatorTransportService"/>
     </sequence>
   </complexType>
 </schema>
