@@ -6,7 +6,7 @@
         <tr class="transportDetails">
             <td>Number of Contacts</td>
             <td>
-                <xsl:value-of select="sgr:numContacts" />
+                <xsl:value-of select="sgr:numberOfContacts" />
             </td>
         </tr>
         <tr class="transportDetails">
