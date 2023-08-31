@@ -39,6 +39,6 @@ Currently the schema defines the following root elements
 | Element                  | Description |
 |--------------------------|-------------|
 | GenericDeviceFrame        | Generic device without any specified transport service |
-| ContactApiDeviceFrame | Device with electrical contacts |
+| ContactDeviceFrame | Device with electrical contacts |
 | ModbusDeviceFrame     | Modbus device  |
 | RestApiDeviceFrame    | RestAPI device |

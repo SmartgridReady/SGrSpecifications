@@ -12,7 +12,7 @@
 	a table element that must be created outside this template
 
     Depends on named templates:
-    - AlternativeNameList
+    - AlternativeNames
     - LegibleDescription
 
 -->
@@ -100,7 +100,7 @@
 </xsl:template>
 
 <xsl:template match="sgr:alternativeNames">
-	<xsl:call-template name="AlternativeNameList"/>
+	<xsl:call-template name="AlternativeNames"/>
 </xsl:template>
 
 <xsl:template match="sgr:legibleDescription">

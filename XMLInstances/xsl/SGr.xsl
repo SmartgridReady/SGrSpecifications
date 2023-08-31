@@ -103,7 +103,7 @@
 					<!-- Device Types -->
 					<xsl:apply-templates select="sgr:ModbusDeviceFrame" />
 					<xsl:apply-templates select="sgr:RestApiDeviceFrame" />
-					<xsl:apply-templates select="sgr:ContactApiDeviceFrame" />
+					<xsl:apply-templates select="sgr:ContactDeviceFrame" />
 
 					<!-- generic functional Profiles -->
 					<xsl:apply-templates select="sgr:FunctionalProfileFrame" />
@@ -119,7 +119,7 @@
 	<xsl:template match="sgr:RestApiDeviceFrame">
 		<xsl:call-template name="SGrDeviceType" />
 	</xsl:template>
-	<xsl:template match="sgr:ContactApiDeviceFrame">
+	<xsl:template match="sgr:ContactDeviceFrame">
 		<xsl:call-template name="SGrDeviceType" />
 	</xsl:template>
 	<xsl:template name="SGrDeviceType">
@@ -169,7 +169,7 @@
                 </xsl:if>
 
                 <!-- Change Log -->
-                <xsl:if test="sgr:releaseNotes/sgr:changelog">
+                <xsl:if test="sgr:releaseNotes/sgr:changeLog">
 					<tr>
 						<td class="fpHeader">
 							<h4>Change Log</h4>
@@ -188,7 +188,7 @@
 									<th>Author</th>
 									<th>Comment</th>
 								</tr>
-								<xsl:for-each select="sgr:releaseNotes/sgr:changelog">
+								<xsl:for-each select="sgr:releaseNotes/sgr:changeLog">
 									<tr>
 										<td>
 											<xsl:value-of select="sgr:version" />

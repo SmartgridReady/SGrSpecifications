@@ -73,7 +73,7 @@
                                 <th>Author</th>
                                 <th>Comment</th>
                             </tr>
-                            <xsl:for-each select="sgr:releaseNotes/sgr:changelog">
+                            <xsl:for-each select="sgr:releaseNotes/sgr:changeLog">
                                 <tr>
                                     <td>
                                         <xsl:value-of select="sgr:version" />
@@ -284,24 +284,24 @@
                             </tr>
                         </xsl:if>
 
-                        <!--specQualityRequirement-->
-                        <xsl:if test="//sgr:specQualityRequirement">
+                        <!--specialQualityRequirement-->
+                        <xsl:if test="//sgr:specialQualityRequirement">
                             <tr class="genericDetails">
                                 <td>
                                     <img src="/xsl/genattr.png" alt="" width="16pt" height="16pt" />
-                                    specQualityRequirement
+                                    specialQualityRequirement
                                 </td>
                                 <td>String (e.g. "METAS")</td>
                                 <td>Indicates Quality requirements fullfilled like formal certifications</td>
                             </tr>
                         </xsl:if>
 
-                        <!--precision-->
-                        <xsl:if test="//sgr:precision">
+                        <!--precisionPercent-->
+                        <xsl:if test="//sgr:precisionPercent">
                             <tr class="genericDetails">
                                 <td>
                                     <img src="/xsl/genattr.png" alt="" width="16pt" height="16pt" />
-                                    precision
+                                    precisionPercent
                                 </td>
                                 <td>%</td>
                                 <td>Precision defines the accuracy
@@ -374,36 +374,36 @@
                             </tr>
                         </xsl:if>
 
-                        <!--valueType-->
-                        <xsl:if test="//sgr:valueType">
+                        <!--measuredValueType-->
+                        <xsl:if test="//sgr:measuredValueType">
                             <tr class="genericDetails">
                                 <td>
                                     <img src="/xsl/genattr.png" alt="" width="16pt" height="16pt" />
-                                    valueType
+                                    measuredValueType
                                 </td>
                                 <td>value, min, max, average, stdDev</td>
                                 <td>Type of data point collection.</td>
                             </tr>
                         </xsl:if>
 
-                        <!--valueSource-->
-                        <xsl:if test="//sgr:valueSource">
+                        <!--measuredValueSource-->
+                        <xsl:if test="//sgr:measuredValueSource">
                             <tr class="genericDetails">
                                 <td>
                                     <img src="/xsl/genattr.png" alt="" width="16pt" height="16pt" />
-                                    valueSource
+                                    measuredValueSource
                                 </td>
                                 <td>measuredValue, calculatedValue, empiricalValue</td>
                                 <td>Value source kind related to SGr level 6 applications.</td>
                             </tr>
                         </xsl:if>
 
-                        <!--sampleRate-->
-                        <xsl:if test="//sgr:sampleRate">
+                        <!--sampleRateHz-->
+                        <xsl:if test="//sgr:sampleRateHz">
                             <tr class="genericDetails">
                                 <td>
                                     <img src="/xsl/genattr.png" alt="" width="16pt" height="16pt" />
-                                    sampleRate
+                                    sampleRateHz
                                 </td>
                                 <td>float</td>
                                 <td>SampleRate in milliseconds</td>

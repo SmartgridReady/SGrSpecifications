@@ -42,13 +42,13 @@
   <modbusAttributes>
     <pollingLatencyMs>150</pollingLatencyMs>
     <accessProtection isEnabled="true">
-      <modbusException>IllegalFunction</modbusException>
-      <modbusException>IllegalAddress</modbusException>
+      <modbusExceptionCode>IllegalFunction</modbusExceptionCode>
+      <modbusExceptionCode>IllegalAddress</modbusExceptionCode>
     </accessProtection>
   </modbusAttributes>
   <modbusInterfaceDescription>
-    <modbusInterfaceSelection>TCP/IP</modbusInterfaceSelection>
-    <trspSrvModbusTCPoutOfBox>
+    <modbusInterfaceSelection>TCPIP</modbusInterfaceSelection>
+    <modbusTcp>
       <port>512</port>
       <address>
         <ipV4n1>192</ipV4n1>
@@ -56,10 +56,10 @@
         <ipV4n3>170</ipV4n3>
         <ipV4n4>99</ipV4n4>
       </address>
-      <slaveID>0</slaveID>
-    </trspSrvModbusTCPoutOfBox>
+      <slaveId>0</slaveId>
+    </modbusTcp>
     <firstRegisterAddressIsOne>false</firstRegisterAddressIsOne>
-    <conversionScheme>BigEndian</conversionScheme>
+    <bitOrder>BigEndian</bitOrder>
   </modbusInterfaceDescription>
   <functionalProfileListElement>
     <functionalProfile profileName="BiDirFlexMgmt">

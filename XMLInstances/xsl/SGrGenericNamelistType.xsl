@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="1.1" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:sgr="http://www.smartgridready.com/ns/V0/">
 
-    <!-- AlternativeNameList-->
-    <xsl:template name="AlternativeNameList">
+    <!-- AlternativeNames-->
+    <xsl:template name="AlternativeNames">
         <xsl:if test="sgr:sLV1Name">
             <tr class="ontologyDetails">
                 <td>SGr label V1 (legacy)</td>

@@ -13,66 +13,66 @@
             </td>
         </tr>
 
-        <!-- trspSrvModbusTCPoutOfBox (1x opt) -->
-        <xsl:if test="sgr:trspSrvModbusTCPoutOfBox">
+        <!-- modbusTcp (1x opt) -->
+        <xsl:if test="sgr:modbusTcp">
             <tr class="transportDetails">
                 <td>TCP</td>
                 <td>
                     <xsl:call-template name="join">
-                        <xsl:with-param name="valueList" select="sgr:trspSrvModbusTCPoutOfBox/sgr:address/*" />
+                        <xsl:with-param name="valueList" select="sgr:modbusTcp/sgr:address/*" />
                         <xsl:with-param name="separator" select="'.'" />
                     </xsl:call-template>
                     :
-                    <xsl:value-of select="sgr:trspSrvModbusTCPoutOfBox/sgr:port" />
+                    <xsl:value-of select="sgr:modbusTcp/sgr:port" />
                     - SlaveID
-                    <xsl:value-of select="sgr:trspSrvModbusTCPoutOfBox/sgr:slaveID" />
+                    <xsl:value-of select="sgr:modbusTcp/sgr:slaveId" />
                 </td>
             </tr>
         </xsl:if>
 
-        <!-- trspSrvModbusRTUoutOfBox (1x opt) -->
-        <xsl:if test="sgr:trspSrvModbusRTUoutOfBox">
+        <!-- modbusRtu (1x opt) -->
+        <xsl:if test="sgr:modbusRtu">
             <tr class="transportDetails">
                 <td>RTU</td>
                 <td>
                     Slave Adress:
-                    <xsl:value-of select="sgr:trspSrvModbusRTUoutOfBox/sgr:slaveAddr" />
+                    <xsl:value-of select="sgr:modbusRtu/sgr:slaveAddr" />
                     <br />
                     Baud Rate:
-                    <xsl:value-of select="sgr:trspSrvModbusRTUoutOfBox/sgr:baudRateSelected" />
+                    <xsl:value-of select="sgr:modbusRtu/sgr:baudRateSelected" />
                     <br />
                     Data Bits:
-                    <xsl:value-of select="sgr:trspSrvModbusRTUoutOfBox/sgr:byteLenSelected" />
+                    <xsl:value-of select="sgr:modbusRtu/sgr:byteLenSelected" />
                     <br />
                     Parity:
-                    <xsl:value-of select="sgr:trspSrvModbusRTUoutOfBox/sgr:paritySelected" />
+                    <xsl:value-of select="sgr:modbusRtu/sgr:paritySelected" />
                     <br />
                     Stop Bit:
-                    <xsl:value-of select="sgr:trspSrvModbusRTUoutOfBox/sgr:stopBitLenSelected" />
+                    <xsl:value-of select="sgr:modbusRtu/sgr:stopBitLenSelected" />
                     <br />
 
                     <h3>Capabilities</h3>
                     Baud Rate:
                     <xsl:call-template name="join">
-                        <xsl:with-param name="valueList" select="sgr:trspSrvModbusRTUoutOfBox/sgr:serialInterfaceCapability/sgr:baudRatesSupported" />
+                        <xsl:with-param name="valueList" select="sgr:modbusRtu/sgr:serialInterfaceCapability/sgr:baudRatesSupported" />
                         <xsl:with-param name="separator" select="','" />
                     </xsl:call-template>
                     <br />
                     Data Bits:
                     <xsl:call-template name="join">
-                        <xsl:with-param name="valueList" select="sgr:trspSrvModbusRTUoutOfBox/sgr:serialInterfaceCapability/sgr:byteLenSupported" />
+                        <xsl:with-param name="valueList" select="sgr:modbusRtu/sgr:serialInterfaceCapability/sgr:byteLenSupported" />
                         <xsl:with-param name="separator" select="','" />
                     </xsl:call-template>
                     <br />
                     Parity:
                     <xsl:call-template name="join">
-                        <xsl:with-param name="valueList" select="sgr:trspSrvModbusRTUoutOfBox/sgr:serialInterfaceCapability/sgr:paritySupported" />
+                        <xsl:with-param name="valueList" select="sgr:modbusRtu/sgr:serialInterfaceCapability/sgr:paritySupported" />
                         <xsl:with-param name="separator" select="','" />
                     </xsl:call-template>
                     <br />
                     Stop Bit:
                     <xsl:call-template name="join">
-                        <xsl:with-param name="valueList" select="sgr:trspSrvModbusRTUoutOfBox/sgr:serialInterfaceCapability/sgr:stopBitLenSupported" />
+                        <xsl:with-param name="valueList" select="sgr:modbusRtu/sgr:serialInterfaceCapability/sgr:stopBitLenSupported" />
                         <xsl:with-param name="separator" select="','" />
                     </xsl:call-template>
                     <br />
@@ -91,12 +91,12 @@
             </td>
         </tr>
 
-        <!-- conversionScheme -->
+        <!-- bitOrder -->
         <tr class="transportDetails">
             <td>Conversion Scheme</td>
             <td>
                 <xsl:call-template name="join">
-                    <xsl:with-param name="valueList" select="sgr:conversionScheme" />
+                    <xsl:with-param name="valueList" select="sgr:bitOrder" />
                     <xsl:with-param name="separator" select="', '" />
                 </xsl:call-template>
             </td>
@@ -174,7 +174,7 @@
                         <xsl:when test="sgr:accessProtection/@isEnabled">Enabled: </xsl:when>
                         <xsl:otherwise>Disabled: </xsl:otherwise>
                     </xsl:choose>
-                    <xsl:for-each select="sgr:accessProtection/sgr:modbusException">
+                    <xsl:for-each select="sgr:accessProtection/sgr:modbusExceptionCode">
                         <xsl:value-of select="." />
                         &#160;
                     </xsl:for-each>

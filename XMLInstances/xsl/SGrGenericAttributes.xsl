@@ -32,28 +32,28 @@
             </tr>
         </xsl:if>
 
-        <!--specQualityRequirement-->
-        <xsl:if test="sgr:specQualityRequirement">
+        <!--specialQualityRequirement-->
+        <xsl:if test="sgr:specialQualityRequirement">
             <tr class="genericDetails">
                 <td>
                     <img src="/xsl/genattr.png" alt="" width="16pt" height="16pt" />
                     Quality Requirements
                 </td>
                 <td>
-                    <xsl:value-of select="sgr:specQualityRequirement" />
+                    <xsl:value-of select="sgr:specialQualityRequirement" />
                 </td>
             </tr>
         </xsl:if>
 
-        <!--precision-->
-        <xsl:if test="sgr:precision">
+        <!--precisionPercent-->
+        <xsl:if test="sgr:precisionPercent">
             <tr class="genericDetails">
                 <td>
                     <img src="/xsl/genattr.png" alt="" width="16pt" height="16pt" />
                     Precision
                 </td>
                 <td>
-                    <xsl:value-of select="sgr:precision" />
+                    <xsl:value-of select="sgr:precisionPercent" />
                     %
                 </td>
             </tr>
@@ -120,41 +120,41 @@
             </tr>
         </xsl:if>
         
-        <!--valueType-->
-        <xsl:if test="sgr:valueType">
+        <!--measuredValueType-->
+        <xsl:if test="sgr:measuredValueType">
             <tr class="genericDetails">
                 <td>
                     <img src="/xsl/genattr.png" alt="" width="16pt" height="16pt" />
                     ValueType
                 </td>
                 <td>
-                    <xsl:value-of select="sgr:valueType" />
+                    <xsl:value-of select="sgr:measuredValueType" />
                 </td>
             </tr>
         </xsl:if>
 
-        <!--valueSource-->
-        <xsl:if test="sgr:valueSource">
+        <!--measuredValueSource-->
+        <xsl:if test="sgr:measuredValueSource">
             <tr class="genericDetails">
                 <td>
                     <img src="/xsl/genattr.png" alt="" width="16pt" height="16pt" />
                     Value Source
                 </td>
                 <td>
-                    <xsl:value-of select="sgr:valueSource" />
+                    <xsl:value-of select="sgr:measuredValueSource" />
                 </td>
             </tr>
         </xsl:if>
 
-        <!--sampleRate-->
-        <xsl:if test="sgr:sampleRate">
+        <!--sampleRateHz-->
+        <xsl:if test="sgr:sampleRateHz">
             <tr class="genericDetails">
                 <td>
                     <img src="/xsl/genattr.png" alt="" width="16pt" height="16pt" />
                     Sample Rate
                 </td>
                 <td>
-                    <xsl:value-of select="sgr:sampleRate" />
+                    <xsl:value-of select="sgr:sampleRateHz" />
                     ms
                 </td>
             </tr>

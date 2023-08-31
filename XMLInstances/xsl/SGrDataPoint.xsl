@@ -104,7 +104,7 @@
 
 	<!-- alternativeNames -->
 	<xsl:template match="sgr:alternativeNames">
-		<xsl:call-template name="AlternativeNameList" />
+		<xsl:call-template name="AlternativeNames" />
 	</xsl:template>
 
 	<!-- LegibleDescription -->

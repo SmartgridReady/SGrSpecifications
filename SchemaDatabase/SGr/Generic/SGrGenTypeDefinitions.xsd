@@ -9,7 +9,7 @@
     <sequence>
       <element maxOccurs="1" minOccurs="1" name="state" type="sgr:ReleaseState"/>
       <element maxOccurs="1" minOccurs="0" name="remarks" type="string"/>
-      <element maxOccurs="unbounded" minOccurs="0" name="changelog" type="sgr:ChangeLog"/>
+      <element maxOccurs="unbounded" minOccurs="0" name="changeLog" type="sgr:ChangeLog"/>
     </sequence>
   </complexType>
   <simpleType name="ReleaseState">
@@ -45,8 +45,8 @@
     </annotation>
     <restriction base="string"/>
   </simpleType>
-  <!-- data value with precision range -->
-  <simpleType name="PrecisionType">
+  <!-- data value with precisionPercent range -->
+  <simpleType name="PrecisionPercent">
     <annotation>
       <documentation xml:lang="en"> Precision defines the accuracy of a data point either related to a measurement value, a simulation result or of a setpoint value
       </documentation>
@@ -58,8 +58,8 @@
       <maxInclusive value="15"/>
     </restriction>
   </simpleType>
-  <!-- AlternativeNameList Type for listing the relevant name references -->
-  <complexType name="AlternativeNameList">
+  <!-- AlternativeNames Type for listing the relevant name references -->
+  <complexType name="AlternativeNames">
     <annotation>
       <documentation xml:lang="en">
         a list of relevant namespaces list for to display names used in different standards like EEBUS, IEC6850,, SAREF4ENER etc this list type is used for devices,
@@ -171,7 +171,7 @@
       <documentation xml:lang="de"/>
       <documentation/>
     </annotation>
-    <restriction base="Name">
+    <restriction base="string">
       <enumeration value="M"/>
       <enumeration value="R"/>
       <enumeration value="O"/>
@@ -188,7 +188,7 @@
       <documentation xml:lang="de"/>
       <documentation/>
     </annotation>
-    <restriction base="Name">
+    <restriction base="string">
       <enumeration value="R"/>
       <enumeration value="W"/>
       <enumeration value="RW"/>
@@ -215,7 +215,7 @@
           </restriction>
         </simpleType>
       </element>
-      <element name="language" type="sgr:LanguageType">
+      <element name="language" type="sgr:Language">
         <annotation>
           <documentation>language identifier de, en, fr, it</documentation>
         </annotation>
@@ -227,19 +227,19 @@
       </element>
     </sequence>
   </complexType>
-  <simpleType name="LanguageType">
+  <simpleType name="Language">
     <annotation>
       <documentation>this is the identification of the language for information to be published. So far en, de, fr and it is possible
       </documentation>
     </annotation>
-    <restriction base="Name">
+    <restriction base="string">
       <enumeration value="de"/>
       <enumeration value="en"/>
       <enumeration value="fr"/>
       <enumeration value="it"/>
     </restriction>
   </simpleType>
-  <complexType name="VersionNumberType">
+  <complexType name="VersionNumber">
     <annotation>
       <documentation>a three digit version mumber system.</documentation>
     </annotation>
@@ -514,7 +514,7 @@
       <element name="powerof10" type="int"/>
     </sequence>
   </complexType>
-  <simpleType name="TransportServiceList">
+  <simpleType name="TransportService">
     <restriction base="string">
       <enumeration value="EEBUS"/>
       <enumeration value="Modbus"/>
@@ -545,14 +545,14 @@
           <documentation> lower range limit. Unit:inherited</documentation>
         </annotation>
       </element>
-      <element maxOccurs="1" minOccurs="0" name="specQualityRequirement" type="sgr:SpecialQualityRequirement">
+      <element maxOccurs="1" minOccurs="0" name="specialQualityRequirement" type="sgr:SpecialQualityRequirement">
         <annotation>
           <documentation> indicates Quality requirements fullfilled like formal certifications</documentation>
         </annotation>
       </element>
-      <element maxOccurs="1" minOccurs="0" name="precision" type="sgr:PrecisionType">
+      <element maxOccurs="1" minOccurs="0" name="precisionPercent" type="sgr:PrecisionPercent">
         <annotation>
-          <documentation> the precision of a measurement, calculation result or result of a controls process
+          <documentation> the precisionPercent of a measurement, calculation result or result of a controls process
           </documentation>
         </annotation>
       </element>
@@ -578,21 +578,21 @@
           </documentation>
         </annotation>
       </element>
-      <element maxOccurs="1" minOccurs="0" name="valueType" type="sgr:MeasuredValueType">
+      <element maxOccurs="1" minOccurs="0" name="measuredValueType" type="sgr:MeasuredValueType">
         <annotation>
           <documentation> MeasValueType: type of measurement. Possbile values are "value", "min", max", "average", "stdDev"
           </documentation>
         </annotation>
       </element>
-      <element maxOccurs="1" minOccurs="0" name="valueSource" type="sgr:SGrMeasValueSourceType">
+      <element maxOccurs="1" minOccurs="0" name="measuredValueSource" type="sgr:MeasuredValueSource">
         <annotation>
           <documentation> Value source kind related to SGr level 6 applications. Potential values are measuredValue, calculatedValue, empiricalValue
           </documentation>
         </annotation>
       </element>
-      <element maxOccurs="1" minOccurs="0" name="sampleRate" type="unsignedLong">
+      <element maxOccurs="1" minOccurs="0" name="sampleRateHz" type="unsignedLong">
         <annotation>
-          <documentation> SampleRate in milliseconds</documentation>
+          <documentation> SampleRate in Hertz</documentation>
         </annotation>
       </element>
       <element maxOccurs="1" minOccurs="0" name="curtailment" type="decimal"/>
@@ -690,7 +690,7 @@
       <enumeration value="stdDev"/>
     </restriction>
   </simpleType>
-  <simpleType name="SGrMeasValueSourceType">
+  <simpleType name="MeasuredValueSource">
     <annotation>
       <documentation>E0003</documentation>
     </annotation>
@@ -1200,7 +1200,7 @@
   </simpleType>
   <complexType name="EnumListType">
     <choice>
-      <element maxOccurs="1" minOccurs="1" name="sgrMeasValueSource" type="sgr:SGrMeasValueSourceType"/>
+      <element maxOccurs="1" minOccurs="1" name="sgrMeasValueSource" type="sgr:MeasuredValueSource"/>
       <element maxOccurs="1" minOccurs="1" name="sgrPowerSource" type="sgr:PowerSource"/>
       <element maxOccurs="1" minOccurs="1" name="sgreadyStateLv2" type="sgr:ReadyStateLV2"/>
       <element maxOccurs="1" minOccurs="1" name="sgreadyStateLv1" type="sgr:ReadyStateLV1"/>

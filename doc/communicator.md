@@ -25,7 +25,7 @@ The release note section contains meta data that descibe history and current sta
 |-----------|-------------|
 | state     | one of Draft, Review, Released, Revoked |
 | remarks   | Optional, arbitrary text. Can be usefull e.g. during draft phase. |
-| changelog | Optional, can occure multiple times. Contains release notes to the version concerned |
+| changeLog | Optional, can occure multiple times. Contains release notes to the version concerned |
 
 ### Communicator Information
 | Element          | Description |
@@ -33,7 +33,7 @@ The release note section contains meta data that descibe history and current sta
 | Name             | Communicator Name |
 | Manufacturer     | Manufacturer |
 | specOwnerId      | Owner of the declaration (normally identical to manufacturer, but different for 3rd party declarations) |
-| CommunicatorKind | Communicator Category |
+| CommunicatorCategory | Communicator Category |
 | SoftwareRevision | Software revision of communicator |
 
 ### Communicator Attributes
@@ -45,7 +45,7 @@ The release note section contains meta data that descibe history and current sta
 ### Descriptions
 | Element     | Description |
 |-------------|-------------|
-| communicatorNameList  | a list of relevant namespaces list for to display names used in different standards like EEBUS, IEC6850,, SAREF4ENER etc. (see [AlternativeNameList](AlternativeNameList.md))|
+| alternativeNames  | a list of relevant namespaces list for to display names used in different standards like EEBUS, IEC6850,, SAREF4ENER etc. (see [AlternativeNames](AlternativeNames.md))|
 | legibleDescription | optional, can occur multiple times, but ideally just a once per language. Contains details concerning the intended use case of the communicator. |
 
 ### Transport Services
