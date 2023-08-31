@@ -36,7 +36,7 @@ The release note section contains meta data that descibe history and current sta
 | Manufacturer     | Manufacturer |
 | specOwnerId      | Owner of the declaration (normally identical to manufacturer, but different for 3rd party declarations) |
 | Type             | local or cloud device |
-| DeviceKind       | Device Category |
+| DeviceCategory       | Device Category |
 | SoftwareRevision | Software revision of device |
 
 
@@ -49,7 +49,7 @@ The release note section contains meta data that descibe history and current sta
 ### Descriptions
 | Element     | Description |
 |-------------|-------------|
-| devNameList  | a list of relevant namespaces list for to display names used in different standards like EEBUS, IEC6850,, SAREF4ENER etc. (see [AlternativeNameList](AlternativeNameList.md))|
+| alternativeNames  | a list of relevant namespaces list for to display names used in different standards like EEBUS, IEC6850,, SAREF4ENER etc. (see [AlternativeNameList](AlternativeNameList.md))|
 | legibleDescription | optional, can occure multiple times, but ideally just a once per language. Contains details concerning the intended use case of the functional profile. |
 
 ### Transport Service
@@ -65,7 +65,7 @@ Each device contains a list of functional profiles.
 |-------------|-------------|
 | profileName | Instance name of the specified functional profile, containing Release Notes, Classification, Description |
 | functionalProfile | Copy of the standardized [functional profile](functionalProfile.md) |
-| fpPrgDesc   | optional, can occure multiple times, but ideally just a once per language. Contains details for the programmer. |
+| programmersDescription   | optional, can occure multiple times, but ideally just a once per language. Contains details for the programmer. |
 
 
 ## Data Points

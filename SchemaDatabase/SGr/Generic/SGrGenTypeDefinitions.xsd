@@ -249,9 +249,9 @@
       <element name="subReleaseVersionNumber" type="int"/>
     </sequence>
   </complexType>
-  <simpleType name="DeviceKind">
+  <simpleType name="DeviceCategory">
     <annotation>
-      <documentation>Device Kind is inherited from EEBUS, a growing list of supported Devices</documentation>
+      <documentation>Device Category is inherited from EEBUS, a growing list of supported Devices</documentation>
     </annotation>
     <restriction base="string">
       <enumeration value="Battery"/>
@@ -504,7 +504,7 @@
       <enumeration value="NONE"/>
     </restriction>
   </simpleType>
-  <complexType name="ScalingType">
+  <complexType name="ScalingFactor">
     <annotation>
       <documentation>scaled_value = value * multiplicator * 10^powerof10 This type is used for to convert intereger datapoint values into floats only
       </documentation>
@@ -514,7 +514,7 @@
       <element name="powerof10" type="int"/>
     </sequence>
   </complexType>
-  <simpleType name="TransportServicesUsedList">
+  <simpleType name="TransportServiceList">
     <restriction base="string">
       <enumeration value="EEBUS"/>
       <enumeration value="Modbus"/>

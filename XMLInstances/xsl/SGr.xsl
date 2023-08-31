@@ -250,13 +250,13 @@
 				</tr>
 
 				<!-- Device Profile (nameList, legibleDescription -->
-				<xsl:apply-templates select="sgr:deviceProfile" />
+				<xsl:apply-templates select="sgr:deviceInformation" />
 
 				<!-- Generic Attributes -->
 				<xsl:apply-templates select="sgr:genericAttributes" />
 
 				<!-- Modbus Device -->
-				<xsl:if test="sgr:modbusInterfaceDesc">
+				<xsl:if test="sgr:modbusInterfaceDescription">
 					<tr class="transportDetails">
 						<td colspan="2" class="noborder">
 							<h3>
@@ -264,8 +264,8 @@
 							</h3>
 						</td>
 					</tr>
-					<xsl:apply-templates select="sgr:modbusInterfaceDesc" />
-					<xsl:apply-templates select="sgr:modbusAttr" />
+					<xsl:apply-templates select="sgr:modbusInterfaceDescription" />
+					<xsl:apply-templates select="sgr:modbusAttributes" />
 					<xsl:apply-templates select="sgr:timeSyncBlockNotification" />
 				</xsl:if>
 
@@ -296,32 +296,9 @@
 
 			</table>
 
-			<xsl:apply-templates select="sgr:networkConnectionState" />
-
 			<!-- Functiol Profiles -->
 			<xsl:apply-templates select="sgr:functionalProfileListElement" />
 		</div>
-	</xsl:template>
-
-	<xsl:template match="sgr:networkConnectionState">
-		<h3>Network Connection State</h3>
-		<table>
-			<colgroup>
-				<col style="width:30%" />
-			</colgroup>
-			<tr class="transportDetails">
-				<td>Connected</td>
-				<td>
-					<xsl:value-of select="sgr:isConnected" />
-				</td>
-			</tr>
-			<tr class="transportDetails">
-				<td>Next Attempt</td>
-				<td>
-					<xsl:value-of select="sgr:nextAttempt" />
-				</td>
-			</tr>
-		</table>
 	</xsl:template>
 
 </xsl:stylesheet>

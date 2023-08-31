@@ -4,8 +4,8 @@
     <xsl:import href="SGrGenericDataPointDefinitions.xsl" />
     <xsl:import href="SGrGenericHelpers.xsl" />
 
-    <!-- modbusInterfaceDesc -->
-    <xsl:template match="sgr:modbusInterfaceDesc">
+    <!-- modbusInterfaceDescription -->
+    <xsl:template match="sgr:modbusInterfaceDescription">
         <tr class="genericDetails">
             <td>Interface Type</td>
             <td>
@@ -104,18 +104,18 @@
     </xsl:template>
 
     <!-- Attributes Modbus -->
-    <xsl:template match="sgr:modbusAttr">
-        <!--scalingByMulPwr-->
-        <xsl:if test="sgr:scalingByMulPwr">
+    <xsl:template match="sgr:modbusAttributes">
+        <!--scalingFactor-->
+        <xsl:if test="sgr:scalingFactor">
             <tr class="transportDetails">
                 <td>
                     <img src="/xsl/modbus.png" alt="Modbus" width="60px" />
                     Scaling
                 </td>
                 <td>
-                    <xsl:value-of select="sgr:scalingByMulPwr/sgr:multiplicator" />
+                    <xsl:value-of select="sgr:scalingFactor/sgr:multiplicator" />
                     x 10e
-                    <xsl:value-of select="sgr:scalingByMulPwr/sgr:powerof10" />
+                    <xsl:value-of select="sgr:scalingFactor/sgr:powerof10" />
                 </td>
             </tr>
         </xsl:if>
@@ -148,15 +148,15 @@
             </tr>
         </xsl:if>
 
-        <!--pollLatencyMS-->
-        <xsl:if test="sgr:pollLatencyMS">
+        <!--pollingLatencyMs-->
+        <xsl:if test="sgr:pollingLatencyMs">
             <tr class="transportDetails">
                 <td>
                     <img src="/xsl/modbus.png" alt="Modbus" width="60px" />
                     Polling Latency
                 </td>
                 <td>
-                    <xsl:value-of select="sgr:pollLatencyMS" />
+                    <xsl:value-of select="sgr:pollingLatencyMs" />
                     ms
                 </td>
             </tr>
@@ -208,13 +208,13 @@
                     <table>
                         <tr>
                             <td>Identifier</td>
-                            <td><xsl:value-of select="sgr:blockCacheId" /></td>
+                            <td><xsl:value-of select="sgr:blockCacheIdentification" /></td>
                         </tr>
                         <tr>
                             <td>Register</td>
                             <td>
                                 <xsl:value-of select="sgr:registerType" />&#160;
-                                <xsl:value-of select="sgr:firstAddr" />
+                                <xsl:value-of select="sgr:firstAddress" />
 				                (Size <xsl:value-of select="sgr:size" />)
                             </td>
                         </tr>
@@ -227,7 +227,7 @@
             </tr>
     </xsl:template>
 
-    <xsl:template match="sgr:ModbusDataType">
+    <xsl:template match="sgr:modbusDataType">
         <xsl:call-template name="SGrModbusDataPointTypeType" />
     </xsl:template>
 

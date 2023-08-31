@@ -14,24 +14,17 @@
     <complexContent>
       <extension base="sgr:DataPointBase">
         <sequence>
-          <element maxOccurs="unbounded" minOccurs="1" name="modbusDataPoint" type="sgr:ModbusDataPointDescription">
+          <element maxOccurs="unbounded" minOccurs="1" name="modbusDataPointConfiguration" type="sgr:ModbusDataPointConfiguration">
           </element>
-          <element name="lastAccessTime" type="long" maxOccurs="1" minOccurs="0">
+          <element name="timeToLiveMs" type="long" maxOccurs="1" minOccurs="0">
             <annotation>
               <documentation>
-                system time in ms (System.currentTimeMillis()) of the last data polling is executed
+                time in milliseconds a once capture value sustains before a next data polling is executed
               </documentation>
             </annotation>
           </element>
-          <element name="timeToLive" type="long" maxOccurs="1" minOccurs="0">
-            <annotation>
-              <documentation>
-                time a once capture value sustains before a next data polling is executed
-              </documentation>
-            </annotation>
-          </element>
-          <element name="blockCacheId" type="string" maxOccurs="1" minOccurs="0"></element>
-          <element maxOccurs="unbounded" minOccurs="0" name="modbusAttr" type="sgr:ModbusAttribute"/>
+          <element name="blockCacheIdentification" type="string" maxOccurs="1" minOccurs="0"></element>
+          <element maxOccurs="unbounded" minOccurs="0" name="modbusAttributes" type="sgr:ModbusAttributes"/>
         </sequence>
       </extension>
     </complexContent>
@@ -41,12 +34,12 @@
       <documentation>Block cache description</documentation>
     </annotation>
     <sequence>
-      <element name="blockCacheId" type="string" maxOccurs="1" minOccurs="1">
+      <element name="blockCacheIdentification" type="string" maxOccurs="1" minOccurs="1">
         <annotation>
           <documentation>Identifier, used by data points for referencing</documentation>
         </annotation>
       </element>
-      <element name="firstAddr" type="nonNegativeInteger" maxOccurs="1" minOccurs="1">
+      <element name="firstAddress" type="nonNegativeInteger" maxOccurs="1" minOccurs="1">
         <annotation>
           <documentation>Start address of block</documentation>
         </annotation>
@@ -56,7 +49,7 @@
           <documentation>Number of registers</documentation>
         </annotation>
       </element>
-      <element name="registerType" type="sgr:EnumObjectType" maxOccurs="1" minOccurs="1">
+      <element name="registerType" type="sgr:EnumRegisterType" maxOccurs="1" minOccurs="1">
         <annotation>
           <documentation>Modbus register type</documentation>
         </annotation>
@@ -75,9 +68,9 @@
       </documentation>
     </annotation>
     <complexContent>
-      <extension base="sgr:FunctionalProfileBaseType">
+      <extension base="sgr:FunctionalProfileBase">
         <sequence>
-          <element maxOccurs="1" minOccurs="0" name="modbusAttr" type="sgr:ModbusAttribute"/>
+          <element maxOccurs="1" minOccurs="0" name="modbusAttributes" type="sgr:ModbusAttributes"/>
           <element maxOccurs="unbounded" minOccurs="1" name="dataPointListElement" type="sgr:ModbusDataPoint"/>
         </sequence>
       </extension>
@@ -91,8 +84,8 @@
     <complexContent>
       <extension base="sgr:DeviceBaseType">
         <sequence>
-          <element maxOccurs="1" minOccurs="0" name="modbusAttr" type="sgr:ModbusAttribute"/>
-          <element maxOccurs="1" minOccurs="1" name="modbusInterfaceDesc" type="sgr:ModbusInterfaceDescription"/>
+          <element maxOccurs="1" minOccurs="0" name="modbusAttributes" type="sgr:ModbusAttributes"/>
+          <element maxOccurs="1" minOccurs="1" name="modbusInterfaceDescription" type="sgr:ModbusInterfaceDescription"/>
           <element maxOccurs="unbounded" minOccurs="1" name="functionalProfileListElement" type="sgr:ModbusFunctionalProfile"/>
           <element maxOccurs="unbounded" minOccurs="0" name="timeSyncBlockNotification" type="sgr:TimeSyncBlockNotification">
             <annotation>
@@ -101,7 +94,6 @@
               </documentation>
             </annotation>
           </element>
-          <element maxOccurs="1" minOccurs="0" name="networkConnectionState" type="sgr:NetworkConnectionState"/>
         </sequence>
       </extension>
     </complexContent>

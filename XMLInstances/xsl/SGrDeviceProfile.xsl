@@ -4,8 +4,8 @@
 
 <!--
     Contains the style sheets for the generic device profile, including
-    - sgr:deviceProfile
-    - sgr:devNameList
+    - sgr:deviceInformation
+    - sgr:alternativeNames
     - sgr:legibleDescription
 
 	This template renders 2 conlum table rows for the device profile, and thus depends on
@@ -23,10 +23,10 @@
 <xsl:import href="SGrGenericNamelistType.xsl" />
 <xsl:import href="SGrGenericLegibDocumentationType.xsl" />
 
-<xsl:template match="sgr:deviceProfile">	
+<xsl:template match="sgr:deviceInformation">	
 
-	<!-- devNameList -->
-	<xsl:apply-templates select="sgr:devNameList"/>
+	<!-- alternativeNames -->
+	<xsl:apply-templates select="sgr:alternativeNames"/>
 
 	<!-- legibleDescription (4x opt) -->
 	<xsl:apply-templates select="sgr:legibleDescription"/>	
@@ -50,7 +50,7 @@
 	</td></tr>
 	
 	<!-- Device Kind -->
-	<tr class="genericDetails"><td>Device Type</td><td><xsl:value-of select="sgr:deviceKind"/></td></tr>
+	<tr class="genericDetails"><td>Device Type</td><td><xsl:value-of select="sgr:deviceCategory"/></td></tr>
 	
 	<!-- softwareRevision -->
 	<tr class="genericDetails"><td>Software Rev.</td><td><xsl:apply-templates select="sgr:softwareRevision"/></td></tr>
@@ -75,9 +75,9 @@
 		<tr class="genericDetails"><td>Nominal Power</td><td><xsl:value-of select="sgr:nominalPower"/></td></tr>
 	</xsl:if>
 
-	<!-- manufSpecIdent (1x opt) -->
+	<!-- manufacturerSpecificationIdentification (1x opt) -->
 	<xsl:if test="sgr:manufSpecIsdent">
-		<tr class="genericDetails"><td>Secification ID</td><td><xsl:value-of select="sgr:manufSpecIdent"/></td></tr>
+		<tr class="genericDetails"><td>Secification ID</td><td><xsl:value-of select="sgr:manufacturerSpecificationIdentification"/></td></tr>
 	</xsl:if>
 
 	<!-- manufacturerLabel (1x opt) -->
@@ -85,9 +85,9 @@
 		<tr class="genericDetails"><td>Manufcaturer Label</td><td><xsl:value-of select="sgr:manufacturerLabel"/></td></tr>
 	</xsl:if>
 	
-	<!-- remAuthorID (1x opt) -->
-	<xsl:if test="sgr:remAuthorID">
-		<tr class="genericDetails"><td>Author Remarks</td><td><xsl:value-of select="sgr:remAuthorID"/></td></tr>
+	<!-- generalRemarks (1x opt) -->
+	<xsl:if test="sgr:generalRemarks">
+		<tr class="genericDetails"><td>Author Remarks</td><td><xsl:value-of select="sgr:generalRemarks"/></td></tr>
 	</xsl:if>
 	
 	<!-- levelOfOperation (1x opt) -->
@@ -96,7 +96,7 @@
 	</xsl:if>
 </xsl:template>
 
-<xsl:template match="sgr:devNameList">
+<xsl:template match="sgr:alternativeNames">
 	<xsl:call-template name="AlternativeNameList"/>
 </xsl:template>
 

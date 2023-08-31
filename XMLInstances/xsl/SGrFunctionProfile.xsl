@@ -35,7 +35,7 @@
                 <xsl:apply-templates select="sgr:genericAttributes" />
 
                 <!-- Modbus and Rest Attributes -->
-                <xsl:apply-templates select="sgr:modbusAttr" />
+                <xsl:apply-templates select="sgr:modbusAttributes" />
                 <xsl:apply-templates select="sgr:restApiAttribute" />
             </table>
 
@@ -97,8 +97,8 @@
         <!-- legibleDescription (4x opt) -->
         <xsl:apply-templates select="sgr:legibleDescription" />
 
-        <!-- fpPrgDesc (4x opt)-->
-        <xsl:apply-templates select="sgr:fpPrgDesc" />
+        <!-- programmersDescription (4x opt)-->
+        <xsl:apply-templates select="sgr:programmersDescription" />
     </xsl:template>
 
     <!-- AlternativeNameList -->
@@ -117,7 +117,7 @@
             </td>
         </tr>
     </xsl:template>
-    <xsl:template match="sgr:fpPrgDesc">
+    <xsl:template match="sgr:programmersDescription">
         <tr>
             <xsl:attribute name="lang">
                 <xsl:value-of select="sgr:language" />

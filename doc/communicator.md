@@ -59,7 +59,7 @@ Each communicator contains a list of functional profiles.
 |-------------|-------------|
 | profileName | Instance name of the specified functional profile, containing Release Notes, Classification, Description |
 | functionalProfile | Copy of the standardized [functional profile](functionalProfile.md) |
-| fpPrgDesc   | optional, can occur multiple times, but ideally just a once per language. Contains details for the programmer. |
+| programmersDescription   | optional, can occur multiple times, but ideally just a once per language. Contains details for the programmer. |
 
 ## Data Points
 Each functional profile instance contains a list of data points in accordance with the standardized functional profile.

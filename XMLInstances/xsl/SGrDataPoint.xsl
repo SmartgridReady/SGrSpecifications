@@ -68,7 +68,7 @@
 					<xsl:apply-templates select="sgr:genericAttributes" />
 
 					<!-- Modbus Device -->
-					<xsl:if test="sgr:modbusDataPoint">
+					<xsl:if test="sgr:modbusDataPointConfiguration">
 						<tr class="transportDetails">
 							<td colspan="2" class="noborder">
 								<h3>
@@ -76,14 +76,14 @@
 								</h3>
 							</td>
 						</tr>
-						<xsl:apply-templates select="sgr:modbusDataPoint" />
-						<xsl:if test="sgr:blockCacheId">
+						<xsl:apply-templates select="sgr:modbusDataPointConfiguration" />
+						<xsl:if test="sgr:blockCacheIdentification">
 							<tr>
 								<td>Time Sync Block</td>
-								<td><xsl:value-of select="sgr:blockCacheId" /></td>
+								<td><xsl:value-of select="sgr:blockCacheIdentification" /></td>
 							</tr>
 						</xsl:if>
-						<xsl:apply-templates select="sgr:modbusAttr" />
+						<xsl:apply-templates select="sgr:modbusAttributes" />
 					</xsl:if>
 
 					<!-- Rest Device -->
@@ -132,14 +132,14 @@
 		</tr>
 	</xsl:template>
 
-	<!-- ModbusDataPointDescription -->
-	<xsl:template match="sgr:modbusDataPoint">
-		<!-- ModbusDataType (opt 1x) -->
+	<!-- ModbusDataPointConfiguration -->
+	<xsl:template match="sgr:modbusDataPointConfiguration">
+		<!-- modbusDataType (opt 1x) -->
 		<tr class="transportDetails">
 			<td>Data Type</td>
 			<td>
-				<xsl:if test="sgr:ModbusDataType">
-					<xsl:apply-templates select="sgr:ModbusDataType" />
+				<xsl:if test="sgr:modbusDataType">
+					<xsl:apply-templates select="sgr:modbusDataType" />
 				</xsl:if>
 			</td>
 		</tr>
@@ -159,18 +159,9 @@
 							select="sgr:modbusFirstRegisterReference/@bitRank" />
 					</xsl:when>
 				</xsl:choose>
-				(Size <xsl:value-of select="sgr:dpSizeNrRegisters" />) </td>
+				(Size <xsl:value-of select="sgr:numberOfRegisters" />) </td>
 		</tr>
-
-		<!-- bitmask (opt 1x) -->
-		<xsl:if test="sgr:bitmask">
-			<tr class="transportDetails">
-				<td>Bit Mask</td>
-				<td>
-					<xsl:value-of select="sgr:bitmask" /> h </td>
-			</tr>
-		</xsl:if>
-
+		
 		<tr class="transportDetails">
 			<td>Supports</td>
 			<td>
@@ -181,14 +172,7 @@
 			</td>
 		</tr>
 
-		<!-- modbusJMESPath (opt 1x) -->
-		<xsl:if test="sgr:modbusJMESPath">
-			<tr class="transportDetails">
-				<td>JMES Path</td>
-				<td>
-					<xsl:value-of select="sgr:modbusJMESPath" /> h </td>
-			</tr>
-		</xsl:if>
+
 	</xsl:template>
 
 	<!-- RestApiDataPointDescription -->
