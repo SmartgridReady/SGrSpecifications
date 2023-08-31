@@ -1,182 +1,182 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="/xsl/SGr.xsl"?>
-<sgr:ModbusDeviceFrame deviceName="Supercal5" isLocalControl="true" specificationOwnerIdentification="0" manufacturerName="SONTEX SA" xmlns:sgr="http://www.smartgridready.com/ns/V0/"
+<ModbusDeviceFrame deviceName="Supercal5" isLocalControl="true" specificationOwnerIdentification="0" manufacturerName="SONTEX SA" xmlns="http://www.smartgridready.com/ns/V0/"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/EI-Modbus/SGrModbusEIDeviceFrame.xsd ">
-  <sgr:releaseNotes>
-    <sgr:state>Draft</sgr:state>
-  </sgr:releaseNotes>
-  <sgr:deviceInformation>
-    <sgr:transportService>Modbus</sgr:transportService>
-    <sgr:deviceCategory>SubMeterElectricity</sgr:deviceCategory>
-    <sgr:softwareRevision>0.0.0</sgr:softwareRevision>
-    <sgr:hardwareRevision>0.0.0</sgr:hardwareRevision>
-    <sgr:brandName>Supercal 5</sgr:brandName>
-    <sgr:powerSource>mains1Phase</sgr:powerSource>
-    <sgr:manufacturerLabel>sgr:manufacturerLabel</sgr:manufacturerLabel>
-    <sgr:generalRemarks>Sample xml instance by IBT : no warranty</sgr:generalRemarks>
-    <sgr:levelOfOperation>4</sgr:levelOfOperation>
-  </sgr:deviceInformation>
-  <sgr:modbusInterfaceDescription>
-    <sgr:modbusInterfaceSelection>RTU</sgr:modbusInterfaceSelection>
-    <sgr:trspSrvModbusTCPoutOfBox>
-      <sgr:port>0</sgr:port>
-      <sgr:address>
-        <sgr:ipV4n1>1</sgr:ipV4n1>
-        <sgr:ipV4n2>1</sgr:ipV4n2>
-        <sgr:ipV4n3>1</sgr:ipV4n3>
-        <sgr:ipV4n4>1</sgr:ipV4n4>
-      </sgr:address>
-      <sgr:slaveID>0</sgr:slaveID>
-    </sgr:trspSrvModbusTCPoutOfBox>
-    <sgr:trspSrvModbusRTUoutOfBox>
-      <sgr:slaveAddr>16</sgr:slaveAddr>
-      <sgr:baudRateSelected>19200</sgr:baudRateSelected>
-      <sgr:byteLenSelected>8</sgr:byteLenSelected>
-      <sgr:paritySelected>EVEN</sgr:paritySelected>
-      <sgr:stopBitLenSelected>1</sgr:stopBitLenSelected>
-      <sgr:serialInterfaceCapability>
-        <sgr:baudRatesSupported>19200</sgr:baudRatesSupported>
-        <sgr:byteLenSupported>8</sgr:byteLenSupported>
-        <sgr:paritySupported>EVEN</sgr:paritySupported>
-        <sgr:stopBitLenSupported>1</sgr:stopBitLenSupported>
-      </sgr:serialInterfaceCapability>
-    </sgr:trspSrvModbusRTUoutOfBox>
-    <sgr:firstRegisterAddressIsOne>true</sgr:firstRegisterAddressIsOne>
-    <sgr:conversionScheme>ChangeWordOrder</sgr:conversionScheme>
-  </sgr:modbusInterfaceDescription>
-  <sgr:functionalProfileListElement>
-    <sgr:functionalProfile profileName="Temperature">
-      <sgr:functionalProfileIdentification>
-        <sgr:specificationOwnerIdentification>101</sgr:specificationOwnerIdentification>
-        <sgr:functionalProfileCategory>TemperatureSensor</sgr:functionalProfileCategory>
-        <sgr:functionalProfileType>WaterTemp</sgr:functionalProfileType>
-        <sgr:levelOfOperation>4</sgr:levelOfOperation>
-        <sgr:versionNumber>
-          <sgr:primaryVersionNumber>0</sgr:primaryVersionNumber>
-          <sgr:secondaryVersionNumber>1</sgr:secondaryVersionNumber>
-          <sgr:subReleaseVersionNumber>2</sgr:subReleaseVersionNumber>
-        </sgr:versionNumber>
-      </sgr:functionalProfileIdentification>
-    </sgr:functionalProfile>
-    <sgr:dataPointListElement>
-      <sgr:dataPoint datapointName="hiTemp" presenceLevel="M" dataDirection="R" unit="DEGREES_PHASE">
-        <sgr:dataType>
-          <sgr:float64/>
-        </sgr:dataType>
-      </sgr:dataPoint>
-      <sgr:modbusDataPointConfiguration>
-        <sgr:modbusDataType>
-          <sgr:int32/>
-        </sgr:modbusDataType>
-        <sgr:modbusFirstRegisterReference addr="823" bitRank="0" registerType="InputRegister"/>
-        <sgr:numberOfRegisters>2</sgr:numberOfRegisters>
-        <sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
-      </sgr:modbusDataPointConfiguration>
-      <sgr:modbusAttributes>
-        <sgr:scalingFactor>
-          <sgr:multiplicator>1</sgr:multiplicator>
-          <sgr:powerof10>-2</sgr:powerof10>
-        </sgr:scalingFactor>
-      </sgr:modbusAttributes>
-    </sgr:dataPointListElement>
-    <sgr:dataPointListElement>
-      <sgr:dataPoint datapointName="lowTemp" presenceLevel="M" dataDirection="R" unit="DEGREES_PHASE">
-        <sgr:dataType>
-          <sgr:float64/>
-        </sgr:dataType>
-      </sgr:dataPoint>
-      <sgr:modbusDataPointConfiguration>
-        <sgr:modbusDataType>
-          <sgr:int32/>
-        </sgr:modbusDataType>
-        <sgr:modbusFirstRegisterReference addr="825" bitRank="0" registerType="InputRegister"/>
-        <sgr:numberOfRegisters>2</sgr:numberOfRegisters>
-        <sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
-      </sgr:modbusDataPointConfiguration>
-      <sgr:modbusAttributes>
-        <sgr:scalingFactor>
-          <sgr:multiplicator>1</sgr:multiplicator>
-          <sgr:powerof10>-2</sgr:powerof10>
-        </sgr:scalingFactor>
-      </sgr:modbusAttributes>
-    </sgr:dataPointListElement>
-    <sgr:dataPointListElement>
-      <sgr:dataPoint datapointName="diffTemp" presenceLevel="M" dataDirection="R" unit="DEGREES_PHASE">
-        <sgr:dataType>
-          <sgr:float64/>
-        </sgr:dataType>
-      </sgr:dataPoint>
-      <sgr:modbusDataPointConfiguration>
-        <sgr:modbusDataType>
-          <sgr:int32/>
-        </sgr:modbusDataType>
-        <sgr:modbusFirstRegisterReference addr="827" bitRank="0" registerType="InputRegister"/>
-        <sgr:numberOfRegisters>2</sgr:numberOfRegisters>
-        <sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
-      </sgr:modbusDataPointConfiguration>
-      <sgr:modbusAttributes>
-        <sgr:scalingFactor>
-          <sgr:multiplicator>1</sgr:multiplicator>
-          <sgr:powerof10>-2</sgr:powerof10>
-        </sgr:scalingFactor>
-      </sgr:modbusAttributes>
-    </sgr:dataPointListElement>
-  </sgr:functionalProfileListElement>
-  <sgr:functionalProfileListElement>
-    <sgr:functionalProfile profileName="PowerFlow">
-      <sgr:functionalProfileIdentification>
-        <sgr:specificationOwnerIdentification>101</sgr:specificationOwnerIdentification>
-        <sgr:functionalProfileCategory>Sensor</sgr:functionalProfileCategory>
-        <sgr:functionalProfileType>ph74</sgr:functionalProfileType>
-        <sgr:levelOfOperation>4</sgr:levelOfOperation>
-        <sgr:versionNumber>
-          <sgr:primaryVersionNumber>0</sgr:primaryVersionNumber>
-          <sgr:secondaryVersionNumber>1</sgr:secondaryVersionNumber>
-          <sgr:subReleaseVersionNumber>2</sgr:subReleaseVersionNumber>
-        </sgr:versionNumber>
-      </sgr:functionalProfileIdentification>
-    </sgr:functionalProfile>
-    <sgr:dataPointListElement>
-      <sgr:dataPoint datapointName="actPower" presenceLevel="M" dataDirection="R" unit="KILOWATTS">
-        <sgr:dataType>
-          <sgr:float64/>
-        </sgr:dataType>
-      </sgr:dataPoint>
-      <sgr:modbusDataPointConfiguration>
-        <sgr:modbusDataType>
-          <sgr:int32U/>
-        </sgr:modbusDataType>
-        <sgr:modbusFirstRegisterReference addr="803" bitRank="0" registerType="InputRegister"/>
-        <sgr:numberOfRegisters>2</sgr:numberOfRegisters>
-        <sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
-      </sgr:modbusDataPointConfiguration>
-      <sgr:modbusAttributes>
-        <sgr:scalingFactor>
-          <sgr:multiplicator>1</sgr:multiplicator>
-          <sgr:powerof10>-2</sgr:powerof10>
-        </sgr:scalingFactor>
-      </sgr:modbusAttributes>
-    </sgr:dataPointListElement>
-    <sgr:dataPointListElement>
-      <sgr:dataPoint datapointName="actFlow" presenceLevel="M" dataDirection="R" unit="PER_HOUR">
-        <sgr:dataType>
-          <sgr:float64/>
-        </sgr:dataType>
-      </sgr:dataPoint>
-      <sgr:modbusDataPointConfiguration>
-        <sgr:modbusDataType>
-          <sgr:int32U/>
-        </sgr:modbusDataType>
-        <sgr:modbusFirstRegisterReference addr="813" bitRank="0" registerType="InputRegister"/>
-        <sgr:numberOfRegisters>2</sgr:numberOfRegisters>
-        <sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
-      </sgr:modbusDataPointConfiguration>
-      <sgr:modbusAttributes>
-        <sgr:scalingFactor>
-          <sgr:multiplicator>1</sgr:multiplicator>
-          <sgr:powerof10>-2</sgr:powerof10>
-        </sgr:scalingFactor>
-      </sgr:modbusAttributes>
-    </sgr:dataPointListElement>
-  </sgr:functionalProfileListElement>
-</sgr:ModbusDeviceFrame>
+  <releaseNotes>
+    <state>Draft</state>
+  </releaseNotes>
+  <deviceInformation>
+    <transportService>Modbus</transportService>
+    <deviceCategory>SubMeterElectricity</deviceCategory>
+    <softwareRevision>0.0.0</softwareRevision>
+    <hardwareRevision>0.0.0</hardwareRevision>
+    <brandName>Supercal 5</brandName>
+    <powerSource>mains1Phase</powerSource>
+    <manufacturerLabel>manufacturerLabel</manufacturerLabel>
+    <generalRemarks>Sample xml instance by IBT : no warranty</generalRemarks>
+    <levelOfOperation>4</levelOfOperation>
+  </deviceInformation>
+  <modbusInterfaceDescription>
+    <modbusInterfaceSelection>RTU</modbusInterfaceSelection>
+    <trspSrvModbusTCPoutOfBox>
+      <port>0</port>
+      <address>
+        <ipV4n1>1</ipV4n1>
+        <ipV4n2>1</ipV4n2>
+        <ipV4n3>1</ipV4n3>
+        <ipV4n4>1</ipV4n4>
+      </address>
+      <slaveID>0</slaveID>
+    </trspSrvModbusTCPoutOfBox>
+    <trspSrvModbusRTUoutOfBox>
+      <slaveAddr>16</slaveAddr>
+      <baudRateSelected>19200</baudRateSelected>
+      <byteLenSelected>8</byteLenSelected>
+      <paritySelected>EVEN</paritySelected>
+      <stopBitLenSelected>1</stopBitLenSelected>
+      <serialInterfaceCapability>
+        <baudRatesSupported>19200</baudRatesSupported>
+        <byteLenSupported>8</byteLenSupported>
+        <paritySupported>EVEN</paritySupported>
+        <stopBitLenSupported>1</stopBitLenSupported>
+      </serialInterfaceCapability>
+    </trspSrvModbusRTUoutOfBox>
+    <firstRegisterAddressIsOne>true</firstRegisterAddressIsOne>
+    <conversionScheme>ChangeWordOrder</conversionScheme>
+  </modbusInterfaceDescription>
+  <functionalProfileListElement>
+    <functionalProfile profileName="Temperature">
+      <functionalProfileIdentification>
+        <specificationOwnerIdentification>101</specificationOwnerIdentification>
+        <functionalProfileCategory>TemperatureSensor</functionalProfileCategory>
+        <functionalProfileType>WaterTemp</functionalProfileType>
+        <levelOfOperation>4</levelOfOperation>
+        <versionNumber>
+          <primaryVersionNumber>0</primaryVersionNumber>
+          <secondaryVersionNumber>1</secondaryVersionNumber>
+          <subReleaseVersionNumber>2</subReleaseVersionNumber>
+        </versionNumber>
+      </functionalProfileIdentification>
+    </functionalProfile>
+    <dataPointListElement>
+      <dataPoint datapointName="hiTemp" presenceLevel="M" dataDirection="R" unit="DEGREES_PHASE">
+        <dataType>
+          <float64/>
+        </dataType>
+      </dataPoint>
+      <modbusDataPointConfiguration>
+        <modbusDataType>
+          <int32/>
+        </modbusDataType>
+        <modbusFirstRegisterReference addr="823" bitRank="0" registerType="InputRegister"/>
+        <numberOfRegisters>2</numberOfRegisters>
+        <masterFunctionsSupported>Primitives</masterFunctionsSupported>
+      </modbusDataPointConfiguration>
+      <modbusAttributes>
+        <scalingFactor>
+          <multiplicator>1</multiplicator>
+          <powerof10>-2</powerof10>
+        </scalingFactor>
+      </modbusAttributes>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint datapointName="lowTemp" presenceLevel="M" dataDirection="R" unit="DEGREES_PHASE">
+        <dataType>
+          <float64/>
+        </dataType>
+      </dataPoint>
+      <modbusDataPointConfiguration>
+        <modbusDataType>
+          <int32/>
+        </modbusDataType>
+        <modbusFirstRegisterReference addr="825" bitRank="0" registerType="InputRegister"/>
+        <numberOfRegisters>2</numberOfRegisters>
+        <masterFunctionsSupported>Primitives</masterFunctionsSupported>
+      </modbusDataPointConfiguration>
+      <modbusAttributes>
+        <scalingFactor>
+          <multiplicator>1</multiplicator>
+          <powerof10>-2</powerof10>
+        </scalingFactor>
+      </modbusAttributes>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint datapointName="diffTemp" presenceLevel="M" dataDirection="R" unit="DEGREES_PHASE">
+        <dataType>
+          <float64/>
+        </dataType>
+      </dataPoint>
+      <modbusDataPointConfiguration>
+        <modbusDataType>
+          <int32/>
+        </modbusDataType>
+        <modbusFirstRegisterReference addr="827" bitRank="0" registerType="InputRegister"/>
+        <numberOfRegisters>2</numberOfRegisters>
+        <masterFunctionsSupported>Primitives</masterFunctionsSupported>
+      </modbusDataPointConfiguration>
+      <modbusAttributes>
+        <scalingFactor>
+          <multiplicator>1</multiplicator>
+          <powerof10>-2</powerof10>
+        </scalingFactor>
+      </modbusAttributes>
+    </dataPointListElement>
+  </functionalProfileListElement>
+  <functionalProfileListElement>
+    <functionalProfile profileName="PowerFlow">
+      <functionalProfileIdentification>
+        <specificationOwnerIdentification>101</specificationOwnerIdentification>
+        <functionalProfileCategory>Sensor</functionalProfileCategory>
+        <functionalProfileType>ph74</functionalProfileType>
+        <levelOfOperation>4</levelOfOperation>
+        <versionNumber>
+          <primaryVersionNumber>0</primaryVersionNumber>
+          <secondaryVersionNumber>1</secondaryVersionNumber>
+          <subReleaseVersionNumber>2</subReleaseVersionNumber>
+        </versionNumber>
+      </functionalProfileIdentification>
+    </functionalProfile>
+    <dataPointListElement>
+      <dataPoint datapointName="actPower" presenceLevel="M" dataDirection="R" unit="KILOWATTS">
+        <dataType>
+          <float64/>
+        </dataType>
+      </dataPoint>
+      <modbusDataPointConfiguration>
+        <modbusDataType>
+          <int32U/>
+        </modbusDataType>
+        <modbusFirstRegisterReference addr="803" bitRank="0" registerType="InputRegister"/>
+        <numberOfRegisters>2</numberOfRegisters>
+        <masterFunctionsSupported>Primitives</masterFunctionsSupported>
+      </modbusDataPointConfiguration>
+      <modbusAttributes>
+        <scalingFactor>
+          <multiplicator>1</multiplicator>
+          <powerof10>-2</powerof10>
+        </scalingFactor>
+      </modbusAttributes>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint datapointName="actFlow" presenceLevel="M" dataDirection="R" unit="PER_HOUR">
+        <dataType>
+          <float64/>
+        </dataType>
+      </dataPoint>
+      <modbusDataPointConfiguration>
+        <modbusDataType>
+          <int32U/>
+        </modbusDataType>
+        <modbusFirstRegisterReference addr="813" bitRank="0" registerType="InputRegister"/>
+        <numberOfRegisters>2</numberOfRegisters>
+        <masterFunctionsSupported>Primitives</masterFunctionsSupported>
+      </modbusDataPointConfiguration>
+      <modbusAttributes>
+        <scalingFactor>
+          <multiplicator>1</multiplicator>
+          <powerof10>-2</powerof10>
+        </scalingFactor>
+      </modbusAttributes>
+    </dataPointListElement>
+  </functionalProfileListElement>
+</ModbusDeviceFrame>

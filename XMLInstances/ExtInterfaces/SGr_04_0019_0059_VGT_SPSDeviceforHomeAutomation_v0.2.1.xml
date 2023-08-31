@@ -1,202 +1,202 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="/xsl/SGr.xsl"?>
-<sgr:ModbusDeviceFrame deviceName="VGTSiemensSPSV0.1.1" isLocalControl="true" specificationOwnerIdentification="0" manufacturerName="Virtual Global Trading AG"
-  xmlns:sgr="http://www.smartgridready.com/ns/V0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<ModbusDeviceFrame deviceName="VGTSiemensSPSV0.1.1" isLocalControl="true" specificationOwnerIdentification="0" manufacturerName="Virtual Global Trading AG"
+  xmlns="http://www.smartgridready.com/ns/V0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/EI-Modbus/SGrModbusEIDeviceFrame.xsd ">
-  <sgr:releaseNotes>
-    <sgr:state>Draft</sgr:state>
-  </sgr:releaseNotes>
-  <sgr:deviceInformation>
-    <sgr:legibleDescription>
-      <sgr:textElement>SPS Device for HomeAutomation</sgr:textElement>
-      <sgr:language>en</sgr:language>
-    </sgr:legibleDescription>
-    <sgr:transportService>Modbus</sgr:transportService>
-    <sgr:deviceCategory>SGCP</sgr:deviceCategory>
-    <sgr:softwareRevision>0.0.0</sgr:softwareRevision>
-    <sgr:hardwareRevision>0.0.0</sgr:hardwareRevision>
-    <sgr:brandName></sgr:brandName>
-    <sgr:powerSource>unknown</sgr:powerSource>
-    <sgr:nominalPower>Referenzleistung in kW</sgr:nominalPower>
-    <sgr:manufacturerSpecificationIdentification>CPU 1212C AC/DC/RLY</sgr:manufacturerSpecificationIdentification>
-    <sgr:manufacturerLabel>gibt es ein Label fuer eine Systemlösung</sgr:manufacturerLabel>
-    <sgr:generalRemarks>Ersteller dieses Templates: SGr/cb</sgr:generalRemarks>
-    <sgr:levelOfOperation>4</sgr:levelOfOperation>
-    <sgr:programmerHints>
-      <sgr:textElement>Dieses Geraet muss mit der IP-Adresse des Clients konfiguriert werden, da  das Modbus-Port aus Sicherheitsgruenden nur für eine einzige Adresse geoeffnet wird</sgr:textElement>
-      <sgr:language>de</sgr:language>
-    </sgr:programmerHints>
-    <sgr:programmerHints>
-      <sgr:textElement>This device must be configured with the client's IP address, as the Modbus port is only opened to a single address for security reasons.</sgr:textElement>
-      <sgr:language>en</sgr:language>
-    </sgr:programmerHints>
-    <sgr:programmerHints>
-      <sgr:textElement>Cet appareil doit être configuré avec l'adresse IP du client, car le port Modbus n'est ouvert qu'à une seule adresse pour des raisons de sécurité.</sgr:textElement>
-      <sgr:language>fr</sgr:language>
-    </sgr:programmerHints>
-    <sgr:programmerHints>
-      <sgr:textElement>Questo dispositivo deve essere configurato con l'indirizzo IP del client, poiché la porta Modbus è aperta solo a un unico indirizzo per motivi di sicurezza.</sgr:textElement>
-      <sgr:language>it</sgr:language>
-    </sgr:programmerHints>
-  </sgr:deviceInformation>
-  <sgr:modbusAttributes>
-    <sgr:pollingLatencyMs>150</sgr:pollingLatencyMs>
-    <sgr:accessProtection isEnabled="true">
-      <sgr:modbusException>IllegalFunction</sgr:modbusException>
-      <sgr:modbusException>IllegalAddress</sgr:modbusException>
-    </sgr:accessProtection>
-  </sgr:modbusAttributes>
-  <sgr:modbusInterfaceDescription>
-    <sgr:modbusInterfaceSelection>TCP/IP</sgr:modbusInterfaceSelection>
-    <sgr:trspSrvModbusTCPoutOfBox>
-      <sgr:port>512</sgr:port>
-      <sgr:address>
-        <sgr:ipV4n1>192</sgr:ipV4n1>
-        <sgr:ipV4n2>168</sgr:ipV4n2>
-        <sgr:ipV4n3>170</sgr:ipV4n3>
-        <sgr:ipV4n4>99</sgr:ipV4n4>
-      </sgr:address>
-      <sgr:slaveID>0</sgr:slaveID>
-    </sgr:trspSrvModbusTCPoutOfBox>
-    <sgr:firstRegisterAddressIsOne>false</sgr:firstRegisterAddressIsOne>
-    <sgr:conversionScheme>BigEndian</sgr:conversionScheme>
-  </sgr:modbusInterfaceDescription>
-  <sgr:functionalProfileListElement>
-    <sgr:functionalProfile profileName="BiDirFlexMgmt">
-      <sgr:functionalProfileIdentification>
-        <sgr:specificationOwnerIdentification>0</sgr:specificationOwnerIdentification>
-        <sgr:functionalProfileCategory>SGCP</sgr:functionalProfileCategory>
-        <sgr:functionalProfileType>BiDirFlexMgmt</sgr:functionalProfileType>
-        <sgr:levelOfOperation>4</sgr:levelOfOperation>
-        <sgr:versionNumber>
-          <sgr:primaryVersionNumber>0</sgr:primaryVersionNumber>
-          <sgr:secondaryVersionNumber>2</sgr:secondaryVersionNumber>
-          <sgr:subReleaseVersionNumber>1</sgr:subReleaseVersionNumber>
-        </sgr:versionNumber>
-      </sgr:functionalProfileIdentification>
-      <sgr:legibleDescription>
-        <sgr:textElement>Der Grid seitige Flex Manager steuert die Anlage über die Datenpunkte ReadinessState, ActivePowerActivation und RunState und liest ActualActivePower. </sgr:textElement>
-        <sgr:language>de</sgr:language>
-      </sgr:legibleDescription>
-    </sgr:functionalProfile>
-    <sgr:dataPointListElement>
-      <sgr:dataPoint datapointName="ActivePowerActivation" presenceLevel="M" dataDirection="W" unit="NONE">
-        <sgr:dataType>
-          <sgr:boolean/>
-        </sgr:dataType>
-        <sgr:alternativeNames>
-          <sgr:sManufName>On/Off</sgr:sManufName>
-        </sgr:alternativeNames>
-        <sgr:legibleDescription>
-          <sgr:textElement>
+  <releaseNotes>
+    <state>Draft</state>
+  </releaseNotes>
+  <deviceInformation>
+    <legibleDescription>
+      <textElement>SPS Device for HomeAutomation</textElement>
+      <language>en</language>
+    </legibleDescription>
+    <transportService>Modbus</transportService>
+    <deviceCategory>SGCP</deviceCategory>
+    <softwareRevision>0.0.0</softwareRevision>
+    <hardwareRevision>0.0.0</hardwareRevision>
+    <brandName></brandName>
+    <powerSource>unknown</powerSource>
+    <nominalPower>Referenzleistung in kW</nominalPower>
+    <manufacturerSpecificationIdentification>CPU 1212C AC/DC/RLY</manufacturerSpecificationIdentification>
+    <manufacturerLabel>gibt es ein Label fuer eine Systemlösung</manufacturerLabel>
+    <generalRemarks>Ersteller dieses Templates: SGr/cb</generalRemarks>
+    <levelOfOperation>4</levelOfOperation>
+    <programmerHints>
+      <textElement>Dieses Geraet muss mit der IP-Adresse des Clients konfiguriert werden, da  das Modbus-Port aus Sicherheitsgruenden nur für eine einzige Adresse geoeffnet wird</textElement>
+      <language>de</language>
+    </programmerHints>
+    <programmerHints>
+      <textElement>This device must be configured with the client's IP address, as the Modbus port is only opened to a single address for security reasons.</textElement>
+      <language>en</language>
+    </programmerHints>
+    <programmerHints>
+      <textElement>Cet appareil doit être configuré avec l'adresse IP du client, car le port Modbus n'est ouvert qu'à une seule adresse pour des raisons de sécurité.</textElement>
+      <language>fr</language>
+    </programmerHints>
+    <programmerHints>
+      <textElement>Questo dispositivo deve essere configurato con l'indirizzo IP del client, poiché la porta Modbus è aperta solo a un unico indirizzo per motivi di sicurezza.</textElement>
+      <language>it</language>
+    </programmerHints>
+  </deviceInformation>
+  <modbusAttributes>
+    <pollingLatencyMs>150</pollingLatencyMs>
+    <accessProtection isEnabled="true">
+      <modbusException>IllegalFunction</modbusException>
+      <modbusException>IllegalAddress</modbusException>
+    </accessProtection>
+  </modbusAttributes>
+  <modbusInterfaceDescription>
+    <modbusInterfaceSelection>TCP/IP</modbusInterfaceSelection>
+    <trspSrvModbusTCPoutOfBox>
+      <port>512</port>
+      <address>
+        <ipV4n1>192</ipV4n1>
+        <ipV4n2>168</ipV4n2>
+        <ipV4n3>170</ipV4n3>
+        <ipV4n4>99</ipV4n4>
+      </address>
+      <slaveID>0</slaveID>
+    </trspSrvModbusTCPoutOfBox>
+    <firstRegisterAddressIsOne>false</firstRegisterAddressIsOne>
+    <conversionScheme>BigEndian</conversionScheme>
+  </modbusInterfaceDescription>
+  <functionalProfileListElement>
+    <functionalProfile profileName="BiDirFlexMgmt">
+      <functionalProfileIdentification>
+        <specificationOwnerIdentification>0</specificationOwnerIdentification>
+        <functionalProfileCategory>SGCP</functionalProfileCategory>
+        <functionalProfileType>BiDirFlexMgmt</functionalProfileType>
+        <levelOfOperation>4</levelOfOperation>
+        <versionNumber>
+          <primaryVersionNumber>0</primaryVersionNumber>
+          <secondaryVersionNumber>2</secondaryVersionNumber>
+          <subReleaseVersionNumber>1</subReleaseVersionNumber>
+        </versionNumber>
+      </functionalProfileIdentification>
+      <legibleDescription>
+        <textElement>Der Grid seitige Flex Manager steuert die Anlage über die Datenpunkte ReadinessState, ActivePowerActivation und RunState und liest ActualActivePower. </textElement>
+        <language>de</language>
+      </legibleDescription>
+    </functionalProfile>
+    <dataPointListElement>
+      <dataPoint datapointName="ActivePowerActivation" presenceLevel="M" dataDirection="W" unit="NONE">
+        <dataType>
+          <boolean/>
+        </dataType>
+        <alternativeNames>
+          <sManufName>On/Off</sManufName>
+        </alternativeNames>
+        <legibleDescription>
+          <textElement>
             On Off Befehl, Wirkleistung Flexibilität liefern ja/nein
             -Activation = true: Die Latenzeit beginnt mit dem Empfang dieses Befehls (WinTms)  
             -Activation= false: Die Leistungsanpassung wird über eine definierte Rampe zurückgenommen (RmpTms)
-          </sgr:textElement>
-          <sgr:language>de</sgr:language>
-        </sgr:legibleDescription>
-      </sgr:dataPoint>
-      <sgr:modbusDataPointConfiguration>
-        <sgr:modbusDataType>
-          <sgr:boolean/>
-        </sgr:modbusDataType>
-        <sgr:modbusFirstRegisterReference addr="20" bitRank="0" registerType="HoldRegister"/>
-        <sgr:numberOfRegisters>1</sgr:numberOfRegisters>
-        <sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
-      </sgr:modbusDataPointConfiguration>
-      <sgr:modbusAttributes>
-        <sgr:scalingFactor>
-          <sgr:multiplicator>1</sgr:multiplicator>
-          <sgr:powerof10>0</sgr:powerof10>
-        </sgr:scalingFactor>
-      </sgr:modbusAttributes>
-    </sgr:dataPointListElement>
-    <sgr:dataPointListElement>
-      <sgr:dataPoint datapointName="ReadinessState" presenceLevel="M" dataDirection="R" unit="NONE">
-        <sgr:dataType>
-          <sgr:boolean/>
-        </sgr:dataType>
-        <sgr:alternativeNames>
-          <sgr:sManufName>Ready</sgr:sManufName>
-        </sgr:alternativeNames>
-        <sgr:legibleDescription>
-          <sgr:textElement>Status ready for flexibility. True wenn Anlage für den nächsten Flexibilitäts-Event bereit ist.</sgr:textElement>
-          <sgr:language>de</sgr:language>
-        </sgr:legibleDescription>
-      </sgr:dataPoint>
-      <sgr:modbusDataPointConfiguration>
-        <sgr:modbusDataType>
-          <sgr:int16/>
-        </sgr:modbusDataType>
-        <sgr:modbusFirstRegisterReference addr="00" bitRank="0" registerType="HoldRegister"/>
-        <sgr:numberOfRegisters>1</sgr:numberOfRegisters>
-        <sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
-      </sgr:modbusDataPointConfiguration>
-      <sgr:modbusAttributes>
-        <sgr:scalingFactor>
-          <sgr:multiplicator>1</sgr:multiplicator>
-          <sgr:powerof10>0</sgr:powerof10>
-        </sgr:scalingFactor>
-      </sgr:modbusAttributes>
-    </sgr:dataPointListElement>
-    <sgr:dataPointListElement>
-      <sgr:dataPoint datapointName="RunState" presenceLevel="M" dataDirection="R" unit="NONE">
-        <sgr:dataType>
-          <sgr:boolean/>
-        </sgr:dataType>
-        <sgr:alternativeNames>
-          <sgr:sManufName>Info</sgr:sManufName>
-        </sgr:alternativeNames>
-        <sgr:legibleDescription>
-          <sgr:textElement>Status running for flexibility. True wenn Anlage läuft für Flexibilität.</sgr:textElement>
-          <sgr:language>de</sgr:language>
-        </sgr:legibleDescription>
-      </sgr:dataPoint>
-      <sgr:modbusDataPointConfiguration>
-        <sgr:modbusDataType>
-          <sgr:int16/>
-        </sgr:modbusDataType>
-        <sgr:modbusFirstRegisterReference addr="01" bitRank="0" registerType="HoldRegister"/>
-        <sgr:numberOfRegisters>1</sgr:numberOfRegisters>
-        <sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
-      </sgr:modbusDataPointConfiguration>
-      <sgr:modbusAttributes>
-        <sgr:scalingFactor>
-          <sgr:multiplicator>1</sgr:multiplicator>
-          <sgr:powerof10>0</sgr:powerof10>
-        </sgr:scalingFactor>
-      </sgr:modbusAttributes>
-    </sgr:dataPointListElement>
-    <sgr:dataPointListElement>
-      <sgr:dataPoint datapointName="ActualActivePower" presenceLevel="M" dataDirection="R" unit="KILOWATTS">
-        <sgr:dataType>
-          <sgr:float64/>
-        </sgr:dataType>
-        <sgr:alternativeNames>
-          <sgr:sManufName>Active Power</sgr:sManufName>
-        </sgr:alternativeNames>
-        <sgr:legibleDescription>
-          <sgr:textElement>
+          </textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+      <modbusDataPointConfiguration>
+        <modbusDataType>
+          <boolean/>
+        </modbusDataType>
+        <modbusFirstRegisterReference addr="20" bitRank="0" registerType="HoldRegister"/>
+        <numberOfRegisters>1</numberOfRegisters>
+        <masterFunctionsSupported>Primitives</masterFunctionsSupported>
+      </modbusDataPointConfiguration>
+      <modbusAttributes>
+        <scalingFactor>
+          <multiplicator>1</multiplicator>
+          <powerof10>0</powerof10>
+        </scalingFactor>
+      </modbusAttributes>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint datapointName="ReadinessState" presenceLevel="M" dataDirection="R" unit="NONE">
+        <dataType>
+          <boolean/>
+        </dataType>
+        <alternativeNames>
+          <sManufName>Ready</sManufName>
+        </alternativeNames>
+        <legibleDescription>
+          <textElement>Status ready for flexibility. True wenn Anlage für den nächsten Flexibilitäts-Event bereit ist.</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+      <modbusDataPointConfiguration>
+        <modbusDataType>
+          <int16/>
+        </modbusDataType>
+        <modbusFirstRegisterReference addr="00" bitRank="0" registerType="HoldRegister"/>
+        <numberOfRegisters>1</numberOfRegisters>
+        <masterFunctionsSupported>Primitives</masterFunctionsSupported>
+      </modbusDataPointConfiguration>
+      <modbusAttributes>
+        <scalingFactor>
+          <multiplicator>1</multiplicator>
+          <powerof10>0</powerof10>
+        </scalingFactor>
+      </modbusAttributes>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint datapointName="RunState" presenceLevel="M" dataDirection="R" unit="NONE">
+        <dataType>
+          <boolean/>
+        </dataType>
+        <alternativeNames>
+          <sManufName>Info</sManufName>
+        </alternativeNames>
+        <legibleDescription>
+          <textElement>Status running for flexibility. True wenn Anlage läuft für Flexibilität.</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+      <modbusDataPointConfiguration>
+        <modbusDataType>
+          <int16/>
+        </modbusDataType>
+        <modbusFirstRegisterReference addr="01" bitRank="0" registerType="HoldRegister"/>
+        <numberOfRegisters>1</numberOfRegisters>
+        <masterFunctionsSupported>Primitives</masterFunctionsSupported>
+      </modbusDataPointConfiguration>
+      <modbusAttributes>
+        <scalingFactor>
+          <multiplicator>1</multiplicator>
+          <powerof10>0</powerof10>
+        </scalingFactor>
+      </modbusAttributes>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint datapointName="ActualActivePower" presenceLevel="M" dataDirection="R" unit="KILOWATTS">
+        <dataType>
+          <float64/>
+        </dataType>
+        <alternativeNames>
+          <sManufName>Active Power</sManufName>
+        </alternativeNames>
+        <legibleDescription>
+          <textElement>
             Momentane Leistung. Betrag und Richtung des Energieflusses.
             + entspricht Energiebezug aus dem Netz oder Erhöhung des Bezugs
-          </sgr:textElement>
-          <sgr:language>de</sgr:language>
-        </sgr:legibleDescription>
-      </sgr:dataPoint>
-      <sgr:modbusDataPointConfiguration>
-        <sgr:modbusDataType>
-          <sgr:int16/>
-        </sgr:modbusDataType>
-        <sgr:modbusFirstRegisterReference addr="10" bitRank="0" registerType="HoldRegister"/>
-        <sgr:numberOfRegisters>1</sgr:numberOfRegisters>
-        <sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
-      </sgr:modbusDataPointConfiguration>
-      <sgr:modbusAttributes>
-        <sgr:scalingFactor>
-          <sgr:multiplicator>1</sgr:multiplicator>
-          <sgr:powerof10>-1</sgr:powerof10>
-        </sgr:scalingFactor>
-      </sgr:modbusAttributes>
-    </sgr:dataPointListElement>
-  </sgr:functionalProfileListElement>
-</sgr:ModbusDeviceFrame>
+          </textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+      <modbusDataPointConfiguration>
+        <modbusDataType>
+          <int16/>
+        </modbusDataType>
+        <modbusFirstRegisterReference addr="10" bitRank="0" registerType="HoldRegister"/>
+        <numberOfRegisters>1</numberOfRegisters>
+        <masterFunctionsSupported>Primitives</masterFunctionsSupported>
+      </modbusDataPointConfiguration>
+      <modbusAttributes>
+        <scalingFactor>
+          <multiplicator>1</multiplicator>
+          <powerof10>-1</powerof10>
+        </scalingFactor>
+      </modbusAttributes>
+    </dataPointListElement>
+  </functionalProfileListElement>
+</ModbusDeviceFrame>

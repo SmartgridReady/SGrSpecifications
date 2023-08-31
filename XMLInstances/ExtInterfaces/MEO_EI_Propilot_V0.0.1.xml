@@ -1,79 +1,79 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="/xsl/SGr.xsl"?>
-<sgr:RestApiDeviceFrame deviceName="meoEnergy PROPILOT" isLocalControl="false" specificationOwnerIdentification="4346239420" manufacturerName="meoEnergy"
-  xmlns:sgr="http://www.smartgridready.com/ns/V0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<RestApiDeviceFrame deviceName="meoEnergy PROPILOT" isLocalControl="false" specificationOwnerIdentification="4346239420" manufacturerName="meoEnergy"
+  xmlns="http://www.smartgridready.com/ns/V0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/EI-RestAPI/SGrRestAPI_EIDeviceFrame.xsd">
-  <sgr:releaseNotes>
-    <sgr:state>Review</sgr:state>
-    <sgr:changelog>
-      <sgr:version>0.2.2</sgr:version>
-      <sgr:date>2023-01-16</sgr:date>
-      <sgr:author>Martin Zwinz, Meo Energy</sgr:author>
-      <sgr:comment>Creation based on input from meoEnergy</sgr:comment>
-    </sgr:changelog>
-  </sgr:releaseNotes>
-  <sgr:deviceInformation>
-    <sgr:transportService>RESTfulJSON</sgr:transportService>
-    <sgr:deviceCategory>SubMeterElectricity</sgr:deviceCategory>
-    <sgr:softwareRevision>1.0.0</sgr:softwareRevision>
-    <sgr:manufacturerSpecificationIdentification>sgr:manufacturerSpecificationIdentification</sgr:manufacturerSpecificationIdentification>
-  </sgr:deviceInformation>
-  <sgr:restApiInterfaceDescription>
-    <sgr:restApiInterfaceSelection>URI</sgr:restApiInterfaceSelection>
-    <sgr:restApiUri>https://my.meo-energy.com/meoApplicationServer</sgr:restApiUri>
-    <sgr:restApiAuthenticationMethod>BearerSecurityScheme</sgr:restApiAuthenticationMethod>
-    <sgr:restApiBearer>
-      <sgr:restServiceCall>
-        <sgr:requestHeader>
-          <sgr:header headerName="Accept" value="application/json"/>
-        </sgr:requestHeader>
-        <sgr:requestMethod>POST</sgr:requestMethod>
-        <sgr:requestPath>/authentication</sgr:requestPath>
-        <sgr:requestBody>{"email": "{{username}}", "password": "{{password}}"}</sgr:requestBody>
-        <sgr:responseQuery>
-          <sgr:queryType>JMESPathExpression</sgr:queryType>
-          <sgr:query>accessToken</sgr:query>
-        </sgr:responseQuery>
-      </sgr:restServiceCall>
-    </sgr:restApiBearer>
-  </sgr:restApiInterfaceDescription>
-  <sgr:functionalProfileListElement>
-    <sgr:functionalProfile profileName="ActivePowerAC">
-      <sgr:functionalProfileIdentification>
-        <sgr:specificationOwnerIdentification>0</sgr:specificationOwnerIdentification>
-        <sgr:functionalProfileCategory>NonSpecific</sgr:functionalProfileCategory>
-        <sgr:functionalProfileType>ActivePowerAC</sgr:functionalProfileType>
-        <sgr:levelOfOperation>m</sgr:levelOfOperation>
-        <sgr:versionNumber>
-          <sgr:primaryVersionNumber>1</sgr:primaryVersionNumber>
-          <sgr:secondaryVersionNumber>0</sgr:secondaryVersionNumber>
-          <sgr:subReleaseVersionNumber>0</sgr:subReleaseVersionNumber>
-        </sgr:versionNumber>
-      </sgr:functionalProfileIdentification>
-    </sgr:functionalProfile>
-    <sgr:dataPointListElement>
-      <sgr:dataPoint datapointName="ActivePowerACtot" presenceLevel="R" dataDirection="R" unit="KILOWATTS">
-        <sgr:dataType>
-          <sgr:float64/>
-        </sgr:dataType>
-        <sgr:legibleDescription>
-          <sgr:textElement>Erfassung der gesamten Wirkleistung</sgr:textElement>
-          <sgr:language>de</sgr:language>
-        </sgr:legibleDescription>
-      </sgr:dataPoint>
-      <sgr:restApiDataPointConfiguration dataType="JSON_number">
-        <sgr:restServiceCall>
-          <sgr:requestHeader>
-            <sgr:header headerName="Accept" value="application/json"/>
-          </sgr:requestHeader>
-          <sgr:requestMethod>GET</sgr:requestMethod>
-          <sgr:requestPath>/sgr/cem/measurements?serialNo={{serialNo}}</sgr:requestPath>
-          <sgr:responseQuery>
-            <sgr:queryType>JMESPathExpression</sgr:queryType>
-            <sgr:query>activePowerACtot</sgr:query>
-          </sgr:responseQuery>
-        </sgr:restServiceCall>
-      </sgr:restApiDataPointConfiguration>
-    </sgr:dataPointListElement>
-  </sgr:functionalProfileListElement>
-</sgr:RestApiDeviceFrame>
+  <releaseNotes>
+    <state>Review</state>
+    <changelog>
+      <version>0.2.2</version>
+      <date>2023-01-16</date>
+      <author>Martin Zwinz, Meo Energy</author>
+      <comment>Creation based on input from meoEnergy</comment>
+    </changelog>
+  </releaseNotes>
+  <deviceInformation>
+    <transportService>RESTfulJSON</transportService>
+    <deviceCategory>SubMeterElectricity</deviceCategory>
+    <softwareRevision>1.0.0</softwareRevision>
+    <manufacturerSpecificationIdentification>manufacturerSpecificationIdentification</manufacturerSpecificationIdentification>
+  </deviceInformation>
+  <restApiInterfaceDescription>
+    <restApiInterfaceSelection>URI</restApiInterfaceSelection>
+    <restApiUri>https://my.meo-energy.com/meoApplicationServer</restApiUri>
+    <restApiAuthenticationMethod>BearerSecurityScheme</restApiAuthenticationMethod>
+    <restApiBearer>
+      <restServiceCall>
+        <requestHeader>
+          <header headerName="Accept" value="application/json"/>
+        </requestHeader>
+        <requestMethod>POST</requestMethod>
+        <requestPath>/authentication</requestPath>
+        <requestBody>{"email": "{{username}}", "password": "{{password}}"}</requestBody>
+        <responseQuery>
+          <queryType>JMESPathExpression</queryType>
+          <query>accessToken</query>
+        </responseQuery>
+      </restServiceCall>
+    </restApiBearer>
+  </restApiInterfaceDescription>
+  <functionalProfileListElement>
+    <functionalProfile profileName="ActivePowerAC">
+      <functionalProfileIdentification>
+        <specificationOwnerIdentification>0</specificationOwnerIdentification>
+        <functionalProfileCategory>NonSpecific</functionalProfileCategory>
+        <functionalProfileType>ActivePowerAC</functionalProfileType>
+        <levelOfOperation>m</levelOfOperation>
+        <versionNumber>
+          <primaryVersionNumber>1</primaryVersionNumber>
+          <secondaryVersionNumber>0</secondaryVersionNumber>
+          <subReleaseVersionNumber>0</subReleaseVersionNumber>
+        </versionNumber>
+      </functionalProfileIdentification>
+    </functionalProfile>
+    <dataPointListElement>
+      <dataPoint datapointName="ActivePowerACtot" presenceLevel="R" dataDirection="R" unit="KILOWATTS">
+        <dataType>
+          <float64/>
+        </dataType>
+        <legibleDescription>
+          <textElement>Erfassung der gesamten Wirkleistung</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+      <restApiDataPointConfiguration dataType="JSON_number">
+        <restServiceCall>
+          <requestHeader>
+            <header headerName="Accept" value="application/json"/>
+          </requestHeader>
+          <requestMethod>GET</requestMethod>
+          <requestPath>/sgr/cem/measurements?serialNo={{serialNo}}</requestPath>
+          <responseQuery>
+            <queryType>JMESPathExpression</queryType>
+            <query>activePowerACtot</query>
+          </responseQuery>
+        </restServiceCall>
+      </restApiDataPointConfiguration>
+    </dataPointListElement>
+  </functionalProfileListElement>
+</RestApiDeviceFrame>
