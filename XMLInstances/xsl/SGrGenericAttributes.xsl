@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="1.1" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:sgr="http://www.smartgridready.com/ns/V0/">
 
-    <xsl:template match="sgr:genAttribute">
-        <xsl:call-template name="GenericAttributeType" />
+    <xsl:template match="sgr:genericAttributes">
+        <xsl:call-template name="GenericAttributes" />
     </xsl:template>
 
-    <xsl:template name="GenericAttributeType">
+    <xsl:template name="GenericAttributes">
         <!--maxVal-->
         <xsl:if test="sgr:maxVal">
             <tr class="genericDetails">

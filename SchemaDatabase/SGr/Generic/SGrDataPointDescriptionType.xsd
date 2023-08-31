@@ -20,14 +20,14 @@
           <documentation>Optional, if present the data point is an array of specified length</documentation>
         </annotation>
       </element>
-      <element maxOccurs="1" minOccurs="0" name="dpNameList" type="sgr:NameList"/>
-      <element maxOccurs="4" minOccurs="0" name="legibleDescription" type="sgr:LegibleDocumentationType">
+      <element maxOccurs="1" minOccurs="0" name="alternativeNames" type="sgr:AlternativeNameList"/>
+      <element maxOccurs="4" minOccurs="0" name="legibleDescription" type="sgr:LegibleDescription">
         <annotation>
           <documentation> this is the public explanation of the functionality of this Datapoint
           </documentation>
         </annotation>
       </element>
-      <element maxOccurs="4" minOccurs="0" name="dpPrgDesc" type="sgr:LegibleDocumentationType"></element>
+      <element maxOccurs="4" minOccurs="0" name="dpPrgDesc" type="sgr:LegibleDescription"></element>
     </sequence>
     <attribute name="datapointName" type="string">
       <annotation>
@@ -37,7 +37,7 @@
         </documentation>
       </annotation>
     </attribute>
-    <attribute name="rwpDatadirection" type="sgr:DataPointRwpType">
+    <attribute name="dataDirection" type="sgr:DataDirection">
       <annotation>
         <documentation>
           RWP (Eigenschaft des Datenpunktes) bezeichnet die Datenrichtung und die Datenhaltung R = lesen aus Sicht des Profilnutzers W = schreiben aus Sicht der Profilnutzers P =
@@ -45,7 +45,7 @@
         </documentation>
       </annotation>
     </attribute>
-    <attribute name="mroVisibilityIndicator" type="sgr:DataPointMroPresenceLevelIndicator">
+    <attribute name="presenceLevel" type="sgr:PresenceLevel">
       <annotation>
         <documentation>
           MRO (Relevanz) Die Gewichtung der Variable bezüglich des Nutzens M = muss (mandatory) Datenpunkt R = empfohlener (recommended) Datenpunkt O = optionaler Datenpunkt

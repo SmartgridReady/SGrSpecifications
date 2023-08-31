@@ -12,8 +12,8 @@
 	a table element that must be created outside this template
 
     Depends on named templates:
-    - NameList
-    - LegibleDocumentationType
+    - AlternativeNameList
+    - LegibleDescription
 
 -->
 
@@ -97,11 +97,11 @@
 </xsl:template>
 
 <xsl:template match="sgr:devNameList">
-	<xsl:call-template name="NameList"/>
+	<xsl:call-template name="AlternativeNameList"/>
 </xsl:template>
 
 <xsl:template match="sgr:legibleDescription">
-	<tr><xsl:attribute name="lang"><xsl:value-of select="sgr:language"/></xsl:attribute><td colspan="2"><xsl:call-template name="LegibleDocumentationType"/></td></tr>	
+	<tr><xsl:attribute name="lang"><xsl:value-of select="sgr:language"/></xsl:attribute><td colspan="2"><xsl:call-template name="LegibleDescription"/></td></tr>	
 </xsl:template>
 
 

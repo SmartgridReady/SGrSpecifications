@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="/xsl/SGr.xsl"?>
-<sgr:SGrFunctionalProfileFrame xmlns:sgr="http://www.smartgridready.com/ns/V0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<sgr:FunctionalProfileFrame xmlns:sgr="http://www.smartgridready.com/ns/V0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/SGrIncluder.xsd">
   <sgr:releaseNotes>
     <sgr:state>Review</sgr:state>
@@ -22,7 +22,7 @@
     </sgr:changelog>
   </sgr:releaseNotes>
   <sgr:functionalProfile>
-    <sgr:profileNumber>
+    <sgr:functionalProfileIdentification>
       <sgr:specificationOwnerIdentification>0</sgr:specificationOwnerIdentification>
       <sgr:functionalProfileCategory>HeatPumpControl</sgr:functionalProfileCategory>
       <sgr:functionalProfileType>BufferStorageCtrl</sgr:functionalProfileType>
@@ -32,10 +32,10 @@
         <sgr:secondaryVersionNumber>2</sgr:secondaryVersionNumber>
         <sgr:subReleaseVersionNumber>2</sgr:subReleaseVersionNumber>
       </sgr:versionNumber>
-    </sgr:profileNumber>
-    <sgr:fpNameList>
+    </sgr:functionalProfileIdentification>
+    <sgr:alternativeNames>
       <sgr:sLV1Name>BufferStorageCtrl</sgr:sLV1Name>
-    </sgr:fpNameList>
+    </sgr:alternativeNames>
     <sgr:legibleDescription>
       <sgr:textElement>
         Dieses Profil definiert die erweiterten Datenpunkte zum Grundprofil,
@@ -48,13 +48,13 @@
     </sgr:legibleDescription>
   </sgr:functionalProfile>
   <sgr:dataPointListElement>
-    <sgr:dataPoint datapointName="HeatWTempStptOffset" mroVisibilityIndicator="R" rwpDatadirection="RW" unit="DEGREES_CELSIUS">
+    <sgr:dataPoint datapointName="HeatWTempStptOffset" presenceLevel="R" dataDirection="RW" unit="DEGREES_CELSIUS">
       <sgr:dataType>
         <sgr:float64/>
       </sgr:dataType>
-      <sgr:dpNameList>
+      <sgr:alternativeNames>
         <sgr:sLV1Name>HeatWTempStptOffset</sgr:sLV1Name>
-      </sgr:dpNameList>
+      </sgr:alternativeNames>
       <sgr:legibleDescription>
         <sgr:textElement>
           Relative Anhebung/Absenkung der Solltemperatur (+/-) für den
@@ -63,21 +63,21 @@
         <sgr:language>de</sgr:language>
       </sgr:legibleDescription>
     </sgr:dataPoint>
-    <sgr:genAttribute>
+    <sgr:genericAttributes>
       <sgr:maxVal>5.0</sgr:maxVal>
       <sgr:minVal>-5.0</sgr:minVal>
-    </sgr:genAttribute>
+    </sgr:genericAttributes>
   </sgr:dataPointListElement>
   <sgr:dataPointListElement>
-    <sgr:dataPoint datapointName="ActBufferState" mroVisibilityIndicator="O" rwpDatadirection="R" unit="NONE">
+    <sgr:dataPoint datapointName="ActBufferState" presenceLevel="O" dataDirection="R" unit="NONE">
       <sgr:dataType>
         <sgr:enum2bitmapIndex>
           <sgr:hovHPActBufferState>HPB_OFF</sgr:hovHPActBufferState>
         </sgr:enum2bitmapIndex>
       </sgr:dataType>
-      <sgr:dpNameList>
+      <sgr:alternativeNames>
         <sgr:sLV1Name>ActBufferState</sgr:sLV1Name>
-      </sgr:dpNameList>
+      </sgr:alternativeNames>
       <sgr:legibleDescription>
         <sgr:textElement>
           <![CDATA[
@@ -101,13 +101,13 @@
     </sgr:dataPoint>
   </sgr:dataPointListElement>
   <sgr:dataPointListElement>
-    <sgr:dataPoint datapointName="ActHeatBufferTemp" mroVisibilityIndicator="M" rwpDatadirection="R" unit="DEGREES_CELSIUS">
+    <sgr:dataPoint datapointName="ActHeatBufferTemp" presenceLevel="M" dataDirection="R" unit="DEGREES_CELSIUS">
       <sgr:dataType>
         <sgr:float64/>
       </sgr:dataType>
-      <sgr:dpNameList>
+      <sgr:alternativeNames>
         <sgr:sLV1Name>ActHeatBufferTemp</sgr:sLV1Name>
-      </sgr:dpNameList>
+      </sgr:alternativeNames>
       <sgr:legibleDescription>
         <sgr:textElement>Aktuelle Ist-Temperatur des Heiz-Pufferspeichers oben</sgr:textElement>
         <sgr:language>de</sgr:language>
@@ -115,13 +115,13 @@
     </sgr:dataPoint>
   </sgr:dataPointListElement>
   <sgr:dataPointListElement>
-    <sgr:dataPoint datapointName="ActHeatBufferTempUpper" mroVisibilityIndicator="O" rwpDatadirection="R" unit="DEGREES_CELSIUS">
+    <sgr:dataPoint datapointName="ActHeatBufferTempUpper" presenceLevel="O" dataDirection="R" unit="DEGREES_CELSIUS">
       <sgr:dataType>
         <sgr:float64/>
       </sgr:dataType>
-      <sgr:dpNameList>
+      <sgr:alternativeNames>
         <sgr:sLV1Name>ActHeatBufferTempUpper</sgr:sLV1Name>
-      </sgr:dpNameList>
+      </sgr:alternativeNames>
       <sgr:legibleDescription>
         <sgr:textElement>Aktuelle Ist-Temperatur des Heiz-Pufferspeichers oben</sgr:textElement>
         <sgr:language>de</sgr:language>
@@ -129,13 +129,13 @@
     </sgr:dataPoint>
   </sgr:dataPointListElement>
   <sgr:dataPointListElement>
-    <sgr:dataPoint datapointName="ActHeatBufferTempLower" mroVisibilityIndicator="O" rwpDatadirection="R" unit="DEGREES_CELSIUS">
+    <sgr:dataPoint datapointName="ActHeatBufferTempLower" presenceLevel="O" dataDirection="R" unit="DEGREES_CELSIUS">
       <sgr:dataType>
         <sgr:float64/>
       </sgr:dataType>
-      <sgr:dpNameList>
+      <sgr:alternativeNames>
         <sgr:sLV1Name>ActHeatBufferTempLower</sgr:sLV1Name>
-      </sgr:dpNameList>
+      </sgr:alternativeNames>
       <sgr:legibleDescription>
         <sgr:textElement>
           Aktuelle Ist-Temperatur des Heiz-Pufferspeichers unten
@@ -145,13 +145,13 @@
     </sgr:dataPoint>
   </sgr:dataPointListElement>
   <sgr:dataPointListElement>
-    <sgr:dataPoint datapointName="ActCoolBufferTemp" mroVisibilityIndicator="O" rwpDatadirection="R" unit="DEGREES_CELSIUS">
+    <sgr:dataPoint datapointName="ActCoolBufferTemp" presenceLevel="O" dataDirection="R" unit="DEGREES_CELSIUS">
       <sgr:dataType>
         <sgr:float64/>
       </sgr:dataType>
-      <sgr:dpNameList>
+      <sgr:alternativeNames>
         <sgr:sLV1Name>ActCoolBufferTemp</sgr:sLV1Name>
-      </sgr:dpNameList>
+      </sgr:alternativeNames>
       <sgr:legibleDescription>
         <sgr:textElement>Aktuelle Ist-Temperatur des Kaelte-Pufferspeichers oben</sgr:textElement>
         <sgr:language>de</sgr:language>
@@ -159,13 +159,13 @@
     </sgr:dataPoint>
   </sgr:dataPointListElement>
   <sgr:dataPointListElement>
-    <sgr:dataPoint datapointName="ActCoolBufferTempUpper" mroVisibilityIndicator="O" rwpDatadirection="R" unit="DEGREES_CELSIUS">
+    <sgr:dataPoint datapointName="ActCoolBufferTempUpper" presenceLevel="O" dataDirection="R" unit="DEGREES_CELSIUS">
       <sgr:dataType>
         <sgr:float64/>
       </sgr:dataType>
-      <sgr:dpNameList>
+      <sgr:alternativeNames>
         <sgr:sLV1Name>ActCoolBufferTempUpper</sgr:sLV1Name>
-      </sgr:dpNameList>
+      </sgr:alternativeNames>
       <sgr:legibleDescription>
         <sgr:textElement>Aktuelle Ist-Temperatur des Kaelte-Pufferspeichers oben</sgr:textElement>
         <sgr:language>de</sgr:language>
@@ -173,17 +173,17 @@
     </sgr:dataPoint>
   </sgr:dataPointListElement>
   <sgr:dataPointListElement>
-    <sgr:dataPoint datapointName="ActCoolBufferTempLower" mroVisibilityIndicator="O" rwpDatadirection="R" unit="DEGREES_CELSIUS">
+    <sgr:dataPoint datapointName="ActCoolBufferTempLower" presenceLevel="O" dataDirection="R" unit="DEGREES_CELSIUS">
       <sgr:dataType>
         <sgr:float64/>
       </sgr:dataType>
-      <sgr:dpNameList>
+      <sgr:alternativeNames>
         <sgr:sLV1Name>ActCoolBufferTempLower</sgr:sLV1Name>
-      </sgr:dpNameList>
+      </sgr:alternativeNames>
       <sgr:legibleDescription>
         <sgr:textElement>Aktuelle Ist-Temperatur des Kaelte-Pufferspeichers unten</sgr:textElement>
         <sgr:language>de</sgr:language>
       </sgr:legibleDescription>
     </sgr:dataPoint>
   </sgr:dataPointListElement>
-</sgr:SGrFunctionalProfileFrame>
+</sgr:FunctionalProfileFrame>

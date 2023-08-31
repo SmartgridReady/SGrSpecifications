@@ -58,8 +58,8 @@
       <maxInclusive value="15"/>
     </restriction>
   </simpleType>
-  <!-- NameList Type for listing the relevant name references -->
-  <complexType name="NameList">
+  <!-- AlternativeNameList Type for listing the relevant name references -->
+  <complexType name="AlternativeNameList">
     <annotation>
       <documentation xml:lang="en">
         a list of relevant namespaces list for to display names used in different standards like EEBUS, IEC6850,, SAREF4ENER etc this list type is used for devices,
@@ -162,7 +162,7 @@
 
 
   <!-- enumeration to select mandatory, optional or recommended use of elements -->
-  <simpleType name="DataPointMroPresenceLevelIndicator">
+  <simpleType name="PresenceLevel">
     <annotation>
       <documentation xml:lang="en">
         Names for the presence indication of Elements listed in the tables are defined as follows (using the EEBUS terminology): "M" mandatotory use (IEC:SHALL),
@@ -179,7 +179,7 @@
   </simpleType>
   <!-- enumeration to select data direction (Read Write) and persistent storage 
 		use of elements -->
-  <simpleType name="DataPointRwpType">
+  <simpleType name="DataDirection">
     <annotation>
       <documentation xml:lang="en">
         Names for the data direction indication. "R" read only data, "W" rite only data, "RW" readible and writable data, "RWP" readible and writable data with
@@ -196,7 +196,7 @@
     </restriction>
   </simpleType>
   <!-- create a new title as separator in between type definitions -->
-  <complexType name="LegibleDocumentationType">
+  <complexType name="LegibleDescription">
     <annotation>
       <documentation>
         This element us used to extend the definitions with legible text elements: a short understandbale explanation of the items addressed. These elements are used for printed and
@@ -529,7 +529,7 @@
   </simpleType>
 
   <!--  generic Attribute Definitions  -->
-  <complexType name="GenericAttributeType">
+  <complexType name="GenericAttributes">
     <annotation>
       <documentation>these attributes are defined for the generic interface for the application programmer. An attribute can be aligned to either a device, a functional Profile or a datapoint
       </documentation>

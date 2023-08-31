@@ -4,7 +4,7 @@
 
 	<!--
     Contains the style sheets for data point, including
-    - sgr:dpNameList
+    - sgr:alternativeNames
 -->
 
 	<xsl:import href="SGrDeviceTypeModbus.xsl" />
@@ -38,10 +38,10 @@
 				</xsl:if>
 			</td>
 			<td>
-				<xsl:value-of select="sgr:dataPoint/@mroVisibilityIndicator" />
+				<xsl:value-of select="sgr:dataPoint/@presenceLevel" />
 			</td>
 			<td>
-				<xsl:value-of select="sgr:dataPoint/@rwpDatadirection" />
+				<xsl:value-of select="sgr:dataPoint/@dataDirection" />
 			</td>
 		</tr>
 		<tr class="dataPointDetails">
@@ -52,9 +52,9 @@
 						<col style="width:25.8%" />
 					</colgroup>
 
-					<!-- dpNameList (1x opt)-->
-					<xsl:if test="sgr:dataPoint/sgr:dpNameList">
-						<xsl:apply-templates select="sgr:dataPoint/sgr:dpNameList" />
+					<!-- alternativeNames (1x opt)-->
+					<xsl:if test="sgr:dataPoint/sgr:alternativeNames">
+						<xsl:apply-templates select="sgr:dataPoint/sgr:alternativeNames" />
 					</xsl:if>
 
 					<!-- legibleDescription (4x opt) -->
@@ -65,7 +65,7 @@
 
 
 					<!-- Generic Attributes -->
-					<xsl:apply-templates select="sgr:genAttribute" />
+					<xsl:apply-templates select="sgr:genericAttributes" />
 
 					<!-- Modbus Device -->
 					<xsl:if test="sgr:modbusDataPoint">
@@ -103,31 +103,31 @@
 		</tr>
 	</xsl:template>
 
-	<!-- dpNameList -->
-	<xsl:template match="sgr:dpNameList">
-		<xsl:call-template name="NameList" />
+	<!-- alternativeNames -->
+	<xsl:template match="sgr:alternativeNames">
+		<xsl:call-template name="AlternativeNameList" />
 	</xsl:template>
 
-	<!-- LegibleDocumentationType -->
+	<!-- LegibleDescription -->
 	<xsl:template match="sgr:legibleDescription">
 		<tr>
 			<xsl:attribute name="lang">
 				<xsl:value-of select="sgr:language" />
 			</xsl:attribute>
 			<td colspan="2">
-				<xsl:call-template name="LegibleDocumentationType" />
+				<xsl:call-template name="LegibleDescription" />
 			</td>
 		</tr>
 	</xsl:template>
 
-	<!-- LegibleDocumentationType -->
+	<!-- LegibleDescription -->
 	<xsl:template match="sgr:dpPrgDesc">
 		<tr>
 			<xsl:attribute name="lang">
 				<xsl:value-of select="sgr:language" />
 			</xsl:attribute>
 			<td colspan="2">
-				<xsl:call-template name="LegibleDocumentationType" />
+				<xsl:call-template name="LegibleDescription" />
 			</td>
 		</tr>
 	</xsl:template>

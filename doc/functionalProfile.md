@@ -27,7 +27,7 @@ SGr classifies and identifies any functional profile by the following values
 | specificationOwnerIdentification          | Identifier of the functional profile owner. |
 | functionalProfileCategory | Functional profile class (see [SGrEnumProfileType.xsd](/SchemaDatabase/SGr/Generic/SGrEnumProfileType.xsd) ) |
 | functionalProfileType       | Functional profile subclass (see [SGrEnumSubProfileType.xsd](/SchemaDatabase/SGr/Generic/SGrEnumSubProfileType.xsd) ) |
-| levelOfOperation   | levelOfOperation defines a controls complexity  (see [levelOfOperation.md](levelOfOperation.md) ) |
+| levelOfOperation   | levelOfOperation defines a controls complexity  (see [LevelOfOperation.md](LevelOfOperation.md) ) |
 | versionNumber         | Version of the functional profile. Changes in primaryVersionNumber indicate breaking changes, changes in secondaryVersionNumber indicate complimentary changes, changes in subReleaseVersionNumber are without impact on the functionality | 
 
 ### Release Notes
@@ -42,25 +42,25 @@ The release note section contains meta data that descibe history and current sta
 ### Descriptions
 | Element     | Description |
 |-------------|-------------|
-| fpNameList  | a list of relevant namespaces list for to display names used in different standards like EEBUS, IEC6850,, SAREF4ENER etc. (see [NameList](NameList.md))|
+| alternativeNames  | a list of relevant namespaces list for to display names used in different standards like EEBUS, IEC6850,, SAREF4ENER etc. (see [AlternativeNameList](AlternativeNameList.md))|
 | legibleDescription | optional, can occure multiple times, but ideally just a once per language. Contains details concerning the intended use case of the functional profile. |
 
 ## Generic Attributes
-SGr allows to associate attributes to a functional profile (i.e. concerning every data point). See [GenericAttributeType](GenericAttributeType.md) for details. Any attribute defined on the functional profile level are mandatory to any product that implements this functional profile. However, the product can optionally add further attributes based on its own needs.
+SGr allows to associate attributes to a functional profile (i.e. concerning every data point). See [GenericAttributes](GenericAttributes.md) for details. Any attribute defined on the functional profile level are mandatory to any product that implements this functional profile. However, the product can optionally add further attributes based on its own needs.
 
 # Data Point Attributes
 | Element     | Description |
 |-------------|-------------|
 | datapointName | Name of the data point. Should be unique within the functional profile |
-| rwpDatadirection | R if data point can be read, W for write, P for persistence |
-| mroVisibilityIndicator | Datapoint optionality: Mandatory, Recommended, Optional |
+| dataDirection | R if data point can be read, W for write, P for persistence |
+| presenceLevel | Datapoint optionality: Mandatory, Recommended, Optional |
 | unit | Physical unit of data point |
 | DataType |  Data point type|
-| dpNameList | a list of relevant namespaces list for to display names used in different standards like EEBUS, IEC6850,, SAREF4ENER etc. (see [NameList](NameList.md))|
+| alternativeNames | a list of relevant namespaces list for to display names used in different standards like EEBUS, IEC6850,, SAREF4ENER etc. (see [AlternativeNameList](AlternativeNameList.md))|
 | legibleDescription | optional, can occure multiple times, but ideally just a once per language. Contains details concerning the intended use case of the functional profile. |
 
 ## Generic Attributes
-SGr allows to associate attributes to a data point. See [GenericAttributeType](GenericAttributeType.md) for details.
+SGr allows to associate attributes to a data point. See [GenericAttributes](GenericAttributes.md) for details.
 Any attribute defined on the functional profile level are mandatory to any product that implements this functional profile. However, the product can optionally add further attributes based on its own needs.
 
 ## Open Points

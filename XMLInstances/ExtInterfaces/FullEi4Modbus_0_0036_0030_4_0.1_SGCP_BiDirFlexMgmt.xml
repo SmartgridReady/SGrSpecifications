@@ -74,7 +74,7 @@
   </sgr:modbusInterfaceDesc>
   <sgr:functionalProfileListElement>
     <sgr:functionalProfile profileName="SGCPbiDirFlexMgmt">
-      <sgr:profileNumber>
+      <sgr:functionalProfileIdentification>
         <sgr:specificationOwnerIdentification>0</sgr:specificationOwnerIdentification>
         <sgr:functionalProfileCategory>SGCP</sgr:functionalProfileCategory>
         <sgr:functionalProfileType>BiDirFlexMgmt</sgr:functionalProfileType>
@@ -84,18 +84,18 @@
           <sgr:secondaryVersionNumber>1</sgr:secondaryVersionNumber>
           <sgr:subReleaseVersionNumber>2</sgr:subReleaseVersionNumber>
         </sgr:versionNumber>
-      </sgr:profileNumber>
-      <sgr:fpNameList>
+      </sgr:functionalProfileIdentification>
+      <sgr:alternativeNames>
         <sgr:sWorkName>BiDirFlexMgmt</sgr:sWorkName>
         <sgr:sManufName>gibt es eigenen Namen?</sgr:sManufName>
-      </sgr:fpNameList>
+      </sgr:alternativeNames>
       <sgr:legibleDescription>
         <sgr:textElement>Der Grid seitige Flex Manager steuert die Anlage über die Datenpunkte ReadinessState, ActivePowerActivation und RunState und liest ActualActivePower. </sgr:textElement>
         <sgr:language>de</sgr:language>
       </sgr:legibleDescription>
     </sgr:functionalProfile>
     <sgr:dataPointListElement>
-      <sgr:dataPoint datapointName="ActivePowerActivation" mroVisibilityIndicator="M" rwpDatadirection="W" unit="NONE">
+      <sgr:dataPoint datapointName="ActivePowerActivation" presenceLevel="M" dataDirection="W" unit="NONE">
         <sgr:dataType>
           <sgr:boolean/>
         </sgr:dataType>
@@ -106,13 +106,13 @@
           <sgr:language>de</sgr:language>
         </sgr:legibleDescription>
       </sgr:dataPoint>
-      <sgr:genAttribute>
+      <sgr:genericAttributes>
         <sgr:smoothTransition>
           <sgr:winTms>0</sgr:winTms>
           <sgr:rvrtTms>0</sgr:rvrtTms>
           <sgr:rmpTms>0</sgr:rmpTms>
         </sgr:smoothTransition>
-      </sgr:genAttribute>
+      </sgr:genericAttributes>
       <sgr:modbusDataPoint>
         <sgr:ModbusDataType>
           <sgr:int16/>
@@ -129,7 +129,7 @@
       </sgr:modbusAttr>
     </sgr:dataPointListElement>
     <sgr:dataPointListElement>
-      <sgr:dataPoint datapointName="ReactivePowerActivation" mroVisibilityIndicator="O" rwpDatadirection="W" unit="NONE">
+      <sgr:dataPoint datapointName="ReactivePowerActivation" presenceLevel="O" dataDirection="W" unit="NONE">
         <sgr:dataType>
           <sgr:boolean/>
         </sgr:dataType>
@@ -142,13 +142,13 @@ Die Leistungsanpassung wird über eine definierte Rampe zurückgenommen (RmpTms)
           <sgr:language>de</sgr:language>
         </sgr:legibleDescription>
       </sgr:dataPoint>
-      <sgr:genAttribute>
+      <sgr:genericAttributes>
         <sgr:smoothTransition>
           <sgr:winTms>0</sgr:winTms>
           <sgr:rvrtTms>0</sgr:rvrtTms>
           <sgr:rmpTms>0</sgr:rmpTms>
         </sgr:smoothTransition>
-      </sgr:genAttribute>
+      </sgr:genericAttributes>
       <sgr:modbusDataPoint>
         <sgr:ModbusDataType>
           <sgr:int16/>
@@ -165,7 +165,7 @@ Die Leistungsanpassung wird über eine definierte Rampe zurückgenommen (RmpTms)
       </sgr:modbusAttr>
     </sgr:dataPointListElement>
     <sgr:dataPointListElement>
-      <sgr:dataPoint datapointName="SetDeltaActivePower" mroVisibilityIndicator="O" rwpDatadirection="W" unit="KILOWATTS">
+      <sgr:dataPoint datapointName="SetDeltaActivePower" presenceLevel="O" dataDirection="W" unit="KILOWATTS">
         <sgr:dataType>
           <sgr:float64/>
         </sgr:dataType>
@@ -191,7 +191,7 @@ Active power request: Angestrebte Veränderung des aktuellen Energieflusses (+/-
       </sgr:modbusAttr>
     </sgr:dataPointListElement>
     <sgr:dataPointListElement>
-      <sgr:dataPoint datapointName="SetDeltaReactivePower" mroVisibilityIndicator="O" rwpDatadirection="W" unit="KILOVOLT_AMPERES">
+      <sgr:dataPoint datapointName="SetDeltaReactivePower" presenceLevel="O" dataDirection="W" unit="KILOVOLT_AMPERES">
         <sgr:dataType>
           <sgr:float64/>
         </sgr:dataType>
@@ -217,7 +217,7 @@ Reactive power request: Angestrebte Veränderung des aktuellen Energieflusses (+
       </sgr:modbusAttr>
     </sgr:dataPointListElement>
     <sgr:dataPointListElement>
-      <sgr:dataPoint datapointName="ReadinessState" mroVisibilityIndicator="M" rwpDatadirection="R" unit="NONE">
+      <sgr:dataPoint datapointName="ReadinessState" presenceLevel="M" dataDirection="R" unit="NONE">
         <sgr:dataType>
           <sgr:boolean/>
         </sgr:dataType>
@@ -242,7 +242,7 @@ Reactive power request: Angestrebte Veränderung des aktuellen Energieflusses (+
       </sgr:modbusAttr>
     </sgr:dataPointListElement>
     <sgr:dataPointListElement>
-      <sgr:dataPoint datapointName="RunState" mroVisibilityIndicator="M" rwpDatadirection="R" unit="NONE">
+      <sgr:dataPoint datapointName="RunState" presenceLevel="M" dataDirection="R" unit="NONE">
         <sgr:dataType>
           <sgr:boolean/>
         </sgr:dataType>
@@ -267,7 +267,7 @@ Reactive power request: Angestrebte Veränderung des aktuellen Energieflusses (+
       </sgr:modbusAttr>
     </sgr:dataPointListElement>
     <sgr:dataPointListElement>
-      <sgr:dataPoint datapointName="ActualActivePower" mroVisibilityIndicator="M" rwpDatadirection="R" unit="KILOWATTS">
+      <sgr:dataPoint datapointName="ActualActivePower" presenceLevel="M" dataDirection="R" unit="KILOWATTS">
         <sgr:dataType>
           <sgr:float64/>
         </sgr:dataType>
@@ -293,7 +293,7 @@ Reactive power request: Angestrebte Veränderung des aktuellen Energieflusses (+
       </sgr:modbusAttr>
     </sgr:dataPointListElement>
     <sgr:dataPointListElement>
-      <sgr:dataPoint datapointName="ActualReactivePower" mroVisibilityIndicator="O" rwpDatadirection="R" unit="KILOWATTS">
+      <sgr:dataPoint datapointName="ActualReactivePower" presenceLevel="O" dataDirection="R" unit="KILOWATTS">
         <sgr:dataType>
           <sgr:float64/>
         </sgr:dataType>
@@ -319,7 +319,7 @@ Reactive power request: Angestrebte Veränderung des aktuellen Energieflusses (+
       </sgr:modbusAttr>
     </sgr:dataPointListElement>
     <sgr:dataPointListElement>
-      <sgr:dataPoint datapointName="MaxReactivePower" mroVisibilityIndicator="O" rwpDatadirection="R" unit="KILOVOLT_AMPERES_REACTIVE">
+      <sgr:dataPoint datapointName="MaxReactivePower" presenceLevel="O" dataDirection="R" unit="KILOVOLT_AMPERES_REACTIVE">
         <sgr:dataType>
           <sgr:float64/>
         </sgr:dataType>
@@ -344,7 +344,7 @@ Reactive power request: Angestrebte Veränderung des aktuellen Energieflusses (+
       </sgr:modbusAttr>
     </sgr:dataPointListElement>
     <sgr:dataPointListElement>
-      <sgr:dataPoint datapointName="MinActivePower" mroVisibilityIndicator="O" rwpDatadirection="R" unit="KILOWATTS">
+      <sgr:dataPoint datapointName="MinActivePower" presenceLevel="O" dataDirection="R" unit="KILOWATTS">
         <sgr:dataType>
           <sgr:float64/>
         </sgr:dataType>
@@ -365,7 +365,7 @@ Reactive power request: Angestrebte Veränderung des aktuellen Energieflusses (+
       </sgr:modbusAttr>
     </sgr:dataPointListElement>
     <sgr:dataPointListElement>
-      <sgr:dataPoint datapointName="MinReactivePower" mroVisibilityIndicator="O" rwpDatadirection="R" unit="KILOVOLT_AMPERES_REACTIVE">
+      <sgr:dataPoint datapointName="MinReactivePower" presenceLevel="O" dataDirection="R" unit="KILOVOLT_AMPERES_REACTIVE">
         <sgr:dataType>
           <sgr:float64/>
         </sgr:dataType>
@@ -390,7 +390,7 @@ Reactive power request: Angestrebte Veränderung des aktuellen Energieflusses (+
       </sgr:modbusAttr>
     </sgr:dataPointListElement>
     <sgr:dataPointListElement>
-      <sgr:dataPoint datapointName="ActualFillLevel" mroVisibilityIndicator="O" rwpDatadirection="R" unit="KILOWATT_HOURS">
+      <sgr:dataPoint datapointName="ActualFillLevel" presenceLevel="O" dataDirection="R" unit="KILOWATT_HOURS">
         <sgr:dataType>
           <sgr:float64/>
         </sgr:dataType>
@@ -415,7 +415,7 @@ Reactive power request: Angestrebte Veränderung des aktuellen Energieflusses (+
       </sgr:modbusAttr>
     </sgr:dataPointListElement>
     <sgr:dataPointListElement>
-      <sgr:dataPoint datapointName="MinAllowedFillLevel" mroVisibilityIndicator="O" rwpDatadirection="RWP" unit="KILOWATT_HOURS">
+      <sgr:dataPoint datapointName="MinAllowedFillLevel" presenceLevel="O" dataDirection="RWP" unit="KILOWATT_HOURS">
         <sgr:dataType>
           <sgr:float64/>
         </sgr:dataType>
@@ -440,7 +440,7 @@ Reactive power request: Angestrebte Veränderung des aktuellen Energieflusses (+
       </sgr:modbusAttr>
     </sgr:dataPointListElement>
     <sgr:dataPointListElement>
-      <sgr:dataPoint datapointName="MaxAllowedFillLevel" mroVisibilityIndicator="O" rwpDatadirection="R" unit="KILOWATT_HOURS">
+      <sgr:dataPoint datapointName="MaxAllowedFillLevel" presenceLevel="O" dataDirection="R" unit="KILOWATT_HOURS">
         <sgr:dataType>
           <sgr:float64/>
         </sgr:dataType>
@@ -465,7 +465,7 @@ Reactive power request: Angestrebte Veränderung des aktuellen Energieflusses (+
       </sgr:modbusAttr>
     </sgr:dataPointListElement>
     <sgr:dataPointListElement>
-      <sgr:dataPoint datapointName=" aValCharge" mroVisibilityIndicator="O" rwpDatadirection="R" unit="PERCENT">
+      <sgr:dataPoint datapointName=" aValCharge" presenceLevel="O" dataDirection="R" unit="PERCENT">
         <sgr:dataType>
           <sgr:float64/>
         </sgr:dataType>
@@ -475,9 +475,9 @@ Reactive power request: Angestrebte Veränderung des aktuellen Energieflusses (+
           <sgr:language>de</sgr:language>
         </sgr:legibleDescription>
       </sgr:dataPoint>
-      <sgr:genAttribute>
+      <sgr:genericAttributes>
         <sgr:valueByTimeTableMinutes>15.0</sgr:valueByTimeTableMinutes>
-      </sgr:genAttribute>
+      </sgr:genericAttributes>
       <sgr:modbusDataPoint>
         <sgr:ModbusDataType>
           <sgr:int32/>
@@ -494,7 +494,7 @@ Reactive power request: Angestrebte Veränderung des aktuellen Energieflusses (+
       </sgr:modbusAttr>
     </sgr:dataPointListElement>
     <sgr:dataPointListElement>
-      <sgr:dataPoint datapointName="aValDischarge" mroVisibilityIndicator="O" rwpDatadirection="R" unit="PERCENT">
+      <sgr:dataPoint datapointName="aValDischarge" presenceLevel="O" dataDirection="R" unit="PERCENT">
         <sgr:dataType>
           <sgr:float64/>
         </sgr:dataType>
@@ -504,9 +504,9 @@ Reactive power request: Angestrebte Veränderung des aktuellen Energieflusses (+
           <sgr:language>de</sgr:language>
         </sgr:legibleDescription>
       </sgr:dataPoint>
-      <sgr:genAttribute>
+      <sgr:genericAttributes>
         <sgr:valueByTimeTableMinutes>15.0</sgr:valueByTimeTableMinutes>
-      </sgr:genAttribute>
+      </sgr:genericAttributes>
       <sgr:modbusDataPoint>
         <sgr:ModbusDataType>
           <sgr:int32/>

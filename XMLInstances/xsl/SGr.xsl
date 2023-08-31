@@ -25,8 +25,8 @@
 			<head>
 				<title>
 					<xsl:choose>
-						<xsl:when test="/sgr:SGrFunctionalProfileFrame">
-							<xsl:apply-templates select="/*/sgr:functionalProfile/sgr:profileNumber">
+						<xsl:when test="/sgr:FunctionalProfileFrame">
+							<xsl:apply-templates select="/*/sgr:functionalProfile/sgr:functionalProfileIdentification">
 								<xsl:with-param name="separator" select="'.'" />
 								<xsl:with-param name="displayShortLevel" select="'true'" />
 							</xsl:apply-templates>
@@ -93,7 +93,7 @@
 						</div>
 						<div style="float:left; width:50%; text-align:right; height: 134px">
 							<xsl:choose>
-								<xsl:when test="/sgr:SGrFunctionalProfileFrame">Definition Functional Profile</xsl:when>
+								<xsl:when test="/sgr:FunctionalProfileFrame">Definition Functional Profile</xsl:when>
 								<xsl:otherwise>Device Profile</xsl:otherwise>
 							</xsl:choose>
 						</div>
@@ -106,7 +106,7 @@
 					<xsl:apply-templates select="sgr:SGrContactAPIDeviceFrame" />
 
 					<!-- generic functional Profiles -->
-					<xsl:apply-templates select="sgr:SGrFunctionalProfileFrame" />
+					<xsl:apply-templates select="sgr:FunctionalProfileFrame" />
 				</div>
 			</body>
 		</html>
@@ -253,7 +253,7 @@
 				<xsl:apply-templates select="sgr:deviceProfile" />
 
 				<!-- Generic Attributes -->
-				<xsl:apply-templates select="sgr:genAttribute" />
+				<xsl:apply-templates select="sgr:genericAttributes" />
 
 				<!-- Modbus Device -->
 				<xsl:if test="sgr:modbusInterfaceDesc">

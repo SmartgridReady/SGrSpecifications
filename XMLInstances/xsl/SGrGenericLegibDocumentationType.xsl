@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="1.1" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:sgr="http://www.smartgridready.com/ns/V0/">
 
-<!-- LegibleDocumentationType -->
-<xsl:template name="LegibleDocumentationType">
+<!-- LegibleDescription -->
+<xsl:template name="LegibleDescription">
 	<img width="20px" height="14px"><xsl:attribute name="src" alt="Lang" >/xsl/<xsl:value-of select="sgr:language"/>.png</xsl:attribute></img>
 	&#160;<xsl:value-of select="sgr:textElement" disable-output-escaping="yes" />
 	<xsl:if test="sgr:uri">

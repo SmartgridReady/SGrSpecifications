@@ -235,7 +235,7 @@
     </xsl:template>
 
     <!-- SGrprofileNumber -->
-    <xsl:template match="sgr:profileNumber">
+    <xsl:template match="sgr:functionalProfileIdentification">
         <xsl:param name="separator" select="'.'" />
         <xsl:param name="displayFullLevel" select="''"/>
         <xsl:param name="displayShortLevel" select="''"/>

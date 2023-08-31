@@ -5,10 +5,10 @@
     <xsl:import href="SGrGenericHelpers.xsl" />
 
     <!-- Generic Functional Profiles -->
-    <xsl:template match="sgr:SGrFunctionalProfileFrame">
+    <xsl:template match="sgr:FunctionalProfileFrame">
         <div class="functionalProfile">
             <h2>
-                <xsl:apply-templates select="sgr:functionalProfile/sgr:profileNumber">
+                <xsl:apply-templates select="sgr:functionalProfile/sgr:functionalProfileIdentification">
                     <xsl:with-param name="separator" select="' - '" />
                     <xsl:with-param name="displayFullLevel" select="'true'" />
                 </xsl:apply-templates>
@@ -106,7 +106,7 @@
                             <tr>
                                 <td>Profil-ID</td>
                                 <td>
-                                    <xsl:apply-templates select="/*/sgr:functionalProfile/sgr:profileNumber">
+                                    <xsl:apply-templates select="/*/sgr:functionalProfile/sgr:functionalProfileIdentification">
                                         <xsl:with-param name="separator" select="' - '" />
                                     </xsl:apply-templates>
                                 </td>
@@ -114,13 +114,13 @@
                             <tr>
                                 <td>Level</td>
                                 <td>
-                                    <xsl:value-of select="sgr:functionalProfile/sgr:profileNumber/sgr:levelOfOperation" />
+                                    <xsl:value-of select="sgr:functionalProfile/sgr:functionalProfileIdentification/sgr:levelOfOperation" />
                                 </td>
                             </tr>
                             <tr>
                                 <td>Version</td>
                                 <td>
-                                    <xsl:apply-templates select="sgr:functionalProfile/sgr:profileNumber/sgr:versionNumber" />
+                                    <xsl:apply-templates select="sgr:functionalProfile/sgr:functionalProfileIdentification/sgr:versionNumber" />
                                 </td>
                             </tr>
                         </table>
@@ -135,16 +135,16 @@
                     <col style="width:20%" />
                 </colgroup>
 
-                <!-- fpNameList -->
-                <xsl:apply-templates select="sgr:functionalProfile/sgr:fpNameList" />
+                <!-- alternativeNames -->
+                <xsl:apply-templates select="sgr:functionalProfile/sgr:alternativeNames" />
 
                 <!-- legibleDescription (4x opt) -->
                 <xsl:apply-templates select="sgr:functionalProfile/sgr:legibleDescription" />
 
-                <xsl:if test="sgr:genAttribute/*">
+                <xsl:if test="sgr:genericAttributes/*">
                     <td>Attributes</td>
                     <td>
-                        <xsl:for-each select="sgr:genAttribute/*">
+                        <xsl:for-each select="sgr:genericAttributes/*">
                             <div style="padding-left:1em;">
                                 <img src="/xsl/genattr.png" alt="" width="16pt" height="16pt" />
                                 &#160;
@@ -189,9 +189,9 @@
                                         <xsl:value-of select="sgr:textElement" disable-output-escaping="yes" />
                                     </div>
                                 </xsl:for-each>
-                                <xsl:if test="sgr:genAttribute/*">
+                                <xsl:if test="sgr:genericAttributes/*">
                                     <p style="margin-bottom:0;">Datapoint Attributes:</p>
-                                    <xsl:for-each select="sgr:genAttribute/*">
+                                    <xsl:for-each select="sgr:genericAttributes/*">
                                         <div style="padding-left:1em;">
                                             <img src="/xsl/genattr.png" alt="" width="16pt" height="16pt" />
                                             &#160;
@@ -215,14 +215,14 @@
                                 </xsl:if>
                             </td>
                             <td>
-                                <xsl:value-of select="sgr:dataPoint/@mroVisibilityIndicator" />
+                                <xsl:value-of select="sgr:dataPoint/@presenceLevel" />
                             </td>
                             <td>
-                                <xsl:value-of select="sgr:dataPoint/@rwpDatadirection" />
+                                <xsl:value-of select="sgr:dataPoint/@dataDirection" />
                             </td>
                         </tr>
 
-                        <xsl:if test="sgr:dataPoint/sgr:dpNameList">
+                        <xsl:if test="sgr:dataPoint/sgr:alternativeNames">
                             <tr class="dataPointDetails">
                                 <td class="noborder"></td>
                                 <td colspan="6">
@@ -231,9 +231,9 @@
                                             <col style="width:25.8%" />
                                         </colgroup>
 
-                                        <!-- dpNameList (1x opt)-->
-                                        <xsl:if test="sgr:dataPoint/sgr:dpNameList">
-                                            <xsl:apply-templates select="sgr:dataPoint/sgr:dpNameList" />
+                                        <!-- alternativeNames (1x opt)-->
+                                        <xsl:if test="sgr:dataPoint/sgr:alternativeNames">
+                                            <xsl:apply-templates select="sgr:dataPoint/sgr:alternativeNames" />
                                         </xsl:if>
 
                                     </table>
@@ -244,7 +244,7 @@
                 </table>
             </div>
 
-            <xsl:if test="//sgr:genAttribute">
+            <xsl:if test="//sgr:genericAttributes">
                 <div class="functionalProfile">
                     <h2>Table of Attibutes</h2>
                     <!-- Generic Attributes -->
