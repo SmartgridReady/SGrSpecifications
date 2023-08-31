@@ -31,6 +31,9 @@
 	<!-- legibleDescription (4x opt) -->
 	<xsl:apply-templates select="sgr:legibleDescription"/>	
 
+	<!-- programmerHints (4x opt)-->
+	<xsl:apply-templates select="sgr:programmerHints" />
+
 	<!-- Transport Service -->
 	<tr class="genericDetails"><td>Transport Service</td><td>
 		<xsl:choose>
@@ -53,11 +56,11 @@
 	<tr class="genericDetails"><td>Device Type</td><td><xsl:value-of select="sgr:deviceCategory"/></td></tr>
 	
 	<!-- softwareRevision -->
-	<tr class="genericDetails"><td>Software Rev.</td><td><xsl:apply-templates select="sgr:softwareRevision"/></td></tr>
+	<tr class="genericDetails"><td>Software Rev.</td><td><xsl:value-of select="sgr:softwareRevision"/></td></tr>
 	
 	<!-- hardwareRevision (1x opt)-->
 	<xsl:if test="sgr:hardwareRevision">
-		<tr class="genericDetails"><td>Hardware Rev.</td><td><xsl:apply-templates select="sgr:hardwareRevision"/></td></tr>
+		<tr class="genericDetails"><td>Hardware Rev.</td><td><xsl:value-of select="sgr:hardwareRevision"/></td></tr>
 	</xsl:if>
 
 	<!-- brandName -->

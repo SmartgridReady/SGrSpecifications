@@ -60,8 +60,8 @@
 					<!-- legibleDescription (4x opt) -->
 					<xsl:apply-templates select="sgr:dataPoint/sgr:legibleDescription" />
 
-					<!-- dpPrgDesc (4x opt)-->
-	                <xsl:apply-templates select="sgr:dataPoint/sgr:dpPrgDesc" />
+					<!-- programmerHints (4x opt)-->
+	                <xsl:apply-templates select="sgr:dataPoint/sgr:programmerHints" />
 
 
 					<!-- Generic Attributes -->
@@ -120,7 +120,7 @@
 	</xsl:template>
 
 	<!-- LegibleDescription -->
-	<xsl:template match="sgr:dpPrgDesc">
+	<xsl:template match="sgr:programmerHints">
 		<tr>
 			<xsl:attribute name="lang">
 				<xsl:value-of select="sgr:language" />
