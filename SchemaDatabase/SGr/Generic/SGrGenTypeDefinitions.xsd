@@ -1219,7 +1219,8 @@
   <simpleType name="ctaHCOpModeType">
    <annotation>
      <documentation>Ecta004:
-     map for CTA Heatpump HeatCool modes Automatik
+     map for CTA Heatpump HeatCool modes 
+#0 Automatik
 #1 Komfort
 #2 Reduziert
 #3 Frostschutz/Aus
@@ -1227,11 +1228,30 @@
 </documentation>
 	</annotation>
     <restriction base="string">
-      <enumeration value="HP_NULL"/>
-      <enumeration value="HP_COMFORT"/>
-      <enumeration value="HP_ECO"/>
-      <enumeration value="HP_DEFROST"/>
-      <enumeration value="HP_EMERGENCY_OP"/>
+      <enumeration value="HC_AUTO"/>
+      <enumeration value="HC_COMFORT"/>
+      <enumeration value="HC_ECO"/>
+      <enumeration value="HC_DEFROST"/>
+      <enumeration value="HC_EMERGENCY_OP"/>
+      </restriction>
+  </simpleType>     
+  <simpleType name="ctaHCOpStateType">
+   <annotation>
+     <documentation>Ecta005:
+     map for CTA Heatpump HeatCool states 
+#0  FALSE (Extern Gesteuert) 
+#1  TRUE
+#2  Komfort
+#3  Reduziert
+#4  Aus
+</documentation>
+	</annotation>
+    <restriction base="string">
+      <enumeration value="HC_EXT_CTRL"/>
+      <enumeration value="HC_STAND_BY"/>
+      <enumeration value="HC_HEAT_COMF"/>
+      <enumeration value="HC_HEAT_ECO"/>
+      <enumeration value="HC_OFF"/>
       </restriction>
   </simpleType>    
   
@@ -1556,6 +1576,7 @@
       <element maxOccurs="1" minOccurs="1" name="ctaDomHotWOpMode" type="sgr:ctaDomHotWOpModeType" />
       <element maxOccurs="1" minOccurs="1" name="ctaHPOpState" type="sgr:ctaHPOpStateType" />
       <element maxOccurs="1" minOccurs="1" name="ctaHPOpMode" type="sgr:ctaHPOpModeType" />
+      <element maxOccurs="1" minOccurs="1" name="ctaHCOpState" type="sgr:ctaHCOpStateType" />
       <element maxOccurs="1" minOccurs="1" name="ctaHCOpMode" type="sgr:ctaHCOpModeType" />
       <element maxOccurs="1" minOccurs="1" name="hovHPOpMode" type="sgr:hovHPOpModeType" />
       <element maxOccurs="1" minOccurs="1" name="hovHCOpMode" type="sgr:hovHCOpModeType" />
