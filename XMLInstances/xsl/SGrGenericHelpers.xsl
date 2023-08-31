@@ -220,17 +220,17 @@
     </xsl:template>
 
 
-    <!-- SGrVersionNumberType -->
+    <!-- VersionNumberType -->
     <xsl:template match="sgr:softwareRevision">
-        <xsl:call-template name="SGrVersionNumberType" />
+        <xsl:call-template name="VersionNumberType" />
     </xsl:template>
     <xsl:template match="sgr:hardwareRevision">
-        <xsl:call-template name="SGrVersionNumberType" />
+        <xsl:call-template name="VersionNumberType" />
     </xsl:template>
     <xsl:template match="sgr:versionNumber">
-        <xsl:call-template name="SGrVersionNumberType" />
+        <xsl:call-template name="VersionNumberType" />
     </xsl:template>
-    <xsl:template name="SGrVersionNumberType">
+    <xsl:template name="VersionNumberType">
         <xsl:value-of select="sgr:primaryVersionNumber" />.<xsl:value-of select="sgr:secondaryVersionNumber" />.<xsl:value-of select="sgr:subReleaseVersionNumber" />
     </xsl:template>
 
@@ -250,18 +250,18 @@
         <xsl:param name="displayFullLevel" select="''"/>
         <xsl:param name="displayShortLevel" select="''"/>
         <xsl:choose>
-            <xsl:when test="sgr:specsOwnerId = 0">SGr</xsl:when>
-            <xsl:otherwise><xsl:value-of select="sgr:specsOwnerId" /></xsl:otherwise>
+            <xsl:when test="sgr:specificationOwnerIdentification = 0">SGr</xsl:when>
+            <xsl:otherwise><xsl:value-of select="sgr:specificationOwnerIdentification" /></xsl:otherwise>
         </xsl:choose>
         <xsl:value-of select="$separator" />
 
-        <xsl:value-of select="sgr:profileIdentification" /><xsl:value-of select="$separator" /><xsl:value-of select="sgr:subProfileIdent" />
+        <xsl:value-of select="sgr:functionalProfileCategory" /><xsl:value-of select="$separator" /><xsl:value-of select="sgr:functionalProfileType" />
         <xsl:if test="$displayShortLevel">
-            <xsl:value-of select="$separator" /><xsl:value-of select="sgr:sgrLevelOfOperation" />
+            <xsl:value-of select="$separator" /><xsl:value-of select="sgr:levelOfOperation" />
         </xsl:if>
 
         <xsl:if test="$displayFullLevel">
-            (Level <xsl:value-of select="sgr:sgrLevelOfOperation" />)
+            (Level <xsl:value-of select="sgr:levelOfOperation" />)
         </xsl:if>
     </xsl:template>
 

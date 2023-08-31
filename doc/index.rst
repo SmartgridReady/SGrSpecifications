@@ -11,6 +11,6 @@ Welcome to SGr Technical Documentation
    :caption: Contents
 
    functionalProfile
-   SGrAttr4GenericType
-   SGrLevelOfOperation
-   SGrNamelistType
+   GenericAttributeType
+   levelOfOperation
+   NameList

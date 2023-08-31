@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- Copyright (c) 2023, SmartGridready, Switzerland. All rights reserved. Source https://github.com/SmartgridReady/SGrSpecifications -->
+<!-- Copyright (c) 2023, SmartGridready, Switzerland. All rights reserved. Source https://github.com/SmartgridReady/SGrSpecifications  -->
 <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:sgr="http://www.smartgridready.com/ns/V0/" attributeFormDefault="unqualified" elementFormDefault="qualified"
   targetNamespace="http://www.smartgridready.com/ns/V0/" version="0.2.2">
   <!-- ************************************** -->
@@ -13,7 +13,7 @@
   <!-- ************************************** -->
   <include schemaLocation="../Generic/SGrSerialIntCapability.xsd"/>
   <include schemaLocation="../Generic/SGrGenTypeDefinitions.xsd"/>
-  <complexType name="tP_IPModbus">
+  <complexType name="ModbusIp">
     <annotation>
       <documentation>
         Modbus IP address:Specific P elements for Modbus over IP protocol. This definition is partially inherited from 61850-80-5's tPTypeModbusIPEnum typedef but reduced to a single
@@ -21,19 +21,19 @@
       </documentation>
     </annotation>
     <sequence>
-      <element maxOccurs="1" minOccurs="1" name="port" type="sgr:tIPportNrType"/>
-      <element maxOccurs="1" minOccurs="1" name="address" type="sgr:ipADDRType"/>
-      <element maxOccurs="1" minOccurs="1" name="slaveID" type="sgr:tSlaveIDType"/>
+      <element maxOccurs="1" minOccurs="1" name="port" type="sgr:ModbusIpPortNumber"/>
+      <element maxOccurs="1" minOccurs="1" name="address" type="sgr:ModbusIpAddress"/>
+      <element maxOccurs="1" minOccurs="1" name="slaveID" type="sgr:ModbusSlaveId"/>
     </sequence>
   </complexType>
-  <simpleType name="tIPportNrType">
+  <simpleType name="ModbusIpPortNumber">
     <annotation>
       <documentation> Modbus Port number, default use is Port 502</documentation>
     </annotation>
     <restriction base="unsignedInt">
     </restriction>
   </simpleType>
-  <complexType name="ipADDRType">
+  <complexType name="ModbusIpAddress">
     <annotation>
       <documentation>Modbus device address</documentation>
     </annotation>
@@ -72,7 +72,7 @@
       </element>
     </sequence>
   </complexType>
-  <simpleType name="tSlaveIDType">
+  <simpleType name="ModbusSlaveId">
     <annotation>
       <documentation>Modbus Slave Address</documentation>
     </annotation>
@@ -83,7 +83,7 @@
   <!-- Modbus Conversion function section -->
   <!-- ****************************************** -->
   <!-- Conversion functions -->
-  <simpleType name="tEnumConversionFct">
+  <simpleType name="EnumConversionFunction">
     <annotation>
       <documentation>
         Modbus conversion functions are used to apply different transformations to data between Modbus device and IEC61850 devices. There are different kind of conversions, depending on
@@ -101,7 +101,7 @@
   <!-- **************************** -->
   <!-- Modbus Address section -->
   <!-- **************************** -->
-  <simpleType name="tEnumObjectType">
+  <simpleType name="EnumObjectType">
     <annotation>
       <documentation>
         Type of the Modbus Data. For slave-role, definition of the Object Type of the data: Discretes Input: Single bit, Read-Only; Coils: Single bit, Read-Write; Input Registers: 16-bit
@@ -115,7 +115,7 @@
       <enumeration value="HoldRegister"/>
     </restriction>
   </simpleType>
-  <simpleType name="tBitRank">
+  <simpleType name="BitRank">
     <annotation>
       <documentation>
         Rank of a bit data represented with a register. The bit rank used to define a bit address (bitAddress = addr x 16 + bitRank
@@ -126,7 +126,7 @@
       <maxInclusive value="15"/>
     </restriction>
   </simpleType>
-  <complexType name="tSGrModbus_RegisterRef">
+  <complexType name="ModbusRegisterReference">
     <annotation>
       <documentation>
         2-bytes-word address: could be a register address (to address a modbus register - inputRegister or holdRegister) or a part of a bit address, see bitRank definition
@@ -139,12 +139,12 @@
         </documentation>
       </annotation>
     </attribute>
-    <attribute name="bitRank" type="sgr:tBitRank" use="optional">
+    <attribute name="bitRank" type="sgr:BitRank" use="optional">
       <annotation>
         <documentation>The bit rank used to define a bit address (bitAddress = addr x 16 + bitRank)</documentation>
       </annotation>
     </attribute>
-    <attribute name="registerType" type="sgr:tEnumObjectType" use="required">
+    <attribute name="registerType" type="sgr:EnumObjectType" use="required">
       <annotation>
         <documentation>
           For slave-role, definition of the Object Type of the data: Discretes Input: Single bit, Read-Only; Coils: Single bit, Read-Write; Input Registers: 16-bit word, Read-Only;
@@ -153,7 +153,7 @@
       </annotation>
     </attribute>
   </complexType>
-  <simpleType name="tEnumExceptionCodeType">
+  <simpleType name="EnumExceptionCode">
     <annotation>
       <documentation>Type of the Modbus Exceptions sent by Slave (Server) responses.</documentation>
     </annotation>
@@ -230,34 +230,34 @@
     </restriction>
   </simpleType>
   <!-- actual serial interface configuration -->
-  <complexType name="tP_RTUModbus">
+  <complexType name="ModbusRtu">
     <sequence>
-      <element maxOccurs="1" minOccurs="1" name="slaveAddr" type="sgr:tSlaveIDType"/>
-      <element maxOccurs="1" minOccurs="1" name="baudRateSelected" type="sgr:eBaudRateType"/>
-      <element maxOccurs="1" minOccurs="1" name="byteLenSelected" type="sgr:eByteLenType"/>
-      <element maxOccurs="1" minOccurs="1" name="paritySelected" type="sgr:eParityType"/>
-      <element maxOccurs="1" minOccurs="1" name="stopBitLenSelected" type="sgr:eStopBitLenType"/>
-      <element name="serialInterfaceCapability" type="sgr:SGrSerialInterfaceCapabilityType"/>
+      <element maxOccurs="1" minOccurs="1" name="slaveAddr" type="sgr:ModbusSlaveId"/>
+      <element maxOccurs="1" minOccurs="1" name="baudRateSelected" type="sgr:EnumBaudRate"/>
+      <element maxOccurs="1" minOccurs="1" name="byteLenSelected" type="sgr:EnumByteLen"/>
+      <element maxOccurs="1" minOccurs="1" name="paritySelected" type="sgr:EnumParityTyp"/>
+      <element maxOccurs="1" minOccurs="1" name="stopBitLenSelected" type="sgr:EnumStopBitLength"/>
+      <element name="serialInterfaceCapability" type="sgr:SerialInterfaceCapability"/>
     </sequence>
   </complexType>
   <!-- modbus data types -->
-  <complexType name="modbusDataType">
+  <complexType name="ModbusDataType">
     <choice>
-      <element maxOccurs="1" minOccurs="1" name="boolean"   type="sgr:emptyType"/>
-      <element maxOccurs="1" minOccurs="1" name="int8"      type="sgr:emptyType"/>
-      <element maxOccurs="1" minOccurs="1" name="int16"     type="sgr:emptyType"/>
-      <element maxOccurs="1" minOccurs="1" name="int32"     type="sgr:emptyType"/>
-      <element maxOccurs="1" minOccurs="1" name="int64"     type="sgr:emptyType"/>
-      <element maxOccurs="1" minOccurs="1" name="int8U"     type="sgr:emptyType"/>
-      <element maxOccurs="1" minOccurs="1" name="int16U"    type="sgr:emptyType"/>
-      <element maxOccurs="1" minOccurs="1" name="int32U"    type="sgr:emptyType"/>
-      <element maxOccurs="1" minOccurs="1" name="int64U"    type="sgr:emptyType"/>
-      <element maxOccurs="1" minOccurs="1" name="float32"   type="sgr:emptyType"/>
-      <element maxOccurs="1" minOccurs="1" name="float64"   type="sgr:emptyType"/>
-      <element maxOccurs="1" minOccurs="1" name="dateTime"  type="sgr:emptyType"/>
-      <element maxOccurs="1" minOccurs="1" name="string"    type="sgr:emptyType"/>
-      <element maxOccurs="1" minOccurs="1" name="enum"      type="sgr:SGrEnumListType"/>
-      <element maxOccurs="1" minOccurs="1" name="enum2bitmapIndex" type="sgr:SGrBitmapperListType">
+      <element maxOccurs="1" minOccurs="1" name="boolean"   type="sgr:EmptyType"/>
+      <element maxOccurs="1" minOccurs="1" name="int8"      type="sgr:EmptyType"/>
+      <element maxOccurs="1" minOccurs="1" name="int16"     type="sgr:EmptyType"/>
+      <element maxOccurs="1" minOccurs="1" name="int32"     type="sgr:EmptyType"/>
+      <element maxOccurs="1" minOccurs="1" name="int64"     type="sgr:EmptyType"/>
+      <element maxOccurs="1" minOccurs="1" name="int8U"     type="sgr:EmptyType"/>
+      <element maxOccurs="1" minOccurs="1" name="int16U"    type="sgr:EmptyType"/>
+      <element maxOccurs="1" minOccurs="1" name="int32U"    type="sgr:EmptyType"/>
+      <element maxOccurs="1" minOccurs="1" name="int64U"    type="sgr:EmptyType"/>
+      <element maxOccurs="1" minOccurs="1" name="float32"   type="sgr:EmptyType"/>
+      <element maxOccurs="1" minOccurs="1" name="float64"   type="sgr:EmptyType"/>
+      <element maxOccurs="1" minOccurs="1" name="dateTime"  type="sgr:EmptyType"/>
+      <element maxOccurs="1" minOccurs="1" name="string"    type="sgr:EmptyType"/>
+      <element maxOccurs="1" minOccurs="1" name="enum"      type="sgr:EnumListType"/>
+      <element maxOccurs="1" minOccurs="1" name="enum2bitmapIndex" type="sgr:BitmapperListType">
         <annotation>
           <documentation>
             bitmap for Registers (typical: Status Bits). For to be visible as generic boolean array or unsigned integer mapped in parallel towards one data single point definition.

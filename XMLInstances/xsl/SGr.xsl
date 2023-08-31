@@ -101,8 +101,8 @@
 					<p></p>
 
 					<!-- Device Types -->
-					<xsl:apply-templates select="sgr:SGrModbusDeviceFrame" />
-					<xsl:apply-templates select="sgr:SGrRestAPIDeviceFrame" />
+					<xsl:apply-templates select="sgr:ModbusDeviceFrame" />
+					<xsl:apply-templates select="sgr:RestApiDeviceFrame" />
 					<xsl:apply-templates select="sgr:SGrContactAPIDeviceFrame" />
 
 					<!-- generic functional Profiles -->
@@ -113,10 +113,10 @@
 	</xsl:template>
 
 	<!-- Device Profiles -->
-	<xsl:template match="sgr:SGrModbusDeviceFrame">
+	<xsl:template match="sgr:ModbusDeviceFrame">
 		<xsl:call-template name="SGrDeviceType" />
 	</xsl:template>
-	<xsl:template match="sgr:SGrRestAPIDeviceFrame">
+	<xsl:template match="sgr:RestApiDeviceFrame">
 		<xsl:call-template name="SGrDeviceType" />
 	</xsl:template>
 	<xsl:template match="sgr:SGrContactAPIDeviceFrame">
@@ -221,12 +221,12 @@
 						<xsl:value-of select="@manufacturerName" />
 					</td>
 				</tr>
-				<!-- specsOwnerId is very technical and of little value to the end user. dont' display. -->
+				<!-- specificationOwnerIdentification is very technical and of little value to the end user. dont' display. -->
 				<!--tr>
 
 					<td>Specification Owner ID</td>
 					<td>
-						<xsl:value-of select="@specsOwnerId" />
+						<xsl:value-of select="@specificationOwnerIdentification" />
 					</td>
 				</tr-->
 				<tr>
@@ -270,7 +270,7 @@
 				</xsl:if>
 
 				<!-- Rest Device -->
-				<xsl:if test="sgr:restAPIInterfaceDesc">
+				<xsl:if test="sgr:restApiInterfaceDescription">
 					<tr class="transportDetails">
 						<td colspan="2" class="noborder">
 							<h3>
@@ -278,8 +278,8 @@
 							</h3>
 						</td>
 					</tr>
-					<xsl:apply-templates select="sgr:restAPIInterfaceDesc" />
-					<xsl:apply-templates select="sgr:restAPIAttr" />
+					<xsl:apply-templates select="sgr:restApiInterfaceDescription" />
+					<xsl:apply-templates select="sgr:restApiAttribute" />
 				</xsl:if>
 
 				<!-- Contact Device -->
@@ -299,7 +299,7 @@
 			<xsl:apply-templates select="sgr:networkConnectionState" />
 
 			<!-- Functiol Profiles -->
-			<xsl:apply-templates select="sgr:fpListElement" />
+			<xsl:apply-templates select="sgr:functionalProfileListElement" />
 		</div>
 	</xsl:template>
 

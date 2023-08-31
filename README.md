@@ -1,4 +1,4 @@
-# SGrSpecifications
+# ModbusRtuTransportServiceInstance
 Contains the schema, functional profiles and external interface descriptions for SmartgridReady.
 
 License see LICENSE file

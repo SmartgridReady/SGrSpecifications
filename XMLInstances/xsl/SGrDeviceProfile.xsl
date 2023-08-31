@@ -12,8 +12,8 @@
 	a table element that must be created outside this template
 
     Depends on named templates:
-    - SGrNamelistType
-    - SGrLegibDocumentationType
+    - NameList
+    - LegibleDocumentationType
 
 -->
 
@@ -90,18 +90,18 @@
 		<tr class="genericDetails"><td>Author Remarks</td><td><xsl:value-of select="sgr:remAuthorID"/></td></tr>
 	</xsl:if>
 	
-	<!-- sgrLevelOfOperation (1x opt) -->
-	<xsl:if test="sgr:sgrLevelOfOperation">
-		<tr class="genericDetails"><td>Level</td><td><xsl:value-of select="sgr:sgrLevelOfOperation"/></td></tr>
+	<!-- levelOfOperation (1x opt) -->
+	<xsl:if test="sgr:levelOfOperation">
+		<tr class="genericDetails"><td>Level</td><td><xsl:value-of select="sgr:levelOfOperation"/></td></tr>
 	</xsl:if>
 </xsl:template>
 
 <xsl:template match="sgr:devNameList">
-	<xsl:call-template name="SGrNamelistType"/>
+	<xsl:call-template name="NameList"/>
 </xsl:template>
 
 <xsl:template match="sgr:legibleDescription">
-	<tr><xsl:attribute name="lang"><xsl:value-of select="sgr:language"/></xsl:attribute><td colspan="2"><xsl:call-template name="SGrLegibDocumentationType"/></td></tr>	
+	<tr><xsl:attribute name="lang"><xsl:value-of select="sgr:language"/></xsl:attribute><td colspan="2"><xsl:call-template name="LegibleDocumentationType"/></td></tr>	
 </xsl:template>
 
 

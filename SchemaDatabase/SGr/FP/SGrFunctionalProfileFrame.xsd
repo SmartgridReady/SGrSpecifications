@@ -14,7 +14,7 @@
     </annotation>
     <complexType>
       <sequence>
-        <element maxOccurs="1" minOccurs="0" name="releaseNotes" type="sgr:SGrReleaseNotes"/>
+        <element maxOccurs="1" minOccurs="0" name="releaseNotes" type="sgr:ReleaseNotes"/>
         <element maxOccurs="1" minOccurs="1" name="functionalProfile">
           <complexType>
             <annotation>
@@ -26,9 +26,9 @@
               </documentation>
             </annotation>
             <sequence>
-              <element maxOccurs="1" minOccurs="1" name="profileNumber" type="sgr:SGrProfilenumberType"/>
-              <element maxOccurs="1" minOccurs="0" name="fpNameList" type="sgr:SGrNamelistType"/>
-              <element maxOccurs="4" minOccurs="0" name="legibleDescription" type="sgr:SGrLegibDocumentationType">
+              <element maxOccurs="1" minOccurs="1" name="profileNumber" type="sgr:ProfilenumberType"/>
+              <element maxOccurs="1" minOccurs="0" name="fpNameList" type="sgr:NameList"/>
+              <element maxOccurs="4" minOccurs="0" name="legibleDescription" type="sgr:LegibleDocumentationType">
                 <annotation>
                   <documentation> this is the published information related to this functional profile
                   </documentation>
@@ -37,8 +37,8 @@
             </sequence>
           </complexType>
         </element>
-        <element maxOccurs="unbounded" minOccurs="0" name="genAttribute" type="sgr:SGrAttr4GenericType"/>
-        <element maxOccurs="unbounded" minOccurs="1" name="dpListElement">
+        <element maxOccurs="unbounded" minOccurs="0" name="genAttribute" type="sgr:GenericAttributeType"/>
+        <element maxOccurs="unbounded" minOccurs="1" name="dataPointListElement">
           <complexType>
             <annotation>
               <documentation>Base data point type</documentation>
@@ -53,10 +53,10 @@
                     </documentation>
                   </annotation>
                   <sequence>
-                    <element maxOccurs="1" minOccurs="1" name="dataType" type="sgr:dataType"/>
+                    <element maxOccurs="1" minOccurs="1" name="dataType" type="sgr:DataType"/>
                     <element name="arrayLength" type="int" maxOccurs="1" minOccurs="0"/>
-                    <element maxOccurs="1" minOccurs="0" name="dpNameList" type="sgr:SGrNamelistType"/>
-                    <element maxOccurs="4" minOccurs="0" name="legibleDescription" type="sgr:SGrLegibDocumentationType">
+                    <element maxOccurs="1" minOccurs="0" name="dpNameList" type="sgr:NameList"/>
+                    <element maxOccurs="4" minOccurs="0" name="legibleDescription" type="sgr:LegibleDocumentationType">
                       <annotation>
                         <documentation> this is the public explanation of the functionlity of this Datapoint
                         </documentation>
@@ -71,7 +71,7 @@
                       </documentation>
                     </annotation>
                   </attribute>
-                  <attribute name="rwpDatadirection" type="sgr:SGrRWPType">
+                  <attribute name="rwpDatadirection" type="sgr:DataPointRwpType">
                     <annotation>
                       <documentation>
                         RWP (Eigenschaft des Datenpunktes) bezeichnet die Datenrichtung und die Datenhaltung R = lesen aus Sicht des Profilnutzers W = schreiben aus Sicht der
@@ -79,7 +79,7 @@
                       </documentation>
                     </annotation>
                   </attribute>
-                  <attribute name="mroVisibilityIndicator" type="sgr:SGrMROPresenceLevelIndicationType">
+                  <attribute name="mroVisibilityIndicator" type="sgr:DataPointMroPresenceLevelIndicator">
                     <annotation>
                       <documentation>
                         MRO (Relevanz) Die Gewichtung der Variable bezüglich des Nutzens M = muss (mandatory) Datenpunkt R = empfohlener (recommended) Datenpunkt O = optionaler
@@ -87,10 +87,10 @@
                       </documentation>
                     </annotation>
                   </attribute>
-                  <attribute name="unit" type="sgr:SGrUnits"/>
+                  <attribute name="unit" type="sgr:Units"/>
                 </complexType>
               </element>
-              <element maxOccurs="unbounded" minOccurs="0" name="genAttribute" type="sgr:SGrAttr4GenericType"/>
+              <element maxOccurs="unbounded" minOccurs="0" name="genAttribute" type="sgr:GenericAttributeType"/>
             </sequence>
           </complexType>
         </element>

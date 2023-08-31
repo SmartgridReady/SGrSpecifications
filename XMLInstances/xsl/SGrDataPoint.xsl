@@ -18,7 +18,7 @@
 
 
 	<!-- SGrDataPointType -->
-	<xsl:template match="sgr:dpListElement">
+	<xsl:template match="sgr:dataPointListElement">
 		<tr>
 			<td colspan="2">
 				<xsl:value-of select="sgr:dataPoint/@datapointName" />
@@ -87,7 +87,7 @@
 					</xsl:if>
 
 					<!-- Rest Device -->
-					<xsl:if test="sgr:restAPIDataPoint">
+					<xsl:if test="sgr:restApiDataPoint">
 						<tr class="transportDetails">
 							<td colspan="2" class="noborder">
 								<h3>
@@ -95,8 +95,8 @@
 								</h3>
 							</td>
 						</tr>
-						<xsl:apply-templates select="sgr:restAPIDataPoint" />
-						<xsl:apply-templates select="sgr:restAPIAttr" />
+						<xsl:apply-templates select="sgr:restApiDataPoint" />
+						<xsl:apply-templates select="sgr:restApiAttribute" />
 					</xsl:if>
 				</table>
 			</td>
@@ -105,41 +105,41 @@
 
 	<!-- dpNameList -->
 	<xsl:template match="sgr:dpNameList">
-		<xsl:call-template name="SGrNamelistType" />
+		<xsl:call-template name="NameList" />
 	</xsl:template>
 
-	<!-- SGrLegibDocumentationType -->
+	<!-- LegibleDocumentationType -->
 	<xsl:template match="sgr:legibleDescription">
 		<tr>
 			<xsl:attribute name="lang">
 				<xsl:value-of select="sgr:language" />
 			</xsl:attribute>
 			<td colspan="2">
-				<xsl:call-template name="SGrLegibDocumentationType" />
+				<xsl:call-template name="LegibleDocumentationType" />
 			</td>
 		</tr>
 	</xsl:template>
 
-	<!-- SGrLegibDocumentationType -->
+	<!-- LegibleDocumentationType -->
 	<xsl:template match="sgr:dpPrgDesc">
 		<tr>
 			<xsl:attribute name="lang">
 				<xsl:value-of select="sgr:language" />
 			</xsl:attribute>
 			<td colspan="2">
-				<xsl:call-template name="SGrLegibDocumentationType" />
+				<xsl:call-template name="LegibleDocumentationType" />
 			</td>
 		</tr>
 	</xsl:template>
 
-	<!-- SGrModbusDataPointDescriptionType -->
+	<!-- ModbusDataPointDescription -->
 	<xsl:template match="sgr:modbusDataPoint">
-		<!-- modbusDataType (opt 1x) -->
+		<!-- ModbusDataType (opt 1x) -->
 		<tr class="transportDetails">
 			<td>Data Type</td>
 			<td>
-				<xsl:if test="sgr:modbusDataType">
-					<xsl:apply-templates select="sgr:modbusDataType" />
+				<xsl:if test="sgr:ModbusDataType">
+					<xsl:apply-templates select="sgr:ModbusDataType" />
 				</xsl:if>
 			</td>
 		</tr>
@@ -191,8 +191,8 @@
 		</xsl:if>
 	</xsl:template>
 
-	<!-- SGrRestAPIDataPointDescriptionType -->
-	<xsl:template match="sgr:restAPIDataPoint">
+	<!-- RestApiDataPointDescription -->
+	<xsl:template match="sgr:restApiDataPoint">
 		<tr class="transportDetails">
 			<td>Data Type</td>
 			<td>

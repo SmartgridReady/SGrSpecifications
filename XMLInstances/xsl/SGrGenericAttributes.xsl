@@ -2,10 +2,10 @@
 <xsl:stylesheet version="1.1" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:sgr="http://www.smartgridready.com/ns/V0/">
 
     <xsl:template match="sgr:genAttribute">
-        <xsl:call-template name="SGrAttr4GenericType" />
+        <xsl:call-template name="GenericAttributeType" />
     </xsl:template>
 
-    <xsl:template name="SGrAttr4GenericType">
+    <xsl:template name="GenericAttributeType">
         <!--maxVal-->
         <xsl:if test="sgr:maxVal">
             <tr class="genericDetails">

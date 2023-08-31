@@ -1,6 +1,6 @@
 # SGr Level of Operation
 
-SGrLevelOfOperation defines a controls complexity level
+levelOfOperation defines a controls complexity level
 
 | Level | Description | Example |
 | ----- | ----------- | ------- |
@@ -14,4 +14,4 @@ SGrLevelOfOperation defines a controls complexity level
 
 Levels 1-6 can be combined with a the monitoring (m) level if they offer read-only data points
 
-(see [SGrProfileDescriptionType.xsd](/SchemaDatabase/SGr/Generic/SGrProfileDescriptionType.xsd) for details...)
+(see [ProfileDescriptionType.xsd](/SchemaDatabase/SGr/Generic/ProfileDescriptionType.xsd) for details...)

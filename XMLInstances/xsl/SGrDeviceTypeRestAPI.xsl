@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:sgr="http://www.smartgridready.com/ns/V0/">
 
-    <!-- restAPIInterfaceDesc -->
-    <xsl:template match="sgr:restAPIInterfaceDesc">
+    <!-- restApiInterfaceDescription -->
+    <xsl:template match="sgr:restApiInterfaceDescription">
         <tr class="transportDetails">
             <td>Interface Type</td>
             <td>
@@ -84,7 +84,7 @@
     </xsl:template>
 
     <!-- Attributes RestAPI -->
-    <xsl:template match="sgr:restAPIAttr">
+    <xsl:template match="sgr:restApiAttribute">
         <!--flexAssistance-->
         <xsl:if test="sgr:placeHolder4futureExtensions">
             <tr class="transportDetails">

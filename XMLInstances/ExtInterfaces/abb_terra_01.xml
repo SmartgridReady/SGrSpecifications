@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="/xsl/SGr.xsl"?>
-<sgr:SGrModbusDeviceFrame deviceName="Webasto" isLocalControl="true" specsOwnerId="0" manufacturerName="Webasto" xmlns:sgr="http://www.smartgridready.com/ns/V0/"
+<sgr:ModbusDeviceFrame deviceName="Webasto" isLocalControl="true" specificationOwnerIdentification="0" manufacturerName="Webasto" xmlns:sgr="http://www.smartgridready.com/ns/V0/"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/EI-Modbus/SGrModbusEIDeviceFrame.xsd ">
   <sgr:releaseNotes>
     <sgr:state>Draft</sgr:state>
@@ -8,11 +8,7 @@
   <sgr:deviceProfile>
     <sgr:transportService>Modbus</sgr:transportService>
     <sgr:deviceKind>ChargingStation</sgr:deviceKind>
-    <sgr:softwareRevision>
-      <sgr:primaryVersionNumber>0</sgr:primaryVersionNumber>
-      <sgr:secondaryVersionNumber>0</sgr:secondaryVersionNumber>
-      <sgr:subReleaseVersionNumber>0</sgr:subReleaseVersionNumber>
-    </sgr:softwareRevision>
+    <sgr:softwareRevision>0.0.0</sgr:softwareRevision>
   </sgr:deviceProfile>
   <sgr:modbusInterfaceDesc>
     <sgr:modbusInterfaceSelection>TCP/IP</sgr:modbusInterfaceSelection>
@@ -29,13 +25,13 @@
     <sgr:firstRegisterAddressIsOne>true</sgr:firstRegisterAddressIsOne>
     <sgr:conversionScheme>BigEndian</sgr:conversionScheme>
   </sgr:modbusInterfaceDesc>
-  <sgr:fpListElement>
+  <sgr:functionalProfileListElement>
     <sgr:functionalProfile profileName="VoltageAC">
       <sgr:profileNumber>
-        <sgr:specsOwnerId>0</sgr:specsOwnerId>
-        <sgr:profileIdentification>SubMeterElectricity</sgr:profileIdentification>
-        <sgr:subProfileIdent>VoltageAC</sgr:subProfileIdent>
-        <sgr:sgrLevelOfOperation>4</sgr:sgrLevelOfOperation>
+        <sgr:specificationOwnerIdentification>0</sgr:specificationOwnerIdentification>
+        <sgr:functionalProfileCategory>SubMeterElectricity</sgr:functionalProfileCategory>
+        <sgr:functionalProfileType>VoltageAC</sgr:functionalProfileType>
+        <sgr:levelOfOperation>4</sgr:levelOfOperation>
         <sgr:versionNumber>
           <sgr:primaryVersionNumber>0</sgr:primaryVersionNumber>
           <sgr:secondaryVersionNumber>1</sgr:secondaryVersionNumber>
@@ -43,16 +39,16 @@
         </sgr:versionNumber>
       </sgr:profileNumber>
     </sgr:functionalProfile>
-    <sgr:dpListElement>
+    <sgr:dataPointListElement>
       <sgr:dataPoint datapointName="VoltageACL1" mroVisibilityIndicator="M" rwpDatadirection="R" unit="VOLTS">
         <sgr:dataType>
           <sgr:float64/>
         </sgr:dataType>
       </sgr:dataPoint>
       <sgr:modbusDataPoint>
-        <sgr:modbusDataType>
+        <sgr:ModbusDataType>
           <sgr:int32/>
-        </sgr:modbusDataType>
+        </sgr:ModbusDataType>
         <sgr:modbusFirstRegisterReference addr="16406" bitRank="0" registerType="InputRegister"></sgr:modbusFirstRegisterReference>
         <sgr:dpSizeNrRegisters>2</sgr:dpSizeNrRegisters>
         <sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
@@ -63,17 +59,17 @@
           <sgr:powerof10>-1</sgr:powerof10>
         </sgr:scalingByMulPwr>
       </sgr:modbusAttr>
-    </sgr:dpListElement>
-    <sgr:dpListElement>
+    </sgr:dataPointListElement>
+    <sgr:dataPointListElement>
       <sgr:dataPoint datapointName="VoltageACL2" mroVisibilityIndicator="M" rwpDatadirection="R" unit="VOLTS">
         <sgr:dataType>
           <sgr:float64/>
         </sgr:dataType>
       </sgr:dataPoint>
       <sgr:modbusDataPoint>
-        <sgr:modbusDataType>
+        <sgr:ModbusDataType>
           <sgr:int32/>
-        </sgr:modbusDataType>
+        </sgr:ModbusDataType>
         <sgr:modbusFirstRegisterReference addr="16408" bitRank="0" registerType="InputRegister"></sgr:modbusFirstRegisterReference>
         <sgr:dpSizeNrRegisters>2</sgr:dpSizeNrRegisters>
         <sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
@@ -84,17 +80,17 @@
           <sgr:powerof10>-1</sgr:powerof10>
         </sgr:scalingByMulPwr>
       </sgr:modbusAttr>
-    </sgr:dpListElement>
-    <sgr:dpListElement>
+    </sgr:dataPointListElement>
+    <sgr:dataPointListElement>
       <sgr:dataPoint datapointName="VoltageACL3" mroVisibilityIndicator="M" rwpDatadirection="R" unit="VOLTS">
         <sgr:dataType>
           <sgr:float64/>
         </sgr:dataType>
       </sgr:dataPoint>
       <sgr:modbusDataPoint>
-        <sgr:modbusDataType>
+        <sgr:ModbusDataType>
           <sgr:int32/>
-        </sgr:modbusDataType>
+        </sgr:ModbusDataType>
         <sgr:modbusFirstRegisterReference addr="16410" bitRank="0" registerType="InputRegister"></sgr:modbusFirstRegisterReference>
         <sgr:dpSizeNrRegisters>2</sgr:dpSizeNrRegisters>
         <sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
@@ -105,15 +101,15 @@
           <sgr:powerof10>-1</sgr:powerof10>
         </sgr:scalingByMulPwr>
       </sgr:modbusAttr>
-    </sgr:dpListElement>
-  </sgr:fpListElement>
-  <sgr:fpListElement>
+    </sgr:dataPointListElement>
+  </sgr:functionalProfileListElement>
+  <sgr:functionalProfileListElement>
     <sgr:functionalProfile profileName="CurrentAC">
       <sgr:profileNumber>
-        <sgr:specsOwnerId>0</sgr:specsOwnerId>
-        <sgr:profileIdentification>NonSpecific</sgr:profileIdentification>
-        <sgr:subProfileIdent>CurrentAC</sgr:subProfileIdent>
-        <sgr:sgrLevelOfOperation>m</sgr:sgrLevelOfOperation>
+        <sgr:specificationOwnerIdentification>0</sgr:specificationOwnerIdentification>
+        <sgr:functionalProfileCategory>NonSpecific</sgr:functionalProfileCategory>
+        <sgr:functionalProfileType>CurrentAC</sgr:functionalProfileType>
+        <sgr:levelOfOperation>m</sgr:levelOfOperation>
         <sgr:versionNumber>
           <sgr:primaryVersionNumber>1</sgr:primaryVersionNumber>
           <sgr:secondaryVersionNumber>0</sgr:secondaryVersionNumber>
@@ -121,16 +117,16 @@
         </sgr:versionNumber>
       </sgr:profileNumber>
     </sgr:functionalProfile>
-    <sgr:dpListElement>
+    <sgr:dataPointListElement>
       <sgr:dataPoint datapointName="CurrentACL1" mroVisibilityIndicator="M" rwpDatadirection="R" unit="AMPERES">
         <sgr:dataType>
           <sgr:float64/>
         </sgr:dataType>
       </sgr:dataPoint>
       <sgr:modbusDataPoint>
-        <sgr:modbusDataType>
+        <sgr:ModbusDataType>
           <sgr:int32U/>
-        </sgr:modbusDataType>
+        </sgr:ModbusDataType>
         <sgr:modbusFirstRegisterReference addr="16400" bitRank="0" registerType="HoldRegister"></sgr:modbusFirstRegisterReference>
         <sgr:dpSizeNrRegisters>2</sgr:dpSizeNrRegisters>
         <sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
@@ -141,17 +137,17 @@
           <sgr:powerof10>-3</sgr:powerof10>
         </sgr:scalingByMulPwr>
       </sgr:modbusAttr>
-    </sgr:dpListElement>
-    <sgr:dpListElement>
+    </sgr:dataPointListElement>
+    <sgr:dataPointListElement>
       <sgr:dataPoint datapointName="CurrentACL2" mroVisibilityIndicator="R" rwpDatadirection="R" unit="AMPERES">
         <sgr:dataType>
           <sgr:float64/>
         </sgr:dataType>
       </sgr:dataPoint>
       <sgr:modbusDataPoint>
-        <sgr:modbusDataType>
+        <sgr:ModbusDataType>
           <sgr:int32U/>
-        </sgr:modbusDataType>
+        </sgr:ModbusDataType>
         <sgr:modbusFirstRegisterReference addr="16402" bitRank="0" registerType="HoldRegister"></sgr:modbusFirstRegisterReference>
         <sgr:dpSizeNrRegisters>2</sgr:dpSizeNrRegisters>
         <sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
@@ -162,17 +158,17 @@
           <sgr:powerof10>-3</sgr:powerof10>
         </sgr:scalingByMulPwr>
       </sgr:modbusAttr>
-    </sgr:dpListElement>
-    <sgr:dpListElement>
+    </sgr:dataPointListElement>
+    <sgr:dataPointListElement>
       <sgr:dataPoint datapointName="CurrentACL3" mroVisibilityIndicator="R" rwpDatadirection="R" unit="AMPERES">
         <sgr:dataType>
           <sgr:float64/>
         </sgr:dataType>
       </sgr:dataPoint>
       <sgr:modbusDataPoint>
-        <sgr:modbusDataType>
+        <sgr:ModbusDataType>
           <sgr:int32U/>
-        </sgr:modbusDataType>
+        </sgr:ModbusDataType>
         <sgr:modbusFirstRegisterReference addr="16404" bitRank="0" registerType="HoldRegister"></sgr:modbusFirstRegisterReference>
         <sgr:dpSizeNrRegisters>2</sgr:dpSizeNrRegisters>
         <sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
@@ -183,15 +179,15 @@
           <sgr:powerof10>-3</sgr:powerof10>
         </sgr:scalingByMulPwr>
       </sgr:modbusAttr>
-    </sgr:dpListElement>
-  </sgr:fpListElement>
-  <sgr:fpListElement>
+    </sgr:dataPointListElement>
+  </sgr:functionalProfileListElement>
+  <sgr:functionalProfileListElement>
     <sgr:functionalProfile profileName="ChargingCurrentLimit">
       <sgr:profileNumber>
-        <sgr:specsOwnerId>0</sgr:specsOwnerId>
-        <sgr:profileIdentification>ChargingOutlet</sgr:profileIdentification>
-        <sgr:subProfileIdent>Curtailment</sgr:subProfileIdent>
-        <sgr:sgrLevelOfOperation>4</sgr:sgrLevelOfOperation>
+        <sgr:specificationOwnerIdentification>0</sgr:specificationOwnerIdentification>
+        <sgr:functionalProfileCategory>ChargingOutlet</sgr:functionalProfileCategory>
+        <sgr:functionalProfileType>Curtailment</sgr:functionalProfileType>
+        <sgr:levelOfOperation>4</sgr:levelOfOperation>
         <sgr:versionNumber>
           <sgr:primaryVersionNumber>0</sgr:primaryVersionNumber>
           <sgr:secondaryVersionNumber>1</sgr:secondaryVersionNumber>
@@ -199,16 +195,16 @@
         </sgr:versionNumber>
       </sgr:profileNumber>
     </sgr:functionalProfile>
-    <sgr:dpListElement>
+    <sgr:dataPointListElement>
       <sgr:dataPoint datapointName="ChargingCurrentLimitRead" mroVisibilityIndicator="M" rwpDatadirection="R" unit="AMPERES">
         <sgr:dataType>
           <sgr:float64/>
         </sgr:dataType>
       </sgr:dataPoint>
       <sgr:modbusDataPoint>
-        <sgr:modbusDataType>
+        <sgr:ModbusDataType>
           <sgr:int32U/>
-        </sgr:modbusDataType>
+        </sgr:ModbusDataType>
         <sgr:modbusFirstRegisterReference addr="16398" bitRank="0" registerType="HoldRegister"></sgr:modbusFirstRegisterReference>
         <sgr:dpSizeNrRegisters>2</sgr:dpSizeNrRegisters>
         <sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
@@ -219,17 +215,17 @@
           <sgr:powerof10>-3</sgr:powerof10>
         </sgr:scalingByMulPwr>
       </sgr:modbusAttr>
-    </sgr:dpListElement>
-    <sgr:dpListElement>
+    </sgr:dataPointListElement>
+    <sgr:dataPointListElement>
       <sgr:dataPoint datapointName="ChargingCurrentLimitWrite" mroVisibilityIndicator="M" rwpDatadirection="R" unit="AMPERES">
         <sgr:dataType>
           <sgr:float64/>
         </sgr:dataType>
       </sgr:dataPoint>
       <sgr:modbusDataPoint>
-        <sgr:modbusDataType>
+        <sgr:ModbusDataType>
           <sgr:int32U/>
-        </sgr:modbusDataType>
+        </sgr:ModbusDataType>
         <sgr:modbusFirstRegisterReference addr="16640" bitRank="0" registerType="HoldRegister"></sgr:modbusFirstRegisterReference>
         <sgr:dpSizeNrRegisters>2</sgr:dpSizeNrRegisters>
         <sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
@@ -240,15 +236,15 @@
           <sgr:powerof10>-3</sgr:powerof10>
         </sgr:scalingByMulPwr>
       </sgr:modbusAttr>
-    </sgr:dpListElement>
-  </sgr:fpListElement>
-  <sgr:fpListElement>
+    </sgr:dataPointListElement>
+  </sgr:functionalProfileListElement>
+  <sgr:functionalProfileListElement>
     <sgr:functionalProfile profileName="Status">
       <sgr:profileNumber>
-        <sgr:specsOwnerId>0</sgr:specsOwnerId>
-        <sgr:profileIdentification>EV</sgr:profileIdentification>
-        <sgr:subProfileIdent>EnergyMonitor</sgr:subProfileIdent>
-        <sgr:sgrLevelOfOperation>4</sgr:sgrLevelOfOperation>
+        <sgr:specificationOwnerIdentification>0</sgr:specificationOwnerIdentification>
+        <sgr:functionalProfileCategory>EV</sgr:functionalProfileCategory>
+        <sgr:functionalProfileType>EnergyMonitor</sgr:functionalProfileType>
+        <sgr:levelOfOperation>4</sgr:levelOfOperation>
         <sgr:versionNumber>
           <sgr:primaryVersionNumber>0</sgr:primaryVersionNumber>
           <sgr:secondaryVersionNumber>1</sgr:secondaryVersionNumber>
@@ -256,7 +252,7 @@
         </sgr:versionNumber>
       </sgr:profileNumber>
     </sgr:functionalProfile>
-    <sgr:dpListElement>
+    <sgr:dataPointListElement>
       <sgr:dataPoint datapointName="EV-StatusCode" mroVisibilityIndicator="M" rwpDatadirection="R" unit="NONE">
         <sgr:dataType>
           <sgr:enum>
@@ -265,15 +261,15 @@
         </sgr:dataType>
       </sgr:dataPoint>
       <sgr:modbusDataPoint>
-        <sgr:modbusDataType>
+        <sgr:ModbusDataType>
           <sgr:int32U/>
-        </sgr:modbusDataType>
+        </sgr:ModbusDataType>
         <sgr:modbusFirstRegisterReference addr="16396" bitRank="0" registerType="HoldRegister"></sgr:modbusFirstRegisterReference>
         <sgr:dpSizeNrRegisters>2</sgr:dpSizeNrRegisters>
         <sgr:bitmask>00000F00</sgr:bitmask>
         <sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
         <sgr:modbusJMESPath>[{"state": @==`0`, "char": `"A"`}, {"state": @==`256`, "char": `"B"`}, {"state": @==`512`, "char": `"B"`}, {"state": @==`768`, "char": `"C"`}, {"state": @==`1024`, "char": `"C"`}, {"state": @==`1280`, "char": `"E"`}, {"state": `true`, "char": `"F"`}][?state] | [0].char</sgr:modbusJMESPath>
       </sgr:modbusDataPoint>
-    </sgr:dpListElement>
-  </sgr:fpListElement>
-</sgr:SGrModbusDeviceFrame>
+    </sgr:dataPointListElement>
+  </sgr:functionalProfileListElement>
+</sgr:ModbusDeviceFrame>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- Copyright (c) 2023, SmartGridready, Switzerland. All rights reserved. Source https://github.com/SmartgridReady/SGrSpecifications -->
+<!-- Copyright (c) 2023, SmartGridready, Switzerland. All rights reserved. Source https://github.com/SmartgridReady/SGrSpecifications  -->
 <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:sgr="http://www.smartgridready.com/ns/V0/" attributeFormDefault="unqualified" elementFormDefault="qualified"
   targetNamespace="http://www.smartgridready.com/ns/V0/" version="0.2.2">
   <include schemaLocation="SGrDataPointDescriptionType.xsd"/>
@@ -7,32 +7,32 @@
   <include schemaLocation="SGrDeviceProfileType.xsd"/>
     
     <!-- Base Types -->
-  <complexType name="SGrDataPointBaseType">
+  <complexType name="DataPointBase">
     <annotation>
       <documentation>Base data point type</documentation>
     </annotation>
     <sequence>
-      <element name="dataPoint" type="sgr:SGrDataPointDescriptionType"/>
-      <element maxOccurs="1" minOccurs="0" name="genAttribute" type="sgr:SGrAttr4GenericType"/>
+      <element name="dataPoint" type="sgr:DataPointDescription"/>
+      <element maxOccurs="1" minOccurs="0" name="genAttribute" type="sgr:GenericAttributeType"/>
     </sequence>
   </complexType>
-  <complexType name="SGrFunctionalProfileBaseType">
+  <complexType name="FunctionalProfileBaseType">
     <annotation>
       <documentation>Base type for functional profile</documentation>
     </annotation>
     <sequence>
-      <element maxOccurs="1" minOccurs="1" name="functionalProfile" type="sgr:SGrProfileDescriptionType"/>
-      <element maxOccurs="1" minOccurs="0" name="genAttribute" type="sgr:SGrAttr4GenericType"/>
+      <element maxOccurs="1" minOccurs="1" name="functionalProfile" type="sgr:ProfileDescriptionType"/>
+      <element maxOccurs="1" minOccurs="0" name="genAttribute" type="sgr:GenericAttributeType"/>
     </sequence>
   </complexType>
-  <complexType name="SGrDeviceBaseType">
+  <complexType name="DeviceBaseType">
     <annotation>
       <documentation>Base type for device</documentation>
     </annotation>
     <sequence>
-      <element maxOccurs="1" minOccurs="1" name="releaseNotes" type="sgr:SGrReleaseNotes"/>
-      <element maxOccurs="1" minOccurs="1" name="deviceProfile" type="sgr:SGrDeviceProfileType"/>
-      <element maxOccurs="1" minOccurs="0" name="genAttribute" type="sgr:SGrAttr4GenericType"/>
+      <element maxOccurs="1" minOccurs="1" name="releaseNotes" type="sgr:ReleaseNotes"/>
+      <element maxOccurs="1" minOccurs="1" name="deviceProfile" type="sgr:DeviceProfile"/>
+      <element maxOccurs="1" minOccurs="0" name="genAttribute" type="sgr:GenericAttributeType"/>
     </sequence>
     <attribute name="deviceName" type="string">
       <annotation>
@@ -45,7 +45,7 @@
         <documentation>Name of the Manufacturer or OEM</documentation>
       </annotation>
     </attribute>
-    <attribute name="specsOwnerId" type="sgr:SpecsOwnerId"/>
+    <attribute name="specificationOwnerIdentification" type="sgr:SpecificationOwnerIdentification"/>
     <attribute name="isLocalControl" type="boolean">
       <annotation>
         <documentation>
