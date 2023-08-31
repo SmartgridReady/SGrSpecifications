@@ -5,6 +5,14 @@
   <include schemaLocation="../Generic/SGrBaseDeviceFrame.xsd"/>
 
   <!-- Contact driven Device Frame -->
+  <complexType name="ContactsDataPointList">
+    <annotation>
+      <documentation>List of data point type with Modbus attributes and data points</documentation>
+    </annotation>
+    <sequence>
+      <element maxOccurs="unbounded" minOccurs="1" name="dataPointListElement" type="sgr:DataPointBase"></element>
+    </sequence>
+  </complexType>
   <complexType name="ContactInterfaceDescription">
     <sequence>
       <element name="numberOfContacts" type="int"/>
@@ -18,10 +26,18 @@
     <complexContent>
       <extension base="sgr:FunctionalProfileBase">
         <sequence>
-          <element maxOccurs="unbounded" minOccurs="1" name="dataPointListElement" type="sgr:DataPointBase"/>
+          <element maxOccurs="unbounded" minOccurs="1" name="dataPointList" type="sgr:ContactsDataPointList"/>
         </sequence>
       </extension>
     </complexContent>
+  </complexType>
+  <complexType name="ContactFunctionalProfileList">
+    <annotation>
+      <documentation>List of base functional profile type with Contact API data points</documentation>
+    </annotation>
+    <sequence>
+      <element maxOccurs="unbounded" minOccurs="1" name="functionalProfileListElement" type="sgr:ContactFunctionalProfile"/>
+    </sequence>
   </complexType>
   <complexType name="ContactDeviceFrame">
     <annotation>
@@ -31,7 +47,7 @@
       <extension base="sgr:DeviceBase">
         <sequence>
           <element maxOccurs="1" minOccurs="1" name="contactInterfaceDescription" type="sgr:ContactInterfaceDescription"/>
-          <element maxOccurs="unbounded" minOccurs="1" name="functionalProfileListElement" type="sgr:ContactFunctionalProfile"/>
+          <element maxOccurs="1" minOccurs="1" name="functionalProfileList" type="sgr:ContactFunctionalProfileList"/>
         </sequence>
       </extension>
     </complexContent>

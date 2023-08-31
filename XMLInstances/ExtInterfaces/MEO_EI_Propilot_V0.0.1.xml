@@ -37,43 +37,47 @@
       </restServiceCall>
     </restApiBearer>
   </restApiInterfaceDescription>
-  <functionalProfileListElement>
-    <functionalProfile profileName="ActivePowerAC">
-      <functionalProfileIdentification>
-        <specificationOwnerIdentification>0</specificationOwnerIdentification>
-        <functionalProfileCategory>NonSpecific</functionalProfileCategory>
-        <functionalProfileType>ActivePowerAC</functionalProfileType>
-        <levelOfOperation>m</levelOfOperation>
-        <versionNumber>
-          <primaryVersionNumber>1</primaryVersionNumber>
-          <secondaryVersionNumber>0</secondaryVersionNumber>
-          <subReleaseVersionNumber>0</subReleaseVersionNumber>
-        </versionNumber>
-      </functionalProfileIdentification>
-    </functionalProfile>
-    <dataPointListElement>
-      <dataPoint datapointName="ActivePowerACtot" presenceLevel="R" dataDirection="R" unit="KILOWATTS">
-        <dataType>
-          <float64/>
-        </dataType>
-        <legibleDescription>
-          <textElement>Erfassung der gesamten Wirkleistung</textElement>
-          <language>de</language>
-        </legibleDescription>
-      </dataPoint>
-      <restApiDataPointConfiguration dataType="JSON_number">
-        <restServiceCall>
-          <requestHeader>
-            <header headerName="Accept" value="application/json"/>
-          </requestHeader>
-          <requestMethod>GET</requestMethod>
-          <requestPath>/sgr/cem/measurements?serialNo={{serialNo}}</requestPath>
-          <responseQuery>
-            <queryType>JMESPathExpression</queryType>
-            <query>activePowerACtot</query>
-          </responseQuery>
-        </restServiceCall>
-      </restApiDataPointConfiguration>
-    </dataPointListElement>
-  </functionalProfileListElement>
+  <functionalProfileList>
+    <functionalProfileListElement>
+      <functionalProfile profileName="ActivePowerAC">
+        <functionalProfileIdentification>
+          <specificationOwnerIdentification>0</specificationOwnerIdentification>
+          <functionalProfileCategory>NonSpecific</functionalProfileCategory>
+          <functionalProfileType>ActivePowerAC</functionalProfileType>
+          <levelOfOperation>m</levelOfOperation>
+          <versionNumber>
+            <primaryVersionNumber>1</primaryVersionNumber>
+            <secondaryVersionNumber>0</secondaryVersionNumber>
+            <subReleaseVersionNumber>0</subReleaseVersionNumber>
+          </versionNumber>
+        </functionalProfileIdentification>
+      </functionalProfile>
+      <dataPointList>
+        <dataPointListElement>
+          <dataPoint datapointName="ActivePowerACtot" presenceLevel="R" dataDirection="R" unit="KILOWATTS">
+            <dataType>
+              <float64/>
+            </dataType>
+            <legibleDescription>
+              <textElement>Erfassung der gesamten Wirkleistung</textElement>
+              <language>de</language>
+            </legibleDescription>
+          </dataPoint>
+          <restApiDataPointConfiguration dataType="JSON_number">
+            <restServiceCall>
+              <requestHeader>
+                <header headerName="Accept" value="application/json"/>
+              </requestHeader>
+              <requestMethod>GET</requestMethod>
+              <requestPath>/sgr/cem/measurements?serialNo={{serialNo}}</requestPath>
+              <responseQuery>
+                <queryType>JMESPathExpression</queryType>
+                <query>activePowerACtot</query>
+              </responseQuery>
+            </restServiceCall>
+          </restApiDataPointConfiguration>
+        </dataPointListElement>
+      </dataPointList>
+    </functionalProfileListElement>
+  </functionalProfileList>
 </RestApiDeviceFrame>

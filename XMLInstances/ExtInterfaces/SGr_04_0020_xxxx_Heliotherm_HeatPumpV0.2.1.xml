@@ -51,1327 +51,1347 @@
     </firstRegisterAddressIsOne>
     <bitOrder>BigEndian</bitOrder>
   </modbusInterfaceDescription>
-  <functionalProfileListElement>
-    <functionalProfile profileName="HeatPumpBase">
-      <functionalProfileIdentification>
-        <specificationOwnerIdentification>0</specificationOwnerIdentification>
-        <functionalProfileCategory>HeatPumpControl</functionalProfileCategory>
-        <functionalProfileType>HeatPumpBase</functionalProfileType>
-        <levelOfOperation>4</levelOfOperation>
-        <versionNumber>
-          <primaryVersionNumber>0</primaryVersionNumber>
-          <secondaryVersionNumber>1</secondaryVersionNumber>
-          <subReleaseVersionNumber>2</subReleaseVersionNumber>
-        </versionNumber>
-      </functionalProfileIdentification>
-      <alternativeNames>
-        <sLV1Name>HeatPumpBase</sLV1Name>
-      </alternativeNames>
-      <legibleDescription>
-        <textElement>
-          Das Profil definiert den Grundbaustein zur dynamischen Ansteuerung von Wärmepumpen über eine variable Beeinflussung der Sollwerte nach SGr Level 4. Der Betrieb der Wärmepumpe muss in sich sicher sein, unabhängig von den äusseren Vorgaben. Dieses Grundprofil definiert die Datenpunkte, welche zur Steuerung des Gerätes «Wärmepumpe» auf Level 4 grundsätzlich zur Verfügung gestellt werden und stellen die Version einer typischen EInfamilienhauswärmepumpe miz Aussentemperaturfühler dar. Für die einzelnen Heizkreise, Warmwasser, Pufferspeicher und das Energie-Monitoring  sowie eine Verdichterdrehzahl / Leistungsregelung werden separate Profile zur Verfügung gestellt.
-        </textElement>
-        <language>de</language>
-      </legibleDescription>
-    </functionalProfile>
-    <dataPointListElement>
-      <dataPoint datapointName="HPOpModeCmd" presenceLevel="M" dataDirection="W" unit="NONE">
-        <dataType>
-          <int16U/>
-        </dataType>
+  <functionalProfileList>
+    <functionalProfileListElement>
+      <functionalProfile profileName="HeatPumpBase">
+        <functionalProfileIdentification>
+          <specificationOwnerIdentification>0</specificationOwnerIdentification>
+          <functionalProfileCategory>HeatPumpControl</functionalProfileCategory>
+          <functionalProfileType>HeatPumpBase</functionalProfileType>
+          <levelOfOperation>4</levelOfOperation>
+          <versionNumber>
+            <primaryVersionNumber>0</primaryVersionNumber>
+            <secondaryVersionNumber>1</secondaryVersionNumber>
+            <subReleaseVersionNumber>2</subReleaseVersionNumber>
+          </versionNumber>
+        </functionalProfileIdentification>
         <alternativeNames>
-          <sLV1Name>HPOpModeCmd</sLV1Name>
-        </alternativeNames>
-        <legibleDescription>
-          <textElement>0=AUS, 1=Automatik, 2=Kühlen, 3=Sommer, 4=Dauerbetrieb, 5=Absenkung, 6=Urlaub, 7=Party, 8=Ausheizen, 9=EVU Sperre, 10=Hauptschalter AUS</textElement>
-          <language>de</language>
-        </legibleDescription>
-        <legibleDescription>
-          <textElement>0=off, 1=automatic, 2=Cooling, 3=Summer, 4=Continuous(?), 5=setback (?), 6=Vacation, 7=Party, 8=Ausheizen, 9=?, 10=?. 8 to 10 only informational</textElement>
-          <language>en</language>
-        </legibleDescription>
-      </dataPoint>
-      <modbusDataPointConfiguration>
-        <modbusDataType>
-          <int16/>
-        </modbusDataType>
-        <modbusFirstRegisterReference registerType="HoldRegister" addr="100" bitRank="0"/>
-        <numberOfRegisters>1</numberOfRegisters>
-        <masterFunctionsSupported>Primitives</masterFunctionsSupported>
-      </modbusDataPointConfiguration>
-      <modbusAttributes>
-        <scalingFactor>
-          <multiplicator>1</multiplicator>
-          <powerof10>0</powerof10>
-        </scalingFactor>
-      </modbusAttributes>
-    </dataPointListElement>
-    <dataPointListElement>
-      <dataPoint datapointName="HPOpState" presenceLevel="M" dataDirection="R" unit="NONE">
-        <dataType>
-          <int16U/>
-        </dataType>
-        <alternativeNames>
-          <sLV1Name>HPOpState</sLV1Name>
-        </alternativeNames>
-        <legibleDescription>
-          <textElement>0=AUS, 1=Automatik, 2=Kühlen, 3=Sommer, 4=Dauerbetrieb, 5=Absenkung, 6=Urlaub, 7=Party, 8=Ausheizen, 9=EVU Sperre, 10=Hauptschalter AUS</textElement>
-          <language>de</language>
-        </legibleDescription>
-        <legibleDescription>
-          <textElement>0=off, 1=automatic, 2=Cooling, 3=Summer, 4=Continuous(?), 5=setback (?), 6=Vacation, 7=Party, 8=Ausheizen, 9=?, 10=?</textElement>
-          <language>en</language>
-        </legibleDescription>
-      </dataPoint>
-      <modbusDataPointConfiguration>
-        <modbusDataType>
-          <int8U/>
-        </modbusDataType>
-        <modbusFirstRegisterReference registerType="HoldRegister" addr="100" bitRank="0"/>
-        <numberOfRegisters>1</numberOfRegisters>
-        <masterFunctionsSupported>Primitives</masterFunctionsSupported>
-      </modbusDataPointConfiguration>
-      <modbusAttributes>
-        <scalingFactor>
-          <multiplicator>1</multiplicator>
-          <powerof10>0</powerof10>
-        </scalingFactor>
-      </modbusAttributes>
-    </dataPointListElement>
-    <dataPointListElement>
-      <dataPoint datapointName="ErrorNrSGr" presenceLevel="M" dataDirection="R" unit="NONE">
-        <dataType>
-          <int16U/>
-        </dataType>
-        <alternativeNames>
-          <sLV1Name>Fault_HP_SGr</sLV1Name>
-        </alternativeNames>
-        <legibleDescription>
-          <textElement>?check: enum oder Bit-Array? Fehlerliste gem. Standard</textElement>
-          <language>de</language>
-        </legibleDescription>
-        <legibleDescription>
-          <textElement>List of error codes not available in modbus doc</textElement>
-          <language>en</language>
-        </legibleDescription>
-      </dataPoint>
-      <modbusDataPointConfiguration>
-        <modbusDataType>
-          <int8U/>
-        </modbusDataType>
-        <modbusFirstRegisterReference registerType="InputRegister" addr="26" bitRank="0"/>
-        <numberOfRegisters>1</numberOfRegisters>
-        <masterFunctionsSupported>Primitives</masterFunctionsSupported>
-      </modbusDataPointConfiguration>
-      <modbusAttributes>
-        <scalingFactor>
-          <multiplicator>1</multiplicator>
-          <powerof10>0</powerof10>
-        </scalingFactor>
-      </modbusAttributes>
-    </dataPointListElement>
-    <dataPointListElement>
-      <dataPoint datapointName="OutsideAirTemp" presenceLevel="M" dataDirection="R" unit="DEGREES_CELSIUS">
-        <dataType>
-          <float64/>
-        </dataType>
-        <alternativeNames>
-          <sLV1Name>OutsideAirTemp</sLV1Name>
+          <sLV1Name>HeatPumpBase</sLV1Name>
         </alternativeNames>
         <legibleDescription>
           <textElement>
-            Aktuelle Aussentemperatur (gemessen über Aussenfühler)
+            Das Profil definiert den Grundbaustein zur dynamischen Ansteuerung von Wärmepumpen über eine variable Beeinflussung der Sollwerte nach SGr Level 4. Der Betrieb der Wärmepumpe muss in sich sicher sein, unabhängig von den äusseren Vorgaben. Dieses Grundprofil definiert die Datenpunkte, welche zur Steuerung des Gerätes «Wärmepumpe» auf Level 4 grundsätzlich zur Verfügung gestellt werden und stellen die Version einer typischen EInfamilienhauswärmepumpe miz Aussentemperaturfühler dar. Für die einzelnen Heizkreise, Warmwasser, Pufferspeicher und das Energie-Monitoring  sowie eine Verdichterdrehzahl / Leistungsregelung werden separate Profile zur Verfügung gestellt.
           </textElement>
           <language>de</language>
         </legibleDescription>
-      </dataPoint>
-      <modbusDataPointConfiguration>
-        <modbusDataType>
-          <int16/>
-        </modbusDataType>
-        <modbusFirstRegisterReference registerType="InputRegister" addr="10" bitRank="0"/>
-        <numberOfRegisters>1</numberOfRegisters>
-        <masterFunctionsSupported>Primitives</masterFunctionsSupported>
-      </modbusDataPointConfiguration>
-      <modbusAttributes>
-        <scalingFactor>
-          <multiplicator>1</multiplicator>
-          <powerof10>-1</powerof10>
-        </scalingFactor>
-      </modbusAttributes>
-    </dataPointListElement>
-    <dataPointListElement>
-      <dataPoint datapointName="FlowWaterTemp" presenceLevel="M" dataDirection="R" unit="DEGREES_CELSIUS">
-        <dataType>
-          <float64/>
-        </dataType>
-      </dataPoint>
-      <modbusDataPointConfiguration>
-        <modbusDataType>
-          <int16/>
-        </modbusDataType>
-        <modbusFirstRegisterReference registerType="InputRegister" addr="12" bitRank="0"/>
-        <numberOfRegisters>1</numberOfRegisters>
-        <masterFunctionsSupported>Primitives</masterFunctionsSupported>
-      </modbusDataPointConfiguration>
-      <modbusAttributes>
-        <scalingFactor>
-          <multiplicator>1</multiplicator>
-          <powerof10>-1</powerof10>
-        </scalingFactor>
-      </modbusAttributes>
-    </dataPointListElement>
-    <dataPointListElement>
-      <dataPoint datapointName="ReturnFlowWaterTemp" presenceLevel="M" dataDirection="R" unit="DEGREES_CELSIUS">
-        <dataType>
-          <float64/>
-        </dataType>
-      </dataPoint>
-      <modbusDataPointConfiguration>
-        <modbusDataType>
-          <int16/>
-        </modbusDataType>
-        <modbusFirstRegisterReference registerType="InputRegister" addr="13" bitRank="0"/>
-        <numberOfRegisters>1</numberOfRegisters>
-        <masterFunctionsSupported>Primitives</masterFunctionsSupported>
-      </modbusDataPointConfiguration>
-      <modbusAttributes>
-        <scalingFactor>
-          <multiplicator>1</multiplicator>
-          <powerof10>-1</powerof10>
-        </scalingFactor>
-      </modbusAttributes>
-    </dataPointListElement>
-  </functionalProfileListElement>
-  <functionalProfileListElement>
-    <functionalProfile profileName="CompressorPwrCtrl">
-      <functionalProfileIdentification>
-        <specificationOwnerIdentification>0</specificationOwnerIdentification>
-        <functionalProfileCategory>HeatPumpControl</functionalProfileCategory>
-        <functionalProfileType>PowerCtrl</functionalProfileType>
-        <levelOfOperation>4</levelOfOperation>
-        <versionNumber>
-          <primaryVersionNumber>0</primaryVersionNumber>
-          <secondaryVersionNumber>1</secondaryVersionNumber>
-          <subReleaseVersionNumber>2</subReleaseVersionNumber>
-        </versionNumber>
-      </functionalProfileIdentification>
-      <alternativeNames>
-        <sLV1Name>CompressorPwrCtrl</sLV1Name>
-      </alternativeNames>
-      <legibleDescription>
-        <textElement>
-          The compressor speed or the heat pump power can be controlled (not both). For compressor speed, a setpoint speed is sent to register 126, For power, a set point input is sent to the heat pump via register 125. The heat pump then regulates the compressor speed upwards or downwards until the setpoint is reached. However, it can take up to several minutes for the heat pump to reach the setpoint. It must also be taken into account that the heat pump does not change compressor speed during the pre-regulation time (usually between 2 and 10 minutes, depending on the heat pump type) and therefore cannot yet regulate to the setpoint.
-        </textElement>
-        <language>en</language>
-      </legibleDescription>
-    </functionalProfile>
-    <dataPointListElement>
-      <dataPoint datapointName="SpeedCtrlSetpt" presenceLevel="M" dataDirection="W" unit="PERCENT">
-        <dataType>
-          <float64/>
-        </dataType>
+      </functionalProfile>
+      <dataPointList>
+        <dataPointListElement>
+          <dataPoint datapointName="HPOpModeCmd" presenceLevel="M" dataDirection="W" unit="NONE">
+            <dataType>
+              <int16U/>
+            </dataType>
+            <alternativeNames>
+              <sLV1Name>HPOpModeCmd</sLV1Name>
+            </alternativeNames>
+            <legibleDescription>
+              <textElement>0=AUS, 1=Automatik, 2=Kühlen, 3=Sommer, 4=Dauerbetrieb, 5=Absenkung, 6=Urlaub, 7=Party, 8=Ausheizen, 9=EVU Sperre, 10=Hauptschalter AUS</textElement>
+              <language>de</language>
+            </legibleDescription>
+            <legibleDescription>
+              <textElement>0=off, 1=automatic, 2=Cooling, 3=Summer, 4=Continuous(?), 5=setback (?), 6=Vacation, 7=Party, 8=Ausheizen, 9=?, 10=?. 8 to 10 only informational</textElement>
+              <language>en</language>
+            </legibleDescription>
+          </dataPoint>
+          <modbusDataPointConfiguration>
+            <modbusDataType>
+              <int16/>
+            </modbusDataType>
+            <modbusFirstRegisterReference registerType="HoldRegister" addr="100" bitRank="0"/>
+            <numberOfRegisters>1</numberOfRegisters>
+            <masterFunctionsSupported>Primitives</masterFunctionsSupported>
+          </modbusDataPointConfiguration>
+          <modbusAttributes>
+            <scalingFactor>
+              <multiplicator>1</multiplicator>
+              <powerof10>0</powerof10>
+            </scalingFactor>
+          </modbusAttributes>
+        </dataPointListElement>
+        <dataPointListElement>
+          <dataPoint datapointName="HPOpState" presenceLevel="M" dataDirection="R" unit="NONE">
+            <dataType>
+              <int16U/>
+            </dataType>
+            <alternativeNames>
+              <sLV1Name>HPOpState</sLV1Name>
+            </alternativeNames>
+            <legibleDescription>
+              <textElement>0=AUS, 1=Automatik, 2=Kühlen, 3=Sommer, 4=Dauerbetrieb, 5=Absenkung, 6=Urlaub, 7=Party, 8=Ausheizen, 9=EVU Sperre, 10=Hauptschalter AUS</textElement>
+              <language>de</language>
+            </legibleDescription>
+            <legibleDescription>
+              <textElement>0=off, 1=automatic, 2=Cooling, 3=Summer, 4=Continuous(?), 5=setback (?), 6=Vacation, 7=Party, 8=Ausheizen, 9=?, 10=?</textElement>
+              <language>en</language>
+            </legibleDescription>
+          </dataPoint>
+          <modbusDataPointConfiguration>
+            <modbusDataType>
+              <int8U/>
+            </modbusDataType>
+            <modbusFirstRegisterReference registerType="HoldRegister" addr="100" bitRank="0"/>
+            <numberOfRegisters>1</numberOfRegisters>
+            <masterFunctionsSupported>Primitives</masterFunctionsSupported>
+          </modbusDataPointConfiguration>
+          <modbusAttributes>
+            <scalingFactor>
+              <multiplicator>1</multiplicator>
+              <powerof10>0</powerof10>
+            </scalingFactor>
+          </modbusAttributes>
+        </dataPointListElement>
+        <dataPointListElement>
+          <dataPoint datapointName="ErrorNrSGr" presenceLevel="M" dataDirection="R" unit="NONE">
+            <dataType>
+              <int16U/>
+            </dataType>
+            <alternativeNames>
+              <sLV1Name>Fault_HP_SGr</sLV1Name>
+            </alternativeNames>
+            <legibleDescription>
+              <textElement>?check: enum oder Bit-Array? Fehlerliste gem. Standard</textElement>
+              <language>de</language>
+            </legibleDescription>
+            <legibleDescription>
+              <textElement>List of error codes not available in modbus doc</textElement>
+              <language>en</language>
+            </legibleDescription>
+          </dataPoint>
+          <modbusDataPointConfiguration>
+            <modbusDataType>
+              <int8U/>
+            </modbusDataType>
+            <modbusFirstRegisterReference registerType="InputRegister" addr="26" bitRank="0"/>
+            <numberOfRegisters>1</numberOfRegisters>
+            <masterFunctionsSupported>Primitives</masterFunctionsSupported>
+          </modbusDataPointConfiguration>
+          <modbusAttributes>
+            <scalingFactor>
+              <multiplicator>1</multiplicator>
+              <powerof10>0</powerof10>
+            </scalingFactor>
+          </modbusAttributes>
+        </dataPointListElement>
+        <dataPointListElement>
+          <dataPoint datapointName="OutsideAirTemp" presenceLevel="M" dataDirection="R" unit="DEGREES_CELSIUS">
+            <dataType>
+              <float64/>
+            </dataType>
+            <alternativeNames>
+              <sLV1Name>OutsideAirTemp</sLV1Name>
+            </alternativeNames>
+            <legibleDescription>
+              <textElement>
+                Aktuelle Aussentemperatur (gemessen über Aussenfühler)
+              </textElement>
+              <language>de</language>
+            </legibleDescription>
+          </dataPoint>
+          <modbusDataPointConfiguration>
+            <modbusDataType>
+              <int16/>
+            </modbusDataType>
+            <modbusFirstRegisterReference registerType="InputRegister" addr="10" bitRank="0"/>
+            <numberOfRegisters>1</numberOfRegisters>
+            <masterFunctionsSupported>Primitives</masterFunctionsSupported>
+          </modbusDataPointConfiguration>
+          <modbusAttributes>
+            <scalingFactor>
+              <multiplicator>1</multiplicator>
+              <powerof10>-1</powerof10>
+            </scalingFactor>
+          </modbusAttributes>
+        </dataPointListElement>
+        <dataPointListElement>
+          <dataPoint datapointName="FlowWaterTemp" presenceLevel="M" dataDirection="R" unit="DEGREES_CELSIUS">
+            <dataType>
+              <float64/>
+            </dataType>
+          </dataPoint>
+          <modbusDataPointConfiguration>
+            <modbusDataType>
+              <int16/>
+            </modbusDataType>
+            <modbusFirstRegisterReference registerType="InputRegister" addr="12" bitRank="0"/>
+            <numberOfRegisters>1</numberOfRegisters>
+            <masterFunctionsSupported>Primitives</masterFunctionsSupported>
+          </modbusDataPointConfiguration>
+          <modbusAttributes>
+            <scalingFactor>
+              <multiplicator>1</multiplicator>
+              <powerof10>-1</powerof10>
+            </scalingFactor>
+          </modbusAttributes>
+        </dataPointListElement>
+        <dataPointListElement>
+          <dataPoint datapointName="ReturnFlowWaterTemp" presenceLevel="M" dataDirection="R" unit="DEGREES_CELSIUS">
+            <dataType>
+              <float64/>
+            </dataType>
+          </dataPoint>
+          <modbusDataPointConfiguration>
+            <modbusDataType>
+              <int16/>
+            </modbusDataType>
+            <modbusFirstRegisterReference registerType="InputRegister" addr="13" bitRank="0"/>
+            <numberOfRegisters>1</numberOfRegisters>
+            <masterFunctionsSupported>Primitives</masterFunctionsSupported>
+          </modbusDataPointConfiguration>
+          <modbusAttributes>
+            <scalingFactor>
+              <multiplicator>1</multiplicator>
+              <powerof10>-1</powerof10>
+            </scalingFactor>
+          </modbusAttributes>
+        </dataPointListElement>
+      </dataPointList>
+    </functionalProfileListElement>
+    <functionalProfileListElement>
+      <functionalProfile profileName="CompressorPwrCtrl">
+        <functionalProfileIdentification>
+          <specificationOwnerIdentification>0</specificationOwnerIdentification>
+          <functionalProfileCategory>HeatPumpControl</functionalProfileCategory>
+          <functionalProfileType>PowerCtrl</functionalProfileType>
+          <levelOfOperation>4</levelOfOperation>
+          <versionNumber>
+            <primaryVersionNumber>0</primaryVersionNumber>
+            <secondaryVersionNumber>1</secondaryVersionNumber>
+            <subReleaseVersionNumber>2</subReleaseVersionNumber>
+          </versionNumber>
+        </functionalProfileIdentification>
         <alternativeNames>
-          <sLV1Name>SpeedCtrlSetpt</sLV1Name>
+          <sLV1Name>CompressorPwrCtrl</sLV1Name>
         </alternativeNames>
         <legibleDescription>
           <textElement>
-            ?check: Adress durch cb? Absolute Vorgabe der Drehzahl in der gewählten Betriebsart
-          </textElement>
-          <language>de</language>
-        </legibleDescription>
-      </dataPoint>
-      <genericAttributes>
-        <maxVal>60.0</maxVal>
-        <minVal>15.0</minVal>
-      </genericAttributes>
-      <modbusDataPointConfiguration>
-        <modbusDataType>
-          <int16/>
-        </modbusDataType>
-        <modbusFirstRegisterReference registerType="HoldRegister" addr="126" bitRank="0"/>
-        <numberOfRegisters>1</numberOfRegisters>
-        <masterFunctionsSupported>Primitives</masterFunctionsSupported>
-      </modbusDataPointConfiguration>
-      <modbusAttributes>
-        <scalingFactor>
-          <multiplicator>1</multiplicator>
-          <powerof10>-1</powerof10>
-        </scalingFactor>
-      </modbusAttributes>
-    </dataPointListElement>
-    <dataPointListElement>
-      <dataPoint datapointName="ActSpeed" presenceLevel="M" dataDirection="R" unit="PERCENT">
-        <dataType>
-          <float64/>
-        </dataType>
-        <alternativeNames>
-          <sLV1Name>ActSpeed</sLV1Name>
-        </alternativeNames>
-        <legibleDescription>
-          <textElement>
-            Effektive Drehzahl des Verdichters
-          </textElement>
-          <language>de</language>
-        </legibleDescription>
-      </dataPoint>
-      <modbusDataPointConfiguration>
-        <modbusDataType>
-          <int16/>
-        </modbusDataType>
-        <modbusFirstRegisterReference registerType="InputRegister" addr="29" bitRank="0"/>
-        <numberOfRegisters>1</numberOfRegisters>
-        <masterFunctionsSupported>Primitives</masterFunctionsSupported>
-      </modbusDataPointConfiguration>
-      <modbusAttributes>
-        <scalingFactor>
-          <multiplicator>1</multiplicator>
-          <powerof10>0</powerof10>
-        </scalingFactor>
-      </modbusAttributes>
-    </dataPointListElement>
-    <dataPointListElement>
-      <dataPoint datapointName="PowerCtrlSetpt" presenceLevel="O" dataDirection="R" unit="WATTS">
-        <dataType>
-          <float64/>
-        </dataType>
-        <alternativeNames>
-          <sLV1Name>ActPower</sLV1Name>
-        </alternativeNames>
-        <legibleDescription>
-          <textElement>
-            Effektive elektrischen Aufnahmeleistung des Verdichters
-          </textElement>
-          <language>de</language>
-        </legibleDescription>
-        <legibleDescription>
-          <textElement>
-            To allow setpoint control, register 117 for PV demand should be set to 1. Should we create a PowerCtrlSetptEn ?. In RCG web interface, Menu item "Photovoltaics" > PV selection on > MODBUS (TCP or RTU). Also, in web controller, Main menu > "WNA" > FU External on > ON and Hot water > DHW preparation > Parameters > DHW Max to "53" Heating circuit > Parameter> Offset to "3"; Mixer1 and 2 > Parameter> Offset to "3".
+            The compressor speed or the heat pump power can be controlled (not both). For compressor speed, a setpoint speed is sent to register 126, For power, a set point input is sent to the heat pump via register 125. The heat pump then regulates the compressor speed upwards or downwards until the setpoint is reached. However, it can take up to several minutes for the heat pump to reach the setpoint. It must also be taken into account that the heat pump does not change compressor speed during the pre-regulation time (usually between 2 and 10 minutes, depending on the heat pump type) and therefore cannot yet regulate to the setpoint.
           </textElement>
           <language>en</language>
         </legibleDescription>
-        <programmerHints>
-          <textElement>
-            For power setpoint control, register 117 for PV demand should be set to 1 and register 126 should not be written.
-          </textElement>
-          <language>en</language>
-        </programmerHints>
-      </dataPoint>
-      <modbusDataPointConfiguration>
-        <modbusDataType>
-          <int16/>
-        </modbusDataType>
-        <modbusFirstRegisterReference registerType="HoldRegister" addr="125" bitRank="0"/>
-        <numberOfRegisters>1</numberOfRegisters>
-        <masterFunctionsSupported>Primitives</masterFunctionsSupported>
-      </modbusDataPointConfiguration>
-      <modbusAttributes>
-        <scalingFactor>
-          <multiplicator>1</multiplicator>
-          <powerof10>0</powerof10>
-        </scalingFactor>
-      </modbusAttributes>
-    </dataPointListElement>
-    <dataPointListElement>
-      <dataPoint datapointName="ActPowerACtot" presenceLevel="O" dataDirection="R" unit="WATTS">
-        <dataType>
-          <float64/>
-        </dataType>
+      </functionalProfile>
+      <dataPointList>
+        <dataPointListElement>
+          <dataPoint datapointName="SpeedCtrlSetpt" presenceLevel="M" dataDirection="W" unit="PERCENT">
+            <dataType>
+              <float64/>
+            </dataType>
+            <alternativeNames>
+              <sLV1Name>SpeedCtrlSetpt</sLV1Name>
+            </alternativeNames>
+            <legibleDescription>
+              <textElement>
+                ?check: Adress durch cb? Absolute Vorgabe der Drehzahl in der gewählten Betriebsart
+              </textElement>
+              <language>de</language>
+            </legibleDescription>
+          </dataPoint>
+          <genericAttributes>
+            <maxVal>60.0</maxVal>
+            <minVal>15.0</minVal>
+          </genericAttributes>
+          <modbusDataPointConfiguration>
+            <modbusDataType>
+              <int16/>
+            </modbusDataType>
+            <modbusFirstRegisterReference registerType="HoldRegister" addr="126" bitRank="0"/>
+            <numberOfRegisters>1</numberOfRegisters>
+            <masterFunctionsSupported>Primitives</masterFunctionsSupported>
+          </modbusDataPointConfiguration>
+          <modbusAttributes>
+            <scalingFactor>
+              <multiplicator>1</multiplicator>
+              <powerof10>-1</powerof10>
+            </scalingFactor>
+          </modbusAttributes>
+        </dataPointListElement>
+        <dataPointListElement>
+          <dataPoint datapointName="ActSpeed" presenceLevel="M" dataDirection="R" unit="PERCENT">
+            <dataType>
+              <float64/>
+            </dataType>
+            <alternativeNames>
+              <sLV1Name>ActSpeed</sLV1Name>
+            </alternativeNames>
+            <legibleDescription>
+              <textElement>
+                Effektive Drehzahl des Verdichters
+              </textElement>
+              <language>de</language>
+            </legibleDescription>
+          </dataPoint>
+          <modbusDataPointConfiguration>
+            <modbusDataType>
+              <int16/>
+            </modbusDataType>
+            <modbusFirstRegisterReference registerType="InputRegister" addr="29" bitRank="0"/>
+            <numberOfRegisters>1</numberOfRegisters>
+            <masterFunctionsSupported>Primitives</masterFunctionsSupported>
+          </modbusDataPointConfiguration>
+          <modbusAttributes>
+            <scalingFactor>
+              <multiplicator>1</multiplicator>
+              <powerof10>0</powerof10>
+            </scalingFactor>
+          </modbusAttributes>
+        </dataPointListElement>
+        <dataPointListElement>
+          <dataPoint datapointName="PowerCtrlSetpt" presenceLevel="O" dataDirection="R" unit="WATTS">
+            <dataType>
+              <float64/>
+            </dataType>
+            <alternativeNames>
+              <sLV1Name>ActPower</sLV1Name>
+            </alternativeNames>
+            <legibleDescription>
+              <textElement>
+                Effektive elektrischen Aufnahmeleistung des Verdichters
+              </textElement>
+              <language>de</language>
+            </legibleDescription>
+            <legibleDescription>
+              <textElement>
+                To allow setpoint control, register 117 for PV demand should be set to 1. Should we create a PowerCtrlSetptEn ?. In RCG web interface, Menu item "Photovoltaics" > PV selection on > MODBUS (TCP or RTU). Also, in web controller, Main menu > "WNA" > FU External on > ON and Hot water > DHW preparation > Parameters > DHW Max to "53" Heating circuit > Parameter> Offset to "3"; Mixer1 and 2 > Parameter> Offset to "3".
+              </textElement>
+              <language>en</language>
+            </legibleDescription>
+            <programmerHints>
+              <textElement>
+                For power setpoint control, register 117 for PV demand should be set to 1 and register 126 should not be written.
+              </textElement>
+              <language>en</language>
+            </programmerHints>
+          </dataPoint>
+          <modbusDataPointConfiguration>
+            <modbusDataType>
+              <int16/>
+            </modbusDataType>
+            <modbusFirstRegisterReference registerType="HoldRegister" addr="125" bitRank="0"/>
+            <numberOfRegisters>1</numberOfRegisters>
+            <masterFunctionsSupported>Primitives</masterFunctionsSupported>
+          </modbusDataPointConfiguration>
+          <modbusAttributes>
+            <scalingFactor>
+              <multiplicator>1</multiplicator>
+              <powerof10>0</powerof10>
+            </scalingFactor>
+          </modbusAttributes>
+        </dataPointListElement>
+        <dataPointListElement>
+          <dataPoint datapointName="ActPowerACtot" presenceLevel="O" dataDirection="R" unit="WATTS">
+            <dataType>
+              <float64/>
+            </dataType>
+            <alternativeNames>
+              <sLV1Name>ActPower</sLV1Name>
+            </alternativeNames>
+            <legibleDescription>
+              <textElement>
+                Effektive elektrischen Aufnahmeleistung des Verdichters (der WP?)
+              </textElement>
+              <language>de</language>
+            </legibleDescription>
+          </dataPoint>
+          <modbusDataPointConfiguration>
+            <modbusDataType>
+              <int32U/>
+            </modbusDataType>
+            <modbusFirstRegisterReference registerType="InputRegister" addr="70" bitRank="0"/>
+            <numberOfRegisters>1</numberOfRegisters>
+            <masterFunctionsSupported>Primitives</masterFunctionsSupported>
+          </modbusDataPointConfiguration>
+          <modbusAttributes>
+            <scalingFactor>
+              <multiplicator>1</multiplicator>
+              <powerof10>0</powerof10>
+            </scalingFactor>
+          </modbusAttributes>
+        </dataPointListElement>
+      </dataPointList>
+    </functionalProfileListElement>
+    <functionalProfileListElement>
+      <functionalProfile profileName="HeatCoolCtrl_1">
+        <functionalProfileIdentification>
+          <specificationOwnerIdentification>0</specificationOwnerIdentification>
+          <functionalProfileCategory>HeatPumpControl</functionalProfileCategory>
+          <functionalProfileType>HeatCoolCtrl</functionalProfileType>
+          <levelOfOperation>4</levelOfOperation>
+          <versionNumber>
+            <primaryVersionNumber>0</primaryVersionNumber>
+            <secondaryVersionNumber>1</secondaryVersionNumber>
+            <subReleaseVersionNumber>2</subReleaseVersionNumber>
+          </versionNumber>
+        </functionalProfileIdentification>
         <alternativeNames>
-          <sLV1Name>ActPower</sLV1Name>
+          <sLV1Name>HeatCoolCtrl</sLV1Name>
         </alternativeNames>
         <legibleDescription>
-          <textElement>
-            Effektive elektrischen Aufnahmeleistung des Verdichters (der WP?)
-          </textElement>
-          <language>de</language>
-        </legibleDescription>
-      </dataPoint>
-      <modbusDataPointConfiguration>
-        <modbusDataType>
-          <int32U/>
-        </modbusDataType>
-        <modbusFirstRegisterReference registerType="InputRegister" addr="70" bitRank="0"/>
-        <numberOfRegisters>1</numberOfRegisters>
-        <masterFunctionsSupported>Primitives</masterFunctionsSupported>
-      </modbusDataPointConfiguration>
-      <modbusAttributes>
-        <scalingFactor>
-          <multiplicator>1</multiplicator>
-          <powerof10>0</powerof10>
-        </scalingFactor>
-      </modbusAttributes>
-    </dataPointListElement>
-  </functionalProfileListElement>
-  <functionalProfileListElement>
-    <functionalProfile profileName="HeatCoolCtrl_1">
-      <functionalProfileIdentification>
-        <specificationOwnerIdentification>0</specificationOwnerIdentification>
-        <functionalProfileCategory>HeatPumpControl</functionalProfileCategory>
-        <functionalProfileType>HeatCoolCtrl</functionalProfileType>
-        <levelOfOperation>4</levelOfOperation>
-        <versionNumber>
-          <primaryVersionNumber>0</primaryVersionNumber>
-          <secondaryVersionNumber>1</secondaryVersionNumber>
-          <subReleaseVersionNumber>2</subReleaseVersionNumber>
-        </versionNumber>
-      </functionalProfileIdentification>
-      <alternativeNames>
-        <sLV1Name>HeatCoolCtrl</sLV1Name>
-      </alternativeNames>
-      <legibleDescription>
-        <textElement>Dieses Profil definiert die erweiterten Datenpunkte zum Grundprofil "HeatPumpBase", welche zur Steuerung eines Heiz- oder Kühlkreises zur Verfügung gestellt werden. Derselbe physikalische Kreislauf kann entweder für das Heizen oder das Kühlen verwendet werden. Das Heiz-/Kühlkreisprofil muss immer in Kombination mit dem Grundprofil der Wärmepumpe  bewirtschaftet werden. Es können mehrere Heiz-/Kühlkreisprofile definiert werden.</textElement>
-        <language>de</language>
-      </legibleDescription>
-      <legibleDescription>
-        <textElement>This profile defines the extended data points to the basic profile "HeatPumpBase", which are provided to control a heating or cooling circuit. The same physical circuit can be used for either heating or cooling. The heating/cooling circuit profile must always be managed in combination with the heat pump base profile. Several heating/cooling circuit profiles can be defined. The heliotherm heat pump is controllable through tank or return temperature setpoint</textElement>
-        <language>en</language>
-      </legibleDescription>
-    </functionalProfile>
-    <dataPointListElement>
-      <dataPoint datapointName="HeatCoolCtrlOpModeCmd" presenceLevel="M" dataDirection="RW" unit="NONE">
-        <dataType>
-          <int16/>
-        </dataType>
-        <alternativeNames>
-          <sLV1Name>HeatCoolCtrlOpModeCmd</sLV1Name>
-        </alternativeNames>
-        <legibleDescription>
-          <textElement>Festlegen der Betriebsart des Heiz-/Kühlkreises 1  [Aus Bereitschaft, Programm, Komfort, Eco]              </textElement>
-          <language>de</language>
-        </legibleDescription>
-        <legibleDescription>
-          <textElement>Control of the heating/cooling circle 1. Modes:  0=off, 1=automatic, 2=Cooling, 3=Summer, 4=Continuous(?), 5=setback (?), 6=Vacation, 7=Party, 8=Ausheizen, 9=?, 10=?. 8 to 10 only informational             </textElement>
-          <language>en</language>
-        </legibleDescription>
-      </dataPoint>
-      <modbusDataPointConfiguration>
-        <modbusDataType>
-          <int16/>
-        </modbusDataType>
-        <modbusFirstRegisterReference registerType="HoldRegister" addr="107" bitRank="0"/>
-        <numberOfRegisters>1</numberOfRegisters>
-        <masterFunctionsSupported>Primitives</masterFunctionsSupported>
-      </modbusDataPointConfiguration>
-      <modbusAttributes>
-        <scalingFactor>
-          <multiplicator>1</multiplicator>
-          <powerof10>0</powerof10>
-        </scalingFactor>
-      </modbusAttributes>
-    </dataPointListElement>
-    <dataPointListElement>
-      <dataPoint datapointName="HeatCoolOpState" presenceLevel="M" dataDirection="R" unit="NONE">
-        <dataType>
-          <int16/>
-        </dataType>
-        <alternativeNames>
-          <sLV1Name>HeatCoolOpState</sLV1Name>
-        </alternativeNames>
-        <legibleDescription>
-          <textElement>Modes:  0=off, 1=automatic, 2=Cooling, 3=Summer, 4=Continuous(?), 5=setback (?), 6=Vacation, 7=Party, 8=Ausheizen, 9=?, 10=?. 8 to 10 only informational</textElement>
-          <language>de</language>
-        </legibleDescription>
-        <legibleDescription>
-          <textElement>This seems redundant with previous registers for RW</textElement>
-          <language>en</language>
-        </legibleDescription>
-      </dataPoint>
-      <modbusDataPointConfiguration>
-        <modbusDataType>
-          <int16/>
-        </modbusDataType>
-        <modbusFirstRegisterReference registerType="HoldRegister" addr="107" bitRank="0"/>
-        <numberOfRegisters>1</numberOfRegisters>
-        <masterFunctionsSupported>Primitives</masterFunctionsSupported>
-      </modbusDataPointConfiguration>
-      <modbusAttributes>
-        <scalingFactor>
-          <multiplicator>1</multiplicator>
-          <powerof10>0</powerof10>
-        </scalingFactor>
-      </modbusAttributes>
-    </dataPointListElement>
-    <dataPointListElement>
-      <dataPoint datapointName="FlowWaterTempStpt" presenceLevel="O" dataDirection="R" unit="DEGREES_CELSIUS">
-        <dataType>
-          <float64/>
-        </dataType>
-        <alternativeNames>
-          <sLV1Name>FlowWaterTempStpt</sLV1Name>
-        </alternativeNames>
-        <legibleDescription>
-          <textElement>Setzen der aktuellen Soll-Temperatur des Vorlaufs (Grundwert) fur HeizKreis 1.</textElement>
-          <language>de</language>
-        </legibleDescription>
-        <legibleDescription>
-          <textElement>Sets the supply temperature setpoint for heaqting loop 1</textElement>
-          <language>en</language>
-        </legibleDescription>
-      </dataPoint>
-      <modbusDataPointConfiguration>
-        <modbusDataType>
-          <int16/>
-        </modbusDataType>
-        <modbusFirstRegisterReference registerType="HoldRegister" addr="109" bitRank="0"/>
-        <numberOfRegisters>1</numberOfRegisters>
-        <masterFunctionsSupported>Primitives</masterFunctionsSupported>
-      </modbusDataPointConfiguration>
-      <modbusAttributes>
-        <scalingFactor>
-          <multiplicator>1</multiplicator>
-          <powerof10>-1</powerof10>
-        </scalingFactor>
-      </modbusAttributes>
-    </dataPointListElement>
-    <dataPointListElement>
-      <dataPoint datapointName="FlowWaterTempStptEn" presenceLevel="O" dataDirection="R" unit="NONE">
-        <dataType>
-          <boolean/>
-        </dataType>
-        <alternativeNames>
-          <sLV1Name>FlowWaterTempStptEN</sLV1Name>
-        </alternativeNames>
-        <legibleDescription>
-          <textElement>Aktiviert der kontrol von vorlauf Temperatur in register 109 fur heizkreis 1 </textElement>
+          <textElement>Dieses Profil definiert die erweiterten Datenpunkte zum Grundprofil "HeatPumpBase", welche zur Steuerung eines Heiz- oder Kühlkreises zur Verfügung gestellt werden. Derselbe physikalische Kreislauf kann entweder für das Heizen oder das Kühlen verwendet werden. Das Heiz-/Kühlkreisprofil muss immer in Kombination mit dem Grundprofil der Wärmepumpe  bewirtschaftet werden. Es können mehrere Heiz-/Kühlkreisprofile definiert werden.</textElement>
           <language>de</language>
         </legibleDescription>
         <legibleDescription>
-          <textElement>Activates following of supply temperature setpoint in register 109 for heating loop 1. If 0, setpoint sent to register 109 is not applied. </textElement>
+          <textElement>This profile defines the extended data points to the basic profile "HeatPumpBase", which are provided to control a heating or cooling circuit. The same physical circuit can be used for either heating or cooling. The heating/cooling circuit profile must always be managed in combination with the heat pump base profile. Several heating/cooling circuit profiles can be defined. The heliotherm heat pump is controllable through tank or return temperature setpoint</textElement>
           <language>en</language>
         </legibleDescription>
-      </dataPoint>
-      <modbusDataPointConfiguration>
-        <modbusDataType>
-          <int16/>
-        </modbusDataType>
-        <modbusFirstRegisterReference registerType="HoldRegister" addr="110" bitRank="0"/>
-        <numberOfRegisters>1</numberOfRegisters>
-        <masterFunctionsSupported>Primitives</masterFunctionsSupported>
-      </modbusDataPointConfiguration>
-      <modbusAttributes>
-        <scalingFactor>
-          <multiplicator>1</multiplicator>
-          <powerof10>0</powerof10>
-        </scalingFactor>
-      </modbusAttributes>
-    </dataPointListElement>
-    <dataPointListElement>
-      <dataPoint datapointName="ReturnFlowWaterTemp" presenceLevel="O" dataDirection="R" unit="DEGREES_CELSIUS">
-        <dataType>
-          <float64/>
-        </dataType>
+      </functionalProfile>
+      <dataPointList>
+        <dataPointListElement>
+          <dataPoint datapointName="HeatCoolCtrlOpModeCmd" presenceLevel="M" dataDirection="RW" unit="NONE">
+            <dataType>
+              <int16/>
+            </dataType>
+            <alternativeNames>
+              <sLV1Name>HeatCoolCtrlOpModeCmd</sLV1Name>
+            </alternativeNames>
+            <legibleDescription>
+              <textElement>Festlegen der Betriebsart des Heiz-/Kühlkreises 1  [Aus Bereitschaft, Programm, Komfort, Eco]              </textElement>
+              <language>de</language>
+            </legibleDescription>
+            <legibleDescription>
+              <textElement>Control of the heating/cooling circle 1. Modes:  0=off, 1=automatic, 2=Cooling, 3=Summer, 4=Continuous(?), 5=setback (?), 6=Vacation, 7=Party, 8=Ausheizen, 9=?, 10=?. 8 to 10 only informational             </textElement>
+              <language>en</language>
+            </legibleDescription>
+          </dataPoint>
+          <modbusDataPointConfiguration>
+            <modbusDataType>
+              <int16/>
+            </modbusDataType>
+            <modbusFirstRegisterReference registerType="HoldRegister" addr="107" bitRank="0"/>
+            <numberOfRegisters>1</numberOfRegisters>
+            <masterFunctionsSupported>Primitives</masterFunctionsSupported>
+          </modbusDataPointConfiguration>
+          <modbusAttributes>
+            <scalingFactor>
+              <multiplicator>1</multiplicator>
+              <powerof10>0</powerof10>
+            </scalingFactor>
+          </modbusAttributes>
+        </dataPointListElement>
+        <dataPointListElement>
+          <dataPoint datapointName="HeatCoolOpState" presenceLevel="M" dataDirection="R" unit="NONE">
+            <dataType>
+              <int16/>
+            </dataType>
+            <alternativeNames>
+              <sLV1Name>HeatCoolOpState</sLV1Name>
+            </alternativeNames>
+            <legibleDescription>
+              <textElement>Modes:  0=off, 1=automatic, 2=Cooling, 3=Summer, 4=Continuous(?), 5=setback (?), 6=Vacation, 7=Party, 8=Ausheizen, 9=?, 10=?. 8 to 10 only informational</textElement>
+              <language>de</language>
+            </legibleDescription>
+            <legibleDescription>
+              <textElement>This seems redundant with previous registers for RW</textElement>
+              <language>en</language>
+            </legibleDescription>
+          </dataPoint>
+          <modbusDataPointConfiguration>
+            <modbusDataType>
+              <int16/>
+            </modbusDataType>
+            <modbusFirstRegisterReference registerType="HoldRegister" addr="107" bitRank="0"/>
+            <numberOfRegisters>1</numberOfRegisters>
+            <masterFunctionsSupported>Primitives</masterFunctionsSupported>
+          </modbusDataPointConfiguration>
+          <modbusAttributes>
+            <scalingFactor>
+              <multiplicator>1</multiplicator>
+              <powerof10>0</powerof10>
+            </scalingFactor>
+          </modbusAttributes>
+        </dataPointListElement>
+        <dataPointListElement>
+          <dataPoint datapointName="FlowWaterTempStpt" presenceLevel="O" dataDirection="R" unit="DEGREES_CELSIUS">
+            <dataType>
+              <float64/>
+            </dataType>
+            <alternativeNames>
+              <sLV1Name>FlowWaterTempStpt</sLV1Name>
+            </alternativeNames>
+            <legibleDescription>
+              <textElement>Setzen der aktuellen Soll-Temperatur des Vorlaufs (Grundwert) fur HeizKreis 1.</textElement>
+              <language>de</language>
+            </legibleDescription>
+            <legibleDescription>
+              <textElement>Sets the supply temperature setpoint for heaqting loop 1</textElement>
+              <language>en</language>
+            </legibleDescription>
+          </dataPoint>
+          <modbusDataPointConfiguration>
+            <modbusDataType>
+              <int16/>
+            </modbusDataType>
+            <modbusFirstRegisterReference registerType="HoldRegister" addr="109" bitRank="0"/>
+            <numberOfRegisters>1</numberOfRegisters>
+            <masterFunctionsSupported>Primitives</masterFunctionsSupported>
+          </modbusDataPointConfiguration>
+          <modbusAttributes>
+            <scalingFactor>
+              <multiplicator>1</multiplicator>
+              <powerof10>-1</powerof10>
+            </scalingFactor>
+          </modbusAttributes>
+        </dataPointListElement>
+        <dataPointListElement>
+          <dataPoint datapointName="FlowWaterTempStptEn" presenceLevel="O" dataDirection="R" unit="NONE">
+            <dataType>
+              <boolean/>
+            </dataType>
+            <alternativeNames>
+              <sLV1Name>FlowWaterTempStptEN</sLV1Name>
+            </alternativeNames>
+            <legibleDescription>
+              <textElement>Aktiviert der kontrol von vorlauf Temperatur in register 109 fur heizkreis 1 </textElement>
+              <language>de</language>
+            </legibleDescription>
+            <legibleDescription>
+              <textElement>Activates following of supply temperature setpoint in register 109 for heating loop 1. If 0, setpoint sent to register 109 is not applied. </textElement>
+              <language>en</language>
+            </legibleDescription>
+          </dataPoint>
+          <modbusDataPointConfiguration>
+            <modbusDataType>
+              <int16/>
+            </modbusDataType>
+            <modbusFirstRegisterReference registerType="HoldRegister" addr="110" bitRank="0"/>
+            <numberOfRegisters>1</numberOfRegisters>
+            <masterFunctionsSupported>Primitives</masterFunctionsSupported>
+          </modbusDataPointConfiguration>
+          <modbusAttributes>
+            <scalingFactor>
+              <multiplicator>1</multiplicator>
+              <powerof10>0</powerof10>
+            </scalingFactor>
+          </modbusAttributes>
+        </dataPointListElement>
+        <dataPointListElement>
+          <dataPoint datapointName="ReturnFlowWaterTemp" presenceLevel="O" dataDirection="R" unit="DEGREES_CELSIUS">
+            <dataType>
+              <float64/>
+            </dataType>
+            <alternativeNames>
+              <sLV1Name>ReturnFlowWaterTemp</sLV1Name>
+            </alternativeNames>
+            <legibleDescription>
+              <textElement>Auslesen der aktuellen aktuellen-Temperatur des Rücklaufs.</textElement>
+              <language>de</language>
+            </legibleDescription>
+          </dataPoint>
+          <modbusDataPointConfiguration>
+            <modbusDataType>
+              <int16/>
+            </modbusDataType>
+            <modbusFirstRegisterReference registerType="InputRegister" addr="12" bitRank="0"/>
+            <numberOfRegisters>1</numberOfRegisters>
+            <masterFunctionsSupported>Primitives</masterFunctionsSupported>
+          </modbusDataPointConfiguration>
+          <modbusAttributes>
+            <scalingFactor>
+              <multiplicator>1</multiplicator>
+              <powerof10>-1</powerof10>
+            </scalingFactor>
+          </modbusAttributes>
+        </dataPointListElement>
+      </dataPointList>
+    </functionalProfileListElement>
+    <functionalProfileListElement>
+      <functionalProfile profileName="HeatCoolCtrl_2">
+        <functionalProfileIdentification>
+          <specificationOwnerIdentification>0</specificationOwnerIdentification>
+          <functionalProfileCategory>HeatPumpControl</functionalProfileCategory>
+          <functionalProfileType>HeatCoolCtrl</functionalProfileType>
+          <levelOfOperation>4</levelOfOperation>
+          <versionNumber>
+            <primaryVersionNumber>0</primaryVersionNumber>
+            <secondaryVersionNumber>1</secondaryVersionNumber>
+            <subReleaseVersionNumber>2</subReleaseVersionNumber>
+          </versionNumber>
+        </functionalProfileIdentification>
         <alternativeNames>
-          <sLV1Name>ReturnFlowWaterTemp</sLV1Name>
+          <sLV1Name>HeatCoolCtrl</sLV1Name>
         </alternativeNames>
         <legibleDescription>
-          <textElement>Auslesen der aktuellen aktuellen-Temperatur des Rücklaufs.</textElement>
-          <language>de</language>
-        </legibleDescription>
-      </dataPoint>
-      <modbusDataPointConfiguration>
-        <modbusDataType>
-          <int16/>
-        </modbusDataType>
-        <modbusFirstRegisterReference registerType="InputRegister" addr="12" bitRank="0"/>
-        <numberOfRegisters>1</numberOfRegisters>
-        <masterFunctionsSupported>Primitives</masterFunctionsSupported>
-      </modbusDataPointConfiguration>
-      <modbusAttributes>
-        <scalingFactor>
-          <multiplicator>1</multiplicator>
-          <powerof10>-1</powerof10>
-        </scalingFactor>
-      </modbusAttributes>
-    </dataPointListElement>
-  </functionalProfileListElement>
-  <functionalProfileListElement>
-    <functionalProfile profileName="HeatCoolCtrl_2">
-      <functionalProfileIdentification>
-        <specificationOwnerIdentification>0</specificationOwnerIdentification>
-        <functionalProfileCategory>HeatPumpControl</functionalProfileCategory>
-        <functionalProfileType>HeatCoolCtrl</functionalProfileType>
-        <levelOfOperation>4</levelOfOperation>
-        <versionNumber>
-          <primaryVersionNumber>0</primaryVersionNumber>
-          <secondaryVersionNumber>1</secondaryVersionNumber>
-          <subReleaseVersionNumber>2</subReleaseVersionNumber>
-        </versionNumber>
-      </functionalProfileIdentification>
-      <alternativeNames>
-        <sLV1Name>HeatCoolCtrl</sLV1Name>
-      </alternativeNames>
-      <legibleDescription>
-        <textElement>Dieses Profil definiert die erweiterten Datenpunkte zum Grundprofil "HeatPumpBase", welche zur Steuerung des Heiz- oder Kühlkreise 2 zur Verfügung gestellt werden. Derselbe physikalische Kreislauf kann entweder für das Heizen oder das Kühlen verwendet werden. Das Heiz-/Kühlkreisprofil muss immer in Kombination mit dem Grundprofil der Wärmepumpe  bewirtschaftet werden. Es können mehrere Heiz-/Kühlkreisprofile definiert werden.</textElement>
-        <language>de</language>
-      </legibleDescription>
-      <legibleDescription>
-        <textElement>This profile defines the extended data points to the basic profile "HeatPumpBase", which are provided to control of heating or cooling circuit 2. The same physical circuit can be used for either heating or cooling. The heating/cooling circuit profile must always be managed in combination with the heat pump base profile.</textElement>
-        <language>en</language>
-      </legibleDescription>
-    </functionalProfile>
-    <dataPointListElement>
-      <dataPoint datapointName="HeatCoolCtrlOpModeCmd" presenceLevel="M" dataDirection="RW" unit="NONE">
-        <dataType>
-          <int16/>
-        </dataType>
-        <alternativeNames>
-          <sLV1Name>HeatCoolCtrlOpModeCmd</sLV1Name>
-        </alternativeNames>
-        <legibleDescription>
-          <textElement>Festlegen der Betriebsart des Heiz-/Kühlkreises 2 Modes:  0=off, 1=automatic, 2=Cooling, 3=Summer, 4=Continuous(?), 5=setback (?), 6=Vacation, 7=Party, 8=Ausheizen, 9=?, 10=?. 8 to 10 only informational            </textElement>
-          <language>de</language>
-        </legibleDescription>
-      </dataPoint>
-      <modbusDataPointConfiguration>
-        <modbusDataType>
-          <int16/>
-        </modbusDataType>
-        <modbusFirstRegisterReference registerType="HoldRegister" addr="112" bitRank="0"/>
-        <numberOfRegisters>1</numberOfRegisters>
-        <masterFunctionsSupported>Primitives</masterFunctionsSupported>
-      </modbusDataPointConfiguration>
-      <modbusAttributes>
-        <scalingFactor>
-          <multiplicator>1</multiplicator>
-          <powerof10>0</powerof10>
-        </scalingFactor>
-      </modbusAttributes>
-    </dataPointListElement>
-    <dataPointListElement>
-      <dataPoint datapointName="HeatCoolOpState" presenceLevel="M" dataDirection="R" unit="NONE">
-        <dataType>
-          <int16/>
-        </dataType>
-        <alternativeNames>
-          <sLV1Name>HeatCoolOpState</sLV1Name>
-        </alternativeNames>
-        <legibleDescription>
-          <textElement>Auslesen des aktuellen Status des Heiz-/Kühlkreises 2 (Aus, Bereitschaft, Programm, Comfort, Eco)</textElement>
+          <textElement>Dieses Profil definiert die erweiterten Datenpunkte zum Grundprofil "HeatPumpBase", welche zur Steuerung des Heiz- oder Kühlkreise 2 zur Verfügung gestellt werden. Derselbe physikalische Kreislauf kann entweder für das Heizen oder das Kühlen verwendet werden. Das Heiz-/Kühlkreisprofil muss immer in Kombination mit dem Grundprofil der Wärmepumpe  bewirtschaftet werden. Es können mehrere Heiz-/Kühlkreisprofile definiert werden.</textElement>
           <language>de</language>
         </legibleDescription>
         <legibleDescription>
-          <textElement>This seems redundant with previous registers for W</textElement>
+          <textElement>This profile defines the extended data points to the basic profile "HeatPumpBase", which are provided to control of heating or cooling circuit 2. The same physical circuit can be used for either heating or cooling. The heating/cooling circuit profile must always be managed in combination with the heat pump base profile.</textElement>
           <language>en</language>
         </legibleDescription>
-      </dataPoint>
-      <modbusDataPointConfiguration>
-        <modbusDataType>
-          <int16/>
-        </modbusDataType>
-        <modbusFirstRegisterReference registerType="HoldRegister" addr="112" bitRank="0"/>
-        <numberOfRegisters>1</numberOfRegisters>
-        <masterFunctionsSupported>Primitives</masterFunctionsSupported>
-      </modbusDataPointConfiguration>
-      <modbusAttributes>
-        <scalingFactor>
-          <multiplicator>1</multiplicator>
-          <powerof10>0</powerof10>
-        </scalingFactor>
-      </modbusAttributes>
-    </dataPointListElement>
-    <dataPointListElement>
-      <dataPoint datapointName="FlowWaterTempStpt" presenceLevel="O" dataDirection="R" unit="DEGREES_CELSIUS">
-        <dataType>
-          <float64/>
-        </dataType>
+      </functionalProfile>
+      <dataPointList>
+        <dataPointListElement>
+          <dataPoint datapointName="HeatCoolCtrlOpModeCmd" presenceLevel="M" dataDirection="RW" unit="NONE">
+            <dataType>
+              <int16/>
+            </dataType>
+            <alternativeNames>
+              <sLV1Name>HeatCoolCtrlOpModeCmd</sLV1Name>
+            </alternativeNames>
+            <legibleDescription>
+              <textElement>Festlegen der Betriebsart des Heiz-/Kühlkreises 2 Modes:  0=off, 1=automatic, 2=Cooling, 3=Summer, 4=Continuous(?), 5=setback (?), 6=Vacation, 7=Party, 8=Ausheizen, 9=?, 10=?. 8 to 10 only informational            </textElement>
+              <language>de</language>
+            </legibleDescription>
+          </dataPoint>
+          <modbusDataPointConfiguration>
+            <modbusDataType>
+              <int16/>
+            </modbusDataType>
+            <modbusFirstRegisterReference registerType="HoldRegister" addr="112" bitRank="0"/>
+            <numberOfRegisters>1</numberOfRegisters>
+            <masterFunctionsSupported>Primitives</masterFunctionsSupported>
+          </modbusDataPointConfiguration>
+          <modbusAttributes>
+            <scalingFactor>
+              <multiplicator>1</multiplicator>
+              <powerof10>0</powerof10>
+            </scalingFactor>
+          </modbusAttributes>
+        </dataPointListElement>
+        <dataPointListElement>
+          <dataPoint datapointName="HeatCoolOpState" presenceLevel="M" dataDirection="R" unit="NONE">
+            <dataType>
+              <int16/>
+            </dataType>
+            <alternativeNames>
+              <sLV1Name>HeatCoolOpState</sLV1Name>
+            </alternativeNames>
+            <legibleDescription>
+              <textElement>Auslesen des aktuellen Status des Heiz-/Kühlkreises 2 (Aus, Bereitschaft, Programm, Comfort, Eco)</textElement>
+              <language>de</language>
+            </legibleDescription>
+            <legibleDescription>
+              <textElement>This seems redundant with previous registers for W</textElement>
+              <language>en</language>
+            </legibleDescription>
+          </dataPoint>
+          <modbusDataPointConfiguration>
+            <modbusDataType>
+              <int16/>
+            </modbusDataType>
+            <modbusFirstRegisterReference registerType="HoldRegister" addr="112" bitRank="0"/>
+            <numberOfRegisters>1</numberOfRegisters>
+            <masterFunctionsSupported>Primitives</masterFunctionsSupported>
+          </modbusDataPointConfiguration>
+          <modbusAttributes>
+            <scalingFactor>
+              <multiplicator>1</multiplicator>
+              <powerof10>0</powerof10>
+            </scalingFactor>
+          </modbusAttributes>
+        </dataPointListElement>
+        <dataPointListElement>
+          <dataPoint datapointName="FlowWaterTempStpt" presenceLevel="O" dataDirection="R" unit="DEGREES_CELSIUS">
+            <dataType>
+              <float64/>
+            </dataType>
+            <alternativeNames>
+              <sLV1Name>FlowWaterTempStpt</sLV1Name>
+            </alternativeNames>
+            <legibleDescription>
+              <textElement>Setzen der aktuellen Soll-Temperatur des Vorlaufs 2 (Grundwert).</textElement>
+              <language>de</language>
+            </legibleDescription>
+          </dataPoint>
+          <modbusDataPointConfiguration>
+            <modbusDataType>
+              <int16/>
+            </modbusDataType>
+            <modbusFirstRegisterReference registerType="HoldRegister" addr="114" bitRank="0"/>
+            <numberOfRegisters>1</numberOfRegisters>
+            <masterFunctionsSupported>Primitives</masterFunctionsSupported>
+          </modbusDataPointConfiguration>
+          <modbusAttributes>
+            <scalingFactor>
+              <multiplicator>1</multiplicator>
+              <powerof10>-1</powerof10>
+            </scalingFactor>
+          </modbusAttributes>
+        </dataPointListElement>
+        <dataPointListElement>
+          <dataPoint datapointName="FlowWaterTempStptEn" presenceLevel="O" dataDirection="R" unit="NONE">
+            <dataType>
+              <boolean/>
+            </dataType>
+            <alternativeNames>
+              <sLV1Name>FlowWaterTempStptEN</sLV1Name>
+            </alternativeNames>
+            <legibleDescription>
+              <textElement>Setzen der aktuellen Soll-Temperatur des Vorlaufs (Grundwert).</textElement>
+              <language>de</language>
+            </legibleDescription>
+          </dataPoint>
+          <modbusDataPointConfiguration>
+            <modbusDataType>
+              <int16/>
+            </modbusDataType>
+            <modbusFirstRegisterReference registerType="HoldRegister" addr="115" bitRank="0"/>
+            <numberOfRegisters>1</numberOfRegisters>
+            <masterFunctionsSupported>Primitives</masterFunctionsSupported>
+          </modbusDataPointConfiguration>
+          <modbusAttributes>
+            <scalingFactor>
+              <multiplicator>1</multiplicator>
+              <powerof10>0</powerof10>
+            </scalingFactor>
+          </modbusAttributes>
+        </dataPointListElement>
+        <dataPointListElement>
+          <dataPoint datapointName="ReturnFlowWaterTemp" presenceLevel="O" dataDirection="R" unit="DEGREES_CELSIUS">
+            <dataType>
+              <float64/>
+            </dataType>
+            <alternativeNames>
+              <sLV1Name>ReturnFlowWaterTemp</sLV1Name>
+            </alternativeNames>
+            <legibleDescription>
+              <textElement>Auslesen der aktuellen aktuellen-Temperatur des Rücklaufs.</textElement>
+              <language>de</language>
+            </legibleDescription>
+          </dataPoint>
+          <modbusDataPointConfiguration>
+            <modbusDataType>
+              <int16/>
+            </modbusDataType>
+            <modbusFirstRegisterReference registerType="InputRegister" addr="12" bitRank="0"/>
+            <numberOfRegisters>1</numberOfRegisters>
+            <masterFunctionsSupported>Primitives</masterFunctionsSupported>
+          </modbusDataPointConfiguration>
+          <modbusAttributes>
+            <scalingFactor>
+              <multiplicator>1</multiplicator>
+              <powerof10>-1</powerof10>
+            </scalingFactor>
+          </modbusAttributes>
+        </dataPointListElement>
+      </dataPointList>
+    </functionalProfileListElement>
+    <functionalProfileListElement>
+      <functionalProfile profileName="DomHotWaterCtrl">
+        <functionalProfileIdentification>
+          <specificationOwnerIdentification>0</specificationOwnerIdentification>
+          <functionalProfileCategory>HeatPumpControl</functionalProfileCategory>
+          <functionalProfileType>DomHotWaterCtrl</functionalProfileType>
+          <levelOfOperation>4</levelOfOperation>
+          <versionNumber>
+            <primaryVersionNumber>0</primaryVersionNumber>
+            <secondaryVersionNumber>1</secondaryVersionNumber>
+            <subReleaseVersionNumber>2</subReleaseVersionNumber>
+          </versionNumber>
+        </functionalProfileIdentification>
         <alternativeNames>
-          <sLV1Name>FlowWaterTempStpt</sLV1Name>
+          <sLV1Name>DomHotWaterCtrl</sLV1Name>
         </alternativeNames>
         <legibleDescription>
-          <textElement>Setzen der aktuellen Soll-Temperatur des Vorlaufs 2 (Grundwert).</textElement>
+          <textElement>Dieses Profil definiert die erweiterten Datenpunkte zum Grundprofil "HeatPumpBase", welche zur Steuerung eines Brauchwarmwasserkreises zur Verfügung gestellt werden. Das Brauchwarmwasser-Profil muss immer in Kombination mit dem Grundprofil der Wärmepumpe bewirtschaftet werden. Es können mehrere Brauchwarmwasser-Profile definiert werden.</textElement>
           <language>de</language>
         </legibleDescription>
-      </dataPoint>
-      <modbusDataPointConfiguration>
-        <modbusDataType>
-          <int16/>
-        </modbusDataType>
-        <modbusFirstRegisterReference registerType="HoldRegister" addr="114" bitRank="0"/>
-        <numberOfRegisters>1</numberOfRegisters>
-        <masterFunctionsSupported>Primitives</masterFunctionsSupported>
-      </modbusDataPointConfiguration>
-      <modbusAttributes>
-        <scalingFactor>
-          <multiplicator>1</multiplicator>
-          <powerof10>-1</powerof10>
-        </scalingFactor>
-      </modbusAttributes>
-    </dataPointListElement>
-    <dataPointListElement>
-      <dataPoint datapointName="FlowWaterTempStptEn" presenceLevel="O" dataDirection="R" unit="NONE">
-        <dataType>
-          <boolean/>
-        </dataType>
+      </functionalProfile>
+      <dataPointList>
+        <dataPointListElement>
+          <dataPoint datapointName="ActDomHotWaterTemp" presenceLevel="M" dataDirection="R" unit="DEGREES_CELSIUS">
+            <dataType>
+              <float64/>
+            </dataType>
+            <alternativeNames>
+              <sLV1Name>ActDomHotWaterTemp</sLV1Name>
+            </alternativeNames>
+            <legibleDescription>
+              <textElement>Domestic hot water tank temperature</textElement>
+              <language>de</language>
+            </legibleDescription>
+            <legibleDescription>
+              <textElement>Domestic hot water tank temperature</textElement>
+              <language>en</language>
+            </legibleDescription>
+          </dataPoint>
+          <modbusDataPointConfiguration>
+            <modbusDataType>
+              <int16U/>
+            </modbusDataType>
+            <modbusFirstRegisterReference registerType="InputRegister" addr="11" bitRank="0"/>
+            <numberOfRegisters>1</numberOfRegisters>
+            <masterFunctionsSupported>Primitives</masterFunctionsSupported>
+          </modbusDataPointConfiguration>
+          <modbusAttributes>
+            <scalingFactor>
+              <multiplicator>1</multiplicator>
+              <powerof10>-1</powerof10>
+            </scalingFactor>
+          </modbusAttributes>
+        </dataPointListElement>
+        <dataPointListElement>
+          <dataPoint datapointName="DomHotWTempStpt" presenceLevel="M" dataDirection="W" unit="DEGREES_CELSIUS">
+            <dataType>
+              <float64/>
+            </dataType>
+            <alternativeNames>
+              <sLV1Name>DomHotWTempStpt</sLV1Name>
+            </alternativeNames>
+            <legibleDescription>
+              <textElement>
+                Domestic hot water temperature setpoint. Another register also available for minimum allowed temp
+              </textElement>
+              <language>de</language>
+            </legibleDescription>
+            <legibleDescription>
+              <textElement>
+                Domestic hot water temperature setpoint. also 133 work fo reading. Set 134 to 0 to have effect by having temperature active.
+              </textElement>
+              <language>en</language>
+            </legibleDescription>
+          </dataPoint>
+          <modbusDataPointConfiguration>
+            <modbusDataType>
+              <int16U/>
+            </modbusDataType>
+            <modbusFirstRegisterReference registerType="HoldRegister" addr="105" bitRank="0"/>
+            <numberOfRegisters>1</numberOfRegisters>
+            <masterFunctionsSupported>Primitives</masterFunctionsSupported>
+          </modbusDataPointConfiguration>
+          <modbusAttributes>
+            <scalingFactor>
+              <multiplicator>1</multiplicator>
+              <powerof10>-1</powerof10>
+            </scalingFactor>
+          </modbusAttributes>
+        </dataPointListElement>
+      </dataPointList>
+    </functionalProfileListElement>
+    <functionalProfileListElement>
+      <functionalProfile profileName="BufferStorageCtrl">
+        <functionalProfileIdentification>
+          <specificationOwnerIdentification>0</specificationOwnerIdentification>
+          <functionalProfileCategory>HeatPumpControl</functionalProfileCategory>
+          <functionalProfileType>BufferStorageCtrl</functionalProfileType>
+          <levelOfOperation>4</levelOfOperation>
+          <versionNumber>
+            <primaryVersionNumber>0</primaryVersionNumber>
+            <secondaryVersionNumber>1</secondaryVersionNumber>
+            <subReleaseVersionNumber>2</subReleaseVersionNumber>
+          </versionNumber>
+        </functionalProfileIdentification>
         <alternativeNames>
-          <sLV1Name>FlowWaterTempStptEN</sLV1Name>
+          <sLV1Name>BufferStorageCtrl</sLV1Name>
         </alternativeNames>
         <legibleDescription>
-          <textElement>Setzen der aktuellen Soll-Temperatur des Vorlaufs (Grundwert).</textElement>
+          <textElement>x</textElement>
           <language>de</language>
         </legibleDescription>
-      </dataPoint>
-      <modbusDataPointConfiguration>
-        <modbusDataType>
-          <int16/>
-        </modbusDataType>
-        <modbusFirstRegisterReference registerType="HoldRegister" addr="115" bitRank="0"/>
-        <numberOfRegisters>1</numberOfRegisters>
-        <masterFunctionsSupported>Primitives</masterFunctionsSupported>
-      </modbusDataPointConfiguration>
-      <modbusAttributes>
-        <scalingFactor>
-          <multiplicator>1</multiplicator>
-          <powerof10>0</powerof10>
-        </scalingFactor>
-      </modbusAttributes>
-    </dataPointListElement>
-    <dataPointListElement>
-      <dataPoint datapointName="ReturnFlowWaterTemp" presenceLevel="O" dataDirection="R" unit="DEGREES_CELSIUS">
-        <dataType>
-          <float64/>
-        </dataType>
+      </functionalProfile>
+      <dataPointList>
+        <dataPointListElement>
+          <dataPoint datapointName="HeatWTempStptOffset" presenceLevel="M" dataDirection="W" unit="DEGREES_CELSIUS">
+            <dataType>
+              <float64/>
+            </dataType>
+            <alternativeNames>
+              <sLV1Name>HeatWTempStpt</sLV1Name>
+            </alternativeNames>
+            <legibleDescription>
+              <textElement>
+                Sollwerte der Solltemperatur (+/-) für den Heiz-Pufferspeicher.
+              </textElement>
+              <language>de</language>
+            </legibleDescription>
+            <legibleDescription>
+              <textElement>
+                Setpoint for tank temperature. to be considered, depends on the WNA settings of the heat pump which should be on Puffer Speicher mode. Otherwise, it will be used for return temperature setpoint setting
+              </textElement>
+              <language>en</language>
+            </legibleDescription>
+          </dataPoint>
+          <modbusDataPointConfiguration>
+            <modbusDataType>
+              <int16/>
+            </modbusDataType>
+            <modbusFirstRegisterReference registerType="HoldRegister" addr="102" bitRank="0"/>
+            <numberOfRegisters>1</numberOfRegisters>
+            <masterFunctionsSupported>Primitives</masterFunctionsSupported>
+          </modbusDataPointConfiguration>
+          <modbusAttributes>
+            <scalingFactor>
+              <multiplicator>1</multiplicator>
+              <powerof10>-1</powerof10>
+            </scalingFactor>
+          </modbusAttributes>
+        </dataPointListElement>
+        <dataPointListElement>
+          <dataPoint datapointName="HeatWTempStptOffsetEn" presenceLevel="O" dataDirection="R" unit="NONE">
+            <dataType>
+              <boolean/>
+            </dataType>
+            <alternativeNames>
+              <sLV1Name>FlowWaterTempStptEN</sLV1Name>
+            </alternativeNames>
+            <legibleDescription>
+              <textElement>Wenn 1, setzen der aktuellen Soll-Temperatur des Vorlaufs (Grundwert).</textElement>
+              <language>de</language>
+            </legibleDescription>
+            <legibleDescription>
+              <textElement>When 1, activates setpoint for tank temperature. If 0, setpoint not applied </textElement>
+              <language>en</language>
+            </legibleDescription>
+          </dataPoint>
+          <modbusDataPointConfiguration>
+            <modbusDataType>
+              <int16/>
+            </modbusDataType>
+            <modbusFirstRegisterReference registerType="HoldRegister" addr="103" bitRank="0"/>
+            <numberOfRegisters>1</numberOfRegisters>
+            <masterFunctionsSupported>Primitives</masterFunctionsSupported>
+          </modbusDataPointConfiguration>
+          <modbusAttributes>
+            <scalingFactor>
+              <multiplicator>1</multiplicator>
+              <powerof10>0</powerof10>
+            </scalingFactor>
+          </modbusAttributes>
+        </dataPointListElement>
+        <dataPointListElement>
+          <dataPoint datapointName="ActHeatBufferTemp" presenceLevel="M" dataDirection="R" unit="DEGREES_CELSIUS">
+            <dataType>
+              <float64/>
+            </dataType>
+            <alternativeNames>
+              <sLV1Name>ActHeatBufferTemp</sLV1Name>
+            </alternativeNames>
+            <legibleDescription>
+              <textElement>Aktuelle Ist-Temperatur des Heiz-Pufferspeichers oben</textElement>
+              <language>de</language>
+            </legibleDescription>
+          </dataPoint>
+          <modbusDataPointConfiguration>
+            <modbusDataType>
+              <int16/>
+            </modbusDataType>
+            <modbusFirstRegisterReference registerType="InputRegister" addr="14" bitRank="0"/>
+            <numberOfRegisters>1</numberOfRegisters>
+            <masterFunctionsSupported>Primitives</masterFunctionsSupported>
+          </modbusDataPointConfiguration>
+          <modbusAttributes>
+            <scalingFactor>
+              <multiplicator>1</multiplicator>
+              <powerof10>-1</powerof10>
+            </scalingFactor>
+          </modbusAttributes>
+        </dataPointListElement>
+      </dataPointList>
+    </functionalProfileListElement>
+    <functionalProfileListElement>
+      <functionalProfile profileName="RoomTempCtrl_Z1">
+        <functionalProfileIdentification>
+          <specificationOwnerIdentification>0</specificationOwnerIdentification>
+          <functionalProfileCategory>HeatPumpControl</functionalProfileCategory>
+          <functionalProfileType>RoomTempCtrl</functionalProfileType>
+          <levelOfOperation>4</levelOfOperation>
+          <versionNumber>
+            <primaryVersionNumber>0</primaryVersionNumber>
+            <secondaryVersionNumber>1</secondaryVersionNumber>
+            <subReleaseVersionNumber>2</subReleaseVersionNumber>
+          </versionNumber>
+        </functionalProfileIdentification>
         <alternativeNames>
-          <sLV1Name>ReturnFlowWaterTemp</sLV1Name>
+          <sLV1Name>RoomTempCtrl</sLV1Name>
         </alternativeNames>
         <legibleDescription>
-          <textElement>Auslesen der aktuellen aktuellen-Temperatur des Rücklaufs.</textElement>
+          <textElement>x
+  				</textElement>
           <language>de</language>
         </legibleDescription>
-      </dataPoint>
-      <modbusDataPointConfiguration>
-        <modbusDataType>
-          <int16/>
-        </modbusDataType>
-        <modbusFirstRegisterReference registerType="InputRegister" addr="12" bitRank="0"/>
-        <numberOfRegisters>1</numberOfRegisters>
-        <masterFunctionsSupported>Primitives</masterFunctionsSupported>
-      </modbusDataPointConfiguration>
-      <modbusAttributes>
-        <scalingFactor>
-          <multiplicator>1</multiplicator>
-          <powerof10>-1</powerof10>
-        </scalingFactor>
-      </modbusAttributes>
-    </dataPointListElement>
-  </functionalProfileListElement>
-  <functionalProfileListElement>
-    <functionalProfile profileName="DomHotWaterCtrl">
-      <functionalProfileIdentification>
-        <specificationOwnerIdentification>0</specificationOwnerIdentification>
-        <functionalProfileCategory>HeatPumpControl</functionalProfileCategory>
-        <functionalProfileType>DomHotWaterCtrl</functionalProfileType>
-        <levelOfOperation>4</levelOfOperation>
-        <versionNumber>
-          <primaryVersionNumber>0</primaryVersionNumber>
-          <secondaryVersionNumber>1</secondaryVersionNumber>
-          <subReleaseVersionNumber>2</subReleaseVersionNumber>
-        </versionNumber>
-      </functionalProfileIdentification>
-      <alternativeNames>
-        <sLV1Name>DomHotWaterCtrl</sLV1Name>
-      </alternativeNames>
-      <legibleDescription>
-        <textElement>Dieses Profil definiert die erweiterten Datenpunkte zum Grundprofil "HeatPumpBase", welche zur Steuerung eines Brauchwarmwasserkreises zur Verfügung gestellt werden. Das Brauchwarmwasser-Profil muss immer in Kombination mit dem Grundprofil der Wärmepumpe bewirtschaftet werden. Es können mehrere Brauchwarmwasser-Profile definiert werden.</textElement>
-        <language>de</language>
-      </legibleDescription>
-    </functionalProfile>
-    <dataPointListElement>
-      <dataPoint datapointName="ActDomHotWaterTemp" presenceLevel="M" dataDirection="R" unit="DEGREES_CELSIUS">
-        <dataType>
-          <float64/>
-        </dataType>
+      </functionalProfile>
+      <dataPointList>
+        <dataPointListElement>
+          <dataPoint datapointName="RoomZoneTempSetpt" presenceLevel="R" dataDirection="RW" unit="DEGREES_CELSIUS">
+            <dataType>
+              <float64/>
+            </dataType>
+            <alternativeNames>
+              <sLV1Name>RoomZoneTemp</sLV1Name>
+            </alternativeNames>
+            <legibleDescription>
+              <textElement>Aktuelle Ist-Temperatur des 1. Raumes oder Mittelwert der Bezugsräume für die Begrenzung der Reduktions- oder Anhebungsmassnahmen</textElement>
+              <language>de</language>
+            </legibleDescription>
+          </dataPoint>
+          <modbusDataPointConfiguration>
+            <modbusDataType>
+              <int16/>
+            </modbusDataType>
+            <modbusFirstRegisterReference registerType="HoldRegister" addr="108" bitRank="0"/>
+            <numberOfRegisters>1</numberOfRegisters>
+            <masterFunctionsSupported>Primitives</masterFunctionsSupported>
+          </modbusDataPointConfiguration>
+          <modbusAttributes>
+            <scalingFactor>
+              <multiplicator>1</multiplicator>
+              <powerof10>-1</powerof10>
+            </scalingFactor>
+          </modbusAttributes>
+        </dataPointListElement>
+      </dataPointList>
+    </functionalProfileListElement>
+    <functionalProfileListElement>
+      <functionalProfile profileName="RoomTempCtrl_Z2">
+        <functionalProfileIdentification>
+          <specificationOwnerIdentification>0</specificationOwnerIdentification>
+          <functionalProfileCategory>HeatPumpControl</functionalProfileCategory>
+          <functionalProfileType>RoomTempCtrl</functionalProfileType>
+          <levelOfOperation>4</levelOfOperation>
+          <versionNumber>
+            <primaryVersionNumber>0</primaryVersionNumber>
+            <secondaryVersionNumber>1</secondaryVersionNumber>
+            <subReleaseVersionNumber>2</subReleaseVersionNumber>
+          </versionNumber>
+        </functionalProfileIdentification>
         <alternativeNames>
-          <sLV1Name>ActDomHotWaterTemp</sLV1Name>
+          <sLV1Name>RoomTempCtrl</sLV1Name>
         </alternativeNames>
         <legibleDescription>
-          <textElement>Domestic hot water tank temperature</textElement>
+          <textElement>x</textElement>
           <language>de</language>
         </legibleDescription>
-        <legibleDescription>
-          <textElement>Domestic hot water tank temperature</textElement>
-          <language>en</language>
-        </legibleDescription>
-      </dataPoint>
-      <modbusDataPointConfiguration>
-        <modbusDataType>
-          <int16U/>
-        </modbusDataType>
-        <modbusFirstRegisterReference registerType="InputRegister" addr="11" bitRank="0"/>
-        <numberOfRegisters>1</numberOfRegisters>
-        <masterFunctionsSupported>Primitives</masterFunctionsSupported>
-      </modbusDataPointConfiguration>
-      <modbusAttributes>
-        <scalingFactor>
-          <multiplicator>1</multiplicator>
-          <powerof10>-1</powerof10>
-        </scalingFactor>
-      </modbusAttributes>
-    </dataPointListElement>
-    <dataPointListElement>
-      <dataPoint datapointName="DomHotWTempStpt" presenceLevel="M" dataDirection="W" unit="DEGREES_CELSIUS">
-        <dataType>
-          <float64/>
-        </dataType>
+      </functionalProfile>
+      <dataPointList>
+        <dataPointListElement>
+          <dataPoint datapointName="RoomZoneTempSetpt" presenceLevel="R" dataDirection="RW" unit="DEGREES_CELSIUS">
+            <dataType>
+              <float64/>
+            </dataType>
+            <alternativeNames>
+              <sLV1Name>RoomZoneTemp</sLV1Name>
+            </alternativeNames>
+            <legibleDescription>
+              <textElement>Aktuelle Ist-Temperatur des 1. Raumes oder Mittelwert der Bezugsräume für die Begrenzung der Reduktions- oder Anhebungsmassnahmen</textElement>
+              <language>de</language>
+            </legibleDescription>
+          </dataPoint>
+          <modbusDataPointConfiguration>
+            <modbusDataType>
+              <int16/>
+            </modbusDataType>
+            <modbusFirstRegisterReference registerType="HoldRegister" addr="113" bitRank="0"/>
+            <numberOfRegisters>1</numberOfRegisters>
+            <masterFunctionsSupported>Primitives</masterFunctionsSupported>
+          </modbusDataPointConfiguration>
+          <modbusAttributes>
+            <scalingFactor>
+              <multiplicator>1</multiplicator>
+              <powerof10>-1</powerof10>
+            </scalingFactor>
+          </modbusAttributes>
+        </dataPointListElement>
+      </dataPointList>
+    </functionalProfileListElement>
+    <functionalProfileListElement>
+      <functionalProfile profileName="EnergyMonitor">
+        <functionalProfileIdentification>
+          <specificationOwnerIdentification>0</specificationOwnerIdentification>
+          <functionalProfileCategory>HeatPumpControl</functionalProfileCategory>
+          <functionalProfileType>EnergyMonitor</functionalProfileType>
+          <levelOfOperation>4</levelOfOperation>
+          <versionNumber>
+            <primaryVersionNumber>0</primaryVersionNumber>
+            <secondaryVersionNumber>1</secondaryVersionNumber>
+            <subReleaseVersionNumber>2</subReleaseVersionNumber>
+          </versionNumber>
+        </functionalProfileIdentification>
         <alternativeNames>
-          <sLV1Name>DomHotWTempStpt</sLV1Name>
+          <sLV1Name>Monitoring</sLV1Name>
         </alternativeNames>
         <legibleDescription>
-          <textElement>
-            Domestic hot water temperature setpoint. Another register also available for minimum allowed temp
-          </textElement>
+          <textElement>Das Profil definiert den Monitoriungbaustein zur dynamischen Ansteuerung von Wärmepumpen über eine variable Beeinflussung der Sollwerte nach SGr Level 4. </textElement>
           <language>de</language>
         </legibleDescription>
-        <legibleDescription>
-          <textElement>
-            Domestic hot water temperature setpoint. also 133 work fo reading. Set 134 to 0 to have effect by having temperature active.
-          </textElement>
-          <language>en</language>
-        </legibleDescription>
-      </dataPoint>
-      <modbusDataPointConfiguration>
-        <modbusDataType>
-          <int16U/>
-        </modbusDataType>
-        <modbusFirstRegisterReference registerType="HoldRegister" addr="105" bitRank="0"/>
-        <numberOfRegisters>1</numberOfRegisters>
-        <masterFunctionsSupported>Primitives</masterFunctionsSupported>
-      </modbusDataPointConfiguration>
-      <modbusAttributes>
-        <scalingFactor>
-          <multiplicator>1</multiplicator>
-          <powerof10>-1</powerof10>
-        </scalingFactor>
-      </modbusAttributes>
-    </dataPointListElement>
-  </functionalProfileListElement>
-  <functionalProfileListElement>
-    <functionalProfile profileName="BufferStorageCtrl">
-      <functionalProfileIdentification>
-        <specificationOwnerIdentification>0</specificationOwnerIdentification>
-        <functionalProfileCategory>HeatPumpControl</functionalProfileCategory>
-        <functionalProfileType>BufferStorageCtrl</functionalProfileType>
-        <levelOfOperation>4</levelOfOperation>
-        <versionNumber>
-          <primaryVersionNumber>0</primaryVersionNumber>
-          <secondaryVersionNumber>1</secondaryVersionNumber>
-          <subReleaseVersionNumber>2</subReleaseVersionNumber>
-        </versionNumber>
-      </functionalProfileIdentification>
-      <alternativeNames>
-        <sLV1Name>BufferStorageCtrl</sLV1Name>
-      </alternativeNames>
-      <legibleDescription>
-        <textElement>x</textElement>
-        <language>de</language>
-      </legibleDescription>
-    </functionalProfile>
-    <dataPointListElement>
-      <dataPoint datapointName="HeatWTempStptOffset" presenceLevel="M" dataDirection="W" unit="DEGREES_CELSIUS">
-        <dataType>
-          <float64/>
-        </dataType>
-        <alternativeNames>
-          <sLV1Name>HeatWTempStpt</sLV1Name>
-        </alternativeNames>
-        <legibleDescription>
-          <textElement>
-            Sollwerte der Solltemperatur (+/-) für den Heiz-Pufferspeicher.
-          </textElement>
-          <language>de</language>
-        </legibleDescription>
-        <legibleDescription>
-          <textElement>
-            Setpoint for tank temperature. to be considered, depends on the WNA settings of the heat pump which should be on Puffer Speicher mode. Otherwise, it will be used for return temperature setpoint setting
-          </textElement>
-          <language>en</language>
-        </legibleDescription>
-      </dataPoint>
-      <modbusDataPointConfiguration>
-        <modbusDataType>
-          <int16/>
-        </modbusDataType>
-        <modbusFirstRegisterReference registerType="HoldRegister" addr="102" bitRank="0"/>
-        <numberOfRegisters>1</numberOfRegisters>
-        <masterFunctionsSupported>Primitives</masterFunctionsSupported>
-      </modbusDataPointConfiguration>
-      <modbusAttributes>
-        <scalingFactor>
-          <multiplicator>1</multiplicator>
-          <powerof10>-1</powerof10>
-        </scalingFactor>
-      </modbusAttributes>
-    </dataPointListElement>
-    <dataPointListElement>
-      <dataPoint datapointName="HeatWTempStptOffsetEn" presenceLevel="O" dataDirection="R" unit="NONE">
-        <dataType>
-          <boolean/>
-        </dataType>
-        <alternativeNames>
-          <sLV1Name>FlowWaterTempStptEN</sLV1Name>
-        </alternativeNames>
-        <legibleDescription>
-          <textElement>Wenn 1, setzen der aktuellen Soll-Temperatur des Vorlaufs (Grundwert).</textElement>
-          <language>de</language>
-        </legibleDescription>
-        <legibleDescription>
-          <textElement>When 1, activates setpoint for tank temperature. If 0, setpoint not applied </textElement>
-          <language>en</language>
-        </legibleDescription>
-      </dataPoint>
-      <modbusDataPointConfiguration>
-        <modbusDataType>
-          <int16/>
-        </modbusDataType>
-        <modbusFirstRegisterReference registerType="HoldRegister" addr="103" bitRank="0"/>
-        <numberOfRegisters>1</numberOfRegisters>
-        <masterFunctionsSupported>Primitives</masterFunctionsSupported>
-      </modbusDataPointConfiguration>
-      <modbusAttributes>
-        <scalingFactor>
-          <multiplicator>1</multiplicator>
-          <powerof10>0</powerof10>
-        </scalingFactor>
-      </modbusAttributes>
-    </dataPointListElement>
-    <dataPointListElement>
-      <dataPoint datapointName="ActHeatBufferTemp" presenceLevel="M" dataDirection="R" unit="DEGREES_CELSIUS">
-        <dataType>
-          <float64/>
-        </dataType>
-        <alternativeNames>
-          <sLV1Name>ActHeatBufferTemp</sLV1Name>
-        </alternativeNames>
-        <legibleDescription>
-          <textElement>Aktuelle Ist-Temperatur des Heiz-Pufferspeichers oben</textElement>
-          <language>de</language>
-        </legibleDescription>
-      </dataPoint>
-      <modbusDataPointConfiguration>
-        <modbusDataType>
-          <int16/>
-        </modbusDataType>
-        <modbusFirstRegisterReference registerType="InputRegister" addr="14" bitRank="0"/>
-        <numberOfRegisters>1</numberOfRegisters>
-        <masterFunctionsSupported>Primitives</masterFunctionsSupported>
-      </modbusDataPointConfiguration>
-      <modbusAttributes>
-        <scalingFactor>
-          <multiplicator>1</multiplicator>
-          <powerof10>-1</powerof10>
-        </scalingFactor>
-      </modbusAttributes>
-    </dataPointListElement>
-  </functionalProfileListElement>
-  <functionalProfileListElement>
-    <functionalProfile profileName="RoomTempCtrl_Z1">
-      <functionalProfileIdentification>
-        <specificationOwnerIdentification>0</specificationOwnerIdentification>
-        <functionalProfileCategory>HeatPumpControl</functionalProfileCategory>
-        <functionalProfileType>RoomTempCtrl</functionalProfileType>
-        <levelOfOperation>4</levelOfOperation>
-        <versionNumber>
-          <primaryVersionNumber>0</primaryVersionNumber>
-          <secondaryVersionNumber>1</secondaryVersionNumber>
-          <subReleaseVersionNumber>2</subReleaseVersionNumber>
-        </versionNumber>
-      </functionalProfileIdentification>
-      <alternativeNames>
-        <sLV1Name>RoomTempCtrl</sLV1Name>
-      </alternativeNames>
-      <legibleDescription>
-        <textElement>x
-				</textElement>
-        <language>de</language>
-      </legibleDescription>
-    </functionalProfile>
-    <dataPointListElement>
-      <dataPoint datapointName="RoomZoneTempSetpt" presenceLevel="R" dataDirection="RW" unit="DEGREES_CELSIUS">
-        <dataType>
-          <float64/>
-        </dataType>
-        <alternativeNames>
-          <sLV1Name>RoomZoneTemp</sLV1Name>
-        </alternativeNames>
-        <legibleDescription>
-          <textElement>Aktuelle Ist-Temperatur des 1. Raumes oder Mittelwert der Bezugsräume für die Begrenzung der Reduktions- oder Anhebungsmassnahmen</textElement>
-          <language>de</language>
-        </legibleDescription>
-      </dataPoint>
-      <modbusDataPointConfiguration>
-        <modbusDataType>
-          <int16/>
-        </modbusDataType>
-        <modbusFirstRegisterReference registerType="HoldRegister" addr="108" bitRank="0"/>
-        <numberOfRegisters>1</numberOfRegisters>
-        <masterFunctionsSupported>Primitives</masterFunctionsSupported>
-      </modbusDataPointConfiguration>
-      <modbusAttributes>
-        <scalingFactor>
-          <multiplicator>1</multiplicator>
-          <powerof10>-1</powerof10>
-        </scalingFactor>
-      </modbusAttributes>
-    </dataPointListElement>
-  </functionalProfileListElement>
-  <functionalProfileListElement>
-    <functionalProfile profileName="RoomTempCtrl_Z2">
-      <functionalProfileIdentification>
-        <specificationOwnerIdentification>0</specificationOwnerIdentification>
-        <functionalProfileCategory>HeatPumpControl</functionalProfileCategory>
-        <functionalProfileType>RoomTempCtrl</functionalProfileType>
-        <levelOfOperation>4</levelOfOperation>
-        <versionNumber>
-          <primaryVersionNumber>0</primaryVersionNumber>
-          <secondaryVersionNumber>1</secondaryVersionNumber>
-          <subReleaseVersionNumber>2</subReleaseVersionNumber>
-        </versionNumber>
-      </functionalProfileIdentification>
-      <alternativeNames>
-        <sLV1Name>RoomTempCtrl</sLV1Name>
-      </alternativeNames>
-      <legibleDescription>
-        <textElement>x</textElement>
-        <language>de</language>
-      </legibleDescription>
-    </functionalProfile>
-    <dataPointListElement>
-      <dataPoint datapointName="RoomZoneTempSetpt" presenceLevel="R" dataDirection="RW" unit="DEGREES_CELSIUS">
-        <dataType>
-          <float64/>
-        </dataType>
-        <alternativeNames>
-          <sLV1Name>RoomZoneTemp</sLV1Name>
-        </alternativeNames>
-        <legibleDescription>
-          <textElement>Aktuelle Ist-Temperatur des 1. Raumes oder Mittelwert der Bezugsräume für die Begrenzung der Reduktions- oder Anhebungsmassnahmen</textElement>
-          <language>de</language>
-        </legibleDescription>
-      </dataPoint>
-      <modbusDataPointConfiguration>
-        <modbusDataType>
-          <int16/>
-        </modbusDataType>
-        <modbusFirstRegisterReference registerType="HoldRegister" addr="113" bitRank="0"/>
-        <numberOfRegisters>1</numberOfRegisters>
-        <masterFunctionsSupported>Primitives</masterFunctionsSupported>
-      </modbusDataPointConfiguration>
-      <modbusAttributes>
-        <scalingFactor>
-          <multiplicator>1</multiplicator>
-          <powerof10>-1</powerof10>
-        </scalingFactor>
-      </modbusAttributes>
-    </dataPointListElement>
-  </functionalProfileListElement>
-  <functionalProfileListElement>
-    <functionalProfile profileName="EnergyMonitor">
-      <functionalProfileIdentification>
-        <specificationOwnerIdentification>0</specificationOwnerIdentification>
-        <functionalProfileCategory>HeatPumpControl</functionalProfileCategory>
-        <functionalProfileType>EnergyMonitor</functionalProfileType>
-        <levelOfOperation>4</levelOfOperation>
-        <versionNumber>
-          <primaryVersionNumber>0</primaryVersionNumber>
-          <secondaryVersionNumber>1</secondaryVersionNumber>
-          <subReleaseVersionNumber>2</subReleaseVersionNumber>
-        </versionNumber>
-      </functionalProfileIdentification>
-      <alternativeNames>
-        <sLV1Name>Monitoring</sLV1Name>
-      </alternativeNames>
-      <legibleDescription>
-        <textElement>Das Profil definiert den Monitoriungbaustein zur dynamischen Ansteuerung von Wärmepumpen über eine variable Beeinflussung der Sollwerte nach SGr Level 4. </textElement>
-        <language>de</language>
-      </legibleDescription>
-    </functionalProfile>
-    <dataPointListElement>
-      <dataPoint datapointName=" ActiveEnergyACtot" presenceLevel="R" dataDirection="R" unit="KILOWATT_HOURS">
-        <dataType>
-          <float64/>
-        </dataType>
-        <alternativeNames>
-          <sLV1Name> ActiveEnergyACtot</sLV1Name>
-        </alternativeNames>
-        <legibleDescription>
-          <textElement>Summe der aufgenommenen elektrischen Energie des Verdichters inkl. Hilfsaggregate total.</textElement>
-          <language>de</language>
-        </legibleDescription>
-      </dataPoint>
-      <modbusDataPointConfiguration>
-        <modbusDataType>
-          <int32U/>
-        </modbusDataType>
-        <modbusFirstRegisterReference registerType="InputRegister" addr="68" bitRank="0"/>
-        <numberOfRegisters>2</numberOfRegisters>
-        <masterFunctionsSupported>Primitives</masterFunctionsSupported>
-      </modbusDataPointConfiguration>
-      <modbusAttributes>
-        <scalingFactor>
-          <multiplicator>1</multiplicator>
-          <powerof10>0</powerof10>
-        </scalingFactor>
-      </modbusAttributes>
-    </dataPointListElement>
-    <dataPointListElement>
-      <dataPoint datapointName=" ActiveEnergyACheat" presenceLevel="R" dataDirection="R" unit="KILOWATT_HOURS">
-        <dataType>
-          <float64/>
-        </dataType>
-        <alternativeNames>
-          <sLV1Name>ActiveEnergyACheat</sLV1Name>
-        </alternativeNames>
-        <legibleDescription>
-          <textElement>Summe der aufgenommenen elektrischen Energie des Verdichters für das Heizen.</textElement>
-          <language>de</language>
-        </legibleDescription>
-      </dataPoint>
-      <modbusDataPointConfiguration>
-        <modbusDataType>
-          <int32U/>
-        </modbusDataType>
-        <modbusFirstRegisterReference registerType="InputRegister" addr="62" bitRank="0"/>
-        <numberOfRegisters>2</numberOfRegisters>
-        <masterFunctionsSupported>Primitives</masterFunctionsSupported>
-      </modbusDataPointConfiguration>
-      <modbusAttributes>
-        <scalingFactor>
-          <multiplicator>1</multiplicator>
-          <powerof10>0</powerof10>
-        </scalingFactor>
-      </modbusAttributes>
-    </dataPointListElement>
-    <dataPointListElement>
-      <dataPoint datapointName="ThermalEnergyDomWater" presenceLevel="R" dataDirection="R" unit="KILOWATT_HOURS">
-        <dataType>
-          <float64/>
-        </dataType>
-        <alternativeNames>
-          <sLV1Name>ThermalEnergyDomWater</sLV1Name>
-        </alternativeNames>
-        <legibleDescription>
-          <textElement>Summe der aufgenommenen elektrischen Energie des Verdichters für die Brauchwarmwasser-Erwärmung.</textElement>
-          <language>de</language>
-        </legibleDescription>
-      </dataPoint>
-      <modbusDataPointConfiguration>
-        <modbusDataType>
-          <int32U/>
-        </modbusDataType>
-        <modbusFirstRegisterReference registerType="InputRegister" addr="62" bitRank="0"/>
-        <numberOfRegisters>2</numberOfRegisters>
-        <masterFunctionsSupported>Primitives</masterFunctionsSupported>
-      </modbusDataPointConfiguration>
-      <modbusAttributes>
-        <scalingFactor>
-          <multiplicator>1</multiplicator>
-          <powerof10>0</powerof10>
-        </scalingFactor>
-      </modbusAttributes>
-    </dataPointListElement>
-    <dataPointListElement>
-      <dataPoint datapointName="ThermalEnergyTot" presenceLevel="R" dataDirection="R" unit="KILOWATT_HOURS">
-        <dataType>
-          <float64/>
-        </dataType>
-        <alternativeNames>
-          <sLV1Name>ThermalEnergyTot</sLV1Name>
-        </alternativeNames>
-        <legibleDescription>
-          <textElement>Summe der abgegebenen thermischen Energie total.</textElement>
-          <language>de</language>
-        </legibleDescription>
-      </dataPoint>
-      <modbusDataPointConfiguration>
-        <modbusDataType>
-          <int32U/>
-        </modbusDataType>
-        <modbusFirstRegisterReference registerType="InputRegister" addr="72" bitRank="0"/>
-        <numberOfRegisters>2</numberOfRegisters>
-        <masterFunctionsSupported>Primitives</masterFunctionsSupported>
-      </modbusDataPointConfiguration>
-      <modbusAttributes>
-        <scalingFactor>
-          <multiplicator>1</multiplicator>
-          <powerof10>0</powerof10>
-        </scalingFactor>
-      </modbusAttributes>
-    </dataPointListElement>
-    <dataPointListElement>
-      <dataPoint datapointName="ThermalEnergyHeat" presenceLevel="R" dataDirection="R" unit="KILOWATT_HOURS">
-        <dataType>
-          <float64/>
-        </dataType>
-        <alternativeNames>
-          <sLV1Name>ThermalEnergyHeat</sLV1Name>
-        </alternativeNames>
-        <legibleDescription>
-          <textElement>Summe der abgegebenen thermischen Energie für das Heizen.</textElement>
-          <language>de</language>
-        </legibleDescription>
-      </dataPoint>
-      <modbusDataPointConfiguration>
-        <modbusDataType>
-          <int32U/>
-        </modbusDataType>
-        <modbusFirstRegisterReference registerType="InputRegister" addr="60" bitRank="0"/>
-        <numberOfRegisters>2</numberOfRegisters>
-        <masterFunctionsSupported>Primitives</masterFunctionsSupported>
-      </modbusDataPointConfiguration>
-      <modbusAttributes>
-        <scalingFactor>
-          <multiplicator>1</multiplicator>
-          <powerof10>-3</powerof10>
-        </scalingFactor>
-      </modbusAttributes>
-    </dataPointListElement>
-    <dataPointListElement>
-      <dataPoint datapointName="ThermalEnergyDomWater" presenceLevel="R" dataDirection="R" unit="KILOWATT_HOURS">
-        <dataType>
-          <float64/>
-        </dataType>
-        <alternativeNames>
-          <sLV1Name>ThermalEnergyDomWater</sLV1Name>
-        </alternativeNames>
-        <legibleDescription>
-          <textElement>Summe der abgegebenen thermischen Energie für die Brauchwarmwasser-Erwärmung.</textElement>
-          <language>de</language>
-        </legibleDescription>
-      </dataPoint>
-      <modbusDataPointConfiguration>
-        <modbusDataType>
-          <int32U/>
-        </modbusDataType>
-        <modbusFirstRegisterReference registerType="InputRegister" addr="62" bitRank="0"/>
-        <numberOfRegisters>2</numberOfRegisters>
-        <masterFunctionsSupported>Primitives</masterFunctionsSupported>
-      </modbusDataPointConfiguration>
-      <modbusAttributes>
-        <scalingFactor>
-          <multiplicator>1</multiplicator>
-          <powerof10>0</powerof10>
-        </scalingFactor>
-      </modbusAttributes>
-    </dataPointListElement>
-    <dataPointListElement>
-      <dataPoint datapointName="ActivePowerACtot" presenceLevel="R" dataDirection="R" unit="WATTS">
-        <dataType>
-          <float64/>
-        </dataType>
-        <alternativeNames>
-          <sLV1Name>ActivePowerACtot</sLV1Name>
-        </alternativeNames>
-        <legibleDescription>
-          <textElement>Aktuell aufgenommene elektrische Leistung des Verdichters.</textElement>
-          <language>de</language>
-        </legibleDescription>
-      </dataPoint>
-      <modbusDataPointConfiguration>
-        <modbusDataType>
-          <int32U/>
-        </modbusDataType>
-        <modbusFirstRegisterReference registerType="InputRegister" addr="70" bitRank="0"/>
-        <numberOfRegisters>2</numberOfRegisters>
-        <masterFunctionsSupported>Primitives</masterFunctionsSupported>
-      </modbusDataPointConfiguration>
-      <modbusAttributes>
-        <scalingFactor>
-          <multiplicator>1</multiplicator>
-          <powerof10>0</powerof10>
-        </scalingFactor>
-      </modbusAttributes>
-    </dataPointListElement>
-    <dataPointListElement>
-      <dataPoint datapointName="ThermalPower" presenceLevel="R" dataDirection="R" unit="KILOWATTS">
-        <dataType>
-          <float64/>
-        </dataType>
-        <alternativeNames>
-          <sLV1Name>ThermalPower</sLV1Name>
-        </alternativeNames>
-        <legibleDescription>
-          <textElement>
-            Thermisch Leistung total
-          </textElement>
-          <language>de</language>
-        </legibleDescription>
-        <legibleDescription>
-          <textElement>
-            Total thermal power
-          </textElement>
-          <language>en</language>
-        </legibleDescription>
-      </dataPoint>
-      <modbusDataPointConfiguration>
-        <modbusDataType>
-          <int32U/>
-        </modbusDataType>
-        <modbusFirstRegisterReference registerType="InputRegister" addr="68" bitRank="0"/>
-        <numberOfRegisters>2</numberOfRegisters>
-        <masterFunctionsSupported>Primitives</masterFunctionsSupported>
-      </modbusDataPointConfiguration>
-      <modbusAttributes>
-        <scalingFactor>
-          <multiplicator>1</multiplicator>
-          <powerof10>0</powerof10>
-        </scalingFactor>
-      </modbusAttributes>
-    </dataPointListElement>
-    <dataPointListElement>
-      <dataPoint datapointName="RuntimeHeating" presenceLevel="R" dataDirection="R" unit="HOURS">
-        <dataType>
-          <float64/>
-        </dataType>
-        <alternativeNames>
-          <sLV1Name>RuntimeHeating</sLV1Name>
-        </alternativeNames>
-        <legibleDescription>
-          <textElement>Summe der Laufzeit in der Heizphase.</textElement>
-          <language>de</language>
-        </legibleDescription>
-      </dataPoint>
-      <modbusDataPointConfiguration>
-        <modbusDataType>
-          <int32U/>
-        </modbusDataType>
-        <modbusFirstRegisterReference registerType="InputRegister" addr="68" bitRank="0"/>
-        <numberOfRegisters>1</numberOfRegisters>
-        <masterFunctionsSupported>Primitives</masterFunctionsSupported>
-      </modbusDataPointConfiguration>
-      <modbusAttributes>
-        <scalingFactor>
-          <multiplicator>1</multiplicator>
-          <powerof10>0</powerof10>
-        </scalingFactor>
-      </modbusAttributes>
-    </dataPointListElement>
-    <dataPointListElement>
-      <dataPoint datapointName="RuntimeDomHotWater " presenceLevel="R" dataDirection="R" unit="HOURS">
-        <dataType>
-          <float64/>
-        </dataType>
-        <alternativeNames>
-          <sLV1Name>RuntimeDomHotWater </sLV1Name>
-        </alternativeNames>
-        <legibleDescription>
-          <textElement>Summe der Laufzeit in der Brauchwarmwasser-Phase.</textElement>
-          <language>de</language>
-        </legibleDescription>
-      </dataPoint>
-      <modbusDataPointConfiguration>
-        <modbusDataType>
-          <int32U/>
-        </modbusDataType>
-        <modbusFirstRegisterReference registerType="HoldRegister" addr="42" bitRank="0"/>
-        <numberOfRegisters>2</numberOfRegisters>
-        <masterFunctionsSupported>Primitives</masterFunctionsSupported>
-      </modbusDataPointConfiguration>
-      <modbusAttributes>
-        <scalingFactor>
-          <multiplicator>1</multiplicator>
-          <powerof10>0</powerof10>
-        </scalingFactor>
-      </modbusAttributes>
-    </dataPointListElement>
-  </functionalProfileListElement>
+      </functionalProfile>
+      <dataPointList>
+        <dataPointListElement>
+          <dataPoint datapointName=" ActiveEnergyACtot" presenceLevel="R" dataDirection="R" unit="KILOWATT_HOURS">
+            <dataType>
+              <float64/>
+            </dataType>
+            <alternativeNames>
+              <sLV1Name> ActiveEnergyACtot</sLV1Name>
+            </alternativeNames>
+            <legibleDescription>
+              <textElement>Summe der aufgenommenen elektrischen Energie des Verdichters inkl. Hilfsaggregate total.</textElement>
+              <language>de</language>
+            </legibleDescription>
+          </dataPoint>
+          <modbusDataPointConfiguration>
+            <modbusDataType>
+              <int32U/>
+            </modbusDataType>
+            <modbusFirstRegisterReference registerType="InputRegister" addr="68" bitRank="0"/>
+            <numberOfRegisters>2</numberOfRegisters>
+            <masterFunctionsSupported>Primitives</masterFunctionsSupported>
+          </modbusDataPointConfiguration>
+          <modbusAttributes>
+            <scalingFactor>
+              <multiplicator>1</multiplicator>
+              <powerof10>0</powerof10>
+            </scalingFactor>
+          </modbusAttributes>
+        </dataPointListElement>
+        <dataPointListElement>
+          <dataPoint datapointName=" ActiveEnergyACheat" presenceLevel="R" dataDirection="R" unit="KILOWATT_HOURS">
+            <dataType>
+              <float64/>
+            </dataType>
+            <alternativeNames>
+              <sLV1Name>ActiveEnergyACheat</sLV1Name>
+            </alternativeNames>
+            <legibleDescription>
+              <textElement>Summe der aufgenommenen elektrischen Energie des Verdichters für das Heizen.</textElement>
+              <language>de</language>
+            </legibleDescription>
+          </dataPoint>
+          <modbusDataPointConfiguration>
+            <modbusDataType>
+              <int32U/>
+            </modbusDataType>
+            <modbusFirstRegisterReference registerType="InputRegister" addr="62" bitRank="0"/>
+            <numberOfRegisters>2</numberOfRegisters>
+            <masterFunctionsSupported>Primitives</masterFunctionsSupported>
+          </modbusDataPointConfiguration>
+          <modbusAttributes>
+            <scalingFactor>
+              <multiplicator>1</multiplicator>
+              <powerof10>0</powerof10>
+            </scalingFactor>
+          </modbusAttributes>
+        </dataPointListElement>
+        <dataPointListElement>
+          <dataPoint datapointName="ThermalEnergyDomWater" presenceLevel="R" dataDirection="R" unit="KILOWATT_HOURS">
+            <dataType>
+              <float64/>
+            </dataType>
+            <alternativeNames>
+              <sLV1Name>ThermalEnergyDomWater</sLV1Name>
+            </alternativeNames>
+            <legibleDescription>
+              <textElement>Summe der aufgenommenen elektrischen Energie des Verdichters für die Brauchwarmwasser-Erwärmung.</textElement>
+              <language>de</language>
+            </legibleDescription>
+          </dataPoint>
+          <modbusDataPointConfiguration>
+            <modbusDataType>
+              <int32U/>
+            </modbusDataType>
+            <modbusFirstRegisterReference registerType="InputRegister" addr="62" bitRank="0"/>
+            <numberOfRegisters>2</numberOfRegisters>
+            <masterFunctionsSupported>Primitives</masterFunctionsSupported>
+          </modbusDataPointConfiguration>
+          <modbusAttributes>
+            <scalingFactor>
+              <multiplicator>1</multiplicator>
+              <powerof10>0</powerof10>
+            </scalingFactor>
+          </modbusAttributes>
+        </dataPointListElement>
+        <dataPointListElement>
+          <dataPoint datapointName="ThermalEnergyTot" presenceLevel="R" dataDirection="R" unit="KILOWATT_HOURS">
+            <dataType>
+              <float64/>
+            </dataType>
+            <alternativeNames>
+              <sLV1Name>ThermalEnergyTot</sLV1Name>
+            </alternativeNames>
+            <legibleDescription>
+              <textElement>Summe der abgegebenen thermischen Energie total.</textElement>
+              <language>de</language>
+            </legibleDescription>
+          </dataPoint>
+          <modbusDataPointConfiguration>
+            <modbusDataType>
+              <int32U/>
+            </modbusDataType>
+            <modbusFirstRegisterReference registerType="InputRegister" addr="72" bitRank="0"/>
+            <numberOfRegisters>2</numberOfRegisters>
+            <masterFunctionsSupported>Primitives</masterFunctionsSupported>
+          </modbusDataPointConfiguration>
+          <modbusAttributes>
+            <scalingFactor>
+              <multiplicator>1</multiplicator>
+              <powerof10>0</powerof10>
+            </scalingFactor>
+          </modbusAttributes>
+        </dataPointListElement>
+        <dataPointListElement>
+          <dataPoint datapointName="ThermalEnergyHeat" presenceLevel="R" dataDirection="R" unit="KILOWATT_HOURS">
+            <dataType>
+              <float64/>
+            </dataType>
+            <alternativeNames>
+              <sLV1Name>ThermalEnergyHeat</sLV1Name>
+            </alternativeNames>
+            <legibleDescription>
+              <textElement>Summe der abgegebenen thermischen Energie für das Heizen.</textElement>
+              <language>de</language>
+            </legibleDescription>
+          </dataPoint>
+          <modbusDataPointConfiguration>
+            <modbusDataType>
+              <int32U/>
+            </modbusDataType>
+            <modbusFirstRegisterReference registerType="InputRegister" addr="60" bitRank="0"/>
+            <numberOfRegisters>2</numberOfRegisters>
+            <masterFunctionsSupported>Primitives</masterFunctionsSupported>
+          </modbusDataPointConfiguration>
+          <modbusAttributes>
+            <scalingFactor>
+              <multiplicator>1</multiplicator>
+              <powerof10>-3</powerof10>
+            </scalingFactor>
+          </modbusAttributes>
+        </dataPointListElement>
+        <dataPointListElement>
+          <dataPoint datapointName="ThermalEnergyDomWater" presenceLevel="R" dataDirection="R" unit="KILOWATT_HOURS">
+            <dataType>
+              <float64/>
+            </dataType>
+            <alternativeNames>
+              <sLV1Name>ThermalEnergyDomWater</sLV1Name>
+            </alternativeNames>
+            <legibleDescription>
+              <textElement>Summe der abgegebenen thermischen Energie für die Brauchwarmwasser-Erwärmung.</textElement>
+              <language>de</language>
+            </legibleDescription>
+          </dataPoint>
+          <modbusDataPointConfiguration>
+            <modbusDataType>
+              <int32U/>
+            </modbusDataType>
+            <modbusFirstRegisterReference registerType="InputRegister" addr="62" bitRank="0"/>
+            <numberOfRegisters>2</numberOfRegisters>
+            <masterFunctionsSupported>Primitives</masterFunctionsSupported>
+          </modbusDataPointConfiguration>
+          <modbusAttributes>
+            <scalingFactor>
+              <multiplicator>1</multiplicator>
+              <powerof10>0</powerof10>
+            </scalingFactor>
+          </modbusAttributes>
+        </dataPointListElement>
+        <dataPointListElement>
+          <dataPoint datapointName="ActivePowerACtot" presenceLevel="R" dataDirection="R" unit="WATTS">
+            <dataType>
+              <float64/>
+            </dataType>
+            <alternativeNames>
+              <sLV1Name>ActivePowerACtot</sLV1Name>
+            </alternativeNames>
+            <legibleDescription>
+              <textElement>Aktuell aufgenommene elektrische Leistung des Verdichters.</textElement>
+              <language>de</language>
+            </legibleDescription>
+          </dataPoint>
+          <modbusDataPointConfiguration>
+            <modbusDataType>
+              <int32U/>
+            </modbusDataType>
+            <modbusFirstRegisterReference registerType="InputRegister" addr="70" bitRank="0"/>
+            <numberOfRegisters>2</numberOfRegisters>
+            <masterFunctionsSupported>Primitives</masterFunctionsSupported>
+          </modbusDataPointConfiguration>
+          <modbusAttributes>
+            <scalingFactor>
+              <multiplicator>1</multiplicator>
+              <powerof10>0</powerof10>
+            </scalingFactor>
+          </modbusAttributes>
+        </dataPointListElement>
+        <dataPointListElement>
+          <dataPoint datapointName="ThermalPower" presenceLevel="R" dataDirection="R" unit="KILOWATTS">
+            <dataType>
+              <float64/>
+            </dataType>
+            <alternativeNames>
+              <sLV1Name>ThermalPower</sLV1Name>
+            </alternativeNames>
+            <legibleDescription>
+              <textElement>
+                Thermisch Leistung total
+              </textElement>
+              <language>de</language>
+            </legibleDescription>
+            <legibleDescription>
+              <textElement>
+                Total thermal power
+              </textElement>
+              <language>en</language>
+            </legibleDescription>
+          </dataPoint>
+          <modbusDataPointConfiguration>
+            <modbusDataType>
+              <int32U/>
+            </modbusDataType>
+            <modbusFirstRegisterReference registerType="InputRegister" addr="68" bitRank="0"/>
+            <numberOfRegisters>2</numberOfRegisters>
+            <masterFunctionsSupported>Primitives</masterFunctionsSupported>
+          </modbusDataPointConfiguration>
+          <modbusAttributes>
+            <scalingFactor>
+              <multiplicator>1</multiplicator>
+              <powerof10>0</powerof10>
+            </scalingFactor>
+          </modbusAttributes>
+        </dataPointListElement>
+        <dataPointListElement>
+          <dataPoint datapointName="RuntimeHeating" presenceLevel="R" dataDirection="R" unit="HOURS">
+            <dataType>
+              <float64/>
+            </dataType>
+            <alternativeNames>
+              <sLV1Name>RuntimeHeating</sLV1Name>
+            </alternativeNames>
+            <legibleDescription>
+              <textElement>Summe der Laufzeit in der Heizphase.</textElement>
+              <language>de</language>
+            </legibleDescription>
+          </dataPoint>
+          <modbusDataPointConfiguration>
+            <modbusDataType>
+              <int32U/>
+            </modbusDataType>
+            <modbusFirstRegisterReference registerType="InputRegister" addr="68" bitRank="0"/>
+            <numberOfRegisters>1</numberOfRegisters>
+            <masterFunctionsSupported>Primitives</masterFunctionsSupported>
+          </modbusDataPointConfiguration>
+          <modbusAttributes>
+            <scalingFactor>
+              <multiplicator>1</multiplicator>
+              <powerof10>0</powerof10>
+            </scalingFactor>
+          </modbusAttributes>
+        </dataPointListElement>
+        <dataPointListElement>
+          <dataPoint datapointName="RuntimeDomHotWater " presenceLevel="R" dataDirection="R" unit="HOURS">
+            <dataType>
+              <float64/>
+            </dataType>
+            <alternativeNames>
+              <sLV1Name>RuntimeDomHotWater </sLV1Name>
+            </alternativeNames>
+            <legibleDescription>
+              <textElement>Summe der Laufzeit in der Brauchwarmwasser-Phase.</textElement>
+              <language>de</language>
+            </legibleDescription>
+          </dataPoint>
+          <modbusDataPointConfiguration>
+            <modbusDataType>
+              <int32U/>
+            </modbusDataType>
+            <modbusFirstRegisterReference registerType="HoldRegister" addr="42" bitRank="0"/>
+            <numberOfRegisters>2</numberOfRegisters>
+            <masterFunctionsSupported>Primitives</masterFunctionsSupported>
+          </modbusDataPointConfiguration>
+          <modbusAttributes>
+            <scalingFactor>
+              <multiplicator>1</multiplicator>
+              <powerof10>0</powerof10>
+            </scalingFactor>
+          </modbusAttributes>
+        </dataPointListElement>
+      </dataPointList>
+    </functionalProfileListElement>
+  </functionalProfileList>
 </ModbusDeviceFrame>

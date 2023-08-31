@@ -28,6 +28,14 @@
       </extension>
     </complexContent>
   </complexType>
+  <complexType name="ModbusDataPointList">
+    <annotation>
+      <documentation>List of data point type with Modbus attributes and data points</documentation>
+    </annotation>
+    <sequence>
+      <element maxOccurs="unbounded" minOccurs="1" name="dataPointListElement" type="sgr:ModbusDataPoint"></element>
+    </sequence>
+  </complexType>
   <complexType name="TimeSyncBlockNotification">
     <annotation>
       <documentation>Block cache description</documentation>
@@ -70,10 +78,20 @@
       <extension base="sgr:FunctionalProfileBase">
         <sequence>
           <element maxOccurs="1" minOccurs="0" name="modbusAttributes" type="sgr:ModbusAttributes"/>
-          <element maxOccurs="unbounded" minOccurs="1" name="dataPointListElement" type="sgr:ModbusDataPoint"/>
+          <element maxOccurs="1" minOccurs="1" name="dataPointList" type="sgr:ModbusDataPointList"/>
         </sequence>
       </extension>
     </complexContent>
+  </complexType>
+  <complexType name="ModbusFunctionalProfileList">
+    <annotation>
+      <documentation>
+        List of base functional profiles type with Modbus attributes and data points
+      </documentation>
+    </annotation>
+    <sequence>
+      <element maxOccurs="unbounded" minOccurs="1" name="functionalProfileListElement" type="sgr:ModbusFunctionalProfile"/>
+    </sequence>
   </complexType>
   <complexType name="ModbusDeviceFrame">
     <annotation>
@@ -85,7 +103,7 @@
         <sequence>
           <element maxOccurs="1" minOccurs="0" name="modbusAttributes" type="sgr:ModbusAttributes"/>
           <element maxOccurs="1" minOccurs="1" name="modbusInterfaceDescription" type="sgr:ModbusInterfaceDescription"/>
-          <element maxOccurs="unbounded" minOccurs="1" name="functionalProfileListElement" type="sgr:ModbusFunctionalProfile"/>
+          <element maxOccurs="1" minOccurs="1" name="functionalProfileList" type="sgr:ModbusFunctionalProfileList"/>
           <element maxOccurs="unbounded" minOccurs="0" name="timeSyncBlockNotification" type="sgr:TimeSyncBlockNotification">
             <annotation>
               <documentation> 
