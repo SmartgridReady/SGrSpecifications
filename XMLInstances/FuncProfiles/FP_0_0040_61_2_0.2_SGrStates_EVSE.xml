@@ -1,36 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="/xsl/SGr.xsl"?>
-<sgr:FunctionalProfileFrame xmlns:sgr="http://www.smartgridready.com/ns/V0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<FunctionalProfileFrame xmlns="http://www.smartgridready.com/ns/V0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/SGrIncluder.xsd">
-  <sgr:releaseNotes>
-    <sgr:state>Review</sgr:state>
-    <sgr:changelog>
-      <sgr:version>0.1.2</sgr:version>
-      <sgr:date>2021-08-23</sgr:date>
-      <sgr:author>IBT/cb</sgr:author>
-      <sgr:comment>Vorbereitung beta test</sgr:comment>
-    </sgr:changelog>
-    <sgr:changelog>
-      <sgr:version>0.2.2</sgr:version>
-      <sgr:date>2022-10-31</sgr:date>
-      <sgr:author>Ergo/sz</sgr:author>
-      <sgr:comment>Finalisierung Go-Live</sgr:comment>
-    </sgr:changelog>
-  </sgr:releaseNotes>
-  <sgr:functionalProfile>
-    <sgr:functionalProfileIdentification>
-      <sgr:specificationOwnerIdentification>0</sgr:specificationOwnerIdentification>
-      <sgr:functionalProfileCategory>EVSE</sgr:functionalProfileCategory>
-      <sgr:functionalProfileType>SGrStates_EVSE</sgr:functionalProfileType>
-      <sgr:levelOfOperation>2</sgr:levelOfOperation>
-      <sgr:versionNumber>
-        <sgr:primaryVersionNumber>0</sgr:primaryVersionNumber>
-        <sgr:secondaryVersionNumber>2</sgr:secondaryVersionNumber>
-        <sgr:subReleaseVersionNumber>2</sgr:subReleaseVersionNumber>
-      </sgr:versionNumber>
-    </sgr:functionalProfileIdentification>
-    <sgr:legibleDescription>
-      <sgr:textElement>
+  <releaseNotes>
+    <state>Review</state>
+    <changelog>
+      <version>0.1.2</version>
+      <date>2021-08-23</date>
+      <author>IBT/cb</author>
+      <comment>Vorbereitung beta test</comment>
+    </changelog>
+    <changelog>
+      <version>0.2.2</version>
+      <date>2022-10-31</date>
+      <author>Ergo/sz</author>
+      <comment>Finalisierung Go-Live</comment>
+    </changelog>
+  </releaseNotes>
+  <functionalProfile>
+    <functionalProfileIdentification>
+      <specificationOwnerIdentification>0</specificationOwnerIdentification>
+      <functionalProfileCategory>EVSE</functionalProfileCategory>
+      <functionalProfileType>SGrStates_EVSE</functionalProfileType>
+      <levelOfOperation>2</levelOfOperation>
+      <versionNumber>
+        <primaryVersionNumber>0</primaryVersionNumber>
+        <secondaryVersionNumber>2</secondaryVersionNumber>
+        <subReleaseVersionNumber>2</subReleaseVersionNumber>
+      </versionNumber>
+    </functionalProfileIdentification>
+    <legibleDescription>
+      <textElement>
         <![CDATA[	
           <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
           <p>Wallboxen (ElectricVehicleSupplyEquipment «EVSE») müssen über einen Regler verfügen, welcher vier Betriebszustände abdeckt:</p>
@@ -47,21 +47,21 @@
             <li>Geräte mit Modbus oder RestAPI setzen bevorzugt den Enum-basierten Datenpunkt um.</li>
           </ul>
         ]]>
-      </sgr:textElement>
-      <sgr:language>de</sgr:language>
-    </sgr:legibleDescription>
-  </sgr:functionalProfile>
-  <sgr:dataPointListElement>
-    <sgr:dataPoint datapointName="EVSE_StateLv2" presenceLevel="M" dataDirection="R" unit="NONE">
-      <sgr:dataType>
-        <sgr:enum>
-          <sgr:sgrEVSEStateLv2>EV_NORMAL</sgr:sgrEVSEStateLv2>
-        </sgr:enum>
-      </sgr:dataType>
-      <sgr:legibleDescription>
-        <sgr:textElement>Betriebszunstand</sgr:textElement>
-        <sgr:language>de</sgr:language>
-      </sgr:legibleDescription>
-    </sgr:dataPoint>
-  </sgr:dataPointListElement>
-</sgr:FunctionalProfileFrame>
+      </textElement>
+      <language>de</language>
+    </legibleDescription>
+  </functionalProfile>
+  <dataPointListElement>
+    <dataPoint datapointName="EVSE_StateLv2" presenceLevel="M" dataDirection="R" unit="NONE">
+      <dataType>
+        <enum>
+          <sgrEVSEStateLv2>EV_NORMAL</sgrEVSEStateLv2>
+        </enum>
+      </dataType>
+      <legibleDescription>
+        <textElement>Betriebszunstand</textElement>
+        <language>de</language>
+      </legibleDescription>
+    </dataPoint>
+  </dataPointListElement>
+</FunctionalProfileFrame>

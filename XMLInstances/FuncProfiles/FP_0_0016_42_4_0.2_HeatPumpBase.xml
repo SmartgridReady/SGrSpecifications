@@ -1,59 +1,59 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="/xsl/SGr.xsl"?>
-<sgr:FunctionalProfileFrame xmlns:sgr="http://www.smartgridready.com/ns/V0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<FunctionalProfileFrame xmlns="http://www.smartgridready.com/ns/V0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/SGrIncluder.xsd">
-  <sgr:releaseNotes>
-    <sgr:state>Review</sgr:state>
-    <sgr:remarks>
+  <releaseNotes>
+    <state>Review</state>
+    <remarks>
       This functional profile is in preliminary state. Before implementing external-interfaces or any other
       functionality, the detailed functionality must be verified with the battery manufacturer.
-    </sgr:remarks>
-    <sgr:changelog>
-      <sgr:version>0.1.1</sgr:version>
-      <sgr:date>2023-01-25</sgr:date>
-      <sgr:author>IBT/cb</sgr:author>
-      <sgr:comment>Vorbereitung Soft Start</sgr:comment>
-    </sgr:changelog>
-    <sgr:changelog>
-      <sgr:version>0.2.2</sgr:version>
-      <sgr:date>2022-10-31</sgr:date>
-      <sgr:author>Ergo/sz</sgr:author>
-      <sgr:comment>Finalisierung Go-Live</sgr:comment>
-    </sgr:changelog>
-  </sgr:releaseNotes>
-  <sgr:functionalProfile>
-    <sgr:functionalProfileIdentification>
-      <sgr:specificationOwnerIdentification>0</sgr:specificationOwnerIdentification>
-      <sgr:functionalProfileCategory>HeatPumpControl</sgr:functionalProfileCategory>
-      <sgr:functionalProfileType>HeatPumpBase</sgr:functionalProfileType>
-      <sgr:levelOfOperation>2m</sgr:levelOfOperation>
-      <sgr:versionNumber>
-        <sgr:primaryVersionNumber>0</sgr:primaryVersionNumber>
-        <sgr:secondaryVersionNumber>9</sgr:secondaryVersionNumber>
-        <sgr:subReleaseVersionNumber>1</sgr:subReleaseVersionNumber>
-      </sgr:versionNumber>
-    </sgr:functionalProfileIdentification>
-    <sgr:alternativeNames>
-      <sgr:sLV1Name>HeatPumpBase</sgr:sLV1Name>
-    </sgr:alternativeNames>
-    <sgr:legibleDescription>
-      <sgr:textElement>Das Profil definiert den Grundbaustein zur dynamischen Ansteuerung von Wärmepumpen über eine Betriebsmodus gestützt Beeinflussung der Sollwerte nach SGr Stufe 2. Der Betrieb der Wärmepumpe muss in sich sicher sein, unabhängig von den äusseren Vorgaben. Dieses Grundprofil definiert die Datenpunkte, welche zur Steuerung des Gerätes «Wärmepumpe» mit zusätzlichen Stufe 4 Funktionsprofilen grundsätzlich zur Verfügung gestellt werden. Sie stellen die Version einer typischen Einfamilienhauswärmepumpe mit Aussentemperaturfühler dar. Für die einzelnen Heizkreise, Warmwasser, Pufferspeicher und das Energie-Monitoring sowie eine Verdichterdrehzahl / Leistungsregelung können in weiteren Funktionsprofilen zur Verfügung gestellt werden.</sgr:textElement>
-      <sgr:language>de</sgr:language>
-    </sgr:legibleDescription>
-  </sgr:functionalProfile>
-  <sgr:dataPointListElement>
-    <sgr:dataPoint datapointName="HPOpModeCmd" presenceLevel="M" dataDirection="RW" unit="NONE">
-      <sgr:dataType>
-        <sgr:enum>
-          <sgr:sgrHPOpMode>WP_EMERG_OP</sgr:sgrHPOpMode>
-        </sgr:enum>
-      </sgr:dataType>
-      <sgr:alternativeNames>
-        <sgr:sLV1Name>HPOpModeCmd</sgr:sLV1Name>
-        <sgr:sHPbwpName>Betriebsmodus</sgr:sHPbwpName>
-      </sgr:alternativeNames>
-      <sgr:legibleDescription>
-        <sgr:textElement> 
+    </remarks>
+    <changelog>
+      <version>0.1.1</version>
+      <date>2023-01-25</date>
+      <author>IBT/cb</author>
+      <comment>Vorbereitung Soft Start</comment>
+    </changelog>
+    <changelog>
+      <version>0.2.2</version>
+      <date>2022-10-31</date>
+      <author>Ergo/sz</author>
+      <comment>Finalisierung Go-Live</comment>
+    </changelog>
+  </releaseNotes>
+  <functionalProfile>
+    <functionalProfileIdentification>
+      <specificationOwnerIdentification>0</specificationOwnerIdentification>
+      <functionalProfileCategory>HeatPumpControl</functionalProfileCategory>
+      <functionalProfileType>HeatPumpBase</functionalProfileType>
+      <levelOfOperation>2m</levelOfOperation>
+      <versionNumber>
+        <primaryVersionNumber>0</primaryVersionNumber>
+        <secondaryVersionNumber>9</secondaryVersionNumber>
+        <subReleaseVersionNumber>1</subReleaseVersionNumber>
+      </versionNumber>
+    </functionalProfileIdentification>
+    <alternativeNames>
+      <sLV1Name>HeatPumpBase</sLV1Name>
+    </alternativeNames>
+    <legibleDescription>
+      <textElement>Das Profil definiert den Grundbaustein zur dynamischen Ansteuerung von Wärmepumpen über eine Betriebsmodus gestützt Beeinflussung der Sollwerte nach SGr Stufe 2. Der Betrieb der Wärmepumpe muss in sich sicher sein, unabhängig von den äusseren Vorgaben. Dieses Grundprofil definiert die Datenpunkte, welche zur Steuerung des Gerätes «Wärmepumpe» mit zusätzlichen Stufe 4 Funktionsprofilen grundsätzlich zur Verfügung gestellt werden. Sie stellen die Version einer typischen Einfamilienhauswärmepumpe mit Aussentemperaturfühler dar. Für die einzelnen Heizkreise, Warmwasser, Pufferspeicher und das Energie-Monitoring sowie eine Verdichterdrehzahl / Leistungsregelung können in weiteren Funktionsprofilen zur Verfügung gestellt werden.</textElement>
+      <language>de</language>
+    </legibleDescription>
+  </functionalProfile>
+  <dataPointListElement>
+    <dataPoint datapointName="HPOpModeCmd" presenceLevel="M" dataDirection="RW" unit="NONE">
+      <dataType>
+        <enum>
+          <sgrHPOpMode>WP_EMERG_OP</sgrHPOpMode>
+        </enum>
+      </dataType>
+      <alternativeNames>
+        <sLV1Name>HPOpModeCmd</sLV1Name>
+        <sHPbwpName>Betriebsmodus</sHPbwpName>
+      </alternativeNames>
+      <legibleDescription>
+        <textElement> 
           <![CDATA[
             <p>Grund-Betriebsart der Wärmepumpe</pl>
             <ol>
@@ -67,24 +67,24 @@
               <li><strong>WP_COOL_PASSIVE_OP:</strong> Kuehlen passic</li>   
             </ol>
           ]]>					
-        </sgr:textElement>
-        <sgr:language>de</sgr:language>
-      </sgr:legibleDescription>
-    </sgr:dataPoint>
-  </sgr:dataPointListElement>
-  <sgr:dataPointListElement>
-    <sgr:dataPoint datapointName="HPOpState" presenceLevel="M" dataDirection="R" unit="NONE">
-      <sgr:dataType>
-        <sgr:enum2bitmapIndex>
-          <sgr:sgrHPOpstate>HP_PUMP_ON</sgr:sgrHPOpstate>
-        </sgr:enum2bitmapIndex>
-      </sgr:dataType>
-      <sgr:alternativeNames>
-        <sgr:sLV1Name>HPOpState</sgr:sLV1Name>
-        <sgr:sHPbwpName>Aktive Funktion</sgr:sHPbwpName>
-      </sgr:alternativeNames>
-      <sgr:legibleDescription>
-        <sgr:textElement>            
+        </textElement>
+        <language>de</language>
+      </legibleDescription>
+    </dataPoint>
+  </dataPointListElement>
+  <dataPointListElement>
+    <dataPoint datapointName="HPOpState" presenceLevel="M" dataDirection="R" unit="NONE">
+      <dataType>
+        <enum2bitmapIndex>
+          <sgrHPOpstate>HP_PUMP_ON</sgrHPOpstate>
+        </enum2bitmapIndex>
+      </dataType>
+      <alternativeNames>
+        <sLV1Name>HPOpState</sLV1Name>
+        <sHPbwpName>Aktive Funktion</sHPbwpName>
+      </alternativeNames>
+      <legibleDescription>
+        <textElement>            
           <![CDATA[	
             <p>Auslesen des aktuellen Status der Wärmepumpe</p>
             <ol>
@@ -96,86 +96,86 @@
               <li><strong>IN_DEFROST_MODE:</strong> Waermepumpe im Gefrierschutzmode</li>
             </ol>
           ]]>
-        </sgr:textElement>
-        <sgr:language>de</sgr:language>
-      </sgr:legibleDescription>
-    </sgr:dataPoint>
-  </sgr:dataPointListElement>
-  <sgr:dataPointListElement>
-    <sgr:dataPoint datapointName="ErrorNrSGr" presenceLevel="M" dataDirection="R" unit="NONE">
-      <sgr:dataType>
-        <sgr:boolean/>
-      </sgr:dataType>
-      <sgr:alternativeNames>
-        <sgr:sLV1Name>ErrorNrSGr</sgr:sLV1Name>
-      </sgr:alternativeNames>
-      <sgr:legibleDescription>
-        <sgr:textElement>FALSE oder 0 bedeuted keine Fehler</sgr:textElement>
-        <sgr:language>de</sgr:language>
-      </sgr:legibleDescription>
-    </sgr:dataPoint>
-  </sgr:dataPointListElement>
-  <sgr:dataPointListElement>
-    <sgr:dataPoint datapointName="OutsideAirTemp" presenceLevel="O" dataDirection="R" unit="DEGREES_CELSIUS">
-      <sgr:dataType>
-        <sgr:float64/>
-      </sgr:dataType>
-      <sgr:alternativeNames>
-        <sgr:sLV1Name>OutsideAirTemp</sgr:sLV1Name>
-        <sgr:sHPbwpName>Temperatur Außen</sgr:sHPbwpName>
-        <sgr:sEN17609Name>Outside Air Temperatur</sgr:sEN17609Name>
-      </sgr:alternativeNames>
-      <sgr:legibleDescription>
-        <sgr:textElement>Aktuelle Aussentemperatur (gemessen über Aussenfühler)</sgr:textElement>
-        <sgr:language>de</sgr:language>
-      </sgr:legibleDescription>
-    </sgr:dataPoint>
-  </sgr:dataPointListElement>
-  <sgr:dataPointListElement>
-    <sgr:dataPoint datapointName="SupplyWaterTemp" presenceLevel="M" dataDirection="R" unit="DEGREES_CELSIUS">
-      <sgr:dataType>
-        <sgr:float64/>
-      </sgr:dataType>
-      <sgr:alternativeNames>
-        <sgr:sLV1Name>SupplyWaterTemp</sgr:sLV1Name>
-        <sgr:sHPbwpName>Temperatur Vorlauf</sgr:sHPbwpName>
-        <sgr:sEN17609Name>Supply WaterTemperat</sgr:sEN17609Name>
-      </sgr:alternativeNames>
-      <sgr:legibleDescription>
-        <sgr:textElement>Auslesen der aktuellen Ist-Temperatur des Vorlaufs des Heizkreises.</sgr:textElement>
-        <sgr:language>de</sgr:language>
-      </sgr:legibleDescription>
-    </sgr:dataPoint>
-  </sgr:dataPointListElement>
-  <sgr:dataPointListElement>
-    <sgr:dataPoint datapointName="ReturnSupplyWaterTemp" presenceLevel="R" dataDirection="R" unit="DEGREES_CELSIUS">
-      <sgr:dataType>
-        <sgr:float64/>
-      </sgr:dataType>
-      <sgr:alternativeNames>
-        <sgr:sLV1Name>ReturnSupplyWaterTemp</sgr:sLV1Name>
-        <sgr:sHPbwpName>Temperatur Rücklauf</sgr:sHPbwpName>
-        <sgr:sEN17609Name>Return Water Temperature</sgr:sEN17609Name>
-      </sgr:alternativeNames>
-      <sgr:legibleDescription>
-        <sgr:textElement>Auslesen der aktuellen aktuellen-Temperatur des Rücklaufs.</sgr:textElement>
-        <sgr:language>de</sgr:language>
-      </sgr:legibleDescription>
-    </sgr:dataPoint>
-  </sgr:dataPointListElement>
-  <sgr:dataPointListElement>
-    <sgr:dataPoint datapointName="SourceTemp" presenceLevel="O" dataDirection="R" unit="DEGREES_CELSIUS">
-      <sgr:dataType>
-        <sgr:float64/>
-      </sgr:dataType>
-      <sgr:alternativeNames>
-        <sgr:sLV1Name>SourceTemp</sgr:sLV1Name>
-        <sgr:sHPbwpName>Temperatur Wärmequelleneintritt</sgr:sHPbwpName>
-      </sgr:alternativeNames>
-      <sgr:legibleDescription>
-        <sgr:textElement>Die Temperatur am Wärmequelleneintritt (Umgebungsluft, Wasser oder Erdsonde) erlaubt eine genauere Analyse der Energieprognose,  </sgr:textElement>
-        <sgr:language>de</sgr:language>
-      </sgr:legibleDescription>
-    </sgr:dataPoint>
-  </sgr:dataPointListElement>
-</sgr:FunctionalProfileFrame>
+        </textElement>
+        <language>de</language>
+      </legibleDescription>
+    </dataPoint>
+  </dataPointListElement>
+  <dataPointListElement>
+    <dataPoint datapointName="ErrorNrSGr" presenceLevel="M" dataDirection="R" unit="NONE">
+      <dataType>
+        <boolean/>
+      </dataType>
+      <alternativeNames>
+        <sLV1Name>ErrorNrSGr</sLV1Name>
+      </alternativeNames>
+      <legibleDescription>
+        <textElement>FALSE oder 0 bedeuted keine Fehler</textElement>
+        <language>de</language>
+      </legibleDescription>
+    </dataPoint>
+  </dataPointListElement>
+  <dataPointListElement>
+    <dataPoint datapointName="OutsideAirTemp" presenceLevel="O" dataDirection="R" unit="DEGREES_CELSIUS">
+      <dataType>
+        <float64/>
+      </dataType>
+      <alternativeNames>
+        <sLV1Name>OutsideAirTemp</sLV1Name>
+        <sHPbwpName>Temperatur Außen</sHPbwpName>
+        <sEN17609Name>Outside Air Temperatur</sEN17609Name>
+      </alternativeNames>
+      <legibleDescription>
+        <textElement>Aktuelle Aussentemperatur (gemessen über Aussenfühler)</textElement>
+        <language>de</language>
+      </legibleDescription>
+    </dataPoint>
+  </dataPointListElement>
+  <dataPointListElement>
+    <dataPoint datapointName="SupplyWaterTemp" presenceLevel="M" dataDirection="R" unit="DEGREES_CELSIUS">
+      <dataType>
+        <float64/>
+      </dataType>
+      <alternativeNames>
+        <sLV1Name>SupplyWaterTemp</sLV1Name>
+        <sHPbwpName>Temperatur Vorlauf</sHPbwpName>
+        <sEN17609Name>Supply WaterTemperat</sEN17609Name>
+      </alternativeNames>
+      <legibleDescription>
+        <textElement>Auslesen der aktuellen Ist-Temperatur des Vorlaufs des Heizkreises.</textElement>
+        <language>de</language>
+      </legibleDescription>
+    </dataPoint>
+  </dataPointListElement>
+  <dataPointListElement>
+    <dataPoint datapointName="ReturnSupplyWaterTemp" presenceLevel="R" dataDirection="R" unit="DEGREES_CELSIUS">
+      <dataType>
+        <float64/>
+      </dataType>
+      <alternativeNames>
+        <sLV1Name>ReturnSupplyWaterTemp</sLV1Name>
+        <sHPbwpName>Temperatur Rücklauf</sHPbwpName>
+        <sEN17609Name>Return Water Temperature</sEN17609Name>
+      </alternativeNames>
+      <legibleDescription>
+        <textElement>Auslesen der aktuellen aktuellen-Temperatur des Rücklaufs.</textElement>
+        <language>de</language>
+      </legibleDescription>
+    </dataPoint>
+  </dataPointListElement>
+  <dataPointListElement>
+    <dataPoint datapointName="SourceTemp" presenceLevel="O" dataDirection="R" unit="DEGREES_CELSIUS">
+      <dataType>
+        <float64/>
+      </dataType>
+      <alternativeNames>
+        <sLV1Name>SourceTemp</sLV1Name>
+        <sHPbwpName>Temperatur Wärmequelleneintritt</sHPbwpName>
+      </alternativeNames>
+      <legibleDescription>
+        <textElement>Die Temperatur am Wärmequelleneintritt (Umgebungsluft, Wasser oder Erdsonde) erlaubt eine genauere Analyse der Energieprognose,  </textElement>
+        <language>de</language>
+      </legibleDescription>
+    </dataPoint>
+  </dataPointListElement>
+</FunctionalProfileFrame>

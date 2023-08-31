@@ -1,43 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="/xsl/SGr.xsl"?>
-<sgr:FunctionalProfileFrame xmlns:sgr="http://www.smartgridready.com/ns/V0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<FunctionalProfileFrame xmlns="http://www.smartgridready.com/ns/V0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/SGrIncluder.xsd">
-  <sgr:releaseNotes>
-    <sgr:state>Review</sgr:state>
-    <sgr:remarks>
+  <releaseNotes>
+    <state>Review</state>
+    <remarks>
       This functional profile is in preliminary state. Before implementing external-interfaces or any other
       functionality, the detailed functionality must be verified with the battery manufacturer.
-    </sgr:remarks>
-    <sgr:changelog>
-      <sgr:version>0.1.1</sgr:version>
-      <sgr:date>2021-04-05</sgr:date>
-      <sgr:author>IBT/cb</sgr:author>
-      <sgr:comment>Vorbereitung beta test</sgr:comment>
-    </sgr:changelog>
-    <sgr:changelog>
-      <sgr:version>0.2.2</sgr:version>
-      <sgr:date>2022-10-31</sgr:date>
-      <sgr:author>Ergo/sz</sgr:author>
-      <sgr:comment>Finalisierung Go-Live</sgr:comment>
-    </sgr:changelog>
-  </sgr:releaseNotes>
-  <sgr:functionalProfile>
-    <sgr:functionalProfileIdentification>
-      <sgr:specificationOwnerIdentification>0</sgr:specificationOwnerIdentification>
-      <sgr:functionalProfileCategory>HeatPumpControl</sgr:functionalProfileCategory>
-      <sgr:functionalProfileType>PowerCtrl</sgr:functionalProfileType>
-      <sgr:levelOfOperation>m</sgr:levelOfOperation>
-      <sgr:versionNumber>
-        <sgr:primaryVersionNumber>0</sgr:primaryVersionNumber>
-        <sgr:secondaryVersionNumber>2</sgr:secondaryVersionNumber>
-        <sgr:subReleaseVersionNumber>2</sgr:subReleaseVersionNumber>
-      </sgr:versionNumber>
-    </sgr:functionalProfileIdentification>
-    <sgr:alternativeNames>
-      <sgr:sLV1Name>PowerCtrl</sgr:sLV1Name>
-    </sgr:alternativeNames>
-    <sgr:legibleDescription>
-      <sgr:textElement>
+    </remarks>
+    <changelog>
+      <version>0.1.1</version>
+      <date>2021-04-05</date>
+      <author>IBT/cb</author>
+      <comment>Vorbereitung beta test</comment>
+    </changelog>
+    <changelog>
+      <version>0.2.2</version>
+      <date>2022-10-31</date>
+      <author>Ergo/sz</author>
+      <comment>Finalisierung Go-Live</comment>
+    </changelog>
+  </releaseNotes>
+  <functionalProfile>
+    <functionalProfileIdentification>
+      <specificationOwnerIdentification>0</specificationOwnerIdentification>
+      <functionalProfileCategory>HeatPumpControl</functionalProfileCategory>
+      <functionalProfileType>PowerCtrl</functionalProfileType>
+      <levelOfOperation>m</levelOfOperation>
+      <versionNumber>
+        <primaryVersionNumber>0</primaryVersionNumber>
+        <secondaryVersionNumber>2</secondaryVersionNumber>
+        <subReleaseVersionNumber>2</subReleaseVersionNumber>
+      </versionNumber>
+    </functionalProfileIdentification>
+    <alternativeNames>
+      <sLV1Name>PowerCtrl</sLV1Name>
+    </alternativeNames>
+    <legibleDescription>
+      <textElement>
         Dieses Profil definiert die erweiterten Datenpunkte zum Grundprofil,
         welche zur direkten Steuerung der Drehzahl oder Leistung der Wärmepumpe zur
         Verfügung gestellt werden. Dieses Profil muss immer in Kombination mit dem
@@ -49,85 +49,85 @@
         fragt zuerst den erlaubten Bereich und die Betriebsart ab und passt die
         entsprechenden Wunschgrössen an. Die WP überwacht intern die vorgegebenen
         Wunschgrössen und korrigiert, wenn aus Sicherheitsgründen notwendig
-      </sgr:textElement>
-      <sgr:language>de</sgr:language>
-    </sgr:legibleDescription>
-  </sgr:functionalProfile>
-  <sgr:dataPointListElement>
-    <sgr:dataPoint datapointName="SpeedCtrlSetpt" presenceLevel="O" dataDirection="RW" unit="PERCENT">
-      <sgr:dataType>
-        <sgr:float64/>
-      </sgr:dataType>
-      <sgr:alternativeNames>
-        <sgr:sLV1Name>SpeedCtrlSetpt</sgr:sLV1Name>
-      </sgr:alternativeNames>
-      <sgr:legibleDescription>
-        <sgr:textElement>
+      </textElement>
+      <language>de</language>
+    </legibleDescription>
+  </functionalProfile>
+  <dataPointListElement>
+    <dataPoint datapointName="SpeedCtrlSetpt" presenceLevel="O" dataDirection="RW" unit="PERCENT">
+      <dataType>
+        <float64/>
+      </dataType>
+      <alternativeNames>
+        <sLV1Name>SpeedCtrlSetpt</sLV1Name>
+      </alternativeNames>
+      <legibleDescription>
+        <textElement>
           Wunschvorgabe für die Verdichter-Drehzahl in Prozent (0% = aus,
           100% = maximale Drehzahl). Erlaubter Bereich und Wirkung wird durch Attribute
           näher beschrieben.
-        </sgr:textElement>
-        <sgr:language>de</sgr:language>
-      </sgr:legibleDescription>
-    </sgr:dataPoint>
-    <sgr:genericAttributes>
-      <sgr:maxVal>0.0</sgr:maxVal>
-      <sgr:minVal>100.0</sgr:minVal>
-    </sgr:genericAttributes>
-  </sgr:dataPointListElement>
-  <sgr:dataPointListElement>
-    <sgr:dataPoint datapointName="ActSpeed" presenceLevel="O" dataDirection="R" unit="PERCENT">
-      <sgr:dataType>
-        <sgr:float64/>
-      </sgr:dataType>
-      <sgr:alternativeNames>
-        <sgr:sLV1Name>ActSpeed</sgr:sLV1Name>
-      </sgr:alternativeNames>
-      <sgr:legibleDescription>
-        <sgr:textElement>Effektive Drehzahl des Verdichters in Prozent</sgr:textElement>
-        <sgr:language>de</sgr:language>
-      </sgr:legibleDescription>
-    </sgr:dataPoint>
-  </sgr:dataPointListElement>
-  <sgr:dataPointListElement>
-    <sgr:dataPoint datapointName="PowerCtrlStpt" presenceLevel="R" dataDirection="RW" unit="KILOWATTS">
-      <sgr:dataType>
-        <sgr:float64/>
-      </sgr:dataType>
-      <sgr:alternativeNames>
-        <sgr:sLV1Name>PowerCtrlStpt</sgr:sLV1Name>
-        <sgr:sHPbwpName>Soll-Aufnahmeleistung</sgr:sHPbwpName>
-      </sgr:alternativeNames>
-      <sgr:legibleDescription>
-        <sgr:textElement>
+        </textElement>
+        <language>de</language>
+      </legibleDescription>
+    </dataPoint>
+    <genericAttributes>
+      <maxVal>0.0</maxVal>
+      <minVal>100.0</minVal>
+    </genericAttributes>
+  </dataPointListElement>
+  <dataPointListElement>
+    <dataPoint datapointName="ActSpeed" presenceLevel="O" dataDirection="R" unit="PERCENT">
+      <dataType>
+        <float64/>
+      </dataType>
+      <alternativeNames>
+        <sLV1Name>ActSpeed</sLV1Name>
+      </alternativeNames>
+      <legibleDescription>
+        <textElement>Effektive Drehzahl des Verdichters in Prozent</textElement>
+        <language>de</language>
+      </legibleDescription>
+    </dataPoint>
+  </dataPointListElement>
+  <dataPointListElement>
+    <dataPoint datapointName="PowerCtrlStpt" presenceLevel="R" dataDirection="RW" unit="KILOWATTS">
+      <dataType>
+        <float64/>
+      </dataType>
+      <alternativeNames>
+        <sLV1Name>PowerCtrlStpt</sLV1Name>
+        <sHPbwpName>Soll-Aufnahmeleistung</sHPbwpName>
+      </alternativeNames>
+      <legibleDescription>
+        <textElement>
           Wunschvorgabe für die elektrische Aufnahmeleistung des Verdichters
           in Kilowatt (kW). Erlaubter Bereich und Wirkung wird durch Attribute näher beschrieben.
-        </sgr:textElement>
-        <sgr:language>de</sgr:language>
-      </sgr:legibleDescription>
-    </sgr:dataPoint>
-    <sgr:genericAttributes>
-      <sgr:minVal>0.0</sgr:minVal>
-      <sgr:maxVal>0.0</sgr:maxVal>
-    </sgr:genericAttributes>
-  </sgr:dataPointListElement>
-  <sgr:dataPointListElement>
-    <sgr:dataPoint datapointName="ActPowerACtot" presenceLevel="O" dataDirection="R" unit="KILOWATTS">
-      <sgr:dataType>
-        <sgr:float64/>
-      </sgr:dataType>
-      <sgr:alternativeNames>
-        <sgr:sLV1Name>ActPowerACtot</sgr:sLV1Name>
-        <sgr:sHPbwpName>Wärmeleistung</sgr:sHPbwpName>
-      </sgr:alternativeNames>
-      <sgr:legibleDescription>
-        <sgr:textElement>
+        </textElement>
+        <language>de</language>
+      </legibleDescription>
+    </dataPoint>
+    <genericAttributes>
+      <minVal>0.0</minVal>
+      <maxVal>0.0</maxVal>
+    </genericAttributes>
+  </dataPointListElement>
+  <dataPointListElement>
+    <dataPoint datapointName="ActPowerACtot" presenceLevel="O" dataDirection="R" unit="KILOWATTS">
+      <dataType>
+        <float64/>
+      </dataType>
+      <alternativeNames>
+        <sLV1Name>ActPowerACtot</sLV1Name>
+        <sHPbwpName>Wärmeleistung</sHPbwpName>
+      </alternativeNames>
+      <legibleDescription>
+        <textElement>
           Effektive elektrische Aufnahmeleistung des Verdichters in Kilowatt
           (kW). Kann von Soll-Leistung abweichen aufgrund von Lebensdauerbeschränkungen,
           Betriebsart, usw.
-        </sgr:textElement>
-        <sgr:language>de</sgr:language>
-      </sgr:legibleDescription>
-    </sgr:dataPoint>
-  </sgr:dataPointListElement>
-</sgr:FunctionalProfileFrame>
+        </textElement>
+        <language>de</language>
+      </legibleDescription>
+    </dataPoint>
+  </dataPointListElement>
+</FunctionalProfileFrame>
