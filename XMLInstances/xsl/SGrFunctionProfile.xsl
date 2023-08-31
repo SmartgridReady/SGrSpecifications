@@ -3,7 +3,7 @@
 
 <!--
     Contains the style sheets for the generic functional profile, including
-    - sgr:fpNameList
+    - sgr:alternativeNames
 -->
 
     <xsl:import href="SGrDeviceTypeModbus.xsl" />
@@ -32,11 +32,10 @@
                 <xsl:apply-templates select="sgr:functionalProfile" />
 
                 <!-- Generic Attributes -->
-                <xsl:apply-templates select="sgr:genAttribute" />
+                <xsl:apply-templates select="sgr:genericAttributes" />
 
                 <!-- Modbus and Rest Attributes -->
-                <xsl:apply-templates select="sgr:modbusAttr" />
-                <xsl:apply-templates select="sgr:restApiAttribute" />
+                <xsl:apply-templates select="sgr:modbusAttributes" />
             </table>
 
             <!-- Data Points -->
@@ -69,7 +68,7 @@
         <tr>
             <td>Profil-ID</td>
             <td>
-                <xsl:apply-templates select="sgr:profileNumber">
+                <xsl:apply-templates select="sgr:functionalProfileIdentification">
                     <xsl:with-param name="separator" select="' - '" />
                 </xsl:apply-templates>
             </td>
@@ -77,13 +76,13 @@
         <tr>
             <td>Level</td>
             <td>
-                <xsl:value-of select="sgr:profileNumber/sgr:levelOfOperation" />
+                <xsl:value-of select="sgr:functionalProfileIdentification/sgr:levelOfOperation" />
             </td>
         </tr>
         <tr>
             <td>Version</td>
             <td>
-                <xsl:apply-templates select="sgr:profileNumber/sgr:versionNumber" />
+                <xsl:apply-templates select="sgr:functionalProfileIdentification/sgr:versionNumber" />
             </td>
         </tr>
 
@@ -91,39 +90,39 @@
             <td class="noborder">&#160;</td>
         </tr>
 
-        <!-- fpNameList -->
-        <xsl:apply-templates select="sgr:fpNameList" />
+        <!-- alternativeNames -->
+        <xsl:apply-templates select="sgr:alternativeNames" />
 
         <!-- legibleDescription (4x opt) -->
         <xsl:apply-templates select="sgr:legibleDescription" />
 
-        <!-- fpPrgDesc (4x opt)-->
-        <xsl:apply-templates select="sgr:fpPrgDesc" />
+        <!-- programmerHints (4x opt)-->
+        <xsl:apply-templates select="sgr:programmerHints" />
     </xsl:template>
 
-    <!-- NameList -->
-    <xsl:template match="sgr:fpNameList">
-        <xsl:call-template name="NameList" />
+    <!-- AlternativeNameList -->
+    <xsl:template match="sgr:alternativeNames">
+        <xsl:call-template name="AlternativeNameList" />
     </xsl:template>
 
-    <!-- LegibleDocumentationType -->
+    <!-- LegibleDescription -->
     <xsl:template match="sgr:legibleDescription">
         <tr>
             <xsl:attribute name="lang">
                 <xsl:value-of select="sgr:language" />
             </xsl:attribute>
             <td colspan="2">
-                <xsl:call-template name="LegibleDocumentationType" />
+                <xsl:call-template name="LegibleDescription" />
             </td>
         </tr>
     </xsl:template>
-    <xsl:template match="sgr:fpPrgDesc">
+    <xsl:template match="sgr:programmerHints">
         <tr>
             <xsl:attribute name="lang">
                 <xsl:value-of select="sgr:language" />
             </xsl:attribute>
             <td colspan="2">
-                <xsl:call-template name="LegibleDocumentationType" />
+                <xsl:call-template name="LegibleDescription" />
             </td>
         </tr>
     </xsl:template>

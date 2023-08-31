@@ -36,7 +36,7 @@ The release note section contains meta data that descibe history and current sta
 | Manufacturer     | Manufacturer |
 | specOwnerId      | Owner of the declaration (normally identical to manufacturer, but different for 3rd party declarations) |
 | Type             | local or cloud device |
-| DeviceKind       | Device Category |
+| DeviceCategory       | Device Category |
 | SoftwareRevision | Software revision of device |
 
 
@@ -44,12 +44,12 @@ The release note section contains meta data that descibe history and current sta
 
 | Element | Description |
 | ------- | ----------- |
-| levelOfOperation | levelOfOperation defines a controls complexity  (see [levelOfOperation.md](levelOfOperation.md) ), and is defined by the highest level of the devices functional profile |
+| levelOfOperation | levelOfOperation defines a controls complexity  (see [LevelOfOperation.md](LevelOfOperation.md) ), and is defined by the highest level of the devices functional profile |
 
 ### Descriptions
 | Element     | Description |
 |-------------|-------------|
-| devNameList  | a list of relevant namespaces list for to display names used in different standards like EEBUS, IEC6850,, SAREF4ENER etc. (see [NameList](NameList.md))|
+| alternativeNames  | a list of relevant namespaces list for to display names used in different standards like EEBUS, IEC6850,, SAREF4ENER etc. (see [AlternativeNameList](AlternativeNameList.md))|
 | legibleDescription | optional, can occure multiple times, but ideally just a once per language. Contains details concerning the intended use case of the functional profile. |
 
 ### Transport Service
@@ -65,7 +65,7 @@ Each device contains a list of functional profiles.
 |-------------|-------------|
 | profileName | Instance name of the specified functional profile, containing Release Notes, Classification, Description |
 | functionalProfile | Copy of the standardized [functional profile](functionalProfile.md) |
-| fpPrgDesc   | optional, can occure multiple times, but ideally just a once per language. Contains details for the programmer. |
+| programmerHints   | optional, can occure multiple times, but ideally just a once per language. Contains details for the programmer. |
 
 
 ## Data Points
@@ -74,7 +74,7 @@ Each functional profile instance contains a list of data points in accordance wi
 |-------------|-------------|
 | Data point | Data point of the standardized [functional profile](functionalProfile.md), containing name, description, units, data type, read/write, mandatory/recommended/optional information |
 | Transport Layer Info| transport-service specific information on how to access the data point |
-| dpPrgDesc   | optional, can occure multiple times, but ideally just a once per language. Contains details for the programmer. |
+| programmerHints   | optional, can occure multiple times, but ideally just a once per language. Contains details for the programmer. |
 
 
 

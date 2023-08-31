@@ -1,35 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="/xsl/SGr.xsl"?>
-<sgr:SGrContactAPIDeviceFrame xmlns:sgr="http://www.smartgridready.com/ns/V0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<sgr:ContactApiDeviceFrame xmlns:sgr="http://www.smartgridready.com/ns/V0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/EI-Contacts/SGrContactsDeviceFrame.xsd " deviceName="TODO: Gerätenamen einfügen" isLocalControl="true"
   specificationOwnerIdentification="undef" manufacturerName="Solar Manager AG">
   <sgr:releaseNotes>
     <sgr:state>Draft</sgr:state>
   </sgr:releaseNotes>
-  <sgr:deviceProfile>
+  <sgr:deviceInformation>
     <sgr:legibleDescription>
       <sgr:textElement>TODO: Bescchreibungstext einfügen (opt)</sgr:textElement>
       <sgr:language>de</sgr:language>
     </sgr:legibleDescription>
     <sgr:transportService>Contacts</sgr:transportService>
-    <sgr:deviceKind>SGCP</sgr:deviceKind>
+    <sgr:deviceCategory>SGCP</sgr:deviceCategory>
     <sgr:softwareRevision>0.0.0</sgr:softwareRevision>
     <sgr:hardwareRevision>0.0.0</sgr:hardwareRevision>
     <sgr:brandName>TODO: Markenname einfügen (opt)</sgr:brandName>
     <sgr:powerSource>mains1Phase</sgr:powerSource>
     <sgr:nominalPower>TODO: Nennleistung des Gerätes einfügen (opt)</sgr:nominalPower>
-    <sgr:manufSpecIdent>TODO: Identfikationscode einfügen (opt)</sgr:manufSpecIdent>
+    <sgr:manufacturerSpecificationIdentification>TODO: Identfikationscode einfügen (opt)</sgr:manufacturerSpecificationIdentification>
     <sgr:manufacturerLabel>TODO: herstellerspezifischen Label einfügen  (opt)</sgr:manufacturerLabel>
-    <sgr:remAuthorID>TODO: verantwortlicher für dieses File einfügen</sgr:remAuthorID>
+    <sgr:generalRemarks>TODO: verantwortlicher für dieses File einfügen</sgr:generalRemarks>
     <sgr:levelOfOperation>2</sgr:levelOfOperation>
-  </sgr:deviceProfile>
+  </sgr:deviceInformation>
   <sgr:contactApiInterfaceDescription>
-    <sgr:numContacts>2</sgr:numContacts>
+    <sgr:numberOfContacts>2</sgr:numberOfContacts>
     <sgr:contactStabilisationTimeMs>1000</sgr:contactStabilisationTimeMs>
   </sgr:contactApiInterfaceDescription>
   <sgr:functionalProfileListElement>
     <sgr:functionalProfile profileName="SGCPFlexLoad">
-      <sgr:profileNumber>
+      <sgr:functionalProfileIdentification>
         <sgr:specificationOwnerIdentification>0</sgr:specificationOwnerIdentification>
         <sgr:functionalProfileCategory>SGCP</sgr:functionalProfileCategory>
         <sgr:functionalProfileType>UniDirFlexLoadMgmt</sgr:functionalProfileType>
@@ -39,13 +39,13 @@
           <sgr:secondaryVersionNumber>1</sgr:secondaryVersionNumber>
           <sgr:subReleaseVersionNumber>2</sgr:subReleaseVersionNumber>
         </sgr:versionNumber>
-      </sgr:profileNumber>
+      </sgr:functionalProfileIdentification>
       <sgr:legibleDescription>
         <sgr:textElement>Anlagen, welche dieses Funktionsprofil nutzen verfügen in der Regel über einen CEM (Customer Energy Manager). Diese Software stellt sicher, dass der Energiebezug der Geräte entsprechend den Betriebsmodi beim Moduswechsel neu aufeinander abgestimmt wird. Beim Wechsel reagiert eine Anlage gemäss den in SGr-Attribut b) vereinbarten Parametern. </sgr:textElement>
         <sgr:language>de</sgr:language>
       </sgr:legibleDescription>
     </sgr:functionalProfile>
-    <sgr:genAttribute>
+    <sgr:genericAttributes>
       <sgr:smoothTransition>
         <sgr:winTms>0</sgr:winTms>
         <sgr:rvrtTms>0</sgr:rvrtTms>
@@ -54,9 +54,9 @@
       <sgr:curtailment>30</sgr:curtailment>
       <sgr:minLoad>0.0</sgr:minLoad>
       <sgr:maxLockTimeMinutes>0.0</sgr:maxLockTimeMinutes>
-    </sgr:genAttribute>
+    </sgr:genericAttributes>
     <sgr:dataPointListElement>
-      <sgr:dataPoint datapointName="SGCP_FeedInStateLv2" mroVisibilityIndicator="M" rwpDatadirection="R" unit="NONE">
+      <sgr:dataPoint datapointName="SGCP_FeedInStateLv2" presenceLevel="M" dataDirection="R" unit="NONE">
         <sgr:dataType>
           <sgr:enum>
             <sgr:sgrSGCPLoadStateLv2>LD_NORMAL</sgr:sgrSGCPLoadStateLv2>
@@ -65,4 +65,4 @@
       </sgr:dataPoint>
     </sgr:dataPointListElement>
   </sgr:functionalProfileListElement>
-</sgr:SGrContactAPIDeviceFrame>
+</sgr:ContactApiDeviceFrame>

@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="/xsl/SGr.xsl"?>
-<sgr:SGrContactAPIDeviceFrame deviceName="PICO Wallbox" isLocalControl="true" specificationOwnerIdentification="0" manufacturerName="eCarUp AG, CH-6343 Rotkreuz "
+<sgr:ContactApiDeviceFrame deviceName="PICO Wallbox" isLocalControl="true" specificationOwnerIdentification="0" manufacturerName="eCarUp AG, CH-6343 Rotkreuz "
   xmlns:sgr="http://www.smartgridready.com/ns/V0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/EI-Contacts/SGrContactsDeviceFrame.xsd ">
   <sgr:releaseNotes>
     <sgr:state>Draft</sgr:state>
   </sgr:releaseNotes>
-  <sgr:deviceProfile>
+  <sgr:deviceInformation>
     <sgr:legibleDescription>
       <sgr:textElement>Pico verbindet sich über das lokale WLAN oder Mobilfunk mit der Cloud. Damit stehen Kunden, und Stationsbetreibern Echtzeitdaten zur Verfügung um Energie zu optimieren, Ladungen transparent abzurechnen und Lasten clever zu verteilen.</sgr:textElement>
       <sgr:language>de</sgr:language>
@@ -18,24 +18,24 @@
       <sgr:uri>https://web.ecarup.com/en/ev-charging-station-pico/</sgr:uri>
     </sgr:legibleDescription>
     <sgr:transportService>generic</sgr:transportService>
-    <sgr:deviceKind>ChargingStation</sgr:deviceKind>
+    <sgr:deviceCategory>ChargingStation</sgr:deviceCategory>
     <sgr:softwareRevision>1.0.0</sgr:softwareRevision>
     <sgr:hardwareRevision>1.0.0</sgr:hardwareRevision>
     <sgr:brandName>PICO</sgr:brandName>
     <sgr:powerSource>mains3Phase</sgr:powerSource>
     <sgr:nominalPower>22000</sgr:nominalPower>
-    <sgr:manufSpecIdent>212070</sgr:manufSpecIdent>
+    <sgr:manufacturerSpecificationIdentification>212070</sgr:manufacturerSpecificationIdentification>
     <sgr:manufacturerLabel>smart-me</sgr:manufacturerLabel>
-    <sgr:remAuthorID>IBT for eCarup</sgr:remAuthorID>
+    <sgr:generalRemarks>IBT for eCarup</sgr:generalRemarks>
     <sgr:levelOfOperation>2</sgr:levelOfOperation>
-  </sgr:deviceProfile>
+  </sgr:deviceInformation>
   <sgr:contactApiInterfaceDescription>
-    <sgr:numContacts>2</sgr:numContacts>
+    <sgr:numberOfContacts>2</sgr:numberOfContacts>
     <sgr:contactStabilisationTimeMs>500</sgr:contactStabilisationTimeMs>
   </sgr:contactApiInterfaceDescription>
   <sgr:functionalProfileListElement>
     <sgr:functionalProfile profileName="EVSE">
-      <sgr:profileNumber>
+      <sgr:functionalProfileIdentification>
         <sgr:specificationOwnerIdentification>0</sgr:specificationOwnerIdentification>
         <sgr:functionalProfileCategory>EVSE</sgr:functionalProfileCategory>
         <sgr:functionalProfileType>DynamicCtrl</sgr:functionalProfileType>
@@ -45,7 +45,7 @@
           <sgr:secondaryVersionNumber>2</sgr:secondaryVersionNumber>
           <sgr:subReleaseVersionNumber>1</sgr:subReleaseVersionNumber>
         </sgr:versionNumber>
-      </sgr:profileNumber>
+      </sgr:functionalProfileIdentification>
       <sgr:legibleDescription>
         <sgr:textElement>
           Wallboxen (ElectricVehicleSupplyEquipment «EVSE») müssen über einen Regler verfügen, welcher vier Betriebszustände abdeckt: 
@@ -58,7 +58,7 @@
       </sgr:legibleDescription>
     </sgr:functionalProfile>
     <sgr:dataPointListElement>
-      <sgr:dataPoint datapointName="EVSE_StateLv1" mroVisibilityIndicator="M" rwpDatadirection="R" unit="NONE">
+      <sgr:dataPoint datapointName="EVSE_StateLv1" presenceLevel="M" dataDirection="R" unit="NONE">
         <sgr:dataType>
           <sgr:enum>
             <sgr:sgrEVSEStateLv1>EV_NORMAL</sgr:sgrEVSEStateLv1>
@@ -67,4 +67,4 @@
       </sgr:dataPoint>
     </sgr:dataPointListElement>
   </sgr:functionalProfileListElement>
-</sgr:SGrContactAPIDeviceFrame>
+</sgr:ContactApiDeviceFrame>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="/xsl/SGr.xsl"?>
-<sgr:SGrFunctionalProfileFrame xmlns:sgr="http://www.smartgridready.com/ns/V0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<sgr:FunctionalProfileFrame xmlns:sgr="http://www.smartgridready.com/ns/V0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/SGrIncluder.xsd">
   <sgr:releaseNotes>
     <sgr:state>Review</sgr:state>
@@ -22,7 +22,7 @@
     </sgr:changelog>
   </sgr:releaseNotes>
   <sgr:functionalProfile>
-    <sgr:profileNumber>
+    <sgr:functionalProfileIdentification>
       <sgr:specificationOwnerIdentification>0</sgr:specificationOwnerIdentification>
       <sgr:functionalProfileCategory>HeatPumpControl</sgr:functionalProfileCategory>
       <sgr:functionalProfileType>HeatCoolCtrl</sgr:functionalProfileType>
@@ -32,11 +32,11 @@
         <sgr:secondaryVersionNumber>2</sgr:secondaryVersionNumber>
         <sgr:subReleaseVersionNumber>2</sgr:subReleaseVersionNumber>
       </sgr:versionNumber>
-    </sgr:profileNumber>
-    <sgr:fpNameList>
+    </sgr:functionalProfileIdentification>
+    <sgr:alternativeNames>
       <sgr:sLV1Name>HeatCoolCtrl</sgr:sLV1Name>
       <sgr:sEN17609Name>HeatCool Group</sgr:sEN17609Name>
-    </sgr:fpNameList>
+    </sgr:alternativeNames>
     <sgr:legibleDescription>
       <sgr:textElement>
         Dieses Profil definiert die erweiterten Datenpunkte zum Grundprofil
@@ -50,15 +50,15 @@
     </sgr:legibleDescription>
   </sgr:functionalProfile>
   <sgr:dataPointListElement>
-    <sgr:dataPoint datapointName="HeatCoolCtrlOpModeCmd" mroVisibilityIndicator="O" rwpDatadirection="RW" unit="NONE">
+    <sgr:dataPoint datapointName="HeatCoolCtrlOpModeCmd" presenceLevel="O" dataDirection="RW" unit="NONE">
       <sgr:dataType>
         <sgr:enum>
           <sgr:sgrHCOpMode>HC_READY</sgr:sgrHCOpMode>
         </sgr:enum>
       </sgr:dataType>
-      <sgr:dpNameList>
+      <sgr:alternativeNames>
         <sgr:sLV1Name>HeatCoolCtrlOpModeCmd</sgr:sLV1Name>
-      </sgr:dpNameList>
+      </sgr:alternativeNames>
       <sgr:legibleDescription>
         <sgr:textElement>
           <![CDATA[
@@ -77,15 +77,15 @@
     </sgr:dataPoint>
   </sgr:dataPointListElement>
   <sgr:dataPointListElement>
-    <sgr:dataPoint datapointName="HeatCoolOpState" mroVisibilityIndicator="O" rwpDatadirection="RW" unit="NONE">
+    <sgr:dataPoint datapointName="HeatCoolOpState" presenceLevel="O" dataDirection="RW" unit="NONE">
       <sgr:dataType>
         <sgr:enum2bitmapIndex>
           <sgr:sgrHCOpstate>HC_OFF</sgr:sgrHCOpstate>
         </sgr:enum2bitmapIndex>
       </sgr:dataType>
-      <sgr:dpNameList>
+      <sgr:alternativeNames>
         <sgr:sLV1Name>HeatCoolOpState</sgr:sLV1Name>
-      </sgr:dpNameList>
+      </sgr:alternativeNames>
       <sgr:legibleDescription>
         <sgr:textElement>
           <![CDATA[
@@ -122,14 +122,14 @@
     </sgr:dataPoint>
   </sgr:dataPointListElement>
   <sgr:dataPointListElement>
-    <sgr:dataPoint datapointName="SupplyWaterTemp" mroVisibilityIndicator="M" rwpDatadirection="R" unit="DEGREES_CELSIUS">
+    <sgr:dataPoint datapointName="SupplyWaterTemp" presenceLevel="M" dataDirection="R" unit="DEGREES_CELSIUS">
       <sgr:dataType>
         <sgr:float64/>
       </sgr:dataType>
-      <sgr:dpNameList>
+      <sgr:alternativeNames>
         <sgr:sLV1Name>SupplyWaterTemp</sgr:sLV1Name>
         <sgr:sEN17609Name>Supply Water Temperature</sgr:sEN17609Name>
-      </sgr:dpNameList>
+      </sgr:alternativeNames>
       <sgr:legibleDescription>
         <sgr:textElement>Auslesen der aktuellen Ist-Temperatur des Vorlaufs des Heizkreises.</sgr:textElement>
         <sgr:language>de</sgr:language>
@@ -137,14 +137,14 @@
     </sgr:dataPoint>
   </sgr:dataPointListElement>
   <sgr:dataPointListElement>
-    <sgr:dataPoint datapointName="SupplyWaterTempStpt" mroVisibilityIndicator="R" rwpDatadirection="RW" unit="DEGREES_CELSIUS">
+    <sgr:dataPoint datapointName="SupplyWaterTempStpt" presenceLevel="R" dataDirection="RW" unit="DEGREES_CELSIUS">
       <sgr:dataType>
         <sgr:float64/>
       </sgr:dataType>
-      <sgr:dpNameList>
+      <sgr:alternativeNames>
         <sgr:sLV1Name>SupplyWaterTempStpt</sgr:sLV1Name>
         <sgr:sEN17609Name>Supply Water Temperature Setpoint</sgr:sEN17609Name>
-      </sgr:dpNameList>
+      </sgr:alternativeNames>
       <sgr:legibleDescription>
         <sgr:textElement>Setzen der aktuellen Soll-Temperatur des Vorlaufs (Grundwert).</sgr:textElement>
         <sgr:language>de</sgr:language>
@@ -152,13 +152,13 @@
     </sgr:dataPoint>
   </sgr:dataPointListElement>
   <sgr:dataPointListElement>
-    <sgr:dataPoint datapointName="SupplyWaterTempStptOffs" mroVisibilityIndicator="R" rwpDatadirection="RW" unit="DEGREES_CELSIUS">
+    <sgr:dataPoint datapointName="SupplyWaterTempStptOffs" presenceLevel="R" dataDirection="RW" unit="DEGREES_CELSIUS">
       <sgr:dataType>
         <sgr:float64/>
       </sgr:dataType>
-      <sgr:dpNameList>
+      <sgr:alternativeNames>
         <sgr:sLV1Name>SupplyWaterTempStptOffs</sgr:sLV1Name>
-      </sgr:dpNameList>
+      </sgr:alternativeNames>
       <sgr:legibleDescription>
         <sgr:textElement>
           Setzen der aktuellen Soll-Temperatur Differenz des Vorlaufs (Offset
@@ -168,20 +168,20 @@
         <sgr:language>de</sgr:language>
       </sgr:legibleDescription>
     </sgr:dataPoint>
-    <sgr:genAttribute>
+    <sgr:genericAttributes>
       <sgr:minVal>+5.0</sgr:minVal>
       <sgr:maxVal>-5.0</sgr:maxVal>
-    </sgr:genAttribute>
+    </sgr:genericAttributes>
   </sgr:dataPointListElement>
   <sgr:dataPointListElement>
-    <sgr:dataPoint datapointName="SupplyWaterTempStptComfort" mroVisibilityIndicator="O" rwpDatadirection="RW" unit="DEGREES_CELSIUS">
+    <sgr:dataPoint datapointName="SupplyWaterTempStptComfort" presenceLevel="O" dataDirection="RW" unit="DEGREES_CELSIUS">
       <sgr:dataType>
         <sgr:float64/>
       </sgr:dataType>
-      <sgr:dpNameList>
+      <sgr:alternativeNames>
         <sgr:sLV1Name>SupplyWaterTempStptComfort</sgr:sLV1Name>
         <sgr:sEN17609Name>Supply Water Temperature Setpoint Comfort</sgr:sEN17609Name>
-      </sgr:dpNameList>
+      </sgr:alternativeNames>
       <sgr:legibleDescription>
         <sgr:textElement>
           Setzen der aktuellen Soll-Temperatur des Vorlaufs fuer den
@@ -192,14 +192,14 @@
     </sgr:dataPoint>
   </sgr:dataPointListElement>
   <sgr:dataPointListElement>
-    <sgr:dataPoint datapointName="SupplyWaterTempStptEco" mroVisibilityIndicator="O" rwpDatadirection="RW" unit="DEGREES_CELSIUS">
+    <sgr:dataPoint datapointName="SupplyWaterTempStptEco" presenceLevel="O" dataDirection="RW" unit="DEGREES_CELSIUS">
       <sgr:dataType>
         <sgr:float64/>
       </sgr:dataType>
-      <sgr:dpNameList>
+      <sgr:alternativeNames>
         <sgr:sLV1Name>SupplyWaterTempStptEco</sgr:sLV1Name>
         <sgr:sEN17609Name>Supply Water Temperature Setpoint Eco</sgr:sEN17609Name>
-      </sgr:dpNameList>
+      </sgr:alternativeNames>
       <sgr:legibleDescription>
         <sgr:textElement>
           Setzen der aktuellen Soll-Temperatur des Vorlaufs fuer den
@@ -210,18 +210,18 @@
     </sgr:dataPoint>
   </sgr:dataPointListElement>
   <sgr:dataPointListElement>
-    <sgr:dataPoint datapointName="ReturnSupplyWaterTemp" mroVisibilityIndicator="O" rwpDatadirection="R" unit="DEGREES_CELSIUS">
+    <sgr:dataPoint datapointName="ReturnSupplyWaterTemp" presenceLevel="O" dataDirection="R" unit="DEGREES_CELSIUS">
       <sgr:dataType>
         <sgr:float64/>
       </sgr:dataType>
-      <sgr:dpNameList>
+      <sgr:alternativeNames>
         <sgr:sLV1Name>ReturnSupplyWaterTemp</sgr:sLV1Name>
         <sgr:sEN17609Name>Return Water Temperature Setpoint</sgr:sEN17609Name>
-      </sgr:dpNameList>
+      </sgr:alternativeNames>
       <sgr:legibleDescription>
         <sgr:textElement>Auslesen der aktuellen aktuellen-Temperatur des Rücklaufs.</sgr:textElement>
         <sgr:language>de</sgr:language>
       </sgr:legibleDescription>
     </sgr:dataPoint>
   </sgr:dataPointListElement>
-</sgr:SGrFunctionalProfileFrame>
+</sgr:FunctionalProfileFrame>

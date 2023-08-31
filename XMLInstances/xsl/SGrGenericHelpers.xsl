@@ -219,23 +219,8 @@
         </xsl:choose>
     </xsl:template>
 
-
-    <!-- VersionNumberType -->
-    <xsl:template match="sgr:softwareRevision">
-        <xsl:call-template name="VersionNumberType" />
-    </xsl:template>
-    <xsl:template match="sgr:hardwareRevision">
-        <xsl:call-template name="VersionNumberType" />
-    </xsl:template>
-    <xsl:template match="sgr:versionNumber">
-        <xsl:call-template name="VersionNumberType" />
-    </xsl:template>
-    <xsl:template name="VersionNumberType">
-        <xsl:value-of select="sgr:primaryVersionNumber" />.<xsl:value-of select="sgr:secondaryVersionNumber" />.<xsl:value-of select="sgr:subReleaseVersionNumber" />
-    </xsl:template>
-
     <!-- SGrprofileNumber -->
-    <xsl:template match="sgr:profileNumber">
+    <xsl:template match="sgr:functionalProfileIdentification">
         <xsl:param name="separator" select="'.'" />
         <xsl:param name="displayFullLevel" select="''"/>
         <xsl:param name="displayShortLevel" select="''"/>

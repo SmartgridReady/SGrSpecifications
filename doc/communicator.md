@@ -40,12 +40,12 @@ The release note section contains meta data that descibe history and current sta
 
 | Element | Description |
 | ------- | ----------- |
-| levelOfOperation | levelOfOperation defines a controls complexity  (see [levelOfOperation.md](levelOfOperation.md) ), and is defined by the highest level of the communicator |
+| levelOfOperation | levelOfOperation defines a controls complexity  (see [LevelOfOperation.md](LevelOfOperation.md) ), and is defined by the highest level of the communicator |
 
 ### Descriptions
 | Element     | Description |
 |-------------|-------------|
-| communicatorNameList  | a list of relevant namespaces list for to display names used in different standards like EEBUS, IEC6850,, SAREF4ENER etc. (see [NameList](NameList.md))|
+| communicatorNameList  | a list of relevant namespaces list for to display names used in different standards like EEBUS, IEC6850,, SAREF4ENER etc. (see [AlternativeNameList](AlternativeNameList.md))|
 | legibleDescription | optional, can occur multiple times, but ideally just a once per language. Contains details concerning the intended use case of the communicator. |
 
 ### Transport Services
@@ -59,11 +59,11 @@ Each communicator contains a list of functional profiles.
 |-------------|-------------|
 | profileName | Instance name of the specified functional profile, containing Release Notes, Classification, Description |
 | functionalProfile | Copy of the standardized [functional profile](functionalProfile.md) |
-| fpPrgDesc   | optional, can occur multiple times, but ideally just a once per language. Contains details for the programmer. |
+| programmerHints   | optional, can occur multiple times, but ideally just a once per language. Contains details for the programmer. |
 
 ## Data Points
 Each functional profile instance contains a list of data points in accordance with the standardized functional profile.
 | Element     | Description |
 |-------------|-------------|
 | Data point | Data point of the standardized [functional profile](functionalProfile.md), containing name, description, and basic data type |
-| dpPrgDesc   | optional, can occur multiple times, but ideally just a once per language. Contains details for the programmer. |
+| programmerHints   | optional, can occur multiple times, but ideally just a once per language. Contains details for the programmer. |

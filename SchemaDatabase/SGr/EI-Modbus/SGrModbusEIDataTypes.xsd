@@ -101,7 +101,7 @@
   <!-- **************************** -->
   <!-- Modbus Address section -->
   <!-- **************************** -->
-  <simpleType name="EnumObjectType">
+  <simpleType name="EnumRegisterType">
     <annotation>
       <documentation>
         Type of the Modbus Data. For slave-role, definition of the Object Type of the data: Discretes Input: Single bit, Read-Only; Coils: Single bit, Read-Write; Input Registers: 16-bit
@@ -126,7 +126,7 @@
       <maxInclusive value="15"/>
     </restriction>
   </simpleType>
-  <complexType name="ModbusRegisterReference">
+  <complexType name="ModbusFirstRegisterReference">
     <annotation>
       <documentation>
         2-bytes-word address: could be a register address (to address a modbus register - inputRegister or holdRegister) or a part of a bit address, see bitRank definition
@@ -144,7 +144,7 @@
         <documentation>The bit rank used to define a bit address (bitAddress = addr x 16 + bitRank)</documentation>
       </annotation>
     </attribute>
-    <attribute name="registerType" type="sgr:EnumObjectType" use="required">
+    <attribute name="registerType" type="sgr:EnumRegisterType" use="required">
       <annotation>
         <documentation>
           For slave-role, definition of the Object Type of the data: Discretes Input: Single bit, Read-Only; Coils: Single bit, Read-Write; Input Registers: 16-bit word, Read-Only;

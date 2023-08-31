@@ -4,7 +4,7 @@
 
 	<!--
     Contains the style sheets for data point, including
-    - sgr:dpNameList
+    - sgr:alternativeNames
 -->
 
 	<xsl:import href="SGrDeviceTypeModbus.xsl" />
@@ -38,10 +38,10 @@
 				</xsl:if>
 			</td>
 			<td>
-				<xsl:value-of select="sgr:dataPoint/@mroVisibilityIndicator" />
+				<xsl:value-of select="sgr:dataPoint/@presenceLevel" />
 			</td>
 			<td>
-				<xsl:value-of select="sgr:dataPoint/@rwpDatadirection" />
+				<xsl:value-of select="sgr:dataPoint/@dataDirection" />
 			</td>
 		</tr>
 		<tr class="dataPointDetails">
@@ -52,23 +52,23 @@
 						<col style="width:25.8%" />
 					</colgroup>
 
-					<!-- dpNameList (1x opt)-->
-					<xsl:if test="sgr:dataPoint/sgr:dpNameList">
-						<xsl:apply-templates select="sgr:dataPoint/sgr:dpNameList" />
+					<!-- alternativeNames (1x opt)-->
+					<xsl:if test="sgr:dataPoint/sgr:alternativeNames">
+						<xsl:apply-templates select="sgr:dataPoint/sgr:alternativeNames" />
 					</xsl:if>
 
 					<!-- legibleDescription (4x opt) -->
 					<xsl:apply-templates select="sgr:dataPoint/sgr:legibleDescription" />
 
-					<!-- dpPrgDesc (4x opt)-->
-	                <xsl:apply-templates select="sgr:dataPoint/sgr:dpPrgDesc" />
+					<!-- programmerHints (4x opt)-->
+	                <xsl:apply-templates select="sgr:dataPoint/sgr:programmerHints" />
 
 
 					<!-- Generic Attributes -->
-					<xsl:apply-templates select="sgr:genAttribute" />
+					<xsl:apply-templates select="sgr:genericAttributes" />
 
 					<!-- Modbus Device -->
-					<xsl:if test="sgr:modbusDataPoint">
+					<xsl:if test="sgr:modbusDataPointConfiguration">
 						<tr class="transportDetails">
 							<td colspan="2" class="noborder">
 								<h3>
@@ -76,18 +76,18 @@
 								</h3>
 							</td>
 						</tr>
-						<xsl:apply-templates select="sgr:modbusDataPoint" />
-						<xsl:if test="sgr:blockCacheId">
+						<xsl:apply-templates select="sgr:modbusDataPointConfiguration" />
+						<xsl:if test="sgr:blockCacheIdentification">
 							<tr>
 								<td>Time Sync Block</td>
-								<td><xsl:value-of select="sgr:blockCacheId" /></td>
+								<td><xsl:value-of select="sgr:blockCacheIdentification" /></td>
 							</tr>
 						</xsl:if>
-						<xsl:apply-templates select="sgr:modbusAttr" />
+						<xsl:apply-templates select="sgr:modbusAttributes" />
 					</xsl:if>
 
 					<!-- Rest Device -->
-					<xsl:if test="sgr:restApiDataPoint">
+					<xsl:if test="sgr:restApiDataPointConfiguration">
 						<tr class="transportDetails">
 							<td colspan="2" class="noborder">
 								<h3>
@@ -95,51 +95,50 @@
 								</h3>
 							</td>
 						</tr>
-						<xsl:apply-templates select="sgr:restApiDataPoint" />
-						<xsl:apply-templates select="sgr:restApiAttribute" />
+						<xsl:apply-templates select="sgr:restApiDataPointConfiguration" />
 					</xsl:if>
 				</table>
 			</td>
 		</tr>
 	</xsl:template>
 
-	<!-- dpNameList -->
-	<xsl:template match="sgr:dpNameList">
-		<xsl:call-template name="NameList" />
+	<!-- alternativeNames -->
+	<xsl:template match="sgr:alternativeNames">
+		<xsl:call-template name="AlternativeNameList" />
 	</xsl:template>
 
-	<!-- LegibleDocumentationType -->
+	<!-- LegibleDescription -->
 	<xsl:template match="sgr:legibleDescription">
 		<tr>
 			<xsl:attribute name="lang">
 				<xsl:value-of select="sgr:language" />
 			</xsl:attribute>
 			<td colspan="2">
-				<xsl:call-template name="LegibleDocumentationType" />
+				<xsl:call-template name="LegibleDescription" />
 			</td>
 		</tr>
 	</xsl:template>
 
-	<!-- LegibleDocumentationType -->
-	<xsl:template match="sgr:dpPrgDesc">
+	<!-- LegibleDescription -->
+	<xsl:template match="sgr:programmerHints">
 		<tr>
 			<xsl:attribute name="lang">
 				<xsl:value-of select="sgr:language" />
 			</xsl:attribute>
 			<td colspan="2">
-				<xsl:call-template name="LegibleDocumentationType" />
+				<xsl:call-template name="LegibleDescription" />
 			</td>
 		</tr>
 	</xsl:template>
 
-	<!-- ModbusDataPointDescription -->
-	<xsl:template match="sgr:modbusDataPoint">
-		<!-- ModbusDataType (opt 1x) -->
+	<!-- ModbusDataPointConfiguration -->
+	<xsl:template match="sgr:modbusDataPointConfiguration">
+		<!-- modbusDataType (opt 1x) -->
 		<tr class="transportDetails">
 			<td>Data Type</td>
 			<td>
-				<xsl:if test="sgr:ModbusDataType">
-					<xsl:apply-templates select="sgr:ModbusDataType" />
+				<xsl:if test="sgr:modbusDataType">
+					<xsl:apply-templates select="sgr:modbusDataType" />
 				</xsl:if>
 			</td>
 		</tr>
@@ -159,18 +158,9 @@
 							select="sgr:modbusFirstRegisterReference/@bitRank" />
 					</xsl:when>
 				</xsl:choose>
-				(Size <xsl:value-of select="sgr:dpSizeNrRegisters" />) </td>
+				(Size <xsl:value-of select="sgr:numberOfRegisters" />) </td>
 		</tr>
-
-		<!-- bitmask (opt 1x) -->
-		<xsl:if test="sgr:bitmask">
-			<tr class="transportDetails">
-				<td>Bit Mask</td>
-				<td>
-					<xsl:value-of select="sgr:bitmask" /> h </td>
-			</tr>
-		</xsl:if>
-
+		
 		<tr class="transportDetails">
 			<td>Supports</td>
 			<td>
@@ -181,18 +171,11 @@
 			</td>
 		</tr>
 
-		<!-- modbusJMESPath (opt 1x) -->
-		<xsl:if test="sgr:modbusJMESPath">
-			<tr class="transportDetails">
-				<td>JMES Path</td>
-				<td>
-					<xsl:value-of select="sgr:modbusJMESPath" /> h </td>
-			</tr>
-		</xsl:if>
+
 	</xsl:template>
 
-	<!-- RestApiDataPointDescription -->
-	<xsl:template match="sgr:restApiDataPoint">
+	<!-- RestApiDataPointConfiguration -->
+	<xsl:template match="sgr:restApiDataPointConfiguration">
 		<tr class="transportDetails">
 			<td>Data Type</td>
 			<td>

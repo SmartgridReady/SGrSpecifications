@@ -25,8 +25,8 @@
 			<head>
 				<title>
 					<xsl:choose>
-						<xsl:when test="/sgr:SGrFunctionalProfileFrame">
-							<xsl:apply-templates select="/*/sgr:functionalProfile/sgr:profileNumber">
+						<xsl:when test="/sgr:FunctionalProfileFrame">
+							<xsl:apply-templates select="/*/sgr:functionalProfile/sgr:functionalProfileIdentification">
 								<xsl:with-param name="separator" select="'.'" />
 								<xsl:with-param name="displayShortLevel" select="'true'" />
 							</xsl:apply-templates>
@@ -93,7 +93,7 @@
 						</div>
 						<div style="float:left; width:50%; text-align:right; height: 134px">
 							<xsl:choose>
-								<xsl:when test="/sgr:SGrFunctionalProfileFrame">Definition Functional Profile</xsl:when>
+								<xsl:when test="/sgr:FunctionalProfileFrame">Definition Functional Profile</xsl:when>
 								<xsl:otherwise>Device Profile</xsl:otherwise>
 							</xsl:choose>
 						</div>
@@ -103,10 +103,10 @@
 					<!-- Device Types -->
 					<xsl:apply-templates select="sgr:ModbusDeviceFrame" />
 					<xsl:apply-templates select="sgr:RestApiDeviceFrame" />
-					<xsl:apply-templates select="sgr:SGrContactAPIDeviceFrame" />
+					<xsl:apply-templates select="sgr:ContactApiDeviceFrame" />
 
 					<!-- generic functional Profiles -->
-					<xsl:apply-templates select="sgr:SGrFunctionalProfileFrame" />
+					<xsl:apply-templates select="sgr:FunctionalProfileFrame" />
 				</div>
 			</body>
 		</html>
@@ -119,7 +119,7 @@
 	<xsl:template match="sgr:RestApiDeviceFrame">
 		<xsl:call-template name="SGrDeviceType" />
 	</xsl:template>
-	<xsl:template match="sgr:SGrContactAPIDeviceFrame">
+	<xsl:template match="sgr:ContactApiDeviceFrame">
 		<xsl:call-template name="SGrDeviceType" />
 	</xsl:template>
 	<xsl:template name="SGrDeviceType">
@@ -250,13 +250,13 @@
 				</tr>
 
 				<!-- Device Profile (nameList, legibleDescription -->
-				<xsl:apply-templates select="sgr:deviceProfile" />
+				<xsl:apply-templates select="sgr:deviceInformation" />
 
 				<!-- Generic Attributes -->
-				<xsl:apply-templates select="sgr:genAttribute" />
+				<xsl:apply-templates select="sgr:genericAttributes" />
 
 				<!-- Modbus Device -->
-				<xsl:if test="sgr:modbusInterfaceDesc">
+				<xsl:if test="sgr:modbusInterfaceDescription">
 					<tr class="transportDetails">
 						<td colspan="2" class="noborder">
 							<h3>
@@ -264,8 +264,8 @@
 							</h3>
 						</td>
 					</tr>
-					<xsl:apply-templates select="sgr:modbusInterfaceDesc" />
-					<xsl:apply-templates select="sgr:modbusAttr" />
+					<xsl:apply-templates select="sgr:modbusInterfaceDescription" />
+					<xsl:apply-templates select="sgr:modbusAttributes" />
 					<xsl:apply-templates select="sgr:timeSyncBlockNotification" />
 				</xsl:if>
 
@@ -279,7 +279,6 @@
 						</td>
 					</tr>
 					<xsl:apply-templates select="sgr:restApiInterfaceDescription" />
-					<xsl:apply-templates select="sgr:restApiAttribute" />
 				</xsl:if>
 
 				<!-- Contact Device -->
@@ -296,32 +295,9 @@
 
 			</table>
 
-			<xsl:apply-templates select="sgr:networkConnectionState" />
-
 			<!-- Functiol Profiles -->
 			<xsl:apply-templates select="sgr:functionalProfileListElement" />
 		</div>
-	</xsl:template>
-
-	<xsl:template match="sgr:networkConnectionState">
-		<h3>Network Connection State</h3>
-		<table>
-			<colgroup>
-				<col style="width:30%" />
-			</colgroup>
-			<tr class="transportDetails">
-				<td>Connected</td>
-				<td>
-					<xsl:value-of select="sgr:isConnected" />
-				</td>
-			</tr>
-			<tr class="transportDetails">
-				<td>Next Attempt</td>
-				<td>
-					<xsl:value-of select="sgr:nextAttempt" />
-				</td>
-			</tr>
-		</table>
 	</xsl:template>
 
 </xsl:stylesheet>

@@ -12,18 +12,18 @@
       <sgr:comment>Creation based on input from meoEnergy</sgr:comment>
     </sgr:changelog>
   </sgr:releaseNotes>
-  <sgr:deviceProfile>
+  <sgr:deviceInformation>
     <sgr:transportService>RESTfulJSON</sgr:transportService>
-    <sgr:deviceKind>SubMeterElectricity</sgr:deviceKind>
+    <sgr:deviceCategory>SubMeterElectricity</sgr:deviceCategory>
     <sgr:softwareRevision>1.0.0</sgr:softwareRevision>
-    <sgr:manufSpecIdent>sgr:manufSpecIdent</sgr:manufSpecIdent>
-  </sgr:deviceProfile>
+    <sgr:manufacturerSpecificationIdentification>sgr:manufacturerSpecificationIdentification</sgr:manufacturerSpecificationIdentification>
+  </sgr:deviceInformation>
   <sgr:restApiInterfaceDescription>
-    <sgr:restAPIInterfaceSelection>trspSrvRestURI</sgr:restAPIInterfaceSelection>
-    <sgr:trspSrvRestURIoutOfBox>https://my.meo-energy.com/meoApplicationServer</sgr:trspSrvRestURIoutOfBox>
-    <sgr:restAPIAuthenticationMethod>BearerSecurityScheme</sgr:restAPIAuthenticationMethod>
-    <sgr:restAPIBearer>
-      <sgr:serviceCall>
+    <sgr:restApiInterfaceSelection>URI</sgr:restApiInterfaceSelection>
+    <sgr:restApiUri>https://my.meo-energy.com/meoApplicationServer</sgr:restApiUri>
+    <sgr:restApiAuthenticationMethod>BearerSecurityScheme</sgr:restApiAuthenticationMethod>
+    <sgr:restApiBearer>
+      <sgr:restServiceCall>
         <sgr:requestHeader>
           <sgr:header headerName="Accept" value="application/json"/>
         </sgr:requestHeader>
@@ -34,12 +34,12 @@
           <sgr:queryType>JMESPathExpression</sgr:queryType>
           <sgr:query>accessToken</sgr:query>
         </sgr:responseQuery>
-      </sgr:serviceCall>
-    </sgr:restAPIBearer>
+      </sgr:restServiceCall>
+    </sgr:restApiBearer>
   </sgr:restApiInterfaceDescription>
   <sgr:functionalProfileListElement>
     <sgr:functionalProfile profileName="ActivePowerAC">
-      <sgr:profileNumber>
+      <sgr:functionalProfileIdentification>
         <sgr:specificationOwnerIdentification>0</sgr:specificationOwnerIdentification>
         <sgr:functionalProfileCategory>NonSpecific</sgr:functionalProfileCategory>
         <sgr:functionalProfileType>ActivePowerAC</sgr:functionalProfileType>
@@ -49,10 +49,10 @@
           <sgr:secondaryVersionNumber>0</sgr:secondaryVersionNumber>
           <sgr:subReleaseVersionNumber>0</sgr:subReleaseVersionNumber>
         </sgr:versionNumber>
-      </sgr:profileNumber>
+      </sgr:functionalProfileIdentification>
     </sgr:functionalProfile>
     <sgr:dataPointListElement>
-      <sgr:dataPoint datapointName="ActivePowerACtot" mroVisibilityIndicator="R" rwpDatadirection="R" unit="KILOWATTS">
+      <sgr:dataPoint datapointName="ActivePowerACtot" presenceLevel="R" dataDirection="R" unit="KILOWATTS">
         <sgr:dataType>
           <sgr:float64/>
         </sgr:dataType>
@@ -61,7 +61,7 @@
           <sgr:language>de</sgr:language>
         </sgr:legibleDescription>
       </sgr:dataPoint>
-      <sgr:restApiDataPoint dataType="JSON_number">
+      <sgr:restApiDataPointConfiguration dataType="JSON_number">
         <sgr:restServiceCall>
           <sgr:requestHeader>
             <sgr:header headerName="Accept" value="application/json"/>
@@ -73,7 +73,7 @@
             <sgr:query>activePowerACtot</sgr:query>
           </sgr:responseQuery>
         </sgr:restServiceCall>
-      </sgr:restApiDataPoint>
+      </sgr:restApiDataPointConfiguration>
     </sgr:dataPointListElement>
   </sgr:functionalProfileListElement>
 </sgr:RestApiDeviceFrame>

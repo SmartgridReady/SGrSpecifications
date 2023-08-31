@@ -7,32 +7,23 @@
   <include schemaLocation="SGrRestAPI_RestServiceCall.xsd"/>
   <complexType name="RestApiInterfaceDescription">
     <sequence>
-      <element maxOccurs="1" minOccurs="1" name="restAPIInterfaceSelection" type="sgr:RestApiInterfaceSelection"/>
-      <element maxOccurs="1" minOccurs="0" name="trspSrvRestTCPV4outOfBox" type="sgr:RestApiIpV4GenericAddressType"/>
-      <element maxOccurs="1" minOccurs="0" name="trspSrvRestTCPV6outOfBox" type="sgr:RestApiIpV6GenericAddressType"/>
-      <element maxOccurs="1" minOccurs="0" name="trspSrvRestURIoutOfBox" type="anyURI"/>
-      <element maxOccurs="1" minOccurs="1" name="restAPIAuthenticationMethod" type="sgr:RestApiAuthenticationEnumMethod"/>
-      <element maxOccurs="1" minOccurs="0" name="restAPIBearer" type="sgr:RestApiBearerType"/>
-      <element maxOccurs="1" minOccurs="0" name="restAPIBasic" type="sgr:RestApiBasicType"/>
+      <element maxOccurs="1" minOccurs="1" name="restApiInterfaceSelection" type="sgr:RestApiInterfaceSelection"/>
+      <element maxOccurs="1" minOccurs="0" name="restApiIpV4Address" type="sgr:RestApiIpV4Address"/>
+      <element maxOccurs="1" minOccurs="0" name="restApiIpV6Address" type="sgr:RestApiIpV6Address"/>
+      <element maxOccurs="1" minOccurs="0" name="restApiUri" type="anyURI"/>
+      <element maxOccurs="1" minOccurs="1" name="restApiAuthenticationMethod" type="sgr:RestApiAuthenticationMethod"/>
+      <element maxOccurs="1" minOccurs="0" name="restApiBearer" type="sgr:RestApiBearer"/>
+      <element maxOccurs="1" minOccurs="0" name="restApiBasic" type="sgr:RestApiBasic"/>
     </sequence>
   </complexType>
   <simpleType name="RestApiInterfaceSelection">
     <restriction base="string">
-      <enumeration value="trspSrvRestTCPV4"/>
-      <enumeration value="trspSrvRestTCPV6"/>
-      <enumeration value="trspSrvRestURI"/>
+      <enumeration value="TCPV4"/>
+      <enumeration value="TCPV6"/>
+      <enumeration value="URI"/>
     </restriction>
   </simpleType>
-  <complexType name="RestApiAttribute">
-    <sequence>
-      <element maxOccurs="1" minOccurs="1" name="placeHolder4futureExtensions">
-        <simpleType>
-          <restriction base="string"/>
-        </simpleType>
-      </element>
-    </sequence>
-  </complexType>
-  <complexType name="RestApiDataPointDescription">
+  <complexType name="RestApiDataPointConfiguration">
     <sequence>
       <element minOccurs="1" maxOccurs="1" name="restServiceCall" type="sgr:RestServiceCall"/>
     </sequence>
@@ -48,43 +39,31 @@
       <enumeration value="JSON_array"/>
     </restriction>
   </simpleType>
-  <simpleType name="RestApiAuthenticationEnumMethod">
+  <simpleType name="RestApiAuthenticationMethod">
     <restriction base="string">
       <enumeration value="NoSecurityScheme"/>
       <enumeration value="BearerSecurityScheme"/>
-      <enumeration value="APIKeySecurityScheme"/>
+      <enumeration value="ApiKeySecurityScheme"/>
       <enumeration value="BasicSecurityScheme"/>
       <enumeration value="DigestSecurityScheme"/>
-      <enumeration value="PSKSecurityScheme"/>
+      <enumeration value="PskSecurityScheme"/>
       <enumeration value="OAuth1SecurityScheme"/>
       <enumeration value="OAuth2SecurityScheme"/>
       <enumeration value="HawkSecurityScheme"/>
-      <enumeration value="AWS_SignatureSecurityScheme"/>
-      <enumeration value="NTLMSecurityScheme"/>
+      <enumeration value="AwsSignatureSecurityScheme"/>
+      <enumeration value="NtlmSecurityScheme"/>
       <enumeration value="AkamaiEdgeGridSecurityScheme"/>
     </restriction>
   </simpleType>
-  <complexType name="RestApiBearerType">
+  <complexType name="RestApiBearer">
     <sequence>
-      <element minOccurs="1" maxOccurs="1" name="serviceCall" type="sgr:RestServiceCall"/>
+      <element minOccurs="1" maxOccurs="1" name="restServiceCall" type="sgr:RestServiceCall"/>
     </sequence>
   </complexType>
-  <simpleType name="RestApiEndPoint">
-    <restriction base="string"/>
-  </simpleType>
-  <simpleType name="RestApiJmesPathType">
-    <restriction base="string"/>
-  </simpleType>
-  <complexType name="RestApiBasicType">
+  <complexType name="RestApiBasic">
     <sequence>
-      <element name="restBasicUsername" type="sgr:RestBasicUsername"/>
-      <element name="restBasicPassword" type="sgr:RestBasicPassword"/>
+      <element name="restBasicUsername" type="string"/>
+      <element name="restBasicPassword" type="string"/>
     </sequence>
   </complexType>
-  <simpleType name="RestBasicUsername">
-    <restriction base="string"/>
-  </simpleType>
-  <simpleType name="RestBasicPassword">
-    <restriction base="string"/>
-  </simpleType>
 </schema>
