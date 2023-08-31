@@ -19,11 +19,11 @@
     <sgr:manufacturerSpecificationIdentification>sgr:manufacturerSpecificationIdentification</sgr:manufacturerSpecificationIdentification>
   </sgr:deviceInformation>
   <sgr:restApiInterfaceDescription>
-    <sgr:restAPIInterfaceSelection>trspSrvRestURI</sgr:restAPIInterfaceSelection>
-    <sgr:trspSrvRestURIoutOfBox>https://my.meo-energy.com/meoApplicationServer</sgr:trspSrvRestURIoutOfBox>
-    <sgr:restAPIAuthenticationMethod>BearerSecurityScheme</sgr:restAPIAuthenticationMethod>
-    <sgr:restAPIBearer>
-      <sgr:serviceCall>
+    <sgr:restApiInterfaceSelection>URI</sgr:restApiInterfaceSelection>
+    <sgr:restApiUri>https://my.meo-energy.com/meoApplicationServer</sgr:restApiUri>
+    <sgr:restApiAuthenticationMethod>BearerSecurityScheme</sgr:restApiAuthenticationMethod>
+    <sgr:restApiBearer>
+      <sgr:restServiceCall>
         <sgr:requestHeader>
           <sgr:header headerName="Accept" value="application/json"/>
         </sgr:requestHeader>
@@ -34,8 +34,8 @@
           <sgr:queryType>JMESPathExpression</sgr:queryType>
           <sgr:query>accessToken</sgr:query>
         </sgr:responseQuery>
-      </sgr:serviceCall>
-    </sgr:restAPIBearer>
+      </sgr:restServiceCall>
+    </sgr:restApiBearer>
   </sgr:restApiInterfaceDescription>
   <sgr:functionalProfileListElement>
     <sgr:functionalProfile profileName="ActivePowerAC">
@@ -61,7 +61,7 @@
           <sgr:language>de</sgr:language>
         </sgr:legibleDescription>
       </sgr:dataPoint>
-      <sgr:restApiDataPoint dataType="JSON_number">
+      <sgr:restApiDataPointConfiguration dataType="JSON_number">
         <sgr:restServiceCall>
           <sgr:requestHeader>
             <sgr:header headerName="Accept" value="application/json"/>
@@ -73,7 +73,7 @@
             <sgr:query>activePowerACtot</sgr:query>
           </sgr:responseQuery>
         </sgr:restServiceCall>
-      </sgr:restApiDataPoint>
+      </sgr:restApiDataPointConfiguration>
     </sgr:dataPointListElement>
   </sgr:functionalProfileListElement>
 </sgr:RestApiDeviceFrame>

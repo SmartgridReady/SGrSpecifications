@@ -279,7 +279,6 @@
 						</td>
 					</tr>
 					<xsl:apply-templates select="sgr:restApiInterfaceDescription" />
-					<xsl:apply-templates select="sgr:restApiAttribute" />
 				</xsl:if>
 
 				<!-- Contact Device -->

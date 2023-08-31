@@ -87,7 +87,7 @@
 					</xsl:if>
 
 					<!-- Rest Device -->
-					<xsl:if test="sgr:restApiDataPoint">
+					<xsl:if test="sgr:restApiDataPointConfiguration">
 						<tr class="transportDetails">
 							<td colspan="2" class="noborder">
 								<h3>
@@ -95,8 +95,7 @@
 								</h3>
 							</td>
 						</tr>
-						<xsl:apply-templates select="sgr:restApiDataPoint" />
-						<xsl:apply-templates select="sgr:restApiAttribute" />
+						<xsl:apply-templates select="sgr:restApiDataPointConfiguration" />
 					</xsl:if>
 				</table>
 			</td>
@@ -175,8 +174,8 @@
 
 	</xsl:template>
 
-	<!-- RestApiDataPointDescription -->
-	<xsl:template match="sgr:restApiDataPoint">
+	<!-- RestApiDataPointConfiguration -->
+	<xsl:template match="sgr:restApiDataPointConfiguration">
 		<tr class="transportDetails">
 			<td>Data Type</td>
 			<td>

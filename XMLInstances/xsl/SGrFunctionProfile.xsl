@@ -36,7 +36,6 @@
 
                 <!-- Modbus and Rest Attributes -->
                 <xsl:apply-templates select="sgr:modbusAttributes" />
-                <xsl:apply-templates select="sgr:restApiAttribute" />
             </table>
 
             <!-- Data Points -->

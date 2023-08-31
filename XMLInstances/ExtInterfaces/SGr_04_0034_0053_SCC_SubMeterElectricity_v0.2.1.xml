@@ -13,11 +13,11 @@
     <sgr:softwareRevision>0.0.0</sgr:softwareRevision>
   </sgr:deviceInformation>
   <sgr:restApiInterfaceDescription>
-    <sgr:restAPIInterfaceSelection>trspSrvRestURI</sgr:restAPIInterfaceSelection>
-    <sgr:trspSrvRestURIoutOfBox>https://api.smartchargecontroller.ch:3000</sgr:trspSrvRestURIoutOfBox>
-    <sgr:restAPIAuthenticationMethod>BearerSecurityScheme</sgr:restAPIAuthenticationMethod>
-    <sgr:restAPIBearer>
-      <sgr:serviceCall>
+    <sgr:restApiInterfaceSelection>URI</sgr:restApiInterfaceSelection>
+    <sgr:restApiUri>https://api.smartchargecontroller.ch:3000</sgr:restApiUri>
+    <sgr:restApiAuthenticationMethod>BearerSecurityScheme</sgr:restApiAuthenticationMethod>
+    <sgr:restApiBearer>
+      <sgr:restServiceCall>
         <sgr:requestHeader>
           <sgr:header headerName="Accept" value="application/json"/>
         </sgr:requestHeader>
@@ -28,8 +28,8 @@
           <sgr:queryType>JMESPathExpression</sgr:queryType>
           <sgr:query>accessToken</sgr:query>
         </sgr:responseQuery>
-      </sgr:serviceCall>
-    </sgr:restAPIBearer>
+      </sgr:restServiceCall>
+    </sgr:restApiBearer>
   </sgr:restApiInterfaceDescription>
   <sgr:functionalProfileListElement>
     <sgr:functionalProfile profileName="ActivePowerAC">
@@ -55,7 +55,7 @@
         <sgr:valueSource>measuredValue</sgr:valueSource>
         <sgr:sampleRate>10</sgr:sampleRate>
       </sgr:genericAttributes>
-      <sgr:restApiDataPoint dataType="JSON_number">
+      <sgr:restApiDataPointConfiguration dataType="JSON_number">
         <sgr:restServiceCall>
           <sgr:requestHeader>
             <sgr:header headerName="Accept" value="application/json"/>
@@ -67,7 +67,7 @@
             <sgr:query>sum([activePower.l1,activePower.l2,activePower.l3])</sgr:query>
           </sgr:responseQuery>
         </sgr:restServiceCall>
-      </sgr:restApiDataPoint>
+      </sgr:restApiDataPointConfiguration>
     </sgr:dataPointListElement>
     <sgr:dataPointListElement>
       <sgr:dataPoint datapointName="ActivePowerACL1" presenceLevel="R" dataDirection="R" unit="WATTS">
@@ -79,7 +79,7 @@
         <sgr:valueSource>measuredValue</sgr:valueSource>
         <sgr:sampleRate>10</sgr:sampleRate>
       </sgr:genericAttributes>
-      <sgr:restApiDataPoint dataType="JSON_number">
+      <sgr:restApiDataPointConfiguration dataType="JSON_number">
         <sgr:restServiceCall>
           <sgr:requestHeader>
             <sgr:header headerName="Accept" value="application/json"/>
@@ -91,7 +91,7 @@
             <sgr:query>activePower.l1</sgr:query>
           </sgr:responseQuery>
         </sgr:restServiceCall>
-      </sgr:restApiDataPoint>
+      </sgr:restApiDataPointConfiguration>
     </sgr:dataPointListElement>
     <sgr:dataPointListElement>
       <sgr:dataPoint datapointName="ActivePowerACL2" presenceLevel="R" dataDirection="R" unit="WATTS">
@@ -103,7 +103,7 @@
         <sgr:valueSource>measuredValue</sgr:valueSource>
         <sgr:sampleRate>10</sgr:sampleRate>
       </sgr:genericAttributes>
-      <sgr:restApiDataPoint dataType="JSON_number">
+      <sgr:restApiDataPointConfiguration dataType="JSON_number">
         <sgr:restServiceCall>
           <sgr:requestHeader>
             <sgr:header headerName="Accept" value="application/json"/>
@@ -115,7 +115,7 @@
             <sgr:query>activePower.l2</sgr:query>
           </sgr:responseQuery>
         </sgr:restServiceCall>
-      </sgr:restApiDataPoint>
+      </sgr:restApiDataPointConfiguration>
     </sgr:dataPointListElement>
     <sgr:dataPointListElement>
       <sgr:dataPoint datapointName="ActivePowerACL3" presenceLevel="R" dataDirection="R" unit="WATTS">
@@ -127,7 +127,7 @@
         <sgr:valueSource>measuredValue</sgr:valueSource>
         <sgr:sampleRate>10</sgr:sampleRate>
       </sgr:genericAttributes>
-      <sgr:restApiDataPoint dataType="JSON_number">
+      <sgr:restApiDataPointConfiguration dataType="JSON_number">
         <sgr:restServiceCall>
           <sgr:requestHeader>
             <sgr:header headerName="Accept" value="application/json"/>
@@ -139,7 +139,7 @@
             <sgr:query>activePower.l3</sgr:query>
           </sgr:responseQuery>
         </sgr:restServiceCall>
-      </sgr:restApiDataPoint>
+      </sgr:restApiDataPointConfiguration>
     </sgr:dataPointListElement>
   </sgr:functionalProfileListElement>
   <sgr:functionalProfileListElement>
@@ -166,7 +166,7 @@
         <sgr:valueSource>measuredValue</sgr:valueSource>
         <sgr:sampleRate>10</sgr:sampleRate>
       </sgr:genericAttributes>
-      <sgr:restApiDataPoint dataType="JSON_number">
+      <sgr:restApiDataPointConfiguration dataType="JSON_number">
         <sgr:restServiceCall>
           <sgr:requestHeader>
             <sgr:header headerName="Accept" value="application/json"/>
@@ -178,7 +178,7 @@
             <sgr:query>voltage.l1</sgr:query>
           </sgr:responseQuery>
         </sgr:restServiceCall>
-      </sgr:restApiDataPoint>
+      </sgr:restApiDataPointConfiguration>
     </sgr:dataPointListElement>
     <sgr:dataPointListElement>
       <sgr:dataPoint datapointName="VoltageACL2_N" presenceLevel="R" dataDirection="R" unit="VOLTS">
@@ -190,7 +190,7 @@
         <sgr:valueSource>measuredValue</sgr:valueSource>
         <sgr:sampleRate>10</sgr:sampleRate>
       </sgr:genericAttributes>
-      <sgr:restApiDataPoint dataType="JSON_number">
+      <sgr:restApiDataPointConfiguration dataType="JSON_number">
         <sgr:restServiceCall>
           <sgr:requestHeader>
             <sgr:header headerName="Accept" value="application/json"/>
@@ -202,7 +202,7 @@
             <sgr:query>voltage.l2</sgr:query>
           </sgr:responseQuery>
         </sgr:restServiceCall>
-      </sgr:restApiDataPoint>
+      </sgr:restApiDataPointConfiguration>
     </sgr:dataPointListElement>
     <sgr:dataPointListElement>
       <sgr:dataPoint datapointName="VoltageACL3_N" presenceLevel="R" dataDirection="R" unit="VOLTS">
@@ -214,7 +214,7 @@
         <sgr:valueSource>measuredValue</sgr:valueSource>
         <sgr:sampleRate>10</sgr:sampleRate>
       </sgr:genericAttributes>
-      <sgr:restApiDataPoint dataType="JSON_number">
+      <sgr:restApiDataPointConfiguration dataType="JSON_number">
         <sgr:restServiceCall>
           <sgr:requestHeader>
             <sgr:header headerName="Accept" value="application/json"/>
@@ -226,7 +226,7 @@
             <sgr:query>voltage.l3</sgr:query>
           </sgr:responseQuery>
         </sgr:restServiceCall>
-      </sgr:restApiDataPoint>
+      </sgr:restApiDataPointConfiguration>
     </sgr:dataPointListElement>
   </sgr:functionalProfileListElement>
   <sgr:functionalProfileListElement>
@@ -253,7 +253,7 @@
         <sgr:valueSource>measuredValue</sgr:valueSource>
         <sgr:sampleRate>10</sgr:sampleRate>
       </sgr:genericAttributes>
-      <sgr:restApiDataPoint dataType="JSON_number">
+      <sgr:restApiDataPointConfiguration dataType="JSON_number">
         <sgr:restServiceCall>
           <sgr:requestHeader>
             <sgr:header headerName="Accept" value="application/json"/>
@@ -265,7 +265,7 @@
             <sgr:query>current.l1</sgr:query>
           </sgr:responseQuery>
         </sgr:restServiceCall>
-      </sgr:restApiDataPoint>
+      </sgr:restApiDataPointConfiguration>
     </sgr:dataPointListElement>
     <sgr:dataPointListElement>
       <sgr:dataPoint datapointName="CurrentACL2" presenceLevel="R" dataDirection="R" unit="AMPERES">
@@ -277,7 +277,7 @@
         <sgr:valueSource>measuredValue</sgr:valueSource>
         <sgr:sampleRate>10</sgr:sampleRate>
       </sgr:genericAttributes>
-      <sgr:restApiDataPoint dataType="JSON_number">
+      <sgr:restApiDataPointConfiguration dataType="JSON_number">
         <sgr:restServiceCall>
           <sgr:requestHeader>
             <sgr:header headerName="Accept" value="application/json"/>
@@ -289,7 +289,7 @@
             <sgr:query>current.l2</sgr:query>
           </sgr:responseQuery>
         </sgr:restServiceCall>
-      </sgr:restApiDataPoint>
+      </sgr:restApiDataPointConfiguration>
     </sgr:dataPointListElement>
     <sgr:dataPointListElement>
       <sgr:dataPoint datapointName="CurrentACL3" presenceLevel="R" dataDirection="R" unit="AMPERES">
@@ -301,7 +301,7 @@
         <sgr:valueSource>measuredValue</sgr:valueSource>
         <sgr:sampleRate>10</sgr:sampleRate>
       </sgr:genericAttributes>
-      <sgr:restApiDataPoint dataType="JSON_number">
+      <sgr:restApiDataPointConfiguration dataType="JSON_number">
         <sgr:restServiceCall>
           <sgr:requestHeader>
             <sgr:header headerName="Accept" value="application/json"/>
@@ -313,7 +313,7 @@
             <sgr:query>current.l3</sgr:query>
           </sgr:responseQuery>
         </sgr:restServiceCall>
-      </sgr:restApiDataPoint>
+      </sgr:restApiDataPointConfiguration>
     </sgr:dataPointListElement>
   </sgr:functionalProfileListElement>
 </sgr:RestApiDeviceFrame>

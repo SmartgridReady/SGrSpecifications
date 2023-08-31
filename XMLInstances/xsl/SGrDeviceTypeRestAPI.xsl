@@ -6,44 +6,44 @@
         <tr class="transportDetails">
             <td>Interface Type</td>
             <td>
-                <xsl:value-of select="sgr:restAPIInterfaceSelection" />
+                <xsl:value-of select="sgr:restApiInterfaceSelection" />
             </td>
         </tr>
 
-        <!-- trspSrvRestTCPV4outOfBox (1x opt )-->
-        <xsl:if test="sgr:trspSrvRestTCPV4outOfBox">
+        <!-- restApiIpV4Address (1x opt )-->
+        <xsl:if test="sgr:restApiIpV4Address">
             <tr class="transportDetails">
                 <td>TCP/IP v4 Adress</td>
                 <td>
-                    <xsl:value-of select="sgr:trspSrvRestTCPV4outOfBox/sgr:ipV4n1" />
+                    <xsl:value-of select="sgr:restApiIpV4Address/sgr:ipV4n1" />
                     .
-                    <xsl:value-of select="sgr:trspSrvRestTCPV4outOfBox/sgr:ipV4n2" />
+                    <xsl:value-of select="sgr:restApiIpV4Address/sgr:ipV4n2" />
                     .
-                    <xsl:value-of select="sgr:trspSrvRestTCPV4outOfBox/sgr:ipV4n3" />
+                    <xsl:value-of select="sgr:restApiIpV4Address/sgr:ipV4n3" />
                     .
-                    <xsl:value-of select="sgr:trspSrvRestTCPV4outOfBox/sgr:ipV4n4" />
+                    <xsl:value-of select="sgr:restApiIpV4Address/sgr:ipV4n4" />
                     :
-                    <xsl:value-of select="sgr:trspSrvRestTCPV4outOfBox/sgr:ipV4portNr" />
+                    <xsl:value-of select="sgr:restApiIpV4Address/sgr:ipV4portNr" />
                 </td>
             </tr>
         </xsl:if>
 
-        <!-- trspSrvRestTCPV6outOfBox (1x opt )-->
-        <xsl:if test="sgr:trspSrvRestTCPV6outOfBox">
+        <!-- restApiIpV6Address (1x opt )-->
+        <xsl:if test="sgr:restApiIpV6Address">
             <tr class="transportDetails">
                 <td>TCP/IP v6 Adress</td>
                 <td>
-                    <xsl:value-of select="sgr:trspSrvRestTCPV6outOfBox/sgr:prelimStringDef" />
+                    <xsl:value-of select="sgr:restApiIpV6Address/sgr:prelimStringDef" />
                 </td>
             </tr>
         </xsl:if>
 
-        <!-- trspSrvRestURIoutOfBox (1x opt )-->
-        <xsl:if test="sgr:trspSrvRestURIoutOfBox">
+        <!-- restApiUri (1x opt )-->
+        <xsl:if test="sgr:restApiUri">
             <tr class="transportDetails">
                 <td>TCP/IP URI</td>
                 <td>
-                    <xsl:value-of select="sgr:trspSrvRestURIoutOfBox" />
+                    <xsl:value-of select="sgr:restApiUri" />
                 </td>
             </tr>
         </xsl:if>
@@ -51,49 +51,33 @@
         <tr class="transportDetails">
             <td>Authentication Method</td>
             <td>
-                <xsl:value-of select="sgr:restAPIAuthenticationMethod" />
+                <xsl:value-of select="sgr:restApiAuthenticationMethod" />
             </td>
         </tr>
 
 
-        <!-- restAPIBearer (1x opt )-->
-        <xsl:if test="sgr:restAPIBearer">
+        <!-- restApiBearer (1x opt )-->
+        <xsl:if test="sgr:restApiBearer">
             <tr class="transportDetails">
                 <td>Bearer Security</td>
                 <td>
                     <table>
-                        <xsl:apply-templates select="sgr:restAPIBearer/sgr:serviceCall" />
+                        <xsl:apply-templates select="sgr:restApiBearer/sgr:restServiceCall" />
                     </table>
                 </td>
             </tr>
         </xsl:if>
 
-        <!-- restAPIBasic (1x opt )-->
-        <xsl:if test="sgr:restAPIBasic">
+        <!-- restApiBasic (1x opt )-->
+        <xsl:if test="sgr:restApiBasic">
             <tr class="transportDetails">
                 <td>Basic Security</td>
                 <td>
                     Username:
-                    <xsl:value-of select="sgr:restAPIBasic/sgr:restBasicUsername" />
+                    <xsl:value-of select="sgr:restApiBasic/sgr:restBasicUsername" />
                     <br />
                     Password:
-                    <xsl:value-of select="sgr:restAPIBasic/sgr:restBasicPassword" />
-                </td>
-            </tr>
-        </xsl:if>
-    </xsl:template>
-
-    <!-- Attributes RestAPI -->
-    <xsl:template match="sgr:restApiAttribute">
-        <!--flexAssistance-->
-        <xsl:if test="sgr:placeHolder4futureExtensions">
-            <tr class="transportDetails">
-                <td>
-                    <img src="/xsl/rest.png" width="60px" />
-                    Fut.Ext. ??
-                </td>
-                <td>
-                    <xsl:value-of select="sgr:placeHolder4futureExtensions" />
+                    <xsl:value-of select="sgr:restApiBasic/sgr:restBasicPassword" />
                 </td>
             </tr>
         </xsl:if>
@@ -103,7 +87,7 @@
     <xsl:template match="sgr:restServiceCall">
 		<xsl:call-template name="SGrRestServiceCall" />
 	</xsl:template>
-    <xsl:template match="sgr:serviceCall">
+    <xsl:template match="sgr:restServiceCall">
 		<xsl:call-template name="SGrRestServiceCall" />
 	</xsl:template>    
     <xsl:template name="SGrRestServiceCall">
