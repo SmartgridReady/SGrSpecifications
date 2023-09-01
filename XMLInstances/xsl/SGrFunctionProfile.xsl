@@ -56,7 +56,7 @@
                         <th>MRO</th>
                         <th>RWP</th>
                     </tr>
-                    <xsl:apply-templates select="sgr:dataPointListElement" />
+                    <xsl:apply-templates select="sgr:dataPointList/sgr:dataPointListElement" />
                 </table>
             </div>
         </div>
