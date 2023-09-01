@@ -65,9 +65,6 @@
             <subReleaseVersionNumber>2</subReleaseVersionNumber>
           </versionNumber>
         </functionalProfileIdentification>
-        <alternativeNames>
-          <sLV1Name>HeatPumpBase</sLV1Name>
-        </alternativeNames>
         <legibleDescription>
           <textElement>
             Das Profil definiert den Grundbaustein zur dynamischen Ansteuerung von Wärmepumpen über eine variable Beeinflussung der Sollwerte nach SGr Level 4. Der Betrieb der Wärmepumpe muss in sich sicher sein, unabhängig von den äusseren Vorgaben. Dieses Grundprofil definiert die Datenpunkte, welche zur Steuerung des Gerätes «Wärmepumpe» auf Level 4 grundsätzlich zur Verfügung gestellt werden und stellen die Version einer typischen EInfamilienhauswärmepumpe miz Aussentemperaturfühler dar. Für die einzelnen Heizkreise, Warmwasser, Pufferspeicher und das Energie-Monitoring  sowie eine Verdichterdrehzahl / Leistungsregelung werden separate Profile zur Verfügung gestellt.
@@ -81,9 +78,6 @@
             <dataType>
               <int16U/>
             </dataType>
-            <alternativeNames>
-              <sLV1Name>HPOpModeCmd</sLV1Name>
-            </alternativeNames>
             <legibleDescription>
               <textElement>0=AUS, 1=Automatik, 2=Kühlen, 3=Sommer, 4=Dauerbetrieb, 5=Absenkung, 6=Urlaub, 7=Party, 8=Ausheizen, 9=EVU Sperre, 10=Hauptschalter AUS</textElement>
               <language>de</language>
@@ -113,9 +107,6 @@
             <dataType>
               <int16U/>
             </dataType>
-            <alternativeNames>
-              <sLV1Name>HPOpState</sLV1Name>
-            </alternativeNames>
             <legibleDescription>
               <textElement>0=AUS, 1=Automatik, 2=Kühlen, 3=Sommer, 4=Dauerbetrieb, 5=Absenkung, 6=Urlaub, 7=Party, 8=Ausheizen, 9=EVU Sperre, 10=Hauptschalter AUS</textElement>
               <language>de</language>
@@ -145,9 +136,6 @@
             <dataType>
               <int16U/>
             </dataType>
-            <alternativeNames>
-              <sLV1Name>Fault_HP_SGr</sLV1Name>
-            </alternativeNames>
             <legibleDescription>
               <textElement>?check: enum oder Bit-Array? Fehlerliste gem. Standard</textElement>
               <language>de</language>
@@ -177,9 +165,6 @@
             <dataType>
               <float64/>
             </dataType>
-            <alternativeNames>
-              <sLV1Name>OutsideAirTemp</sLV1Name>
-            </alternativeNames>
             <legibleDescription>
               <textElement>
                 Aktuelle Aussentemperatur (gemessen über Aussenfühler)
@@ -259,9 +244,6 @@
             <subReleaseVersionNumber>2</subReleaseVersionNumber>
           </versionNumber>
         </functionalProfileIdentification>
-        <alternativeNames>
-          <sLV1Name>CompressorPwrCtrl</sLV1Name>
-        </alternativeNames>
         <legibleDescription>
           <textElement>
             The compressor speed or the heat pump power can be controlled (not both). For compressor speed, a setpoint speed is sent to register 126, For power, a set point input is sent to the heat pump via register 125. The heat pump then regulates the compressor speed upwards or downwards until the setpoint is reached. However, it can take up to several minutes for the heat pump to reach the setpoint. It must also be taken into account that the heat pump does not change compressor speed during the pre-regulation time (usually between 2 and 10 minutes, depending on the heat pump type) and therefore cannot yet regulate to the setpoint.
@@ -275,9 +257,6 @@
             <dataType>
               <float64/>
             </dataType>
-            <alternativeNames>
-              <sLV1Name>SpeedCtrlSetpt</sLV1Name>
-            </alternativeNames>
             <legibleDescription>
               <textElement>
                 ?check: Adress durch cb? Absolute Vorgabe der Drehzahl in der gewählten Betriebsart
@@ -309,9 +288,6 @@
             <dataType>
               <float64/>
             </dataType>
-            <alternativeNames>
-              <sLV1Name>ActSpeed</sLV1Name>
-            </alternativeNames>
             <legibleDescription>
               <textElement>
                 Effektive Drehzahl des Verdichters
@@ -339,9 +315,6 @@
             <dataType>
               <float64/>
             </dataType>
-            <alternativeNames>
-              <sLV1Name>ActPower</sLV1Name>
-            </alternativeNames>
             <legibleDescription>
               <textElement>
                 Effektive elektrischen Aufnahmeleistung des Verdichters
@@ -381,9 +354,6 @@
             <dataType>
               <float64/>
             </dataType>
-            <alternativeNames>
-              <sLV1Name>ActPower</sLV1Name>
-            </alternativeNames>
             <legibleDescription>
               <textElement>
                 Effektive elektrischen Aufnahmeleistung des Verdichters (der WP?)
@@ -421,9 +391,6 @@
             <subReleaseVersionNumber>2</subReleaseVersionNumber>
           </versionNumber>
         </functionalProfileIdentification>
-        <alternativeNames>
-          <sLV1Name>HeatCoolCtrl</sLV1Name>
-        </alternativeNames>
         <legibleDescription>
           <textElement>Dieses Profil definiert die erweiterten Datenpunkte zum Grundprofil "HeatPumpBase", welche zur Steuerung eines Heiz- oder Kühlkreises zur Verfügung gestellt werden. Derselbe physikalische Kreislauf kann entweder für das Heizen oder das Kühlen verwendet werden. Das Heiz-/Kühlkreisprofil muss immer in Kombination mit dem Grundprofil der Wärmepumpe  bewirtschaftet werden. Es können mehrere Heiz-/Kühlkreisprofile definiert werden.</textElement>
           <language>de</language>
@@ -439,9 +406,6 @@
             <dataType>
               <int16/>
             </dataType>
-            <alternativeNames>
-              <sLV1Name>HeatCoolCtrlOpModeCmd</sLV1Name>
-            </alternativeNames>
             <legibleDescription>
               <textElement>Festlegen der Betriebsart des Heiz-/Kühlkreises 1  [Aus Bereitschaft, Programm, Komfort, Eco]              </textElement>
               <language>de</language>
@@ -471,9 +435,6 @@
             <dataType>
               <int16/>
             </dataType>
-            <alternativeNames>
-              <sLV1Name>HeatCoolOpState</sLV1Name>
-            </alternativeNames>
             <legibleDescription>
               <textElement>Modes:  0=off, 1=automatic, 2=Cooling, 3=Summer, 4=Continuous(?), 5=setback (?), 6=Vacation, 7=Party, 8=Ausheizen, 9=?, 10=?. 8 to 10 only informational</textElement>
               <language>de</language>
@@ -503,9 +464,6 @@
             <dataType>
               <float64/>
             </dataType>
-            <alternativeNames>
-              <sLV1Name>FlowWaterTempStpt</sLV1Name>
-            </alternativeNames>
             <legibleDescription>
               <textElement>Setzen der aktuellen Soll-Temperatur des Vorlaufs (Grundwert) fur HeizKreis 1.</textElement>
               <language>de</language>
@@ -535,9 +493,6 @@
             <dataType>
               <boolean/>
             </dataType>
-            <alternativeNames>
-              <sLV1Name>FlowWaterTempStptEN</sLV1Name>
-            </alternativeNames>
             <legibleDescription>
               <textElement>Aktiviert der kontrol von vorlauf Temperatur in register 109 fur heizkreis 1 </textElement>
               <language>de</language>
@@ -567,9 +522,6 @@
             <dataType>
               <float64/>
             </dataType>
-            <alternativeNames>
-              <sLV1Name>ReturnFlowWaterTemp</sLV1Name>
-            </alternativeNames>
             <legibleDescription>
               <textElement>Auslesen der aktuellen aktuellen-Temperatur des Rücklaufs.</textElement>
               <language>de</language>
@@ -605,9 +557,6 @@
             <subReleaseVersionNumber>2</subReleaseVersionNumber>
           </versionNumber>
         </functionalProfileIdentification>
-        <alternativeNames>
-          <sLV1Name>HeatCoolCtrl</sLV1Name>
-        </alternativeNames>
         <legibleDescription>
           <textElement>Dieses Profil definiert die erweiterten Datenpunkte zum Grundprofil "HeatPumpBase", welche zur Steuerung des Heiz- oder Kühlkreise 2 zur Verfügung gestellt werden. Derselbe physikalische Kreislauf kann entweder für das Heizen oder das Kühlen verwendet werden. Das Heiz-/Kühlkreisprofil muss immer in Kombination mit dem Grundprofil der Wärmepumpe  bewirtschaftet werden. Es können mehrere Heiz-/Kühlkreisprofile definiert werden.</textElement>
           <language>de</language>
@@ -623,9 +572,6 @@
             <dataType>
               <int16/>
             </dataType>
-            <alternativeNames>
-              <sLV1Name>HeatCoolCtrlOpModeCmd</sLV1Name>
-            </alternativeNames>
             <legibleDescription>
               <textElement>Festlegen der Betriebsart des Heiz-/Kühlkreises 2 Modes:  0=off, 1=automatic, 2=Cooling, 3=Summer, 4=Continuous(?), 5=setback (?), 6=Vacation, 7=Party, 8=Ausheizen, 9=?, 10=?. 8 to 10 only informational            </textElement>
               <language>de</language>
@@ -651,9 +597,6 @@
             <dataType>
               <int16/>
             </dataType>
-            <alternativeNames>
-              <sLV1Name>HeatCoolOpState</sLV1Name>
-            </alternativeNames>
             <legibleDescription>
               <textElement>Auslesen des aktuellen Status des Heiz-/Kühlkreises 2 (Aus, Bereitschaft, Programm, Comfort, Eco)</textElement>
               <language>de</language>
@@ -683,9 +626,6 @@
             <dataType>
               <float64/>
             </dataType>
-            <alternativeNames>
-              <sLV1Name>FlowWaterTempStpt</sLV1Name>
-            </alternativeNames>
             <legibleDescription>
               <textElement>Setzen der aktuellen Soll-Temperatur des Vorlaufs 2 (Grundwert).</textElement>
               <language>de</language>
@@ -711,9 +651,6 @@
             <dataType>
               <boolean/>
             </dataType>
-            <alternativeNames>
-              <sLV1Name>FlowWaterTempStptEN</sLV1Name>
-            </alternativeNames>
             <legibleDescription>
               <textElement>Setzen der aktuellen Soll-Temperatur des Vorlaufs (Grundwert).</textElement>
               <language>de</language>
@@ -739,9 +676,6 @@
             <dataType>
               <float64/>
             </dataType>
-            <alternativeNames>
-              <sLV1Name>ReturnFlowWaterTemp</sLV1Name>
-            </alternativeNames>
             <legibleDescription>
               <textElement>Auslesen der aktuellen aktuellen-Temperatur des Rücklaufs.</textElement>
               <language>de</language>
@@ -777,9 +711,6 @@
             <subReleaseVersionNumber>2</subReleaseVersionNumber>
           </versionNumber>
         </functionalProfileIdentification>
-        <alternativeNames>
-          <sLV1Name>DomHotWaterCtrl</sLV1Name>
-        </alternativeNames>
         <legibleDescription>
           <textElement>Dieses Profil definiert die erweiterten Datenpunkte zum Grundprofil "HeatPumpBase", welche zur Steuerung eines Brauchwarmwasserkreises zur Verfügung gestellt werden. Das Brauchwarmwasser-Profil muss immer in Kombination mit dem Grundprofil der Wärmepumpe bewirtschaftet werden. Es können mehrere Brauchwarmwasser-Profile definiert werden.</textElement>
           <language>de</language>
@@ -791,9 +722,6 @@
             <dataType>
               <float64/>
             </dataType>
-            <alternativeNames>
-              <sLV1Name>ActDomHotWaterTemp</sLV1Name>
-            </alternativeNames>
             <legibleDescription>
               <textElement>Domestic hot water tank temperature</textElement>
               <language>de</language>
@@ -823,9 +751,6 @@
             <dataType>
               <float64/>
             </dataType>
-            <alternativeNames>
-              <sLV1Name>DomHotWTempStpt</sLV1Name>
-            </alternativeNames>
             <legibleDescription>
               <textElement>
                 Domestic hot water temperature setpoint. Another register also available for minimum allowed temp
@@ -869,9 +794,6 @@
             <subReleaseVersionNumber>2</subReleaseVersionNumber>
           </versionNumber>
         </functionalProfileIdentification>
-        <alternativeNames>
-          <sLV1Name>BufferStorageCtrl</sLV1Name>
-        </alternativeNames>
         <legibleDescription>
           <textElement>x</textElement>
           <language>de</language>
@@ -883,9 +805,6 @@
             <dataType>
               <float64/>
             </dataType>
-            <alternativeNames>
-              <sLV1Name>HeatWTempStpt</sLV1Name>
-            </alternativeNames>
             <legibleDescription>
               <textElement>
                 Sollwerte der Solltemperatur (+/-) für den Heiz-Pufferspeicher.
@@ -919,9 +838,6 @@
             <dataType>
               <boolean/>
             </dataType>
-            <alternativeNames>
-              <sLV1Name>FlowWaterTempStptEN</sLV1Name>
-            </alternativeNames>
             <legibleDescription>
               <textElement>Wenn 1, setzen der aktuellen Soll-Temperatur des Vorlaufs (Grundwert).</textElement>
               <language>de</language>
@@ -951,9 +867,6 @@
             <dataType>
               <float64/>
             </dataType>
-            <alternativeNames>
-              <sLV1Name>ActHeatBufferTemp</sLV1Name>
-            </alternativeNames>
             <legibleDescription>
               <textElement>Aktuelle Ist-Temperatur des Heiz-Pufferspeichers oben</textElement>
               <language>de</language>
@@ -989,9 +902,6 @@
             <subReleaseVersionNumber>2</subReleaseVersionNumber>
           </versionNumber>
         </functionalProfileIdentification>
-        <alternativeNames>
-          <sLV1Name>RoomTempCtrl</sLV1Name>
-        </alternativeNames>
         <legibleDescription>
           <textElement>x
   				</textElement>
@@ -1004,9 +914,6 @@
             <dataType>
               <float64/>
             </dataType>
-            <alternativeNames>
-              <sLV1Name>RoomZoneTemp</sLV1Name>
-            </alternativeNames>
             <legibleDescription>
               <textElement>Aktuelle Ist-Temperatur des 1. Raumes oder Mittelwert der Bezugsräume für die Begrenzung der Reduktions- oder Anhebungsmassnahmen</textElement>
               <language>de</language>
@@ -1042,9 +949,6 @@
             <subReleaseVersionNumber>2</subReleaseVersionNumber>
           </versionNumber>
         </functionalProfileIdentification>
-        <alternativeNames>
-          <sLV1Name>RoomTempCtrl</sLV1Name>
-        </alternativeNames>
         <legibleDescription>
           <textElement>x</textElement>
           <language>de</language>
@@ -1056,9 +960,6 @@
             <dataType>
               <float64/>
             </dataType>
-            <alternativeNames>
-              <sLV1Name>RoomZoneTemp</sLV1Name>
-            </alternativeNames>
             <legibleDescription>
               <textElement>Aktuelle Ist-Temperatur des 1. Raumes oder Mittelwert der Bezugsräume für die Begrenzung der Reduktions- oder Anhebungsmassnahmen</textElement>
               <language>de</language>
@@ -1094,9 +995,6 @@
             <subReleaseVersionNumber>2</subReleaseVersionNumber>
           </versionNumber>
         </functionalProfileIdentification>
-        <alternativeNames>
-          <sLV1Name>Monitoring</sLV1Name>
-        </alternativeNames>
         <legibleDescription>
           <textElement>Das Profil definiert den Monitoriungbaustein zur dynamischen Ansteuerung von Wärmepumpen über eine variable Beeinflussung der Sollwerte nach SGr Level 4. </textElement>
           <language>de</language>
@@ -1108,9 +1006,6 @@
             <dataType>
               <float64/>
             </dataType>
-            <alternativeNames>
-              <sLV1Name> ActiveEnergyACtot</sLV1Name>
-            </alternativeNames>
             <legibleDescription>
               <textElement>Summe der aufgenommenen elektrischen Energie des Verdichters inkl. Hilfsaggregate total.</textElement>
               <language>de</language>
@@ -1132,13 +1027,10 @@
           </modbusAttributes>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName=" ActiveEnergyACheat" presenceLevel="R" dataDirection="R" unit="KILOWATT_HOURS">
+          <dataPoint datapointName="ActiveEnergyACheat" presenceLevel="R" dataDirection="R" unit="KILOWATT_HOURS">
             <dataType>
               <float64/>
             </dataType>
-            <alternativeNames>
-              <sLV1Name>ActiveEnergyACheat</sLV1Name>
-            </alternativeNames>
             <legibleDescription>
               <textElement>Summe der aufgenommenen elektrischen Energie des Verdichters für das Heizen.</textElement>
               <language>de</language>
@@ -1164,9 +1056,6 @@
             <dataType>
               <float64/>
             </dataType>
-            <alternativeNames>
-              <sLV1Name>ThermalEnergyDomWater</sLV1Name>
-            </alternativeNames>
             <legibleDescription>
               <textElement>Summe der aufgenommenen elektrischen Energie des Verdichters für die Brauchwarmwasser-Erwärmung.</textElement>
               <language>de</language>
@@ -1192,9 +1081,6 @@
             <dataType>
               <float64/>
             </dataType>
-            <alternativeNames>
-              <sLV1Name>ThermalEnergyTot</sLV1Name>
-            </alternativeNames>
             <legibleDescription>
               <textElement>Summe der abgegebenen thermischen Energie total.</textElement>
               <language>de</language>
@@ -1220,9 +1106,6 @@
             <dataType>
               <float64/>
             </dataType>
-            <alternativeNames>
-              <sLV1Name>ThermalEnergyHeat</sLV1Name>
-            </alternativeNames>
             <legibleDescription>
               <textElement>Summe der abgegebenen thermischen Energie für das Heizen.</textElement>
               <language>de</language>
@@ -1248,9 +1131,6 @@
             <dataType>
               <float64/>
             </dataType>
-            <alternativeNames>
-              <sLV1Name>ThermalEnergyDomWater</sLV1Name>
-            </alternativeNames>
             <legibleDescription>
               <textElement>Summe der abgegebenen thermischen Energie für die Brauchwarmwasser-Erwärmung.</textElement>
               <language>de</language>
@@ -1276,9 +1156,6 @@
             <dataType>
               <float64/>
             </dataType>
-            <alternativeNames>
-              <sLV1Name>ActivePowerACtot</sLV1Name>
-            </alternativeNames>
             <legibleDescription>
               <textElement>Aktuell aufgenommene elektrische Leistung des Verdichters.</textElement>
               <language>de</language>
@@ -1304,9 +1181,6 @@
             <dataType>
               <float64/>
             </dataType>
-            <alternativeNames>
-              <sLV1Name>ThermalPower</sLV1Name>
-            </alternativeNames>
             <legibleDescription>
               <textElement>
                 Thermisch Leistung total
@@ -1340,9 +1214,6 @@
             <dataType>
               <float64/>
             </dataType>
-            <alternativeNames>
-              <sLV1Name>RuntimeHeating</sLV1Name>
-            </alternativeNames>
             <legibleDescription>
               <textElement>Summe der Laufzeit in der Heizphase.</textElement>
               <language>de</language>
@@ -1368,9 +1239,6 @@
             <dataType>
               <float64/>
             </dataType>
-            <alternativeNames>
-              <sLV1Name>RuntimeDomHotWater </sLV1Name>
-            </alternativeNames>
             <legibleDescription>
               <textElement>Summe der Laufzeit in der Brauchwarmwasser-Phase.</textElement>
               <language>de</language>
