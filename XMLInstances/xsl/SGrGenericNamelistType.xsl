@@ -3,15 +3,6 @@
 
     <!-- AlternativeNames-->
     <xsl:template name="AlternativeNames">
-        <xsl:if test="sgr:sLV1Name">
-            <tr class="ontologyDetails">
-                <td>SGr label V1 (legacy)</td>
-                <td>
-                    <xsl:value-of select="sgr:sLV1Name" />
-                </td>
-            </tr>
-        </xsl:if>
-
         <xsl:if test="sgr:workName">
             <tr class="ontologyDetails">
                 <td>Temporary Work Name</td>
@@ -30,38 +21,38 @@
             </tr>
         </xsl:if>
 
-        <xsl:if test="sgr:iec61850Name">
+        <xsl:if test="sgr:IEC61850Name">
             <tr class="ontologyDetails">
                 <td>IEC 61850 Name </td>
                 <td>
-                    <xsl:value-of select="sgr:iec61850Name" />
+                    <xsl:value-of select="sgr:IEC61850Name" />
                 </td>
             </tr>
         </xsl:if>
 
-        <xsl:if test="sgr:sarefName">
+        <xsl:if test="sgr:SAREFName">
             <tr class="ontologyDetails">
                 <td>SAREF Name</td>
                 <td>
-                    <xsl:value-of select="sgr:sarefName" />
+                    <xsl:value-of select="sgr:SAREFName" />
                 </td>
             </tr>
         </xsl:if>
 
-        <xsl:if test="sgr:eebusName">
+        <xsl:if test="sgr:EEBUSName">
             <tr class="ontologyDetails">
                 <td>EEBUS Name</td>
                 <td>
-                    <xsl:value-of select="sgr:eebusName" />
+                    <xsl:value-of select="sgr:EEBUSName" />
                 </td>
             </tr>
         </xsl:if>
 
-        <xsl:if test="sgr:sunspecName">
+        <xsl:if test="sgr:sunSpecName">
             <tr class="ontologyDetails">
                 <td>SUNSPEC Name</td>
                 <td>
-                    <xsl:value-of select="sgr:sunspecName" />
+                    <xsl:value-of select="sgr:sunSpecName" />
                 </td>
             </tr>
         </xsl:if>
@@ -75,11 +66,11 @@
             </tr>
         </xsl:if>
 
-        <xsl:if test="sgr:en17609Name">
+        <xsl:if test="sgr:EN17609Name">
             <tr class="ontologyDetails">
                 <td>EN17609 Name</td>
                 <td>
-                    <xsl:value-of select="sgr:en17609Name" />
+                    <xsl:value-of select="sgr:EN17609Name" />
                 </td>
             </tr>
         </xsl:if>
