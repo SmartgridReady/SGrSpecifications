@@ -44,119 +44,121 @@
       <language>de</language>
     </legibleDescription>
   </functionalProfile>
-  <dataPointListElement>
-    <dataPoint datapointName="HeatWTempStptOffset" presenceLevel="R" dataDirection="RW" unit="DEGREES_CELSIUS">
-      <dataType>
-        <float64/>
-      </dataType>
-      <legibleDescription>
-        <textElement>
-          Relative Anhebung/Absenkung der Solltemperatur (+/-) für den
-          Heiz-Pufferspeicher.
-        </textElement>
-        <language>de</language>
-      </legibleDescription>
-    </dataPoint>
-    <genericAttributes>
-      <maxVal>5.0</maxVal>
-      <minVal>-5.0</minVal>
-    </genericAttributes>
-  </dataPointListElement>
-  <dataPointListElement>
-    <dataPoint datapointName="ActBufferState" presenceLevel="O" dataDirection="R" unit="NONE">
-      <dataType>
-        <enum2bitmapIndex>
-          <hovHPActBufferState>HPB_OFF</hovHPActBufferState>
-        </enum2bitmapIndex>
-      </dataType>
-      <legibleDescription>
-        <textElement>
-          <![CDATA[
-            <p>Auslesen des aktuellen Status des Bufferspeichers (BitmapRegister)</p>
-            <ol>				
-              <li><strong>HPB_OFF:</strong> keine Anforderung, AUS </li>
-              <li><strong>HPB_TEMP_LOW:</strong> Anforderung, Temp. tief, PLP aus (Entladeschutz)</li>
-              <li><strong>HPB_RUNNING:</strong> Anforderung, Ladung läuft </li>
-              <li><strong>HPB_RUN_HOLD:</strong> Anforderung, Sollwert erfüllt, Nachlauf aktiv</li>
-              <li><strong>HPB_ON_TARGET:</strong> Anforderung, Sollwert erfüllt</li>
-              <li><strong>HPB_RESERVE:</strong>  </li>
-              <li><strong>HPB_ENER_COMPULSION:</strong> Energiezwang  </li>
-              <li><strong>HPB_SKIMMING:</strong> Abschöpffunktion </li>
-              <li><strong>HPB_SGR_INTENSIVIED:</strong> Vorzugsbetrieb SG-Ready bwp</li>
-              <li><strong>HPB_SGR_FORCED:</strong> Abnahmezwang SG-Ready bwp </li>
-            </ol>
-          ]]>
-        </textElement>
-        <language>de</language>
-      </legibleDescription>
-    </dataPoint>
-  </dataPointListElement>
-  <dataPointListElement>
-    <dataPoint datapointName="ActHeatBufferTemp" presenceLevel="M" dataDirection="R" unit="DEGREES_CELSIUS">
-      <dataType>
-        <float64/>
-      </dataType>
-      <legibleDescription>
-        <textElement>Aktuelle Ist-Temperatur des Heiz-Pufferspeichers oben</textElement>
-        <language>de</language>
-      </legibleDescription>
-    </dataPoint>
-  </dataPointListElement>
-  <dataPointListElement>
-    <dataPoint datapointName="ActHeatBufferTempUpper" presenceLevel="O" dataDirection="R" unit="DEGREES_CELSIUS">
-      <dataType>
-        <float64/>
-      </dataType>
-      <legibleDescription>
-        <textElement>Aktuelle Ist-Temperatur des Heiz-Pufferspeichers oben</textElement>
-        <language>de</language>
-      </legibleDescription>
-    </dataPoint>
-  </dataPointListElement>
-  <dataPointListElement>
-    <dataPoint datapointName="ActHeatBufferTempLower" presenceLevel="O" dataDirection="R" unit="DEGREES_CELSIUS">
-      <dataType>
-        <float64/>
-      </dataType>
-      <legibleDescription>
-        <textElement>
-          Aktuelle Ist-Temperatur des Heiz-Pufferspeichers unten
-        </textElement>
-        <language>de</language>
-      </legibleDescription>
-    </dataPoint>
-  </dataPointListElement>
-  <dataPointListElement>
-    <dataPoint datapointName="ActCoolBufferTemp" presenceLevel="O" dataDirection="R" unit="DEGREES_CELSIUS">
-      <dataType>
-        <float64/>
-      </dataType>
-      <legibleDescription>
-        <textElement>Aktuelle Ist-Temperatur des Kaelte-Pufferspeichers oben</textElement>
-        <language>de</language>
-      </legibleDescription>
-    </dataPoint>
-  </dataPointListElement>
-  <dataPointListElement>
-    <dataPoint datapointName="ActCoolBufferTempUpper" presenceLevel="O" dataDirection="R" unit="DEGREES_CELSIUS">
-      <dataType>
-        <float64/>
-      </dataType>
-      <legibleDescription>
-        <textElement>Aktuelle Ist-Temperatur des Kaelte-Pufferspeichers oben</textElement>
-        <language>de</language>
-      </legibleDescription>
-    </dataPoint>
-  </dataPointListElement>
-  <dataPointListElement>
-    <dataPoint datapointName="ActCoolBufferTempLower" presenceLevel="O" dataDirection="R" unit="DEGREES_CELSIUS">
-      <dataType>
-        <float64/>
-      </dataType>
-      <legibleDescription>
-        <textElement>Aktuelle Ist-Temperatur des Kaelte-Pufferspeichers unten</textElement>
-        <language>de</language>
-      </legibleDescription>
-    </dataPoint>
-  </dataPointListElement>
+  <dataPointList>
+    <dataPointListElement>
+      <dataPoint datapointName="HeatWTempStptOffset" presenceLevel="R" dataDirection="RW" unit="DEGREES_CELSIUS">
+        <dataType>
+          <float64/>
+        </dataType>
+        <legibleDescription>
+          <textElement>
+            Relative Anhebung/Absenkung der Solltemperatur (+/-) für den
+            Heiz-Pufferspeicher.
+          </textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+      <genericAttributes>
+        <maxVal>5.0</maxVal>
+        <minVal>-5.0</minVal>
+      </genericAttributes>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint datapointName="ActBufferState" presenceLevel="O" dataDirection="R" unit="NONE">
+        <dataType>
+          <enum2bitmapIndex>
+            <hovHPActBufferState>HPB_OFF</hovHPActBufferState>
+          </enum2bitmapIndex>
+        </dataType>
+        <legibleDescription>
+          <textElement>
+            <![CDATA[
+              <p>Auslesen des aktuellen Status des Bufferspeichers (BitmapRegister)</p>
+              <ol>				
+                <li><strong>HPB_OFF:</strong> keine Anforderung, AUS </li>
+                <li><strong>HPB_TEMP_LOW:</strong> Anforderung, Temp. tief, PLP aus (Entladeschutz)</li>
+                <li><strong>HPB_RUNNING:</strong> Anforderung, Ladung läuft </li>
+                <li><strong>HPB_RUN_HOLD:</strong> Anforderung, Sollwert erfüllt, Nachlauf aktiv</li>
+                <li><strong>HPB_ON_TARGET:</strong> Anforderung, Sollwert erfüllt</li>
+                <li><strong>HPB_RESERVE:</strong>  </li>
+                <li><strong>HPB_ENER_COMPULSION:</strong> Energiezwang  </li>
+                <li><strong>HPB_SKIMMING:</strong> Abschöpffunktion </li>
+                <li><strong>HPB_SGR_INTENSIVIED:</strong> Vorzugsbetrieb SG-Ready bwp</li>
+                <li><strong>HPB_SGR_FORCED:</strong> Abnahmezwang SG-Ready bwp </li>
+              </ol>
+            ]]>
+          </textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint datapointName="ActHeatBufferTemp" presenceLevel="M" dataDirection="R" unit="DEGREES_CELSIUS">
+        <dataType>
+          <float64/>
+        </dataType>
+        <legibleDescription>
+          <textElement>Aktuelle Ist-Temperatur des Heiz-Pufferspeichers oben</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint datapointName="ActHeatBufferTempUpper" presenceLevel="O" dataDirection="R" unit="DEGREES_CELSIUS">
+        <dataType>
+          <float64/>
+        </dataType>
+        <legibleDescription>
+          <textElement>Aktuelle Ist-Temperatur des Heiz-Pufferspeichers oben</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint datapointName="ActHeatBufferTempLower" presenceLevel="O" dataDirection="R" unit="DEGREES_CELSIUS">
+        <dataType>
+          <float64/>
+        </dataType>
+        <legibleDescription>
+          <textElement>
+            Aktuelle Ist-Temperatur des Heiz-Pufferspeichers unten
+          </textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint datapointName="ActCoolBufferTemp" presenceLevel="O" dataDirection="R" unit="DEGREES_CELSIUS">
+        <dataType>
+          <float64/>
+        </dataType>
+        <legibleDescription>
+          <textElement>Aktuelle Ist-Temperatur des Kaelte-Pufferspeichers oben</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint datapointName="ActCoolBufferTempUpper" presenceLevel="O" dataDirection="R" unit="DEGREES_CELSIUS">
+        <dataType>
+          <float64/>
+        </dataType>
+        <legibleDescription>
+          <textElement>Aktuelle Ist-Temperatur des Kaelte-Pufferspeichers oben</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint datapointName="ActCoolBufferTempLower" presenceLevel="O" dataDirection="R" unit="DEGREES_CELSIUS">
+        <dataType>
+          <float64/>
+        </dataType>
+        <legibleDescription>
+          <textElement>Aktuelle Ist-Temperatur des Kaelte-Pufferspeichers unten</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+  </dataPointList>
 </FunctionalProfileFrame>

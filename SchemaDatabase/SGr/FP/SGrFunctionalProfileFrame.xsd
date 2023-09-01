@@ -7,7 +7,69 @@
   targetNamespace="http://www.smartgridready.com/ns/V0/" version="0.2.2">
   <include schemaLocation="../Generic/SGrBaseDeviceFrame.xsd"/>
 
-    <!-- Functional Profile definitions -->
+  <complexType name="FunctionalProfileDataPoint">
+    <annotation>
+      <documentation>Base data point type</documentation>
+    </annotation>
+    <sequence>
+      <element name="dataPoint">
+        <complexType>
+          <annotation>
+            <documentation xml:lang="en"> This schema sheet serves the generation of the data point for to define a single data point, its type and links to potential attributes.
+            </documentation>
+            <documentation xml:lang="de"> Dieses Schema dient der Erzeugung eines einzelnen Datenpunktes zur Definition des Datentyps und der Verbindung mit möglichen Attributen.
+            </documentation>
+          </annotation>
+          <sequence>
+            <element maxOccurs="1" minOccurs="1" name="dataType" type="sgr:DataType"/>
+            <element name="arrayLength" type="int" maxOccurs="1" minOccurs="0"/>
+            <element maxOccurs="1" minOccurs="0" name="alternativeNames" type="sgr:AlternativeNames"/>
+            <element maxOccurs="4" minOccurs="0" name="legibleDescription" type="sgr:LegibleDescription">
+              <annotation>
+                <documentation> this is the public explanation of the functionlity of this Datapoint
+                </documentation>
+              </annotation>
+            </element>
+          </sequence>
+          <attribute name="datapointName" type="string">
+            <annotation>
+              <documentation>
+                Bezeichnung des Datenpunktes: «Schlagwort», welches die Bedeutung identifiziert. Diese Bezeichnung gilt neben der Indexnummer als Definition für den
+                SmartGridready Namespace für die maschinenlesbaren Daten.
+              </documentation>
+            </annotation>
+          </attribute>
+          <attribute name="dataDirection" type="sgr:DataDirection">
+            <annotation>
+              <documentation>
+                RWP (Eigenschaft des Datenpunktes) bezeichnet die Datenrichtung und die Datenhaltung R = lesen aus Sicht des Profilnutzers W = schreiben aus Sicht der
+                Profilnutzers P = persistente Speicherung der Daten
+              </documentation>
+            </annotation>
+          </attribute>
+          <attribute name="presenceLevel" type="sgr:PresenceLevel">
+            <annotation>
+              <documentation>
+                MRO (Relevanz) Die Gewichtung der Variable bezüglich des Nutzens M = muss (mandatory) Datenpunkt R = empfohlener (recommended) Datenpunkt O = optionaler
+                Datenpunkt
+              </documentation>
+            </annotation>
+          </attribute>
+          <attribute name="unit" type="sgr:Units"/>
+        </complexType>
+      </element>
+      <element maxOccurs="1" minOccurs="0" name="genericAttributes" type="sgr:GenericAttributes"/>
+    </sequence>
+  </complexType>
+  <complexType name="FunctionalProfileDataPointList">
+    <annotation>
+      <documentation>List of data points</documentation>
+    </annotation>
+    <sequence>
+      <element maxOccurs="unbounded" minOccurs="1" name="dataPointListElement" type="sgr:FunctionalProfileDataPoint"></element>
+    </sequence>
+  </complexType>
+  <!-- Functional Profile definitions -->
   <element name="FunctionalProfileFrame">
     <annotation>
       <documentation> RPT Root Point for stand alone generic Functional Profile description</documentation>
@@ -38,62 +100,7 @@
           </complexType>
         </element>
         <element maxOccurs="unbounded" minOccurs="0" name="genericAttributes" type="sgr:GenericAttributes"/>
-        <element maxOccurs="unbounded" minOccurs="1" name="dataPointListElement">
-          <complexType>
-            <annotation>
-              <documentation>Base data point type</documentation>
-            </annotation>
-            <sequence>
-              <element name="dataPoint">
-                <complexType>
-                  <annotation>
-                    <documentation xml:lang="en"> This schema sheet serves the generation of the data point for to define a single data point, its type and links to potential attributes.
-                    </documentation>
-                    <documentation xml:lang="de"> Dieses Schema dient der Erzeugung eines einzelnen Datenpunktes zur Definition des Datentyps und der Verbindung mit möglichen Attributen.
-                    </documentation>
-                  </annotation>
-                  <sequence>
-                    <element maxOccurs="1" minOccurs="1" name="dataType" type="sgr:DataType"/>
-                    <element name="arrayLength" type="int" maxOccurs="1" minOccurs="0"/>
-                    <element maxOccurs="1" minOccurs="0" name="alternativeNames" type="sgr:AlternativeNames"/>
-                    <element maxOccurs="4" minOccurs="0" name="legibleDescription" type="sgr:LegibleDescription">
-                      <annotation>
-                        <documentation> this is the public explanation of the functionlity of this Datapoint
-                        </documentation>
-                      </annotation>
-                    </element>
-                  </sequence>
-                  <attribute name="datapointName" type="string">
-                    <annotation>
-                      <documentation>
-                        Bezeichnung des Datenpunktes: «Schlagwort», welches die Bedeutung identifiziert. Diese Bezeichnung gilt neben der Indexnummer als Definition für den
-                        SmartGridready Namespace für die maschinenlesbaren Daten.
-                      </documentation>
-                    </annotation>
-                  </attribute>
-                  <attribute name="dataDirection" type="sgr:DataDirection">
-                    <annotation>
-                      <documentation>
-                        RWP (Eigenschaft des Datenpunktes) bezeichnet die Datenrichtung und die Datenhaltung R = lesen aus Sicht des Profilnutzers W = schreiben aus Sicht der
-                        Profilnutzers P = persistente Speicherung der Daten
-                      </documentation>
-                    </annotation>
-                  </attribute>
-                  <attribute name="presenceLevel" type="sgr:PresenceLevel">
-                    <annotation>
-                      <documentation>
-                        MRO (Relevanz) Die Gewichtung der Variable bezüglich des Nutzens M = muss (mandatory) Datenpunkt R = empfohlener (recommended) Datenpunkt O = optionaler
-                        Datenpunkt
-                      </documentation>
-                    </annotation>
-                  </attribute>
-                  <attribute name="unit" type="sgr:Units"/>
-                </complexType>
-              </element>
-              <element maxOccurs="unbounded" minOccurs="0" name="genericAttributes" type="sgr:GenericAttributes"/>
-            </sequence>
-          </complexType>
-        </element>
+        <element maxOccurs="1" minOccurs="1" name="dataPointList" type="sgr:FunctionalProfileDataPointList"/>
       </sequence>
     </complexType>
   </element>
