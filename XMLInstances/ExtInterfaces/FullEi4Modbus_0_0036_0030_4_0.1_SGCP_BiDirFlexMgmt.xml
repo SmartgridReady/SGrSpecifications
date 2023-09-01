@@ -8,11 +8,11 @@
   </releaseNotes>
   <deviceInformation>
     <alternativeNames>
-      <sWorkName>sWorkName</sWorkName>
-      <sManufName>sManufName</sManufName>
-      <sIEC61850Name>sIEC61850Name</sIEC61850Name>
-      <sSAREFName>sSAREFName</sSAREFName>
-      <sEEBUSName>sEEBUSName</sEEBUSName>
+      <workName>workName</workName>
+      <manufName>manufName</manufName>
+      <iec61850Name>iec61850Name</iec61850Name>
+      <sarefName>sarefName</sarefName>
+      <eebusName>eebusName</eebusName>
     </alternativeNames>
     <legibleDescription>
       <textElement>Gerätebeschreibung einfügen</textElement>
@@ -72,455 +72,471 @@
     <firstRegisterAddressIsOne>true</firstRegisterAddressIsOne>
     <bitOrder>BigEndian</bitOrder>
   </modbusInterfaceDescription>
-  <functionalProfileListElement>
-    <functionalProfile profileName="SGCPbiDirFlexMgmt">
-      <functionalProfileIdentification>
-        <specificationOwnerIdentification>0</specificationOwnerIdentification>
-        <functionalProfileCategory>SGCP</functionalProfileCategory>
-        <functionalProfileType>BiDirFlexMgmt</functionalProfileType>
-        <levelOfOperation>4</levelOfOperation>
-        <versionNumber>
-          <primaryVersionNumber>0</primaryVersionNumber>
-          <secondaryVersionNumber>1</secondaryVersionNumber>
-          <subReleaseVersionNumber>2</subReleaseVersionNumber>
-        </versionNumber>
-      </functionalProfileIdentification>
-      <alternativeNames>
-        <sWorkName>BiDirFlexMgmt</sWorkName>
-        <sManufName>gibt es eigenen Namen?</sManufName>
-      </alternativeNames>
-      <legibleDescription>
-        <textElement>Der Grid seitige Flex Manager steuert die Anlage über die Datenpunkte ReadinessState, ActivePowerActivation und RunState und liest ActualActivePower. </textElement>
-        <language>de</language>
-      </legibleDescription>
-    </functionalProfile>
-    <dataPointListElement>
-      <dataPoint datapointName="ActivePowerActivation" presenceLevel="M" dataDirection="W" unit="NONE">
-        <dataType>
-          <boolean/>
-        </dataType>
+  <functionalProfileList>
+    <functionalProfileListElement>
+      <functionalProfile profileName="SGCPbiDirFlexMgmt">
+        <functionalProfileIdentification>
+          <specificationOwnerIdentification>0</specificationOwnerIdentification>
+          <functionalProfileCategory>SGCP</functionalProfileCategory>
+          <functionalProfileType>BiDirFlexMgmt</functionalProfileType>
+          <levelOfOperation>4</levelOfOperation>
+          <versionNumber>
+            <primaryVersionNumber>0</primaryVersionNumber>
+            <secondaryVersionNumber>1</secondaryVersionNumber>
+            <subReleaseVersionNumber>2</subReleaseVersionNumber>
+          </versionNumber>
+        </functionalProfileIdentification>
+        <alternativeNames>
+          <workName>BiDirFlexMgmt</workName>
+          <manufName>gibt es eigenen Namen?</manufName>
+        </alternativeNames>
         <legibleDescription>
-          <textElement>On Off Befehl, Wirkleistung Flexibilität liefern ja/nein
--Activation = true: Die Latenzeit beginnt mit dem Empfang dieses Befehls (WinTms)  
--Activation= false: Die Leistungsanpassung wird über eine definierte Rampe zurückgenommen (RmpTms)</textElement>
+          <textElement>Der Grid seitige Flex Manager steuert die Anlage über die Datenpunkte ReadinessState, ActivePowerActivation und RunState und liest ActualActivePower. </textElement>
           <language>de</language>
         </legibleDescription>
-      </dataPoint>
-      <genericAttributes>
-        <smoothTransition>
-          <winTms>0</winTms>
-          <rvrtTms>0</rvrtTms>
-          <rmpTms>0</rmpTms>
-        </smoothTransition>
-      </genericAttributes>
-      <modbusDataPointConfiguration>
-        <modbusDataType>
-          <int16/>
-        </modbusDataType>
-        <modbusFirstRegisterReference addr="0" bitRank="0" registerType="HoldRegister"/>
-        <numberOfRegisters>1</numberOfRegisters>
-        <masterFunctionsSupported>Primitives</masterFunctionsSupported>
-      </modbusDataPointConfiguration>
-      <modbusAttributes>
-        <scalingFactor>
-          <multiplicator>1</multiplicator>
-          <powerof10>0</powerof10>
-        </scalingFactor>
-      </modbusAttributes>
-    </dataPointListElement>
-    <dataPointListElement>
-      <dataPoint datapointName="ReactivePowerActivation" presenceLevel="O" dataDirection="W" unit="NONE">
-        <dataType>
-          <boolean/>
-        </dataType>
-        <legibleDescription>
-          <textElement>On Off Befehl, Blindleistung Flexibilität liefern ja/nein
-Activation = true  
-Die Latenzeit beginnt mit dem Empfang dieses Befehls (WinTms)
-Activation= false
-Die Leistungsanpassung wird über eine definierte Rampe zurückgenommen (RmpTms)</textElement>
-          <language>de</language>
-        </legibleDescription>
-      </dataPoint>
-      <genericAttributes>
-        <smoothTransition>
-          <winTms>0</winTms>
-          <rvrtTms>0</rvrtTms>
-          <rmpTms>0</rmpTms>
-        </smoothTransition>
-      </genericAttributes>
-      <modbusDataPointConfiguration>
-        <modbusDataType>
-          <int16/>
-        </modbusDataType>
-        <modbusFirstRegisterReference addr="0" bitRank="0" registerType="HoldRegister"/>
-        <numberOfRegisters>1</numberOfRegisters>
-        <masterFunctionsSupported>Primitives</masterFunctionsSupported>
-      </modbusDataPointConfiguration>
-      <modbusAttributes>
-        <scalingFactor>
-          <multiplicator>1</multiplicator>
-          <powerof10>0</powerof10>
-        </scalingFactor>
-      </modbusAttributes>
-    </dataPointListElement>
-    <dataPointListElement>
-      <dataPoint datapointName="SetDeltaActivePower" presenceLevel="O" dataDirection="W" unit="KILOWATTS">
-        <dataType>
-          <float64/>
-        </dataType>
-        <legibleDescription>
-          <textElement>Leistungsvorgabe, +/- 
-Active power request: Angestrebte Veränderung des aktuellen Energieflusses (+/-)</textElement>
-          <language>de</language>
-        </legibleDescription>
-      </dataPoint>
-      <modbusDataPointConfiguration>
-        <modbusDataType>
-          <int32/>
-        </modbusDataType>
-        <modbusFirstRegisterReference addr="0" bitRank="0" registerType="HoldRegister"/>
-        <numberOfRegisters>2</numberOfRegisters>
-        <masterFunctionsSupported>Primitives</masterFunctionsSupported>
-      </modbusDataPointConfiguration>
-      <modbusAttributes>
-        <scalingFactor>
-          <multiplicator>1</multiplicator>
-          <powerof10>-1</powerof10>
-        </scalingFactor>
-      </modbusAttributes>
-    </dataPointListElement>
-    <dataPointListElement>
-      <dataPoint datapointName="SetDeltaReactivePower" presenceLevel="O" dataDirection="W" unit="KILOVOLT_AMPERES">
-        <dataType>
-          <float64/>
-        </dataType>
-        <legibleDescription>
-          <textElement>Blindleistungsvorgabe, +/-.
-Reactive power request: Angestrebte Veränderung des aktuellen Energieflusses (+/-)</textElement>
-          <language>de</language>
-        </legibleDescription>
-      </dataPoint>
-      <modbusDataPointConfiguration>
-        <modbusDataType>
-          <int32/>
-        </modbusDataType>
-        <modbusFirstRegisterReference addr="0" bitRank="0" registerType="HoldRegister"/>
-        <numberOfRegisters>2</numberOfRegisters>
-        <masterFunctionsSupported>Primitives</masterFunctionsSupported>
-      </modbusDataPointConfiguration>
-      <modbusAttributes>
-        <scalingFactor>
-          <multiplicator>1</multiplicator>
-          <powerof10>-1</powerof10>
-        </scalingFactor>
-      </modbusAttributes>
-    </dataPointListElement>
-    <dataPointListElement>
-      <dataPoint datapointName="ReadinessState" presenceLevel="M" dataDirection="R" unit="NONE">
-        <dataType>
-          <boolean/>
-        </dataType>
-        <legibleDescription>
-          <textElement>Status ready for flexibility. True wenn Anlage für den nächsten Flexibilitäts-Event bereit ist.</textElement>
-          <language>de</language>
-        </legibleDescription>
-      </dataPoint>
-      <modbusDataPointConfiguration>
-        <modbusDataType>
-          <int16/>
-        </modbusDataType>
-        <modbusFirstRegisterReference addr="0" bitRank="0" registerType="HoldRegister"/>
-        <numberOfRegisters>1</numberOfRegisters>
-        <masterFunctionsSupported>Primitives</masterFunctionsSupported>
-      </modbusDataPointConfiguration>
-      <modbusAttributes>
-        <scalingFactor>
-          <multiplicator>1</multiplicator>
-          <powerof10>0</powerof10>
-        </scalingFactor>
-      </modbusAttributes>
-    </dataPointListElement>
-    <dataPointListElement>
-      <dataPoint datapointName="RunState" presenceLevel="M" dataDirection="R" unit="NONE">
-        <dataType>
-          <boolean/>
-        </dataType>
-        <legibleDescription>
-          <textElement>Status running for flexibility. True wenn Anlage läuft für Flexibilität.</textElement>
-          <language>de</language>
-        </legibleDescription>
-      </dataPoint>
-      <modbusDataPointConfiguration>
-        <modbusDataType>
-          <int16/>
-        </modbusDataType>
-        <modbusFirstRegisterReference addr="0" bitRank="0" registerType="HoldRegister"/>
-        <numberOfRegisters>1</numberOfRegisters>
-        <masterFunctionsSupported>Primitives</masterFunctionsSupported>
-      </modbusDataPointConfiguration>
-      <modbusAttributes>
-        <scalingFactor>
-          <multiplicator>1</multiplicator>
-          <powerof10>0</powerof10>
-        </scalingFactor>
-      </modbusAttributes>
-    </dataPointListElement>
-    <dataPointListElement>
-      <dataPoint datapointName="ActualActivePower" presenceLevel="M" dataDirection="R" unit="KILOWATTS">
-        <dataType>
-          <float64/>
-        </dataType>
-        <legibleDescription>
-          <textElement>Momentane Leistung. Betrag und Richtung des Energieflusses.
-+ entspricht Energiebezug aus dem Netz oder Erhöhung des Bezugs</textElement>
-          <language>de</language>
-        </legibleDescription>
-      </dataPoint>
-      <modbusDataPointConfiguration>
-        <modbusDataType>
-          <int32/>
-        </modbusDataType>
-        <modbusFirstRegisterReference addr="0" bitRank="0" registerType="HoldRegister"/>
-        <numberOfRegisters>2</numberOfRegisters>
-        <masterFunctionsSupported>Primitives</masterFunctionsSupported>
-      </modbusDataPointConfiguration>
-      <modbusAttributes>
-        <scalingFactor>
-          <multiplicator>1</multiplicator>
-          <powerof10>-1</powerof10>
-        </scalingFactor>
-      </modbusAttributes>
-    </dataPointListElement>
-    <dataPointListElement>
-      <dataPoint datapointName="ActualReactivePower" presenceLevel="O" dataDirection="R" unit="KILOWATTS">
-        <dataType>
-          <float64/>
-        </dataType>
-        <legibleDescription>
-          <textElement>Momentane Leistung. Betrag und Richtung des Energieflusses.
-+ entspricht Energiebezug aus dem Netz oder Erhöhung des Bezugs</textElement>
-          <language>de</language>
-        </legibleDescription>
-      </dataPoint>
-      <modbusDataPointConfiguration>
-        <modbusDataType>
-          <int32/>
-        </modbusDataType>
-        <modbusFirstRegisterReference addr="0" bitRank="0" registerType="HoldRegister"/>
-        <numberOfRegisters>2</numberOfRegisters>
-        <masterFunctionsSupported>Primitives</masterFunctionsSupported>
-      </modbusDataPointConfiguration>
-      <modbusAttributes>
-        <scalingFactor>
-          <multiplicator>1</multiplicator>
-          <powerof10>-1</powerof10>
-        </scalingFactor>
-      </modbusAttributes>
-    </dataPointListElement>
-    <dataPointListElement>
-      <dataPoint datapointName="MaxReactivePower" presenceLevel="O" dataDirection="R" unit="KILOVOLT_AMPERES_REACTIVE">
-        <dataType>
-          <float64/>
-        </dataType>
-        <legibleDescription>
-          <textElement>Maximal Steuerbare Blindleistung (actual value)</textElement>
-          <language>de</language>
-        </legibleDescription>
-      </dataPoint>
-      <modbusDataPointConfiguration>
-        <modbusDataType>
-          <int32/>
-        </modbusDataType>
-        <modbusFirstRegisterReference addr="0" bitRank="0" registerType="HoldRegister"/>
-        <numberOfRegisters>2</numberOfRegisters>
-        <masterFunctionsSupported>Primitives</masterFunctionsSupported>
-      </modbusDataPointConfiguration>
-      <modbusAttributes>
-        <scalingFactor>
-          <multiplicator>1</multiplicator>
-          <powerof10>-1</powerof10>
-        </scalingFactor>
-      </modbusAttributes>
-    </dataPointListElement>
-    <dataPointListElement>
-      <dataPoint datapointName="MinActivePower" presenceLevel="O" dataDirection="R" unit="KILOWATTS">
-        <dataType>
-          <float64/>
-        </dataType>
-      </dataPoint>
-      <modbusDataPointConfiguration>
-        <modbusDataType>
-          <int32/>
-        </modbusDataType>
-        <modbusFirstRegisterReference addr="0" bitRank="0" registerType="HoldRegister"/>
-        <numberOfRegisters>2</numberOfRegisters>
-        <masterFunctionsSupported>Primitives</masterFunctionsSupported>
-      </modbusDataPointConfiguration>
-      <modbusAttributes>
-        <scalingFactor>
-          <multiplicator>1</multiplicator>
-          <powerof10>-1</powerof10>
-        </scalingFactor>
-      </modbusAttributes>
-    </dataPointListElement>
-    <dataPointListElement>
-      <dataPoint datapointName="MinReactivePower" presenceLevel="O" dataDirection="R" unit="KILOVOLT_AMPERES_REACTIVE">
-        <dataType>
-          <float64/>
-        </dataType>
-        <legibleDescription>
-          <textElement>Minimal Steuerbare Blindleistung (actual value)</textElement>
-          <language>de</language>
-        </legibleDescription>
-      </dataPoint>
-      <modbusDataPointConfiguration>
-        <modbusDataType>
-          <int32/>
-        </modbusDataType>
-        <modbusFirstRegisterReference addr="0" bitRank="0" registerType="HoldRegister"/>
-        <numberOfRegisters>2</numberOfRegisters>
-        <masterFunctionsSupported>Primitives</masterFunctionsSupported>
-      </modbusDataPointConfiguration>
-      <modbusAttributes>
-        <scalingFactor>
-          <multiplicator>1</multiplicator>
-          <powerof10>-1</powerof10>
-        </scalingFactor>
-      </modbusAttributes>
-    </dataPointListElement>
-    <dataPointListElement>
-      <dataPoint datapointName="ActualFillLevel" presenceLevel="O" dataDirection="R" unit="KILOWATT_HOURS">
-        <dataType>
-          <float64/>
-        </dataType>
-        <legibleDescription>
-          <textElement>Aktueller Speicherstand</textElement>
-          <language>de</language>
-        </legibleDescription>
-      </dataPoint>
-      <modbusDataPointConfiguration>
-        <modbusDataType>
-          <int32/>
-        </modbusDataType>
-        <modbusFirstRegisterReference addr="0" bitRank="0" registerType="HoldRegister"/>
-        <numberOfRegisters>2</numberOfRegisters>
-        <masterFunctionsSupported>Primitives</masterFunctionsSupported>
-      </modbusDataPointConfiguration>
-      <modbusAttributes>
-        <scalingFactor>
-          <multiplicator>1</multiplicator>
-          <powerof10>-1</powerof10>
-        </scalingFactor>
-      </modbusAttributes>
-    </dataPointListElement>
-    <dataPointListElement>
-      <dataPoint datapointName="MinAllowedFillLevel" presenceLevel="O" dataDirection="RWP" unit="KILOWATT_HOURS">
-        <dataType>
-          <float64/>
-        </dataType>
-        <legibleDescription>
-          <textElement>Minimaler Ladzustand (darf nicht verletzt werden)</textElement>
-          <language>de</language>
-        </legibleDescription>
-      </dataPoint>
-      <modbusDataPointConfiguration>
-        <modbusDataType>
-          <int32/>
-        </modbusDataType>
-        <modbusFirstRegisterReference addr="0" bitRank="0" registerType="HoldRegister"/>
-        <numberOfRegisters>2</numberOfRegisters>
-        <masterFunctionsSupported>Primitives</masterFunctionsSupported>
-      </modbusDataPointConfiguration>
-      <modbusAttributes>
-        <scalingFactor>
-          <multiplicator>1</multiplicator>
-          <powerof10>-1</powerof10>
-        </scalingFactor>
-      </modbusAttributes>
-    </dataPointListElement>
-    <dataPointListElement>
-      <dataPoint datapointName="MaxAllowedFillLevel" presenceLevel="O" dataDirection="R" unit="KILOWATT_HOURS">
-        <dataType>
-          <float64/>
-        </dataType>
-        <legibleDescription>
-          <textElement>Maximaler Ladzustand (darf nicht verletzt werden)</textElement>
-          <language>de</language>
-        </legibleDescription>
-      </dataPoint>
-      <modbusDataPointConfiguration>
-        <modbusDataType>
-          <int32/>
-        </modbusDataType>
-        <modbusFirstRegisterReference addr="0" bitRank="0" registerType="HoldRegister"/>
-        <numberOfRegisters>2</numberOfRegisters>
-        <masterFunctionsSupported>Primitives</masterFunctionsSupported>
-      </modbusDataPointConfiguration>
-      <modbusAttributes>
-        <scalingFactor>
-          <multiplicator>1</multiplicator>
-          <powerof10>-1</powerof10>
-        </scalingFactor>
-      </modbusAttributes>
-    </dataPointListElement>
-    <dataPointListElement>
-      <dataPoint datapointName=" aValCharge" presenceLevel="O" dataDirection="R" unit="PERCENT">
-        <dataType>
-          <float64/>
-        </dataType>
-        <arrayLength>20</arrayLength>
-        <legibleDescription>
-          <textElement>Ladeprofil %[Pmax]</textElement>
-          <language>de</language>
-        </legibleDescription>
-      </dataPoint>
-      <genericAttributes>
-        <valueByTimeTableMinutes>15.0</valueByTimeTableMinutes>
-      </genericAttributes>
-      <modbusDataPointConfiguration>
-        <modbusDataType>
-          <int32/>
-        </modbusDataType>
-        <modbusFirstRegisterReference addr="0" bitRank="0" registerType="HoldRegister"/>
-        <numberOfRegisters>2</numberOfRegisters>
-        <masterFunctionsSupported>Primitives</masterFunctionsSupported>
-      </modbusDataPointConfiguration>
-      <modbusAttributes>
-        <scalingFactor>
-          <multiplicator>1</multiplicator>
-          <powerof10>-1</powerof10>
-        </scalingFactor>
-      </modbusAttributes>
-    </dataPointListElement>
-    <dataPointListElement>
-      <dataPoint datapointName="aValDischarge" presenceLevel="O" dataDirection="R" unit="PERCENT">
-        <dataType>
-          <float64/>
-        </dataType>
-        <arrayLength>20</arrayLength>
-        <legibleDescription>
-          <textElement>Entladeprofil %[Pmax]</textElement>
-          <language>de</language>
-        </legibleDescription>
-      </dataPoint>
-      <genericAttributes>
-        <valueByTimeTableMinutes>15.0</valueByTimeTableMinutes>
-      </genericAttributes>
-      <modbusDataPointConfiguration>
-        <modbusDataType>
-          <int32/>
-        </modbusDataType>
-        <modbusFirstRegisterReference addr="0" bitRank="0" registerType="HoldRegister"/>
-        <numberOfRegisters>2</numberOfRegisters>
-        <masterFunctionsSupported>Primitives</masterFunctionsSupported>
-      </modbusDataPointConfiguration>
-      <modbusAttributes>
-        <scalingFactor>
-          <multiplicator>1</multiplicator>
-          <powerof10>-1</powerof10>
-        </scalingFactor>
-      </modbusAttributes>
-    </dataPointListElement>
-  </functionalProfileListElement>
+      </functionalProfile>
+      <dataPointList>
+        <dataPointListElement>
+          <dataPoint datapointName="ActivePowerActivation" presenceLevel="M" dataDirection="W" unit="NONE">
+            <dataType>
+              <boolean/>
+            </dataType>
+            <legibleDescription>
+              <textElement>
+                On Off Befehl, Wirkleistung Flexibilität liefern ja/nein
+                -Activation = true: Die Latenzeit beginnt mit dem Empfang dieses Befehls (WinTms)  
+                -Activation= false: Die Leistungsanpassung wird über eine definierte Rampe zurückgenommen (RmpTms)
+              </textElement>
+              <language>de</language>
+            </legibleDescription>
+          </dataPoint>
+          <genericAttributes>
+            <smoothTransition>
+              <winTms>0</winTms>
+              <rvrtTms>0</rvrtTms>
+              <rmpTms>0</rmpTms>
+            </smoothTransition>
+          </genericAttributes>
+          <modbusDataPointConfiguration>
+            <modbusDataType>
+              <int16/>
+            </modbusDataType>
+            <modbusFirstRegisterReference addr="0" bitRank="0" registerType="HoldRegister"/>
+            <numberOfRegisters>1</numberOfRegisters>
+            <masterFunctionsSupported>Primitives</masterFunctionsSupported>
+          </modbusDataPointConfiguration>
+          <modbusAttributes>
+            <scalingFactor>
+              <multiplicator>1</multiplicator>
+              <powerof10>0</powerof10>
+            </scalingFactor>
+          </modbusAttributes>
+        </dataPointListElement>
+        <dataPointListElement>
+          <dataPoint datapointName="ReactivePowerActivation" presenceLevel="O" dataDirection="W" unit="NONE">
+            <dataType>
+              <boolean/>
+            </dataType>
+            <legibleDescription>
+              <textElement>
+                On Off Befehl, Blindleistung Flexibilität liefern ja/nein
+                Activation = true  
+                Die Latenzeit beginnt mit dem Empfang dieses Befehls (WinTms)
+                Activation= false
+                Die Leistungsanpassung wird über eine definierte Rampe zurückgenommen (RmpTms)
+              </textElement>
+              <language>de</language>
+            </legibleDescription>
+          </dataPoint>
+          <genericAttributes>
+            <smoothTransition>
+              <winTms>0</winTms>
+              <rvrtTms>0</rvrtTms>
+              <rmpTms>0</rmpTms>
+            </smoothTransition>
+          </genericAttributes>
+          <modbusDataPointConfiguration>
+            <modbusDataType>
+              <int16/>
+            </modbusDataType>
+            <modbusFirstRegisterReference addr="0" bitRank="0" registerType="HoldRegister"/>
+            <numberOfRegisters>1</numberOfRegisters>
+            <masterFunctionsSupported>Primitives</masterFunctionsSupported>
+          </modbusDataPointConfiguration>
+          <modbusAttributes>
+            <scalingFactor>
+              <multiplicator>1</multiplicator>
+              <powerof10>0</powerof10>
+            </scalingFactor>
+          </modbusAttributes>
+        </dataPointListElement>
+        <dataPointListElement>
+          <dataPoint datapointName="SetDeltaActivePower" presenceLevel="O" dataDirection="W" unit="KILOWATTS">
+            <dataType>
+              <float64/>
+            </dataType>
+            <legibleDescription>
+              <textElement>
+                Leistungsvorgabe, +/-
+                Active power request: Angestrebte Veränderung des aktuellen Energieflusses (+/-)
+              </textElement>
+              <language>de</language>
+            </legibleDescription>
+          </dataPoint>
+          <modbusDataPointConfiguration>
+            <modbusDataType>
+              <int32/>
+            </modbusDataType>
+            <modbusFirstRegisterReference addr="0" bitRank="0" registerType="HoldRegister"/>
+            <numberOfRegisters>2</numberOfRegisters>
+            <masterFunctionsSupported>Primitives</masterFunctionsSupported>
+          </modbusDataPointConfiguration>
+          <modbusAttributes>
+            <scalingFactor>
+              <multiplicator>1</multiplicator>
+              <powerof10>-1</powerof10>
+            </scalingFactor>
+          </modbusAttributes>
+        </dataPointListElement>
+        <dataPointListElement>
+          <dataPoint datapointName="SetDeltaReactivePower" presenceLevel="O" dataDirection="W" unit="KILOVOLT_AMPERES">
+            <dataType>
+              <float64/>
+            </dataType>
+            <legibleDescription>
+              <textElement>
+                Blindleistungsvorgabe, +/-.
+                Reactive power request: Angestrebte Veränderung des aktuellen Energieflusses (+/-)
+              </textElement>
+              <language>de</language>
+            </legibleDescription>
+          </dataPoint>
+          <modbusDataPointConfiguration>
+            <modbusDataType>
+              <int32/>
+            </modbusDataType>
+            <modbusFirstRegisterReference addr="0" bitRank="0" registerType="HoldRegister"/>
+            <numberOfRegisters>2</numberOfRegisters>
+            <masterFunctionsSupported>Primitives</masterFunctionsSupported>
+          </modbusDataPointConfiguration>
+          <modbusAttributes>
+            <scalingFactor>
+              <multiplicator>1</multiplicator>
+              <powerof10>-1</powerof10>
+            </scalingFactor>
+          </modbusAttributes>
+        </dataPointListElement>
+        <dataPointListElement>
+          <dataPoint datapointName="ReadinessState" presenceLevel="M" dataDirection="R" unit="NONE">
+            <dataType>
+              <boolean/>
+            </dataType>
+            <legibleDescription>
+              <textElement>Status ready for flexibility. True wenn Anlage für den nächsten Flexibilitäts-Event bereit ist.</textElement>
+              <language>de</language>
+            </legibleDescription>
+          </dataPoint>
+          <modbusDataPointConfiguration>
+            <modbusDataType>
+              <int16/>
+            </modbusDataType>
+            <modbusFirstRegisterReference addr="0" bitRank="0" registerType="HoldRegister"/>
+            <numberOfRegisters>1</numberOfRegisters>
+            <masterFunctionsSupported>Primitives</masterFunctionsSupported>
+          </modbusDataPointConfiguration>
+          <modbusAttributes>
+            <scalingFactor>
+              <multiplicator>1</multiplicator>
+              <powerof10>0</powerof10>
+            </scalingFactor>
+          </modbusAttributes>
+        </dataPointListElement>
+        <dataPointListElement>
+          <dataPoint datapointName="RunState" presenceLevel="M" dataDirection="R" unit="NONE">
+            <dataType>
+              <boolean/>
+            </dataType>
+            <legibleDescription>
+              <textElement>Status running for flexibility. True wenn Anlage läuft für Flexibilität.</textElement>
+              <language>de</language>
+            </legibleDescription>
+          </dataPoint>
+          <modbusDataPointConfiguration>
+            <modbusDataType>
+              <int16/>
+            </modbusDataType>
+            <modbusFirstRegisterReference addr="0" bitRank="0" registerType="HoldRegister"/>
+            <numberOfRegisters>1</numberOfRegisters>
+            <masterFunctionsSupported>Primitives</masterFunctionsSupported>
+          </modbusDataPointConfiguration>
+          <modbusAttributes>
+            <scalingFactor>
+              <multiplicator>1</multiplicator>
+              <powerof10>0</powerof10>
+            </scalingFactor>
+          </modbusAttributes>
+        </dataPointListElement>
+        <dataPointListElement>
+          <dataPoint datapointName="ActualActivePower" presenceLevel="M" dataDirection="R" unit="KILOWATTS">
+            <dataType>
+              <float64/>
+            </dataType>
+            <legibleDescription>
+              <textElement>
+                Momentane Leistung. Betrag und Richtung des Energieflusses.
+                + entspricht Energiebezug aus dem Netz oder Erhöhung des Bezugs
+              </textElement>
+              <language>de</language>
+            </legibleDescription>
+          </dataPoint>
+          <modbusDataPointConfiguration>
+            <modbusDataType>
+              <int32/>
+            </modbusDataType>
+            <modbusFirstRegisterReference addr="0" bitRank="0" registerType="HoldRegister"/>
+            <numberOfRegisters>2</numberOfRegisters>
+            <masterFunctionsSupported>Primitives</masterFunctionsSupported>
+          </modbusDataPointConfiguration>
+          <modbusAttributes>
+            <scalingFactor>
+              <multiplicator>1</multiplicator>
+              <powerof10>-1</powerof10>
+            </scalingFactor>
+          </modbusAttributes>
+        </dataPointListElement>
+        <dataPointListElement>
+          <dataPoint datapointName="ActualReactivePower" presenceLevel="O" dataDirection="R" unit="KILOWATTS">
+            <dataType>
+              <float64/>
+            </dataType>
+            <legibleDescription>
+              <textElement>
+                Momentane Leistung. Betrag und Richtung des Energieflusses.
+                + entspricht Energiebezug aus dem Netz oder Erhöhung des Bezugs
+              </textElement>
+              <language>de</language>
+            </legibleDescription>
+          </dataPoint>
+          <modbusDataPointConfiguration>
+            <modbusDataType>
+              <int32/>
+            </modbusDataType>
+            <modbusFirstRegisterReference addr="0" bitRank="0" registerType="HoldRegister"/>
+            <numberOfRegisters>2</numberOfRegisters>
+            <masterFunctionsSupported>Primitives</masterFunctionsSupported>
+          </modbusDataPointConfiguration>
+          <modbusAttributes>
+            <scalingFactor>
+              <multiplicator>1</multiplicator>
+              <powerof10>-1</powerof10>
+            </scalingFactor>
+          </modbusAttributes>
+        </dataPointListElement>
+        <dataPointListElement>
+          <dataPoint datapointName="MaxReactivePower" presenceLevel="O" dataDirection="R" unit="KILOVOLT_AMPERES_REACTIVE">
+            <dataType>
+              <float64/>
+            </dataType>
+            <legibleDescription>
+              <textElement>Maximal Steuerbare Blindleistung (actual value)</textElement>
+              <language>de</language>
+            </legibleDescription>
+          </dataPoint>
+          <modbusDataPointConfiguration>
+            <modbusDataType>
+              <int32/>
+            </modbusDataType>
+            <modbusFirstRegisterReference addr="0" bitRank="0" registerType="HoldRegister"/>
+            <numberOfRegisters>2</numberOfRegisters>
+            <masterFunctionsSupported>Primitives</masterFunctionsSupported>
+          </modbusDataPointConfiguration>
+          <modbusAttributes>
+            <scalingFactor>
+              <multiplicator>1</multiplicator>
+              <powerof10>-1</powerof10>
+            </scalingFactor>
+          </modbusAttributes>
+        </dataPointListElement>
+        <dataPointListElement>
+          <dataPoint datapointName="MinActivePower" presenceLevel="O" dataDirection="R" unit="KILOWATTS">
+            <dataType>
+              <float64/>
+            </dataType>
+          </dataPoint>
+          <modbusDataPointConfiguration>
+            <modbusDataType>
+              <int32/>
+            </modbusDataType>
+            <modbusFirstRegisterReference addr="0" bitRank="0" registerType="HoldRegister"/>
+            <numberOfRegisters>2</numberOfRegisters>
+            <masterFunctionsSupported>Primitives</masterFunctionsSupported>
+          </modbusDataPointConfiguration>
+          <modbusAttributes>
+            <scalingFactor>
+              <multiplicator>1</multiplicator>
+              <powerof10>-1</powerof10>
+            </scalingFactor>
+          </modbusAttributes>
+        </dataPointListElement>
+        <dataPointListElement>
+          <dataPoint datapointName="MinReactivePower" presenceLevel="O" dataDirection="R" unit="KILOVOLT_AMPERES_REACTIVE">
+            <dataType>
+              <float64/>
+            </dataType>
+            <legibleDescription>
+              <textElement>Minimal Steuerbare Blindleistung (actual value)</textElement>
+              <language>de</language>
+            </legibleDescription>
+          </dataPoint>
+          <modbusDataPointConfiguration>
+            <modbusDataType>
+              <int32/>
+            </modbusDataType>
+            <modbusFirstRegisterReference addr="0" bitRank="0" registerType="HoldRegister"/>
+            <numberOfRegisters>2</numberOfRegisters>
+            <masterFunctionsSupported>Primitives</masterFunctionsSupported>
+          </modbusDataPointConfiguration>
+          <modbusAttributes>
+            <scalingFactor>
+              <multiplicator>1</multiplicator>
+              <powerof10>-1</powerof10>
+            </scalingFactor>
+          </modbusAttributes>
+        </dataPointListElement>
+        <dataPointListElement>
+          <dataPoint datapointName="ActualFillLevel" presenceLevel="O" dataDirection="R" unit="KILOWATT_HOURS">
+            <dataType>
+              <float64/>
+            </dataType>
+            <legibleDescription>
+              <textElement>Aktueller Speicherstand</textElement>
+              <language>de</language>
+            </legibleDescription>
+          </dataPoint>
+          <modbusDataPointConfiguration>
+            <modbusDataType>
+              <int32/>
+            </modbusDataType>
+            <modbusFirstRegisterReference addr="0" bitRank="0" registerType="HoldRegister"/>
+            <numberOfRegisters>2</numberOfRegisters>
+            <masterFunctionsSupported>Primitives</masterFunctionsSupported>
+          </modbusDataPointConfiguration>
+          <modbusAttributes>
+            <scalingFactor>
+              <multiplicator>1</multiplicator>
+              <powerof10>-1</powerof10>
+            </scalingFactor>
+          </modbusAttributes>
+        </dataPointListElement>
+        <dataPointListElement>
+          <dataPoint datapointName="MinAllowedFillLevel" presenceLevel="O" dataDirection="RWP" unit="KILOWATT_HOURS">
+            <dataType>
+              <float64/>
+            </dataType>
+            <legibleDescription>
+              <textElement>Minimaler Ladzustand (darf nicht verletzt werden)</textElement>
+              <language>de</language>
+            </legibleDescription>
+          </dataPoint>
+          <modbusDataPointConfiguration>
+            <modbusDataType>
+              <int32/>
+            </modbusDataType>
+            <modbusFirstRegisterReference addr="0" bitRank="0" registerType="HoldRegister"/>
+            <numberOfRegisters>2</numberOfRegisters>
+            <masterFunctionsSupported>Primitives</masterFunctionsSupported>
+          </modbusDataPointConfiguration>
+          <modbusAttributes>
+            <scalingFactor>
+              <multiplicator>1</multiplicator>
+              <powerof10>-1</powerof10>
+            </scalingFactor>
+          </modbusAttributes>
+        </dataPointListElement>
+        <dataPointListElement>
+          <dataPoint datapointName="MaxAllowedFillLevel" presenceLevel="O" dataDirection="R" unit="KILOWATT_HOURS">
+            <dataType>
+              <float64/>
+            </dataType>
+            <legibleDescription>
+              <textElement>Maximaler Ladzustand (darf nicht verletzt werden)</textElement>
+              <language>de</language>
+            </legibleDescription>
+          </dataPoint>
+          <modbusDataPointConfiguration>
+            <modbusDataType>
+              <int32/>
+            </modbusDataType>
+            <modbusFirstRegisterReference addr="0" bitRank="0" registerType="HoldRegister"/>
+            <numberOfRegisters>2</numberOfRegisters>
+            <masterFunctionsSupported>Primitives</masterFunctionsSupported>
+          </modbusDataPointConfiguration>
+          <modbusAttributes>
+            <scalingFactor>
+              <multiplicator>1</multiplicator>
+              <powerof10>-1</powerof10>
+            </scalingFactor>
+          </modbusAttributes>
+        </dataPointListElement>
+        <dataPointListElement>
+          <dataPoint datapointName=" aValCharge" presenceLevel="O" dataDirection="R" unit="PERCENT">
+            <dataType>
+              <float64/>
+            </dataType>
+            <arrayLength>20</arrayLength>
+            <legibleDescription>
+              <textElement>Ladeprofil %[Pmax]</textElement>
+              <language>de</language>
+            </legibleDescription>
+          </dataPoint>
+          <genericAttributes>
+            <valueByTimeTableMinutes>15.0</valueByTimeTableMinutes>
+          </genericAttributes>
+          <modbusDataPointConfiguration>
+            <modbusDataType>
+              <int32/>
+            </modbusDataType>
+            <modbusFirstRegisterReference addr="0" bitRank="0" registerType="HoldRegister"/>
+            <numberOfRegisters>2</numberOfRegisters>
+            <masterFunctionsSupported>Primitives</masterFunctionsSupported>
+          </modbusDataPointConfiguration>
+          <modbusAttributes>
+            <scalingFactor>
+              <multiplicator>1</multiplicator>
+              <powerof10>-1</powerof10>
+            </scalingFactor>
+          </modbusAttributes>
+        </dataPointListElement>
+        <dataPointListElement>
+          <dataPoint datapointName="aValDischarge" presenceLevel="O" dataDirection="R" unit="PERCENT">
+            <dataType>
+              <float64/>
+            </dataType>
+            <arrayLength>20</arrayLength>
+            <legibleDescription>
+              <textElement>Entladeprofil %[Pmax]</textElement>
+              <language>de</language>
+            </legibleDescription>
+          </dataPoint>
+          <genericAttributes>
+            <valueByTimeTableMinutes>15.0</valueByTimeTableMinutes>
+          </genericAttributes>
+          <modbusDataPointConfiguration>
+            <modbusDataType>
+              <int32/>
+            </modbusDataType>
+            <modbusFirstRegisterReference addr="0" bitRank="0" registerType="HoldRegister"/>
+            <numberOfRegisters>2</numberOfRegisters>
+            <masterFunctionsSupported>Primitives</masterFunctionsSupported>
+          </modbusDataPointConfiguration>
+          <modbusAttributes>
+            <scalingFactor>
+              <multiplicator>1</multiplicator>
+              <powerof10>-1</powerof10>
+            </scalingFactor>
+          </modbusAttributes>
+        </dataPointListElement>
+      </dataPointList>
+    </functionalProfileListElement>
+  </functionalProfileList>
 </ModbusDeviceFrame>

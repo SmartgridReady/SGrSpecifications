@@ -296,7 +296,7 @@
 			</table>
 
 			<!-- Functiol Profiles -->
-			<xsl:apply-templates select="sgr:functionalProfileListElement" />
+			<xsl:apply-templates select="sgr:functionalProfileList/sgr:functionalProfileListElement" />
 		</div>
 	</xsl:template>
 

@@ -18,6 +18,14 @@
       </extension>
     </complexContent>
   </complexType>
+  <complexType name="RestApiDataPointList">
+    <annotation>
+      <documentation>List of data point type with Rest API attributes and data points</documentation>
+    </annotation>
+    <sequence>
+      <element maxOccurs="unbounded" minOccurs="1" name="dataPointListElement" type="sgr:RestApiDataPoint"/>
+    </sequence>
+  </complexType>
   <complexType name="RestApiFunctionalProfile">
     <annotation>
       <documentation>Extends the base functional profile type with Rest API attributes and data points</documentation>
@@ -25,10 +33,18 @@
     <complexContent>
       <extension base="sgr:FunctionalProfileBase">
         <sequence>
-          <element maxOccurs="unbounded" minOccurs="1" name="dataPointListElement" type="sgr:RestApiDataPoint"/>
+          <element maxOccurs="1" minOccurs="1" name="dataPointList" type="sgr:RestApiDataPointList"/>
         </sequence>
       </extension>
     </complexContent>
+  </complexType>
+  <complexType name="RestApiFunctionalProfileList">
+    <annotation>
+      <documentation>List of base functional profile type with Rest API attributes and data points</documentation>
+    </annotation>
+    <sequence>
+      <element maxOccurs="unbounded" minOccurs="1" name="functionalProfileListElement" type="sgr:RestApiFunctionalProfile"/>
+    </sequence>
   </complexType>
   <complexType name="RestApiDeviceFrame">
     <annotation>
@@ -38,7 +54,7 @@
       <extension base="sgr:DeviceBase">
         <sequence>
           <element maxOccurs="1" minOccurs="1" name="restApiInterfaceDescription" type="sgr:RestApiInterfaceDescription"/>
-          <element maxOccurs="unbounded" minOccurs="1" name="functionalProfileListElement" type="sgr:RestApiFunctionalProfile"/>
+          <element maxOccurs="1" minOccurs="1" name="functionalProfileList" type="sgr:RestApiFunctionalProfileList"/>
         </sequence>
       </extension>
     </complexContent>
