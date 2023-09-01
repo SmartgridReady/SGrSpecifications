@@ -175,7 +175,7 @@
                         <th>MRO</th>
                         <th>RWP</th>
                     </tr>
-                    <xsl:for-each select="sgr:dataPointListElement">
+                    <xsl:for-each select="sgr:dataPointList/sgr:dataPointListElement">
                         <tr>
                             <td colspan="2">
                                 <xsl:value-of select="sgr:dataPoint/@datapointName" />
