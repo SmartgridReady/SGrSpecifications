@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="/xsl/SGr.xsl"?>
-<ModbusDeviceFrame deviceName="Template fuer SGCP komplett" isLocalControl="true" specificationOwnerIdentification="0" manufacturerName="Template SGr: hier Name des Herstellers eintragen"
-  xmlns="http://www.smartgridready.com/ns/V0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/EI-Modbus/SGrModbusEIDeviceFrame.xsd ">
+<ModbusDeviceFrame xmlns="http://www.smartgridready.com/ns/V0/"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/EI-Modbus/SGrModbusEIDeviceFrame.xsd ">
+  <deviceName>Template fuer SGCP komplett</deviceName>
+  <manufacturerName>Template SGr: hier Name des Herstellers eintragen</manufacturerName>
   <releaseNotes>
     <state>Draft</state>
   </releaseNotes>
+  <specificationOwnerIdentification>0</specificationOwnerIdentification>
+  <isLocalControl>true</isLocalControl>
   <deviceInformation>
     <legibleDescription>
       <textElement>Gerätebeschreibung einfügen</textElement>
@@ -67,7 +71,8 @@
   </modbusInterfaceDescription>
   <functionalProfileList>
     <functionalProfileListElement>
-      <functionalProfile profileName="SGCPbiDirFlexMgmt">
+      <functionalProfile>
+        <profileName>SGCPbiDirFlexMgmt</profileName>
         <functionalProfileIdentification>
           <specificationOwnerIdentification>0</specificationOwnerIdentification>
           <functionalProfileCategory>SGCP</functionalProfileCategory>
@@ -86,10 +91,14 @@
       </functionalProfile>
       <dataPointList>
         <dataPointListElement>
-          <dataPoint datapointName="ActivePowerActivation" presenceLevel="M" dataDirection="W" unit="NONE">
+          <dataPoint>
+            <datapointName>ActivePowerActivation</datapointName>
+            <dataDirection>W</dataDirection>
+            <presenceLevel>M</presenceLevel>
             <dataType>
               <boolean/>
             </dataType>
+            <unit>NONE</unit>
             <legibleDescription>
               <textElement>
                 On Off Befehl, Wirkleistung Flexibilität liefern ja/nein
@@ -122,10 +131,14 @@
           </modbusAttributes>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="ReactivePowerActivation" presenceLevel="O" dataDirection="W" unit="NONE">
+          <dataPoint>
+            <datapointName>ReactivePowerActivation</datapointName>
+            <dataDirection>W</dataDirection>
+            <presenceLevel>O</presenceLevel>
             <dataType>
               <boolean/>
             </dataType>
+            <unit>NONE</unit>
             <legibleDescription>
               <textElement>
                 On Off Befehl, Blindleistung Flexibilität liefern ja/nein
@@ -160,10 +173,14 @@
           </modbusAttributes>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="SetDeltaActivePower" presenceLevel="O" dataDirection="W" unit="KILOWATTS">
+          <dataPoint>
+            <datapointName>SetDeltaActivePower</datapointName>
+            <dataDirection>W</dataDirection>
+            <presenceLevel>O</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>KILOWATTS</unit>
             <legibleDescription>
               <textElement>
                 Leistungsvorgabe, +/-
@@ -188,10 +205,14 @@
           </modbusAttributes>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="SetDeltaReactivePower" presenceLevel="O" dataDirection="W" unit="KILOVOLT_AMPERES">
+          <dataPoint>
+            <datapointName>SetDeltaReactivePower</datapointName>
+            <dataDirection>W</dataDirection>
+            <presenceLevel>O</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>KILOVOLT_AMPERES</unit>
             <legibleDescription>
               <textElement>
                 Blindleistungsvorgabe, +/-.
@@ -216,10 +237,14 @@
           </modbusAttributes>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="ReadinessState" presenceLevel="M" dataDirection="R" unit="NONE">
+          <dataPoint>
+            <datapointName>ReadinessState</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>M</presenceLevel>
             <dataType>
               <boolean/>
             </dataType>
+            <unit>NONE</unit>
             <legibleDescription>
               <textElement>Status ready for flexibility. True wenn Anlage für den nächsten Flexibilitäts-Event bereit ist.</textElement>
               <language>de</language>
@@ -241,10 +266,14 @@
           </modbusAttributes>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="RunState" presenceLevel="M" dataDirection="R" unit="NONE">
+          <dataPoint>
+            <datapointName>RunState</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>M</presenceLevel>
             <dataType>
               <boolean/>
             </dataType>
+            <unit>NONE</unit>
             <legibleDescription>
               <textElement>Status running for flexibility. True wenn Anlage läuft für Flexibilität.</textElement>
               <language>de</language>
@@ -266,10 +295,14 @@
           </modbusAttributes>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="ActualActivePower" presenceLevel="M" dataDirection="R" unit="KILOWATTS">
+          <dataPoint>
+            <datapointName>ActualActivePower</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>M</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>KILOWATTS</unit>
             <legibleDescription>
               <textElement>
                 Momentane Leistung. Betrag und Richtung des Energieflusses.
@@ -294,10 +327,14 @@
           </modbusAttributes>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="ActualReactivePower" presenceLevel="O" dataDirection="R" unit="KILOWATTS">
+          <dataPoint>
+            <datapointName>ActualReactivePower</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>O</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>KILOWATTS</unit>
             <legibleDescription>
               <textElement>
                 Momentane Leistung. Betrag und Richtung des Energieflusses.
@@ -322,10 +359,14 @@
           </modbusAttributes>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="MaxReactivePower" presenceLevel="O" dataDirection="R" unit="KILOVOLT_AMPERES_REACTIVE">
+          <dataPoint>
+            <datapointName>MaxReactivePower</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>O</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>KILOVOLT_AMPERES_REACTIVE</unit>
             <legibleDescription>
               <textElement>Maximal Steuerbare Blindleistung (actual value)</textElement>
               <language>de</language>
@@ -347,10 +388,14 @@
           </modbusAttributes>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="MinActivePower" presenceLevel="O" dataDirection="R" unit="KILOWATTS">
+          <dataPoint>
+            <datapointName>MinActivePower</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>O</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>KILOWATTS</unit>
           </dataPoint>
           <modbusDataPointConfiguration>
             <modbusDataType>
@@ -368,10 +413,14 @@
           </modbusAttributes>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="MinReactivePower" presenceLevel="O" dataDirection="R" unit="KILOVOLT_AMPERES_REACTIVE">
+          <dataPoint>
+            <datapointName>MinReactivePower</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>O</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>KILOVOLT_AMPERES_REACTIVE</unit>
             <legibleDescription>
               <textElement>Minimal Steuerbare Blindleistung (actual value)</textElement>
               <language>de</language>
@@ -393,10 +442,14 @@
           </modbusAttributes>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="ActualFillLevel" presenceLevel="O" dataDirection="R" unit="KILOWATT_HOURS">
+          <dataPoint>
+            <datapointName>ActualFillLevel</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>O</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>KILOWATT_HOURS</unit>
             <legibleDescription>
               <textElement>Aktueller Speicherstand</textElement>
               <language>de</language>
@@ -418,10 +471,14 @@
           </modbusAttributes>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="MinAllowedFillLevel" presenceLevel="O" dataDirection="RWP" unit="KILOWATT_HOURS">
+          <dataPoint>
+            <datapointName>MinAllowedFillLevel</datapointName>
+            <dataDirection>RWP</dataDirection>
+            <presenceLevel>O</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>KILOWATT_HOURS</unit>
             <legibleDescription>
               <textElement>Minimaler Ladzustand (darf nicht verletzt werden)</textElement>
               <language>de</language>
@@ -443,10 +500,14 @@
           </modbusAttributes>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="MaxAllowedFillLevel" presenceLevel="O" dataDirection="R" unit="KILOWATT_HOURS">
+          <dataPoint>
+            <datapointName>MaxAllowedFillLevel</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>O</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>KILOWATT_HOURS</unit>
             <legibleDescription>
               <textElement>Maximaler Ladzustand (darf nicht verletzt werden)</textElement>
               <language>de</language>
@@ -468,10 +529,14 @@
           </modbusAttributes>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName=" aValCharge" presenceLevel="O" dataDirection="R" unit="PERCENT">
+          <dataPoint>
+            <datapointName>aValCharge</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>O</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>PERCENT</unit>
             <arrayLength>20</arrayLength>
             <legibleDescription>
               <textElement>Ladeprofil %[Pmax]</textElement>
@@ -497,10 +562,14 @@
           </modbusAttributes>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="aValDischarge" presenceLevel="O" dataDirection="R" unit="PERCENT">
+          <dataPoint>
+            <datapointName>aValDischarge</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>O</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>PERCENT</unit>
             <arrayLength>20</arrayLength>
             <legibleDescription>
               <textElement>Entladeprofil %[Pmax]</textElement>

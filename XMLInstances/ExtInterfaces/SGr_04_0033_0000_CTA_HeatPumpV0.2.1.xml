@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="/xsl/SGr.xsl"?>
-<ModbusDeviceFrame deviceName="OptiHeat" isLocalControl="true" specificationOwnerIdentification="0" manufacturerName="CTA AG" xmlns="http://www.smartgridready.com/ns/V0/"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/EI-Modbus/SGrModbusEIDeviceFrame.xsd ">
+<ModbusDeviceFrame xmlns="http://www.smartgridready.com/ns/V0/"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/EI-Modbus/SGrModbusEIDeviceFrame.xsd ">
+  <deviceName>OptiHeat</deviceName>
+  <manufacturerName>CTA AG</manufacturerName>
   <releaseNotes>
     <state>Draft</state>
   </releaseNotes>
+  <specificationOwnerIdentification>0</specificationOwnerIdentification>
+  <isLocalControl>true</isLocalControl>
   <deviceInformation>
     <legibleDescription>
       <textElement>
@@ -51,7 +56,8 @@
   </modbusInterfaceDescription>
   <functionalProfileList>
     <functionalProfileListElement>
-      <functionalProfile profileName="HeatPumpBase">
+      <functionalProfile>
+        <profileName>HeatPumpBase</profileName>
         <functionalProfileIdentification>
           <specificationOwnerIdentification>0</specificationOwnerIdentification>
           <functionalProfileCategory>HeatPumpControl</functionalProfileCategory>
@@ -80,12 +86,16 @@
       </functionalProfile>
       <dataPointList>
         <dataPointListElement>
-          <dataPoint datapointName="ctaHPOpModeCmdFb" presenceLevel="O" dataDirection="R" unit="NONE">
+          <dataPoint>
+            <datapointName>ctaHPOpModeCmdFb</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>O</presenceLevel>
             <dataType>
               <enum>
                 <ctaHPOpMode>HP_NULL</ctaHPOpMode>
               </enum>
             </dataType>
+            <unit>NONE</unit>
             <alternativeNames>
               <manufName>CTA_HeatPump_FSM</manufName>
             </alternativeNames>
@@ -106,12 +116,16 @@
           </modbusDataPointConfiguration>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="ctaHPOpState" presenceLevel="M" dataDirection="R" unit="NONE">
+          <dataPoint>
+            <datapointName>ctaHPOpState</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>M</presenceLevel>
             <dataType>
               <enum>
                 <ctaHPOpState>HP_STANDBY</ctaHPOpState>
               </enum>
             </dataType>
+            <unit>NONE</unit>
             <alternativeNames>
               <manufName>CTA_UnitStatus</manufName>
             </alternativeNames>
@@ -132,10 +146,14 @@
           </modbusDataPointConfiguration>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="ErrorNrSGr" presenceLevel="M" dataDirection="R" unit="NONE">
+          <dataPoint>
+            <datapointName>ErrorNrSGr</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>M</presenceLevel>
             <dataType>
               <int16/>
             </dataType>
+            <unit>NONE</unit>
             <alternativeNames>
               <manufName>GlbAl</manufName>
             </alternativeNames>
@@ -160,10 +178,14 @@
           </modbusAttributes>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="OutsideAirTemp" presenceLevel="M" dataDirection="R" unit="DEGREES_CELSIUS">
+          <dataPoint>
+            <datapointName>OutsideAirTemp</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>M</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>DEGREES_CELSIUS</unit>
             <alternativeNames>
               <manufName>CTA_Outdoor_Temp</manufName>
             </alternativeNames>
@@ -184,10 +206,14 @@
           </modbusDataPointConfiguration>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="SupplyWaterTemp" presenceLevel="M" dataDirection="R" unit="DEGREES_CELSIUS">
+          <dataPoint>
+            <datapointName>SupplyWaterTemp</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>M</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>DEGREES_CELSIUS</unit>
             <alternativeNames>
               <manufName>CTA_B21_Temp</manufName>
             </alternativeNames>
@@ -206,10 +232,14 @@
           </modbusDataPointConfiguration>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="ReturnSupplyWaterTemp" presenceLevel="O" dataDirection="R" unit="DEGREES_CELSIUS">
+          <dataPoint>
+            <datapointName>ReturnSupplyWaterTemp</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>O</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>DEGREES_CELSIUS</unit>
             <alternativeNames>
               <manufName>CTA_B71_Temp</manufName>
             </alternativeNames>
@@ -228,10 +258,14 @@
           </modbusDataPointConfiguration>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="SourceTemp" presenceLevel="O" dataDirection="R" unit="DEGREES_CELSIUS">
+          <dataPoint>
+            <datapointName>SourceTemp</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>O</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>DEGREES_CELSIUS</unit>
             <alternativeNames>
               <manufName>CTA_B91_Temp</manufName>
             </alternativeNames>
@@ -252,7 +286,8 @@
       </dataPointList>
     </functionalProfileListElement>
     <functionalProfileListElement>
-      <functionalProfile profileName="PowerCtrl">
+      <functionalProfile>
+        <profileName>PowerCtrl</profileName>
         <functionalProfileIdentification>
           <specificationOwnerIdentification>0</specificationOwnerIdentification>
           <functionalProfileCategory>HeatPumpControl</functionalProfileCategory>
@@ -271,10 +306,14 @@
       </functionalProfile>
       <dataPointList>
         <dataPointListElement>
-          <dataPoint datapointName="PowerCtrlStpt" presenceLevel="M" dataDirection="W" unit="NONE">
+          <dataPoint>
+            <datapointName>PowerCtrlStpt</datapointName>
+            <dataDirection>W</dataDirection>
+            <presenceLevel>M</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>NONE</unit>
             <alternativeNames>
               <manufName>CTA_DWRequest</manufName>
             </alternativeNames>
@@ -299,10 +338,14 @@
           </modbusAttributes>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="ActSpeed" presenceLevel="M" dataDirection="R" unit="REVOLUTIONS_PER_MINUTE">
+          <dataPoint>
+            <datapointName>ActSpeed</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>M</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>REVOLUTIONS_PER_MINUTE</unit>
             <legibleDescription>
               <textElement>
                 ?check: Adress durch cb? Effektive Drehzahl des Verdichters
@@ -329,10 +372,14 @@
           </modbusAttributes>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="ActPowerACtot" presenceLevel="O" dataDirection="R" unit="KILOWATT_HOURS">
+          <dataPoint>
+            <datapointName>ActPowerACtot</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>O</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>KILOWATT_HOURS</unit>
             <legibleDescription>
               <textElement>
                 Effektive elektrischen Aufnahmeleistung des Verdichters
@@ -350,10 +397,14 @@
           </modbusDataPointConfiguration>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="ctaRemoteCtrlTimeSec" presenceLevel="M" dataDirection="RW" unit="SECONDS">
+          <dataPoint>
+            <datapointName>ctaRemoteCtrlTimeSec</datapointName>
+            <dataDirection>RW</dataDirection>
+            <presenceLevel>M</presenceLevel>
             <dataType>
               <int16U/>
             </dataType>
+            <unit>SECONDS</unit>
             <alternativeNames>
               <manufName>CTA_Ext_Communication_Handler</manufName>
             </alternativeNames>
@@ -384,7 +435,8 @@
       </dataPointList>
     </functionalProfileListElement>
     <functionalProfileListElement>
-      <functionalProfile profileName="HeatCoolCtrl">
+      <functionalProfile>
+        <profileName>HeatCoolCtrl</profileName>
         <functionalProfileIdentification>
           <specificationOwnerIdentification>0</specificationOwnerIdentification>
           <functionalProfileCategory>HeatPumpControl</functionalProfileCategory>
@@ -405,10 +457,14 @@
       </functionalProfile>
       <dataPointList>
         <dataPointListElement>
-          <dataPoint datapointName="ctaHCOpModeCmd" presenceLevel="M" dataDirection="RW" unit="NONE">
+          <dataPoint>
+            <datapointName>ctaHCOpModeCmd</datapointName>
+            <dataDirection>RW</dataDirection>
+            <presenceLevel>M</presenceLevel>
             <dataType>
               <int16/>
             </dataType>
+            <unit>NONE</unit>
             <legibleDescription>
               <textElement>
                 Festlegen der Betriebsart des Heiz-/Kühlkreises  [Aus Bereitschaft, Programm, Komfort, Eco]
@@ -426,10 +482,14 @@
           </modbusDataPointConfiguration>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="HeatCoolOpState" presenceLevel="M" dataDirection="RW" unit="NONE">
+          <dataPoint>
+            <datapointName>HeatCoolOpState</datapointName>
+            <dataDirection>RW</dataDirection>
+            <presenceLevel>M</presenceLevel>
             <dataType>
               <int32U/>
             </dataType>
+            <unit>NONE</unit>
             <legibleDescription>
               <textElement>Auslesen des aktuellen Status des Heiz-/Kühlkreises (Aus, Bereitschaft, Programm, Comfort, Eco)</textElement>
               <language>de</language>
@@ -456,10 +516,14 @@
           </modbusDataPointConfiguration>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="SupplyWaterTemp" presenceLevel="O" dataDirection="R" unit="DEGREES_CELSIUS">
+          <dataPoint>
+            <datapointName>SupplyWaterTemp</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>O</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>DEGREES_CELSIUS</unit>
             <legibleDescription>
               <textElement>Auslesen der aktuellen aktuellen-Temperatur des Vorlaufs.</textElement>
               <language>de</language>
@@ -475,10 +539,14 @@
           </modbusDataPointConfiguration>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="SupplyWaterTempStpt" presenceLevel="O" dataDirection="RW" unit="DEGREES_CELSIUS">
+          <dataPoint>
+            <datapointName>SupplyWaterTempStpt</datapointName>
+            <dataDirection>RW</dataDirection>
+            <presenceLevel>O</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>DEGREES_CELSIUS</unit>
             <legibleDescription>
               <textElement>Setzen der aktuellen Soll-Temperatur des Vorlaufs (Grundwert).</textElement>
               <language>de</language>
@@ -494,10 +562,14 @@
           </modbusDataPointConfiguration>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="ReturnSupplyWaterTemp" presenceLevel="O" dataDirection="R" unit="DEGREES_CELSIUS">
+          <dataPoint>
+            <datapointName>ReturnSupplyWaterTemp</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>O</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>DEGREES_CELSIUS</unit>
             <legibleDescription>
               <textElement>Auslesen der aktuellen aktuellen-Temperatur des Rücklaufs.</textElement>
               <language>de</language>
@@ -513,10 +585,14 @@
           </modbusDataPointConfiguration>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="ctaRemoteCtrlTimeSec" presenceLevel="M" dataDirection="RW" unit="SECONDS">
+          <dataPoint>
+            <datapointName>ctaRemoteCtrlTimeSec</datapointName>
+            <dataDirection>RW</dataDirection>
+            <presenceLevel>M</presenceLevel>
             <dataType>
               <int16U/>
             </dataType>
+            <unit>SECONDS</unit>
             <alternativeNames>
               <manufName>CTA_Ext_Communication_Handler</manufName>
             </alternativeNames>
@@ -547,7 +623,8 @@
       </dataPointList>
     </functionalProfileListElement>
     <functionalProfileListElement>
-      <functionalProfile profileName="DomHotWaterCtrl">
+      <functionalProfile>
+        <profileName>DomHotWaterCtrl</profileName>
         <functionalProfileIdentification>
           <specificationOwnerIdentification>0</specificationOwnerIdentification>
           <functionalProfileCategory>HeatPumpControl</functionalProfileCategory>
@@ -568,12 +645,16 @@
       </functionalProfile>
       <dataPointList>
         <dataPointListElement>
-          <dataPoint datapointName="ctaDomHotWOpModeCmd" presenceLevel="M" dataDirection="RW" unit="NONE">
+          <dataPoint>
+            <datapointName>ctaDomHotWOpModeCmd</datapointName>
+            <dataDirection>RW</dataDirection>
+            <presenceLevel>M</presenceLevel>
             <dataType>
               <enum>
                 <ctaDomHotWOpMode>DHW_NULL</ctaDomHotWOpMode>
               </enum>
             </dataType>
+            <unit>NONE</unit>
             <legibleDescription>
               <textElement>
                 ?checkDoku TODO: enum.  Grund-Betriebsart der Brauchwasseranlage (Bereitschaft, Programm, Komfort, Eco, Warmwasser, Kühlen aktiv, Kühlen passiv, Notbetrieb)
@@ -593,10 +674,14 @@
           </modbusDataPointConfiguration>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="DomHotWTempStpt" presenceLevel="M" dataDirection="RW" unit="DEGREES_CELSIUS">
+          <dataPoint>
+            <datapointName>DomHotWTempStpt</datapointName>
+            <dataDirection>RW</dataDirection>
+            <presenceLevel>M</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>DEGREES_CELSIUS</unit>
             <legibleDescription>
               <textElement>
                 Zieltemperatur fuer den Brauchwarmwasserspeicher.
@@ -614,10 +699,14 @@
           </modbusDataPointConfiguration>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="ActDomHotWTemp" presenceLevel="M" dataDirection="R" unit="DEGREES_CELSIUS">
+          <dataPoint>
+            <datapointName>ActDomHotWTemp</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>M</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>DEGREES_CELSIUS</unit>
             <alternativeNames>
               <manufName>CTA_B3_Temp</manufName>
             </alternativeNames>
@@ -636,10 +725,14 @@
           </modbusDataPointConfiguration>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="ctaRemoteCtrlTimeSec" presenceLevel="M" dataDirection="RW" unit="SECONDS">
+          <dataPoint>
+            <datapointName>ctaRemoteCtrlTimeSec</datapointName>
+            <dataDirection>RW</dataDirection>
+            <presenceLevel>M</presenceLevel>
             <dataType>
               <int16U/>
             </dataType>
+            <unit>SECONDS</unit>
             <alternativeNames>
               <manufName>CTA_Ext_Communication_Handler</manufName>
             </alternativeNames>
@@ -670,7 +763,8 @@
       </dataPointList>
     </functionalProfileListElement>
     <functionalProfileListElement>
-      <functionalProfile profileName="BufferStorageCtrl">
+      <functionalProfile>
+        <profileName>BufferStorageCtrl</profileName>
         <functionalProfileIdentification>
           <specificationOwnerIdentification>0</specificationOwnerIdentification>
           <functionalProfileCategory>HeatPumpControl</functionalProfileCategory>
@@ -689,10 +783,14 @@
       </functionalProfile>
       <dataPointList>
         <dataPointListElement>
-          <dataPoint datapointName="HeatBufferTempStptOffset" presenceLevel="M" dataDirection="W" unit="DEGREES_CELSIUS">
+          <dataPoint>
+            <datapointName>HeatBufferTempStptOffset</datapointName>
+            <dataDirection>W</dataDirection>
+            <presenceLevel>M</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>DEGREES_CELSIUS</unit>
             <alternativeNames>
               <manufName>CTA_CFG_Buffer_Overcharge_dT</manufName>
             </alternativeNames>
@@ -715,10 +813,14 @@
           </modbusDataPointConfiguration>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="ActHeatBufferTempUpper" presenceLevel="M" dataDirection="R" unit="DEGREES_CELSIUS">
+          <dataPoint>
+            <datapointName>ActHeatBufferTempUpper</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>M</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>DEGREES_CELSIUS</unit>
             <legibleDescription>
               <textElement>?check addr 16518 doppelt: Aktuelle Ist-Temperatur des Heiz-Pufferspeichers oben</textElement>
               <language>de</language>
@@ -734,10 +836,14 @@
           </modbusDataPointConfiguration>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="ActHeatBufferTempLower" presenceLevel="M" dataDirection="R" unit="DEGREES_CELSIUS">
+          <dataPoint>
+            <datapointName>ActHeatBufferTempLower</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>M</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>DEGREES_CELSIUS</unit>
             <legibleDescription>
               <textElement>Aktuelle Ist-Temperatur des Heiz-Pufferspeichers unten</textElement>
               <language>de</language>
@@ -753,10 +859,14 @@
           </modbusDataPointConfiguration>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="ctaRemoteCtrlTimeSec" presenceLevel="M" dataDirection="RW" unit="SECONDS">
+          <dataPoint>
+            <datapointName>ctaRemoteCtrlTimeSec</datapointName>
+            <dataDirection>RW</dataDirection>
+            <presenceLevel>M</presenceLevel>
             <dataType>
               <int16U/>
             </dataType>
+            <unit>SECONDS</unit>
             <alternativeNames>
               <manufName>CTA_Ext_Communication_Handler</manufName>
             </alternativeNames>
@@ -787,7 +897,8 @@
       </dataPointList>
     </functionalProfileListElement>
     <functionalProfileListElement>
-      <functionalProfile profileName="RoomTempCtrl">
+      <functionalProfile>
+        <profileName>RoomTempCtrl</profileName>
         <functionalProfileIdentification>
           <specificationOwnerIdentification>0</specificationOwnerIdentification>
           <functionalProfileCategory>HeatPumpControl</functionalProfileCategory>
@@ -806,10 +917,14 @@
       </functionalProfile>
       <dataPointList>
         <dataPointListElement>
-          <dataPoint datapointName="RoomZoneTemp" presenceLevel="R" dataDirection="R" unit="DEGREES_CELSIUS">
+          <dataPoint>
+            <datapointName>RoomZoneTemp</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>R</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>DEGREES_CELSIUS</unit>
             <legibleDescription>
               <textElement>Aktuelle Ist-Temperatur des 1. Raumes oder Mittelwert der Bezugsräume für die Begrenzung der Reduktions- oder Anhebungsmassnahmen</textElement>
               <language>de</language>
@@ -825,10 +940,14 @@
           </modbusDataPointConfiguration>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="RoomZoneTempStpt" presenceLevel="M" dataDirection="RW" unit="DEGREES_CELSIUS">
+          <dataPoint>
+            <datapointName>RoomZoneTempStpt</datapointName>
+            <dataDirection>RW</dataDirection>
+            <presenceLevel>M</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>DEGREES_CELSIUS</unit>
           </dataPoint>
           <modbusDataPointConfiguration>
             <modbusDataType>
@@ -842,7 +961,8 @@
       </dataPointList>
     </functionalProfileListElement>
     <functionalProfileListElement>
-      <functionalProfile profileName="SG-ReadyStates_bwp">
+      <functionalProfile>
+        <profileName>SG-ReadyStates_bwp</profileName>
         <functionalProfileIdentification>
           <specificationOwnerIdentification>0</specificationOwnerIdentification>
           <functionalProfileCategory>HeatPumpControl</functionalProfileCategory>
@@ -867,12 +987,16 @@
       </functionalProfile>
       <dataPointList>
         <dataPointListElement>
-          <dataPoint datapointName="SGReadyCmd" presenceLevel="M" dataDirection="RW" unit="NONE">
+          <dataPoint>
+            <datapointName>SGReadyCmd</datapointName>
+            <dataDirection>RW</dataDirection>
+            <presenceLevel>M</presenceLevel>
             <dataType>
               <enum>
                 <sgreadyStateLv2>HP_NORMAL</sgreadyStateLv2>
               </enum>
             </dataType>
+            <unit>NONE</unit>
             <legibleDescription>
               <textElement>this the command acccording the bwp SG-Ready definition  https://www.waermepumpe.de/normen-technik/sg-ready/</textElement>
               <language>en</language>
@@ -904,10 +1028,14 @@
           </modbusDataPointConfiguration>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="ctaRemoteCtrlTimeSec" presenceLevel="M" dataDirection="RW" unit="SECONDS">
+          <dataPoint>
+            <datapointName>ctaRemoteCtrlTimeSec</datapointName>
+            <dataDirection>RW</dataDirection>
+            <presenceLevel>M</presenceLevel>
             <dataType>
               <int16U/>
             </dataType>
+            <unit>SECONDS</unit>
             <alternativeNames>
               <manufName>CTA_Ext_Communication_Handler</manufName>
             </alternativeNames>
@@ -938,7 +1066,8 @@
       </dataPointList>
     </functionalProfileListElement>
     <functionalProfileListElement>
-      <functionalProfile profileName="EnergyMonitor">
+      <functionalProfile>
+        <profileName>EnergyMonitor</profileName>
         <functionalProfileIdentification>
           <specificationOwnerIdentification>0</specificationOwnerIdentification>
           <functionalProfileCategory>HeatPumpControl</functionalProfileCategory>
@@ -957,10 +1086,14 @@
       </functionalProfile>
       <dataPointList>
         <dataPointListElement>
-          <dataPoint datapointName=" ActiveEnergyACtot" presenceLevel="R" dataDirection="R" unit="KILOWATT_HOURS">
+          <dataPoint>
+            <datapointName>ActiveEnergyACtot</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>R</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>KILOWATT_HOURS</unit>
             <alternativeNames>
               <manufName>CTA_Energy_El_Tot</manufName>
             </alternativeNames>
@@ -979,10 +1112,14 @@
           </modbusDataPointConfiguration>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName=" ActiveEnergyACheat" presenceLevel="R" dataDirection="R" unit="KILOWATT_HOURS">
+          <dataPoint>
+            <datapointName>ActiveEnergyACheat</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>R</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>KILOWATT_HOURS</unit>
             <alternativeNames>
               <manufName>CTA_Energy_El_Heat</manufName>
             </alternativeNames>
@@ -1001,10 +1138,14 @@
           </modbusDataPointConfiguration>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="ActiveEnergyACDomHotW" presenceLevel="R" dataDirection="R" unit="KILOWATT_HOURS">
+          <dataPoint>
+            <datapointName>ActiveEnergyACDomHotW</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>R</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>KILOWATT_HOURS</unit>
             <alternativeNames>
               <manufName>CTA_Energy_El_DW</manufName>
             </alternativeNames>
@@ -1023,10 +1164,14 @@
           </modbusDataPointConfiguration>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="ThermalEnergyDomWater" presenceLevel="R" dataDirection="R" unit="KILOWATT_HOURS">
+          <dataPoint>
+            <datapointName>ThermalEnergyDomWater</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>R</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>KILOWATT_HOURS</unit>
             <legibleDescription>
               <textElement>Summe der aufgenommenen elektrischen Energie des Verdichters für die Brauchwarmwasser-Erwärmung.</textElement>
               <language>de</language>
@@ -1042,10 +1187,14 @@
           </modbusDataPointConfiguration>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="ThermalEnergyTot" presenceLevel="R" dataDirection="R" unit="KILOWATT_HOURS">
+          <dataPoint>
+            <datapointName>ThermalEnergyTot</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>R</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>KILOWATT_HOURS</unit>
             <alternativeNames>
               <manufName>CTA_Energy_Q_Tot</manufName>
             </alternativeNames>
@@ -1064,10 +1213,14 @@
           </modbusDataPointConfiguration>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="ThermalEnergyHeat" presenceLevel="R" dataDirection="R" unit="KILOWATT_HOURS">
+          <dataPoint>
+            <datapointName>ThermalEnergyHeat</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>R</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>KILOWATT_HOURS</unit>
             <alternativeNames>
               <manufName>CTA_Energy_Q_Heat</manufName>
             </alternativeNames>
@@ -1086,10 +1239,14 @@
           </modbusDataPointConfiguration>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="ThermalEnergyDomHotWater" presenceLevel="R" dataDirection="R" unit="KILOWATT_HOURS">
+          <dataPoint>
+            <datapointName>ThermalEnergyDomHotWater</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>R</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>KILOWATT_HOURS</unit>
             <alternativeNames>
               <manufName>CTA_Energy_Q_DW</manufName>
             </alternativeNames>
@@ -1108,10 +1265,14 @@
           </modbusDataPointConfiguration>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="ActPowerACtot" presenceLevel="O" dataDirection="R" unit="KILOWATT_HOURS">
+          <dataPoint>
+            <datapointName>ActPowerACtot</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>O</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>KILOWATT_HOURS</unit>
             <legibleDescription>
               <textElement>Effektive elektrischen Aufnahmeleistung des Verdichters</textElement>
               <language>de</language>
@@ -1127,10 +1288,14 @@
           </modbusDataPointConfiguration>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="RuntimeHeating" presenceLevel="R" dataDirection="R" unit="HOURS">
+          <dataPoint>
+            <datapointName>RuntimeHeating</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>R</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>HOURS</unit>
             <alternativeNames>
               <manufName>CTA_OperTime_Total_h</manufName>
             </alternativeNames>
@@ -1149,10 +1314,14 @@
           </modbusDataPointConfiguration>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="RuntimeCooling" presenceLevel="R" dataDirection="R" unit="HOURS">
+          <dataPoint>
+            <datapointName>RuntimeCooling</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>R</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>HOURS</unit>
             <alternativeNames>
               <manufName>CTA_OperTime_Cooling_h</manufName>
             </alternativeNames>
@@ -1171,10 +1340,14 @@
           </modbusDataPointConfiguration>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="NrOfStartupsCompressor" presenceLevel="R" dataDirection="R" unit="NONE">
+          <dataPoint>
+            <datapointName>NrOfStartupsCompressor></datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>R</presenceLevel>
             <dataType>
               <int32U/>
             </dataType>
+            <unit>NONE</unit>
             <alternativeNames>
               <manufName>CTA_CompStartAttempts</manufName>
             </alternativeNames>

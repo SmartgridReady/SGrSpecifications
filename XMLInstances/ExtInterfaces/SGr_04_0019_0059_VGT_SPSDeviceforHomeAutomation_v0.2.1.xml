@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="/xsl/SGr.xsl"?>
-<ModbusDeviceFrame deviceName="VGTSiemensSPSV0.1.1" isLocalControl="true" specificationOwnerIdentification="0" manufacturerName="Virtual Global Trading AG"
-  xmlns="http://www.smartgridready.com/ns/V0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/EI-Modbus/SGrModbusEIDeviceFrame.xsd ">
+<ModbusDeviceFrame xmlns="http://www.smartgridready.com/ns/V0/"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/EI-Modbus/SGrModbusEIDeviceFrame.xsd ">
+  <deviceName>VGTSiemensSPSV0.1.1</deviceName>
+  <manufacturerName>Virtual Global Trading AG</manufacturerName>
   <releaseNotes>
     <state>Draft</state>
   </releaseNotes>
+  <specificationOwnerIdentification>0</specificationOwnerIdentification>
+  <isLocalControl>true</isLocalControl>
   <deviceInformation>
     <legibleDescription>
       <textElement>SPS Device for HomeAutomation</textElement>
@@ -63,7 +67,8 @@
   </modbusInterfaceDescription>
   <functionalProfileList>
     <functionalProfileListElement>
-      <functionalProfile profileName="BiDirFlexMgmt">
+      <functionalProfile>
+        <profileName>BiDirFlexMgmt</profileName>
         <functionalProfileIdentification>
           <specificationOwnerIdentification>0</specificationOwnerIdentification>
           <functionalProfileCategory>SGCP</functionalProfileCategory>
@@ -82,10 +87,14 @@
       </functionalProfile>
       <dataPointList>
         <dataPointListElement>
-          <dataPoint datapointName="ActivePowerActivation" presenceLevel="M" dataDirection="W" unit="NONE">
+          <dataPoint>
+            <datapointName>ActivePowerActivation</datapointName>
+            <dataDirection>W</dataDirection>
+            <presenceLevel>M</presenceLevel>
             <dataType>
               <boolean/>
             </dataType>
+            <unit>NONE</unit>
             <alternativeNames>
               <manufName>On/Off</manufName>
             </alternativeNames>
@@ -114,10 +123,14 @@
           </modbusAttributes>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="ReadinessState" presenceLevel="M" dataDirection="R" unit="NONE">
+          <dataPoint>
+            <datapointName>ReadinessState</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>M</presenceLevel>
             <dataType>
               <boolean/>
             </dataType>
+            <unit>NONE</unit>
             <alternativeNames>
               <manufName>Ready</manufName>
             </alternativeNames>
@@ -142,10 +155,14 @@
           </modbusAttributes>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="RunState" presenceLevel="M" dataDirection="R" unit="NONE">
+          <dataPoint>
+            <datapointName>RunState</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>M</presenceLevel>
             <dataType>
               <boolean/>
             </dataType>
+            <unit>NONE</unit>
             <alternativeNames>
               <manufName>Info</manufName>
             </alternativeNames>
@@ -170,10 +187,14 @@
           </modbusAttributes>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="ActualActivePower" presenceLevel="M" dataDirection="R" unit="KILOWATTS">
+          <dataPoint>
+            <datapointName>ActualActivePower</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>M</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>KILOWATTS</unit>
             <alternativeNames>
               <manufName>Active Power</manufName>
             </alternativeNames>

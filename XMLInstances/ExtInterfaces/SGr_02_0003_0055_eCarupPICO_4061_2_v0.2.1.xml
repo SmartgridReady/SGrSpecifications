@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="/xsl/SGr.xsl"?>
-<ContactDeviceFrame deviceName="PICO Wallbox" isLocalControl="true" specificationOwnerIdentification="0" manufacturerName="eCarUp AG, CH-6343 Rotkreuz "
-  xmlns="http://www.smartgridready.com/ns/V0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/EI-Contacts/SGrContactsDeviceFrame.xsd ">
+<ContactDeviceFrame xmlns="http://www.smartgridready.com/ns/V0/"
+                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                    xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/EI-Contacts/SGrContactsDeviceFrame.xsd ">
+  <deviceName>PICO Wallbox</deviceName>
+  <manufacturerName>eCarUp AG, CH-6343 Rotkreuz</manufacturerName>
   <releaseNotes>
     <state>Draft</state>
   </releaseNotes>
+  <specificationOwnerIdentification>0</specificationOwnerIdentification>
+  <isLocalControl>true</isLocalControl>
   <deviceInformation>
     <legibleDescription>
       <textElement>Pico verbindet sich über das lokale WLAN oder Mobilfunk mit der Cloud. Damit stehen Kunden, und Stationsbetreibern Echtzeitdaten zur Verfügung um Energie zu optimieren, Ladungen transparent abzurechnen und Lasten clever zu verteilen.</textElement>
@@ -35,7 +39,8 @@
   </contactInterfaceDescription>
   <functionalProfileList>
     <functionalProfileListElement>
-      <functionalProfile profileName="EVSE">
+      <functionalProfile>
+        <profileName>EVSE</profileName>
         <functionalProfileIdentification>
           <specificationOwnerIdentification>0</specificationOwnerIdentification>
           <functionalProfileCategory>EVSE</functionalProfileCategory>
@@ -60,12 +65,16 @@
       </functionalProfile>
       <dataPointList>
         <dataPointListElement>
-          <dataPoint datapointName="EVSE_StateLv2" presenceLevel="M" dataDirection="R" unit="NONE">
+          <dataPoint>
+            <datapointName>EVSE_StateLv2</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>M</presenceLevel>
             <dataType>
               <enum>
                 <sgrEVSEStateLv2>EV_NORMAL</sgrEVSEStateLv2>
               </enum>
             </dataType>
+            <unit>NONE</unit>
           </dataPoint>
         </dataPointListElement>
       </dataPointList>

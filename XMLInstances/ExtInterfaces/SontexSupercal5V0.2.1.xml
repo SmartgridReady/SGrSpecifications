@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="/xsl/SGr.xsl"?>
-<ModbusDeviceFrame deviceName="Supercal5" isLocalControl="true" specificationOwnerIdentification="0" manufacturerName="SONTEX SA" xmlns="http://www.smartgridready.com/ns/V0/"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/EI-Modbus/SGrModbusEIDeviceFrame.xsd ">
+<ModbusDeviceFrame xmlns="http://www.smartgridready.com/ns/V0/"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/EI-Modbus/SGrModbusEIDeviceFrame.xsd ">
+  <deviceName>Supercal5</deviceName>
+  <manufacturerName>SONTEX SA</manufacturerName>
   <releaseNotes>
     <state>Draft</state>
   </releaseNotes>
+  <specificationOwnerIdentification>0</specificationOwnerIdentification>
+  <isLocalControl>true</isLocalControl>
   <deviceInformation>
     <transportService>Modbus</transportService>
     <deviceCategory>SubMeterElectricity</deviceCategory>
@@ -46,7 +51,8 @@
   </modbusInterfaceDescription>
   <functionalProfileList>
     <functionalProfileListElement>
-      <functionalProfile profileName="Temperature">
+      <functionalProfile>
+        <profileName>Temperature</profileName>
         <functionalProfileIdentification>
           <specificationOwnerIdentification>101</specificationOwnerIdentification>
           <functionalProfileCategory>TemperatureSensor</functionalProfileCategory>
@@ -61,10 +67,14 @@
       </functionalProfile>
       <dataPointList>
         <dataPointListElement>
-          <dataPoint datapointName="hiTemp" presenceLevel="M" dataDirection="R" unit="DEGREES_PHASE">
+          <dataPoint>
+            <datapointName>hiTemp</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>M</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>DEGREES_PHASE</unit>
           </dataPoint>
           <modbusDataPointConfiguration>
             <modbusDataType>
@@ -82,10 +92,14 @@
           </modbusAttributes>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="lowTemp" presenceLevel="M" dataDirection="R" unit="DEGREES_PHASE">
+          <dataPoint>
+            <datapointName>lowTemp</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>M</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>DEGREES_PHASE</unit>
           </dataPoint>
           <modbusDataPointConfiguration>
             <modbusDataType>
@@ -103,10 +117,14 @@
           </modbusAttributes>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="diffTemp" presenceLevel="M" dataDirection="R" unit="DEGREES_PHASE">
+          <dataPoint>
+            <datapointName>diffTemp</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>M</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>DEGREES_PHASE</unit>
           </dataPoint>
           <modbusDataPointConfiguration>
             <modbusDataType>
@@ -126,7 +144,8 @@
       </dataPointList>
     </functionalProfileListElement>
     <functionalProfileListElement>
-      <functionalProfile profileName="PowerFlow">
+      <functionalProfile>
+        <profileName>PowerFlow</profileName>
         <functionalProfileIdentification>
           <specificationOwnerIdentification>101</specificationOwnerIdentification>
           <functionalProfileCategory>Sensor</functionalProfileCategory>
@@ -141,10 +160,14 @@
       </functionalProfile>
       <dataPointList>
         <dataPointListElement>
-          <dataPoint datapointName="actPower" presenceLevel="M" dataDirection="R" unit="KILOWATTS">
+          <dataPoint>
+            <datapointName>actPower</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>M</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>KILOWATTS</unit>
           </dataPoint>
           <modbusDataPointConfiguration>
             <modbusDataType>
@@ -162,10 +185,14 @@
           </modbusAttributes>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="actFlow" presenceLevel="M" dataDirection="R" unit="PER_HOUR">
+          <dataPoint>
+            <datapointName>actFlow</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>M</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>PER_HOUR</unit>
           </dataPoint>
           <modbusDataPointConfiguration>
             <modbusDataType>

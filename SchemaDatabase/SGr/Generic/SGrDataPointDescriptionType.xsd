@@ -14,7 +14,31 @@
       </documentation>
     </annotation>
     <sequence>
+      <element maxOccurs="1" minOccurs="1" name="datapointName" type="string">
+        <annotation>
+          <documentation>
+            Bezeichnung des Datenpunktes: «Schlagwort», welches die Bedeutung identifiziert. Diese Bezeichnung gilt neben der Indexnummer als Definition für den SmartGridready Namespace
+            für die maschinenlesbaren Daten.
+          </documentation>
+        </annotation>
+      </element>
+      <element maxOccurs="1" minOccurs="1" name="dataDirection" type="sgr:DataDirection">
+        <annotation>
+          <documentation>
+            RWP (Eigenschaft des Datenpunktes) bezeichnet die Datenrichtung und die Datenhaltung R = lesen aus Sicht des Profilnutzers W = schreiben aus Sicht der Profilnutzers P =
+            persistente Speicherung der Daten
+          </documentation>
+        </annotation>
+      </element>
+      <element maxOccurs="1" minOccurs="1" name="presenceLevel" type="sgr:PresenceLevel">
+        <annotation>
+          <documentation>
+            MRO (Relevanz) Die Gewichtung der Variable bezüglich des Nutzens M = muss (mandatory) Datenpunkt R = empfohlener (recommended) Datenpunkt O = optionaler Datenpunkt
+          </documentation>
+        </annotation>
+      </element>
       <element maxOccurs="1" minOccurs="1" name="dataType" type="sgr:DataType"/>
+      <element maxOccurs="1" minOccurs="1" name="unit" type="sgr:Units"/>
       <element name="arrayLength" type="int" maxOccurs="1" minOccurs="0">
         <annotation>
           <documentation>Optional, if present the data point is an array of specified length</documentation>
@@ -29,29 +53,5 @@
       </element>
       <element maxOccurs="4" minOccurs="0" name="programmerHints" type="sgr:LegibleDescription"></element>
     </sequence>
-    <attribute name="datapointName" type="string">
-      <annotation>
-        <documentation>
-          Bezeichnung des Datenpunktes: «Schlagwort», welches die Bedeutung identifiziert. Diese Bezeichnung gilt neben der Indexnummer als Definition für den SmartGridready Namespace
-          für die maschinenlesbaren Daten.
-        </documentation>
-      </annotation>
-    </attribute>
-    <attribute name="dataDirection" type="sgr:DataDirection">
-      <annotation>
-        <documentation>
-          RWP (Eigenschaft des Datenpunktes) bezeichnet die Datenrichtung und die Datenhaltung R = lesen aus Sicht des Profilnutzers W = schreiben aus Sicht der Profilnutzers P =
-          persistente Speicherung der Daten
-        </documentation>
-      </annotation>
-    </attribute>
-    <attribute name="presenceLevel" type="sgr:PresenceLevel">
-      <annotation>
-        <documentation>
-          MRO (Relevanz) Die Gewichtung der Variable bezüglich des Nutzens M = muss (mandatory) Datenpunkt R = empfohlener (recommended) Datenpunkt O = optionaler Datenpunkt
-        </documentation>
-      </annotation>
-    </attribute>
-    <attribute name="unit" type="sgr:Units"/>
   </complexType>
 </schema>

@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="/xsl/SGr.xsl"?>
-<RestApiDeviceFrame deviceName="Smart Charge Controller" isLocalControl="true" specificationOwnerIdentification="0" manufacturerName="A. Lehmann Elektro AG"
-  xmlns="http://www.smartgridready.com/ns/V0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/EI-RestAPI/SGrRestAPI_EIDeviceFrame.xsd ">
-    <!-- TODO: broken XML, this EI needs fixing... -->
+<RestApiDeviceFrame xmlns="http://www.smartgridready.com/ns/V0/"
+                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                    xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/EI-RestAPI/SGrRestAPI_EIDeviceFrame.xsd ">
+  <!-- TODO: broken XML, this EI needs fixing... -->
+  <deviceName>Smart Charge Controller</deviceName>
+  <manufacturerName>A. Lehmann Elektro AG</manufacturerName>
   <releaseNotes>
     <state>Draft</state>
   </releaseNotes>
+  <specificationOwnerIdentification>0</specificationOwnerIdentification>
+  <isLocalControl>true</isLocalControl>
   <deviceInformation>
     <transportService>RESTfulJSON</transportService>
     <deviceCategory>SubMeterElectricity</deviceCategory>
@@ -19,7 +23,10 @@
     <restApiBearer>
       <restServiceCall>
         <requestHeader>
-          <header headerName="Accept" value="application/json"/>
+          <header>
+            <headerName>Accept</headerName>
+            <value>application/json</value>
+          </header>
         </requestHeader>
         <requestMethod>POST</requestMethod>
         <requestPath>/auth/login</requestPath>
@@ -33,7 +40,8 @@
   </restApiInterfaceDescription>
   <functionalProfileList>
     <functionalProfileListElement>
-      <functionalProfile profileName="ActivePowerAC">
+      <functionalProfile>
+        <profileName>ActivePowerAC</profileName>
         <functionalProfileIdentification>
           <specificationOwnerIdentification>0</specificationOwnerIdentification>
           <functionalProfileCategory>NonSpecific</functionalProfileCategory>
@@ -48,19 +56,27 @@
       </functionalProfile>
       <dataPointList>
         <dataPointListElement>
-          <dataPoint datapointName="ActivePowerACtot" presenceLevel="R" dataDirection="R" unit="WATTS">
+          <dataPoint>
+            <datapointName>ActivePowerACtot</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>R</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>WATTS</unit>
           </dataPoint>
           <genericAttributes>
             <measuredValueSource>measuredValue</measuredValueSource>
             <sampleRateHz>10</sampleRateHz>
           </genericAttributes>
-          <restApiDataPointConfiguration dataType="JSON_number">
+          <restApiDataPointConfiguration>
+            <dataType>JSON_number</dataType>
             <restServiceCall>
               <requestHeader>
-                <header headerName="Accept" value="application/json"/>
+                <header>
+                  <headerName>Accept</headerName>
+                  <value>application/json</value>
+                </header>
               </requestHeader>
               <requestMethod>GET</requestMethod>
               <requestPath>/edges/{{edgeid}}/metrics/momentaryMeterValues</requestPath>
@@ -72,19 +88,27 @@
           </restApiDataPointConfiguration>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="ActivePowerACL1" presenceLevel="R" dataDirection="R" unit="WATTS">
+          <dataPoint>
+            <datapointName>ActivePowerACL1</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>R</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>WATTS</unit>
           </dataPoint>
           <genericAttributes>
             <measuredValueSource>measuredValue</measuredValueSource>
             <sampleRateHz>10</sampleRateHz>
           </genericAttributes>
-          <restApiDataPointConfiguration dataType="JSON_number">
+          <restApiDataPointConfiguration>
+            <dataType>JSON_number</dataType>
             <restServiceCall>
               <requestHeader>
-                <header headerName="Accept" value="application/json"/>
+                <header>
+                  <headerName>Accept</headerName>
+                  <value>application/json</value>
+                </header>
               </requestHeader>
               <requestMethod>GET</requestMethod>
               <requestPath>/edges/{{edgeid}}/metrics/momentaryMeterValues</requestPath>
@@ -96,19 +120,27 @@
           </restApiDataPointConfiguration>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="ActivePowerACL2" presenceLevel="R" dataDirection="R" unit="WATTS">
+          <dataPoint>
+            <datapointName>ActivePowerACL2</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>R</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>WATTS</unit>
           </dataPoint>
           <genericAttributes>
             <measuredValueSource>measuredValue</measuredValueSource>
             <sampleRateHz>10</sampleRateHz>
           </genericAttributes>
-          <restApiDataPointConfiguration dataType="JSON_number">
+          <restApiDataPointConfiguration>
+            <dataType>JSON_number</dataType>
             <restServiceCall>
               <requestHeader>
-                <header headerName="Accept" value="application/json"/>
+                <header>
+                  <headerName>Accept</headerName>
+                  <value>application/json</value>
+                </header>
               </requestHeader>
               <requestMethod>GET</requestMethod>
               <requestPath>/edges/{{edgeid}}/metrics/momentaryMeterValues</requestPath>
@@ -120,19 +152,27 @@
           </restApiDataPointConfiguration>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="ActivePowerACL3" presenceLevel="R" dataDirection="R" unit="WATTS">
+          <dataPoint>
+            <datapointName>ActivePowerACL3</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>R</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>WATTS</unit>
           </dataPoint>
           <genericAttributes>
             <measuredValueSource>measuredValue</measuredValueSource>
             <sampleRateHz>10</sampleRateHz>
           </genericAttributes>
-          <restApiDataPointConfiguration dataType="JSON_number">
+          <restApiDataPointConfiguration>
+            <dataType>JSON_number</dataType>
             <restServiceCall>
               <requestHeader>
-                <header headerName="Accept" value="application/json"/>
+                <header>
+                  <headerName>Accept</headerName>
+                  <value>application/json</value>
+                </header>
               </requestHeader>
               <requestMethod>GET</requestMethod>
               <requestPath>/edges/{{edgeid}}/metrics/momentaryMeterValues</requestPath>
@@ -146,7 +186,8 @@
       </dataPointList>
     </functionalProfileListElement>
     <functionalProfileListElement>
-      <functionalProfile profileName="VoltageAC">
+      <functionalProfile>
+        <profileName>VoltageAC</profileName>
         <functionalProfileIdentification>
           <specificationOwnerIdentification>0</specificationOwnerIdentification>
           <functionalProfileCategory>NonSpecific</functionalProfileCategory>
@@ -161,19 +202,27 @@
       </functionalProfile>
       <dataPointList>
         <dataPointListElement>
-          <dataPoint datapointName="VoltageACL1_N" presenceLevel="R" dataDirection="R" unit="VOLTS">
+          <dataPoint>
+            <datapointName>VoltageACL1_N</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>R</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>VOLTS</unit>
           </dataPoint>
           <genericAttributes>
             <measuredValueSource>measuredValue</measuredValueSource>
             <sampleRateHz>10</sampleRateHz>
           </genericAttributes>
-          <restApiDataPointConfiguration dataType="JSON_number">
+          <restApiDataPointConfiguration>
+            <dataType>JSON_number</dataType>
             <restServiceCall>
               <requestHeader>
-                <header headerName="Accept" value="application/json"/>
+                <header>
+                  <headerName>Accept</headerName>
+                  <value>application/json</value>
+                </header>
               </requestHeader>
               <requestMethod>GET</requestMethod>
               <requestPath>/edges/{{edgeid}}/metrics/momentaryMeterValues</requestPath>
@@ -185,19 +234,27 @@
           </restApiDataPointConfiguration>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="VoltageACL2_N" presenceLevel="R" dataDirection="R" unit="VOLTS">
+          <dataPoint>
+            <datapointName>VoltageACL2_N</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>R</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>VOLTS</unit>
           </dataPoint>
           <genericAttributes>
             <measuredValueSource>measuredValue</measuredValueSource>
             <sampleRateHz>10</sampleRateHz>
           </genericAttributes>
-          <restApiDataPointConfiguration dataType="JSON_number">
+          <restApiDataPointConfiguration>
+            <dataType>JSON_number</dataType>
             <restServiceCall>
               <requestHeader>
-                <header headerName="Accept" value="application/json"/>
+                <header>
+                  <headerName>Accept</headerName>
+                  <value>application/json</value>
+                </header>
               </requestHeader>
               <requestMethod>GET</requestMethod>
               <requestPath>/edges/{{edgeid}}/metrics/momentaryMeterValues</requestPath>
@@ -209,19 +266,27 @@
           </restApiDataPointConfiguration>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="VoltageACL3_N" presenceLevel="R" dataDirection="R" unit="VOLTS">
+          <dataPoint>
+            <datapointName>VoltageACL3_N</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>R</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>VOLTS</unit>
           </dataPoint>
           <genericAttributes>
             <measuredValueSource>measuredValue</measuredValueSource>
             <sampleRateHz>10</sampleRateHz>
           </genericAttributes>
-          <restApiDataPointConfiguration dataType="JSON_number">
+          <restApiDataPointConfiguration>
+            <dataType>JSON_number</dataType>
             <restServiceCall>
               <requestHeader>
-                <header headerName="Accept" value="application/json"/>
+                <header>
+                  <headerName>Accept</headerName>
+                  <value>application/json</value>
+                </header>
               </requestHeader>
               <requestMethod>GET</requestMethod>
               <requestPath>/edges/{{edgeid}}/metrics/momentaryMeterValues</requestPath>
@@ -235,7 +300,8 @@
       </dataPointList>
     </functionalProfileListElement>
     <functionalProfileListElement>
-      <functionalProfile profileName="CurrentAC">
+      <functionalProfile>
+        <profileName>CurrentAC</profileName>
         <functionalProfileIdentification>
           <specificationOwnerIdentification>0</specificationOwnerIdentification>
           <functionalProfileCategory>NonSpecific</functionalProfileCategory>
@@ -250,19 +316,27 @@
       </functionalProfile>
       <dataPointList>
         <dataPointListElement>
-          <dataPoint datapointName="CurrentACL1" presenceLevel="M" dataDirection="R" unit="AMPERES">
+          <dataPoint>
+            <datapointName>CurrentACL1</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>M</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>AMPERES</unit>
           </dataPoint>
           <genericAttributes>
             <measuredValueSource>measuredValue</measuredValueSource>
             <sampleRateHz>10</sampleRateHz>
           </genericAttributes>
-          <restApiDataPointConfiguration dataType="JSON_number">
+          <restApiDataPointConfiguration>
+            <dataType>JSON_number</dataType>
             <restServiceCall>
               <requestHeader>
-                <header headerName="Accept" value="application/json"/>
+                <header>
+                  <headerName>Accept</headerName>
+                  <value>application/json</value>
+                </header>
               </requestHeader>
               <requestMethod>GET</requestMethod>
               <requestPath>/edges/{{edgeid}}/metrics/momentaryMeterValues</requestPath>
@@ -274,19 +348,27 @@
           </restApiDataPointConfiguration>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="CurrentACL2" presenceLevel="R" dataDirection="R" unit="AMPERES">
+          <dataPoint>
+            <datapointName>CurrentACL2</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>R</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>AMPERES</unit>
           </dataPoint>
           <genericAttributes>
             <measuredValueSource>measuredValue</measuredValueSource>
             <sampleRateHz>10</sampleRateHz>
           </genericAttributes>
-          <restApiDataPointConfiguration dataType="JSON_number">
+          <restApiDataPointConfiguration>
+            <dataType>JSON_number</dataType>
             <restServiceCall>
               <requestHeader>
-                <header headerName="Accept" value="application/json"/>
+                <header>
+                  <headerName>Accept</headerName>
+                  <value>application/json</value>
+                </header>
               </requestHeader>
               <requestMethod>GET</requestMethod>
               <requestPath>/edges/{{edgeid}}/metrics/momentaryMeterValues</requestPath>
@@ -298,19 +380,27 @@
           </restApiDataPointConfiguration>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="CurrentACL3" presenceLevel="R" dataDirection="R" unit="AMPERES">
+          <dataPoint>
+            <datapointName>CurrentACL3</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>R</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>AMPERES</unit>
           </dataPoint>
           <genericAttributes>
             <measuredValueSource>measuredValue</measuredValueSource>
             <sampleRateHz>10</sampleRateHz>
           </genericAttributes>
-          <restApiDataPointConfiguration dataType="JSON_number">
+          <restApiDataPointConfiguration>
+            <dataType>JSON_number</dataType>
             <restServiceCall>
               <requestHeader>
-                <header headerName="Accept" value="application/json"/>
+                <header>
+                  <headerName>Accept</headerName>
+                  <value>application/json</value>
+                </header>
               </requestHeader>
               <requestMethod>GET</requestMethod>
               <requestPath>/edges/{{edgeid}}/metrics/momentaryMeterValues</requestPath>

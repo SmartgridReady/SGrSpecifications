@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="/xsl/SGr.xsl"?>
-<RestApiDeviceFrame deviceName="CLEMAP Energy Monitor" isLocalControl="false" specificationOwnerIdentification="0" manufacturerName="CLEMAP"
-  xmlns="http://www.smartgridready.com/ns/V0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/EI-RestAPI/SGrRestAPI_EIDeviceFrame.xsd ">
+<RestApiDeviceFrame xmlns="http://www.smartgridready.com/ns/V0/"
+                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                    xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/EI-RestAPI/SGrRestAPI_EIDeviceFrame.xsd ">
+  <deviceName>CLEMAP Energy Monitor</deviceName>
+  <manufacturerName>CLEMAP</manufacturerName>
   <releaseNotes>
     <state>Draft</state>
   </releaseNotes>
+  <specificationOwnerIdentification>0</specificationOwnerIdentification>
+  <isLocalControl>false</isLocalControl>
   <deviceInformation>
     <transportService>RESTfulJSON</transportService>
     <deviceCategory>SubMeterElectricity</deviceCategory>
@@ -19,8 +23,14 @@
     <restApiBearer>
       <restServiceCall>
         <requestHeader>
-          <header headerName="Accept" value="application/json"/>
-          <header headerName="Content-Type" value="application/json"/>
+          <header>
+            <headerName>Accept</headerName>
+            <value>application/json</value>
+          </header>
+          <header>
+            <headerName>Content-Type</headerName>
+            <value>application/json</value>
+          </header>
         </requestHeader>
         <requestMethod>POST</requestMethod>
         <requestPath>/authentication</requestPath>
@@ -34,7 +44,8 @@
   </restApiInterfaceDescription>
   <functionalProfileList>
     <functionalProfileListElement>
-      <functionalProfile profileName="ActivePowerAC">
+      <functionalProfile>
+        <profileName>ActivePowerAC</profileName>
         <functionalProfileIdentification>
           <specificationOwnerIdentification>0</specificationOwnerIdentification>
           <functionalProfileCategory>SubMeterElectricity</functionalProfileCategory>
@@ -49,16 +60,27 @@
       </functionalProfile>
       <dataPointList>
         <dataPointListElement>
-          <dataPoint datapointName="ActivePowerACtot" dataDirection="R" unit="KILOWATTS" presenceLevel="R">
+          <dataPoint>
+            <datapointName>ActivePowerACtot</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>R</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>KILOWATTS</unit>
           </dataPoint>
-          <restApiDataPointConfiguration dataType="JSON_number">
+          <restApiDataPointConfiguration>
+            <dataType>JSON_number</dataType>
             <restServiceCall>
               <requestHeader>
-                <header headerName="Accept" value="application/json"/>
-                <header headerName="Authentication" value="Bearer {{bearerToken}}"/>
+                <header>
+                  <headerName>Accept</headerName>
+                  <value>application/json</value>
+                </header>
+                <header>
+                  <headerName>Authentication</headerName>
+                  <value>Bearer {{bearerToken}}</value>
+                </header>
               </requestHeader>
               <requestMethod>GET</requestMethod>
               <requestPath>/digitaltwins/?sensor_id={sensor_id}</requestPath>
@@ -70,15 +92,23 @@
           </restApiDataPointConfiguration>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="ActivePowerACL1" dataDirection="R" unit="KILOWATTS" presenceLevel="R">
+          <dataPoint>
+            <datapointName>ActivePowerACL1</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>R</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>KILOWATTS</unit>
           </dataPoint>
-          <restApiDataPointConfiguration dataType="JSON_number">
+          <restApiDataPointConfiguration>
+            <dataType>JSON_number</dataType>
             <restServiceCall>
               <requestHeader>
-                <header headerName="Accept" value="application/json"/>
+                <header>
+                  <headerName>Accept</headerName>
+                  <value>application/json</value>
+                </header>
               </requestHeader>
               <requestMethod>GET</requestMethod>
               <requestPath>/digitaltwins/?sensor_id={sensor_id}</requestPath>
@@ -90,15 +120,23 @@
           </restApiDataPointConfiguration>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="ActivePowerACL2" dataDirection="R" unit="KILOWATTS" presenceLevel="R">
+          <dataPoint>
+            <datapointName>ActivePowerACL2</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>R</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>KILOWATTS</unit>
           </dataPoint>
-          <restApiDataPointConfiguration dataType="JSON_number">
+          <restApiDataPointConfiguration>
+            <dataType>JSON_number</dataType>
             <restServiceCall>
               <requestHeader>
-                <header headerName="Accept" value="application/json"/>
+                <header>
+                  <headerName>Accept</headerName>
+                  <value>application/json</value>
+                </header>
               </requestHeader>
               <requestMethod>GET</requestMethod>
               <requestPath>/digitaltwins/?sensor_id={sensor_id}</requestPath>
@@ -110,15 +148,23 @@
           </restApiDataPointConfiguration>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint presenceLevel="R" datapointName="ActivePowerACL3" dataDirection="R" unit="KILOWATTS">
+          <dataPoint>
+            <datapointName>ActivePowerACL3</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>R</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>KILOWATTS</unit>
           </dataPoint>
-          <restApiDataPointConfiguration dataType="JSON_number">
+          <restApiDataPointConfiguration>
+            <dataType>JSON_number</dataType>
             <restServiceCall>
               <requestHeader>
-                <header headerName="Accept" value="application/json"/>
+                <header>
+                  <headerName>Accept</headerName>
+                  <value>application/json</value>
+                </header>
               </requestHeader>
               <requestMethod>GET</requestMethod>
               <requestPath>/digitaltwins/?sensor_id={sensor_id}</requestPath>
@@ -132,7 +178,8 @@
       </dataPointList>
     </functionalProfileListElement>
     <functionalProfileListElement>
-      <functionalProfile profileName="ReactivePowerAC">
+      <functionalProfile>
+        <profileName>ReactivePowerAC</profileName>
         <functionalProfileIdentification>
           <specificationOwnerIdentification>0</specificationOwnerIdentification>
           <functionalProfileCategory>NonSpecific</functionalProfileCategory>
@@ -147,16 +194,27 @@
       </functionalProfile>
       <dataPointList>
         <dataPointListElement>
-          <dataPoint datapointName="ReactivePowerACtot" dataDirection="R" unit="KILOVOLT_AMPERES_REACTIVE" presenceLevel="R">
+          <dataPoint>
+            <datapointName>ReactivePowerACtot</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>R</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>KILOVOLT_AMPERES_REACTIVE</unit>
           </dataPoint>
-          <restApiDataPointConfiguration dataType="JSON_number">
+          <restApiDataPointConfiguration>
+            <dataType>JSON_number</dataType>
             <restServiceCall>
               <requestHeader>
-                <header headerName="Accept" value="application/json"/>
-                <header headerName="Authentication" value="Bearer {{bearerToken}}"/>
+                <header>
+                  <headerName>Accept</headerName>
+                  <value>application/json</value>
+                </header>
+                <header>
+                  <headerName>Authentication</headerName>
+                  <value>Bearer {{bearerToken}}</value>
+                </header>
               </requestHeader>
               <requestMethod>GET</requestMethod>
               <requestPath>/digitaltwins/?sensor_id={sensor_id}</requestPath>
@@ -168,15 +226,23 @@
           </restApiDataPointConfiguration>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="ReactivePowerACL1" dataDirection="R" unit="KILOVOLT_AMPERES_REACTIVE" presenceLevel="R">
+          <dataPoint>
+            <datapointName>ReactivePowerACL1</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>R</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>KILOVOLT_AMPERES_REACTIVE</unit>
           </dataPoint>
-          <restApiDataPointConfiguration dataType="JSON_number">
+          <restApiDataPointConfiguration>
+            <dataType>JSON_number</dataType>
             <restServiceCall>
               <requestHeader>
-                <header headerName="Accept" value="application/json"/>
+                <header>
+                  <headerName>Accept</headerName>
+                  <value>application/json</value>
+                </header>
               </requestHeader>
               <requestMethod>GET</requestMethod>
               <requestPath>/digitaltwins/?sensor_id={sensor_id}</requestPath>
@@ -188,15 +254,23 @@
           </restApiDataPointConfiguration>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="ReactivePowerACL2" dataDirection="R" unit="KILOVOLT_AMPERES_REACTIVE" presenceLevel="R">
+          <dataPoint>
+            <datapointName>ReactivePowerACL2</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>R</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>KILOVOLT_AMPERES_REACTIVE</unit>
           </dataPoint>
-          <restApiDataPointConfiguration dataType="JSON_number">
+          <restApiDataPointConfiguration>
+            <dataType>JSON_number</dataType>
             <restServiceCall>
               <requestHeader>
-                <header headerName="Accept" value="application/json"/>
+                <header>
+                  <headerName>Accept</headerName>
+                  <value>application/json</value>
+                </header>
               </requestHeader>
               <requestMethod>GET</requestMethod>
               <requestPath>/digitaltwins/?sensor_id={sensor_id}</requestPath>
@@ -208,15 +282,23 @@
           </restApiDataPointConfiguration>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint presenceLevel="R" datapointName="ReactivePowerACL3" dataDirection="R" unit="KILOVOLT_AMPERES_REACTIVE">
+          <dataPoint>
+            <datapointName>ReactivePowerACL3</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>R</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>KILOVOLT_AMPERES_REACTIVE</unit>
           </dataPoint>
-          <restApiDataPointConfiguration dataType="JSON_number">
+          <restApiDataPointConfiguration>
+            <dataType>JSON_number</dataType>
             <restServiceCall>
               <requestHeader>
-                <header headerName="Accept" value="application/json"/>
+                <header>
+                  <headerName>Accept</headerName>
+                  <value>application/json</value>
+                </header>
               </requestHeader>
               <requestMethod>GET</requestMethod>
               <requestPath>/digitaltwins/?sensor_id={sensor_id}</requestPath>
@@ -230,7 +312,8 @@
       </dataPointList>
     </functionalProfileListElement>
     <functionalProfileListElement>
-      <functionalProfile profileName="ActiveEnergyAC">
+      <functionalProfile>
+        <profileName>ActiveEnergyAC</profileName>
         <functionalProfileIdentification>
           <specificationOwnerIdentification>0</specificationOwnerIdentification>
           <functionalProfileCategory>NonSpecific</functionalProfileCategory>
@@ -245,16 +328,27 @@
       </functionalProfile>
       <dataPointList>
         <dataPointListElement>
-          <dataPoint datapointName="ActiveEnergyACTOT" dataDirection="R" unit="KILOWATT_HOURS" presenceLevel="R">
+          <dataPoint>
+            <datapointName>ActiveEnergyACTOT</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>R</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>KILOWATT_HOURS</unit>
           </dataPoint>
-          <restApiDataPointConfiguration dataType="JSON_number">
+          <restApiDataPointConfiguration>
+            <dataType>JSON_number</dataType>
             <restServiceCall>
               <requestHeader>
-                <header headerName="Accept" value="application/json"/>
-                <header headerName="Authentication" value="Bearer {{bearerToken}}"/>
+                <header>
+                  <headerName>Accept</headerName>
+                  <value>application/json</value>
+                </header>
+                <header>
+                  <headerName>Authentication</headerName>
+                  <value>Bearer {{bearerToken}}</value>
+                </header>
               </requestHeader>
               <requestMethod>GET</requestMethod>
               <requestPath>/digitaltwins/?sensor_id={sensor_id}</requestPath>
@@ -266,15 +360,23 @@
           </restApiDataPointConfiguration>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="ActiveEnergyACL1" dataDirection="R" unit="KILOWATT_HOURS" presenceLevel="R">
+          <dataPoint>
+            <datapointName>ActiveEnergyACL1</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>R</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>KILOWATT_HOURS</unit>
           </dataPoint>
-          <restApiDataPointConfiguration dataType="JSON_number">
+          <restApiDataPointConfiguration>
+            <dataType>JSON_number</dataType>
             <restServiceCall>
               <requestHeader>
-                <header headerName="Accept" value="application/json"/>
+                <header>
+                  <headerName>Accept</headerName>
+                  <value>application/json</value>
+                </header>
               </requestHeader>
               <requestMethod>GET</requestMethod>
               <requestPath>/digitaltwins/?sensor_id={sensor_id}</requestPath>
@@ -286,15 +388,23 @@
           </restApiDataPointConfiguration>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="ActiveEnergyACL2" dataDirection="R" unit="KILOWATT_HOURS" presenceLevel="R">
+          <dataPoint>
+            <datapointName>ActiveEnergyACL2</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>R</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>KILOWATT_HOURS</unit>
           </dataPoint>
-          <restApiDataPointConfiguration dataType="JSON_number">
+          <restApiDataPointConfiguration>
+            <dataType>JSON_number</dataType>
             <restServiceCall>
               <requestHeader>
-                <header headerName="Accept" value="application/json"/>
+                <header>
+                  <headerName>Accept</headerName>
+                  <value>application/json</value>
+                </header>
               </requestHeader>
               <requestMethod>GET</requestMethod>
               <requestPath>/digitaltwins/?sensor_id={sensor_id}</requestPath>
@@ -306,15 +416,23 @@
           </restApiDataPointConfiguration>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="ActiveEnergyACL3" dataDirection="R" unit="KILOWATT_HOURS" presenceLevel="R">
+          <dataPoint>
+            <datapointName>ActiveEnergyACL3</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>R</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>KILOWATT_HOURS</unit>
           </dataPoint>
-          <restApiDataPointConfiguration dataType="JSON_number">
+          <restApiDataPointConfiguration>
+            <dataType>JSON_number</dataType>
             <restServiceCall>
               <requestHeader>
-                <header headerName="Accept" value="application/json"/>
+                <header>
+                  <headerName>Accept</headerName>
+                  <value>application/json</value>
+                </header>
               </requestHeader>
               <requestMethod>GET</requestMethod>
               <requestPath>/digitaltwins/?sensor_id={sensor_id}</requestPath>
@@ -328,7 +446,8 @@
       </dataPointList>
     </functionalProfileListElement>
     <functionalProfileListElement>
-      <functionalProfile profileName="VoltageAC">
+      <functionalProfile>
+        <profileName>VoltageAC</profileName>
         <functionalProfileIdentification>
           <specificationOwnerIdentification>0</specificationOwnerIdentification>
           <functionalProfileCategory>NonSpecific</functionalProfileCategory>
@@ -343,16 +462,27 @@
       </functionalProfile>
       <dataPointList>
         <dataPointListElement>
-          <dataPoint datapointName="VoltageTOT" dataDirection="R" unit="VOLTS" presenceLevel="R">
+          <dataPoint>
+            <datapointName>VoltageTOT</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>R</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>VOLTS</unit>
           </dataPoint>
-          <restApiDataPointConfiguration dataType="JSON_number">
+          <restApiDataPointConfiguration>
+            <dataType>JSON_number</dataType>
             <restServiceCall>
               <requestHeader>
-                <header headerName="Accept" value="application/json"/>
-                <header headerName="Authentication" value="Bearer {{bearerToken}}"/>
+                <header>
+                  <headerName>Accept</headerName>
+                  <value>application/json</value>
+                </header>
+                <header>
+                  <headerName>Authentication</headerName>
+                  <value>Bearer {{bearerToken}}</value>
+                </header>
               </requestHeader>
               <requestMethod>GET</requestMethod>
               <requestPath>/digitaltwins/?sensor_id={sensor_id}</requestPath>
@@ -364,15 +494,23 @@
           </restApiDataPointConfiguration>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="VoltageL1" dataDirection="R" unit="VOLTS" presenceLevel="R">
+          <dataPoint>
+            <datapointName>VoltageL1</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>R</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>VOLTS</unit>
           </dataPoint>
-          <restApiDataPointConfiguration dataType="JSON_number">
+          <restApiDataPointConfiguration>
+            <dataType>JSON_number</dataType>
             <restServiceCall>
               <requestHeader>
-                <header headerName="Accept" value="application/json"/>
+                <header>
+                  <headerName>Accept</headerName>
+                  <value>application/json</value>
+                </header>
               </requestHeader>
               <requestMethod>GET</requestMethod>
               <requestPath>/digitaltwins/?sensor_id={sensor_id}</requestPath>
@@ -384,15 +522,23 @@
           </restApiDataPointConfiguration>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="VoltageL2" dataDirection="R" unit="VOLTS" presenceLevel="R">
+          <dataPoint>
+            <datapointName>VoltageL2</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>R</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>VOLTS</unit>
           </dataPoint>
-          <restApiDataPointConfiguration dataType="JSON_number">
+          <restApiDataPointConfiguration>
+            <dataType>JSON_number</dataType>
             <restServiceCall>
               <requestHeader>
-                <header headerName="Accept" value="application/json"/>
+                <header>
+                  <headerName>Accept</headerName>
+                  <value>application/json</value>
+                </header>
               </requestHeader>
               <requestMethod>GET</requestMethod>
               <requestPath>/digitaltwins/?sensor_id={sensor_id}</requestPath>
@@ -404,15 +550,23 @@
           </restApiDataPointConfiguration>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="VoltageL3" dataDirection="R" unit="VOLTS" presenceLevel="R">
+          <dataPoint>
+            <datapointName>VoltageL3</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>R</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>VOLTS</unit>
           </dataPoint>
-          <restApiDataPointConfiguration dataType="JSON_number">
+          <restApiDataPointConfiguration>
+            <dataType>JSON_number</dataType>
             <restServiceCall>
               <requestHeader>
-                <header headerName="Accept" value="application/json"/>
+                <header>
+                  <headerName>Accept</headerName>
+                  <value>application/json</value>
+                </header>
               </requestHeader>
               <requestMethod>GET</requestMethod>
               <requestPath>/digitaltwins/?sensor_id={sensor_id}</requestPath>
@@ -426,7 +580,8 @@
       </dataPointList>
     </functionalProfileListElement>
     <functionalProfileListElement>
-      <functionalProfile profileName="CurrentAC">
+      <functionalProfile>
+        <profileName>CurrentAC</profileName>
         <functionalProfileIdentification>
           <specificationOwnerIdentification>0</specificationOwnerIdentification>
           <functionalProfileCategory>NonSpecific</functionalProfileCategory>
@@ -441,16 +596,27 @@
       </functionalProfile>
       <dataPointList>
         <dataPointListElement>
-          <dataPoint datapointName="CurrentTOT" dataDirection="R" unit="AMPERES" presenceLevel="R">
+          <dataPoint>
+            <datapointName>CurrentTOT</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>R</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>AMPERES</unit>
           </dataPoint>
-          <restApiDataPointConfiguration dataType="JSON_number">
+          <restApiDataPointConfiguration>
+            <dataType>JSON_number</dataType>
             <restServiceCall>
               <requestHeader>
-                <header headerName="Accept" value="application/json"/>
-                <header headerName="Authentication" value="Bearer {{bearerToken}}"/>
+                <header>
+                  <headerName>Accept</headerName>
+                  <value>application/json</value>
+                </header>
+                <header>
+                  <headerName>Authentication</headerName>
+                  <value>Bearer {{bearerToken}}</value>
+                </header>
               </requestHeader>
               <requestMethod>GET</requestMethod>
               <requestPath>/digitaltwins/?sensor_id={sensor_id}</requestPath>
@@ -462,15 +628,23 @@
           </restApiDataPointConfiguration>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="CurrentL1" dataDirection="R" unit="AMPERES" presenceLevel="R">
+          <dataPoint>
+            <datapointName>CurrentL1</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>R</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>AMPERES</unit>
           </dataPoint>
-          <restApiDataPointConfiguration dataType="JSON_number">
+          <restApiDataPointConfiguration>
+            <dataType>JSON_number</dataType>
             <restServiceCall>
               <requestHeader>
-                <header headerName="Accept" value="application/json"/>
+                <header>
+                  <headerName>Accept</headerName>
+                  <value>application/json</value>
+                </header>
               </requestHeader>
               <requestMethod>GET</requestMethod>
               <requestPath>/digitaltwins/?sensor_id={sensor_id}</requestPath>
@@ -482,15 +656,23 @@
           </restApiDataPointConfiguration>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="CurrentL2" dataDirection="R" unit="AMPERES" presenceLevel="R">
+          <dataPoint>
+            <datapointName>CurrentL2</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>R</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>AMPERES</unit>
           </dataPoint>
-          <restApiDataPointConfiguration dataType="JSON_number">
+          <restApiDataPointConfiguration>
+            <dataType>JSON_number</dataType>
             <restServiceCall>
               <requestHeader>
-                <header headerName="Accept" value="application/json"/>
+                <header>
+                  <headerName>Accept</headerName>
+                  <value>application/json</value>
+                </header>
               </requestHeader>
               <requestMethod>GET</requestMethod>
               <requestPath>/digitaltwins/?sensor_id={sensor_id}</requestPath>
@@ -502,15 +684,23 @@
           </restApiDataPointConfiguration>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="CurrentL3" dataDirection="R" unit="AMPERES" presenceLevel="R">
+          <dataPoint>
+            <datapointName>CurrentL3</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>R</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>AMPERES</unit>
           </dataPoint>
-          <restApiDataPointConfiguration dataType="JSON_number">
+          <restApiDataPointConfiguration>
+            <dataType>JSON_number</dataType>
             <restServiceCall>
               <requestHeader>
-                <header headerName="Accept" value="application/json"/>
+                <header>
+                  <headerName>Accept</headerName>
+                  <value>application/json</value>
+                </header>
               </requestHeader>
               <requestMethod>GET</requestMethod>
               <requestPath>/digitaltwins/?sensor_id={sensor_id}</requestPath>
@@ -524,7 +714,8 @@
       </dataPointList>
     </functionalProfileListElement>
     <functionalProfileListElement>
-      <functionalProfile profileName="ApparentPowerAC">
+      <functionalProfile>
+        <profileName>ApparentPowerAC</profileName>
         <functionalProfileIdentification>
           <specificationOwnerIdentification>0</specificationOwnerIdentification>
           <functionalProfileCategory>NonSpecific</functionalProfileCategory>
@@ -539,16 +730,27 @@
       </functionalProfile>
       <dataPointList>
         <dataPointListElement>
-          <dataPoint datapointName="ApparentPowerTOT" dataDirection="R" unit="KILOVOLT_AMPERES" presenceLevel="R">
+          <dataPoint>
+            <datapointName>ApparentPowerTOT</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>R</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>KILOVOLT_AMPERES</unit>
           </dataPoint>
-          <restApiDataPointConfiguration dataType="JSON_number">
+          <restApiDataPointConfiguration>
+            <dataType>JSON_number</dataType>
             <restServiceCall>
               <requestHeader>
-                <header headerName="Accept" value="application/json"/>
-                <header headerName="Authentication" value="Bearer {{bearerToken}}"/>
+                <header>
+                  <headerName>Accept</headerName>
+                  <value>application/json</value>
+                </header>
+                <header>
+                  <headerName>Authentication</headerName>
+                  <value>Bearer {{bearerToken}}</value>
+                </header>
               </requestHeader>
               <requestMethod>GET</requestMethod>
               <requestPath>/digitaltwins/?sensor_id={sensor_id}</requestPath>
@@ -560,15 +762,23 @@
           </restApiDataPointConfiguration>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="ApparentPowerL1" dataDirection="R" unit="KILOVOLT_AMPERES" presenceLevel="R">
+          <dataPoint>
+            <datapointName>ApparentPowerL1</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>R</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>KILOVOLT_AMPERES</unit>
           </dataPoint>
-          <restApiDataPointConfiguration dataType="JSON_number">
+          <restApiDataPointConfiguration>
+            <dataType>JSON_number</dataType>
             <restServiceCall>
               <requestHeader>
-                <header headerName="Accept" value="application/json"/>
+                <header>
+                  <headerName>Accept</headerName>
+                  <value>application/json</value>
+                </header>
               </requestHeader>
               <requestMethod>GET</requestMethod>
               <requestPath>/digitaltwins/?sensor_id={sensor_id}</requestPath>
@@ -580,15 +790,23 @@
           </restApiDataPointConfiguration>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="ApparentPowerL2" dataDirection="R" unit="KILOVOLT_AMPERES" presenceLevel="R">
+          <dataPoint>
+            <datapointName>ApparentPowerL2</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>R</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>KILOVOLT_AMPERES</unit>
           </dataPoint>
-          <restApiDataPointConfiguration dataType="JSON_number">
+          <restApiDataPointConfiguration>
+            <dataType>JSON_number</dataType>
             <restServiceCall>
               <requestHeader>
-                <header headerName="Accept" value="application/json"/>
+                <header>
+                  <headerName>Accept</headerName>
+                  <value>application/json</value>
+                </header>
               </requestHeader>
               <requestMethod>GET</requestMethod>
               <requestPath>/digitaltwins/?sensor_id={sensor_id}</requestPath>
@@ -600,15 +818,23 @@
           </restApiDataPointConfiguration>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="ApparentPowerL3" dataDirection="R" unit="KILOVOLT_AMPERES" presenceLevel="R">
+          <dataPoint>
+            <datapointName>ApparentPowerL3</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>R</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>KILOVOLT_AMPERES</unit>
           </dataPoint>
-          <restApiDataPointConfiguration dataType="JSON_number">
+          <restApiDataPointConfiguration>
+            <dataType>JSON_number</dataType>
             <restServiceCall>
               <requestHeader>
-                <header headerName="Accept" value="application/json"/>
+                <header>
+                  <headerName>Accept</headerName>
+                  <value>application/json</value>
+                </header>
               </requestHeader>
               <requestMethod>GET</requestMethod>
               <requestPath>/digitaltwins/?sensor_id={sensor_id}</requestPath>
@@ -622,7 +848,8 @@
       </dataPointList>
     </functionalProfileListElement>
     <functionalProfileListElement>
-      <functionalProfile profileName="PowerFactor">
+      <functionalProfile>
+        <profileName>PowerFactor</profileName>
         <functionalProfileIdentification>
           <specificationOwnerIdentification>0</specificationOwnerIdentification>
           <functionalProfileCategory>NonSpecific</functionalProfileCategory>
@@ -637,16 +864,27 @@
       </functionalProfile>
       <dataPointList>
         <dataPointListElement>
-          <dataPoint datapointName="PowerFactorTOT" dataDirection="R" unit="PERCENT" presenceLevel="R">
+          <dataPoint>
+            <datapointName>PowerFactorTOT</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>R</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>PERCENT</unit>
           </dataPoint>
-          <restApiDataPointConfiguration dataType="JSON_number">
+          <restApiDataPointConfiguration>
+            <dataType>JSON_number</dataType>
             <restServiceCall>
               <requestHeader>
-                <header headerName="Accept" value="application/json"/>
-                <header headerName="Authentication" value="Bearer {{bearerToken}}"/>
+                <header>
+                  <headerName>Accept</headerName>
+                  <value>application/json</value>
+                </header>
+                <header>
+                  <headerName>Authentication</headerName>
+                  <value>Bearer {{bearerToken}}</value>
+                </header>
               </requestHeader>
               <requestMethod>GET</requestMethod>
               <requestPath>/digitaltwins/?sensor_id={sensor_id}</requestPath>
@@ -658,15 +896,23 @@
           </restApiDataPointConfiguration>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="PowerFactorL1" dataDirection="R" unit="PERCENT" presenceLevel="R">
+          <dataPoint>
+            <datapointName>PowerFactorL1</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>R</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>PERCENT</unit>
           </dataPoint>
-          <restApiDataPointConfiguration dataType="JSON_number">
+          <restApiDataPointConfiguration>
+            <dataType>JSON_number</dataType>
             <restServiceCall>
               <requestHeader>
-                <header headerName="Accept" value="application/json"/>
+                <header>
+                  <headerName>Accept</headerName>
+                  <value>application/json</value>
+                </header>
               </requestHeader>
               <requestMethod>GET</requestMethod>
               <requestPath>/digitaltwins/?sensor_id={sensor_id}</requestPath>
@@ -678,15 +924,23 @@
           </restApiDataPointConfiguration>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="PowerFactorL2" dataDirection="R" unit="PERCENT" presenceLevel="R">
+          <dataPoint>
+            <datapointName>PowerFactorL2</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>R</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>PERCENT</unit>
           </dataPoint>
-          <restApiDataPointConfiguration dataType="JSON_number">
+          <restApiDataPointConfiguration>
+            <dataType>JSON_number</dataType>
             <restServiceCall>
               <requestHeader>
-                <header headerName="Accept" value="application/json"/>
+                <header>
+                  <headerName>Accept</headerName>
+                  <value>application/json</value>
+                </header>
               </requestHeader>
               <requestMethod>GET</requestMethod>
               <requestPath>/digitaltwins/?sensor_id={sensor_id}</requestPath>
@@ -698,15 +952,23 @@
           </restApiDataPointConfiguration>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="PowerFactorL3" dataDirection="R" unit="PERCENT" presenceLevel="R">
+          <dataPoint>
+            <datapointName>PowerFactorL3</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>R</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>PERCENT</unit>
           </dataPoint>
-          <restApiDataPointConfiguration dataType="JSON_number">
+          <restApiDataPointConfiguration>
+            <dataType>JSON_number</dataType>
             <restServiceCall>
               <requestHeader>
-                <header headerName="Accept" value="application/json"/>
+                <header>
+                  <headerName>Accept</headerName>
+                  <value>application/json</value>
+                </header>
               </requestHeader>
               <requestMethod>GET</requestMethod>
               <requestPath>/digitaltwins/?sensor_id={sensor_id}</requestPath>

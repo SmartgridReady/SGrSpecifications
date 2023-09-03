@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="/xsl/SGr.xsl"?>
-<ModbusDeviceFrame deviceName="BitteGeraetnamenSetzen" isLocalControl="true" specificationOwnerIdentification="0" manufacturerName="HELIOTHERM Wärmepumpentechnik Ges.m.b.H"
-  xmlns="http://www.smartgridready.com/ns/V0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/EI-Modbus/SGrModbusEIDeviceFrame.xsd ">
+<ModbusDeviceFrame xmlns="http://www.smartgridready.com/ns/V0/"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/EI-Modbus/SGrModbusEIDeviceFrame.xsd ">
+  <deviceName>BitteGeraetnamenSetzen</deviceName>
+  <manufacturerName>HELIOTHERM Wärmepumpentechnik Ges.m.b.H</manufacturerName>
   <releaseNotes>
     <state>Draft</state>
   </releaseNotes>
+  <specificationOwnerIdentification>0</specificationOwnerIdentification>
+  <isLocalControl>true</isLocalControl>
   <deviceInformation>
     <legibleDescription>
       <textElement>Bitte leicht lesbarerGeraetebeschreibung einfügen</textElement>
@@ -53,7 +57,8 @@
   </modbusInterfaceDescription>
   <functionalProfileList>
     <functionalProfileListElement>
-      <functionalProfile profileName="HeatPumpBase">
+      <functionalProfile>
+        <profileName>HeatPumpBase</profileName>
         <functionalProfileIdentification>
           <specificationOwnerIdentification>0</specificationOwnerIdentification>
           <functionalProfileCategory>HeatPumpControl</functionalProfileCategory>
@@ -74,10 +79,14 @@
       </functionalProfile>
       <dataPointList>
         <dataPointListElement>
-          <dataPoint datapointName="HPOpModeCmd" presenceLevel="M" dataDirection="W" unit="NONE">
+          <dataPoint>
+            <datapointName>HPOpModeCmd</datapointName>
+            <dataDirection>W</dataDirection>
+            <presenceLevel>M</presenceLevel>
             <dataType>
               <int16U/>
             </dataType>
+            <unit>NONE</unit>
             <legibleDescription>
               <textElement>0=AUS, 1=Automatik, 2=Kühlen, 3=Sommer, 4=Dauerbetrieb, 5=Absenkung, 6=Urlaub, 7=Party, 8=Ausheizen, 9=EVU Sperre, 10=Hauptschalter AUS</textElement>
               <language>de</language>
@@ -103,10 +112,14 @@
           </modbusAttributes>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="HPOpState" presenceLevel="M" dataDirection="R" unit="NONE">
+          <dataPoint>
+            <datapointName>HPOpState</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>M</presenceLevel>
             <dataType>
               <int16U/>
             </dataType>
+            <unit>NONE</unit>
             <legibleDescription>
               <textElement>0=AUS, 1=Automatik, 2=Kühlen, 3=Sommer, 4=Dauerbetrieb, 5=Absenkung, 6=Urlaub, 7=Party, 8=Ausheizen, 9=EVU Sperre, 10=Hauptschalter AUS</textElement>
               <language>de</language>
@@ -132,10 +145,14 @@
           </modbusAttributes>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="ErrorNrSGr" presenceLevel="M" dataDirection="R" unit="NONE">
+          <dataPoint>
+            <datapointName>ErrorNrSGr</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>M</presenceLevel>
             <dataType>
               <int16U/>
             </dataType>
+            <unit>NONE</unit>
             <legibleDescription>
               <textElement>?check: enum oder Bit-Array? Fehlerliste gem. Standard</textElement>
               <language>de</language>
@@ -161,10 +178,14 @@
           </modbusAttributes>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="OutsideAirTemp" presenceLevel="M" dataDirection="R" unit="DEGREES_CELSIUS">
+          <dataPoint>
+            <datapointName>OutsideAirTemp</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>M</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>DEGREES_CELSIUS</unit>
             <legibleDescription>
               <textElement>
                 Aktuelle Aussentemperatur (gemessen über Aussenfühler)
@@ -188,10 +209,14 @@
           </modbusAttributes>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="FlowWaterTemp" presenceLevel="M" dataDirection="R" unit="DEGREES_CELSIUS">
+          <dataPoint>
+            <datapointName>FlowWaterTemp</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>M</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>DEGREES_CELSIUS</unit>
           </dataPoint>
           <modbusDataPointConfiguration>
             <modbusDataType>
@@ -209,10 +234,14 @@
           </modbusAttributes>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="ReturnFlowWaterTemp" presenceLevel="M" dataDirection="R" unit="DEGREES_CELSIUS">
+          <dataPoint>
+            <datapointName>ReturnFlowWaterTemp</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>M</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>DEGREES_CELSIUS</unit>
           </dataPoint>
           <modbusDataPointConfiguration>
             <modbusDataType>
@@ -232,7 +261,8 @@
       </dataPointList>
     </functionalProfileListElement>
     <functionalProfileListElement>
-      <functionalProfile profileName="CompressorPwrCtrl">
+      <functionalProfile>
+        <profileName>CompressorPwrCtrl</profileName>
         <functionalProfileIdentification>
           <specificationOwnerIdentification>0</specificationOwnerIdentification>
           <functionalProfileCategory>HeatPumpControl</functionalProfileCategory>
@@ -253,10 +283,14 @@
       </functionalProfile>
       <dataPointList>
         <dataPointListElement>
-          <dataPoint datapointName="SpeedCtrlSetpt" presenceLevel="M" dataDirection="W" unit="PERCENT">
+          <dataPoint>
+            <datapointName>SpeedCtrlSetpt</datapointName>
+            <dataDirection>W</dataDirection>
+            <presenceLevel>M</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>PERCENT</unit>
             <legibleDescription>
               <textElement>
                 ?check: Adress durch cb? Absolute Vorgabe der Drehzahl in der gewählten Betriebsart
@@ -284,10 +318,14 @@
           </modbusAttributes>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="ActSpeed" presenceLevel="M" dataDirection="R" unit="PERCENT">
+          <dataPoint>
+            <datapointName>ActSpeed</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>M</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>PERCENT</unit>
             <legibleDescription>
               <textElement>
                 Effektive Drehzahl des Verdichters
@@ -311,10 +349,14 @@
           </modbusAttributes>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="PowerCtrlSetpt" presenceLevel="O" dataDirection="R" unit="WATTS">
+          <dataPoint>
+            <datapointName>PowerCtrlSetpt</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>O</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>WATTS</unit>
             <legibleDescription>
               <textElement>
                 Effektive elektrischen Aufnahmeleistung des Verdichters
@@ -350,10 +392,14 @@
           </modbusAttributes>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="ActPowerACtot" presenceLevel="O" dataDirection="R" unit="WATTS">
+          <dataPoint>
+            <datapointName>ActPowerACtot</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>O</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>WATTS</unit>
             <legibleDescription>
               <textElement>
                 Effektive elektrischen Aufnahmeleistung des Verdichters (der WP?)
@@ -379,7 +425,8 @@
       </dataPointList>
     </functionalProfileListElement>
     <functionalProfileListElement>
-      <functionalProfile profileName="HeatCoolCtrl_1">
+      <functionalProfile>
+        <profileName>HeatCoolCtrl_1</profileName>
         <functionalProfileIdentification>
           <specificationOwnerIdentification>0</specificationOwnerIdentification>
           <functionalProfileCategory>HeatPumpControl</functionalProfileCategory>
@@ -402,10 +449,14 @@
       </functionalProfile>
       <dataPointList>
         <dataPointListElement>
-          <dataPoint datapointName="HeatCoolCtrlOpModeCmd" presenceLevel="M" dataDirection="RW" unit="NONE">
+          <dataPoint>
+            <datapointName>HeatCoolCtrlOpModeCmd</datapointName>
+            <dataDirection>RW</dataDirection>
+            <presenceLevel>M</presenceLevel>
             <dataType>
               <int16/>
             </dataType>
+            <unit>NONE</unit>
             <legibleDescription>
               <textElement>Festlegen der Betriebsart des Heiz-/Kühlkreises 1  [Aus Bereitschaft, Programm, Komfort, Eco]              </textElement>
               <language>de</language>
@@ -431,10 +482,14 @@
           </modbusAttributes>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="HeatCoolOpState" presenceLevel="M" dataDirection="R" unit="NONE">
+          <dataPoint>
+            <datapointName>HeatCoolOpState</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>M</presenceLevel>
             <dataType>
               <int16/>
             </dataType>
+            <unit>NONE</unit>
             <legibleDescription>
               <textElement>Modes:  0=off, 1=automatic, 2=Cooling, 3=Summer, 4=Continuous(?), 5=setback (?), 6=Vacation, 7=Party, 8=Ausheizen, 9=?, 10=?. 8 to 10 only informational</textElement>
               <language>de</language>
@@ -460,10 +515,14 @@
           </modbusAttributes>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="FlowWaterTempStpt" presenceLevel="O" dataDirection="R" unit="DEGREES_CELSIUS">
+          <dataPoint>
+            <datapointName>FlowWaterTempStpt</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>O</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>DEGREES_CELSIUS</unit>
             <legibleDescription>
               <textElement>Setzen der aktuellen Soll-Temperatur des Vorlaufs (Grundwert) fur HeizKreis 1.</textElement>
               <language>de</language>
@@ -489,10 +548,14 @@
           </modbusAttributes>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="FlowWaterTempStptEn" presenceLevel="O" dataDirection="R" unit="NONE">
+          <dataPoint>
+            <datapointName>FlowWaterTempStptEn</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>O</presenceLevel>
             <dataType>
               <boolean/>
             </dataType>
+            <unit>NONE</unit>
             <legibleDescription>
               <textElement>Aktiviert der kontrol von vorlauf Temperatur in register 109 fur heizkreis 1 </textElement>
               <language>de</language>
@@ -518,10 +581,14 @@
           </modbusAttributes>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="ReturnFlowWaterTemp" presenceLevel="O" dataDirection="R" unit="DEGREES_CELSIUS">
+          <dataPoint>
+            <datapointName>ReturnFlowWaterTemp</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>O</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>DEGREES_CELSIUS</unit>
             <legibleDescription>
               <textElement>Auslesen der aktuellen aktuellen-Temperatur des Rücklaufs.</textElement>
               <language>de</language>
@@ -545,7 +612,8 @@
       </dataPointList>
     </functionalProfileListElement>
     <functionalProfileListElement>
-      <functionalProfile profileName="HeatCoolCtrl_2">
+      <functionalProfile>
+        <profileName>HeatCoolCtrl_2</profileName>
         <functionalProfileIdentification>
           <specificationOwnerIdentification>0</specificationOwnerIdentification>
           <functionalProfileCategory>HeatPumpControl</functionalProfileCategory>
@@ -568,10 +636,14 @@
       </functionalProfile>
       <dataPointList>
         <dataPointListElement>
-          <dataPoint datapointName="HeatCoolCtrlOpModeCmd" presenceLevel="M" dataDirection="RW" unit="NONE">
+          <dataPoint>
+            <datapointName>HeatCoolCtrlOpModeCmd</datapointName>
+            <dataDirection>RW</dataDirection>
+            <presenceLevel>M</presenceLevel>
             <dataType>
               <int16/>
             </dataType>
+            <unit>NONE</unit>
             <legibleDescription>
               <textElement>Festlegen der Betriebsart des Heiz-/Kühlkreises 2 Modes:  0=off, 1=automatic, 2=Cooling, 3=Summer, 4=Continuous(?), 5=setback (?), 6=Vacation, 7=Party, 8=Ausheizen, 9=?, 10=?. 8 to 10 only informational            </textElement>
               <language>de</language>
@@ -593,10 +665,14 @@
           </modbusAttributes>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="HeatCoolOpState" presenceLevel="M" dataDirection="R" unit="NONE">
+          <dataPoint>
+            <datapointName>HeatCoolOpState</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>M</presenceLevel>
             <dataType>
               <int16/>
             </dataType>
+            <unit>NONE</unit>
             <legibleDescription>
               <textElement>Auslesen des aktuellen Status des Heiz-/Kühlkreises 2 (Aus, Bereitschaft, Programm, Comfort, Eco)</textElement>
               <language>de</language>
@@ -622,10 +698,14 @@
           </modbusAttributes>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="FlowWaterTempStpt" presenceLevel="O" dataDirection="R" unit="DEGREES_CELSIUS">
+          <dataPoint>
+            <datapointName>FlowWaterTempStpt</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>O</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>DEGREES_CELSIUS</unit>
             <legibleDescription>
               <textElement>Setzen der aktuellen Soll-Temperatur des Vorlaufs 2 (Grundwert).</textElement>
               <language>de</language>
@@ -647,10 +727,14 @@
           </modbusAttributes>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="FlowWaterTempStptEn" presenceLevel="O" dataDirection="R" unit="NONE">
+          <dataPoint>
+            <datapointName>FlowWaterTempStptEn</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>O</presenceLevel>
             <dataType>
               <boolean/>
             </dataType>
+            <unit>NONE</unit>
             <legibleDescription>
               <textElement>Setzen der aktuellen Soll-Temperatur des Vorlaufs (Grundwert).</textElement>
               <language>de</language>
@@ -672,10 +756,14 @@
           </modbusAttributes>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="ReturnFlowWaterTemp" presenceLevel="O" dataDirection="R" unit="DEGREES_CELSIUS">
+          <dataPoint>
+            <datapointName>ReturnFlowWaterTemp</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>O</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>DEGREES_CELSIUS</unit>
             <legibleDescription>
               <textElement>Auslesen der aktuellen aktuellen-Temperatur des Rücklaufs.</textElement>
               <language>de</language>
@@ -699,7 +787,8 @@
       </dataPointList>
     </functionalProfileListElement>
     <functionalProfileListElement>
-      <functionalProfile profileName="DomHotWaterCtrl">
+      <functionalProfile>
+        <profileName>DomHotWaterCtrl</profileName>
         <functionalProfileIdentification>
           <specificationOwnerIdentification>0</specificationOwnerIdentification>
           <functionalProfileCategory>HeatPumpControl</functionalProfileCategory>
@@ -718,10 +807,14 @@
       </functionalProfile>
       <dataPointList>
         <dataPointListElement>
-          <dataPoint datapointName="ActDomHotWaterTemp" presenceLevel="M" dataDirection="R" unit="DEGREES_CELSIUS">
+          <dataPoint>
+            <datapointName>ActDomHotWaterTemp</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>M</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>DEGREES_CELSIUS</unit>
             <legibleDescription>
               <textElement>Domestic hot water tank temperature</textElement>
               <language>de</language>
@@ -747,10 +840,14 @@
           </modbusAttributes>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="DomHotWTempStpt" presenceLevel="M" dataDirection="W" unit="DEGREES_CELSIUS">
+          <dataPoint>
+            <datapointName>DomHotWTempStpt</datapointName>
+            <dataDirection>W</dataDirection>
+            <presenceLevel>M</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>DEGREES_CELSIUS</unit>
             <legibleDescription>
               <textElement>
                 Domestic hot water temperature setpoint. Another register also available for minimum allowed temp
@@ -782,7 +879,8 @@
       </dataPointList>
     </functionalProfileListElement>
     <functionalProfileListElement>
-      <functionalProfile profileName="BufferStorageCtrl">
+      <functionalProfile>
+        <profileName>BufferStorageCtrl</profileName>
         <functionalProfileIdentification>
           <specificationOwnerIdentification>0</specificationOwnerIdentification>
           <functionalProfileCategory>HeatPumpControl</functionalProfileCategory>
@@ -801,10 +899,14 @@
       </functionalProfile>
       <dataPointList>
         <dataPointListElement>
-          <dataPoint datapointName="HeatWTempStptOffset" presenceLevel="M" dataDirection="W" unit="DEGREES_CELSIUS">
+          <dataPoint>
+            <datapointName>HeatWTempStptOffset</datapointName>
+            <dataDirection>W</dataDirection>
+            <presenceLevel>M</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>DEGREES_CELSIUS</unit>
             <legibleDescription>
               <textElement>
                 Sollwerte der Solltemperatur (+/-) für den Heiz-Pufferspeicher.
@@ -834,10 +936,14 @@
           </modbusAttributes>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="HeatWTempStptOffsetEn" presenceLevel="O" dataDirection="R" unit="NONE">
+          <dataPoint>
+            <datapointName>HeatWTempStptOffsetEn</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>O</presenceLevel>
             <dataType>
               <boolean/>
             </dataType>
+            <unit>NONE</unit>
             <legibleDescription>
               <textElement>Wenn 1, setzen der aktuellen Soll-Temperatur des Vorlaufs (Grundwert).</textElement>
               <language>de</language>
@@ -863,10 +969,14 @@
           </modbusAttributes>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="ActHeatBufferTemp" presenceLevel="M" dataDirection="R" unit="DEGREES_CELSIUS">
+          <dataPoint>
+            <datapointName>ActHeatBufferTemp</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>M</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>DEGREES_CELSIUS</unit>
             <legibleDescription>
               <textElement>Aktuelle Ist-Temperatur des Heiz-Pufferspeichers oben</textElement>
               <language>de</language>
@@ -890,7 +1000,8 @@
       </dataPointList>
     </functionalProfileListElement>
     <functionalProfileListElement>
-      <functionalProfile profileName="RoomTempCtrl_Z1">
+      <functionalProfile>
+        <profileName>RoomTempCtrl_Z1</profileName>
         <functionalProfileIdentification>
           <specificationOwnerIdentification>0</specificationOwnerIdentification>
           <functionalProfileCategory>HeatPumpControl</functionalProfileCategory>
@@ -910,10 +1021,14 @@
       </functionalProfile>
       <dataPointList>
         <dataPointListElement>
-          <dataPoint datapointName="RoomZoneTempSetpt" presenceLevel="R" dataDirection="RW" unit="DEGREES_CELSIUS">
+          <dataPoint>
+            <datapointName>RoomZoneTempSetpt</datapointName>
+            <dataDirection>RW</dataDirection>
+            <presenceLevel>R</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>DEGREES_CELSIUS</unit>
             <legibleDescription>
               <textElement>Aktuelle Ist-Temperatur des 1. Raumes oder Mittelwert der Bezugsräume für die Begrenzung der Reduktions- oder Anhebungsmassnahmen</textElement>
               <language>de</language>
@@ -937,7 +1052,8 @@
       </dataPointList>
     </functionalProfileListElement>
     <functionalProfileListElement>
-      <functionalProfile profileName="RoomTempCtrl_Z2">
+      <functionalProfile>
+        <profileName>RoomTempCtrl_Z2</profileName>
         <functionalProfileIdentification>
           <specificationOwnerIdentification>0</specificationOwnerIdentification>
           <functionalProfileCategory>HeatPumpControl</functionalProfileCategory>
@@ -956,10 +1072,14 @@
       </functionalProfile>
       <dataPointList>
         <dataPointListElement>
-          <dataPoint datapointName="RoomZoneTempSetpt" presenceLevel="R" dataDirection="RW" unit="DEGREES_CELSIUS">
+          <dataPoint>
+            <datapointName>RoomZoneTempSetpt</datapointName>
+            <dataDirection>RW</dataDirection>
+            <presenceLevel>R</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>DEGREES_CELSIUS</unit>
             <legibleDescription>
               <textElement>Aktuelle Ist-Temperatur des 1. Raumes oder Mittelwert der Bezugsräume für die Begrenzung der Reduktions- oder Anhebungsmassnahmen</textElement>
               <language>de</language>
@@ -983,7 +1103,8 @@
       </dataPointList>
     </functionalProfileListElement>
     <functionalProfileListElement>
-      <functionalProfile profileName="EnergyMonitor">
+      <functionalProfile>
+        <profileName>EnergyMonitor</profileName>
         <functionalProfileIdentification>
           <specificationOwnerIdentification>0</specificationOwnerIdentification>
           <functionalProfileCategory>HeatPumpControl</functionalProfileCategory>
@@ -1002,10 +1123,14 @@
       </functionalProfile>
       <dataPointList>
         <dataPointListElement>
-          <dataPoint datapointName=" ActiveEnergyACtot" presenceLevel="R" dataDirection="R" unit="KILOWATT_HOURS">
+          <dataPoint>
+            <datapointName>ActiveEnergyACtot</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>R</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>KILOWATT_HOURS</unit>
             <legibleDescription>
               <textElement>Summe der aufgenommenen elektrischen Energie des Verdichters inkl. Hilfsaggregate total.</textElement>
               <language>de</language>
@@ -1027,10 +1152,14 @@
           </modbusAttributes>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="ActiveEnergyACheat" presenceLevel="R" dataDirection="R" unit="KILOWATT_HOURS">
+          <dataPoint>
+            <datapointName>ActiveEnergyACheat</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>R</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>KILOWATT_HOURS</unit>
             <legibleDescription>
               <textElement>Summe der aufgenommenen elektrischen Energie des Verdichters für das Heizen.</textElement>
               <language>de</language>
@@ -1052,10 +1181,14 @@
           </modbusAttributes>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="ThermalEnergyDomWater" presenceLevel="R" dataDirection="R" unit="KILOWATT_HOURS">
+          <dataPoint>
+            <datapointName>ThermalEnergyDomWater</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>R</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>KILOWATT_HOURS</unit>
             <legibleDescription>
               <textElement>Summe der aufgenommenen elektrischen Energie des Verdichters für die Brauchwarmwasser-Erwärmung.</textElement>
               <language>de</language>
@@ -1077,10 +1210,14 @@
           </modbusAttributes>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="ThermalEnergyTot" presenceLevel="R" dataDirection="R" unit="KILOWATT_HOURS">
+          <dataPoint>
+            <datapointName>ThermalEnergyTot</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>R</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>KILOWATT_HOURS</unit>
             <legibleDescription>
               <textElement>Summe der abgegebenen thermischen Energie total.</textElement>
               <language>de</language>
@@ -1102,10 +1239,14 @@
           </modbusAttributes>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="ThermalEnergyHeat" presenceLevel="R" dataDirection="R" unit="KILOWATT_HOURS">
+          <dataPoint>
+            <datapointName>ThermalEnergyHeat</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>R</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>KILOWATT_HOURS</unit>
             <legibleDescription>
               <textElement>Summe der abgegebenen thermischen Energie für das Heizen.</textElement>
               <language>de</language>
@@ -1127,10 +1268,14 @@
           </modbusAttributes>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="ThermalEnergyDomWater" presenceLevel="R" dataDirection="R" unit="KILOWATT_HOURS">
+          <dataPoint>
+            <datapointName>ThermalEnergyDomWater</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>R</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>KILOWATT_HOURS</unit>
             <legibleDescription>
               <textElement>Summe der abgegebenen thermischen Energie für die Brauchwarmwasser-Erwärmung.</textElement>
               <language>de</language>
@@ -1152,10 +1297,14 @@
           </modbusAttributes>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="ActivePowerACtot" presenceLevel="R" dataDirection="R" unit="WATTS">
+          <dataPoint>
+            <datapointName>ActivePowerACtot</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>R</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>WATTS</unit>
             <legibleDescription>
               <textElement>Aktuell aufgenommene elektrische Leistung des Verdichters.</textElement>
               <language>de</language>
@@ -1177,10 +1326,14 @@
           </modbusAttributes>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="ThermalPower" presenceLevel="R" dataDirection="R" unit="KILOWATTS">
+          <dataPoint>
+            <datapointName>ThermalPower</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>R</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>KILOWATTS</unit>
             <legibleDescription>
               <textElement>
                 Thermisch Leistung total
@@ -1210,10 +1363,14 @@
           </modbusAttributes>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="RuntimeHeating" presenceLevel="R" dataDirection="R" unit="HOURS">
+          <dataPoint>
+            <datapointName>RuntimeHeating</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>R</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>HOURS</unit>
             <legibleDescription>
               <textElement>Summe der Laufzeit in der Heizphase.</textElement>
               <language>de</language>
@@ -1235,10 +1392,14 @@
           </modbusAttributes>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="RuntimeDomHotWater " presenceLevel="R" dataDirection="R" unit="HOURS">
+          <dataPoint>
+            <datapointName>RuntimeDomHotWater</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>R</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>HOURS</unit>
             <legibleDescription>
               <textElement>Summe der Laufzeit in der Brauchwarmwasser-Phase.</textElement>
               <language>de</language>

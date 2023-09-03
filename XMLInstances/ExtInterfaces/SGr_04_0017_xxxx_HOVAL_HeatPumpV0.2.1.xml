@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="/xsl/SGr.xsl"?>
-<ModbusDeviceFrame deviceName="HovalConnect" isLocalControl="true" specificationOwnerIdentification="0" manufacturerName="Hoval AG" xmlns="http://www.smartgridready.com/ns/V0/"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/EI-Modbus/SGrModbusEIDeviceFrame.xsd ">
+<ModbusDeviceFrame xmlns="http://www.smartgridready.com/ns/V0/"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/EI-Modbus/SGrModbusEIDeviceFrame.xsd ">
+  <deviceName>HovalConnect</deviceName>
+  <manufacturerName>Hoval AG</manufacturerName>
   <releaseNotes>
     <state>Draft</state>
   </releaseNotes>
+  <specificationOwnerIdentification>0</specificationOwnerIdentification>
+  <isLocalControl>true</isLocalControl>
   <deviceInformation>
     <legibleDescription>
       <textElement>TODO: txt Hoval Hoval Wärmepumpen mit TopTronic(r) E in Kombination mit dem HovalConnect Modbus Gateway und SmartGridready Anbindung ermöglichen umweltfreundliches Heizen und erfüllen bereits heute die gesetzlichen Vorgaben von morgen.</textElement>
@@ -51,7 +56,8 @@
   </modbusInterfaceDescription>
   <functionalProfileList>
     <functionalProfileListElement>
-      <functionalProfile profileName="HeatPumpBase">
+      <functionalProfile>
+        <profileName>HeatPumpBase</profileName>
         <functionalProfileIdentification>
           <specificationOwnerIdentification>0</specificationOwnerIdentification>
           <functionalProfileCategory>HeatPumpControl</functionalProfileCategory>
@@ -72,12 +78,16 @@
       </functionalProfile>
       <dataPointList>
         <dataPointListElement>
-          <dataPoint datapointName="hovHPOpModeCmd" presenceLevel="M" dataDirection="RW" unit="NONE">
+          <dataPoint>
+            <datapointName>hovHPOpModeCmd</datapointName>
+            <dataDirection>RW</dataDirection>
+            <presenceLevel>M</presenceLevel>
             <dataType>
               <enum>
                 <hovHPOpMode>HP_OFF</hovHPOpMode>
               </enum>
             </dataType>
+            <unit>NONE</unit>
             <legibleDescription>
               <textElement>?checkDoku TODO: enum.  Grund-Betriebsart der Wärmepumpe (Bereitschaft, Programm, Komfort, Eco, Warmwasser, Kühlen aktiv, Kühlen passiv, Notbetrieb)</textElement>
               <language>de</language>
@@ -101,10 +111,14 @@
           </modbusAttributes>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="hovHPOpState" presenceLevel="M" dataDirection="R" unit="NONE">
+          <dataPoint>
+            <datapointName>hovHPOpState</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>M</presenceLevel>
             <dataType>
               <int16U/>
             </dataType>
+            <unit>NONE</unit>
             <legibleDescription>
               <textElement>?check: enum oder Bit-Array? TODO: enum. Auslesen des aktuellen Status der Wärmepumpe (Bereitschaft, Programm, Komfort, Eco, Warmwasser, Kühlen aktiv, Kühlen passiv,Notbetrieb)</textElement>
               <language>de</language>
@@ -126,10 +140,14 @@
           </modbusAttributes>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="ErrorNrSGr" presenceLevel="M" dataDirection="R" unit="NONE">
+          <dataPoint>
+            <datapointName>ErrorNrSGr</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>M</presenceLevel>
             <dataType>
               <int16U/>
             </dataType>
+            <unit>NONE</unit>
             <legibleDescription>
               <textElement>?check: enum oder Bit-Array? Fehlerliste gem. Standard</textElement>
               <language>de</language>
@@ -151,10 +169,14 @@
           </modbusAttributes>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="OutsideAirTemp" presenceLevel="M" dataDirection="R" unit="DEGREES_CELSIUS">
+          <dataPoint>
+            <datapointName>OutsideAirTemp</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>M</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>DEGREES_CELSIUS</unit>
             <legibleDescription>
               <textElement>Aktuelle Aussentemperatur (gemessen über Aussenfühler)</textElement>
               <language>de</language>
@@ -176,10 +198,14 @@
           </modbusAttributes>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="SupplyWaterTemp" presenceLevel="M" dataDirection="R" unit="DEGREES_CELSIUS">
+          <dataPoint>
+            <datapointName>SupplyWaterTemp</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>M</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>DEGREES_CELSIUS</unit>
           </dataPoint>
           <modbusDataPointConfiguration>
             <modbusDataType>
@@ -197,10 +223,14 @@
           </modbusAttributes>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="SupplyWaterTempStpt" presenceLevel="O" dataDirection="R" unit="DEGREES_CELSIUS">
+          <dataPoint>
+            <datapointName>SupplyWaterTempStpt</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>O</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>DEGREES_CELSIUS</unit>
             <legibleDescription>
               <textElement>Setzen der aktuellen Soll-Temperatur des Vorlaufs (Grundwert).Wirkt nur für die OpMode "manuell"</textElement>
               <language>de</language>
@@ -222,10 +252,14 @@
           </modbusAttributes>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="ReturnSupplyWaterTemp" presenceLevel="O" dataDirection="R" unit="DEGREES_CELSIUS">
+          <dataPoint>
+            <datapointName>ReturnSupplyWaterTemp</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>O</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>DEGREES_CELSIUS</unit>
             <legibleDescription>
               <textElement>Auslesen der aktuellen aktuellen-Temperatur des Rücklaufs.</textElement>
               <language>de</language>
@@ -247,10 +281,14 @@
           </modbusAttributes>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="SupplyWaterTempStptFb" presenceLevel="O" dataDirection="R" unit="DEGREES_CELSIUS">
+          <dataPoint>
+            <datapointName>SupplyWaterTempStptFb</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>O</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>DEGREES_CELSIUS</unit>
             <legibleDescription>
               <textElement>Setzen der aktuellen Soll-Temperatur des Vorlaufs (Grundwert).Wirkt nur für die OpMode "manuell"</textElement>
               <language>de</language>
@@ -274,7 +312,8 @@
       </dataPointList>
     </functionalProfileListElement>
     <functionalProfileListElement>
-      <functionalProfile profileName="CompressorPwrCtrl">
+      <functionalProfile>
+        <profileName>CompressorPwrCtrl</profileName>
         <functionalProfileIdentification>
           <specificationOwnerIdentification>0</specificationOwnerIdentification>
           <functionalProfileCategory>HeatPumpControl</functionalProfileCategory>
@@ -293,10 +332,14 @@
       </functionalProfile>
       <dataPointList>
         <dataPointListElement>
-          <dataPoint datapointName="ActSpeed" presenceLevel="M" dataDirection="R" unit="PERCENT">
+          <dataPoint>
+            <datapointName>ActSpeed</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>M</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>PERCENT</unit>
             <legibleDescription>
               <textElement>?check: Adress durch cb? Effektive Drehzahl des Verdichters</textElement>
               <language>de</language>
@@ -320,7 +363,8 @@
       </dataPointList>
     </functionalProfileListElement>
     <functionalProfileListElement>
-      <functionalProfile profileName="HeatCoolCtrl_1">
+      <functionalProfile>
+        <profileName>HeatCoolCtrl_1</profileName>
         <functionalProfileIdentification>
           <specificationOwnerIdentification>0</specificationOwnerIdentification>
           <functionalProfileCategory>HeatPumpControl</functionalProfileCategory>
@@ -339,12 +383,16 @@
       </functionalProfile>
       <dataPointList>
         <dataPointListElement>
-          <dataPoint datapointName="hovHeatCoolCtrlOpModeCmd" presenceLevel="M" dataDirection="RW" unit="NONE">
+          <dataPoint>
+            <datapointName>hovHeatCoolCtrlOpModeCmd</datapointName>
+            <dataDirection>RW</dataDirection>
+            <presenceLevel>M</presenceLevel>
             <dataType>
               <enum>
                 <hovHCOpMode>HC_STANDBY</hovHCOpMode>
               </enum>
             </dataType>
+            <unit>NONE</unit>
             <legibleDescription>
               <textElement>Festlegen der Betriebsart des Heiz-/Kühlkreises  [Aus, Bereitschaft, Programm, Komfort, Eco]</textElement>
               <language>de</language>
@@ -368,12 +416,16 @@
           </modbusAttributes>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="hovHeatCoolOpState" presenceLevel="M" dataDirection="R" unit="NONE">
+          <dataPoint>
+            <datapointName>hovHeatCoolOpState</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>M</presenceLevel>
             <dataType>
               <enum>
                 <hovHCOpState>HC_OFF</hovHCOpState>
               </enum>
             </dataType>
+            <unit>NONE</unit>
             <legibleDescription>
               <textElement>Auslesen des aktuellen Status des Heiz-/Kühlkreises (Aus, Bereitschaft, Programm, Comfort, Eco)</textElement>
               <language>de</language>
@@ -397,10 +449,14 @@
           </modbusAttributes>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="SupplyWaterTemp" presenceLevel="O" dataDirection="R" unit="DEGREES_CELSIUS">
+          <dataPoint>
+            <datapointName>SupplyWaterTemp</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>O</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>DEGREES_CELSIUS</unit>
             <legibleDescription>
               <textElement>Auslesen der aktuellen aktuellen-Temperatur des Vorlaufs.</textElement>
               <language>de</language>
@@ -422,10 +478,14 @@
           </modbusAttributes>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="SupplyWaterTempStpt" presenceLevel="O" dataDirection="RW" unit="DEGREES_CELSIUS">
+          <dataPoint>
+            <datapointName>SupplyWaterTempStpt</datapointName>
+            <dataDirection>RW</dataDirection>
+            <presenceLevel>O</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>DEGREES_CELSIUS</unit>
             <legibleDescription>
               <textElement>Setzen der aktuellen Soll-Temperatur des Vorlaufs (Grundwert). TODO:  Hinweis "geht nur bei Mode Konstant" </textElement>
               <language>de</language>
@@ -447,10 +507,14 @@
           </modbusAttributes>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="ReturnSupplyWaterTemp" presenceLevel="O" dataDirection="R" unit="DEGREES_CELSIUS">
+          <dataPoint>
+            <datapointName>ReturnSupplyWaterTemp</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>O</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>DEGREES_CELSIUS</unit>
             <legibleDescription>
               <textElement>Auslesen der aktuellen aktuellen-Temperatur des Rücklaufs.</textElement>
               <language>de</language>
@@ -474,7 +538,8 @@
       </dataPointList>
     </functionalProfileListElement>
     <functionalProfileListElement>
-      <functionalProfile profileName="HeatCoolCtrl_2">
+      <functionalProfile>
+        <profileName>HeatCoolCtrl_2</profileName>
         <functionalProfileIdentification>
           <specificationOwnerIdentification>0</specificationOwnerIdentification>
           <functionalProfileCategory>HeatPumpControl</functionalProfileCategory>
@@ -493,12 +558,16 @@
       </functionalProfile>
       <dataPointList>
         <dataPointListElement>
-          <dataPoint datapointName="hovHeatCoolCtrlOpModeCmd" presenceLevel="M" dataDirection="RW" unit="NONE">
+          <dataPoint>
+            <datapointName>hovHeatCoolCtrlOpModeCmd</datapointName>
+            <dataDirection>RW</dataDirection>
+            <presenceLevel>M</presenceLevel>
             <dataType>
               <enum>
                 <hovHCOpMode>HC_STANDBY</hovHCOpMode>
               </enum>
             </dataType>
+            <unit>NONE</unit>
             <legibleDescription>
               <textElement>Festlegen der Betriebsart des Heiz-/Kühlkreises  [Aus, Bereitschaft, Programm, Komfort, Eco]</textElement>
               <language>de</language>
@@ -522,12 +591,16 @@
           </modbusAttributes>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="hovHeatCoolOpState" presenceLevel="M" dataDirection="R" unit="NONE">
+          <dataPoint>
+            <datapointName>hovHeatCoolOpState</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>M</presenceLevel>
             <dataType>
               <enum>
                 <hovHCOpState>HC_OFF</hovHCOpState>
               </enum>
             </dataType>
+            <unit>NONE</unit>
             <legibleDescription>
               <textElement>Auslesen des aktuellen Status des Heiz-/Kühlkreises (Aus, Bereitschaft, Programm, Comfort, Eco)</textElement>
               <language>de</language>
@@ -551,10 +624,14 @@
           </modbusAttributes>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="SupplyWaterTemp" presenceLevel="O" dataDirection="R" unit="DEGREES_CELSIUS">
+          <dataPoint>
+            <datapointName>SupplyWaterTemp</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>O</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>DEGREES_CELSIUS</unit>
             <legibleDescription>
               <textElement>Auslesen der aktuellen aktuellen-Temperatur des Vorlaufs.</textElement>
               <language>de</language>
@@ -576,10 +653,14 @@
           </modbusAttributes>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="SupplyWaterTempStpt" presenceLevel="O" dataDirection="RW" unit="DEGREES_CELSIUS">
+          <dataPoint>
+            <datapointName>SupplyWaterTempStpt</datapointName>
+            <dataDirection>RW</dataDirection>
+            <presenceLevel>O</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>DEGREES_CELSIUS</unit>
             <legibleDescription>
               <textElement>Setzen der aktuellen Soll-Temperatur des Vorlaufs (Grundwert). TODO:  Hinweis "geht nur bei Mode Konstant"</textElement>
               <language>de</language>
@@ -601,10 +682,14 @@
           </modbusAttributes>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="ReturnSupplyWaterTemp" presenceLevel="O" dataDirection="R" unit="DEGREES_CELSIUS">
+          <dataPoint>
+            <datapointName>ReturnSupplyWaterTemp</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>O</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>DEGREES_CELSIUS</unit>
             <legibleDescription>
               <textElement>Auslesen der aktuellen aktuellen-Temperatur des Rücklaufs.</textElement>
               <language>de</language>
@@ -628,7 +713,8 @@
       </dataPointList>
     </functionalProfileListElement>
     <functionalProfileListElement>
-      <functionalProfile profileName="HeatCoolCtrl_3">
+      <functionalProfile>
+        <profileName>HeatCoolCtrl_3</profileName>
         <functionalProfileIdentification>
           <specificationOwnerIdentification>0</specificationOwnerIdentification>
           <functionalProfileCategory>HeatPumpControl</functionalProfileCategory>
@@ -647,12 +733,16 @@
       </functionalProfile>
       <dataPointList>
         <dataPointListElement>
-          <dataPoint datapointName="hovHeatCoolCtrlOpModeCmd" presenceLevel="M" dataDirection="RW" unit="NONE">
+          <dataPoint>
+            <datapointName>hovHeatCoolCtrlOpModeCmd</datapointName>
+            <dataDirection>RW</dataDirection>
+            <presenceLevel>M</presenceLevel>
             <dataType>
               <enum>
                 <hovHCOpMode>HC_STANDBY</hovHCOpMode>
               </enum>
             </dataType>
+            <unit>NONE</unit>
             <legibleDescription>
               <textElement>Festlegen der Betriebsart des Heiz-/Kühlkreises  [Aus, Bereitschaft, Programm, Komfort, Eco]</textElement>
               <language>de</language>
@@ -676,12 +766,16 @@
           </modbusAttributes>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="hovHeatCoolOpState" presenceLevel="M" dataDirection="R" unit="NONE">
+          <dataPoint>
+            <datapointName>hovHeatCoolOpState</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>M</presenceLevel>
             <dataType>
               <enum>
                 <hovHCOpState>HC_OFF</hovHCOpState>
               </enum>
             </dataType>
+            <unit>NONE</unit>
             <legibleDescription>
               <textElement>Auslesen des aktuellen Status des Heiz-/Kühlkreises (Aus, Bereitschaft, Programm, Comfort, Eco)</textElement>
               <language>de</language>
@@ -705,10 +799,14 @@
           </modbusAttributes>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="SupplyWaterTemp" presenceLevel="O" dataDirection="R" unit="DEGREES_CELSIUS">
+          <dataPoint>
+            <datapointName>SupplyWaterTemp</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>O</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>DEGREES_CELSIUS</unit>
             <legibleDescription>
               <textElement>Auslesen der aktuellen aktuellen-Temperatur des Vorlaufs.</textElement>
               <language>de</language>
@@ -730,10 +828,14 @@
           </modbusAttributes>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="SupplyWaterTempStpt" presenceLevel="O" dataDirection="RW" unit="DEGREES_CELSIUS">
+          <dataPoint>
+            <datapointName>SupplyWaterTempStpt</datapointName>
+            <dataDirection>RW</dataDirection>
+            <presenceLevel>O</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>DEGREES_CELSIUS</unit>
             <legibleDescription>
               <textElement>Setzen der aktuellen Soll-Temperatur des Vorlaufs (Grundwert). TODO:  Hinweis "geht nur bei Mode Konstant"</textElement>
               <language>de</language>
@@ -755,10 +857,14 @@
           </modbusAttributes>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="ReturnSupplyWaterTemp" presenceLevel="O" dataDirection="R" unit="DEGREES_CELSIUS">
+          <dataPoint>
+            <datapointName>ReturnSupplyWaterTemp</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>O</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>DEGREES_CELSIUS</unit>
             <legibleDescription>
               <textElement>Auslesen der aktuellen aktuellen-Temperatur des Rücklaufs.</textElement>
               <language>de</language>
@@ -782,7 +888,8 @@
       </dataPointList>
     </functionalProfileListElement>
     <functionalProfileListElement>
-      <functionalProfile profileName="DomHotWaterCtrl">
+      <functionalProfile>
+        <profileName>DomHotWaterCtrl</profileName>
         <functionalProfileIdentification>
           <specificationOwnerIdentification>0</specificationOwnerIdentification>
           <functionalProfileCategory>HeatPumpControl</functionalProfileCategory>
@@ -803,12 +910,16 @@
       </functionalProfile>
       <dataPointList>
         <dataPointListElement>
-          <dataPoint datapointName="DomHotWOpMode" presenceLevel="O" dataDirection="RW" unit="NONE">
+          <dataPoint>
+            <datapointName>DomHotWOpMode</datapointName>
+            <dataDirection>RW</dataDirection>
+            <presenceLevel>O</presenceLevel>
             <dataType>
               <enum>
                 <hovDomHotWOpMode>DHW_STANDBY</hovDomHotWOpMode>
               </enum>
             </dataType>
+            <unit>NONE</unit>
             <legibleDescription>
               <textElement>Festlegen der Betriebsart für den Brauchwarmwasserkreis (Bereitschaft, Programm 1, Programm 1, Konstant, Eco )</textElement>
               <language>de</language>
@@ -832,12 +943,16 @@
           </modbusAttributes>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="hovDomHotWState" presenceLevel="R" dataDirection="R" unit="NONE">
+          <dataPoint>
+            <datapointName>hovDomHotWState</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>R</presenceLevel>
             <dataType>
               <enum>
                 <hovDomHotWState>DHW_OFF</hovDomHotWState>
               </enum>
             </dataType>
+            <unit>NONE</unit>
             <alternativeNames>
               <hpBwpName>Warmwasserbereitung in Betrieb</hpBwpName>
             </alternativeNames>
@@ -864,10 +979,14 @@
           </modbusAttributes>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="DomHotWTempStpt" presenceLevel="R" dataDirection="W" unit="DEGREES_CELSIUS">
+          <dataPoint>
+            <datapointName>DomHotWTempStpt</datapointName>
+            <dataDirection>W</dataDirection>
+            <presenceLevel>R</presenceLevel>
             <dataType>
               <float32/>
             </dataType>
+            <unit>DEGREES_CELSIUS</unit>
             <legibleDescription>
               <textElement>
                 Setzen des Wertes der Solltemperatur für den Brauchwarmwasserspeicher.TODO: braucht Mode Konstant
@@ -891,10 +1010,14 @@
           </modbusAttributes>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="ActDomHotWaterTemp" presenceLevel="M" dataDirection="R" unit="DEGREES_CELSIUS">
+          <dataPoint>
+            <datapointName>ActDomHotWaterTemp</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>M</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>DEGREES_CELSIUS</unit>
             <legibleDescription>
               <textElement>Aktuelle Ist-Temperatur des Brauchwarmwasserspeichers</textElement>
               <language>de</language>
@@ -916,10 +1039,14 @@
           </modbusAttributes>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="DomHotWTempStptFb" presenceLevel="M" dataDirection="W" unit="DEGREES_CELSIUS">
+          <dataPoint>
+            <datapointName>DomHotWTempStptFb</datapointName>
+            <dataDirection>W</dataDirection>
+            <presenceLevel>M</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>DEGREES_CELSIUS</unit>
             <legibleDescription>
               <textElement>
                 Rückmeldung  des aktuell gesetzten Wertes der Solltemperatur für den Brauchwarmwasserspeicher
@@ -945,7 +1072,8 @@
       </dataPointList>
     </functionalProfileListElement>
     <functionalProfileListElement>
-      <functionalProfile profileName="BufferStorageCtrl">
+      <functionalProfile>
+        <profileName>BufferStorageCtrl</profileName>
         <functionalProfileIdentification>
           <specificationOwnerIdentification>0</specificationOwnerIdentification>
           <functionalProfileCategory>HeatPumpControl</functionalProfileCategory>
@@ -964,10 +1092,14 @@
       </functionalProfile>
       <dataPointList>
         <dataPointListElement>
-          <dataPoint datapointName="ActBufferTempStptFb" presenceLevel="M" dataDirection="R" unit="DEGREES_CELSIUS">
+          <dataPoint>
+            <datapointName>ActBufferTempStptFb</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>M</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>DEGREES_CELSIUS</unit>
             <legibleDescription>
               <textElement>
                 Vom System selbst vorgegebener Temperatur-SOllwert des Speichers.
@@ -991,12 +1123,16 @@
           </modbusAttributes>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="hovActBufferState" presenceLevel="M" dataDirection="R" unit="NONE">
+          <dataPoint>
+            <datapointName>hovActBufferState</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>M</presenceLevel>
             <dataType>
               <enum>
                 <hovBufferState>BUF_OFF</hovBufferState>
               </enum>
             </dataType>
+            <unit>NONE</unit>
             <legibleDescription>
               <textElement>Auslesen des aktuellen Status Speichers (Aus, Bereitschaft, Programm, Comfort, Eco)</textElement>
               <language>de</language>
@@ -1020,10 +1156,14 @@
           </modbusAttributes>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="ActHeatBufferTempUpper" presenceLevel="M" dataDirection="R" unit="DEGREES_CELSIUS">
+          <dataPoint>
+            <datapointName>ActHeatBufferTempUpper</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>M</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>DEGREES_CELSIUS</unit>
             <legibleDescription>
               <textElement>?check addr 16518 doppelt: Aktuelle Ist-Temperatur des Heiz-Pufferspeichers oben</textElement>
               <language>de</language>
@@ -1045,10 +1185,14 @@
           </modbusAttributes>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="ActHeatBufferTempLower" presenceLevel="M" dataDirection="R" unit="DEGREES_CELSIUS">
+          <dataPoint>
+            <datapointName>ActHeatBufferTempLower</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>M</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>DEGREES_CELSIUS</unit>
             <legibleDescription>
               <textElement>
                 Aktuelle Ist-Temperatur des Heiz-Pufferspeichers unten
@@ -1072,10 +1216,14 @@
           </modbusAttributes>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="ActCoolBufferTempUpper" presenceLevel="M" dataDirection="R" unit="DEGREES_CELSIUS">
+          <dataPoint>
+            <datapointName>ActCoolBufferTempUpper</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>M</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>DEGREES_CELSIUS</unit>
             <legibleDescription>
               <textElement>
                 Aktuelle Ist-Temperatur des Kühl-Pufferspeichers oben
@@ -1099,10 +1247,14 @@
           </modbusAttributes>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="ActCoolBufferTempLower" presenceLevel="M" dataDirection="R" unit="DEGREES_CELSIUS">
+          <dataPoint>
+            <datapointName>ActCoolBufferTempLower</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>M</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>DEGREES_CELSIUS</unit>
             <legibleDescription>
               <textElement>
                 Aktuelle Ist-Temperatur des Kühl-Pufferspeichers unten
@@ -1128,7 +1280,8 @@
       </dataPointList>
     </functionalProfileListElement>
     <functionalProfileListElement>
-      <functionalProfile profileName="SG-ReadyStates_bwp">
+      <functionalProfile>
+        <profileName>SG-ReadyStates_bwp</profileName>
         <functionalProfileIdentification>
           <specificationOwnerIdentification>0</specificationOwnerIdentification>
           <functionalProfileCategory>HeatPumpControl</functionalProfileCategory>
@@ -1156,12 +1309,16 @@
       </functionalProfile>
       <dataPointList>
         <dataPointListElement>
-          <dataPoint datapointName="SGReadyCmd" presenceLevel="M" dataDirection="RW" unit="NONE">
+          <dataPoint>
+            <datapointName>SGReadyCmd</datapointName>
+            <dataDirection>RW</dataDirection>
+            <presenceLevel>M</presenceLevel>
             <dataType>
               <enum>
                 <sgreadyStateLv2>HP_NORMAL</sgreadyStateLv2>
               </enum>
             </dataType>
+            <unit>NONE</unit>
             <legibleDescription>
               <textElement>this the command acccording the bwp SG-Ready definition  https://www.waermepumpe.de/normen-technik/sg-ready/</textElement>
               <language>en</language>
@@ -1193,12 +1350,16 @@
           </modbusAttributes>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint presenceLevel="R" dataDirection="R" unit="NONE" datapointName="SGReadyState">
+          <dataPoint>
+            <datapointName>SGReadyState</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>R</presenceLevel>
             <dataType>
               <enum>
                 <sgreadyStateLv2>HP_NORMAL</sgreadyStateLv2>
               </enum>
             </dataType>
+            <unit>NONE</unit>
             <legibleDescription>
               <textElement>SG-ReadyState of the current operation</textElement>
               <language>de</language>
@@ -1244,12 +1405,16 @@
           </modbusAttributes>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="hovSGReadySrcSelect" unit="NONE" dataDirection="RW" presenceLevel="M">
+          <dataPoint>
+            <datapointName>hovSGReadySrcSelect</datapointName>
+            <dataDirection>RW</dataDirection>
+            <presenceLevel>M</presenceLevel>
             <dataType>
               <enum>
                 <hovSGReadySrcSel>SGR_src_OFF</hovSGReadySrcSel>
               </enum>
             </dataType>
+            <unit>NONE</unit>
           </dataPoint>
           <modbusDataPointConfiguration>
             <modbusDataType>
@@ -1265,7 +1430,8 @@
       </dataPointList>
     </functionalProfileListElement>
     <functionalProfileListElement>
-      <functionalProfile profileName="EnergyMonitor">
+      <functionalProfile>
+        <profileName>EnergyMonitor</profileName>
         <functionalProfileIdentification>
           <specificationOwnerIdentification>0</specificationOwnerIdentification>
           <functionalProfileCategory>HeatPumpControl</functionalProfileCategory>
@@ -1284,10 +1450,14 @@
       </functionalProfile>
       <dataPointList>
         <dataPointListElement>
-          <dataPoint datapointName="ThermalEnergyHeat" presenceLevel="R" dataDirection="R" unit="KILOWATT_HOURS">
+          <dataPoint>
+            <datapointName>ThermalEnergyHeat</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>R</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>KILOWATT_HOURS</unit>
             <legibleDescription>
               <textElement>Summe der abgegebenen thermischen Energie für das Heizen.</textElement>
               <language>de</language>
@@ -1309,10 +1479,14 @@
           </modbusAttributes>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="ThermalEnergyCool" presenceLevel="R" dataDirection="R" unit="KILOWATT_HOURS">
+          <dataPoint>
+            <datapointName>ThermalEnergyCool</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>R</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>KILOWATT_HOURS</unit>
             <legibleDescription>
               <textElement>Summe der aufgenommenen thermischen Energie für das Kühlen (nur bei aktiver Kühlung über Verdichter).</textElement>
               <language>de</language>
@@ -1334,10 +1508,14 @@
           </modbusAttributes>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="RuntimeCompressor" presenceLevel="R" dataDirection="R" unit="HOURS">
+          <dataPoint>
+            <datapointName>RuntimeCompressor</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>R</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>HOURS</unit>
             <legibleDescription>
               <textElement>Summe der Laufzeit des Verdichters seit Inbetriebnahme.</textElement>
               <language>de</language>
@@ -1359,10 +1537,14 @@
           </modbusAttributes>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="NrOfStartupsCompressor" presenceLevel="R" dataDirection="R" unit="NONE">
+          <dataPoint>
+            <datapointName>NrOfStartupsCompressor</datapointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>R</presenceLevel>
             <dataType>
               <int32U/>
             </dataType>
+            <unit>NONE</unit>
             <legibleDescription>
               <textElement>Anzahl Starts des Verdichters seit Inbetriebnahme.</textElement>
               <language>de</language>
