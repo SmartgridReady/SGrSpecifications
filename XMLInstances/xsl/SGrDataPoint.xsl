@@ -10,11 +10,11 @@
 	<xsl:import href="SGrDeviceTypeModbus.xsl" />
 	<xsl:import href="SGrDeviceTypeRestAPI.xsl" />
 
-	<xsl:import href="SGrGenericAttributes.xsl" />
+	<xsl:import href="GenericAttributes.xsl" />
 	<xsl:import href="SGrGenericDataPointDefinitions.xsl" />
 	<xsl:import href="SGrGenericHelpers.xsl" />
-	<xsl:import href="SGrGenericLegibDocumentationType.xsl" />
-	<xsl:import href="SGrGenericNamelistType.xsl" />
+	<!--xsl:import href="Descriptions.xsl" /-->
+	<xsl:import href="AlternateNames.xsl" />
 
 
 	<!-- SGrDataPointType -->
@@ -58,10 +58,10 @@
 					</xsl:if>
 
 					<!-- legibleDescription (4x opt) -->
-					<xsl:apply-templates select="sgr:dataPoint/sgr:legibleDescription" />
+					<!--xsl:apply-templates select="sgr:dataPoint/sgr:legibleDescription" /-->
 
 					<!-- programmerHints (4x opt)-->
-	                <xsl:apply-templates select="sgr:dataPoint/sgr:programmerHints" />
+	                <!--xsl:apply-templates select="sgr:dataPoint/sgr:programmerHints" /-->
 
 
 					<!-- Generic Attributes -->
@@ -107,26 +107,14 @@
 		<xsl:call-template name="AlternativeNames" />
 	</xsl:template>
 
-	<!-- LegibleDescription -->
-	<xsl:template match="sgr:legibleDescription">
-		<tr>
-			<xsl:attribute name="lang">
-				<xsl:value-of select="sgr:language" />
-			</xsl:attribute>
-			<td colspan="2">
-				<xsl:call-template name="LegibleDescription" />
-			</td>
-		</tr>
-	</xsl:template>
-
-	<!-- LegibleDescription -->
+	<!-- programmersHints -->
 	<xsl:template match="sgr:programmerHints">
 		<tr>
 			<xsl:attribute name="lang">
 				<xsl:value-of select="sgr:language" />
 			</xsl:attribute>
 			<td colspan="2">
-				<xsl:call-template name="LegibleDescription" />
+				<!--xsl:call-template name="LegibleDescription" /-->
 			</td>
 		</tr>
 	</xsl:template>

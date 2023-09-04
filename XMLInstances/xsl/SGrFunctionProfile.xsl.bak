@@ -100,31 +100,4 @@
         <xsl:apply-templates select="sgr:programmerHints" />
     </xsl:template>
 
-    <!-- AlternativeNames -->
-    <xsl:template match="sgr:alternativeNames">
-        <xsl:call-template name="AlternativeNames" />
-    </xsl:template>
-
-    <!-- LegibleDescription -->
-    <xsl:template match="sgr:legibleDescription">
-        <tr>
-            <xsl:attribute name="lang">
-                <xsl:value-of select="sgr:language" />
-            </xsl:attribute>
-            <td colspan="2">
-                <xsl:call-template name="LegibleDescription" />
-            </td>
-        </tr>
-    </xsl:template>
-    <xsl:template match="sgr:programmerHints">
-        <tr>
-            <xsl:attribute name="lang">
-                <xsl:value-of select="sgr:language" />
-            </xsl:attribute>
-            <td colspan="2">
-                <xsl:call-template name="LegibleDescription" />
-            </td>
-        </tr>
-    </xsl:template>
-
 </xsl:stylesheet>

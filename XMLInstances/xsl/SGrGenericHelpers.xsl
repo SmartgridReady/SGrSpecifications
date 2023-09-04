@@ -219,18 +219,18 @@
         </xsl:choose>
     </xsl:template>
 
-    <!-- SGrprofileNumber -->
-    <xsl:template match="sgr:functionalProfileIdentification">
+    <!-- functionalProfileIdentification -->
+    <xsl:template match="sgr:functionalProfileIdentificationy">
         <xsl:param name="separator" select="'.'" />
         <xsl:param name="displayFullLevel" select="''"/>
         <xsl:param name="displayShortLevel" select="''"/>
-        <xsl:call-template name="SGrProfileNumber">
+        <xsl:call-template name="functionalProfileIdentificationShort">
             <xsl:with-param name="separator" select="$separator" />
             <xsl:with-param name="displayShortLevel" select="$displayShortLevel" />
             <xsl:with-param name="displayFullLevel" select="$displayFullLevel" />
         </xsl:call-template>
     </xsl:template>
-    <xsl:template name="SGrProfileNumber">
+    <xsl:template name="functionalProfileIdentificationShort">
         <xsl:param name="separator" select="'.'" />
         <xsl:param name="displayFullLevel" select="''"/>
         <xsl:param name="displayShortLevel" select="''"/>
@@ -248,6 +248,89 @@
         <xsl:if test="$displayFullLevel">
             (Level <xsl:value-of select="sgr:levelOfOperation" />)
         </xsl:if>
+    </xsl:template>
+
+    <!-- release notes -->
+    <xsl:template match="sgr:releaseNotes">
+        <table>
+            <colgroup>
+                <col style="width:30%" />
+            </colgroup>
+            <!-- Release State -->
+            <tr>
+                <td class="fpHeader">
+                    <h4>Release State</h4>
+                </td>
+                <td class="fpHeader">
+                    <table>
+                        <tr>
+                            <td>
+                                <xsl:value-of select="sgr:state" />
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+
+            <!-- Remarks -->
+            <xsl:if test="sgr:remarks">
+                <tr>
+                    <td class="fpHeader">
+                        <h4>Remarks</h4>
+                    </td>
+                    <td class="fpHeader">
+                        <table>
+                            <tr>
+                                <td>
+                                    <xsl:value-of select="sgr:remarks" />
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </xsl:if>
+
+            <!-- Change Log -->
+            <xsl:if test="sgr:changeLog">
+                <tr>
+                    <td class="fpHeader">
+                        <h4>Change Log</h4>
+                    </td>
+                    <td class="fpHeader">
+                        <table>
+                            <colgroup>
+                                <col style="width:16%" />
+                                <col style="width:16%" />
+                                <col style="width:16%" />
+                                <col style="width:52%" />
+                            </colgroup>
+                            <tr>
+                                <th>Version</th>
+                                <th>Date</th>
+                                <th>Author</th>
+                                <th>Comment</th>
+                            </tr>
+                            <xsl:for-each select="sgr:changeLog">
+                                <tr>
+                                    <td>
+                                        <xsl:value-of select="sgr:version" />
+                                    </td>
+                                    <td>
+                                        <xsl:value-of select="sgr:date" />
+                                    </td>
+                                    <td>
+                                        <xsl:value-of select="sgr:author" />
+                                    </td>
+                                    <td>
+                                        <xsl:value-of select="sgr:comment" />
+                                    </td>
+                                </tr>
+                            </xsl:for-each>
+                        </table>
+                    </td>
+                </tr>
+            </xsl:if>
+        </table>        
     </xsl:template>
 
 </xsl:stylesheet> 

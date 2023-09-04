@@ -2,7 +2,7 @@
 <xsl:stylesheet version="1.1" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:sgr="http://www.smartgridready.com/ns/V0/">
 
     <!-- AlternativeNames-->
-    <xsl:template name="AlternativeNames">
+    <xsl:template match="sgr:alternativeNames">
         <xsl:if test="sgr:workName">
             <tr class="ontologyDetails">
                 <td>Temporary Work Name</td>
@@ -14,7 +14,7 @@
 
         <xsl:if test="sgr:manufName">
             <tr class="ontologyDetails">
-                <td>Manufacturer</td>
+                <td>Manufacturers Name</td>
                 <td>
                     <xsl:value-of select="sgr:manufName" />
                 </td>

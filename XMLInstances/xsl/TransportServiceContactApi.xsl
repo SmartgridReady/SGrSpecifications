@@ -2,7 +2,7 @@
 <xsl:stylesheet version="1.1" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:sgr="http://www.smartgridready.com/ns/V0/">
 
     <!-- contactApiInterfaceDesc -->
-    <xsl:template match="sgr:contactApiInterfaceDesc">
+    <xsl:template match="sgr:contactInterfaceDescription">
         <tr class="transportDetails">
             <td>Number of Contacts</td>
             <td>

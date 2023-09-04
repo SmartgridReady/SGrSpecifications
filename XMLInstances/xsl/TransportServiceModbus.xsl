@@ -228,10 +228,6 @@
     </xsl:template>
 
     <xsl:template match="sgr:modbusDataType">
-        <xsl:call-template name="SGrModbusDataPointTypeType" />
-    </xsl:template>
-
-    <xsl:template name="SGrModbusDataPointTypeType">
         <xsl:choose>
             <xsl:when test="sgr:boolean">boolean</xsl:when>
             <xsl:when test="sgr:int8">byte</xsl:when>
