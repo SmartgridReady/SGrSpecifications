@@ -178,7 +178,7 @@
                     <xsl:for-each select="sgr:dataPointList/sgr:dataPointListElement">
                         <tr>
                             <td colspan="2">
-                                <xsl:value-of select="sgr:dataPoint/@datapointName" />
+                                <xsl:value-of select="sgr:dataPoint/sgr:dataPointName" />
                             </td>
                             <td>
                                 <xsl:for-each select="sgr:dataPoint/sgr:legibleDescription">
@@ -202,7 +202,7 @@
                             </td>
                             <td>
                                 <xsl:call-template name="SGrUnits">
-                                    <xsl:with-param name="value" select="sgr:dataPoint/@unit" />
+                                    <xsl:with-param name="value" select="sgr:dataPoint/sgr:unit" />
                                 </xsl:call-template>
                             </td>
                             <td>
@@ -215,10 +215,10 @@
                                 </xsl:if>
                             </td>
                             <td>
-                                <xsl:value-of select="sgr:dataPoint/@presenceLevel" />
+                                <xsl:value-of select="sgr:dataPoint/sgr:presenceLevel" />
                             </td>
                             <td>
-                                <xsl:value-of select="sgr:dataPoint/@dataDirection" />
+                                <xsl:value-of select="sgr:dataPoint/sgr:dataDirection" />
                             </td>
                         </tr>
 

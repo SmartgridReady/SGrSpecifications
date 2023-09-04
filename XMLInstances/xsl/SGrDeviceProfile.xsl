@@ -34,6 +34,23 @@
 	<!-- programmerHints (4x opt)-->
 	<xsl:apply-templates select="sgr:programmerHints" />
 
+	<!-- isLocalControl -->
+	<tr class="genericDetails">
+		<td>Type</td>
+		<td>
+			<xsl:choose>
+				<xsl:when test="sgr:isLocalControl = 'true'">
+					<img src="/xsl/lan.png" alt="" width="16pt" height="16pt" />
+					Local area
+				</xsl:when>
+				<xsl:otherwise>
+					<img src="/xsl/cloud.png" alt="" width="16pt" height="16pt" />
+					Cloud device
+				</xsl:otherwise>
+			</xsl:choose>
+		</td>
+	</tr>
+
 	<!-- Transport Service -->
 	<tr class="genericDetails"><td>Transport Service</td><td>
 		<xsl:choose>

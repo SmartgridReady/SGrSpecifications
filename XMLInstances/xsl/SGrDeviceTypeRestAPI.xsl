@@ -103,7 +103,7 @@
                 <td>Header</td>
                 <td>
     				<xsl:for-each select="sgr:requestHeader/sgr:header">
-                        <xsl:value-of select="./@headerName" /> : <xsl:value-of select="@value" />
+                        <xsl:value-of select="./sgr:headerName" /> : <xsl:value-of select="sgr:value" />
                     </xsl:for-each>
                 </td>
             </tr>
