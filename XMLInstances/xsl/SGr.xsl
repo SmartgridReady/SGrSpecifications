@@ -33,9 +33,9 @@
 						</xsl:when>
 						<xsl:otherwise>
 							SGr EI
-							<xsl:value-of select="/*/@manufacturerName" />
+							<xsl:value-of select="/*/sgr:manufacturerName" />
 							-
-							<xsl:value-of select="/*/@deviceName" />
+							<xsl:value-of select="/*/sgr:deviceName" />
 						</xsl:otherwise>
 					</xsl:choose>
 				</title>
@@ -125,9 +125,9 @@
 	<xsl:template name="SGrDeviceType">
 		<div class="externalInterface">
 			<h1>
-				<xsl:value-of select="@manufacturerName" />
+				<xsl:value-of select="sgr:manufacturerName" />
 				-
-				<xsl:value-of select="@deviceName" />
+				<xsl:value-of select="sgr:deviceName" />
 			</h1>
 
 			<table>
@@ -212,13 +212,13 @@
 				<tr>
 					<td>Name</td>
 					<td>
-						<xsl:value-of select="@deviceName" />
+						<xsl:value-of select="sgr:deviceName" />
 					</td>
 				</tr>
 				<tr>
 					<td>Manufacturer</td>
 					<td>
-						<xsl:value-of select="@manufacturerName" />
+						<xsl:value-of select="sgr:manufacturerName" />
 					</td>
 				</tr>
 				<!-- specificationOwnerIdentification is very technical and of little value to the end user. dont' display. -->
@@ -226,24 +226,9 @@
 
 					<td>Specification Owner ID</td>
 					<td>
-						<xsl:value-of select="@specificationOwnerIdentification" />
+						<xsl:value-of select="sgr:specificationOwnerIdentification" />
 					</td>
 				</tr-->
-				<tr>
-					<td>Type</td>
-					<td>
-						<xsl:choose>
-							<xsl:when test="@isLocalControl = 'true'">
-								<img src="/xsl/lan.png" alt="" width="16pt" height="16pt" />
-								Local area
-							</xsl:when>
-							<xsl:otherwise>
-								<img src="/xsl/cloud.png" alt="" width="16pt" height="16pt" />
-								Cloud device
-							</xsl:otherwise>
-						</xsl:choose>
-					</td>
-				</tr>
 
 				<tr>
 					<td class="noborder">&#160;</td>

@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="/xsl/SGr.xsl"?>
-<ModbusDeviceFrame deviceName="Template fuer SGCP Minimal valid Product" isLocalControl="true" specificationOwnerIdentification="0"
-  manufacturerName="Template SGr: hier Name des Herstellers eintragen" xmlns="http://www.smartgridready.com/ns/V0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/EI-Modbus/SGrModbusEIDeviceFrame.xsd ">
+<ModbusDeviceFrame xmlns="http://www.smartgridready.com/ns/V0/"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/EI-Modbus/SGrModbusEIDeviceFrame.xsd ">
+  <deviceName>Template fuer SGCP Minimal valid Product</deviceName>
+  <manufacturerName>Template SGr: hier Name des Herstellers eintragen</manufacturerName>
+  <specificationOwnerIdentification>0</specificationOwnerIdentification>
   <releaseNotes>
     <state>Draft</state>
   </releaseNotes>
@@ -22,6 +25,7 @@
     <manufacturerLabel>gibt es ein Label fuer eine Systemlösung</manufacturerLabel>
     <generalRemarks>Ersteller dieses Templates: SGr/cb</generalRemarks>
     <levelOfOperation>4</levelOfOperation>
+    <isLocalControl>true</isLocalControl>
   </deviceInformation>
   <modbusAttributes>
     <pollingLatencyMs>150</pollingLatencyMs>
@@ -67,7 +71,8 @@
   </modbusInterfaceDescription>
   <functionalProfileList>
     <functionalProfileListElement>
-      <functionalProfile profileName="SGCPbiDirFlexMgmt">
+      <functionalProfile>
+        <functionalProfileName>SGCPbiDirFlexMgmt</functionalProfileName>
         <functionalProfileIdentification>
           <specificationOwnerIdentification>0</specificationOwnerIdentification>
           <functionalProfileCategory>SGCP</functionalProfileCategory>
@@ -86,10 +91,14 @@
       </functionalProfile>
       <dataPointList>
         <dataPointListElement>
-          <dataPoint datapointName="ActivePowerActivation" presenceLevel="M" dataDirection="W" unit="NONE">
+          <dataPoint>
+            <dataPointName>ActivePowerActivation</dataPointName>
+            <dataDirection>W</dataDirection>
+            <presenceLevel>M</presenceLevel>
             <dataType>
               <boolean/>
             </dataType>
+            <unit>NONE</unit>
             <legibleDescription>
               <textElement>
                 On Off Befehl, Wirkleistung Flexibilität liefern ja/nein
@@ -103,7 +112,9 @@
             <modbusDataType>
               <int16/>
             </modbusDataType>
-            <modbusFirstRegisterReference addr="0" bitRank="0" registerType="HoldRegister"/>
+            <address>0</address>
+            <bitRank>0</bitRank>
+            <registerType>HoldRegister</registerType>
             <numberOfRegisters>1</numberOfRegisters>
             <masterFunctionsSupported>Primitives</masterFunctionsSupported>
           </modbusDataPointConfiguration>
@@ -116,10 +127,14 @@
           </modbusAttributes>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="ReadinessState" presenceLevel="M" dataDirection="R" unit="NONE">
+          <dataPoint>
+            <dataPointName>ReadinessState</dataPointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>M</presenceLevel>
             <dataType>
               <boolean/>
             </dataType>
+            <unit>NONE</unit>
             <legibleDescription>
               <textElement>Status ready for flexibility. True wenn Anlage für den nächsten Flexibilitäts-Event bereit ist.</textElement>
               <language>de</language>
@@ -129,7 +144,9 @@
             <modbusDataType>
               <int16/>
             </modbusDataType>
-            <modbusFirstRegisterReference addr="0" bitRank="0" registerType="HoldRegister"/>
+            <address>0</address>
+            <bitRank>0</bitRank>
+            <registerType>HoldRegister</registerType>
             <numberOfRegisters>1</numberOfRegisters>
             <masterFunctionsSupported>Primitives</masterFunctionsSupported>
           </modbusDataPointConfiguration>
@@ -142,10 +159,14 @@
           </modbusAttributes>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="RunState" presenceLevel="M" dataDirection="R" unit="NONE">
+          <dataPoint>
+            <dataPointName>RunState</dataPointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>M</presenceLevel>
             <dataType>
               <boolean/>
             </dataType>
+            <unit>NONE</unit>
             <legibleDescription>
               <textElement>Status running for flexibility. True wenn Anlage läuft für Flexibilität.</textElement>
               <language>de</language>
@@ -155,7 +176,9 @@
             <modbusDataType>
               <int16/>
             </modbusDataType>
-            <modbusFirstRegisterReference addr="0" bitRank="0" registerType="HoldRegister"/>
+            <address>0</address>
+            <bitRank>0</bitRank>
+            <registerType>HoldRegister</registerType>
             <numberOfRegisters>1</numberOfRegisters>
             <masterFunctionsSupported>Primitives</masterFunctionsSupported>
           </modbusDataPointConfiguration>
@@ -168,10 +191,14 @@
           </modbusAttributes>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="ActualActivePower" presenceLevel="M" dataDirection="R" unit="KILOWATTS">
+          <dataPoint>
+            <dataPointName>ActualActivePower</dataPointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>M</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>KILOWATTS</unit>
             <legibleDescription>
               <textElement>
                 Momentane Leistung. Betrag und Richtung des Energieflusses.
@@ -184,7 +211,9 @@
             <modbusDataType>
               <float32/>
             </modbusDataType>
-            <modbusFirstRegisterReference addr="0" bitRank="0" registerType="HoldRegister"/>
+            <address>0</address>
+            <bitRank>0</bitRank>
+            <registerType>HoldRegister</registerType>
             <numberOfRegisters>2</numberOfRegisters>
             <masterFunctionsSupported>Primitives</masterFunctionsSupported>
           </modbusDataPointConfiguration>

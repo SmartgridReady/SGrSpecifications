@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="/xsl/SGr.xsl"?>
-<ModbusDeviceFrame deviceName="Supercal5" isLocalControl="true" specificationOwnerIdentification="0" manufacturerName="SONTEX SA" xmlns="http://www.smartgridready.com/ns/V0/"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/EI-Modbus/SGrModbusEIDeviceFrame.xsd ">
+<ModbusDeviceFrame xmlns="http://www.smartgridready.com/ns/V0/"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/EI-Modbus/SGrModbusEIDeviceFrame.xsd ">
+  <deviceName>Supercal5</deviceName>
+  <manufacturerName>SONTEX SA</manufacturerName>
+  <specificationOwnerIdentification>0</specificationOwnerIdentification>
   <releaseNotes>
     <state>Draft</state>
   </releaseNotes>
@@ -15,6 +19,7 @@
     <manufacturerLabel>manufacturerLabel</manufacturerLabel>
     <generalRemarks>Sample xml instance by IBT : no warranty</generalRemarks>
     <levelOfOperation>4</levelOfOperation>
+    <isLocalControl>true</isLocalControl>
   </deviceInformation>
   <modbusInterfaceDescription>
     <modbusInterfaceSelection>RTU</modbusInterfaceSelection>
@@ -46,7 +51,8 @@
   </modbusInterfaceDescription>
   <functionalProfileList>
     <functionalProfileListElement>
-      <functionalProfile profileName="Temperature">
+      <functionalProfile>
+        <functionalProfileName>Temperature</functionalProfileName>
         <functionalProfileIdentification>
           <specificationOwnerIdentification>101</specificationOwnerIdentification>
           <functionalProfileCategory>TemperatureSensor</functionalProfileCategory>
@@ -61,16 +67,22 @@
       </functionalProfile>
       <dataPointList>
         <dataPointListElement>
-          <dataPoint datapointName="hiTemp" presenceLevel="M" dataDirection="R" unit="DEGREES_PHASE">
+          <dataPoint>
+            <dataPointName>hiTemp</dataPointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>M</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>DEGREES_PHASE</unit>
           </dataPoint>
           <modbusDataPointConfiguration>
             <modbusDataType>
               <int32/>
             </modbusDataType>
-            <modbusFirstRegisterReference addr="823" bitRank="0" registerType="InputRegister"/>
+            <address>823</address>
+            <bitRank>0</bitRank>
+            <registerType>InputRegister</registerType>
             <numberOfRegisters>2</numberOfRegisters>
             <masterFunctionsSupported>Primitives</masterFunctionsSupported>
           </modbusDataPointConfiguration>
@@ -82,16 +94,22 @@
           </modbusAttributes>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="lowTemp" presenceLevel="M" dataDirection="R" unit="DEGREES_PHASE">
+          <dataPoint>
+            <dataPointName>lowTemp</dataPointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>M</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>DEGREES_PHASE</unit>
           </dataPoint>
           <modbusDataPointConfiguration>
             <modbusDataType>
               <int32/>
             </modbusDataType>
-            <modbusFirstRegisterReference addr="825" bitRank="0" registerType="InputRegister"/>
+            <address>825</address>
+            <bitRank>0</bitRank>
+            <registerType>InputRegister</registerType>
             <numberOfRegisters>2</numberOfRegisters>
             <masterFunctionsSupported>Primitives</masterFunctionsSupported>
           </modbusDataPointConfiguration>
@@ -103,16 +121,22 @@
           </modbusAttributes>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="diffTemp" presenceLevel="M" dataDirection="R" unit="DEGREES_PHASE">
+          <dataPoint>
+            <dataPointName>diffTemp</dataPointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>M</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>DEGREES_PHASE</unit>
           </dataPoint>
           <modbusDataPointConfiguration>
             <modbusDataType>
               <int32/>
             </modbusDataType>
-            <modbusFirstRegisterReference addr="827" bitRank="0" registerType="InputRegister"/>
+            <address>827</address>
+            <bitRank>0</bitRank>
+            <registerType>InputRegister</registerType>
             <numberOfRegisters>2</numberOfRegisters>
             <masterFunctionsSupported>Primitives</masterFunctionsSupported>
           </modbusDataPointConfiguration>
@@ -126,7 +150,8 @@
       </dataPointList>
     </functionalProfileListElement>
     <functionalProfileListElement>
-      <functionalProfile profileName="PowerFlow">
+      <functionalProfile>
+        <functionalProfileName>PowerFlow</functionalProfileName>
         <functionalProfileIdentification>
           <specificationOwnerIdentification>101</specificationOwnerIdentification>
           <functionalProfileCategory>Sensor</functionalProfileCategory>
@@ -141,16 +166,22 @@
       </functionalProfile>
       <dataPointList>
         <dataPointListElement>
-          <dataPoint datapointName="actPower" presenceLevel="M" dataDirection="R" unit="KILOWATTS">
+          <dataPoint>
+            <dataPointName>actPower</dataPointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>M</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>KILOWATTS</unit>
           </dataPoint>
           <modbusDataPointConfiguration>
             <modbusDataType>
               <int32U/>
             </modbusDataType>
-            <modbusFirstRegisterReference addr="803" bitRank="0" registerType="InputRegister"/>
+            <address>803</address>
+            <bitRank>0</bitRank>
+            <registerType>InputRegister</registerType>
             <numberOfRegisters>2</numberOfRegisters>
             <masterFunctionsSupported>Primitives</masterFunctionsSupported>
           </modbusDataPointConfiguration>
@@ -162,16 +193,22 @@
           </modbusAttributes>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="actFlow" presenceLevel="M" dataDirection="R" unit="PER_HOUR">
+          <dataPoint>
+            <dataPointName>actFlow</dataPointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>M</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>PER_HOUR</unit>
           </dataPoint>
           <modbusDataPointConfiguration>
             <modbusDataType>
               <int32U/>
             </modbusDataType>
-            <modbusFirstRegisterReference addr="813" bitRank="0" registerType="InputRegister"/>
+            <address>813</address>
+            <bitRank>0</bitRank>
+            <registerType>InputRegister</registerType>
             <numberOfRegisters>2</numberOfRegisters>
             <masterFunctionsSupported>Primitives</masterFunctionsSupported>
           </modbusDataPointConfiguration>

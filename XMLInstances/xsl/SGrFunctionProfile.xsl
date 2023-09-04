@@ -20,7 +20,7 @@
     <xsl:template name="sgrFunctionProfile">
         <div class="functionalProfile">
             <h2 style="float:left;">
-                <xsl:value-of select="sgr:functionalProfile/@profileName" />
+                <xsl:value-of select="sgr:functionalProfile/sgr:functionalProfileName" />
             </h2>
 
             <!-- Functional Profile Block -->

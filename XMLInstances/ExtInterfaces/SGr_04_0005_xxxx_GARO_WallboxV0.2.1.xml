@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="/xsl/SGr.xsl"?>
-<ModbusDeviceFrame deviceName="GARO Wallbox GLB" isLocalControl="true" specificationOwnerIdentification="0" manufacturerName="Garo / Optex AG"
-  xmlns="http://www.smartgridready.com/ns/V0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/EI-Modbus/SGrModbusEIDeviceFrame.xsd">
+<ModbusDeviceFrame xmlns="http://www.smartgridready.com/ns/V0/"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/EI-Modbus/SGrModbusEIDeviceFrame.xsd">
+  <deviceName>GARO Wallbox GLB</deviceName>
+  <manufacturerName>Garo / Optex AG</manufacturerName>
+  <specificationOwnerIdentification>0</specificationOwnerIdentification>
   <releaseNotes>
     <state>Draft</state>
   </releaseNotes>
@@ -48,6 +51,7 @@
     <manufacturerLabel>GLB+</manufacturerLabel>
     <generalRemarks>IBT/cb (no warranty on this EI)</generalRemarks>
     <levelOfOperation>4</levelOfOperation>
+    <isLocalControl>true</isLocalControl>
   </deviceInformation>
   <modbusAttributes>
     <pollingLatencyMs>350</pollingLatencyMs>
@@ -60,7 +64,8 @@
   </modbusInterfaceDescription>
   <functionalProfileList>
     <functionalProfileListElement>
-      <functionalProfile profileName="EVState">
+      <functionalProfile>
+        <functionalProfileName>EVState</functionalProfileName>
         <functionalProfileIdentification>
           <specificationOwnerIdentification>0</specificationOwnerIdentification>
           <functionalProfileCategory>EVSE</functionalProfileCategory>
@@ -75,31 +80,43 @@
       </functionalProfile>
       <dataPointList>
         <dataPointListElement>
-          <dataPoint datapointName="isSmartEV15188" presenceLevel="O" dataDirection="R" unit="NONE">
+          <dataPoint>
+            <dataPointName>isSmartEV15188</dataPointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>O</presenceLevel>
             <dataType>
               <boolean/>
             </dataType>
+            <unit>NONE</unit>
           </dataPoint>
           <modbusDataPointConfiguration>
             <modbusDataType>
               <int16U/>
             </modbusDataType>
-            <modbusFirstRegisterReference registerType="HoldRegister" addr="740" bitRank="0"/>
+            <address>740</address>
+            <bitRank>0</bitRank>
+            <registerType>HoldRegister</registerType>
             <numberOfRegisters>1</numberOfRegisters>
             <masterFunctionsSupported>Primitives</masterFunctionsSupported>
           </modbusDataPointConfiguration>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="EVCCID" presenceLevel="O" dataDirection="R" unit="NONE">
+          <dataPoint>
+            <dataPointName>EVCCID</dataPointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>O</presenceLevel>
             <dataType>
               <string/>
             </dataType>
+            <unit>NONE</unit>
           </dataPoint>
           <modbusDataPointConfiguration>
             <modbusDataType>
               <string/>
             </modbusDataType>
-            <modbusFirstRegisterReference registerType="HoldRegister" addr="741" bitRank="0"/>
+            <address>741</address>
+            <bitRank>0</bitRank>
+            <registerType>HoldRegister</registerType>
             <numberOfRegisters>6</numberOfRegisters>
             <masterFunctionsSupported>Primitives</masterFunctionsSupported>
           </modbusDataPointConfiguration>
@@ -107,7 +124,8 @@
       </dataPointList>
     </functionalProfileListElement>
     <functionalProfileListElement>
-      <functionalProfile profileName="EVSEState">
+      <functionalProfile>
+        <functionalProfileName>EVSEState</functionalProfileName>
         <functionalProfileIdentification>
           <specificationOwnerIdentification>0</specificationOwnerIdentification>
           <functionalProfileCategory>EVSE</functionalProfileCategory>
@@ -122,12 +140,16 @@
       </functionalProfile>
       <dataPointList>
         <dataPointListElement>
-          <dataPoint datapointName="EV-StatusCode" presenceLevel="M" dataDirection="R" unit="NONE">
+          <dataPoint>
+            <dataPointName>EV-StatusCode</dataPointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>M</presenceLevel>
             <dataType>
               <enum>
                 <sgrEVState>EV_STANDBY</sgrEVState>
               </enum>
             </dataType>
+            <unit>NONE</unit>
           </dataPoint>
           <modbusDataPointConfiguration>
             <modbusDataType>
@@ -135,18 +157,24 @@
                 <sgrEVState>EV_STANDBY</sgrEVState>
               </enum>
             </modbusDataType>
-            <modbusFirstRegisterReference registerType="HoldRegister" addr="122" bitRank="0"/>
+            <address>122</address>
+            <bitRank>0</bitRank>
+            <registerType>HoldRegister</registerType>
             <numberOfRegisters>1</numberOfRegisters>
             <masterFunctionsSupported>Primitives</masterFunctionsSupported>
           </modbusDataPointConfiguration>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="ocppState" presenceLevel="O" unit="NONE">
+          <dataPoint>
+            <dataPointName>ocppState</dataPointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>O</presenceLevel>
             <dataType>
               <enum>
                 <sgrOCPPState>Available</sgrOCPPState>
               </enum>
             </dataType>
+            <unit>NONE</unit>
           </dataPoint>
           <modbusDataPointConfiguration>
             <modbusDataType>
@@ -154,7 +182,8 @@
                 <sgrOCPPState>Available</sgrOCPPState>
               </enum>
             </modbusDataType>
-            <modbusFirstRegisterReference registerType="HoldRegister" addr="104"></modbusFirstRegisterReference>
+            <address>104</address>
+            <registerType>HoldRegister</registerType>
             <numberOfRegisters>1</numberOfRegisters>
             <masterFunctionsSupported>Primitives</masterFunctionsSupported>
           </modbusDataPointConfiguration>
@@ -162,7 +191,8 @@
       </dataPointList>
     </functionalProfileListElement>
     <functionalProfileListElement>
-      <functionalProfile profileName="Curtailment">
+      <functionalProfile>
+        <functionalProfileName>Curtailment</functionalProfileName>
         <functionalProfileIdentification>
           <specificationOwnerIdentification>0</specificationOwnerIdentification>
           <functionalProfileCategory>EVSE</functionalProfileCategory>
@@ -184,40 +214,56 @@
       </genericAttributes>
       <dataPointList>
         <dataPointListElement>
-          <dataPoint datapointName="SafeCurrent" presenceLevel="M" dataDirection="RW" unit="AMPERES">
+          <dataPoint>
+            <dataPointName>SafeCurrent</dataPointName>
+            <dataDirection>RW</dataDirection>
+            <presenceLevel>M</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>AMPERES</unit>
           </dataPoint>
           <modbusDataPointConfiguration>
             <modbusDataType>
               <int16/>
             </modbusDataType>
-            <modbusFirstRegisterReference registerType="HoldRegister" addr="131"/>
+            <address>133</address>
+            <bitRank>0</bitRank>
+            <registerType>HoldRegister</registerType>
             <numberOfRegisters>1</numberOfRegisters>
             <masterFunctionsSupported>Primitives</masterFunctionsSupported>
           </modbusDataPointConfiguration>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="HemsCurrentLimit" dataDirection="RW" presenceLevel="M" unit="AMPERES">
+          <dataPoint>
+            <dataPointName>HemsCurrentLimit</dataPointName>
+            <dataDirection>RW</dataDirection>
+            <presenceLevel>M</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>AMPERES</unit>
           </dataPoint>
           <modbusDataPointConfiguration>
             <modbusDataType>
               <int16/>
             </modbusDataType>
-            <modbusFirstRegisterReference registerType="HoldRegister" addr="1000"/>
+            <address>1000</address>
+            <bitRank>0</bitRank>
+            <registerType>HoldRegister</registerType>
             <numberOfRegisters>1</numberOfRegisters>
             <masterFunctionsSupported>Primitives</masterFunctionsSupported>
           </modbusDataPointConfiguration>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="maxReceiveTimeSec" presenceLevel="M" dataDirection="RW" unit="SECONDS">
+          <dataPoint>
+            <dataPointName>maxReceiveTimeSec</dataPointName>
+            <dataDirection>RW</dataDirection>
+            <presenceLevel>M</presenceLevel>
             <dataType>
               <int16U/>
             </dataType>
+            <unit>SECONDS</unit>
             <legibleDescription>
               <textElement>
                 Programmers hint: This maxReceiveTimeSec represents the timeout
@@ -235,22 +281,30 @@
             <modbusDataType>
               <int16U/>
             </modbusDataType>
-            <modbusFirstRegisterReference registerType="HoldRegister" addr="132"/>
+            <address>132</address>
+            <bitRank>0</bitRank>
+            <registerType>HoldRegister</registerType>
             <numberOfRegisters>1</numberOfRegisters>
             <masterFunctionsSupported>Primitives</masterFunctionsSupported>
           </modbusDataPointConfiguration>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="HWCurrentLimit" presenceLevel="R" unit="AMPERES">
+          <dataPoint>
+            <dataPointName>HWCurrentLimit</dataPointName>
+            <dataDirection>RW</dataDirection>
+            <presenceLevel>R</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>AMPERES</unit>
           </dataPoint>
           <modbusDataPointConfiguration>
             <modbusDataType>
               <int16/>
             </modbusDataType>
-            <modbusFirstRegisterReference registerType="HoldRegister" addr="133"/>
+            <address>133</address>
+            <bitRank>0</bitRank>
+            <registerType>HoldRegister</registerType>
             <numberOfRegisters>1</numberOfRegisters>
             <masterFunctionsSupported>Primitives</masterFunctionsSupported>
           </modbusDataPointConfiguration>
@@ -258,7 +312,8 @@
       </dataPointList>
     </functionalProfileListElement>
     <functionalProfileListElement>
-      <functionalProfile profileName="CurrentAC">
+      <functionalProfile>
+        <functionalProfileName>CurrentAC</functionalProfileName>
         <functionalProfileIdentification>
           <specificationOwnerIdentification>0</specificationOwnerIdentification>
           <functionalProfileCategory>SubMeterElectricity</functionalProfileCategory>
@@ -273,16 +328,22 @@
       </functionalProfile>
       <dataPointList>
         <dataPointListElement>
-          <dataPoint datapointName="CurrentACL1" presenceLevel="M" dataDirection="R" unit="AMPERES">
+          <dataPoint>
+            <dataPointName>CurrentACL1</dataPointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>M</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>AMPERES</unit>
           </dataPoint>
           <modbusDataPointConfiguration>
             <modbusDataType>
               <int32/>
             </modbusDataType>
-            <modbusFirstRegisterReference registerType="HoldRegister" addr="212" bitRank="0"/>
+            <address>212</address>
+            <bitRank>0</bitRank>
+            <registerType>HoldRegister</registerType>
             <numberOfRegisters>2</numberOfRegisters>
             <masterFunctionsSupported>Primitives</masterFunctionsSupported>
           </modbusDataPointConfiguration>
@@ -295,16 +356,22 @@
           </modbusAttributes>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="CurrentACL2" presenceLevel="R" unit="AMPERES" dataDirection="R">
+          <dataPoint>
+            <dataPointName>CurrentACL2</dataPointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>R</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>AMPERES</unit>
           </dataPoint>
           <modbusDataPointConfiguration>
             <modbusDataType>
               <int32/>
             </modbusDataType>
-            <modbusFirstRegisterReference registerType="HoldRegister" addr="214" bitRank="0"/>
+            <address>214</address>
+            <bitRank>0</bitRank>
+            <registerType>HoldRegister</registerType>
             <numberOfRegisters>2</numberOfRegisters>
             <masterFunctionsSupported>Primitives</masterFunctionsSupported>
           </modbusDataPointConfiguration>
@@ -317,16 +384,22 @@
           </modbusAttributes>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="CurrentACL3" presenceLevel="R" unit="AMPERES" dataDirection="R">
+          <dataPoint>
+            <dataPointName>CurrentACL3</dataPointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>R</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>AMPERES</unit>
           </dataPoint>
           <modbusDataPointConfiguration>
             <modbusDataType>
               <int32/>
             </modbusDataType>
-            <modbusFirstRegisterReference addr="216" registerType="HoldRegister" bitRank="0"/>
+            <address>216</address>
+            <bitRank>0</bitRank>
+            <registerType>HoldRegister</registerType>
             <numberOfRegisters>2</numberOfRegisters>
             <masterFunctionsSupported>Primitives</masterFunctionsSupported>
           </modbusDataPointConfiguration>
@@ -341,7 +414,8 @@
       </dataPointList>
     </functionalProfileListElement>
     <functionalProfileListElement>
-      <functionalProfile profileName="ActivePowerAC">
+      <functionalProfile>
+        <functionalProfileName>ActivePowerAC</functionalProfileName>
         <functionalProfileIdentification>
           <specificationOwnerIdentification>0</specificationOwnerIdentification>
           <functionalProfileCategory>NonSpecific</functionalProfileCategory>
@@ -356,16 +430,22 @@
       </functionalProfile>
       <dataPointList>
         <dataPointListElement>
-          <dataPoint datapointName="ActivePowerACL1" presenceLevel="R" dataDirection="R" unit="KILOWATTS">
+          <dataPoint>
+            <dataPointName>ActivePowerACL1</dataPointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>R</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>KILOWATTS</unit>
           </dataPoint>
           <modbusDataPointConfiguration>
-            <modbusDataType>
-              <int32/>
-            </modbusDataType>
-            <modbusFirstRegisterReference registerType="HoldRegister" addr="206" bitRank="0"/>
+          <modbusDataType>
+            <int32/>
+          </modbusDataType>
+            <address>206</address>
+            <bitRank>0</bitRank>
+            <registerType>HoldRegister</registerType>
             <numberOfRegisters>2</numberOfRegisters>
             <masterFunctionsSupported>Primitives</masterFunctionsSupported>
           </modbusDataPointConfiguration>
@@ -378,16 +458,22 @@
           </modbusAttributes>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="ActivePowerACL2" presenceLevel="R" unit="KILOWATTS" dataDirection="R">
+          <dataPoint>
+            <dataPointName>ActivePowerACL2</dataPointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>R</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>KILOWATTS</unit>
           </dataPoint>
           <modbusDataPointConfiguration>
             <modbusDataType>
               <int32/>
             </modbusDataType>
-            <modbusFirstRegisterReference registerType="HoldRegister" addr="208" bitRank="0"/>
+            <address>208</address>
+            <bitRank>0</bitRank>
+            <registerType>HoldRegister</registerType>
             <numberOfRegisters>2</numberOfRegisters>
             <masterFunctionsSupported>Primitives</masterFunctionsSupported>
           </modbusDataPointConfiguration>
@@ -400,16 +486,22 @@
           </modbusAttributes>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="ActivePowerACL3" presenceLevel="R" unit="KILOWATTS" dataDirection="R">
+          <dataPoint>
+            <dataPointName>ActivePowerACL3</dataPointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>R</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>KILOWATTS</unit>
           </dataPoint>
           <modbusDataPointConfiguration>
             <modbusDataType>
               <int32/>
             </modbusDataType>
-            <modbusFirstRegisterReference addr="210" registerType="HoldRegister" bitRank="0"/>
+            <address>210</address>
+            <bitRank>0</bitRank>
+            <registerType>HoldRegister</registerType>
             <numberOfRegisters>2</numberOfRegisters>
             <masterFunctionsSupported>Primitives</masterFunctionsSupported>
           </modbusDataPointConfiguration>
@@ -424,7 +516,8 @@
       </dataPointList>
     </functionalProfileListElement>
     <functionalProfileListElement>
-      <functionalProfile profileName="ActiveEnergyAC">
+      <functionalProfile>
+        <functionalProfileName>ActiveEnergyAC</functionalProfileName>
         <functionalProfileIdentification>
           <specificationOwnerIdentification>0</specificationOwnerIdentification>
           <functionalProfileCategory>NonSpecific</functionalProfileCategory>
@@ -439,16 +532,22 @@
       </functionalProfile>
       <dataPointList>
         <dataPointListElement>
-          <dataPoint datapointName="ActiveEnergyACL1" presenceLevel="R" dataDirection="R" unit="KILOWATT_HOURS">
+          <dataPoint>
+            <dataPointName>ActiveEnergyACL1</dataPointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>R</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>KILOWATT_HOURS</unit>
           </dataPoint>
           <modbusDataPointConfiguration>
             <modbusDataType>
               <int32/>
             </modbusDataType>
-            <modbusFirstRegisterReference registerType="HoldRegister" addr="200" bitRank="0"/>
+            <address>200</address>
+            <bitRank>0</bitRank>
+            <registerType>HoldRegister</registerType>
             <numberOfRegisters>2</numberOfRegisters>
             <masterFunctionsSupported>Primitives</masterFunctionsSupported>
           </modbusDataPointConfiguration>
@@ -460,16 +559,22 @@
           </modbusAttributes>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="ActiveEnergyACL2" presenceLevel="R" unit="KILOWATT_HOURS" dataDirection="R">
+          <dataPoint>
+            <dataPointName>ActiveEnergyACL2</dataPointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>R</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>KILOWATT_HOURS</unit>
           </dataPoint>
           <modbusDataPointConfiguration>
             <modbusDataType>
               <int32/>
             </modbusDataType>
-            <modbusFirstRegisterReference registerType="HoldRegister" addr="202" bitRank="0"/>
+            <address>202</address>
+            <bitRank>0</bitRank>
+            <registerType>HoldRegister</registerType>
             <numberOfRegisters>2</numberOfRegisters>
             <masterFunctionsSupported>Primitives</masterFunctionsSupported>
           </modbusDataPointConfiguration>
@@ -481,16 +586,22 @@
           </modbusAttributes>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="ActiveEnergyACL3" presenceLevel="R" unit="KILOWATT_HOURS" dataDirection="R">
+          <dataPoint>
+            <dataPointName>ActiveEnergyACL3</dataPointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>R</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>KILOWATT_HOURS</unit>
           </dataPoint>
           <modbusDataPointConfiguration>
             <modbusDataType>
               <int32U/>
             </modbusDataType>
-            <modbusFirstRegisterReference addr="204" registerType="HoldRegister" bitRank="0"/>
+            <address>204</address>
+            <bitRank>0</bitRank>
+            <registerType>HoldRegister</registerType>
             <numberOfRegisters>2</numberOfRegisters>
             <masterFunctionsSupported>Primitives</masterFunctionsSupported>
           </modbusDataPointConfiguration>

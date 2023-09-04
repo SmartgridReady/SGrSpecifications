@@ -62,7 +62,7 @@
                 <td>Bearer Security</td>
                 <td>
                     <table>
-                        <xsl:apply-templates select="sgr:restApiBearer/sgr:restServiceCall" />
+                        <xsl:apply-templates select="sgr:restApiBearer" />
                     </table>
                 </td>
             </tr>
@@ -84,13 +84,11 @@
     </xsl:template>
 
     <!-- Rest Service Call -->
-    <xsl:template match="sgr:restServiceCall">
-		<xsl:call-template name="SGrRestServiceCall" />
-	</xsl:template>
-    <xsl:template match="sgr:restServiceCall">
+    <xsl:template match="sgr:restApiBearer">
 		<xsl:call-template name="SGrRestServiceCall" />
 	</xsl:template>    
     <xsl:template name="SGrRestServiceCall">
+        <xsl:param name="value" select="NONE" />
         <tr class="transportDetails">
 			<td>End Point</td>
 			<td>
@@ -103,7 +101,7 @@
                 <td>Header</td>
                 <td>
     				<xsl:for-each select="sgr:requestHeader/sgr:header">
-                        <xsl:value-of select="./@headerName" /> : <xsl:value-of select="@value" />
+                        <xsl:value-of select="./sgr:headerName" /> : <xsl:value-of select="sgr:value" />
                     </xsl:for-each>
                 </td>
             </tr>

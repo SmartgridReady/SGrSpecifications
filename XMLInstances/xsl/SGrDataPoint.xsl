@@ -21,11 +21,11 @@
 	<xsl:template match="sgr:dataPointListElement">
 		<tr>
 			<td colspan="2">
-				<xsl:value-of select="sgr:dataPoint/@datapointName" />
+				<xsl:value-of select="sgr:dataPoint/sgr:dataPointName" />
 			</td>
 			<td>
 				<xsl:call-template name="SGrUnits">
-					<xsl:with-param name="value" select="sgr:dataPoint/@unit" />
+					<xsl:with-param name="value" select="sgr:dataPoint/sgr:unit" />
 				</xsl:call-template>
 			</td>
 			<td>
@@ -38,10 +38,10 @@
 				</xsl:if>
 			</td>
 			<td>
-				<xsl:value-of select="sgr:dataPoint/@presenceLevel" />
+				<xsl:value-of select="sgr:dataPoint/sgr:presenceLevel" />
 			</td>
 			<td>
-				<xsl:value-of select="sgr:dataPoint/@dataDirection" />
+				<xsl:value-of select="sgr:dataPoint/sgr:dataDirection" />
 			</td>
 		</tr>
 		<tr class="dataPointDetails">
@@ -146,16 +146,16 @@
 		<tr class="transportDetails">
 			<td>Register</td>
 			<td>
-				<xsl:value-of select="sgr:modbusFirstRegisterReference/@registerType" />&#160; <xsl:value-of
-					select="sgr:modbusFirstRegisterReference/@addr" />
+				<xsl:value-of select="sgr:registerType" />&#160; <xsl:value-of
+					select="sgr:address" />
 				<xsl:choose>
-					<xsl:when test="sgr:modbusFirstRegisterReference/@registerType = 'Coil'"> bit <xsl:value-of
-							select="sgr:modbusFirstRegisterReference/@bitRank" />
+					<xsl:when test="sgr:registerType = 'Coil'"> bit <xsl:value-of
+							select="sgr:bitRank" />
 					</xsl:when>
 
 					<xsl:when
-						test="sgr:modbusFirstRegisterReference/@registerType = 'DiscreteInput'"> bit <xsl:value-of
-							select="sgr:modbusFirstRegisterReference/@bitRank" />
+						test="sgr:registerType = 'DiscreteInput'"> bit <xsl:value-of
+							select="sgr:bitRank" />
 					</xsl:when>
 				</xsl:choose>
 				(Size <xsl:value-of select="sgr:numberOfRegisters" />) </td>
@@ -179,10 +179,10 @@
 		<tr class="transportDetails">
 			<td>Data Type</td>
 			<td>
-				<xsl:apply-templates select="./@dataType" />
+				<xsl:value-of select="./sgr:dataType" />
 			</td>
 		</tr>
-		<xsl:apply-templates select="sgr:restServiceCall" />
+        <xsl:call-template name="SGrRestServiceCall" />
 	</xsl:template>
 
 </xsl:stylesheet>

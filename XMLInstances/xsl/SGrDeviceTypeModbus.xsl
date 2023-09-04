@@ -171,7 +171,7 @@
                 </td>
                 <td>
                     <xsl:choose>
-                        <xsl:when test="sgr:accessProtection/@isEnabled">Enabled: </xsl:when>
+                        <xsl:when test="sgr:accessProtection/sgr:isEnabled">Enabled: </xsl:when>
                         <xsl:otherwise>Disabled: </xsl:otherwise>
                     </xsl:choose>
                     <xsl:for-each select="sgr:accessProtection/sgr:modbusExceptionCode">
