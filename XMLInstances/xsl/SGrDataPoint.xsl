@@ -146,16 +146,16 @@
 		<tr class="transportDetails">
 			<td>Register</td>
 			<td>
-				<xsl:value-of select="sgr:modbusFirstRegisterReference/sgr:registerType" />&#160; <xsl:value-of
-					select="sgr:modbusFirstRegisterReference/sgr:address" />
+				<xsl:value-of select="sgr:registerType" />&#160; <xsl:value-of
+					select="sgr:address" />
 				<xsl:choose>
-					<xsl:when test="sgr:modbusFirstRegisterReference/sgr:registerType = 'Coil'"> bit <xsl:value-of
-							select="sgr:modbusFirstRegisterReference/sgr:bitRank" />
+					<xsl:when test="sgr:registerType = 'Coil'"> bit <xsl:value-of
+							select="sgr:bitRank" />
 					</xsl:when>
 
 					<xsl:when
-						test="sgr:modbusFirstRegisterReference/sgr:registerType = 'DiscreteInput'"> bit <xsl:value-of
-							select="sgr:modbusFirstRegisterReference/sgr:bitRank" />
+						test="sgr:registerType = 'DiscreteInput'"> bit <xsl:value-of
+							select="sgr:bitRank" />
 					</xsl:when>
 				</xsl:choose>
 				(Size <xsl:value-of select="sgr:numberOfRegisters" />) </td>
@@ -182,7 +182,7 @@
 				<xsl:value-of select="./sgr:dataType" />
 			</td>
 		</tr>
-		<xsl:apply-templates select="sgr:restServiceCall" />
+        <xsl:call-template name="SGrRestServiceCall" />
 	</xsl:template>
 
 </xsl:stylesheet>
