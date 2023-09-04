@@ -27,21 +27,19 @@
     <restApiUri>https://my.meo-energy.com/meoApplicationServer</restApiUri>
     <restApiAuthenticationMethod>BearerSecurityScheme</restApiAuthenticationMethod>
     <restApiBearer>
-      <restServiceCall>
-        <requestHeader>
-          <header>
-            <headerName>Accept</headerName>
-            <value>application/json</value>
-          </header>
-        </requestHeader>
-        <requestMethod>POST</requestMethod>
-        <requestPath>/authentication</requestPath>
-        <requestBody>{"email": "{{username}}", "password": "{{password}}"}</requestBody>
-        <responseQuery>
-          <queryType>JMESPathExpression</queryType>
-          <query>accessToken</query>
-        </responseQuery>
-      </restServiceCall>
+      <requestHeader>
+        <header>
+          <headerName>Accept</headerName>
+          <value>application/json</value>
+        </header>
+      </requestHeader>
+      <requestMethod>POST</requestMethod>
+      <requestPath>/authentication</requestPath>
+      <requestBody>{"email": "{{username}}", "password": "{{password}}"}</requestBody>
+      <responseQuery>
+        <queryType>JMESPathExpression</queryType>
+        <query>accessToken</query>
+      </responseQuery>
     </restApiBearer>
   </restApiInterfaceDescription>
   <functionalProfileList>
@@ -77,20 +75,18 @@
           </dataPoint>
           <restApiDataPointConfiguration>
             <dataType>JSON_number</dataType>
-            <restServiceCall>
-              <requestHeader>
-                <header>
-                  <headerName>Accept</headerName>
-                  <value>application/json</value>
-                </header>
-              </requestHeader>
-              <requestMethod>GET</requestMethod>
-              <requestPath>/sgr/cem/measurements?serialNo={{serialNo}}</requestPath>
-              <responseQuery>
-                <queryType>JMESPathExpression</queryType>
-                <query>activePowerACtot</query>
-              </responseQuery>
-            </restServiceCall>
+            <requestHeader>
+              <header>
+                <headerName>Accept</headerName>
+                <value>application/json</value>
+              </header>
+            </requestHeader>
+            <requestMethod>GET</requestMethod>
+            <requestPath>/sgr/cem/measurements?serialNo={{serialNo}}</requestPath>
+            <responseQuery>
+              <queryType>JMESPathExpression</queryType>
+              <query>activePowerACtot</query>
+            </responseQuery>
           </restApiDataPointConfiguration>
         </dataPointListElement>
       </dataPointList>

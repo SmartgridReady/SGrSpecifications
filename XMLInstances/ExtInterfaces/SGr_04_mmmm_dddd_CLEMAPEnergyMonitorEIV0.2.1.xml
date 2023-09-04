@@ -21,25 +21,23 @@
     <restApiUri>b1.cloud.clemap.com:3032</restApiUri>
     <restApiAuthenticationMethod>BearerSecurityScheme</restApiAuthenticationMethod>
     <restApiBearer>
-      <restServiceCall>
-        <requestHeader>
-          <header>
-            <headerName>Accept</headerName>
-            <value>application/json</value>
-          </header>
-          <header>
-            <headerName>Content-Type</headerName>
-            <value>application/json</value>
-          </header>
-        </requestHeader>
-        <requestMethod>POST</requestMethod>
-        <requestPath>/authentication</requestPath>
-        <requestBody>{"strategy": "local", "email": "{{username}}", "password": "{{password}}"}</requestBody>
-        <responseQuery>
-          <queryType>JMESPathExpression</queryType>
-          <query>accessToken</query>
-        </responseQuery>
-      </restServiceCall>
+      <requestHeader>
+        <header>
+          <headerName>Accept</headerName>
+          <value>application/json</value>
+        </header>
+        <header>
+          <headerName>Content-Type</headerName>
+          <value>application/json</value>
+        </header>
+      </requestHeader>
+      <requestMethod>POST</requestMethod>
+      <requestPath>/authentication</requestPath>
+      <requestBody>{"strategy": "local", "email": "{{username}}", "password": "{{password}}"}</requestBody>
+      <responseQuery>
+        <queryType>JMESPathExpression</queryType>
+        <query>accessToken</query>
+      </responseQuery>
     </restApiBearer>
   </restApiInterfaceDescription>
   <functionalProfileList>
@@ -71,24 +69,22 @@
           </dataPoint>
           <restApiDataPointConfiguration>
             <dataType>JSON_number</dataType>
-            <restServiceCall>
-              <requestHeader>
-                <header>
-                  <headerName>Accept</headerName>
-                  <value>application/json</value>
-                </header>
-                <header>
-                  <headerName>Authentication</headerName>
-                  <value>Bearer {{bearerToken}}</value>
-                </header>
-              </requestHeader>
-              <requestMethod>GET</requestMethod>
-              <requestPath>/digitaltwins/?sensor_id={sensor_id}</requestPath>
-              <responseQuery>
-                <queryType>JMESPathExpression</queryType>
-                <query>sum([[0].ten_sec.p_l1,[0].ten_sec.p_l2,[0].ten_sec.p_l3])</query>
-              </responseQuery>
-            </restServiceCall>
+            <requestHeader>
+              <header>
+                <headerName>Accept</headerName>
+                <value>application/json</value>
+              </header>
+              <header>
+                <headerName>Authentication</headerName>
+                <value>Bearer {{bearerToken}}</value>
+              </header>
+            </requestHeader>
+            <requestMethod>GET</requestMethod>
+            <requestPath>/digitaltwins/?sensor_id={sensor_id}</requestPath>
+            <responseQuery>
+              <queryType>JMESPathExpression</queryType>
+              <query>sum([[0].ten_sec.p_l1,[0].ten_sec.p_l2,[0].ten_sec.p_l3])</query>
+            </responseQuery>
           </restApiDataPointConfiguration>
         </dataPointListElement>
         <dataPointListElement>
@@ -103,20 +99,18 @@
           </dataPoint>
           <restApiDataPointConfiguration>
             <dataType>JSON_number</dataType>
-            <restServiceCall>
-              <requestHeader>
-                <header>
-                  <headerName>Accept</headerName>
-                  <value>application/json</value>
-                </header>
-              </requestHeader>
-              <requestMethod>GET</requestMethod>
-              <requestPath>/digitaltwins/?sensor_id={sensor_id}</requestPath>
-              <responseQuery>
-                <queryType>JMESPathExpression</queryType>
-                <query>[0].ten_sec.p_l1</query>
-              </responseQuery>
-            </restServiceCall>
+            <requestHeader>
+              <header>
+                <headerName>Accept</headerName>
+                <value>application/json</value>
+              </header>
+            </requestHeader>
+            <requestMethod>GET</requestMethod>
+            <requestPath>/digitaltwins/?sensor_id={sensor_id}</requestPath>
+            <responseQuery>
+              <queryType>JMESPathExpression</queryType>
+              <query>[0].ten_sec.p_l1</query>
+            </responseQuery>
           </restApiDataPointConfiguration>
         </dataPointListElement>
         <dataPointListElement>
@@ -131,20 +125,18 @@
           </dataPoint>
           <restApiDataPointConfiguration>
             <dataType>JSON_number</dataType>
-            <restServiceCall>
-              <requestHeader>
-                <header>
-                  <headerName>Accept</headerName>
-                  <value>application/json</value>
-                </header>
-              </requestHeader>
-              <requestMethod>GET</requestMethod>
-              <requestPath>/digitaltwins/?sensor_id={sensor_id}</requestPath>
-              <responseQuery>
-                <queryType>JMESPathExpression</queryType>
-                <query>[0].ten_sec.p_l2</query>
-              </responseQuery>
-            </restServiceCall>
+            <requestHeader>
+              <header>
+                <headerName>Accept</headerName>
+                <value>application/json</value>
+              </header>
+            </requestHeader>
+            <requestMethod>GET</requestMethod>
+            <requestPath>/digitaltwins/?sensor_id={sensor_id}</requestPath>
+            <responseQuery>
+              <queryType>JMESPathExpression</queryType>
+              <query>[0].ten_sec.p_l2</query>
+            </responseQuery>
           </restApiDataPointConfiguration>
         </dataPointListElement>
         <dataPointListElement>
@@ -159,20 +151,18 @@
           </dataPoint>
           <restApiDataPointConfiguration>
             <dataType>JSON_number</dataType>
-            <restServiceCall>
-              <requestHeader>
-                <header>
-                  <headerName>Accept</headerName>
-                  <value>application/json</value>
-                </header>
-              </requestHeader>
-              <requestMethod>GET</requestMethod>
-              <requestPath>/digitaltwins/?sensor_id={sensor_id}</requestPath>
-              <responseQuery>
-                <queryType>JMESPathExpression</queryType>
-                <query>[0].ten_sec.p_l3</query>
-              </responseQuery>
-            </restServiceCall>
+            <requestHeader>
+              <header>
+                <headerName>Accept</headerName>
+                <value>application/json</value>
+              </header>
+            </requestHeader>
+            <requestMethod>GET</requestMethod>
+            <requestPath>/digitaltwins/?sensor_id={sensor_id}</requestPath>
+            <responseQuery>
+              <queryType>JMESPathExpression</queryType>
+              <query>[0].ten_sec.p_l3</query>
+            </responseQuery>
           </restApiDataPointConfiguration>
         </dataPointListElement>
       </dataPointList>
@@ -205,24 +195,22 @@
           </dataPoint>
           <restApiDataPointConfiguration>
             <dataType>JSON_number</dataType>
-            <restServiceCall>
-              <requestHeader>
-                <header>
-                  <headerName>Accept</headerName>
-                  <value>application/json</value>
-                </header>
-                <header>
-                  <headerName>Authentication</headerName>
-                  <value>Bearer {{bearerToken}}</value>
-                </header>
-              </requestHeader>
-              <requestMethod>GET</requestMethod>
-              <requestPath>/digitaltwins/?sensor_id={sensor_id}</requestPath>
-              <responseQuery>
-                <queryType>JMESPathExpression</queryType>
-                <query>sum([[0].ten_sec.q_l1,[0].ten_sec.q_l2,[0].ten_sec.q_l3])</query>
-              </responseQuery>
-            </restServiceCall>
+            <requestHeader>
+              <header>
+                <headerName>Accept</headerName>
+                <value>application/json</value>
+              </header>
+              <header>
+                <headerName>Authentication</headerName>
+                <value>Bearer {{bearerToken}}</value>
+              </header>
+            </requestHeader>
+            <requestMethod>GET</requestMethod>
+            <requestPath>/digitaltwins/?sensor_id={sensor_id}</requestPath>
+            <responseQuery>
+              <queryType>JMESPathExpression</queryType>
+              <query>sum([[0].ten_sec.q_l1,[0].ten_sec.q_l2,[0].ten_sec.q_l3])</query>
+            </responseQuery>
           </restApiDataPointConfiguration>
         </dataPointListElement>
         <dataPointListElement>
@@ -237,20 +225,18 @@
           </dataPoint>
           <restApiDataPointConfiguration>
             <dataType>JSON_number</dataType>
-            <restServiceCall>
-              <requestHeader>
-                <header>
-                  <headerName>Accept</headerName>
-                  <value>application/json</value>
-                </header>
-              </requestHeader>
-              <requestMethod>GET</requestMethod>
-              <requestPath>/digitaltwins/?sensor_id={sensor_id}</requestPath>
-              <responseQuery>
-                <queryType>JMESPathExpression</queryType>
-                <query>[0].ten_sec.q_l1</query>
-              </responseQuery>
-            </restServiceCall>
+            <requestHeader>
+              <header>
+                <headerName>Accept</headerName>
+                <value>application/json</value>
+              </header>
+            </requestHeader>
+            <requestMethod>GET</requestMethod>
+            <requestPath>/digitaltwins/?sensor_id={sensor_id}</requestPath>
+            <responseQuery>
+              <queryType>JMESPathExpression</queryType>
+              <query>[0].ten_sec.q_l1</query>
+            </responseQuery>
           </restApiDataPointConfiguration>
         </dataPointListElement>
         <dataPointListElement>
@@ -265,20 +251,18 @@
           </dataPoint>
           <restApiDataPointConfiguration>
             <dataType>JSON_number</dataType>
-            <restServiceCall>
-              <requestHeader>
-                <header>
-                  <headerName>Accept</headerName>
-                  <value>application/json</value>
-                </header>
-              </requestHeader>
-              <requestMethod>GET</requestMethod>
-              <requestPath>/digitaltwins/?sensor_id={sensor_id}</requestPath>
-              <responseQuery>
-                <queryType>JMESPathExpression</queryType>
-                <query>[0].ten_sec.q_l2</query>
-              </responseQuery>
-            </restServiceCall>
+            <requestHeader>
+              <header>
+                <headerName>Accept</headerName>
+                <value>application/json</value>
+              </header>
+            </requestHeader>
+            <requestMethod>GET</requestMethod>
+            <requestPath>/digitaltwins/?sensor_id={sensor_id}</requestPath>
+            <responseQuery>
+              <queryType>JMESPathExpression</queryType>
+              <query>[0].ten_sec.q_l2</query>
+            </responseQuery>
           </restApiDataPointConfiguration>
         </dataPointListElement>
         <dataPointListElement>
@@ -293,20 +277,18 @@
           </dataPoint>
           <restApiDataPointConfiguration>
             <dataType>JSON_number</dataType>
-            <restServiceCall>
-              <requestHeader>
-                <header>
-                  <headerName>Accept</headerName>
-                  <value>application/json</value>
-                </header>
-              </requestHeader>
-              <requestMethod>GET</requestMethod>
-              <requestPath>/digitaltwins/?sensor_id={sensor_id}</requestPath>
-              <responseQuery>
-                <queryType>JMESPathExpression</queryType>
-                <query>[0].ten_sec.q_l3</query>
-              </responseQuery>
-            </restServiceCall>
+            <requestHeader>
+              <header>
+                <headerName>Accept</headerName>
+                <value>application/json</value>
+              </header>
+            </requestHeader>
+            <requestMethod>GET</requestMethod>
+            <requestPath>/digitaltwins/?sensor_id={sensor_id}</requestPath>
+            <responseQuery>
+              <queryType>JMESPathExpression</queryType>
+              <query>[0].ten_sec.q_l3</query>
+            </responseQuery>
           </restApiDataPointConfiguration>
         </dataPointListElement>
       </dataPointList>
@@ -339,24 +321,22 @@
           </dataPoint>
           <restApiDataPointConfiguration>
             <dataType>JSON_number</dataType>
-            <restServiceCall>
-              <requestHeader>
-                <header>
-                  <headerName>Accept</headerName>
-                  <value>application/json</value>
-                </header>
-                <header>
-                  <headerName>Authentication</headerName>
-                  <value>Bearer {{bearerToken}}</value>
-                </header>
-              </requestHeader>
-              <requestMethod>GET</requestMethod>
-              <requestPath>/digitaltwins/?sensor_id={sensor_id}</requestPath>
-              <responseQuery>
-                <queryType>JMESPathExpression</queryType>
-                <query>sum([[0].one_min.avg_energy_l1,[0].one_min.avg_energy_l2,[0].one_min.avg_energy_l3])</query>
-              </responseQuery>
-            </restServiceCall>
+            <requestHeader>
+              <header>
+                <headerName>Accept</headerName>
+                <value>application/json</value>
+              </header>
+              <header>
+                <headerName>Authentication</headerName>
+                <value>Bearer {{bearerToken}}</value>
+              </header>
+            </requestHeader>
+            <requestMethod>GET</requestMethod>
+            <requestPath>/digitaltwins/?sensor_id={sensor_id}</requestPath>
+            <responseQuery>
+              <queryType>JMESPathExpression</queryType>
+              <query>sum([[0].one_min.avg_energy_l1,[0].one_min.avg_energy_l2,[0].one_min.avg_energy_l3])</query>
+            </responseQuery>
           </restApiDataPointConfiguration>
         </dataPointListElement>
         <dataPointListElement>
@@ -371,20 +351,18 @@
           </dataPoint>
           <restApiDataPointConfiguration>
             <dataType>JSON_number</dataType>
-            <restServiceCall>
-              <requestHeader>
-                <header>
-                  <headerName>Accept</headerName>
-                  <value>application/json</value>
-                </header>
-              </requestHeader>
-              <requestMethod>GET</requestMethod>
-              <requestPath>/digitaltwins/?sensor_id={sensor_id}</requestPath>
-              <responseQuery>
-                <queryType>JMESPathExpression</queryType>
-                <query>[0].one_min.avg_energy_l1</query>
-              </responseQuery>
-            </restServiceCall>
+            <requestHeader>
+              <header>
+                <headerName>Accept</headerName>
+                <value>application/json</value>
+              </header>
+            </requestHeader>
+            <requestMethod>GET</requestMethod>
+            <requestPath>/digitaltwins/?sensor_id={sensor_id}</requestPath>
+            <responseQuery>
+              <queryType>JMESPathExpression</queryType>
+              <query>[0].one_min.avg_energy_l1</query>
+            </responseQuery>
           </restApiDataPointConfiguration>
         </dataPointListElement>
         <dataPointListElement>
@@ -399,20 +377,18 @@
           </dataPoint>
           <restApiDataPointConfiguration>
             <dataType>JSON_number</dataType>
-            <restServiceCall>
-              <requestHeader>
-                <header>
-                  <headerName>Accept</headerName>
-                  <value>application/json</value>
-                </header>
-              </requestHeader>
-              <requestMethod>GET</requestMethod>
-              <requestPath>/digitaltwins/?sensor_id={sensor_id}</requestPath>
-              <responseQuery>
-                <queryType>JMESPathExpression</queryType>
-                <query>[0].one_min.avg_energy_l2</query>
-              </responseQuery>
-            </restServiceCall>
+            <requestHeader>
+              <header>
+                <headerName>Accept</headerName>
+                <value>application/json</value>
+              </header>
+            </requestHeader>
+            <requestMethod>GET</requestMethod>
+            <requestPath>/digitaltwins/?sensor_id={sensor_id}</requestPath>
+            <responseQuery>
+              <queryType>JMESPathExpression</queryType>
+              <query>[0].one_min.avg_energy_l2</query>
+            </responseQuery>
           </restApiDataPointConfiguration>
         </dataPointListElement>
         <dataPointListElement>
@@ -427,20 +403,18 @@
           </dataPoint>
           <restApiDataPointConfiguration>
             <dataType>JSON_number</dataType>
-            <restServiceCall>
-              <requestHeader>
-                <header>
-                  <headerName>Accept</headerName>
-                  <value>application/json</value>
-                </header>
-              </requestHeader>
-              <requestMethod>GET</requestMethod>
-              <requestPath>/digitaltwins/?sensor_id={sensor_id}</requestPath>
-              <responseQuery>
-                <queryType>JMESPathExpression</queryType>
-                <query>[0].one_min.avg_energy_l3</query>
-              </responseQuery>
-            </restServiceCall>
+            <requestHeader>
+              <header>
+                <headerName>Accept</headerName>
+                <value>application/json</value>
+              </header>
+            </requestHeader>
+            <requestMethod>GET</requestMethod>
+            <requestPath>/digitaltwins/?sensor_id={sensor_id}</requestPath>
+            <responseQuery>
+              <queryType>JMESPathExpression</queryType>
+              <query>[0].one_min.avg_energy_l3</query>
+            </responseQuery>
           </restApiDataPointConfiguration>
         </dataPointListElement>
       </dataPointList>
@@ -473,24 +447,22 @@
           </dataPoint>
           <restApiDataPointConfiguration>
             <dataType>JSON_number</dataType>
-            <restServiceCall>
-              <requestHeader>
-                <header>
-                  <headerName>Accept</headerName>
-                  <value>application/json</value>
-                </header>
-                <header>
-                  <headerName>Authentication</headerName>
-                  <value>Bearer {{bearerToken}}</value>
-                </header>
-              </requestHeader>
-              <requestMethod>GET</requestMethod>
-              <requestPath>/digitaltwins/?sensor_id={sensor_id}</requestPath>
-              <responseQuery>
-                <queryType>JMESPathExpression</queryType>
-                <query>sum([[0].one_min.v_l1,[0].one_min.v_l2,[0].one_min.v_l3])</query>
-              </responseQuery>
-            </restServiceCall>
+            <requestHeader>
+              <header>
+                <headerName>Accept</headerName>
+                <value>application/json</value>
+              </header>
+              <header>
+                <headerName>Authentication</headerName>
+                <value>Bearer {{bearerToken}}</value>
+              </header>
+            </requestHeader>
+            <requestMethod>GET</requestMethod>
+            <requestPath>/digitaltwins/?sensor_id={sensor_id}</requestPath>
+            <responseQuery>
+              <queryType>JMESPathExpression</queryType>
+              <query>sum([[0].one_min.v_l1,[0].one_min.v_l2,[0].one_min.v_l3])</query>
+            </responseQuery>
           </restApiDataPointConfiguration>
         </dataPointListElement>
         <dataPointListElement>
@@ -505,20 +477,18 @@
           </dataPoint>
           <restApiDataPointConfiguration>
             <dataType>JSON_number</dataType>
-            <restServiceCall>
-              <requestHeader>
-                <header>
-                  <headerName>Accept</headerName>
-                  <value>application/json</value>
-                </header>
-              </requestHeader>
-              <requestMethod>GET</requestMethod>
-              <requestPath>/digitaltwins/?sensor_id={sensor_id}</requestPath>
-              <responseQuery>
-                <queryType>JMESPathExpression</queryType>
-                <query>[0].one_min.v_l1</query>
-              </responseQuery>
-            </restServiceCall>
+            <requestHeader>
+              <header>
+                <headerName>Accept</headerName>
+                <value>application/json</value>
+              </header>
+            </requestHeader>
+            <requestMethod>GET</requestMethod>
+            <requestPath>/digitaltwins/?sensor_id={sensor_id}</requestPath>
+            <responseQuery>
+              <queryType>JMESPathExpression</queryType>
+              <query>[0].one_min.v_l1</query>
+            </responseQuery>
           </restApiDataPointConfiguration>
         </dataPointListElement>
         <dataPointListElement>
@@ -533,20 +503,18 @@
           </dataPoint>
           <restApiDataPointConfiguration>
             <dataType>JSON_number</dataType>
-            <restServiceCall>
-              <requestHeader>
-                <header>
-                  <headerName>Accept</headerName>
-                  <value>application/json</value>
-                </header>
-              </requestHeader>
-              <requestMethod>GET</requestMethod>
-              <requestPath>/digitaltwins/?sensor_id={sensor_id}</requestPath>
-              <responseQuery>
-                <queryType>JMESPathExpression</queryType>
-                <query>[0].one_min.v_l2</query>
-              </responseQuery>
-            </restServiceCall>
+            <requestHeader>
+              <header>
+                <headerName>Accept</headerName>
+                <value>application/json</value>
+              </header>
+            </requestHeader>
+            <requestMethod>GET</requestMethod>
+            <requestPath>/digitaltwins/?sensor_id={sensor_id}</requestPath>
+            <responseQuery>
+              <queryType>JMESPathExpression</queryType>
+              <query>[0].one_min.v_l2</query>
+            </responseQuery>
           </restApiDataPointConfiguration>
         </dataPointListElement>
         <dataPointListElement>
@@ -561,20 +529,18 @@
           </dataPoint>
           <restApiDataPointConfiguration>
             <dataType>JSON_number</dataType>
-            <restServiceCall>
-              <requestHeader>
-                <header>
-                  <headerName>Accept</headerName>
-                  <value>application/json</value>
-                </header>
-              </requestHeader>
-              <requestMethod>GET</requestMethod>
-              <requestPath>/digitaltwins/?sensor_id={sensor_id}</requestPath>
-              <responseQuery>
-                <queryType>JMESPathExpression</queryType>
-                <query>[0].one_min.v_l3</query>
-              </responseQuery>
-            </restServiceCall>
+            <requestHeader>
+              <header>
+                <headerName>Accept</headerName>
+                <value>application/json</value>
+              </header>
+            </requestHeader>
+            <requestMethod>GET</requestMethod>
+            <requestPath>/digitaltwins/?sensor_id={sensor_id}</requestPath>
+            <responseQuery>
+              <queryType>JMESPathExpression</queryType>
+              <query>[0].one_min.v_l3</query>
+            </responseQuery>
           </restApiDataPointConfiguration>
         </dataPointListElement>
       </dataPointList>
@@ -607,24 +573,22 @@
           </dataPoint>
           <restApiDataPointConfiguration>
             <dataType>JSON_number</dataType>
-            <restServiceCall>
-              <requestHeader>
-                <header>
-                  <headerName>Accept</headerName>
-                  <value>application/json</value>
-                </header>
-                <header>
-                  <headerName>Authentication</headerName>
-                  <value>Bearer {{bearerToken}}</value>
-                </header>
-              </requestHeader>
-              <requestMethod>GET</requestMethod>
-              <requestPath>/digitaltwins/?sensor_id={sensor_id}</requestPath>
-              <responseQuery>
-                <queryType>JMESPathExpression</queryType>
-                <query>sum([[0].one_min.i_l1,[0].one_min.i_l2,[0].one_min.i_l3])</query>
-              </responseQuery>
-            </restServiceCall>
+            <requestHeader>
+              <header>
+                <headerName>Accept</headerName>
+                <value>application/json</value>
+              </header>
+              <header>
+                <headerName>Authentication</headerName>
+                <value>Bearer {{bearerToken}}</value>
+              </header>
+            </requestHeader>
+            <requestMethod>GET</requestMethod>
+            <requestPath>/digitaltwins/?sensor_id={sensor_id}</requestPath>
+            <responseQuery>
+              <queryType>JMESPathExpression</queryType>
+              <query>sum([[0].one_min.i_l1,[0].one_min.i_l2,[0].one_min.i_l3])</query>
+            </responseQuery>
           </restApiDataPointConfiguration>
         </dataPointListElement>
         <dataPointListElement>
@@ -639,20 +603,18 @@
           </dataPoint>
           <restApiDataPointConfiguration>
             <dataType>JSON_number</dataType>
-            <restServiceCall>
-              <requestHeader>
-                <header>
-                  <headerName>Accept</headerName>
-                  <value>application/json</value>
-                </header>
-              </requestHeader>
-              <requestMethod>GET</requestMethod>
-              <requestPath>/digitaltwins/?sensor_id={sensor_id}</requestPath>
-              <responseQuery>
-                <queryType>JMESPathExpression</queryType>
-                <query>[0].one_min.i_l1</query>
-              </responseQuery>
-            </restServiceCall>
+            <requestHeader>
+              <header>
+                <headerName>Accept</headerName>
+                <value>application/json</value>
+              </header>
+            </requestHeader>
+            <requestMethod>GET</requestMethod>
+            <requestPath>/digitaltwins/?sensor_id={sensor_id}</requestPath>
+            <responseQuery>
+              <queryType>JMESPathExpression</queryType>
+              <query>[0].one_min.i_l1</query>
+            </responseQuery>
           </restApiDataPointConfiguration>
         </dataPointListElement>
         <dataPointListElement>
@@ -667,20 +629,18 @@
           </dataPoint>
           <restApiDataPointConfiguration>
             <dataType>JSON_number</dataType>
-            <restServiceCall>
-              <requestHeader>
-                <header>
-                  <headerName>Accept</headerName>
-                  <value>application/json</value>
-                </header>
-              </requestHeader>
-              <requestMethod>GET</requestMethod>
-              <requestPath>/digitaltwins/?sensor_id={sensor_id}</requestPath>
-              <responseQuery>
-                <queryType>JMESPathExpression</queryType>
-                <query>[0].one_min.i_l2</query>
-              </responseQuery>
-            </restServiceCall>
+            <requestHeader>
+              <header>
+                <headerName>Accept</headerName>
+                <value>application/json</value>
+              </header>
+            </requestHeader>
+            <requestMethod>GET</requestMethod>
+            <requestPath>/digitaltwins/?sensor_id={sensor_id}</requestPath>
+            <responseQuery>
+              <queryType>JMESPathExpression</queryType>
+              <query>[0].one_min.i_l2</query>
+            </responseQuery>
           </restApiDataPointConfiguration>
         </dataPointListElement>
         <dataPointListElement>
@@ -695,20 +655,18 @@
           </dataPoint>
           <restApiDataPointConfiguration>
             <dataType>JSON_number</dataType>
-            <restServiceCall>
-              <requestHeader>
-                <header>
-                  <headerName>Accept</headerName>
-                  <value>application/json</value>
-                </header>
-              </requestHeader>
-              <requestMethod>GET</requestMethod>
-              <requestPath>/digitaltwins/?sensor_id={sensor_id}</requestPath>
-              <responseQuery>
-                <queryType>JMESPathExpression</queryType>
-                <query>[0].one_min.i_l3</query>
-              </responseQuery>
-            </restServiceCall>
+            <requestHeader>
+              <header>
+                <headerName>Accept</headerName>
+                <value>application/json</value>
+              </header>
+            </requestHeader>
+            <requestMethod>GET</requestMethod>
+            <requestPath>/digitaltwins/?sensor_id={sensor_id}</requestPath>
+            <responseQuery>
+              <queryType>JMESPathExpression</queryType>
+              <query>[0].one_min.i_l3</query>
+            </responseQuery>
           </restApiDataPointConfiguration>
         </dataPointListElement>
       </dataPointList>
@@ -741,24 +699,22 @@
           </dataPoint>
           <restApiDataPointConfiguration>
             <dataType>JSON_number</dataType>
-            <restServiceCall>
-              <requestHeader>
-                <header>
-                  <headerName>Accept</headerName>
-                  <value>application/json</value>
-                </header>
-                <header>
-                  <headerName>Authentication</headerName>
-                  <value>Bearer {{bearerToken}}</value>
-                </header>
-              </requestHeader>
-              <requestMethod>GET</requestMethod>
-              <requestPath>/digitaltwins/?sensor_id={sensor_id}</requestPath>
-              <responseQuery>
-                <queryType>JMESPathExpression</queryType>
-                <query>sum([[0].one_min.s_l1,[0].one_min.s_l2,[0].one_min.s_l3])</query>
-              </responseQuery>
-            </restServiceCall>
+            <requestHeader>
+              <header>
+                <headerName>Accept</headerName>
+                <value>application/json</value>
+              </header>
+              <header>
+                <headerName>Authentication</headerName>
+                <value>Bearer {{bearerToken}}</value>
+              </header>
+            </requestHeader>
+            <requestMethod>GET</requestMethod>
+            <requestPath>/digitaltwins/?sensor_id={sensor_id}</requestPath>
+            <responseQuery>
+              <queryType>JMESPathExpression</queryType>
+              <query>sum([[0].one_min.s_l1,[0].one_min.s_l2,[0].one_min.s_l3])</query>
+            </responseQuery>
           </restApiDataPointConfiguration>
         </dataPointListElement>
         <dataPointListElement>
@@ -773,20 +729,18 @@
           </dataPoint>
           <restApiDataPointConfiguration>
             <dataType>JSON_number</dataType>
-            <restServiceCall>
-              <requestHeader>
-                <header>
-                  <headerName>Accept</headerName>
-                  <value>application/json</value>
-                </header>
-              </requestHeader>
-              <requestMethod>GET</requestMethod>
-              <requestPath>/digitaltwins/?sensor_id={sensor_id}</requestPath>
-              <responseQuery>
-                <queryType>JMESPathExpression</queryType>
-                <query>[0].one_min.s_l1</query>
-              </responseQuery>
-            </restServiceCall>
+            <requestHeader>
+              <header>
+                <headerName>Accept</headerName>
+                <value>application/json</value>
+              </header>
+            </requestHeader>
+            <requestMethod>GET</requestMethod>
+            <requestPath>/digitaltwins/?sensor_id={sensor_id}</requestPath>
+            <responseQuery>
+              <queryType>JMESPathExpression</queryType>
+              <query>[0].one_min.s_l1</query>
+            </responseQuery>
           </restApiDataPointConfiguration>
         </dataPointListElement>
         <dataPointListElement>
@@ -801,20 +755,18 @@
           </dataPoint>
           <restApiDataPointConfiguration>
             <dataType>JSON_number</dataType>
-            <restServiceCall>
-              <requestHeader>
-                <header>
-                  <headerName>Accept</headerName>
-                  <value>application/json</value>
-                </header>
-              </requestHeader>
-              <requestMethod>GET</requestMethod>
-              <requestPath>/digitaltwins/?sensor_id={sensor_id}</requestPath>
-              <responseQuery>
-                <queryType>JMESPathExpression</queryType>
-                <query>[0].one_min.s_l2</query>
-              </responseQuery>
-            </restServiceCall>
+            <requestHeader>
+              <header>
+                <headerName>Accept</headerName>
+                <value>application/json</value>
+              </header>
+            </requestHeader>
+            <requestMethod>GET</requestMethod>
+            <requestPath>/digitaltwins/?sensor_id={sensor_id}</requestPath>
+            <responseQuery>
+              <queryType>JMESPathExpression</queryType>
+              <query>[0].one_min.s_l2</query>
+            </responseQuery>
           </restApiDataPointConfiguration>
         </dataPointListElement>
         <dataPointListElement>
@@ -829,20 +781,18 @@
           </dataPoint>
           <restApiDataPointConfiguration>
             <dataType>JSON_number</dataType>
-            <restServiceCall>
-              <requestHeader>
-                <header>
-                  <headerName>Accept</headerName>
-                  <value>application/json</value>
-                </header>
-              </requestHeader>
-              <requestMethod>GET</requestMethod>
-              <requestPath>/digitaltwins/?sensor_id={sensor_id}</requestPath>
-              <responseQuery>
-                <queryType>JMESPathExpression</queryType>
-                <query>[0].one_min.s_l3</query>
-              </responseQuery>
-            </restServiceCall>
+            <requestHeader>
+              <header>
+                <headerName>Accept</headerName>
+                <value>application/json</value>
+              </header>
+            </requestHeader>
+            <requestMethod>GET</requestMethod>
+            <requestPath>/digitaltwins/?sensor_id={sensor_id}</requestPath>
+            <responseQuery>
+              <queryType>JMESPathExpression</queryType>
+              <query>[0].one_min.s_l3</query>
+            </responseQuery>
           </restApiDataPointConfiguration>
         </dataPointListElement>
       </dataPointList>
@@ -875,24 +825,22 @@
           </dataPoint>
           <restApiDataPointConfiguration>
             <dataType>JSON_number</dataType>
-            <restServiceCall>
-              <requestHeader>
-                <header>
-                  <headerName>Accept</headerName>
-                  <value>application/json</value>
-                </header>
-                <header>
-                  <headerName>Authentication</headerName>
-                  <value>Bearer {{bearerToken}}</value>
-                </header>
-              </requestHeader>
-              <requestMethod>GET</requestMethod>
-              <requestPath>/digitaltwins/?sensor_id={sensor_id}</requestPath>
-              <responseQuery>
-                <queryType>JMESPathExpression</queryType>
-                <query>sum([[0].one_min.pf_l1,[0].one_min.pf_l2,[0].one_min.pf_l3])</query>
-              </responseQuery>
-            </restServiceCall>
+            <requestHeader>
+              <header>
+                <headerName>Accept</headerName>
+                <value>application/json</value>
+              </header>
+              <header>
+                <headerName>Authentication</headerName>
+                <value>Bearer {{bearerToken}}</value>
+              </header>
+            </requestHeader>
+            <requestMethod>GET</requestMethod>
+            <requestPath>/digitaltwins/?sensor_id={sensor_id}</requestPath>
+            <responseQuery>
+              <queryType>JMESPathExpression</queryType>
+              <query>sum([[0].one_min.pf_l1,[0].one_min.pf_l2,[0].one_min.pf_l3])</query>
+            </responseQuery>
           </restApiDataPointConfiguration>
         </dataPointListElement>
         <dataPointListElement>
@@ -907,20 +855,18 @@
           </dataPoint>
           <restApiDataPointConfiguration>
             <dataType>JSON_number</dataType>
-            <restServiceCall>
-              <requestHeader>
-                <header>
-                  <headerName>Accept</headerName>
-                  <value>application/json</value>
-                </header>
-              </requestHeader>
-              <requestMethod>GET</requestMethod>
-              <requestPath>/digitaltwins/?sensor_id={sensor_id}</requestPath>
-              <responseQuery>
-                <queryType>JMESPathExpression</queryType>
-                <query>[0].one_min.pf_l1</query>
-              </responseQuery>
-            </restServiceCall>
+            <requestHeader>
+              <header>
+                <headerName>Accept</headerName>
+                <value>application/json</value>
+              </header>
+            </requestHeader>
+            <requestMethod>GET</requestMethod>
+            <requestPath>/digitaltwins/?sensor_id={sensor_id}</requestPath>
+            <responseQuery>
+              <queryType>JMESPathExpression</queryType>
+              <query>[0].one_min.pf_l1</query>
+            </responseQuery>
           </restApiDataPointConfiguration>
         </dataPointListElement>
         <dataPointListElement>
@@ -935,20 +881,18 @@
           </dataPoint>
           <restApiDataPointConfiguration>
             <dataType>JSON_number</dataType>
-            <restServiceCall>
-              <requestHeader>
-                <header>
-                  <headerName>Accept</headerName>
-                  <value>application/json</value>
-                </header>
-              </requestHeader>
-              <requestMethod>GET</requestMethod>
-              <requestPath>/digitaltwins/?sensor_id={sensor_id}</requestPath>
-              <responseQuery>
-                <queryType>JMESPathExpression</queryType>
-                <query>[0].one_min.pf_l2</query>
-              </responseQuery>
-            </restServiceCall>
+            <requestHeader>
+              <header>
+                <headerName>Accept</headerName>
+                <value>application/json</value>
+              </header>
+            </requestHeader>
+            <requestMethod>GET</requestMethod>
+            <requestPath>/digitaltwins/?sensor_id={sensor_id}</requestPath>
+            <responseQuery>
+              <queryType>JMESPathExpression</queryType>
+              <query>[0].one_min.pf_l2</query>
+            </responseQuery>
           </restApiDataPointConfiguration>
         </dataPointListElement>
         <dataPointListElement>
@@ -963,20 +907,18 @@
           </dataPoint>
           <restApiDataPointConfiguration>
             <dataType>JSON_number</dataType>
-            <restServiceCall>
-              <requestHeader>
-                <header>
-                  <headerName>Accept</headerName>
-                  <value>application/json</value>
-                </header>
-              </requestHeader>
-              <requestMethod>GET</requestMethod>
-              <requestPath>/digitaltwins/?sensor_id={sensor_id}</requestPath>
-              <responseQuery>
-                <queryType>JMESPathExpression</queryType>
-                <query>[0].one_min.pf_l3</query>
-              </responseQuery>
-            </restServiceCall>
+            <requestHeader>
+              <header>
+                <headerName>Accept</headerName>
+                <value>application/json</value>
+              </header>
+            </requestHeader>
+            <requestMethod>GET</requestMethod>
+            <requestPath>/digitaltwins/?sensor_id={sensor_id}</requestPath>
+            <responseQuery>
+              <queryType>JMESPathExpression</queryType>
+              <query>[0].one_min.pf_l3</query>
+            </responseQuery>
           </restApiDataPointConfiguration>
         </dataPointListElement>
       </dataPointList>
