@@ -5,10 +5,7 @@
         <!--maxVal-->
         <xsl:if test="sgr:maxVal">
             <tr class="genericDetails">
-                <td>
-                    <img src="/xsl/genattr.png" alt="" width="16pt" height="16pt" />
-                    Upper Range Limit
-                </td>
+                <td class="genericattribute">Upper Range Limit</td>
                 <td>
                     <xsl:value-of select="sgr:maxVal" />
                 </td>
@@ -18,10 +15,7 @@
         <!--minVal-->
         <xsl:if test="sgr:minVal">
             <tr class="genericDetails">
-                <td>
-                    <img src="/xsl/genattr.png" alt="" width="16pt" height="16pt" />
-                    Lower Range Limit
-                </td>
+                <td class="genericattribute">Lower Range Limit</td>
                 <td>
                     <xsl:value-of select="sgr:minVal" />
                 </td>
@@ -31,10 +25,7 @@
         <!--specialQualityRequirement-->
         <xsl:if test="sgr:specialQualityRequirement">
             <tr class="genericDetails">
-                <td>
-                    <img src="/xsl/genattr.png" alt="" width="16pt" height="16pt" />
-                    Quality Requirements
-                </td>
+                <td class="genericattribute">Quality Requirements</td>
                 <td>
                     <xsl:value-of select="sgr:specialQualityRequirement" />
                 </td>
@@ -44,10 +35,7 @@
         <!--precisionPercent-->
         <xsl:if test="sgr:precisionPercent">
             <tr class="genericDetails">
-                <td>
-                    <img src="/xsl/genattr.png" alt="" width="16pt" height="16pt" />
-                    Precision
-                </td>
+                <td class="genericattribute">Precision</td>
                 <td>
                     <xsl:value-of select="sgr:precisionPercent" />
                     %
@@ -58,10 +46,7 @@
         <!--stabilityFallback-->
         <xsl:if test="sgr:stabilityFallback">
             <tr class="genericDetails">
-                <td>
-                    <img src="/xsl/genattr.png" alt="" width="16pt" height="16pt" />
-                    Stability Fallback
-                </td>
+                <td class="genericattribute">Stability Fallback</td>
                 <td>
                     Max recieve time:
                     <xsl:value-of select="sgr:stabilityFallback/sgr:maxReceiveTime" />&#160;s
@@ -79,10 +64,7 @@
         <!--smoothTransition-->
         <xsl:if test="sgr:smoothTransition">
             <tr class="genericDetails">
-                <td>
-                    <img src="/xsl/genattr.png" alt="" width="16pt" height="16pt" />
-                    Smooth Transition
-                </td>
+                <td class="genericattribute">Smooth Transition</td>
                 <td>
                     <xsl:if test="sgr:smoothTransition/sgr:winTms">
                         Window:
@@ -106,10 +88,7 @@
         <!--maxLatencyTime-->
         <xsl:if test="sgr:maxLatencyTimeMs">
             <tr class="genericDetails">
-                <td>
-                    <img src="/xsl/genattr.png" alt="" width="16pt" height="16pt" />
-                    Max. Latency
-                </td>
+                <td class="genericattribute">Max. Latency</td>
                 <td>
                     <xsl:value-of select="sgr:maxLatencyTimeMs" />&#160;ms
                 </td>
@@ -119,10 +98,7 @@
         <!--measuredValueType-->
         <xsl:if test="sgr:measuredValueType">
             <tr class="genericDetails">
-                <td>
-                    <img src="/xsl/genattr.png" alt="" width="16pt" height="16pt" />
-                    ValueType
-                </td>
+                <td class="genericattribute">ValueType</td>
                 <td>
                     <xsl:value-of select="sgr:measuredValueType" />
                 </td>
@@ -132,10 +108,7 @@
         <!--measuredValueSource-->
         <xsl:if test="sgr:measuredValueSource">
             <tr class="genericDetails">
-                <td>
-                    <img src="/xsl/genattr.png" alt="" width="16pt" height="16pt" />
-                    Value Source
-                </td>
+                <td class="genericattribute">Value Source</td>
                 <td>
                     <xsl:value-of select="sgr:measuredValueSource" />
                 </td>
@@ -145,10 +118,7 @@
         <!--sampleRateHz-->
         <xsl:if test="sgr:sampleRateHz">
             <tr class="genericDetails">
-                <td>
-                    <img src="/xsl/genattr.png" alt="" width="16pt" height="16pt" />
-                    Sample Rate
-                </td>
+                <td class="genericattribute">Sample Rate</td>
                 <td>
                     <xsl:value-of select="sgr:sampleRateHz" />
                     ms
@@ -159,10 +129,7 @@
         <!--curtailment-->
         <xsl:if test="sgr:curtailment">
             <tr class="genericDetails">
-                <td>
-                    <img src="/xsl/genattr.png" alt="" width="16pt" height="16pt" />
-                    Curtailment
-                </td>
+                <td class="genericattribute">Curtailment</td>
                 <td>
                     <xsl:value-of select="sgr:curtailment" />
                 </td>
@@ -172,10 +139,7 @@
         <!--minLoad-->
         <xsl:if test="sgr:minLoad">
             <tr class="genericDetails">
-                <td>
-                    <img src="/xsl/genattr.png" alt="" width="16pt" height="16pt" />
-                    Min. Load
-                </td>
+                <td class="genericattribute">Min. Load</td>
                 <td>
                     <xsl:value-of select="sgr:minLoad" />
                 </td>
@@ -185,10 +149,7 @@
         <!--maxLockTimeMinutes-->
         <xsl:if test="sgr:maxLockTimeMinutes">
             <tr class="genericDetails">
-                <td>
-                    <img src="/xsl/genattr.png" alt="" width="16pt" height="16pt" />
-                    Max. Lock Time
-                </td>
+                <td class="genericattribute">Max. Lock Time</td>
                 <td>
                     <xsl:value-of select="sgr:maxLockTimeMinutes" />
                     min
@@ -199,10 +160,7 @@
         <!--minRunTimeMinutes-->
         <xsl:if test="sgr:minRunTimeMinutes">
             <tr class="genericDetails">
-                <td>
-                    <img src="/xsl/genattr.png" alt="" width="16pt" height="16pt" />
-                    Min. Run Time
-                </td>
+                <td class="genericattribute">Min. Run Time</td>
                 <td>
                     <xsl:value-of select="sgr:minRunTimeMinutes" />
                     min
@@ -213,10 +171,7 @@
         <!--valueByTimeTableMinutes-->
         <xsl:if test="sgr:valueByTimeTableMinutes">
             <tr class="genericDetails">
-                <td>
-                    <img src="/xsl/genattr.png" alt="" width="16pt" height="16pt" />
-                    Value by time Table
-                </td>
+                <td class="genericattribute">Value by time Table</td>
                 <td>
                     <xsl:value-of select="sgr:valueByTimeTableMinutes" />
                     min
@@ -227,10 +182,7 @@
         <!--flexAssistance-->
         <xsl:if test="sgr:flexAssistance">
             <tr class="genericDetails">
-                <td>
-                    <img src="/xsl/genattr.png" alt="" width="16pt" height="16pt" />
-                    Flex Assistance
-                </td>
+                <td class="genericattribute">Flex Assistance</td>
                 <td>
                     Assists
                     <xsl:value-of select="sgr:flexAssistance/sgr:assists" />

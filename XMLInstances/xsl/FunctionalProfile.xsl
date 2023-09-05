@@ -7,6 +7,12 @@
     - sgr:alternativeNames
 -->
 
+    <xsl:template match="sgr:functionalProfileList">
+        <xsl:for-each select="sgr:functionalProfileListElement">
+            <xsl:apply-templates select="."/>
+        </xsl:for-each>
+    </xsl:template>
+
     <xsl:template match="sgr:functionalProfileListElement">
         <div class="functionalProfile">
             <h2 style="float:left;"> Functional Profile - <xsl:value-of
@@ -23,6 +29,8 @@
                 <xsl:apply-templates select="sgr:genericAttributes" />
                 <xsl:apply-templates select="sgr:modbusAttributes" />
             </table>
+            
+            <xsl:apply-templates select="sgr:dataPointList" />
 
         </div>
     </xsl:template>
@@ -30,7 +38,7 @@
     <xsl:template match="sgr:functionalProfile">
         <xsl:apply-templates select="sgr:functionalProfileIdentification" />
 
-        <tr><td class="noborder">&#160;</td></tr>
+        <tr><td class="noborder" /></tr>
 
         <xsl:apply-templates select="sgr:alternativeNames" />
         <xsl:apply-templates select="sgr:legibleDescription" />
@@ -53,17 +61,13 @@
         <tr>
             <td>Category</td>
             <td>
-                <xsl:apply-templates select="sgr:functionalProfileCategory">
-                    <xsl:with-param name="separator" select="' - '" />
-                </xsl:apply-templates>
+                <xsl:value-of select="sgr:functionalProfileCategory" />
             </td>
         </tr>
         <tr>
             <td>Type</td>
             <td>
-                <xsl:apply-templates select="sgr:functionalProfileType">
-                    <xsl:with-param name="separator" select="' - '" />
-                </xsl:apply-templates>
+                <xsl:value-of select="sgr:functionalProfileType" />
             </td>
         </tr>
         <tr>

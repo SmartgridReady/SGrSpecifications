@@ -4,9 +4,18 @@
 
 	<xsl:output method="html" version="4.0" encoding="UTF-8" indent="yes" />
 
-	<xsl:include href="SGrGenericHelpers.xsl" />
+	<xsl:include href="GenericAttributes.xsl" />
+	<xsl:include href="Helpers.xsl" />
+
 	<xsl:include href="DeviceFrame.xsl" />
-	<xsl:include href="SGrFunctionalProfileFrame.xsl" />
+	<xsl:include href="FunctionalProfile.xsl" />
+	<xsl:include href="DataPoint.xsl" />
+
+	<xsl:include href="FunctionalProfileFrame.xsl" />
+
+	<xsl:include href="TransportServiceModbus.xsl" />
+	<xsl:include href="TransportServiceRestApi.xsl" />
+	<xsl:include href="TransportServiceContactApi.xsl" />
 
 	<xsl:template match="/">
 		<html lang="any">

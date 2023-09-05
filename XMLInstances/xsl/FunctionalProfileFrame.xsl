@@ -2,9 +2,6 @@
 <xsl:stylesheet version="1.1" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:sgr="http://www.smartgridready.com/ns/V0/">
 
-    <xsl:import href="SGrGenericDataPointDefinitions.xsl" />
-    <xsl:import href="SGrGenericHelpers.xsl" />
-
     <!-- Generic Functional Profiles -->
     <xsl:template match="sgr:FunctionalProfileFrame">
         <div class="documentheader">Functional Profile Definition</div>
@@ -50,115 +47,16 @@
             <!-- Functional Profile Block -->
             <table>
                 <colgroup>
-                    <col style="width:20%" />
+                    <col style="width:169px" />
                 </colgroup>
 
                 <!-- alternativeNames -->
                 <xsl:apply-templates select="sgr:functionalProfile/sgr:alternativeNames" />
-
-                <!-- legibleDescription (4x opt) -->
                 <xsl:apply-templates select="sgr:functionalProfile/sgr:legibleDescription" />
-
-                <xsl:if test="sgr:genericAttributes/*">
-                    <td>Attributes</td>
-                    <td>
-                        <xsl:for-each select="sgr:genericAttributes/*">
-                            <div style="padding-left:1em;">
-                                <img src="/xsl/genattr.png" alt="" width="16pt" height="16pt" />
-                                &#160; <xsl:value-of select="local-name(.)" />
-                            </div>
-                        </xsl:for-each>
-                    </td>
-                </xsl:if>
+                <xsl:apply-templates select="sgr:genericAttributes" />
             </table>
 
-            <!-- Data Points -->
-            <div class="dataPoint">
-                <table>
-                    <colgroup>
-                        <col style="width:5%" />
-                        <col style="width:15%" />
-                        <col style="width:52%" />
-                        <col style="width:6%" />
-                        <col style="width:10%" />
-                        <col style="width:6%" />
-                        <col style="width:6%" />
-                    </colgroup>
-                    <tr>
-                        <th colspan="2">Datapoint</th>
-                        <th>Description</th>
-                        <th>Unit</th>
-                        <th>Type</th>
-                        <th>MRO</th>
-                        <th>RWP</th>
-                    </tr>
-                    <xsl:for-each select="sgr:dataPointList/sgr:dataPointListElement">
-                        <tr>
-                            <td colspan="2">
-                                <xsl:value-of select="sgr:dataPoint/sgr:dataPointName" />
-                            </td>
-                            <td>
-                                <xsl:for-each select="sgr:dataPoint/sgr:legibleDescription">
-                                    <div>
-                                        <xsl:attribute name="lang">
-                                            <xsl:value-of select="sgr:language" />
-                                        </xsl:attribute>
-                                        <xsl:value-of select="sgr:textElement" disable-output-escaping="yes" />
-                                    </div>
-                                </xsl:for-each>
-                                <xsl:if test="sgr:genericAttributes/*">
-                                    <p style="margin-bottom:0;">Datapoint Attributes:</p>
-                                    <xsl:for-each select="sgr:genericAttributes/*">
-                                        <div style="padding-left:1em;">
-                                            <img src="/xsl/genattr.png" alt="" width="16pt"
-                                                height="16pt" /> &#160; <xsl:value-of
-                                                select="local-name(.)" />
-                                        </div>
-                                    </xsl:for-each>
-                                </xsl:if>
-                            </td>
-                            <td>
-                                <xsl:call-template name="SGrUnits">
-                                    <xsl:with-param name="value" select="sgr:dataPoint/sgr:unit" />
-                                </xsl:call-template>
-                            </td>
-                            <td>
-                                <xsl:if test="sgr:dataPoint/sgr:arrayLength">
-                                    <xsl:value-of select="sgr:dataPoint/sgr:arrayLength" /> x </xsl:if>
-
-                                <xsl:if test="sgr:dataPoint/sgr:dataType">
-                                    <xsl:apply-templates select="sgr:dataPoint/sgr:dataType" />
-                                </xsl:if>
-                            </td>
-                            <td>
-                                <xsl:value-of select="sgr:dataPoint/sgr:presenceLevel" />
-                            </td>
-                            <td>
-                                <xsl:value-of select="sgr:dataPoint/sgr:dataDirection" />
-                            </td>
-                        </tr>
-
-                        <xsl:if test="sgr:dataPoint/sgr:alternativeNames">
-                            <tr class="dataPointDetails">
-                                <td class="noborder"></td>
-                                <td colspan="6">
-                                    <table>
-                                        <colgroup>
-                                            <col style="width:25.8%" />
-                                        </colgroup>
-
-                                        <!-- alternativeNames (1x opt)-->
-                                        <xsl:if test="sgr:dataPoint/sgr:alternativeNames">
-                                            <xsl:apply-templates select="sgr:dataPoint/sgr:alternativeNames" />
-                                        </xsl:if>
-
-                                    </table>
-                                </td>
-                            </tr>
-                        </xsl:if>
-                    </xsl:for-each>
-                </table>
-            </div>
+            <xsl:apply-templates select="sgr:dataPointList" />
 
             <xsl:if test="//sgr:genericAttributes">
                 <div class="functionalProfile">
@@ -166,12 +64,11 @@
                     <!-- Generic Attributes -->
                     <table>
                         <colgroup>
-                            <col style="width:20%" />
-                            <col style="width:30%" />
-                            <col style="width:60%" />
+                            <col style="width:169px" />
+                            <col style="width:134px" />
                         </colgroup>
                         <tr>
-                            <th>SGr Attribute</th>
+                            <th>Attribute</th>
                             <th>Type</th>
                             <th>Description</th>
                         </tr>
@@ -179,9 +76,7 @@
                         <!--maxVal-->
                         <xsl:if test="//sgr:maxVal">
                             <tr class="genericDetails">
-                                <td>
-                                    <img src="/xsl/genattr.png" alt="" width="16pt" height="16pt" />
-                                    maxVal </td>
+                                <td class="genericattribute">maxVal</td>
                                 <td>Float</td>
                                 <td>Upper Range Limit</td>
                             </tr>
@@ -190,9 +85,7 @@
                         <!--minVal-->
                         <xsl:if test="//sgr:minVal">
                             <tr class="genericDetails">
-                                <td>
-                                    <img src="/xsl/genattr.png" alt="" width="16pt" height="16pt" />
-                                    minVal </td>
+                                <td class="genericattribute">minVal</td>
                                 <td>Float</td>
                                 <td>Lower Range Limit</td>
                             </tr>
@@ -201,9 +94,7 @@
                         <!--specialQualityRequirement-->
                         <xsl:if test="//sgr:specialQualityRequirement">
                             <tr class="genericDetails">
-                                <td>
-                                    <img src="/xsl/genattr.png" alt="" width="16pt" height="16pt" />
-                                    specialQualityRequirement </td>
+                                <td class="genericattribute">specialQualityRequirement</td>
                                 <td>String (e.g. "METAS")</td>
                                 <td>Indicates Quality requirements fullfilled like formal
                                     certifications</td>
@@ -213,9 +104,7 @@
                         <!--precisionPercent-->
                         <xsl:if test="//sgr:precisionPercent">
                             <tr class="genericDetails">
-                                <td>
-                                    <img src="/xsl/genattr.png" alt="" width="16pt" height="16pt" />
-                                    precisionPercent </td>
+                                <td class="genericattribute">precisionPercent</td>
                                 <td>%</td>
                                 <td>Precision defines the accuracy
                                     of a data point either related to a measurement value, a
@@ -227,9 +116,7 @@
                         <!--stabilityFallback-->
                         <xsl:if test="//sgr:stabilityFallback">
                             <tr class="genericDetails">
-                                <td>
-                                    <img src="/xsl/genattr.png" alt="" width="16pt" height="16pt" />
-                                    stabilityFallback </td>
+                                <td class="genericattribute">stabilityFallback</td>
                                 <td> Max recieve time: float, seconds <br /> Init Value: float, <br />
                                     Fallback Value: float <br />
                                 </td>
@@ -243,9 +130,7 @@
                         <!--smoothTransition-->
                         <xsl:if test="//sgr:smoothTransition">
                             <tr class="genericDetails">
-                                <td>
-                                    <img src="/xsl/genattr.png" alt="" width="16pt" height="16pt" />
-                                    smoothTransition </td>
+                                <td class="genericattribute">smoothTransition</td>
                                 <td>
                                     <p>Window: optional, seconds, unsigned long. (Indicates a time
                                         window in which the new operating
@@ -279,9 +164,7 @@
                         <!--maxLatencyTime-->
                         <xsl:if test="//sgr:maxLatencyTimeMs">
                             <tr class="genericDetails">
-                                <td>
-                                    <img src="/xsl/genattr.png" alt="" width="16pt" height="16pt" />
-                                    maxLatencyTimeMs </td>
+                                <td class="genericattribute">maxLatencyTimeMs</td>
                                 <td>unsigned long</td>
                                 <td>Maximum time in milliseconds from capturing of measured value
                                     until ready at the external interface
@@ -292,9 +175,7 @@
                         <!--measuredValueType-->
                         <xsl:if test="//sgr:measuredValueType">
                             <tr class="genericDetails">
-                                <td>
-                                    <img src="/xsl/genattr.png" alt="" width="16pt" height="16pt" />
-                                    measuredValueType </td>
+                                <td class="genericattribute">measuredValueType</td>
                                 <td>value, min, max, average, stdDev</td>
                                 <td>Type of data point collection.</td>
                             </tr>
@@ -303,9 +184,7 @@
                         <!--measuredValueSource-->
                         <xsl:if test="//sgr:measuredValueSource">
                             <tr class="genericDetails">
-                                <td>
-                                    <img src="/xsl/genattr.png" alt="" width="16pt" height="16pt" />
-                                    measuredValueSource </td>
+                                <td class="genericattribute">measuredValueSource</td>
                                 <td>measuredValue, calculatedValue, empiricalValue</td>
                                 <td>Value source kind related to SGr level 6 applications.</td>
                             </tr>
@@ -314,9 +193,7 @@
                         <!--sampleRateHz-->
                         <xsl:if test="//sgr:sampleRateHz">
                             <tr class="genericDetails">
-                                <td>
-                                    <img src="/xsl/genattr.png" alt="" width="16pt" height="16pt" />
-                                    sampleRateHz </td>
+                                <td class="genericattribute">sampleRateHz</td>
                                 <td>float</td>
                                 <td>SampleRate in milliseconds</td>
                             </tr>
@@ -325,9 +202,7 @@
                         <!--curtailment-->
                         <xsl:if test="//sgr:curtailment">
                             <tr class="genericDetails">
-                                <td>
-                                    <img src="/xsl/genattr.png" alt="" width="16pt" height="16pt" />
-                                    curtailment </td>
+                                <td class="genericattribute">>curtailment</td>
                                 <td>float</td>
                                 <td>Used in state-based reduction schemes. This value specifies the
                                     reduction in percent for the reduced operation mode.</td>
@@ -337,9 +212,7 @@
                         <!--minLoad-->
                         <xsl:if test="//sgr:minLoad">
                             <tr class="genericDetails">
-                                <td>
-                                    <img src="/xsl/genattr.png" alt="" width="16pt" height="16pt" />
-                                    minLoad </td>
+                                <td class="genericattribute">minLoad</td>
                                 <td>float</td>
                                 <td>Minimale Last in kW, welche im Sperrbetrieb nicht überschritten
                                     werden darf.</td>
@@ -349,9 +222,7 @@
                         <!--maxLockTimeMinutes-->
                         <xsl:if test="//sgr:maxLockTimeMinutes">
                             <tr class="genericDetails">
-                                <td>
-                                    <img src="/xsl/genattr.png" alt="" width="16pt" height="16pt" />
-                                    maxLockTimeMinutes </td>
+                                <td class="genericattribute">maxLockTimeMinutes</td>
                                 <td>float</td>
                                 <td>Wert in Minuten für die maximale Sperrzeit.</td>
                             </tr>
@@ -360,9 +231,7 @@
                         <!--minRunTimeMinutes-->
                         <xsl:if test="//sgr:minRunTimeMinutes">
                             <tr class="genericDetails">
-                                <td>
-                                    <img src="/xsl/genattr.png" alt="" width="16pt" height="16pt" />
-                                    minRunTimeMinutes </td>
+                                <td class="genericattribute">minRunTimeMinutes</td>
                                 <td>float</td>
                                 <td>Wert in Minuten für die minimale Laufzeit</td>
                             </tr>
@@ -371,9 +240,7 @@
                         <!--valueByTimeTableMinutes-->
                         <xsl:if test="//sgr:valueByTimeTableMinutes">
                             <tr class="genericDetails">
-                                <td>
-                                    <img src="/xsl/genattr.png" alt="" width="16pt" height="16pt" />
-                                    valueByTimeTableMinutes </td>
+                                <td class="genericattribute">valueByTimeTableMinutes</td>
                                 <td>float</td>
                                 <td>Step width in minutes</td>
                             </tr>
@@ -382,9 +249,7 @@
                         <!--flexAssistance-->
                         <xsl:if test="//sgr:flexAssistance">
                             <tr class="genericDetails">
-                                <td>
-                                    <img src="/xsl/genattr.png" alt="" width="16pt" height="16pt" />
-                                    Flex Assistance </td>
+                                <td class="genericattribute">Flex Assistance</td>
                                 <td>
                                     <p>assists: AT_NetServicable, AT_SysServicable,
                                         AT_EnerServicable</p>
@@ -403,7 +268,7 @@
 
                     <xsl:if test="//sgr:smoothTransition">
                         <h3>Smooth Transition Timing</h3>
-                        <img src="/xsl/genAttributes_smoothTransition.drawio.png" width="100%" />
+                        <img src="/xsl/ressources/genAttributes_smoothTransition.drawio.png" width="100%" />
                         <ol>
                             <li>Command for a new set value is recieved (e.g. 60%)</li>
                             <li>Within the maximum delay the product starts the ramp to the new set

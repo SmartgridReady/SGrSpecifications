@@ -3,14 +3,17 @@
 
     <!-- contactApiInterfaceDesc -->
     <xsl:template match="sgr:contactInterfaceDescription">
+        <tr class="genericDetails">
+            <td class="noborder" />
+        </tr>    
         <tr class="transportDetails">
-            <td>Number of Contacts</td>
+            <td class="contactapiattribute">Number of Contacts</td>
             <td>
                 <xsl:value-of select="sgr:numberOfContacts" />
             </td>
         </tr>
         <tr class="transportDetails">
-            <td>Contact Stabilization Time</td>
+            <td class="contactapiattribute">Contact Stabilization Time</td>
             <td>
                 <xsl:value-of select="sgr:contactStabilisationTimeMs" />
                 ms
