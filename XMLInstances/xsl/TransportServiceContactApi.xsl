@@ -2,15 +2,18 @@
 <xsl:stylesheet version="1.1" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:sgr="http://www.smartgridready.com/ns/V0/">
 
     <!-- contactApiInterfaceDesc -->
-    <xsl:template match="sgr:contactApiInterfaceDesc">
+    <xsl:template match="sgr:contactInterfaceDescription">
+        <tr class="genericDetails">
+            <td class="noborder" />
+        </tr>    
         <tr class="transportDetails">
-            <td>Number of Contacts</td>
+            <td class="contactapiattribute">Number of Contacts</td>
             <td>
                 <xsl:value-of select="sgr:numberOfContacts" />
             </td>
         </tr>
         <tr class="transportDetails">
-            <td>Contact Stabilization Time</td>
+            <td class="contactapiattribute">Contact Stabilization Time</td>
             <td>
                 <xsl:value-of select="sgr:contactStabilisationTimeMs" />
                 ms
