@@ -31,6 +31,9 @@
 	<!-- devLegibDesc (4x opt) -->
 	<xsl:apply-templates select="sgr:devLegibDesc"/>	
 
+	<!-- devPrgDesc (4x opt) -->
+	<xsl:apply-templates select="sgr:devPrgDesc"/>	
+
 	<!-- Transport Service -->
 	<tr class="genericDetails"><td>Transport Service</td><td>
 		<xsl:choose>
@@ -108,6 +111,8 @@
 <xsl:template match="sgr:devLegibDesc">
 	<tr><xsl:attribute name="lang"><xsl:value-of select="sgr:language"/></xsl:attribute><td colspan="2"><xsl:call-template name="SGrLegibDocumentationType"/></td></tr>	
 </xsl:template>
-
+<xsl:template match="sgr:devPrgDesc">
+	<tr><xsl:attribute name="lang"><xsl:value-of select="sgr:language"/></xsl:attribute><td colspan="2"><xsl:call-template name="SGrLegibDocumentationType"/></td></tr>	
+</xsl:template>
 
 </xsl:stylesheet>
