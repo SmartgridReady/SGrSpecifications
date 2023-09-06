@@ -1258,16 +1258,19 @@
   <simpleType name="hovHPOpModeType">
    <annotation>
      <documentation>Ehov1:
-     map for Hoval H 
+     map for Hoval  
      // #0=Wärmeerzeuger aus
 	 // #1=Automatikbetrieb
+	 //2: TODO: chk data sheet
+	 //3: TODO: chk data sheet
 	 // #4=Manueller Heizbetrieb
 	 // #5=Manueller Kühlbetrieb 
 </documentation>
 	</annotation>
     <restriction base="string">
       <enumeration value="HP_OFF"/>
-      <enumeration value="HP_AUTOMATIC"/>
+      <enumeration value="HP_RES_1"/>  
+      <enumeration value="HP_RES_2"/>   
       <enumeration value="HP_MAN_HEAT"/>
       <enumeration value="HP_MAN_COOL"/>
       </restriction>
@@ -1281,8 +1284,10 @@
      // #0=Standbybetrieb
 	 // #1=Woche 1
 	 // #2=Woche 2
+	 //3: TODO: chk data sheet
 	 // #4=Konstant
 	 // #5=Sparbetrieb
+	 //5: TODO: chk data sheet
 	 // #7=Handbetrieb Heizen
 	 // #8=Handbetrieb Kühlen
 </documentation>
@@ -1291,8 +1296,10 @@
       <enumeration value="HC_STANDBY"/>
       <enumeration value="HC_PLAN_W1"/>
       <enumeration value="HC_PLAN_W2"/>
+      <enumeration value="HC_RES_1"/>
       <enumeration value="HC_CONSTANT"/>
       <enumeration value="HC_ECO"/>
+      <enumeration value="HC_RES_2"/>
       <enumeration value="HC_MAN_HEAT"/>
       <enumeration value="HC_MAN_COOL"/>
       </restriction>
@@ -1437,7 +1444,8 @@
      #0 = Abgeschaltet
      #1 = Normal Ladebetrieb
      #2 = Komfort Ladebetrieb
-     #3 = Zwangsdrosselung (bei E-Zwang kleiner -50p)#4 = Zwangsladung  (bei E-Zwang groesser +50p)
+     #3 = Zwangsdrosselung (bei E-Zwang kleiner -50p)
+     #4 = Zwangsladung  (bei E-Zwang groesser +50p)
      #5 = Stoerung
      #6 = WW-Entnahme (Entnahme von Trinkwarmwasser aktiv)
      #7 = Warnung
@@ -1450,7 +1458,8 @@
       <enumeration value="DHW_OFF"/>
       <enumeration value="DHW_CHARGING"/>
       <enumeration value="DHW_CHARGE_COMF"/>
-      <enumeration value="DHW_FORCED_CURTAIL"/>
+      <enumeration value="DHW_FORCE_CURT_LOW"/>
+      <enumeration value="DHW_FORCE_CURT_HIGH"/>
       <enumeration value="DHW_ERROR"/>
       <enumeration value="DHW_WITHDRAWING"/>
       <enumeration value="DHW_WARNING_ACTIVE"/>
@@ -1458,7 +1467,6 @@
       <enumeration value="DHW_RES1"/>
       <enumeration value="DHW_RES2"/>
       <enumeration value="DHW_RES3"/>
-      <enumeration value="DHW_RES4"/>
       <enumeration value="DHW_INTENSIFIED_EXT"/>
       <enumeration value="DHW_FORCED_EXT"/>
       </restriction>
