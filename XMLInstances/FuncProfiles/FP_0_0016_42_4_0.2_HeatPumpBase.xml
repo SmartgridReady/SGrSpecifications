@@ -38,134 +38,164 @@
       <language>de</language>
     </legibleDescription>
   </functionalProfile>
-  <dataPointListElement>
-    <dataPoint datapointName="HPOpModeCmd" presenceLevel="M" dataDirection="RW" unit="NONE">
-      <dataType>
-        <enum>
-          <sgrHPOpMode>WP_EMERG_OP</sgrHPOpMode>
-        </enum>
-      </dataType>
-      <alternativeNames>
-        <hpBwpName>Betriebsmodus</hpBwpName>
-      </alternativeNames>
-      <legibleDescription>
-        <textElement> 
-          <![CDATA[
-            <p>Grund-Betriebsart der Wärmepumpe</pl>
-            <ol>
-              <li><strong>WP_EMERG_OP:</strong> Notbetrieb</li>
-              <li><strong>WP_READY:</strong> Bereitschaft</li>
-              <li><strong>WP_PROG_OP:</strong> Programmbetrieb</li>
-              <li><strong>WP_COMFORT_OP:</strong> Komfortbetrieb</li>
-              <li><strong>WP_ECO_OP:</strong> ECO Betrieb</li>
-              <li><strong>WP_DOM_WATER_OP:</strong> Warmwassererzeugung</li>  
-              <li><strong>WP_COOL_ACTIVE_OP:</strong> Kuehlen aktiv</li>  
-              <li><strong>WP_COOL_PASSIVE_OP:</strong> Kuehlen passic</li>   
-            </ol>
-          ]]>					
-        </textElement>
-        <language>de</language>
-      </legibleDescription>
-    </dataPoint>
-  </dataPointListElement>
-  <dataPointListElement>
-    <dataPoint datapointName="HPOpState" presenceLevel="M" dataDirection="R" unit="NONE">
-      <dataType>
-        <enum2bitmapIndex>
-          <sgrHPOpstate>HP_PUMP_ON</sgrHPOpstate>
-        </enum2bitmapIndex>
-      </dataType>
-      <alternativeNames>
-        <hpBwpName>Aktive Funktion</hpBwpName>
-      </alternativeNames>
-      <legibleDescription>
-        <textElement>            
-          <![CDATA[	
-            <p>Auslesen des aktuellen Status der Wärmepumpe</p>
-            <ol>
-              <li><strong>HP_PUMP_ON:</strong> Waermepumpe EIN</li>
-              <li><strong>HP_IN_HEATING_MODE:</strong> Waermepumpe heizt</li>
-              <li><strong>HP_IN_DHW_MODE:</strong> Waermepumpe im Warmwassermode</li>
-              <li><strong>COMPRESSOR_RUNNING:</strong> Kompressor laeuft</li>
-              <li><strong>COOLING_MODE_ACTIVE:</strong> Waermepumpe kuehlt</li>
-              <li><strong>IN_DEFROST_MODE:</strong> Waermepumpe im Gefrierschutzmode</li>
-            </ol>
-          ]]>
-        </textElement>
-        <language>de</language>
-      </legibleDescription>
-    </dataPoint>
-  </dataPointListElement>
-  <dataPointListElement>
-    <dataPoint datapointName="ErrorNrSGr" presenceLevel="M" dataDirection="R" unit="NONE">
-      <dataType>
-        <boolean/>
-      </dataType>
-      <alternativeNames>
-      </alternativeNames>
-      <legibleDescription>
-        <textElement>FALSE oder 0 bedeuted keine Fehler</textElement>
-        <language>de</language>
-      </legibleDescription>
-    </dataPoint>
-  </dataPointListElement>
-  <dataPointListElement>
-    <dataPoint datapointName="OutsideAirTemp" presenceLevel="O" dataDirection="R" unit="DEGREES_CELSIUS">
-      <dataType>
-        <float64/>
-      </dataType>
-      <alternativeNames>
-        <hpBwpName>Temperatur Außen</hpBwpName>
-        <EN17609Name>Outside Air Temperatur</EN17609Name>
-      </alternativeNames>
-      <legibleDescription>
-        <textElement>Aktuelle Aussentemperatur (gemessen über Aussenfühler)</textElement>
-        <language>de</language>
-      </legibleDescription>
-    </dataPoint>
-  </dataPointListElement>
-  <dataPointListElement>
-    <dataPoint datapointName="SupplyWaterTemp" presenceLevel="M" dataDirection="R" unit="DEGREES_CELSIUS">
-      <dataType>
-        <float64/>
-      </dataType>
-      <alternativeNames>
-        <hpBwpName>Temperatur Vorlauf</hpBwpName>
-        <EN17609Name>Supply WaterTemperat</EN17609Name>
-      </alternativeNames>
-      <legibleDescription>
-        <textElement>Auslesen der aktuellen Ist-Temperatur des Vorlaufs des Heizkreises.</textElement>
-        <language>de</language>
-      </legibleDescription>
-    </dataPoint>
-  </dataPointListElement>
-  <dataPointListElement>
-    <dataPoint datapointName="ReturnSupplyWaterTemp" presenceLevel="R" dataDirection="R" unit="DEGREES_CELSIUS">
-      <dataType>
-        <float64/>
-      </dataType>
-      <alternativeNames>
-        <hpBwpName>Temperatur Rücklauf</hpBwpName>
-        <EN17609Name>Return Water Temperature</EN17609Name>
-      </alternativeNames>
-      <legibleDescription>
-        <textElement>Auslesen der aktuellen aktuellen-Temperatur des Rücklaufs.</textElement>
-        <language>de</language>
-      </legibleDescription>
-    </dataPoint>
-  </dataPointListElement>
-  <dataPointListElement>
-    <dataPoint datapointName="SourceTemp" presenceLevel="O" dataDirection="R" unit="DEGREES_CELSIUS">
-      <dataType>
-        <float64/>
-      </dataType>
-      <alternativeNames>
-        <hpBwpName>Temperatur Wärmequelleneintritt</hpBwpName>
-      </alternativeNames>
-      <legibleDescription>
-        <textElement>Die Temperatur am Wärmequelleneintritt (Umgebungsluft, Wasser oder Erdsonde) erlaubt eine genauere Analyse der Energieprognose,  </textElement>
-        <language>de</language>
-      </legibleDescription>
-    </dataPoint>
-  </dataPointListElement>
+  <dataPointList>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>HPOpModeCmd</dataPointName>
+        <dataDirection>RW</dataDirection>
+        <presenceLevel>M</presenceLevel>
+        <dataType>
+          <enum>
+            <sgrHPOpMode>WP_EMERG_OP</sgrHPOpMode>
+          </enum>
+        </dataType>
+        <unit>NONE</unit>
+        <alternativeNames>
+          <hpBwpName>Betriebsmodus</hpBwpName>
+        </alternativeNames>
+        <legibleDescription>
+          <textElement> 
+            <![CDATA[
+              <p>Grund-Betriebsart der Wärmepumpe</pl>
+              <ol>
+                <li><strong>WP_EMERG_OP:</strong> Notbetrieb</li>
+                <li><strong>WP_READY:</strong> Bereitschaft</li>
+                <li><strong>WP_PROG_OP:</strong> Programmbetrieb</li>
+                <li><strong>WP_COMFORT_OP:</strong> Komfortbetrieb</li>
+                <li><strong>WP_ECO_OP:</strong> ECO Betrieb</li>
+                <li><strong>WP_DOM_WATER_OP:</strong> Warmwassererzeugung</li>  
+                <li><strong>WP_COOL_ACTIVE_OP:</strong> Kuehlen aktiv</li>  
+                <li><strong>WP_COOL_PASSIVE_OP:</strong> Kuehlen passic</li>   
+              </ol>
+            ]]>					
+          </textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>HPOpState</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>M</presenceLevel>
+        <dataType>
+          <enum2bitmapIndex>
+            <sgrHPOpstate>HP_PUMP_ON</sgrHPOpstate>
+          </enum2bitmapIndex>
+        </dataType>
+        <unit>NONE</unit>
+        <alternativeNames>
+          <hpBwpName>Aktive Funktion</hpBwpName>
+        </alternativeNames>
+        <legibleDescription>
+          <textElement>            
+            <![CDATA[	
+              <p>Auslesen des aktuellen Status der Wärmepumpe</p>
+              <ol>
+                <li><strong>HP_PUMP_ON:</strong> Waermepumpe EIN</li>
+                <li><strong>HP_IN_HEATING_MODE:</strong> Waermepumpe heizt</li>
+                <li><strong>HP_IN_DHW_MODE:</strong> Waermepumpe im Warmwassermode</li>
+                <li><strong>COMPRESSOR_RUNNING:</strong> Kompressor laeuft</li>
+                <li><strong>COOLING_MODE_ACTIVE:</strong> Waermepumpe kuehlt</li>
+                <li><strong>IN_DEFROST_MODE:</strong> Waermepumpe im Gefrierschutzmode</li>
+              </ol>
+            ]]>
+          </textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>ErrorNrSGr</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>M</presenceLevel>
+        <dataType>
+          <boolean/>
+        </dataType>
+        <unit>NONE</unit>
+        <alternativeNames>
+        </alternativeNames>
+        <legibleDescription>
+          <textElement>FALSE oder 0 bedeuted keine Fehler</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>OutsideAirTemp</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>O</presenceLevel>
+        <dataType>
+          <float64/>
+        </dataType>
+        <unit>DEGREES_CELSIUS</unit>
+        <alternativeNames>
+          <hpBwpName>Temperatur Außen</hpBwpName>
+          <EN17609Name>Outside Air Temperatur</EN17609Name>
+        </alternativeNames>
+        <legibleDescription>
+          <textElement>Aktuelle Aussentemperatur (gemessen über Aussenfühler)</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>SupplyWaterTemp</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>M</presenceLevel>
+        <dataType>
+          <float64/>
+        </dataType>
+        <unit>DEGREES_CELSIUS</unit>
+        <alternativeNames>
+          <hpBwpName>Temperatur Vorlauf</hpBwpName>
+          <EN17609Name>Supply WaterTemperat</EN17609Name>
+        </alternativeNames>
+        <legibleDescription>
+          <textElement>Auslesen der aktuellen Ist-Temperatur des Vorlaufs des Heizkreises.</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>ReturnSupplyWaterTemp</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>R</presenceLevel>
+        <dataType>
+          <float64/>
+        </dataType>
+        <unit>DEGREES_CELSIUS</unit>
+        <alternativeNames>
+          <hpBwpName>Temperatur Rücklauf</hpBwpName>
+          <EN17609Name>Return Water Temperature</EN17609Name>
+        </alternativeNames>
+        <legibleDescription>
+          <textElement>Auslesen der aktuellen aktuellen-Temperatur des Rücklaufs.</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>SourceTemp</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>O</presenceLevel>
+        <dataType>
+          <float64/>
+        </dataType>
+        <unit>DEGREES_CELSIUS</unit>
+        <alternativeNames>
+          <hpBwpName>Temperatur Wärmequelleneintritt</hpBwpName>
+        </alternativeNames>
+        <legibleDescription>
+          <textElement>Die Temperatur am Wärmequelleneintritt (Umgebungsluft, Wasser oder Erdsonde) erlaubt eine genauere Analyse der Energieprognose,  </textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+  </dataPointList>
 </FunctionalProfileFrame>

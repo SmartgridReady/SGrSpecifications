@@ -25,9 +25,13 @@
   </simpleType>
   <complexType name="RestApiDataPointConfiguration">
     <sequence>
-      <element minOccurs="1" maxOccurs="1" name="restServiceCall" type="sgr:RestServiceCall"/>
+      <element minOccurs="1" maxOccurs="1" name="dataType" type="sgr:RestApiDataType"/>
+      <element minOccurs="0" maxOccurs="1" name="requestHeader" type="sgr:HeaderList"/>
+      <element minOccurs="1" maxOccurs="1" name="requestMethod" type="sgr:HttpMethod"/>
+      <element minOccurs="0" maxOccurs="1" name="requestPath" type="string"/>
+      <element minOccurs="0" maxOccurs="1" name="requestBody" type="string"/>
+      <element minOccurs="0" maxOccurs="1" name="responseQuery" type="sgr:ResponseQuery"/>
     </sequence>
-    <attribute name="dataType" type="sgr:RestApiDataType"/>
   </complexType>
   <simpleType name="RestApiDataType">
     <restriction base="string">
@@ -57,7 +61,11 @@
   </simpleType>
   <complexType name="RestApiBearer">
     <sequence>
-      <element minOccurs="1" maxOccurs="1" name="restServiceCall" type="sgr:RestServiceCall"/>
+      <element minOccurs="0" maxOccurs="1" name="requestHeader" type="sgr:HeaderList"/>
+      <element minOccurs="1" maxOccurs="1" name="requestMethod" type="sgr:HttpMethod"/>
+      <element minOccurs="0" maxOccurs="1" name="requestPath" type="string"/>
+      <element minOccurs="0" maxOccurs="1" name="requestBody" type="string"/>
+      <element minOccurs="0" maxOccurs="1" name="responseQuery" type="sgr:ResponseQuery"/>
     </sequence>
   </complexType>
   <complexType name="RestApiBasic">

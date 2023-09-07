@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="/xsl/SGr.xsl"?>
-<RestApiDeviceFrame deviceName="meoEnergy PROPILOT" isLocalControl="false" specificationOwnerIdentification="4346239420" manufacturerName="meoEnergy"
-  xmlns="http://www.smartgridready.com/ns/V0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/EI-RestAPI/SGrRestAPI_EIDeviceFrame.xsd">
+<RestApiDeviceFrame xmlns="http://www.smartgridready.com/ns/V0/"
+                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                    xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/EI-RestAPI/SGrRestAPI_EIDeviceFrame.xsd">
+  <deviceName>meoEnergy PROPILOT</deviceName>
+  <manufacturerName>meoEnergy</manufacturerName>
+  <specificationOwnerIdentification>4346239420</specificationOwnerIdentification>
   <releaseNotes>
     <state>Review</state>
     <changeLog>
@@ -17,29 +20,32 @@
     <deviceCategory>SubMeterElectricity</deviceCategory>
     <softwareRevision>1.0.0</softwareRevision>
     <manufacturerSpecificationIdentification>manufacturerSpecificationIdentification</manufacturerSpecificationIdentification>
+    <isLocalControl>false</isLocalControl>
   </deviceInformation>
   <restApiInterfaceDescription>
     <restApiInterfaceSelection>URI</restApiInterfaceSelection>
     <restApiUri>https://my.meo-energy.com/meoApplicationServer</restApiUri>
     <restApiAuthenticationMethod>BearerSecurityScheme</restApiAuthenticationMethod>
     <restApiBearer>
-      <restServiceCall>
-        <requestHeader>
-          <header headerName="Accept" value="application/json"/>
-        </requestHeader>
-        <requestMethod>POST</requestMethod>
-        <requestPath>/authentication</requestPath>
-        <requestBody>{"email": "{{username}}", "password": "{{password}}"}</requestBody>
-        <responseQuery>
-          <queryType>JMESPathExpression</queryType>
-          <query>accessToken</query>
-        </responseQuery>
-      </restServiceCall>
+      <requestHeader>
+        <header>
+          <headerName>Accept</headerName>
+          <value>application/json</value>
+        </header>
+      </requestHeader>
+      <requestMethod>POST</requestMethod>
+      <requestPath>/authentication</requestPath>
+      <requestBody>{"email": "{{username}}", "password": "{{password}}"}</requestBody>
+      <responseQuery>
+        <queryType>JMESPathExpression</queryType>
+        <query>accessToken</query>
+      </responseQuery>
     </restApiBearer>
   </restApiInterfaceDescription>
   <functionalProfileList>
     <functionalProfileListElement>
-      <functionalProfile profileName="ActivePowerAC">
+      <functionalProfile>
+        <functionalProfileName>ActivePowerAC</functionalProfileName>
         <functionalProfileIdentification>
           <specificationOwnerIdentification>0</specificationOwnerIdentification>
           <functionalProfileCategory>NonSpecific</functionalProfileCategory>
@@ -54,27 +60,33 @@
       </functionalProfile>
       <dataPointList>
         <dataPointListElement>
-          <dataPoint datapointName="ActivePowerACtot" presenceLevel="R" dataDirection="R" unit="KILOWATTS">
+          <dataPoint>
+            <dataPointName>ActivePowerACtot</dataPointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>R</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>KILOWATTS</unit>
             <legibleDescription>
               <textElement>Erfassung der gesamten Wirkleistung</textElement>
               <language>de</language>
             </legibleDescription>
           </dataPoint>
-          <restApiDataPointConfiguration dataType="JSON_number">
-            <restServiceCall>
-              <requestHeader>
-                <header headerName="Accept" value="application/json"/>
-              </requestHeader>
-              <requestMethod>GET</requestMethod>
-              <requestPath>/sgr/cem/measurements?serialNo={{serialNo}}</requestPath>
-              <responseQuery>
-                <queryType>JMESPathExpression</queryType>
-                <query>activePowerACtot</query>
-              </responseQuery>
-            </restServiceCall>
+          <restApiDataPointConfiguration>
+            <dataType>JSON_number</dataType>
+            <requestHeader>
+              <header>
+                <headerName>Accept</headerName>
+                <value>application/json</value>
+              </header>
+            </requestHeader>
+            <requestMethod>GET</requestMethod>
+            <requestPath>/sgr/cem/measurements?serialNo={{serialNo}}</requestPath>
+            <responseQuery>
+              <queryType>JMESPathExpression</queryType>
+              <query>activePowerACtot</query>
+            </responseQuery>
           </restApiDataPointConfiguration>
         </dataPointListElement>
       </dataPointList>

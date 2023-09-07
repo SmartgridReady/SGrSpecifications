@@ -50,7 +50,7 @@
       <element maxOccurs="1" minOccurs="0" name="modbusTcp" type="sgr:ModbusIp"/>
       <element maxOccurs="1" minOccurs="0" name="modbusRtu" type="sgr:ModbusRtu"/>
       <element maxOccurs="1" minOccurs="1" name="firstRegisterAddressIsOne" type="boolean"/>
-      <element maxOccurs="unbounded" minOccurs="1" name="bitOrder" type="sgr:BitOrder"/>
+      <element maxOccurs="1" minOccurs="1" name="bitOrder" type="sgr:BitOrder"/>
     </sequence>
   </complexType>
   <simpleType name="ModbusInterfaceSelection">
@@ -66,7 +66,28 @@
   <complexType name="ModbusDataPointConfiguration">
     <sequence>
       <element maxOccurs="1" minOccurs="1" name="modbusDataType" type="sgr:ModbusDataType"/>
-      <element maxOccurs="1" minOccurs="1" name="modbusFirstRegisterReference" type="sgr:ModbusFirstRegisterReference"/>
+      <sequence>
+        <element maxOccurs="1" minOccurs="1" name="address" type="nonNegativeInteger">
+          <annotation>
+            <documentation>
+              2-bytes-word address: could be a register address (to address a modbus register - inputRegister or holdRegister) or a part of a bit address, see bitRank definition
+            </documentation>
+          </annotation>
+        </element>
+        <element maxOccurs="1" minOccurs="0"  name="bitRank" type="sgr:BitRank">
+          <annotation>
+            <documentation>The bit rank used to define a bit address (bitAddress = addr x 16 + bitRank)</documentation>
+          </annotation>
+        </element>
+        <element maxOccurs="1" minOccurs="1" name="registerType" type="sgr:RegisterType">
+          <annotation>
+            <documentation>
+              For slave-role, definition of the Object Type of the data: Discretes Input: Single bit, Read-Only; Coils: Single bit, Read-Write; Input Registers: 16-bit word, Read-Only;
+              Holding Registers: 16-bit word, Read-Write.
+            </documentation>
+          </annotation>
+        </element>
+      </sequence>
       <element maxOccurs="1" minOccurs="1" name="numberOfRegisters" type="int"/>
       <element maxOccurs="unbounded" minOccurs="1" name="masterFunctionsSupported" type="sgr:MasterFunctionsSupported">
         <annotation>
@@ -202,8 +223,8 @@
     </annotation>
     <sequence>
       <element name="modbusExceptionCode" type="sgr:ModbusExceptionCode" maxOccurs="unbounded" minOccurs="1"/>
+      <element name="isEnabled" type="boolean" maxOccurs="1" minOccurs="1" />
     </sequence>
-    <attribute name="isEnabled" type="boolean"/>
   </complexType>
   <simpleType name="ModbusLayer6Deviation">
     <annotation>

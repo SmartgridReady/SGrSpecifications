@@ -1,24 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<xsl:stylesheet version="1.1" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:sgr="http://www.smartgridready.com/ns/V0/">
+<xsl:stylesheet version="1.1" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+	xmlns:sgr="http://www.smartgridready.com/ns/V0/">
 
 	<xsl:output method="html" version="4.0" encoding="UTF-8" indent="yes" />
 
-	<xsl:include href="SGrDeviceProfile.xsl" />
-	<xsl:include href="SGrFunctionProfile.xsl" />
-	<xsl:include href="SGrDataPoint.xsl" />
+	<xsl:include href="GenericAttributes.xsl" />
+	<xsl:include href="Helpers.xsl" />
 
-	<xsl:include href="SGrDeviceTypeContact.xsl" />
-	<xsl:include href="SGrDeviceTypeModbus.xsl" />
-	<xsl:include href="SGrDeviceTypeRestAPI.xsl" />
-	<xsl:include href="SGrDeviceTypeFunctionalProfile.xsl" />
+	<xsl:include href="DeviceFrame.xsl" />
+	<xsl:include href="FunctionalProfile.xsl" />
+	<xsl:include href="DataPoint.xsl" />
 
-	<xsl:include href="SGrGenericAttributes.xsl" />
-	<xsl:include href="SGrGenericDataPointDefinitions.xsl" />
-	<xsl:include href="SGrGenericHelpers.xsl" />
-	<xsl:include href="SGrGenericNamelistType.xsl" />
-	<xsl:include href="SGrGenericLegibDocumentationType.xsl" />
+	<xsl:include href="FunctionalProfileFrame.xsl" />
 
+	<xsl:include href="TransportServiceModbus.xsl" />
+	<xsl:include href="TransportServiceRestApi.xsl" />
+	<xsl:include href="TransportServiceContactApi.xsl" />
 
 	<xsl:template match="/">
 		<html lang="any">
@@ -26,16 +23,16 @@
 				<title>
 					<xsl:choose>
 						<xsl:when test="/sgr:FunctionalProfileFrame">
-							<xsl:apply-templates select="/*/sgr:functionalProfile/sgr:functionalProfileIdentification">
-								<xsl:with-param name="separator" select="'.'" />
-								<xsl:with-param name="displayShortLevel" select="'true'" />
-							</xsl:apply-templates>
+							SGr.
+							<xsl:value-of
+								select="/*/sgr:functionalProfile/sgr:functionalProfileIdentification/sgr:functionalProfileCategory" />.
+							<xsl:value-of
+								select="/*/sgr:functionalProfile/sgr:functionalProfileIdentification/sgr:functionalProfileType" />.
+							<xsl:value-of
+								select="/*/sgr:functionalProfile/sgr:functionalProfileIdentification/sgr:levelOfOperation" />
 						</xsl:when>
-						<xsl:otherwise>
-							SGr EI
-							<xsl:value-of select="/*/@manufacturerName" />
-							-
-							<xsl:value-of select="/*/@deviceName" />
+						<xsl:otherwise> SGr EI <xsl:value-of select="/*/sgr:manufacturerName" /> - <xsl:value-of
+								select="/*/sgr:deviceName" />
 						</xsl:otherwise>
 					</xsl:choose>
 				</title>
@@ -44,39 +41,38 @@
 			</head>
 			<body class="any">
 				<script type="text/javascript">
-			function toggleClass(className) {
-				const collection = document.getElementsByClassName(className);
-				for (let i = 0; i &lt; collection.length; i++) {
-				  collection[i].style.display == "none" ? collection[i].style.display = "block" : collection[i].style.display = "none";
-				}
-			}
-			function toggleClassRow(className) {
-				const collection = document.getElementsByClassName(className);
-				for (let i = 0; i &lt; collection.length; i++) {
-				  collection[i].style.display == "none" ? collection[i].style.display = "table-row" : collection[i].style.display = "none";
-				}
-			}
-		</script>
+					function toggleClass(className) {
+					const collection = document.getElementsByClassName(className);
+					for (let i = 0; i &lt; collection.length; i++) {
+					collection[i].style.display == "none" ? collection[i].style.display = "block" :
+					collection[i].style.display = "none";
+					}
+					}
+					function toggleClassRow(className) {
+					const collection = document.getElementsByClassName(className);
+					for (let i = 0; i &lt; collection.length; i++) {
+					collection[i].style.display == "none" ? collection[i].style.display =
+					"table-row" : collection[i].style.display = "none";
+					}
+					}
+				</script>
 				<div class="navigation">
 					<h2>Details</h2>
 					<div>
-						<input type="checkbox" onclick="toggleClassRow('dataPointDetails')" name="showDPDetails" value="1" checked="checked" />
-						Data Points
-					</div>
+						<input type="checkbox" onclick="toggleClassRow('dataPointDetails')"
+							name="showDPDetails" value="1" checked="checked" /> Data Points </div>
 					<div>
-						<input type="checkbox" onclick="toggleClassRow('genericDetails')" name="showDPDetails" value="1" checked="checked" />
-						Generic Info
-					</div>
+						<input type="checkbox" onclick="toggleClassRow('genericDetails')"
+							name="showDPDetails" value="1" checked="checked" /> Generic Info </div>
 					<div>
-						<input type="checkbox" onclick="toggleClassRow('ontologyDetails')" name="showDPDetails" value="1" checked="checked" />
-						Ontology
-					</div>
+						<input type="checkbox" onclick="toggleClassRow('ontologyDetails')"
+							name="showDPDetails" value="1" checked="checked" /> Ontology </div>
 					<div>
-						<input type="checkbox" onclick="toggleClassRow('transportDetails')" name="showDPDetails" value="1" checked="checked" />
-						Transport Layer
-					</div>
+						<input type="checkbox" onclick="toggleClassRow('transportDetails')"
+							name="showDPDetails" value="1" checked="checked" /> Transport Layer </div>
 					<div>
-						<select name="language" id="language" title="Language" onchange="document.body.className = this.value">
+						<select name="language" id="language" title="Language"
+							onchange="document.body.className = this.value">
 							<option value="any">All Languages</option>
 							<option value="en">English</option>
 							<option value="de">Deutsch</option>
@@ -87,217 +83,17 @@
 					</div>
 				</div>
 				<div class="document">
-					<div class="profileheader" style="height: 134px; margin-bottom:2em">
-						<div style="float:left; width:50%">
-							<img src="https://smartgridready.ch/media/images/Logos/SGR_LOGO_REDESIGN_RGB.svg" alt="SGr" width="240px" height="134px" />
-						</div>
-						<div style="float:left; width:50%; text-align:right; height: 134px">
-							<xsl:choose>
-								<xsl:when test="/sgr:FunctionalProfileFrame">Definition Functional Profile</xsl:when>
-								<xsl:otherwise>Device Profile</xsl:otherwise>
-							</xsl:choose>
-						</div>
-					</div>
-					<p></p>
 
-					<!-- Device Types -->
+					<!-- Map any device frames -->
 					<xsl:apply-templates select="sgr:ModbusDeviceFrame" />
 					<xsl:apply-templates select="sgr:RestApiDeviceFrame" />
 					<xsl:apply-templates select="sgr:ContactDeviceFrame" />
 
-					<!-- generic functional Profiles -->
+					<!-- Map any functional profiles -->
 					<xsl:apply-templates select="sgr:FunctionalProfileFrame" />
 				</div>
 			</body>
 		</html>
-	</xsl:template>
-
-	<!-- Device Profiles -->
-	<xsl:template match="sgr:ModbusDeviceFrame">
-		<xsl:call-template name="SGrDeviceType" />
-	</xsl:template>
-	<xsl:template match="sgr:RestApiDeviceFrame">
-		<xsl:call-template name="SGrDeviceType" />
-	</xsl:template>
-	<xsl:template match="sgr:ContactDeviceFrame">
-		<xsl:call-template name="SGrDeviceType" />
-	</xsl:template>
-	<xsl:template name="SGrDeviceType">
-		<div class="externalInterface">
-			<h1>
-				<xsl:value-of select="@manufacturerName" />
-				-
-				<xsl:value-of select="@deviceName" />
-			</h1>
-
-			<table>
-				<colgroup>
-					<col style="width:30%" />
-				</colgroup>
-				<!-- Release State -->
-                <tr>
-                    <td class="fpHeader">
-                        <h4>Release State</h4>
-                    </td>
-                    <td class="fpHeader">
-                        <table>
-                            <tr>
-                                <td>
-                                    <xsl:value-of select="sgr:releaseNotes/sgr:state" />
-                                </td>
-                            </tr>
-                        </table>
-                    </td>
-                </tr>
-
-				<!-- Remarks -->
-                <xsl:if test="sgr:releaseNotes/sgr:remarks">
-                    <tr>
-                        <td class="fpHeader">
-                            <h4>Remarks</h4>
-                        </td>
-                        <td class="fpHeader">
-                            <table>
-                                <tr>
-                                    <td>
-                                        <xsl:value-of select="sgr:releaseNotes/sgr:remarks" />
-                                    </td>
-                                </tr>
-                            </table>
-                        </td>
-                    </tr>
-                </xsl:if>
-
-                <!-- Change Log -->
-                <xsl:if test="sgr:releaseNotes/sgr:changeLog">
-					<tr>
-						<td class="fpHeader">
-							<h4>Change Log</h4>
-						</td>
-						<td class="fpHeader">
-							<table>
-								<colgroup>
-									<col style="width:16%" />
-									<col style="width:16%" />
-									<col style="width:16%" />
-									<col style="width:52%" />
-								</colgroup>
-								<tr>
-									<th>Version</th>
-									<th>Date</th>
-									<th>Author</th>
-									<th>Comment</th>
-								</tr>
-								<xsl:for-each select="sgr:releaseNotes/sgr:changeLog">
-									<tr>
-										<td>
-											<xsl:value-of select="sgr:version" />
-										</td>
-										<td>
-											<xsl:value-of select="sgr:date" />
-										</td>
-										<td>
-											<xsl:value-of select="sgr:author" />
-										</td>
-										<td>
-											<xsl:value-of select="sgr:comment" />
-										</td>
-									</tr>
-								</xsl:for-each>
-							</table>
-						</td>
-					</tr>
-				</xsl:if>
-
-				<tr>
-					<td>Name</td>
-					<td>
-						<xsl:value-of select="@deviceName" />
-					</td>
-				</tr>
-				<tr>
-					<td>Manufacturer</td>
-					<td>
-						<xsl:value-of select="@manufacturerName" />
-					</td>
-				</tr>
-				<!-- specificationOwnerIdentification is very technical and of little value to the end user. dont' display. -->
-				<!--tr>
-
-					<td>Specification Owner ID</td>
-					<td>
-						<xsl:value-of select="@specificationOwnerIdentification" />
-					</td>
-				</tr-->
-				<tr>
-					<td>Type</td>
-					<td>
-						<xsl:choose>
-							<xsl:when test="@isLocalControl = 'true'">
-								<img src="/xsl/lan.png" alt="" width="16pt" height="16pt" />
-								Local area
-							</xsl:when>
-							<xsl:otherwise>
-								<img src="/xsl/cloud.png" alt="" width="16pt" height="16pt" />
-								Cloud device
-							</xsl:otherwise>
-						</xsl:choose>
-					</td>
-				</tr>
-
-				<tr>
-					<td class="noborder">&#160;</td>
-				</tr>
-
-				<!-- Device Profile (nameList, legibleDescription -->
-				<xsl:apply-templates select="sgr:deviceInformation" />
-
-				<!-- Generic Attributes -->
-				<xsl:apply-templates select="sgr:genericAttributes" />
-
-				<!-- Modbus Device -->
-				<xsl:if test="sgr:modbusInterfaceDescription">
-					<tr class="transportDetails">
-						<td colspan="2" class="noborder">
-							<h3>
-								<img src="/xsl/modbus.png" alt="Modbus" width="100px" />
-							</h3>
-						</td>
-					</tr>
-					<xsl:apply-templates select="sgr:modbusInterfaceDescription" />
-					<xsl:apply-templates select="sgr:modbusAttributes" />
-					<xsl:apply-templates select="sgr:timeSyncBlockNotification" />
-				</xsl:if>
-
-				<!-- Rest Device -->
-				<xsl:if test="sgr:restApiInterfaceDescription">
-					<tr class="transportDetails">
-						<td colspan="2" class="noborder">
-							<h3>
-								<img src="/xsl/rest.png" alt="Rest" width="100px" />
-							</h3>
-						</td>
-					</tr>
-					<xsl:apply-templates select="sgr:restApiInterfaceDescription" />
-				</xsl:if>
-
-				<!-- Contact Device -->
-				<xsl:if test="sgr:contactApiInterfaceDesc">
-					<tr class="transportDetails">
-						<td colspan="2" class="noborder">
-							<h3>
-								<img src="/xsl/contacts.png" alt="Contacts" width="40px" />
-							</h3>
-						</td>
-					</tr>
-					<xsl:apply-templates select="sgr:contactApiInterfaceDesc" />
-				</xsl:if>
-
-			</table>
-
-			<!-- Functiol Profiles -->
-			<xsl:apply-templates select="sgr:functionalProfileList/sgr:functionalProfileListElement" />
-		</div>
 	</xsl:template>
 
 </xsl:stylesheet>

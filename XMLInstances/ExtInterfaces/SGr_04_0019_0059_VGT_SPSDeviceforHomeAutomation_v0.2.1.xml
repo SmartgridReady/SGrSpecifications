@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="/xsl/SGr.xsl"?>
-<ModbusDeviceFrame deviceName="VGTSiemensSPSV0.1.1" isLocalControl="true" specificationOwnerIdentification="0" manufacturerName="Virtual Global Trading AG"
-  xmlns="http://www.smartgridready.com/ns/V0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/EI-Modbus/SGrModbusEIDeviceFrame.xsd ">
+<ModbusDeviceFrame xmlns="http://www.smartgridready.com/ns/V0/"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/EI-Modbus/SGrModbusEIDeviceFrame.xsd ">
+  <deviceName>VGTSiemensSPSV0.1.1</deviceName>
+  <manufacturerName>Virtual Global Trading AG</manufacturerName>
+  <specificationOwnerIdentification>0</specificationOwnerIdentification>
   <releaseNotes>
     <state>Draft</state>
   </releaseNotes>
@@ -22,6 +25,7 @@
     <manufacturerLabel>gibt es ein Label fuer eine Systemlösung</manufacturerLabel>
     <generalRemarks>Ersteller dieses Templates: SGr/cb</generalRemarks>
     <levelOfOperation>4</levelOfOperation>
+    <isLocalControl>true</isLocalControl>
     <programmerHints>
       <textElement>Dieses Geraet muss mit der IP-Adresse des Clients konfiguriert werden, da  das Modbus-Port aus Sicherheitsgruenden nur für eine einzige Adresse geoeffnet wird</textElement>
       <language>de</language>
@@ -41,9 +45,10 @@
   </deviceInformation>
   <modbusAttributes>
     <pollingLatencyMs>150</pollingLatencyMs>
-    <accessProtection isEnabled="true">
+    <accessProtection>
       <modbusExceptionCode>IllegalFunction</modbusExceptionCode>
       <modbusExceptionCode>IllegalAddress</modbusExceptionCode>
+      <isEnabled>true</isEnabled>
     </accessProtection>
   </modbusAttributes>
   <modbusInterfaceDescription>
@@ -63,7 +68,8 @@
   </modbusInterfaceDescription>
   <functionalProfileList>
     <functionalProfileListElement>
-      <functionalProfile profileName="BiDirFlexMgmt">
+      <functionalProfile>
+        <functionalProfileName>BiDirFlexMgmt</functionalProfileName>
         <functionalProfileIdentification>
           <specificationOwnerIdentification>0</specificationOwnerIdentification>
           <functionalProfileCategory>SGCP</functionalProfileCategory>
@@ -82,10 +88,14 @@
       </functionalProfile>
       <dataPointList>
         <dataPointListElement>
-          <dataPoint datapointName="ActivePowerActivation" presenceLevel="M" dataDirection="W" unit="NONE">
+          <dataPoint>
+            <dataPointName>ActivePowerActivation</dataPointName>
+            <dataDirection>W</dataDirection>
+            <presenceLevel>M</presenceLevel>
             <dataType>
               <boolean/>
             </dataType>
+            <unit>NONE</unit>
             <alternativeNames>
               <manufName>On/Off</manufName>
             </alternativeNames>
@@ -102,7 +112,9 @@
             <modbusDataType>
               <boolean/>
             </modbusDataType>
-            <modbusFirstRegisterReference addr="20" bitRank="0" registerType="HoldRegister"/>
+            <address>20</address>
+            <bitRank>0</bitRank>
+            <registerType>HoldRegister</registerType>
             <numberOfRegisters>1</numberOfRegisters>
             <masterFunctionsSupported>Primitives</masterFunctionsSupported>
           </modbusDataPointConfiguration>
@@ -114,10 +126,14 @@
           </modbusAttributes>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="ReadinessState" presenceLevel="M" dataDirection="R" unit="NONE">
+          <dataPoint>
+            <dataPointName>ReadinessState</dataPointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>M</presenceLevel>
             <dataType>
               <boolean/>
             </dataType>
+            <unit>NONE</unit>
             <alternativeNames>
               <manufName>Ready</manufName>
             </alternativeNames>
@@ -130,7 +146,9 @@
             <modbusDataType>
               <int16/>
             </modbusDataType>
-            <modbusFirstRegisterReference addr="00" bitRank="0" registerType="HoldRegister"/>
+            <address>60</address>
+            <bitRank>0</bitRank>
+            <registerType>HoldRegister</registerType>
             <numberOfRegisters>1</numberOfRegisters>
             <masterFunctionsSupported>Primitives</masterFunctionsSupported>
           </modbusDataPointConfiguration>
@@ -142,10 +160,14 @@
           </modbusAttributes>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="RunState" presenceLevel="M" dataDirection="R" unit="NONE">
+          <dataPoint>
+            <dataPointName>RunState</dataPointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>M</presenceLevel>
             <dataType>
               <boolean/>
             </dataType>
+            <unit>NONE</unit>
             <alternativeNames>
               <manufName>Info</manufName>
             </alternativeNames>
@@ -158,7 +180,9 @@
             <modbusDataType>
               <int16/>
             </modbusDataType>
-            <modbusFirstRegisterReference addr="01" bitRank="0" registerType="HoldRegister"/>
+            <address>1</address>
+            <bitRank>0</bitRank>
+            <registerType>HoldRegister</registerType>
             <numberOfRegisters>1</numberOfRegisters>
             <masterFunctionsSupported>Primitives</masterFunctionsSupported>
           </modbusDataPointConfiguration>
@@ -170,10 +194,14 @@
           </modbusAttributes>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="ActualActivePower" presenceLevel="M" dataDirection="R" unit="KILOWATTS">
+          <dataPoint>
+            <dataPointName>ActualActivePower</dataPointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>M</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>KILOWATTS</unit>
             <alternativeNames>
               <manufName>Active Power</manufName>
             </alternativeNames>
@@ -189,7 +217,9 @@
             <modbusDataType>
               <int16/>
             </modbusDataType>
-            <modbusFirstRegisterReference addr="10" bitRank="0" registerType="HoldRegister"/>
+            <address>10</address>
+            <bitRank>0</bitRank>
+            <registerType>HoldRegister</registerType>
             <numberOfRegisters>1</numberOfRegisters>
             <masterFunctionsSupported>Primitives</masterFunctionsSupported>
           </modbusDataPointConfiguration>

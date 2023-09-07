@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="/xsl/SGr.xsl"?>
-<ModbusDeviceFrame deviceName="FroniusSymo" isLocalControl="true" specificationOwnerIdentification="0" manufacturerName="Fronius" xmlns="http://www.smartgridready.com/ns/V0/"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/EI-Modbus/SGrModbusEIDeviceFrame.xsd">
+<ModbusDeviceFrame xmlns="http://www.smartgridready.com/ns/V0/"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/EI-Modbus/SGrModbusEIDeviceFrame.xsd">
+  <deviceName>FroniusSymo</deviceName>
+  <manufacturerName>Fronius</manufacturerName>
+  <specificationOwnerIdentification>0</specificationOwnerIdentification>
   <releaseNotes>
     <state>Draft</state>
   </releaseNotes>
@@ -11,6 +15,7 @@
     <softwareRevision>1.0.0</softwareRevision>
     <hardwareRevision>1.0.0</hardwareRevision>
     <generalRemarks>IBT/cb for test purpose only</generalRemarks>
+    <isLocalControl>true</isLocalControl>
   </deviceInformation>
   <modbusInterfaceDescription>
     <modbusInterfaceSelection>TCPIP</modbusInterfaceSelection>
@@ -19,7 +24,8 @@
   </modbusInterfaceDescription>
   <functionalProfileList>
     <functionalProfileListElement>
-      <functionalProfile profileName="SunspCommonModel">
+      <functionalProfile>
+        <functionalProfileName>SunspCommonModel</functionalProfileName>
         <functionalProfileIdentification>
           <specificationOwnerIdentification>0</specificationOwnerIdentification>
           <functionalProfileCategory>Inverter</functionalProfileCategory>
@@ -34,10 +40,14 @@
       </functionalProfile>
       <dataPointList>
         <dataPointListElement>
-          <dataPoint datapointName="SunspecID" presenceLevel="M" dataDirection="R" unit="NONE">
+          <dataPoint>
+            <dataPointName>SunspecID</dataPointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>M</presenceLevel>
             <dataType>
               <int16U/>
             </dataType>
+            <unit>NONE</unit>
             <alternativeNames>
               <sunSpecName>SID</sunSpecName>
             </alternativeNames>
@@ -59,7 +69,9 @@
             <modbusDataType>
               <int16U/>
             </modbusDataType>
-            <modbusFirstRegisterReference registerType="HoldRegister" addr="40001" bitRank="0"/>
+            <address>40001</address>
+            <bitRank>0</bitRank>
+            <registerType>HoldRegister</registerType>
             <numberOfRegisters>2</numberOfRegisters>
             <masterFunctionsSupported>Primitives</masterFunctionsSupported>
           </modbusDataPointConfiguration>
@@ -71,10 +83,14 @@
           </modbusAttributes>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="SunspCommonModelID" dataDirection="R" presenceLevel="M" unit="NONE">
+          <dataPoint>
+            <dataPointName>SunspCommonModelID</dataPointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>M</presenceLevel>
             <dataType>
               <int16U/>
             </dataType>
+            <unit>NONE</unit>
             <alternativeNames>
               <sunSpecName>ID</sunSpecName>
             </alternativeNames>
@@ -84,31 +100,41 @@
             <modbusDataType>
               <int16U/>
             </modbusDataType>
-            <modbusFirstRegisterReference registerType="HoldRegister" addr="40003"/>
+            <address>40003</address>
+            <registerType>HoldRegister</registerType>
             <numberOfRegisters>1</numberOfRegisters>
             <masterFunctionsSupported>Primitives</masterFunctionsSupported>
           </modbusDataPointConfiguration>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="CommonModelBlockLen" unit="NONE" presenceLevel="M" dataDirection="R">
+          <dataPoint>
+            <dataPointName>CommonModelBlockLen</dataPointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>M</presenceLevel>
             <dataType>
               <int16U/>
             </dataType>
+            <unit>NONE</unit>
           </dataPoint>
           <modbusDataPointConfiguration>
             <modbusDataType>
               <int16U/>
             </modbusDataType>
-            <modbusFirstRegisterReference registerType="HoldRegister" addr="4004"/>
+            <address>40004</address>
+            <registerType>HoldRegister</registerType>
             <numberOfRegisters>2</numberOfRegisters>
             <masterFunctionsSupported>Primitives</masterFunctionsSupported>
           </modbusDataPointConfiguration>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="ManufName" presenceLevel="M" dataDirection="R" unit="NONE">
+          <dataPoint>
+            <dataPointName>ManufName</dataPointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>M</presenceLevel>
             <dataType>
               <string/>
             </dataType>
+            <unit>NONE</unit>
             <alternativeNames>
               <manufName>Manufacturer</manufName>
               <sunSpecName>Mn</sunSpecName>
@@ -118,16 +144,22 @@
             <modbusDataType>
               <int16U/>
             </modbusDataType>
-            <modbusFirstRegisterReference registerType="HoldRegister" addr="40005" bitRank="0"/>
+            <address>40005</address>
+            <bitRank>0</bitRank>
+            <registerType>HoldRegister</registerType>
             <numberOfRegisters>16</numberOfRegisters>
             <masterFunctionsSupported>Primitives</masterFunctionsSupported>
           </modbusDataPointConfiguration>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="DeviceName" presenceLevel="M" dataDirection="R" unit="NONE">
+          <dataPoint>
+            <dataPointName>DeviceName</dataPointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>M</presenceLevel>
             <dataType>
               <string/>
             </dataType>
+            <unit>NONE</unit>
             <alternativeNames>
               <manufName>Device</manufName>
               <sunSpecName>Dn</sunSpecName>
@@ -137,16 +169,22 @@
             <modbusDataType>
               <int16U/>
             </modbusDataType>
-            <modbusFirstRegisterReference registerType="HoldRegister" addr="40021" bitRank="0"/>
+            <address>40021</address>
+            <bitRank>0</bitRank>
+            <registerType>HoldRegister</registerType>
             <numberOfRegisters>16</numberOfRegisters>
             <masterFunctionsSupported>Primitives</masterFunctionsSupported>
           </modbusDataPointConfiguration>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="Options" presenceLevel="O" dataDirection="R" unit="NONE">
+          <dataPoint>
+            <dataPointName>Options</dataPointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>O</presenceLevel>
             <dataType>
               <string/>
             </dataType>
+            <unit>NONE</unit>
             <alternativeNames>
               <sunSpecName>Opt</sunSpecName>
             </alternativeNames>
@@ -155,16 +193,21 @@
             <modbusDataType>
               <int16U/>
             </modbusDataType>
-            <modbusFirstRegisterReference registerType="HoldRegister" addr="20037"/>
+            <address>20037</address>
+            <registerType>HoldRegister</registerType>
             <numberOfRegisters>8</numberOfRegisters>
             <masterFunctionsSupported>Primitives</masterFunctionsSupported>
           </modbusDataPointConfiguration>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="SWVersion" presenceLevel="R" dataDirection="R" unit="NONE">
+          <dataPoint>
+            <dataPointName>SWVersion</dataPointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>R</presenceLevel>
             <dataType>
               <string/>
             </dataType>
+            <unit>NONE</unit>
             <alternativeNames>
               <sunSpecName>Vr</sunSpecName>
             </alternativeNames>
@@ -173,16 +216,21 @@
             <modbusDataType>
               <string/>
             </modbusDataType>
-            <modbusFirstRegisterReference registerType="HoldRegister" addr="40045"/>
+            <address>40045</address>
+            <registerType>HoldRegister</registerType>
             <numberOfRegisters>8</numberOfRegisters>
             <masterFunctionsSupported>Primitives</masterFunctionsSupported>
           </modbusDataPointConfiguration>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="SerialNumber" presenceLevel="M" dataDirection="R" unit="NONE">
+          <dataPoint>
+            <dataPointName>SerialNumber</dataPointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>M</presenceLevel>
             <dataType>
               <string/>
             </dataType>
+            <unit>NONE</unit>
             <alternativeNames>
               <sunSpecName>SN</sunSpecName>
             </alternativeNames>
@@ -191,7 +239,8 @@
             <modbusDataType>
               <string/>
             </modbusDataType>
-            <modbusFirstRegisterReference registerType="HoldRegister" addr="40053"/>
+            <address>40053</address>
+            <registerType>HoldRegister</registerType>
             <numberOfRegisters>16</numberOfRegisters>
             <masterFunctionsSupported>Primitives</masterFunctionsSupported>
           </modbusDataPointConfiguration>
@@ -199,7 +248,8 @@
       </dataPointList>
     </functionalProfileListElement>
     <functionalProfileListElement>
-      <functionalProfile profileName="SunspInvModel">
+      <functionalProfile>
+        <functionalProfileName>SunspInvModel</functionalProfileName>
         <functionalProfileIdentification>
           <specificationOwnerIdentification>0</specificationOwnerIdentification>
           <functionalProfileCategory>Inverter</functionalProfileCategory>
@@ -214,10 +264,14 @@
       </functionalProfile>
       <dataPointList>
         <dataPointListElement>
-          <dataPoint datapointName="SunspInvModelID" dataDirection="R" presenceLevel="M" unit="NONE">
+          <dataPoint>
+            <dataPointName>SunspInvModelID</dataPointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>M</presenceLevel>
             <dataType>
               <int16U/>
             </dataType>
+            <unit>NONE</unit>
             <alternativeNames>
               <sunSpecName>ID</sunSpecName>
             </alternativeNames>
@@ -226,16 +280,21 @@
             <modbusDataType>
               <int16U/>
             </modbusDataType>
-            <modbusFirstRegisterReference registerType="HoldRegister" addr="40070"/>
+            <address>40070</address>
+            <registerType>HoldRegister</registerType>
             <numberOfRegisters>1</numberOfRegisters>
             <masterFunctionsSupported>Primitives</masterFunctionsSupported>
           </modbusDataPointConfiguration>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="InvModelBlockLen" presenceLevel="M" dataDirection="R" unit="NONE">
+          <dataPoint>
+            <dataPointName>InvModelBlockLen</dataPointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>M</presenceLevel>
             <dataType>
               <int16U/>
             </dataType>
+            <unit>NONE</unit>
             <alternativeNames>
               <manufName>C_SunSpec_Length</manufName>
               <sunSpecName>L</sunSpecName>
@@ -245,7 +304,9 @@
             <modbusDataType>
               <int16U/>
             </modbusDataType>
-            <modbusFirstRegisterReference registerType="HoldRegister" addr="40071" bitRank="0"/>
+            <address>40071</address>
+            <bitRank>0</bitRank>
+            <registerType>HoldRegister</registerType>
             <numberOfRegisters>1</numberOfRegisters>
             <masterFunctionsSupported>Primitives</masterFunctionsSupported>
           </modbusDataPointConfiguration>
@@ -257,10 +318,14 @@
           </modbusAttributes>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="CurrentACtot" presenceLevel="M" dataDirection="R" unit="AMPERES">
+          <dataPoint>
+            <dataPointName>CurrentACtot</dataPointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>M</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>AMPERES</unit>
             <alternativeNames>
               <manufName>I_AC_Current</manufName>
               <sunSpecName>A</sunSpecName>
@@ -270,7 +335,9 @@
             <modbusDataType>
               <int16U/>
             </modbusDataType>
-            <modbusFirstRegisterReference registerType="HoldRegister" addr="40072" bitRank="0"/>
+            <address>40072</address>
+            <bitRank>0</bitRank>
+            <registerType>HoldRegister</registerType>
             <numberOfRegisters>1</numberOfRegisters>
             <masterFunctionsSupported>Primitives</masterFunctionsSupported>
           </modbusDataPointConfiguration>
@@ -283,10 +350,14 @@
           </modbusAttributes>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="CurrentACL1" presenceLevel="M" dataDirection="R" unit="AMPERES">
+          <dataPoint>
+            <dataPointName>CurrentACL1</dataPointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>M</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>AMPERES</unit>
             <alternativeNames>
               <manufName>I_AC_CurrentA</manufName>
               <sunSpecName>AphA</sunSpecName>
@@ -296,7 +367,9 @@
             <modbusDataType>
               <int16U/>
             </modbusDataType>
-            <modbusFirstRegisterReference registerType="HoldRegister" addr="40073" bitRank="0"/>
+            <address>40073</address>
+            <bitRank>0</bitRank>
+            <registerType>HoldRegister</registerType>
             <numberOfRegisters>1</numberOfRegisters>
             <masterFunctionsSupported>Primitives</masterFunctionsSupported>
           </modbusDataPointConfiguration>
@@ -308,10 +381,14 @@
           </modbusAttributes>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="CurrentACL2" presenceLevel="M" unit="AMPERES" dataDirection="R">
+          <dataPoint>
+            <dataPointName>CurrentACL2</dataPointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>M</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>AMPERES</unit>
             <alternativeNames>
               <manufName>I_AC_CurrentB</manufName>
               <sunSpecName>AphB</sunSpecName>
@@ -321,7 +398,9 @@
             <modbusDataType>
               <int16/>
             </modbusDataType>
-            <modbusFirstRegisterReference addr="40074" bitRank="0" registerType="HoldRegister"></modbusFirstRegisterReference>
+            <address>40074</address>
+            <bitRank>0</bitRank>
+            <registerType>HoldRegister</registerType>
             <numberOfRegisters>1</numberOfRegisters>
             <masterFunctionsSupported>Primitives</masterFunctionsSupported>
           </modbusDataPointConfiguration>
@@ -334,10 +413,14 @@
           </modbusAttributes>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="CurrentACL3" presenceLevel="M" unit="AMPERES" dataDirection="R">
+          <dataPoint>
+            <dataPointName>CurrentACL3</dataPointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>M</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>AMPERES</unit>
             <alternativeNames>
               <manufName>I_AC_CurrentC</manufName>
               <sunSpecName>AphC</sunSpecName>
@@ -347,7 +430,9 @@
             <modbusDataType>
               <int16/>
             </modbusDataType>
-            <modbusFirstRegisterReference registerType="HoldRegister" addr="40075"/>
+            <address>40075</address>
+            <bitRank>0</bitRank>
+            <registerType>HoldRegister</registerType>
             <numberOfRegisters>1</numberOfRegisters>
             <masterFunctionsSupported>Primitives</masterFunctionsSupported>
           </modbusDataPointConfiguration>
@@ -360,26 +445,36 @@
           </modbusAttributes>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="sunssf4Current" presenceLevel="M" dataDirection="R" unit="NONE">
+          <dataPoint>
+            <dataPointName>sunssf4Current</dataPointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>M</presenceLevel>
             <dataType>
               <int16U/>
             </dataType>
+            <unit>NONE</unit>
           </dataPoint>
           <modbusDataPointConfiguration>
             <modbusDataType>
               <int16U/>
             </modbusDataType>
-            <modbusFirstRegisterReference registerType="HoldRegister" addr="40076"/>
+            <address>40076</address>
+            <bitRank>0</bitRank>
+            <registerType>HoldRegister</registerType>
             <numberOfRegisters>1</numberOfRegisters>
             <masterFunctionsSupported>Primitives</masterFunctionsSupported>
           </modbusDataPointConfiguration>
           <blockCacheIdentification>Block4Current</blockCacheIdentification>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="VoltageACL1L2" presenceLevel="O" unit="VOLTS" dataDirection="R">
+          <dataPoint>
+            <dataPointName>VoltageACL1L2</dataPointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>O</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>VOLTS</unit>
             <alternativeNames>
               <sunSpecName>I_AC_VoltageAB</sunSpecName>
             </alternativeNames>
@@ -388,7 +483,9 @@
             <modbusDataType>
               <int16/>
             </modbusDataType>
-            <modbusFirstRegisterReference addr="40077" bitRank="0" registerType="HoldRegister"></modbusFirstRegisterReference>
+            <address>40077</address>
+            <bitRank>0</bitRank>
+            <registerType>HoldRegister</registerType>
             <numberOfRegisters>1</numberOfRegisters>
             <masterFunctionsSupported>Primitives</masterFunctionsSupported>
           </modbusDataPointConfiguration>
@@ -400,10 +497,14 @@
           </modbusAttributes>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="VoltageACL2L3" presenceLevel="O" unit="VOLTS" dataDirection="R">
+          <dataPoint>
+            <dataPointName>VoltageACL2L3</dataPointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>O</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>VOLTS</unit>
             <alternativeNames>
               <sunSpecName></sunSpecName>
             </alternativeNames>
@@ -412,7 +513,9 @@
             <modbusDataType>
               <int16/>
             </modbusDataType>
-            <modbusFirstRegisterReference addr="40" registerType="HoldRegister" bitRank="0"/>
+            <address>40</address>
+            <bitRank>0</bitRank>
+            <registerType>HoldRegister</registerType>
             <numberOfRegisters>1</numberOfRegisters>
             <masterFunctionsSupported>Primitives</masterFunctionsSupported>
           </modbusDataPointConfiguration>
@@ -424,10 +527,14 @@
           </modbusAttributes>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="VoltageACL3L1" presenceLevel="O" unit="VOLTS" dataDirection="R">
+          <dataPoint>
+            <dataPointName>VoltageACL3L1</dataPointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>O</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>VOLTS</unit>
             <alternativeNames>
               <sunSpecName>I_AC_CurrentB</sunSpecName>
             </alternativeNames>
@@ -436,7 +543,9 @@
             <modbusDataType>
               <int16/>
             </modbusDataType>
-            <modbusFirstRegisterReference addr="40" bitRank="0" registerType="HoldRegister"></modbusFirstRegisterReference>
+            <address>40</address>
+            <bitRank>0</bitRank>
+            <registerType>HoldRegister</registerType>
             <numberOfRegisters>1</numberOfRegisters>
             <masterFunctionsSupported>Primitives</masterFunctionsSupported>
           </modbusDataPointConfiguration>
@@ -448,10 +557,14 @@
           </modbusAttributes>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="VoltageACL1N" presenceLevel="O" unit="VOLTS" dataDirection="R">
+          <dataPoint>
+            <dataPointName>VoltageACL1N</dataPointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>O</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>VOLTS</unit>
             <alternativeNames>
               <sunSpecName></sunSpecName>
             </alternativeNames>
@@ -460,7 +573,9 @@
             <modbusDataType>
               <int16/>
             </modbusDataType>
-            <modbusFirstRegisterReference addr="40" registerType="HoldRegister" bitRank="0"/>
+            <address>40</address>
+            <bitRank>0</bitRank>
+            <registerType>HoldRegister</registerType>
             <numberOfRegisters>1</numberOfRegisters>
             <masterFunctionsSupported>Primitives</masterFunctionsSupported>
           </modbusDataPointConfiguration>
@@ -472,10 +587,14 @@
           </modbusAttributes>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="VoltageACL2N" presenceLevel="O" unit="VOLTS" dataDirection="R">
+          <dataPoint>
+            <dataPointName>VoltageACL2N</dataPointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>O</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>VOLTS</unit>
             <alternativeNames>
               <sunSpecName>I_AC_CurrentB</sunSpecName>
             </alternativeNames>
@@ -484,7 +603,9 @@
             <modbusDataType>
               <int16/>
             </modbusDataType>
-            <modbusFirstRegisterReference addr="40" bitRank="0" registerType="HoldRegister"></modbusFirstRegisterReference>
+            <address>40</address>
+            <bitRank>0</bitRank>
+            <registerType>HoldRegister</registerType>
             <numberOfRegisters>1</numberOfRegisters>
             <masterFunctionsSupported>Primitives</masterFunctionsSupported>
           </modbusDataPointConfiguration>
@@ -496,10 +617,14 @@
           </modbusAttributes>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="VoltageACL3N" presenceLevel="O" unit="VOLTS" dataDirection="R">
+          <dataPoint>
+            <dataPointName>VoltageACL3N</dataPointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>O</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>VOLTS</unit>
             <alternativeNames>
               <sunSpecName></sunSpecName>
             </alternativeNames>
@@ -508,7 +633,9 @@
             <modbusDataType>
               <int16/>
             </modbusDataType>
-            <modbusFirstRegisterReference addr="40" registerType="HoldRegister" bitRank="0"/>
+            <address>40</address>
+            <bitRank>0</bitRank>
+            <registerType>HoldRegister</registerType>
             <numberOfRegisters>1</numberOfRegisters>
             <masterFunctionsSupported>Primitives</masterFunctionsSupported>
           </modbusDataPointConfiguration>
@@ -520,10 +647,14 @@
           </modbusAttributes>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="Frequency" presenceLevel="O" unit="HERTZ" dataDirection="R">
+          <dataPoint>
+            <dataPointName>Frequency</dataPointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>O</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>HERTZ</unit>
             <alternativeNames>
               <sunSpecName>I_AC_CurrentB</sunSpecName>
             </alternativeNames>
@@ -532,7 +663,9 @@
             <modbusDataType>
               <int16/>
             </modbusDataType>
-            <modbusFirstRegisterReference addr="40" bitRank="0" registerType="HoldRegister"></modbusFirstRegisterReference>
+            <address>40</address>
+            <bitRank>0</bitRank>
+            <registerType>HoldRegister</registerType>
             <numberOfRegisters>1</numberOfRegisters>
             <masterFunctionsSupported>Primitives</masterFunctionsSupported>
           </modbusDataPointConfiguration>
@@ -544,10 +677,14 @@
           </modbusAttributes>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="ApparentPowerACtot" presenceLevel="O" unit="VOLT_AMPERES" dataDirection="R">
+          <dataPoint>
+            <dataPointName>ApparentPowerACtot</dataPointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>O</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>VOLT_AMPERES</unit>
             <alternativeNames>
               <sunSpecName></sunSpecName>
             </alternativeNames>
@@ -556,7 +693,9 @@
             <modbusDataType>
               <int16/>
             </modbusDataType>
-            <modbusFirstRegisterReference addr="40" registerType="HoldRegister" bitRank="0"/>
+            <address>40</address>
+            <bitRank>0</bitRank>
+            <registerType>HoldRegister</registerType>
             <numberOfRegisters>1</numberOfRegisters>
             <masterFunctionsSupported>Primitives</masterFunctionsSupported>
           </modbusDataPointConfiguration>
@@ -568,10 +707,14 @@
           </modbusAttributes>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="ReactivePowerACTot" presenceLevel="O" unit="VOLT_AMPERES_REACTIVE" dataDirection="R">
+          <dataPoint>
+            <dataPointName>ReactivePowerACTot</dataPointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>O</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>VOLT_AMPERES_REACTIVE</unit>
             <alternativeNames>
               <sunSpecName>I_AC_CurrentB</sunSpecName>
             </alternativeNames>
@@ -580,7 +723,9 @@
             <modbusDataType>
               <int16/>
             </modbusDataType>
-            <modbusFirstRegisterReference addr="40" bitRank="0" registerType="HoldRegister"></modbusFirstRegisterReference>
+            <address>40</address>
+            <bitRank>0</bitRank>
+            <registerType>HoldRegister</registerType>
             <numberOfRegisters>1</numberOfRegisters>
             <masterFunctionsSupported>Primitives</masterFunctionsSupported>
           </modbusDataPointConfiguration>
@@ -592,10 +737,14 @@
           </modbusAttributes>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="PowerFactor" presenceLevel="O" unit="NONE" dataDirection="R">
+          <dataPoint>
+            <dataPointName>PowerFactor</dataPointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>O</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>NONE</unit>
             <alternativeNames>
               <sunSpecName></sunSpecName>
             </alternativeNames>
@@ -604,7 +753,9 @@
             <modbusDataType>
               <int16/>
             </modbusDataType>
-            <modbusFirstRegisterReference addr="40" registerType="HoldRegister" bitRank="0"/>
+            <address>40</address>
+            <bitRank>0</bitRank>
+            <registerType>HoldRegister</registerType>
             <numberOfRegisters>1</numberOfRegisters>
             <masterFunctionsSupported>Primitives</masterFunctionsSupported>
           </modbusDataPointConfiguration>
@@ -616,10 +767,14 @@
           </modbusAttributes>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="TempCabinet" presenceLevel="O" unit="DEGREES_CELSIUS" dataDirection="R">
+          <dataPoint>
+            <dataPointName>TempCabinet</dataPointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>O</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>DEGREES_CELSIUS</unit>
             <alternativeNames>
               <sunSpecName>I_AC_CurrentB</sunSpecName>
             </alternativeNames>
@@ -628,7 +783,9 @@
             <modbusDataType>
               <int16/>
             </modbusDataType>
-            <modbusFirstRegisterReference addr="40" bitRank="0" registerType="HoldRegister"></modbusFirstRegisterReference>
+            <address>40</address>
+            <bitRank>0</bitRank>
+            <registerType>HoldRegister</registerType>
             <numberOfRegisters>1</numberOfRegisters>
             <masterFunctionsSupported>Primitives</masterFunctionsSupported>
           </modbusDataPointConfiguration>
@@ -640,10 +797,14 @@
           </modbusAttributes>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="HeatThinkTemp" presenceLevel="O" unit="DEGREES_CELSIUS" dataDirection="R">
+          <dataPoint>
+            <dataPointName>HeatThinkTemp</dataPointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>O</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>DEGREES_CELSIUS</unit>
             <alternativeNames>
               <sunSpecName></sunSpecName>
             </alternativeNames>
@@ -652,7 +813,9 @@
             <modbusDataType>
               <int16/>
             </modbusDataType>
-            <modbusFirstRegisterReference addr="40" registerType="HoldRegister" bitRank="0"/>
+            <address>40</address>
+            <bitRank>0</bitRank>
+            <registerType>HoldRegister</registerType>
             <numberOfRegisters>1</numberOfRegisters>
             <masterFunctionsSupported>Primitives</masterFunctionsSupported>
           </modbusDataPointConfiguration>
@@ -664,10 +827,14 @@
           </modbusAttributes>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="TransformerTemp" presenceLevel="O" unit="DEGREES_CELSIUS" dataDirection="R">
+          <dataPoint>
+            <dataPointName>TransformerTemp</dataPointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>O</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>DEGREES_CELSIUS</unit>
             <alternativeNames>
               <sunSpecName>I_AC_CurrentB</sunSpecName>
             </alternativeNames>
@@ -676,7 +843,9 @@
             <modbusDataType>
               <int16/>
             </modbusDataType>
-            <modbusFirstRegisterReference addr="40" bitRank="0" registerType="HoldRegister"></modbusFirstRegisterReference>
+            <address>40</address>
+            <bitRank>0</bitRank>
+            <registerType>HoldRegister</registerType>
             <numberOfRegisters>1</numberOfRegisters>
             <masterFunctionsSupported>Primitives</masterFunctionsSupported>
           </modbusDataPointConfiguration>
@@ -688,10 +857,14 @@
           </modbusAttributes>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="OtherTemp" presenceLevel="O" unit="DEGREES_CELSIUS" dataDirection="R">
+          <dataPoint>
+            <dataPointName>OtherTemp</dataPointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>O</presenceLevel>
             <dataType>
               <float64/>
             </dataType>
+            <unit>DEGREES_CELSIUS</unit>
             <alternativeNames>
               <sunSpecName></sunSpecName>
             </alternativeNames>
@@ -700,7 +873,9 @@
             <modbusDataType>
               <int16/>
             </modbusDataType>
-            <modbusFirstRegisterReference addr="40" registerType="HoldRegister" bitRank="0"/>
+            <address>40</address>
+            <bitRank>0</bitRank>
+            <registerType>HoldRegister</registerType>
             <numberOfRegisters>1</numberOfRegisters>
             <masterFunctionsSupported>Primitives</masterFunctionsSupported>
           </modbusDataPointConfiguration>
@@ -712,12 +887,16 @@
           </modbusAttributes>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="OperatingState" presenceLevel="O" unit="NONE" dataDirection="R">
+          <dataPoint>
+            <dataPointName>OperatingState</dataPointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>O</presenceLevel>
             <dataType>
               <enum>
                 <sgrSunspStateCodes>I_STATUS_OFF</sgrSunspStateCodes>
               </enum>
             </dataType>
+            <unit>NONE</unit>
             <alternativeNames>
               <sunSpecName>I_AC_CurrentB</sunSpecName>
             </alternativeNames>
@@ -726,7 +905,9 @@
             <modbusDataType>
               <int16/>
             </modbusDataType>
-            <modbusFirstRegisterReference addr="40" bitRank="0" registerType="HoldRegister"></modbusFirstRegisterReference>
+            <address>40</address>
+            <bitRank>0</bitRank>
+            <registerType>HoldRegister</registerType>
             <numberOfRegisters>1</numberOfRegisters>
             <masterFunctionsSupported>Primitives</masterFunctionsSupported>
           </modbusDataPointConfiguration>
@@ -738,12 +919,16 @@
           </modbusAttributes>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="EventList1" presenceLevel="O" unit="NONE" dataDirection="R">
+          <dataPoint>
+            <dataPointName>EventList1</dataPointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>O</presenceLevel>
             <dataType>
               <enum2bitmapIndex>
                 <sgrBool2BitRank>Bit0</sgrBool2BitRank>
               </enum2bitmapIndex>
             </dataType>
+            <unit>NONE</unit>
             <alternativeNames>
               <sunSpecName>Evt1</sunSpecName>
             </alternativeNames>
@@ -755,7 +940,9 @@
             <modbusDataType>
               <int32U/>
             </modbusDataType>
-            <modbusFirstRegisterReference addr="40110" registerType="HoldRegister" bitRank="0"/>
+            <address>40110</address>
+            <bitRank>0</bitRank>
+            <registerType>HoldRegister</registerType>
             <numberOfRegisters>2</numberOfRegisters>
             <masterFunctionsSupported>Primitives</masterFunctionsSupported>
           </modbusDataPointConfiguration>
@@ -768,12 +955,16 @@
           </modbusAttributes>
         </dataPointListElement>
         <dataPointListElement>
-          <dataPoint datapointName="EventList2" presenceLevel="O" unit="NONE" dataDirection="R">
+          <dataPoint>
+            <dataPointName>EventList2</dataPointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>O</presenceLevel>
             <dataType>
               <enum2bitmapIndex>
                 <sgrBool2BitRank>Bit0</sgrBool2BitRank>
               </enum2bitmapIndex>
             </dataType>
+            <unit>NONE</unit>
             <alternativeNames>
               <sunSpecName>Evt2</sunSpecName>
             </alternativeNames>
@@ -784,7 +975,9 @@
             <modbusDataType>
               <int32U/>
             </modbusDataType>
-            <modbusFirstRegisterReference addr="40112" bitRank="0" registerType="HoldRegister"></modbusFirstRegisterReference>
+            <address>40112</address>
+            <bitRank>0</bitRank>
+            <registerType>HoldRegister</registerType>
             <numberOfRegisters>2</numberOfRegisters>
             <masterFunctionsSupported>Primitives</masterFunctionsSupported>
           </modbusDataPointConfiguration>
@@ -799,7 +992,8 @@
       </dataPointList>
     </functionalProfileListElement>
     <functionalProfileListElement>
-      <functionalProfile profileName="SunspNameplate">
+      <functionalProfile>
+        <functionalProfileName>SunspNameplate</functionalProfileName>
         <functionalProfileIdentification>
           <specificationOwnerIdentification>0</specificationOwnerIdentification>
           <functionalProfileCategory>Inverter</functionalProfileCategory>
@@ -814,10 +1008,14 @@
       </functionalProfile>
       <dataPointList>
         <dataPointListElement>
-          <dataPoint datapointName="SunspNameplateID" presenceLevel="M" dataDirection="R" unit="NONE">
+          <dataPoint>
+            <dataPointName>SunspNameplateID</dataPointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>M</presenceLevel>
             <dataType>
               <int16U/>
             </dataType>
+            <unit>NONE</unit>
             <alternativeNames>
               <sunSpecName>ID</sunSpecName>
             </alternativeNames>
@@ -826,7 +1024,8 @@
             <modbusDataType>
               <int16U/>
             </modbusDataType>
-            <modbusFirstRegisterReference registerType="HoldRegister" addr="0"/>
+            <address>0</address>
+            <registerType>HoldRegister</registerType>
             <numberOfRegisters>1</numberOfRegisters>
             <masterFunctionsSupported>Primitives</masterFunctionsSupported>
           </modbusDataPointConfiguration>
@@ -834,7 +1033,8 @@
       </dataPointList>
     </functionalProfileListElement>
     <functionalProfileListElement>
-      <functionalProfile profileName="SunspBasicSettings">
+      <functionalProfile>
+        <functionalProfileName>SunspBasicSettings</functionalProfileName>
         <functionalProfileIdentification>
           <specificationOwnerIdentification>0</specificationOwnerIdentification>
           <functionalProfileCategory>Inverter</functionalProfileCategory>
@@ -849,16 +1049,21 @@
       </functionalProfile>
       <dataPointList>
         <dataPointListElement>
-          <dataPoint datapointName="SunspBasicSettingsID" presenceLevel="M" dataDirection="R" unit="NONE">
+          <dataPoint>
+            <dataPointName>SunspBasicSettingsID</dataPointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>M</presenceLevel>
             <dataType>
               <int32U/>
             </dataType>
+            <unit>NONE</unit>
           </dataPoint>
           <modbusDataPointConfiguration>
             <modbusDataType>
               <int16U/>
             </modbusDataType>
-            <modbusFirstRegisterReference registerType="HoldRegister" addr="40150"/>
+            <address>40150</address>
+            <registerType>HoldRegister</registerType>
             <numberOfRegisters>1</numberOfRegisters>
             <masterFunctionsSupported>Primitives</masterFunctionsSupported>
           </modbusDataPointConfiguration>
@@ -866,7 +1071,8 @@
       </dataPointList>
     </functionalProfileListElement>
     <functionalProfileListElement>
-      <functionalProfile profileName="SunspMeasurementStatus">
+      <functionalProfile>
+        <functionalProfileName>SunspMeasurementStatus</functionalProfileName>
         <functionalProfileIdentification>
           <specificationOwnerIdentification>0</specificationOwnerIdentification>
           <functionalProfileCategory>Inverter</functionalProfileCategory>
@@ -881,10 +1087,14 @@
       </functionalProfile>
       <dataPointList>
         <dataPointListElement>
-          <dataPoint datapointName="SunspMeasurementStatusID" presenceLevel="M" dataDirection="R" unit="NONE">
+          <dataPoint>
+            <dataPointName>SunspMeasurementStatusID</dataPointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>M</presenceLevel>
             <dataType>
               <int32U/>
             </dataType>
+            <unit>NONE</unit>
             <alternativeNames>
               <sunSpecName>ID</sunSpecName>
             </alternativeNames>
@@ -893,7 +1103,8 @@
             <modbusDataType>
               <int16U/>
             </modbusDataType>
-            <modbusFirstRegisterReference registerType="HoldRegister" addr="40150"/>
+            <address>40150</address>
+            <registerType>HoldRegister</registerType>
             <numberOfRegisters>1</numberOfRegisters>
             <masterFunctionsSupported>Primitives</masterFunctionsSupported>
           </modbusDataPointConfiguration>
@@ -901,7 +1112,8 @@
       </dataPointList>
     </functionalProfileListElement>
     <functionalProfileListElement>
-      <functionalProfile profileName="SunspImmControl">
+      <functionalProfile>
+        <functionalProfileName>SunspImmControl</functionalProfileName>
         <functionalProfileIdentification>
           <specificationOwnerIdentification>0</specificationOwnerIdentification>
           <functionalProfileCategory>Inverter</functionalProfileCategory>
@@ -916,10 +1128,14 @@
       </functionalProfile>
       <dataPointList>
         <dataPointListElement>
-          <dataPoint datapointName="SunspImmControlID" presenceLevel="M" dataDirection="R" unit="NONE">
+          <dataPoint>
+            <dataPointName>SunspImmControlID</dataPointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>M</presenceLevel>
             <dataType>
               <int16U/>
             </dataType>
+            <unit>NONE</unit>
             <alternativeNames>
               <sunSpecName>ID</sunSpecName>
             </alternativeNames>
@@ -928,7 +1144,8 @@
             <modbusDataType>
               <int16U/>
             </modbusDataType>
-            <modbusFirstRegisterReference registerType="HoldRegister" addr="40228"/>
+            <address>40228</address>
+            <registerType>HoldRegister</registerType>
             <numberOfRegisters>1</numberOfRegisters>
             <masterFunctionsSupported>Primitives</masterFunctionsSupported>
           </modbusDataPointConfiguration>
@@ -936,7 +1153,8 @@
       </dataPointList>
     </functionalProfileListElement>
     <functionalProfileListElement>
-      <functionalProfile profileName="SunspMultMPP">
+      <functionalProfile>
+        <functionalProfileName>SunspMultMPP</functionalProfileName>
         <functionalProfileIdentification>
           <specificationOwnerIdentification>0</specificationOwnerIdentification>
           <functionalProfileCategory>Inverter</functionalProfileCategory>
@@ -951,10 +1169,14 @@
       </functionalProfile>
       <dataPointList>
         <dataPointListElement>
-          <dataPoint datapointName="SunspMultMPPID" presenceLevel="M" dataDirection="R" unit="NONE">
+          <dataPoint>
+            <dataPointName>SunspMultMPPID</dataPointName>
+            <dataDirection>R</dataDirection>
+            <presenceLevel>M</presenceLevel>
             <dataType>
               <int16U/>
             </dataType>
+            <unit>NONE</unit>
             <alternativeNames>
               <sunSpecName>ID</sunSpecName>
             </alternativeNames>
@@ -970,7 +1192,8 @@
             <modbusDataType>
               <int16U/>
             </modbusDataType>
-            <modbusFirstRegisterReference registerType="HoldRegister" addr="40254"/>
+            <address>40254</address>
+            <registerType>HoldRegister</registerType>
             <numberOfRegisters>1</numberOfRegisters>
             <masterFunctionsSupported>Primitives</masterFunctionsSupported>
           </modbusDataPointConfiguration>

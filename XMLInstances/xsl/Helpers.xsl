@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="1.1" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:sgr="http://www.smartgridready.com/ns/V0/">
 
-
     <!-- Helper templates -->
     <!-- template 'join' accepts valueList and separator -->
     <xsl:template name="join">
@@ -17,6 +16,259 @@
                 </xsl:otherwise>
             </xsl:choose>
         </xsl:for-each>
+    </xsl:template>
+
+    <!-- release notes -->
+    <xsl:template match="sgr:releaseNotes">
+        <table>
+            <colgroup>
+                <col style="width:30%" />
+            </colgroup>
+            <!-- Release State -->
+            <tr>
+                <td class="fpHeader">
+                    <h4>Release State</h4>
+                </td>
+                <td class="fpHeader">
+                    <table>
+                        <tr>
+                            <td>
+                                <xsl:value-of select="sgr:state" />
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+
+            <!-- Remarks -->
+            <xsl:if test="sgr:remarks">
+                <tr>
+                    <td class="fpHeader">
+                        <h4>Remarks</h4>
+                    </td>
+                    <td class="fpHeader">
+                        <table>
+                            <tr>
+                                <td>
+                                    <xsl:value-of select="sgr:remarks" />
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </xsl:if>
+
+            <!-- Change Log -->
+            <xsl:if test="sgr:changeLog">
+                <tr>
+                    <td class="fpHeader">
+                        <h4>Change Log</h4>
+                    </td>
+                    <td class="fpHeader">
+                        <table>
+                            <colgroup>
+                                <col style="width:16%" />
+                                <col style="width:16%" />
+                                <col style="width:16%" />
+                                <col style="width:52%" />
+                            </colgroup>
+                            <tr>
+                                <th>Version</th>
+                                <th>Date</th>
+                                <th>Author</th>
+                                <th>Comment</th>
+                            </tr>
+                            <xsl:for-each select="sgr:changeLog">
+                                <tr>
+                                    <td>
+                                        <xsl:value-of select="sgr:version" />
+                                    </td>
+                                    <td>
+                                        <xsl:value-of select="sgr:date" />
+                                    </td>
+                                    <td>
+                                        <xsl:value-of select="sgr:author" />
+                                    </td>
+                                    <td>
+                                        <xsl:value-of select="sgr:comment" />
+                                    </td>
+                                </tr>
+                            </xsl:for-each>
+                        </table>
+                    </td>
+                </tr>
+            </xsl:if>
+        </table>        
+    </xsl:template>
+
+    <!-- version number -->
+    <xsl:template match="sgr:versionNumber">
+        <xsl:value-of select="sgr:primaryVersionNumber" />.<xsl:value-of select="sgr:secondaryVersionNumber" />.<xsl:value-of select="sgr:subReleaseVersionNumber" />
+    </xsl:template>
+
+    <!-- AlternativeNames-->
+    <xsl:template match="sgr:alternativeNames">
+        <xsl:if test="sgr:workName">
+            <tr class="ontologyDetails">
+                <td>Temporary Work Name</td>
+                <td>
+                    <xsl:value-of select="sgr:workName" />
+                </td>
+            </tr>
+        </xsl:if>
+
+        <xsl:if test="sgr:manufName">
+            <tr class="ontologyDetails">
+                <td>Manufacturers Name</td>
+                <td>
+                    <xsl:value-of select="sgr:manufName" />
+                </td>
+            </tr>
+        </xsl:if>
+
+        <xsl:if test="sgr:IEC61850Name">
+            <tr class="ontologyDetails">
+                <td>IEC 61850 Name </td>
+                <td>
+                    <xsl:value-of select="sgr:IEC61850Name" />
+                </td>
+            </tr>
+        </xsl:if>
+
+        <xsl:if test="sgr:SAREFName">
+            <tr class="ontologyDetails">
+                <td>SAREF Name</td>
+                <td>
+                    <xsl:value-of select="sgr:SAREFName" />
+                </td>
+            </tr>
+        </xsl:if>
+
+        <xsl:if test="sgr:EEBUSName">
+            <tr class="ontologyDetails">
+                <td>EEBUS Name</td>
+                <td>
+                    <xsl:value-of select="sgr:EEBUSName" />
+                </td>
+            </tr>
+        </xsl:if>
+
+        <xsl:if test="sgr:sunSpecName">
+            <tr class="ontologyDetails">
+                <td>SUNSPEC Name</td>
+                <td>
+                    <xsl:value-of select="sgr:sunSpecName" />
+                </td>
+            </tr>
+        </xsl:if>
+
+        <xsl:if test="sgr:hpBwpName">
+            <tr class="ontologyDetails">
+                <td>bwp HP Name</td>
+                <td>
+                    <xsl:value-of select="sgr:hpBwpName" />
+                </td>
+            </tr>
+        </xsl:if>
+
+        <xsl:if test="sgr:EN17609Name">
+            <tr class="ontologyDetails">
+                <td>EN17609 Name</td>
+                <td>
+                    <xsl:value-of select="sgr:EN17609Name" />
+                </td>
+            </tr>
+        </xsl:if>
+    </xsl:template>
+
+    	<!-- LegibleDescription -->
+	<xsl:template match="sgr:legibleDescription">
+		<tr>
+			<xsl:attribute name="lang">
+				<xsl:value-of select="sgr:language" />
+			</xsl:attribute>
+			<td colspan="2">
+                <img width="20px" height="14px">
+                    <xsl:attribute name="src" alt="Lang">/xsl/ressources/<xsl:value-of select="sgr:language" />.png</xsl:attribute>
+                </img>
+                &#160;<xsl:value-of select="sgr:textElement" disable-output-escaping="yes" />
+                <xsl:apply-templates select="sgr:uri" />
+			</td>
+		</tr>
+	</xsl:template>
+	<!-- ProgrammerHints -->
+	<xsl:template match="sgr:programmerHints">
+		<tr class="transportDetails">
+			<xsl:attribute name="lang">
+				<xsl:value-of select="sgr:language" />
+			</xsl:attribute>
+			<td colspan="2">
+                <div style="padding-top:0.3em;padding-bottom:0.3em;">
+                    <img width="20px" height="14px">
+                        <xsl:attribute name="src" alt="Lang">/xsl/ressources/<xsl:value-of select="sgr:language" />.png</xsl:attribute>
+                    </img>&#160;
+                    Programmer Hint 
+                    &#160;<img src="/xsl/ressources/hint.png" alt="Hint" width="16px" height="16px" />
+                </div>
+                <xsl:value-of select="sgr:textElement" disable-output-escaping="yes" />
+                <xsl:apply-templates select="sgr:uri" />
+			</td>
+		</tr>
+	</xsl:template>
+    <xsl:template match="sgr:uri">
+        <div style="padding-top:0.5em;">
+        <a target="_blank">
+            <xsl:attribute name="href">
+                <xsl:value-of select="sgr:uri" />
+            </xsl:attribute>
+            <img src="/xsl/ressources/link.png" alt="Link.." width="16pt" height="16pt" />&#160;
+            <xsl:value-of select="." />
+        </a>
+    </div>
+    </xsl:template>
+
+    <!-- Data Types -->
+    <xsl:template match="sgr:dataType">
+        <xsl:choose>
+            <xsl:when test="sgr:boolean">boolean</xsl:when>
+            <xsl:when test="sgr:int8">byte</xsl:when>
+            <xsl:when test="sgr:int16">short</xsl:when>
+            <xsl:when test="sgr:int32">integer</xsl:when>
+            <xsl:when test="sgr:int64">long</xsl:when>
+            <xsl:when test="sgr:int8U">unsigned byte</xsl:when>
+            <xsl:when test="sgr:int16U">unsigned short</xsl:when>
+            <xsl:when test="sgr:int32U">unsigned int</xsl:when>
+            <xsl:when test="sgr:int64U">unsigned long</xsl:when>
+            <xsl:when test="sgr:float32">float</xsl:when>
+            <xsl:when test="sgr:float64">double</xsl:when>
+            <xsl:when test="sgr:dateTime">date time</xsl:when>
+            <xsl:when test="sgr:string">string</xsl:when>
+            <xsl:when test="sgr:enum"><xsl:apply-templates select="sgr:enum" /></xsl:when> <!-- TODO Simon: map enum -->
+            <xsl:when test="sgr:enum2bitmapIndex">bitmap</xsl:when> <!-- TODO Simon: render the differnet bitmap types -->
+        </xsl:choose>
+    </xsl:template>
+
+    <!-- Enums (TODO Simon: replace by new structure ) -->
+    <xsl:template match="sgr:enum">
+        <xsl:choose>
+            <xsl:when test="sgr:sgrMeasValueSource">MeasValueSource</xsl:when>
+            <xsl:when test="sgr:sgrPowerSource">PowerSource</xsl:when>
+            <xsl:when test="sgr:sgreadyStateLv2">sgreadyStateLv2</xsl:when>
+            <xsl:when test="sgr:sgreadyStateLv1">sgreadyStateLv1</xsl:when>
+            <xsl:when test="sgr:sgrSunspStateCodes">SunspStateCodes</xsl:when>
+            <xsl:when test="sgr:sgrEVSEStateLv2">EVSEStateLv2</xsl:when>
+            <xsl:when test="sgr:sgrEVSEStateLv1">EVSEStateLv1</xsl:when>
+            <xsl:when test="sgr:sgrSGCPLoadStateLv2">SGCPLoadStateLv2</xsl:when>
+            <xsl:when test="sgr:sgrSGCPFeedInStateLv2">SGCPFeedInStateLv2</xsl:when>
+            <xsl:when test="sgr:sgrEVState">sgrEVState</xsl:when>
+            <xsl:when test="sgr:sgrSGCPService">SGCPService</xsl:when>
+            <xsl:when test="sgr:sgrObligLvl">ObligLvl</xsl:when>
+            <xsl:when test="sgr:sgrOCPPState">OCPPState</xsl:when>
+            <xsl:when test="sgr:sgrHPOpMode">HPOpMode</xsl:when>
+            <xsl:when test="sgr:sgrHCOpMode">HCOpMode</xsl:when>
+            <xsl:when test="sgr:sgrDHWOpMode">DHWOpMode</xsl:when>        
+            <xsl:otherwise>unknown</xsl:otherwise>
+        </xsl:choose>
     </xsl:template>
 
     <!-- Units -->
@@ -217,37 +469,6 @@
             <xsl:when test="$value = 'NONE'"></xsl:when>
             <xsl:otherwise><xsl:value-of select="$value" /></xsl:otherwise>
         </xsl:choose>
-    </xsl:template>
-
-    <!-- SGrprofileNumber -->
-    <xsl:template match="sgr:functionalProfileIdentification">
-        <xsl:param name="separator" select="'.'" />
-        <xsl:param name="displayFullLevel" select="''"/>
-        <xsl:param name="displayShortLevel" select="''"/>
-        <xsl:call-template name="SGrProfileNumber">
-            <xsl:with-param name="separator" select="$separator" />
-            <xsl:with-param name="displayShortLevel" select="$displayShortLevel" />
-            <xsl:with-param name="displayFullLevel" select="$displayFullLevel" />
-        </xsl:call-template>
-    </xsl:template>
-    <xsl:template name="SGrProfileNumber">
-        <xsl:param name="separator" select="'.'" />
-        <xsl:param name="displayFullLevel" select="''"/>
-        <xsl:param name="displayShortLevel" select="''"/>
-        <xsl:choose>
-            <xsl:when test="sgr:specificationOwnerIdentification = 0">SGr</xsl:when>
-            <xsl:otherwise><xsl:value-of select="sgr:specificationOwnerIdentification" /></xsl:otherwise>
-        </xsl:choose>
-        <xsl:value-of select="$separator" />
-
-        <xsl:value-of select="sgr:functionalProfileCategory" /><xsl:value-of select="$separator" /><xsl:value-of select="sgr:functionalProfileType" />
-        <xsl:if test="$displayShortLevel">
-            <xsl:value-of select="$separator" /><xsl:value-of select="sgr:levelOfOperation" />
-        </xsl:if>
-
-        <xsl:if test="$displayFullLevel">
-            (Level <xsl:value-of select="sgr:levelOfOperation" />)
-        </xsl:if>
     </xsl:template>
 
 </xsl:stylesheet> 
