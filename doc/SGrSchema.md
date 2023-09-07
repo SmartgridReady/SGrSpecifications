@@ -42,3 +42,46 @@ Currently the schema defines the following root elements
 | ContactDeviceFrame | Device with electrical contacts |
 | ModbusDeviceFrame     | Modbus device  |
 | RestApiDeviceFrame    | RestAPI device |
+
+## Naming Conventions
+
+### Naming
+
+ The following naming are applied:
+ - camelCase for elements, attributes, tags
+ - UpperCamelCase for simpleTypes and complexTypes in XSD
+ - no abbreviations in general, but trivial ones are ok (e.g. ms for milliseconds)
+ - same things have same names
+ - use meaningfull names that can be understood
+ - if the element defines a value with units the name should have the unit as suffix (example: timeToLiveMs for milliseconds)
+
+ ### MinOccurs, MaxOccurs
+
+ - ommit the defaults in schema (minOccurs=1, maxOccurs=1)
+ - Order
+    - name
+    - type
+    - maxOccurs
+    - minOccurs
+
+
+### Formatting
+ - 2 spaces for indentation, no tabs
+ - line length should be less than 120 characters
+ - just one `<element>`, `<sequence>`, ... per line
+ - if a tag uses multiple lines, `<tag>` and `</tag>`are on separate lines
+
+### Elements vs Attributes
+
+As a rule of thumb: Relevant data should use elements, whereas meta data should be put in attributes.
+If in doubt whether to use elements or attributes ask yourself if you loose significant information when stripping the XML of all attributes. If yes, use an element, if no an attribute is fine.
+
+ 
+### Namespace
+
+Use the SGr namespace as default namespace in the XMLs. 
+
+
+### Schema Compliance
+
+XMLs should always fulfill their schema. No invalid XMLs on master.

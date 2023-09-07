@@ -3,55 +3,40 @@
 	(IBT Ing. Buero Broennimann Thun) -->
 <!-- Copyright (c) Verein SmartGridready, Switzerland Version 0.2.2 2022-8-22 
 	All Rights Reserved. Source: https://www.SmartGridready.ch/ -->
-<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:sgr="http://www.smartgridready.com/ns/V0/" attributeFormDefault="unqualified" elementFormDefault="qualified"
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:sgr="http://www.smartgridready.com/ns/V0/"
+  attributeFormDefault="unqualified" elementFormDefault="qualified"
   targetNamespace="http://www.smartgridready.com/ns/V0/" version="0.2.2">
-  <include schemaLocation="SGrGenTypeDefinitions.xsd"/>
+  <include schemaLocation="SGrGenTypeDefinitions.xsd" />
   <complexType name="DataPointDescription">
     <annotation>
-      <documentation xml:lang="en"> This schema sheet serves the generation of the data point for to define a single data point, its type and links to potential attributes.
-      </documentation>
-      <documentation xml:lang="de"> Dieses Schema dient der Erzeugung eines einzelnen Datenpunktes zur Definition des Datentyps und der Verbindung mit möglichen Attributen.
-      </documentation>
+      <documentation>Generic data point properties</documentation>
     </annotation>
     <sequence>
-      <element maxOccurs="1" minOccurs="1" name="dataPointName" type="string">
+      <element name="dataPointName" type="string">
         <annotation>
-          <documentation>
-            Bezeichnung des Datenpunktes: «Schlagwort», welches die Bedeutung identifiziert. Diese Bezeichnung gilt neben der Indexnummer als Definition für den SmartGridready Namespace
-            für die maschinenlesbaren Daten.
-          </documentation>
+          <documentation>Name of the data point (unique on functional profile)</documentation>
         </annotation>
       </element>
-      <element maxOccurs="1" minOccurs="1" name="dataDirection" type="sgr:DataDirection">
-        <annotation>
-          <documentation>
-            RWP (Eigenschaft des Datenpunktes) bezeichnet die Datenrichtung und die Datenhaltung R = lesen aus Sicht des Profilnutzers W = schreiben aus Sicht der Profilnutzers P =
-            persistente Speicherung der Daten
-          </documentation>
-        </annotation>
-      </element>
-      <element maxOccurs="1" minOccurs="1" name="presenceLevel" type="sgr:PresenceLevel">
-        <annotation>
-          <documentation>
-            MRO (Relevanz) Die Gewichtung der Variable bezüglich des Nutzens M = muss (mandatory) Datenpunkt R = empfohlener (recommended) Datenpunkt O = optionaler Datenpunkt
-          </documentation>
-        </annotation>
-      </element>
-      <element maxOccurs="1" minOccurs="1" name="dataType" type="sgr:DataType"/>
-      <element maxOccurs="1" minOccurs="1" name="unit" type="sgr:Units"/>
-      <element name="arrayLength" type="int" maxOccurs="1" minOccurs="0">
+      <element name="dataDirection" type="sgr:DataDirection" />
+      <element name="presenceLevel" type="sgr:PresenceLevel" />
+      <element name="dataType" type="sgr:DataType" />
+      <element name="unit" type="sgr:Units" />
+      <element name="arrayLength" type="int" minOccurs="0">
         <annotation>
           <documentation>Optional, if present the data point is an array of specified length</documentation>
         </annotation>
       </element>
-      <element maxOccurs="1" minOccurs="0" name="alternativeNames" type="sgr:AlternativeNames"/>
-      <element maxOccurs="4" minOccurs="0" name="legibleDescription" type="sgr:LegibleDescription">
+      <element name="alternativeNames" type="sgr:AlternativeNames" minOccurs="0" />
+      <element name="legibleDescription" type="sgr:LegibleDescription" maxOccurs="4" minOccurs="0">
         <annotation>
-          <documentation> this is the public explanation of the functionality of this Datapoint
-          </documentation>
+          <documentation>Published and printable information related to this data point</documentation>
         </annotation>
       </element>
-      <element maxOccurs="4" minOccurs="0" name="programmerHints" type="sgr:LegibleDescription"></element>
+      <element name="programmerHints" type="sgr:LegibleDescription" maxOccurs="4" minOccurs="0">
+        <annotation>
+          <documentation>additional device-specific implementation hints for this data point</documentation>
+        </annotation>
+      </element>
     </sequence>
   </complexType>
 </schema>

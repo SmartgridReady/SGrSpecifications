@@ -1,38 +1,40 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- Copyright (c) 2023, SmartGridready, Switzerland. All rights reserved. Source https://github.com/SmartgridReady/SGrSpecifications  -->
-<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:sgr="http://www.smartgridready.com/ns/V0/" attributeFormDefault="unqualified" elementFormDefault="qualified"
+<!-- Copyright (c) 2023, SmartGridready, Switzerland. All rights reserved. Source
+https://github.com/SmartgridReady/SGrSpecifications  -->
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:sgr="http://www.smartgridready.com/ns/V0/"
+  attributeFormDefault="unqualified" elementFormDefault="qualified"
   targetNamespace="http://www.smartgridready.com/ns/V0/" version="0.2.2">
   <complexType name="HeaderEntry">
     <sequence>
-      <element minOccurs="1" maxOccurs="1" name="headerName" type="string"/>
-      <element minOccurs="1" maxOccurs="1" name="value" type="string"/>
+      <element name="headerName" type="string" />
+      <element name="value" type="string" />
     </sequence>
   </complexType>
   <complexType name="HeaderList">
     <sequence>
-      <element minOccurs="0" maxOccurs="unbounded" name="header" type="sgr:HeaderEntry"/>
+      <element name="header" type="sgr:HeaderEntry" minOccurs="0" maxOccurs="unbounded" />
     </sequence>
   </complexType>
   <simpleType name="HttpMethod">
     <restriction base="string">
-      <enumeration value="GET"/>
-      <enumeration value="POST"/>
-      <enumeration value="PUT"/>
-      <enumeration value="PATCH"/>
-      <enumeration value="DELETE"/>
+      <enumeration value="GET" />
+      <enumeration value="POST" />
+      <enumeration value="PUT" />
+      <enumeration value="PATCH" />
+      <enumeration value="DELETE" />
     </restriction>
   </simpleType>
   <simpleType name="ResponseQueryType">
     <restriction base="string">
-      <enumeration value="JMESPathExpression"/>
-      <enumeration value="XPathExpression"/>
-      <enumeration value="RegularExpression"/>
+      <enumeration value="JMESPathExpression" />
+      <enumeration value="XPathExpression" />
+      <enumeration value="RegularExpression" />
     </restriction>
   </simpleType>
   <complexType name="ResponseQuery">
     <sequence>
-      <element minOccurs="1" maxOccurs="1" name="queryType" type="sgr:ResponseQueryType"/>
-      <element minOccurs="1" maxOccurs="1" name="query" type="string"/>
+      <element name="queryType" type="sgr:ResponseQueryType" />
+      <element name="query" type="string" />
     </sequence>
   </complexType>
 </schema>

@@ -3,62 +3,57 @@
 	(IBT Ing. Buero Broennimann Thun) -->
 <!-- Copyright (c) Verein SmartGridready, Switzerland Version 0.2.2 2022-8-22 
 	All Rights Reserved. Source: https://www.SmartGridready.ch/ -->
-<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:sgr="http://www.smartgridready.com/ns/V0/" attributeFormDefault="unqualified" elementFormDefault="qualified"
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:sgr="http://www.smartgridready.com/ns/V0/"
+  attributeFormDefault="unqualified" elementFormDefault="qualified"
   targetNamespace="http://www.smartgridready.com/ns/V0/" version="0.2.2">
-  <include schemaLocation="../Generic/SGrBaseDeviceFrame.xsd"/>
+  <include schemaLocation="../Generic/SGrBaseDeviceFrame.xsd" />
 
   <complexType name="FunctionalProfileDataPoint">
     <annotation>
-      <documentation>Base data point type</documentation>
+      <documentation>Data point element</documentation>
     </annotation>
     <sequence>
       <element name="dataPoint">
         <complexType>
           <annotation>
-            <documentation xml:lang="en"> This schema sheet serves the generation of the data point for to define a single data point, its type and links to potential attributes.
-            </documentation>
-            <documentation xml:lang="de"> Dieses Schema dient der Erzeugung eines einzelnen Datenpunktes zur Definition des Datentyps und der Verbindung mit möglichen Attributen.
-            </documentation>
+            <documentation>Generic data point description</documentation>
           </annotation>
           <sequence>
-            <element maxOccurs="1" minOccurs="1" name="dataPointName" type="string">
+            <element name="dataPointName" type="string">
               <annotation>
-                <documentation>
-                  Bezeichnung des Datenpunktes: «Schlagwort», welches die Bedeutung identifiziert. Diese Bezeichnung gilt neben der Indexnummer als Definition für den
-                  SmartGridready Namespace für die maschinenlesbaren Daten.
-                </documentation>
+                <documentation> Bezeichnung des Datenpunktes: «Schlagwort», welches die Bedeutung
+                  identifiziert. Diese Bezeichnung gilt neben der Indexnummer als Definition für den
+                  SmartGridready Namespace für die maschinenlesbaren Daten. </documentation>
               </annotation>
             </element>
-            <element maxOccurs="1" minOccurs="1" name="dataDirection" type="sgr:DataDirection">
+            <element name="dataDirection" type="sgr:DataDirection">
               <annotation>
-                <documentation>
-                  RWP (Eigenschaft des Datenpunktes) bezeichnet die Datenrichtung und die Datenhaltung R = lesen aus Sicht des Profilnutzers W = schreiben aus Sicht der
-                  Profilnutzers P = persistente Speicherung der Daten
-                </documentation>
+                <documentation> RWP (Eigenschaft des Datenpunktes) bezeichnet die Datenrichtung und
+                  die Datenhaltung R = lesen aus Sicht des Profilnutzers W = schreiben aus Sicht der
+                  Profilnutzers P = persistente Speicherung der Daten </documentation>
               </annotation>
             </element>
-            <element maxOccurs="1" minOccurs="1" name="presenceLevel" type="sgr:PresenceLevel">
+            <element name="presenceLevel" type="sgr:PresenceLevel">
               <annotation>
-                <documentation>
-                  MRO (Relevanz) Die Gewichtung der Variable bezüglich des Nutzens M = muss (mandatory) Datenpunkt R = empfohlener (recommended) Datenpunkt O = optionaler
-                  Datenpunkt
-                </documentation>
+                <documentation> MRO (Relevanz) Die Gewichtung der Variable bezüglich des Nutzens M =
+                  muss (mandatory) Datenpunkt R = empfohlener (recommended) Datenpunkt O =
+                  optionaler Datenpunkt </documentation>
               </annotation>
             </element>
-            <element maxOccurs="1" minOccurs="1" name="dataType" type="sgr:DataType"/>
-            <element maxOccurs="1" minOccurs="1" name="unit" type="sgr:Units"/>
-            <element name="arrayLength" type="int" maxOccurs="1" minOccurs="0"/>
-            <element maxOccurs="1" minOccurs="0" name="alternativeNames" type="sgr:AlternativeNames"/>
-            <element maxOccurs="4" minOccurs="0" name="legibleDescription" type="sgr:LegibleDescription">
+            <element name="dataType" type="sgr:DataType" />
+            <element name="unit" type="sgr:Units" />
+            <element name="arrayLength" type="int" minOccurs="0" />
+            <element name="alternativeNames" type="sgr:AlternativeNames" minOccurs="0" />
+            <element name="legibleDescription" type="sgr:LegibleDescription" maxOccurs="4"
+              minOccurs="0">
               <annotation>
-                <documentation> this is the public explanation of the functionlity of this Datapoint
-                </documentation>
+                <documentation>Published and printable information related to this datapoint</documentation>
               </annotation>
             </element>
           </sequence>
         </complexType>
       </element>
-      <element maxOccurs="1" minOccurs="0" name="genericAttributes" type="sgr:GenericAttributes"/>
+      <element name="genericAttributes" type="sgr:GenericAttributes" minOccurs="0" />
     </sequence>
   </complexType>
   <complexType name="FunctionalProfileDataPointList">
@@ -66,41 +61,39 @@
       <documentation>List of data points</documentation>
     </annotation>
     <sequence>
-      <element maxOccurs="unbounded" minOccurs="1" name="dataPointListElement" type="sgr:FunctionalProfileDataPoint"></element>
+      <element name="dataPointListElement" type="sgr:FunctionalProfileDataPoint"
+        maxOccurs="unbounded" />
     </sequence>
   </complexType>
   <!-- Functional Profile definitions -->
   <element name="FunctionalProfileFrame">
     <annotation>
-      <documentation> RPT Root Point for stand alone generic Functional Profile description</documentation>
+      <documentation>Functional profile template</documentation>
     </annotation>
     <complexType>
       <sequence>
-        <element maxOccurs="1" minOccurs="0" name="releaseNotes" type="sgr:ReleaseNotes"/>
-        <element maxOccurs="1" minOccurs="1" name="functionalProfile">
+        <element name="releaseNotes" type="sgr:ReleaseNotes" minOccurs="0" />
+        <element name="functionalProfile">
           <complexType>
             <annotation>
-              <documentation xml:lang="en">
-                Profile Element for to be used for the generation of SGrGenericDevices and the Ecore modelling the generation of the generic profile level
-                interface class
-              </documentation>
-              <documentation xml:lang="de"> Profil Element zur Integration in generische Gerätedefinitionen oder zur Erzeugung von ecore-Modellierungen
-              </documentation>
+              <documentation>Functional profile element</documentation>
             </annotation>
             <sequence>
-              <element maxOccurs="1" minOccurs="1" name="functionalProfileIdentification" type="sgr:FunctionalProfileIdentification"/>
-              <element maxOccurs="1" minOccurs="0" name="alternativeNames" type="sgr:AlternativeNames"/>
-              <element maxOccurs="4" minOccurs="0" name="legibleDescription" type="sgr:LegibleDescription">
+              <element name="functionalProfileIdentification"
+                type="sgr:FunctionalProfileIdentification" />
+              <element name="alternativeNames" type="sgr:AlternativeNames" minOccurs="0" />
+              <element name="legibleDescription" type="sgr:LegibleDescription"
+                maxOccurs="4" minOccurs="0">
                 <annotation>
-                  <documentation> this is the published information related to this functional profile
-                  </documentation>
+                  <documentation>Published and printable information related to this functional profile</documentation>
                 </annotation>
               </element>
             </sequence>
           </complexType>
         </element>
-        <element maxOccurs="unbounded" minOccurs="0" name="genericAttributes" type="sgr:GenericAttributes"/>
-        <element maxOccurs="1" minOccurs="1" name="dataPointList" type="sgr:FunctionalProfileDataPointList"/>
+        <element name="genericAttributes" type="sgr:GenericAttributes" maxOccurs="unbounded"
+          minOccurs="0" />
+        <element name="dataPointList" type="sgr:FunctionalProfileDataPointList" />
       </sequence>
     </complexType>
   </element>
