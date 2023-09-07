@@ -188,36 +188,44 @@
 				<xsl:value-of select="sgr:language" />
 			</xsl:attribute>
 			<td colspan="2">
-				<xsl:call-template name="LegibleDescription" />
+                <img width="20px" height="14px">
+                    <xsl:attribute name="src" alt="Lang">/xsl/ressources/<xsl:value-of select="sgr:language" />.png</xsl:attribute>
+                </img>
+                &#160;<xsl:value-of select="sgr:textElement" disable-output-escaping="yes" />
+                <xsl:apply-templates select="sgr:uri" />
 			</td>
 		</tr>
 	</xsl:template>
 	<!-- ProgrammerHints -->
 	<xsl:template match="sgr:programmerHints">
-		<tr>
+		<tr class="transportDetails">
 			<xsl:attribute name="lang">
 				<xsl:value-of select="sgr:language" />
 			</xsl:attribute>
 			<td colspan="2">
-				<xsl:call-template name="LegibleDescription" />
+                <div style="padding-top:0.3em;padding-bottom:0.3em;">
+                    <img width="20px" height="14px">
+                        <xsl:attribute name="src" alt="Lang">/xsl/ressources/<xsl:value-of select="sgr:language" />.png</xsl:attribute>
+                    </img>&#160;
+                    Programmer Hint 
+                    &#160;<img src="/xsl/ressources/hint.png" alt="Hint" width="16px" height="16px" />
+                </div>
+                <xsl:value-of select="sgr:textElement" disable-output-escaping="yes" />
+                <xsl:apply-templates select="sgr:uri" />
 			</td>
 		</tr>
 	</xsl:template>
-	<!-- LegibleDescription (without table cell) -->
-	<xsl:template name="LegibleDescription">
-		<img width="20px" height="14px">
-			<xsl:attribute name="src" alt="Lang">/xsl/ressources/<xsl:value-of select="sgr:language" />.png</xsl:attribute>
-		</img>
-		&#160;<xsl:value-of select="sgr:textElement" disable-output-escaping="yes" />
-	    <xsl:if
-			test="sgr:uri"> &#160; <a target="_blank">
-				<xsl:attribute name="href">
-					<xsl:value-of select="sgr:uri" />
-				</xsl:attribute>
-				<img src="/xsl/ressources/link.png" alt="Link.." width="16pt" height="16pt" />
-			</a>
-		</xsl:if>
-	</xsl:template>
+    <xsl:template match="sgr:uri">
+        <div style="padding-top:0.5em;">
+        <a target="_blank">
+            <xsl:attribute name="href">
+                <xsl:value-of select="sgr:uri" />
+            </xsl:attribute>
+            <img src="/xsl/ressources/link.png" alt="Link.." width="16pt" height="16pt" />&#160;
+            <xsl:value-of select="." />
+        </a>
+    </div>
+    </xsl:template>
 
     <!-- Data Types -->
     <xsl:template match="sgr:dataType">

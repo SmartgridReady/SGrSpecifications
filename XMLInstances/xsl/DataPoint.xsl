@@ -68,7 +68,10 @@
             <td>
                 <xsl:for-each select="sgr:legibleDescription">
                     <div>
-                        <xsl:call-template name="LegibleDescription" />
+                        <img width="20px" height="14px">
+                            <xsl:attribute name="src" alt="Lang">/xsl/ressources/<xsl:value-of select="sgr:language" />.png</xsl:attribute>
+                        </img>
+                        &#160;<xsl:value-of select="sgr:textElement" disable-output-escaping="yes" />
                     </div>
                 </xsl:for-each>
             </td>
