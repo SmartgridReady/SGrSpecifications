@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- Copyright (c) 2023, SmartGridready, Switzerland. All rights reserved. Source https://github.com/SmartgridReady/SGrSpecifications  -->
-<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:sgr="http://www.smartgridready.com/ns/V0/" attributeFormDefault="unqualified" elementFormDefault="qualified"
+<!-- Copyright (c) 2023, SmartGridready, Switzerland. All rights reserved. Source
+https://github.com/SmartgridReady/SGrSpecifications  -->
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:sgr="http://www.smartgridready.com/ns/V0/"
+  attributeFormDefault="unqualified" elementFormDefault="qualified"
   targetNamespace="http://www.smartgridready.com/ns/V0/" version="0.2.2">
   <!-- ************************************** -->
   <!-- IEC 61850-80-5 inherited data types -->
@@ -11,19 +13,18 @@
   <!-- ************************************** -->
   <!-- Modbus Communication Section: TCP based -->
   <!-- ************************************** -->
-  <include schemaLocation="../Generic/SGrSerialIntCapability.xsd"/>
-  <include schemaLocation="../Generic/SGrGenTypeDefinitions.xsd"/>
+  <include schemaLocation="../Generic/SGrSerialIntCapability.xsd" />
+  <include schemaLocation="../Generic/SGrGenTypeDefinitions.xsd" />
   <complexType name="ModbusIp">
     <annotation>
-      <documentation>
-        Modbus IP address:Specific P elements for Modbus over IP protocol. This definition is partially inherited from 61850-80-5's tPTypeModbusIPEnum typedef but reduced to a single
-        interface (not redundant adresses RG1 and RG2) and information layer definitions
-      </documentation>
+      <documentation> Modbus IP address:Specific P elements for Modbus over IP protocol. This
+        definition is partially inherited from 61850-80-5's tPTypeModbusIPEnum typedef but reduced
+        to a single interface (not redundant adresses RG1 and RG2) and information layer definitions </documentation>
     </annotation>
     <sequence>
-      <element maxOccurs="1" minOccurs="1" name="port" type="unsignedInt"/>
-      <element maxOccurs="1" minOccurs="1" name="address" type="sgr:ModbusIpAddress"/>
-      <element maxOccurs="1" minOccurs="1" name="slaveId" type="unsignedShort"/>
+      <element name="port" type="unsignedInt" />
+      <element name="address" type="sgr:ModbusIpAddress" />
+      <element name="slaveId" type="unsignedShort" />
     </sequence>
   </complexType>
   <complexType name="ModbusIpAddress">
@@ -31,35 +32,35 @@
       <documentation>Modbus device address</documentation>
     </annotation>
     <sequence>
-      <element maxOccurs="1" minOccurs="1" name="ipV4n1">
+      <element name="ipV4n1">
         <simpleType>
           <restriction base="positiveInteger">
-            <minInclusive value="1"/>
-            <maxInclusive value="255"/>
+            <minInclusive value="1" />
+            <maxInclusive value="255" />
           </restriction>
         </simpleType>
       </element>
-      <element maxOccurs="1" minOccurs="1" name="ipV4n2">
+      <element name="ipV4n2">
         <simpleType>
           <restriction base="positiveInteger">
-            <minInclusive value="1"/>
-            <maxInclusive value="255"/>
+            <minInclusive value="1" />
+            <maxInclusive value="255" />
           </restriction>
         </simpleType>
       </element>
-      <element maxOccurs="1" minOccurs="1" name="ipV4n3">
+      <element name="ipV4n3">
         <simpleType>
           <restriction base="positiveInteger">
-            <minInclusive value="1"/>
-            <maxInclusive value="255"/>
+            <minInclusive value="1" />
+            <maxInclusive value="255" />
           </restriction>
         </simpleType>
       </element>
-      <element maxOccurs="1" minOccurs="1" name="ipV4n4">
+      <element name="ipV4n4">
         <simpleType>
           <restriction base="positiveInteger">
-            <minInclusive value="1"/>
-            <maxInclusive value="255"/>
+            <minInclusive value="1" />
+            <maxInclusive value="255" />
           </restriction>
         </simpleType>
       </element>
@@ -67,16 +68,15 @@
   </complexType>
   <simpleType name="BitOrder">
     <annotation>
-      <documentation>
-        Modbus bit orders are used to apply different conversion transformations to data between Modbus device and IEC61850 devices.
-      </documentation>
+      <documentation> Modbus bit orders are used to apply different conversion transformations to
+        data between Modbus device and IEC61850 devices. </documentation>
     </annotation>
     <restriction base="string">
-      <enumeration value="BigEndian"/>
-      <enumeration value="ChangeDWordOrder"/>
-      <enumeration value="ChangeWordOrder"/>
-      <enumeration value="ChangeByteOrder"/>
-      <enumeration value="ChangeBitOrder"/>
+      <enumeration value="BigEndian" />
+      <enumeration value="ChangeDWordOrder" />
+      <enumeration value="ChangeWordOrder" />
+      <enumeration value="ChangeByteOrder" />
+      <enumeration value="ChangeBitOrder" />
     </restriction>
   </simpleType>
   <!-- **************************** -->
@@ -84,27 +84,25 @@
   <!-- **************************** -->
   <simpleType name="RegisterType">
     <annotation>
-      <documentation>
-        Type of the Modbus Data. For slave-role, definition of the Object Type of the data: Discretes Input: Single bit, Read-Only; Coils: Single bit, Read-Write; Input Registers: 16-bit
-        word, Read-Only; Holding Registers: 16-bit word, Read-Write.
-      </documentation>
+      <documentation> Type of the Modbus Data. For slave-role, definition of the Object Type of the
+        data: Discretes Input: Single bit, Read-Only; Coils: Single bit, Read-Write; Input
+        Registers: 16-bit word, Read-Only; Holding Registers: 16-bit word, Read-Write. </documentation>
     </annotation>
     <restriction base="string">
-      <enumeration value="Coil"/>
-      <enumeration value="DiscreteInput"/>
-      <enumeration value="InputRegister"/>
-      <enumeration value="HoldRegister"/>
+      <enumeration value="Coil" />
+      <enumeration value="DiscreteInput" />
+      <enumeration value="InputRegister" />
+      <enumeration value="HoldRegister" />
     </restriction>
   </simpleType>
   <simpleType name="BitRank">
     <annotation>
-      <documentation>
-        Rank of a bit data represented with a register. The bit rank used to define a bit address (bitAddress = addr x 16 + bitRank
-      </documentation>
+      <documentation>The bit rank used to define a bit address for coils and discreteInput (bitAddress = addr x 16 +
+        bitRank)</documentation>
     </annotation>
     <restriction base="unsignedByte">
-      <minInclusive value="0"/>
-      <maxInclusive value="15"/>
+      <minInclusive value="0" />
+      <maxInclusive value="15" />
     </restriction>
   </simpleType>
   <simpleType name="ModbusExceptionCode">
@@ -114,16 +112,14 @@
     <restriction base="string">
       <enumeration value="IllegalFunction">
         <annotation>
-          <documentation>
-            "1: Illegal Function Function code received in the query is not recognized or allowed by slave"
-          </documentation>
+          <documentation> "1: Illegal Function Function code received in the query is not recognized
+            or allowed by slave" </documentation>
         </annotation>
       </enumeration>
       <enumeration value="IllegalAddress">
         <annotation>
-          <documentation>
-            2: Illegal Data Address Data address of some or all the required entities are not allowed or do not exist in slave
-          </documentation>
+          <documentation> 2: Illegal Data Address Data address of some or all the required entities
+            are not allowed or do not exist in slave </documentation>
         </annotation>
       </enumeration>
       <enumeration value="IllegalDataValue">
@@ -133,90 +129,89 @@
       </enumeration>
       <enumeration value="SlaveFailure">
         <annotation>
-          <documentation>
-            4: Slave (Server) Device Failure Unrecoverable error occurred while slave was attempting to perform requested action
-          </documentation>
+          <documentation> 4: Slave (Server) Device Failure Unrecoverable error occurred while slave
+            was attempting to perform requested action </documentation>
         </annotation>
       </enumeration>
       <enumeration value="ACK">
         <annotation>
-          <documentation>
-            5: Acknowledge Slave has accepted request and is processing it, but a long duration of time is required. This response is returned to prevent a timeout error from occurring in
-            the master. Master can next issue a Poll Program Complete message to determine whether processing is completed
-          </documentation>
+          <documentation> 5: Acknowledge Slave has accepted request and is processing it, but a long
+            duration of time is required. This response is returned to prevent a timeout error from
+            occurring in the master. Master can next issue a Poll Program Complete message to
+            determine whether processing is completed </documentation>
         </annotation>
       </enumeration>
       <enumeration value="SlaveBusy">
         <annotation>
-          <documentation>
-            6: Slave (Server) Device Busy Slave is engaged in processing a long-duration command. Master should retry later
-          </documentation>
+          <documentation> 6: Slave (Server) Device Busy Slave is engaged in processing a
+            long-duration command. Master should retry later </documentation>
         </annotation>
       </enumeration>
       <enumeration value="NACK">
         <annotation>
-          <documentation>
-            7: Negative Acknowledge Slave (Server) cannot perform the programming functions. Master should request diagnostic or error information from slave
-          </documentation>
+          <documentation> 7: Negative Acknowledge Slave (Server) cannot perform the programming
+            functions. Master should request diagnostic or error information from slave </documentation>
         </annotation>
       </enumeration>
       <enumeration value="MemoryParityErr">
         <annotation>
-          <documentation>
-            8: Memory Parity Error Slave (Server) detected a parity error in memory. Master can retry the request, but service may be required on the slave device
-          </documentation>
+          <documentation> 8: Memory Parity Error Slave (Server) detected a parity error in memory.
+            Master can retry the request, but service may be required on the slave device </documentation>
         </annotation>
       </enumeration>
       <enumeration value="GtwyPathErr">
         <annotation>
-          <documentation>
-            10: Gateway Path Unavailable Specialized for Modbus gateways. Indicates a misconfigured gateway
-          </documentation>
+          <documentation> 10: Gateway Path Unavailable Specialized for Modbus gateways. Indicates a
+            misconfigured gateway </documentation>
         </annotation>
       </enumeration>
       <enumeration value="GtwyTargetErr">
         <annotation>
-          <documentation>
-            11: Gateway Target Device Failed to Respond Specialized for Modbus gateways. Sent when slave fails to respond
-          </documentation>
+          <documentation> 11: Gateway Target Device Failed to Respond Specialized for Modbus
+            gateways. Sent when slave fails to respond </documentation>
         </annotation>
       </enumeration>
     </restriction>
   </simpleType>
   <!-- actual serial interface configuration -->
   <complexType name="ModbusRtu">
+    <annotation>
+      <documentation> Modbus RTU serial port configuration</documentation>
+    </annotation>    
     <sequence>
-      <element maxOccurs="1" minOccurs="1" name="slaveAddr" type="unsignedShort"/>
-      <element maxOccurs="1" minOccurs="1" name="baudRateSelected" type="sgr:BaudRate"/>
-      <element maxOccurs="1" minOccurs="1" name="byteLenSelected" type="sgr:ByteLength"/>
-      <element maxOccurs="1" minOccurs="1" name="paritySelected" type="sgr:Parity"/>
-      <element maxOccurs="1" minOccurs="1" name="stopBitLenSelected" type="sgr:StopBitLength"/>
-      <element name="serialInterfaceCapability" type="sgr:SerialInterfaceCapability"/>
+      <element name="slaveAddr" type="unsignedShort" />
+      <element name="baudRateSelected" type="sgr:BaudRate" />
+      <element name="byteLenSelected" type="sgr:ByteLength" />
+      <element name="paritySelected" type="sgr:Parity" />
+      <element name="stopBitLenSelected" type="sgr:StopBitLength" />
+      <element name="serialInterfaceCapability" type="sgr:SerialInterfaceCapability" />
     </sequence>
   </complexType>
   <!-- modbus data types -->
   <complexType name="ModbusDataType">
+    <annotation>
+      <documentation>Modbus specific data types</documentation>
+    </annotation>
     <choice>
-      <element maxOccurs="1" minOccurs="1" name="boolean"   type="sgr:EmptyType"/>
-      <element maxOccurs="1" minOccurs="1" name="int8"      type="sgr:EmptyType"/>
-      <element maxOccurs="1" minOccurs="1" name="int16"     type="sgr:EmptyType"/>
-      <element maxOccurs="1" minOccurs="1" name="int32"     type="sgr:EmptyType"/>
-      <element maxOccurs="1" minOccurs="1" name="int64"     type="sgr:EmptyType"/>
-      <element maxOccurs="1" minOccurs="1" name="int8U"     type="sgr:EmptyType"/>
-      <element maxOccurs="1" minOccurs="1" name="int16U"    type="sgr:EmptyType"/>
-      <element maxOccurs="1" minOccurs="1" name="int32U"    type="sgr:EmptyType"/>
-      <element maxOccurs="1" minOccurs="1" name="int64U"    type="sgr:EmptyType"/>
-      <element maxOccurs="1" minOccurs="1" name="float32"   type="sgr:EmptyType"/>
-      <element maxOccurs="1" minOccurs="1" name="float64"   type="sgr:EmptyType"/>
-      <element maxOccurs="1" minOccurs="1" name="dateTime"  type="sgr:EmptyType"/>
-      <element maxOccurs="1" minOccurs="1" name="string"    type="sgr:EmptyType"/>
-      <element maxOccurs="1" minOccurs="1" name="enum"      type="sgr:EnumListType"/>
-      <element maxOccurs="1" minOccurs="1" name="enum2bitmapIndex" type="sgr:BitmapperListType">
+      <element name="boolean" type="sgr:EmptyType" />
+      <element name="int8" type="sgr:EmptyType" />
+      <element name="int16" type="sgr:EmptyType" />
+      <element name="int32" type="sgr:EmptyType" />
+      <element name="int64" type="sgr:EmptyType" />
+      <element name="int8U" type="sgr:EmptyType" />
+      <element name="int16U" type="sgr:EmptyType" />
+      <element name="int32U" type="sgr:EmptyType" />
+      <element name="int64U" type="sgr:EmptyType" />
+      <element name="float32" type="sgr:EmptyType" />
+      <element name="float64" type="sgr:EmptyType" />
+      <element name="dateTime" type="sgr:EmptyType" />
+      <element name="string" type="sgr:EmptyType" />
+      <element name="enum" type="sgr:EnumListType" />
+      <element name="enum2bitmapIndex" type="sgr:BitmapperListType">
         <annotation>
-          <documentation>
-            bitmap for Registers (typical: Status Bits). For to be visible as generic boolean array or unsigned integer mapped in parallel towards one data single point definition.
-            Depending on the TransportService, this requires specialized sw coding.
-          </documentation>
+          <documentation> bitmap for Registers (typical: Status Bits). For to be visible as generic
+            boolean array or unsigned integer mapped in parallel towards one data single point
+            definition. Depending on the TransportService, this requires specialized sw coding. </documentation>
         </annotation>
       </element>
     </choice>
