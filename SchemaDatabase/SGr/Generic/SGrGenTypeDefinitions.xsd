@@ -4,6 +4,11 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
 <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:sgr="http://www.smartgridready.com/ns/V0/"
   attributeFormDefault="unqualified" elementFormDefault="qualified"
   targetNamespace="http://www.smartgridready.com/ns/V0/" version="0.2.2">
+
+  <include schemaLocation="SGrFunctionalProfileCategory.xsd" />
+  <include schemaLocation="SGrFunctionalProfileType.xsd" />
+  <include schemaLocation="SGrEnumLevelOfOperationType.xsd" />
+
   <complexType name="ReleaseNotes">
     <annotation>
       <documentation> Contains versioning, history and release states</documentation>
@@ -104,6 +109,35 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
       </element>
     </sequence>
   </complexType>
+  
+  <complexType name="FunctionalProfileIdentification">
+    <annotation>
+      <documentation> Specification of design source 0 means: specified by SmartGridready, the
+        Porfilenumber follows the SmargGirdready scheme &gt;0 means: specfied by manufacturer hhhh,
+        the Profilenumber followos a manufacturors scheme </documentation>
+    </annotation>
+    <sequence>
+      <element name="specificationOwnerIdentification" type="sgr:SpecificationOwnerIdentification" />
+      <element name="functionalProfileCategory" type="sgr:FunctionalProfileCategory">
+        <annotation>
+          <documentation>The Profile Identfication identiofis the main profile classes. The
+            enumeration text is also documented with numbers being referenced in the profile number
+            hhhh.nnnn.uuuu.ss.VV.vv as nnnn </documentation>
+        </annotation>
+      </element>
+      <element name="functionalProfileType" type="sgr:FunctionalProfileType" />
+      <element name="levelOfOperation" type="sgr:LevelOfOperation">
+        <annotation>
+          <documentation> levelOfOperation defines a controls complexity level m) for read-only
+            monitoring dat points level 1) single contact 2) 2 or more contacts /state controlled
+            interface 3) statical defined characteristics tables 4) dynamic realtime control
+            combined with statical defined characteristics tables 5) dynamic realtime control
+            combined with dynamic changeable characteristics tables 6) prognosis based systems </documentation>
+        </annotation>
+      </element>
+      <element name="versionNumber" type="sgr:VersionNumber" />
+    </sequence>
+  </complexType>
 
   <!-- help construct to support definition of types valid for the code generator -->
   <complexType name="EmptyType">
@@ -145,11 +179,8 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
   <!-- enumeration to select mandatory, optional or recommended use of elements -->
   <simpleType name="PresenceLevel">
     <annotation>
-      <documentation xml:lang="en"> Names for the presence indication of Elements listed in the
-        tables are defined as follows (using the EEBUS terminology): "M" mandatotory use
-        (IEC:SHALL), "R" recommended use (IEC:SHOULD) and "O" optional use (IEC:MAY) </documentation>
-      <documentation xml:lang="de" />
-      <documentation />
+      <documentation>Indicates wheter the element is mandatory (M), recommended (R, at least one of
+        the R elements mus be present), or optional (O, can be ommitted)</documentation>
     </annotation>
     <restriction base="string">
       <enumeration value="M" />
@@ -161,11 +192,8 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
 		use of elements -->
   <simpleType name="DataDirection">
     <annotation>
-      <documentation xml:lang="en"> Names for the data direction indication. "R" read only data, "W"
-        rite only data, "RW" readible and writable data, "RWP" readible and writable data with
-        persistent storage </documentation>
-      <documentation xml:lang="de" />
-      <documentation />
+      <documentation>Read/write direction with read (R), write (W), read-write (RW), read-write with
+        persistent storage (RWP)</documentation>
     </annotation>
     <restriction base="string">
       <enumeration value="R" />

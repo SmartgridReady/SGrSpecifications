@@ -47,7 +47,7 @@
             <!-- Functional Profile Block -->
             <table>
                 <colgroup>
-                    <col style="width:169px" />
+                    <col style="width:230px" />
                 </colgroup>
 
                 <!-- alternativeNames -->
@@ -64,7 +64,7 @@
                     <!-- Generic Attributes -->
                     <table>
                         <colgroup>
-                            <col style="width:169px" />
+                            <col style="width:230px" />
                             <col style="width:134px" />
                         </colgroup>
                         <tr>

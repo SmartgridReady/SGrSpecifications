@@ -65,7 +65,7 @@
                 <td class="restapiattribute">Bearer Security</td>
                 <td>
                     <table>
-                        <xsl:apply-templates select="sgr:restApiBearer" />
+                        <xsl:apply-templates select="sgr:restApiBearer/sgr:restApiServiceCall" />
                     </table>
                 </td>
             </tr>
@@ -94,42 +94,11 @@
 				<xsl:value-of select="./sgr:dataType" />
 			</td>
 		</tr>
-        <tr class="transportDetails">
-			<td class="restapiattribute">End Point</td>
-			<td>
-				<xsl:value-of select="sgr:requestMethod" /> &#160; 
-				<xsl:value-of select="sgr:requestPath" />
-			</td>
-		</tr>
-        <xsl:if test="sgr:requestHeader">
-            <tr class="transportDetails">
-                <td class="restapiattribute">Header</td>
-                <td>
-    				<xsl:for-each select="sgr:requestHeader/sgr:header">
-                        <xsl:value-of select="./sgr:headerName" /> : <xsl:value-of select="sgr:value" />
-                    </xsl:for-each>
-                </td>
-            </tr>
-        </xsl:if>
-        <xsl:if test="sgr:requestBody">
-		    <tr class="transportDetails">
-			    <td class="restapiattribute">Body</td>
-			    <td>
-                    <xsl:value-of select="sgr:requestBody" />
-			    </td>
-		    </tr>		
-        </xsl:if>
-		<tr class="transportDetails">
-			<td class="restapiattribute">Response</td>
-			<td>
-				<xsl:value-of select="sgr:responseQuery/sgr:queryType" /> &#160;
-				<xsl:value-of select="sgr:responseQuery/sgr:query" />
-			</td>
-		</tr>        
+        <xsl:apply-templates select="sgr:restApiServiceCall" />      
 	</xsl:template>    
 
-    <!-- Rest Service Call -->
-    <xsl:template match="sgr:restApiBearer">
+    <!-- Rest Api Service Call -->
+    <xsl:template match="sgr:restApiServiceCall">
         <tr class="transportDetails">
 			<td>End Point</td>
 			<td>
