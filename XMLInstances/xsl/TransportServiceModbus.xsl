@@ -101,6 +101,17 @@
                 </xsl:call-template>
             </td>
         </tr>
+
+        <!-- masterFunctionsSupported -->
+        <tr class="transportDetails">
+            <td class="modbusattribute">Supports</td>
+            <td>
+                <xsl:for-each select="sgr:masterFunctionsSupportedList/sgr:masterFunctionsSupported">
+                    <xsl:value-of select="." />
+                    <br />
+                </xsl:for-each>
+            </td>
+        </tr>
     </xsl:template>
 
     <!-- ModbusDataPointConfiguration -->
@@ -131,16 +142,6 @@
 					</xsl:when>
 				</xsl:choose>
 				(Size <xsl:value-of select="sgr:numberOfRegisters" />) </td>
-		</tr>
-		
-		<tr class="transportDetails">
-			<td class="modbusattribute">Supports</td>
-			<td>
-				<xsl:call-template name="join">
-					<xsl:with-param name="valueList" select="sgr:masterFunctionsSupported" />
-					<xsl:with-param name="separator" select="', '" />
-				</xsl:call-template>
-			</td>
 		</tr>
 	</xsl:template>
 
