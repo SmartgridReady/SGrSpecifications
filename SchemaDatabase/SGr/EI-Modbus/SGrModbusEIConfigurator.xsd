@@ -89,6 +89,7 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
         </annotation>
       </element>
       <element name="bitOrder" type="sgr:BitOrder" />
+      <element name="masterFunctionsSupportedList" type="sgr:MasterFunctionsSupportedList" minOccurs="0" />
     </sequence>
   </complexType>
   <simpleType name="ModbusInterfaceSelection">
@@ -124,10 +125,22 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
           <documentation>Number of 16-bit registers of this data point</documentation>
         </annotation>
       </element>
-      <element name="masterFunctionsSupported" type="sgr:MasterFunctionsSupported"
-        maxOccurs="unbounded"/>
     </sequence>
   </complexType>
+  <complexType name="MasterFunctionsSupportedList">
+    <annotation>
+      <documentation>
+        Available function/command codes for Master / Clients The various reading, writing and other operations are categorized as follows. The most "primitive" reads and writes are
+        A number of sources use alternative terminology, for example Force Single Coil where the standard uses Write Single Coil.[11] Prominent entities within a Modbus slave are:
+        ReadDiscreteInputs (code: 2) ReadCoils (code: 1) WriteSingleCoil (code: 5) WriteMultipleCoils (code:15) ReadInputRegisters (code:4) ReadMultipleHoldingRegisters (code:3)
+        WriteSingleHoldingRegister (code:6) WriteMultipleHoldingRegisters (code:16) the enum "Primitives" means, that the current register Type supports Single Trasnactions If dpSizeNrRegistarts
+        is &gt;1, also the multiple access functions must be supported 
+      </documentation>
+    </annotation>    
+    <sequence>
+      <element name="masterFunctionsSupported" type="sgr:MasterFunctionsSupported" maxOccurs="unbounded"/>
+    </sequence>
+  </complexType>  
   <simpleType name="MasterFunctionsSupported">
     <annotation>
       <documentation> Available function/command codes for Master / Clients The various reading,
