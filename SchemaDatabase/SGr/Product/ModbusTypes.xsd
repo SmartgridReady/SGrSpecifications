@@ -6,7 +6,7 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
   targetNamespace="http://www.smartgridready.com/ns/V0/" version="0.2.2">
   
   <include schemaLocation="../Generic/SGrSerialIntCapability.xsd" />
-  <include schemaLocation="../Generic/SGrGenTypeDefinitions.xsd" />
+  <include schemaLocation="../Generic/BaseTypes.xsd" />
 
   <complexType name="ModbusAttributes">
     <annotation>
@@ -83,7 +83,7 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
     </annotation>
     <sequence>
       <element name="modbusInterfaceSelection" type="sgr:ModbusInterfaceSelection" />
-      <element name="modbusTcp" type="sgr:ModbusIp" minOccurs="0" />
+      <element name="modbusTcp" type="sgr:ModbusTcp" minOccurs="0" />
       <element name="modbusRtu" type="sgr:ModbusRtu" minOccurs="0" />
       <element name="firstRegisterAddressIsOne" type="boolean">
         <annotation>
@@ -351,7 +351,7 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
       <element name="value" type="unsignedInt" />
     </sequence>
   </complexType>
-  <complexType name="ModbusIp">
+  <complexType name="ModbusTcp">
     <annotation>
       <documentation> Modbus IP address:Specific P elements for Modbus over IP protocol. This
         definition is partially inherited from 61850-80-5's tPTypeModbusIPEnum typedef but reduced
@@ -363,46 +363,15 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
       <element name="slaveId" type="unsignedShort" />
     </sequence>
   </complexType>
-  <complexType name="ModbusIpAddress">
+  <simpleType name="ModbusIpAddress">
     <annotation>
       <documentation>Modbus device address</documentation>
     </annotation>
-    <sequence>
-      <element name="ipV4n1">
-        <simpleType>
-          <restriction base="positiveInteger">
-            <minInclusive value="1" />
-            <maxInclusive value="255" />
-          </restriction>
-        </simpleType>
-      </element>
-      <element name="ipV4n2">
-        <simpleType>
-          <restriction base="positiveInteger">
-            <minInclusive value="1" />
-            <maxInclusive value="255" />
-          </restriction>
-        </simpleType>
-      </element>
-      <element name="ipV4n3">
-        <simpleType>
-          <restriction base="positiveInteger">
-            <minInclusive value="1" />
-            <maxInclusive value="255" />
-          </restriction>
-        </simpleType>
-      </element>
-      <element name="ipV4n4">
-        <simpleType>
-          <restriction base="positiveInteger">
-            <minInclusive value="1" />
-            <maxInclusive value="255" />
-          </restriction>
-        </simpleType>
-      </element>
-    </sequence>
-  </complexType>
-  <simpleType name="BitOrder">
+    <restriction base="string">
+      <pattern value="\d+\.\d+\.\d+\.\d+"></pattern>
+    </restriction>
+  </simpleType>
+   <simpleType name="BitOrder">
     <annotation>
       <documentation> Modbus bit orders are used to apply different conversion transformations to
         data between Modbus device and IEC61850 devices. </documentation>
