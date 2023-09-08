@@ -5,17 +5,13 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
   attributeFormDefault="unqualified" elementFormDefault="qualified"
   targetNamespace="http://www.smartgridready.com/ns/V0/" version="0.2.2">
 
-  <include schemaLocation="../Generic/SGrTspSrvTCP_IP.xsd" />
-  
   <complexType name="RestApiInterfaceDescription">
     <annotation>
       <documentation>Modbus interface properties</documentation>
     </annotation>    
     <sequence>
       <element name="restApiInterfaceSelection" type="sgr:RestApiInterfaceSelection" />
-      <element name="restApiIpV4Address" type="sgr:RestApiIpV4Address" minOccurs="0" />
-      <element name="restApiIpV6Address" type="sgr:RestApiIpV6Address" minOccurs="0" />
-      <element name="restApiUri" type="anyURI" minOccurs="0" />
+      <element name="restApiUri" type="anyURI" minOccurs="1" />
       <element name="restApiAuthenticationMethod" type="sgr:RestApiAuthenticationMethod"
         minOccurs="0" />
       <element name="restApiBearer" type="sgr:RestApiBearer" minOccurs="0" />
@@ -81,7 +77,7 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
   </simpleType>
   <complexType name="RestApiBearer">
     <sequence>
-      <element name="restApiServiceCall" type="sgr:RestApiServiceCall"></element>
+      <element name="restApiServiceCall" type="sgr:RestApiServiceCall" />
     </sequence>
   </complexType>
   <complexType name="RestApiBasic">

@@ -5,9 +5,9 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
   attributeFormDefault="unqualified" elementFormDefault="qualified"
   targetNamespace="http://www.smartgridready.com/ns/V0/" version="0.2.2">
 
-  <include schemaLocation="SGrFunctionalProfileCategory.xsd" />
-  <include schemaLocation="SGrFunctionalProfileType.xsd" />
-  <include schemaLocation="SGrEnumLevelOfOperationType.xsd" />
+  <include schemaLocation="BaseType_FunctionalProfileCategory.xsd" />
+  <include schemaLocation="BaseType_FunctionalProfileType.xsd" />
+  <include schemaLocation="BaseType_LevelOfOperationType.xsd" />
 
   <complexType name="ReleaseNotes">
     <annotation>
@@ -47,7 +47,7 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
         reserved for SmartGridready specifications, any other company will receive a number by the
         SmartGridready Deklarationsstelle. </documentation>
     </annotation>
-    <restriction base="string"></restriction>
+    <restriction base="string" />
   </simpleType>
   <simpleType name="PrecisionPercent">
     <annotation>
@@ -75,18 +75,18 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
           <documentation>manufacturers may use an internal wording</documentation>
         </annotation>
       </element>
-      <element name="IEC61850Name" type="string" minOccurs="0">
+      <element name="iec61850Name" type="string" minOccurs="0">
         <annotation>
           <documentation>IEC 61850 termonoligy place to add the 61850 abreviatuions</documentation>
         </annotation>
       </element>
-      <element name="SAREFName" type="string" minOccurs="0">
+      <element name="sarefName" type="string" minOccurs="0">
         <annotation>
           <documentation> SAREF for ENER termonoligy place to add the SAREF abreviations
             (https://saref.etsi.org) </documentation>
         </annotation>
       </element>
-      <element name="EEBUSName" type="string" minOccurs="0">
+      <element name="eebusName" type="string" minOccurs="0">
         <annotation>
           <documentation> EEBUS for terminology place to add the EEBUS abreviations</documentation>
         </annotation>
@@ -102,7 +102,7 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
             naming for HVAC</documentation>
         </annotation>
       </element>
-      <element name="EN17609Name" type="string" minOccurs="0">
+      <element name="en17609Name" type="string" minOccurs="0">
         <annotation>
           <documentation>EN17609 terminology place to add the EU17609 abbreviations</documentation>
         </annotation>
@@ -141,7 +141,7 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
 
   <!-- help construct to support definition of types valid for the code generator -->
   <complexType name="EmptyType">
-    <sequence></sequence>
+    <sequence />
   </complexType>
 
   <!-- the basic data based used für the generic level of a communicator -->
@@ -615,7 +615,7 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
             (SHALL / SHOULD / MAY) </documentation>
         </annotation>
       </element>
-      <element name="unitConversionMultiplicator" type="float" minOccurs="0"></element>
+      <element name="unitConversionMultiplicator" type="float" minOccurs="0" />
     </all>
   </complexType>
   <complexType name="StabilityFallback">

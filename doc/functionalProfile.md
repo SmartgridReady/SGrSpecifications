@@ -63,5 +63,19 @@ SGr allows to associate attributes to a functional profile (i.e. concerning ever
 SGr allows to associate attributes to a data point. See [GenericAttributes](GenericAttributes.md) for details.
 Any attribute defined on the functional profile level are mandatory to any product that implements this functional profile. However, the product can optionally add further attributes based on its own needs.
 
+## New Functional Profiles
+
+## File Naming Schema
+Functional profiles should have the following file naming conventions:
+
+`FP_[specificationOwnerIdentification]_[FunctionalProfileCategory]_[FunctionalProfileType]_[levelOfOperation]_[majorVerion].[minorVerion].xml`
+
+## Descriptions
+Functional profile descriptions should be structured as follows:
+- Image indicating the typical appliacle, together with a easily understandable title
+- Short explanation (i.e. long version of the title)
+- Detailed explanation, including very attribute.
+- How to apply the functional profile concerning presence level (i.e. how to handle recommended and optional data points)
+
 ## Open Points
 - What are the rules for naming a functional profile (sgr:functionalProfile@profileName)? Is this strict (then it should be part of the classification), or loose (then it should be part of the legibleDescription)?
