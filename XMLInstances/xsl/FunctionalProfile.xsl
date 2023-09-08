@@ -22,7 +22,7 @@
             <!-- Functional Profile Block -->
             <table>
                 <colgroup>
-                    <col style="width:30%" />
+                    <col style="width:230px" />
                 </colgroup>
 
                 <xsl:apply-templates select="sgr:functionalProfile" />

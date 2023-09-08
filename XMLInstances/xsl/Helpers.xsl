@@ -22,7 +22,7 @@
     <xsl:template match="sgr:releaseNotes">
         <table>
             <colgroup>
-                <col style="width:30%" />
+                <col style="width:230px" />
             </colgroup>
             <!-- Release State -->
             <tr>
@@ -232,44 +232,23 @@
         <xsl:choose>
             <xsl:when test="sgr:boolean">boolean</xsl:when>
             <xsl:when test="sgr:int8">byte</xsl:when>
-            <xsl:when test="sgr:int16">short</xsl:when>
-            <xsl:when test="sgr:int32">integer</xsl:when>
-            <xsl:when test="sgr:int64">long</xsl:when>
-            <xsl:when test="sgr:int8U">unsigned byte</xsl:when>
-            <xsl:when test="sgr:int16U">unsigned short</xsl:when>
-            <xsl:when test="sgr:int32U">unsigned int</xsl:when>
-            <xsl:when test="sgr:int64U">unsigned long</xsl:when>
+            <xsl:when test="sgr:int16">nit16</xsl:when>
+            <xsl:when test="sgr:int32">int32</xsl:when>
+            <xsl:when test="sgr:int64">int64</xsl:when>
+            <xsl:when test="sgr:int8U">int8U</xsl:when>
+            <xsl:when test="sgr:int16U">int16U</xsl:when>
+            <xsl:when test="sgr:int32U">int32U</xsl:when>
+            <xsl:when test="sgr:int64U">int64U</xsl:when>
             <xsl:when test="sgr:float32">float</xsl:when>
             <xsl:when test="sgr:float64">double</xsl:when>
             <xsl:when test="sgr:dateTime">date time</xsl:when>
             <xsl:when test="sgr:string">string</xsl:when>
-            <xsl:when test="sgr:enum"><xsl:apply-templates select="sgr:enum" /></xsl:when> <!-- TODO Simon: map enum -->
-            <xsl:when test="sgr:enum2bitmapIndex">bitmap</xsl:when> <!-- TODO Simon: render the differnet bitmap types -->
+            <xsl:when test="sgr:enum">enum</xsl:when>
+            <xsl:when test="sgr:enum2bitmapIndex">bitmap</xsl:when>
         </xsl:choose>
     </xsl:template>
 
     <!-- Enums (TODO Simon: replace by new structure ) -->
-    <xsl:template match="sgr:enum">
-        <xsl:choose>
-            <xsl:when test="sgr:sgrMeasValueSource">MeasValueSource</xsl:when>
-            <xsl:when test="sgr:sgrPowerSource">PowerSource</xsl:when>
-            <xsl:when test="sgr:sgreadyStateLv2">sgreadyStateLv2</xsl:when>
-            <xsl:when test="sgr:sgreadyStateLv1">sgreadyStateLv1</xsl:when>
-            <xsl:when test="sgr:sgrSunspStateCodes">SunspStateCodes</xsl:when>
-            <xsl:when test="sgr:sgrEVSEStateLv2">EVSEStateLv2</xsl:when>
-            <xsl:when test="sgr:sgrEVSEStateLv1">EVSEStateLv1</xsl:when>
-            <xsl:when test="sgr:sgrSGCPLoadStateLv2">SGCPLoadStateLv2</xsl:when>
-            <xsl:when test="sgr:sgrSGCPFeedInStateLv2">SGCPFeedInStateLv2</xsl:when>
-            <xsl:when test="sgr:sgrEVState">sgrEVState</xsl:when>
-            <xsl:when test="sgr:sgrSGCPService">SGCPService</xsl:when>
-            <xsl:when test="sgr:sgrObligLvl">ObligLvl</xsl:when>
-            <xsl:when test="sgr:sgrOCPPState">OCPPState</xsl:when>
-            <xsl:when test="sgr:sgrHPOpMode">HPOpMode</xsl:when>
-            <xsl:when test="sgr:sgrHCOpMode">HCOpMode</xsl:when>
-            <xsl:when test="sgr:sgrDHWOpMode">DHWOpMode</xsl:when>        
-            <xsl:otherwise>unknown</xsl:otherwise>
-        </xsl:choose>
-    </xsl:template>
 
     <!-- Units -->
     <xsl:template name="SGrUnits">
@@ -312,7 +291,7 @@
             <xsl:when test="$value = 'DEGREE_DAYS_CELSIUS'"><xsl:value-of select="$value" /></xsl:when>
             <xsl:when test="$value = 'DEGREE_DAYS_FAHRENHEIT'"><xsl:value-of select="$value" /></xsl:when>
             <xsl:when test="$value = 'DEGREES_ANGULAR'"><xsl:value-of select="$value" /></xsl:when>
-            <xsl:when test="$value = 'DEGREES_CELSIUS'"><xsl:value-of select="$value" /></xsl:when>
+            <xsl:when test="$value = 'DEGREES_CELSIUS'"><sup>o</sup>C</xsl:when>
             <xsl:when test="$value = 'DEGREES_CELSIUS_PER_HOUR'"><xsl:value-of select="$value" /></xsl:when>
             <xsl:when test="$value = 'DEGREES_CELSIUS_PER_MINUTE'"><xsl:value-of select="$value" /></xsl:when>
             <xsl:when test="$value = 'DEGREES_FAHRENHEIT'"><xsl:value-of select="$value" /></xsl:when>
@@ -435,8 +414,8 @@
             <xsl:when test="$value = 'PSI_PER_DEGREE_FAHRENHEIT'"><xsl:value-of select="$value" /></xsl:when>
             <xsl:when test="$value = 'RADIANS'"><xsl:value-of select="$value" /></xsl:when>
             <xsl:when test="$value = 'RADIANS_PER_SECOND'"><xsl:value-of select="$value" /></xsl:when>
-            <xsl:when test="$value = 'REVOLUTIONS_PER_MINUTE'"><xsl:value-of select="$value" /></xsl:when>
-            <xsl:when test="$value = 'SECONDS'"><xsl:value-of select="$value" /></xsl:when>
+            <xsl:when test="$value = 'REVOLUTIONS_PER_MINUTE'">rpm</xsl:when>
+            <xsl:when test="$value = 'SECONDS'">s</xsl:when>
             <xsl:when test="$value = 'SIEMENS'"><xsl:value-of select="$value" /></xsl:when>
             <xsl:when test="$value = 'SIEMENS_PER_METER'"><xsl:value-of select="$value" /></xsl:when>
             <xsl:when test="$value = 'SQUARE_CENTIMETERS'">cm2</xsl:when>
@@ -466,7 +445,7 @@
             <xsl:when test="$value = 'WEBERS'"><xsl:value-of select="$value" /></xsl:when>
             <xsl:when test="$value = 'WEEKS'"><xsl:value-of select="$value" /></xsl:when>
             <xsl:when test="$value = 'YEARS'"><xsl:value-of select="$value" /></xsl:when>
-            <xsl:when test="$value = 'NONE'"></xsl:when>
+            <xsl:when test="$value = 'NONE'">-</xsl:when>
             <xsl:otherwise><xsl:value-of select="$value" /></xsl:otherwise>
         </xsl:choose>
     </xsl:template>

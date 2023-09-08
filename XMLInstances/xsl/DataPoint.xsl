@@ -7,16 +7,15 @@
         <div class="dataPoint">
             <table>
                 <colgroup>
-                    <col style="width:35px" />
-                    <col style="width:134px" />
-                    <col style="width:293px" />
-                    <col style="width:134px" />
-                    <col style="width:85px" />
+                    <col style="width:230px" />
+                    <col style="width:325px" />
+                    <col style="width:54px" />
+                    <col style="width:75px" />
                     <col style="width:44px" />
                     <col style="width:44px" />
                 </colgroup>
                 <tr>
-                    <th colspan="2">Datapoint</th>
+                    <th>Datapoint</th>
                     <th>Description</th>
                     <th>Unit</th>
                     <th>Type</th>
@@ -33,11 +32,10 @@
     <xsl:template match="sgr:dataPointListElement">
         <xsl:apply-templates select="sgr:dataPoint" />
         <tr class="dataPointDetails">
-            <td class="noborder"></td>
             <td colspan="6" class="noborder">
-                <table>
+                <table style="margin-left:35px; width:737px;">
                     <colgroup>
-                        <col style="width:428px" />
+                        <col style="width:194px" />
                     </colgroup>
 
                     <xsl:apply-templates select="sgr:dataPoint/sgr:programmerHints" />
@@ -62,7 +60,7 @@
         <!-- Renders a data point table row (dataPointName, unit, dataType, presenceLevel,
         dataDirection) -->
         <tr>
-            <td colspan="2">
+            <td>
                 <xsl:value-of select="sgr:dataPointName" />
             </td>
             <td>

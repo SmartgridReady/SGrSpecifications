@@ -25,7 +25,7 @@
 
 			<table>
 				<colgroup>
-					<col style="width:30%" />
+					<col style="width:230px" />
 				</colgroup>
 				<tr>
 					<td>Name</td>

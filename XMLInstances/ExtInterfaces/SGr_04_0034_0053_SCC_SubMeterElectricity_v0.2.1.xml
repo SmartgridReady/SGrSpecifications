@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="/xsl/SGr.xsl"?>
 <RestApiDeviceFrame xmlns="http://www.smartgridready.com/ns/V0/"
-                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-                    xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/EI-RestAPI/SGrRestAPI_EIDeviceFrame.xsd ">
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/Product/RestApiFrame.xsd
+                      ">
   <!-- TODO: broken XML, this EI needs fixing... -->
   <deviceName>Smart Charge Controller</deviceName>
   <manufacturerName>A. Lehmann Elektro AG</manufacturerName>
@@ -21,19 +22,21 @@
     <restApiUri>https://api.smartchargecontroller.ch:3000</restApiUri>
     <restApiAuthenticationMethod>BearerSecurityScheme</restApiAuthenticationMethod>
     <restApiBearer>
-      <requestHeader>
-        <header>
-          <headerName>Accept</headerName>
-          <value>application/json</value>
-        </header>
-      </requestHeader>
-      <requestMethod>POST</requestMethod>
-      <requestPath>/auth/login</requestPath>
-      <requestBody>{"username": "{{username}}", "password": "{{password}}" }</requestBody>
-      <responseQuery>
-        <queryType>JMESPathExpression</queryType>
-        <query>accessToken</query>
-      </responseQuery>
+      <restApiServiceCall>
+        <requestHeader>
+          <header>
+            <headerName>Accept</headerName>
+            <value>application/json</value>
+          </header>
+        </requestHeader>
+        <requestMethod>POST</requestMethod>
+        <requestPath>/auth/login</requestPath>
+        <requestBody>{"username": "{{username}}", "password": "{{password}}" }</requestBody>
+        <responseQuery>
+          <queryType>JMESPathExpression</queryType>
+          <query>accessToken</query>
+        </responseQuery>
+      </restApiServiceCall>
     </restApiBearer>
   </restApiInterfaceDescription>
   <functionalProfileList>
@@ -59,7 +62,7 @@
             <dataDirection>R</dataDirection>
             <presenceLevel>R</presenceLevel>
             <dataType>
-              <float64/>
+              <float64 />
             </dataType>
             <unit>WATTS</unit>
           </dataPoint>
@@ -69,18 +72,20 @@
           </genericAttributes>
           <restApiDataPointConfiguration>
             <dataType>JSON_number</dataType>
-            <requestHeader>
-              <header>
-                <headerName>Accept</headerName>
-                <value>application/json</value>
-              </header>
-            </requestHeader>
-            <requestMethod>GET</requestMethod>
-            <requestPath>/edges/{{edgeid}}/metrics/momentaryMeterValues</requestPath>
-            <responseQuery>
-              <queryType>JMESPathExpression</queryType>
-              <query>sum([activePower.l1,activePower.l2,activePower.l3])</query>
-            </responseQuery>
+            <restApiServiceCall>
+              <requestHeader>
+                <header>
+                  <headerName>Accept</headerName>
+                  <value>application/json</value>
+                </header>
+              </requestHeader>
+              <requestMethod>GET</requestMethod>
+              <requestPath>/edges/{{edgeid}}/metrics/momentaryMeterValues</requestPath>
+              <responseQuery>
+                <queryType>JMESPathExpression</queryType>
+                <query>sum([activePower.l1,activePower.l2,activePower.l3])</query>
+              </responseQuery>
+            </restApiServiceCall>
           </restApiDataPointConfiguration>
         </dataPointListElement>
         <dataPointListElement>
@@ -89,7 +94,7 @@
             <dataDirection>R</dataDirection>
             <presenceLevel>R</presenceLevel>
             <dataType>
-              <float64/>
+              <float64 />
             </dataType>
             <unit>WATTS</unit>
           </dataPoint>
@@ -99,18 +104,20 @@
           </genericAttributes>
           <restApiDataPointConfiguration>
             <dataType>JSON_number</dataType>
-            <requestHeader>
-              <header>
-                <headerName>Accept</headerName>
-                <value>application/json</value>
-              </header>
-            </requestHeader>
-            <requestMethod>GET</requestMethod>
-            <requestPath>/edges/{{edgeid}}/metrics/momentaryMeterValues</requestPath>
-            <responseQuery>
-              <queryType>JMESPathExpression</queryType>
-              <query>activePower.l1</query>
-            </responseQuery>
+            <restApiServiceCall>
+              <requestHeader>
+                <header>
+                  <headerName>Accept</headerName>
+                  <value>application/json</value>
+                </header>
+              </requestHeader>
+              <requestMethod>GET</requestMethod>
+              <requestPath>/edges/{{edgeid}}/metrics/momentaryMeterValues</requestPath>
+              <responseQuery>
+                <queryType>JMESPathExpression</queryType>
+                <query>activePower.l1</query>
+              </responseQuery>
+            </restApiServiceCall>
           </restApiDataPointConfiguration>
         </dataPointListElement>
         <dataPointListElement>
@@ -119,7 +126,7 @@
             <dataDirection>R</dataDirection>
             <presenceLevel>R</presenceLevel>
             <dataType>
-              <float64/>
+              <float64 />
             </dataType>
             <unit>WATTS</unit>
           </dataPoint>
@@ -129,18 +136,20 @@
           </genericAttributes>
           <restApiDataPointConfiguration>
             <dataType>JSON_number</dataType>
-            <requestHeader>
-              <header>
-                <headerName>Accept</headerName>
-                <value>application/json</value>
-              </header>
-            </requestHeader>
-            <requestMethod>GET</requestMethod>
-            <requestPath>/edges/{{edgeid}}/metrics/momentaryMeterValues</requestPath>
-            <responseQuery>
-              <queryType>JMESPathExpression</queryType>
-              <query>activePower.l2</query>
-            </responseQuery>
+            <restApiServiceCall>
+              <requestHeader>
+                <header>
+                  <headerName>Accept</headerName>
+                  <value>application/json</value>
+                </header>
+              </requestHeader>
+              <requestMethod>GET</requestMethod>
+              <requestPath>/edges/{{edgeid}}/metrics/momentaryMeterValues</requestPath>
+              <responseQuery>
+                <queryType>JMESPathExpression</queryType>
+                <query>activePower.l2</query>
+              </responseQuery>
+            </restApiServiceCall>
           </restApiDataPointConfiguration>
         </dataPointListElement>
         <dataPointListElement>
@@ -149,7 +158,7 @@
             <dataDirection>R</dataDirection>
             <presenceLevel>R</presenceLevel>
             <dataType>
-              <float64/>
+              <float64 />
             </dataType>
             <unit>WATTS</unit>
           </dataPoint>
@@ -159,18 +168,20 @@
           </genericAttributes>
           <restApiDataPointConfiguration>
             <dataType>JSON_number</dataType>
-            <requestHeader>
-              <header>
-                <headerName>Accept</headerName>
-                <value>application/json</value>
-              </header>
-            </requestHeader>
-            <requestMethod>GET</requestMethod>
-            <requestPath>/edges/{{edgeid}}/metrics/momentaryMeterValues</requestPath>
-            <responseQuery>
-              <queryType>JMESPathExpression</queryType>
-              <query>activePower.l3</query>
-            </responseQuery>
+            <restApiServiceCall>
+              <requestHeader>
+                <header>
+                  <headerName>Accept</headerName>
+                  <value>application/json</value>
+                </header>
+              </requestHeader>
+              <requestMethod>GET</requestMethod>
+              <requestPath>/edges/{{edgeid}}/metrics/momentaryMeterValues</requestPath>
+              <responseQuery>
+                <queryType>JMESPathExpression</queryType>
+                <query>activePower.l3</query>
+              </responseQuery>
+            </restApiServiceCall>
           </restApiDataPointConfiguration>
         </dataPointListElement>
       </dataPointList>
@@ -197,7 +208,7 @@
             <dataDirection>R</dataDirection>
             <presenceLevel>R</presenceLevel>
             <dataType>
-              <float64/>
+              <float64 />
             </dataType>
             <unit>VOLTS</unit>
           </dataPoint>
@@ -207,18 +218,20 @@
           </genericAttributes>
           <restApiDataPointConfiguration>
             <dataType>JSON_number</dataType>
-            <requestHeader>
-              <header>
-                <headerName>Accept</headerName>
-                <value>application/json</value>
-              </header>
-            </requestHeader>
-            <requestMethod>GET</requestMethod>
-            <requestPath>/edges/{{edgeid}}/metrics/momentaryMeterValues</requestPath>
-            <responseQuery>
-              <queryType>JMESPathExpression</queryType>
-              <query>voltage.l1</query>
-            </responseQuery>
+            <restApiServiceCall>
+              <requestHeader>
+                <header>
+                  <headerName>Accept</headerName>
+                  <value>application/json</value>
+                </header>
+              </requestHeader>
+              <requestMethod>GET</requestMethod>
+              <requestPath>/edges/{{edgeid}}/metrics/momentaryMeterValues</requestPath>
+              <responseQuery>
+                <queryType>JMESPathExpression</queryType>
+                <query>voltage.l1</query>
+              </responseQuery>
+            </restApiServiceCall>
           </restApiDataPointConfiguration>
         </dataPointListElement>
         <dataPointListElement>
@@ -227,7 +240,7 @@
             <dataDirection>R</dataDirection>
             <presenceLevel>R</presenceLevel>
             <dataType>
-              <float64/>
+              <float64 />
             </dataType>
             <unit>VOLTS</unit>
           </dataPoint>
@@ -237,18 +250,20 @@
           </genericAttributes>
           <restApiDataPointConfiguration>
             <dataType>JSON_number</dataType>
-            <requestHeader>
-              <header>
-                <headerName>Accept</headerName>
-                <value>application/json</value>
-              </header>
-            </requestHeader>
-            <requestMethod>GET</requestMethod>
-            <requestPath>/edges/{{edgeid}}/metrics/momentaryMeterValues</requestPath>
-            <responseQuery>
-              <queryType>JMESPathExpression</queryType>
-              <query>voltage.l2</query>
-            </responseQuery>
+            <restApiServiceCall>
+              <requestHeader>
+                <header>
+                  <headerName>Accept</headerName>
+                  <value>application/json</value>
+                </header>
+              </requestHeader>
+              <requestMethod>GET</requestMethod>
+              <requestPath>/edges/{{edgeid}}/metrics/momentaryMeterValues</requestPath>
+              <responseQuery>
+                <queryType>JMESPathExpression</queryType>
+                <query>voltage.l2</query>
+              </responseQuery>
+            </restApiServiceCall>
           </restApiDataPointConfiguration>
         </dataPointListElement>
         <dataPointListElement>
@@ -257,7 +272,7 @@
             <dataDirection>R</dataDirection>
             <presenceLevel>R</presenceLevel>
             <dataType>
-              <float64/>
+              <float64 />
             </dataType>
             <unit>VOLTS</unit>
           </dataPoint>
@@ -267,18 +282,20 @@
           </genericAttributes>
           <restApiDataPointConfiguration>
             <dataType>JSON_number</dataType>
-            <requestHeader>
-              <header>
-                <headerName>Accept</headerName>
-                <value>application/json</value>
-              </header>
-            </requestHeader>
-            <requestMethod>GET</requestMethod>
-            <requestPath>/edges/{{edgeid}}/metrics/momentaryMeterValues</requestPath>
-            <responseQuery>
-              <queryType>JMESPathExpression</queryType>
-              <query>voltage.l3</query>
-            </responseQuery>
+            <restApiServiceCall>
+              <requestHeader>
+                <header>
+                  <headerName>Accept</headerName>
+                  <value>application/json</value>
+                </header>
+              </requestHeader>
+              <requestMethod>GET</requestMethod>
+              <requestPath>/edges/{{edgeid}}/metrics/momentaryMeterValues</requestPath>
+              <responseQuery>
+                <queryType>JMESPathExpression</queryType>
+                <query>voltage.l3</query>
+              </responseQuery>
+            </restApiServiceCall>
           </restApiDataPointConfiguration>
         </dataPointListElement>
       </dataPointList>
@@ -305,7 +322,7 @@
             <dataDirection>R</dataDirection>
             <presenceLevel>M</presenceLevel>
             <dataType>
-              <float64/>
+              <float64 />
             </dataType>
             <unit>AMPERES</unit>
           </dataPoint>
@@ -315,18 +332,20 @@
           </genericAttributes>
           <restApiDataPointConfiguration>
             <dataType>JSON_number</dataType>
-            <requestHeader>
-              <header>
-                <headerName>Accept</headerName>
-                <value>application/json</value>
-              </header>
-            </requestHeader>
-            <requestMethod>GET</requestMethod>
-            <requestPath>/edges/{{edgeid}}/metrics/momentaryMeterValues</requestPath>
-            <responseQuery>
-              <queryType>JMESPathExpression</queryType>
-              <query>current.l1</query>
-            </responseQuery>
+            <restApiServiceCall>
+              <requestHeader>
+                <header>
+                  <headerName>Accept</headerName>
+                  <value>application/json</value>
+                </header>
+              </requestHeader>
+              <requestMethod>GET</requestMethod>
+              <requestPath>/edges/{{edgeid}}/metrics/momentaryMeterValues</requestPath>
+              <responseQuery>
+                <queryType>JMESPathExpression</queryType>
+                <query>current.l1</query>
+              </responseQuery>
+            </restApiServiceCall>
           </restApiDataPointConfiguration>
         </dataPointListElement>
         <dataPointListElement>
@@ -335,7 +354,7 @@
             <dataDirection>R</dataDirection>
             <presenceLevel>R</presenceLevel>
             <dataType>
-              <float64/>
+              <float64 />
             </dataType>
             <unit>AMPERES</unit>
           </dataPoint>
@@ -345,18 +364,20 @@
           </genericAttributes>
           <restApiDataPointConfiguration>
             <dataType>JSON_number</dataType>
-            <requestHeader>
-              <header>
-                <headerName>Accept</headerName>
-                <value>application/json</value>
-              </header>
-            </requestHeader>
-            <requestMethod>GET</requestMethod>
-            <requestPath>/edges/{{edgeid}}/metrics/momentaryMeterValues</requestPath>
-            <responseQuery>
-              <queryType>JMESPathExpression</queryType>
-              <query>current.l2</query>
-            </responseQuery>
+            <restApiServiceCall>
+              <requestHeader>
+                <header>
+                  <headerName>Accept</headerName>
+                  <value>application/json</value>
+                </header>
+              </requestHeader>
+              <requestMethod>GET</requestMethod>
+              <requestPath>/edges/{{edgeid}}/metrics/momentaryMeterValues</requestPath>
+              <responseQuery>
+                <queryType>JMESPathExpression</queryType>
+                <query>current.l2</query>
+              </responseQuery>
+            </restApiServiceCall>
           </restApiDataPointConfiguration>
         </dataPointListElement>
         <dataPointListElement>
@@ -365,7 +386,7 @@
             <dataDirection>R</dataDirection>
             <presenceLevel>R</presenceLevel>
             <dataType>
-              <float64/>
+              <float64 />
             </dataType>
             <unit>AMPERES</unit>
           </dataPoint>
@@ -375,18 +396,20 @@
           </genericAttributes>
           <restApiDataPointConfiguration>
             <dataType>JSON_number</dataType>
-            <requestHeader>
-              <header>
-                <headerName>Accept</headerName>
-                <value>application/json</value>
-              </header>
-            </requestHeader>
-            <requestMethod>GET</requestMethod>
-            <requestPath>/edges/{{edgeid}}/metrics/momentaryMeterValues</requestPath>
-            <responseQuery>
-              <queryType>JMESPathExpression</queryType>
-              <query>current.l3</query>
-            </responseQuery>
+            <restApiServiceCall>
+              <requestHeader>
+                <header>
+                  <headerName>Accept</headerName>
+                  <value>application/json</value>
+                </header>
+              </requestHeader>
+              <requestMethod>GET</requestMethod>
+              <requestPath>/edges/{{edgeid}}/metrics/momentaryMeterValues</requestPath>
+              <responseQuery>
+                <queryType>JMESPathExpression</queryType>
+                <query>current.l3</query>
+              </responseQuery>
+            </restApiServiceCall>
           </restApiDataPointConfiguration>
         </dataPointListElement>
       </dataPointList>
