@@ -91,7 +91,76 @@
                 <presenceLevel>O</presenceLevel>
                 <dataType>
                   <enum>
-                    <ctaHPOpMode>HP_NULL</ctaHPOpMode>
+                <enumMapping>
+                  <literal>HP_STANDBY</literal>
+                  <ordinal>1</ordinal>
+                  <description>WP in Stand by Modus</description>
+                </enumMapping>
+                <enumMapping>
+                  <literal>HP_HEATING_OP</literal>
+                  <ordinal>2</ordinal>
+                  <description>Heizbetrieb aktiv</description>
+                </enumMapping>
+                <enumMapping>
+                  <literal>HP_EMERG_HEATING_ACTIVE</literal>
+                  <ordinal>3</ordinal>
+                  <description>Notbetrieb Heizen aktiv</description>
+                </enumMapping>
+                <enumMapping>
+                  <literal>HP_DOMHW_ACTIVE</literal>
+                  <ordinal>4</ordinal>
+                  <description>TWW Ladung aktiv</description>
+                </enumMapping>
+                <enumMapping>
+                  <literal>HP_OMHW_EMERG_ACTIVE</literal>
+                  <ordinal>5</ordinal>
+                  <description>Notbetrieb TWW aktiv</description>
+                </enumMapping>
+                <enumMapping>
+                  <literal>HP_ACTIVE_COOLING_OP</literal>
+                  <ordinal>6</ordinal>
+                  <description>Aktivkühlbetrieb aktiv</description>
+                </enumMapping>
+                <enumMapping>
+                  <literal>HP_MANUAL_OP</literal>
+                  <ordinal>7</ordinal>
+                  <description>Manueller Betrieb</description>
+                </enumMapping>
+                <enumMapping>
+                  <literal>HP_BUFFER_LOAD_ACTIVE</literal>
+                  <ordinal>8</ordinal>
+                  <description>Heizungsspeicher Ladebetrieb ein</description>
+                </enumMapping>
+                <enumMapping>
+                  <literal>HP_EXTERNAL_CTRL</literal>
+                  <ordinal>9</ordinal>
+                  <description>Externer Betrieb ein</description>
+                </enumMapping>
+                <enumMapping>
+                  <literal>HP_DIRECT_DISTRIBUTION</literal>
+                  <ordinal>10</ordinal>
+                  <description>Verteilkreis-ohne Puffer Betrieb</description>
+                </enumMapping>
+                <enumMapping>
+                  <literal>HP_DEFROST_ACTIVE</literal>
+                  <ordinal>11</ordinal>
+                  <description>Abtauvorgang aktiv</description>
+                </enumMapping>
+                <enumMapping>
+                  <literal>HP_PASSIVE_COOLING_OP</literal>
+                  <ordinal>12</ordinal>
+                  <description>Kältegeführter Betrieb (Prozesskühlen)</description>
+                </enumMapping>
+                <enumMapping>
+                  <literal>HP_RESERVE</literal>
+                  <ordinal>13</ordinal>
+                  <description>Reserve</description>
+                </enumMapping>
+                <enumMapping>
+                  <literal>HP_COMBINDED_BUFFER_LOADING</literal>
+                  <ordinal>14</ordinal>
+                  <description>TWW Legio mit El. Einsatz K6 und parallel Heizungsbetrieb (Pufferladung)</description>
+                </enumMapping>
                   </enum>
                 </dataType>
                 <unit>NONE</unit>
@@ -105,9 +174,7 @@
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
-                  <enum>
-                    <ctaHPOpMode>HP_NULL</ctaHPOpMode>
-                  </enum>
+                  <int16U/>
                 </modbusDataType>
                 <address>2204</address>
                 <registerType>InputRegister</registerType>
@@ -121,7 +188,101 @@
                 <presenceLevel>M</presenceLevel>
                 <dataType>
                   <enum>
-                    <ctaHPOpState>HP_STANDBY</ctaHPOpState>
+                <enumMapping>
+                  <literal>HP_STANDBY</literal>
+                  <ordinal>1</ordinal>
+                  <description>Stand by</description>
+                </enumMapping>
+                <enumMapping>
+                  <literal>HP_ALARM_OFF</literal>
+                  <ordinal>2</ordinal>
+                  <description>Alarm aus</description>
+                </enumMapping>
+                <enumMapping>
+                  <literal>HP_EXTERNAL_OFF</literal>
+                  <ordinal>3</ordinal>
+                  <description>Externer Betrieb aus</description>
+                </enumMapping>
+                <enumMapping>
+                  <literal>HP_TIMEOUT_OFF</literal>
+                  <ordinal>4</ordinal>
+                  <description>Aus aufgrund Zeitlimite</description>
+                </enumMapping>
+                <enumMapping>
+                  <literal>HP_DSO_OFF</literal>
+                  <ordinal>5</ordinal>
+                  <description>Aus aufgrund Sperrung (EW-Sperre)</description>
+                </enumMapping>
+                <enumMapping>
+                  <literal>HP_MANUAL_OFF</literal>
+                  <ordinal>6</ordinal>
+                  <description>Manuell Aus</description>
+                </enumMapping>
+                <enumMapping>
+                  <literal>HP_MANUAL_OP</literal>
+                  <ordinal>7</ordinal>
+                  <description>Manueller Betrieb</description>
+                </enumMapping>
+                <enumMapping>
+                  <literal>HP_STARTING</literal>
+                  <ordinal>8</ordinal>
+                  <description>Startphase</description>
+                </enumMapping>
+                <enumMapping>
+                  <literal>HP_STOPPING</literal>
+                  <ordinal>9</ordinal>
+                  <description>Abtauphase</description>
+                </enumMapping>
+                <enumMapping>
+                  <literal>HP_SECURE_OFF</literal>
+                  <ordinal>10</ordinal>
+                  <description>Sicherheits-Abschaltung</description>
+                </enumMapping>
+                <enumMapping>
+                  <literal>HP_START_DEFROST</literal>
+                  <ordinal>11</ordinal>
+                  <description>Start Abtauphase</description>
+                </enumMapping>
+                <enumMapping>
+                  <literal>HP_DEFROSTING</literal>
+                  <ordinal>12</ordinal>
+                  <description>Abtauphase</description>
+                </enumMapping>
+                <enumMapping>
+                  <literal>HP_DEFROST_END</literal>
+                  <ordinal>13</ordinal>
+                  <description>Ende Abtauphase</description>
+                </enumMapping>
+                <enumMapping>
+                  <literal>HP_PRESSURE_DIFF</literal>
+                  <ordinal>14</ordinal>
+                  <description>Gesperrt aufgrund Druckdifferenz beim Start</description>
+                </enumMapping>
+                <enumMapping>
+                  <literal>HP_COOLING</literal>
+                  <ordinal>15</ordinal>
+                  <description>Kühlbetrieb aktiv</description>
+                </enumMapping>
+                <enumMapping>
+                  <literal>HP_HEATING</literal>
+                  <ordinal>16</ordinal>
+                  <description>Heizbetrieb aktiv</description>
+                </enumMapping>
+                <enumMapping>
+                  <literal>HP_COMP_START_ERR</literal>
+                  <ordinal>17</ordinal>
+                  <description>Start nach VD Startfehler</description>
+                </enumMapping>
+                <enumMapping>
+                  <literal>HP_OFF_OUT_OF_LIMITS</literal>
+                  <ordinal>18</ordinal>
+                  <description>Aus Begrenzung aktiv</description>
+                </enumMapping>
+                <enumMapping>
+                  <literal>HP_OIL_RECIRCUL_ACTIVE</literal>
+                  <ordinal>19</ordinal>
+                  <description>Oel Rückführung aktiv></description>
+                </enumMapping>
                   </enum>
                 </dataType>
                 <unit>NONE</unit>
@@ -135,9 +296,7 @@
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
-                  <enum>
-                    <ctaHPOpState>HP_STANDBY</ctaHPOpState>
-                  </enum>
+                  <int16U/>
                 </modbusDataType>
                 <address>2202</address>
                 <registerType>InputRegister</registerType>
@@ -472,7 +631,28 @@
                 <dataDirection>RW</dataDirection>
                 <presenceLevel>M</presenceLevel>
                 <dataType>
-                  <int16 />
+              <enum>
+                <enumMapping>
+                  <literal>HC_AUTO</literal>
+                  <ordinal>0</ordinal>
+                </enumMapping>
+                <enumMapping>
+                  <literal>HC_COMFORT</literal>
+                  <ordinal>1</ordinal>
+                </enumMapping>
+                <enumMapping>
+                  <literal>HC_ECO</literal>
+                  <ordinal>2</ordinal>
+                </enumMapping>
+                <enumMapping>
+                  <literal>HC_DEFROST</literal>
+                  <ordinal>3</ordinal>
+                </enumMapping>
+                <enumMapping>
+                  <literal>HC_EMERGENCY_OP</literal>
+                  <ordinal>4</ordinal>
+                </enumMapping>
+              </enum>
                 </dataType>
                 <unit>NONE</unit>
                 <legibleDescription>
@@ -498,7 +678,33 @@
                 <dataDirection>RW</dataDirection>
                 <presenceLevel>M</presenceLevel>
                 <dataType>
-                  <int32U />
+              <enum>
+                <enumMapping>
+                  <literal>HC_EXT_CTRL</literal>
+                  <ordinal>0</ordinal>
+                  <description>Extern gesteuert</description>
+                </enumMapping>
+                <enumMapping>
+                  <literal>HC_STAND_BY</literal>
+                  <ordinal>1</ordinal>
+                  <description>Standby Betrieb</description>
+                </enumMapping>
+                <enumMapping>
+                  <literal>HC_HEAT_COMF</literal>
+                  <ordinal>2</ordinal>
+                  <description>Komnfort Betrieb</description>
+                </enumMapping>
+                <enumMapping>
+                  <literal>HC_HEAT_ECO</literal>
+                  <ordinal>3</ordinal>
+                  <description>Reduzierter Betrieb</description>
+                </enumMapping>
+                <enumMapping>
+                  <literal>HC_OFF</literal>
+                  <ordinal>4</ordinal>
+                  <description>Aus</description>
+                </enumMapping>
+              </enum>
                 </dataType>
                 <unit>NONE</unit>
                 <legibleDescription>
@@ -506,18 +712,6 @@
                     Bereitschaft, Programm, Comfort, Eco)</textElement>
                   <language>de</language>
                 </legibleDescription>
-                <programmerHints>
-                  <textElement>
-                    aktuell auf Modbus 0=extern, 2=Komfort, 3= Reduziert, 4= Aus; Vorschlag Gruppe =
-                    Auslesen des Status des Heizkreises
-                    Binärcodiert, zum Beispiel:
-                    Bit 0 = Umwälzpumpe Heizkreis läuft (1)
-                    Bit 1 = Heizmodus aktiv (1)
-                    Bit 2 = Kühlmodus aktiv (1)
-                    usw.
-                  </textElement>
-                  <language>de</language>
-                </programmerHints>
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
@@ -671,7 +865,26 @@
                 <presenceLevel>M</presenceLevel>
                 <dataType>
                   <enum>
-                    <ctaDomHotWOpMode>DHW_NULL</ctaDomHotWOpMode>
+                <enumMapping>
+                  <literal>DHW_ON</literal>
+                  <ordinal>1</ordinal>
+                </enumMapping>
+                <enumMapping>
+                  <literal>DHW_OFF</literal>
+                  <ordinal>2</ordinal>
+                </enumMapping>
+                <enumMapping>
+                  <literal>DHW_PUSH</literal>
+                  <ordinal>3</ordinal>
+                </enumMapping>
+                <enumMapping>
+                  <literal>DHW_TMP_OFF</literal>
+                  <ordinal>4</ordinal>
+                </enumMapping>
+                <enumMapping>
+                  <literal>DHW_EMERGENCY</literal>
+                  <ordinal>5</ordinal>
+                </enumMapping>
                   </enum>
                 </dataType>
                 <unit>NONE</unit>
@@ -685,9 +898,7 @@
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
-                  <enum>
-                    <ctaDomHotWOpMode>DHW_NULL</ctaDomHotWOpMode>
-                  </enum>
+                  <int16U/>
                 </modbusDataType>
                 <address>1013</address>
                 <registerType>HoldRegister</registerType>
@@ -1036,7 +1247,26 @@
                 <presenceLevel>M</presenceLevel>
                 <dataType>
                   <enum>
-                    <sgreadyStateLv2>HP_NORMAL</sgreadyStateLv2>
+                <enumMapping>
+                  <literal>HP_LOCKED</literal>
+                  <ordinal>1</ordinal>
+                  <description>Gesperrt für maximal 2h</description>
+                </enumMapping>
+                <enumMapping>
+                  <literal>HP_NORMAL</literal>
+                  <ordinal>2</ordinal>
+                  <description>Normalbetrieb, optimiert auf den Kunden</description>
+                </enumMapping>
+                <enumMapping>
+                  <literal>HP_INTENSIFIED</literal>
+                  <ordinal>3</ordinal>
+                  <description>Verstärkter Betrieb</description>
+                </enumMapping>
+                <enumMapping>
+                  <literal>HP_FORCED</literal>
+                  <ordinal>4</ordinal>
+                  <description>Definitiver Anlaufbefehl</description>
+                </enumMapping>
                   </enum>
                 </dataType>
                 <unit>NONE</unit>
@@ -1065,9 +1295,7 @@
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
-                  <enum>
-                    <sgreadyStateLv2>HP_NORMAL</sgreadyStateLv2>
-                  </enum>
+                  <int16U/>
                 </modbusDataType>
                 <address>1054</address>
                 <registerType>HoldRegister</registerType>
@@ -1081,7 +1309,26 @@
                 <presenceLevel>M</presenceLevel>
                 <dataType>
                   <enum>
-                    <sgreadyStateLv2>HP_NORMAL</sgreadyStateLv2>
+                <enumMapping>
+                  <literal>HP_LOCKED</literal>
+                  <ordinal>1</ordinal>
+                  <description>Gesperrt für maximal 2h</description>
+                </enumMapping>
+                <enumMapping>
+                  <literal>HP_NORMAL</literal>
+                  <ordinal>2</ordinal>
+                  <description>Normalbetrieb, optimiert auf den Kunden</description>
+                </enumMapping>
+                <enumMapping>
+                  <literal>HP_INTENSIFIED</literal>
+                  <ordinal>3</ordinal>
+                  <description>Verstärkter Betrieb</description>
+                </enumMapping>
+                <enumMapping>
+                  <literal>HP_FORCED</literal>
+                  <ordinal>4</ordinal>
+                  <description>Definitiver Anlaufbefehl</description>
+                </enumMapping>
                   </enum>
                 </dataType>
                 <unit>NONE</unit>
@@ -1096,9 +1343,7 @@
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
-                  <enum>
-                    <sgreadyStateLv2>HP_NORMAL</sgreadyStateLv2>
-                  </enum>
+                  <int16U/>
                 </modbusDataType>
                 <address>1054</address>
                 <registerType>HoldRegister</registerType>

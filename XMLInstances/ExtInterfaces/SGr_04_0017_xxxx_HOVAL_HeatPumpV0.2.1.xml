@@ -92,7 +92,36 @@
                 <presenceLevel>M</presenceLevel>
                 <dataType>
                   <enum>
-                    <hovHPOpMode>HP_OFF</hovHPOpMode>
+                <enumMapping>
+                  <literal>HP_OFF</literal>
+                  <ordinal>0</ordinal>
+                  <description>Wärmeerzeuger aus</description>
+                </enumMapping>
+                <enumMapping>
+                  <literal>HP_AUTOMATIC</literal>
+                  <ordinal>1</ordinal>
+                  <description>Automatikbetrieb</description>
+                </enumMapping>
+                <enumMapping>
+                  <literal>HP_RES1</literal>
+                  <ordinal>2</ordinal>
+                  <description>TODO: Wert 1 siehe Datenblatt</description>
+                </enumMapping>
+                <enumMapping>
+                  <literal>HP_RES2</literal>
+                  <ordinal>3</ordinal>
+                  <description>TODO: Wert 2 siehe Datenblatt</description>
+                </enumMapping>
+                <enumMapping>
+                  <literal>HP_MAN_HEAT</literal>
+                  <ordinal>4</ordinal>
+                  <description>Manueller Heizbetrieb</description>
+                </enumMapping>
+                <enumMapping>
+                  <literal>HP_MAN_COOL</literal>
+                  <ordinal>5</ordinal>
+                  <description>Manueller Kühlbetrieb</description>
+                </enumMapping>
                   </enum>
                 </dataType>
                 <unit>NONE</unit>
@@ -105,9 +134,7 @@
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
-                  <enum>
-                    <hovHPOpMode>HP_OFF</hovHPOpMode>
-                  </enum>
+                  <int16U/>
                 </modbusDataType>
                 <address>1561</address>
                 <registerType>HoldRegister</registerType>
@@ -411,7 +438,41 @@
                 <presenceLevel>M</presenceLevel>
                 <dataType>
                   <enum>
-                    <hovHCOpMode>HC_STANDBY</hovHCOpMode>
+                <enumMapping>
+                  <literal>HC_STANDBY</literal>
+                  <ordinal>0</ordinal>
+                  <description>Standbybetrieb</description>
+                </enumMapping>
+                <enumMapping>
+                  <literal>HC_PLAN_W1</literal>
+                  <ordinal>1</ordinal>
+                  <description>Wochenplan 1</description>
+                </enumMapping>
+                <enumMapping>
+                  <literal>HC_PLAN_W2</literal>
+                  <ordinal>2</ordinal>
+                  <description>Wochenplan 2</description>
+                </enumMapping>
+                <enumMapping>
+                  <literal>HC_CONSTANT</literal>
+                  <ordinal>4</ordinal>
+                  <description>Konstanter Betrieb</description>
+                </enumMapping>
+                <enumMapping>
+                  <literal>HC_ECONOMY</literal>
+                  <ordinal>5</ordinal>
+                  <description>Sparbetrieb</description>
+                </enumMapping>
+                <enumMapping>
+                  <literal>HC_MANUAL_COOLING</literal>
+                  <ordinal>7</ordinal>
+                  <description>Handbetrieb kühlen</description>
+                </enumMapping>
+                <enumMapping>
+                  <literal>HC_MANUAL_HEATING</literal>
+                  <ordinal>8</ordinal>
+                  <description>Handbetrieb heizen</description>
+                </enumMapping>
                   </enum>
                 </dataType>
                 <unit>NONE</unit>
@@ -423,9 +484,7 @@
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
-                  <enum>
-                    <hovHCOpMode>HC_STANDBY</hovHCOpMode>
-                  </enum>
+                  <int16U/>
                 </modbusDataType>
                 <address>1478</address>
                 <registerType>HoldRegister</registerType>
@@ -445,7 +504,11 @@
                 <presenceLevel>M</presenceLevel>
                 <dataType>
                   <enum>
-                    <hovHCOpState>HC_OFF</hovHCOpState>
+                <enumMapping>
+                  <literal>HC_OFF</literal>
+                  <ordinal>0</ordinal>
+                  <description>TODO check whether Hoval uses numbers of bitmaps for states</description>
+                </enumMapping>
                   </enum>
                 </dataType>
                 <unit>NONE</unit>
@@ -458,9 +521,7 @@
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
-                  <enum>
-                    <hovHCOpState>HC_OFF</hovHCOpState>
-                  </enum>
+                  <int16U/>
                 </modbusDataType>
                 <address>1501</address>
                 <registerType>HoldRegister</registerType>
@@ -595,7 +656,11 @@
                 <presenceLevel>M</presenceLevel>
                 <dataType>
                   <enum>
-                    <hovHCOpMode>HC_STANDBY</hovHCOpMode>
+                <enumMapping>
+                  <literal>HC_STANDBY</literal>
+                  <ordinal>0</ordinal>
+                  <description>TODO check whether Hoval uses numbers of bitmaps for states</description>
+                </enumMapping>
                   </enum>
                 </dataType>
                 <unit>NONE</unit>
@@ -607,9 +672,7 @@
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
-                  <enum>
-                    <hovHCOpMode>HC_STANDBY</hovHCOpMode>
-                  </enum>
+                  <int16U/>
                 </modbusDataType>
                 <address>1479</address>
                 <registerType>HoldRegister</registerType>
@@ -629,7 +692,11 @@
                 <presenceLevel>M</presenceLevel>
                 <dataType>
                   <enum>
-                    <hovHCOpState>HC_OFF</hovHCOpState>
+                <enumMapping>
+                  <literal>HC_STANDBY</literal>
+                  <ordinal>0</ordinal>
+                  <description>TODO check whether Hoval uses numbers of bitmaps for states</description>
+                </enumMapping>
                   </enum>
                 </dataType>
                 <unit>NONE</unit>
@@ -642,9 +709,7 @@
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
-                  <enum>
-                    <hovHCOpState>HC_OFF</hovHCOpState>
-                  </enum>
+                  <int16U/>
                 </modbusDataType>
                 <address>1502</address>
                 <registerType>HoldRegister</registerType>
@@ -779,7 +844,11 @@
                 <presenceLevel>M</presenceLevel>
                 <dataType>
                   <enum>
-                    <hovHCOpMode>HC_STANDBY</hovHCOpMode>
+                <enumMapping>
+                  <literal>HC_STANDBY</literal>
+                  <ordinal>0</ordinal>
+                  <description>TODO check whether Hoval uses numbers of bitmaps for states</description>
+                </enumMapping>
                   </enum>
                 </dataType>
                 <unit>NONE</unit>
@@ -791,9 +860,7 @@
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
-                  <enum>
-                    <hovHCOpMode>HC_STANDBY</hovHCOpMode>
-                  </enum>
+                  <int16U/>
                 </modbusDataType>
                 <address>1480</address>
                 <registerType>HoldRegister</registerType>
@@ -813,7 +880,11 @@
                 <presenceLevel>M</presenceLevel>
                 <dataType>
                   <enum>
-                    <hovHCOpState>HC_OFF</hovHCOpState>
+                <enumMapping>
+                  <literal>HC_STANDBY</literal>
+                  <ordinal>0</ordinal>
+                  <description>TODO check whether Hoval uses numbers of bitmaps for states</description>
+                </enumMapping>
                   </enum>
                 </dataType>
                 <unit>NONE</unit>
@@ -826,9 +897,7 @@
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
-                  <enum>
-                    <hovHCOpState>HC_OFF</hovHCOpState>
-                  </enum>
+                  <int16U/>
                 </modbusDataType>
                 <address>1503</address>
                 <registerType>HoldRegister</registerType>
@@ -964,7 +1033,11 @@
                 <presenceLevel>O</presenceLevel>
                 <dataType>
                   <enum>
-                    <hovDomHotWOpMode>DHW_STANDBY</hovDomHotWOpMode>
+                <enumMapping>
+                  <literal>DHW_STANDBY</literal>
+                  <ordinal>0</ordinal>
+                  <description>TODO check whether Hoval uses numbers of bitmaps for states</description>
+                </enumMapping>
                   </enum>
                 </dataType>
                 <unit>NONE</unit>
@@ -977,9 +1050,7 @@
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
-                  <enum>
-                    <hovDomHotWOpMode>DHW_STANDBY</hovDomHotWOpMode>
-                  </enum>
+                  <int16U/>
                 </modbusDataType>
                 <address>1496</address>
                 <registerType>HoldRegister</registerType>
@@ -999,7 +1070,11 @@
                 <presenceLevel>R</presenceLevel>
                 <dataType>
                   <enum>
-                    <hovDomHotWState>DHW_OFF</hovDomHotWState>
+                <enumMapping>
+                  <literal>DHW_OFF</literal>
+                  <ordinal>0</ordinal>
+                  <description>TODO check whether Hoval uses numbers of bitmaps for states</description>
+                </enumMapping>
                   </enum>
                 </dataType>
                 <unit>NONE</unit>
@@ -1013,9 +1088,7 @@
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
-                  <enum>
-                    <hovDomHotWState>DHW_OFF</hovDomHotWState>
-                  </enum>
+                  <int16U/>
                 </modbusDataType>
                 <address>1504</address>
                 <registerType>HoldRegister</registerType>
@@ -1181,7 +1254,11 @@
                 <presenceLevel>M</presenceLevel>
                 <dataType>
                   <enum>
-                    <hovBufferState>BUF_OFF</hovBufferState>
+                <enumMapping>
+                  <literal>BUF_OFF</literal>
+                  <ordinal>0</ordinal>
+                  <description>TODO check whether Hoval uses numbers of bitmaps for states</description>
+                </enumMapping>
                   </enum>
                 </dataType>
                 <unit>NONE</unit>
@@ -1193,9 +1270,7 @@
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
-                  <enum>
-                    <hovBufferState>BUF_OFF</hovBufferState>
-                  </enum>
+                  <int16U/>
                 </modbusDataType>
                 <address>17384</address>
                 <registerType>HoldRegister</registerType>
@@ -1379,7 +1454,26 @@
                 <presenceLevel>M</presenceLevel>
                 <dataType>
                   <enum>
-                    <sgreadyStateLv2>HP_NORMAL</sgreadyStateLv2>
+                <enumMapping>
+                  <literal>HP_LOCKED</literal>
+                  <ordinal>1</ordinal>
+                  <description>Gesperrt für maximal 2h</description>
+                </enumMapping>
+                <enumMapping>
+                  <literal>HP_NORMAL</literal>
+                  <ordinal>2</ordinal>
+                  <description>Normalbetrieb, optimiert auf den Kunden</description>
+                </enumMapping>
+                <enumMapping>
+                  <literal>HP_INTENSIFIED</literal>
+                  <ordinal>3</ordinal>
+                  <description>Verstärkter Betrieb</description>
+                </enumMapping>
+                <enumMapping>
+                  <literal>HP_FORCED</literal>
+                  <ordinal>4</ordinal>
+                  <description>Definitiver Anlaufbefehl</description>
+                </enumMapping>
                   </enum>
                 </dataType>
                 <unit>NONE</unit>
@@ -1394,9 +1488,7 @@
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
-                  <enum>
-                    <sgreadyStateLv2>HP_NORMAL</sgreadyStateLv2>
-                  </enum>
+                  <int16U/>
                 </modbusDataType>
                 <address>27545</address>
                 <registerType>HoldRegister</registerType>
@@ -1424,7 +1516,26 @@
                 <presenceLevel>R</presenceLevel>
                 <dataType>
                   <enum>
-                    <sgreadyStateLv2>HP_NORMAL</sgreadyStateLv2>
+                <enumMapping>
+                  <literal>HP_LOCKED</literal>
+                  <ordinal>1</ordinal>
+                  <description>Gesperrt für maximal 2h</description>
+                </enumMapping>
+                <enumMapping>
+                  <literal>HP_NORMAL</literal>
+                  <ordinal>2</ordinal>
+                  <description>Normalbetrieb, optimiert auf den Kunden</description>
+                </enumMapping>
+                <enumMapping>
+                  <literal>HP_INTENSIFIED</literal>
+                  <ordinal>3</ordinal>
+                  <description>Verstärkter Betrieb</description>
+                </enumMapping>
+                <enumMapping>
+                  <literal>HP_FORCED</literal>
+                  <ordinal>4</ordinal>
+                  <description>Definitiver Anlaufbefehl</description>
+                </enumMapping>
                   </enum>
                 </dataType>
                 <unit>NONE</unit>
@@ -1452,9 +1563,7 @@
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
-                  <enum>
-                    <sgreadyStateLv2>HP_NORMAL</sgreadyStateLv2>
-                  </enum>
+                  <int16U/>
                 </modbusDataType>
                 <address>27545</address>
                 <registerType>InputRegister</registerType>
@@ -1482,16 +1591,18 @@
                 <presenceLevel>M</presenceLevel>
                 <dataType>
                   <enum>
-                    <hovSGReadySrcSel>SGR_src_OFF</hovSGReadySrcSel>
+                <enumMapping>
+                  <literal>SGR_src_OFF</literal>
+                  <ordinal>0</ordinal>
+                  <description>TODO check whether Hoval uses numbers of bitmaps for states</description>
+                </enumMapping>
                   </enum>
                 </dataType>
                 <unit>NONE</unit>
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
-                  <enum>
-                    <hovSGReadySrcSel>SGR_src_OFF</hovSGReadySrcSel>
-                  </enum>
+                  <int16U/>
                 </modbusDataType>
                 <address>27546</address>
                 <registerType>HoldRegister</registerType>

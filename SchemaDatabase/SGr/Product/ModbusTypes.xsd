@@ -511,8 +511,8 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
       <element name="float64" type="sgr:EmptyType" />
       <element name="dateTime" type="sgr:EmptyType" />
       <element name="string" type="sgr:EmptyType" />
-      <element name="enum" type="sgr:EnumListType" />
-      <element name="enum2bitmapIndex" type="sgr:BitmapperListType">
+      <element name="enum" type="sgr:EnumMap" />
+      <element name="bitmap" type="sgr:BitMap">
         <annotation>
           <documentation> bitmap for Registers (typical: Status Bits). For to be visible as generic
             boolean array or unsigned integer mapped in parallel towards one data single point
@@ -520,5 +520,8 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
         </annotation>
       </element>
     </choice>
-  </complexType>  
+  </complexType>
+  <simpleType name="hex">
+    <restriction></restriction>
+  </simpleType>
 </schema>
