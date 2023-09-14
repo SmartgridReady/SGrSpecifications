@@ -1,4 +1,4 @@
-# External Interface Description Schema
+# Communicator Description Schema
 
 ## Use case
 
@@ -14,7 +14,7 @@ The schema of the communicator interface description is structured on two levels
 
 The figure below shows the entity relation model of the communicator interface description
 
-![External Interface Description Entity Relation](communicator.drawio.png)
+![Communicator Entity Relation](communicator.drawio.png)
 
 # Communicator Elements
 

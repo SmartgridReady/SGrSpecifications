@@ -1,22 +1,22 @@
-# External Interface Description Schema
+# Product Description Schema
 
 ## Use case
 
-An external interface description contains information about the device, its supported functional profiles and how
+An product description contains information about the device, its supported functional profiles and how
 the datapoints of the functional profiles can be accessed through the transport layer.
 
 This allows potential controllers to easily integrate, implement or access any SmartGridready certified product
 through a standarized set of functionality, and thereby greatly simplifies scale-up to support a wide range of products.
 
 ## General Structure
-The schema of the external interface description is structured on three levels:
+The schema of the product description is structured on three levels:
 - Device information concerning manufacturer and product data, and the basic configuration of the transport layer
 - A list of supported functional profiles
 - A list of data points (as defined in the respective functional profile definition) together with transport layer details on how to access the individual data point
 
-The figure below shows the entity relation model of the external interface description (t.b.d!!!)
+The figure below shows the entity relation model of the product description.
 
-![External Interface Description Entity Relation](externalInterface.drawio.png)
+![Product Entity Relation](product.drawio.png)
 
 # Device Elements
 
