@@ -3,9 +3,6 @@
 
     <!-- restApiInterfaceDescription -->
     <xsl:template match="sgr:restApiInterfaceDescription">
-        <tr class="genericDetails">
-            <td class="noborder" />
-        </tr>
         <tr class="transportDetails">
             <td class="restapiattribute">Interface Type</td>
             <td>

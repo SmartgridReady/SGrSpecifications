@@ -8,7 +8,7 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
   <include schemaLocation="../Generic/DataPoint.xsd" />
   <include schemaLocation="../Generic/FunctionalProfile.xsd" />
   
-  <complexType name="ContactsDataPointList">
+  <complexType name="GenericDataPointList">
     <annotation>
       <documentation>List of data points</documentation>
     </annotation>
@@ -16,45 +16,30 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
       <element name="dataPointListElement" type="sgr:DataPointBase" maxOccurs="unbounded" />
     </sequence>
   </complexType>
-  <complexType name="ContactFunctionalProfile">
+  <complexType name="GenericFunctionalProfile">
     <complexContent>
       <extension base="sgr:FunctionalProfileBase">
         <sequence>
-          <element name="dataPointList" type="sgr:ContactsDataPointList" maxOccurs="unbounded" />
+          <element name="dataPointList" type="sgr:GenericDataPointList" />
         </sequence>
       </extension>
     </complexContent>
   </complexType>
-  <complexType name="ContactFunctionalProfileList">
+  <complexType name="GenericFunctionalProfileList">
     <annotation>
       <documentation>List of functional profiles</documentation>
     </annotation>
     <sequence>
-      <element name="functionalProfileListElement" type="sgr:ContactFunctionalProfile"
+      <element name="functionalProfileListElement" type="sgr:GenericFunctionalProfile"
         maxOccurs="unbounded" />
     </sequence>
   </complexType>
-  <complexType name="ContactInterfaceDescription">
+  <complexType name="GenericInterface">
     <annotation>
-      <documentation>Contact interface properties</documentation>
+      <documentation>Container for a device without supported transport service</documentation>
     </annotation>
     <sequence>
-      <element name="numberOfContacts" type="int" />
-      <element name="contactStabilisationTimeMs" type="unsignedInt">
-        <annotation>
-          <documentation>Time in milliseconds until a contact has reached a stable state after
-            switching</documentation>
-        </annotation>
-      </element>
-    </sequence>
-  </complexType>
-  <complexType name="ContactFrame">
-    <annotation>
-      <documentation>Container for a device with contacts</documentation>
-    </annotation>
-    <sequence>
-      <element name="contactInterfaceDescription" type="sgr:ContactInterfaceDescription" />
-      <element name="functionalProfileList" type="sgr:ContactFunctionalProfileList" />
+      <element name="functionalProfileList" type="sgr:GenericFunctionalProfileList" />
     </sequence>
   </complexType>
 </schema>

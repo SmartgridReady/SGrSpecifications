@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="/xsl/SGr.xsl"?>
 <deviceFrame xmlns="http://www.smartgridready.com/ns/V0/"
-             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-             xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/Product/ProductFrame.xsd">
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/Product/Product.xsd">
   <deviceName>VGTSiemensSPSV0.1.1</deviceName>
   <manufacturerName>Virtual Global Trading AG</manufacturerName>
   <specificationOwnerIdentification>0</specificationOwnerIdentification>
@@ -47,187 +47,190 @@
       <language>it</language>
     </programmerHints>
   </deviceInformation>
-  <modbusFrame>
-    <modbusInterfaceDescription>
-      <modbusInterfaceSelection>TCPIP</modbusInterfaceSelection>
-      <modbusTcp>
-        <port>512</port>
-        <address>192.168.170.99</address>
-        <slaveId>0</slaveId>
-      </modbusTcp>
-      <firstRegisterAddressIsOne>false</firstRegisterAddressIsOne>
-      <bitOrder>BigEndian</bitOrder>
-    </modbusInterfaceDescription>
-    <modbusAttributes>
-      <pollingLatencyMs>150</pollingLatencyMs>
-      <accessProtection>
-        <modbusExceptionCode>IllegalFunction</modbusExceptionCode>
-        <modbusExceptionCode>IllegalAddress</modbusExceptionCode>
-        <isEnabled>true</isEnabled>
-      </accessProtection>
-    </modbusAttributes>
-    <functionalProfileList>
-      <functionalProfileListElement>
-        <functionalProfile>
-          <functionalProfileName>BiDirFlexMgmt</functionalProfileName>
-          <functionalProfileIdentification>
-            <specificationOwnerIdentification>0</specificationOwnerIdentification>
-            <functionalProfileCategory>SGCP</functionalProfileCategory>
-            <functionalProfileType>BiDirFlexMgmt</functionalProfileType>
-            <levelOfOperation>4</levelOfOperation>
-            <versionNumber>
-              <primaryVersionNumber>0</primaryVersionNumber>
-              <secondaryVersionNumber>2</secondaryVersionNumber>
-              <subReleaseVersionNumber>1</subReleaseVersionNumber>
-            </versionNumber>
-          </functionalProfileIdentification>
-          <legibleDescription>
-            <textElement>Der Grid seitige Flex Manager steuert die Anlage über die Datenpunkte
-              ReadinessState, ActivePowerActivation und RunState und liest ActualActivePower. </textElement>
-            <language>de</language>
-          </legibleDescription>
-        </functionalProfile>
-        <dataPointList>
-          <dataPointListElement>
-            <dataPoint>
-              <dataPointName>ActivePowerActivation</dataPointName>
-              <dataDirection>W</dataDirection>
-              <presenceLevel>M</presenceLevel>
-              <dataType>
-                <boolean />
-              </dataType>
-              <unit>NONE</unit>
-              <alternativeNames>
-                <manufName>On/Off</manufName>
-              </alternativeNames>
-              <legibleDescription>
-                <textElement>
-                  On Off Befehl, Wirkleistung Flexibilität liefern ja/nein
-                  -Activation = true: Die Latenzeit beginnt mit dem Empfang dieses Befehls (WinTms)
-                  -Activation= false: Die Leistungsanpassung wird über eine definierte Rampe
-                  zurückgenommen (RmpTms)
-                </textElement>
-                <language>de</language>
-              </legibleDescription>
-            </dataPoint>
-            <modbusDataPointConfiguration>
-              <modbusDataType>
-                <boolean />
-              </modbusDataType>
-              <address>20</address>
-              <registerType>HoldRegister</registerType>
-              <numberOfRegisters>1</numberOfRegisters>
-            </modbusDataPointConfiguration>
-            <modbusAttributes>
-              <scalingFactor>
-                <multiplicator>1</multiplicator>
-                <powerof10>0</powerof10>
-              </scalingFactor>
-            </modbusAttributes>
-          </dataPointListElement>
-          <dataPointListElement>
-            <dataPoint>
-              <dataPointName>ReadinessState</dataPointName>
-              <dataDirection>R</dataDirection>
-              <presenceLevel>M</presenceLevel>
-              <dataType>
-                <boolean />
-              </dataType>
-              <unit>NONE</unit>
-              <alternativeNames>
-                <manufName>Ready</manufName>
-              </alternativeNames>
-              <legibleDescription>
-                <textElement>Status ready for flexibility. True wenn Anlage für den nächsten
-                  Flexibilitäts-Event bereit ist.</textElement>
-                <language>de</language>
-              </legibleDescription>
-            </dataPoint>
-            <modbusDataPointConfiguration>
-              <modbusDataType>
-                <int16 />
-              </modbusDataType>
-              <address>60</address>
-              <registerType>HoldRegister</registerType>
-              <numberOfRegisters>1</numberOfRegisters>
-            </modbusDataPointConfiguration>
-            <modbusAttributes>
-              <scalingFactor>
-                <multiplicator>1</multiplicator>
-                <powerof10>0</powerof10>
-              </scalingFactor>
-            </modbusAttributes>
-          </dataPointListElement>
-          <dataPointListElement>
-            <dataPoint>
-              <dataPointName>RunState</dataPointName>
-              <dataDirection>R</dataDirection>
-              <presenceLevel>M</presenceLevel>
-              <dataType>
-                <boolean />
-              </dataType>
-              <unit>NONE</unit>
-              <alternativeNames>
-                <manufName>Info</manufName>
-              </alternativeNames>
-              <legibleDescription>
-                <textElement>Status running for flexibility. True wenn Anlage läuft für
-                  Flexibilität.</textElement>
-                <language>de</language>
-              </legibleDescription>
-            </dataPoint>
-            <modbusDataPointConfiguration>
-              <modbusDataType>
-                <int16 />
-              </modbusDataType>
-              <address>1</address>
-              <registerType>HoldRegister</registerType>
-              <numberOfRegisters>1</numberOfRegisters>
-            </modbusDataPointConfiguration>
-            <modbusAttributes>
-              <scalingFactor>
-                <multiplicator>1</multiplicator>
-                <powerof10>0</powerof10>
-              </scalingFactor>
-            </modbusAttributes>
-          </dataPointListElement>
-          <dataPointListElement>
-            <dataPoint>
-              <dataPointName>ActualActivePower</dataPointName>
-              <dataDirection>R</dataDirection>
-              <presenceLevel>M</presenceLevel>
-              <dataType>
-                <float64 />
-              </dataType>
-              <unit>KILOWATTS</unit>
-              <alternativeNames>
-                <manufName>Active Power</manufName>
-              </alternativeNames>
-              <legibleDescription>
-                <textElement>
-                  Momentane Leistung. Betrag und Richtung des Energieflusses.
-                  + entspricht Energiebezug aus dem Netz oder Erhöhung des Bezugs
-                </textElement>
-                <language>de</language>
-              </legibleDescription>
-            </dataPoint>
-            <modbusDataPointConfiguration>
-              <modbusDataType>
-                <int16 />
-              </modbusDataType>
-              <address>10</address>
-              <registerType>HoldRegister</registerType>
-              <numberOfRegisters>1</numberOfRegisters>
-            </modbusDataPointConfiguration>
-            <modbusAttributes>
-              <scalingFactor>
-                <multiplicator>1</multiplicator>
-                <powerof10>-1</powerof10>
-              </scalingFactor>
-            </modbusAttributes>
-          </dataPointListElement>
-        </dataPointList>
-      </functionalProfileListElement>
-    </functionalProfileList>
-  </modbusFrame>
+  <interfaceList>
+    <modbusInterface>
+      <modbusInterfaceDescription>
+        <modbusInterfaceSelection>TCPIP</modbusInterfaceSelection>
+        <modbusTcp>
+          <port>512</port>
+          <address>192.168.170.99</address>
+          <slaveId>0</slaveId>
+        </modbusTcp>
+        <firstRegisterAddressIsOne>false</firstRegisterAddressIsOne>
+        <bitOrder>BigEndian</bitOrder>
+      </modbusInterfaceDescription>
+      <modbusAttributes>
+        <pollingLatencyMs>150</pollingLatencyMs>
+        <accessProtection>
+          <modbusExceptionCode>IllegalFunction</modbusExceptionCode>
+          <modbusExceptionCode>IllegalAddress</modbusExceptionCode>
+          <isEnabled>true</isEnabled>
+        </accessProtection>
+      </modbusAttributes>
+      <functionalProfileList>
+        <functionalProfileListElement>
+          <functionalProfile>
+            <functionalProfileName>BiDirFlexMgmt</functionalProfileName>
+            <functionalProfileIdentification>
+              <specificationOwnerIdentification>0</specificationOwnerIdentification>
+              <functionalProfileCategory>SGCP</functionalProfileCategory>
+              <functionalProfileType>BiDirFlexMgmt</functionalProfileType>
+              <levelOfOperation>4</levelOfOperation>
+              <versionNumber>
+                <primaryVersionNumber>0</primaryVersionNumber>
+                <secondaryVersionNumber>2</secondaryVersionNumber>
+                <subReleaseVersionNumber>1</subReleaseVersionNumber>
+              </versionNumber>
+            </functionalProfileIdentification>
+            <legibleDescription>
+              <textElement>Der Grid seitige Flex Manager steuert die Anlage über die Datenpunkte
+                ReadinessState, ActivePowerActivation und RunState und liest ActualActivePower. </textElement>
+              <language>de</language>
+            </legibleDescription>
+          </functionalProfile>
+          <dataPointList>
+            <dataPointListElement>
+              <dataPoint>
+                <dataPointName>ActivePowerActivation</dataPointName>
+                <dataDirection>W</dataDirection>
+                <presenceLevel>M</presenceLevel>
+                <dataType>
+                  <boolean />
+                </dataType>
+                <unit>NONE</unit>
+                <alternativeNames>
+                  <manufName>On/Off</manufName>
+                </alternativeNames>
+                <legibleDescription>
+                  <textElement>
+                    On Off Befehl, Wirkleistung Flexibilität liefern ja/nein
+                    -Activation = true: Die Latenzeit beginnt mit dem Empfang dieses Befehls
+                    (WinTms)
+                    -Activation= false: Die Leistungsanpassung wird über eine definierte Rampe
+                    zurückgenommen (RmpTms)
+                  </textElement>
+                  <language>de</language>
+                </legibleDescription>
+              </dataPoint>
+              <modbusDataPointConfiguration>
+                <modbusDataType>
+                  <boolean />
+                </modbusDataType>
+                <address>20</address>
+                <registerType>HoldRegister</registerType>
+                <numberOfRegisters>1</numberOfRegisters>
+              </modbusDataPointConfiguration>
+              <modbusAttributes>
+                <scalingFactor>
+                  <multiplicator>1</multiplicator>
+                  <powerof10>0</powerof10>
+                </scalingFactor>
+              </modbusAttributes>
+            </dataPointListElement>
+            <dataPointListElement>
+              <dataPoint>
+                <dataPointName>ReadinessState</dataPointName>
+                <dataDirection>R</dataDirection>
+                <presenceLevel>M</presenceLevel>
+                <dataType>
+                  <boolean />
+                </dataType>
+                <unit>NONE</unit>
+                <alternativeNames>
+                  <manufName>Ready</manufName>
+                </alternativeNames>
+                <legibleDescription>
+                  <textElement>Status ready for flexibility. True wenn Anlage für den nächsten
+                    Flexibilitäts-Event bereit ist.</textElement>
+                  <language>de</language>
+                </legibleDescription>
+              </dataPoint>
+              <modbusDataPointConfiguration>
+                <modbusDataType>
+                  <int16 />
+                </modbusDataType>
+                <address>60</address>
+                <registerType>HoldRegister</registerType>
+                <numberOfRegisters>1</numberOfRegisters>
+              </modbusDataPointConfiguration>
+              <modbusAttributes>
+                <scalingFactor>
+                  <multiplicator>1</multiplicator>
+                  <powerof10>0</powerof10>
+                </scalingFactor>
+              </modbusAttributes>
+            </dataPointListElement>
+            <dataPointListElement>
+              <dataPoint>
+                <dataPointName>RunState</dataPointName>
+                <dataDirection>R</dataDirection>
+                <presenceLevel>M</presenceLevel>
+                <dataType>
+                  <boolean />
+                </dataType>
+                <unit>NONE</unit>
+                <alternativeNames>
+                  <manufName>Info</manufName>
+                </alternativeNames>
+                <legibleDescription>
+                  <textElement>Status running for flexibility. True wenn Anlage läuft für
+                    Flexibilität.</textElement>
+                  <language>de</language>
+                </legibleDescription>
+              </dataPoint>
+              <modbusDataPointConfiguration>
+                <modbusDataType>
+                  <int16 />
+                </modbusDataType>
+                <address>1</address>
+                <registerType>HoldRegister</registerType>
+                <numberOfRegisters>1</numberOfRegisters>
+              </modbusDataPointConfiguration>
+              <modbusAttributes>
+                <scalingFactor>
+                  <multiplicator>1</multiplicator>
+                  <powerof10>0</powerof10>
+                </scalingFactor>
+              </modbusAttributes>
+            </dataPointListElement>
+            <dataPointListElement>
+              <dataPoint>
+                <dataPointName>ActualActivePower</dataPointName>
+                <dataDirection>R</dataDirection>
+                <presenceLevel>M</presenceLevel>
+                <dataType>
+                  <float64 />
+                </dataType>
+                <unit>KILOWATTS</unit>
+                <alternativeNames>
+                  <manufName>Active Power</manufName>
+                </alternativeNames>
+                <legibleDescription>
+                  <textElement>
+                    Momentane Leistung. Betrag und Richtung des Energieflusses.
+                    + entspricht Energiebezug aus dem Netz oder Erhöhung des Bezugs
+                  </textElement>
+                  <language>de</language>
+                </legibleDescription>
+              </dataPoint>
+              <modbusDataPointConfiguration>
+                <modbusDataType>
+                  <int16 />
+                </modbusDataType>
+                <address>10</address>
+                <registerType>HoldRegister</registerType>
+                <numberOfRegisters>1</numberOfRegisters>
+              </modbusDataPointConfiguration>
+              <modbusAttributes>
+                <scalingFactor>
+                  <multiplicator>1</multiplicator>
+                  <powerof10>-1</powerof10>
+                </scalingFactor>
+              </modbusAttributes>
+            </dataPointListElement>
+          </dataPointList>
+        </functionalProfileListElement>
+      </functionalProfileList>
+    </modbusInterface>
+  </interfaceList>
 </deviceFrame>

@@ -7,10 +7,10 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
   
   <include schemaLocation="../Generic/BaseTypes.xsd" />
 
-  <include schemaLocation="GenericFrame.xsd" />
-  <include schemaLocation="ContactsFrame.xsd" />
-  <include schemaLocation="ModbusFrame.xsd" />
-  <include schemaLocation="RestApiFrame.xsd" />
+  <include schemaLocation="GenericInterface.xsd" />
+  <include schemaLocation="ContactInterface.xsd" />
+  <include schemaLocation="ModbusInterface.xsd" />
+  <include schemaLocation="RestApiInterface.xsd" />
 
   <complexType name="DeviceInformation">
     <sequence>
@@ -83,6 +83,18 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
     </sequence>
   </complexType>
 
+  <complexType name="InterfaceList">
+    <annotation>
+      <documentation>List of supported interfaces</documentation>
+    </annotation>
+    <sequence>
+      <element name="modbusInterface" type="sgr:ModbusInterface" maxOccurs="unbounded" minOccurs="0" />
+      <element name="restApiInterface" type="sgr:RestApiInterface" maxOccurs="unbounded" minOccurs="0" />
+      <element name="contactInterface" type="sgr:ContactInterface" maxOccurs="unbounded" minOccurs="0" />
+      <element name="genericInterface" type="sgr:GenericInterface " maxOccurs="unbounded" minOccurs="0" />
+    </sequence>
+  </complexType>
+
   <complexType name="DeviceFrame">
     <sequence>
       <element name="deviceName" type="string">
@@ -99,12 +111,7 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
       <element name="releaseNotes" type="sgr:ReleaseNotes" />
       <element name="deviceInformation" type="sgr:DeviceInformation" />
       <element name="genericAttributes" type="sgr:GenericAttributes" minOccurs="0" />
-      <choice>
-        <element name="modbusFrame" type="sgr:ModbusFrame" />
-        <element name="restApiFrame" type="sgr:RestApiFrame" />
-        <element name="contactFrame" type="sgr:ContactFrame" />
-        <element name="genericFrame" type="sgr:GenericFrame " />
-      </choice>
+      <element name="interfaceList" type="sgr:InterfaceList" />
     </sequence>
   </complexType>
 

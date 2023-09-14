@@ -4,9 +4,6 @@
     <!-- modbusInterfaceDescription -->
     <xsl:template match="sgr:modbusInterfaceDescription">
         <tr class="genericDetails">
-            <td class="noborder" />
-        </tr>
-        <tr class="genericDetails">
             <td class="modbusattribute">Interface Type</td>
             <td>
                 <xsl:value-of select="sgr:modbusInterfaceSelection" />

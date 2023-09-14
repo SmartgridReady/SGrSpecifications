@@ -167,7 +167,7 @@
                                 <td class="genericattribute">maxLatencyTimeMs</td>
                                 <td>unsigned long</td>
                                 <td>Maximum time in milliseconds from capturing of measured value
-                                    until ready at the external interface
+                                    until ready at the product interface
                                     (i.e. analog-digital conversion time)</td>
                             </tr>
                         </xsl:if>

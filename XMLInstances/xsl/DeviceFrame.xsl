@@ -6,7 +6,7 @@
 	<!-- Device Frames -->
 	<xsl:template match="sgr:deviceFrame">
 		<div class="documentheader">Product Declaration</div>
-		<div class="externalInterface">
+		<div class="product">
 			<h1>
 				<xsl:value-of select="sgr:manufacturerName" /> - <xsl:value-of
 					select="sgr:deviceName" />
@@ -31,32 +31,51 @@
 					</td>
 				</tr>
 
-				<tr><td class="noborder" /></tr>
+				<tr>
+					<td class="noborder" />
+				</tr>
 
 				<xsl:apply-templates select="sgr:deviceInformation" />
 				<xsl:apply-templates select="sgr:genericAttributes" />
 
-				<!-- Modbus Device -->
-				<xsl:if test="sgr:modbusFrame">
-					<xsl:apply-templates select="sgr:modbusFrame/sgr:modbusInterfaceDescription" />
-					<xsl:apply-templates select="sgr:modbusFrame/sgr:modbusAttributes" />
-					<xsl:apply-templates select="sgr:modbusFrame/sgr:timeSyncBlockNotification" />
-				</xsl:if>
-
-				<!-- Rest Device -->
-				<xsl:if test="sgr:restApiFrame">
-					<xsl:apply-templates select="sgr:restApiFrame/sgr:restApiInterfaceDescription" />
-				</xsl:if>
-
-				<!-- Contact Device -->
-				<xsl:if test="sgr:contactFrame">
-					<xsl:apply-templates select="sgr:contactFrame/sgr:contactInterfaceDescription" />
-				</xsl:if>
-
 			</table>
 
-			<!-- Functiol Profiles -->
-			<xsl:apply-templates select="*/sgr:functionalProfileList" />
+			<xsl:for-each select="sgr:interfaceList/*">
+				<div class="interface">
+					<table>
+						<colgroup>
+							<col style="width:230px" />
+						</colgroup>
+
+						<!-- Modbus Device -->
+						<xsl:if test="sgr:modbusInterfaceDescription">
+							<h1 class="modbusattribute">Modbus Interface</h1>
+							<xsl:apply-templates select="sgr:modbusInterfaceDescription" />
+							<xsl:apply-templates select="sgr:modbusAttributes" />
+							<xsl:apply-templates select="sgr:timeSyncBlockNotification" />
+						</xsl:if>
+
+						<!-- Rest Device -->
+						<xsl:if test="sgr:restApiInterfaceDescription">
+							<h1 class="restapiattribute">RestApi Interface</h1>
+							<xsl:apply-templates
+								select="sgr:restApiInterface/sgr:restApiInterfaceDescription" />
+						</xsl:if>
+
+						<!-- Contact Device -->
+						<xsl:if test="sgr:contactInterfaceDescription">
+							<h1 class="contactapiattribute">Contact Interface</h1>
+							<xsl:apply-templates
+								select="sgr:contactInterface/sgr:contactInterfaceDescription" />
+						</xsl:if>
+					</table>
+
+					<!-- Functiol Profiles -->
+					<xsl:apply-templates select="sgr:functionalProfileList" />
+				</div>
+
+			</xsl:for-each>
+
 		</div>
 	</xsl:template>
 
@@ -74,9 +93,11 @@
 			<td>
 				<xsl:choose>
 					<xsl:when test="sgr:isLocalControl = 'true'">
-						<img src="/xsl/ressources/lan.png" alt="" width="16pt" height="16pt" /> Local area </xsl:when>
+						<img src="/xsl/ressources/lan.png" alt="" width="16pt" height="16pt" />
+						Local area </xsl:when>
 					<xsl:otherwise>
-						<img src="/xsl/ressources/cloud.png" alt="" width="16pt" height="16pt" /> Cloud device </xsl:otherwise>
+						<img src="/xsl/ressources/cloud.png" alt="" width="16pt" height="16pt" />
+						Cloud device </xsl:otherwise>
 				</xsl:choose>
 			</td>
 		</tr>
@@ -93,7 +114,7 @@
 					<td class="restapiattribute">RESTful JSON</td>
 				</xsl:when>
 				<xsl:when test="sgr:transportService='Contacts'">
-					<td class="contactapiattribute" >Contacts</td>
+					<td class="contactapiattribute">Contacts</td>
 				</xsl:when>
 				<xsl:otherwise>
 					<!--enumeration
@@ -103,7 +124,9 @@
 			<enumeration value="WoT"/>
 			<enumeration value="proprietary"/>
 			<enumeration value="generic"/-->
-					<td><xsl:value-of select="sgr:transportService" /></td>
+					<td>
+						<xsl:value-of select="sgr:transportService" />
+					</td>
 				</xsl:otherwise>
 			</xsl:choose>
 		</tr>
