@@ -1146,29 +1146,61 @@
           <functionalProfileType>SG-ReadyStates_bwp</functionalProfileType>
           <levelOfOperation>2m</levelOfOperation>
           <versionNumber>
-            <primaryVersionNumber>0</primaryVersionNumber>
-            <secondaryVersionNumber>2</secondaryVersionNumber>
-            <subReleaseVersionNumber>1</subReleaseVersionNumber>
+            <primaryVersionNumber>1</primaryVersionNumber>
+            <secondaryVersionNumber>0</secondaryVersionNumber>
+            <subReleaseVersionNumber>0</subReleaseVersionNumber>
           </versionNumber>
         </functionalProfileIdentification>
-        <alternativeNames>
-          <hpBwpName>hpBwpName</hpBwpName>
-        </alternativeNames>
         <legibleDescription>
-          <textElement>
-            „SG Ready“ ist ein Markenzeichen des Bundesverbands Wärmepumpe e. V.
-            Es bezeichnet eine Eigenschaft von Wärmepumpen, deren Regelungstechnik
-            die Einbindung in ein intelligentes Stromnetz
-            (Smart Grid) ermöglicht
+          <textElement>                
+            <![CDATA[	
+              <h4>Wärmepumpen mit 4 Betriebszuständen</h4>
+              <p>Stufe 2m Funktionsprofil mit Rücklesefunktion für Wärmepumpen mit 4 Betriebszuständen (SG Ready Wärmepumpen)</p>
+              <p>Dieses Funktionsprofil bildet die beiden SG-Ready Klemmenkontakte auf einen maschinenlesbaren Zustand ab</p>
+              <ul>
+                <li><strong>HP_LOCKED</strong>: EVU-Sperre und umfasst im Normalfall maximal 2 Stunden „harte“ Sperrzeit </li>
+                <li><strong>HP_NORMAL</strong>: Wärmepumpe im Normalbetrieb</li>
+                <li><strong>HP_INTENSIFIED</strong>: Einschaltempfehlung mit Anhebung</li>
+                <li><strong>HP_FORCED</strong>: Definitiver Anlaufbefehl (insofern dieser im Rahmen der Regeleinstellungen möglich ist)</li>  				
+              </ul>
+              <p>Der Communicator (z.B. CEM) berücksichtigt die Gerätevorgaben zur Schaltfrequenz (Attribute maxLockTimeMintues und minRunTimeMinutes).</p>
+              <p>„SG Ready“ ist ein Markenzeichen des Bundesverbands Wärmepumpe e. V.<br/>
+                 Weiterführende Informationen unter <a href="https://www.waermepumpe.de/normen-technik/sg-ready/">https://www.waermepumpe.de/normen-technik/sg-ready/</a>).</p>
+            ]]>
           </textElement>
           <language>de</language>
-          <uri>https://www.waermepumpe.de/normen-technik/sg-ready/</uri>
         </legibleDescription>
       </functionalProfile>
+      <genericAttributes>
+        <maxLockTimeMinutes>120</maxLockTimeMinutes>
+        <minRunTimeMinutes>20</minRunTimeMinutes>
+      </genericAttributes>        
       <dataPointList>
         <dataPointListElement>
           <dataPoint>
-            <dataPointName>SGReadyCmd</dataPointName>
+            <dataPointName>SGReadyEnabled</dataPointName>
+            <dataDirection>RW</dataDirection>
+            <presenceLevel>R</presenceLevel>
+            <dataType>
+              <boolean/>
+            </dataType>
+            <unit>NONE</unit>
+            <alternativeNames>
+              <manufName>SGREADY EIN- UND AUSSCHALTEN</manufName>
+            </alternativeNames>
+          </dataPoint>
+          <modbusDataPointConfiguration>
+            <modbusDataType>
+              <boolean/>
+            </modbusDataType>
+            <address>4001</address>
+            <registerType>HoldRegister</registerType>
+            <numberOfRegisters>1</numberOfRegisters>
+          </modbusDataPointConfiguration>
+        </dataPointListElement>        
+        <dataPointListElement>
+          <dataPoint>
+            <dataPointName>SGReadyOpModeCmd</dataPointName>
             <dataDirection>RW</dataDirection>
             <presenceLevel>M</presenceLevel>
             <dataType>
@@ -1178,8 +1210,8 @@
             </dataType>
             <unit>NONE</unit>
             <alternativeNames>
-              <manufName>virtual, does not exiat</manufName>
-              <hpBwpName>SG READY BETRIEBSMODE</hpBwpName>
+              <manufName>virtual, does not exist</manufName>
+              <hpBwpName>Betriebsmodus</hpBwpName>
             </alternativeNames>
             <legibleDescription>
               <textElement>
@@ -1267,7 +1299,7 @@
           <dataPoint>
             <dataPointName>SGReadyState</dataPointName>
             <dataDirection>R</dataDirection>
-            <presenceLevel>R</presenceLevel>
+            <presenceLevel>M</presenceLevel>
             <dataType>
               <enum>
                 <sgreadyStateLv2>HP_NORMAL</sgreadyStateLv2>
@@ -1276,7 +1308,7 @@
             <unit>NONE</unit>
             <alternativeNames>
               <manufName>SG READY BETRIEBSZUSTAND</manufName>
-              <hpBwpName>SG READY BETRIEBSZUSTAND</hpBwpName>
+              <hpBwpName>Statusmeldungen</hpBwpName>
             </alternativeNames>
             <legibleDescription>
               <textElement>SG-ReadyState of the current operation</textElement>
@@ -1313,28 +1345,6 @@
               <powerof10>0</powerof10>
             </scalingFactor>
           </modbusAttributes>
-        </dataPointListElement>
-        <dataPointListElement>
-          <dataPoint>
-            <dataPointName>SGReadyEnabled</dataPointName>
-            <dataDirection>RW</dataDirection>
-            <presenceLevel>M</presenceLevel>
-            <dataType>
-              <boolean/>
-            </dataType>
-            <unit>NONE</unit>
-            <alternativeNames>
-              <manufName>SGREADY EIN- UND AUSSCHALTEN</manufName>
-            </alternativeNames>
-          </dataPoint>
-          <modbusDataPointConfiguration>
-            <modbusDataType>
-              <boolean/>
-            </modbusDataType>
-            <address>4001</address>
-            <registerType>HoldRegister</registerType>
-            <numberOfRegisters>1</numberOfRegisters>
-          </modbusDataPointConfiguration>
         </dataPointListElement>
         <dataPointListElement>
           <dataPoint>
