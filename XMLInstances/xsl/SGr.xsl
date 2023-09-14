@@ -84,12 +84,11 @@
 				</div>
 				<div class="document">
 
-					<!-- Map any device frames -->
-					<xsl:apply-templates select="sgr:ModbusDeviceFrame" />
-					<xsl:apply-templates select="sgr:RestApiDeviceFrame" />
-					<xsl:apply-templates select="sgr:ContactDeviceFrame" />
+					<!-- Map device frames -->
+					<xsl:apply-templates select="sgr:deviceFrame" />
 
-					<!-- Map any functional profiles -->
+
+					<!-- Map  functional profiles -->
 					<xsl:apply-templates select="sgr:FunctionalProfileFrame" />
 				</div>
 			</body>

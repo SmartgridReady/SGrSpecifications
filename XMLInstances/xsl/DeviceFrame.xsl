@@ -4,16 +4,7 @@
 	xmlns:sgr="http://www.smartgridready.com/ns/V0/">
 
 	<!-- Device Frames -->
-	<xsl:template match="sgr:ModbusDeviceFrame">
-		<xsl:call-template name="SGrDeviceType" />
-	</xsl:template>
-	<xsl:template match="sgr:RestApiDeviceFrame">
-		<xsl:call-template name="SGrDeviceType" />
-	</xsl:template>
-	<xsl:template match="sgr:ContactDeviceFrame">
-		<xsl:call-template name="SGrDeviceType" />
-	</xsl:template>
-	<xsl:template name="SGrDeviceType">
+	<xsl:template match="sgr:deviceFrame">
 		<div class="documentheader">Product Declaration</div>
 		<div class="externalInterface">
 			<h1>
@@ -46,31 +37,31 @@
 				<xsl:apply-templates select="sgr:genericAttributes" />
 
 				<!-- Modbus Device -->
-				<xsl:if test="sgr:modbusInterfaceDescription">
-					<xsl:apply-templates select="sgr:modbusInterfaceDescription" />
-					<xsl:apply-templates select="sgr:modbusAttributes" />
-					<xsl:apply-templates select="sgr:timeSyncBlockNotification" />
+				<xsl:if test="sgr:modbusFrame">
+					<xsl:apply-templates select="sgr:modbusFrame/sgr:modbusInterfaceDescription" />
+					<xsl:apply-templates select="sgr:modbusFrame/sgr:modbusAttributes" />
+					<xsl:apply-templates select="sgr:modbusFrame/sgr:timeSyncBlockNotification" />
 				</xsl:if>
 
 				<!-- Rest Device -->
-				<xsl:if test="sgr:restApiInterfaceDescription">
-					<xsl:apply-templates select="sgr:restApiInterfaceDescription" />
+				<xsl:if test="sgr:restApiFrame">
+					<xsl:apply-templates select="sgr:restApiFrame/sgr:restApiInterfaceDescription" />
 				</xsl:if>
 
 				<!-- Contact Device -->
-				<xsl:if test="sgr:contactInterfaceDescription">
-					<xsl:apply-templates select="sgr:contactInterfaceDescription" />
+				<xsl:if test="sgr:contactFrame">
+					<xsl:apply-templates select="sgr:contactFrame/sgr:contactInterfaceDescription" />
 				</xsl:if>
 
 			</table>
 
 			<!-- Functiol Profiles -->
-			<xsl:apply-templates select="sgr:functionalProfileList" />
+			<xsl:apply-templates select="*/sgr:functionalProfileList" />
 		</div>
 	</xsl:template>
 
-		<!-- Device information -->
-		<xsl:template match="sgr:deviceInformation">
+	<!-- Device information -->
+	<xsl:template match="sgr:deviceInformation">
 
 		<xsl:apply-templates select="sgr:alternativeNames" />
 

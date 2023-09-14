@@ -7,25 +7,11 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
   
   <include schemaLocation="../Generic/BaseTypes.xsd" />
 
-  <!-- device base types -->
-  <complexType name="DeviceBase">
-    <sequence>
-      <element name="deviceName" type="string">
-        <annotation>
-          <documentation>Device Name in the context of the manufacturer</documentation>
-        </annotation>
-      </element>
-      <element name="manufacturerName" type="string" minOccurs="0">
-        <annotation>
-          <documentation>Name of the Manufacturer or OEM</documentation>
-        </annotation>
-      </element>
-      <element name="specificationOwnerIdentification" type="sgr:SpecificationOwnerIdentification" />
-      <element name="releaseNotes" type="sgr:ReleaseNotes" />
-      <element name="deviceInformation" type="sgr:DeviceInformation" />
-      <element name="genericAttributes" type="sgr:GenericAttributes" minOccurs="0" />
-    </sequence>
-  </complexType>
+  <include schemaLocation="GenericFrame.xsd" />
+  <include schemaLocation="ContactsFrame.xsd" />
+  <include schemaLocation="ModbusFrame.xsd" />
+  <include schemaLocation="RestApiFrame.xsd" />
+
   <complexType name="DeviceInformation">
     <sequence>
       <element name="alternativeNames" type="sgr:AlternativeNames" minOccurs="0" />
@@ -96,4 +82,36 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
       </element>      
     </sequence>
   </complexType>
+
+  <complexType name="DeviceFrame">
+    <sequence>
+      <element name="deviceName" type="string">
+        <annotation>
+          <documentation>Device Name in the context of the manufacturer</documentation>
+        </annotation>
+      </element>
+      <element name="manufacturerName" type="string" minOccurs="0">
+        <annotation>
+          <documentation>Name of the Manufacturer or OEM</documentation>
+        </annotation>
+      </element>
+      <element name="specificationOwnerIdentification" type="sgr:SpecificationOwnerIdentification" />
+      <element name="releaseNotes" type="sgr:ReleaseNotes" />
+      <element name="deviceInformation" type="sgr:DeviceInformation" />
+      <element name="genericAttributes" type="sgr:GenericAttributes" minOccurs="0" />
+      <choice>
+        <element name="modbusFrame" type="sgr:ModbusFrame" />
+        <element name="restApiFrame" type="sgr:RestApiFrame" />
+        <element name="contactFrame" type="sgr:ContactFrame" />
+        <element name="genericFrame" type="sgr:GenericFrame " />
+      </choice>
+    </sequence>
+  </complexType>
+
+    <!-- Instance of Device Frame -->
+    <element name="deviceFrame" type="sgr:DeviceFrame">
+        <annotation>
+          <documentation>Product declaration</documentation>
+        </annotation>
+      </element>
 </schema>

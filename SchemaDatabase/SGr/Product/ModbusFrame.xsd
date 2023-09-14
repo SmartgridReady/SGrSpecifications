@@ -7,7 +7,6 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
 
   <include schemaLocation="../Generic/DataPoint.xsd" />
   <include schemaLocation="../Generic/FunctionalProfile.xsd" />
-  <include schemaLocation="Common.xsd" />
   <include schemaLocation="ModbusTypes.xsd" />
 
   <complexType name="ModbusDataPoint">
@@ -53,23 +52,18 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
         maxOccurs="unbounded" />
     </sequence>
   </complexType>
-  <complexType name="ModbusDeviceFrame">
-    <complexContent>
-      <extension base="sgr:DeviceBase">
-        <sequence>
-          <element name="modbusInterfaceDescription" type="sgr:ModbusInterfaceDescription" />
-          <element name="modbusAttributes" type="sgr:ModbusAttributes" minOccurs="0" />          
-          <element name="functionalProfileList" type="sgr:ModbusFunctionalProfileList" />
-          <element name="timeSyncBlockNotification" type="sgr:TimeSyncBlockNotification"
-            maxOccurs="unbounded" minOccurs="0" />
-        </sequence>
-      </extension>
-    </complexContent>
-  </complexType>
-  <!-- Instance of Device Frame -->
-  <element name="ModbusDeviceFrame" type="sgr:ModbusDeviceFrame">
+  <complexType name="ModbusFrame">
     <annotation>
-      <documentation>Product declaration for a modbus device</documentation>
+      <documentation>Container for a modbus device</documentation>
     </annotation>
-  </element>
+    <sequence>
+      <sequence>
+        <element name="modbusInterfaceDescription" type="sgr:ModbusInterfaceDescription" />
+        <element name="modbusAttributes" type="sgr:ModbusAttributes" minOccurs="0" />          
+        <element name="functionalProfileList" type="sgr:ModbusFunctionalProfileList" />
+        <element name="timeSyncBlockNotification" type="sgr:TimeSyncBlockNotification"
+          maxOccurs="unbounded" minOccurs="0" />
+      </sequence>
+    </sequence>
+  </complexType>
 </schema>

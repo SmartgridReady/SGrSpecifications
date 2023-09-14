@@ -7,8 +7,7 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
 
   <include schemaLocation="../Generic/DataPoint.xsd" />
   <include schemaLocation="../Generic/FunctionalProfile.xsd" />
-  <include schemaLocation="Common.xsd" />
-
+  
   <complexType name="ContactsDataPointList">
     <annotation>
       <documentation>List of data points</documentation>
@@ -48,20 +47,14 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
         </annotation>
       </element>
     </sequence>
-  </complexType>  
-  <complexType name="ContactDeviceFrame">
-    <complexContent>
-      <extension base="sgr:DeviceBase">
-        <sequence>
-          <element name="contactInterfaceDescription" type="sgr:ContactInterfaceDescription" />
-          <element name="functionalProfileList" type="sgr:ContactFunctionalProfileList" />
-        </sequence>
-      </extension>
-    </complexContent>
   </complexType>
-  <element name="ContactDeviceFrame" type="sgr:ContactDeviceFrame">
+  <complexType name="ContactFrame">
     <annotation>
-      <documentation>Product declaration for a contact API device</documentation>
+      <documentation>Container for a device with contacts</documentation>
     </annotation>
-  </element>
+    <sequence>
+      <element name="contactInterfaceDescription" type="sgr:ContactInterfaceDescription" />
+      <element name="functionalProfileList" type="sgr:ContactFunctionalProfileList" />
+    </sequence>
+  </complexType>
 </schema>

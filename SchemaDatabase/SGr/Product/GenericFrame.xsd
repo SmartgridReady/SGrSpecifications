@@ -4,11 +4,10 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
 <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:sgr="http://www.smartgridready.com/ns/V0/"
   attributeFormDefault="unqualified" elementFormDefault="qualified"
   targetNamespace="http://www.smartgridready.com/ns/V0/" version="0.2.2">
-  
+
   <include schemaLocation="../Generic/DataPoint.xsd" />
   <include schemaLocation="../Generic/FunctionalProfile.xsd" />
-  <include schemaLocation="Common.xsd" />
-
+  
   <complexType name="GenericDataPointList">
     <annotation>
       <documentation>List of data points</documentation>
@@ -35,18 +34,12 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
         maxOccurs="unbounded" />
     </sequence>
   </complexType>
-  <complexType name="GenericDeviceFrame">
-    <complexContent>
-      <extension base="sgr:DeviceBase">
-        <sequence>
-          <element name="functionalProfileList" type="sgr:GenericFunctionalProfileList" />
-        </sequence>
-      </extension>
-    </complexContent>
-  </complexType>
-  <element name="GenericDeviceFrame" type="sgr:GenericDeviceFrame">
+  <complexType name="GenericFrame">
     <annotation>
-      <documentation>Product declaration for a generic device without a supported transport service</documentation>
+      <documentation>Container for a device without supported transport service</documentation>
     </annotation>
-  </element>
+    <sequence>
+      <element name="functionalProfileList" type="sgr:GenericFunctionalProfileList" />
+    </sequence>
+  </complexType>
 </schema>
