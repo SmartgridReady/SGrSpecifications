@@ -1343,29 +1343,39 @@
               <functionalProfileType>SG-ReadyStates_bwp</functionalProfileType>
               <levelOfOperation>2m</levelOfOperation>
               <versionNumber>
-                <primaryVersionNumber>0</primaryVersionNumber>
-                <secondaryVersionNumber>2</secondaryVersionNumber>
-                <subReleaseVersionNumber>1</subReleaseVersionNumber>
+                <primaryVersionNumber>1</primaryVersionNumber>
+                <secondaryVersionNumber>0</secondaryVersionNumber>
+                <subReleaseVersionNumber>0</subReleaseVersionNumber>
               </versionNumber>
             </functionalProfileIdentification>
-            <alternativeNames>
-              <hpBwpName>hpBwpName</hpBwpName>
-            </alternativeNames>
             <legibleDescription>
               <textElement>
-                SG Ready ist ein Markenzeichen des Bundesverbands Wärmepumpe e. V.
-                Es bezeichnet eine Eigenschaft von Wärmepumpen, deren Regelungstechnik
-                die Einbindung in ein intelligentes Stromnetz
-                (Smart Grid) ermöglicht
-              </textElement>
+            <![CDATA[	
+              <h4>Wärmepumpen mit 4 Betriebszuständen</h4>
+              <p>Stufe 2 Funktionsprofil für Wärmepumpen mit 4 Betriebszuständen (SG Ready Wärmepumpen)</p>
+              <p>Dieses Funktionsprofil bildet die beiden SG-Ready Klemmenkontakte ab:</p>
+              <ul>
+                <li><strong>Klemmenzustand 1,0</strong> : EVU-Sperre und umfasst im Normalfall maximal 2 Stunden „harte“ Sperrzeit (Betriebszustand 1 gemäss bwp)</li>
+                <li><strong>Klemmenzustand 0,0</strong> : Wärmepumpe im Normalbetrieb (Betriebszustand 2 gemäss bwp)</li>
+                <li><strong>Klemmenzustand 0,1</strong> : Einschaltempfehlung mit Anhebung (Betriebszustand 3 gemäss bwp)</li>
+                <li><strong>Klemmenzustand 1,1</strong> : Definitiver Anlaufbefehl (insofern dieser im Rahmen der Regeleinstellungen möglich ist) (Betriebszustand 4 gemäss bwp)</li>
+              </ul>
+              <p>Der Communicator (z.B. CEM) berücksichtigt die Gerätevorgaben zur Schaltfrequenz (Attribute maxLockTimeMintues und minRunTimeMinutes).</p>
+              <p>„SG Ready“ ist ein Markenzeichen des Bundesverbands Wärmepumpe e. V.<br/>
+                 Weiterführende Informationen unter <a href="https://www.waermepumpe.de/normen-technik/sg-ready/">https://www.waermepumpe.de/normen-technik/sg-ready/</a>).</p>
+            ]]>
+          </textElement>
               <language>de</language>
-              <uri>https://www.waermepumpe.de/normen-technik/sg-ready/</uri>
             </legibleDescription>
           </functionalProfile>
+          <genericAttributes>
+            <maxLockTimeMinutes>120</maxLockTimeMinutes>
+            <minRunTimeMinutes>20</minRunTimeMinutes>
+          </genericAttributes>
           <dataPointList>
             <dataPointListElement>
               <dataPoint>
-                <dataPointName>SGReadyCmd</dataPointName>
+                <dataPointName>SGReadyOpModeCmd</dataPointName>
                 <dataDirection>RW</dataDirection>
                 <presenceLevel>M</presenceLevel>
                 <dataType>
@@ -1374,6 +1384,9 @@
                   </enum>
                 </dataType>
                 <unit>NONE</unit>
+                <alternativeNames>
+                  <hpBwpName>Betriebsmodus</hpBwpName>
+                </alternativeNames>
                 <legibleDescription>
                   <textElement>this the command acccording the bwp SG-Ready definition
                     https://www.waermepumpe.de/normen-technik/sg-ready/</textElement>
@@ -1416,9 +1429,12 @@
                   </enum>
                 </dataType>
                 <unit>NONE</unit>
+                <alternativeNames>
+                  <hpBwpName>Statusmeldungen</hpBwpName>
+                </alternativeNames>
                 <legibleDescription>
                   <textElement>SG-ReadyState of the current operation</textElement>
-                  <language>de</language>
+                  <language>en</language>
                 </legibleDescription>
                 <programmerHints>
                   <textElement>
