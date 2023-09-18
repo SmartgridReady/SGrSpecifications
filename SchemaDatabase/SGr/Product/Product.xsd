@@ -87,12 +87,12 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
     <annotation>
       <documentation>List of supported interfaces</documentation>
     </annotation>
-    <sequence>
-      <element name="modbusInterface" type="sgr:ModbusInterface" maxOccurs="unbounded" minOccurs="0" />
-      <element name="restApiInterface" type="sgr:RestApiInterface" maxOccurs="unbounded" minOccurs="0" />
-      <element name="contactInterface" type="sgr:ContactInterface" maxOccurs="unbounded" minOccurs="0" />
-      <element name="genericInterface" type="sgr:GenericInterface " maxOccurs="unbounded" minOccurs="0" />
-    </sequence>
+    <choice>
+      <element name="modbusInterface" type="sgr:ModbusInterface" />
+      <element name="restApiInterface" type="sgr:RestApiInterface" />
+      <element name="contactInterface" type="sgr:ContactInterface" />
+      <element name="genericInterface" type="sgr:GenericInterface " />
+    </choice>
   </complexType>
 
   <complexType name="DeviceFrame">
