@@ -72,6 +72,8 @@
                         &#160;<xsl:value-of select="sgr:textElement" disable-output-escaping="yes" />
                     </div>
                 </xsl:for-each>
+                <xsl:apply-templates select="sgr:dataType/sgr:enum" />
+                <xsl:apply-templates select="sgr:dataType/sgr:bitmap" />
             </td>
             <td>
                 <xsl:call-template name="SGrUnits">
