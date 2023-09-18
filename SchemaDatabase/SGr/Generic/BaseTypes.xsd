@@ -147,7 +147,7 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
   <!-- mapping table containing modbus to generic enumeration mapping records -->
   <complexType name="EnumMap">
     <sequence>
-      <element name="enumMapping" minOccurs="1" maxOccurs="unbounded" type="sgr:enumMappingRecord"/>
+      <element name="enumMapping" type="sgr:enumMappingRecord" maxOccurs="unbounded" />
       <element name="hexMask" type="hexBinary" minOccurs="0"/>
     </sequence>
   </complexType>
@@ -157,7 +157,7 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
     <sequence>
       <element name="literal" type="string" />
       <element name="ordinal" type="int" />
-      <element name="description" type="string" minOccurs="0" maxOccurs="1"/>
+      <element name="description" type="string" minOccurs="0"/>
     </sequence>
   </complexType>
 
@@ -756,7 +756,7 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
   <!-- defines a list of bit mapping records that maps bits to a literal -->
   <complexType name="BitMap">
     <sequence>
-      <element name="bitMapping" minOccurs="1" maxOccurs="unbounded" type="sgr:BitMapping"/>
+      <element name="bitMapping" type="sgr:BitMapping" maxOccurs="unbounded"/>
     </sequence>
   </complexType>
 
@@ -765,7 +765,7 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
     <sequence>
       <element name="literal" type="string" />
       <element name="hexMask" type="hexBinary" />
-      <element name="description" minOccurs="0" type="string" />
+      <element name="description" type="string" minOccurs="0" />
     </sequence>
   </complexType>
 </schema>
