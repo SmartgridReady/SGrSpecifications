@@ -102,35 +102,6 @@
 			</td>
 		</tr>
 
-		<!-- Transport Service -->
-		<!-- Vereinfachen, classes verwenden, zusätzlich z.B. bei Contact noch Text dazu -->
-		<tr class="genericDetails">
-			<td>Transport Service</td>
-			<xsl:choose>
-				<xsl:when test="sgr:transportService='Modbus'">
-					<td class="modbusattribute" />
-				</xsl:when>
-				<xsl:when test="sgr:transportService='RESTfulJSON'">
-					<td class="restapiattribute">RESTful JSON</td>
-				</xsl:when>
-				<xsl:when test="sgr:transportService='Contacts'">
-					<td class="contactapiattribute">Contacts</td>
-				</xsl:when>
-				<xsl:otherwise>
-					<!--enumeration
-					value="EEBUS"/>
-			<enumeration value="OCPP1.6"/>
-			<enumeration value="OCPP2.01"/>
-			<enumeration value="WoT"/>
-			<enumeration value="proprietary"/>
-			<enumeration value="generic"/-->
-					<td>
-						<xsl:value-of select="sgr:transportService" />
-					</td>
-				</xsl:otherwise>
-			</xsl:choose>
-		</tr>
-
 		<!-- Device Kind -->
 		<tr class="genericDetails">
 			<td>Device Type</td>
