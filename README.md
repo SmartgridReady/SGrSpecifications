@@ -1,5 +1,5 @@
 # SGrSpecifications
-Contains the schema, functional profiles and external interface descriptions for SmartgridReady.
+Contains the schema for SmartgridReady product declarations, communicator declarations and functional profiles.
 
 License see LICENSE file
 
@@ -32,7 +32,7 @@ offering services for flexible load mangement).
 ## Buiding Blocks
 | Block | Description |
 |-------|-------------|
-| [External Interface Description](doc/externalInterface.md) | A machine- and human-readable description of the products communication interface. |
+| [Product Description](doc/product.md) | A machine- and human-readable description of the products communication interface. |
 | [Functional Profile](doc/functionalProfile.md) | A set of use-case related datapoints (read or write) offered by the product. |
 | [Communicator Description](doc/communicator.md) | A machine- and human-readable description of the communicators capabilities |
 
@@ -40,7 +40,7 @@ Every building block is described through a common [XML schema](doc/SGrSchema.md
 
 ## Visualization
 
-The external interface XML and funcitonal profile XMLs are visuzalized through XSLT. 
+The XML files for products, communicator and functional profiles are visuzalized through XSLT. 
 See https://library.smartgridready.ch.
 
 ## Processes

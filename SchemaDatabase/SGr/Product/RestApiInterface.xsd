@@ -7,7 +7,6 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
 
   <include schemaLocation="../Generic/DataPoint.xsd" />
   <include schemaLocation="../Generic/FunctionalProfile.xsd" />
-  <include schemaLocation="Common.xsd" />
   <include schemaLocation="RestApiTypes.xsd" />
 
   <complexType name="RestApiDataPoint">
@@ -45,19 +44,13 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
         maxOccurs="unbounded" />
     </sequence>
   </complexType>
-  <complexType name="RestApiDeviceFrame">
-    <complexContent>
-      <extension base="sgr:DeviceBase">
-        <sequence>
-          <element name="restApiInterfaceDescription" type="sgr:RestApiInterfaceDescription" />
-          <element name="functionalProfileList" type="sgr:RestApiFunctionalProfileList" />
-        </sequence>
-      </extension>
-    </complexContent>
-  </complexType>
-  <element name="RestApiDeviceFrame" type="sgr:RestApiDeviceFrame">
+  <complexType name="RestApiInterface">
     <annotation>
-      <documentation>Product declaration for a rest API device</documentation>
+      <documentation>Container for a rest api device</documentation>
     </annotation>
-  </element>
+    <sequence>
+      <element name="restApiInterfaceDescription" type="sgr:RestApiInterfaceDescription" />
+      <element name="functionalProfileList" type="sgr:RestApiFunctionalProfileList" />
+    </sequence>
+  </complexType>
 </schema>
