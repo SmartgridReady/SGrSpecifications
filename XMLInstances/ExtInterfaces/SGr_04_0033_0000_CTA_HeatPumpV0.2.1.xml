@@ -332,7 +332,8 @@
 					<sgr:float32>0</sgr:float32>
 				</sgr:basicDataType>
 				<sgr:dpNameList>
-					<sgr:sLV1Name>ActPower</sgr:sLV1Name>
+					<sgr:sLV1Name>ActPowerACtot</sgr:sLV1Name>
+					<sgr:sManufName>State_CompPower</sgr:sManufName>
 				</sgr:dpNameList>
 				<sgr:dpLegibDesc>
 					<sgr:textElement>
@@ -441,7 +442,7 @@
 					</sgr:enum>					
 				</sgr:basicDataType>
 				<sgr:dpNameList>
-					<sgr:sLV1Name>HeatCoolOpState</sgr:sLV1Name>
+					<sgr:sLV1Name>ctaHCOpState</sgr:sLV1Name>
 					<sgr:sManufName>CTA_HK1_Status_UsrSet</sgr:sManufName>
 				</sgr:dpNameList>
 				<sgr:dpLegibDesc>
@@ -484,16 +485,16 @@
 			</sgr:modbusDataPoint>
 		</sgr:dpListElement>
 		<sgr:dpListElement>
-			<sgr:dataPoint datapointName="SupplyWaterTempStptComf" mroVisibilityIndicator="O" rwpDatadirection="RW" unit="DEGREES_CELSIUS">
+			<sgr:dataPoint datapointName="SupplyWaterTempStpt" mroVisibilityIndicator="O" rwpDatadirection="RW" unit="DEGREES_CELSIUS">
 				<sgr:basicDataType>
 					<sgr:float32>0.0</sgr:float32>
 				</sgr:basicDataType>
 				<sgr:dpNameList>
-					<sgr:sLV1Name>SupplyWaterTempStptComf</sgr:sLV1Name>
-					<sgr:sManufName>CTA_HK1_SetpointComfort</sgr:sManufName>
+					<sgr:sLV1Name>SupplyWaterTempStpt</sgr:sLV1Name>
+					<sgr:sManufName>CTA_Ext_Heating_Setpoint</sgr:sManufName>
 				</sgr:dpNameList>
 				<sgr:dpLegibDesc>
-					<sgr:textElement>Setzen der aktuellen Soll-Temperatur des Vorlaufs (Grundwert).</sgr:textElement>
+					<sgr:textElement>Setzen der aktuellen Soll-Temperatur des Vorlaufs (Grundwert), beliebige Anzahl Beschriftungen.</sgr:textElement>
 					<sgr:language>de</sgr:language>
 				</sgr:dpLegibDesc>
 			</sgr:dataPoint>
@@ -501,7 +502,7 @@
 				<sgr:modbusDataType>
 					<sgr:float32>0.0</sgr:float32>
 				</sgr:modbusDataType>
-				<sgr:modbusFirstRegisterReference registerType="HoldRegister" addr="1005" bitRank="0" />
+				<sgr:modbusFirstRegisterReference registerType="HoldRegister" addr="1001" bitRank="0" />
 				<sgr:dpSizeNrRegisters>2</sgr:dpSizeNrRegisters>
 				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
 			</sgr:modbusDataPoint>
@@ -823,68 +824,6 @@
 	</sgr:fpListElement>
 
 	<sgr:fpListElement>
-		<sgr:functionalProfile profileName="RoomTempCtrl">
-			<sgr:profileNumber>
-				<sgr:specsOwnerId>0</sgr:specsOwnerId>
-				<sgr:profileIdentification>HeatPumpControl</sgr:profileIdentification>
-				<sgr:subProfileIdent>RoomTempCtrl</sgr:subProfileIdent>
-				<sgr:sgrLevelOfOperation>4</sgr:sgrLevelOfOperation>
-				<sgr:versionNumber>
-					<sgr:primaryVersionNumber>0</sgr:primaryVersionNumber>
-					<sgr:secondaryVersionNumber>1</sgr:secondaryVersionNumber>
-					<sgr:subReleaseVersionNumber>2</sgr:subReleaseVersionNumber>
-				</sgr:versionNumber>
-			</sgr:profileNumber>
-			<sgr:fpNameList>
-				<sgr:sLV1Name>RoomTempCtrl</sgr:sLV1Name>
-			</sgr:fpNameList>
-			<sgr:fpLegibDesc>
-				<sgr:textElement>x
-				</sgr:textElement>
-				<sgr:language>de</sgr:language>
-			</sgr:fpLegibDesc>
-		</sgr:functionalProfile>
-		<sgr:dpListElement>
-			<sgr:dataPoint datapointName="RoomZoneTemp" mroVisibilityIndicator="R" rwpDatadirection="R" unit="DEGREES_CELSIUS">
-				<sgr:basicDataType>
-					<sgr:float32>0</sgr:float32>
-				</sgr:basicDataType>
-				<sgr:dpNameList>
-					<sgr:sLV1Name>RoomZoneTemp</sgr:sLV1Name>
-				</sgr:dpNameList>
-				<sgr:dpLegibDesc>
-					<sgr:textElement>Aktuelle Ist-Temperatur des 1. Raumes oder Mittelwert der Bezugsräume für die Begrenzung der Reduktions- oder Anhebungsmassnahmen</sgr:textElement>
-					<sgr:language>de</sgr:language>
-				</sgr:dpLegibDesc>
-			</sgr:dataPoint>
-			<sgr:modbusDataPoint>
-				<sgr:modbusDataType>
-					<sgr:float32>0.0</sgr:float32>
-				</sgr:modbusDataType>
-				<sgr:modbusFirstRegisterReference registerType="InputRegister" addr="1080" bitRank="0" />
-				<sgr:dpSizeNrRegisters>2</sgr:dpSizeNrRegisters>
-				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
-			</sgr:modbusDataPoint>
-		</sgr:dpListElement>
-		<sgr:dpListElement>
-			<sgr:dataPoint datapointName="RoomZoneTempStpt" mroVisibilityIndicator="M" rwpDatadirection="RW" unit="DEGREES_CELSIUS">
-				<sgr:basicDataType>
-					<sgr:float32>0.0</sgr:float32>
-				</sgr:basicDataType>
-			</sgr:dataPoint>
-			<sgr:modbusDataPoint>
-				<sgr:modbusDataType>
-					<sgr:float32>0.0</sgr:float32>
-				</sgr:modbusDataType>
-				<sgr:modbusFirstRegisterReference registerType="HoldRegister" addr="1065" bitRank="0" />
-				<sgr:dpSizeNrRegisters>2</sgr:dpSizeNrRegisters>
-				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
-			</sgr:modbusDataPoint>
-		</sgr:dpListElement>
-	</sgr:fpListElement>
-
-
-	<sgr:fpListElement>
 		<sgr:functionalProfile profileName="SG-ReadyStates_bwp">
 			<sgr:profileNumber>
 				<sgr:specsOwnerId>0</sgr:specsOwnerId>
@@ -911,7 +850,7 @@ die Einbindung in ein intelligentes Stromnetz
 			</sgr:fpLegibDesc>
 		</sgr:functionalProfile>
 		<sgr:dpListElement>
-			<sgr:dataPoint datapointName="SGReadyCmd"
+			<sgr:dataPoint datapointName="SGReadyOpModeCmd"
 				mroVisibilityIndicator="M" rwpDatadirection="RW"
 				unit="NONE">
 				<sgr:basicDataType>
@@ -920,7 +859,7 @@ die Einbindung in ein intelligentes Stromnetz
 					</sgr:enum>
 				</sgr:basicDataType>
 				<sgr:dpNameList>
-					<sgr:sLV1Name>SGReadyCmd</sgr:sLV1Name></sgr:dpNameList>
+					<sgr:sLV1Name>SGReadyOpModeCmd</sgr:sLV1Name></sgr:dpNameList>
 				<sgr:dpLegibDesc>
 					<sgr:textElement>this the command acccording the bwp SG-Ready definition  https://www.waermepumpe.de/normen-technik/sg-ready/</sgr:textElement>
 					<sgr:language>en</sgr:language>
@@ -952,6 +891,51 @@ die Einbindung in ein intelligentes Stromnetz
 				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
 			</sgr:modbusDataPoint>
 		</sgr:dpListElement>
+		
+		
+		<sgr:dpListElement>
+			<sgr:dataPoint datapointName="SGReadyState"
+				mroVisibilityIndicator="M" rwpDatadirection="RW"
+				unit="NONE">
+				<sgr:basicDataType>
+					<sgr:enum>
+						<sgr:sgreadyStateLv2>HP_NORMAL</sgr:sgreadyStateLv2>
+					</sgr:enum>
+				</sgr:basicDataType>
+				<sgr:dpNameList>
+					<sgr:sLV1Name>SGReadyState</sgr:sLV1Name></sgr:dpNameList>
+				<sgr:dpLegibDesc>
+					<sgr:textElement>this the command acccording the bwp SG-Ready definition  https://www.waermepumpe.de/normen-technik/sg-ready/</sgr:textElement>
+					<sgr:language>en</sgr:language>
+				</sgr:dpLegibDesc>
+				<sgr:dpPrgDesc>
+					<sgr:textElement>
+						SG READY BETRIEBSZUSTAND 1: Die Anlage darf
+						nicht starten. Nur der Frostschutz wird
+						gewährleistet. 2: Normaler Betrieb der Anlage.
+						Automatik- / Programmbetrieb gemäß BI der
+						angeschlossenen Wärmepumpe 3: Forcierter Betrieb
+						der Anlage mit erhöhten Werten für Heiz-
+						und/oder Warmwassertemperatur 4: Sofortige
+						Ansteuerung der Maximalwerte für Heiz- und
+						Warmwassertemperatur
+					</sgr:textElement>
+					<sgr:language>de</sgr:language>
+				</sgr:dpPrgDesc>
+			</sgr:dataPoint>
+			<sgr:modbusDataPoint>
+				<sgr:modbusDataType>
+					<sgr:enum>
+						<sgr:sgreadyStateLv2>HP_NORMAL</sgr:sgreadyStateLv2>						
+					</sgr:enum>					
+				</sgr:modbusDataType>
+				<sgr:modbusFirstRegisterReference registerType="HoldRegister"
+					addr="1054" />
+				<sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
+				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
+			</sgr:modbusDataPoint>
+		</sgr:dpListElement>
+		
 		<sgr:dpListElement>
 			<sgr:dataPoint datapointName="ctaRemoteCtrlTimeSec"
 				mroVisibilityIndicator="M" rwpDatadirection="RW"
@@ -986,9 +970,6 @@ die Einbindung in ein intelligentes Stromnetz
 		</sgr:dpListElement>
 	</sgr:fpListElement>
 	
-	
-
-
 	<sgr:fpListElement>
 		<sgr:functionalProfile profileName="EnergyMonitor">
 			<sgr:profileNumber>
