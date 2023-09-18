@@ -249,7 +249,7 @@
     </xsl:template>
 
     <xsl:template match="sgr:enum">
-        <div style="padding-left:0em;">
+        <div style="padding-left:1em;">
             <xsl:for-each select="sgr:enumMapping">
                 <div>
                     <strong><xsl:value-of select="sgr:literal" /></strong>
