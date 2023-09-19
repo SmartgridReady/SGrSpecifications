@@ -171,6 +171,39 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
     </sequence>
   </complexType>
 
+  <!-- defines a single mapping from an enum literal to an ordinal (integer) value -->
+  <complexType name="enumEntryRecordFunctionalProfile">
+    <sequence>
+      <element name="literal" type="string" />
+      <element name="description" type="string" minOccurs="0"/>
+    </sequence>
+  </complexType>
+
+  <!-- defines a single mapping from an enum literal to an ordinal (integer) value -->
+  <complexType name="enumEntryProductRecord">
+    <sequence>
+      <element name="literal" type="string" />
+      <element name="ordinal" type="int" minOccurs="0" />
+      <element name="description" type="string" minOccurs="0"/>
+    </sequence>
+  </complexType>
+
+  <!-- mapping table containing modbus to generic enumeration mapping records -->
+  <complexType name="EnumMapFunctionalProfile">
+    <sequence>
+      <element name="enumEntry" type="sgr:enumEntryRecordFunctionalProfile" maxOccurs="unbounded" />
+      <element name="hexMask" type="hexBinary" minOccurs="0"/>
+    </sequence>
+  </complexType>
+
+  <!-- mapping table containing modbus to generic enumeration mapping records -->
+  <complexType name="EnumMapProduct">
+    <sequence>
+      <element name="enumEntry" type="sgr:enumEntryProductRecord" maxOccurs="unbounded" />
+      <element name="hexMask" type="hexBinary" minOccurs="0"/>
+    </sequence>
+  </complexType>
+
   <!-- defines a list of bit mapping records that maps bits to a literal -->
   <complexType name="Bitmap">
     <annotation>
@@ -195,7 +228,7 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
   </complexType>  
 
   <!-- the basic data based used für the generic level of a communicator -->
-  <complexType name="DataType">
+  <group name="DataType">
     <annotation>
       <documentation>Generic high-ldevel data types. Impelemntations of this XSD map these types
         into native data types in their programming language (java, python, golang, ...)</documentation>
@@ -214,8 +247,31 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
       <element name="float64" type="sgr:EmptyType" />
       <element name="dateTime" type="sgr:EmptyType" />
       <element name="string" type="sgr:EmptyType" />
-      <element name="enum" type="sgr:Enum" />
       <element name="bitmap" type="sgr:Bitmap" />
+    </choice>
+  </group>
+
+  <!-- the basic data based used für the generic level of a communicator -->
+  <complexType name="DataTypeProduct">
+    <annotation>
+      <documentation>Generic high-ldevel data types. Implementations of this XSD map these types
+        into native data types in their programming language (java, python, golang, ...)</documentation>
+    </annotation>
+    <choice>
+      <element name="enum" type="sgr:EnumMapProduct" />
+      <group ref="sgr:DataType" />
+    </choice>
+  </complexType>
+
+  <!-- the basic data based used für the generic level of a communicator -->
+  <complexType name="DataTypeFunctionalProfile">
+    <annotation>
+      <documentation>Generic high-level data types. Implementations of this XSD map these types
+        into native data types in their programming language (java, python, golang, ...)</documentation>
+    </annotation>
+    <choice>
+      <element name="enum" type="sgr:EnumMapFunctionalProfile" />
+      <group ref="sgr:DataType" />
     </choice>
   </complexType>
 
