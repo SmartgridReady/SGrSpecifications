@@ -4,7 +4,7 @@
 	xmlns:sgr="http://www.smartgridready.com/ns/V0/">
 
 	<!-- Device Frames -->
-	<xsl:template match="sgr:deviceFrame">
+	<xsl:template match="sgr:DeviceFrame">
 		<div class="documentheader">Product Declaration</div>
 		<div class="product">
 			<h1>
