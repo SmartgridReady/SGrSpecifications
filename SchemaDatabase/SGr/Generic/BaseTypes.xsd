@@ -145,21 +145,54 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
   </complexType>
 
   <!-- mapping table containing modbus to generic enumeration mapping records -->
-  <complexType name="EnumMap">
+  <complexType name="Enum">
+    <annotation>
+      <documentation>Enum of states. Maps device-specific register values (ordinals) to literals.</documentation>
+    </annotation>
     <sequence>
-      <element name="enumMapping" type="sgr:enumMappingRecord" maxOccurs="unbounded" />
-      <element name="hexMask" type="hexBinary" minOccurs="0"/>
+      <element name="enumEntry" type="sgr:EnumEntry" maxOccurs="unbounded" />
+      <element name="hexMask" type="hexBinary" minOccurs="0" >
+        <annotation>
+          <documentation>hex mask for bit-wise AND before evaluating the enum</documentation>
+        </annotation>
+      </element>
     </sequence>
   </complexType>
 
   <!-- defines a single mapping from an enum literal to an ordinal (integer) value -->
-  <complexType name="enumMappingRecord">
+  <complexType name="EnumEntry">
+    <annotation>
+      <documentation>Maps a device specific ordinal to its literal</documentation>
+    </annotation>
     <sequence>
       <element name="literal" type="string" />
       <element name="ordinal" type="int" />
       <element name="description" type="string" minOccurs="0"/>
     </sequence>
   </complexType>
+
+  <!-- defines a list of bit mapping records that maps bits to a literal -->
+  <complexType name="Bitmap">
+    <annotation>
+      <documentation>bitmap for status bits. Maps device-specific
+        bit patterns (as hex mask) to literals.</documentation>
+    </annotation>
+    <sequence>
+      <element name="bitmapEntry" type="sgr:BitmapEntry" maxOccurs="unbounded"/>
+    </sequence>
+  </complexType>
+
+  <!-- defines a single mapping record -->
+  <complexType name="BitmapEntry">
+    <annotation>
+      <documentation>Maps a device-specific bit mask to a literal</documentation>
+    </annotation>
+    <sequence>
+      <element name="literal" type="string" />
+      <element name="hexMask" type="hexBinary" />
+      <element name="description" type="string" minOccurs="0" />
+    </sequence>
+  </complexType>  
 
   <!-- the basic data based used für the generic level of a communicator -->
   <complexType name="DataType">
@@ -181,17 +214,10 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
       <element name="float64" type="sgr:EmptyType" />
       <element name="dateTime" type="sgr:EmptyType" />
       <element name="string" type="sgr:EmptyType" />
-      <element name="enum" type="sgr:EnumMap" />
-      <element name="bitmap" type="sgr:BitMap">
-        <annotation>
-          <documentation> bitmap for Registers (typical: Status Bits). For to be visible as generic
-            boolean array or unsigned integer mapped in parallel towards one data single point
-            definition. Depending on the TransportService, this requires specialized sw coding. </documentation>
-        </annotation>
-      </element>
+      <element name="enum" type="sgr:Enum" />
+      <element name="bitmap" type="sgr:Bitmap" />
     </choice>
   </complexType>
-
 
   <!-- enumeration to select mandatory, optional or recommended use of elements -->
   <simpleType name="PresenceLevel">
@@ -205,6 +231,7 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
       <enumeration value="O" />
     </restriction>
   </simpleType>
+
   <!-- enumeration to select data direction (Read Write) and persistent storage 
 		use of elements -->
   <simpleType name="DataDirection">
@@ -753,19 +780,4 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
     </restriction>
   </simpleType>
 
-  <!-- defines a list of bit mapping records that maps bits to a literal -->
-  <complexType name="BitMap">
-    <sequence>
-      <element name="bitMapping" type="sgr:BitMapping" maxOccurs="unbounded"/>
-    </sequence>
-  </complexType>
-
-  <!-- defines a single mapping record -->
-  <complexType name="BitMapping">
-    <sequence>
-      <element name="literal" type="string" />
-      <element name="hexMask" type="hexBinary" />
-      <element name="description" type="string" minOccurs="0" />
-    </sequence>
-  </complexType>
 </schema>

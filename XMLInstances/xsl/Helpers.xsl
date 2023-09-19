@@ -250,7 +250,7 @@
 
     <xsl:template match="sgr:enum">
         <div style="padding-left:1em;">
-            <xsl:for-each select="sgr:enumMapping">
+            <xsl:for-each select="sgr:enumEntry">
                 <div>
                     <strong><xsl:value-of select="sgr:literal" /></strong>
                     <xsl:if test="sgr:ordinal"> = <xsl:value-of select="sgr:ordinal" /></xsl:if>
@@ -265,7 +265,7 @@
 
     <xsl:template match="sgr:bitmap">
         <div style="padding-left:1em;">
-            <xsl:for-each select="sgr:bitMapping">
+            <xsl:for-each select="sgr:bitmapEntry">
                 <div>
                     <strong><xsl:value-of select="sgr:literal" /></strong>
                     <xsl:if test="sgr:hexMask"> = 0x<xsl:value-of select="sgr:hexMask" /></xsl:if>
