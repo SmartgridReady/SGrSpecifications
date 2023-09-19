@@ -205,24 +205,46 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
   </complexType>
 
   <!-- defines a list of bit mapping records that maps bits to a literal -->
-  <complexType name="Bitmap">
+  <complexType name="BitmapProduct">
     <annotation>
       <documentation>bitmap for status bits. Maps device-specific
         bit patterns (as hex mask) to literals.</documentation>
     </annotation>
     <sequence>
-      <element name="bitmapEntry" type="sgr:BitmapEntry" maxOccurs="unbounded"/>
+      <element name="bitmapEntry" type="sgr:BitmapEntryProduct" maxOccurs="unbounded"/>
+    </sequence>
+  </complexType>
+
+  <!-- defines a list of bit mapping records that maps bits to a literal -->
+  <complexType name="BitmapFunctionalProfile">
+    <annotation>
+      <documentation>bitmap for status bits. Maps device-specific
+        bit patterns (as hex mask) to literals.</documentation>
+    </annotation>
+    <sequence>
+      <element name="bitmapEntry" type="sgr:BitmapEntryFunctionalProfile" maxOccurs="unbounded"/>
     </sequence>
   </complexType>
 
   <!-- defines a single mapping record -->
-  <complexType name="BitmapEntry">
+  <complexType name="BitmapEntryProduct">
     <annotation>
       <documentation>Maps a device-specific bit mask to a literal</documentation>
     </annotation>
     <sequence>
       <element name="literal" type="string" />
       <element name="hexMask" type="hexBinary" />
+      <element name="description" type="string" minOccurs="0" />
+    </sequence>
+  </complexType>  
+
+  <!-- defines a single mapping record -->
+  <complexType name="BitmapEntryFunctionalProfile">
+    <annotation>
+      <documentation>Maps a device-specific bit mask to a literal</documentation>
+    </annotation>
+    <sequence>
+      <element name="literal" type="string" />
       <element name="description" type="string" minOccurs="0" />
     </sequence>
   </complexType>  
@@ -247,7 +269,6 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
       <element name="float64" type="sgr:EmptyType" />
       <element name="dateTime" type="sgr:EmptyType" />
       <element name="string" type="sgr:EmptyType" />
-      <element name="bitmap" type="sgr:Bitmap" />
     </choice>
   </group>
 
@@ -259,6 +280,7 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
     </annotation>
     <choice>
       <element name="enum" type="sgr:EnumMapProduct" />
+      <element name="bitmap" type="sgr:BitmapProduct" />
       <group ref="sgr:DataType" />
     </choice>
   </complexType>
@@ -271,6 +293,7 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
     </annotation>
     <choice>
       <element name="enum" type="sgr:EnumMapFunctionalProfile" />
+      <element name="bitmap" type="sgr:BitmapFunctionalProfile" />
       <group ref="sgr:DataType" />
     </choice>
   </complexType>
