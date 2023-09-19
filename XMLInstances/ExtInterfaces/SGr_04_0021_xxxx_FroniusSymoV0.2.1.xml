@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="/xsl/SGr.xsl"?>
-<deviceFrame xmlns="http://www.smartgridready.com/ns/V0/"
+<DeviceFrame xmlns="http://www.smartgridready.com/ns/V0/"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/Product/Product.xsd">
   <deviceName>FroniusSymo</deviceName>
@@ -842,7 +842,38 @@
                 <presenceLevel>O</presenceLevel>
                 <dataType>
                   <enum>
-                    <sgrSunspStateCodes>I_STATUS_OFF</sgrSunspStateCodes>
+                    <enumEntry>
+                      <literal>I_STATUS_OFF</literal>
+                      <ordinal>0</ordinal>
+                    </enumEntry>
+                    <enumEntry>
+                      <literal>I_STATUS_SLEEPING</literal>
+                      <ordinal>1</ordinal>
+                    </enumEntry>
+                    <enumEntry>
+                      <literal>I_STATUS_STARTING</literal>
+                      <ordinal>2</ordinal>
+                    </enumEntry>
+                    <enumEntry>
+                      <literal>I_STATUS_MPPT</literal>
+                      <ordinal>3</ordinal>
+                    </enumEntry>
+                    <enumEntry>
+                      <literal>I_STATUS_THROTTLED</literal>
+                      <ordinal>4</ordinal>
+                    </enumEntry>
+                    <enumEntry>
+                      <literal>I_STATUS_SHUTING_DOWN</literal>
+                      <ordinal>5</ordinal>
+                    </enumEntry>
+                    <enumEntry>
+                      <literal>I_STATUS_FAULT</literal>
+                      <ordinal>6</ordinal>
+                    </enumEntry>
+                    <enumEntry>
+                      <literal>I_STATUS_STANDBY</literal>
+                      <ordinal>7</ordinal>
+                    </enumEntry>
                   </enum>
                 </dataType>
                 <unit>NONE</unit>
@@ -871,9 +902,108 @@
                 <dataDirection>R</dataDirection>
                 <presenceLevel>O</presenceLevel>
                 <dataType>
-                  <enum2bitmapIndex>
-                    <sgrBool2BitRank>Bit0</sgrBool2BitRank>
-                  </enum2bitmapIndex>
+                  <bitmap>
+                    <bitmapEntry>
+                      <literal>Grid Error</literal>
+                      <hexMask>02</hexMask>
+                    </bitmapEntry>
+                    <bitmapEntry>
+                      <literal>Overcurrent AC</literal>
+                      <hexMask>04</hexMask>
+                    </bitmapEntry>
+                    <bitmapEntry>
+                      <literal>Overcurrent DC</literal>
+                      <hexMask>08</hexMask>
+                    </bitmapEntry>
+                    <bitmapEntry>
+                      <literal>Overtemperature</literal>
+                      <hexMask>10</hexMask>
+                    </bitmapEntry>
+                    <bitmapEntry>
+                      <literal>Power low</literal>
+                      <hexMask>20</hexMask>
+                    </bitmapEntry>
+                    <bitmapEntry>
+                      <literal>DC low</literal>
+                      <hexMask>40</hexMask>
+                    </bitmapEntry>
+                    <bitmapEntry>
+                      <literal>Intermediate Circuit Error</literal>
+                      <hexMask>80</hexMask>
+                    </bitmapEntry>
+                    <bitmapEntry>
+                      <literal>AC frequency too high</literal>
+                      <hexMask>0100</hexMask>
+                    </bitmapEntry>
+                    <bitmapEntry>
+                      <literal>AC frequency too low</literal>
+                      <hexMask>0200</hexMask>
+                    </bitmapEntry>
+                    <bitmapEntry>
+                      <literal>AC voltage too high</literal>
+                      <hexMask>0400</hexMask>
+                    </bitmapEntry>
+                    <bitmapEntry>
+                      <literal>AC voltage too low</literal>
+                      <hexMask>0800</hexMask>
+                    </bitmapEntry>
+                    <bitmapEntry>
+                      <literal>Direct current feed in</literal>
+                      <hexMask>1000</hexMask>
+                    </bitmapEntry>
+                    <bitmapEntry>
+                      <literal>Relay problem</literal>
+                      <hexMask>2000</hexMask>
+                    </bitmapEntry>
+                    <bitmapEntry>
+                      <literal>Internal power stage error</literal>
+                      <hexMask>4000</hexMask>
+                    </bitmapEntry>
+                    <bitmapEntry>
+                      <literal>Guard Controller - AC voltage error</literal>
+                      <hexMask>010000</hexMask>
+                    </bitmapEntry>
+                    <bitmapEntry>
+                      <literal>Guard Controller - AC frequency error</literal>
+                      <hexMask>020000</hexMask>
+                    </bitmapEntry>
+                    <bitmapEntry>
+                      <literal>Error during anti islanding test</literal>
+                      <hexMask>100000</hexMask>
+                    </bitmapEntry>
+                    <bitmapEntry>
+                      <literal>Error during anti islanding test</literal>
+                      <hexMask>100000</hexMask>
+                    </bitmapEntry>
+                    <bitmapEntry>
+                      <literal>Fixed voltage lower than current MPP voltage</literal>
+                      <hexMask>200000</hexMask>
+                    </bitmapEntry>
+                    <bitmapEntry>
+                      <literal>Memory fault</literal>
+                      <hexMask>400000</hexMask>
+                    </bitmapEntry>
+                    <bitmapEntry>
+                      <literal>Internal communication error</literal>
+                      <hexMask>01000000</hexMask>
+                    </bitmapEntry>
+                    <bitmapEntry>
+                      <literal>Temperature sensors defective</literal>
+                      <hexMask>02000000</hexMask>
+                    </bitmapEntry>
+                    <bitmapEntry>
+                      <literal>DC or AC board fault</literal>
+                      <hexMask>04000000</hexMask>
+                    </bitmapEntry>
+                    <bitmapEntry>
+                      <literal>ENS error</literal>
+                      <hexMask>08000000</hexMask>
+                    </bitmapEntry>
+                    <bitmapEntry>
+                      <literal>Defective fuse</literal>
+                      <hexMask>20000000</hexMask>
+                    </bitmapEntry>
+                  </bitmap>
                 </dataType>
                 <unit>NONE</unit>
                 <alternativeNames>
@@ -904,9 +1034,72 @@
                 <dataDirection>R</dataDirection>
                 <presenceLevel>O</presenceLevel>
                 <dataType>
-                  <enum2bitmapIndex>
-                    <sgrBool2BitRank>Bit0</sgrBool2BitRank>
-                  </enum2bitmapIndex>
+                  <bitmap>
+                    <bitmapEntry>
+                      <literal>24h no feed in</literal>
+                      <hexMask>04</hexMask>
+                    </bitmapEntry>
+                    <bitmapEntry>
+                      <literal>Incompatible or old software</literal>
+                      <hexMask>40</hexMask>
+                    </bitmapEntry>
+                    <bitmapEntry>
+                      <literal>Power Derating Due To Overtemperature</literal>
+                      <hexMask>80</hexMask>
+                    </bitmapEntry>
+                    <bitmapEntry>
+                      <literal>Incompatible feature</literal>
+                      <hexMask>0200</hexMask>
+                    </bitmapEntry>
+                    <bitmapEntry>
+                      <literal> Power reduction on error</literal>
+                      <hexMask>0800</hexMask>
+                    </bitmapEntry>
+                    <bitmapEntry>
+                      <literal>Arc Detected</literal>
+                      <hexMask>1000</hexMask>
+                    </bitmapEntry>
+                    <bitmapEntry>
+                      <literal>AFCI Self Test Failed</literal>
+                      <hexMask>2000</hexMask>
+                    </bitmapEntry>
+                    <bitmapEntry>
+                      <literal>Current Sensor Error</literal>
+                      <hexMask>4000</hexMask>
+                    </bitmapEntry>
+                    <bitmapEntry>
+                      <literal>AFCI Defective</literal>
+                      <hexMask>010000</hexMask>
+                    </bitmapEntry>
+                    <bitmapEntry>
+                      <literal>Power Stack Supply Missing</literal>
+                      <hexMask>040000</hexMask>
+                    </bitmapEntry>
+                    <bitmapEntry>
+                      <literal>AC polarity reversed</literal>
+                      <hexMask>200000</hexMask>
+                    </bitmapEntry>
+                    <bitmapEntry>
+                      <literal>Flash fault</literal>
+                      <hexMask>800000</hexMask>
+                    </bitmapEntry>
+                    <bitmapEntry>
+                      <literal>General error</literal>
+                      <hexMask>01000000</hexMask>
+                    </bitmapEntry>
+                    <bitmapEntry>
+                      <literal>Power limitation fault</literal>
+                      <hexMask>04000000</hexMask>
+                    </bitmapEntry>
+                    <bitmapEntry>
+                      <literal>Internal processor program status</literal>
+                      <hexMask>20000000</hexMask>
+                    </bitmapEntry>
+                    <bitmapEntry>
+                      <literal>SolarNet issue</literal>
+                      <hexMask>40000000</hexMask>
+                    </bitmapEntry>
+                  </bitmap>
                 </dataType>
                 <unit>NONE</unit>
                 <alternativeNames>
@@ -1146,4 +1339,4 @@
       </timeSyncBlockNotification>
     </modbusInterface>
   </interfaceList>
-</deviceFrame>
+</DeviceFrame>

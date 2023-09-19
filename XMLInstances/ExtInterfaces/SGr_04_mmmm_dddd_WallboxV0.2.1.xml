@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="/xsl/SGr.xsl"?>
-<deviceFrame xmlns="http://www.smartgridready.com/ns/V0/"
+<DeviceFrame xmlns="http://www.smartgridready.com/ns/V0/"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/Product/Product.xsd">
   <deviceName>WALLBOX beta 1 symmetrisch steuerbar</deviceName>
@@ -129,16 +129,37 @@
                 <presenceLevel>M</presenceLevel>
                 <dataType>
                   <enum>
-                    <sgrEVState>EV_STANDBY</sgrEVState>
+                    <enumEntry>
+                      <literal>EV_STANDBY</literal>
+                      <ordinal>1</ordinal>
+                    </enumEntry>
+                    <enumEntry>
+                      <literal>EV_DETECTED</literal>
+                      <ordinal>2</ordinal>
+                    </enumEntry>
+                    <enumEntry>
+                      <literal>EV_READY4CHARGING</literal>
+                      <ordinal>3</ordinal>
+                    </enumEntry>
+                    <enumEntry>
+                      <literal>EV_WITHFAN</literal>
+                      <ordinal>4</ordinal>
+                    </enumEntry>
+                    <enumEntry>
+                      <literal>EV_SHUTOFF</literal>
+                      <ordinal>5</ordinal>
+                    </enumEntry>
+                    <enumEntry>
+                      <literal>EV_ERROR</literal>
+                      <ordinal>6</ordinal>
+                    </enumEntry>
                   </enum>
                 </dataType>
                 <unit>NONE</unit>
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
-                  <enum>
-                    <sgrEVState>EV_STANDBY</sgrEVState>
-                  </enum>
+                  <int16U />
                 </modbusDataType>
                 <address>0</address>
                 <registerType>HoldRegister</registerType>
@@ -626,4 +647,4 @@
       </functionalProfileList>
     </modbusInterface>
   </interfaceList>
-</deviceFrame>
+</DeviceFrame>

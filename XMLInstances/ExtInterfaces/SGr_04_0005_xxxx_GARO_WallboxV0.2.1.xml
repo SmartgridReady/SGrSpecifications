@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="/xsl/SGr.xsl"?>
-<deviceFrame xmlns="http://www.smartgridready.com/ns/V0/"
+<DeviceFrame xmlns="http://www.smartgridready.com/ns/V0/"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/Product/Product.xsd">
   <deviceName>GARO Wallbox GLB</deviceName>
@@ -143,16 +143,37 @@
                 <presenceLevel>M</presenceLevel>
                 <dataType>
                   <enum>
-                    <sgrEVState>EV_STANDBY</sgrEVState>
+                    <enumEntry>
+                      <literal>EV_STANDBY</literal>
+                      <ordinal>1</ordinal>
+                    </enumEntry>
+                    <enumEntry>
+                      <literal>EV_DETECTED</literal>
+                      <ordinal>2</ordinal>
+                    </enumEntry>
+                    <enumEntry>
+                      <literal>EV_READY4CHARGING</literal>
+                      <ordinal>3</ordinal>
+                    </enumEntry>
+                    <enumEntry>
+                      <literal>EV_WITHFAN</literal>
+                      <ordinal>4</ordinal>
+                    </enumEntry>
+                    <enumEntry>
+                      <literal>EV_SHUTOFF</literal>
+                      <ordinal>5</ordinal>
+                    </enumEntry>
+                    <enumEntry>
+                      <literal>EV_ERROR</literal>
+                      <ordinal>6</ordinal>
+                    </enumEntry>
                   </enum>
                 </dataType>
                 <unit>NONE</unit>
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
-                  <enum>
-                    <sgrEVState>EV_STANDBY</sgrEVState>
-                  </enum>
+                  <int16U />
                 </modbusDataType>
                 <address>122</address>
                 <registerType>HoldRegister</registerType>
@@ -166,7 +187,42 @@
                 <presenceLevel>O</presenceLevel>
                 <dataType>
                   <enum>
-                    <sgrOCPPState>Available</sgrOCPPState>
+                    <enumEntry>
+                      <literal>AVAILABLE</literal>
+                      <ordinal>0</ordinal>
+                    </enumEntry>
+                    <enumEntry>
+                      <literal>CHARGING</literal>
+                      <ordinal>1</ordinal>
+                    </enumEntry>
+                    <enumEntry>
+                      <literal>PREPARING</literal>
+                      <ordinal>2</ordinal>
+                    </enumEntry>
+                    <enumEntry>
+                      <literal>FINISHING</literal>
+                      <ordinal>3</ordinal>
+                    </enumEntry>
+                    <enumEntry>
+                      <literal>RESERVED</literal>
+                      <ordinal>4</ordinal>
+                    </enumEntry>
+                    <enumEntry>
+                      <literal>UNAVAILABLE</literal>
+                      <ordinal>5</ordinal>
+                    </enumEntry>
+                    <enumEntry>
+                      <literal>FAULTED</literal>
+                      <ordinal>6</ordinal>
+                    </enumEntry>
+                    <enumEntry>
+                      <literal>SUSPENDED_EV_SE</literal>
+                      <ordinal>7</ordinal>
+                    </enumEntry>
+                    <enumEntry>
+                      <literal>SUSPENDED_EV</literal>
+                      <ordinal>8</ordinal>
+                    </enumEntry>
                   </enum>
                 </dataType>
                 <unit>NONE</unit>
@@ -174,7 +230,42 @@
               <modbusDataPointConfiguration>
                 <modbusDataType>
                   <enum>
-                    <sgrOCPPState>Available</sgrOCPPState>
+                    <enumEntry>
+                      <literal>Available</literal>
+                      <ordinal>0</ordinal>
+                    </enumEntry>
+                <enumEntry>
+                      <literal>Charging</literal>
+                      <ordinal>1</ordinal>
+                    </enumEntry>
+                <enumEntry>
+                      <literal>Preparing</literal>
+                      <ordinal>2</ordinal>
+                    </enumEntry>
+                <enumEntry>
+                      <literal>Finishing</literal>
+                      <ordinal>3</ordinal>
+                    </enumEntry>
+                <enumEntry>
+                      <literal>Reserved</literal>
+                      <ordinal>4</ordinal>
+                    </enumEntry>
+                <enumEntry>
+                      <literal>Unavailable</literal>
+                      <ordinal>5</ordinal>
+                    </enumEntry>
+                <enumEntry>
+                      <literal>Faulted</literal>
+                      <ordinal>6</ordinal>
+                    </enumEntry>
+                <enumEntry>
+                      <literal>SuspendedEVSE</literal>
+                      <ordinal>7</ordinal>
+                    </enumEntry>
+                <enumEntry>
+                      <literal>SuspendedEV</literal>
+                      <ordinal>8</ordinal>
+                    </enumEntry>
                   </enum>
                 </modbusDataType>
                 <address>104</address>
@@ -599,4 +690,4 @@
       </timeSyncBlockNotification>
     </modbusInterface>
   </interfaceList>
-</deviceFrame>
+</DeviceFrame>

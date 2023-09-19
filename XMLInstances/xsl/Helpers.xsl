@@ -232,7 +232,7 @@
         <xsl:choose>
             <xsl:when test="sgr:boolean">boolean</xsl:when>
             <xsl:when test="sgr:int8">byte</xsl:when>
-            <xsl:when test="sgr:int16">nit16</xsl:when>
+            <xsl:when test="sgr:int16">int16</xsl:when>
             <xsl:when test="sgr:int32">int32</xsl:when>
             <xsl:when test="sgr:int64">int64</xsl:when>
             <xsl:when test="sgr:int8U">int8U</xsl:when>
@@ -244,11 +244,36 @@
             <xsl:when test="sgr:dateTime">date time</xsl:when>
             <xsl:when test="sgr:string">string</xsl:when>
             <xsl:when test="sgr:enum">enum</xsl:when>
-            <xsl:when test="sgr:enum2bitmapIndex">bitmap</xsl:when>
+            <xsl:when test="sgr:bitmap">bitmap</xsl:when>
         </xsl:choose>
     </xsl:template>
 
-    <!-- Enums (TODO Simon: replace by new structure ) -->
+    <xsl:template match="sgr:enum">
+        <div style="padding-left:1em;">
+            <xsl:for-each select="sgr:enumEntry">
+                <div>
+                    <strong><xsl:value-of select="sgr:literal" /></strong>
+                    <xsl:if test="sgr:ordinal"> = <xsl:value-of select="sgr:ordinal" /></xsl:if>
+                    <xsl:if test="sgr:description">: <xsl:value-of select="sgr:description" /></xsl:if>
+                </div>
+            </xsl:for-each>
+        <xsl:if test="sgr:hexMask">
+            <div>Hex Mask: 0x<xsl:value-of select="sgr:hexMask"/></div>
+        </xsl:if>        
+        </div>
+    </xsl:template>
+
+    <xsl:template match="sgr:bitmap">
+        <div style="padding-left:1em;">
+            <xsl:for-each select="sgr:bitmapEntry">
+                <div>
+                    <strong><xsl:value-of select="sgr:literal" /></strong>
+                    <xsl:if test="sgr:hexMask"> = 0x<xsl:value-of select="sgr:hexMask" /></xsl:if>
+                    <xsl:if test="sgr:description">: <xsl:value-of select="sgr:description" /></xsl:if>
+                </div>
+            </xsl:for-each>
+        </div>       
+    </xsl:template>
 
     <!-- Units -->
     <xsl:template name="SGrUnits">

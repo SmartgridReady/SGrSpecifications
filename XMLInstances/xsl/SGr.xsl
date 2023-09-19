@@ -85,7 +85,7 @@
 				<div class="document">
 
 					<!-- Map device frames -->
-					<xsl:apply-templates select="sgr:deviceFrame" />
+					<xsl:apply-templates select="sgr:DeviceFrame" />
 
 
 					<!-- Map  functional profiles -->

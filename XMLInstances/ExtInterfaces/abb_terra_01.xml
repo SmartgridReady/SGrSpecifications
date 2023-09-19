@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="/xsl/SGr.xsl"?>
-<deviceFrame xmlns="http://www.smartgridready.com/ns/V0/"
+<DeviceFrame xmlns="http://www.smartgridready.com/ns/V0/"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/Product/Product.xsd">
   <deviceName>Webasto</deviceName>
@@ -304,7 +304,31 @@
                 <presenceLevel>M</presenceLevel>
                 <dataType>
                   <enum>
-                    <sgrEVState>EV_STANDBY</sgrEVState>
+                    <enumEntry>
+                      <literal>EV_STANDBY</literal>
+                      <ordinal>0</ordinal>
+                    </enumEntry>
+                    <enumEntry>
+                      <literal>EV_DETECTED</literal>
+                      <ordinal>256</ordinal>
+                    </enumEntry>
+                    <enumEntry>
+                      <literal>EV_READY4CHARGING</literal>
+                      <ordinal>512</ordinal>
+                    </enumEntry>
+                    <enumEntry>
+                      <literal>EV_WITHFAN</literal>
+                      <ordinal>768</ordinal>
+                    </enumEntry>
+                    <enumEntry>
+                      <literal>EV_SHUTOFF</literal>
+                      <ordinal>1024</ordinal>
+                    </enumEntry>
+                    <enumEntry>
+                      <literal>EV_ERROR</literal>
+                      <ordinal>1280</ordinal>
+                    </enumEntry>
+                    <hexMask>0F00</hexMask>
                   </enum>
                 </dataType>
                 <unit>NONE</unit>
@@ -332,4 +356,4 @@
       </functionalProfileList>
     </modbusInterface>
   </interfaceList>
-</deviceFrame>
+</DeviceFrame>
