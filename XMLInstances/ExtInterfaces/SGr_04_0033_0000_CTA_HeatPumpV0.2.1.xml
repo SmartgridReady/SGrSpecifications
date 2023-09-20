@@ -54,6 +54,63 @@
 		<sgr:conversionScheme>ChangeWordOrder</sgr:conversionScheme>
 	</sgr:modbusInterfaceDesc>
 	<sgr:fpListElement>
+		<sgr:functionalProfile profileName="DeviceInformation">
+			<sgr:profileNumber>
+				<sgr:specsOwnerId>0</sgr:specsOwnerId>
+				<sgr:profileIdentification>DeviceInformation</sgr:profileIdentification>
+				<sgr:subProfileIdent>UNDEF</sgr:subProfileIdent>
+				<sgr:sgrLevelOfOperation>4</sgr:sgrLevelOfOperation>
+				<sgr:versionNumber>
+					<sgr:primaryVersionNumber>
+						0
+					</sgr:primaryVersionNumber>
+					<sgr:secondaryVersionNumber>
+						2
+					</sgr:secondaryVersionNumber>
+					<sgr:subReleaseVersionNumber>
+						1
+					</sgr:subReleaseVersionNumber>
+				</sgr:versionNumber>
+			</sgr:profileNumber>
+			<sgr:fpLegibDesc>
+				<sgr:textElement>Dieses Funktionsprofil ermöglicht das Handling von Datenpunkten, welche für das ganze Gerät gelten</sgr:textElement>
+				<sgr:language>de</sgr:language>
+			</sgr:fpLegibDesc>
+		</sgr:functionalProfile>
+		<sgr:dpListElement>
+			<sgr:dataPoint datapointName="ctaRemoteCtrlTimeSec"
+				mroVisibilityIndicator="M" rwpDatadirection="RW"
+				unit="SECONDS">
+				<sgr:basicDataType>
+					<sgr:int16U>0</sgr:int16U>
+				</sgr:basicDataType>
+				<sgr:dpNameList>
+					<sgr:sLV1Name>remoteCtrlTimeSec </sgr:sLV1Name>
+					<sgr:sManufName>CTA_Ext_Communication_Handler</sgr:sManufName></sgr:dpNameList>
+				<sgr:dpLegibDesc>
+					<sgr:textElement>Countdown Variable in sec. Wenn 0, dann Ext. Kommunikation inaktiv., Max. Wert 3000</sgr:textElement>
+					<sgr:language>de</sgr:language>
+				</sgr:dpLegibDesc>
+				<sgr:dpPrgDesc>
+					<sgr:textElement>remoteCtrlTimeSec is valid for all external commands and settings of the device. It must be > 0 for keeping the external command / Setpoint valid.
+					CTA_Ext_Heating_Command, CTA_Ext_Heating_Setpoint, CTA_Ext_SG, CTA_Ext_PwrReq, CTA_Ext_Cooling_Command, CTA_Ext_Cooling_Setpoint </sgr:textElement>
+					<sgr:language>en</sgr:language>
+				</sgr:dpPrgDesc>
+			</sgr:dataPoint>
+			<sgr:genAttribute>
+				<sgr:maxVal>3000</sgr:maxVal></sgr:genAttribute>
+			<sgr:modbusDataPoint>
+				<sgr:modbusDataType>
+					<sgr:int16U>0</sgr:int16U>					
+				</sgr:modbusDataType>
+				<sgr:modbusFirstRegisterReference registerType="HoldRegister"
+					addr="990" />
+				<sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
+				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
+			</sgr:modbusDataPoint>
+		</sgr:dpListElement>
+	</sgr:fpListElement>
+	<sgr:fpListElement>
 		<sgr:functionalProfile profileName="HeatPumpBase">
 			<sgr:profileNumber>
 				<sgr:specsOwnerId>0</sgr:specsOwnerId>
@@ -70,7 +127,7 @@
 				<sgr:sLV1Name>HeatPumpBase</sgr:sLV1Name>
 			</sgr:fpNameList>
 			<sgr:fpLegibDesc>
-				<sgr:textElement>Das Profil definiert den Grundbaustein zur dynamischen Ansteuerung von Wärmepumpen über eine variable Beeinflussung der Sollwerte nach SGr Level 4. Der Betrieb der Wärmepumpe muss in sich sicher sein, unabhängig von den äusseren Vorgaben. Dieses Grundprofil definiert die Datenpunkte, welche zur Steuerung des Gerätes «Wärmepumpe» auf Level 4 grundsätzlich zur Verfügung gestellt werden und stellen die Version einer typischen EInfamilienhauswärmepumpe miz Aussentemperaturfühler dar. Für die einzelnen Heizkreise, Warmwasser, Pufferspeicher und das Energie-Monitoring  sowie eine Verdichterdrehzahl / Leistungsregelung werden separate Profile zur Verfügung gestellt.
+				<sgr:textElement>Das Profil definiert den Grundbaustein zur dynamischen Ansteuerung von Wärmepumpen über eine variable Beeinflussung der Sollwerte nach SGr Level 4. Der Betrieb der Wärmepumpe muss in sich sicher sein, unabhängig von den äusseren Vorgaben. Dieses Grundprofil definiert die Datenpunkte, welche zur Steuerung des Gerätes «Wärmepumpe» auf Level 4 grundsätzlich zur Verfügung gestellt werden und stellen die Version einer typischen EInfamilienhauswärmepumpe mit Aussentemperaturfühler dar. Für die einzelnen Heizkreise, Warmwasser, Pufferspeicher und das Energie-Monitoring  sowie eine Verdichterdrehzahl / Leistungsregelung werden separate Profile zur Verfügung gestellt.
  				</sgr:textElement>
 				<sgr:language>de</sgr:language>
 			</sgr:fpLegibDesc>
@@ -87,7 +144,7 @@
 					<sgr:sManufName>CTA_HeatPump_FSM</sgr:sManufName>
 				</sgr:dpNameList>
 				<sgr:dpLegibDesc>
-					<sgr:textElement>Status Code Betriebsart gem. Liste</sgr:textElement>
+					<sgr:textElement>?? Status Code Betriebsart gem. Liste, eher als OpState führen?</sgr:textElement>
 					<sgr:language>de</sgr:language>
 				</sgr:dpLegibDesc>
 			</sgr:dataPoint>
@@ -114,7 +171,7 @@
 					<sgr:sManufName>CTA_UnitStatus</sgr:sManufName>
 				</sgr:dpNameList>
 				<sgr:dpLegibDesc>
-					<sgr:textElement>Status Code Kältekreis gem. Liste</sgr:textElement>
+					<sgr:textElement>?? gem. Liste: Status Code Kältekreis  </sgr:textElement>
 					<sgr:language>de</sgr:language>
 				</sgr:dpLegibDesc>
 			</sgr:dataPoint>
@@ -281,10 +338,10 @@
 				</sgr:basicDataType>
 				<sgr:dpNameList>
 					<sgr:sLV1Name>PowerCtrlStpt</sgr:sLV1Name>
-					<sgr:sManufName>CTA_DWRequest</sgr:sManufName>
+					<sgr:sManufName>CTA_Ext_PwrReq</sgr:sManufName>
 				</sgr:dpNameList>
 				<sgr:dpLegibDesc>
-					<sgr:textElement>VD-Leistung in % bei TWW Ladung (Empfehlung 38). Die Grenzwerte min / max müssen eingehalten werden</sgr:textElement>
+					<sgr:textElement>ext Leistungsanforderung 0-1, nur Aktiv wenn Freigabemodus auf Externe Leistungsanf. konfiguriert.</sgr:textElement>
 					<sgr:language>de</sgr:language>
 				</sgr:dpLegibDesc>
 			</sgr:dataPoint>
@@ -296,7 +353,7 @@
 				<sgr:modbusDataType>
 					<sgr:float32>0.0</sgr:float32>
 				</sgr:modbusDataType>
-				<sgr:modbusFirstRegisterReference registerType="HoldRegister" addr="1028" bitRank="0" />
+				<sgr:modbusFirstRegisterReference registerType="HoldRegister" addr="1056" bitRank="0" />
 				<sgr:dpSizeNrRegisters>2</sgr:dpSizeNrRegisters>
 				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
 			</sgr:modbusDataPoint>
@@ -351,38 +408,6 @@
 				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
 			</sgr:modbusDataPoint>
 		</sgr:dpListElement>
-		<sgr:dpListElement>
-			<sgr:dataPoint datapointName="ctaRemoteCtrlTimeSec"
-				mroVisibilityIndicator="M" rwpDatadirection="RW"
-				unit="SECONDS">
-				<sgr:basicDataType>
-					<sgr:int16U>0</sgr:int16U>
-				</sgr:basicDataType>
-				<sgr:dpNameList>
-					<sgr:sLV1Name>ctaRemoteCtrlTimeSec</sgr:sLV1Name>
-					<sgr:sManufName>CTA_Ext_Communication_Handler</sgr:sManufName></sgr:dpNameList>
-				<sgr:dpLegibDesc>
-					<sgr:textElement>Countdown Variable in sec. Wenn 0, dann Ext. Kommunikation inaktiv., Max. Wert 3000</sgr:textElement>
-					<sgr:language>de</sgr:language>
-				</sgr:dpLegibDesc>
-				<sgr:dpPrgDesc>
-					<sgr:textElement>remoteCtrlTimeSec is valid for all external commands and settings of the device. It must be > 0 for keeping the external command / Setpoint valid.
-					CTA_Ext_Heating_Command, CTA_Ext_Heating_Setpoint, CTA_Ext_SG, CTA_Ext_PwrReq, CTA_Ext_Cooling_Command, CTA_Ext_Cooling_Setpoint </sgr:textElement>
-					<sgr:language>en</sgr:language>
-				</sgr:dpPrgDesc>
-			</sgr:dataPoint>
-			<sgr:genAttribute>
-				<sgr:maxVal>3000</sgr:maxVal></sgr:genAttribute>
-			<sgr:modbusDataPoint>
-				<sgr:modbusDataType>
-					<sgr:int16U>0</sgr:int16U>					
-				</sgr:modbusDataType>
-				<sgr:modbusFirstRegisterReference registerType="HoldRegister"
-					addr="990" />
-				<sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
-				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
-			</sgr:modbusDataPoint>
-		</sgr:dpListElement>
 	</sgr:fpListElement>
 
 
@@ -419,7 +444,7 @@
 					<sgr:sManufName>CTA_Ext_Heating_Command</sgr:sManufName>
 				</sgr:dpNameList>
 				<sgr:dpLegibDesc>
-					<sgr:textElement>Festlegen der Betriebsart des Heiz-/Kühlkreises  [Aus Bereitschaft, Programm, Komfort, Eco]              </sgr:textElement>
+					<sgr:textElement>1= extern gesteuert (nur aktiv, wenn Countdown Register 990 > 0), 0= lokal gesteuert</sgr:textElement>
 					<sgr:language>de</sgr:language>
 				</sgr:dpLegibDesc>
 			</sgr:dataPoint>
@@ -530,38 +555,6 @@
 				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
 			</sgr:modbusDataPoint>
 		</sgr:dpListElement>
-		<sgr:dpListElement>
-			<sgr:dataPoint datapointName="ctaRemoteCtrlTimeSec"
-				mroVisibilityIndicator="M" rwpDatadirection="RW"
-				unit="SECONDS">
-				<sgr:basicDataType>
-					<sgr:int16U>0</sgr:int16U>
-				</sgr:basicDataType>
-				<sgr:dpNameList>
-					<sgr:sLV1Name>ctaRemoteCtrlTimeSec</sgr:sLV1Name>
-					<sgr:sManufName>CTA_Ext_Communication_Handler</sgr:sManufName></sgr:dpNameList>
-				<sgr:dpLegibDesc>
-					<sgr:textElement>Countdown Variable in sec. Wenn 0, dann Ext. Kommunikation inaktiv., Max. Wert 3000</sgr:textElement>
-					<sgr:language>de</sgr:language>
-				</sgr:dpLegibDesc>
-				<sgr:dpPrgDesc>
-					<sgr:textElement>remoteCtrlTimeSec is valid for all external commands and settings of the device. It must be > 0 for keeping the external command / Setpoint valid.
-					CTA_Ext_Heating_Command, CTA_Ext_Heating_Setpoint, CTA_Ext_SG, CTA_Ext_PwrReq, CTA_Ext_Cooling_Command, CTA_Ext_Cooling_Setpoint </sgr:textElement>
-					<sgr:language>en</sgr:language>
-				</sgr:dpPrgDesc>
-			</sgr:dataPoint>
-			<sgr:genAttribute>
-				<sgr:maxVal>3000</sgr:maxVal></sgr:genAttribute>
-			<sgr:modbusDataPoint>
-				<sgr:modbusDataType>
-					<sgr:int16U>0</sgr:int16U>					
-				</sgr:modbusDataType>
-				<sgr:modbusFirstRegisterReference registerType="HoldRegister"
-					addr="990" />
-				<sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
-				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
-			</sgr:modbusDataPoint>
-		</sgr:dpListElement>
 	</sgr:fpListElement>
 
 	<sgr:fpListElement>
@@ -595,9 +588,10 @@
 				</sgr:basicDataType>
 				<sgr:dpNameList>
 					<sgr:sLV1Name>ctaDomHotWOpMode</sgr:sLV1Name>
+					<sgr:sManufName>CTA_DW_Status_UsrSet</sgr:sManufName>
 				</sgr:dpNameList>
 				<sgr:dpLegibDesc>
-					<sgr:textElement>?checkDoku TODO: enum.  Grund-Betriebsart der Brauchwasseranlage (Bereitschaft, Programm, Komfort, Eco, Warmwasser, Kühlen aktiv, Kühlen passiv, Notbetrieb)</sgr:textElement>
+					<sgr:textElement>?1= TWW Betrieb ein, 2= TWW Betrieb aus, Verwebdubg bicht klar</sgr:textElement>
 					<sgr:language>de</sgr:language>
 				</sgr:dpLegibDesc>
 			</sgr:dataPoint>
@@ -619,6 +613,7 @@
 				</sgr:basicDataType>
 				<sgr:dpNameList>
 					<sgr:sLV1Name>DomHotWTempStpt</sgr:sLV1Name>
+					<sgr:sManufName>CTA_DW_SetpointComfort</sgr:sManufName>
 				</sgr:dpNameList>
 				<sgr:dpLegibDesc>
 					<sgr:textElement>
@@ -656,38 +651,6 @@
 				</sgr:modbusDataType>
 				<sgr:modbusFirstRegisterReference registerType="InputRegister" addr="2010" bitRank="0" />
 				<sgr:dpSizeNrRegisters>2</sgr:dpSizeNrRegisters>
-				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
-			</sgr:modbusDataPoint>
-		</sgr:dpListElement>
-		<sgr:dpListElement>
-			<sgr:dataPoint datapointName="ctaRemoteCtrlTimeSec"
-				mroVisibilityIndicator="M" rwpDatadirection="RW"
-				unit="SECONDS">
-				<sgr:basicDataType>
-					<sgr:int16U>0</sgr:int16U>
-				</sgr:basicDataType>
-				<sgr:dpNameList>
-					<sgr:sLV1Name>ctaRemoteCtrlTimeSec</sgr:sLV1Name>
-					<sgr:sManufName>CTA_Ext_Communication_Handler</sgr:sManufName></sgr:dpNameList>
-				<sgr:dpLegibDesc>
-					<sgr:textElement>Countdown Variable in sec. Wenn 0, dann Ext. Kommunikation inaktiv., Max. Wert 3000</sgr:textElement>
-					<sgr:language>de</sgr:language>
-				</sgr:dpLegibDesc>
-				<sgr:dpPrgDesc>
-					<sgr:textElement>remoteCtrlTimeSec is valid for all external commands and settings of the device. It must be > 0 for keeping the external command / Setpoint valid.
-					CTA_Ext_Heating_Command, CTA_Ext_Heating_Setpoint, CTA_Ext_SG, CTA_Ext_PwrReq, CTA_Ext_Cooling_Command, CTA_Ext_Cooling_Setpoint </sgr:textElement>
-					<sgr:language>en</sgr:language>
-				</sgr:dpPrgDesc>
-			</sgr:dataPoint>
-			<sgr:genAttribute>
-				<sgr:maxVal>3000</sgr:maxVal></sgr:genAttribute>
-			<sgr:modbusDataPoint>
-				<sgr:modbusDataType>
-					<sgr:int16U>0</sgr:int16U>					
-				</sgr:modbusDataType>
-				<sgr:modbusFirstRegisterReference registerType="HoldRegister"
-					addr="990" />
-				<sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
 				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
 			</sgr:modbusDataPoint>
 		</sgr:dpListElement>
@@ -750,9 +713,10 @@
 				</sgr:basicDataType>
 				<sgr:dpNameList>
 					<sgr:sLV1Name>ActHeatBufferTempUpper</sgr:sLV1Name>
+					<sgr:sManufName>CTA_B4_Temp</sgr:sManufName>
 				</sgr:dpNameList>
 				<sgr:dpLegibDesc>
-					<sgr:textElement>?check addr 16518 doppelt: Aktuelle Ist-Temperatur des Heiz-Pufferspeichers oben</sgr:textElement>
+					<sgr:textElement>Heizungsspeicher Fühler oben in °C</sgr:textElement>
 					<sgr:language>de</sgr:language>
 				</sgr:dpLegibDesc>
 			</sgr:dataPoint>
@@ -772,10 +736,11 @@
 				</sgr:basicDataType>
 				<sgr:dpNameList>
 					<sgr:sLV1Name>ctHeatBufferTempLower</sgr:sLV1Name>
+					<sgr:sManufName>CTA_B4_Temp</sgr:sManufName>
 				</sgr:dpNameList>
 				<sgr:dpLegibDesc>
 					<sgr:textElement>
-						Aktuelle Ist-Temperatur des Heiz-Pufferspeichers unten
+						Heizungsspeicher Fühler unten in °C, optional, wenn nicht vorhanden = -99°C
 					</sgr:textElement>
 					<sgr:language>de</sgr:language>
 				</sgr:dpLegibDesc>
@@ -786,38 +751,6 @@
 				</sgr:modbusDataType>
 				<sgr:modbusFirstRegisterReference registerType="InputRegister" addr="2016" bitRank="0" />
 				<sgr:dpSizeNrRegisters>2</sgr:dpSizeNrRegisters>
-				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
-			</sgr:modbusDataPoint>
-		</sgr:dpListElement>
-		<sgr:dpListElement>
-			<sgr:dataPoint datapointName="ctaRemoteCtrlTimeSec"
-				mroVisibilityIndicator="M" rwpDatadirection="RW"
-				unit="SECONDS">
-				<sgr:basicDataType>
-					<sgr:int16U>0</sgr:int16U>
-				</sgr:basicDataType>
-				<sgr:dpNameList>
-					<sgr:sLV1Name>ctaRemoteCtrlTimeSec</sgr:sLV1Name>
-					<sgr:sManufName>CTA_Ext_Communication_Handler</sgr:sManufName></sgr:dpNameList>
-				<sgr:dpLegibDesc>
-					<sgr:textElement>Countdown Variable in sec. Wenn 0, dann Ext. Kommunikation inaktiv., Max. Wert 3000</sgr:textElement>
-					<sgr:language>de</sgr:language>
-				</sgr:dpLegibDesc>
-				<sgr:dpPrgDesc>
-					<sgr:textElement>remoteCtrlTimeSec is valid for all external commands and settings of the device. It must be > 0 for keeping the external command / Setpoint valid.
-					CTA_Ext_Heating_Command, CTA_Ext_Heating_Setpoint, CTA_Ext_SG, CTA_Ext_PwrReq, CTA_Ext_Cooling_Command, CTA_Ext_Cooling_Setpoint </sgr:textElement>
-					<sgr:language>en</sgr:language>
-				</sgr:dpPrgDesc>
-			</sgr:dataPoint>
-			<sgr:genAttribute>
-				<sgr:maxVal>3000</sgr:maxVal></sgr:genAttribute>
-			<sgr:modbusDataPoint>
-				<sgr:modbusDataType>
-					<sgr:int16U>0</sgr:int16U>					
-				</sgr:modbusDataType>
-				<sgr:modbusFirstRegisterReference registerType="HoldRegister"
-					addr="990" />
-				<sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
 				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
 			</sgr:modbusDataPoint>
 		</sgr:dpListElement>
@@ -859,7 +792,8 @@ die Einbindung in ein intelligentes Stromnetz
 					</sgr:enum>
 				</sgr:basicDataType>
 				<sgr:dpNameList>
-					<sgr:sLV1Name>SGReadyOpModeCmd</sgr:sLV1Name></sgr:dpNameList>
+					<sgr:sLV1Name>SGReadyOpModeCmd</sgr:sLV1Name>
+					<sgr:sManufName>CTA_Ext_SG</sgr:sManufName></sgr:dpNameList>
 				<sgr:dpLegibDesc>
 					<sgr:textElement>this the command acccording the bwp SG-Ready definition  https://www.waermepumpe.de/normen-technik/sg-ready/</sgr:textElement>
 					<sgr:language>en</sgr:language>
@@ -895,7 +829,7 @@ die Einbindung in ein intelligentes Stromnetz
 		
 		<sgr:dpListElement>
 			<sgr:dataPoint datapointName="SGReadyState"
-				mroVisibilityIndicator="M" rwpDatadirection="RW"
+				mroVisibilityIndicator="M" rwpDatadirection="R"
 				unit="NONE">
 				<sgr:basicDataType>
 					<sgr:enum>
@@ -903,7 +837,8 @@ die Einbindung in ein intelligentes Stromnetz
 					</sgr:enum>
 				</sgr:basicDataType>
 				<sgr:dpNameList>
-					<sgr:sLV1Name>SGReadyState</sgr:sLV1Name></sgr:dpNameList>
+					<sgr:sLV1Name>SGReadyState</sgr:sLV1Name>
+					<sgr:sManufName>CTA_Ext_SG</sgr:sManufName></sgr:dpNameList>
 				<sgr:dpLegibDesc>
 					<sgr:textElement>this the command acccording the bwp SG-Ready definition  https://www.waermepumpe.de/normen-technik/sg-ready/</sgr:textElement>
 					<sgr:language>en</sgr:language>
@@ -936,38 +871,6 @@ die Einbindung in ein intelligentes Stromnetz
 			</sgr:modbusDataPoint>
 		</sgr:dpListElement>
 		
-		<sgr:dpListElement>
-			<sgr:dataPoint datapointName="ctaRemoteCtrlTimeSec"
-				mroVisibilityIndicator="M" rwpDatadirection="RW"
-				unit="SECONDS">
-				<sgr:basicDataType>
-					<sgr:int16U>0</sgr:int16U>
-				</sgr:basicDataType>
-				<sgr:dpNameList>
-					<sgr:sLV1Name>remoteCtrlTimeSec </sgr:sLV1Name>
-					<sgr:sManufName>CTA_Ext_Communication_Handler</sgr:sManufName></sgr:dpNameList>
-				<sgr:dpLegibDesc>
-					<sgr:textElement>Countdown Variable in sec. Wenn 0, dann Ext. Kommunikation inaktiv., Max. Wert 3000</sgr:textElement>
-					<sgr:language>de</sgr:language>
-				</sgr:dpLegibDesc>
-				<sgr:dpPrgDesc>
-					<sgr:textElement>remoteCtrlTimeSec is valid for all external commands and settings of the device. It must be > 0 for keeping the external command / Setpoint valid.
-					CTA_Ext_Heating_Command, CTA_Ext_Heating_Setpoint, CTA_Ext_SG, CTA_Ext_PwrReq, CTA_Ext_Cooling_Command, CTA_Ext_Cooling_Setpoint </sgr:textElement>
-					<sgr:language>en</sgr:language>
-				</sgr:dpPrgDesc>
-			</sgr:dataPoint>
-			<sgr:genAttribute>
-				<sgr:maxVal>3000</sgr:maxVal></sgr:genAttribute>
-			<sgr:modbusDataPoint>
-				<sgr:modbusDataType>
-					<sgr:int16U>0</sgr:int16U>					
-				</sgr:modbusDataType>
-				<sgr:modbusFirstRegisterReference registerType="HoldRegister"
-					addr="990" />
-				<sgr:dpSizeNrRegisters>1</sgr:dpSizeNrRegisters>
-				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
-			</sgr:modbusDataPoint>
-		</sgr:dpListElement>
 	</sgr:fpListElement>
 	
 	<sgr:fpListElement>
@@ -1067,31 +970,6 @@ die Einbindung in ein intelligentes Stromnetz
 			</sgr:modbusDataPoint>
 		</sgr:dpListElement>
 
-
-		<sgr:dpListElement>
-			<sgr:dataPoint datapointName="ThermalEnergyDomWater" mroVisibilityIndicator="R" rwpDatadirection="R" unit="KILOWATT_HOURS">
-				<sgr:basicDataType>
-					<sgr:float32>0.0</sgr:float32>
-				</sgr:basicDataType>
-				<sgr:dpNameList>
-					<sgr:sLV1Name>ThermalEnergyDomWater</sgr:sLV1Name>
-				</sgr:dpNameList>
-				<sgr:dpLegibDesc>
-					<sgr:textElement>Summe der aufgenommenen elektrischen Energie des Verdichters für die Brauchwarmwasser-Erwärmung.</sgr:textElement>
-					<sgr:language>de</sgr:language>
-				</sgr:dpLegibDesc>
-			</sgr:dataPoint>
-			<sgr:modbusDataPoint>
-				<sgr:modbusDataType>
-					<sgr:int32U>0</sgr:int32U>
-					
-				</sgr:modbusDataType>
-				<sgr:modbusFirstRegisterReference registerType="InputRegister" addr="2056" bitRank="0" />
-				<sgr:dpSizeNrRegisters>2</sgr:dpSizeNrRegisters>
-				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
-			</sgr:modbusDataPoint>
-		</sgr:dpListElement>
-
 		<sgr:dpListElement>
 			<sgr:dataPoint datapointName="ThermalEnergyTot" mroVisibilityIndicator="R" rwpDatadirection="R" unit="KILOWATT_HOURS">
 				<sgr:basicDataType>
@@ -1157,16 +1035,13 @@ die Einbindung in ein intelligentes Stromnetz
 			</sgr:dataPoint>
 			<sgr:modbusDataPoint>
 				<sgr:modbusDataType>
-					<sgr:int32U>0</sgr:int32U>
-					
-					
+					<sgr:int32U>0</sgr:int32U>			
 				</sgr:modbusDataType>
 				<sgr:modbusFirstRegisterReference registerType="InputRegister" addr="2056" bitRank="0" />
 				<sgr:dpSizeNrRegisters>2</sgr:dpSizeNrRegisters>
 				<sgr:masterFunctionsSupported>Primitives</sgr:masterFunctionsSupported>
 			</sgr:modbusDataPoint>
 		</sgr:dpListElement>
-
 
 		<sgr:dpListElement>
 			<sgr:dataPoint datapointName="ActPowerACtot" mroVisibilityIndicator="O" rwpDatadirection="R" unit="KILOWATT_HOURS">
@@ -1175,6 +1050,7 @@ die Einbindung in ein intelligentes Stromnetz
 				</sgr:basicDataType>
 				<sgr:dpNameList>
 					<sgr:sLV1Name>ActPower</sgr:sLV1Name>
+					<sgr:sManufName>State_CompPower</sgr:sManufName>
 				</sgr:dpNameList>
 				<sgr:dpLegibDesc>
 					<sgr:textElement>
