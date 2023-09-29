@@ -16,6 +16,12 @@
       <author>Ergo/sz</author>
       <comment>Finalisierung Go-Live</comment>
     </changeLog>
+    <changeLog>
+      <version>1.0.0</version>
+      <date>2023-09-30</date>
+      <author>Ergo/ag</author>
+      <comment>Finalisierung</comment>
+    </changeLog>
   </releaseNotes>
   <functionalProfile>
     <functionalProfileIdentification>
@@ -24,25 +30,26 @@
       <functionalProfileType>SGrStates_EVSE</functionalProfileType>
       <levelOfOperation>1</levelOfOperation>
       <versionNumber>
-        <primaryVersionNumber>0</primaryVersionNumber>
-        <secondaryVersionNumber>2</secondaryVersionNumber>
-        <subReleaseVersionNumber>2</subReleaseVersionNumber>
+        <primaryVersionNumber>1</primaryVersionNumber>
+        <secondaryVersionNumber>0</secondaryVersionNumber>
+        <subReleaseVersionNumber>0</subReleaseVersionNumber>
       </versionNumber>
     </functionalProfileIdentification>
     <legibleDescription>
       <textElement>
         <![CDATA[	
           <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
-          <p>Wallboxen (ElectricVehicleSupplyEquipment «EVSE») müssen über einen Regler verfügen, welcher vier Betriebszustände abdeckt:</p>
+          <p>Wallboxen (ElectricVehicleSupplyEquipment «EVSE») müssen über einen Regler verfügen, welcher folgende Betriebszustände abdeckt:</p>
           <ol>
-            <li>Normalbetrieb  uneingeschränkt entsprechend der konfigurierten Anschlussleistung Laden</li>
-            <li>Minimale Ladung  AC Ladung 6A, DC Ladung 10kW, Bidirektionale Lader Max feed-in für Vehicle to Infrastructurev2X)</li>
+            <li>Normalbetrieb uneingeschränkt entsprechend der konfigurierten Anschlussleistung laden</li>
+            <li>Minimale Ladung (AC Ladung 6A, DC Ladung 10kW, Bidirektionales Laden, maximales Feed-In für Vehicle to Infrastructure V2X)</li>
           </ol>
           
-          <p>Hinweis</p>
+          <p>Hinweise:</p>
           <ul>
-            <li>Geräte mit Stufe 2 können im Stufe 1 Betrieb genutzt werden, wenn der zweite Kontakt fest auf den Zustand 0 verdrahtet wird.</li>
-            <li>Geräte mit 2 Klemmenkontakte setzen die Klemmen-Datenpunkte  um.</li>
+            <li>Geräte mit Stufe 2 können im Stufe-1-Betrieb genutzt werden, wenn der zweite Kontakt fest auf den Zustand 0 verdrahtet wird.
+                Dadurch wird das komplette Abstellen der Stromversorgung verhindert.</li>
+            <li>Geräte mit 2 Klemmenkontakten setzen die Klemmen-Datenpunkte um.</li>
             <li>Geräte mit Modbus oder RestAPI setzen bevorzugt den Enum-basierten Datenpunkt um.</li>
           </ul>
         ]]>
@@ -54,15 +61,17 @@
     <dataPointListElement>
       <dataPoint>
         <dataPointName>EVSE_StateLv1</dataPointName>
-        <dataDirection>R</dataDirection>
+        <dataDirection>W</dataDirection>
         <presenceLevel>M</presenceLevel>
         <dataType>
           <enum>
             <enumEntry>
               <literal>EV_NORMAL</literal>
+              <description>Normalbetrieb  uneingeschränkt entsprechend der konfigurierten Anschlussleistung Laden</description>
             </enumEntry>
             <enumEntry>
               <literal>EV_REDUCED</literal>
+              <description>Minimale Ladung (AC Ladung 6A, DC Ladung 10kW, Bidirektionales Laden, maximales Feed-In für Vehicle to Infrastructure V2X)</description>
             </enumEntry>
           </enum>
         </dataType>
