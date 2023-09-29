@@ -249,14 +249,16 @@
     </xsl:template>
 
     <xsl:template match="sgr:enum">
-        <div style="padding-left:1em;">
+        <div>
+          <ul>
             <xsl:for-each select="sgr:enumEntry">
-                <div>
+                <li>
                     <strong><xsl:value-of select="sgr:literal" /></strong>
                     <xsl:if test="sgr:ordinal"> = <xsl:value-of select="sgr:ordinal" /></xsl:if>
                     <xsl:if test="sgr:description">: <xsl:value-of select="sgr:description" /></xsl:if>
-                </div>
+                </li>
             </xsl:for-each>
+          </ul>
         <xsl:if test="sgr:hexMask">
             <div>Hex Mask: 0x<xsl:value-of select="sgr:hexMask"/></div>
         </xsl:if>        
