@@ -19,8 +19,8 @@
                     <th>Description</th>
                     <th>Unit</th>
                     <th>Type</th>
-                    <th>MRO</th>
-                    <th>RWP</th>
+                    <th>MRO<sup>1)</sup></th>
+                    <th>RWP<sup>2)</sup></th>
                 </tr>
                 <xsl:for-each select="sgr:dataPointListElement">
                     <xsl:apply-templates select="." />

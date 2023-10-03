@@ -77,6 +77,11 @@
 			</xsl:for-each>
 
 		</div>
+
+        <!-- Footer-->
+        <div class="documentfooter"><sup>1)</sup> R read, W write, P persistent
+                <br/><sup>2)</sup> M mandatory, R recommended, O optional
+        </div>
 	</xsl:template>
 
 	<!-- Device information -->
