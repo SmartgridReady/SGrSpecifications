@@ -23,7 +23,7 @@
     <hardwareRevision>1.1.0</hardwareRevision>
     <brandName>OptiHeat Inverta</brandName>
     <powerSource>mains3Phase</powerSource>
-    <nominalPower>nominalPower</nominalPower>
+    <nominalPower>5 - 35 kW</nominalPower>
     <manufacturerLabel>
 			CTA OH Inverta Wärmepumpen
 		</manufacturerLabel>
@@ -31,14 +31,12 @@
     <levelOfOperation>4</levelOfOperation>
     <programmerHints>
       <textElement>
-        There is a timer "remoteCtrlTimeSec" (CTA_Ext_Heating_Command) aligned to all external
-        commands that counts down for lifetime management. It's value must be > 0 for keeping the
-        external command / Setpoint valid.
-        CTA_Ext_Heating_Setpoint, CTA_Ext_SG, CTA_Ext_PwrReq, CTA_Ext_Cooling_Command,
-        CTA_Ext_Cooling_Setpoint.
-        It must be set through the controlling functional profile.
+        ProgrammersHint: There is a timer "remoteCtrlTimeSec" (CTA_Ext_Heating_Command) aligned to all external commands that counts down for lifetime management. It's value must be > 0 for keeping the external command / Setpoint valid.
+          CTA_Ext_Heating_Setpoint, CTA_Ext_SG, CTA_Ext_PwrReq, CTA_Ext_Cooling_Command, CTA_Ext_Cooling_Setpoint.
+          It must be set through the controlling functional profile.
       </textElement>
       <language>en</language>
+      <uri>https://cta.ch/privatkunden/produkte/oh-i-eco-sw</uri>
     </programmerHints>
   </deviceInformation>
   <interfaceList>
@@ -52,8 +50,65 @@
         </modbusTcp>
         <firstRegisterAddressIsOne>false</firstRegisterAddressIsOne>
         <bitOrder>ChangeWordOrder</bitOrder>
+        <masterFunctionsSupportedList>
+          <masterFunctionsSupported>Primitives</masterFunctionsSupported>
+        </masterFunctionsSupportedList>
       </modbusInterfaceDescription>
       <functionalProfileList>
+        <functionalProfileListElement>
+          <functionalProfile>
+            <functionalProfileName>DeviceInformation</functionalProfileName>
+            <functionalProfileIdentification>
+              <specificationOwnerIdentification>0</specificationOwnerIdentification>
+              <functionalProfileCategory>DeviceInformation</functionalProfileCategory>
+              <functionalProfileType>UNDEF</functionalProfileType>
+              <levelOfOperation>4</levelOfOperation>
+              <versionNumber>
+                <primaryVersionNumber>0</primaryVersionNumber>
+                <secondaryVersionNumber>2</secondaryVersionNumber>
+                <subReleaseVersionNumber>1</subReleaseVersionNumber>
+              </versionNumber>
+            </functionalProfileIdentification>
+            <legibleDescription>
+              <textElement>Dieses Funktionsprofil ermöglicht das Handling von Datenpunkten, welche für das ganze Gerät gelten</textElement>
+              <language>de</language>
+            </legibleDescription>
+          </functionalProfile>
+          <dataPointList>
+            <dataPointListElement>
+              <dataPoint>
+                <dataPointName>ctaRemoteCtrlTimeSec</dataPointName>
+                <dataDirection>RW</dataDirection>
+                <presenceLevel>M</presenceLevel>
+                <dataType>
+                  <int16U />
+                </dataType>
+                <unit>SECONDS</unit>
+                <alternativeNames>
+                  <sLV1Name>remoteCtrlTimeSec</sLV1Name>
+                  <manufName>CTA_Ext_Communication_Handler</manufName>
+                </alternativeNames>
+                <legibleDescription>
+                  <textElement>Countdown Variable in sec. Wenn 0, dann Ext. Kommunikation inaktiv., Max. Wert 3000</textElement>
+                  <language>de</language>
+                </legibleDescription>
+                <programmerHints>
+                  <textElement>remoteCtrlTimeSec is valid for all external commands and settings of the device. It must be > 0 for keeping the external command / Setpoint valid.
+                    CTA_Ext_Heating_Command, CTA_Ext_Heating_Setpoint, CTA_Ext_SG, CTA_Ext_PwrReq, CTA_Ext_Cooling_Command, CTA_Ext_Cooling_Setpoint </textElement>
+                  <language>en</language>
+                </programmerHints>
+              </dataPoint>
+              <modbusDataPointConfiguration>
+                <modbusDataType>
+                  <int16U/>
+                </modbusDataType>
+                <address>990</address>
+                <registerType>HoldRegister</registerType>
+                <numberOfRegisters>1</numberOfRegisters>
+              </modbusDataPointConfiguration>
+            </dataPointListElement>
+          </dataPointList>
+        </functionalProfileListElement>
         <functionalProfileListElement>
           <functionalProfile>
             <functionalProfileName>HeatPumpBase</functionalProfileName>
@@ -168,7 +223,7 @@
                   <manufName>CTA_HeatPump_FSM</manufName>
                 </alternativeNames>
                 <legibleDescription>
-                  <textElement>Status Code Betriebsart gem. Liste</textElement>
+                  <textElement>Status Code Betriebsart gem. Liste, eher als OpState führen?</textElement>
                   <language>de</language>
                 </legibleDescription>
               </dataPoint>
@@ -469,12 +524,12 @@
             <dataPointListElement>
               <dataPoint>
                 <dataPointName>PowerCtrlStpt</dataPointName>
-                <dataDirection>W</dataDirection>
+                <dataDirection>RW</dataDirection>
                 <presenceLevel>M</presenceLevel>
                 <dataType>
                   <float64 />
                 </dataType>
-                <unit>NONE</unit>
+                <unit>PERCENT</unit>
                 <alternativeNames>
                   <manufName>CTA_DWRequest</manufName>
                 </alternativeNames>
@@ -485,18 +540,19 @@
               </dataPoint>
               <genericAttributes>
                 <maxVal>100.0</maxVal>
-                <minVal>25.0</minVal>
+                <minVal>38.0</minVal>
+                <!-- TODO check whether this is needed
+                <unitConversionMultiplicator>2.0</unitConversionMultiplicator>
+                -->
               </genericAttributes>
               <modbusDataPointConfiguration>
                 <modbusDataType>
                   <float64 />
                 </modbusDataType>
                 <address>1028</address>
-                <registerType>InputRegister</registerType>
+                <registerType>HoldRegister</registerType>
                 <numberOfRegisters>2</numberOfRegisters>
               </modbusDataPointConfiguration>
-              <modbusAttributes>
-              </modbusAttributes>
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
@@ -555,45 +611,6 @@
                 <address>2032</address>
                 <registerType>InputRegister</registerType>
                 <numberOfRegisters>2</numberOfRegisters>
-              </modbusDataPointConfiguration>
-            </dataPointListElement>
-            <dataPointListElement>
-              <dataPoint>
-                <dataPointName>ctaRemoteCtrlTimeSec</dataPointName>
-                <dataDirection>RW</dataDirection>
-                <presenceLevel>M</presenceLevel>
-                <dataType>
-                  <int16U />
-                </dataType>
-                <unit>SECONDS</unit>
-                <alternativeNames>
-                  <manufName>CTA_Ext_Communication_Handler</manufName>
-                </alternativeNames>
-                <legibleDescription>
-                  <textElement>Countdown Variable in sec. Wenn 0, dann Ext. Kommunikation inaktiv.,
-                    Max. Wert 3000</textElement>
-                  <language>de</language>
-                </legibleDescription>
-                <programmerHints>
-                  <textElement>
-                    remoteCtrlTimeSec is valid for all external commands and settings of the device.
-                    It must be > 0 for keeping the external command / Setpoint valid.
-                    CTA_Ext_Heating_Command, CTA_Ext_Heating_Setpoint, CTA_Ext_SG, CTA_Ext_PwrReq,
-                    CTA_Ext_Cooling_Command, CTA_Ext_Cooling_Setpoint
-                  </textElement>
-                  <language>en</language>
-                </programmerHints>
-              </dataPoint>
-              <genericAttributes>
-                <maxVal>3000</maxVal>
-              </genericAttributes>
-              <modbusDataPointConfiguration>
-                <modbusDataType>
-                  <int16U />
-                </modbusDataType>
-                <address>990</address>
-                <registerType>HoldRegister</registerType>
-                <numberOfRegisters>1</numberOfRegisters>
               </modbusDataPointConfiguration>
             </dataPointListElement>
           </dataPointList>
@@ -707,6 +724,10 @@
                   </enum>
                 </dataType>
                 <unit>NONE</unit>
+                <alternativeNames>
+                  <sLV1Name>ctaHCOpState</sLV1Name>
+                  <manufName>CTA_HK1_Status_UsrSet</manufName>
+                </alternativeNames>
                 <legibleDescription>
                   <textElement>Auslesen des aktuellen Status des Heiz-/Kühlkreises (Aus,
                     Bereitschaft, Programm, Comfort, Eco)</textElement>
@@ -731,6 +752,10 @@
                   <float64 />
                 </dataType>
                 <unit>DEGREES_CELSIUS</unit>
+                <alternativeNames>
+                  <sLV1Name>SupplyWaterTemp</sLV1Name>
+                  <manufName>CTA_B21_Temp</manufName>
+                </alternativeNames>
                 <legibleDescription>
                   <textElement>Auslesen der aktuellen aktuellen-Temperatur des Vorlaufs.</textElement>
                   <language>de</language>
@@ -754,6 +779,10 @@
                   <float64 />
                 </dataType>
                 <unit>DEGREES_CELSIUS</unit>
+                <alternativeNames>
+                  <sLV1Name>SupplyWaterTempStpt</sLV1Name>
+                  <manufName>CTA_Ext_Heating_Setpoint</manufName>
+                </alternativeNames>
                 <legibleDescription>
                   <textElement>Setzen der aktuellen Soll-Temperatur des Vorlaufs (Grundwert).</textElement>
                   <language>de</language>
@@ -763,7 +792,7 @@
                 <modbusDataType>
                   <float64 />
                 </modbusDataType>
-                <address>2154</address>
+                <address>1001</address>
                 <registerType>HoldRegister</registerType>
                 <numberOfRegisters>2</numberOfRegisters>
               </modbusDataPointConfiguration>
@@ -777,6 +806,10 @@
                   <float64 />
                 </dataType>
                 <unit>DEGREES_CELSIUS</unit>
+                <alternativeNames>
+                  <sLV1Name>ReturnSupplyWaterTemp</sLV1Name>
+                  <manufName>CTA_B71_Temp</manufName>
+                </alternativeNames>
                 <legibleDescription>
                   <textElement>Auslesen der aktuellen aktuellen-Temperatur des Rücklaufs.</textElement>
                   <language>de</language>
@@ -789,45 +822,6 @@
                 <address>2004</address>
                 <registerType>HoldRegister</registerType>
                 <numberOfRegisters>2</numberOfRegisters>
-              </modbusDataPointConfiguration>
-            </dataPointListElement>
-            <dataPointListElement>
-              <dataPoint>
-                <dataPointName>ctaRemoteCtrlTimeSec</dataPointName>
-                <dataDirection>RW</dataDirection>
-                <presenceLevel>M</presenceLevel>
-                <dataType>
-                  <int16U />
-                </dataType>
-                <unit>SECONDS</unit>
-                <alternativeNames>
-                  <manufName>CTA_Ext_Communication_Handler</manufName>
-                </alternativeNames>
-                <legibleDescription>
-                  <textElement>Countdown Variable in sec. Wenn 0, dann Ext. Kommunikation inaktiv.,
-                    Max. Wert 3000</textElement>
-                  <language>de</language>
-                </legibleDescription>
-                <programmerHints>
-                  <textElement>
-                    remoteCtrlTimeSec is valid for all external commands and settings of the device.
-                    It must be > 0 for keeping the external command / Setpoint valid.
-                    CTA_Ext_Heating_Command, CTA_Ext_Heating_Setpoint, CTA_Ext_SG, CTA_Ext_PwrReq,
-                    CTA_Ext_Cooling_Command, CTA_Ext_Cooling_Setpoint
-                  </textElement>
-                  <language>en</language>
-                </programmerHints>
-              </dataPoint>
-              <genericAttributes>
-                <maxVal>3000</maxVal>
-              </genericAttributes>
-              <modbusDataPointConfiguration>
-                <modbusDataType>
-                  <int16U />
-                </modbusDataType>
-                <address>990</address>
-                <registerType>HoldRegister</registerType>
-                <numberOfRegisters>1</numberOfRegisters>
               </modbusDataPointConfiguration>
             </dataPointListElement>
           </dataPointList>
@@ -888,6 +882,10 @@
                   </enum>
                 </dataType>
                 <unit>NONE</unit>
+                <alternativeNames>
+                  <sLV1Name>ctaDomHotWOpMode</sLV1Name>
+                  <manufName>CTA_DW_Status_UsrSet</manufName>
+                </alternativeNames>
                 <legibleDescription>
                   <textElement>
                     ?checkDoku TODO: enum. Grund-Betriebsart der Brauchwasseranlage (Bereitschaft,
@@ -914,6 +912,10 @@
                   <float64 />
                 </dataType>
                 <unit>DEGREES_CELSIUS</unit>
+                <alternativeNames>
+                  <sLV1Name>DomHotWTempStpt</sLV1Name>
+                  <manufName>CTA_DW_SetpointComfort</manufName>
+                </alternativeNames>
                 <legibleDescription>
                   <textElement>
                     Zieltemperatur fuer den Brauchwarmwasserspeicher.
@@ -1020,7 +1022,7 @@
             <dataPointListElement>
               <dataPoint>
                 <dataPointName>HeatBufferTempStptOffset</dataPointName>
-                <dataDirection>W</dataDirection>
+                <dataDirection>RW</dataDirection>
                 <presenceLevel>M</presenceLevel>
                 <dataType>
                   <float64 />
