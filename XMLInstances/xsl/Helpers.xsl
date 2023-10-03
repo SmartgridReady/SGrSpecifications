@@ -108,6 +108,15 @@
 
     <!-- AlternativeNames-->
     <xsl:template match="sgr:alternativeNames">
+        <xsl:if test="sgr:sLV1Name">
+            <tr class="ontologyDetails">
+                <td>SGr label V1 (legacy)</td>
+                <td>
+                    <xsl:value-of select="sgr:sLV1Name" />
+                </td>
+            </tr>
+        </xsl:if>
+
         <xsl:if test="sgr:workName">
             <tr class="ontologyDetails">
                 <td>Temporary Work Name</td>
@@ -267,13 +276,15 @@
 
     <xsl:template match="sgr:bitmap">
         <div style="padding-left:1em;">
+            <ul>
             <xsl:for-each select="sgr:bitmapEntry">
-                <div>
+                <li>
                     <strong><xsl:value-of select="sgr:literal" /></strong>
                     <xsl:if test="sgr:hexMask"> = 0x<xsl:value-of select="sgr:hexMask" /></xsl:if>
                     <xsl:if test="sgr:description">: <xsl:value-of select="sgr:description" /></xsl:if>
-                </div>
+                </li>
             </xsl:for-each>
+            </ul>
         </div>       
     </xsl:template>
 
