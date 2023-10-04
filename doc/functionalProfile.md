@@ -24,10 +24,10 @@ SGr classifies and identifies any functional profile by the following values
 
 | Element               | Description |
 |-----------------------|-------------|
-| specsOwnerId          | Identifier of the functional profile owner. |
-| profileIdentification | Functional profile class (see [SGrEnumProfileType.xsd](/SchemaDatabase/SGr/Generic/SGrEnumProfileType.xsd) ) |
-| subProfileIdent       | Functional profile subclass (see [SGrEnumSubProfileType.xsd](/SchemaDatabase/SGr/Generic/SGrEnumSubProfileType.xsd) ) |
-| sgrLevelOfOperation   | SGrLevelOfOperation defines a controls complexity  (see [SGrLevelOfOperation.md](SGrLevelOfOperation.md) ) |
+| specificationOwnerIdentification          | Identifier of the functional profile owner. |
+| functionalProfileCategory | Functional profile class (see [SGrFunctionalProfileCategory.xsd](/SchemaDatabase/SGr/Generic/SGrFunctionalProfileCategory.xsd) ) |
+| functionalProfileType       | Functional profile subclass (see [SGrFunctionalProfileType.xsd](/SchemaDatabase/SGr/Generic/SGrFunctionalProfileType.xsd) ) |
+| levelOfOperation   | levelOfOperation defines a controls complexity  (see [LevelOfOperation.md](LevelOfOperation.md) ) |
 | versionNumber         | Version of the functional profile. Changes in primaryVersionNumber indicate breaking changes, changes in secondaryVersionNumber indicate complimentary changes, changes in subReleaseVersionNumber are without impact on the functionality | 
 
 ### Release Notes
@@ -37,35 +37,45 @@ The release note section contains meta data that descibe history and current sta
 |-----------|-------------|
 | state     | one of Draft, Review, Released, Revoked |
 | remarks   |  Optional, arbitrary text. Can be usefull e.g. during draft phase. |
-| changelog | Optional, can occure multiple times. Contains release notes to the version concerned |
+| changeLog | Optional, can occure multiple times. Contains release notes to the version concerned |
 
 ### Descriptions
 | Element     | Description |
 |-------------|-------------|
-| fpNameList  | a list of relevant namespaces list for to display names used in different standards like EEBUS, IEC6850,, SAREF4ENER etc. (see [SGrNamelistType](SGrNamelistType.md))|
-| fpLegibDesc | optional, can occure multiple times, but ideally just a once per language. Contains details concerning the intended use case of the functional profile. |
-| fpPrgDesc   | optional, can occure multiple times, but ideally just a once per language. Contains details for the programmer. This element should only be used in external interfaces, not in functional profiles. (see #28) |
-
+| alternativeNames  | a list of relevant namespaces list for to display names used in different standards like EEBUS, IEC6850,, SAREF4ENER etc. (see [AlternativeNames](AlternativeNames.md))|
+| legibleDescription | optional, can occure multiple times, but ideally just a once per language. Contains details concerning the intended use case of the functional profile. |
 
 ## Generic Attributes
-SGr allows to associate attributes to a functional profile (i.e. concerning every data point). See [SGrAttr4GenericType](SGrAttr4GenericType.md) for details. Any attribute defined on the functional profile level are mandatory to any product that implements this functional profile. However, the product can optionally add further attributes based on its own needs.
+SGr allows to associate attributes to a functional profile (i.e. concerning every data point). See [GenericAttributes](GenericAttributes.md) for details. Any attribute defined on the functional profile level are mandatory to any product that implements this functional profile. However, the product can optionally add further attributes based on its own needs.
 
 # Data Point Attributes
 | Element     | Description |
 |-------------|-------------|
 | datapointName | Name of the data point. Should be unique within the functional profile |
-| rwpDatadirection | R if data point can be read, W for write, P for persistence |
-| mroVisibilityIndicator | Datapoint optionality: Mandatory, Recommended, Optional |
+| dataDirection | R if data point can be read, W for write, P for persistence |
+| presenceLevel | Datapoint optionality: Mandatory, Recommended, Optional |
 | unit | Physical unit of data point |
 | DataType |  Data point type|
-| dpNameList | a list of relevant namespaces list for to display names used in different standards like EEBUS, IEC6850,, SAREF4ENER etc. (see [SGrNamelistType](SGrNamelistType.md))|
-| dpLegibDesc | optional, can occure multiple times, but ideally just a once per language. Contains details concerning the intended use case of the functional profile. |
-| dpPrgDesc | optional, can occure multiple times, but ideally just a once per language. Contains details for the programmer. This element should only be used in external interfaces, not in functional profiles. (see #28) |
-
+| alternativeNames | a list of relevant namespaces list for to display names used in different standards like EEBUS, IEC6850,, SAREF4ENER etc. (see [AlternativeNames](AlternativeNames.md))|
+| legibleDescription | optional, can occure multiple times, but ideally just a once per language. Contains details concerning the intended use case of the functional profile. |
 
 ## Generic Attributes
-SGr allows to associate attributes to a data point. See [SGrAttr4GenericType](SGrAttr4GenericType.md) for details.
+SGr allows to associate attributes to a data point. See [GenericAttributes](GenericAttributes.md) for details.
 Any attribute defined on the functional profile level are mandatory to any product that implements this functional profile. However, the product can optionally add further attributes based on its own needs.
 
+## New Functional Profiles
+
+## File Naming Schema
+Functional profiles should have the following file naming conventions:
+
+`FP_[specificationOwnerIdentification]_[FunctionalProfileCategory]_[FunctionalProfileType]_[levelOfOperation]_[majorVerion].[minorVerion].xml`
+
+## Descriptions
+Functional profile descriptions should be structured as follows:
+- Image indicating the typical appliacle, together with a easily understandable title
+- Short explanation (i.e. long version of the title)
+- Detailed explanation, including very attribute.
+- How to apply the functional profile concerning presence level (i.e. how to handle recommended and optional data points)
+
 ## Open Points
-- What are the rules for naming a functional profile (sgr:functionalProfile@profileName)? Is this strict (then it should be part of the classification), or loose (then it should be part of the legibDesc)?
+- What are the rules for naming a functional profile (sgr:functionalProfile@profileName)? Is this strict (then it should be part of the classification), or loose (then it should be part of the legibleDescription)?

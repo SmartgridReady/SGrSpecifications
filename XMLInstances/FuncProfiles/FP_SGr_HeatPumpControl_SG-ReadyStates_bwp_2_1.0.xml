@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/SGr.xsl"?>
+<FunctionalProfileFrame xmlns="http://www.smartgridready.com/ns/V0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/SGrIncluder.xsd">
+  <releaseNotes>
+    <state>Review</state>
+    <changeLog>
+      <version>0.1.2</version>
+      <date>2021-08-17</date>
+      <author>IBT/cb</author>
+      <comment>Vorbereitung beta test</comment>
+    </changeLog>
+    <changeLog>
+      <version>1.0.0</version>
+      <date>2023-06-30</date>
+      <author>Ergo/sz</author>
+      <comment>Finalisierung</comment>
+    </changeLog>
+  </releaseNotes>
+  <functionalProfile>
+    <functionalProfileIdentification>
+      <specificationOwnerIdentification>0</specificationOwnerIdentification>
+      <functionalProfileCategory>HeatPumpControl</functionalProfileCategory>
+      <functionalProfileType>SG-ReadyStates_bwp</functionalProfileType>
+      <levelOfOperation>2</levelOfOperation>
+      <versionNumber>
+        <primaryVersionNumber>1</primaryVersionNumber>
+        <secondaryVersionNumber>0</secondaryVersionNumber>
+        <subReleaseVersionNumber>0</subReleaseVersionNumber>
+      </versionNumber>
+    </functionalProfileIdentification>
+    <legibleDescription>
+      <textElement>
+        <![CDATA[	
+          <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
+          <h4>Wärmepumpen mit 4 Betriebszuständen</h4>
+          <p>Stufe 2 Funktionsprofil für Wärmepumpen mit 4 Betriebszuständen (SG Ready Wärmepumpen)</p>
+          <p>Dieses Funktionsprofil bildet die beiden SG-Ready Klemmenkontakte ab:</p>
+          <ul>
+            <li><strong>Klemmenzustand 1,0</strong> : EVU-Sperre und umfasst im Normalfall maximal 2 Stunden „harte“ Sperrzeit (Betriebszustand 1 gemäss bwp)</li>
+            <li><strong>Klemmenzustand 0,0</strong> : Wärmepumpe im Normalbetrieb (Betriebszustand 2 gemäss bwp)</li>
+            <li><strong>Klemmenzustand 0,1</strong> : Einschaltempfehlung mit Anhebung (Betriebszustand 3 gemäss bwp)</li>
+            <li><strong>Klemmenzustand 1,1</strong> : Definitiver Anlaufbefehl (insofern dieser im Rahmen der Regeleinstellungen möglich ist) (Betriebszustand 4 gemäss bwp)</li>
+          </ul>
+          <p>Der Communicator (z.B. CEM) berücksichtigt die Gerätevorgaben zur Schaltfrequenz (Attribute maxLockTimeMintues und minRunTimeMinutes).</p>
+          <p>„SG Ready“ ist ein Markenzeichen des Bundesverbands Wärmepumpe e. V.<br/>
+             Weiterführende Informationen unter <a href="https://www.waermepumpe.de/normen-technik/sg-ready/">https://www.waermepumpe.de/normen-technik/sg-ready/</a>).</p>
+        ]]>
+      </textElement>
+      <language>de</language>
+    </legibleDescription>
+  </functionalProfile>
+  <genericAttributes>
+    <maxLockTimeMinutes>120</maxLockTimeMinutes>
+    <minRunTimeMinutes>20</minRunTimeMinutes>
+  </genericAttributes>
+  <dataPointList>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>SGReadyInp1isON</dataPointName>
+        <dataDirection>W</dataDirection>
+        <presenceLevel>M</presenceLevel>
+        <dataType>
+          <boolean/>
+        </dataType>
+        <unit>NONE</unit>
+        <legibleDescription>
+          <textElement>Schaltzustand erste Klemme (0 oder 1)</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>SGReadyInp2isON</dataPointName>
+        <dataDirection>W</dataDirection>
+        <presenceLevel>M</presenceLevel>
+        <dataType>
+          <boolean/>
+        </dataType>
+        <unit>NONE</unit>
+        <legibleDescription>
+          <textElement>Schaltzustand zweite Klemme (0 oder 1)</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+  </dataPointList>
+</FunctionalProfileFrame>

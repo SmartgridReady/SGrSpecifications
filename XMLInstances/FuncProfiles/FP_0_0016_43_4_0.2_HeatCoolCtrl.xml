@@ -1,244 +1,328 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="/xsl/SGr.xsl"?>
-<sgr:SGrFunctionalProfileFrame xmlns:sgr="http://www.smartgridready.com/ns/V0/"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/SGrIncluder.xsd">
-	<sgr:releaseNotes>
-		<sgr:state>Review</sgr:state>
-		<sgr:remarks>This functional profile is in preliminary state. Before implementing external-interfaces or any other
-            functionality, the detailed functionality must be verified with the battery manufacturer.
-        </sgr:remarks>
-		<sgr:changelog>
-			<sgr:version>0.1.1</sgr:version>
-			<sgr:date>2021-04-05</sgr:date>
-			<sgr:author>IBT/cb</sgr:author>
-			<sgr:comment>Vorbereitung beta test</sgr:comment>
-		</sgr:changelog>
-		<sgr:changelog>
-			<sgr:version>0.2.2</sgr:version>
-			<sgr:date>2022-10-31</sgr:date>
-			<sgr:author>Ergo/sz</sgr:author>
-			<sgr:comment>Finalisierung Go-Live</sgr:comment>
-		</sgr:changelog>
-	</sgr:releaseNotes>
-	<sgr:functionalProfile>
-		<sgr:profileNumber>
-			<sgr:specsOwnerId>0</sgr:specsOwnerId>
-			<sgr:profileIdentification>HeatPumpControl</sgr:profileIdentification>
-			<sgr:subProfileIdent>HeatCoolCtrl</sgr:subProfileIdent>
-			<sgr:sgrLevelOfOperation>m</sgr:sgrLevelOfOperation>
-			<sgr:versionNumber>
-				<sgr:primaryVersionNumber>0</sgr:primaryVersionNumber>
-				<sgr:secondaryVersionNumber>2</sgr:secondaryVersionNumber>
-				<sgr:subReleaseVersionNumber>2</sgr:subReleaseVersionNumber>
-			</sgr:versionNumber>
-		</sgr:profileNumber>
-		<sgr:fpNameList>
-			<sgr:sLV1Name>HeatCoolCtrl</sgr:sLV1Name>
-			<sgr:sEN17609Name>HeatCool Group</sgr:sEN17609Name>
-		</sgr:fpNameList>
-		<sgr:fpLegibDesc>
-			<sgr:textElement>Dieses Profil definiert die erweiterten Datenpunkte zum Grundprofil
-				"HeatPumpBase", welche zur Steuerung eines Heiz- oder Kühlkreises zur Verfügung
-				gestellt werden. Derselbe physikalische Kreislauf kann entweder für das Heizen oder
-				das Kühlen verwendet werden. Das Heiz-/Kühlkreisprofil muss immer in Kombination mit
-				dem Grundprofil der Wärmepumpe bewirtschaftet werden. Es können mehrere
-				Heiz-/Kühlkreisprofile definiert werden.</sgr:textElement>
-			<sgr:language>de</sgr:language>
-		</sgr:fpLegibDesc>
-	</sgr:functionalProfile>
-	<sgr:dpListElement>
-		<sgr:dataPoint datapointName="HeatCoolCtrlOpModeCmd" mroVisibilityIndicator="O"
-			rwpDatadirection="RW" unit="NONE">
-			<sgr:basicDataType>
-				<sgr:enum>
-					<sgr:sgrHCOpMode>HC_READY</sgr:sgrHCOpMode>
-				</sgr:enum>
-			</sgr:basicDataType>
-			<sgr:dpNameList>
-				<sgr:sLV1Name>HeatCoolCtrlOpModeCmd</sgr:sLV1Name>
-			</sgr:dpNameList>
-			<sgr:dpLegibDesc>
-				<sgr:textElement>
-					<![CDATA[
-					<p>Festlegen der Betriebsart des Heiz-/Kühlkreises</p>
-					<ol>
-   					<li><strong>HC_OFF:</strong> Aus </li>
-   					<li><strong>HC_READY:</strong> Bereitschaft</li>
-   					<li><strong>HC_PROG_OP:</strong> Programm</li>
-   					<li><strong>HC_COMFORT_OP:</strong> Komfort Betrieb</li>  
-   					<li><strong>HC_ECO_OP:</strong> Eco Heizbetrieb</li>
-					</ol>
-					]]>
-					</sgr:textElement>
-				<sgr:language>de</sgr:language>
-			</sgr:dpLegibDesc>
-		</sgr:dataPoint>
-	</sgr:dpListElement>
-	<sgr:dpListElement>
-		<sgr:dataPoint datapointName="HeatCoolOpState" mroVisibilityIndicator="O"
-			rwpDatadirection="RW" unit="NONE">
-			<sgr:basicDataType>
-				<sgr:enum2bitmapIndex>
-					<sgr:sgrHCOpstate>HC_OFF</sgr:sgrHCOpstate>
-					
-				</sgr:enum2bitmapIndex>
-
-			</sgr:basicDataType>
-			<sgr:dpNameList>
-				<sgr:sLV1Name>HeatCoolOpState</sgr:sLV1Name>
-			</sgr:dpNameList>
-			<sgr:dpLegibDesc>
-				<sgr:textElement>
-					<![CDATA[
-					<P>Auslesen des aktuellen Status des Heiz-Kuehlkreises (BitmapRegister)</p>
-					<ol>
-					<li><strong>HC_OFF:</strong> Abgeschaltet </li>
-					<li><strong>HC_HEAT:</strong> Normal Heizbetrieb</li>
-					<li><strong>HC_HEAT_COMFORT:</strong> Komfort Heizbetrieb</li>
-					<li><strong>HC_HEAT_ECO:</strong> Eco Heizbetrieb</li>
-					<li><strong>HC_DEFROST:</strong> Frostbetrieb</li>
-					<li><strong>HC_INTENSIFIED_50p:</strong> Zwangsabnahme (bei Zwang kleiner plus 50 prozent)</li>
-					<li><strong>HC_REDUCED_50p:</strong> Zwangsdrosselung  (bei Zwang kleiner abs  minus 50 prozent)</li>
-					<li><strong>HC_HOLIDAY:</strong> Ferienbetrieb</li>
-					<li><strong>HC_PARTY_HEAT:</strong> Partybetrieb</li>
-					<li><strong>HC_COOL:</strong> Normal Kuehlbetrieb</li>
-					<li><strong>HC_COOL_COMFORT:</strong> Komfort Kuehlbetrieb</li>
-					<li><strong>HC_COOL_ECO:</strong> Eco Kuehlbetrieb</li>
-					<li><strong>HC_ERROR:</strong> Stoerung</li>
-					<li><strong>HC_MANUAL:</strong> Handbetrieb</li>
-					<li><strong>HC_PROT_COOL:</strong> Schutz Kuehlbetrieb</li>
-					<li><strong>HC_PARTY_COOL:</strong> Partybetrieb Kuehlen</li>
-					<li><strong>HC_DRYING_HEAT_UP:</strong> Austrocknung Aufheizphase</li>
-					<li><strong>HC_DRYING_STATIONARY:</strong> Austrocknung Stationaerphase</li>
-					<li><strong>HC_DRYING_COOL_DOWN:</strong> Austrocknung Abkuehlphase</li>
-					<li><strong>HC_DRYING_FINAL:</strong> Austrocknung Endphase</li>
-					<li><strong>HC_COOL_EXTERNAL_CMD:</strong> Kuehlbetrieb Extern/Konstantanforderung</li>
-					<li><strong>HC_HEAT_EXTERNAL_CMD:</strong> Heizbetrieb Extern/Konstantanforderung</li>
-					<li><strong>HC_SGRID_INTENSIFIED:</strong> Vorzugsbetrieb SmartGrid</li>
-					</ol>
-					]]>
-				</sgr:textElement>
-				<sgr:language>de</sgr:language>
-			</sgr:dpLegibDesc>
-			<sgr:dpPrgDesc>
-				<sgr:textElement>this status bit field is inhereited from Hoval and needs further
-					observation for to build interoperability</sgr:textElement>
-				<sgr:language>en</sgr:language>
-			</sgr:dpPrgDesc>
-		</sgr:dataPoint>
-	</sgr:dpListElement>
-	<sgr:dpListElement>
-		<sgr:dataPoint datapointName="SupplyWaterTemp" mroVisibilityIndicator="M" rwpDatadirection="R"
-			unit="DEGREES_CELSIUS">
-			<sgr:basicDataType>
-				<sgr:float32>0.0</sgr:float32>
-			</sgr:basicDataType>
-			<sgr:dpNameList>
-				<sgr:sLV1Name>SupplyWaterTemp</sgr:sLV1Name>
-				<sgr:sEN17609Name>Supply Water Temperature</sgr:sEN17609Name>
-			</sgr:dpNameList>
-			<sgr:dpLegibDesc>
-				<sgr:textElement>Auslesen der aktuellen Ist-Temperatur des Vorlaufs des Heizkreises.</sgr:textElement>
-				<sgr:language>de</sgr:language>
-			</sgr:dpLegibDesc>
-		</sgr:dataPoint>
-	</sgr:dpListElement>
-	<sgr:dpListElement>
-		<sgr:dataPoint datapointName="SupplyWaterTempStpt" mroVisibilityIndicator="R"
-			rwpDatadirection="RW" unit="DEGREES_CELSIUS">
-			<sgr:basicDataType>
-				<sgr:float32>0.0</sgr:float32>
-			</sgr:basicDataType>
-			<sgr:dpNameList>
-				<sgr:sLV1Name>SupplyWaterTempStpt</sgr:sLV1Name>
-				<sgr:sEN17609Name>Supply Water Temperature Setpoint</sgr:sEN17609Name>
-			</sgr:dpNameList>
-			<sgr:dpLegibDesc>
-				<sgr:textElement>Setzen der aktuellen Soll-Temperatur des Vorlaufs (Grundwert).</sgr:textElement>
-				<sgr:language>de</sgr:language>
-			</sgr:dpLegibDesc>
-		</sgr:dataPoint>
-	</sgr:dpListElement>
-	<sgr:dpListElement>
-		<sgr:dataPoint datapointName="SupplyWaterTempStptOffs" mroVisibilityIndicator="R"
-			rwpDatadirection="RW" unit="DEGREES_CELSIUS">
-			<sgr:basicDataType>
-				<sgr:float32>0.0</sgr:float32>
-			</sgr:basicDataType>
-			<sgr:dpNameList>
-				<sgr:sLV1Name>SupplyWaterTempStptOffs</sgr:sLV1Name>
-			</sgr:dpNameList>
-			<sgr:dpLegibDesc>
-				<sgr:textElement>Setzen der aktuellen Soll-Temperatur Differenz des Vorlaufs (Offset
-					zum Grundwert). Min / Max Val der zugelassenen Abweichung können im SGrAttribut
-					gesetzt werden</sgr:textElement>
-				<sgr:language>de</sgr:language>
-			</sgr:dpLegibDesc>
-		</sgr:dataPoint>
-		<sgr:genAttribute>
-			<sgr:minVal>+5.0</sgr:minVal>
-			<sgr:maxVal>-5.0</sgr:maxVal>
-		</sgr:genAttribute>
-	</sgr:dpListElement>
-
-	<sgr:dpListElement>
-		<sgr:dataPoint datapointName="SupplyWaterTempStptComfort" mroVisibilityIndicator="O"
-			rwpDatadirection="RW" unit="DEGREES_CELSIUS">
-			<sgr:basicDataType>
-				<sgr:float32>0.0</sgr:float32>
-			</sgr:basicDataType>
-			<sgr:dpNameList>
-				<sgr:sLV1Name>SupplyWaterTempStptComfort</sgr:sLV1Name>
-				<sgr:sEN17609Name>Supply Water Temperature Setpoint Comfort</sgr:sEN17609Name>
-			</sgr:dpNameList>
-			<sgr:dpLegibDesc>
-				<sgr:textElement>Setzen der aktuellen Soll-Temperatur des Vorlaufs fuer den
-					Komfortbetrieb (Grundwert).</sgr:textElement>
-				<sgr:language>de</sgr:language>
-			</sgr:dpLegibDesc>
-			<sgr:dpPrgDesc>
-				<sgr:textElement>this data point is only used in Comfort mode</sgr:textElement>
-				<sgr:language>en</sgr:language>
-			</sgr:dpPrgDesc>
-		</sgr:dataPoint>
-	</sgr:dpListElement>
-
-	<sgr:dpListElement>
-		<sgr:dataPoint datapointName="SupplyWaterTempStptEco" mroVisibilityIndicator="O"
-			rwpDatadirection="RW" unit="DEGREES_CELSIUS">
-			<sgr:basicDataType>
-				<sgr:float32>0.0</sgr:float32>
-			</sgr:basicDataType>
-			<sgr:dpNameList>
-				<sgr:sLV1Name>SupplyWaterTempStptEco</sgr:sLV1Name>
-				<sgr:sEN17609Name>Supply Water Temperature Setpoint Eco</sgr:sEN17609Name>
-			</sgr:dpNameList>
-			<sgr:dpLegibDesc>
-				<sgr:textElement>Setzen der aktuellen Soll-Temperatur des Vorlaufs fuer den
-					Ecobetrieb (Grundwert).</sgr:textElement>
-				<sgr:language>de</sgr:language>
-			</sgr:dpLegibDesc>
-			<sgr:dpPrgDesc>
-				<sgr:textElement>this data point is only used in Eco mode</sgr:textElement>
-				<sgr:language>en</sgr:language>
-			</sgr:dpPrgDesc>
-		</sgr:dataPoint>
-	</sgr:dpListElement>
-	<sgr:dpListElement>
-		<sgr:dataPoint datapointName="ReturnSupplyWaterTemp" mroVisibilityIndicator="O"
-			rwpDatadirection="R" unit="DEGREES_CELSIUS">
-			<sgr:basicDataType>
-				<sgr:float32>0.0</sgr:float32>
-			</sgr:basicDataType>
-			<sgr:dpNameList>
-				<sgr:sLV1Name>ReturnSupplyWaterTemp</sgr:sLV1Name>
-				<sgr:sEN17609Name>Return Water Temperature Setpoint</sgr:sEN17609Name>
-			</sgr:dpNameList>
-			<sgr:dpLegibDesc>
-				<sgr:textElement>Auslesen der aktuellen aktuellen-Temperatur des Rücklaufs.</sgr:textElement>
-				<sgr:language>de</sgr:language>
-			</sgr:dpLegibDesc>
-		</sgr:dataPoint>
-	</sgr:dpListElement>
-</sgr:SGrFunctionalProfileFrame>
+<FunctionalProfileFrame xmlns="http://www.smartgridready.com/ns/V0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/SGrIncluder.xsd">
+  <releaseNotes>
+    <state>Review</state>
+    <remarks>
+      This functional profile is in preliminary state. Before implementing external-interfaces or any other
+      functionality, the detailed functionality must be verified with the battery manufacturer.
+    </remarks>
+    <changeLog>
+      <version>0.1.1</version>
+      <date>2021-04-05</date>
+      <author>IBT/cb</author>
+      <comment>Vorbereitung beta test</comment>
+    </changeLog>
+    <changeLog>
+      <version>0.2.2</version>
+      <date>2022-10-31</date>
+      <author>Ergo/sz</author>
+      <comment>Finalisierung Go-Live</comment>
+    </changeLog>
+  </releaseNotes>
+  <functionalProfile>
+    <functionalProfileIdentification>
+      <specificationOwnerIdentification>0</specificationOwnerIdentification>
+      <functionalProfileCategory>HeatPumpControl</functionalProfileCategory>
+      <functionalProfileType>HeatCoolCtrl</functionalProfileType>
+      <levelOfOperation>m</levelOfOperation>
+      <versionNumber>
+        <primaryVersionNumber>0</primaryVersionNumber>
+        <secondaryVersionNumber>2</secondaryVersionNumber>
+        <subReleaseVersionNumber>2</subReleaseVersionNumber>
+      </versionNumber>
+    </functionalProfileIdentification>
+    <alternativeNames>
+      <en17609Name>HeatCool Group</en17609Name>
+    </alternativeNames>
+    <legibleDescription>
+      <textElement>
+        Dieses Profil definiert die erweiterten Datenpunkte zum Grundprofil
+        "HeatPumpBase", welche zur Steuerung eines Heiz- oder Kühlkreises zur Verfügung
+        gestellt werden. Derselbe physikalische Kreislauf kann entweder für das Heizen oder
+        das Kühlen verwendet werden. Das Heiz-/Kühlkreisprofil muss immer in Kombination mit
+        dem Grundprofil der Wärmepumpe bewirtschaftet werden. Es können mehrere
+        Heiz-/Kühlkreisprofile definiert werden.
+      </textElement>
+      <language>de</language>
+    </legibleDescription>
+  </functionalProfile>
+  <dataPointList>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>HeatCoolCtrlOpModeCmd</dataPointName>
+        <dataDirection>RW</dataDirection>
+        <presenceLevel>O</presenceLevel>
+        <dataType>
+          <enum>
+            <enumEntry>
+              <literal>HC_OFF</literal>
+            </enumEntry>
+            <enumEntry>
+              <literal>HC_READY</literal>
+            </enumEntry>
+            <enumEntry>
+              <literal>HC_PROG_OP</literal>
+            </enumEntry>
+            <enumEntry>
+              <literal>HC_COMFORT_OP</literal>
+            </enumEntry>
+            <enumEntry>
+              <literal>HC_ECO_OP</literal>
+            </enumEntry>
+          </enum>
+        </dataType>
+        <unit>NONE</unit>
+        <legibleDescription>
+          <textElement>
+            <![CDATA[
+              <p>Festlegen der Betriebsart des Heiz-/Kühlkreises</p>
+              <ol>
+                <li><strong>HC_OFF:</strong> Aus </li>
+                <li><strong>HC_READY:</strong> Bereitschaft</li>
+                <li><strong>HC_PROG_OP:</strong> Programm</li>
+                <li><strong>HC_COMFORT_OP:</strong> Komfort Betrieb</li>  
+                <li><strong>HC_ECO_OP:</strong> Eco Heizbetrieb</li>
+              </ol>
+            ]]>
+          </textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>HeatCoolOpState</dataPointName>
+        <dataDirection>RW</dataDirection>
+        <presenceLevel>O</presenceLevel>
+        <dataType>
+          <bitmap>
+            <bitmapEntry>
+              <literal>HC_OFF</literal>
+            </bitmapEntry>
+            <bitmapEntry>
+              <literal>HC_HEAT</literal>
+            </bitmapEntry>
+            <bitmapEntry>
+              <literal>HC_HEAT_COMFORT</literal>
+            </bitmapEntry>
+            <bitmapEntry>
+              <literal>HC_HEAT_ECO</literal>
+            </bitmapEntry>
+            <bitmapEntry>
+              <literal>HC_DEFROST</literal>
+            </bitmapEntry>
+            <bitmapEntry>
+              <literal>HC_INTESIVIED_50p</literal>
+            </bitmapEntry>
+            <bitmapEntry>
+              <literal>HC_REDUCED_50p</literal>
+            </bitmapEntry>
+            <bitmapEntry>
+              <literal>HC_HOLIDAY</literal>
+            </bitmapEntry>
+            <bitmapEntry>
+              <literal>HC_PARTY_HEAT</literal>
+            </bitmapEntry>
+            <bitmapEntry>
+              <literal>HC_COOL</literal>
+            </bitmapEntry>
+            <bitmapEntry>
+              <literal>HC_COOL_COMFORT</literal>
+            </bitmapEntry>
+            <bitmapEntry>
+              <literal>HC_COOL_ECO</literal>
+            </bitmapEntry>
+            <bitmapEntry>
+              <literal>HC_ERROR</literal>
+            </bitmapEntry>
+            <bitmapEntry>
+              <literal>HC_MANUAL</literal>
+            </bitmapEntry>
+            <bitmapEntry>
+              <literal>HC_PROT_COOL</literal>
+            </bitmapEntry>
+            <bitmapEntry>
+              <literal>HC_PARTY_COOL</literal>
+            </bitmapEntry>
+            <bitmapEntry>
+              <literal>HC_DRYING_HEAT_UP</literal>
+            </bitmapEntry>
+            <bitmapEntry>
+              <literal>HC_DRYING_STATIONARY</literal>
+            </bitmapEntry>
+            <bitmapEntry>
+              <literal>HC_DRYING_COOL_DOWN</literal>
+            </bitmapEntry>
+            <bitmapEntry>
+              <literal>HC_DRYING_FINAL</literal>
+            </bitmapEntry>
+            <bitmapEntry>
+              <literal>HC_DRYING_FINAL</literal>
+            </bitmapEntry>
+            <bitmapEntry>
+              <literal>HC_COOL_EXTERNAL_CMD</literal>
+            </bitmapEntry>
+            <bitmapEntry>
+              <literal>HC_SGRID_INTENSIVIED</literal>
+            </bitmapEntry>
+          </bitmap>
+        </dataType>
+        <unit>NONE</unit>
+        <legibleDescription>
+          <textElement>
+            <![CDATA[
+              <P>Auslesen des aktuellen Status des Heiz-Kuehlkreises (BitmapRegister)</p>
+              <ol>
+                <li><strong>HC_OFF:</strong> Abgeschaltet </li>
+                <li><strong>HC_HEAT:</strong> Normal Heizbetrieb</li>
+                <li><strong>HC_HEAT_COMFORT:</strong> Komfort Heizbetrieb</li>
+                <li><strong>HC_HEAT_ECO:</strong> Eco Heizbetrieb</li>
+                <li><strong>HC_DEFROST:</strong> Frostbetrieb</li>
+                <li><strong>HC_INTENSIFIED_50p:</strong> Zwangsabnahme (bei Zwang kleiner plus 50 prozent)</li>
+                <li><strong>HC_REDUCED_50p:</strong> Zwangsdrosselung  (bei Zwang kleiner abs  minus 50 prozent)</li>
+                <li><strong>HC_HOLIDAY:</strong> Ferienbetrieb</li>
+                <li><strong>HC_PARTY_HEAT:</strong> Partybetrieb</li>
+                <li><strong>HC_COOL:</strong> Normal Kuehlbetrieb</li>
+                <li><strong>HC_COOL_COMFORT:</strong> Komfort Kuehlbetrieb</li>
+                <li><strong>HC_COOL_ECO:</strong> Eco Kuehlbetrieb</li>
+                <li><strong>HC_ERROR:</strong> Stoerung</li>
+                <li><strong>HC_MANUAL:</strong> Handbetrieb</li>
+                <li><strong>HC_PROT_COOL:</strong> Schutz Kuehlbetrieb</li>
+                <li><strong>HC_PARTY_COOL:</strong> Partybetrieb Kuehlen</li>
+                <li><strong>HC_DRYING_HEAT_UP:</strong> Austrocknung Aufheizphase</li>
+                <li><strong>HC_DRYING_STATIONARY:</strong> Austrocknung Stationaerphase</li>
+                <li><strong>HC_DRYING_COOL_DOWN:</strong> Austrocknung Abkuehlphase</li>
+                <li><strong>HC_DRYING_FINAL:</strong> Austrocknung Endphase</li>
+                <li><strong>HC_COOL_EXTERNAL_CMD:</strong> Kuehlbetrieb Extern/Konstantanforderung</li>
+                <li><strong>HC_HEAT_EXTERNAL_CMD:</strong> Heizbetrieb Extern/Konstantanforderung</li>
+                <li><strong>HC_SGRID_INTENSIFIED:</strong> Vorzugsbetrieb SmartGrid</li>
+              </ol>
+            ]]>
+          </textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>SupplyWaterTemp</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>M</presenceLevel>
+        <dataType>
+          <float64/>
+        </dataType>
+        <unit>DEGREES_CELSIUS</unit>
+        <alternativeNames>
+          <en17609Name>Supply Water Temperature</en17609Name>
+        </alternativeNames>
+        <legibleDescription>
+          <textElement>Auslesen der aktuellen Ist-Temperatur des Vorlaufs des Heizkreises.</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>SupplyWaterTempStpt</dataPointName>
+        <dataDirection>RW</dataDirection>
+        <presenceLevel>R</presenceLevel>
+        <dataType>
+          <float64/>
+        </dataType>
+        <unit>DEGREES_CELSIUS</unit>
+        <alternativeNames>
+          <en17609Name>Supply Water Temperature Setpoint</en17609Name>
+        </alternativeNames>
+        <legibleDescription>
+          <textElement>Setzen der aktuellen Soll-Temperatur des Vorlaufs (Grundwert).</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>SupplyWaterTempStptOffs</dataPointName>
+        <dataDirection>RW</dataDirection>
+        <presenceLevel>R</presenceLevel>
+        <dataType>
+          <float64/>
+        </dataType>
+        <unit>DEGREES_CELSIUS</unit>
+        <legibleDescription>
+          <textElement>
+            Setzen der aktuellen Soll-Temperatur Differenz des Vorlaufs (Offset
+            zum Grundwert). Min / Max Val der zugelassenen Abweichung können im SGrAttribut
+            gesetzt werden
+          </textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+      <genericAttributes>
+        <minVal>+5.0</minVal>
+        <maxVal>-5.0</maxVal>
+      </genericAttributes>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>SupplyWaterTempStptComfort</dataPointName>
+        <dataDirection>RW</dataDirection>
+        <presenceLevel>O</presenceLevel>
+        <dataType>
+          <float64/>
+        </dataType>
+        <unit>DEGREES_CELSIUS</unit>
+        <alternativeNames>
+          <en17609Name>Supply Water Temperature Setpoint Comfort</en17609Name>
+        </alternativeNames>
+        <legibleDescription>
+          <textElement>
+            Setzen der aktuellen Soll-Temperatur des Vorlaufs fuer den
+            Komfortbetrieb (Grundwert).
+          </textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>SupplyWaterTempStptEco</dataPointName>
+        <dataDirection>RW</dataDirection>
+        <presenceLevel>O</presenceLevel>
+        <dataType>
+          <float64/>
+        </dataType>
+        <unit>DEGREES_CELSIUS</unit>
+        <alternativeNames>
+          <en17609Name>Supply Water Temperature Setpoint Eco</en17609Name>
+        </alternativeNames>
+        <legibleDescription>
+          <textElement>
+            Setzen der aktuellen Soll-Temperatur des Vorlaufs fuer den
+            Ecobetrieb (Grundwert).
+          </textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>ReturnSupplyWaterTemp</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>O</presenceLevel>
+        <dataType>
+          <float64/>
+        </dataType>
+        <unit>DEGREES_CELSIUS</unit>
+        <alternativeNames>
+          <en17609Name>Return Water Temperature Setpoint</en17609Name>
+        </alternativeNames>
+        <legibleDescription>
+          <textElement>Auslesen der aktuellen aktuellen-Temperatur des Rücklaufs.</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+  </dataPointList>
+</FunctionalProfileFrame>

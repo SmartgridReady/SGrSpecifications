@@ -1,131 +1,168 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="/xsl/SGr.xsl"?>
-<sgr:SGrFunctionalProfileFrame xmlns:sgr="http://www.smartgridready.com/ns/V0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/SGrIncluder.xsd">
-    <sgr:releaseNotes>
-        <sgr:state>Review</sgr:state>
-        <sgr:remarks>This functional profile is in preliminary state. Before implementing external-interfaces or any other
-            functionality, the detailed functionality must be verified with the battery manufacturer.
-        </sgr:remarks>
-        <sgr:changelog>
-            <sgr:version>0.1.1</sgr:version>
-            <sgr:date>2021-04-05</sgr:date>
-            <sgr:author>IBT/cb</sgr:author>
-            <sgr:comment>Vorbereitung beta test</sgr:comment>
-        </sgr:changelog>
-        <sgr:changelog>
-            <sgr:version>0.2.2</sgr:version>
-            <sgr:date>2022-10-31</sgr:date>
-            <sgr:author>Ergo/sz</sgr:author>
-            <sgr:comment>Finalisierung Go-Live</sgr:comment>
-        </sgr:changelog>
-    </sgr:releaseNotes>
-    <sgr:functionalProfile>
-        <sgr:profileNumber>
-            <sgr:specsOwnerId>0</sgr:specsOwnerId>
-            <sgr:profileIdentification>Battery</sgr:profileIdentification>
-            <sgr:subProfileIdent>EnergyMonitor</sgr:subProfileIdent>
-            <sgr:sgrLevelOfOperation>m</sgr:sgrLevelOfOperation>
-            <sgr:versionNumber>
-                <sgr:primaryVersionNumber>0</sgr:primaryVersionNumber>
-                <sgr:secondaryVersionNumber>2</sgr:secondaryVersionNumber>
-                <sgr:subReleaseVersionNumber>2</sgr:subReleaseVersionNumber>
-            </sgr:versionNumber>
-        </sgr:profileNumber>
-        <sgr:fpLegibDesc>
-            <sgr:textElement>
-                <![CDATA[	
-				<img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
-                <p>Aufzeichnen der Batteriedaten durch den CEM.</p>
-                ]]>
-            </sgr:textElement>
-            <sgr:language>de</sgr:language>
-        </sgr:fpLegibDesc>
-    </sgr:functionalProfile>
-    <sgr:dpListElement>
-        <sgr:dataPoint datapointName="ActivePowerDC" rwpDatadirection="R" unit="KILOWATTS" mroVisibilityIndicator="M">
-            <sgr:basicDataType>
-                <sgr:float32>0</sgr:float32>
-            </sgr:basicDataType>
-            <sgr:dpLegibDesc>
-                <sgr:textElement>Leistung total</sgr:textElement>
-                <sgr:language>de</sgr:language>
-            </sgr:dpLegibDesc>
-        </sgr:dataPoint>
-    </sgr:dpListElement>
-    <sgr:dpListElement>
-        <sgr:dataPoint datapointName="SoC" rwpDatadirection="R" unit="PERCENT" mroVisibilityIndicator="M">
-            <sgr:basicDataType>
-                <sgr:float32>0</sgr:float32>
-            </sgr:basicDataType>
-            <sgr:dpLegibDesc>
-                <sgr:textElement>State of Charge (aktueller Füllzustand)</sgr:textElement>
-                <sgr:language>de</sgr:language>
-            </sgr:dpLegibDesc>
-        </sgr:dataPoint>
-    </sgr:dpListElement>
-    <sgr:dpListElement>
-        <sgr:dataPoint datapointName="EnergyAvailable" rwpDatadirection="R" unit="KILOWATT_HOURS" mroVisibilityIndicator="O">
-            <sgr:basicDataType>
-                <sgr:float32>0</sgr:float32>
-            </sgr:basicDataType>
-            <sgr:dpLegibDesc>
-                <sgr:textElement>Aktuell nutzbare Energie</sgr:textElement>
-                <sgr:language>de</sgr:language>
-            </sgr:dpLegibDesc>
-        </sgr:dataPoint>
-    </sgr:dpListElement>
-    <sgr:dpListElement>
-        <sgr:dataPoint datapointName="maxCapacity" rwpDatadirection="R" unit="KILOWATT_HOURS" mroVisibilityIndicator="O">
-            <sgr:basicDataType>
-                <sgr:float32>0</sgr:float32>
-            </sgr:basicDataType>
-            <sgr:dpLegibDesc>
-                <sgr:textElement>Maximale Speicherkapazität</sgr:textElement>
-                <sgr:language>de</sgr:language>
-            </sgr:dpLegibDesc>
-        </sgr:dataPoint>
-    </sgr:dpListElement>
-    <sgr:dpListElement>
-        <sgr:dataPoint datapointName="Pmax_charge_60min" rwpDatadirection="R" unit="KILOWATTS" mroVisibilityIndicator="O">
-            <sgr:basicDataType>
-                <sgr:float32>0</sgr:float32>
-            </sgr:basicDataType>
-            <sgr:dpLegibDesc>
-                <sgr:textElement>Max. Ladeleistung 60min</sgr:textElement>
-                <sgr:language>de</sgr:language>
-            </sgr:dpLegibDesc>
-        </sgr:dataPoint>
-    </sgr:dpListElement>
-    <sgr:dpListElement>
-        <sgr:dataPoint datapointName="Pmax_discharge_60min" rwpDatadirection="R" unit="KILOWATTS" mroVisibilityIndicator="O">
-            <sgr:basicDataType>
-                <sgr:float32>0</sgr:float32>
-            </sgr:basicDataType>
-            <sgr:dpLegibDesc>
-                <sgr:textElement>Max. Entladeleistung 60min</sgr:textElement>
-                <sgr:language>de</sgr:language>
-            </sgr:dpLegibDesc>
-        </sgr:dataPoint>
-    </sgr:dpListElement>
-    <sgr:dpListElement>
-        <sgr:dataPoint datapointName="NightEnergyUsed" rwpDatadirection="R" unit="KILOWATT_HOURS" mroVisibilityIndicator="O">
-            <sgr:basicDataType>
-                <sgr:float32>0</sgr:float32>
-            </sgr:basicDataType>
-            <sgr:dpLegibDesc>
-                <sgr:textElement>Verbrauch Nachtenergie</sgr:textElement>
-                <sgr:language>de</sgr:language>
-            </sgr:dpLegibDesc>
-        </sgr:dataPoint>
-    </sgr:dpListElement>
-    <sgr:dpListElement>
-        <sgr:dataPoint datapointName="ChargingOpMode" rwpDatadirection="R" unit="NONE" mroVisibilityIndicator="O">
-            <sgr:basicDataType>
-                <sgr:string>Enum is missing!</sgr:string>
-            </sgr:basicDataType>
-            <sgr:dpLegibDesc>
-                <sgr:textElement>FillrateCtrl, ModeCtrl</sgr:textElement>
-                <sgr:language>de</sgr:language>
-            </sgr:dpLegibDesc>
-        </sgr:dataPoint>
-    </sgr:dpListElement></sgr:SGrFunctionalProfileFrame>
+<FunctionalProfileFrame xmlns="http://www.smartgridready.com/ns/V0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/SGrIncluder.xsd">
+  <releaseNotes>
+    <state>Review</state>
+    <remarks>
+      This functional profile is in preliminary state. Before implementing external-interfaces or any other
+      functionality, the detailed functionality must be verified with the battery manufacturer.
+    </remarks>
+    <changeLog>
+      <version>0.1.1</version>
+      <date>2021-04-05</date>
+      <author>IBT/cb</author>
+      <comment>Vorbereitung beta test</comment>
+    </changeLog>
+    <changeLog>
+      <version>0.2.2</version>
+      <date>2022-10-31</date>
+      <author>Ergo/sz</author>
+      <comment>Finalisierung Go-Live</comment>
+    </changeLog>
+  </releaseNotes>
+  <functionalProfile>
+    <functionalProfileIdentification>
+      <specificationOwnerIdentification>0</specificationOwnerIdentification>
+      <functionalProfileCategory>Battery</functionalProfileCategory>
+      <functionalProfileType>EnergyMonitor</functionalProfileType>
+      <levelOfOperation>m</levelOfOperation>
+      <versionNumber>
+        <primaryVersionNumber>0</primaryVersionNumber>
+        <secondaryVersionNumber>2</secondaryVersionNumber>
+        <subReleaseVersionNumber>2</subReleaseVersionNumber>
+      </versionNumber>
+    </functionalProfileIdentification>
+    <legibleDescription>
+      <textElement>
+        <![CDATA[	
+          <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
+          <p>Aufzeichnen der Batteriedaten durch den CEM.</p>
+        ]]>
+      </textElement>
+      <language>de</language>
+    </legibleDescription>
+  </functionalProfile>
+  <dataPointList>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>ActivePowerDC</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>M</presenceLevel>
+        <dataType>
+          <float64/>
+        </dataType>
+        <unit>KILOWATTS</unit>
+        <legibleDescription>
+          <textElement>Leistung total</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>SoC</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>M</presenceLevel>
+        <dataType>
+          <float64/>
+        </dataType>
+        <unit>PERCENT</unit>
+        <legibleDescription>
+          <textElement>State of Charge (aktueller Füllzustand)</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>EnergyAvailable</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>O</presenceLevel>
+        <dataType>
+          <float64/>
+        </dataType>
+        <unit>KILOWATT_HOURS</unit>
+        <legibleDescription>
+          <textElement>Aktuell nutzbare Energie</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>maxCapacity</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>O</presenceLevel>
+        <dataType>
+          <float64/>
+        </dataType>
+        <unit>KILOWATT_HOURS</unit>
+        <legibleDescription>
+          <textElement>Maximale Speicherkapazität</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>Pmax_charge_60min</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>O</presenceLevel>
+        <dataType>
+          <float64/>
+        </dataType>
+        <unit>KILOWATTS</unit>
+        <legibleDescription>
+          <textElement>Max. Ladeleistung 60min</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>Pmax_discharge_60min</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>O</presenceLevel>
+        <dataType>
+          <float64/>
+        </dataType>
+        <unit>KILOWATTS</unit>
+        <legibleDescription>
+          <textElement>Max. Entladeleistung 60min</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>NightEnergyUsed</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>O</presenceLevel>
+        <dataType>
+          <float64/>
+        </dataType>
+        <unit>KILOWATT_HOURS</unit>
+        <legibleDescription>
+          <textElement>Verbrauch Nachtenergie</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>ChargingOpMode</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>O</presenceLevel>
+        <dataType>
+          <string/>
+        </dataType>
+        <unit>NONE</unit>
+        <legibleDescription>
+          <textElement>FillrateCtrl, ModeCtrl</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+  </dataPointList>
+</FunctionalProfileFrame>

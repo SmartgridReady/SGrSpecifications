@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/SGr.xsl"?>
+<FunctionalProfileFrame xmlns="http://www.smartgridready.com/ns/V0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/SGrIncluder.xsd">
+  <releaseNotes>
+    <state>Review</state>
+    <changeLog>
+      <version>0.1.2</version>
+      <date>2021-08-23</date>
+      <author>IBT/cb</author>
+      <comment>Vorbereitung beta test</comment>
+    </changeLog>
+    <changeLog>
+      <version>0.2.2</version>
+      <date>2022-10-31</date>
+      <author>Ergo/sz</author>
+      <comment>Finalisierung Go-Live</comment>
+    </changeLog>
+    <changeLog>
+      <version>1.0.0</version>
+      <date>2023-09-30</date>
+      <author>Ergo/ag</author>
+      <comment>Finalisierung</comment>
+    </changeLog>
+  </releaseNotes>
+  <functionalProfile>
+    <functionalProfileIdentification>
+      <specificationOwnerIdentification>0</specificationOwnerIdentification>
+      <functionalProfileCategory>EVSE</functionalProfileCategory>
+      <functionalProfileType>SGrStates_EVSE</functionalProfileType>
+      <levelOfOperation>1</levelOfOperation>
+      <versionNumber>
+        <primaryVersionNumber>1</primaryVersionNumber>
+        <secondaryVersionNumber>0</secondaryVersionNumber>
+        <subReleaseVersionNumber>0</subReleaseVersionNumber>
+      </versionNumber>
+    </functionalProfileIdentification>
+    <legibleDescription>
+      <textElement>
+        <![CDATA[	
+          <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
+          <p>Wallboxen (ElectricVehicleSupplyEquipment «EVSE») müssen über einen Regler verfügen, welcher folgende Betriebszustände abdeckt:</p>
+          <ol>
+            <li>Normalbetrieb uneingeschränkt entsprechend der konfigurierten Anschlussleistung laden</li>
+            <li>Minimale Ladung (AC Ladung 6A, DC Ladung 10kW, Bidirektionales Laden, maximales Feed-In für Vehicle to Infrastructure V2X)</li>
+          </ol>
+          
+          <p>Hinweise:</p>
+          <ul>
+            <li>Geräte mit Stufe 2 können im Stufe-1-Betrieb genutzt werden, wenn der zweite Kontakt fest auf den Zustand 0 verdrahtet wird.
+                Dadurch wird das komplette Abstellen der Stromversorgung verhindert.</li>
+            <li>Geräte mit 2 Klemmenkontakten setzen die Klemmen-Datenpunkte um.</li>
+            <li>Geräte mit Modbus oder RestAPI setzen bevorzugt den Enum-basierten Datenpunkt um.</li>
+          </ul>
+        ]]>
+      </textElement>
+      <language>de</language>
+    </legibleDescription>
+  </functionalProfile>
+  <dataPointList>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>EVSE_StateLv1</dataPointName>
+        <dataDirection>W</dataDirection>
+        <presenceLevel>M</presenceLevel>
+        <dataType>
+          <enum>
+            <enumEntry>
+              <literal>EV_NORMAL</literal>
+              <description>Normalbetrieb  uneingeschränkt entsprechend der konfigurierten Anschlussleistung Laden</description>
+            </enumEntry>
+            <enumEntry>
+              <literal>EV_REDUCED</literal>
+              <description>Minimale Ladung (AC Ladung 6A, DC Ladung 10kW, Bidirektionales Laden, maximales Feed-In für Vehicle to Infrastructure V2X)</description>
+            </enumEntry>
+          </enum>
+        </dataType>
+        <unit>NONE</unit>
+        <legibleDescription>
+          <textElement>Betriebszustand</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+  </dataPointList>
+</FunctionalProfileFrame>
