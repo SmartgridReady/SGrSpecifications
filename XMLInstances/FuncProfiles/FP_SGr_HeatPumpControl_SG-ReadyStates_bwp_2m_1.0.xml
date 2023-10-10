@@ -12,8 +12,8 @@
     </changeLog>
     <changeLog>
       <version>1.0.0</version>
-      <date>2023-06-30</date>
-      <author>Ergo/sz</author>
+      <date>2023-10-15</date>
+      <author>Ergo/ag</author>
       <comment>Finalisierung</comment>
     </changeLog>
   </releaseNotes>
@@ -21,7 +21,7 @@
     <functionalProfileIdentification>
       <specificationOwnerIdentification>0</specificationOwnerIdentification>
       <functionalProfileCategory>HeatPumpControl</functionalProfileCategory>
-      <functionalProfileType>SG-ReadyStates_bwp</functionalProfileType>
+      <functionalProfileType>SG-ReadyStates</functionalProfileType>
       <levelOfOperation>2m</levelOfOperation>
       <versionNumber>
         <primaryVersionNumber>1</primaryVersionNumber>
@@ -33,21 +33,51 @@
       <textElement>                
         <![CDATA[	
           <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
-          <h4>Wärmepumpen mit 4 Betriebszuständen test asdf</h4>
-          <p>Stufe 2m Funktionsprofil mit Rücklesefunktion für Wärmepumpen mit 4 Betriebszuständen (SG Ready Wärmepumpen)</p>
-          <p>Dieses Funktionsprofil bildet die beiden SG-Ready Klemmenkontakte auf einen maschinenlesbaren Zustand ab</p>
+          <h4>Wärmepumpen mit 4 Betriebszuständen</h4>
+          <p>Stufe 2m Funktionsprofil für Wärmepumpen mit 4 Betriebszuständen (SG Ready Wärmepumpen), die über Modbus oder RestAPI gesetzt werden können. 
+		  Zusätzlich kann der aktuelle Betriebszustand der Wärmepumpe ausgelesen werden. Die Betriebszustände werden über SG Ready - Bundesverband Wärmepumpe e.V. (bwp) definiert. </p>
+          <p>Dieses Funktionsprofil kann auf zwei Arten genutzt werden: </p>
+		  
+		  <ul>
+            <li> Die Betriebszustände werden direkt über Modbus gesetzt und ausgelesen </li>
+            <li> Die Klemmkontakte werden gemappt und über Modbus zum Auslesen des Betriebszustandes abgebildet, der Zustand wird aber wie bei der Standard-Anwendung
+			von SG Ready Wärmepumpen über die Klemmkontakte gesetzt. </li>		
+          </ul>
+		  
+		 <p> Folgende Betriebszustände können über den Datenpunkt gesetzt und ausgelesen werden: 
           <ul>
             <li><strong>HP_LOCKED</strong>: EVU-Sperre und umfasst im Normalfall maximal 2 Stunden „harte“ Sperrzeit </li>
             <li><strong>HP_NORMAL</strong>: Wärmepumpe im Normalbetrieb</li>
-            <li><strong>HP_INTENSIFIED</strong>: Einschaltempfehlung mit Anhebung</li>
+            <li><strong>HP_INTENSIFIED</strong>: Einschaltempfehlung für verstärkten Betrieb</li>
             <li><strong>HP_FORCED</strong>: Definitiver Anlaufbefehl (insofern dieser im Rahmen der Regeleinstellungen möglich ist)</li>  				
           </ul>
           <p>Der Communicator (z.B. CEM) berücksichtigt die Gerätevorgaben zur Schaltfrequenz (Attribute maxLockTimeMintues und minRunTimeMinutes).</p>
           <p>„SG Ready“ ist ein Markenzeichen des Bundesverbands Wärmepumpe e. V.<br/>
-             Weiterführende Informationen unter <a href="https://www.waermepumpe.de/normen-technik/sg-ready/">https://www.waermepumpe.de/normen-technik/sg-ready/</a>).</p>
+             Weiterführende Informationen unter <a href="https://www.waermepumpe.de/normen-technik/sg-ready/">https://www.waermepumpe.de/normen-technik/sg-ready/</a>.</p>
         ]]>
       </textElement>
       <language>de</language>
+	  </legibleDescription>
+    <legibleDescription>
+      <textElement>
+        <![CDATA[	
+          <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
+          <h4>Heatpump with 4 operation modes</h4>
+          Level 2m functional profile for heat pumps with 4 operation modes (SG Ready Heatpumps)
+          
+          <p>test.</p>
+          
+          <p>text.</p>
+		  
+          <ul>
+            <li>Punkt 1  </li>
+            <li>Punkt 2  </li>
+            <li>Punkt 3  </li>
+          </ul>
+          </p>
+        ]]>			
+      </textElement>
+      <language>en</language>
     </legibleDescription>
   </functionalProfile>
   <genericAttributes>
