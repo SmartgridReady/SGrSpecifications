@@ -174,31 +174,40 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
     <sequence>
       <element name="literal" type="string" />
       <element name="ordinal" type="int" />
-      <element name="description" type="string" minOccurs="0"/>
+      <choice minOccurs="0">
+        <element name="description" type="string"/>
+        <element name="legibleDescription" type="sgr:LegibleDescription"/>
+      </choice>
     </sequence>
   </complexType>
 
   <!-- defines a single mapping from an enum literal to an ordinal (integer) value -->
-  <complexType name="enumEntryRecordFunctionalProfile">
+  <complexType name="EnumEntryRecordFunctionalProfile">
     <sequence>
       <element name="literal" type="string" />
-      <element name="description" type="string" minOccurs="0"/>
+      <choice minOccurs="0">
+        <element name="description" type="string"/>
+        <element name="legibleDescription" type="sgr:LegibleDescription"/>
+      </choice>
     </sequence>
   </complexType>
 
   <!-- defines a single mapping from an enum literal to an ordinal (integer) value -->
-  <complexType name="enumEntryProductRecord">
+  <complexType name="EnumEntryProductRecord">
     <sequence>
       <element name="literal" type="string" />
       <element name="ordinal" type="int" minOccurs="0" />
-      <element name="description" type="string" minOccurs="0"/>
+      <choice minOccurs="0">
+        <element name="description" type="string"/>
+        <element name="legibleDescription" type="sgr:LegibleDescription"/>
+      </choice>
     </sequence>
   </complexType>
 
   <!-- mapping table containing modbus to generic enumeration mapping records -->
   <complexType name="EnumMapFunctionalProfile">
     <sequence>
-      <element name="enumEntry" type="sgr:enumEntryRecordFunctionalProfile" maxOccurs="unbounded" />
+      <element name="enumEntry" type="sgr:EnumEntryRecordFunctionalProfile" maxOccurs="unbounded" />
       <element name="hexMask" type="hexBinary" minOccurs="0"/>
     </sequence>
   </complexType>
@@ -206,7 +215,7 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
   <!-- mapping table containing modbus to generic enumeration mapping records -->
   <complexType name="EnumMapProduct">
     <sequence>
-      <element name="enumEntry" type="sgr:enumEntryProductRecord" maxOccurs="unbounded" />
+      <element name="enumEntry" type="sgr:EnumEntryProductRecord" maxOccurs="unbounded" />
       <element name="hexMask" type="hexBinary" minOccurs="0"/>
     </sequence>
   </complexType>
@@ -439,6 +448,7 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
           <documentation>EEBUS: ChargingOutlet</documentation>
         </annotation>
       </enumeration>
+      <enumeration value="Actuator" />
       <enumeration value="CEM" />
     </restriction>
   </simpleType>
