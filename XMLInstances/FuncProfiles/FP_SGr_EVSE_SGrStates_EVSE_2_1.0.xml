@@ -5,20 +5,8 @@
   <releaseNotes>
     <state>Review</state>
     <changeLog>
-      <version>0.1.2</version>
-      <date>2021-08-23</date>
-      <author>IBT/cb</author>
-      <comment>Vorbereitung beta test</comment>
-    </changeLog>
-    <changeLog>
-      <version>0.2.2</version>
-      <date>2022-10-31</date>
-      <author>Ergo/sz</author>
-      <comment>Finalisierung Go-Live</comment>
-    </changeLog>
-    <changeLog>
       <version>1.0.0</version>
-      <date>2023-09-30</date>
+      <date>2023-10-10</date>
       <author>Ergo/ag</author>
       <comment>Finalisierung</comment>
     </changeLog>
@@ -27,7 +15,7 @@
     <functionalProfileIdentification>
       <specificationOwnerIdentification>0</specificationOwnerIdentification>
       <functionalProfileCategory>EVSE</functionalProfileCategory>
-      <functionalProfileType>SGrStates_EVSE</functionalProfileType>
+      <functionalProfileType>LoadReduction_EVSE</functionalProfileType>
       <levelOfOperation>2</levelOfOperation>
       <versionNumber>
         <primaryVersionNumber>1</primaryVersionNumber>
@@ -38,20 +26,14 @@
     <legibleDescription>
       <textElement>
         <![CDATA[	
-          <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
-          <p>Wallboxen (ElectricVehicleSupplyEquipment «EVSE») müssen über einen Regler verfügen, welcher vier Betriebszustände abdeckt:</p>
+          <img src="ressources/cem_to_evse.svg" style="float:left; padding:0.3em;"/>
+          <p>Wallboxen (Electric Vehicle Supply Equipment «EVSE») müssen über einen Regler verfügen, welcher vier Betriebszustände abdeckt:</p>
           <ol>
-            <li>(Klemmenlösung 0:0): Normalbetrieb uneingeschränkt entsprechend der konfigurierten Anschlussleistung laden</li>
-            <li>(Klemmenlösung 0:1): Reduziert das Laden z.B. 50% der maximalen Ladeleistung, jedoch mindestens 6A</li>
-            <li>(Klemmenlösung 1:0): Minimale Ladung (AC Ladung 6A, DC Ladung 10kW, Bidirektionales Laden, maximales Feed-In für Vehicle to Infrastructure V2X)</li>
-            <li>(Klemmenlösung 1:1): Ladung unterbrochen (Bidirektionales Laden, maximales Feed-In für Vehicle to Infrastructure V2X)</li>
+            <li><strong>Klemmzustand 0,0</strong>: Normalbetrieb uneingeschränkt entsprechend der konfigurierten Anschlussleistung laden</li>
+            <li><strong>Klemmzustand 0,1</strong>: Reduziert das Laden z.B. 50% der maximalen Ladeleistung, jedoch mindestens 6A</li>
+            <li><strong>Klemmzustand 1,0</strong>: Minimale Ladung (AC Ladung 6A, DC Ladung 10kW, Bidirektionales Laden, maximales Feed-In für Vehicle to Infrastructure V2X)</li>
+            <li><strong>Klemmzustand 1,1</strong>: Ladung unterbrochen (Bidirektionales Laden, maximales Feed-In für Vehicle to Infrastructure V2X)</li>
           </ol>
-          
-          <p>Hinweise:</p>
-          <ul>
-            <li>Geräte mit 2 Klemmenkontakten setzen die Klemmen-Datenpunkte um.</li>
-            <li>Geräte mit Modbus oder RestAPI setzen bevorzugt den Enum-basierten Datenpunkt um.</li>
-          </ul>
         ]]>
       </textElement>
       <language>de</language>
@@ -60,32 +42,30 @@
   <dataPointList>
     <dataPointListElement>
       <dataPoint>
-        <dataPointName>EVSE_StateLv2</dataPointName>
+        <dataPointName>EVSE_Inp1isON</dataPointName>
         <dataDirection>W</dataDirection>
         <presenceLevel>M</presenceLevel>
         <dataType>
-          <enum>
-            <enumEntry>
-              <literal>EV_NORMAL</literal>
-              <description>Normalbetrieb  uneingeschränkt entsprechend der konfigurierten Anschlussleistung Laden</description>
-            </enumEntry>
-            <enumEntry>
-              <literal>EV_REDUCED</literal>
-              <description>Reduziert Laden z.B. 50% der minimalen Ladeleistung, jedoch min 6A</description>
-            </enumEntry>
-            <enumEntry>
-              <literal>EV_MINIMAL</literal>
-              <description>Minimale Ladung (AC Ladung 6A, DC Ladung 10kW, Bidirektionales Laden, maximales Feed-In für Vehicle to Infrastructure V2X)</description>
-            </enumEntry>
-            <enumEntry>
-              <literal>EV_NONE_OR_FEEDIN</literal>
-              <description>Ladung unterbrochen, bidirektionale Lader mx feed-in für V2X = maximale Entladung bei V2X)</description>
-            </enumEntry>
-          </enum>
+          <boolean/>
         </dataType>
         <unit>NONE</unit>
         <legibleDescription>
-          <textElement>Betriebszustand</textElement>
+          <textElement>Schaltzustand erste Klemme (0 oder 1)</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>EVSE_Inp2isON</dataPointName>
+        <dataDirection>W</dataDirection>
+        <presenceLevel>M</presenceLevel>
+        <dataType>
+          <boolean/>
+        </dataType>
+        <unit>NONE</unit>
+        <legibleDescription>
+          <textElement>Schaltzustand zweite Klemme (0 oder 1)</textElement>
           <language>de</language>
         </legibleDescription>
       </dataPoint>
