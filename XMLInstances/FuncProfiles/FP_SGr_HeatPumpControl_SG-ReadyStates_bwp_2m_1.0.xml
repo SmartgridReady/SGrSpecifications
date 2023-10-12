@@ -39,18 +39,20 @@
           <p>Dieses Funktionsprofil kann auf zwei Arten genutzt werden: </p>
 		  
 		  <ul>
-            <li> Die Betriebszustände werden direkt über Modbus gesetzt und ausgelesen </li>
+            <li> Die Betriebszustände werden direkt über Modbus oder RestAPI gesetzt und ausgelesen. </li>
             <li> Die Klemmkontakte werden gemappt und über Modbus zum Auslesen des Betriebszustandes abgebildet, der Zustand wird aber wie bei der Standard-Anwendung
 			von SG Ready Wärmepumpen über die Klemmkontakte gesetzt. </li>		
           </ul>
 		  
-		 <p> Folgende Betriebszustände können über den Datenpunkt gesetzt und ausgelesen werden: 
+		 <p> Folgende Betriebszustände können über den Datenpunkt gesetzt und ausgelesen werden: </p>
           <ul>
             <li><strong>HP_LOCKED</strong>: EVU-Sperre und umfasst im Normalfall maximal 2 Stunden „harte“ Sperrzeit </li>
             <li><strong>HP_NORMAL</strong>: Wärmepumpe im Normalbetrieb</li>
             <li><strong>HP_INTENSIFIED</strong>: Einschaltempfehlung für verstärkten Betrieb</li>
-            <li><strong>HP_FORCED</strong>: Definitiver Anlaufbefehl (insofern dieser im Rahmen der Regeleinstellungen möglich ist)</li>  				
+            <li><strong>HP_FORCED</strong>: Definitiver Anlaufbefehl (insofern dieser im Rahmen der Regeleinstellungen der Wärmepumpe möglich ist)</li>  				
           </ul>
+		  <p> Über den Datenpunkt SGReadyState kann der aktuelle Betriebsmodus der Wärmepumpe ausgelesen werden. </p>
+		  
           <p>Der Communicator (z.B. CEM) berücksichtigt die Gerätevorgaben zur Schaltfrequenz (Attribute maxLockTimeMintues und minRunTimeMinutes).</p>
           <p>„SG Ready“ ist ein Markenzeichen des Bundesverbands Wärmepumpe e. V.<br/>
              Weiterführende Informationen unter <a href="https://www.waermepumpe.de/normen-technik/sg-ready/">https://www.waermepumpe.de/normen-technik/sg-ready/</a>.</p>
@@ -62,28 +64,43 @@
       <textElement>
         <![CDATA[	
           <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
-          <h4>Heatpump with 4 operation modes</h4>
-          Level 2m functional profile for heat pumps with 4 operation modes (SG Ready Heatpumps)
-          
-          <p>test.</p>
-          
-          <p>text.</p>
+          <h4>Heat pump with 4 operation modes</h4>
+        <p>Level 2m functional profile for heat pumps with 4 operation modes (SG Ready heat pumps) which can be set via 
+		  Modbus or RestAPI. In addition, the current operation status of the heat pump can be read. The operating states are
+		   defined from SG ready - "Bundesverband Wärmepumpe e.V. (bwp)". </p>
+		   
+		<p> This functional profile can be used in two ways: </p>
+		   
+		   <ul>
+            <li> The operating modes are written and read directly via Modbus or RestAPI. </li>
+            <li> The relay contacts are mapped and implemented via Modbus or RestAPI for reading the operation mode, 
+			but the mode is set via the relay contacts as in the standard application of SG Ready heat pumps.</li>		
+          </ul>
+		       
+          <p> The following operation modes can be written and read via the defined data point "SGReadyOpModeCmd": </p>
 		  
           <ul>
-            <li>Punkt 1  </li>
-            <li>Punkt 2  </li>
-            <li>Punkt 3  </li>
+            <li><strong>HP_LOCKED</strong>: EVU lockoud and normally "hard" lockout time from maximum 2 hours. </li>
+            <li><strong>HP_NORMAL</strong>: Heat pump in normal operation. </li>
+            <li><strong>HP_INTENSIFIED</strong>: Switch-on recommendations for increased operation.  </li>
+            <li><strong>HP_FORCED</strong>: Definite start-up command (as far as this is possible within the control settings of the heat pump).  </li>
           </ul>
-          </p>
+		  
+		  <p> Via the datapoint SGReadyState it is possible to check the currently running operation mode of the heat pump. </p>
+		  
+          <p> The communicator (e.g. CEM) takes into account the unit specifications for the switching 
+			frequency (attributes maxLockTimeMinutes and minRunTimeMinutes). </p>
+		  
+		  
+		  <p> "SG Ready" is a trademark of the German Heat Pump Association. Further infomation at <a href="https://www.waermepumpe.de/normen-technik/sg-ready/">https://www.waermepumpe.de/normen-technik/sg-ready/</a>. </p>
+		  
+		  
         ]]>			
       </textElement>
       <language>en</language>
     </legibleDescription>
   </functionalProfile>
-  <genericAttributes>
-    <maxLockTimeMinutes>120</maxLockTimeMinutes>
-    <minRunTimeMinutes>20</minRunTimeMinutes>
-  </genericAttributes>  
+  
   <dataPointList>
     <dataPointListElement>
       <dataPoint>
@@ -98,6 +115,10 @@
           <textElement>Aktivierung der SG-Ready Funktion</textElement>
           <language>de</language>
         </legibleDescription>
+		<legibleDescription>
+          <textElement>Activation of the SG Ready functionality </textElement>
+          <language>en</language>
+        </legibleDescription>
       </dataPoint>
     </dataPointListElement>
     <dataPointListElement>
@@ -109,19 +130,19 @@
           <enum>
             <enumEntry>
               <literal>HP_LOCKED</literal>
-              <description>Gesperrt für maximal 2h</description>
+              <description> </description>
             </enumEntry>
             <enumEntry>
               <literal>HP_NORMAL</literal>
-              <description>Normalbetrieb, optimiert auf den Kunden</description>
+              <description> </description>
             </enumEntry>
             <enumEntry>
               <literal>HP_INTENSIFIED</literal>
-              <description>Verstärkter Betrieb</description>
+              <description> </description>
             </enumEntry>
             <enumEntry>
               <literal>HP_FORCED</literal>
-              <description>Definitiver Anlaufbefehl</description>
+              <description> </description>
             </enumEntry>
           </enum>
         </dataType>
@@ -130,8 +151,12 @@
           <hpBwpName>Betriebsmodus</hpBwpName>
         </alternativeNames>
         <legibleDescription>
-          <textElement>Festlegen der Übersteuerungsmoeglichkeit der Wärmepumpe</textElement>
+          <textElement>Festlegen der Übersteuerungsmoeglichkeiten der Wärmepumpe</textElement>
           <language>de</language>
+        </legibleDescription>
+		<legibleDescription>
+          <textElement>Sets the override possibilities of the heat pump </textElement>
+          <language>en</language>
         </legibleDescription>
       </dataPoint>
     </dataPointListElement>
@@ -144,19 +169,19 @@
           <enum>
             <enumEntry>
               <literal>HP_LOCKED</literal>
-              <description>Gesperrt für maximal 2h</description>
+              <description> </description>
             </enumEntry>
             <enumEntry>
               <literal>HP_NORMAL</literal>
-              <description>Normalbetrieb, optimiert auf den Kunden</description>
+              <description> </description>
             </enumEntry>
             <enumEntry>
               <literal>HP_INTENSIFIED</literal>
-              <description>Verstärkter Betrieb</description>
+              <description> </description>
             </enumEntry>
             <enumEntry>
               <literal>HP_FORCED</literal>
-              <description>Definitiver Anlaufbefehl</description>
+              <description> </description>
             </enumEntry>
           </enum>
         </dataType>
@@ -167,6 +192,10 @@
         <legibleDescription>
           <textElement>Rückmeldung der aktuellen laufenden Übersteuerungsmoeglichkeit der Wärmepumpe</textElement>
           <language>de</language>
+        </legibleDescription>
+		<legibleDescription>
+          <textElement>Feedback of the current running override possibility of the heat pump </textElement>
+          <language>en</language>
         </legibleDescription>
       </dataPoint>
     </dataPointListElement>
