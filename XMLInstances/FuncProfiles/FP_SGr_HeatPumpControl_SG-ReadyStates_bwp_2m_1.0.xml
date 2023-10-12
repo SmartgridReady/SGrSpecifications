@@ -40,20 +40,20 @@
 		  
 		  <ul>
             <li> Die Betriebszustände werden direkt über Modbus oder RestAPI gesetzt und ausgelesen. </li>
-            <li> Die Klemmkontakte werden gemappt und über Modbus zum Auslesen des Betriebszustandes abgebildet, der Zustand wird aber wie bei der Standard-Anwendung
+            <li> Die Klemmkontakte werden gemappt und über Modbus oder RestAPI zum Auslesen des Betriebszustandes abgebildet. Der Zustand wird jedoch wie bei der Standard-Anwendung
 			von SG Ready Wärmepumpen über die Klemmkontakte gesetzt. </li>		
           </ul>
 		  
-		 <p> Folgende Betriebszustände können über den Datenpunkt gesetzt und ausgelesen werden: </p>
+		 <p> Folgende Betriebszustände können über den Datenpunkt "SGReadyOpModeCmd" gesetzt und ausgelesen werden: </p>
           <ul>
-            <li><strong>HP_LOCKED</strong>: EVU-Sperre und umfasst im Normalfall maximal 2 Stunden „harte“ Sperrzeit </li>
+            <li><strong>HP_LOCKED</strong>: EVU-Sperre, umfasst im Normalfall maximal 2 Stunden „harte“ Sperrzeit </li>
             <li><strong>HP_NORMAL</strong>: Wärmepumpe im Normalbetrieb.</li>
             <li><strong>HP_INTENSIFIED</strong>: Einschaltempfehlung für verstärkten Betrieb.</li>
-            <li><strong>HP_FORCED</strong>: Definitiver Anlaufbefehl (insofern dieser im Rahmen der Regeleinstellungen der Wärmepumpe möglich ist).</li>  				
+            <li><strong>HP_FORCED</strong>: Forcierter Anlaufbefehl (insofern dieser im Rahmen der Regeleinstellungen der Wärmepumpe möglich ist).</li>  				
           </ul>
-		  <p> Über den Datenpunkt SGReadyState kann der aktuelle Betriebsmodus der Wärmepumpe ausgelesen werden. </p>
+		  <p> Über den Datenpunkt "SGReadyState" kann der aktuelle Betriebsmodus der Wärmepumpe ausgelesen werden. </p>
 		  
-          <p>Der Communicator (z.B. CEM) berücksichtigt die Gerätevorgaben zur Schaltfrequenz (Attribute maxLockTimeMintues und minRunTimeMinutes.
+          <p>Der Communicator (z.B. Energiemanagementsystem) berücksichtigt die Gerätevorgaben zur Schaltfrequenz (Attribute maxLockTimeMintues und minRunTimeMinutes.
 		  Der Wert der Attribute kann bei der Deklaration gesetzt werden. Standardeinstellung von SG Ready Wärmepumpen nach bwp ist 
 		  "Max. Lock Time" 120 Minuten und "Min. Run Time" 20 Minuten.</p>
           <p>„SG Ready“ ist ein Markenzeichen des Bundesverbands Wärmepumpe e. V.<br/>
@@ -82,20 +82,20 @@
           <p> The following operation modes can be written and read via the defined data point "SGReadyOpModeCmd": </p>
 		  
           <ul>
-            <li><strong>HP_LOCKED</strong>: EVU lockoud and normally "hard" lockout time from maximum 2 hours. </li>
+            <li><strong>HP_LOCKED</strong>: EVU lock, contains usually a "hard" lock of maximum 2 hours.</li>
             <li><strong>HP_NORMAL</strong>: Heat pump in normal operation. </li>
             <li><strong>HP_INTENSIFIED</strong>: Switch-on recommendations for increased operation.  </li>
-            <li><strong>HP_FORCED</strong>: Definite start-up command (as far as this is possible within the control settings of the heat pump).  </li>
+            <li><strong>HP_FORCED</strong>: Forced start-up command (as far as this is possible within the control settings of the heat pump).  </li>
           </ul>
 		  
 		  <p> Via the datapoint SGReadyState it is possible to check the currently running operation mode of the heat pump. </p>
 		  
-          <p> The communicator (e.g. CEM) takes into account the unit specifications for the switching 
+          <p> The communicator (e.g. central energy management system) takes into account the unit specifications for the switching 
 			frequency (attributes maxLockTimeMinutes and minRunTimeMinutes). The values can be set during declaration of the 
 				heat pump. The standard values for SG Ready heat pumps are "Max. Lock Time" 120 minutes and "Min. Run Time" 20 minutes. </p>
 		  
 		  
-		  <p> "SG Ready" is a trademark of the German Heat Pump Association. Further infomation at <a href="https://www.waermepumpe.de/normen-technik/sg-ready/">https://www.waermepumpe.de/normen-technik/sg-ready/</a>. </p>
+		  <p> "SG Ready" is a trademark of the German Heat Pump Association. Further information at <a href="https://www.waermepumpe.de/normen-technik/sg-ready/">https://www.waermepumpe.de/normen-technik/sg-ready/</a>. </p>
 		  
 		  
         ]]>			
