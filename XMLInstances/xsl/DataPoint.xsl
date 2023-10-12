@@ -71,9 +71,19 @@
                         </img>
                         &#160;<xsl:value-of select="sgr:textElement" disable-output-escaping="yes" />
                     </div>
+                    <xsl:if test="../sgr:dataType/sgr:enum">
+                        <xsl:call-template name="langEnum">
+                            <xsl:with-param name="lang" select="sgr:language" />
+                            <xsl:with-param name="enum" select="../sgr:dataType/sgr:enum" />
+                        </xsl:call-template>
+                    </xsl:if>
+                    <xsl:if test="../sgr:dataType/sgr:bitmap">
+                        <xsl:call-template name="langBitmap">
+                            <xsl:with-param name="lang" select="sgr:language" />
+                            <xsl:with-param name="bitmap" select="../sgr:dataType/sgr:bitmap" />
+                        </xsl:call-template>
+                    </xsl:if>
                 </xsl:for-each>
-                <xsl:apply-templates select="sgr:dataType/sgr:enum" />
-                <xsl:apply-templates select="sgr:dataType/sgr:bitmap" />
             </td>
             <td>
                 <xsl:call-template name="SGrUnits">

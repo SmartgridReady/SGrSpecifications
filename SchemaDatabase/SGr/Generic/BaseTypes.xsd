@@ -176,7 +176,7 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
       <element name="ordinal" type="int" />
       <choice minOccurs="0">
         <element name="description" type="string"/>
-        <element name="legibleDescription" type="sgr:LegibleDescription"/>
+        <element name="legibleDescription" type="sgr:LegibleDescription" minOccurs="1" maxOccurs="4" />
       </choice>
     </sequence>
   </complexType>
@@ -187,7 +187,7 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
       <element name="literal" type="string" />
       <choice minOccurs="0">
         <element name="description" type="string"/>
-        <element name="legibleDescription" type="sgr:LegibleDescription"/>
+        <element name="legibleDescription" type="sgr:LegibleDescription" minOccurs="1" maxOccurs="4" />
       </choice>
     </sequence>
   </complexType>
@@ -199,7 +199,7 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
       <element name="ordinal" type="int" minOccurs="0" />
       <choice minOccurs="0">
         <element name="description" type="string"/>
-        <element name="legibleDescription" type="sgr:LegibleDescription"/>
+        <element name="legibleDescription" type="sgr:LegibleDescription" minOccurs="1" maxOccurs="4" />
       </choice>
     </sequence>
   </complexType>
@@ -250,7 +250,10 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
     <sequence>
       <element name="literal" type="string" />
       <element name="hexMask" type="hexBinary" />
-      <element name="description" type="string" minOccurs="0" />
+      <choice minOccurs="0">
+        <element name="description" type="string"/>
+        <element name="legibleDescription" type="sgr:LegibleDescription" minOccurs="1" maxOccurs="4" />
+      </choice>
     </sequence>
   </complexType>  
 
@@ -261,7 +264,10 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
     </annotation>
     <sequence>
       <element name="literal" type="string" />
-      <element name="description" type="string" minOccurs="0" />
+      <choice minOccurs="0">
+        <element name="description" type="string"/>
+        <element name="legibleDescription" type="sgr:LegibleDescription" minOccurs="1" maxOccurs="4" />
+      </choice>
     </sequence>
   </complexType>  
 

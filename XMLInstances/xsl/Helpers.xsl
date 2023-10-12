@@ -274,6 +274,29 @@
         </div>
     </xsl:template>
 
+    <xsl:template name="langEnum">
+        <xsl:param name="lang" select="NONE" />
+        <xsl:param name="enum" select="NONE" />
+        <div>
+          <ul>
+            <xsl:for-each select="$enum/sgr:enumEntry">
+                <li>
+                    <strong><xsl:value-of select="sgr:literal" /></strong>
+                    <xsl:if test="sgr:ordinal"> = <xsl:value-of select="sgr:ordinal" /></xsl:if>
+                    <xsl:if test="sgr:description">: <xsl:value-of select="sgr:description" /></xsl:if>
+                    <xsl:for-each select="sgr:legibleDescription">
+                        <xsl:variable name="thisLang"><xsl:value-of select="sgr:language" /></xsl:variable>
+                        <xsl:if test="$thisLang = $lang">: <xsl:value-of select="sgr:textElement" /> </xsl:if>
+                    </xsl:for-each>
+                </li>
+            </xsl:for-each>
+          </ul>
+        <xsl:if test="sgr:hexMask">
+            <div>Hex Mask: 0x<xsl:value-of select="sgr:hexMask"/></div>
+        </xsl:if>        
+        </div>
+    </xsl:template>
+
     <xsl:template match="sgr:bitmap">
         <div style="padding-left:1em;">
             <ul>
@@ -282,6 +305,26 @@
                     <strong><xsl:value-of select="sgr:literal" /></strong>
                     <xsl:if test="sgr:hexMask"> = 0x<xsl:value-of select="sgr:hexMask" /></xsl:if>
                     <xsl:if test="sgr:description">: <xsl:value-of select="sgr:description" /></xsl:if>
+                </li>
+            </xsl:for-each>
+            </ul>
+        </div>       
+    </xsl:template>
+
+    <xsl:template name="langBitmap">
+        <xsl:param name="lang" select="NONE" />
+        <xsl:param name="bitmap" select="NONE" />
+        <div style="padding-left:1em;">
+            <ul>
+            <xsl:for-each select="$bitmap/sgr:bitmapEntry">
+                <li>
+                    <strong><xsl:value-of select="sgr:literal" /></strong>
+                    <xsl:if test="sgr:hexMask"> = 0x<xsl:value-of select="sgr:hexMask" /></xsl:if>
+                    <xsl:if test="sgr:description">: <xsl:value-of select="sgr:description" /></xsl:if>
+                    <xsl:for-each select="sgr:legibleDescription">
+                        <xsl:variable name="thisLang"><xsl:value-of select="sgr:language" /></xsl:variable>
+                        <xsl:if test="$thisLang = $lang">: <xsl:value-of select="sgr:textElement" /> </xsl:if>
+                    </xsl:for-each>
                 </li>
             </xsl:for-each>
             </ul>
