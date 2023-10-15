@@ -59,25 +59,25 @@
             </td>
         </tr-->
         <tr>
-            <td>Category</td>
+            <td><strong>Category</strong></td>
             <td>
                 <xsl:value-of select="sgr:functionalProfileCategory" />
             </td>
         </tr>
         <tr>
-            <td>Type</td>
+            <td><strong>Type</strong></td>
             <td>
                 <xsl:value-of select="sgr:functionalProfileType" />
             </td>
         </tr>
         <tr>
-            <td>Level</td>
+            <td><strong>Level</strong></td>
             <td>
                 <xsl:value-of select="sgr:levelOfOperation" />
             </td>
         </tr>
         <tr>
-            <td>Version</td>
+            <td><strong>Version</strong></td>
             <td>
                 <xsl:apply-templates select="sgr:versionNumber" />
             </td>
