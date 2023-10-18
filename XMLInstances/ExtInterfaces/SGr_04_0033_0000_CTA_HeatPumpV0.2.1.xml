@@ -85,7 +85,7 @@
                 </dataType>
                 <unit>SECONDS</unit>
                 <alternativeNames>
-                  <sLV1Name>remoteCtrlTimeSec</sLV1Name>
+                  <sLV1Name>ctaRemoteCtrlTimeSec</sLV1Name>
                   <manufName>CTA_Ext_Communication_Handler</manufName>
                 </alternativeNames>
                 <legibleDescription>
@@ -94,7 +94,7 @@
                 </legibleDescription>
                 <programmerHints>
                   <textElement>remoteCtrlTimeSec is valid for all external commands and settings of the device. It must be > 0 for keeping the external command / Setpoint valid.
-                    CTA_Ext_Heating_Command, CTA_Ext_Heating_Setpoint, CTA_Ext_SG, CTA_Ext_PwrReq, CTA_Ext_Cooling_Command, CTA_Ext_Cooling_Setpoint </textElement>
+                    CTA_Ext_Heating_Setpoint, CTA_Ext_PwrReq and / or  CTA_Ext_Cooling_Setpoint alive </textElement>
                   <language>en</language>
                 </programmerHints>
               </dataPoint>
@@ -109,7 +109,38 @@
                 <registerType>HoldRegister</registerType>
                 <numberOfRegisters>1</numberOfRegisters>
               </modbusDataPointConfiguration>
+            </dataPointListElement>         
+            <dataPointListElement>
+              <dataPoint>
+                <dataPointName>ctaRemoteHCTempSetptEnable</dataPointName>
+                <dataDirection>RW</dataDirection>
+                <presenceLevel>M</presenceLevel>
+                <dataType>
+                  <boolean/>
+                </dataType>
+                <unit>NONE</unit>
+                <alternativeNames>
+                	<sLV1Name>ctaRemoteHCTempSetptEnable</sLV1Name>
+                	<manufName>CTA_Ext_Heating_Command</manufName></alternativeNames>
+                <legibleDescription>
+                  <textElement>true um den Datenpunkt HeatCoolCtrl.SupplyWaterTempStpt zu aktvieren</textElement>
+                  <language>de</language>
+                </legibleDescription>
+                <programmerHints>
+                  <textElement>true sets the CTA_Ext_Heating_Setpoint to active AND forces the ctaHCOpModeCmd into HC_COMFORT mode as long ctaRemoteCtrlTimeSec > 0</textElement>
+                  <language>en</language>
+                </programmerHints>
+              </dataPoint>
+              <modbusDataPointConfiguration>
+                <modbusDataType>
+                  <int16 />
+                </modbusDataType>
+                <address>1000</address>
+                <registerType>HoldRegister</registerType>
+                <numberOfRegisters>1</numberOfRegisters>
+              </modbusDataPointConfiguration>
             </dataPointListElement>
+            
           </dataPointList>
         </functionalProfileListElement>
         <functionalProfileListElement>
@@ -647,54 +678,7 @@
           <dataPointList>
             <dataPointListElement>
               <dataPoint>
-                <dataPointName>ctaHCOpModeCmd</dataPointName>
-                <dataDirection>RW</dataDirection>
-                <presenceLevel>M</presenceLevel>
-                <dataType>
-                  <enum>
-                    <enumEntry>
-                      <literal>HC_AUTO</literal>
-                      <ordinal>0</ordinal>
-                    </enumEntry>
-                    <enumEntry>
-                      <literal>HC_COMFORT</literal>
-                      <ordinal>1</ordinal>
-                    </enumEntry>
-                    <enumEntry>
-                      <literal>HC_ECO</literal>
-                      <ordinal>2</ordinal>
-                    </enumEntry>
-                    <enumEntry>
-                      <literal>HC_DEFROST</literal>
-                      <ordinal>3</ordinal>
-                    </enumEntry>
-                    <enumEntry>
-                      <literal>HC_EMERGENCY_OP</literal>
-                      <ordinal>4</ordinal>
-                    </enumEntry>
-                  </enum>
-                </dataType>
-                <unit>NONE</unit>
-                <legibleDescription>
-                  <textElement>
-                    Festlegen der Betriebsart des Heiz-/Kühlkreises [Aus Bereitschaft, Programm,
-                    Komfort, Eco]
-                  </textElement>
-                  <language>de</language>
-                </legibleDescription>
-              </dataPoint>
-              <modbusDataPointConfiguration>
-                <modbusDataType>
-                  <int16 />
-                </modbusDataType>
-                <address>1003</address>
-                <registerType>HoldRegister</registerType>
-                <numberOfRegisters>1</numberOfRegisters>
-              </modbusDataPointConfiguration>
-            </dataPointListElement>
-            <dataPointListElement>
-              <dataPoint>
-                <dataPointName>HeatCoolOpState</dataPointName>
+                <dataPointName>ctaHeatCoolCtrlOpModeCmd</dataPointName>
                 <dataDirection>RW</dataDirection>
                 <presenceLevel>M</presenceLevel>
                 <dataType>
@@ -705,14 +689,14 @@
                       <description>Extern gesteuert</description>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HC_STAND_BY</literal>
+                      <literal>HC_AUTO</literal>
                       <ordinal>1</ordinal>
                       <description>Standby Betrieb</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>HC_HEAT_COMF</literal>
                       <ordinal>2</ordinal>
-                      <description>Komnfort Betrieb</description>
+                      <description>Komfort Betrieb</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>HC_HEAT_ECO</literal>
@@ -720,20 +704,82 @@
                       <description>Reduzierter Betrieb</description>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HC_OFF</literal>
+                      <literal>HC_ANTIFREEZE</literal>
                       <ordinal>4</ordinal>
-                      <description>Aus</description>
+                      <description>Frostschutz / Aus</description>
+                    </enumEntry>
+                    <enumEntry>
+                      <literal>HC_EMERGENCY_OP</literal>
+                      <ordinal>5</ordinal>
+                      <description>Notbetrieb</description>
                     </enumEntry>
                   </enum>
                 </dataType>
                 <unit>NONE</unit>
                 <alternativeNames>
-                  <sLV1Name>ctaHCOpState</sLV1Name>
+                  <sLV1Name>HeatCoolCtrlOpModeCmd</sLV1Name>
                   <manufName>CTA_HK1_Status_UsrSet</manufName>
                 </alternativeNames>
                 <legibleDescription>
-                  <textElement>Auslesen des aktuellen Status des Heiz-/Kühlkreises (Aus,
-                    Bereitschaft, Programm, Comfort, Eco)</textElement>
+                  <textElement>Auslesen des aktuellen Status des Heizkreises</textElement>
+                  <language>de</language>
+                </legibleDescription>
+              </dataPoint>
+              <modbusDataPointConfiguration>
+                <modbusDataType>
+                  <int32U />
+                </modbusDataType>
+                <address>1003</address>
+                <registerType>HoldRegister</registerType>
+                <numberOfRegisters>2</numberOfRegisters>
+              </modbusDataPointConfiguration>
+            </dataPointListElement>
+            <dataPointListElement>
+              <dataPoint>
+                <dataPointName>ctaHeatCoolOpState</dataPointName>
+                <dataDirection>R</dataDirection>
+                <presenceLevel>M</presenceLevel>
+                <dataType>
+                  <enum>
+                    <enumEntry>
+                      <literal>HC_EXT_CTRL</literal>
+                      <ordinal>0</ordinal>
+                      <description>Extern gesteuert</description>
+                    </enumEntry>
+                    <enumEntry>
+                      <literal>HC_AUTO</literal>
+                      <ordinal>1</ordinal>
+                      <description>Standby Betrieb</description>
+                    </enumEntry>
+                    <enumEntry>
+                      <literal>HC_HEAT_COMF</literal>
+                      <ordinal>2</ordinal>
+                      <description>Komfort Betrieb</description>
+                    </enumEntry>
+                    <enumEntry>
+                      <literal>HC_HEAT_ECO</literal>
+                      <ordinal>3</ordinal>
+                      <description>Reduzierter Betrieb</description>
+                    </enumEntry>
+                    <enumEntry>
+                      <literal>HC_ANTIFREEZE</literal>
+                      <ordinal>4</ordinal>
+                      <description>Frostschutz / Aus</description>
+                    </enumEntry>
+                    <enumEntry>
+                      <literal>HC_EMERGENCY_OP</literal>
+                      <ordinal>5</ordinal>
+                      <description>Notbetrieb</description>
+                    </enumEntry>
+                  </enum>
+                </dataType>
+                <unit>NONE</unit>
+                <alternativeNames>
+                  <sLV1Name>ctaHeatCoolOpState</sLV1Name>
+                  <manufName>CTA_HK1_Status_UsrSet</manufName>
+                </alternativeNames>
+                <legibleDescription>
+                  <textElement>Auslesen des aktuellen Status des Heizkreises</textElement>
                   <language>de</language>
                 </legibleDescription>
               </dataPoint>
