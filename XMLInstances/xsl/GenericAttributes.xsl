@@ -71,26 +71,28 @@
 
         <!--smoothTransition-->
         <xsl:if test="sgr:smoothTransition">
-            <tr class="genericDetails">
-                <td class="genericattribute">Smooth Transition</td>
-                <td>
-                    <xsl:if test="sgr:smoothTransition/sgr:winTms">
-                        Window:
-                        <xsl:value-of select="sgr:smoothTransition/sgr:winTms" />
-                        s&#160;
-                    </xsl:if>
-                    <xsl:if test="sgr:smoothTransition/sgr:rvrtTms">
-                        rvrt:
-                        <xsl:value-of select="sgr:smoothTransition/sgr:rvrtTms" />
-                        s&#160;
-                    </xsl:if>
-                    <xsl:if test="sgr:smoothTransition/sgr:rmpTms">
-                        rmp:
-                        <xsl:value-of select="sgr:smoothTransition/sgr:rmpTms" />
-                        s&#160;
-                    </xsl:if>
-                </td>
-            </tr>
+            <xsl:if test="sgr:smoothTransition != ''">
+                <tr class="genericDetails">
+                    <td class="genericattribute">Smooth Transition</td>
+                    <td>
+                        <xsl:if test="sgr:smoothTransition/sgr:winTms">
+                            Window:
+                            <xsl:value-of select="sgr:smoothTransition/sgr:winTms" />
+                            s&#160;
+                        </xsl:if>
+                        <xsl:if test="sgr:smoothTransition/sgr:rvrtTms">
+                            rvrt:
+                            <xsl:value-of select="sgr:smoothTransition/sgr:rvrtTms" />
+                            s&#160;
+                        </xsl:if>
+                        <xsl:if test="sgr:smoothTransition/sgr:rmpTms">
+                            rmp:
+                            <xsl:value-of select="sgr:smoothTransition/sgr:rmpTms" />
+                            s&#160;
+                        </xsl:if>
+                    </td>
+                </tr>
+            </xsl:if>
         </xsl:if>
 
         <!--maxLatencyTime-->
