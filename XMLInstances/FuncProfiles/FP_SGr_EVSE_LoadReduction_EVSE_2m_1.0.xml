@@ -27,6 +27,23 @@
       <textElement>
         <![CDATA[	
           <img src="ressources/cem_from-to_evse.svg" style="float:left; padding:0.3em;"/>
+          <p>Wallboxes (Electric Vehicle Supply Equipment "EVSE") must have a controller which covers the following four operating states:</p>
+          <p>The following operating states can be set and read using the data point "EVSE_OpModeCmd": </p>
+          <ol>
+            <li><strong>EV_NORMAL</strong>: Normal operation, charging without any restrictions based on the configured connection power.</li>
+            <li><strong>EV_REDUCED</strong>: Reduces charging, e.g. to 50 % of the maximum charging power, but not below 6A.</li>
+            <li><strong>EV_MINIMAL</strong>: Minimum charging (AC charging at 6A, DC charging at 10kW, bidirectional charging.</li>
+            <li><strong>EV_NONE_OR_FEEDIN</strong>: Charging interrupted (bidirectional charging, maximum feed-in for Vehicle to Infrastructure V2X).</li>
+          </ol>
+          <p>The current operating mode of the wallbox can be read using the data point "EVSE_OpState."</p>
+        ]]>
+      </textElement>
+      <language>en</language>
+    </legibleDescription>
+	<legibleDescription>
+      <textElement>
+        <![CDATA[	
+          <img src="ressources/cem_from-to_evse.svg" style="float:left; padding:0.3em;"/>
           <p>Wallboxen (Electric Vehicle Supply Equipment «EVSE») müssen über einen Regler verfügen, welcher vier Betriebszustände abdeckt.</p>
           <p>Folgende Betriebszustände können über den Datenpunkt "EVSE_OpModeCmd" gesetzt und ausgelesen werden: </p>
           <ol>
@@ -102,6 +119,10 @@
           </enum>
         </dataType>
         <unit>NONE</unit>
+		<legibleDescription>
+          <textElement>To set the operating mode</textElement>
+          <language>en</language>
+        </legibleDescription>
         <legibleDescription>
           <textElement>Zum Einstellen des Betriebsmodus</textElement>
           <language>de</language>
@@ -130,7 +151,11 @@
           </enum>
         </dataType>
         <unit>NONE</unit>
-        <legibleDescription>
+         <legibleDescription>
+          <textElement>Feedback of the EVSE</textElement>
+          <language>en</language>
+        </legibleDescription>
+		<legibleDescription>
           <textElement>Rückmeldung vom EVSE</textElement>
           <language>de</language>
         </legibleDescription>
