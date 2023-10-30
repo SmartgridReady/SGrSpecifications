@@ -597,6 +597,9 @@
                   <float32 />
                 </dataType>
                 <unit>REVOLUTIONS_PER_MINUTE</unit>
+                <alternativeNames>
+                	<sLV1Name>ActSpeed</sLV1Name>
+                	<manufName>State_CompRPS</manufName></alternativeNames>
                 <legibleDescription>
                   <textElement>
                     ?check: Adress durch cb? Effektive Drehzahl des Verdichters
@@ -625,6 +628,9 @@
                   <float32 />
                 </dataType>
                 <unit>KILOWATT_HOURS</unit>
+                <alternativeNames>
+                	<sLV1Name>ActPowerACtot</sLV1Name>
+                	<manufName>State_CompPower</manufName></alternativeNames>
                 <legibleDescription>
                   <textElement>
                     Effektive elektrischen Aufnahmeleistung des Verdichters
@@ -711,7 +717,7 @@
                 </dataType>
                 <unit>NONE</unit>
                 <alternativeNames>
-                  <sLV1Name>HeatCoolCtrlOpModeCmd</sLV1Name>
+                  <sLV1Name>ctaHCOpModeCmd</sLV1Name>
                   <manufName>CTA_HK1_Status_UsrSet</manufName>
                 </alternativeNames>
                 <legibleDescription>
@@ -1063,6 +1069,9 @@
                   <float32 />
                 </dataType>
                 <unit>DEGREES_CELSIUS</unit>
+                <alternativeNames>
+                	<sLV1Name>ActHeatBufferTempUpper</sLV1Name>
+                	<manufName>CTA_B4_Temp</manufName></alternativeNames>
                 <legibleDescription>
                   <textElement>?check addr 16518 doppelt: Aktuelle Ist-Temperatur des
                     Heiz-Pufferspeichers oben</textElement>
@@ -1082,11 +1091,14 @@
               <dataPoint>
                 <dataPointName>ActHeatBufferTempLower</dataPointName>
                 <dataDirection>R</dataDirection>
-                <presenceLevel>M</presenceLevel>
+                <presenceLevel>O</presenceLevel>
                 <dataType>
                   <float32 />
                 </dataType>
                 <unit>DEGREES_CELSIUS</unit>
+                <alternativeNames>
+                	<sLV1Name>ActHeatBufferTempLower</sLV1Name>
+                	<manufName>CTA_B41_Temp</manufName></alternativeNames>
                 <legibleDescription>
                   <textElement>Aktuelle Ist-Temperatur des Heiz-Pufferspeichers unten</textElement>
                   <language>de</language>
@@ -1103,71 +1115,7 @@
             </dataPointListElement>
           </dataPointList>
         </functionalProfileListElement>
-        <functionalProfileListElement>
-          <functionalProfile>
-            <functionalProfileName>RoomTempCtrl</functionalProfileName>
-            <functionalProfileIdentification>
-              <specificationOwnerIdentification>0</specificationOwnerIdentification>
-              <functionalProfileCategory>HeatPumpControl</functionalProfileCategory>
-              <functionalProfileType>RoomTempCtrl</functionalProfileType>
-              <levelOfOperation>4</levelOfOperation>
-              <versionNumber>
-                <primaryVersionNumber>0</primaryVersionNumber>
-                <secondaryVersionNumber>1</secondaryVersionNumber>
-                <subReleaseVersionNumber>2</subReleaseVersionNumber>
-              </versionNumber>
-            </functionalProfileIdentification>
-            <legibleDescription>
-              <textElement>x</textElement>
-              <language>de</language>
-            </legibleDescription>
-          </functionalProfile>
-          <dataPointList>
-            <dataPointListElement>
-              <dataPoint>
-                <dataPointName>RoomZoneTemp</dataPointName>
-                <dataDirection>R</dataDirection>
-                <presenceLevel>R</presenceLevel>
-                <dataType>
-                  <float32 />
-                </dataType>
-                <unit>DEGREES_CELSIUS</unit>
-                <legibleDescription>
-                  <textElement>Aktuelle Ist-Temperatur des 1. Raumes oder Mittelwert der Bezugsräume
-                    für die Begrenzung der Reduktions- oder Anhebungsmassnahmen</textElement>
-                  <language>de</language>
-                </legibleDescription>
-              </dataPoint>
-              <modbusDataPointConfiguration>
-                <modbusDataType>
-                  <float32 />
-                </modbusDataType>
-                <address>1080</address>
-                <registerType>InputRegister</registerType>
-                <numberOfRegisters>2</numberOfRegisters>
-              </modbusDataPointConfiguration>
-            </dataPointListElement>
-            <dataPointListElement>
-              <dataPoint>
-                <dataPointName>RoomZoneTempStpt</dataPointName>
-                <dataDirection>RW</dataDirection>
-                <presenceLevel>M</presenceLevel>
-                <dataType>
-                  <float32 />
-                </dataType>
-                <unit>DEGREES_CELSIUS</unit>
-              </dataPoint>
-              <modbusDataPointConfiguration>
-                <modbusDataType>
-                  <float32 />
-                </modbusDataType>
-                <address>1065</address>
-                <registerType>HoldRegister</registerType>
-                <numberOfRegisters>2</numberOfRegisters>
-              </modbusDataPointConfiguration>
-            </dataPointListElement>
-          </dataPointList>
-        </functionalProfileListElement>
+             
         <functionalProfileListElement>
           <functionalProfile>
             <functionalProfileName>SG-ReadyStates_bwp</functionalProfileName>
@@ -1509,6 +1457,9 @@
                   <float32 />
                 </dataType>
                 <unit>KILOWATT_HOURS</unit>
+                  <alternativeNames>                
+                    <manufName>State_CompPower</manufName>
+                  </alternativeNames>
                 <legibleDescription>
                   <textElement>Effektive elektrischen Aufnahmeleistung des Verdichters</textElement>
                   <language>de</language>
