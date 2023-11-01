@@ -31,9 +31,10 @@
     <levelOfOperation>4</levelOfOperation>
     <programmerHints>
       <textElement>
-        ProgrammersHint: There is a timer "remoteCtrlTimeSec" (CTA_Ext_Heating_Command) aligned to all external commands that counts down for lifetime management. It's value must be > 0 for keeping the external command / Setpoint valid.
-          CTA_Ext_Heating_Setpoint, CTA_Ext_SG, CTA_Ext_PwrReq, CTA_Ext_Cooling_Command, CTA_Ext_Cooling_Setpoint.
-          It must be set through the controlling functional profile.
+          This Gateway offers manufacturer specific control modes for HeatCoolCtrl and DomHotWaterCtrl.  
+          Manufacurer specific data points use the preamble cta.
+          These must be set through the controlling functional profile and work as long ctaRemoteCtrlTimeSec = 0.
+          See DeviceInformation functional profile for further details.
       </textElement>
       <language>en</language>
       <uri>https://cta.ch/privatkunden/produkte/oh-i-eco-sw</uri>
@@ -93,8 +94,11 @@
                   <language>de</language>
                 </legibleDescription>
                 <programmerHints>
-                  <textElement>remoteCtrlTimeSec is valid for all external commands and settings of the device. It must be > 0 for keeping the external command / Setpoint valid.
-                    CTA_Ext_Heating_Setpoint, CTA_Ext_PwrReq and / or  CTA_Ext_Cooling_Setpoint alive </textElement>
+                  <textElement>remoteCtrlTimeSec is valid for external HeatCoolCtrl commands. It must be > 0 for keeping the external command / Setpoint valid.
+                    CTA_Ext_Heating_Setpoint and / or  CTA_Ext_Cooling_Setpoint must be set alive that the appropriate setpoint is set. 
+                     HeatCoolCtrl will be set automatically into COMFORT mode. When the remoteCtrlTimeSec becomes 0, HeatCoolCtrl will stay in comfort mode  
+                     until a new ctaHCOpModeCmd is set
+                     </textElement>
                   <language>en</language>
                 </programmerHints>
               </dataPoint>
@@ -127,7 +131,8 @@
                   <language>de</language>
                 </legibleDescription>
                 <programmerHints>
-                  <textElement>true sets the CTA_Ext_Heating_Setpoint to active AND forces the ctaHCOpModeCmd into HC_COMFORT mode as long ctaRemoteCtrlTimeSec > 0</textElement>
+                  <textElement>true sets the CTA_Ext_Heating_Setpoint to active AND forces the ctaHCOpModeCmd into HC_COMFORT mode as long ctaRemoteCtrlTimeSec > 0
+                  when the ctaRemoteHCTempSetptEnable becomes 0, HeatCoolCtrl will stay in comfort mode until a new ctaHCOpModeCmd is set</textElement>
                   <language>en</language>
                 </programmerHints>
               </dataPoint>
@@ -150,7 +155,7 @@
               <specificationOwnerIdentification>0</specificationOwnerIdentification>
               <functionalProfileCategory>HeatPumpControl</functionalProfileCategory>
               <functionalProfileType>HeatPumpBase</functionalProfileType>
-              <levelOfOperation>4</levelOfOperation>
+              <levelOfOperation>m</levelOfOperation>
               <versionNumber>
                 <primaryVersionNumber>0</primaryVersionNumber>
                 <secondaryVersionNumber>1</secondaryVersionNumber>
@@ -254,6 +259,7 @@
                 </dataType>
                 <unit>NONE</unit>
                 <alternativeNames>
+                  <sLV1Name>ctaHPOpModeCmdFb</sLV1Name>
                   <manufName>CTA_HeatPump_FSM</manufName>
                 </alternativeNames>
                 <legibleDescription>
@@ -376,6 +382,7 @@
                 </dataType>
                 <unit>NONE</unit>
                 <alternativeNames>
+                  <sLV1Name>ctaHPOpState</sLV1Name>
                   <manufName>CTA_UnitStatus</manufName>
                 </alternativeNames>
                 <legibleDescription>
@@ -402,6 +409,7 @@
                 </dataType>
                 <unit>NONE</unit>
                 <alternativeNames>
+                  <sLV1Name>ErrorNrSGr</sLV1Name>
                   <manufName>GlbAl</manufName>
                 </alternativeNames>
                 <legibleDescription>
@@ -435,6 +443,7 @@
                 </dataType>
                 <unit>DEGREES_CELSIUS</unit>
                 <alternativeNames>
+                  <sLV1Name>OutsideAirTemp</sLV1Name>
                   <manufName>CTA_Outdoor_Temp</manufName>
                 </alternativeNames>
                 <legibleDescription>
@@ -463,6 +472,7 @@
                 </dataType>
                 <unit>DEGREES_CELSIUS</unit>
                 <alternativeNames>
+                  <sLV1Name>SupplyWaterTemp</sLV1Name>
                   <manufName>CTA_B21_Temp</manufName>
                 </alternativeNames>
                 <legibleDescription>
@@ -489,6 +499,7 @@
                 </dataType>
                 <unit>DEGREES_CELSIUS</unit>
                 <alternativeNames>
+                  <sLV1Name>ReturnSupplyWaterTemp</sLV1Name>
                   <manufName>CTA_B71_Temp</manufName>
                 </alternativeNames>
                 <legibleDescription>
@@ -516,6 +527,7 @@
                 </dataType>
                 <unit>DEGREES_CELSIUS</unit>
                 <alternativeNames>
+                  <sLV1Name>SourceTemp</sLV1Name>
                   <manufName>CTA_B91_Temp</manufName>
                 </alternativeNames>
                 <legibleDescription>
@@ -542,7 +554,7 @@
               <specificationOwnerIdentification>0</specificationOwnerIdentification>
               <functionalProfileCategory>HeatPumpControl</functionalProfileCategory>
               <functionalProfileType>PowerCtrl</functionalProfileType>
-              <levelOfOperation>4</levelOfOperation>
+              <levelOfOperation>4m</levelOfOperation>
               <versionNumber>
                 <primaryVersionNumber>0</primaryVersionNumber>
                 <secondaryVersionNumber>1</secondaryVersionNumber>
@@ -550,7 +562,7 @@
               </versionNumber>
             </functionalProfileIdentification>
             <legibleDescription>
-              <textElement>x</textElement>
+              <textElement>Die Leistungssteuerung steuert die Verdichterdrehzahl. Diese wird nur bei Wärme- oder Kühlbedarf umgesetzt, je nach Anwendungsfall müsste bei einer externen Leistungsanforderung zusätzlich mit Temperaturanpassungen gearbeitet werden.</textElement>
               <language>de</language>
             </legibleDescription>
           </functionalProfile>
@@ -602,7 +614,7 @@
                 	<manufName>State_CompRPS</manufName></alternativeNames>
                 <legibleDescription>
                   <textElement>
-                    ?check: Adress durch cb? Effektive Drehzahl des Verdichters
+                    Effektive Drehzahl des Verdichters
                   </textElement>
                   <language>de</language>
                 </legibleDescription>
@@ -656,7 +668,7 @@
               <specificationOwnerIdentification>0</specificationOwnerIdentification>
               <functionalProfileCategory>HeatPumpControl</functionalProfileCategory>
               <functionalProfileType>HeatCoolCtrl</functionalProfileType>
-              <levelOfOperation>4</levelOfOperation>
+              <levelOfOperation>4m</levelOfOperation>
               <versionNumber>
                 <primaryVersionNumber>0</primaryVersionNumber>
                 <secondaryVersionNumber>1</secondaryVersionNumber>
@@ -869,7 +881,7 @@
                   <float32 />
                 </modbusDataType>
                 <address>2004</address>
-                <registerType>HoldRegister</registerType>
+                <registerType>InputRegister</registerType>
                 <numberOfRegisters>2</numberOfRegisters>
               </modbusDataPointConfiguration>
             </dataPointListElement>
@@ -882,7 +894,7 @@
               <specificationOwnerIdentification>0</specificationOwnerIdentification>
               <functionalProfileCategory>HeatPumpControl</functionalProfileCategory>
               <functionalProfileType>DomHotWaterCtrl</functionalProfileType>
-              <levelOfOperation>4</levelOfOperation>
+              <levelOfOperation>4m</levelOfOperation>
               <versionNumber>
                 <primaryVersionNumber>0</primaryVersionNumber>
                 <secondaryVersionNumber>1</secondaryVersionNumber>
@@ -894,8 +906,7 @@
                 Dieses Profil definiert die erweiterten Datenpunkte zum Grundprofil "HeatPumpBase",
                 welche zur Steuerung eines Brauchwarmwasserkreises zur Verfügung gestellt werden.
                 Das Brauchwarmwasser-Profil muss immer in Kombination mit dem Grundprofil der
-                Wärmepumpe bewirtschaftet werden. Es können mehrere Brauchwarmwasser-Profile
-                definiert werden.
+                Wärmepumpe bewirtschaftet werden.
               </textElement>
               <language>de</language>
             </legibleDescription>
@@ -937,8 +948,8 @@
                 </alternativeNames>
                 <legibleDescription>
                   <textElement>
-                    ?checkDoku TODO: enum. Grund-Betriebsart der Brauchwasseranlage (Bereitschaft,
-                    Programm, Komfort, Eco, Warmwasser, Kühlen aktiv, Kühlen passiv, Notbetrieb)
+                    Die Betriebsarten dieses Gerätes sind herstellerspezifisch:
+                    Ein- und ausschalten, einmaliger Leistungsstoss (z.B. für Legionellenschaltung), temporäre Ausschaltung und Notfallsteuerung 
                   </textElement>
                   <language>de</language>
                 </legibleDescription>
@@ -991,6 +1002,7 @@
                 </dataType>
                 <unit>DEGREES_CELSIUS</unit>
                 <alternativeNames>
+                  <sLV1Name>ActDomHotWTemp</sLV1Name>
                   <manufName>CTA_B3_Temp</manufName>
                 </alternativeNames>
                 <legibleDescription>
@@ -1016,7 +1028,7 @@
               <specificationOwnerIdentification>0</specificationOwnerIdentification>
               <functionalProfileCategory>HeatPumpControl</functionalProfileCategory>
               <functionalProfileType>BufferStorageCtrl</functionalProfileType>
-              <levelOfOperation>4</levelOfOperation>
+              <levelOfOperation>4m</levelOfOperation>
               <versionNumber>
                 <primaryVersionNumber>0</primaryVersionNumber>
                 <secondaryVersionNumber>1</secondaryVersionNumber>
@@ -1024,7 +1036,7 @@
               </versionNumber>
             </functionalProfileIdentification>
             <legibleDescription>
-              <textElement>x</textElement>
+              <textElement>Bufferspeichersteuerung mittels Temperaturoffset.</textElement>
               <language>de</language>
             </legibleDescription>
           </functionalProfile>
@@ -1039,6 +1051,7 @@
                 </dataType>
                 <unit>DEGREES_CELSIUS</unit>
                 <alternativeNames>
+                  <sLV1Name>HeatBufferTempStptOffset</sLV1Name>
                   <manufName>CTA_CFG_Buffer_Overcharge_dT</manufName>
                 </alternativeNames>
                 <legibleDescription>
@@ -1073,7 +1086,7 @@
                 	<sLV1Name>ActHeatBufferTempUpper</sLV1Name>
                 	<manufName>CTA_B4_Temp</manufName></alternativeNames>
                 <legibleDescription>
-                  <textElement>?check addr 16518 doppelt: Aktuelle Ist-Temperatur des
+                  <textElement>Aktuelle Ist-Temperatur des
                     Heiz-Pufferspeichers oben</textElement>
                   <language>de</language>
                 </legibleDescription>
@@ -1186,6 +1199,8 @@
                 </dataType>
                 <unit>NONE</unit>
                 <alternativeNames>
+                  <sLV1Name>SGReadyOpModeCmd</sLV1Name>
+                  <manufName>CTA_Ext_SG</manufName>
                   <hpBwpName>Betriebsmodus</hpBwpName>
                 </alternativeNames>
                 <legibleDescription>
@@ -1248,6 +1263,8 @@
                 </dataType>
                 <unit>NONE</unit>
                 <alternativeNames>
+                  <sLV1Name>SGReadyState</sLV1Name>
+                  <manufName>CTA_Ext_SG</manufName>
                   <hpBwpName>Statusmeldungen</hpBwpName>
                 </alternativeNames>
                 <legibleDescription>
@@ -1274,7 +1291,7 @@
               <specificationOwnerIdentification>0</specificationOwnerIdentification>
               <functionalProfileCategory>HeatPumpControl</functionalProfileCategory>
               <functionalProfileType>EnergyMonitor</functionalProfileType>
-              <levelOfOperation>4</levelOfOperation>
+              <levelOfOperation>m</levelOfOperation>
               <versionNumber>
                 <primaryVersionNumber>0</primaryVersionNumber>
                 <secondaryVersionNumber>1</secondaryVersionNumber>
@@ -1282,8 +1299,8 @@
               </versionNumber>
             </functionalProfileIdentification>
             <legibleDescription>
-              <textElement>Das Profil definiert den Monitoriungbaustein zur dynamischen Ansteuerung
-                von Wärmepumpen über eine variable Beeinflussung der Sollwerte nach SGr Level 4. </textElement>
+              <textElement>Das Profil definiert den Monitoringbaustein zur Auswertung des Energieverbrauchs
+                der Wärmepumpe</textElement>
               <language>de</language>
             </legibleDescription>
           </functionalProfile>
@@ -1379,6 +1396,7 @@
                 </dataType>
                 <unit>KILOWATT_HOURS</unit>
                 <alternativeNames>
+                  <sLV1Name>ThermalEnergyTot</sLV1Name>
                   <manufName>CTA_Energy_Q_Tot</manufName>
                 </alternativeNames>
                 <legibleDescription>
@@ -1405,6 +1423,7 @@
                 </dataType>
                 <unit>KILOWATT_HOURS</unit>
                 <alternativeNames>
+                  <sLV1Name>ThermalEnergyHeat</sLV1Name>
                   <manufName>CTA_Energy_Q_Heat</manufName>
                 </alternativeNames>
                 <legibleDescription>
@@ -1431,6 +1450,7 @@
                 </dataType>
                 <unit>KILOWATT_HOURS</unit>
                 <alternativeNames>
+                  <sLV1Name>ThermalEnergyDomHotWater</sLV1Name>
                   <manufName>CTA_Energy_Q_DW</manufName>
                 </alternativeNames>
                 <legibleDescription>
@@ -1457,7 +1477,8 @@
                   <float32 />
                 </dataType>
                 <unit>KILOWATT_HOURS</unit>
-                  <alternativeNames>                
+                  <alternativeNames>
+                    <sLV1Name>ActPowerACtot</sLV1Name>
                     <manufName>State_CompPower</manufName>
                   </alternativeNames>
                 <legibleDescription>
@@ -1484,6 +1505,7 @@
                 </dataType>
                 <unit>HOURS</unit>
                 <alternativeNames>
+                  <sLV1Name>RuntimeHeating</sLV1Name>
                   <manufName>CTA_OperTime_Total_h</manufName>
                 </alternativeNames>
                 <legibleDescription>
@@ -1510,6 +1532,7 @@
                 </dataType>
                 <unit>HOURS</unit>
                 <alternativeNames>
+                  <sLV1Name>RuntimeCooling</sLV1Name>
                   <manufName>CTA_OperTime_Cooling_h</manufName>
                 </alternativeNames>
                 <legibleDescription>
@@ -1536,6 +1559,7 @@
                 </dataType>
                 <unit>NONE</unit>
                 <alternativeNames>
+                  <sLV1Name>NrOfStartupsCompressor</sLV1Name>
                   <manufName>CTA_CompStartAttempts</manufName>
                 </alternativeNames>
                 <legibleDescription>
