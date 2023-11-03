@@ -541,6 +541,26 @@
                                     </tr>
                                 </xsl:if>
         
+                                <!--//sgr:attributeList-->
+                                <xsl:if test="//sgr:attributeList">
+                                    <xsl:for-each select="//sgr:attributeList/sgr:attribute">
+                                        <tr class="genericDetails">
+                                            <td class="genericattribute"><xsl:value-of select="sgr:name" /></td>
+                                            <td><xsl:value-of select="sgr:type" /></td>
+                                            <td>
+                                                <xsl:for-each select="sgr:legibleDescription">
+                                                    <div>
+                                                        <xsl:call-template name="SGrLanguageText">
+                                                            <xsl:with-param name="lang"><xsl:value-of select="sgr:language" /></xsl:with-param>
+                                                            <xsl:with-param name="value"><xsl:value-of select="sgr:textElement" /></xsl:with-param>
+                                                        </xsl:call-template>
+                                                    </div>
+                                                </xsl:for-each>
+                                            </td>
+                                        </tr>
+                                    </xsl:for-each>
+                                </xsl:if>
+        
                             </table>
         
                             <xsl:if test="//sgr:smoothTransition">

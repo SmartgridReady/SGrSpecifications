@@ -6,7 +6,6 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
   targetNamespace="http://www.smartgridready.com/ns/V0/" version="0.2.2">
 
   <include schemaLocation="BaseType_FunctionalProfileCategory.xsd" />
-  <include schemaLocation="BaseType_FunctionalProfileType.xsd" />
   <include schemaLocation="BaseType_LevelOfOperationType.xsd" />
 
   <complexType name="ReleaseNotes">
@@ -766,6 +765,7 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
         </annotation>
       </element>
       <element name="unitConversionMultiplicator" type="sgr:EmptyOrFloat" minOccurs="0" />
+      <element name="attributeList" type="sgr:AttributeList" minOccurs="0" />
     </all>
   </complexType>
   <complexType name="StabilityFallback">
@@ -832,7 +832,19 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
       <element name="obligedTo" type="sgr:ObligLVlType" />
     </sequence>
   </complexType>
-
+  <complexType name="Attribute">
+    <sequence>
+      <element name="name" type="string" />
+      <element name="type" type="string" minOccurs="0" />
+      <element name="value" type="string" minOccurs="0" />
+      <element name="legibleDescription" type="sgr:LegibleDescription" maxOccurs="4" minOccurs="0" />
+    </sequence>
+  </complexType>
+  <complexType name="AttributeList">
+    <sequence>
+      <element name="attribute" type="sgr:Attribute" maxOccurs="unbounded" minOccurs="1" />
+    </sequence>
+  </complexType>
 
   <!--  generic Enumeration Definitions  -->
   <simpleType name="MeasuredValueType">

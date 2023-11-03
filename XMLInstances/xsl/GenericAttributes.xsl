@@ -219,6 +219,19 @@
                 </td>
             </tr>
         </xsl:if>
+
+        <!--attributeList-->
+        <xsl:if test="sgr:attributeList">
+            <xsl:for-each select="sgr:attributeList/sgr:attribute">
+                <xsl:if test="sgr:value != ''">
+                    <tr class="genericDetails">
+                        <td class="genericattribute"><xsl:value-of select="sgr:name" /></td>
+                        <td><xsl:value-of select="sgr:value" /></td>
+                    </tr>
+                </xsl:if>
+            </xsl:for-each>
+        </xsl:if>
+
     </xsl:template>
 
 </xsl:stylesheet>  

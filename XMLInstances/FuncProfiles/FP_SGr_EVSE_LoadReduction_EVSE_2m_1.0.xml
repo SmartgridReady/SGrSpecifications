@@ -32,7 +32,7 @@
           <ol>
             <li><strong>EV_NORMAL</strong>: Normalbetrieb: Uneingeschränkt entsprechend der konfigurierten Anschlussleistung laden</li>
             <li><strong>EV_REDUCED</strong>: Reduziert das Laden z.B. 50% der maximalen Ladeleistung, jedoch mindestens 6A</li>
-            <li><strong>EV_MINIMAL</strong>: Minimale Ladung (AC Ladung 6A, DC Ladung 10kW, Bidirektionales Laden, maximales Feed-In für Vehicle to Infrastructure V2X)</li>
+            <li><strong>EV_MINIMAL</strong>: Minimale Ladung (AC Ladung 6A, DC Ladung 10kW, Bidirektionales Laden)</li>
             <li><strong>EV_NONE_OR_FEEDIN</strong>: Ladung unterbrochen (Bidirektionales Laden, maximales Feed-In für Vehicle to Infrastructure V2X)</li>
           </ol>
           <p> Über den Datenpunkt "EVSE_OpState" kann der aktuelle Betriebsmodus der Wallbox ausgelesen werden. </p>
@@ -41,6 +41,44 @@
       <language>de</language>
     </legibleDescription>
   </functionalProfile>
+  <genericAttributes>
+    <attributeList>
+      <attribute>
+        <name>Load Reduction</name>
+        <type>float</type>
+        <value>50 %</value>
+        <legibleDescription>
+          <textElement>
+            Load reduction for EV_REDUCED setting. 
+          </textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>
+            Reduktion des Ladens for Einstellung EV_REDUCED. 
+          </textElement>
+          <language>de</language>
+        </legibleDescription>
+      </attribute>
+      <attribute>
+        <name>Minimum Load</name>
+        <type>float</type>
+        <value>6 A</value>
+        <legibleDescription>
+          <textElement>
+            Minimum load capacity.
+          </textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>
+            Minimale Ladeleistung
+          </textElement>
+          <language>de</language>
+        </legibleDescription>
+      </attribute>
+    </attributeList>
+  </genericAttributes>
   <dataPointList>
     <dataPointListElement>
       <dataPoint>
