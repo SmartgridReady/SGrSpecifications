@@ -31,9 +31,9 @@
     <levelOfOperation>4</levelOfOperation>
     <programmerHints>
       <textElement>
-        ProgrammersHint: There is a timer "remoteCtrlTimeSec" (CTA_Ext_Heating_Command) aligned to all external commands that counts down for lifetime management. It's value must be > 0 for keeping the external command / Setpoint valid.
-          CTA_Ext_Heating_Setpoint, CTA_Ext_SG, CTA_Ext_PwrReq, CTA_Ext_Cooling_Command, CTA_Ext_Cooling_Setpoint.
-          It must be set through the controlling functional profile.
+          This Gateway offers manufacturer specific control modes for HeatCoolCtrl and DomHotWaterCtrl.  
+          Manufacurer specific data points use the preamble cta.
+          Some data points support persistent memory functionality  (RWP) and limit data write operations to a couple 10'000 write cycles.
       </textElement>
       <language>en</language>
       <uri>https://cta.ch/privatkunden/produkte/oh-i-eco-sw</uri>
@@ -45,7 +45,7 @@
         <modbusInterfaceSelection>TCPIP</modbusInterfaceSelection>
         <modbusTcp>
           <port>502</port>
-          <address>192.168.1.55</address>
+          <address>192.168.99.55</address>
           <slaveId>1</slaveId>
         </modbusTcp>
         <firstRegisterAddressIsOne>false</firstRegisterAddressIsOne>
@@ -85,7 +85,7 @@
                 </dataType>
                 <unit>SECONDS</unit>
                 <alternativeNames>
-                  <sLV1Name>remoteCtrlTimeSec</sLV1Name>
+                  <sLV1Name>ctaRemoteCtrlTimeSec</sLV1Name>
                   <manufName>CTA_Ext_Communication_Handler</manufName>
                 </alternativeNames>
                 <legibleDescription>
@@ -93,11 +93,16 @@
                   <language>de</language>
                 </legibleDescription>
                 <programmerHints>
-                  <textElement>remoteCtrlTimeSec is valid for all external commands and settings of the device. It must be > 0 for keeping the external command / Setpoint valid.
-                    CTA_Ext_Heating_Command, CTA_Ext_Heating_Setpoint, CTA_Ext_SG, CTA_Ext_PwrReq, CTA_Ext_Cooling_Command, CTA_Ext_Cooling_Setpoint </textElement>
+                  <textElement>remoteCtrlTimeSec is valid for external HeatCoolCtrl commands. It must be > 0 for keeping the external command / Setpoint valid.
+                    CTA_Ext_Heating_Setpoints and / or  CTA_Ext_Cooling_Setpoints must be set t true that the appropriate setpoint can be set. 
+                     Check the datapoints ctaRemoteHCTempSetptEnable within the HeatCoolCtrl functional profiles for further information.
+                     </textElement>
                   <language>en</language>
                 </programmerHints>
               </dataPoint>
+              <genericAttributes>
+                <maxVal>3000</maxVal>
+              </genericAttributes>
               <modbusDataPointConfiguration>
                 <modbusDataType>
                   <int16U/>
@@ -106,7 +111,7 @@
                 <registerType>HoldRegister</registerType>
                 <numberOfRegisters>1</numberOfRegisters>
               </modbusDataPointConfiguration>
-            </dataPointListElement>
+            </dataPointListElement>                   
           </dataPointList>
         </functionalProfileListElement>
         <functionalProfileListElement>
@@ -116,7 +121,7 @@
               <specificationOwnerIdentification>0</specificationOwnerIdentification>
               <functionalProfileCategory>HeatPumpControl</functionalProfileCategory>
               <functionalProfileType>HeatPumpBase</functionalProfileType>
-              <levelOfOperation>4</levelOfOperation>
+              <levelOfOperation>m</levelOfOperation>
               <versionNumber>
                 <primaryVersionNumber>0</primaryVersionNumber>
                 <secondaryVersionNumber>1</secondaryVersionNumber>
@@ -220,6 +225,7 @@
                 </dataType>
                 <unit>NONE</unit>
                 <alternativeNames>
+                  <sLV1Name>ctaHPOpModeCmdFb</sLV1Name>
                   <manufName>CTA_HeatPump_FSM</manufName>
                 </alternativeNames>
                 <legibleDescription>
@@ -252,27 +258,7 @@
                       <literal>HP_ALARM_OFF</literal>
                       <ordinal>2</ordinal>
                       <description>Alarm aus</description>
-                    </enumEntry>
-                    <enumEntry>
-                      <literal>HP_EXTERNAL_OFF</literal>
-                      <ordinal>3</ordinal>
-                      <description>Externer Betrieb aus</description>
-                    </enumEntry>
-                    <enumEntry>
-                      <literal>HP_TIMEOUT_OFF</literal>
-                      <ordinal>4</ordinal>
-                      <description>Aus aufgrund Zeitlimite</description>
-                    </enumEntry>
-                    <enumEntry>
-                      <literal>HP_DSO_OFF</literal>
-                      <ordinal>5</ordinal>
-                      <description>Aus aufgrund Sperrung (EW-Sperre)</description>
-                    </enumEntry>
-                    <enumEntry>
-                      <literal>HP_MANUAL_OFF</literal>
-                      <ordinal>6</ordinal>
-                      <description>Manuell Aus</description>
-                    </enumEntry>
+                    </enumEntry>            
                     <enumEntry>
                       <literal>HP_MANUAL_OP</literal>
                       <ordinal>7</ordinal>
@@ -282,41 +268,11 @@
                       <literal>HP_STARTING</literal>
                       <ordinal>8</ordinal>
                       <description>Startphase</description>
-                    </enumEntry>
-                    <enumEntry>
-                      <literal>HP_STOPPING</literal>
-                      <ordinal>9</ordinal>
-                      <description>Abtauphase</description>
-                    </enumEntry>
-                    <enumEntry>
-                      <literal>HP_SECURE_OFF</literal>
-                      <ordinal>10</ordinal>
-                      <description>Sicherheits-Abschaltung</description>
-                    </enumEntry>
-                    <enumEntry>
-                      <literal>HP_START_DEFROST</literal>
-                      <ordinal>11</ordinal>
-                      <description>Start Abtauphase</description>
-                    </enumEntry>
-                    <enumEntry>
-                      <literal>HP_DEFROSTING</literal>
-                      <ordinal>12</ordinal>
-                      <description>Abtauphase</description>
-                    </enumEntry>
-                    <enumEntry>
-                      <literal>HP_DEFROST_END</literal>
-                      <ordinal>13</ordinal>
-                      <description>Ende Abtauphase</description>
-                    </enumEntry>
+                    </enumEntry>      
                     <enumEntry>
                       <literal>HP_PRESSURE_DIFF</literal>
                       <ordinal>14</ordinal>
                       <description>Gesperrt aufgrund Druckdifferenz beim Start</description>
-                    </enumEntry>
-                    <enumEntry>
-                      <literal>HP_COOLING</literal>
-                      <ordinal>15</ordinal>
-                      <description>Kühlbetrieb aktiv</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>HP_HEATING</literal>
@@ -329,19 +285,15 @@
                       <description>Start nach VD Startfehler</description>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HP_OFF_OUT_OF_LIMITS</literal>
+                      <literal>HP_OFF_OUT_OFF_LIMITS</literal>
                       <ordinal>18</ordinal>
-                      <description>Aus Begrenzung aktiv</description>
-                    </enumEntry>
-                    <enumEntry>
-                      <literal>HP_OIL_RECIRCUL_ACTIVE</literal>
-                      <ordinal>19</ordinal>
                       <description>Oel Rückführung aktiv></description>
                     </enumEntry>
                   </enum>
                 </dataType>
                 <unit>NONE</unit>
                 <alternativeNames>
+                  <sLV1Name>ctaHPOpState</sLV1Name>
                   <manufName>CTA_UnitStatus</manufName>
                 </alternativeNames>
                 <legibleDescription>
@@ -368,6 +320,7 @@
                 </dataType>
                 <unit>NONE</unit>
                 <alternativeNames>
+                  <sLV1Name>ErrorNrSGr</sLV1Name>
                   <manufName>GlbAl</manufName>
                 </alternativeNames>
                 <legibleDescription>
@@ -397,10 +350,11 @@
                 <dataDirection>R</dataDirection>
                 <presenceLevel>M</presenceLevel>
                 <dataType>
-                  <float64 />
+                  <float32 />
                 </dataType>
                 <unit>DEGREES_CELSIUS</unit>
                 <alternativeNames>
+                  <sLV1Name>OutsideAirTemp</sLV1Name>
                   <manufName>CTA_Outdoor_Temp</manufName>
                 </alternativeNames>
                 <legibleDescription>
@@ -412,7 +366,7 @@
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
-                  <float64 />
+                  <float32 />
                 </modbusDataType>
                 <address>2000</address>
                 <registerType>InputRegister</registerType>
@@ -425,10 +379,11 @@
                 <dataDirection>R</dataDirection>
                 <presenceLevel>M</presenceLevel>
                 <dataType>
-                  <float64 />
+                  <float32 />
                 </dataType>
                 <unit>DEGREES_CELSIUS</unit>
                 <alternativeNames>
+                  <sLV1Name>SupplyWaterTemp</sLV1Name>
                   <manufName>CTA_B21_Temp</manufName>
                 </alternativeNames>
                 <legibleDescription>
@@ -438,7 +393,7 @@
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
-                  <float64 />
+                  <float32 />
                 </modbusDataType>
                 <address>2002</address>
                 <registerType>InputRegister</registerType>
@@ -451,10 +406,11 @@
                 <dataDirection>R</dataDirection>
                 <presenceLevel>O</presenceLevel>
                 <dataType>
-                  <float64 />
+                  <float32 />
                 </dataType>
                 <unit>DEGREES_CELSIUS</unit>
                 <alternativeNames>
+                  <sLV1Name>ReturnSupplyWaterTemp</sLV1Name>
                   <manufName>CTA_B71_Temp</manufName>
                 </alternativeNames>
                 <legibleDescription>
@@ -465,7 +421,7 @@
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
-                  <float64 />
+                  <float32 />
                 </modbusDataType>
                 <address>2004</address>
                 <registerType>InputRegister</registerType>
@@ -478,21 +434,22 @@
                 <dataDirection>R</dataDirection>
                 <presenceLevel>O</presenceLevel>
                 <dataType>
-                  <float64 />
+                  <float32 />
                 </dataType>
                 <unit>DEGREES_CELSIUS</unit>
                 <alternativeNames>
+                  <sLV1Name>SourceTemp</sLV1Name>
                   <manufName>CTA_B91_Temp</manufName>
                 </alternativeNames>
                 <legibleDescription>
-                  <textElement>Auslesen der aktuellen Temperaturan der WP-Quelle (SoleWasser oder
+                  <textElement>Auslesen der aktuellen Temperaturen der WP-Quelle (SoleWasser oder
                     Luft)</textElement>
                   <language>de</language>
                 </legibleDescription>
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
-                  <float64 />
+                  <float32 />
                 </modbusDataType>
                 <address>2006</address>
                 <registerType>InputRegister</registerType>
@@ -508,7 +465,7 @@
               <specificationOwnerIdentification>0</specificationOwnerIdentification>
               <functionalProfileCategory>HeatPumpControl</functionalProfileCategory>
               <functionalProfileType>PowerCtrl</functionalProfileType>
-              <levelOfOperation>4</levelOfOperation>
+              <levelOfOperation>4m</levelOfOperation>
               <versionNumber>
                 <primaryVersionNumber>0</primaryVersionNumber>
                 <secondaryVersionNumber>1</secondaryVersionNumber>
@@ -516,7 +473,8 @@
               </versionNumber>
             </functionalProfileIdentification>
             <legibleDescription>
-              <textElement>x</textElement>
+              <textElement>Die Leistungssteuerung steuert die Verdichterdrehzahl. Dieser Sollwert wird nur bei Trink-Warmwasserbedarf berücksichtigt.
+              Der Bedarf kann durch die Erhöhung des DomHotWTempStpt-Wertes erzeugt werden.</textElement>              
               <language>de</language>
             </legibleDescription>
           </functionalProfile>
@@ -524,10 +482,10 @@
             <dataPointListElement>
               <dataPoint>
                 <dataPointName>PowerCtrlStpt</dataPointName>
-                <dataDirection>RW</dataDirection>
+                <dataDirection>RWP</dataDirection>
                 <presenceLevel>M</presenceLevel>
                 <dataType>
-                  <float64 />
+                  <float32 />
                 </dataType>
                 <unit>PERCENT</unit>
                 <alternativeNames>
@@ -547,7 +505,7 @@
               </genericAttributes>
               <modbusDataPointConfiguration>
                 <modbusDataType>
-                  <float64 />
+                  <float32 />
                 </modbusDataType>
                 <address>1028</address>
                 <registerType>HoldRegister</registerType>
@@ -560,12 +518,15 @@
                 <dataDirection>R</dataDirection>
                 <presenceLevel>M</presenceLevel>
                 <dataType>
-                  <float64 />
+                  <float32 />
                 </dataType>
                 <unit>REVOLUTIONS_PER_MINUTE</unit>
+                <alternativeNames>
+                	<sLV1Name>ActSpeed</sLV1Name>
+                	<manufName>State_CompRPS</manufName></alternativeNames>
                 <legibleDescription>
                   <textElement>
-                    ?check: Adress durch cb? Effektive Drehzahl des Verdichters
+                    Effektive Drehzahl des Verdichters
                   </textElement>
                   <language>de</language>
                 </legibleDescription>
@@ -575,18 +536,12 @@
               </genericAttributes>
               <modbusDataPointConfiguration>
                 <modbusDataType>
-                  <float64 />
+                  <float32 />
                 </modbusDataType>
                 <address>2030</address>
                 <registerType>InputRegister</registerType>
                 <numberOfRegisters>2</numberOfRegisters>
               </modbusDataPointConfiguration>
-              <modbusAttributes>
-                <scalingFactor>
-                  <multiplicator>60</multiplicator>
-                  <powerof10>0</powerof10>
-                </scalingFactor>
-              </modbusAttributes>
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
@@ -594,9 +549,12 @@
                 <dataDirection>R</dataDirection>
                 <presenceLevel>O</presenceLevel>
                 <dataType>
-                  <float64 />
+                  <float32 />
                 </dataType>
                 <unit>KILOWATT_HOURS</unit>
+                <alternativeNames>
+                	<sLV1Name>ActPowerACtot</sLV1Name>
+                	<manufName>State_CompPower</manufName></alternativeNames>
                 <legibleDescription>
                   <textElement>
                     Effektive elektrischen Aufnahmeleistung des Verdichters
@@ -606,7 +564,7 @@
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
-                  <float64 />
+                  <float32 />
                 </modbusDataType>
                 <address>2032</address>
                 <registerType>InputRegister</registerType>
@@ -617,12 +575,12 @@
         </functionalProfileListElement>
         <functionalProfileListElement>
           <functionalProfile>
-            <functionalProfileName>HeatCoolCtrl</functionalProfileName>
+            <functionalProfileName>HeatCoolCtrl_1</functionalProfileName>
             <functionalProfileIdentification>
               <specificationOwnerIdentification>0</specificationOwnerIdentification>
               <functionalProfileCategory>HeatPumpControl</functionalProfileCategory>
               <functionalProfileType>HeatCoolCtrl</functionalProfileType>
-              <levelOfOperation>4</levelOfOperation>
+              <levelOfOperation>4m</levelOfOperation>
               <versionNumber>
                 <primaryVersionNumber>0</primaryVersionNumber>
                 <secondaryVersionNumber>1</secondaryVersionNumber>
@@ -645,54 +603,7 @@
             <dataPointListElement>
               <dataPoint>
                 <dataPointName>ctaHCOpModeCmd</dataPointName>
-                <dataDirection>RW</dataDirection>
-                <presenceLevel>M</presenceLevel>
-                <dataType>
-                  <enum>
-                    <enumEntry>
-                      <literal>HC_AUTO</literal>
-                      <ordinal>0</ordinal>
-                    </enumEntry>
-                    <enumEntry>
-                      <literal>HC_COMFORT</literal>
-                      <ordinal>1</ordinal>
-                    </enumEntry>
-                    <enumEntry>
-                      <literal>HC_ECO</literal>
-                      <ordinal>2</ordinal>
-                    </enumEntry>
-                    <enumEntry>
-                      <literal>HC_DEFROST</literal>
-                      <ordinal>3</ordinal>
-                    </enumEntry>
-                    <enumEntry>
-                      <literal>HC_EMERGENCY_OP</literal>
-                      <ordinal>4</ordinal>
-                    </enumEntry>
-                  </enum>
-                </dataType>
-                <unit>NONE</unit>
-                <legibleDescription>
-                  <textElement>
-                    Festlegen der Betriebsart des Heiz-/Kühlkreises [Aus Bereitschaft, Programm,
-                    Komfort, Eco]
-                  </textElement>
-                  <language>de</language>
-                </legibleDescription>
-              </dataPoint>
-              <modbusDataPointConfiguration>
-                <modbusDataType>
-                  <int16 />
-                </modbusDataType>
-                <address>1003</address>
-                <registerType>HoldRegister</registerType>
-                <numberOfRegisters>1</numberOfRegisters>
-              </modbusDataPointConfiguration>
-            </dataPointListElement>
-            <dataPointListElement>
-              <dataPoint>
-                <dataPointName>HeatCoolOpState</dataPointName>
-                <dataDirection>RW</dataDirection>
+                <dataDirection>RWP</dataDirection>
                 <presenceLevel>M</presenceLevel>
                 <dataType>
                   <enum>
@@ -702,14 +613,14 @@
                       <description>Extern gesteuert</description>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HC_STAND_BY</literal>
+                      <literal>HC_AUTO</literal>
                       <ordinal>1</ordinal>
                       <description>Standby Betrieb</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>HC_HEAT_COMF</literal>
                       <ordinal>2</ordinal>
-                      <description>Komnfort Betrieb</description>
+                      <description>Komfort Betrieb</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>HC_HEAT_ECO</literal>
@@ -717,9 +628,72 @@
                       <description>Reduzierter Betrieb</description>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HC_OFF</literal>
+                      <literal>HC_ANTIFREEZE</literal>
                       <ordinal>4</ordinal>
-                      <description>Aus</description>
+                      <description>Frostschutz / Aus</description>
+                    </enumEntry>
+                    <enumEntry>
+                      <literal>HC_EMERGENCY_OP</literal>
+                      <ordinal>5</ordinal>
+                      <description>Notbetrieb</description>
+                    </enumEntry>
+                  </enum>
+                </dataType>
+                <unit>NONE</unit>
+                <alternativeNames>
+                  <sLV1Name>ctaHCOpModeCmd</sLV1Name>
+                  <manufName>CTA_HK1_Status_UsrSet</manufName>
+                </alternativeNames>
+                <legibleDescription>
+                  <textElement>Auslesen des aktuellen Status des Heizkreises</textElement>
+                  <language>de</language>
+                </legibleDescription>
+              </dataPoint>
+              <modbusDataPointConfiguration>
+                <modbusDataType>
+                  <int32U />
+                </modbusDataType>
+                <address>1003</address>
+                <registerType>HoldRegister</registerType>
+                <numberOfRegisters>2</numberOfRegisters>
+              </modbusDataPointConfiguration>
+            </dataPointListElement>
+            <dataPointListElement>
+              <dataPoint>
+                <dataPointName>ctaHCOpState</dataPointName>
+                <dataDirection>R</dataDirection>
+                <presenceLevel>M</presenceLevel>
+                <dataType>
+                  <enum>
+                    <enumEntry>
+                      <literal>HC_EXT_CTRL</literal>
+                      <ordinal>0</ordinal>
+                      <description>Extern gesteuert</description>
+                    </enumEntry>
+                    <enumEntry>
+                      <literal>HC_AUTO</literal>
+                      <ordinal>1</ordinal>
+                      <description>Standby Betrieb</description>
+                    </enumEntry>
+                    <enumEntry>
+                      <literal>HC_HEAT_COMF</literal>
+                      <ordinal>2</ordinal>
+                      <description>Komfort Betrieb</description>
+                    </enumEntry>
+                    <enumEntry>
+                      <literal>HC_HEAT_ECO</literal>
+                      <ordinal>3</ordinal>
+                      <description>Reduzierter Betrieb</description>
+                    </enumEntry>
+                    <enumEntry>
+                      <literal>HC_ANTIFREEZE</literal>
+                      <ordinal>4</ordinal>
+                      <description>Frostschutz / Aus</description>
+                    </enumEntry>
+                    <enumEntry>
+                      <literal>HC_EMERGENCY_OP</literal>
+                      <ordinal>5</ordinal>
+                      <description>Notbetrieb</description>
                     </enumEntry>
                   </enum>
                 </dataType>
@@ -729,8 +703,7 @@
                   <manufName>CTA_HK1_Status_UsrSet</manufName>
                 </alternativeNames>
                 <legibleDescription>
-                  <textElement>Auslesen des aktuellen Status des Heiz-/Kühlkreises (Aus,
-                    Bereitschaft, Programm, Comfort, Eco)</textElement>
+                  <textElement>Auslesen des aktuellen Status des Heizkreises</textElement>
                   <language>de</language>
                 </legibleDescription>
               </dataPoint>
@@ -749,7 +722,7 @@
                 <dataDirection>R</dataDirection>
                 <presenceLevel>O</presenceLevel>
                 <dataType>
-                  <float64 />
+                  <float32 />
                 </dataType>
                 <unit>DEGREES_CELSIUS</unit>
                 <alternativeNames>
@@ -763,7 +736,7 @@
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
-                  <float64 />
+                  <float32 />
                 </modbusDataType>
                 <address>2002</address>
                 <registerType>InputRegister</registerType>
@@ -776,7 +749,7 @@
                 <dataDirection>RW</dataDirection>
                 <presenceLevel>O</presenceLevel>
                 <dataType>
-                  <float64 />
+                  <float32 />
                 </dataType>
                 <unit>DEGREES_CELSIUS</unit>
                 <alternativeNames>
@@ -790,7 +763,7 @@
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
-                  <float64 />
+                  <float32 />
                 </modbusDataType>
                 <address>1001</address>
                 <registerType>HoldRegister</registerType>
@@ -799,11 +772,42 @@
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
+                <dataPointName>ctaRemoteHCTempSetptEnable</dataPointName>
+                <dataDirection>RW</dataDirection>
+                <presenceLevel>M</presenceLevel>
+                <dataType>
+                  <boolean/>
+                </dataType>
+                <unit>NONE</unit>
+                <alternativeNames>
+                	<sLV1Name>ctaRemoteHCTempSetptEnable</sLV1Name>
+                	<manufName>CTA_Ext_Heating_Command</manufName></alternativeNames>
+                <legibleDescription>
+                  <textElement>true um den Datenpunkt HeatCoolCtrl.SupplyWaterTempStpt zu aktvieren</textElement>
+                  <language>de</language>
+                </legibleDescription>
+                <programmerHints>
+                  <textElement>true sets the CTA_Ext_Heating_Setpoint to active AND forces the ctaHCOpModeCmd into HC_COMFORT mode as long ctaRemoteCtrlTimeSec > 0
+                  when the ctaRemoteHCTempSetptEnable becomes 0, HeatCoolCtrl will stay in comfort mode until a new ctaHCOpModeCmd is set</textElement>
+                  <language>en</language>
+                </programmerHints>
+              </dataPoint>
+              <modbusDataPointConfiguration>
+                <modbusDataType>
+                  <int16 />
+                </modbusDataType>
+                <address>1000</address>
+                <registerType>HoldRegister</registerType>
+                <numberOfRegisters>1</numberOfRegisters>
+              </modbusDataPointConfiguration>
+            </dataPointListElement>
+            <dataPointListElement>
+              <dataPoint>
                 <dataPointName>ReturnSupplyWaterTemp</dataPointName>
                 <dataDirection>R</dataDirection>
                 <presenceLevel>O</presenceLevel>
                 <dataType>
-                  <float64 />
+                  <float32 />
                 </dataType>
                 <unit>DEGREES_CELSIUS</unit>
                 <alternativeNames>
@@ -817,15 +821,276 @@
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
-                  <float64 />
+                  <float32 />
                 </modbusDataType>
                 <address>2004</address>
-                <registerType>HoldRegister</registerType>
+                <registerType>InputRegister</registerType>
                 <numberOfRegisters>2</numberOfRegisters>
               </modbusDataPointConfiguration>
             </dataPointListElement>
           </dataPointList>
         </functionalProfileListElement>
+        
+        
+        <functionalProfileListElement>
+          <functionalProfile>
+            <functionalProfileName>HeatCoolCtrl_2</functionalProfileName>
+            <functionalProfileIdentification>
+              <specificationOwnerIdentification>0</specificationOwnerIdentification>
+              <functionalProfileCategory>HeatPumpControl</functionalProfileCategory>
+              <functionalProfileType>HeatCoolCtrl</functionalProfileType>
+              <levelOfOperation>4m</levelOfOperation>
+              <versionNumber>
+                <primaryVersionNumber>0</primaryVersionNumber>
+                <secondaryVersionNumber>1</secondaryVersionNumber>
+                <subReleaseVersionNumber>2</subReleaseVersionNumber>
+              </versionNumber>
+            </functionalProfileIdentification>
+            <legibleDescription>
+              <textElement>
+                Dieses Profil definiert die erweiterten Datenpunkte zum Grundprofil "HeatPumpBase",
+                welche zur Steuerung eines Heiz- oder Kühlkreises zur Verfügung gestellt werden.
+                Derselbe physikalische Kreislauf kann entweder für das Heizen oder das Kühlen
+                verwendet werden. Das Heiz-/Kühlkreisprofil muss immer in Kombination mit dem
+                Grundprofil der Wärmepumpe bewirtschaftet werden. Es können mehrere
+                Heiz-/Kühlkreisprofile definiert werden.
+              </textElement>
+              <language>de</language>
+            </legibleDescription>
+          </functionalProfile>
+          <dataPointList>
+            <dataPointListElement>
+              <dataPoint>
+                <dataPointName>ctaHCOpModeCmd</dataPointName>
+                <dataDirection>RWP</dataDirection>
+                <presenceLevel>M</presenceLevel>
+                <dataType>
+                  <enum>
+                    <enumEntry>
+                      <literal>HC_EXT_CTRL</literal>
+                      <ordinal>0</ordinal>
+                      <description>Extern gesteuert</description>
+                    </enumEntry>
+                    <enumEntry>
+                      <literal>HC_AUTO</literal>
+                      <ordinal>1</ordinal>
+                      <description>Standby Betrieb</description>
+                    </enumEntry>
+                    <enumEntry>
+                      <literal>HC_HEAT_COMF</literal>
+                      <ordinal>2</ordinal>
+                      <description>Komfort Betrieb</description>
+                    </enumEntry>
+                    <enumEntry>
+                      <literal>HC_HEAT_ECO</literal>
+                      <ordinal>3</ordinal>
+                      <description>Reduzierter Betrieb</description>
+                    </enumEntry>
+                    <enumEntry>
+                      <literal>HC_ANTIFREEZE</literal>
+                      <ordinal>4</ordinal>
+                      <description>Frostschutz / Aus</description>
+                    </enumEntry>
+                    <enumEntry>
+                      <literal>HC_EMERGENCY_OP</literal>
+                      <ordinal>5</ordinal>
+                      <description>Notbetrieb</description>
+                    </enumEntry>
+                  </enum>
+                </dataType>
+                <unit>NONE</unit>
+                <alternativeNames>
+                  <sLV1Name>ctaHCOpModeCmd</sLV1Name>
+                  <manufName>CTA_HK2_Status_UsrSet</manufName>
+                </alternativeNames>
+                <legibleDescription>
+                  <textElement>Auslesen des aktuellen Status des Heizkreises</textElement>
+                  <language>de</language>
+                </legibleDescription>
+              </dataPoint>
+              <modbusDataPointConfiguration>
+                <modbusDataType>
+                  <int32U />
+                </modbusDataType>
+                <address>1103</address>
+                <registerType>HoldRegister</registerType>
+                <numberOfRegisters>2</numberOfRegisters>
+              </modbusDataPointConfiguration>
+            </dataPointListElement>
+            <dataPointListElement>
+              <dataPoint>
+                <dataPointName>ctaHCOpState</dataPointName>
+                <dataDirection>R</dataDirection>
+                <presenceLevel>M</presenceLevel>
+                <dataType>
+                  <enum>
+                    <enumEntry>
+                      <literal>HC_EXT_CTRL</literal>
+                      <ordinal>0</ordinal>
+                      <description>Extern gesteuert</description>
+                    </enumEntry>
+                    <enumEntry>
+                      <literal>HC_AUTO</literal>
+                      <ordinal>1</ordinal>
+                      <description>Standby Betrieb</description>
+                    </enumEntry>
+                    <enumEntry>
+                      <literal>HC_HEAT_COMF</literal>
+                      <ordinal>2</ordinal>
+                      <description>Komfort Betrieb</description>
+                    </enumEntry>
+                    <enumEntry>
+                      <literal>HC_HEAT_ECO</literal>
+                      <ordinal>3</ordinal>
+                      <description>Reduzierter Betrieb</description>
+                    </enumEntry>
+                    <enumEntry>
+                      <literal>HC_ANTIFREEZE</literal>
+                      <ordinal>4</ordinal>
+                      <description>Frostschutz / Aus</description>
+                    </enumEntry>
+                    <enumEntry>
+                      <literal>HC_EMERGENCY_OP</literal>
+                      <ordinal>5</ordinal>
+                      <description>Notbetrieb</description>
+                    </enumEntry>
+                  </enum>
+                </dataType>
+                <unit>NONE</unit>
+                <alternativeNames>
+                  <sLV1Name>ctaHCOpState</sLV1Name>
+                  <manufName>CTA_HK2_Status_UsrSet</manufName>
+                </alternativeNames>
+                <legibleDescription>
+                  <textElement>Auslesen des aktuellen Status des Heizkreises</textElement>
+                  <language>de</language>
+                </legibleDescription>
+              </dataPoint>
+              <modbusDataPointConfiguration>
+                <modbusDataType>
+                  <int32U />
+                </modbusDataType>
+                <address>1103</address>
+                <registerType>HoldRegister</registerType>
+                <numberOfRegisters>2</numberOfRegisters>
+              </modbusDataPointConfiguration>
+            </dataPointListElement>
+            <dataPointListElement>
+              <dataPoint>
+                <dataPointName>SupplyWaterTemp</dataPointName>
+                <dataDirection>R</dataDirection>
+                <presenceLevel>O</presenceLevel>
+                <dataType>
+                  <float32 />
+                </dataType>
+                <unit>DEGREES_CELSIUS</unit>
+                <alternativeNames>
+                  <sLV1Name>SupplyWaterTemp</sLV1Name>
+                  <manufName>CTA_B21_Temp</manufName>
+                </alternativeNames>
+                <legibleDescription>
+                  <textElement>Auslesen der aktuellen aktuellen-Temperatur des Vorlaufs.</textElement>
+                  <language>de</language>
+                </legibleDescription>
+              </dataPoint>
+              <modbusDataPointConfiguration>
+                <modbusDataType>
+                  <float32 />
+                </modbusDataType>
+                <address>2002</address>
+                <registerType>InputRegister</registerType>
+                <numberOfRegisters>2</numberOfRegisters>
+              </modbusDataPointConfiguration>
+            </dataPointListElement>
+            <dataPointListElement>
+              <dataPoint>
+                <dataPointName>SupplyWaterTempStpt</dataPointName>
+                <dataDirection>RW</dataDirection>
+                <presenceLevel>O</presenceLevel>
+                <dataType>
+                  <float32 />
+                </dataType>
+                <unit>DEGREES_CELSIUS</unit>
+                <alternativeNames>
+                  <sLV1Name>SupplyWaterTempStpt</sLV1Name>
+                  <manufName>CTA_Ext_Heating_Setpoint_2 (?Reserve)</manufName>
+                </alternativeNames>
+                <legibleDescription>
+                  <textElement>Setzen der aktuellen Soll-Temperatur des Vorlaufs (Grundwert).</textElement>
+                  <language>de</language>
+                </legibleDescription>
+              </dataPoint>
+              <modbusDataPointConfiguration>
+                <modbusDataType>
+                  <float32 />
+                </modbusDataType>
+                <address>1101</address>
+                <registerType>HoldRegister</registerType>
+                <numberOfRegisters>2</numberOfRegisters>
+              </modbusDataPointConfiguration>
+            </dataPointListElement>
+            <dataPointListElement>
+              <dataPoint>
+                <dataPointName>ctaRemoteHCTempSetptEnable</dataPointName>
+                <dataDirection>RW</dataDirection>
+                <presenceLevel>M</presenceLevel>
+                <dataType>
+                  <boolean/>
+                </dataType>
+                <unit>NONE</unit>
+                <alternativeNames>
+                	<sLV1Name>ctaRemoteHCTempSetptEnable</sLV1Name>
+                	<manufName>CTA_Ext_Heating_Command_2 (?Reserve)</manufName></alternativeNames>
+                <legibleDescription>
+                  <textElement>true um den Datenpunkt HeatCoolCtrl.SupplyWaterTempStpt zu aktvieren</textElement>
+                  <language>de</language>
+                </legibleDescription>
+                <programmerHints>
+                  <textElement>true sets the CTA_Ext_Heating_Setpoint to active AND forces the ctaHCOpModeCmd into HC_COMFORT mode as long ctaRemoteCtrlTimeSec > 0
+                  when the ctaRemoteHCTempSetptEnable becomes 0, HeatCoolCtrl will stay in comfort mode until a new ctaHCOpModeCmd is set</textElement>
+                  <language>en</language>
+                </programmerHints>
+              </dataPoint>
+              <modbusDataPointConfiguration>
+                <modbusDataType>
+                  <int16 />
+                </modbusDataType>
+                <address>1100</address>
+                <registerType>HoldRegister</registerType>
+                <numberOfRegisters>1</numberOfRegisters>
+              </modbusDataPointConfiguration>
+            </dataPointListElement>
+            <dataPointListElement>
+              <dataPoint>
+                <dataPointName>ReturnSupplyWaterTemp</dataPointName>
+                <dataDirection>R</dataDirection>
+                <presenceLevel>O</presenceLevel>
+                <dataType>
+                  <float32 />
+                </dataType>
+                <unit>DEGREES_CELSIUS</unit>
+                <alternativeNames>
+                  <sLV1Name>ReturnSupplyWaterTemp</sLV1Name>
+                  <manufName>CTA_B71_Temp</manufName>
+                </alternativeNames>
+                <legibleDescription>
+                  <textElement>Auslesen der aktuellen aktuellen-Temperatur des Rücklaufs.</textElement>
+                  <language>de</language>
+                </legibleDescription>
+              </dataPoint>
+              <modbusDataPointConfiguration>
+                <modbusDataType>
+                  <float32 />
+                </modbusDataType>
+                <address>2004</address>
+                <registerType>InputRegister</registerType>
+                <numberOfRegisters>2</numberOfRegisters>
+              </modbusDataPointConfiguration>
+            </dataPointListElement>
+          </dataPointList>
+        </functionalProfileListElement>
+        
+        
         <functionalProfileListElement>
           <functionalProfile>
             <functionalProfileName>DomHotWaterCtrl</functionalProfileName>
@@ -833,7 +1098,7 @@
               <specificationOwnerIdentification>0</specificationOwnerIdentification>
               <functionalProfileCategory>HeatPumpControl</functionalProfileCategory>
               <functionalProfileType>DomHotWaterCtrl</functionalProfileType>
-              <levelOfOperation>4</levelOfOperation>
+              <levelOfOperation>4m</levelOfOperation>
               <versionNumber>
                 <primaryVersionNumber>0</primaryVersionNumber>
                 <secondaryVersionNumber>1</secondaryVersionNumber>
@@ -845,8 +1110,7 @@
                 Dieses Profil definiert die erweiterten Datenpunkte zum Grundprofil "HeatPumpBase",
                 welche zur Steuerung eines Brauchwarmwasserkreises zur Verfügung gestellt werden.
                 Das Brauchwarmwasser-Profil muss immer in Kombination mit dem Grundprofil der
-                Wärmepumpe bewirtschaftet werden. Es können mehrere Brauchwarmwasser-Profile
-                definiert werden.
+                Wärmepumpe bewirtschaftet werden.
               </textElement>
               <language>de</language>
             </legibleDescription>
@@ -855,7 +1119,7 @@
             <dataPointListElement>
               <dataPoint>
                 <dataPointName>ctaDomHotWOpModeCmd</dataPointName>
-                <dataDirection>RW</dataDirection>
+                <dataDirection>RWP</dataDirection>
                 <presenceLevel>M</presenceLevel>
                 <dataType>
                   <enum>
@@ -872,24 +1136,79 @@
                       <ordinal>3</ordinal>
                     </enumEntry>
                     <enumEntry>
-                      <literal>DHW_TMP_OFF</literal>
-                      <ordinal>4</ordinal>
-                    </enumEntry>
-                    <enumEntry>
-                      <literal>DHW_EMERGENCY</literal>
+                      <literal>DHW_EMERGENCY_OP</literal>
                       <ordinal>5</ordinal>
                     </enumEntry>
                   </enum>
                 </dataType>
                 <unit>NONE</unit>
                 <alternativeNames>
-                  <sLV1Name>ctaDomHotWOpMode</sLV1Name>
+                  <sLV1Name>ctaDomHotWOpModeCmd</sLV1Name>
                   <manufName>CTA_DW_Status_UsrSet</manufName>
                 </alternativeNames>
                 <legibleDescription>
                   <textElement>
-                    ?checkDoku TODO: enum. Grund-Betriebsart der Brauchwasseranlage (Bereitschaft,
-                    Programm, Komfort, Eco, Warmwasser, Kühlen aktiv, Kühlen passiv, Notbetrieb)
+                    Die Betriebsarten dieses Gerätes sind herstellerspezifisch:
+                    Ein- und ausschalten, einmaliger Leistungsstoss und  Notbetrieb TWW  
+                  </textElement>
+                  <language>de</language>
+                </legibleDescription>
+              </dataPoint>
+              <modbusDataPointConfiguration>
+                <modbusDataType>
+                  <int16U />
+                </modbusDataType>
+                <address>1013</address>
+                <registerType>HoldRegister</registerType>
+                <numberOfRegisters>1</numberOfRegisters>
+              </modbusDataPointConfiguration>
+            </dataPointListElement>
+            <dataPointListElement>
+              <dataPoint>
+                <dataPointName>ctaDomHotWOpState</dataPointName>
+                <dataDirection>R</dataDirection>
+                <presenceLevel>M</presenceLevel>
+                <dataType>
+                  <enum>
+                    <enumEntry>
+                      <literal>DHW_INACTIVE</literal>
+                      <ordinal>0</ordinal>
+                    </enumEntry>
+                    <enumEntry>
+                      <literal>DHW_ON</literal>
+                      <ordinal>1</ordinal>
+                    </enumEntry>
+                    <enumEntry>
+                      <literal>DHW_OFF</literal>
+                      <ordinal>2</ordinal>
+                    </enumEntry>
+                    <enumEntry>
+                      <literal>DHW_PUSH</literal>
+                      <ordinal>3</ordinal>
+                    </enumEntry>
+                    <enumEntry>
+                      <literal>DHW_HOLIDAY_IS_SELECTED</literal>
+                      <ordinal>4</ordinal>
+                    </enumEntry>
+                    <enumEntry>
+                      <literal>DHW_EMERGENCY_OP</literal>
+                      <ordinal>5</ordinal>
+                    </enumEntry>
+                    <enumEntry>
+                      <literal>DHW_AUTOMATED_LEGIO_RUN</literal>
+                      <ordinal>6</ordinal>
+                    </enumEntry>
+                  </enum>
+                </dataType>
+                <unit>NONE</unit>
+                <alternativeNames>
+                  <sLV1Name>ctaDomHotWOpState</sLV1Name>
+                  <manufName>CTA_DW_Status_UsrSet</manufName>
+                </alternativeNames>
+                <legibleDescription>
+                  <textElement>
+                    Die Betriebsarten dieses Gerätes sind herstellerspezifisch:
+                    Ein- und ausschalten, einmaliger Leistungsstoss, Ferienschaltung (kann nur vor Ort gesetzt werden), Notbetrieb TWW, und (nicht setzbare) automatische Legionellenschaltung  
                   </textElement>
                   <language>de</language>
                 </legibleDescription>
@@ -906,10 +1225,10 @@
             <dataPointListElement>
               <dataPoint>
                 <dataPointName>DomHotWTempStpt</dataPointName>
-                <dataDirection>RW</dataDirection>
+                <dataDirection>RWP</dataDirection>
                 <presenceLevel>M</presenceLevel>
                 <dataType>
-                  <float64 />
+                  <float32 />
                 </dataType>
                 <unit>DEGREES_CELSIUS</unit>
                 <alternativeNames>
@@ -925,7 +1244,7 @@
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
-                  <float64 />
+                  <float32 />
                 </modbusDataType>
                 <address>1015</address>
                 <registerType>HoldRegister</registerType>
@@ -938,10 +1257,11 @@
                 <dataDirection>R</dataDirection>
                 <presenceLevel>M</presenceLevel>
                 <dataType>
-                  <float64 />
+                  <float32 />
                 </dataType>
                 <unit>DEGREES_CELSIUS</unit>
                 <alternativeNames>
+                  <sLV1Name>ActDomHotWTemp</sLV1Name>
                   <manufName>CTA_B3_Temp</manufName>
                 </alternativeNames>
                 <legibleDescription>
@@ -951,50 +1271,11 @@
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
-                  <float64 />
+                  <float32 />
                 </modbusDataType>
                 <address>2010</address>
                 <registerType>InputRegister</registerType>
                 <numberOfRegisters>2</numberOfRegisters>
-              </modbusDataPointConfiguration>
-            </dataPointListElement>
-            <dataPointListElement>
-              <dataPoint>
-                <dataPointName>ctaRemoteCtrlTimeSec</dataPointName>
-                <dataDirection>RW</dataDirection>
-                <presenceLevel>M</presenceLevel>
-                <dataType>
-                  <int16U />
-                </dataType>
-                <unit>SECONDS</unit>
-                <alternativeNames>
-                  <manufName>CTA_Ext_Communication_Handler</manufName>
-                </alternativeNames>
-                <legibleDescription>
-                  <textElement>Countdown Variable in sec. Wenn 0, dann Ext. Kommunikation inaktiv.,
-                    Max. Wert 3000</textElement>
-                  <language>de</language>
-                </legibleDescription>
-                <programmerHints>
-                  <textElement>
-                    remoteCtrlTimeSec is valid for all external commands and settings of the device.
-                    It must be > 0 for keeping the external command / Setpoint valid.
-                    CTA_Ext_Heating_Command, CTA_Ext_Heating_Setpoint, CTA_Ext_SG, CTA_Ext_PwrReq,
-                    CTA_Ext_Cooling_Command, CTA_Ext_Cooling_Setpoint
-                  </textElement>
-                  <language>en</language>
-                </programmerHints>
-              </dataPoint>
-              <genericAttributes>
-                <maxVal>3000</maxVal>
-              </genericAttributes>
-              <modbusDataPointConfiguration>
-                <modbusDataType>
-                  <int16U />
-                </modbusDataType>
-                <address>990</address>
-                <registerType>HoldRegister</registerType>
-                <numberOfRegisters>1</numberOfRegisters>
               </modbusDataPointConfiguration>
             </dataPointListElement>
           </dataPointList>
@@ -1006,7 +1287,7 @@
               <specificationOwnerIdentification>0</specificationOwnerIdentification>
               <functionalProfileCategory>HeatPumpControl</functionalProfileCategory>
               <functionalProfileType>BufferStorageCtrl</functionalProfileType>
-              <levelOfOperation>4</levelOfOperation>
+              <levelOfOperation>4m</levelOfOperation>
               <versionNumber>
                 <primaryVersionNumber>0</primaryVersionNumber>
                 <secondaryVersionNumber>1</secondaryVersionNumber>
@@ -1014,7 +1295,7 @@
               </versionNumber>
             </functionalProfileIdentification>
             <legibleDescription>
-              <textElement>x</textElement>
+              <textElement>Bufferspeichersteuerung mittels Temperaturoffset.</textElement>
               <language>de</language>
             </legibleDescription>
           </functionalProfile>
@@ -1022,13 +1303,14 @@
             <dataPointListElement>
               <dataPoint>
                 <dataPointName>HeatBufferTempStptOffset</dataPointName>
-                <dataDirection>RW</dataDirection>
+                <dataDirection>RWP</dataDirection>
                 <presenceLevel>M</presenceLevel>
                 <dataType>
-                  <float64 />
+                  <float32 />
                 </dataType>
                 <unit>DEGREES_CELSIUS</unit>
                 <alternativeNames>
+                  <sLV1Name>HeatBufferTempStptOffset</sLV1Name>
                   <manufName>CTA_CFG_Buffer_Overcharge_dT</manufName>
                 </alternativeNames>
                 <legibleDescription>
@@ -1043,7 +1325,7 @@
               </genericAttributes>
               <modbusDataPointConfiguration>
                 <modbusDataType>
-                  <float64 />
+                  <float32 />
                 </modbusDataType>
                 <address>1032</address>
                 <registerType>HoldRegister</registerType>
@@ -1056,18 +1338,21 @@
                 <dataDirection>R</dataDirection>
                 <presenceLevel>M</presenceLevel>
                 <dataType>
-                  <float64 />
+                  <float32 />
                 </dataType>
                 <unit>DEGREES_CELSIUS</unit>
+                <alternativeNames>
+                	<sLV1Name>ActHeatBufferTempUpper</sLV1Name>
+                	<manufName>CTA_B4_Temp</manufName></alternativeNames>
                 <legibleDescription>
-                  <textElement>?check addr 16518 doppelt: Aktuelle Ist-Temperatur des
+                  <textElement>Aktuelle Ist-Temperatur des
                     Heiz-Pufferspeichers oben</textElement>
                   <language>de</language>
                 </legibleDescription>
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
-                  <float64 />
+                  <float32 />
                 </modbusDataType>
                 <address>2014</address>
                 <registerType>HoldRegister</registerType>
@@ -1078,11 +1363,14 @@
               <dataPoint>
                 <dataPointName>ActHeatBufferTempLower</dataPointName>
                 <dataDirection>R</dataDirection>
-                <presenceLevel>M</presenceLevel>
+                <presenceLevel>O</presenceLevel>
                 <dataType>
-                  <float64 />
+                  <float32 />
                 </dataType>
                 <unit>DEGREES_CELSIUS</unit>
+                <alternativeNames>
+                	<sLV1Name>ActHeatBufferTempLower</sLV1Name>
+                	<manufName>CTA_B41_Temp</manufName></alternativeNames>
                 <legibleDescription>
                   <textElement>Aktuelle Ist-Temperatur des Heiz-Pufferspeichers unten</textElement>
                   <language>de</language>
@@ -1090,119 +1378,16 @@
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
-                  <float64 />
+                  <float32 />
                 </modbusDataType>
                 <address>2016</address>
                 <registerType>HoldRegister</registerType>
                 <numberOfRegisters>2</numberOfRegisters>
               </modbusDataPointConfiguration>
             </dataPointListElement>
-            <dataPointListElement>
-              <dataPoint>
-                <dataPointName>ctaRemoteCtrlTimeSec</dataPointName>
-                <dataDirection>RW</dataDirection>
-                <presenceLevel>M</presenceLevel>
-                <dataType>
-                  <int16U />
-                </dataType>
-                <unit>SECONDS</unit>
-                <alternativeNames>
-                  <manufName>CTA_Ext_Communication_Handler</manufName>
-                </alternativeNames>
-                <legibleDescription>
-                  <textElement>Countdown Variable in sec. Wenn 0, dann Ext. Kommunikation inaktiv.,
-                    Max. Wert 3000</textElement>
-                  <language>de</language>
-                </legibleDescription>
-                <programmerHints>
-                  <textElement>
-                    remoteCtrlTimeSec is valid for all external commands and settings of the device.
-                    It must be > 0 for keeping the external command / Setpoint valid.
-                    CTA_Ext_Heating_Command, CTA_Ext_Heating_Setpoint, CTA_Ext_SG, CTA_Ext_PwrReq,
-                    CTA_Ext_Cooling_Command, CTA_Ext_Cooling_Setpoint
-                  </textElement>
-                  <language>en</language>
-                </programmerHints>
-              </dataPoint>
-              <genericAttributes>
-                <maxVal>3000</maxVal>
-              </genericAttributes>
-              <modbusDataPointConfiguration>
-                <modbusDataType>
-                  <int16U />
-                </modbusDataType>
-                <address>990</address>
-                <registerType>HoldRegister</registerType>
-                <numberOfRegisters>1</numberOfRegisters>
-              </modbusDataPointConfiguration>
-            </dataPointListElement>
           </dataPointList>
         </functionalProfileListElement>
-        <functionalProfileListElement>
-          <functionalProfile>
-            <functionalProfileName>RoomTempCtrl</functionalProfileName>
-            <functionalProfileIdentification>
-              <specificationOwnerIdentification>0</specificationOwnerIdentification>
-              <functionalProfileCategory>HeatPumpControl</functionalProfileCategory>
-              <functionalProfileType>RoomTempCtrl</functionalProfileType>
-              <levelOfOperation>4</levelOfOperation>
-              <versionNumber>
-                <primaryVersionNumber>0</primaryVersionNumber>
-                <secondaryVersionNumber>1</secondaryVersionNumber>
-                <subReleaseVersionNumber>2</subReleaseVersionNumber>
-              </versionNumber>
-            </functionalProfileIdentification>
-            <legibleDescription>
-              <textElement>x</textElement>
-              <language>de</language>
-            </legibleDescription>
-          </functionalProfile>
-          <dataPointList>
-            <dataPointListElement>
-              <dataPoint>
-                <dataPointName>RoomZoneTemp</dataPointName>
-                <dataDirection>R</dataDirection>
-                <presenceLevel>R</presenceLevel>
-                <dataType>
-                  <float64 />
-                </dataType>
-                <unit>DEGREES_CELSIUS</unit>
-                <legibleDescription>
-                  <textElement>Aktuelle Ist-Temperatur des 1. Raumes oder Mittelwert der Bezugsräume
-                    für die Begrenzung der Reduktions- oder Anhebungsmassnahmen</textElement>
-                  <language>de</language>
-                </legibleDescription>
-              </dataPoint>
-              <modbusDataPointConfiguration>
-                <modbusDataType>
-                  <float64 />
-                </modbusDataType>
-                <address>1080</address>
-                <registerType>InputRegister</registerType>
-                <numberOfRegisters>2</numberOfRegisters>
-              </modbusDataPointConfiguration>
-            </dataPointListElement>
-            <dataPointListElement>
-              <dataPoint>
-                <dataPointName>RoomZoneTempStpt</dataPointName>
-                <dataDirection>RW</dataDirection>
-                <presenceLevel>M</presenceLevel>
-                <dataType>
-                  <float64 />
-                </dataType>
-                <unit>DEGREES_CELSIUS</unit>
-              </dataPoint>
-              <modbusDataPointConfiguration>
-                <modbusDataType>
-                  <float64 />
-                </modbusDataType>
-                <address>1065</address>
-                <registerType>HoldRegister</registerType>
-                <numberOfRegisters>2</numberOfRegisters>
-              </modbusDataPointConfiguration>
-            </dataPointListElement>
-          </dataPointList>
-        </functionalProfileListElement>
+             
         <functionalProfileListElement>
           <functionalProfile>
             <functionalProfileName>SG-ReadyStates_bwp</functionalProfileName>
@@ -1273,6 +1458,8 @@
                 </dataType>
                 <unit>NONE</unit>
                 <alternativeNames>
+                  <sLV1Name>SGReadyOpModeCmd</sLV1Name>
+                  <manufName>CTA_Ext_SG</manufName>
                   <hpBwpName>Betriebsmodus</hpBwpName>
                 </alternativeNames>
                 <legibleDescription>
@@ -1335,6 +1522,8 @@
                 </dataType>
                 <unit>NONE</unit>
                 <alternativeNames>
+                  <sLV1Name>SGReadyState</sLV1Name>
+                  <manufName>CTA_Ext_SG</manufName>
                   <hpBwpName>Statusmeldungen</hpBwpName>
                 </alternativeNames>
                 <legibleDescription>
@@ -1352,46 +1541,6 @@
                 <numberOfRegisters>1</numberOfRegisters>
               </modbusDataPointConfiguration>
             </dataPointListElement>
-
-            <dataPointListElement>
-              <dataPoint>
-                <dataPointName>ctaRemoteCtrlTimeSec</dataPointName>
-                <dataDirection>RW</dataDirection>
-                <presenceLevel>M</presenceLevel>
-                <dataType>
-                  <int16U />
-                </dataType>
-                <unit>SECONDS</unit>
-                <alternativeNames>
-                  <manufName>CTA_Ext_Communication_Handler</manufName>
-                </alternativeNames>
-                <legibleDescription>
-                  <textElement>Countdown Variable in sec. Wenn 0, dann Ext. Kommunikation inaktiv.,
-                    Max. Wert 3000</textElement>
-                  <language>de</language>
-                </legibleDescription>
-                <programmerHints>
-                  <textElement>
-                    remoteCtrlTimeSec is valid for all external commands and settings of the device.
-                    It must be > 0 for keeping the external command / Setpoint valid.
-                    CTA_Ext_Heating_Command, CTA_Ext_Heating_Setpoint, CTA_Ext_SG, CTA_Ext_PwrReq,
-                    CTA_Ext_Cooling_Command, CTA_Ext_Cooling_Setpoint
-                  </textElement>
-                  <language>en</language>
-                </programmerHints>
-              </dataPoint>
-              <genericAttributes>
-                <maxVal>3000</maxVal>
-              </genericAttributes>
-              <modbusDataPointConfiguration>
-                <modbusDataType>
-                  <int16U />
-                </modbusDataType>
-                <address>990</address>
-                <registerType>HoldRegister</registerType>
-                <numberOfRegisters>1</numberOfRegisters>
-              </modbusDataPointConfiguration>
-            </dataPointListElement>
           </dataPointList>
         </functionalProfileListElement>
         <functionalProfileListElement>
@@ -1401,7 +1550,7 @@
               <specificationOwnerIdentification>0</specificationOwnerIdentification>
               <functionalProfileCategory>HeatPumpControl</functionalProfileCategory>
               <functionalProfileType>EnergyMonitor</functionalProfileType>
-              <levelOfOperation>4</levelOfOperation>
+              <levelOfOperation>m</levelOfOperation>
               <versionNumber>
                 <primaryVersionNumber>0</primaryVersionNumber>
                 <secondaryVersionNumber>1</secondaryVersionNumber>
@@ -1409,8 +1558,8 @@
               </versionNumber>
             </functionalProfileIdentification>
             <legibleDescription>
-              <textElement>Das Profil definiert den Monitoriungbaustein zur dynamischen Ansteuerung
-                von Wärmepumpen über eine variable Beeinflussung der Sollwerte nach SGr Level 4. </textElement>
+              <textElement>Das Profil definiert den Monitoringbaustein zur Auswertung des Energieverbrauchs
+                der Wärmepumpe</textElement>
               <language>de</language>
             </legibleDescription>
           </functionalProfile>
@@ -1421,7 +1570,7 @@
                 <dataDirection>R</dataDirection>
                 <presenceLevel>R</presenceLevel>
                 <dataType>
-                  <float64 />
+                  <float32 />
                 </dataType>
                 <unit>KILOWATT_HOURS</unit>
                 <alternativeNames>
@@ -1448,7 +1597,7 @@
                 <dataDirection>R</dataDirection>
                 <presenceLevel>R</presenceLevel>
                 <dataType>
-                  <float64 />
+                  <float32 />
                 </dataType>
                 <unit>KILOWATT_HOURS</unit>
                 <alternativeNames>
@@ -1475,7 +1624,7 @@
                 <dataDirection>R</dataDirection>
                 <presenceLevel>R</presenceLevel>
                 <dataType>
-                  <float64 />
+                  <float32 />
                 </dataType>
                 <unit>KILOWATT_HOURS</unit>
                 <alternativeNames>
@@ -1489,33 +1638,9 @@
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
-                  <int64U />
-                </modbusDataType>
-                <address>2070</address>
-                <registerType>InputRegister</registerType>
-                <numberOfRegisters>2</numberOfRegisters>
-              </modbusDataPointConfiguration>
-            </dataPointListElement>
-            <dataPointListElement>
-              <dataPoint>
-                <dataPointName>ThermalEnergyDomWater</dataPointName>
-                <dataDirection>R</dataDirection>
-                <presenceLevel>R</presenceLevel>
-                <dataType>
-                  <float64 />
-                </dataType>
-                <unit>KILOWATT_HOURS</unit>
-                <legibleDescription>
-                  <textElement>Summe der aufgenommenen elektrischen Energie des Verdichters für die
-                    Brauchwarmwasser-Erwärmung.</textElement>
-                  <language>de</language>
-                </legibleDescription>
-              </dataPoint>
-              <modbusDataPointConfiguration>
-                <modbusDataType>
                   <int32U />
                 </modbusDataType>
-                <address>2056</address>
+                <address>2070</address>
                 <registerType>InputRegister</registerType>
                 <numberOfRegisters>2</numberOfRegisters>
               </modbusDataPointConfiguration>
@@ -1526,10 +1651,11 @@
                 <dataDirection>R</dataDirection>
                 <presenceLevel>R</presenceLevel>
                 <dataType>
-                  <float64 />
+                  <float32 />
                 </dataType>
                 <unit>KILOWATT_HOURS</unit>
                 <alternativeNames>
+                  <sLV1Name>ThermalEnergyTot</sLV1Name>
                   <manufName>CTA_Energy_Q_Tot</manufName>
                 </alternativeNames>
                 <legibleDescription>
@@ -1552,10 +1678,11 @@
                 <dataDirection>R</dataDirection>
                 <presenceLevel>R</presenceLevel>
                 <dataType>
-                  <float64 />
+                  <float32 />
                 </dataType>
                 <unit>KILOWATT_HOURS</unit>
                 <alternativeNames>
+                  <sLV1Name>ThermalEnergyHeat</sLV1Name>
                   <manufName>CTA_Energy_Q_Heat</manufName>
                 </alternativeNames>
                 <legibleDescription>
@@ -1578,10 +1705,11 @@
                 <dataDirection>R</dataDirection>
                 <presenceLevel>R</presenceLevel>
                 <dataType>
-                  <float64 />
+                  <float32 />
                 </dataType>
                 <unit>KILOWATT_HOURS</unit>
                 <alternativeNames>
+                  <sLV1Name>ThermalEnergyDomHotWater</sLV1Name>
                   <manufName>CTA_Energy_Q_DW</manufName>
                 </alternativeNames>
                 <legibleDescription>
@@ -1605,9 +1733,13 @@
                 <dataDirection>R</dataDirection>
                 <presenceLevel>O</presenceLevel>
                 <dataType>
-                  <float64 />
+                  <float32 />
                 </dataType>
                 <unit>KILOWATT_HOURS</unit>
+                  <alternativeNames>
+                    <sLV1Name>ActPowerACtot</sLV1Name>
+                    <manufName>State_CompPower</manufName>
+                  </alternativeNames>
                 <legibleDescription>
                   <textElement>Effektive elektrischen Aufnahmeleistung des Verdichters</textElement>
                   <language>de</language>
@@ -1615,7 +1747,7 @@
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
-                  <float64 />
+                  <float32 />
                 </modbusDataType>
                 <address>2032</address>
                 <registerType>InputRegister</registerType>
@@ -1628,10 +1760,11 @@
                 <dataDirection>R</dataDirection>
                 <presenceLevel>R</presenceLevel>
                 <dataType>
-                  <float64 />
+                  <float32 />
                 </dataType>
                 <unit>HOURS</unit>
                 <alternativeNames>
+                  <sLV1Name>RuntimeHeating</sLV1Name>
                   <manufName>CTA_OperTime_Total_h</manufName>
                 </alternativeNames>
                 <legibleDescription>
@@ -1641,7 +1774,7 @@
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
-                  <float64 />
+                  <float32 />
                 </modbusDataType>
                 <address>2090</address>
                 <registerType>InputRegister</registerType>
@@ -1654,10 +1787,11 @@
                 <dataDirection>R</dataDirection>
                 <presenceLevel>R</presenceLevel>
                 <dataType>
-                  <float64 />
+                  <float32 />
                 </dataType>
                 <unit>HOURS</unit>
                 <alternativeNames>
+                  <sLV1Name>RuntimeCooling</sLV1Name>
                   <manufName>CTA_OperTime_Cooling_h</manufName>
                 </alternativeNames>
                 <legibleDescription>
@@ -1684,6 +1818,7 @@
                 </dataType>
                 <unit>NONE</unit>
                 <alternativeNames>
+                  <sLV1Name>NrOfStartupsCompressor</sLV1Name>
                   <manufName>CTA_CompStartAttempts</manufName>
                 </alternativeNames>
                 <legibleDescription>
