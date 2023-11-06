@@ -431,12 +431,21 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
     </sequence>
   </complexType>
   <!-- modbus data types -->
+  <complexType name="ModbusBoolean">
+    <annotation>
+      <documentation>Modbus specific boolean definition</documentation>
+    </annotation>
+    <choice>
+      <element name="trueValue" type="unsignedShort" minOccurs="0" />
+      <element name="falseValue" type="unsignedShort"  minOccurs="0" />
+    </choice>
+  </complexType>
   <complexType name="ModbusDataType">
     <annotation>
       <documentation>Modbus specific data types</documentation>
     </annotation>
     <choice>
-      <element name="boolean" type="sgr:EmptyType" />
+      <element name="boolean" type="sgr:ModbusBoolean" />
       <element name="int8" type="sgr:EmptyType" />
       <element name="int16" type="sgr:EmptyType" />
       <element name="int32" type="sgr:EmptyType" />
