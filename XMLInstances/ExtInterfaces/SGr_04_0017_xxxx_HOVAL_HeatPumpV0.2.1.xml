@@ -129,10 +129,11 @@
                   </enum>
                 </dataType>
                 <unit>NONE</unit>
+                <alternativeNames>
+                	<sLV1Name>hovHPOpModeCmd</sLV1Name>
+                	<manufName>9075</manufName></alternativeNames>
                 <legibleDescription>
-                  <textElement>?checkDoku TODO: enum. Grund-Betriebsart der Wärmepumpe
-                    (Bereitschaft,
-                    Programm, Komfort, Eco, Warmwasser, Kühlen aktiv, Kühlen passiv, Notbetrieb)
+                  <textElement>Betriebswahl Wärmeerzeuger
                   </textElement>
                   <language>de</language>
                 </legibleDescription>
@@ -185,42 +186,6 @@
                       <ordinal>5</ordinal>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HP_6</literal>
-                      <ordinal>6</ordinal>
-                    </enumEntry>
-                    <enumEntry>
-                      <literal>HP_7</literal>
-                      <ordinal>7</ordinal>
-                    </enumEntry>
-                    <enumEntry>
-                      <literal>HP_8</literal>
-                      <ordinal>8</ordinal>
-                    </enumEntry>
-                    <enumEntry>
-                      <literal>HP_9</literal>
-                      <ordinal>9</ordinal>
-                    </enumEntry>
-                    <enumEntry>
-                      <literal>HP_10</literal>
-                      <ordinal>10</ordinal>
-                    </enumEntry>
-                    <enumEntry>
-                      <literal>HP_11</literal>
-                      <ordinal>11</ordinal>
-                    </enumEntry>
-                    <enumEntry>
-                      <literal>HP_12</literal>
-                      <ordinal>12</ordinal>
-                    </enumEntry>
-                    <enumEntry>
-                      <literal>HP_13</literal>
-                      <ordinal>13</ordinal>
-                    </enumEntry>
-                    <enumEntry>
-                      <literal>HP_14</literal>
-                      <ordinal>14</ordinal>
-                    </enumEntry>
-                    <enumEntry>
                       <literal>HP_ALARM</literal>
                       <ordinal>15</ordinal>
                     </enumEntry>
@@ -233,36 +198,12 @@
                       <ordinal>17</ordinal>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HP_18</literal>
-                      <ordinal>18</ordinal>
-                    </enumEntry>
-                    <enumEntry>
-                      <literal>HP_19</literal>
-                      <ordinal>19</ordinal>
-                    </enumEntry>
-                    <enumEntry>
-                      <literal>HP_20</literal>
-                      <ordinal>20</ordinal>
-                    </enumEntry>
-                    <enumEntry>
                       <literal>HP_WFmax_SWITCHOFF</literal>
                       <ordinal>21</ordinal>
                     </enumEntry>
                     <enumEntry>
                       <literal>HP_WFset_SWITCHOFF</literal>
                       <ordinal>22</ordinal>
-                    </enumEntry>
-                    <enumEntry>
-                      <literal>HP_23</literal>
-                      <ordinal>23</ordinal>
-                    </enumEntry>
-                    <enumEntry>
-                      <literal>HP_24</literal>
-                      <ordinal>24</ordinal>
-                    </enumEntry>
-                    <enumEntry>
-                      <literal>HP_25</literal>
-                      <ordinal>25</ordinal>
                     </enumEntry>
                     <enumEntry>
                       <literal>HP_BIVALENCE_SWITCHOFF</literal>
@@ -277,18 +218,6 @@
                       <ordinal>28</ordinal>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HP_29</literal>
-                      <ordinal>29</ordinal>
-                    </enumEntry>
-                    <enumEntry>
-                      <literal>HP_30</literal>
-                      <ordinal>30</ordinal>
-                    </enumEntry>
-                    <enumEntry>
-                      <literal>HP_31</literal>
-                      <ordinal>31</ordinal>
-                    </enumEntry>
-                    <enumEntry>
                       <literal>HP_TRAILING</literal>
                       <ordinal>32</ordinal>
                     </enumEntry>
@@ -300,39 +229,7 @@
                       <literal>HP_TEMPERATURE_HIGH_OP</literal>
                       <ordinal>34</ordinal>
                     </enumEntry>
-                    <enumEntry>
-                      <literal>HP_35</literal>
-                      <ordinal>35</ordinal>
-                    </enumEntry>
-                    <enumEntry>
-                      <literal>HP_36</literal>
-                      <ordinal>36</ordinal>
-                    </enumEntry>
-                    <enumEntry>
-                      <literal>HP_37</literal>
-                      <ordinal>37</ordinal>
-                    </enumEntry>
-                    <enumEntry>
-                      <literal>HP_38</literal>
-                      <ordinal>38</ordinal>
-                    </enumEntry>
-                    <enumEntry>
-                      <literal>HP_39</literal>
-                      <ordinal>39</ordinal>
-                    </enumEntry>
-                    <enumEntry>
-                      <literal>HP_40</literal>
-                      <ordinal>40</ordinal>
-                    </enumEntry>
-                    <enumEntry>
-                      <literal>HP_41</literal>
-                      <ordinal>41</ordinal>
-                    </enumEntry>
-                    <enumEntry>
-                      <literal>HP_42</literal>
-                      <ordinal>42</ordinal>
-                    </enumEntry>
-                    <enumEntry>
+                        <enumEntry>
                       <literal>HP_MAN_OP_HEATING</literal>
                       <ordinal>43</ordinal>
                     </enumEntry>
@@ -349,12 +246,10 @@
                 <unit>NONE</unit>
                 <alternativeNames>
                   <sLV1Name>HPOpState</sLV1Name>
+                  <manufName>2053</manufName>
                 </alternativeNames>
                 <legibleDescription>
-                  <textElement>>
-                    ?check: enum oder Bit-Array? TODO: enum. Auslesen des aktuellen Status der Wärmepumpe
-                    (Bereitschaft, Programm, Komfort, Eco, Warmwasser, Kühlen aktiv, Kühlen passiv,Notbetrieb)
-                  </textElement>
+                  <textElement>Status Wärmeerzeugerregelung</textElement>
                   <language>de</language>
                 </legibleDescription>
               </dataPoint>
@@ -362,7 +257,7 @@
                 <modbusDataType>
                   <int8U/>
                 </modbusDataType>
-                <address>18732</address>
+                <address>18722</address>
                 <registerType>HoldRegister</registerType>
                 <numberOfRegisters>1</numberOfRegisters>
               </modbusDataPointConfiguration>
@@ -384,9 +279,10 @@
                 <unit>NONE</unit>
                 <alternativeNames>
                   <sLV1Name>Fault_HP_SGr</sLV1Name>
+                  <manufName>27</manufName>
                 </alternativeNames>
                 <legibleDescription>
-                  <textElement>?check: enum oder Bit-Array? Fehlerliste gem. Standard</textElement>
+                  <textElement>Fehlercode vom Automaten, reduziert auf Boolean: true = Fehler </textElement>
                   <language>de</language>
                 </legibleDescription>
               </dataPoint>
@@ -399,13 +295,12 @@
                 <registerType>HoldRegister</registerType>
                 <numberOfRegisters>1</numberOfRegisters>
               </modbusDataPointConfiguration>
-              <modbusAttributes>
-                <!-- TODO why was this here, it's an error number?
+              <modbusAttributes>   
+             <!-- TODO: reinstall this feature   
                 <iopBooleanMapper>
                   <assignedValueMeans>false</assignedValueMeans>
                   <value>255</value>
-                </iopBooleanMapper>
-                -->
+                </iopBooleanMapper>  --> 
               </modbusAttributes>
             </dataPointListElement>
             <dataPointListElement>
@@ -419,9 +314,10 @@
                 <unit>DEGREES_CELSIUS</unit>
                 <alternativeNames>
                   <sLV1Name>OutsideAirTemp</sLV1Name>
+                  <manufName>0</manufName>
                 </alternativeNames>
                 <legibleDescription>
-                  <textElement>Aktuelle Aussentemperatur (gemessen über Aussenfühler)</textElement>
+                  <textElement>Aktuelle Aussentemperatur (gemessen über AF1 - Aussenfühler 1)</textElement>
                   <language>de</language>
                 </legibleDescription>
               </dataPoint>
@@ -444,12 +340,19 @@
             <dataPointListElement>
               <dataPoint>
                 <dataPointName>SupplyWaterTemp</dataPointName>
-                <dataDirection>RW</dataDirection>
+                <dataDirection>R</dataDirection>
                 <presenceLevel>M</presenceLevel>
                 <dataType>
                   <float32/>
                 </dataType>
                 <unit>DEGREES_CELSIUS</unit>
+                <alternativeNames>
+                	<sLV1Name>SupplyWaterTemp</sLV1Name>
+                	<manufName>7</manufName></alternativeNames>
+                <legibleDescription>
+                	<textElement>Wärmeerzeuger-Ist</textElement>
+                	<language>de</language>
+                </legibleDescription>
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
@@ -470,7 +373,7 @@
             <dataPointListElement>
               <dataPoint>
                 <dataPointName>SupplyWaterTempStpt</dataPointName>
-                <dataDirection>R</dataDirection>
+                <dataDirection>RW</dataDirection>
                 <presenceLevel>O</presenceLevel>
                 <dataType>
                   <float32/>
@@ -478,12 +381,10 @@
                 <unit>DEGREES_CELSIUS</unit>
                 <alternativeNames>
                   <sLV1Name>SupplyWaterTempStpt</sLV1Name>
+                  <manufName>9020</manufName>
                 </alternativeNames>
                 <legibleDescription>
-                  <textElement>
-                    Setzen der aktuellen Soll-Temperatur des Vorlaufs (Grundwert).Wirkt nur für die OpMode
-                    "manuell"
-                  </textElement>
+                  <textElement>Solltemperatur Handbetrieb: Setzen der aktuellen Soll-Temperatur des Vorlaufs (Grundwert).Wirkt nur für die OpMode  "manuell"</textElement>
                   <language>de</language>
                 </legibleDescription>
               </dataPoint>
@@ -514,9 +415,10 @@
                 <unit>DEGREES_CELSIUS</unit>
                 <alternativeNames>
                   <sLV1Name>ReturnSupplyWaterTemp</sLV1Name>
+                  <manufName>29</manufName>
                 </alternativeNames>
                 <legibleDescription>
-                  <textElement>Auslesen der aktuellen aktuellen-Temperatur des Rücklaufs.</textElement>
+                  <textElement>Auslesen der aktuellen aktuellen Rücklauftemperatur</textElement>
                   <language>de</language>
                 </legibleDescription>
               </dataPoint>
@@ -546,13 +448,11 @@
                 </dataType>
                 <unit>DEGREES_CELSIUS</unit>
                 <alternativeNames>
-                  <sLV1Name>SupplyWaterTempStpt</sLV1Name>
+                  <sLV1Name>SupplyWaterTempStptFb</sLV1Name>
+                  <manufName>1007</manufName>
                 </alternativeNames>
                 <legibleDescription>
-                  <textElement>
-                    Setzen der aktuellen Soll-Temperatur des Vorlaufs (Grundwert).Wirkt nur für die OpMode
-                    "manuell"
-                  </textElement>
+                  <textElement>Wärmeerzeuger-Soll</textElement>
                   <language>de</language>
                 </legibleDescription>
               </dataPoint>
@@ -644,6 +544,7 @@
                 <unit>PERCENT</unit>
                 <alternativeNames>
                   <sLV1Name>PowerCtrlStpt</sLV1Name>
+                  <manufName>20069</manufName>
                 </alternativeNames>
                 <legibleDescription>
                   <textElement>Verfügbare el. Leistung gedämpft</textElement>
