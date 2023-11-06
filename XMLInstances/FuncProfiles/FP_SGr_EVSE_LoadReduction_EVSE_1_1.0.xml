@@ -5,20 +5,8 @@
   <releaseNotes>
     <state>Review</state>
     <changeLog>
-      <version>0.1.2</version>
-      <date>2021-08-23</date>
-      <author>IBT/cb</author>
-      <comment>Vorbereitung beta test</comment>
-    </changeLog>
-    <changeLog>
-      <version>0.2.2</version>
-      <date>2022-10-31</date>
-      <author>Ergo/sz</author>
-      <comment>Finalisierung Go-Live</comment>
-    </changeLog>
-    <changeLog>
       <version>1.0.0</version>
-      <date>2023-09-30</date>
+      <date>2023-10-10</date>
       <author>Ergo/ag</author>
       <comment>Finalisierung</comment>
     </changeLog>
@@ -27,7 +15,7 @@
     <functionalProfileIdentification>
       <specificationOwnerIdentification>0</specificationOwnerIdentification>
       <functionalProfileCategory>EVSE</functionalProfileCategory>
-      <functionalProfileType>SGrStates_EVSE</functionalProfileType>
+      <functionalProfileType>LoadReduction_EVSE</functionalProfileType>
       <levelOfOperation>1</levelOfOperation>
       <versionNumber>
         <primaryVersionNumber>1</primaryVersionNumber>
@@ -38,46 +26,73 @@
     <legibleDescription>
       <textElement>
         <![CDATA[	
-          <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
-          <p>Wallboxen (ElectricVehicleSupplyEquipment «EVSE») müssen über einen Regler verfügen, welcher folgende Betriebszustände abdeckt:</p>
+          <img src="ressources/cem_to_evse.svg" style="float:left; padding:0.3em;"/>
+          <p>Wallboxen (Electric Vehicle Supply Equipment «EVSE») müssen über einen Regler verfügen, welcher folgende Betriebszustände abdeckt:</p>
           <ol>
-            <li>Normalbetrieb uneingeschränkt entsprechend der konfigurierten Anschlussleistung laden</li>
-            <li>Minimale Ladung (AC Ladung 6A, DC Ladung 10kW, Bidirektionales Laden, maximales Feed-In für Vehicle to Infrastructure V2X)</li>
+            <li><strong>Klemmenzustand 0</strong>: Normalbetrieb uneingeschränkt entsprechend der konfigurierten Anschlussleistung laden</li>
+            <li><strong>Klemmenzustand 1</strong>: Minimale Ladung (AC Ladung 6A, DC Ladung 10kW, Bidirektionales Laden)</li>
           </ol>
           
           <p>Hinweise:</p>
           <ul>
             <li>Geräte mit Stufe 2 können im Stufe-1-Betrieb genutzt werden, wenn der zweite Kontakt fest auf den Zustand 0 verdrahtet wird.
                 Dadurch wird das komplette Abstellen der Stromversorgung verhindert.</li>
-            <li>Geräte mit 2 Klemmenkontakten setzen die Klemmen-Datenpunkte um.</li>
-            <li>Geräte mit Modbus oder RestAPI setzen bevorzugt den Enum-basierten Datenpunkt um.</li>
           </ul>
         ]]>
       </textElement>
       <language>de</language>
     </legibleDescription>
   </functionalProfile>
+  <genericAttributes>
+    <attributeList>
+      <attribute>
+        <name>Load Reduction</name>
+        <type>float</type>
+        <value>50 %</value>
+        <legibleDescription>
+          <textElement>
+            Load reduction for EV_REDUCED setting. 
+          </textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>
+            Reduktion des Ladens for Einstellung EV_REDUCED. 
+          </textElement>
+          <language>de</language>
+        </legibleDescription>
+      </attribute>
+      <attribute>
+        <name>Minimum Load</name>
+        <type>float</type>
+        <value>6 A</value>
+        <legibleDescription>
+          <textElement>
+            Minimum load capacity.
+          </textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>
+            Minimale Ladeleistung
+          </textElement>
+          <language>de</language>
+        </legibleDescription>
+      </attribute>
+    </attributeList>
+  </genericAttributes>
   <dataPointList>
     <dataPointListElement>
       <dataPoint>
-        <dataPointName>EVSE_StateLv1</dataPointName>
+        <dataPointName>EVSE_Inp1isON</dataPointName>
         <dataDirection>W</dataDirection>
         <presenceLevel>M</presenceLevel>
         <dataType>
-          <enum>
-            <enumEntry>
-              <literal>EV_NORMAL</literal>
-              <description>Normalbetrieb  uneingeschränkt entsprechend der konfigurierten Anschlussleistung Laden</description>
-            </enumEntry>
-            <enumEntry>
-              <literal>EV_REDUCED</literal>
-              <description>Minimale Ladung (AC Ladung 6A, DC Ladung 10kW, Bidirektionales Laden, maximales Feed-In für Vehicle to Infrastructure V2X)</description>
-            </enumEntry>
-          </enum>
+          <boolean/>
         </dataType>
         <unit>NONE</unit>
         <legibleDescription>
-          <textElement>Betriebszustand</textElement>
+          <textElement>Schaltzustand erste Klemme (0 oder 1)</textElement>
           <language>de</language>
         </legibleDescription>
       </dataPoint>

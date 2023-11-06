@@ -4,43 +4,51 @@
     <xsl:template match="sgr:genericAttributes">
         <!--maxVal-->
         <xsl:if test="sgr:maxVal">
-            <tr class="genericDetails">
-                <td class="genericattribute">Upper Range Limit</td>
-                <td>
-                    <xsl:value-of select="sgr:maxVal" />
-                </td>
-            </tr>
+            <xsl:if test="sgr:maxVal != ''">
+                <tr class="genericDetails">
+                    <td class="genericattribute">Upper Range Limit</td>
+                    <td>
+                        <xsl:value-of select="sgr:maxVal" />
+                    </td>
+                </tr>
+            </xsl:if>
         </xsl:if>
 
         <!--minVal-->
         <xsl:if test="sgr:minVal">
-            <tr class="genericDetails">
-                <td class="genericattribute">Lower Range Limit</td>
-                <td>
-                    <xsl:value-of select="sgr:minVal" />
-                </td>
-            </tr>
+            <xsl:if test="sgr:minVal != ''">
+                <tr class="genericDetails">
+                    <td class="genericattribute">Lower Range Limit</td>
+                    <td>
+                        <xsl:value-of select="sgr:minVal" />
+                    </td>
+                </tr>
+            </xsl:if>
         </xsl:if>
 
         <!--specialQualityRequirement-->
         <xsl:if test="sgr:specialQualityRequirement">
-            <tr class="genericDetails">
-                <td class="genericattribute">Quality Requirements</td>
-                <td>
-                    <xsl:value-of select="sgr:specialQualityRequirement" />
-                </td>
-            </tr>
+            <xsl:if test="sgr:specialQualityRequirement != ''">
+                <tr class="genericDetails">
+                    <td class="genericattribute">Quality Requirements</td>
+                    <td>
+                        <xsl:value-of select="sgr:specialQualityRequirement" />
+                    </td>
+                </tr>
+            </xsl:if>
         </xsl:if>
 
         <!--precisionPercent-->
         <xsl:if test="sgr:precisionPercent">
-            <tr class="genericDetails">
-                <td class="genericattribute">Precision</td>
-                <td>
-                    <xsl:value-of select="sgr:precisionPercent" />
-                    %
-                </td>
-            </tr>
+            <xsl:if test="sgr:precisionPercent != ''">
+                <tr class="genericDetails">
+                    <td class="genericattribute">Precision</td>
+                    <td>
+                        <xsl:value-of select="sgr:precisionPercent" />
+                        %
+                    </td>
+                </tr>
+            </xsl:if>
         </xsl:if>
 
         <!--stabilityFallback-->
@@ -63,120 +71,140 @@
 
         <!--smoothTransition-->
         <xsl:if test="sgr:smoothTransition">
-            <tr class="genericDetails">
-                <td class="genericattribute">Smooth Transition</td>
-                <td>
-                    <xsl:if test="sgr:smoothTransition/sgr:winTms">
-                        Window:
-                        <xsl:value-of select="sgr:smoothTransition/sgr:winTms" />
-                        s&#160;
-                    </xsl:if>
-                    <xsl:if test="sgr:smoothTransition/sgr:rvrtTms">
-                        rvrt:
-                        <xsl:value-of select="sgr:smoothTransition/sgr:rvrtTms" />
-                        s&#160;
-                    </xsl:if>
-                    <xsl:if test="sgr:smoothTransition/sgr:rmpTms">
-                        rmp:
-                        <xsl:value-of select="sgr:smoothTransition/sgr:rmpTms" />
-                        s&#160;
-                    </xsl:if>
-                </td>
-            </tr>
+            <xsl:if test="sgr:smoothTransition != ''">
+                <tr class="genericDetails">
+                    <td class="genericattribute">Smooth Transition</td>
+                    <td>
+                        <xsl:if test="sgr:smoothTransition/sgr:winTms">
+                            Window:
+                            <xsl:value-of select="sgr:smoothTransition/sgr:winTms" />
+                            s&#160;
+                        </xsl:if>
+                        <xsl:if test="sgr:smoothTransition/sgr:rvrtTms">
+                            rvrt:
+                            <xsl:value-of select="sgr:smoothTransition/sgr:rvrtTms" />
+                            s&#160;
+                        </xsl:if>
+                        <xsl:if test="sgr:smoothTransition/sgr:rmpTms">
+                            rmp:
+                            <xsl:value-of select="sgr:smoothTransition/sgr:rmpTms" />
+                            s&#160;
+                        </xsl:if>
+                    </td>
+                </tr>
+            </xsl:if>
         </xsl:if>
 
         <!--maxLatencyTime-->
         <xsl:if test="sgr:maxLatencyTimeMs">
-            <tr class="genericDetails">
-                <td class="genericattribute">Max. Latency</td>
-                <td>
-                    <xsl:value-of select="sgr:maxLatencyTimeMs" />&#160;ms
-                </td>
-            </tr>
+            <xsl:if test="sgr:maxLatencyTimeMs != ''">
+                <tr class="genericDetails">
+                    <td class="genericattribute">Max. Latency</td>
+                    <td>
+                        <xsl:value-of select="sgr:maxLatencyTimeMs" />&#160;ms
+                    </td>
+                </tr>
+            </xsl:if>
         </xsl:if>
         
         <!--measuredValueType-->
         <xsl:if test="sgr:measuredValueType">
-            <tr class="genericDetails">
-                <td class="genericattribute">ValueType</td>
-                <td>
-                    <xsl:value-of select="sgr:measuredValueType" />
-                </td>
-            </tr>
+            <xsl:if test="sgr:measuredValueType != ''">
+                <tr class="genericDetails">
+                    <td class="genericattribute">ValueType</td>
+                    <td>
+                        <xsl:value-of select="sgr:measuredValueType" />
+                    </td>
+                </tr>
+            </xsl:if>
         </xsl:if>
 
         <!--measuredValueSource-->
         <xsl:if test="sgr:measuredValueSource">
-            <tr class="genericDetails">
-                <td class="genericattribute">Value Source</td>
-                <td>
-                    <xsl:value-of select="sgr:measuredValueSource" />
-                </td>
-            </tr>
+            <xsl:if test="sgr:measuredValueSource != ''">
+                <tr class="genericDetails">
+                    <td class="genericattribute">Value Source</td>
+                    <td>
+                        <xsl:value-of select="sgr:measuredValueSource" />
+                    </td>
+                </tr>
+            </xsl:if>
         </xsl:if>
 
         <!--sampleRateHz-->
         <xsl:if test="sgr:sampleRateHz">
-            <tr class="genericDetails">
-                <td class="genericattribute">Sample Rate</td>
-                <td>
-                    <xsl:value-of select="sgr:sampleRateHz" />
-                    ms
-                </td>
-            </tr>
+            <xsl:if test="sgr:sampleRateHz != ''">
+                <tr class="genericDetails">
+                    <td class="genericattribute">Sample Rate</td>
+                    <td>
+                        <xsl:value-of select="sgr:sampleRateHz" />
+                        ms
+                    </td>
+                </tr>
+            </xsl:if>
         </xsl:if>
 
         <!--curtailment-->
         <xsl:if test="sgr:curtailment">
-            <tr class="genericDetails">
-                <td class="genericattribute">Curtailment</td>
-                <td>
-                    <xsl:value-of select="sgr:curtailment" />
-                </td>
-            </tr>
+            <xsl:if test="sgr:curtailment != ''">
+                <tr class="genericDetails">
+                    <td class="genericattribute">Curtailment</td>
+                    <td>
+                        <xsl:value-of select="sgr:curtailment" />
+                    </td>
+                </tr>
+            </xsl:if>
         </xsl:if>
 
         <!--minLoad-->
         <xsl:if test="sgr:minLoad">
-            <tr class="genericDetails">
-                <td class="genericattribute">Min. Load</td>
-                <td>
-                    <xsl:value-of select="sgr:minLoad" />
-                </td>
-            </tr>
+            <xsl:if test="sgr:minLoad != ''">
+                <tr class="genericDetails">
+                    <td class="genericattribute">Min. Load</td>
+                    <td>
+                        <xsl:value-of select="sgr:minLoad" />
+                    </td>
+                </tr>
+            </xsl:if>
         </xsl:if>
 
         <!--maxLockTimeMinutes-->
         <xsl:if test="sgr:maxLockTimeMinutes">
-            <tr class="genericDetails">
-                <td class="genericattribute">Max. Lock Time</td>
-                <td>
-                    <xsl:value-of select="sgr:maxLockTimeMinutes" />
-                    min
-                </td>
-            </tr>
+            <xsl:if test="sgr:maxLockTimeMinutes != ''">
+                <tr class="genericDetails">
+                    <td class="genericattribute">Max. Lock Time</td>
+                    <td>
+                        <xsl:value-of select="sgr:maxLockTimeMinutes" />
+                        min
+                    </td>
+                </tr>
+            </xsl:if>
         </xsl:if>
 
         <!--minRunTimeMinutes-->
         <xsl:if test="sgr:minRunTimeMinutes">
-            <tr class="genericDetails">
-                <td class="genericattribute">Min. Run Time</td>
-                <td>
-                    <xsl:value-of select="sgr:minRunTimeMinutes" />
-                    min
-                </td>
-            </tr>
+            <xsl:if test="sgr:minRunTimeMinutes != ''">
+                <tr class="genericDetails">
+                    <td class="genericattribute">Min. Run Time</td>
+                    <td>
+                        <xsl:value-of select="sgr:minRunTimeMinutes" />
+                        min
+                    </td>
+                </tr>
+            </xsl:if>
         </xsl:if>
 
         <!--valueByTimeTableMinutes-->
         <xsl:if test="sgr:valueByTimeTableMinutes">
-            <tr class="genericDetails">
-                <td class="genericattribute">Value by time Table</td>
-                <td>
-                    <xsl:value-of select="sgr:valueByTimeTableMinutes" />
-                    min
-                </td>
-            </tr>
+            <xsl:if test="sgr:valueByTimeTableMinutes != ''">
+                <tr class="genericDetails">
+                    <td class="genericattribute">Value by time Table</td>
+                    <td>
+                        <xsl:value-of select="sgr:valueByTimeTableMinutes" />
+                        min
+                    </td>
+                </tr>
+            </xsl:if>
         </xsl:if>
 
         <!--flexAssistance-->
@@ -191,6 +219,19 @@
                 </td>
             </tr>
         </xsl:if>
+
+        <!--attributeList-->
+        <xsl:if test="sgr:attributeList">
+            <xsl:for-each select="sgr:attributeList/sgr:attribute">
+                <xsl:if test="sgr:value != ''">
+                    <tr class="genericDetails">
+                        <td class="genericattribute"><xsl:value-of select="sgr:name" /></td>
+                        <td><xsl:value-of select="sgr:value" /></td>
+                    </tr>
+                </xsl:if>
+            </xsl:for-each>
+        </xsl:if>
+
     </xsl:template>
 
 </xsl:stylesheet>  

@@ -66,7 +66,7 @@
 							name="showDPDetails" value="1" checked="checked" /> Generic Info </div>
 					<div>
 						<input type="checkbox" onclick="toggleClassRow('ontologyDetails')"
-							name="showDPDetails" value="1" checked="checked" /> Ontology </div>
+							name="showDPDetails" value="1" checked="checked" /> Alternative Names </div>
 					<div>
 						<input type="checkbox" onclick="toggleClassRow('transportDetails')"
 							name="showDPDetails" value="1" checked="checked" /> Transport Layer </div>

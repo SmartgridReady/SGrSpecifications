@@ -66,10 +66,14 @@
             <td>
                 <xsl:for-each select="sgr:legibleDescription">
                     <div>
+                        <xsl:attribute name="lang">
+                          <xsl:value-of select="sgr:language" />
+                        </xsl:attribute>
                         <img width="20px" height="14px">
                             <xsl:attribute name="src" alt="Lang">/xsl/ressources/<xsl:value-of select="sgr:language" />.png</xsl:attribute>
                         </img>
                         &#160;<xsl:value-of select="sgr:textElement" disable-output-escaping="yes" />
+                        <xsl:apply-templates select="sgr:uri" />
                     </div>
                 </xsl:for-each>
                 <xsl:apply-templates select="sgr:dataType/sgr:enum" />

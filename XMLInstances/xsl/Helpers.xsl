@@ -190,7 +190,7 @@
         </xsl:if>
     </xsl:template>
 
-    	<!-- LegibleDescription -->
+  	<!-- LegibleDescription -->
 	<xsl:template match="sgr:legibleDescription">
 		<tr>
 			<xsl:attribute name="lang">
@@ -205,6 +205,7 @@
 			</td>
 		</tr>
 	</xsl:template>
+
 	<!-- ProgrammerHints -->
 	<xsl:template match="sgr:programmerHints">
 		<tr class="transportDetails">
@@ -286,6 +287,20 @@
             </xsl:for-each>
             </ul>
         </div>       
+    </xsl:template>
+
+    <!-- LegibleDescription -->
+    <xsl:template name="SGrLanguageText">
+        <xsl:param name="lang" select="NONE" />
+        <xsl:param name="value" select="NONE" />
+        <xsl:attribute name="lang">
+            <xsl:value-of select="$lang" />
+        </xsl:attribute>
+        <img width="20px" height="14px">
+            <xsl:attribute name="src" alt="Lang">/xsl/ressources/<xsl:value-of select="$lang" />.png</xsl:attribute>
+        </img>
+        &#160;<xsl:value-of select="$value" disable-output-escaping="yes" />
+        <xsl:apply-templates select="sgr:uri" />
     </xsl:template>
 
     <!-- Units -->

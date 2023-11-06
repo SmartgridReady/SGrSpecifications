@@ -6,7 +6,6 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
   targetNamespace="http://www.smartgridready.com/ns/V0/" version="0.2.2">
 
   <include schemaLocation="BaseType_FunctionalProfileCategory.xsd" />
-  <include schemaLocation="BaseType_FunctionalProfileType.xsd" />
   <include schemaLocation="BaseType_LevelOfOperationType.xsd" />
 
   <complexType name="ReleaseNotes">
@@ -132,7 +131,7 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
             hhhh.nnnn.uuuu.ss.VV.vv as nnnn </documentation>
         </annotation>
       </element>
-      <element name="functionalProfileType" type="sgr:FunctionalProfileType" />
+      <element name="functionalProfileType" type="string" />
       <element name="levelOfOperation" type="sgr:LevelOfOperation">
         <annotation>
           <documentation> levelOfOperation defines a controls complexity level m) for read-only
@@ -174,31 +173,37 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
     <sequence>
       <element name="literal" type="string" />
       <element name="ordinal" type="int" />
-      <element name="description" type="string" minOccurs="0"/>
+      <choice minOccurs="0">
+        <element name="description" type="string"/>
+      </choice>
     </sequence>
   </complexType>
 
   <!-- defines a single mapping from an enum literal to an ordinal (integer) value -->
-  <complexType name="enumEntryRecordFunctionalProfile">
+  <complexType name="EnumEntryRecordFunctionalProfile">
     <sequence>
       <element name="literal" type="string" />
-      <element name="description" type="string" minOccurs="0"/>
+      <choice minOccurs="0">
+        <element name="description" type="string"/>
+      </choice>
     </sequence>
   </complexType>
 
   <!-- defines a single mapping from an enum literal to an ordinal (integer) value -->
-  <complexType name="enumEntryProductRecord">
+  <complexType name="EnumEntryProductRecord">
     <sequence>
       <element name="literal" type="string" />
       <element name="ordinal" type="int" minOccurs="0" />
-      <element name="description" type="string" minOccurs="0"/>
+      <choice minOccurs="0">
+        <element name="description" type="string"/>
+      </choice>
     </sequence>
   </complexType>
 
   <!-- mapping table containing modbus to generic enumeration mapping records -->
   <complexType name="EnumMapFunctionalProfile">
     <sequence>
-      <element name="enumEntry" type="sgr:enumEntryRecordFunctionalProfile" maxOccurs="unbounded" />
+      <element name="enumEntry" type="sgr:EnumEntryRecordFunctionalProfile" maxOccurs="unbounded" />
       <element name="hexMask" type="hexBinary" minOccurs="0"/>
     </sequence>
   </complexType>
@@ -206,7 +211,7 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
   <!-- mapping table containing modbus to generic enumeration mapping records -->
   <complexType name="EnumMapProduct">
     <sequence>
-      <element name="enumEntry" type="sgr:enumEntryProductRecord" maxOccurs="unbounded" />
+      <element name="enumEntry" type="sgr:EnumEntryProductRecord" maxOccurs="unbounded" />
       <element name="hexMask" type="hexBinary" minOccurs="0"/>
     </sequence>
   </complexType>
@@ -241,7 +246,9 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
     <sequence>
       <element name="literal" type="string" />
       <element name="hexMask" type="hexBinary" />
-      <element name="description" type="string" minOccurs="0" />
+      <choice minOccurs="0">
+        <element name="description" type="string"/>
+      </choice>
     </sequence>
   </complexType>  
 
@@ -252,7 +259,9 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
     </annotation>
     <sequence>
       <element name="literal" type="string" />
-      <element name="description" type="string" minOccurs="0" />
+      <choice minOccurs="0">
+        <element name="description" type="string"/>
+      </choice>
     </sequence>
   </complexType>  
 
@@ -439,6 +448,7 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
           <documentation>EEBUS: ChargingOutlet</documentation>
         </annotation>
       </enumeration>
+      <enumeration value="Actuator" />
       <enumeration value="CEM" />
     </restriction>
   </simpleType>
@@ -651,6 +661,28 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
     </sequence>
   </complexType>
 
+  <simpleType name="EmptyValue">
+    <restriction base="string">
+      <enumeration value="" />
+    </restriction>
+  </simpleType>
+
+  <simpleType name="EmptyOrFloat">
+    <union memberTypes="float sgr:EmptyValue" />
+  </simpleType>
+
+  <simpleType name="EmptyOrDouble">
+    <union memberTypes="double sgr:EmptyValue" />
+  </simpleType>
+
+  <simpleType name="EmptyOrDecimal">
+    <union memberTypes="decimal sgr:EmptyValue" />
+  </simpleType>
+
+  <simpleType name="EmptyOrUnsignedLong">
+    <union memberTypes="unsignedLong sgr:EmptyValue" />
+  </simpleType>
+
   <!--  generic Attribute Definitions  -->
   <complexType name="GenericAttributes">
     <annotation>
@@ -659,12 +691,12 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
         datapoint </documentation>
     </annotation>
     <all>
-      <element name="maxVal" type="decimal" minOccurs="0">
+      <element name="maxVal" type="sgr:EmptyOrDecimal" minOccurs="0">
         <annotation>
           <documentation> upper range limit. Unit:inherited</documentation>
         </annotation>
       </element>
-      <element name="minVal" type="decimal" minOccurs="0">
+      <element name="minVal" type="sgr:EmptyOrDecimal" minOccurs="0">
         <annotation>
           <documentation> lower range limit. Unit:inherited</documentation>
         </annotation>
@@ -695,7 +727,7 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
             value. </documentation>
         </annotation>
       </element>
-      <element name="maxLatencyTimeMs" type="unsignedLong" minOccurs="0">
+      <element name="maxLatencyTimeMs" type="sgr:EmptyOrUnsignedLong" minOccurs="0">
         <annotation>
           <documentation> Maximum time in milliseconds from capturing of measured value until ready
             at the product interface (i.e. analog-digital conversion time) </documentation>
@@ -713,17 +745,17 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
             are measuredValue, calculatedValue, empiricalValue </documentation>
         </annotation>
       </element>
-      <element name="sampleRateHz" type="unsignedLong" minOccurs="0">
+      <element name="sampleRateHz" type="sgr:EmptyOrUnsignedLong" minOccurs="0">
         <annotation>
           <documentation> SampleRate in Hertz</documentation>
         </annotation>
       </element>
       <!-- TODO: describe generic attributes -->
-      <element name="curtailment" type="double" minOccurs="0" />
-      <element name="minLoad" type="double" minOccurs="0" />
-      <element name="maxLockTimeMinutes" type="float" minOccurs="0" />
-      <element name="minRunTimeMinutes" type="float" minOccurs="0" />
-      <element name="valueByTimeTableMinutes" type="float" minOccurs="0" />
+      <element name="curtailment" type="sgr:EmptyOrDouble" minOccurs="0" />
+      <element name="minLoad" type="sgr:EmptyOrDouble" minOccurs="0" />
+      <element name="maxLockTimeMinutes" type="sgr:EmptyOrFloat" minOccurs="0" />
+      <element name="minRunTimeMinutes" type="sgr:EmptyOrFloat" minOccurs="0" />
+      <element name="valueByTimeTableMinutes" type="sgr:EmptyOrFloat" minOccurs="0" />
       <element name="flexAssistance" type="sgr:FlexAssistance" minOccurs="0">
         <annotation>
           <documentation> Systems with more than One communicator need a definition of the priority
@@ -732,7 +764,8 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
             (SHALL / SHOULD / MAY) </documentation>
         </annotation>
       </element>
-      <element name="unitConversionMultiplicator" type="float" minOccurs="0" />
+      <element name="unitConversionMultiplicator" type="sgr:EmptyOrFloat" minOccurs="0" />
+      <element name="attributeList" type="sgr:AttributeList" minOccurs="0" />
     </all>
   </complexType>
   <complexType name="StabilityFallback">
@@ -742,20 +775,20 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
         received (HeartBeat). </documentation>
     </annotation>
     <sequence>
-      <element name="maxReceiveTime" type="float">
+      <element name="maxReceiveTime" type="sgr:EmptyOrFloat">
         <annotation>
           <documentation> Time in seconds. If the device does not recieve any communication within
             this specified time the device automatically initiates the fallback. 0 indicates no
             fallback will be performed. </documentation>
         </annotation>
       </element>
-      <element name="initValue" type="decimal">
+      <element name="initValue" type="sgr:EmptyOrDecimal">
         <annotation>
           <documentation>Value of the reference variable at the start of the process cycle. Unit:
             inherited </documentation>
         </annotation>
       </element>
-      <element name="fallbackValue" type="decimal">
+      <element name="fallbackValue" type="sgr:EmptyOrDecimal">
         <annotation>
           <documentation>Value of the reference variable in the event of a communication failure .
             Unit:inherited </documentation>
@@ -799,7 +832,19 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
       <element name="obligedTo" type="sgr:ObligLVlType" />
     </sequence>
   </complexType>
-
+  <complexType name="Attribute">
+    <sequence>
+      <element name="name" type="string" />
+      <element name="type" type="string" minOccurs="0" />
+      <element name="value" type="string" minOccurs="0" />
+      <element name="legibleDescription" type="sgr:LegibleDescription" maxOccurs="4" minOccurs="0" />
+    </sequence>
+  </complexType>
+  <complexType name="AttributeList">
+    <sequence>
+      <element name="attribute" type="sgr:Attribute" maxOccurs="unbounded" minOccurs="1" />
+    </sequence>
+  </complexType>
 
   <!--  generic Enumeration Definitions  -->
   <simpleType name="MeasuredValueType">
