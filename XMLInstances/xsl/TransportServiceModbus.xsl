@@ -15,10 +15,7 @@
             <tr class="transportDetails">
                 <td class="modbusattribute">TCP</td>
                 <td>
-                    <xsl:call-template name="join">
-                        <xsl:with-param name="valueList" select="sgr:modbusTcp/sgr:address/*" />
-                        <xsl:with-param name="separator" select="'.'" />
-                    </xsl:call-template>
+                    <xsl:value-of select="sgr:modbusTcp/sgr:address" />
                     :
                     <xsl:value-of select="sgr:modbusTcp/sgr:port" />
                     - SlaveID
