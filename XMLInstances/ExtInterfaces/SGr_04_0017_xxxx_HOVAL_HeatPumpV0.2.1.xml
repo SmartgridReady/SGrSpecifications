@@ -3,7 +3,7 @@
 <DeviceFrame xmlns="http://www.smartgridready.com/ns/V0/"
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/Product/Product.xsd">
-  <deviceName>HovalConnect</deviceName>
+  <deviceName>HovalConnect WEZ</deviceName>
   <manufacturerName>Hoval AG</manufacturerName>
   <specificationOwnerIdentification>0</specificationOwnerIdentification>
   <releaseNotes>
@@ -31,7 +31,7 @@
     </legibleDescription>
     <deviceCategory>HeatPumpAppliance</deviceCategory>
     <isLocalControl>true</isLocalControl>
-    <softwareRevision>1.0.0</softwareRevision>
+    <softwareRevision>1.1.1.3050</softwareRevision>
     <hardwareRevision>1.0.0</hardwareRevision>
     <brandName>TopTronic(r)</brandName>
     <powerSource>mains3Phase</powerSource>
@@ -40,7 +40,7 @@
     </manufacturerSpecificationIdentification>
     <manufacturerLabel>Hoval Wärmepumpen mit HovalConnect Modbus</manufacturerLabel>
     <generalRemarks>generalRemarks</generalRemarks>
-    <levelOfOperation>4</levelOfOperation>
+    <levelOfOperation>4m</levelOfOperation>
   </deviceInformation>
   <interfaceList>
     <modbusInterface>
@@ -2544,7 +2544,7 @@
               </versionNumber>
             </functionalProfileIdentification>
             <alternativeNames>
-              <sLV1Name>Monitoring</sLV1Name>
+              <sLV1Name>EnergyMonitor</sLV1Name>
             </alternativeNames>
             <legibleDescription>
               <textElement>Das Profil definiert den Monitoriungbaustein zur dynamischen Ansteuerung von Wärmepumpen über
@@ -2563,6 +2563,13 @@
                   <float32/>
                 </dataType>
                 <unit>KILOWATT_HOURS</unit>
+                <alternativeNames>
+                	<sLV1Name>ActiveEnergyACtot</sLV1Name>
+                	<manufName>29050</manufName></alternativeNames>
+                <legibleDescription>
+                	<textElement>"Wärmemenge Heizen"  -> GESUCHT: totale Energieaufnahme elektrisch</textElement>
+                	<language>de</language>
+                </legibleDescription>
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
@@ -2590,9 +2597,10 @@
                 <unit>KILOWATT_HOURS</unit>
                 <alternativeNames>
                   <sLV1Name>ThermalEnergyTot</sLV1Name>
+                  <manufName>29051</manufName>
                 </alternativeNames>
                 <legibleDescription>
-                  <textElement>Summe der total abgegebenen thermischen Energie.</textElement>
+                  <textElement>"Aktuelle Leistung Heizen"  ->GESUCHT: Summe der total abgegebenen thermischen Energie.</textElement>
                   <language>de</language>
                 </legibleDescription>
               </dataPoint>
@@ -2620,6 +2628,13 @@
                   <float32/>
                 </dataType>
                 <unit>KILOWATT_HOURS</unit>
+                <alternativeNames>
+                	<sLV1Name>ThermalEnergyHeat</sLV1Name>
+                	<manufName>29051</manufName></alternativeNames>
+                <legibleDescription>
+                	<textElement>"Aktuelle Leistung Heizen"->GESUCHT: Summe der abgegebenen thermischen Energie für Heizen</textElement>
+                	<language>de</language>
+                </legibleDescription>
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
@@ -2647,11 +2662,11 @@
                 <unit>KILOWATT_HOURS</unit>
                 <alternativeNames>
                   <sLV1Name>ThermalEnergyCool</sLV1Name>
+                  <manufName>29052</manufName>
                 </alternativeNames>
                 <legibleDescription>
-                  <textElement>Summe der aufgenommenen thermischen Energie für das Kühlen (nur bei aktiver Kühlung über
-                    Verdichter).
-                  </textElement>
+                  <textElement>Kältemenge Kühlen: Summe der aufgenommenen thermischen Energie für das Kühlen (nur bei aktiver Kühlung über
+                    Verdichter).</textElement>
                   <language>de</language>
                 </legibleDescription>
               </dataPoint>
@@ -2679,6 +2694,10 @@
                   <float32/>
                 </dataType>
                 <unit>KILOWATT_HOURS</unit>
+                <legibleDescription>
+                	<textElement>Wärmemenge WW</textElement>
+                	<language>de</language>
+                </legibleDescription>
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
@@ -2706,9 +2725,10 @@
                 <unit>KILOWATT_HOURS</unit>
                 <alternativeNames>
                   <sLV1Name>ActivePowerACtot</sLV1Name>
+                  <manufName>29051</manufName>
                 </alternativeNames>
                 <legibleDescription>
-                  <textElement>Summe der abgegebenen thermischen Energie für das Heizen.</textElement>
+                  <textElement>"Aktuelle Leistung Heizen"->GESUCHT: aktuell aufgenommene Gesamtleistung</textElement>
                   <language>de</language>
                 </legibleDescription>
               </dataPoint>
@@ -2740,7 +2760,7 @@
                   <sLV1Name>RuntimeCompressor</sLV1Name>
                 </alternativeNames>
                 <legibleDescription>
-                  <textElement>Summe der Laufzeit des Verdichters seit Inbetriebnahme.</textElement>
+                  <textElement>Betriebsstunden Wärmeerzeuger: Summe der Laufzeit des Verdichters seit Inbetriebnahme.</textElement>
                   <language>de</language>
                 </legibleDescription>
               </dataPoint>
@@ -2770,9 +2790,10 @@
                 <unit>NONE</unit>
                 <alternativeNames>
                   <sLV1Name>NrOfStartupsCompressor</sLV1Name>
+                  <manufName>2080</manufName>
                 </alternativeNames>
                 <legibleDescription>
-                  <textElement>Anzahl Starts des Verdichters seit Inbetriebnahme.</textElement>
+                  <textElement>Schaltzyklen Wärmeerzeuger: Anzahl Starts des Verdichters seit Inbetriebnahme.</textElement>
                   <language>de</language>
                 </legibleDescription>
               </dataPoint>
