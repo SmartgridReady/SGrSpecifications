@@ -3,7 +3,7 @@
 <DeviceFrame xmlns="http://www.smartgridready.com/ns/V0/"
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/Product/Product.xsd">
-  <deviceName>HovalConnect</deviceName>
+  <deviceName>HovalConnect WEZ</deviceName>
   <manufacturerName>Hoval AG</manufacturerName>
   <specificationOwnerIdentification>0</specificationOwnerIdentification>
   <releaseNotes>
@@ -31,7 +31,7 @@
     </legibleDescription>
     <deviceCategory>HeatPumpAppliance</deviceCategory>
     <isLocalControl>true</isLocalControl>
-    <softwareRevision>1.0.0</softwareRevision>
+    <softwareRevision>1.1.1.3050</softwareRevision>
     <hardwareRevision>1.0.0</hardwareRevision>
     <brandName>TopTronic(r)</brandName>
     <powerSource>mains3Phase</powerSource>
@@ -40,7 +40,7 @@
     </manufacturerSpecificationIdentification>
     <manufacturerLabel>Hoval Wärmepumpen mit HovalConnect Modbus</manufacturerLabel>
     <generalRemarks>generalRemarks</generalRemarks>
-    <levelOfOperation>4</levelOfOperation>
+    <levelOfOperation>4m</levelOfOperation>
   </deviceInformation>
   <interfaceList>
     <modbusInterface>
@@ -142,8 +142,7 @@
                 <modbusDataType>
                   <int16U/>
                 </modbusDataType>
-                <address>1561</address>
-                <bitRank>0</bitRank>
+                <address>1561</address>                
                 <registerType>HoldRegister</registerType>
                 <numberOfRegisters>1</numberOfRegisters>
               </modbusDataPointConfiguration>
@@ -288,20 +287,13 @@
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
-                  <int8U/>
+                	<boolean>
+                		<falseValue>255</falseValue></boolean>                	
                 </modbusDataType>
-                <address>1534</address>
-                <bitRank>0</bitRank>
+                <address>1534</address>                
                 <registerType>HoldRegister</registerType>
                 <numberOfRegisters>1</numberOfRegisters>
               </modbusDataPointConfiguration>
-              <modbusAttributes>   
-             <!-- TODO: reinstall this feature   
-                <iopBooleanMapper>
-                  <assignedValueMeans>false</assignedValueMeans>
-                  <value>255</value>
-                </iopBooleanMapper>  --> 
-              </modbusAttributes>
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
@@ -325,8 +317,7 @@
                 <modbusDataType>
                   <int16/>
                 </modbusDataType>
-                <address>1477</address>
-                <bitRank>0</bitRank>
+                <address>1477</address>                
                 <registerType>HoldRegister</registerType>
                 <numberOfRegisters>1</numberOfRegisters>
               </modbusDataPointConfiguration>
@@ -358,8 +349,7 @@
                 <modbusDataType>
                   <int16/>
                 </modbusDataType>
-                <address>18725</address>
-                <bitRank>0</bitRank>
+                <address>18725</address>                
                 <registerType>HoldRegister</registerType>
                 <numberOfRegisters>1</numberOfRegisters>
               </modbusDataPointConfiguration>
@@ -392,8 +382,7 @@
                 <modbusDataType>
                   <int16/>
                 </modbusDataType>
-                <address>1562</address>
-                <bitRank>0</bitRank>
+                <address>1562</address>                
                 <registerType>HoldRegister</registerType>
                 <numberOfRegisters>1</numberOfRegisters>
               </modbusDataPointConfiguration>
@@ -427,7 +416,7 @@
                   <int16/>
                 </modbusDataType>
                 <address>1535</address>
-                <bitRank>0</bitRank>
+                
                 <registerType>HoldRegister</registerType>
                 <numberOfRegisters>1</numberOfRegisters>
               </modbusDataPointConfiguration>
@@ -461,7 +450,7 @@
                   <int16/>
                 </modbusDataType>
                 <address>18724</address>
-                <bitRank>0</bitRank>
+                
                 <registerType>HoldRegister</registerType>
                 <numberOfRegisters>1</numberOfRegisters>
               </modbusDataPointConfiguration>
@@ -483,6 +472,7 @@
                 <unit>DEGREES_CELSIUS</unit>
                 <alternativeNames>
                   <sLV1Name>SupplyWaterTempStpt</sLV1Name>
+                  <manufName>9020</manufName>
                 </alternativeNames>
                 <legibleDescription>
                   <textElement>
@@ -496,8 +486,7 @@
                 <modbusDataType>
                   <int16/>
                 </modbusDataType>
-                <address>18724</address>
-                <bitRank>0</bitRank>
+                <address>18724</address>                
                 <registerType>HoldRegister</registerType>
                 <numberOfRegisters>1</numberOfRegisters>
               </modbusDataPointConfiguration>
@@ -567,8 +556,7 @@
                 <modbusDataType>
                   <int16/>
                 </modbusDataType>
-                <address>27536</address>
-                <bitRank>0</bitRank>
+                <address>27536</address>                
                 <registerType>HoldRegister</registerType>
                 <numberOfRegisters>1</numberOfRegisters>
               </modbusDataPointConfiguration>
@@ -621,8 +609,7 @@
                 <modbusDataType>
                   <int16/>
                 </modbusDataType>
-                <address>18726</address>
-                <bitRank>0</bitRank>
+                <address>18726</address>                
                 <registerType>HoldRegister</registerType>
                 <numberOfRegisters>1</numberOfRegisters>
               </modbusDataPointConfiguration>
@@ -667,8 +654,7 @@
                 <modbusDataType>
                   <int32U/>
                 </modbusDataType>
-                <address>18731</address>
-                <bitRank>0</bitRank>
+                <address>18731</address>                
                 <registerType>HoldRegister</registerType>
                 <numberOfRegisters>2</numberOfRegisters>
               </modbusDataPointConfiguration>
@@ -688,7 +674,7 @@
               <specificationOwnerIdentification>0</specificationOwnerIdentification>
               <functionalProfileCategory>HeatPumpControl</functionalProfileCategory>
               <functionalProfileType>HeatCoolCtrl</functionalProfileType>
-              <levelOfOperation>4</levelOfOperation>
+              <levelOfOperation>4m</levelOfOperation>
               <versionNumber>
                 <primaryVersionNumber>0</primaryVersionNumber>
                 <secondaryVersionNumber>2</secondaryVersionNumber>
@@ -733,10 +719,6 @@
                       <description>Wochenplan 2</description>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HC_RES_1</literal>
-                      <ordinal>3</ordinal>
-                    </enumEntry>
-                    <enumEntry>
                       <literal>HC_CONSTANT</literal>
                       <ordinal>4</ordinal>
                       <description>Konstanter Betrieb</description>
@@ -745,10 +727,6 @@
                       <literal>HC_ECO</literal>
                       <ordinal>5</ordinal>
                       <description>Sparbetrieb</description>
-                    </enumEntry>
-                    <enumEntry>
-                      <literal>HC_RES_2</literal>
-                      <ordinal>6</ordinal>
                     </enumEntry>
                     <enumEntry>
                       <literal>HC_MAN_HEAT</literal>
@@ -875,14 +853,6 @@
                       <ordinal>19</ordinal>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HC_RES1</literal>
-                      <ordinal>20</ordinal>
-                    </enumEntry>
-                    <enumEntry>
-                      <literal>HC_RES2</literal>
-                      <ordinal>21</ordinal>
-                    </enumEntry>
-                    <enumEntry>
                       <literal>HC_COOLING_EXT_CMD</literal>
                       <ordinal>22</ordinal>
                     </enumEntry>
@@ -910,8 +880,7 @@
                 <modbusDataType>
                   <int16U/>
                 </modbusDataType>
-                <address>1501</address>
-                <bitRank>0</bitRank>
+                <address>1501</address>                
                 <registerType>HoldRegister</registerType>
                 <numberOfRegisters>1</numberOfRegisters>
               </modbusDataPointConfiguration>
@@ -933,9 +902,10 @@
                 <unit>DEGREES_CELSIUS</unit>
                 <alternativeNames>
                   <sLV1Name>SupplyWaterTemp</sLV1Name>
+                  <manufName>2</manufName>
                 </alternativeNames>
                 <legibleDescription>
-                  <textElement>Auslesen der aktuellen aktuellen-Temperatur des Vorlaufs.</textElement>
+                  <textElement>Vorlauf-Ist: Auslesen der aktuellen Temperatur des Vorlaufs.</textElement>
                   <language>de</language>
                 </legibleDescription>
               </dataPoint>
@@ -943,8 +913,7 @@
                 <modbusDataType>
                   <int16/>
                 </modbusDataType>
-                <address>1513</address>
-                <bitRank>0</bitRank>
+                <address>1513</address>                
                 <registerType>HoldRegister</registerType>
                 <numberOfRegisters>1</numberOfRegisters>
               </modbusDataPointConfiguration>
@@ -966,21 +935,24 @@
                 <unit>DEGREES_CELSIUS</unit>
                 <alternativeNames>
                   <sLV1Name>SupplyWaterTempStpt</sLV1Name>
+                  <manufName>9020</manufName>
                 </alternativeNames>
                 <legibleDescription>
                   <textElement>
-                    Setzen der aktuellen Soll-Temperatur des Vorlaufs (Grundwert). TODO: Hinweis "geht nur bei
-                    Mode Konstant"
+                    Setzen der aktuellen Soll-Temperatur des Vorlaufs (Grundwert)
                   </textElement>
                   <language>de</language>
                 </legibleDescription>
+                <programmerHints>
+                	<textElement>This data point does only work during operationModes manual (HC_MAN_HEAT ,HC_MAN_COOL )</textElement>
+                	<language>de</language>
+                </programmerHints>
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
                   <int16/>
                 </modbusDataType>
-                <address>1487</address>
-                <bitRank>0</bitRank>
+                <address>1487</address>                
                 <registerType>HoldRegister</registerType>
                 <numberOfRegisters>1</numberOfRegisters>
               </modbusDataPointConfiguration>
@@ -1002,9 +974,10 @@
                 <unit>DEGREES_CELSIUS</unit>
                 <alternativeNames>
                   <sLV1Name>ReturnSupplyWaterTemp</sLV1Name>
+                  <manufName>3</manufName>
                 </alternativeNames>
                 <legibleDescription>
-                  <textElement>Auslesen der aktuellen aktuellen-Temperatur des Rücklaufs.</textElement>
+                  <textElement>Rücklauf-Ist: Auslesen der aktuellen Temperatur des Rücklaufs</textElement>
                   <language>de</language>
                 </legibleDescription>
               </dataPoint>
@@ -1073,20 +1046,12 @@
                       <ordinal>2</ordinal>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HC_RES_1</literal>
-                      <ordinal>3</ordinal>
-                    </enumEntry>
-                    <enumEntry>
                       <literal>HC_CONSTANT</literal>
                       <ordinal>4</ordinal>
                     </enumEntry>
                     <enumEntry>
                       <literal>HC_ECO</literal>
                       <ordinal>5</ordinal>
-                    </enumEntry>
-                    <enumEntry>
-                      <literal>HC_RES_2</literal>
-                      <ordinal>6</ordinal>
                     </enumEntry>
                     <enumEntry>
                       <literal>HC_MAN_HEAT</literal>
@@ -1112,8 +1077,7 @@
                 <modbusDataType>
                   <int16U/>
                 </modbusDataType>
-                <address>1479</address>
-                <bitRank>0</bitRank>
+                <address>1479</address>                
                 <registerType>HoldRegister</registerType>
                 <numberOfRegisters>1</numberOfRegisters>
               </modbusDataPointConfiguration>
@@ -1212,14 +1176,6 @@
                       <ordinal>19</ordinal>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HC_RES1</literal>
-                      <ordinal>20</ordinal>
-                    </enumEntry>
-                    <enumEntry>
-                      <literal>HC_RES2</literal>
-                      <ordinal>21</ordinal>
-                    </enumEntry>
-                    <enumEntry>
                       <literal>HC_COOLING_EXT_CMD</literal>
                       <ordinal>22</ordinal>
                     </enumEntry>
@@ -1247,8 +1203,7 @@
                 <modbusDataType>
                   <int16U/>
                 </modbusDataType>
-                <address>1502</address>
-                <bitRank>0</bitRank>
+                <address>1502</address>                
                 <registerType>HoldRegister</registerType>
                 <numberOfRegisters>1</numberOfRegisters>
               </modbusDataPointConfiguration>
@@ -1268,8 +1223,11 @@
                   <float32/>
                 </dataType>
                 <unit>DEGREES_CELSIUS</unit>
+                <alternativeNames>
+                	<sLV1Name>SupplyWaterTemp</sLV1Name>
+                	<manufName>2</manufName></alternativeNames>
                 <legibleDescription>
-                  <textElement>Auslesen der aktuellen aktuellen-Temperatur des Vorlaufs.</textElement>
+                  <textElement>Vorlauf-Ist: Auslesen der aktuellen Temperatur des Vorlaufs.</textElement>
                   <language>de</language>
                 </legibleDescription>
               </dataPoint>
@@ -1277,8 +1235,7 @@
                 <modbusDataType>
                   <int16/>
                 </modbusDataType>
-                <address>1514</address>
-                <bitRank>0</bitRank>
+                <address>1514</address>                
                 <registerType>HoldRegister</registerType>
                 <numberOfRegisters>1</numberOfRegisters>
               </modbusDataPointConfiguration>
@@ -1300,21 +1257,22 @@
                 <unit>DEGREES_CELSIUS</unit>
                 <alternativeNames>
                   <sLV1Name>SupplyWaterTempStpt</sLV1Name>
+                  <manufName>9020</manufName>
                 </alternativeNames>
                 <legibleDescription>
-                  <textElement>Setzen der aktuellen Soll-Temperatur des Vorlaufs (Grundwert). TODO: Hinweis "geht nur
-                    bei
-                    Mode Konstant"
-                  </textElement>
+                  <textElement>Solltemperatur Handbetrieb: Setzen der aktuellen Soll-Temperatur des Vorlaufs (Grundwert). </textElement>
                   <language>de</language>
                 </legibleDescription>
+                <programmerHints>
+                	<textElement>This data point does only work during operationModes manual (HC_MAN_HEAT ,HC_MAN_COOL )</textElement>
+                	<language>de</language>
+                </programmerHints>
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
                   <int16/>
                 </modbusDataType>
-                <address>1488</address>
-                <bitRank>0</bitRank>
+                <address>1488</address>                
                 <registerType>HoldRegister</registerType>
                 <numberOfRegisters>1</numberOfRegisters>
               </modbusDataPointConfiguration>
@@ -1336,9 +1294,10 @@
                 <unit>DEGREES_CELSIUS</unit>
                 <alternativeNames>
                   <sLV1Name>ReturnSupplyWaterTemp</sLV1Name>
+                  <manufName>3</manufName>
                 </alternativeNames>
                 <legibleDescription>
-                  <textElement>Auslesen der aktuellen aktuellen-Temperatur des Rücklaufs.</textElement>
+                  <textElement>Rücklauf-Ist: Auslesen der aktuellen Temperatur des Rücklaufs</textElement>
                   <language>de</language>
                 </legibleDescription>
               </dataPoint>
@@ -1346,8 +1305,7 @@
                 <modbusDataType>
                   <int16/>
                 </modbusDataType>
-                <address>19611</address>
-                <bitRank>0</bitRank>
+                <address>19611</address>                
                 <registerType>HoldRegister</registerType>
                 <numberOfRegisters>1</numberOfRegisters>
               </modbusDataPointConfiguration>
@@ -1412,10 +1370,6 @@
                       <description>Wochenplan 2</description>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HC_RES_1</literal>
-                      <ordinal>3</ordinal>
-                    </enumEntry>
-                    <enumEntry>
                       <literal>HC_CONSTANT</literal>
                       <ordinal>4</ordinal>
                       <description>Konstanter Betrieb</description>
@@ -1424,10 +1378,6 @@
                       <literal>HC_ECO</literal>
                       <ordinal>5</ordinal>
                       <description>Sparbetrieb</description>
-                    </enumEntry>
-                    <enumEntry>
-                      <literal>HC_RES_2</literal>
-                      <ordinal>6</ordinal>
                     </enumEntry>
                     <enumEntry>
                       <literal>HC_MAN_HEAT</literal>
@@ -1554,14 +1504,6 @@
                       <ordinal>19</ordinal>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HC_RES1</literal>
-                      <ordinal>20</ordinal>
-                    </enumEntry>
-                    <enumEntry>
-                      <literal>HC_RES2</literal>
-                      <ordinal>21</ordinal>
-                    </enumEntry>
-                    <enumEntry>
                       <literal>HC_COOLING_EXT_CMD</literal>
                       <ordinal>22</ordinal>
                     </enumEntry>
@@ -1589,8 +1531,7 @@
                 <modbusDataType>
                   <int16U/>
                 </modbusDataType>
-                <address>1503</address>
-                <bitRank>0</bitRank>
+                <address>1503</address>                
                 <registerType>HoldRegister</registerType>
                 <numberOfRegisters>1</numberOfRegisters>
               </modbusDataPointConfiguration>
@@ -1612,9 +1553,10 @@
                 <unit>DEGREES_CELSIUS</unit>
                 <alternativeNames>
                   <sLV1Name>SupplyWaterTemp</sLV1Name>
+                  <manufName>2</manufName>
                 </alternativeNames>
                 <legibleDescription>
-                  <textElement>Auslesen der aktuellen aktuellen-Temperatur des Vorlaufs.</textElement>
+                  <textElement>Vorlauf-Ist: Auslesen der aktuellen Temperatur des Vorlaufs.</textElement>
                   <language>de</language>
                 </legibleDescription>
               </dataPoint>
@@ -1622,8 +1564,7 @@
                 <modbusDataType>
                   <int16/>
                 </modbusDataType>
-                <address>1515</address>
-                <bitRank>0</bitRank>
+                <address>1515</address>                
                 <registerType>HoldRegister</registerType>
                 <numberOfRegisters>1</numberOfRegisters>
               </modbusDataPointConfiguration>
@@ -1645,21 +1586,23 @@
                 <unit>DEGREES_CELSIUS</unit>
                 <alternativeNames>
                   <sLV1Name>SupplyWaterTempStpt</sLV1Name>
+                  <manufName>9020</manufName>
                 </alternativeNames>
                 <legibleDescription>
-                  <textElement>Setzen der aktuellen Soll-Temperatur des Vorlaufs (Grundwert). TODO: Hinweis "geht nur
-                    bei
-                    Mode Konstant"
+                  <textElement>Setzen der aktuellen Soll-Temperatur des Vorlaufs (Grundwert). 
                   </textElement>
                   <language>de</language>
                 </legibleDescription>
+                <programmerHints>
+                	<textElement>This data point does only work during operationModes manual (HC_MAN_HEAT ,HC_MAN_COOL )</textElement>
+                	<language>de</language>
+                </programmerHints>
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
                   <int16/>
                 </modbusDataType>
-                <address>1489</address>
-                <bitRank>0</bitRank>
+                <address>1489</address>                
                 <registerType>HoldRegister</registerType>
                 <numberOfRegisters>1</numberOfRegisters>
               </modbusDataPointConfiguration>
@@ -1681,9 +1624,10 @@
                 <unit>DEGREES_CELSIUS</unit>
                 <alternativeNames>
                 	<sLV1Name>ReturnSupplyWaterTemp</sLV1Name>
-                	<manufName>2051</manufName></alternativeNames>
+                    <manufName>3</manufName>
+                </alternativeNames>
                 <legibleDescription>
-                  <textElement>Auslesen der aktuellen aktuellen-Temperatur des Rücklaufs.</textElement>
+                  <textElement>Rücklauf-Ist: Auslesen der aktuellen Temperatur des Rücklaufs.</textElement>
                   <language>de</language>
                 </legibleDescription>
               </dataPoint>
@@ -1691,8 +1635,7 @@
                 <modbusDataType>
                   <int16/>
                 </modbusDataType>
-                <address>19612</address>
-                <bitRank>0</bitRank>
+                <address>19612</address>                
                 <registerType>HoldRegister</registerType>
                 <numberOfRegisters>1</numberOfRegisters>
               </modbusDataPointConfiguration>
@@ -1765,12 +1708,10 @@
                 <unit>NONE</unit>
                 <alternativeNames>
                   <sLV1Name>DomHotWOpMode</sLV1Name>
+                  <manufName>5050</manufName>
                 </alternativeNames>
                 <legibleDescription>
-                  <textElement>Festlegen der Betriebsart für den Brauchwarmwasserkreis (Bereitschaft, Programm 1,
-                    Programm
-                    1, Konstant, Eco )
-                  </textElement>
+                  <textElement>Betriebswahl Warmwasser</textElement>
                   <language>de</language>
                 </legibleDescription>
               </dataPoint>
@@ -1778,8 +1719,7 @@
                 <modbusDataType>
                   <int16U/>
                 </modbusDataType>
-                <address>1496</address>
-                <bitRank>0</bitRank>
+                <address>1496</address>                
                 <registerType>HoldRegister</registerType>
                 <numberOfRegisters>1</numberOfRegisters>
               </modbusDataPointConfiguration>
@@ -1834,18 +1774,6 @@
                       <ordinal>8</ordinal>
                     </enumEntry>
                     <enumEntry>
-                      <literal>DHW_RES1</literal>
-                      <ordinal>9</ordinal>
-                    </enumEntry>
-                    <enumEntry>
-                      <literal>DHW_RES2</literal>
-                      <ordinal>10</ordinal>
-                    </enumEntry>
-                    <enumEntry>
-                      <literal>DHW_RES3</literal>
-                      <ordinal>11</ordinal>
-                    </enumEntry>
-                    <enumEntry>
                       <literal>DHW_INTENSIFIED_EXT</literal>
                       <ordinal>12</ordinal>
                     </enumEntry>
@@ -1858,10 +1786,11 @@
                 <unit>NONE</unit>
                 <alternativeNames>
                   <sLV1Name>DomHotWState</sLV1Name>
+                  <manufName>2052</manufName>
                   <hpBwpName>Warmwasserbereitung in Betrieb</hpBwpName>
                 </alternativeNames>
                 <legibleDescription>
-                  <textElement>Auslesen des aktuellen Status des Brauchwarmwasserkreises</textElement>
+                  <textElement>Status Warmwasserregelung</textElement>
                   <language>de</language>
                 </legibleDescription>
               </dataPoint>
@@ -1869,8 +1798,7 @@
                 <modbusDataType>
                   <int16U/>
                 </modbusDataType>
-                <address>1504</address>
-                <bitRank>0</bitRank>
+                <address>1504</address>                
                 <registerType>HoldRegister</registerType>
                 <numberOfRegisters>1</numberOfRegisters>
               </modbusDataPointConfiguration>
@@ -1890,13 +1818,19 @@
                   <float32/>
                 </dataType>
                 <unit>DEGREES_CELSIUS</unit>
+                <alternativeNames>
+                	<sLV1Name>DomHotWTempStptOffs</sLV1Name>
+                	<manufName>5077</manufName></alternativeNames>
+                <legibleDescription>
+                	<textElement>Smart-Grid (Offset) WW-Sollwert</textElement>
+                	<language>de</language>
+                </legibleDescription>
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
                   <int16/>
                 </modbusDataType>
-                <address>27509</address>
-                <bitRank>0</bitRank>
+                <address>27509</address>                
                 <registerType>HoldRegister</registerType>
                 <numberOfRegisters>1</numberOfRegisters>
               </modbusDataPointConfiguration>
@@ -1917,21 +1851,25 @@
                 </dataType>
                 <unit>DEGREES_CELSIUS</unit>
                 <alternativeNames>
-                  <sLV1Name>DomHotWTempStpt</sLV1Name>
+                  <sLV1Name>DomHotWTempStptComf</sLV1Name>
+                  <manufName>5051</manufName>
                 </alternativeNames>
                 <legibleDescription>
                   <textElement>
-                    Setzen des Wertes der Solltemperatur für den Brauchwarmwasserspeicher.TODO: braucht Mode Konstant
+                    Normal-Warmwassertemperatur: Setzen des Wertes der Solltemperatur für den Brauchwarmwasserspeicher.
                   </textElement>
                   <language>de</language>
                 </legibleDescription>
+                <programmerHints>
+                	<textElement>This data point does only work during operation Mode constant (DHW_CONST_OP)</textElement>
+                	<language>de</language>
+                </programmerHints>
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
                   <int16/>
                 </modbusDataType>
-                <address>1497</address>
-                <bitRank>0</bitRank>
+                <address>1497</address>                
                 <registerType>HoldRegister</registerType>
                 <numberOfRegisters>1</numberOfRegisters>
               </modbusDataPointConfiguration>
@@ -1948,13 +1886,16 @@
                 <unit>DEGREES_CELSIUS</unit>
                 <alternativeNames>
                   <sLV1Name>DomHotWTempStptEco</sLV1Name>
+                  <manufName>5086</manufName>
                 </alternativeNames>
                 <legibleDescription>
-                  <textElement>
-                    Setzen des Wertes der Solltemperatur für den Brauchwarmwasserspeicher.TODO: braucht Mode Konstant
-                  </textElement>
+                  <textElement>Spar-Warmwassertemperatur: Setzen des Wertes der Solltemperatur für den Brauchwarmwasserspeicher.</textElement>
                   <language>de</language>
                 </legibleDescription>
+                <programmerHints>
+                	<textElement>This data point does only work during operation Mode constant (DHW_CONST_OP)</textElement>
+                	<language>de</language>
+                </programmerHints>
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
@@ -1982,9 +1923,10 @@
                 <unit>DEGREES_CELSIUS</unit>
                 <alternativeNames>
                   <sLV1Name>ActDomHotWTemp</sLV1Name>
+                  <manufName>4</manufName>
                 </alternativeNames>
                 <legibleDescription>
-                  <textElement>Aktuelle Ist-Temperatur des Brauchwarmwasserspeichers</textElement>
+                  <textElement>Warmwasser-Ist SF: Aktuelle Ist-Temperatur des Brauchwarmwasserspeichers</textElement>
                   <language>de</language>
                 </legibleDescription>
               </dataPoint>
@@ -1992,8 +1934,7 @@
                 <modbusDataType>
                   <int16/>
                 </modbusDataType>
-                <address>1500</address>
-                <bitRank>0</bitRank>
+                <address>1500</address>                
                 <registerType>HoldRegister</registerType>
                 <numberOfRegisters>1</numberOfRegisters>
               </modbusDataPointConfiguration>
@@ -2016,11 +1957,10 @@
                 <unit>DEGREES_CELSIUS</unit>
                 <alternativeNames>
                   <sLV1Name>DomHotWTempStpFb</sLV1Name>
+                  <manufName>1004</manufName>
                 </alternativeNames>
                 <legibleDescription>
-                  <textElement>
-                    Rückmeldung des aktuell gesetzten Wertes der Solltemperatur für den Brauchwarmwasserspeicher
-                  </textElement>
+                  <textElement>Warmwasser-Soll: Rückmeldung des aktuell gesetzten Wertes der Solltemperatur für den Brauchwarmwasserspeicher</textElement>
                   <language>de</language>
                 </legibleDescription>
               </dataPoint>
@@ -2028,8 +1968,7 @@
                 <modbusDataType>
                   <int16/>
                 </modbusDataType>
-                <address>1499</address>
-                <bitRank>0</bitRank>
+                <address>1499</address>                
                 <registerType>HoldRegister</registerType>
                 <numberOfRegisters>1</numberOfRegisters>
               </modbusDataPointConfiguration>
@@ -2060,25 +1999,30 @@
               <sLV1Name>BufferStorageCtrl</sLV1Name>
             </alternativeNames>
             <legibleDescription>
-              <textElement>x
-              </textElement>
+              <textElement>Der Wärmespeicher kann die Reserveenergie einer Anlage mit Temperaturoffsets (Wärme und Kälte) zeitlich verschieben.</textElement>
               <language>de</language>
             </legibleDescription>
+            <programmerHints>
+            	<textElement>The selection of the data points used (Heating / Cooling)  at a certain time can be derived from the hovHPOpState within the HeatPumpBase functional profile.</textElement>
+            	<language>en</language>
+            </programmerHints>
           </functionalProfile>
           <dataPointList>
-            <dataPointListElement>
+          <dataPointListElement>
               <dataPoint>
-                <dataPointName>ActBufferTempStptFb</dataPointName>
-                <dataDirection>R</dataDirection>
+                <dataPointName>HeatBufferTempStptOffs</dataPointName>
+                <dataDirection>RW</dataDirection>
                 <presenceLevel>M</presenceLevel>
                 <dataType>
                   <float32/>
                 </dataType>
                 <unit>DEGREES_CELSIUS</unit>
+                <alternativeNames>
+                  <sLV1Name>ActBufferTempStpt Offset</sLV1Name>
+                  <manufName>6050</manufName>
+                </alternativeNames>
                 <legibleDescription>
-                  <textElement>
-                    Vom System selbst vorgegebener Temperatur-SOllwert des Speichers.
-                  </textElement>
+                  <textElement>Smart-Grid (Offset) Puffer-Soll.Heizen</textElement>
                   <language>de</language>
                 </legibleDescription>
               </dataPoint>
@@ -2086,7 +2030,39 @@
                 <modbusDataType>
                   <int16/>
                 </modbusDataType>
-                <address>17385</address>
+                <address>28839</address>
+                <registerType>HoldRegister</registerType>
+                <numberOfRegisters>1</numberOfRegisters>
+              </modbusDataPointConfiguration>
+              <modbusAttributes>
+                <scalingFactor>
+                  <multiplicator>1</multiplicator>
+                  <powerof10>-1</powerof10>
+                </scalingFactor></modbusAttributes>
+            </dataPointListElement>
+            <dataPointListElement>
+              <dataPoint>
+                <dataPointName>CoolBufferTempStptOffs</dataPointName>
+                <dataDirection>RW</dataDirection>
+                <presenceLevel>M</presenceLevel>
+                <dataType>
+                  <float32/>
+                </dataType>
+                <unit>DEGREES_CELSIUS</unit>
+                <alternativeNames>
+                  <sLV1Name>ActBufferTempStpt Offsetf</sLV1Name>
+                  <manufName>6051</manufName>
+                </alternativeNames>
+                <legibleDescription>
+                  <textElement>Smart-Grid (Offset) Puffer-Soll.Kühlen</textElement>
+                  <language>de</language>
+                </legibleDescription>
+              </dataPoint>
+              <modbusDataPointConfiguration>
+                <modbusDataType>
+                  <int16/>
+                </modbusDataType>
+                <address>28840</address>                
                 <registerType>HoldRegister</registerType>
                 <numberOfRegisters>1</numberOfRegisters>
               </modbusDataPointConfiguration>
@@ -2096,7 +2072,7 @@
                   <powerof10>-1</powerof10>
                 </scalingFactor>
               </modbusAttributes>
-            </dataPointListElement>
+            </dataPointListElement>              
             <dataPointListElement>
               <dataPoint>
                 <dataPointName>hovActBufferState</dataPointName>
@@ -2125,10 +2101,6 @@
                       <ordinal>4</ordinal>
                     </enumEntry>
                     <enumEntry>
-                      <literal>BUF_RES</literal>
-                      <ordinal>5</ordinal>
-                    </enumEntry>
-                    <enumEntry>
                       <literal>BUF_FORCED</literal>
                       <ordinal>6</ordinal>
                     </enumEntry>
@@ -2149,10 +2121,10 @@
                 <unit>NONE</unit>
                 <alternativeNames>
                   <sLV1Name>BufferState</sLV1Name>
+                  <manufName>23082</manufName>
                 </alternativeNames>
                 <legibleDescription>
-                  <textElement>Auslesen des aktuellen Status Speichers (Aus, Bereitschaft, Programm, Comfort, Eco)
-                  </textElement>
+                  <textElement>Status Puffer</textElement>
                   <language>de</language>
                 </legibleDescription>
               </dataPoint>
@@ -2160,8 +2132,7 @@
                 <modbusDataType>
                   <int16U/>
                 </modbusDataType>
-                <address>17384</address>
-                <bitRank>0</bitRank>
+                <address>17384</address>                
                 <registerType>HoldRegister</registerType>
                 <numberOfRegisters>1</numberOfRegisters>
               </modbusDataPointConfiguration>
@@ -2182,22 +2153,22 @@
                 </dataType>
                 <unit>DEGREES_CELSIUS</unit>
                 <alternativeNames>
-                  <sLV1Name>ActHeatBufferTempUpper</sLV1Name>
+                  <sLV1Name>ActHeatBufferTemp</sLV1Name>
+                  <manufName>1570</manufName>
                 </alternativeNames>
                 <legibleDescription>
-                  <textElement>?check addr 16518 doppelt: Aktuelle Ist-Temperatur des Heiz-Pufferspeichers oben
-                  </textElement>
+                  <textElement>WPF Wärmepumpenpufferfühler</textElement>
                   <language>de</language>
                 </legibleDescription>
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
-                  <int16/>
+                	<int32 />
+                	
                 </modbusDataType>
-                <address>17386</address>
-                <bitRank>0</bitRank>
+                <address>27493</address>                
                 <registerType>HoldRegister</registerType>
-                <numberOfRegisters>1</numberOfRegisters>
+                <numberOfRegisters>2</numberOfRegisters>
               </modbusDataPointConfiguration>
               <modbusAttributes>
                 <scalingFactor>
@@ -2208,7 +2179,7 @@
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
-                <dataPointName>ActBufferTempStptFb</dataPointName>
+                <dataPointName>ActHeatBufferTempUppper</dataPointName>
                 <dataDirection>R</dataDirection>
                 <presenceLevel>M</presenceLevel>
                 <dataType>
@@ -2216,12 +2187,11 @@
                 </dataType>
                 <unit>DEGREES_CELSIUS</unit>
                 <alternativeNames>
-                  <sLV1Name>ActBufferWaterTempStpFb</sLV1Name>
+                  <sLV1Name>ActHeatBufferTempUppper</sLV1Name>
+                  <manufName>15</manufName>
                 </alternativeNames>
                 <legibleDescription>
-                  <textElement>
-                    Vom System selbst vorgegebener Temperatur-SOllwert des Speichers.
-                  </textElement>
+                  <textElement>Puffer PF/KPF2 Ist</textElement>
                   <language>de</language>
                 </legibleDescription>
               </dataPoint>
@@ -2229,42 +2199,7 @@
                 <modbusDataType>
                   <int16/>
                 </modbusDataType>
-                <address>17385</address>
-                <bitRank>0</bitRank>
-                <registerType>HoldRegister</registerType>
-                <numberOfRegisters>1</numberOfRegisters>
-              </modbusDataPointConfiguration>
-              <modbusAttributes>
-                <scalingFactor>
-                  <multiplicator>1</multiplicator>
-                  <powerof10>-1</powerof10>
-                </scalingFactor>
-              </modbusAttributes>
-            </dataPointListElement>
-            <dataPointListElement>
-              <dataPoint>
-                <dataPointName>ActHeatBufferTempUpper</dataPointName>
-                <dataDirection>R</dataDirection>
-                <presenceLevel>M</presenceLevel>
-                <dataType>
-                  <float32/>
-                </dataType>
-                <unit>DEGREES_CELSIUS</unit>
-                <alternativeNames>
-                  <sLV1Name>ActHeatBufferTempUpper</sLV1Name>
-                </alternativeNames>
-                <legibleDescription>
-                  <textElement>?check addr 16518 doppelt: Aktuelle Ist-Temperatur des Heiz-Pufferspeichers oben
-                  </textElement>
-                  <language>de</language>
-                </legibleDescription>
-              </dataPoint>
-              <modbusDataPointConfiguration>
-                <modbusDataType>
-                  <int16/>
-                </modbusDataType>
-                <address>17386</address>
-                <bitRank>0</bitRank>
+                <address>17386</address>                
                 <registerType>HoldRegister</registerType>
                 <numberOfRegisters>1</numberOfRegisters>
               </modbusDataPointConfiguration>
@@ -2286,11 +2221,10 @@
                 <unit>DEGREES_CELSIUS</unit>
                 <alternativeNames>
                   <sLV1Name>ctHeatBufferTempLower</sLV1Name>
+                  <manufName>17</manufName>
                 </alternativeNames>
                 <legibleDescription>
-                  <textElement>
-                    Aktuelle Ist-Temperatur des Heiz-Pufferspeichers unten
-                  </textElement>
+                  <textElement>Puffer PF2/KPF Ist</textElement>
                   <language>de</language>
                 </legibleDescription>
               </dataPoint>
@@ -2298,8 +2232,7 @@
                 <modbusDataType>
                   <int16/>
                 </modbusDataType>
-                <address>17387</address>
-                <bitRank>0</bitRank>
+                <address>17387</address>                
                 <registerType>HoldRegister</registerType>
                 <numberOfRegisters>1</numberOfRegisters>
               </modbusDataPointConfiguration>
@@ -2321,11 +2254,10 @@
                 <unit>DEGREES_CELSIUS</unit>
                 <alternativeNames>
                   <sLV1Name>ActCoolBufferTempUpper</sLV1Name>
+                  <manufName>15</manufName>
                 </alternativeNames>
                 <legibleDescription>
-                  <textElement>
-                    Aktuelle Ist-Temperatur des Kühl-Pufferspeichers oben
-                  </textElement>
+                  <textElement>Puffer PF/KPF2 Ist</textElement>
                   <language>de</language>
                 </legibleDescription>
               </dataPoint>
@@ -2333,8 +2265,7 @@
                 <modbusDataType>
                   <int16/>
                 </modbusDataType>
-                <address>17386</address>
-                <bitRank>0</bitRank>
+                <address>17386</address>                
                 <registerType>HoldRegister</registerType>
                 <numberOfRegisters>1</numberOfRegisters>
               </modbusDataPointConfiguration>
@@ -2344,7 +2275,7 @@
                   <powerof10>-1</powerof10>
                 </scalingFactor>
               </modbusAttributes>
-            </dataPointListElement>
+            </dataPointListElement>            
             <dataPointListElement>
               <dataPoint>
                 <dataPointName>ActCoolBufferTempLower</dataPointName>
@@ -2355,12 +2286,11 @@
                 </dataType>
                 <unit>DEGREES_CELSIUS</unit>
                 <alternativeNames>
-                  <sLV1Name>ActBufferTempStpt Offsetf</sLV1Name>
+                  <sLV1Name>ActCoolBufferTempLower</sLV1Name>
+                  <manufName>17</manufName>
                 </alternativeNames>
                 <legibleDescription>
-                  <textElement>
-                    Temperatur-Sollwert für den Speichers.
-                  </textElement>
+                  <textElement>Puffer PF2/KPF Ist</textElement>
                   <language>de</language>
                 </legibleDescription>
               </dataPoint>
@@ -2368,8 +2298,7 @@
                 <modbusDataType>
                   <int16/>
                 </modbusDataType>
-                <address>17387</address>
-                <bitRank>0</bitRank>
+                <address>17387</address>                
                 <registerType>HoldRegister</registerType>
                 <numberOfRegisters>1</numberOfRegisters>
               </modbusDataPointConfiguration>
@@ -2382,20 +2311,18 @@
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
-                <dataPointName>HeatBufferTempStptOffs</dataPointName>
-                <dataDirection>RW</dataDirection>
+                <dataPointName>ActBufferTempStptFb</dataPointName>
+                <dataDirection>R</dataDirection>
                 <presenceLevel>M</presenceLevel>
                 <dataType>
                   <float32/>
                 </dataType>
                 <unit>DEGREES_CELSIUS</unit>
                 <alternativeNames>
-                  <sLV1Name>ActBufferTempStpt Offset</sLV1Name>
-                </alternativeNames>
+                	<sLV1Name>ActBufferTempStptFb</sLV1Name>
+                	<manufName>1015</manufName></alternativeNames>
                 <legibleDescription>
-                  <textElement>
-                    Temperatur-Sollwert für den Speichers.
-                  </textElement>
+                  <textElement>Puffer-Soll: Vom System selbst vorgegebener Temperatur-Sollwert des Speichers.</textElement>
                   <language>de</language>
                 </legibleDescription>
               </dataPoint>
@@ -2403,42 +2330,7 @@
                 <modbusDataType>
                   <int16/>
                 </modbusDataType>
-                <address>28839</address>
-                <bitRank>0</bitRank>
-                <registerType>HoldRegister</registerType>
-                <numberOfRegisters>1</numberOfRegisters>
-              </modbusDataPointConfiguration>
-              <modbusAttributes>
-                <scalingFactor>
-                  <multiplicator>1</multiplicator>
-                  <powerof10>-1</powerof10>
-                </scalingFactor></modbusAttributes>
-            </dataPointListElement>
-            <dataPointListElement>
-              <dataPoint>
-                <dataPointName>CoolBufferTempStptOffs</dataPointName>
-                <dataDirection>RW</dataDirection>
-                <presenceLevel>M</presenceLevel>
-                <dataType>
-                  <float32/>
-                </dataType>
-                <unit>DEGREES_CELSIUS</unit>
-                <alternativeNames>
-                  <sLV1Name>ActBufferTempStpt Offsetf</sLV1Name>
-                </alternativeNames>
-                <legibleDescription>
-                  <textElement>
-                    Temperatur-Sollwert für den Speichers.
-                  </textElement>
-                  <language>de</language>
-                </legibleDescription>
-              </dataPoint>
-              <modbusDataPointConfiguration>
-                <modbusDataType>
-                  <int16/>
-                </modbusDataType>
-                <address>28840</address>
-                <bitRank>0</bitRank>
+                <address>17385</address>
                 <registerType>HoldRegister</registerType>
                 <numberOfRegisters>1</numberOfRegisters>
               </modbusDataPointConfiguration>
@@ -2526,21 +2418,20 @@
                 </dataType>
                 <unit>NONE</unit>
                 <alternativeNames>
+                  <sLV1Name>SGReadyOpModeCmd</sLV1Name>
+                  <manufName>38012</manufName>
                   <hpBwpName>Betriebsmodus</hpBwpName>
                 </alternativeNames>
                 <legibleDescription>
-                  <textElement>this the command acccording the bwp SG-Ready definition
-                    https://www.waermepumpe.de/normen-technik/sg-ready/
-                  </textElement>
-                  <language>en</language>
+                  <textElement>Smart Grid über Systembus</textElement>
+                  <language>de</language>
                 </legibleDescription>
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
                   <int16U/>
                 </modbusDataType>
-                <address>27545</address>
-                <bitRank>0</bitRank>
+                <address>27545</address>                
                 <registerType>HoldRegister</registerType>
                 <numberOfRegisters>1</numberOfRegisters>
               </modbusDataPointConfiguration>
@@ -2554,22 +2445,22 @@
                   <enum>
                     <enumEntry>
                       <literal>HP_LOCKED</literal>
-                      <ordinal>1</ordinal>
+                      <ordinal>2</ordinal>
                       <description>Gesperrt für maximal 2h</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>HP_NORMAL</literal>
-                      <ordinal>2</ordinal>
+                      <ordinal>0</ordinal>
                       <description>Normalbetrieb, optimiert auf den Kunden</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>HP_INTENSIFIED</literal>
-                      <ordinal>3</ordinal>
+                      <ordinal>1</ordinal>
                       <description>Verstärkter Betrieb</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>HP_FORCED</literal>
-                      <ordinal>4</ordinal>
+                      <ordinal>3</ordinal>
                       <description>Definitiver Anlaufbefehl</description>
                     </enumEntry>
                   </enum>
@@ -2577,11 +2468,10 @@
                 <unit>NONE</unit>
                 <alternativeNames>
                   <sLV1Name>SG-ReadyState</sLV1Name>
+                  <manufName>38012</manufName>
                 </alternativeNames>
                 <legibleDescription>
-                  <textElement>
-                    SG-ReadyState of the current operation
-                  </textElement>
+                  <textElement>Smart Grid über Systembus</textElement>
                   <language>de</language>
                 </legibleDescription>
               </dataPoint>
@@ -2589,8 +2479,7 @@
                 <modbusDataType>
                   <int16U/>
                 </modbusDataType>
-                <address>27545</address>
-                <bitRank>0</bitRank>
+                <address>27545</address>                
                 <registerType>HoldRegister</registerType>
                 <numberOfRegisters>1</numberOfRegisters>
               </modbusDataPointConfiguration>
@@ -2621,13 +2510,19 @@
                   </enum>
                 </dataType>
                 <unit>NONE</unit>
+                <alternativeNames>
+                	<sLV1Name>hovSGReadySrcSelect</sLV1Name>
+                	<manufName>38013</manufName></alternativeNames>
+                <legibleDescription>
+                	<textElement>Auslöser Smart Grid Funktion</textElement>
+                	<language>de</language>
+                </legibleDescription>
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
                   <int16U/>
                 </modbusDataType>
-                <address>27546</address>
-                <bitRank>0</bitRank>
+                <address>27546</address>                
                 <registerType>HoldRegister</registerType>
                 <numberOfRegisters>1</numberOfRegisters>
               </modbusDataPointConfiguration>
@@ -2649,7 +2544,7 @@
               </versionNumber>
             </functionalProfileIdentification>
             <alternativeNames>
-              <sLV1Name>Monitoring</sLV1Name>
+              <sLV1Name>EnergyMonitor</sLV1Name>
             </alternativeNames>
             <legibleDescription>
               <textElement>Das Profil definiert den Monitoriungbaustein zur dynamischen Ansteuerung von Wärmepumpen über
@@ -2668,13 +2563,19 @@
                   <float32/>
                 </dataType>
                 <unit>KILOWATT_HOURS</unit>
+                <alternativeNames>
+                	<sLV1Name>ActiveEnergyACtot</sLV1Name>
+                	<manufName>29050</manufName></alternativeNames>
+                <legibleDescription>
+                	<textElement>"Wärmemenge Heizen"  -> GESUCHT: totale Energieaufnahme elektrisch</textElement>
+                	<language>de</language>
+                </legibleDescription>
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
                   <int32U/>
                 </modbusDataType>
-                <address>1505</address>
-                <bitRank>0</bitRank>
+                <address>1505</address>                
                 <registerType>HoldRegister</registerType>
                 <numberOfRegisters>2</numberOfRegisters>
               </modbusDataPointConfiguration>
@@ -2696,9 +2597,10 @@
                 <unit>KILOWATT_HOURS</unit>
                 <alternativeNames>
                   <sLV1Name>ThermalEnergyTot</sLV1Name>
+                  <manufName>29051</manufName>
                 </alternativeNames>
                 <legibleDescription>
-                  <textElement>Summe der total abgegebenen thermischen Energie.</textElement>
+                  <textElement>"Aktuelle Leistung Heizen"  ->GESUCHT: Summe der total abgegebenen thermischen Energie.</textElement>
                   <language>de</language>
                 </legibleDescription>
               </dataPoint>
@@ -2706,8 +2608,7 @@
                 <modbusDataType>
                   <int32U/>
                 </modbusDataType>
-                <address>24050</address>
-                <bitRank>0</bitRank>
+                <address>24050</address>                
                 <registerType>HoldRegister</registerType>
                 <numberOfRegisters>2</numberOfRegisters>
               </modbusDataPointConfiguration>
@@ -2727,13 +2628,19 @@
                   <float32/>
                 </dataType>
                 <unit>KILOWATT_HOURS</unit>
+                <alternativeNames>
+                	<sLV1Name>ThermalEnergyHeat</sLV1Name>
+                	<manufName>29051</manufName></alternativeNames>
+                <legibleDescription>
+                	<textElement>"Aktuelle Leistung Heizen"->GESUCHT: Summe der abgegebenen thermischen Energie für Heizen</textElement>
+                	<language>de</language>
+                </legibleDescription>
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
                   <int32U/>
                 </modbusDataType>
-                <address>18731</address>
-                <bitRank>0</bitRank>
+                <address>18731</address>                
                 <registerType>HoldRegister</registerType>
                 <numberOfRegisters>2</numberOfRegisters>
               </modbusDataPointConfiguration>
@@ -2755,11 +2662,11 @@
                 <unit>KILOWATT_HOURS</unit>
                 <alternativeNames>
                   <sLV1Name>ThermalEnergyCool</sLV1Name>
+                  <manufName>29052</manufName>
                 </alternativeNames>
                 <legibleDescription>
-                  <textElement>Summe der aufgenommenen thermischen Energie für das Kühlen (nur bei aktiver Kühlung über
-                    Verdichter).
-                  </textElement>
+                  <textElement>Kältemenge Kühlen: Summe der aufgenommenen thermischen Energie für das Kühlen (nur bei aktiver Kühlung über
+                    Verdichter).</textElement>
                   <language>de</language>
                 </legibleDescription>
               </dataPoint>
@@ -2767,8 +2674,7 @@
                 <modbusDataType>
                   <int32U/>
                 </modbusDataType>
-                <address>18733</address>
-                <bitRank>0</bitRank>
+                <address>18733</address>                
                 <registerType>HoldRegister</registerType>
                 <numberOfRegisters>2</numberOfRegisters>
               </modbusDataPointConfiguration>
@@ -2788,13 +2694,16 @@
                   <float32/>
                 </dataType>
                 <unit>KILOWATT_HOURS</unit>
+                <legibleDescription>
+                	<textElement>Wärmemenge WW</textElement>
+                	<language>de</language>
+                </legibleDescription>
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
                   <int32U/>
                 </modbusDataType>
-                <address>27488</address>
-                <bitRank>0</bitRank>
+                <address>27488</address>                
                 <registerType>HoldRegister</registerType>
                 <numberOfRegisters>2</numberOfRegisters>
               </modbusDataPointConfiguration>
@@ -2816,9 +2725,10 @@
                 <unit>KILOWATT_HOURS</unit>
                 <alternativeNames>
                   <sLV1Name>ActivePowerACtot</sLV1Name>
+                  <manufName>29051</manufName>
                 </alternativeNames>
                 <legibleDescription>
-                  <textElement>Summe der abgegebenen thermischen Energie für das Heizen.</textElement>
+                  <textElement>"Aktuelle Leistung Heizen"->GESUCHT: aktuell aufgenommene Gesamtleistung</textElement>
                   <language>de</language>
                 </legibleDescription>
               </dataPoint>
@@ -2826,8 +2736,7 @@
                 <modbusDataType>
                   <int32U/>
                 </modbusDataType>
-                <address>18731</address>
-                <bitRank>0</bitRank>
+                <address>18731</address>                
                 <registerType>HoldRegister</registerType>
                 <numberOfRegisters>2</numberOfRegisters>
               </modbusDataPointConfiguration>
@@ -2851,7 +2760,7 @@
                   <sLV1Name>RuntimeCompressor</sLV1Name>
                 </alternativeNames>
                 <legibleDescription>
-                  <textElement>Summe der Laufzeit des Verdichters seit Inbetriebnahme.</textElement>
+                  <textElement>Betriebsstunden Wärmeerzeuger: Summe der Laufzeit des Verdichters seit Inbetriebnahme.</textElement>
                   <language>de</language>
                 </legibleDescription>
               </dataPoint>
@@ -2859,8 +2768,7 @@
                 <modbusDataType>
                   <int32U/>
                 </modbusDataType>
-                <address>1516</address>
-                <bitRank>0</bitRank>
+                <address>1516</address>                
                 <registerType>HoldRegister</registerType>
                 <numberOfRegisters>2</numberOfRegisters>
               </modbusDataPointConfiguration>
@@ -2882,9 +2790,10 @@
                 <unit>NONE</unit>
                 <alternativeNames>
                   <sLV1Name>NrOfStartupsCompressor</sLV1Name>
+                  <manufName>2080</manufName>
                 </alternativeNames>
                 <legibleDescription>
-                  <textElement>Anzahl Starts des Verdichters seit Inbetriebnahme.</textElement>
+                  <textElement>Schaltzyklen Wärmeerzeuger: Anzahl Starts des Verdichters seit Inbetriebnahme.</textElement>
                   <language>de</language>
                 </legibleDescription>
               </dataPoint>
@@ -2892,8 +2801,7 @@
                 <modbusDataType>
                   <int32U/>
                 </modbusDataType>
-                <address>1518</address>
-                <bitRank>0</bitRank>
+                <address>1518</address>                
                 <registerType>HoldRegister</registerType>
                 <numberOfRegisters>2</numberOfRegisters>
               </modbusDataPointConfiguration>
