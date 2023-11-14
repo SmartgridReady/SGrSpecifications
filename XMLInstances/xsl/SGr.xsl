@@ -76,8 +76,10 @@
 							<option value="any">All Languages</option>
 							<option value="en">English</option>
 							<option value="de">Deutsch</option>
+                            <!--
 							<option value="fr">Francais</option>
 							<option value="it">Italiano</option>
+                            -->
 							<option value="none">(none)</option>
 						</select>
 					</div>
