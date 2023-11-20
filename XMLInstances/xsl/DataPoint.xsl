@@ -72,7 +72,10 @@
                         <img width="20px" height="14px">
                             <xsl:attribute name="src" alt="Lang">/xsl/ressources/<xsl:value-of select="sgr:language" />.png</xsl:attribute>
                         </img>
-                        &#160;<xsl:value-of select="sgr:textElement" disable-output-escaping="yes" />
+                        &#160;
+                        <span class="renderhtml">
+                          <xsl:value-of select="sgr:textElement" disable-output-escaping="yes" />
+                        </span>
                         <xsl:apply-templates select="sgr:uri" />
                     </div>
                 </xsl:for-each>

@@ -200,7 +200,10 @@
                 <img width="20px" height="14px">
                     <xsl:attribute name="src" alt="Lang">/xsl/ressources/<xsl:value-of select="sgr:language" />.png</xsl:attribute>
                 </img>
-                &#160;<xsl:value-of select="sgr:textElement" disable-output-escaping="yes" />
+                &#160;
+                <span class="renderhtml">
+                  <xsl:value-of select="sgr:textElement" disable-output-escaping="yes" />
+                </span>
                 <xsl:apply-templates select="sgr:uri" />
 			</td>
 		</tr>
@@ -220,7 +223,9 @@
                     Programmer Hint 
                     &#160;<img src="/xsl/ressources/hint.png" alt="Hint" width="16px" height="16px" />
                 </div>
-                <xsl:value-of select="sgr:textElement" disable-output-escaping="yes" />
+                <span class="renderhtml">
+                  <xsl:value-of select="sgr:textElement" disable-output-escaping="yes" />
+                </span>
                 <xsl:apply-templates select="sgr:uri" />
 			</td>
 		</tr>
@@ -299,7 +304,10 @@
         <img width="20px" height="14px">
             <xsl:attribute name="src" alt="Lang">/xsl/ressources/<xsl:value-of select="$lang" />.png</xsl:attribute>
         </img>
-        &#160;<xsl:value-of select="$value" disable-output-escaping="yes" />
+        &#160;
+        <span class="renderhtml">
+          <xsl:value-of select="$value" disable-output-escaping="yes" />
+        </span>
         <xsl:apply-templates select="sgr:uri" />
     </xsl:template>
 
