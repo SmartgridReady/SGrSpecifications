@@ -183,7 +183,7 @@
                                 <xsl:if test="//sgr:stabilityFallback">
                                     <tr class="genericDetails">
                                         <td class="genericattribute">stabilityFallback</td>
-                                        <td> Max recieve time: float, seconds <br /> Init Value: float, <br />
+                                        <td> Max receive time: float, seconds <br /> Init Value: float, <br />
                                             Fallback Value: float <br />
                                         </td>
                                         <td>
@@ -577,7 +577,7 @@
                                                     value</li>
                                                 <li>Within the specified ramp time the product reaches the new set value</li>
                                                 <li>The product initiates a revert to the old set value (e.g. 100%) if
-                                                    now new set value is recieved within the revert time window</li>
+                                                    now new set value is received within the revert time window</li>
                                                 <li>Within the specified ramp time the product reverts to the old set
                                                     value</li>
                                             </ol>

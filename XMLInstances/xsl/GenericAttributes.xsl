@@ -56,7 +56,7 @@
             <tr class="genericDetails">
                 <td class="genericattribute">Stability Fallback</td>
                 <td>
-                    Max recieve time:
+                    Max receive time:
                     <xsl:value-of select="sgr:stabilityFallback/sgr:maxReceiveTime" />&#160;s
                     <br />
                     Init Value:
