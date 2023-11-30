@@ -297,7 +297,42 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
     <choice>
       <element name="enum" type="sgr:EnumMapProduct" />
       <element name="bitmap" type="sgr:BitmapProduct" />
+      <element name="json" type="sgr:EmptyValue" />
       <group ref="sgr:DataType" />
+    </choice>
+  </complexType>
+
+  <complexType name="JSonElemFunctionalProfile">
+    <sequence>
+      <element name="key" type="string"/>
+      <choice>
+        <element name="date" type="sgr:EmptyValue"/>
+        <element name="string" type="sgr:EmptyValue"/>
+        <element name="number" type="sgr:EmptyValue"/>
+      </choice>
+    </sequence>
+  </complexType>
+
+  <complexType name="RequestParam">
+    <sequence>
+      <element name="param" type="sgr:JSonElemFunctionalProfile" maxOccurs="unbounded"/>
+    </sequence>
+  </complexType>
+
+  <complexType name="JSonArrayOutputFunctionalProfile">
+    <sequence>
+      <element name="name" type="string" minOccurs="0" maxOccurs="1"/>
+      <choice minOccurs="0" maxOccurs="unbounded">
+        <element name="array" type="sgr:JSonArrayOutputFunctionalProfile"/>
+        <element name="elem" type="sgr:JSonElemFunctionalProfile"/>
+      </choice>
+    </sequence>
+  </complexType>
+
+  <complexType name="JSonOutputFunctionalProfile">
+    <choice minOccurs="0" maxOccurs="unbounded">
+      <element name="array" type="sgr:JSonArrayOutputFunctionalProfile"/>
+      <element name="elem" type="sgr:JSonElemFunctionalProfile"/>
     </choice>
   </complexType>
 
@@ -310,6 +345,7 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
     <choice>
       <element name="enum" type="sgr:EnumMapFunctionalProfile" />
       <element name="bitmap" type="sgr:BitmapFunctionalProfile" />
+      <element name="json" type="sgr:JSonOutputFunctionalProfile"/>
       <group ref="sgr:DataType" />
     </choice>
   </complexType>
