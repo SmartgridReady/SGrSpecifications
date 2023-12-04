@@ -44,7 +44,7 @@ The release note section contains meta data that descibe history and current sta
 
 | Element | Description |
 | ------- | ----------- |
-| levelOfOperation | levelOfOperation defines a controls complexity  (see [LevelOfOperation.md](LevelOfOperation.md) ), and is defined by the highest level of the devices functional profile |
+| levelOfOperation | levelOfOperation defines a controls complexity  (see [LevelOfOperation](LevelOfOperation.md) ), and is defined by the highest level of the devices functional profile |
 
 ### Descriptions
 | Element     | Description |

@@ -25,8 +25,8 @@ SGr classifies and identifies any functional profile by the following values
 | Element               | Description |
 |-----------------------|-------------|
 | specificationOwnerIdentification          | Identifier of the functional profile owner. |
-| functionalProfileCategory | Functional profile class (see [SGrFunctionalProfileCategory.xsd](/SchemaDatabase/SGr/Generic/SGrFunctionalProfileCategory.xsd) ) |
-| functionalProfileType       | Functional profile subclass (see [SGrFunctionalProfileType.xsd](/SchemaDatabase/SGr/Generic/SGrFunctionalProfileType.xsd) ) |
+| functionalProfileCategory | Functional profile class (see [SGrFunctionalProfileCategory.xsd](../SchemaDatabase/SGr/Generic/BaseType_FunctionalProfileCategory.xsd) ) |
+| functionalProfileType       | Functional profile subclass |
 | levelOfOperation   | levelOfOperation defines a controls complexity  (see [LevelOfOperation.md](LevelOfOperation.md) ) |
 | versionNumber         | Version of the functional profile. Changes in primaryVersionNumber indicate breaking changes, changes in secondaryVersionNumber indicate complimentary changes, changes in subReleaseVersionNumber are without impact on the functionality | 
 

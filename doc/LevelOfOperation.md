@@ -14,4 +14,4 @@ levelOfOperation defines a controls complexity level
 
 Levels 1-6 can be combined with a the monitoring (m) level if they offer read-only data points
 
-(see [FunctionalProfileDescription.xsd](/SchemaDatabase/SGr/Generic/FunctionalProfileDescription.xsd) for details...)
+(see [FunctionalProfileDescription.xsd](../SchemaDatabase/SGr/Generic/BaseType_LevelOfOperationType.xsd) for details...)
