@@ -7,10 +7,10 @@ levelOfOperation defines a controls complexity level
 | m     | Monitoring | read-only values |
 | 1     | On-Off | single contact |
 | 2     | Discrete values | two or more contacts, state controlled interfaces |
-| 3     | Set of characteristic curves | statical defined tables |
+| 3     | Set of characteristic curves | statistical defined tables |
 | 4     | dynamic set values | temperature set points |
 | 5     | dynamically changeable characteristics tables | |
-| 6     | prognosis based systems | |
+| 6     | prediction based systems | |
 
 Levels 1-6 can be combined with a the monitoring (m) level if they offer read-only data points
 

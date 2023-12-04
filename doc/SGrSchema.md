@@ -26,7 +26,7 @@ The  elements in [SGrBaseDeviceFrame.xsd](/SchemaDatabase/SGr/Generic/SGrBaseDev
 
 ### Frame Types for each Transport Layer
 Based on the building blocks the schema then defines root elements for the different product and communicator types, depending on their communication layers.
-The base building blockes are grouped together, and enriched with transport-service specific information.
+The base building blocks are grouped together, and enriched with transport-service specific information.
 
 ![Schema Entity Relation](SGrSchema.png)
 
@@ -50,14 +50,14 @@ Currently the schema defines the following root elements
  The following naming are applied:
  - camelCase for elements, attributes, tags
  - UpperCamelCase for simpleTypes and complexTypes in XSD
- - no abbreviations in general, but trivial ones are ok (e.g. ms for milliseconds)
+ - no abbreviations in general, but trivial ones are OK (e.g. ms for milliseconds)
  - same things have same names
- - use meaningfull names that can be understood
+ - use meaningful names that can be understood
  - if the element defines a value with units the name should have the unit as suffix (example: timeToLiveMs for milliseconds)
 
  ### MinOccurs, MaxOccurs
 
- - ommit the defaults in schema (minOccurs=1, maxOccurs=1)
+ - omit the defaults in schema (minOccurs=1, maxOccurs=1)
  - Order
     - name
     - type

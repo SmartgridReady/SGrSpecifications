@@ -19,13 +19,13 @@ The figure below shows the entity relation model of the communicator interface d
 # Communicator Elements
 
 ### Release Notes
-The release note section contains meta data that descibe history and current state of the communicator
+The release note section contains meta data that describe history and current state of the communicator
 
 | Element   | Description |
 |-----------|-------------|
 | state     | one of Draft, Review, Released, Revoked |
-| remarks   | Optional, arbitrary text. Can be usefull e.g. during draft phase. |
-| changeLog | Optional, can occure multiple times. Contains release notes to the version concerned |
+| remarks   | Optional, arbitrary text. Can be useful e.g. during draft phase. |
+| changeLog | Optional, can occurs multiple times. Contains release notes to the version concerned |
 
 ### Communicator Information
 | Element          | Description |
@@ -40,7 +40,7 @@ The release note section contains meta data that descibe history and current sta
 
 | Element | Description |
 | ------- | ----------- |
-| levelOfOperation | levelOfOperation defines a controls complexity  (see [LevelOfOperation.md](LevelOfOperation.md) ), and is defined by the highest level of the communicator |
+| levelOfOperation | levelOfOperation defines a controls complexity  (see [LevelOfOperation](LevelOfOperation.md) ), and is defined by the highest level of the communicator |
 
 ### Descriptions
 | Element     | Description |

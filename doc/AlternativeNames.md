@@ -10,5 +10,5 @@ A list of relevant name spaces list for to display names used in different stand
 | sSAREFName | optional | SAREF for ENER terminology place to add the SAREF abbreviations if an overlap exists |
 | sEEBUSName | optional | EEBUS for terminology place to add the EEBUS abbreviations if an overlap exists |
 | sSUNSPECName | optional | sSUNSPEC for terminology place to add the www.sunspec.org abbreviations if an overlap exists|
-| sHPbwpName | optional | bwp (German Heat Pump Association) for terminology place to add the BWP naming for HVAC if an overlap exists |
+| sHPbwpName | optional | BWP (German Heat Pump Association) for terminology place to add the BWP naming for HVAC if an overlap exists |
 | sEN17609Name | optional | EN 17609 terminology|
