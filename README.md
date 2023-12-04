@@ -1,7 +1,7 @@
 # SGrSpecifications
 Contains the schema for SmartgridReady product declarations, communicator declarations and functional profiles.
 
-License see LICENSE file
+License see [LICENSE](LICENSE) file
 
 ## Vision
 To reach the global climate goals energy production from renewable sources will gain an increased share. But
