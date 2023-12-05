@@ -1,6 +1,6 @@
 # SGr Alternative Names
 
-A list of relevant name spaces list for to display names used in different standards like EEBUS, IEC6850,, SAREF4ENER etc this list type is used for devices, functional profiles and data points. This name space naming framework is typically used by the SGr association in order to tailer web based information tools. This complex data type is intended to be extended for future relevant standards in order to secure information over technology live cycles.
+A list of relevant name spaces to display names used in different standards like EEBUS, IEC6850, SAREF4ENER, etc. This list type is used for devices, functional profiles and data points. This name space naming framework is typically used by the SGr association in order to tailer web based information tools. This complex data type is intended to be extended for future relevant standards in order to secure information over technology live cycles.
 
 | Element | Optional | Description |
 |---------|----------|-------------|

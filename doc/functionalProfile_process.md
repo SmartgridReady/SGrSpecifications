@@ -27,10 +27,9 @@ XML with state "draft". A new issue will be created for this functional profile.
 - a label of the functional profile interest group concerned
 - the project "Functional Profile Interest Group" assigned, with status "draft"
 
-Any documentation, discussion and work on the elaboration of this functional profile will be tracked in this issue.
+Any documentation, discussion, and work on the elaboration of this functional profile will be tracked in this github issue.
 
 The team then works directly on the XML.
-
 
 ## Ready for review
 
@@ -46,9 +45,9 @@ When a new functional profile is considered ready it switches the state to revie
 
 To publish a functional profile the following criteria must be met:
 
-1. The version is set correctly according to the versioning scheme (see below)
-2. All stakeholders concerned are happy with the content of the functional profile, and have given their formal consent
-3. "SGr Deklarationsstelle" has been informed about the upcoming publish
+1. The version is set correctly according to the versioning scheme (see below).
+2. All stakeholders concerned are happy with the content of the functional profile, and have given their formal consent.
+3. "SGr Deklarationsstelle" has been informed about the upcoming publication.
 4. The functional profile has been tested by at least one product.
 
 Published functional profiles will not change anymore. If a change is requested, a new functional profile with increased version number will be created (see versioning scheme below). Therefore, only the release note structure of the functional profile can be updated on publishing.
