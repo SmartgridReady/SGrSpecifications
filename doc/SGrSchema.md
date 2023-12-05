@@ -1,7 +1,7 @@
 # SGr XML Schema
 
 ## Purpose
-The XML schema provides the building block to interoperable device descriptions for smart energy grids and flexible energy management.
+The XML schema provides the building blocks to interoperable device descriptions for smart energy grids and flexible energy management.
 
 ### What the schema provides
 The schema allows to describe the communication interfaces of existing and new devices. Such a XML description contains
@@ -26,7 +26,7 @@ The  elements in [SGrBaseDeviceFrame.xsd](/SchemaDatabase/SGr/Generic/SGrBaseDev
 
 ### Frame Types for each Transport Layer
 Based on the building blocks the schema then defines root elements for the different product and communicator types, depending on their communication layers.
-The base building blocks are grouped together, and enriched with transport-service specific information.
+The base building blocks are grouped together and enriched with transport-service specific information.
 
 ![Schema Entity Relation](SGrSchema.png)
 
@@ -34,7 +34,7 @@ For each transport service the schema defines a specific root element based on t
 with transport-layer-specific elements into the generic structure of device and a list of functional profiles with their list of data points.
 
 ## Transport Services
-Currently the schema defines the following root elements
+Currently, the schema defines the following root elements
 
 | Element                  | Description |
 |--------------------------|-------------|
