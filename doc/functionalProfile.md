@@ -1,6 +1,6 @@
 # Functional Profile Schema
 
-## Use case
+## Use Case
 
 A functional profile contains a set of data points that support the implementation of a specific use case. It thereby
 focuses entirely on the functionality. Any transport-specific details are not part of the functional profile (e.g.
