@@ -116,7 +116,8 @@ SGr classifies and identifies any functional profile by the following values
 ## Generic Attributes
 SGr allows to associate attributes to a functional profile (i.e. concerning every data point). See [GenericAttributes](GenericAttributes.md) for details. Any attribute defined on the functional profile level are mandatory to any product that implements this functional profile. However, the product can optionally add further attributes based on its own needs.
 
-## Data Points (? Arnd please check... this looks like description for Data-points?)
+## Data Points
+A functional profile mainly defines a set of datapoints. The attributes of a datapoint are defined in the next section.
 
 # Data Point Attributes
 | Element     | Description |
