@@ -1,4 +1,4 @@
-# Functional Profile
+# Functional Profiles
 
 ## General Concept
 
@@ -8,10 +8,35 @@ on how to get or set a data point on a specfic product).
 
 The main intent is to allow communicator manufacturers to easily implement their use cases based on logically grouped data points, while device-specific communication details to the SGr communicator library. Any product that support the functional profiles required for a specific use case are therefore  automatically compatible, and can be used whithout changing the implementation.
 
-## Structure
+tbd... link to library.smartgridrady.com
 
+
+## Structure 
+tbd... main points: 
+FP is stuctured in description / framing, datapoint with read/write and MRO definition and description, Attribute-List
+
+### Datapoints
+tbd... main points: 
+- Concept of Datapoints
+- Types of Datapoints
+- important remarks
+
+### Attributes
+tbd... main points: 
+- Concept of Attributes (for what / how defined?) 
+- Types of Attributes (we don't have types any more?)
+- Link to the list of Attributes used (has always to be up to date)
+- important remarks
+
+
+## Using Functional Profiles for declaration 
+tbd... maiin points: 
+-concept of using FPs for declaration (filling up device information) 
+- link to more information for declaration (SGr-Website)
+- 
 
 # For developer - XSD scheme for functional profiles
+
 ## General Structure
 The schema of the functional profile is structured on two levels:
 - Information concerning the entire functional profile
@@ -21,9 +46,7 @@ The figure below shows the entity relation model of the functional profile
 
 ![Functional Profile Entity Relation](functionalProfile.drawio.png)
 
-## Functional Profile Attributes
-
-### Classification
+## Classification
 SGr classifies and identifies any functional profile by the following values
 
 | Element               | Description |
@@ -34,6 +57,46 @@ SGr classifies and identifies any functional profile by the following values
 | levelOfOperation   | levelOfOperation defines a controls complexity  (see [LevelOfOperation.md](LevelOfOperation.md) ) |
 | versionNumber         | Version of the functional profile. Changes in primaryVersionNumber indicate breaking changes, changes in secondaryVersionNumber indicate complimentary changes, changes in subReleaseVersionNumber are without impact on the functionality | 
 
+
+
+
+## Data Points (? Arnd please check... this looks like description for Data-points?)
+| Element     | Description |
+|-------------|-------------|
+| datapointName | Name of the data point. Should be unique within the functional profile |
+| dataDirection | R if data point can be read, W for write, P for persistence |
+| presenceLevel | Datapoint optionality: Mandatory, Recommended, Optional |
+| unit | Physical unit of data point |
+| DataType |  Data point type|
+| alternativeNames | a list of relevant namespaces list for to display names used in different standards like EEBUS, IEC6850,, SAREF4ENER etc. (see [AlternativeNames](AlternativeNames.md))|
+| legibleDescription | optional, can occure multiple times, but ideally just a once per language. Contains details concerning the intended use case of the functional profile. |
+
+## Functional Profile Attributes (Generic Attributes) 
+
+SGr allows to associate attributes to a functional profile (i.e. concerning every data point). See [GenericAttributes](GenericAttributes.md) for details. Any attribute defined on the functional profile level are mandatory to any product that implements this functional profile. However, the product can optionally add further attributes based on its own needs.
+
+tbd... main points: 
+- description of the concept:
+    - when do we use attributes (for what)
+    - if there are types which types and why?
+    - how do we define attributes?
+    - where do we hold the list of attributes? who has to add attriutes there and when? (developer always going over Arnd or so?)
+    - 
+- 
+
+## File Naming Schema
+Functional profiles should have the following file naming conventions:
+
+`FP_[specificationOwnerIdentification]_[FunctionalProfileCategory]_[FunctionalProfileType]_[levelOfOperation]_[majorVerion].[minorVerion].xml`
+
+## Writing Descriptions
+Functional profile descriptions should be structured as follows:
+- Image indicating the typical appliacle, together with a easily understandable title
+- Short explanation (i.e. long version of the title)
+- Detailed explanation, including very attribute.
+- How to apply the functional profile concerning presence level (i.e. how to handle recommended and optional data points)
+
+# Attatchment
 ### Release Notes
 The release note section contains meta data that descibe history and current state of the functional profile
 
@@ -49,37 +112,6 @@ The release note section contains meta data that descibe history and current sta
 | alternativeNames  | a list of relevant namespaces list for to display names used in different standards like EEBUS, IEC6850,, SAREF4ENER etc. (see [AlternativeNames](AlternativeNames.md))|
 | legibleDescription | optional, can occure multiple times, but ideally just a once per language. Contains details concerning the intended use case of the functional profile. |
 
-## Generic Attributes
-SGr allows to associate attributes to a functional profile (i.e. concerning every data point). See [GenericAttributes](GenericAttributes.md) for details. Any attribute defined on the functional profile level are mandatory to any product that implements this functional profile. However, the product can optionally add further attributes based on its own needs.
 
-# Data Point Attributes
-| Element     | Description |
-|-------------|-------------|
-| datapointName | Name of the data point. Should be unique within the functional profile |
-| dataDirection | R if data point can be read, W for write, P for persistence |
-| presenceLevel | Datapoint optionality: Mandatory, Recommended, Optional |
-| unit | Physical unit of data point |
-| DataType |  Data point type|
-| alternativeNames | a list of relevant namespaces list for to display names used in different standards like EEBUS, IEC6850,, SAREF4ENER etc. (see [AlternativeNames](AlternativeNames.md))|
-| legibleDescription | optional, can occure multiple times, but ideally just a once per language. Contains details concerning the intended use case of the functional profile. |
-
-## Generic Attributes
-SGr allows to associate attributes to a data point. See [GenericAttributes](GenericAttributes.md) for details.
-Any attribute defined on the functional profile level are mandatory to any product that implements this functional profile. However, the product can optionally add further attributes based on its own needs.
-
-## New Functional Profiles
-
-## File Naming Schema
-Functional profiles should have the following file naming conventions:
-
-`FP_[specificationOwnerIdentification]_[FunctionalProfileCategory]_[FunctionalProfileType]_[levelOfOperation]_[majorVerion].[minorVerion].xml`
-
-## Descriptions
-Functional profile descriptions should be structured as follows:
-- Image indicating the typical appliacle, together with a easily understandable title
-- Short explanation (i.e. long version of the title)
-- Detailed explanation, including very attribute.
-- How to apply the functional profile concerning presence level (i.e. how to handle recommended and optional data points)
-
-## Open Points
+### Open Points 
 - What are the rules for naming a functional profile (sgr:functionalProfile@profileName)? Is this strict (then it should be part of the classification), or loose (then it should be part of the legibleDescription)?
