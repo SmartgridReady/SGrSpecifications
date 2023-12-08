@@ -1,6 +1,6 @@
-# Functional Profile Schema
+# Functional Profile
 
-## Use case
+## General Concept
 
 A functional profile contains a set of data points that support implementation of a specific use case. It thereby
 focuses entirely on the functionality. Any transport-specific details are not part of the functional profile (e.g.
@@ -8,6 +8,10 @@ on how to get or set a data point on a specfic product).
 
 The main intent is to allow communicator manufacturers to easily implement their use cases based on logically grouped data points, while device-specific communication details to the SGr communicator library. Any product that support the functional profiles required for a specific use case are therefore  automatically compatible, and can be used whithout changing the implementation.
 
+## Structure
+
+
+# For developer - XSD scheme for functional profiles
 ## General Structure
 The schema of the functional profile is structured on two levels:
 - Information concerning the entire functional profile
