@@ -10,12 +10,18 @@
       <author>Ergo/ag</author>
       <comment>Initial version</comment>
     </changeLog>
+    <changeLog>
+      <version>0.1.1</version>
+      <date>2023-12-11</date>
+      <author>ag</author>
+      <comment>Curtailment to EMS Current Limit</comment>
+    </changeLog>
   </releaseNotes>
   <functionalProfile>
     <functionalProfileIdentification>
       <specificationOwnerIdentification>0</specificationOwnerIdentification>
       <functionalProfileCategory>EVSE</functionalProfileCategory>
-      <functionalProfileType>Curtailment</functionalProfileType>
+      <functionalProfileType>EMS Current Limit</functionalProfileType>
       <levelOfOperation>4</levelOfOperation>
       <versionNumber>
         <primaryVersionNumber>0</primaryVersionNumber>
@@ -26,7 +32,7 @@
     <legibleDescription>
       <textElement>
         <![CDATA[
-          Description Curtailment ...
+        The charging station's current limit is dynamically regulated by an external Energy Management System (EMS), with the value expressed in amps. This specific parameter is designed to be easily adjusted by an Energy Manager, allowing for efficient and tailored control of the charging process.
         ]]>
       </textElement>
       <language>en</language>
@@ -57,11 +63,8 @@
           <float32/>
         </dataType>
         <unit>AMPERES</unit>
-        <alternativeNames>
-          <sLV1Name>Betriebsmodus</sLV1Name>
-        </alternativeNames>
         <legibleDescription>
-          <textElement>To control the mode of operation</textElement>
+          <textElement>In the event of a communication interruption with the EMS, the EVSE automatically adjusts its current limit to the Safe Current value.</textElement>
           <language>en</language>
         </legibleDescription>
         <legibleDescription>
@@ -79,11 +82,8 @@
           <float32/>
         </dataType>
         <unit>AMPERES</unit>
-        <alternativeNames>
-          <sLV1Name>initValue</sLV1Name>
-        </alternativeNames>
         <legibleDescription>
-          <textElement>Current limit ...</textElement>
+          <textElement>The maximum current allowed for the charging station at this moment.</textElement>
           <language>en</language>
         </legibleDescription>
         <legibleDescription>
@@ -103,8 +103,7 @@
         <unit>SECONDS</unit>
         <legibleDescription>
           <textElement>
-            This maxReceiveTimeSec represents the timeout of the stabilityFallback Attribute.
-            Hovewer, the timeout will be set to 0 whenever the Modbus interface is polled vor any data transaction
+            The 'maxReceiveTimeSec' parameter signifies the timeout for the 'stabilityFallback' attribute. If the EVSE does not receive communication within the specified 'maxReceiveTimeSec,' it will automatically limit the current to the 'Safe Current' value.
           </textElement>
           <language>en</language>
         </legibleDescription>
@@ -127,7 +126,7 @@
         <unit>AMPERES</unit>
         <legibleDescription>
           <textElement>
-            Hardware current limit ...
+            The maximum current allowed for the EVSE is determined by the electrical installation of the charging station and cannot be changed during operation.
           </textElement>
           <language>en</language>
         </legibleDescription>
