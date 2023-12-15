@@ -264,8 +264,7 @@
     </xsl:template>
 
     <xsl:template match="sgr:enum">
-        <div>
-          <ul>
+        <ul>
             <xsl:for-each select="sgr:enumEntry">
                 <li>
                     <strong><xsl:value-of select="sgr:literal" /></strong>
@@ -273,16 +272,14 @@
                     <xsl:if test="sgr:description">: <xsl:value-of select="sgr:description" /></xsl:if>
                 </li>
             </xsl:for-each>
-          </ul>
+        </ul>
         <xsl:if test="sgr:hexMask">
             <div>Hex Mask: 0x<xsl:value-of select="sgr:hexMask"/></div>
         </xsl:if>        
-        </div>
     </xsl:template>
 
     <xsl:template match="sgr:bitmap">
-        <div style="padding-left:1em;">
-            <ul>
+        <ul>
             <xsl:for-each select="sgr:bitmapEntry">
                 <li>
                     <strong><xsl:value-of select="sgr:literal" /></strong>
@@ -290,8 +287,7 @@
                     <xsl:if test="sgr:description">: <xsl:value-of select="sgr:description" /></xsl:if>
                 </li>
             </xsl:for-each>
-            </ul>
-        </div>       
+        </ul>
     </xsl:template>
 
     <!-- LegibleDescription -->
