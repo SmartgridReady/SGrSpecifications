@@ -2571,13 +2571,46 @@
                 <dataType>
                   <float32/>
                 </dataType>
-                <unit>KILOWATT_HOURS</unit>
+                <unit>MEGAWATT_HOURS</unit>
                 <alternativeNames>
                 	<sLV1Name>ActiveEnergyACtot</sLV1Name>
-                	<manufName>29050</manufName></alternativeNames>
+                	<manufName>23009</manufName></alternativeNames>
                 <legibleDescription>
-                	<textElement>"Wärmemenge Heizen"  -> GESUCHT: totale Energieaufnahme elektrisch</textElement>
+                	<textElement>Elektrische Gesamtenergie WEZ MWh</textElement>
                 	<language>de</language>
+                </legibleDescription>
+              </dataPoint>
+              <modbusDataPointConfiguration>
+                <modbusDataType>
+                  <int32U/>
+                </modbusDataType>
+                <address>25613</address>                
+                <registerType>HoldRegister</registerType>
+                <numberOfRegisters>2</numberOfRegisters>
+              </modbusDataPointConfiguration>
+              <modbusAttributes>
+                <scalingFactor>
+                  <multiplicator>1</multiplicator>
+                  <powerof10>-3</powerof10>
+                </scalingFactor>
+              </modbusAttributes>
+            </dataPointListElement>
+            <dataPointListElement>
+              <dataPoint>
+                <dataPointName>ThermalEnergyTot</dataPointName>
+                <dataDirection>R</dataDirection>
+                <presenceLevel>R</presenceLevel>
+                <dataType>
+                  <float32/>
+                </dataType>
+                <unit>MEGAWATT_HOURS</unit>
+                <alternativeNames>
+                  <sLV1Name>ThermalEnergyTot</sLV1Name>
+                  <manufName>29050</manufName>
+                </alternativeNames>
+                <legibleDescription>
+                  <textElement>Wärmemenge Heizen</textElement>
+                  <language>de</language>
                 </legibleDescription>
               </dataPoint>
               <modbusDataPointConfiguration>
@@ -2597,51 +2630,18 @@
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
-                <dataPointName>ThermalEnergyTot</dataPointName>
-                <dataDirection>R</dataDirection>
-                <presenceLevel>R</presenceLevel>
-                <dataType>
-                  <float32/>
-                </dataType>
-                <unit>KILOWATT_HOURS</unit>
-                <alternativeNames>
-                  <sLV1Name>ThermalEnergyTot</sLV1Name>
-                  <manufName>29051</manufName>
-                </alternativeNames>
-                <legibleDescription>
-                  <textElement>"Aktuelle Leistung Heizen"  ->GESUCHT: Summe der total abgegebenen thermischen Energie.</textElement>
-                  <language>de</language>
-                </legibleDescription>
-              </dataPoint>
-              <modbusDataPointConfiguration>
-                <modbusDataType>
-                  <int32U/>
-                </modbusDataType>
-                <address>24050</address>                
-                <registerType>HoldRegister</registerType>
-                <numberOfRegisters>2</numberOfRegisters>
-              </modbusDataPointConfiguration>
-              <modbusAttributes>
-                <scalingFactor>
-                  <multiplicator>1</multiplicator>
-                  <powerof10>-3</powerof10>
-                </scalingFactor>
-              </modbusAttributes>
-            </dataPointListElement>
-            <dataPointListElement>
-              <dataPoint>
                 <dataPointName>ThermalEnergyHeat</dataPointName>
                 <dataDirection>R</dataDirection>
                 <presenceLevel>R</presenceLevel>
                 <dataType>
                   <float32/>
                 </dataType>
-                <unit>KILOWATT_HOURS</unit>
+                <unit>MEGAWATT_HOURS</unit>
                 <alternativeNames>
                 	<sLV1Name>ThermalEnergyHeat</sLV1Name>
-                	<manufName>29051</manufName></alternativeNames>
+                	<manufName>47</manufName></alternativeNames>
                 <legibleDescription>
-                	<textElement>"Aktuelle Leistung Heizen"->GESUCHT: Summe der abgegebenen thermischen Energie für Heizen</textElement>
+                	<textElement>Wärmemenge Heizen</textElement>
                 	<language>de</language>
                 </legibleDescription>
               </dataPoint>
@@ -2649,7 +2649,7 @@
                 <modbusDataType>
                   <int32U/>
                 </modbusDataType>
-                <address>18731</address>                
+                <address>27484</address>                
                 <registerType>HoldRegister</registerType>
                 <numberOfRegisters>2</numberOfRegisters>
               </modbusDataPointConfiguration>
@@ -2668,7 +2668,7 @@
                 <dataType>
                   <float32/>
                 </dataType>
-                <unit>KILOWATT_HOURS</unit>
+                <unit>MEGAWATT_HOURS</unit>
                 <alternativeNames>
                   <sLV1Name>ThermalEnergyCool</sLV1Name>
                   <manufName>29052</manufName>
@@ -2702,7 +2702,10 @@
                 <dataType>
                   <float32/>
                 </dataType>
-                <unit>KILOWATT_HOURS</unit>
+                <unit>MEGAWATT_HOURS</unit>
+                <alternativeNames>
+                	<sLV1Name>ThermalEnergyDomHotWater</sLV1Name>
+                	<manufName>55</manufName></alternativeNames>
                 <legibleDescription>
                 	<textElement>Wärmemenge WW</textElement>
                 	<language>de</language>
@@ -2731,28 +2734,29 @@
                 <dataType>
                   <float32/>
                 </dataType>
-                <unit>KILOWATT_HOURS</unit>
+                <unit>KILOWATTS</unit>
                 <alternativeNames>
                   <sLV1Name>ActivePowerACtot</sLV1Name>
-                  <manufName>29051</manufName>
+                  <manufName>23002</manufName>
                 </alternativeNames>
                 <legibleDescription>
-                  <textElement>"Aktuelle Leistung Heizen"->GESUCHT: aktuell aufgenommene Gesamtleistung</textElement>
+                  <textElement>Aktuelle elektr. Leistungsaufnahme WEZ</textElement>
                   <language>de</language>
                 </legibleDescription>
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
-                  <int32U/>
+                	<int32 />
+                	
                 </modbusDataType>
-                <address>18731</address>                
+                <address>25611</address>                
                 <registerType>HoldRegister</registerType>
                 <numberOfRegisters>2</numberOfRegisters>
               </modbusDataPointConfiguration>
               <modbusAttributes>
                 <scalingFactor>
                   <multiplicator>1</multiplicator>
-                  <powerof10>-3</powerof10>
+                  <powerof10>-2</powerof10>
                 </scalingFactor>
               </modbusAttributes>
             </dataPointListElement>
