@@ -612,8 +612,8 @@
                 <div class="documentfooter"> Information and Support at <a
                         href="http://www.smartgridready.ch">www.smartgridready.ch</a> or email <a
                         href="mailto:deklaration@smartgridready.ch">deklaration@smartgridready.ch</a>
-                        <br/><sup>1)</sup> R read, W write, P persistent
-                        <br/><sup>2)</sup> M mandatory, R recommended, O optional
+                        <br/><sup>1)</sup> M mandatory, R recommended, O optional
+                        <br/><sup>2)</sup> R read, W write, P persistent
                 </div>
             </td></tr></tfoot>
         </table>
