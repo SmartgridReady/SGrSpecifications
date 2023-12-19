@@ -84,6 +84,7 @@
                   <int16U />
                 </dataType>
                 <unit>SECONDS</unit>
+                <maximumValue>3000</maximumValue>
                 <alternativeNames>
                   <sLV1Name>ctaRemoteCtrlTimeSec</sLV1Name>
                   <manufName>CTA_Ext_Communication_Handler</manufName>
@@ -100,9 +101,6 @@
                   <language>en</language>
                 </programmerHints>
               </dataPoint>
-              <genericAttributes>
-                <maxVal>3000</maxVal>
-              </genericAttributes>
               <modbusDataPointConfiguration>
                 <modbusDataType>
                   <int16U/>
@@ -488,6 +486,11 @@
                   <float32 />
                 </dataType>
                 <unit>PERCENT</unit>
+                <minimumValue>38.0</minimumValue>
+                <maximumValue>100.0</maximumValue>
+                <!-- TODO check whether this is needed
+                <unitConversionMultiplicator>2.0</unitConversionMultiplicator>
+                -->
                 <alternativeNames>
                   <manufName>CTA_DWRequest</manufName>
                 </alternativeNames>
@@ -496,13 +499,6 @@
                   <language>de</language>
                 </legibleDescription>
               </dataPoint>
-              <genericAttributes>
-                <maxVal>100.0</maxVal>
-                <minVal>38.0</minVal>
-                <!-- TODO check whether this is needed
-                <unitConversionMultiplicator>2.0</unitConversionMultiplicator>
-                -->
-              </genericAttributes>
               <modbusDataPointConfiguration>
                 <modbusDataType>
                   <float32 />
@@ -521,6 +517,7 @@
                   <float32 />
                 </dataType>
                 <unit>REVOLUTIONS_PER_MINUTE</unit>
+                <unitConversionMultiplicator>60.0</unitConversionMultiplicator>
                 <alternativeNames>
                 	<sLV1Name>ActSpeed</sLV1Name>
                 	<manufName>State_CompRPS</manufName></alternativeNames>
@@ -531,9 +528,6 @@
                   <language>de</language>
                 </legibleDescription>
               </dataPoint>
-              <genericAttributes>
-                <unitConversionMultiplicator>60.0</unitConversionMultiplicator>
-              </genericAttributes>
               <modbusDataPointConfiguration>
                 <modbusDataType>
                   <float32 />
@@ -1309,6 +1303,8 @@
                   <float32 />
                 </dataType>
                 <unit>DEGREES_CELSIUS</unit>
+                <minimumValue>-50.0</minimumValue>
+                <maximumValue>50.0</maximumValue>
                 <alternativeNames>
                   <sLV1Name>HeatBufferTempStptOffset</sLV1Name>
                   <manufName>CTA_CFG_Buffer_Overcharge_dT</manufName>
@@ -1319,10 +1315,6 @@
                   <language>de</language>
                 </legibleDescription>
               </dataPoint>
-              <genericAttributes>
-                <maxVal>50.0</maxVal>
-                <minVal>-50.0</minVal>
-              </genericAttributes>
               <modbusDataPointConfiguration>
                 <modbusDataType>
                   <float32 />
@@ -1422,10 +1414,24 @@
               <language>de</language>
             </legibleDescription>
           </functionalProfile>
-          <genericAttributes>
-            <maxLockTimeMinutes>120</maxLockTimeMinutes>
-            <minRunTimeMinutes>20</minRunTimeMinutes>
-          </genericAttributes>
+          <genericAttributeList>
+            <genericAttributeListElement>
+              <name>MaximumLockTime</name>
+              <dataType>
+                <float32/>
+              </dataType>
+              <value>120</value>
+              <unit>MINUTES</unit>
+            </genericAttributeListElement>
+            <genericAttributeListElement>
+              <name>MinimumRunTime</name>
+              <dataType>
+                <float32/>
+              </dataType>
+              <value>20</value>
+              <unit>MINUTES</unit>
+            </genericAttributeListElement>
+          </genericAttributeList>
           <dataPointList>
             <dataPointListElement>
               <dataPoint>
