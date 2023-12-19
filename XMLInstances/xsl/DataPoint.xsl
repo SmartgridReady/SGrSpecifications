@@ -60,7 +60,7 @@
 
                     <xsl:if test="sgr:dataPoint/sgr:unitConversionMultiplicator">
                         <tr class="genericDetails">
-                            <td>Value Multiplicator</td>
+                            <td>Value Multiplier</td>
                             <td>
                                 <xsl:value-of select="sgr:dataPoint/sgr:unitConversionMultiplicator" />
                             </td>
