@@ -472,7 +472,7 @@
                                             <div>
                                                 <xsl:call-template name="SGrLanguageText">
                                                     <xsl:with-param name="lang">en</xsl:with-param>
-                                                    <xsl:with-param name="value">Minimum time in minutes for locking.</xsl:with-param>
+                                                    <xsl:with-param name="value">Minimum time in minutes for the mimimum runtime.</xsl:with-param>
                                                 </xsl:call-template>
                                             </div>
                                             <div>

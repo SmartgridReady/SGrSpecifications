@@ -58,6 +58,15 @@
                         </tr>
                     </xsl:if>
 
+                    <xsl:if test="sgr:dataPoint/sgr:unitConversionMultiplicator">
+                        <tr class="genericDetails">
+                            <td>Value Multiplicator</td>
+                            <td>
+                                <xsl:value-of select="sgr:dataPoint/sgr:unitConversionMultiplicator" />
+                            </td>
+                        </tr>
+                    </xsl:if>
+
                     <xsl:apply-templates select="sgr:dataPoint/sgr:alternativeNames" />
                     <xsl:apply-templates select="sgr:genericAttributeList" />
                     <xsl:apply-templates select="sgr:genericAttributes" />
