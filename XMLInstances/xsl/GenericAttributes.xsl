@@ -220,17 +220,33 @@
             </tr>
         </xsl:if>
 
-        <!--attributeList-->
-        <xsl:if test="sgr:attributeList">
-            <xsl:for-each select="sgr:attributeList/sgr:attribute">
-                <xsl:if test="sgr:value != ''">
-                    <tr class="genericDetails">
-                        <td class="genericattribute"><xsl:value-of select="sgr:name" /></td>
-                        <td><xsl:value-of select="sgr:value" /></td>
-                    </tr>
-                </xsl:if>
-            </xsl:for-each>
-        </xsl:if>
+    </xsl:template>
+
+    <xsl:template match="sgr:genericAttributeList">
+
+        <!--genericAttributeList-->
+        <xsl:for-each select="sgr:genericAttributeListElement">
+            <xsl:variable name="name" select="sgr:name"/> 
+            <xsl:variable name="attribute" select="document(concat('../GenericAttributes/', $name, '.xml'))"/>
+            <tr class="genericDetails">
+                <td class="genericattribute">
+                  <xsl:value-of select="$attribute/sgr:GenericAttributeFrame/sgr:name" />
+                  <xsl:for-each select="$attribute/sgr:GenericAttributeFrame/sgr:genericAttributeList/sgr:genericAttributeListElement">
+                    <ul style="margin: 0">
+                      <li><xsl:value-of select="sgr:name"/></li>
+                    </ul>
+                  </xsl:for-each>
+                </td>
+                <td>
+                  <xsl:value-of select="sgr:value" />&#160;<xsl:call-template name="SGrUnits"><xsl:with-param name="value" select="sgr:unit" /></xsl:call-template>
+                  <xsl:for-each select="sgr:genericAttributeList/sgr:genericAttributeListElement">
+                    <ul style="margin: 0">
+                      <li><xsl:value-of select="sgr:value" />&#160;<xsl:call-template name="SGrUnits"><xsl:with-param name="value" select="sgr:unit" /></xsl:call-template></li>
+                    </ul>
+                  </xsl:for-each>
+                </td>
+            </tr>
+        </xsl:for-each>
 
     </xsl:template>
 

@@ -801,7 +801,6 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
         </annotation>
       </element>
       <element name="unitConversionMultiplicator" type="sgr:EmptyOrFloat" minOccurs="0" />
-      <element name="attributeList" type="sgr:AttributeList" minOccurs="0" />
     </all>
   </complexType>
   <complexType name="StabilityFallback">
@@ -868,17 +867,49 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
       <element name="obligedTo" type="sgr:ObligLVlType" />
     </sequence>
   </complexType>
-  <complexType name="Attribute">
+  <complexType name="GenericAttributeFunctionalProfile">
     <sequence>
       <element name="name" type="string" />
-      <element name="type" type="string" minOccurs="0" />
-      <element name="value" type="string" minOccurs="0" />
-      <element name="legibleDescription" type="sgr:LegibleDescription" maxOccurs="4" minOccurs="0" />
     </sequence>
   </complexType>
-  <complexType name="AttributeList">
+  <complexType name="GenericAttributeProduct">
     <sequence>
-      <element name="attribute" type="sgr:Attribute" maxOccurs="unbounded" minOccurs="1" />
+      <element name="name" type="string" />
+      <choice>
+        <sequence>
+          <element name="dataType" type="sgr:DataTypeProduct" />
+          <element name="value" type="string"/>
+          <element name="unit" type="sgr:Units"/>
+        </sequence>
+        <element name="genericAttributeList" type="sgr:GenericAttributeListProductEnd" />
+      </choice>
+    </sequence>
+  </complexType>
+  <complexType name="GenericAttributeProductEnd">
+    <sequence>
+      <element name="name" type="string" />
+      <choice>
+        <sequence>
+          <element name="dataType" type="sgr:DataTypeProduct" />
+          <element name="value" type="string"/>
+          <element name="unit" type="sgr:Units"/>
+        </sequence>
+      </choice>
+    </sequence>
+  </complexType>
+  <complexType name="GenericAttributeListFunctionalProfile">
+    <sequence>
+      <element name="genericAttributeListElement" type="sgr:GenericAttributeFunctionalProfile" maxOccurs="unbounded" minOccurs="1" />
+    </sequence>
+  </complexType>
+  <complexType name="GenericAttributeListProduct">
+    <sequence>
+      <element name="genericAttributeListElement" type="sgr:GenericAttributeProduct" maxOccurs="unbounded" minOccurs="1" />
+    </sequence>
+  </complexType>
+  <complexType name="GenericAttributeListProductEnd">
+    <sequence>
+      <element name="genericAttributeListElement" type="sgr:GenericAttributeProductEnd" maxOccurs="unbounded" minOccurs="1" />
     </sequence>
   </complexType>
 

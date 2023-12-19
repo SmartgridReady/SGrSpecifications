@@ -37,9 +37,29 @@
                     <colgroup>
                         <col style="width:194px" />
                     </colgroup>
-
+                    
                     <xsl:apply-templates select="sgr:dataPoint/sgr:programmerHints" />
+
+                    <xsl:if test="sgr:dataPoint/sgr:minimumValue">
+                        <tr class="genericDetails">
+                            <td>Minimum Value</td>
+                            <td>
+                                <xsl:value-of select="sgr:dataPoint/sgr:minimumValue" />&#160;<xsl:call-template name="SGrUnits"><xsl:with-param name="value" select="sgr:dataPoint/sgr:unit" /></xsl:call-template>
+                            </td>
+                        </tr>
+                    </xsl:if>
+
+                    <xsl:if test="sgr:dataPoint/sgr:maximumValue">
+                        <tr class="genericDetails">
+                            <td>Maximum Value</td>
+                            <td>
+                                <xsl:value-of select="sgr:dataPoint/sgr:maximumValue" />&#160;<xsl:call-template name="SGrUnits"><xsl:with-param name="value" select="sgr:dataPoint/sgr:unit" /></xsl:call-template>
+                            </td>
+                        </tr>
+                    </xsl:if>
+
                     <xsl:apply-templates select="sgr:dataPoint/sgr:alternativeNames" />
+                    <xsl:apply-templates select="sgr:genericAttributeList" />
                     <xsl:apply-templates select="sgr:genericAttributes" />
 
                     <!-- transport service details-->

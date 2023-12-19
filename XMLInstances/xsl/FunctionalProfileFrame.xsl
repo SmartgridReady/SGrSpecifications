@@ -540,27 +540,7 @@
                                         </td>
                                     </tr>
                                 </xsl:if>
-        
-                                <!--//sgr:attributeList-->
-                                <xsl:if test="//sgr:attributeList">
-                                    <xsl:for-each select="//sgr:attributeList/sgr:attribute">
-                                        <tr class="genericDetails">
-                                            <td class="genericattribute"><xsl:value-of select="sgr:name" /></td>
-                                            <td><xsl:value-of select="sgr:type" /></td>
-                                            <td>
-                                                <xsl:for-each select="sgr:legibleDescription">
-                                                    <div>
-                                                        <xsl:call-template name="SGrLanguageText">
-                                                            <xsl:with-param name="lang"><xsl:value-of select="sgr:language" /></xsl:with-param>
-                                                            <xsl:with-param name="value"><xsl:value-of select="sgr:textElement" /></xsl:with-param>
-                                                        </xsl:call-template>
-                                                    </div>
-                                                </xsl:for-each>
-                                            </td>
-                                        </tr>
-                                    </xsl:for-each>
-                                </xsl:if>
-        
+
                             </table>
         
                             <xsl:if test="//sgr:smoothTransition">
@@ -605,6 +585,62 @@
                             </xsl:if>
                         </div>
                     </xsl:if>
+
+                    <xsl:if test="//sgr:genericAttributeList">
+                        <div class="functionalProfile">
+                            <h2>Table of Attributes</h2>
+                            <!-- Generic Attributes -->
+                            <table>
+                                <colgroup>
+                                    <col style="width:230px" />
+                                    <col style="width:134px" />
+                                </colgroup>
+                                <tr>
+                                    <th>Attribute</th>
+                                    <th>Type</th>
+                                    <th>Description</th>
+                                </tr>
+        
+                                <!--//sgr:attributeList-->
+                                <xsl:if test="//sgr:genericAttributeList">
+                                    <xsl:for-each select="//sgr:genericAttributeList/sgr:genericAttributeListElement">
+                                        <tr class="genericDetails">
+                                            <xsl:variable name="name" select="sgr:name"/> 
+                                            <xsl:variable name="attribute" select="document(concat('../GenericAttributes/', $name, '.xml'))"/>
+                                            <td class="genericattribute">
+                                              <xsl:value-of select="$attribute/sgr:GenericAttributeFrame/sgr:name"/>
+                                              <xsl:for-each select="$attribute/sgr:GenericAttributeFrame/sgr:genericAttributeList/sgr:genericAttributeListElement">
+                                                <ul style="margin: 0">
+                                                  <li><xsl:value-of select="sgr:name"/></li>
+                                                </ul>
+                                              </xsl:for-each>
+                                            </td>
+                                            <td>
+                                              <xsl:apply-templates select="$attribute/sgr:GenericAttributeFrame/sgr:dataType" />&#160;
+                                              <xsl:for-each select="$attribute/sgr:GenericAttributeFrame/sgr:genericAttributeList/sgr:genericAttributeListElement">
+                                                <ul style="margin: 0">
+                                                  <li><xsl:apply-templates select="sgr:dataType" /></li>
+                                                </ul>
+                                              </xsl:for-each>
+                                            </td>
+                                            <td>
+                                                <xsl:for-each select="$attribute/sgr:GenericAttributeFrame/sgr:legibleDescription">
+                                                    <div>
+                                                        <xsl:call-template name="SGrLanguageText">
+                                                            <xsl:with-param name="lang"><xsl:value-of select="sgr:language" /></xsl:with-param>
+                                                            <xsl:with-param name="value"><xsl:value-of select="sgr:textElement" /></xsl:with-param>
+                                                        </xsl:call-template>
+                                                    </div>
+                                                </xsl:for-each>
+                                            </td>
+                                        </tr>
+                                    </xsl:for-each>
+                                </xsl:if>
+        
+                            </table>
+                        </div>
+                    </xsl:if>
+
                 </div>
             </td></tr></tbody>
             <tfoot><tr style="border:hidden;"><td>

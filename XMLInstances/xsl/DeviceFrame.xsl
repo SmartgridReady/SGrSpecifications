@@ -42,6 +42,7 @@
                         </tr>
         
                         <xsl:apply-templates select="sgr:deviceInformation" />
+                        <xsl:apply-templates select="sgr:genericAttributeList" />
                         <xsl:apply-templates select="sgr:genericAttributes" />
         
                     </table>
