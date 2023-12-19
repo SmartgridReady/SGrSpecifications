@@ -25,19 +25,43 @@
     </functionalProfileIdentification>
     <legibleDescription>
       <textElement>
-        <![CDATA[	
+        <![CDATA[    
           <img src="ressources/cem_to_evse.svg" style="float:left; padding:0.3em;"/>
-          <p>Wallboxen (Electric Vehicle Supply Equipment «EVSE») müssen über einen Regler verfügen, welcher folgende Betriebszustände abdeckt:</p>
+          <p>Level 1 funktional profile for wallboxes (Electric Vehicle Supply Equipment "EVSE") with one relay contact. 
+			To implement this funktional profile wallboxes must have a controller which covers the following four operating states:</p>
           <ol>
-            <li><strong>Klemmenzustand 0</strong>: Normalbetrieb uneingeschränkt entsprechend der konfigurierten Anschlussleistung laden</li>
-            <li><strong>Klemmenzustand 1</strong>: Minimale Ladung (AC Ladung 6A, DC Ladung 10kW, Bidirektionales Laden)</li>
+            <li><strong>Switching state 0 </strong>: Normal operation, charging according to the configured connection power without any restrictions.</li>
+            <li><strong>Switching state 1</strong>: Minimum charging (AC charging at 6 A, DC charging at 10 kW).</li>
+          </ol>
+          
+          <p>Notes:</p>
+          <ol>
+			<li>Devices with two relay contacts can be used in level 1 mode if the second contact is securely wired to state 0. This prevents a complete power shutdown.</li>
+			<li>The minimum load can be configured manually on the device itself. The parameter is described 
+		  below in the table of attributes.
+		 
+        ]]>
+      </textElement>
+      <language>en</language>
+    </legibleDescription>
+    <legibleDescription>
+      <textElement>
+        <![CDATA[    
+          <img src="ressources/cem_to_evse.svg" style="float:left; padding:0.3em;"/>
+          <p>Stufe 1 Funktionsprofil für Heim-Ladestationen (Wallboxen bzw. Electric Vehicle Supply Equipment «EVSE») mit einem Klemmkontakt. Zur Umsetzung des Funktionsprofils müssen Ladestationen 
+		  über einen Regler verfügen, welcher folgende Betriebszustände abdeckt:</p>
+          <ol>
+            <li><strong>Klemmenzustand 0</strong>: Uneingeschränkter Normalbetrieb, Laden entsprechend der konfigurierten Anschlussleistung</li>
+            <li><strong>Klemmenzustand 1</strong>: Minimale Ladung (AC Ladung 6 A, DC Ladung 10 kW)</li>
           </ol>
           
           <p>Hinweise:</p>
-          <ul>
-            <li>Geräte mit Stufe 2 können im Stufe-1-Betrieb genutzt werden, wenn der zweite Kontakt fest auf den Zustand 0 verdrahtet wird.
+			<ol>
+				<li>Geräte mit zwei Klemmkontakten können im Stufe-1-Betrieb genutzt werden, wenn der zweite Kontakt fest auf den Zustand 0 verdrahtet wird.
                 Dadurch wird das komplette Abstellen der Stromversorgung verhindert.</li>
-          </ul>
+				<li>Die Minimalladung kann am Gerät selber konfiguriert werden. Der Parameter ist untenstehend in der "Table of Attributes" beschrieben.
+				</li>
+			</ol>
         ]]>
       </textElement>
       <language>de</language>
@@ -46,26 +70,9 @@
   <genericAttributes>
     <attributeList>
       <attribute>
-        <name>Load Reduction</name>
-        <type>float</type>
-        <value>50 %</value>
-        <legibleDescription>
-          <textElement>
-            Load reduction for EV_REDUCED setting. 
-          </textElement>
-          <language>en</language>
-        </legibleDescription>
-        <legibleDescription>
-          <textElement>
-            Reduktion des Ladens for Einstellung EV_REDUCED. 
-          </textElement>
-          <language>de</language>
-        </legibleDescription>
-      </attribute>
-      <attribute>
         <name>Minimum Load</name>
         <type>float</type>
-        <value>6 A</value>
+        <value></value>
         <legibleDescription>
           <textElement>
             Minimum load capacity.
@@ -74,7 +81,7 @@
         </legibleDescription>
         <legibleDescription>
           <textElement>
-            Minimale Ladeleistung
+            Minimale Ladeleistung.
           </textElement>
           <language>de</language>
         </legibleDescription>
@@ -91,6 +98,10 @@
           <boolean/>
         </dataType>
         <unit>NONE</unit>
+        <legibleDescription>
+          <textElement>Switching state first relay contact (0 or 1)</textElement>
+          <language>en</language>
+        </legibleDescription>
         <legibleDescription>
           <textElement>Schaltzustand erste Klemme (0 oder 1)</textElement>
           <language>de</language>
