@@ -42,7 +42,7 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
   </complexType>
   <simpleType name="SpecificationOwnerIdentification">
     <annotation>
-      <documentation> This number identifies the organisation that owns the specification. 0 is
+      <documentation> This number identifies the organization that owns the specification. 0 is
         reserved for SmartGridready specifications, any other company will receive a number by the
         SmartGridready Deklarationsstelle. </documentation>
     </annotation>
@@ -60,7 +60,7 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
   </simpleType>
   <complexType name="AlternativeNames">
     <annotation>
-      <documentation> a name list for EEBUS, IEC6850,, SAREF4ENER etc. Used to support onology
+      <documentation> a name list for EEBUS, IEC6850,, SAREF4ENER etc. Used to support ontology
         naming.</documentation>
     </annotation>
     <sequence>
@@ -83,23 +83,23 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
       </element>
       <element name="iec61850Name" type="string" minOccurs="0">
         <annotation>
-          <documentation>IEC 61850 termonoligy place to add the 61850 abreviatuions</documentation>
+          <documentation>IEC 61850 terminology place to add the 61850 abbreviatuions</documentation>
         </annotation>
       </element>
       <element name="sarefName" type="string" minOccurs="0">
         <annotation>
-          <documentation> SAREF for ENER termonoligy place to add the SAREF abreviations
+          <documentation> SAREF for ENER terminology place to add the SAREF abbreviations
             (https://saref.etsi.org) </documentation>
         </annotation>
       </element>
       <element name="eebusName" type="string" minOccurs="0">
         <annotation>
-          <documentation> EEBUS for terminology place to add the EEBUS abreviations</documentation>
+          <documentation> EEBUS for terminology place to add the EEBUS abbreviations</documentation>
         </annotation>
       </element>
       <element name="sunSpecName" type="string" minOccurs="0">
         <annotation>
-          <documentation> sSUNSPEC for terminology place to add the www.sunspec.org abreviations</documentation>
+          <documentation> sSUNSPEC for terminology place to add the www.sunspec.org abbreviations</documentation>
         </annotation>
       </element>
       <element name="hpBwpName" type="string" minOccurs="0">
@@ -119,14 +119,14 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
   <complexType name="FunctionalProfileIdentification">
     <annotation>
       <documentation> Specification of design source 0 means: specified by SmartGridready, the
-        Porfilenumber follows the SmargGirdready scheme &gt;0 means: specfied by manufacturer hhhh,
-        the Profilenumber followos a manufacturors scheme </documentation>
+        Profile number follows the SmargGirdready scheme &gt;0 means: specified by manufacturer hhhh,
+        the Profile number follows a manufacturers scheme </documentation>
     </annotation>
     <sequence>
       <element name="specificationOwnerIdentification" type="sgr:SpecificationOwnerIdentification" />
       <element name="functionalProfileCategory" type="sgr:FunctionalProfileCategory">
         <annotation>
-          <documentation>The Profile Identfication identiofis the main profile classes. The
+          <documentation>The Profile Identification identifies the main profile classes. The
             enumeration text is also documented with numbers being referenced in the profile number
             hhhh.nnnn.uuuu.ss.VV.vv as nnnn </documentation>
         </annotation>
@@ -135,10 +135,10 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
       <element name="levelOfOperation" type="sgr:LevelOfOperation">
         <annotation>
           <documentation> levelOfOperation defines a controls complexity level m) for read-only
-            monitoring dat points level 1) single contact 2) 2 or more contacts /state controlled
-            interface 3) statical defined characteristics tables 4) dynamic realtime control
-            combined with statical defined characteristics tables 5) dynamic realtime control
-            combined with dynamic changeable characteristics tables 6) prognosis based systems </documentation>
+            monitoring data points level 1) single contact 2) 2 or more contacts /state controlled
+            interface 3) statistical defined characteristics tables 4) dynamic real-time control
+            combined with statistical defined characteristics tables 5) dynamic real-time control
+            combined with dynamic changeable characteristics tables 6) prediction based systems </documentation>
         </annotation>
       </element>
       <element name="versionNumber" type="sgr:VersionNumber" />
@@ -268,8 +268,8 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
   <!-- the basic data based used für the generic level of a communicator -->
   <group name="DataType">
     <annotation>
-      <documentation>Generic high-ldevel data types. Impelemntations of this XSD map these types
-        into native data types in their programming language (java, python, golang, ...)</documentation>
+      <documentation>Generic high-level data types. Implementations of this XSD map these types
+        into native data types in their programming language (java, python, go lang, ...)</documentation>
     </annotation>
     <choice>
       <element name="boolean" type="sgr:EmptyType" />
@@ -291,8 +291,8 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
   <!-- the basic data based used für the generic level of a communicator -->
   <complexType name="DataTypeProduct">
     <annotation>
-      <documentation>Generic high-ldevel data types. Implementations of this XSD map these types
-        into native data types in their programming language (java, python, golang, ...)</documentation>
+      <documentation>Generic high-devel data types. Implementations of this XSD map these types
+        into native data types in their programming language (java, python, go lang, ...)</documentation>
     </annotation>
     <choice>
       <element name="enum" type="sgr:EnumMapProduct" />
@@ -336,7 +336,7 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
     </choice>
   </complexType>
 
-  <!-- the basic data based used für the generic level of a communicator -->
+  <!-- the basic data based used for the generic level of a communicator -->
   <complexType name="DataTypeFunctionalProfile">
     <annotation>
       <documentation>Generic high-level data types. Implementations of this XSD map these types
@@ -353,8 +353,8 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
   <!-- enumeration to select mandatory, optional or recommended use of elements -->
   <simpleType name="PresenceLevel">
     <annotation>
-      <documentation>Indicates wheter the element is mandatory (M), recommended (R, at least one of
-        the R elements mus be present), or optional (O, can be ommitted)</documentation>
+      <documentation>Indicates whether the element is mandatory (M), recommended (R, at least one of
+        the R elements must be present), or optional (O, can be omitted)</documentation>
     </annotation>
     <restriction base="string">
       <enumeration value="M" />
@@ -381,7 +381,7 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
   <complexType name="LegibleDescription">
     <annotation>
       <documentation> This element us used to extend the definitions with legible text elements: a
-        short understandbale explanation of the items addressed. These elements are used for printed
+        short understandable explanation of the items addressed. These elements are used for printed
         and published information </documentation>
     </annotation>
     <sequence>
@@ -403,7 +403,7 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
       </element>
       <element name="uri" type="anyURI" minOccurs="0">
         <annotation>
-          <documentation>optional URI pointong towards additional information</documentation>
+          <documentation>optional URI pointing towards additional information</documentation>
         </annotation>
       </element>
     </sequence>
@@ -689,7 +689,7 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
   <complexType name="ScalingFactor">
     <annotation>
       <documentation>scaled_value = value * multiplicator * 10^powerof10 This type is used for to
-        convert intereger datapoint values into floats only </documentation>
+        convert integer datapoint values into floats only </documentation>
     </annotation>
     <sequence>
       <element name="multiplicator" type="int" />
@@ -800,9 +800,9 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
   <simpleType name="SGCPServiceType">
     <annotation>
       <documentation> E0013: Assistance type of a reaction / function. This Attribute indicates the
-        type of Flexibility Entity of the operation NET servicable: Operation for the benefit of a
-        distribution network operator (DSO) SYS servicable: Operation of the total system operators
-        (TSO) ENER servicable: Operation for energy optimization </documentation>
+        type of Flexibility Entity of the operation NET serviceable: Operation for the benefit of a
+        distribution network operator (DSO) SYS serviceable: Operation of the total system operators
+        (TSO) ENER serviceable: Operation for energy optimization </documentation>
     </annotation>
     <restriction base="string">
       <enumeration value="AT_NetServiceable" />
