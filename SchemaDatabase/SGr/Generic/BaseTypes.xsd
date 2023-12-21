@@ -42,7 +42,7 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
   </complexType>
   <simpleType name="SpecificationOwnerIdentification">
     <annotation>
-      <documentation> This number identifies the organisation that owns the specification. 0 is
+      <documentation> This number identifies the organization that owns the specification. 0 is
         reserved for SmartGridready specifications, any other company will receive a number by the
         SmartGridready Deklarationsstelle. </documentation>
     </annotation>
@@ -60,7 +60,7 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
   </simpleType>
   <complexType name="AlternativeNames">
     <annotation>
-      <documentation> a name list for EEBUS, IEC6850,, SAREF4ENER etc. Used to support onology
+      <documentation> a name list for EEBUS, IEC6850,, SAREF4ENER etc. Used to support ontology
         naming.</documentation>
     </annotation>
     <sequence>
@@ -83,23 +83,23 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
       </element>
       <element name="iec61850Name" type="string" minOccurs="0">
         <annotation>
-          <documentation>IEC 61850 termonoligy place to add the 61850 abreviatuions</documentation>
+          <documentation>IEC 61850 terminology place to add the 61850 abbreviatuions</documentation>
         </annotation>
       </element>
       <element name="sarefName" type="string" minOccurs="0">
         <annotation>
-          <documentation> SAREF for ENER termonoligy place to add the SAREF abreviations
+          <documentation> SAREF for ENER terminology place to add the SAREF abbreviations
             (https://saref.etsi.org) </documentation>
         </annotation>
       </element>
       <element name="eebusName" type="string" minOccurs="0">
         <annotation>
-          <documentation> EEBUS for terminology place to add the EEBUS abreviations</documentation>
+          <documentation> EEBUS for terminology place to add the EEBUS abbreviations</documentation>
         </annotation>
       </element>
       <element name="sunSpecName" type="string" minOccurs="0">
         <annotation>
-          <documentation> sSUNSPEC for terminology place to add the www.sunspec.org abreviations</documentation>
+          <documentation> sSUNSPEC for terminology place to add the www.sunspec.org abbreviations</documentation>
         </annotation>
       </element>
       <element name="hpBwpName" type="string" minOccurs="0">
@@ -119,14 +119,14 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
   <complexType name="FunctionalProfileIdentification">
     <annotation>
       <documentation> Specification of design source 0 means: specified by SmartGridready, the
-        Porfilenumber follows the SmargGirdready scheme &gt;0 means: specfied by manufacturer hhhh,
-        the Profilenumber followos a manufacturors scheme </documentation>
+        Profile number follows the SmargGirdready scheme &gt;0 means: specified by manufacturer hhhh,
+        the Profile number follows a manufacturers scheme </documentation>
     </annotation>
     <sequence>
       <element name="specificationOwnerIdentification" type="sgr:SpecificationOwnerIdentification" />
       <element name="functionalProfileCategory" type="sgr:FunctionalProfileCategory">
         <annotation>
-          <documentation>The Profile Identfication identiofis the main profile classes. The
+          <documentation>The Profile Identification identifies the main profile classes. The
             enumeration text is also documented with numbers being referenced in the profile number
             hhhh.nnnn.uuuu.ss.VV.vv as nnnn </documentation>
         </annotation>
@@ -135,10 +135,10 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
       <element name="levelOfOperation" type="sgr:LevelOfOperation">
         <annotation>
           <documentation> levelOfOperation defines a controls complexity level m) for read-only
-            monitoring dat points level 1) single contact 2) 2 or more contacts /state controlled
-            interface 3) statical defined characteristics tables 4) dynamic realtime control
-            combined with statical defined characteristics tables 5) dynamic realtime control
-            combined with dynamic changeable characteristics tables 6) prognosis based systems </documentation>
+            monitoring data points level 1) single contact 2) 2 or more contacts /state controlled
+            interface 3) statistical defined characteristics tables 4) dynamic real-time control
+            combined with statistical defined characteristics tables 5) dynamic real-time control
+            combined with dynamic changeable characteristics tables 6) prediction based systems </documentation>
         </annotation>
       </element>
       <element name="versionNumber" type="sgr:VersionNumber" />
@@ -268,8 +268,8 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
   <!-- the basic data based used für the generic level of a communicator -->
   <group name="DataType">
     <annotation>
-      <documentation>Generic high-ldevel data types. Impelemntations of this XSD map these types
-        into native data types in their programming language (java, python, golang, ...)</documentation>
+      <documentation>Generic high-level data types. Implementations of this XSD map these types
+        into native data types in their programming language (java, python, go lang, ...)</documentation>
     </annotation>
     <choice>
       <element name="boolean" type="sgr:EmptyType" />
@@ -291,8 +291,8 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
   <!-- the basic data based used für the generic level of a communicator -->
   <complexType name="DataTypeProduct">
     <annotation>
-      <documentation>Generic high-ldevel data types. Implementations of this XSD map these types
-        into native data types in their programming language (java, python, golang, ...)</documentation>
+      <documentation>Generic high-devel data types. Implementations of this XSD map these types
+        into native data types in their programming language (java, python, go lang, ...)</documentation>
     </annotation>
     <choice>
       <element name="enum" type="sgr:EnumMapProduct" />
@@ -336,7 +336,7 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
     </choice>
   </complexType>
 
-  <!-- the basic data based used für the generic level of a communicator -->
+  <!-- the basic data based used for the generic level of a communicator -->
   <complexType name="DataTypeFunctionalProfile">
     <annotation>
       <documentation>Generic high-level data types. Implementations of this XSD map these types
@@ -353,8 +353,8 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
   <!-- enumeration to select mandatory, optional or recommended use of elements -->
   <simpleType name="PresenceLevel">
     <annotation>
-      <documentation>Indicates wheter the element is mandatory (M), recommended (R, at least one of
-        the R elements mus be present), or optional (O, can be ommitted)</documentation>
+      <documentation>Indicates whether the element is mandatory (M), recommended (R, at least one of
+        the R elements must be present), or optional (O, can be omitted)</documentation>
     </annotation>
     <restriction base="string">
       <enumeration value="M" />
@@ -381,7 +381,7 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
   <complexType name="LegibleDescription">
     <annotation>
       <documentation> This element us used to extend the definitions with legible text elements: a
-        short understandbale explanation of the items addressed. These elements are used for printed
+        short understandable explanation of the items addressed. These elements are used for printed
         and published information </documentation>
     </annotation>
     <sequence>
@@ -403,7 +403,7 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
       </element>
       <element name="uri" type="anyURI" minOccurs="0">
         <annotation>
-          <documentation>optional URI pointong towards additional information</documentation>
+          <documentation>optional URI pointing towards additional information</documentation>
         </annotation>
       </element>
     </sequence>
@@ -604,7 +604,7 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
       <!-- <enumeration value="MEGAVOLT_AMPERES" /> -->
       <!-- <enumeration value="MEGAVOLT_AMPERES_REACTIVE" /> -->
       <!-- <enumeration value="MEGAVOLTS" /> -->
-      <!-- <enumeration value="MEGAWATT_HOURS" /> -->
+      <enumeration value="MEGAWATT_HOURS" />
       <!-- <enumeration value="MEGAWATTS" /> -->
       <!-- <enumeration value="MEGOHMS" /> -->
       <enumeration value="METERS" />
@@ -689,7 +689,7 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
   <complexType name="ScalingFactor">
     <annotation>
       <documentation>scaled_value = value * multiplicator * 10^powerof10 This type is used for to
-        convert intereger datapoint values into floats only </documentation>
+        convert integer datapoint values into floats only </documentation>
     </annotation>
     <sequence>
       <element name="multiplicator" type="int" />
@@ -719,166 +719,49 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
     <union memberTypes="unsignedLong sgr:EmptyValue" />
   </simpleType>
 
-  <!--  generic Attribute Definitions  -->
-  <complexType name="GenericAttributes">
-    <annotation>
-      <documentation>these attributes are defined for the generic interface for the application
-        programmer. An attribute can be aligned to either a device, a functional Profile or a
-        datapoint </documentation>
-    </annotation>
-    <all>
-      <element name="maxVal" type="sgr:EmptyOrDecimal" minOccurs="0">
-        <annotation>
-          <documentation> upper range limit. Unit:inherited</documentation>
-        </annotation>
-      </element>
-      <element name="minVal" type="sgr:EmptyOrDecimal" minOccurs="0">
-        <annotation>
-          <documentation> lower range limit. Unit:inherited</documentation>
-        </annotation>
-      </element>
-      <element name="specialQualityRequirement" type="string" minOccurs="0">
-        <annotation>
-          <documentation>indicates quality requirements fullfilled like formal certifications</documentation>
-        </annotation>
-      </element>
-      <element name="precisionPercent" type="sgr:PrecisionPercent" minOccurs="0">
-        <annotation>
-          <documentation> the precisionPercent of a measurement, calculation result or result of a
-            controls process </documentation>
-        </annotation>
-      </element>
-      <element name="stabilityFallback" type="sgr:StabilityFallback" minOccurs="0">
-        <annotation>
-          <documentation> A consumer or a generating system receives the permit for a load change
-            for a certain period of time. This time is always set to 0 each time a confirmation
-            message is received (HeartBeat). </documentation>
-        </annotation>
-      </element>
-      <element name="smoothTransition" type="sgr:SmoothTransition" minOccurs="0">
-        <annotation>
-          <documentation> The time behavior of a transition from a power adjustment (positive as
-            well as negative) can be determined by several time values, so that this starts with a
-            random time delay, changes via a ramp and an expiry time with return to the initial
-            value. </documentation>
-        </annotation>
-      </element>
-      <element name="maxLatencyTimeMs" type="sgr:EmptyOrUnsignedLong" minOccurs="0">
-        <annotation>
-          <documentation> Maximum time in milliseconds from capturing of measured value until ready
-            at the product interface (i.e. analog-digital conversion time) </documentation>
-        </annotation>
-      </element>
-      <element name="measuredValueType" type="sgr:MeasuredValueType" minOccurs="0">
-        <annotation>
-          <documentation> MeasValueType: type of measurement. Possbile values are "value", "min",
-            max", "average", "stdDev" </documentation>
-        </annotation>
-      </element>
-      <element name="measuredValueSource" type="sgr:MeasuredValueSource" minOccurs="0">
-        <annotation>
-          <documentation> Value source kind related to SGr level 6 applications. Potential values
-            are measuredValue, calculatedValue, empiricalValue </documentation>
-        </annotation>
-      </element>
-      <element name="sampleRateHz" type="sgr:EmptyOrUnsignedLong" minOccurs="0">
-        <annotation>
-          <documentation> SampleRate in Hertz</documentation>
-        </annotation>
-      </element>
-      <!-- TODO: describe generic attributes -->
-      <element name="curtailment" type="sgr:EmptyOrDouble" minOccurs="0" />
-      <element name="minLoad" type="sgr:EmptyOrDouble" minOccurs="0" />
-      <element name="maxLockTimeMinutes" type="sgr:EmptyOrFloat" minOccurs="0" />
-      <element name="minRunTimeMinutes" type="sgr:EmptyOrFloat" minOccurs="0" />
-      <element name="valueByTimeTableMinutes" type="sgr:EmptyOrFloat" minOccurs="0" />
-      <element name="flexAssistance" type="sgr:FlexAssistance" minOccurs="0">
-        <annotation>
-          <documentation> Systems with more than One communicator need a definition of the priority
-            of the commands / demands for a flexibility requirement. This element defines the kind
-            of a such a command (servicable for net (DSO), energy or system (TNO)) and its priority
-            (SHALL / SHOULD / MAY) </documentation>
-        </annotation>
-      </element>
-      <element name="unitConversionMultiplicator" type="sgr:EmptyOrFloat" minOccurs="0" />
-      <element name="attributeList" type="sgr:AttributeList" minOccurs="0" />
-    </all>
-  </complexType>
-  <complexType name="StabilityFallback">
-    <annotation>
-      <documentation> A consumer or a generating system receives the permit for a load change for a
-        certain period of time. This time is always set to 0 each time a confirmation message is
-        received (HeartBeat). </documentation>
-    </annotation>
-    <sequence>
-      <element name="maxReceiveTime" type="sgr:EmptyOrFloat">
-        <annotation>
-          <documentation> Time in seconds. If the device does not recieve any communication within
-            this specified time the device automatically initiates the fallback. 0 indicates no
-            fallback will be performed. </documentation>
-        </annotation>
-      </element>
-      <element name="initValue" type="sgr:EmptyOrDecimal">
-        <annotation>
-          <documentation>Value of the reference variable at the start of the process cycle. Unit:
-            inherited </documentation>
-        </annotation>
-      </element>
-      <element name="fallbackValue" type="sgr:EmptyOrDecimal">
-        <annotation>
-          <documentation>Value of the reference variable in the event of a communication failure .
-            Unit:inherited </documentation>
-        </annotation>
-      </element>
-    </sequence>
-  </complexType>
-  <complexType name="SmoothTransition">
-    <annotation>
-      <documentation> The time behavior of a transition from a power adjustment (positive as well as
-        negative) can be determined by several time values, so that this starts with a random time
-        delay, changes via a ramp and an expiry time with return to the initial value. </documentation>
-    </annotation>
-    <sequence>
-      <element name="winTms" type="unsignedLong" minOccurs="0">
-        <annotation>
-          <documentation>indicates a time window in seconds in which the new operating mode is
-            started randomly. The time window begins with the start command of the operating mode.
-            The value 0 means immediate </documentation>
-        </annotation>
-      </element>
-      <element name="rvrtTms" type="unsignedLong" minOccurs="0">
-        <annotation>
-          <documentation> determines how long the operating mode should be active in seconds. When
-            the time has elapsed, the operating mode is automatically terminated. If rvrtTms = 0
-            (standard value), the operating mode remains active until a new command is received. </documentation>
-        </annotation>
-      </element>
-      <element name="rmpTms" type="unsignedLong" minOccurs="0">
-        <annotation>
-          <documentation>specifies how quickly the changes should be made in seconds. The
-            corresponding value is gradually changed from the old to the new value in the specified
-            time. </documentation>
-        </annotation>
-      </element>
-    </sequence>
-  </complexType>
-  <complexType name="FlexAssistance">
-    <sequence>
-      <element name="assists" type="sgr:SGCPServiceType" />
-      <element name="obligedTo" type="sgr:ObligLVlType" />
-    </sequence>
-  </complexType>
-  <complexType name="Attribute">
+  <complexType name="GenericAttributeFunctionalProfile">
     <sequence>
       <element name="name" type="string" />
-      <element name="type" type="string" minOccurs="0" />
-      <element name="value" type="string" minOccurs="0" />
-      <element name="legibleDescription" type="sgr:LegibleDescription" maxOccurs="4" minOccurs="0" />
     </sequence>
   </complexType>
-  <complexType name="AttributeList">
+  <complexType name="GenericAttributeProduct">
     <sequence>
-      <element name="attribute" type="sgr:Attribute" maxOccurs="unbounded" minOccurs="1" />
+      <element name="name" type="string" />
+      <choice>
+        <sequence>
+          <element name="dataType" type="sgr:DataTypeProduct" />
+          <element name="value" type="string"/>
+          <element name="unit" type="sgr:Units"/>
+        </sequence>
+        <element name="genericAttributeList" type="sgr:GenericAttributeListProductEnd" />
+      </choice>
+    </sequence>
+  </complexType>
+  <complexType name="GenericAttributeProductEnd">
+    <sequence>
+      <element name="name" type="string" />
+      <choice>
+        <sequence>
+          <element name="dataType" type="sgr:DataTypeProduct" />
+          <element name="value" type="string"/>
+          <element name="unit" type="sgr:Units"/>
+        </sequence>
+      </choice>
+    </sequence>
+  </complexType>
+  <complexType name="GenericAttributeListFunctionalProfile">
+    <sequence>
+      <element name="genericAttributeListElement" type="sgr:GenericAttributeFunctionalProfile" maxOccurs="unbounded" minOccurs="1" />
+    </sequence>
+  </complexType>
+  <complexType name="GenericAttributeListProduct">
+    <sequence>
+      <element name="genericAttributeListElement" type="sgr:GenericAttributeProduct" maxOccurs="unbounded" minOccurs="1" />
+    </sequence>
+  </complexType>
+  <complexType name="GenericAttributeListProductEnd">
+    <sequence>
+      <element name="genericAttributeListElement" type="sgr:GenericAttributeProductEnd" maxOccurs="unbounded" minOccurs="1" />
     </sequence>
   </complexType>
 
@@ -917,9 +800,9 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
   <simpleType name="SGCPServiceType">
     <annotation>
       <documentation> E0013: Assistance type of a reaction / function. This Attribute indicates the
-        type of Flexibility Entity of the operation NET servicable: Operation for the benefit of a
-        distribution network operator (DSO) SYS servicable: Operation of the total system operators
-        (TSO) ENER servicable: Operation for energy optimization </documentation>
+        type of Flexibility Entity of the operation NET serviceable: Operation for the benefit of a
+        distribution network operator (DSO) SYS serviceable: Operation of the total system operators
+        (TSO) ENER serviceable: Operation for energy optimization </documentation>
     </annotation>
     <restriction base="string">
       <enumeration value="AT_NetServiceable" />
