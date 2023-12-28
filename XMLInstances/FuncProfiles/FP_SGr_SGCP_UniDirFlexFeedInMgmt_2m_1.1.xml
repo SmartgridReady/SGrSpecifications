@@ -29,7 +29,32 @@
         <subReleaseVersionNumber>0</subReleaseVersionNumber>
       </versionNumber>
     </functionalProfileIdentification>
-    <legibleDescription>
+     <legibleDescription>
+      <textElement>
+        <![CDATA[
+          <img src="ressources/fp_cem_to_flexmgr.svg"/>
+			
+			<p>Stage 2m functional profile for Load Management Devices that regulate feed-in and have a communication interface to the power grid (to power suppliers, pooling providers or similar), 
+				controllable via a data point with various operating modes. The implementation of the functional profile must cover the following four operating states:</p>
+		
+		<p>The following operating states can be set and read through the data point "SGCP_OpModeFeedInCmd":</p>
+		<ol>
+			<li><strong>FI_NORMAL</strong>: In normal operation, the load management optimizes feed-in according to user-defined criteria within the allowed power range.</li>
+			<li><strong>FI_REDUCED</strong>: In reduced operation, feed-in power is reduced by an agreed-upon amount (in percentage, see SGrAttribute 'Curtailment') if possible.</li>
+			<li><strong>FI_MAX</strong>: In maximum operation, the load management allows for maximum feed-in power.</li>
+			<li><strong>FI_LOCKED</strong>: In the "locked" operating mode, no energy is allowed to be fed into the grid. The maximum duration of the lockout is defined by the 'Max. Lock Time' attribute.</li>
+		</ol>
+		
+		<p>The current operating mode of the customer's system can be read through the data point "SGCP_OpLoadState."</p>
+		
+		<p>The parameters for the percentage reduction (curtailment), maximum lockout duration (maxLockTimeMinutes), and time windows for defining continuous feed-in changes (smoothTransition) are manually configured during declaration or on the device itself. The optimal path for the declared device is defined during declaration. These parameters are described in the "Table of Attributes" below.</p>
+
+		  
+        ]]>
+      </textElement>
+      <language>en</language>
+    </legibleDescription>
+	<legibleDescription>
       <textElement>
         <![CDATA[
           <img src="ressources/fp_cem_to_flexmgr.svg"/>
@@ -56,7 +81,7 @@
 			  und die maximale Zeitdauer einer Sperrung (maxLockTimeMinutes) sowie die Zeitfenster für die Definition der kontinuierlichen Lastveränderung (smoothTransition) werden 
 			  über die Attribute während der Deklaration oder am Gerät selber manuell konfiguriert. Der optimale Weg für das deklarierte Gerät 
 		  wird bei der Deklaration definiert
-			Die Parameter sind untenstehend in der "Table of Attributes" beschrieben.
+			Die Parameter sind untenstehend in der "Table of Attributes" beschrieben.</p>
 		  
         ]]>
       </textElement>
@@ -98,6 +123,10 @@
         </dataType>
         <unit>NONE</unit>
         <legibleDescription>
+          <textElement>Setting the operation mode</textElement>
+          <language>en</language>
+        </legibleDescription>
+		 <legibleDescription>
           <textElement>Setzen des Betriebsmodus</textElement>
           <language>de</language>
         </legibleDescription>
@@ -126,6 +155,10 @@
         </dataType>
         <unit>NONE</unit>
         <legibleDescription>
+          <textElement>Feedback of load management</textElement>
+          <language>en</language>
+        </legibleDescription>
+		<legibleDescription>
           <textElement>Rückmeldung vom Lastmanagement</textElement>
           <language>de</language>
         </legibleDescription>
