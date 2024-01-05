@@ -29,22 +29,22 @@ jobs:
         DELETED_FILES: ${{ steps.changed-files.outputs.deleted_files }}
         RENAMED_FILES: ${{ steps.changed-files.outputs.renamed_files }}
       run: |
-        for file in "$ALL_CHANGED_AND_MODIFIED_FILES"; do # detects deleted files, too
+        for file in $ALL_CHANGED_AND_MODIFIED_FILES; do # detects deleted files, too
           echo "detected changed file: $file"
         done
-        for file in "$ADDED_FILES"; do
+        for file in $ADDED_FILES; do
           echo "try to upload added file: $file"
           curl --silent --upload-file "$file" "https://library.smartgridready.ch/$file?add&token=$SGR_WEB_APP_TOKEN"
         done
-        for file in "$MODIFIED_FILES"; do
+        for file in $MODIFIED_FILES; do
           echo "try to upload modified file: $file"
           curl --silent --upload-file "$file" "https://library.smartgridready.ch/$file?update&token=$SGR_WEB_APP_TOKEN"
         done
-        for file in "$DELETED_FILES"; do
+        for file in $DELETED_FILES; do
           echo "try to delete file: $file"
           curl --silent "$file" "https://library.smartgridready.ch/$file?delete&token=$SGR_WEB_APP_TOKEN"
         done
-        for file in "$RENAMED_FILES"; do
+        for file in $RENAMED_FILES; do
           echo "try to upload renamed file: $file (as update as we do not know the old name)"
           curl --silent --upload-file "$file" "https://library.smartgridready.ch/$file?update&token=$SGR_WEB_APP_TOKEN"
         done
