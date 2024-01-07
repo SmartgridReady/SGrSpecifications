@@ -85,7 +85,3 @@ Use the SGr namespace as default namespace in the XMLs.
 ### Schema Compliance
 
 XMLs should always fulfill their schema. No invalid XMLs on master.
-
-### Glossar (deutsch)
-
-[Glossar](Glossary.md)
