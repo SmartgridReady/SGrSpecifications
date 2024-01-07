@@ -28,7 +28,7 @@
 			CTA OH Inverta Wärmepumpen
 		</manufacturerLabel>
     <generalRemarks>CTA/mz  IBT/cb</generalRemarks>
-    <levelOfOperation>4</levelOfOperation>
+    <levelOfOperation>4m</levelOfOperation>
     <programmerHints>
       <textElement>
           This Gateway offers manufacturer specific control modes for HeatCoolCtrl and DomHotWaterCtrl.  
@@ -79,11 +79,12 @@
               <dataPoint>
                 <dataPointName>ctaRemoteCtrlTimeSec</dataPointName>
                 <dataDirection>RW</dataDirection>
-                <presenceLevel>M</presenceLevel>
+                <presenceLevel>O</presenceLevel>
                 <dataType>
                   <int16U />
                 </dataType>
                 <unit>SECONDS</unit>
+                <maximumValue>3000</maximumValue>
                 <alternativeNames>
                   <sLV1Name>ctaRemoteCtrlTimeSec</sLV1Name>
                   <manufName>CTA_Ext_Communication_Handler</manufName>
@@ -100,9 +101,6 @@
                   <language>en</language>
                 </programmerHints>
               </dataPoint>
-              <genericAttributes>
-                <maxVal>3000</maxVal>
-              </genericAttributes>
               <modbusDataPointConfiguration>
                 <modbusDataType>
                   <int16U/>
@@ -148,7 +146,7 @@
               <dataPoint>
                 <dataPointName>ctaHPOpModeCmdFb</dataPointName>
                 <dataDirection>R</dataDirection>
-                <presenceLevel>O</presenceLevel>
+                <presenceLevel>R</presenceLevel>
                 <dataType>
                   <enum>
                     <enumEntry>
@@ -246,7 +244,7 @@
               <dataPoint>
                 <dataPointName>ctaHPOpState</dataPointName>
                 <dataDirection>R</dataDirection>
-                <presenceLevel>M</presenceLevel>
+                <presenceLevel>R</presenceLevel>
                 <dataType>
                   <enum>
                     <enumEntry>
@@ -488,6 +486,11 @@
                   <float32 />
                 </dataType>
                 <unit>PERCENT</unit>
+                <minimumValue>38.0</minimumValue>
+                <maximumValue>100.0</maximumValue>
+                <!-- TODO check whether this is needed
+                <unitConversionMultiplicator>2.0</unitConversionMultiplicator>
+                -->
                 <alternativeNames>
                   <manufName>CTA_DWRequest</manufName>
                 </alternativeNames>
@@ -496,13 +499,6 @@
                   <language>de</language>
                 </legibleDescription>
               </dataPoint>
-              <genericAttributes>
-                <maxVal>100.0</maxVal>
-                <minVal>38.0</minVal>
-                <!-- TODO check whether this is needed
-                <unitConversionMultiplicator>2.0</unitConversionMultiplicator>
-                -->
-              </genericAttributes>
               <modbusDataPointConfiguration>
                 <modbusDataType>
                   <float32 />
@@ -521,6 +517,7 @@
                   <float32 />
                 </dataType>
                 <unit>REVOLUTIONS_PER_MINUTE</unit>
+                <unitConversionMultiplicator>60.0</unitConversionMultiplicator>
                 <alternativeNames>
                 	<sLV1Name>ActSpeed</sLV1Name>
                 	<manufName>State_CompRPS</manufName></alternativeNames>
@@ -531,9 +528,6 @@
                   <language>de</language>
                 </legibleDescription>
               </dataPoint>
-              <genericAttributes>
-                <unitConversionMultiplicator>60.0</unitConversionMultiplicator>
-              </genericAttributes>
               <modbusDataPointConfiguration>
                 <modbusDataType>
                   <float32 />
@@ -547,7 +541,7 @@
               <dataPoint>
                 <dataPointName>ActPowerACtot</dataPointName>
                 <dataDirection>R</dataDirection>
-                <presenceLevel>O</presenceLevel>
+                <presenceLevel>M</presenceLevel>
                 <dataType>
                   <float32 />
                 </dataType>
@@ -604,7 +598,7 @@
               <dataPoint>
                 <dataPointName>ctaHCOpModeCmd</dataPointName>
                 <dataDirection>RWP</dataDirection>
-                <presenceLevel>M</presenceLevel>
+                <presenceLevel>R</presenceLevel>
                 <dataType>
                   <enum>
                     <enumEntry>
@@ -662,7 +656,7 @@
               <dataPoint>
                 <dataPointName>ctaHCOpState</dataPointName>
                 <dataDirection>R</dataDirection>
-                <presenceLevel>M</presenceLevel>
+                <presenceLevel>R</presenceLevel>
                 <dataType>
                   <enum>
                     <enumEntry>
@@ -720,7 +714,7 @@
               <dataPoint>
                 <dataPointName>SupplyWaterTemp</dataPointName>
                 <dataDirection>R</dataDirection>
-                <presenceLevel>O</presenceLevel>
+                <presenceLevel>M</presenceLevel>
                 <dataType>
                   <float32 />
                 </dataType>
@@ -747,7 +741,7 @@
               <dataPoint>
                 <dataPointName>SupplyWaterTempStpt</dataPointName>
                 <dataDirection>RW</dataDirection>
-                <presenceLevel>O</presenceLevel>
+                <presenceLevel>R</presenceLevel>
                 <dataType>
                   <float32 />
                 </dataType>
@@ -774,7 +768,7 @@
               <dataPoint>
                 <dataPointName>ctaRemoteHCTempSetptEnable</dataPointName>
                 <dataDirection>RW</dataDirection>
-                <presenceLevel>M</presenceLevel>
+                <presenceLevel>O</presenceLevel>
                 <dataType>
                   <boolean/>
                 </dataType>
@@ -805,7 +799,7 @@
               <dataPoint>
                 <dataPointName>ReturnSupplyWaterTemp</dataPointName>
                 <dataDirection>R</dataDirection>
-                <presenceLevel>O</presenceLevel>
+                <presenceLevel>R</presenceLevel>
                 <dataType>
                   <float32 />
                 </dataType>
@@ -863,7 +857,7 @@
               <dataPoint>
                 <dataPointName>ctaHCOpModeCmd</dataPointName>
                 <dataDirection>RWP</dataDirection>
-                <presenceLevel>M</presenceLevel>
+                <presenceLevel>R</presenceLevel>
                 <dataType>
                   <enum>
                     <enumEntry>
@@ -921,7 +915,7 @@
               <dataPoint>
                 <dataPointName>ctaHCOpState</dataPointName>
                 <dataDirection>R</dataDirection>
-                <presenceLevel>M</presenceLevel>
+                <presenceLevel>R</presenceLevel>
                 <dataType>
                   <enum>
                     <enumEntry>
@@ -979,7 +973,7 @@
               <dataPoint>
                 <dataPointName>SupplyWaterTemp</dataPointName>
                 <dataDirection>R</dataDirection>
-                <presenceLevel>O</presenceLevel>
+                <presenceLevel>M</presenceLevel>
                 <dataType>
                   <float32 />
                 </dataType>
@@ -1006,7 +1000,7 @@
               <dataPoint>
                 <dataPointName>SupplyWaterTempStpt</dataPointName>
                 <dataDirection>RW</dataDirection>
-                <presenceLevel>O</presenceLevel>
+                <presenceLevel>R</presenceLevel>
                 <dataType>
                   <float32 />
                 </dataType>
@@ -1033,7 +1027,7 @@
               <dataPoint>
                 <dataPointName>ctaRemoteHCTempSetptEnable</dataPointName>
                 <dataDirection>RW</dataDirection>
-                <presenceLevel>M</presenceLevel>
+                <presenceLevel>O</presenceLevel>
                 <dataType>
                   <boolean/>
                 </dataType>
@@ -1064,7 +1058,7 @@
               <dataPoint>
                 <dataPointName>ReturnSupplyWaterTemp</dataPointName>
                 <dataDirection>R</dataDirection>
-                <presenceLevel>O</presenceLevel>
+                <presenceLevel>M</presenceLevel>
                 <dataType>
                   <float32 />
                 </dataType>
@@ -1120,7 +1114,7 @@
               <dataPoint>
                 <dataPointName>ctaDomHotWOpModeCmd</dataPointName>
                 <dataDirection>RWP</dataDirection>
-                <presenceLevel>M</presenceLevel>
+                <presenceLevel>R</presenceLevel>
                 <dataType>
                   <enum>
                     <enumEntry>
@@ -1167,7 +1161,7 @@
               <dataPoint>
                 <dataPointName>ctaDomHotWOpState</dataPointName>
                 <dataDirection>R</dataDirection>
-                <presenceLevel>M</presenceLevel>
+                <presenceLevel>R</presenceLevel>
                 <dataType>
                   <enum>
                     <enumEntry>
@@ -1304,11 +1298,13 @@
               <dataPoint>
                 <dataPointName>HeatBufferTempStptOffset</dataPointName>
                 <dataDirection>RWP</dataDirection>
-                <presenceLevel>M</presenceLevel>
+                <presenceLevel>R</presenceLevel>
                 <dataType>
                   <float32 />
                 </dataType>
                 <unit>DEGREES_CELSIUS</unit>
+                <minimumValue>-50.0</minimumValue>
+                <maximumValue>50.0</maximumValue>
                 <alternativeNames>
                   <sLV1Name>HeatBufferTempStptOffset</sLV1Name>
                   <manufName>CTA_CFG_Buffer_Overcharge_dT</manufName>
@@ -1319,10 +1315,6 @@
                   <language>de</language>
                 </legibleDescription>
               </dataPoint>
-              <genericAttributes>
-                <maxVal>50.0</maxVal>
-                <minVal>-50.0</minVal>
-              </genericAttributes>
               <modbusDataPointConfiguration>
                 <modbusDataType>
                   <float32 />
@@ -1334,7 +1326,7 @@
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
-                <dataPointName>ActHeatBufferTempUpper</dataPointName>
+                <dataPointName>ActHeatBufferTemp</dataPointName>
                 <dataDirection>R</dataDirection>
                 <presenceLevel>M</presenceLevel>
                 <dataType>
@@ -1342,7 +1334,7 @@
                 </dataType>
                 <unit>DEGREES_CELSIUS</unit>
                 <alternativeNames>
-                	<sLV1Name>ActHeatBufferTempUpper</sLV1Name>
+                	<sLV1Name>ActHeatBufferTemp</sLV1Name>
                 	<manufName>CTA_B4_Temp</manufName></alternativeNames>
                 <legibleDescription>
                   <textElement>Aktuelle Ist-Temperatur des
@@ -1422,10 +1414,24 @@
               <language>de</language>
             </legibleDescription>
           </functionalProfile>
-          <genericAttributes>
-            <maxLockTimeMinutes>120</maxLockTimeMinutes>
-            <minRunTimeMinutes>20</minRunTimeMinutes>
-          </genericAttributes>
+          <genericAttributeList>
+            <genericAttributeListElement>
+              <name>MaximumLockTime</name>
+              <dataType>
+                <float32/>
+              </dataType>
+              <value>120</value>
+              <unit>MINUTES</unit>
+            </genericAttributeListElement>
+            <genericAttributeListElement>
+              <name>MinimumRunTime</name>
+              <dataType>
+                <float32/>
+              </dataType>
+              <value>20</value>
+              <unit>MINUTES</unit>
+            </genericAttributeListElement>
+          </genericAttributeList>
           <dataPointList>
             <dataPointListElement>
               <dataPoint>
@@ -1595,7 +1601,7 @@
               <dataPoint>
                 <dataPointName>ActiveEnergyACheat</dataPointName>
                 <dataDirection>R</dataDirection>
-                <presenceLevel>R</presenceLevel>
+                <presenceLevel>O</presenceLevel>
                 <dataType>
                   <float32 />
                 </dataType>
@@ -1622,7 +1628,7 @@
               <dataPoint>
                 <dataPointName>ActiveEnergyACDomHotW</dataPointName>
                 <dataDirection>R</dataDirection>
-                <presenceLevel>R</presenceLevel>
+                <presenceLevel>O</presenceLevel>
                 <dataType>
                   <float32 />
                 </dataType>
@@ -1649,7 +1655,7 @@
               <dataPoint>
                 <dataPointName>ThermalEnergyTot</dataPointName>
                 <dataDirection>R</dataDirection>
-                <presenceLevel>R</presenceLevel>
+                <presenceLevel>O</presenceLevel>
                 <dataType>
                   <float32 />
                 </dataType>
@@ -1676,7 +1682,7 @@
               <dataPoint>
                 <dataPointName>ThermalEnergyHeat</dataPointName>
                 <dataDirection>R</dataDirection>
-                <presenceLevel>R</presenceLevel>
+                <presenceLevel>M</presenceLevel>
                 <dataType>
                   <float32 />
                 </dataType>
@@ -1703,7 +1709,7 @@
               <dataPoint>
                 <dataPointName>ThermalEnergyDomHotWater</dataPointName>
                 <dataDirection>R</dataDirection>
-                <presenceLevel>R</presenceLevel>
+                <presenceLevel>M</presenceLevel>
                 <dataType>
                   <float32 />
                 </dataType>
@@ -1758,7 +1764,7 @@
               <dataPoint>
                 <dataPointName>RuntimeHeating</dataPointName>
                 <dataDirection>R</dataDirection>
-                <presenceLevel>R</presenceLevel>
+                <presenceLevel>O</presenceLevel>
                 <dataType>
                   <float32 />
                 </dataType>
@@ -1785,7 +1791,7 @@
               <dataPoint>
                 <dataPointName>RuntimeCooling</dataPointName>
                 <dataDirection>R</dataDirection>
-                <presenceLevel>R</presenceLevel>
+                <presenceLevel>O</presenceLevel>
                 <dataType>
                   <float32 />
                 </dataType>
@@ -1812,7 +1818,7 @@
               <dataPoint>
                 <dataPointName>NrOfStartupsCompressor</dataPointName>
                 <dataDirection>R</dataDirection>
-                <presenceLevel>R</presenceLevel>
+                <presenceLevel>O</presenceLevel>
                 <dataType>
                   <int32U />
                 </dataType>

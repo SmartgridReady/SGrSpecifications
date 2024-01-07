@@ -53,7 +53,7 @@
     <powerSource>dc</powerSource>
     <manufacturerLabel>ISG web, Bestellnummer 229336</manufacturerLabel>
     <generalRemarks>IBT/cb</generalRemarks>
-    <levelOfOperation>4</levelOfOperation>
+    <levelOfOperation>4m</levelOfOperation>
   </deviceInformation>
   <interfaceList>
     <modbusInterface>
@@ -152,9 +152,9 @@
           <dataPointList>
             <dataPointListElement>
               <dataPoint>
-                <dataPointName>HPOpModeCmd</dataPointName>
+                <dataPointName>stiHPOpModeCmd</dataPointName>
                 <dataDirection>RW</dataDirection>
-                <presenceLevel>M</presenceLevel>
+                <presenceLevel>R</presenceLevel>
                 <dataType>
                   <enum>
                     <enumEntry>
@@ -230,103 +230,9 @@
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
-                <dataPointName>HPOpState</dataPointName>
-                <dataDirection>R</dataDirection>
-                <presenceLevel>M</presenceLevel>
-                <dataType>
-                  <bitmap>
-                    <bitmapEntry>
-                      <literal>HP_PUMP_ON</literal>
-                      <hexMask>03</hexMask>
-                      <description>Waermepumpe EIN</description>
-                    </bitmapEntry>
-                    <bitmapEntry>
-                      <literal>HP_IN_HEATING_MODE</literal>
-                      <hexMask>1C</hexMask>
-                    </bitmapEntry>
-                    <bitmapEntry>
-                      <literal>HP_IN_DHW_MODE</literal>
-                      <hexMask>20</hexMask>
-                    </bitmapEntry>
-                    <bitmapEntry>
-                      <literal>COMPRESSOR_RUNNING</literal>
-                      <hexMask>40</hexMask>
-                    </bitmapEntry>
-                    <bitmapEntry>
-                      <literal>COOLING_MODE_ACTIVE</literal>
-                      <hexMask>0100</hexMask>
-                    </bitmapEntry>
-                    <bitmapEntry>
-                      <literal>IN_DEFROST_MODE</literal>
-                      <hexMask>0200</hexMask>
-                    </bitmapEntry>
-                  </bitmap>
-                </dataType>
-                <unit>NONE</unit>
-                <alternativeNames>                 
-                  <sLV1Name>HPOpState</sLV1Name>
-                  <manufName>Betriebsstatus</manufName>
-                  <hpBwpName>Aktive Funktion</hpBwpName>
-                </alternativeNames>
-                <legibleDescription>
-                  <textElement>            
-                <![CDATA[	
-                  <p>Auslesen des aktuellen Status der Wärmepumpe</p>
-                  <ol>
-                    <li><strong>HP_PUMP_ON:</strong> Waermepumpe EIN</li>
-                    <li><strong>HP_IN_HEATING_MODE:</strong> Waermepumpe heizt</li>
-                    <li><strong>HP_IN_DHW_MODE:</strong> Waermepumpe im Warmwassermode</li>
-                    <li><strong>COMPRESSOR_RUNNING:</strong> Kompressor laeuft</li>
-                    <li><strong>SUMMER_MODE_ACTIVE:</strong> Waermepumpe im Sommermodus</li>
-                    <li><strong>COOLING_MODE_ACTIVE:</strong> Waermepumpe kuehlt</li>
-                    <li><strong>IN_DEFROST_MODE:</strong> Waermepumpe im Gefrierschutzmode</li>
-                  </ol>
-                ]]>
-              </textElement>
-                  <language>de</language>
-                </legibleDescription>
-                <programmerHints>
-                  <textElement>          
-                    <![CDATA[		
-                      <p>the manufacturer Bit coded status information is as mapped into interoperable format as  follows:</p>
-                      <ol>
-                        <li><strong>B0:</strong> HC 1 PUMP on</li>
-                        <li><strong>B1:</strong> HC 2 PUMP on</li>
-                        <li> -> mapped into: <strong>HP_PUMP_ON</strong>  </li>   
-                        <li><strong>B2:</strong> HEAT-UP PROGRAM</li>
-                        <li><strong>B3:</strong> NHZ STAGES RUNNING</li>
-                        <li><strong>B4:</strong> HP IN HEATING MODE</li>
-                        <li> ->  mapped into:<strong>HP_IN_HEATING_MODE</strong>  </li>   
-                        <li><strong>B5:</strong> HP IN DHW MODE</li>
-                        <li> ->  mapped into:<strong>HP_IN_DHW_MODE</strong>  </li>  
-                        <li><strong>B6:</strong> COMPRESSOR RUNNING</li>
-                        <li> ->  mapped into: <strong>COMPRESSOR_RUNNING</strong> </li>  
-                        <li><strong>B7:</strong> SUMMER MODE ACTIVE</li>
-                        <li> ->  mapped into: <strong>SUMMER_MODE_ACTIVE</strong>  </li>  
-                        <li><strong>B8:</strong> COOLING MODE ACTIVE</li>
-                        <li> ->  mapped into: <strong>COOLING_MODE_ACTIVE</strong>  </li>  
-                        <li><strong>B9:</strong> MIN. ONE IWS IN DEFROST MODE</li>
-                        <li> ->  mapped into: <strong>IN_DEFROST_MODE</strong> </li>  
-                  </ol>
-                ]]>
-                  </textElement>
-                  <language>en</language>
-                </programmerHints>
-              </dataPoint>
-              <modbusDataPointConfiguration>
-                <modbusDataType>
-                  <int16U />
-                </modbusDataType>
-                <address>2501</address>
-                <registerType>InputRegister</registerType>
-                <numberOfRegisters>1</numberOfRegisters>
-              </modbusDataPointConfiguration>
-            </dataPointListElement>
-            <dataPointListElement>
-              <dataPoint>
                 <dataPointName>stiHPOpState</dataPointName>
                 <dataDirection>R</dataDirection>
-                <presenceLevel>O</presenceLevel>
+                <presenceLevel>R</presenceLevel>
                 <dataType>
                   <bitmap>
                     <bitmapEntry>
@@ -481,6 +387,8 @@
                   <float32 />
                 </dataType>
                 <unit>DEGREES_CELSIUS</unit>
+                <minimumValue>-60.0</minimumValue>
+                <maximumValue>80.0</maximumValue>
                 <alternativeNames>            
                   <sLV1Name>OutsideAirTemp</sLV1Name>
                   <manufName>Aussentemperatur</manufName>
@@ -492,10 +400,6 @@
                   <language>de</language>
                 </legibleDescription>
               </dataPoint>
-              <genericAttributes>
-                <maxVal>80.0</maxVal>
-                <minVal>-60.0</minVal>
-              </genericAttributes>
               <modbusDataPointConfiguration>
                 <modbusDataType>
                   <int16 />
@@ -546,11 +450,13 @@
               <dataPoint>
                 <dataPointName>ReturnSupplyWaterTemp</dataPointName>
                 <dataDirection>R</dataDirection>
-                <presenceLevel>O</presenceLevel>
+                <presenceLevel>M</presenceLevel>
                 <dataType>
                   <float32 />
                 </dataType>
                 <unit>DEGREES_CELSIUS</unit>
+                <minimumValue>0.0</minimumValue>
+                <maximumValue>90.0</maximumValue>
                 <alternativeNames>            
                   <sLV1Name>ReturnSupplyWaterTemp</sLV1Name>
                   <manufName>Ruecklaufisttemperatur</manufName>
@@ -562,10 +468,6 @@
                   <language>de</language>
                 </legibleDescription>
               </dataPoint>
-              <genericAttributes>
-                <maxVal>90.0</maxVal>
-                <minVal>0.0</minVal>
-              </genericAttributes>
               <modbusDataPointConfiguration>
                 <modbusDataType>
                   <int16 />
@@ -651,11 +553,13 @@
               <dataPoint>
                 <dataPointName>SupplyWaterTemp</dataPointName>
                 <dataDirection>R</dataDirection>
-                <presenceLevel>O</presenceLevel>
+                <presenceLevel>M</presenceLevel>
                 <dataType>
                   <float32 />
                 </dataType>
                 <unit>DEGREES_CELSIUS</unit>
+                <minimumValue>0.0</minimumValue>
+                <maximumValue>40.0</maximumValue>
                 <alternativeNames>            
                   <sLV1Name>SupplyWaterTemp</sLV1Name>
                   <manufName>ISTTEMPERATUR HK 1</manufName>
@@ -666,10 +570,6 @@
                   <language>de</language>
                 </legibleDescription>
               </dataPoint>
-              <genericAttributes>
-                <maxVal>40.0</maxVal>
-                <minVal>0.0</minVal>
-              </genericAttributes>
               <modbusDataPointConfiguration>
                 <modbusDataType>
                   <int16 />
@@ -694,6 +594,8 @@
                   <float32 />
                 </dataType>
                 <unit>DEGREES_CELSIUS</unit>
+                <minimumValue>0.0</minimumValue>
+                <maximumValue>40.0</maximumValue>
                 <alternativeNames>            
                   <sLV1Name>SupplyWaterTempStptFb</sLV1Name>
                   <manufName>SOLLTEMPERATUR HK 1</manufName>
@@ -710,10 +612,6 @@
                   <language>en</language>
                 </programmerHints>
               </dataPoint>
-              <genericAttributes>
-                <maxVal>40.0</maxVal>
-                <minVal>0.0</minVal>
-              </genericAttributes>
               <modbusDataPointConfiguration>
                 <modbusDataType>
                   <int16 />
@@ -738,6 +636,8 @@
                   <float32 />
                 </dataType>
                 <unit>DEGREES_CELSIUS</unit>
+                <minimumValue>5.0</minimumValue>
+                <maximumValue>30.0</maximumValue>
                 <alternativeNames>            
                   <sLV1Name>SupplyWaterTempStptComf</sLV1Name>
                   <manufName>KOMFORT TEMPERATUR HK 1</manufName>
@@ -748,10 +648,6 @@
                   <language>de</language>
                 </legibleDescription>
               </dataPoint>
-              <genericAttributes>
-                <maxVal>30.0</maxVal>
-                <minVal>5.0</minVal>
-              </genericAttributes>
               <modbusDataPointConfiguration>
                 <modbusDataType>
                   <int16 />
@@ -776,6 +672,8 @@
                   <float32 />
                 </dataType>
                 <unit>DEGREES_CELSIUS</unit>
+                <minimumValue>5.0</minimumValue>
+                <maximumValue>30.0</maximumValue>
                 <alternativeNames>            
                   <sLV1Name>SupplyWaterTempStptEco</sLV1Name>
                   <manufName>ECO TEMPERATUR HK 1</manufName>
@@ -786,10 +684,6 @@
                   <language>de</language>
                 </legibleDescription>
               </dataPoint>
-              <genericAttributes>
-                <maxVal>30.0</maxVal>
-                <minVal>5.0</minVal>
-              </genericAttributes>
               <modbusDataPointConfiguration>
                 <modbusDataType>
                   <int16 />
@@ -839,11 +733,13 @@
               <dataPoint>
                 <dataPointName>SupplyWaterTemp</dataPointName>
                 <dataDirection>R</dataDirection>
-                <presenceLevel>O</presenceLevel>
+                <presenceLevel>M</presenceLevel>
                 <dataType>
                   <float32 />
                 </dataType>
                 <unit>DEGREES_CELSIUS</unit>
+                <minimumValue>0.0</minimumValue>
+                <maximumValue>40.0</maximumValue>
                 <alternativeNames>            
                   <sLV1Name>SupplyWaterTemp</sLV1Name>
                   <manufName>ISTTEMPERATUR HK 2</manufName>
@@ -854,10 +750,6 @@
                   <language>de</language>
                 </legibleDescription>
               </dataPoint>
-              <genericAttributes>
-                <maxVal>40.0</maxVal>
-                <minVal>0.0</minVal>
-              </genericAttributes>
               <modbusDataPointConfiguration>
                 <modbusDataType>
                   <int16 />
@@ -882,6 +774,8 @@
                   <float32 />
                 </dataType>
                 <unit>DEGREES_CELSIUS</unit>
+                <minimumValue>0.0</minimumValue>
+                <maximumValue>40.0</maximumValue>
                 <alternativeNames>            
                   <sLV1Name>SupplyWaterTempStptFb</sLV1Name>
                   <manufName>SOLLTEMPERATUR HK 2</manufName>
@@ -898,10 +792,6 @@
                   <language>en</language>
                 </programmerHints>
               </dataPoint>
-              <genericAttributes>
-                <maxVal>40.0</maxVal>
-                <minVal>0.0</minVal>
-              </genericAttributes>
               <modbusDataPointConfiguration>
                 <modbusDataType>
                   <int16 />
@@ -926,6 +816,8 @@
                   <float32 />
                 </dataType>
                 <unit>DEGREES_CELSIUS</unit>
+                <minimumValue>5.0</minimumValue>
+                <maximumValue>30.0</maximumValue>
                 <alternativeNames>            
                   <sLV1Name>SupplyWaterTempStptComf</sLV1Name>
                   <manufName>KOMFORT TEMPERATUR HK 2</manufName>
@@ -936,10 +828,6 @@
                   <language>de</language>
                 </legibleDescription>
               </dataPoint>
-              <genericAttributes>
-                <maxVal>30.0</maxVal>
-                <minVal>5.0</minVal>
-              </genericAttributes>
               <modbusDataPointConfiguration>
                 <modbusDataType>
                   <int16 />
@@ -964,6 +852,8 @@
                   <float32 />
                 </dataType>
                 <unit>DEGREES_CELSIUS</unit>
+                <minimumValue>5.0</minimumValue>
+                <maximumValue>30.0</maximumValue>
                 <alternativeNames>            
                   <sLV1Name>SupplyWaterTempStptEco</sLV1Name>
                   <manufName>ECO TEMPERATUR HK 2</manufName>
@@ -974,10 +864,6 @@
                   <language>de</language>
                 </legibleDescription>
               </dataPoint>
-              <genericAttributes>
-                <maxVal>30.0</maxVal>
-                <minVal>5.0</minVal>
-              </genericAttributes>
               <modbusDataPointConfiguration>
                 <modbusDataType>
                   <int16 />
@@ -1059,11 +945,13 @@
               <dataPoint>
                 <dataPointName>DomHotWTempStptFb</dataPointName>
                 <dataDirection>R</dataDirection>
-                <presenceLevel>M</presenceLevel>
+                <presenceLevel>R</presenceLevel>
                 <dataType>
                   <float32 />
                 </dataType>
                 <unit>DEGREES_CELSIUS</unit>
+                <minimumValue>10.0</minimumValue>
+                <maximumValue>65.0</maximumValue>
                 <alternativeNames>            
                   <sLV1Name>DomHotWTempStptFb</sLV1Name>
                   <manufName>SOLLTEMPERATUR Warmwasser</manufName>
@@ -1078,10 +966,6 @@
                   <language>en</language>
                 </programmerHints>
               </dataPoint>
-              <genericAttributes>
-                <maxVal>65.0</maxVal>
-                <minVal>10.0</minVal>
-              </genericAttributes>
               <modbusDataPointConfiguration>
                 <modbusDataType>
                   <int16 />
@@ -1101,11 +985,13 @@
               <dataPoint>
                 <dataPointName>DomHotWTempStptComf</dataPointName>
                 <dataDirection>RW</dataDirection>
-                <presenceLevel>M</presenceLevel>
+                <presenceLevel>R</presenceLevel>
                 <dataType>
                   <float32 />
                 </dataType>
                 <unit>DEGREES_CELSIUS</unit>
+                <minimumValue>10.0</minimumValue>
+                <maximumValue>60.0</maximumValue>
                 <alternativeNames>            
                   <sLV1Name>DomHotWTempStptComf</sLV1Name>
                   <manufName>KOMFORT TEMPERATUR Warmwasser</manufName>
@@ -1118,10 +1004,6 @@
                   <language>de</language>
                 </legibleDescription>
               </dataPoint>
-              <genericAttributes>
-                <maxVal>60.0</maxVal>
-                <minVal>10.0</minVal>
-              </genericAttributes>
               <modbusDataPointConfiguration>
                 <modbusDataType>
                   <int16 />
@@ -1141,11 +1023,13 @@
               <dataPoint>
                 <dataPointName>DomHotWTempStptEco</dataPointName>
                 <dataDirection>RW</dataDirection>
-                <presenceLevel>M</presenceLevel>
+                <presenceLevel>R</presenceLevel>
                 <dataType>
                   <float32 />
                 </dataType>
                 <unit>DEGREES_CELSIUS</unit>
+                <minimumValue>10.0</minimumValue>
+                <maximumValue>60.0</maximumValue>
                 <alternativeNames>            
                   <sLV1Name>DomHotWTempStptEco</sLV1Name>
                   <manufName>ECO TEMPERATUR Warmwasser</manufName>
@@ -1158,10 +1042,6 @@
                   <language>de</language>
                 </legibleDescription>
               </dataPoint>
-              <genericAttributes>
-                <minVal>10.0</minVal>
-                <maxVal>60.0</maxVal>
-              </genericAttributes>
               <modbusDataPointConfiguration>
                 <modbusDataType>
                   <int16 />
@@ -1204,7 +1084,7 @@
               <dataPoint>
                 <dataPointName>ActHeatBufferTempStptFb</dataPointName>
                 <dataDirection>R</dataDirection>
-                <presenceLevel>M</presenceLevel>
+                <presenceLevel>R</presenceLevel>
                 <dataType>
                   <float32 />
                 </dataType>
@@ -1248,6 +1128,8 @@
                   <float32 />
                 </dataType>
                 <unit>DEGREES_CELSIUS</unit>
+                <minimumValue>0.0</minimumValue>
+                <maximumValue>90.0</maximumValue>
                 <alternativeNames>            
                   <sLV1Name>ActHeatBufferTemp</sLV1Name>
                   <manufName>PUFFERISTTEMPERATUR</manufName>
@@ -1257,10 +1139,6 @@
                   <language>de</language>
                 </legibleDescription>
               </dataPoint>
-              <genericAttributes>
-                <maxVal>90.0</maxVal>
-                <minVal>0.0</minVal>
-              </genericAttributes>
               <modbusDataPointConfiguration>
                 <modbusDataType>
                   <int16 />
@@ -1286,10 +1164,9 @@
               <functionalProfileCategory>HeatPumpControl</functionalProfileCategory>
               <functionalProfileType>SG-ReadyStates_bwp</functionalProfileType>
               <levelOfOperation>2m</levelOfOperation>
-              <versionNumber>
-                <primaryVersionNumber>1</primaryVersionNumber>
-                <secondaryVersionNumber>0</secondaryVersionNumber>
-                <subReleaseVersionNumber>0</subReleaseVersionNumber>
+              <versionNumber>                
+                <primaryVersionNumber>1</primaryVersionNumber><secondaryVersionNumber>0</secondaryVersionNumber>
+                <subReleaseVersionNumber>2</subReleaseVersionNumber>
               </versionNumber>
             </functionalProfileIdentification>
             <legibleDescription>
@@ -1312,10 +1189,24 @@
               <language>de</language>
             </legibleDescription>
           </functionalProfile>
-          <genericAttributes>
-            <maxLockTimeMinutes>120</maxLockTimeMinutes>
-            <minRunTimeMinutes>20</minRunTimeMinutes>
-          </genericAttributes>
+          <genericAttributeList>
+            <genericAttributeListElement>
+              <name>MaximumLockTime</name>
+              <dataType>
+                <float32/>
+              </dataType>
+              <value>120</value>
+              <unit>MINUTES</unit>
+            </genericAttributeListElement>
+            <genericAttributeListElement>
+              <name>MinimumRunTime</name>
+              <dataType>
+                <float32/>
+              </dataType>
+              <value>20</value>
+              <unit>MINUTES</unit>
+            </genericAttributeListElement>
+          </genericAttributeList>
           <dataPointList>
             <dataPointListElement>
               <dataPoint>
@@ -1345,21 +1236,21 @@
                 <dataPointName>SGReadyOpModeCmd</dataPointName>
                 <dataDirection>RW</dataDirection>
                 <presenceLevel>M</presenceLevel>
-                <dataType>
+                <dataType>                  
                   <enum>
                     <enumEntry>
                       <literal>HP_LOCKED</literal>
-                      <ordinal>0</ordinal>
+                      <ordinal>256</ordinal>
                       <description>Gesperrt für maximal 2h</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>HP_NORMAL</literal>
-                      <ordinal>1</ordinal>
+                      <ordinal>0</ordinal>
                       <description>Normalbetrieb, optimiert auf den Kunden</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>HP_INTENSIFIED</literal>
-                      <ordinal>256</ordinal>
+                      <ordinal>1</ordinal>
                       <description>Verstärkter Betrieb</description>
                     </enumEntry>
                     <enumEntry>
@@ -1367,7 +1258,6 @@
                       <ordinal>257</ordinal>
                       <description>Definitiver Anlaufbefehl</description>
                     </enumEntry>
-                    <hexMask>00010001</hexMask>
                   </enum>
                 </dataType>
                 <unit>NONE</unit>
@@ -1529,7 +1419,7 @@
               <dataPoint>
                 <dataPointName>SGReadyInp1isON</dataPointName>
                 <dataDirection>RW</dataDirection>
-                <presenceLevel>M</presenceLevel>
+                <presenceLevel>O</presenceLevel>
                 <dataType>
                   <boolean />
                 </dataType>
@@ -1552,7 +1442,7 @@
               <dataPoint>
                 <dataPointName>SGReadyInp2isON</dataPointName>
                 <dataDirection>RW</dataDirection>
-                <presenceLevel>M</presenceLevel>
+                <presenceLevel>O</presenceLevel>
                 <dataType>
                   <boolean />
                 </dataType>
@@ -1603,7 +1493,7 @@
               <dataPoint>
                 <dataPointName>ThermalEnergyHeat</dataPointName>
                 <dataDirection>R</dataDirection>
-                <presenceLevel>R</presenceLevel>
+                <presenceLevel>M</presenceLevel>
                 <dataType>
                   <float32 />
                 </dataType>
@@ -1642,7 +1532,7 @@
               <dataPoint>
                 <dataPointName>ThermalEnergyDomHotWater</dataPointName>
                 <dataDirection>R</dataDirection>
-                <presenceLevel>R</presenceLevel>
+                <presenceLevel>M</presenceLevel>
                 <dataType>
                   <float32 />
                 </dataType>
@@ -1682,7 +1572,7 @@
               <dataPoint>
                 <dataPointName>ActiveEnergyACheat</dataPointName>
                 <dataDirection>R</dataDirection>
-                <presenceLevel>R</presenceLevel>
+                <presenceLevel>O</presenceLevel>
                 <dataType>
                   <float32 />
                 </dataType>
@@ -1721,7 +1611,7 @@
               <dataPoint>
                 <dataPointName>ActivelEnergyACdomWater</dataPointName>
                 <dataDirection>R</dataDirection>
-                <presenceLevel>R</presenceLevel>
+                <presenceLevel>O</presenceLevel>
                 <dataType>
                   <float32 />
                 </dataType>
@@ -1761,7 +1651,7 @@
               <dataPoint>
                 <dataPointName>RuntimeHeating</dataPointName>
                 <dataDirection>R</dataDirection>
-                <presenceLevel>R</presenceLevel>
+                <presenceLevel>O</presenceLevel>
                 <dataType>
                   <float32 />
                 </dataType>
@@ -1796,7 +1686,7 @@
               <dataPoint>
                 <dataPointName>RuntimeDomHotWater</dataPointName>
                 <dataDirection>R</dataDirection>
-                <presenceLevel>R</presenceLevel>
+                <presenceLevel>O</presenceLevel>
                 <dataType>
                   <float32 />
                 </dataType>

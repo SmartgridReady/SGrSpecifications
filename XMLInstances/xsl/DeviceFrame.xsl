@@ -42,6 +42,7 @@
                         </tr>
         
                         <xsl:apply-templates select="sgr:deviceInformation" />
+                        <xsl:apply-templates select="sgr:genericAttributeList" />
                         <xsl:apply-templates select="sgr:genericAttributes" />
         
                     </table>
@@ -85,8 +86,10 @@
             </td></tr></tbody>
             <tfoot><tr style="border:hidden;"><td>
                 <!-- Footer-->
-                <div class="documentfooter"><sup>1)</sup> R read, W write, P persistent
-                        <br/><sup>2)</sup> M mandatory, R recommended, O optional</div>
+                <div class="documentfooter">
+				    <sup>1)</sup> M mandatory, R recommended, O optional<br/>
+					<sup>2)</sup> R read, W write, P persistent
+				</div>
             </td></tr></tfoot>
         </table>
     </xsl:template>

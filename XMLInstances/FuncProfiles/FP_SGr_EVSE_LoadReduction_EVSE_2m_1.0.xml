@@ -3,7 +3,7 @@
 <FunctionalProfileFrame xmlns="http://www.smartgridready.com/ns/V0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/SGrIncluder.xsd">
   <releaseNotes>
-    <state>Review</state>
+    <state>Published</state>
     <changeLog>
       <version>1.0.0</version>
       <date>2023-10-10</date>
@@ -25,60 +25,56 @@
     </functionalProfileIdentification>
     <legibleDescription>
       <textElement>
-        <![CDATA[	
+        <![CDATA[    
           <img src="ressources/cem_from-to_evse.svg" style="float:left; padding:0.3em;"/>
-          <p>Wallboxen (Electric Vehicle Supply Equipment «EVSE») müssen über einen Regler verfügen, welcher vier Betriebszustände abdeckt.</p>
-          <p>Folgende Betriebszustände können über den Datenpunkt "EVSE_OpModeCmd" gesetzt und ausgelesen werden: </p>
+          <p> Level 2m functional profile for wallboxes (Electric Vehicle Supply Equipment "EVSE").
+			To implement the functional profile the device must have a controller which covers four operating states.</p>
+          <p>The following four operating states can be set and read using the data point "EVSE_OpModeCmd": </p>
           <ol>
-            <li><strong>EV_NORMAL</strong>: Normalbetrieb: Uneingeschränkt entsprechend der konfigurierten Anschlussleistung laden</li>
-            <li><strong>EV_REDUCED</strong>: Reduziert das Laden z.B. 50% der maximalen Ladeleistung, jedoch mindestens 6A</li>
-            <li><strong>EV_MINIMAL</strong>: Minimale Ladung (AC Ladung 6A, DC Ladung 10kW, Bidirektionales Laden)</li>
-            <li><strong>EV_NONE_OR_FEEDIN</strong>: Ladung unterbrochen (Bidirektionales Laden, maximales Feed-In für Vehicle to Infrastructure V2X)</li>
+            <li><strong>EV_NORMAL</strong>: Normal operation, charging without any restrictions based on the configured connection power.</li>
+            <li><strong>EV_REDUCED</strong>: Reduces charging (e.g. to 50 % of the maximum charging power, but not below 6 A).</li>
+            <li><strong>EV_MINIMAL</strong>: Minimum charging (e.g. AC charging at 6 A, DC charging at 10 kW).</li>
+            <li><strong>EV_NONE_OR_FEEDIN</strong>: Charging interrupted (if bidirectional charging is supported maximum feed-in for vehicle to infrastructure V2X).</li>
+          </ol>
+          <p>The current operating mode of the wallbox can be read using the data point "EVSE_OpState."</p>
+          <p> The parameters for the possible reduction of the charge and the minimum charge are set via
+		  attributes and can be specified during the declaration or configured manually on the device itself.
+		  The optimum method for the declared device is defined during declaration. The parameters are described 
+		  below in the table of attributes.
+		]]>
+      </textElement>
+      <language>en</language>
+    </legibleDescription>
+    <legibleDescription>
+      <textElement>
+        <![CDATA[    
+          <img src="ressources/cem_from-to_evse.svg" style="float:left; padding:0.3em;"/>
+          <p> Stufe 2 Funktionsprofil für Heim-Ladestationen (Wallboxen bzw. Electric Vehicle Supply Equipment "EVSE").
+			  Zur Umsetzung des Funktionsprofils müssen die Ladestationen über einen Regler verfügen, der vier Betriebszustände abdeckt.</p>
+          <p>Folgende vier Betriebszustände können über den Datenpunkt "EVSE_OpModeCmd" gesetzt und ausgelesen werden: </p>
+          <ol>
+            <li><strong>EV_NORMAL</strong>: Normalbetrieb: Uneingeschränkes Laden entsprechend der konfigurierten Anschlussleistung.</li>
+            <li><strong>EV_REDUCED</strong>: Reduziertes das Laden (z.B. 50 % der maximalen Ladeleistung, jedoch mindestens 6 A).</li>
+            <li><strong>EV_MINIMAL</strong>: Minimales Laden (z.B. AC Ladung 6 A, DC Ladung 10 kW).</li>
+            <li><strong>EV_NONE_OR_FEEDIN</strong>: Laden unterbrochen (Oder falls bidirektionales Laden möglich maximales Feed-In für Vehicle to Infrastructure V2X).</li>
           </ol>
           <p> Über den Datenpunkt "EVSE_OpState" kann der aktuelle Betriebsmodus der Wallbox ausgelesen werden. </p>
+		  <p> Die Parameter für die mögliche Reduktion der Ladung und die minimal-Ladung werden über Attribute gesetzt und können bei der 
+		  Deklaration angegeben werden oder am Gerät selber manuell konfiguriert werden. Der optimale Weg für das deklarierte Gerät 
+		  wird bei der Deklaration definiert. Die Parameter sind untenstehend in der "Table of Attributes" beschrieben.
         ]]>
       </textElement>
       <language>de</language>
     </legibleDescription>
   </functionalProfile>
-  <genericAttributes>
-    <attributeList>
-      <attribute>
-        <name>Load Reduction</name>
-        <type>float</type>
-        <value>50 %</value>
-        <legibleDescription>
-          <textElement>
-            Load reduction for EV_REDUCED setting. 
-          </textElement>
-          <language>en</language>
-        </legibleDescription>
-        <legibleDescription>
-          <textElement>
-            Reduktion des Ladens for Einstellung EV_REDUCED. 
-          </textElement>
-          <language>de</language>
-        </legibleDescription>
-      </attribute>
-      <attribute>
-        <name>Minimum Load</name>
-        <type>float</type>
-        <value>6 A</value>
-        <legibleDescription>
-          <textElement>
-            Minimum load capacity.
-          </textElement>
-          <language>en</language>
-        </legibleDescription>
-        <legibleDescription>
-          <textElement>
-            Minimale Ladeleistung
-          </textElement>
-          <language>de</language>
-        </legibleDescription>
-      </attribute>
-    </attributeList>
-  </genericAttributes>
+  <genericAttributeList>
+    <genericAttributeListElement>
+      <name>LoadReduction</name>
+    </genericAttributeListElement>
+    <genericAttributeListElement>
+      <name>MinimumLoad</name>
+    </genericAttributeListElement>
+  </genericAttributeList>
   <dataPointList>
     <dataPointListElement>
       <dataPoint>
@@ -103,7 +99,11 @@
         </dataType>
         <unit>NONE</unit>
         <legibleDescription>
-          <textElement>Zum Einstellen des Betriebsmodus</textElement>
+          <textElement>Set (and read) the operating mode</textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>Setzen (und Auslesen) des Betriebsmodus</textElement>
           <language>de</language>
         </legibleDescription>
       </dataPoint>
@@ -130,6 +130,10 @@
           </enum>
         </dataType>
         <unit>NONE</unit>
+         <legibleDescription>
+          <textElement>Feedback of the EVSE</textElement>
+          <language>en</language>
+        </legibleDescription>
         <legibleDescription>
           <textElement>Rückmeldung vom EVSE</textElement>
           <language>de</language>

@@ -27,6 +27,7 @@
 
                 <xsl:apply-templates select="sgr:functionalProfile" />
                 <xsl:apply-templates select="sgr:genericAttributes" />
+                <xsl:apply-templates select="sgr:genericAttributeList" />
                 <xsl:apply-templates select="sgr:modbusAttributes" />
             </table>
             

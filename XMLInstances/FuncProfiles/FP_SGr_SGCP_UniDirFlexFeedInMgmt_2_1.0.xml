@@ -3,7 +3,7 @@
 <FunctionalProfileFrame xmlns="http://www.smartgridready.com/ns/V0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/SGrIncluder.xsd">
   <releaseNotes>
-    <state>Review</state>
+    <state>Published</state>
     <changeLog>
       <version>0.1.1</version>
       <date>2021-09-02</date>
@@ -31,28 +31,42 @@
     </functionalProfileIdentification>
     <legibleDescription>
       <textElement>
-        <![CDATA[
-          <img src="ressources/fp_cem_to_pv_v2x.svg"/>
-          Anlagen, welche dieses Funktionsprofil nutzen verfügen in der Regel über einen CEM (Customer Energy Manager).
-          Diese Software stellt sicher, dass der Energiebezug der Geräte entsprechend den Betriebsmodi beim Moduswechsel neu aufeinander abgestimmt wird.
+      <![CDATA[
+          <img src="ressources/fp_cem_to_flexmgr.svg"/>
+          
+		  <p>Stufe 2 Funktionsprofil für Lastmanagement Geräte (CEM), welche eine Kommunikationsschnittstelle zum Stromnetz (z.B. zu Stromanbieter, Pooling-Anbieter oder ähnlichem) haben, 
+			die über zwei Relais-Kontakte steuerbar ist. 
+			Für die Umsetzung des Funktionsprofils müssen folgende vier Betriebszustände abdeckt werden:</p>
           <ol>
-            <li>Betriebszustand 3 (Schaltzustand, bei Klemmenlösung: 0:0): <strong>Normal</strong>: Im Normalbetrieb folgt die Rückspeisung entsprechend
-                der Anlagemöglichkeiten innerhalb des zugelassenen Leistungsbereichs.</li>
-            <li>Betriebszustand 2 (Schaltzustand, bei Klemmenlösung: 0:1): <strong>Reduziert (Wunsch)</strong>: Die Rückspeisung soll um einen vereinbarten
-                Betrag (in Prozent, siehe SGrAttribut 'Curtailment') gesenkt werden, falls dies möglich ist.</li>
-            <li>Betriebszustand 1 (Schaltzustand, bei Klemmenlösung: 1:0): <strong>Gesperrt</strong>: In diesen Betriebsmode darf keine Energie ins Netz
-                eingespeist werden. Dies kann mittels Lasterhöhung, Batterieladung oder Sperrbetrieb der Stromquelle sichergestellt werden.</li>
-            <li>Betriebszustand 4 (Schaltzustand, bei Klemmenlösung: 1:1): <strong>Maximal</strong>: Die Anlage ermöglicht die maximale Rückspeisung
-                unter Einsatz aller Stromquellen.</li>
+             <li>Betriebszustand 1 (Schaltzustand, bei Klemmenlösung: 1:0): <strong>Maximale Einspeisung</strong>: Das Lastmanagement ermöglicht eine maximale
+               Einspeisung.</li>
+			<li>Betriebszustand 2 (Schaltzustand, bei Klemmenlösung: 0:0): <strong>Normal</strong>: Im Normalbetrieb optimiert das Lastmanagement die Stromeinspeisung nach den Kriterien des Nutzers.</li>
+            <li>Betriebszustand 3 (Schaltzustand, bei Klemmenlösung 0:1): <strong>Reduziert (Wunsch)</strong>: Die Einspeiseleistung wird um einen vereinbarten Betrag
+                (in Prozent, siehe SGrAttribut 'Curtailment') gesenkt, falls dies möglich ist. </li>
+           
+            <li>Betriebszustand 4 (Schaltzustand, bei Klemmenlösung 1:1): <strong>Gesperrt</strong>: In diesen Betriebsmodus darf keine oder eine definierte
+                minimale Energie (SGrAttribut 'Min. Load') ins Netzeingespeist werden. Dies kann mittels einer Abregelung der Erzeugung oder dem Abschalten der Speicherentladung
+                während einer maximalen Zeitdauer (siehe SGrAttribut 'Max. Lock Time') erfolgen.</li>
           </ol>
+		  	  <p> Die Parameter für den minimal-Wert für die prozentuale Abregelung (curtailment),   
+			  und die maximale Zeitdauer einer Sperrung (maxLockTimeMinutes) sowie die Zeitfenster für die Definition der kontinuierlichen Lastveränderung (smoothTransition) werden am Gerät selber manuell konfiguriert. 
+		  Die Parameter sind untenstehend in der "Table of Attributes" beschrieben.
         ]]>
       </textElement>
       <language>de</language>
     </legibleDescription>
   </functionalProfile>
-  <genericAttributes>
-    <curtailment>30</curtailment>
-  </genericAttributes>
+  <genericAttributeList>
+    <genericAttributeListElement>
+      <name>SmoothTransition</name>
+    </genericAttributeListElement>
+    <genericAttributeListElement>
+      <name>Curtailment</name>
+    </genericAttributeListElement>
+    <genericAttributeListElement>
+      <name>MaximumLockTime</name>
+    </genericAttributeListElement>
+  </genericAttributeList>
   <dataPointList>
     <dataPointListElement>
       <dataPoint>

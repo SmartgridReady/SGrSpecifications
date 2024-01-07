@@ -6,19 +6,19 @@ This documentation describes the list of generic attributes.
 - Generic attributes always apply to the data point
 - Generic attributes defined on functional profile level apply to all data points of the same functional profile.
 - Generic attributes defined on device level apply to all functional profiles, and thus to all data points of the device
-If the same attribute is defined on multiple levels the most specific definition superseeds any other definition (i.e. data point over functional profile over).
+If the same attribute is defined on multiple levels the most specific definition supersedes any other definition (i.e. data point over functional profile over).
 
 ## Static Data Point Attributes
 These values describe the measurement limits for data points. Depending on the definition level they apply either to a specific data point, every data point of a functional profile, or the the entire device.
 
-These attributes are generally used to search for devices that fullfil a set of  minimum requirements to support a specific use case.
+These attributes are generally used to search for devices that fulfill a set of  minimum requirements to support a specific use case.
 
 | SGr Attribute | Data Type | Description | Example |
 |---------------|-----------|-------------|---------|
 | maxVal | float | upper range limit. | 200.0 |
 | minVal | float | lower range limit. | 0.0 |
-| measuredValueType | enum | MeasValueType: type of measurement. Possbile values are "value", "min", max", "average", "stdDev" | value |
-| specialQualityRequirement | string | indicates Quality requirements fullfilled like formal certifications | METAS  |
+| measuredValueType | enum | MeasValueType: type of measurement. Possible values are "value", "min", max", "average", "stdDev" | value |
+| specialQualityRequirement | string | indicates Quality requirements fulfilled like formal certifications | METAS  |
 | precisionPercent | float | the precisionPercent of a measurement, calculation result or result of a controls process | 2.0% |
 | maxLatencyTimeMs | unsignedLong | Maximum time in milliseconds from capturing of measured value until ready at the product interface (i.e. analog-digital conversion time) | 10 ms |
 | sampleRateHz | unsignedLong | SampleRate in milliseconds | 200 ms |
@@ -29,7 +29,7 @@ A consumer or a generating system receives the permit for a load change for a ce
 The figure below depicts the typical flow
 1. the device starts at initial value.
 2. regular communication starts. The communicator periodically sets new set values.
-3. communication breaks. The device recieves its last set value.
+3. communication breaks. The device receives its last set value.
 4. after reaching the timeout the device automatically sets the fallback value.
 
 ![SGr Stability Fallback](genAttributes_sstabilityFallback.drawio.png)
@@ -62,7 +62,7 @@ The figure below depicts the typical flow
 
 ## Data Point Quality
 
-SGr has attributes to denote the quality of the mesaured value. The presence of any quality attributes either on functional profile or data point level indicate that the com handler will provide these dynamic attributes at run time (see documentation of SGr com handler libs)
+SGr has attributes to denote the quality of the measured value. The presence of any quality attributes either on functional profile or data point level indicate that the com handler will provide these dynamic attributes at run time (see documentation of SGr com handler libs)
 
 
 | SGr Attribute | Data Type | Description | Example |
@@ -79,11 +79,5 @@ Various function profiles require boundaries to set points with respect to curta
 | minLoad | float |  Used in state-based reduction schemes. In locked mode the product will not reduce its load below this minimum value | 2 kW |
 | maxLockTimeMinutes | float | used in state-based reduction schemes. A reduction command to reduced or locked mode shall not be applied longer than this specified duration | 20 min |
 | minRunTimeMinutes | float | Used in state-based reduction schemes. When returning to normal mode the normal mode must be guaranteed for at least the specified duration | 15 min|
-| valueByTimeTableMinutes | float | Used for time tables to specifiy the temporal separation of data curve points | 1 min |
-| flexAssistance | sgr:FlexAssistance | Systems with more than One communicator need a definition of the priority of the commands / demands for a flexibility requirement. This element defines the kind of a such a command (servicable for net (DSO), energy or system (TNO)) and its priority (SHALL / SHOULD / MAY) |
-
-
-## Open Points
-- Quality
-  - the com handler implementations should provide the values of these attributes. Generate an issue for java / python
-  
+| valueByTimeTableMinutes | float | Used for time tables to specify the temporal separation of data curve points | 1 min |
+| flexAssistance | sgr:FlexAssistance | Systems with more than One communicator need a definition of the priority of the commands / demands for a flexibility requirement. This element defines the kind of a such a command (serviceable for net (DSO), energy or system (TNO)) and its priority (SHALL / SHOULD / MAY) |
