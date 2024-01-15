@@ -34,7 +34,7 @@ The release note section contains meta data that describe history and current st
 |------------------|-------------|
 | Name             | Device Name |
 | Manufacturer     | Manufacturer |
-| specOwnerId      | Owner of the declaration (normally identical to manufacturer, but different for 3rd party declarations) |
+| specificationOwnerIdentification | Owner of the declaration (normally identical to manufacturer, but different for 3rd party declarations) |
 | Type             | local or cloud device |
 | DeviceCategory   | Device Category |
 | SoftwareRevision | Software revision of device |
@@ -73,6 +73,6 @@ Each functional profile instance contains a list of data points in accordance wi
 | Element     | Description |
 |-------------|-------------|
 | Data point | Data point of the standardized [functional profile](functionalProfile.md), containing name, description, units, data type, read/write, mandatory/recommended/optional information |
-| Transport Layer Info| transport-service specific information on how to access the data point |
+| Interface Info| transport-service specific information on how to access the data point |
 | programmerHints   | optional, can occur once per language. Contains details for the programmer. |
 
