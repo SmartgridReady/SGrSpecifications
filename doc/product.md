@@ -2,11 +2,11 @@
 
 ## Use case
 
-An product description contains information about the device, its supported functional profiles and how
+A product description contains information about the device, its supported functional profiles, and how
 the datapoints of the functional profiles can be accessed through the transport layer.
 
-This allows potential controllers to easily integrate, implement or access any SmartGridready certified product
-through a standarized set of functionality, and thereby greatly simplifies scale-up to support a wide range of products.
+This allows potential controllers to easily integrate, implement, or access any SmartGridready certified product
+through a standardized set of functionality, and thereby greatly simplifies scale-up to support a wide range of products.
 
 ## General Structure
 The schema of the product description is structured on three levels:
@@ -21,22 +21,22 @@ The figure below shows the entity relation model of the product description.
 # Device Elements
 
 ### Release Notes
-The release note section contains meta data that descibe history and current state of the functional profile
+The release note section contains meta data that describe history and current state of the functional profile
 
 | Element   | Description |
 |-----------|-------------|
-| state     | one of Draft, Review, Released, Revoked |
-| remarks   |  Optional, arbitrary text. Can be usefull e.g. during draft phase. |
-| changeLog | Optional, can occure multiple times. Contains release notes to the version concerned |
+| state     | One of Draft, Review, Released, Revoked |
+| remarks   | Optional, arbitrary text. Can be useful e.g. during draft phase. |
+| changeLog | Optional, can occurs multiple times. Contains release notes to the version concerned |
 
 ### Device Information
 | Element          | Description |
 |------------------|-------------|
 | Name             | Device Name |
 | Manufacturer     | Manufacturer |
-| specOwnerId      | Owner of the declaration (normally identical to manufacturer, but different for 3rd party declarations) |
+| specificationOwnerIdentification | Owner of the declaration (normally identical to manufacturer, but different for 3rd party declarations) |
 | Type             | local or cloud device |
-| DeviceCategory       | Device Category |
+| DeviceCategory   | Device Category |
 | SoftwareRevision | Software revision of device |
 
 
@@ -44,13 +44,13 @@ The release note section contains meta data that descibe history and current sta
 
 | Element | Description |
 | ------- | ----------- |
-| levelOfOperation | levelOfOperation defines a controls complexity  (see [LevelOfOperation.md](LevelOfOperation.md) ), and is defined by the highest level of the devices functional profile |
+| levelOfOperation | Level of control defining the complexity (see [LevelOfOperation](LevelOfOperation.md) ), and is defined by the highest level of the devices functional profile |
 
 ### Descriptions
 | Element     | Description |
 |-------------|-------------|
-| alternativeNames  | a list of relevant namespaces list for to display names used in different standards like EEBUS, IEC6850,, SAREF4ENER etc. (see [AlternativeNames](AlternativeNames.md))|
-| legibleDescription | optional, can occure multiple times, but ideally just a once per language. Contains details concerning the intended use case of the functional profile. |
+| alternativeNames  | A list of relevant namespaces list for to display names used in different standards like EEBUS, IEC6850,, SAREF4ENER etc. (see [AlternativeNames](AlternativeNames.md))|
+| legibleDescription | Optional, can occur once per language. Contains details concerning the intended use case of the functional profile. |
 
 ### Transport Service
 | Element     | Description |
@@ -65,7 +65,7 @@ Each device contains a list of functional profiles.
 |-------------|-------------|
 | profileName | Instance name of the specified functional profile, containing Release Notes, Classification, Description |
 | functionalProfile | Copy of the standardized [functional profile](functionalProfile.md) |
-| programmerHints   | optional, can occure multiple times, but ideally just a once per language. Contains details for the programmer. |
+| programmerHints   | optional, can occur once per language. Contains details for the programmer. |
 
 
 ## Data Points
@@ -73,9 +73,6 @@ Each functional profile instance contains a list of data points in accordance wi
 | Element     | Description |
 |-------------|-------------|
 | Data point | Data point of the standardized [functional profile](functionalProfile.md), containing name, description, units, data type, read/write, mandatory/recommended/optional information |
-| Transport Layer Info| transport-service specific information on how to access the data point |
-| programmerHints   | optional, can occure multiple times, but ideally just a once per language. Contains details for the programmer. |
-
-
-
+| Interface Info| transport-service specific information on how to access the data point |
+| programmerHints   | optional, can occur once per language. Contains details for the programmer. |
 

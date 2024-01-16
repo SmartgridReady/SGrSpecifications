@@ -76,8 +76,10 @@
 							<option value="any">All Languages</option>
 							<option value="en">English</option>
 							<option value="de">Deutsch</option>
-							<option value="fr">Francais</option>
-							<option value="it">Italiano</option>
+                            <xsl:if test="/sgr:DeviceFrame">
+    							<option value="fr">Francais</option>
+    							<option value="it">Italiano</option>
+                            </xsl:if>
 							<option value="none">(none)</option>
 						</select>
 					</div>
@@ -92,6 +94,16 @@
 					<xsl:apply-templates select="sgr:FunctionalProfileFrame" />
 				</div>
 			</body>
+            <script>
+                if (navigator.userAgent.match(/firefox|fxios/i))
+                {
+                    // get all "renderhtml" hints (HTML escaped within CDATA/text) nodes, then unescape and render HTML code
+                    var nodes = document.getElementsByClassName("renderhtml");
+                    for (var i = nodes.length - 1; i >= 0; i--) {
+                        nodes[i].innerHTML = nodes[i].textContent;
+                    }
+                }
+            </script>
 		</html>
 	</xsl:template>
 

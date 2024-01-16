@@ -3,7 +3,7 @@
 <FunctionalProfileFrame xmlns="http://www.smartgridready.com/ns/V0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/SGrIncluder.xsd">
   <releaseNotes>
-    <state>Review</state>
+    <state>Published</state>
     <changeLog>
       <version>0.1.1</version>
       <date>2021-09-02</date>
@@ -33,36 +33,47 @@
       <textElement>
         <![CDATA[
           <img src="ressources/fp_cem_to_flexmgr.svg"/>
-          Anlagen, welche dieses Funktionsprofil nutzen verfügen in der Regel über einen CEM (Customer Energy Manager).
-          Diese Software stellt sicher, dass der Energiebezug der Geräte entsprechend den Betriebsmodi beim Moduswechsel neu aufeinander abgestimmt wird.
-          Beim Wechsel reagiert eine Anlage gemäss den in SGrAttribut 'Smooth Transition' vereinbarten Parametern.
+			
+			<p>Stufe 2m Funktionsprofil für Lastmanagement-Geräte, welche die Einspeisung regulieren und eine Kommunikationsschnittstelle zum Stromnetz (z.B. zu Stromanbieter, Pooling-Anbieter oder ähnlichem) haben, 
+			die über einen Datenpunkt mit verschiedenen Betriebsmodi steuerbar ist. 
+			Für die Umsetzung des Funktionsprofils müssen folgende vier Betriebszustände abdeckt werden:</p>
+          
 
           <p> Folgende Betriebszustände können über den Datenpunkt "SGCP_OpModeFeedInCmd" gesetzt und ausgelesen werden: </p>
           <ol>
-            <li><strong>FI_NORMAL</strong>: Normal: Im Normalbetrieb folgt die Rückspeisung entsprechend
-                der Anlagemöglichkeiten innerhalb des zugelassenen Leistungsbereichs.</li>
-            <li><strong>FI_REDUCED</strong>: Reduziert (Wunsch): Die Rückspeisung soll um einen vereinbarten
-                Betrag (in Prozent, siehe SGrAttribut 'Curtailment') gesenkt werden, falls dies möglich ist.</li>
-            <li><strong>FI_LOCKED</strong>: Gesperrt: In diesen Betriebsmode darf keine Energie ins Netz
-                eingespeist werden. Dies kann mittels Lasterhöhung, Batterieladung oder Sperrbetrieb der Stromquelle sichergestellt werden.</li>
-            <li><strong>FI_MAX</strong>: Maximal: Die Anlage ermöglicht die maximale Rückspeisung
-                unter Einsatz aller Stromquellen.</li>
+            <li><strong>FI_NORMAL</strong>: Im Normalbetrieb optimiert das Lastmanagement die Einspeisung nach den Kriterien des Nutzers.
+                innerhalb des zugelassenen Leistungsbereichs.</li>
+            <li><strong>FI_REDUCED</strong>: Im reduzierten Betrieb wird Einspeiseleistung um einen vereinbarten Betrag
+                (in Prozent, siehe SGrAttribut 'Curtailment') gesenkt, falls dies möglich ist. </li>
+            <li><strong>FI_MAX</strong>: Im Maximalbetrieb ermöglicht das Lastmanagement eine maximale
+                Einspeiseleistung. </li>
+            <li><strong>FI_LOCKED</strong>: Im Betriebsmodus "gesperrt" darf keine Energie ins Netz eingespeist werden. Die maximale Zeitdauer der Sperrung wird über das Attribut 'Max. Lock Time' definiert.</li>
           </ol>
 
-          <p> Über den Datenpunkt "SGCP_OpFeedInState" kann der aktuelle Betriebsmodus der Kundenanlage ausgelesen werden. </p>
+          <p> Über den Datenpunkt "SGCP_OpLoadState" kann der aktuelle Betriebsmodus der Kundenanlage ausgelesen werden. </p>
+		  
+		  	  <p> Die Parameter für die prozentuale Abregelung (curtailment),  
+			  und die maximale Zeitdauer einer Sperrung (maxLockTimeMinutes) sowie die Zeitfenster für die Definition der kontinuierlichen Lastveränderung (smoothTransition) werden 
+			  über die Attribute während der Deklaration oder am Gerät selber manuell konfiguriert. Der optimale Weg für das deklarierte Gerät 
+		  wird bei der Deklaration definiert
+			Die Parameter sind untenstehend in der "Table of Attributes" beschrieben.
+		  
         ]]>
       </textElement>
       <language>de</language>
     </legibleDescription>
   </functionalProfile>
-  <genericAttributes>
-    <smoothTransition>
-      <winTms>0</winTms>
-      <rvrtTms>0</rvrtTms>
-      <rmpTms>0</rmpTms>
-    </smoothTransition>
-    <curtailment>30</curtailment>
-  </genericAttributes>
+  <genericAttributeList>
+    <genericAttributeListElement>
+      <name>SmoothTransition</name>
+    </genericAttributeListElement>
+    <genericAttributeListElement>
+      <name>Curtailment</name>
+    </genericAttributeListElement>
+    <genericAttributeListElement>
+      <name>MaximumLockTime</name>
+    </genericAttributeListElement>
+  </genericAttributeList>
   <dataPointList>
     <dataPointListElement>
       <dataPoint>
@@ -77,17 +88,17 @@
             <enumEntry>
               <literal>FI_REDUCED</literal>
             </enumEntry>
-            <enumEntry>
-              <literal>FI_LOCKED</literal>
+			<enumEntry>
+              <literal>FI_MAX</literal>
             </enumEntry>
             <enumEntry>
-              <literal>FI_MAX</literal>
+              <literal>FI_LOCKED</literal>
             </enumEntry>
           </enum>
         </dataType>
         <unit>NONE</unit>
         <legibleDescription>
-          <textElement>Zum Einstellen des Betriebsmodus</textElement>
+          <textElement>Setzen des Betriebsmodus</textElement>
           <language>de</language>
         </legibleDescription>
       </dataPoint>
@@ -105,17 +116,17 @@
             <enumEntry>
               <literal>FI_REDUCED</literal>
             </enumEntry>
-            <enumEntry>
-              <literal>FI_LOCKED</literal>
+			<enumEntry>
+              <literal>FI_MAX</literal>
             </enumEntry>
             <enumEntry>
-              <literal>FI_MAX</literal>
+              <literal>FI_LOCKED</literal>
             </enumEntry>
           </enum>
         </dataType>
         <unit>NONE</unit>
         <legibleDescription>
-          <textElement>Rückmeldung vom SGCP</textElement>
+          <textElement>Rückmeldung vom Lastmanagement</textElement>
           <language>de</language>
         </legibleDescription>
       </dataPoint>
