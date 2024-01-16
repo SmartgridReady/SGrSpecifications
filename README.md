@@ -46,3 +46,7 @@ See https://library.smartgridready.ch.
 ## Processes
 This repository contains the XML schema, as well as the device description XMLs and functional profile XMLs.
 Any changes on XML files of this repository are pushed through github actions to the SGr Library.
+
+## Glossar (deutsch)
+
+[Glossar](doc/Glossary.md)
