@@ -340,85 +340,6 @@
                 </scalingFactor>
               </modbusAttributes>
             </dataPointListElement>
-          </dataPointList>
-        </functionalProfileListElement>
-        <functionalProfileListElement>
-          <functionalProfile>
-            <functionalProfileName>SG-ReadyStates_bwp_2</functionalProfileName>
-            <functionalProfileIdentification>
-              <specificationOwnerIdentification>0</specificationOwnerIdentification>
-              <functionalProfileCategory>HeatPumpControl</functionalProfileCategory>
-              <functionalProfileType>SG-ReadyStates_bwp</functionalProfileType>
-              <levelOfOperation>2</levelOfOperation>
-              <versionNumber>                
-                <primaryVersionNumber>1</primaryVersionNumber>
-                <secondaryVersionNumber>0</secondaryVersionNumber>
-                <subReleaseVersionNumber>0</subReleaseVersionNumber>
-              </versionNumber>
-            </functionalProfileIdentification>
-              <legibleDescription>
-                <textElement>
-                  <![CDATA[    
-                    <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
-                    <h4>Wärmepumpen mit 4 Betriebszuständen</h4>
-                    <p>Stufe 2 Funktionsprofil für Wärmepumpen mit 4 Betriebszuständen (SG Ready Wärmepumpen, Definition nach SG Ready - Bundesverband Wärmepumpe e.V. (bwp))</p>
-                    <p>Dieses Funktionsprofil bildet die beiden SG-Ready Klemmenkontakte ab:</p>
-                    <ul>
-                      <li><strong>Klemmenzustand 1,0</strong>: EVU-Sperre, umfasst im Normalfall maximal 2 Stunden „harte“ Sperrzeit (Betriebszustand 1 nach SG Ready bwp).</li>
-                      <li><strong>Klemmenzustand 0,0</strong>: Wärmepumpe im Normalbetrieb (Betriebszustand 2 nach SG Ready bwp).</li>
-                      <li><strong>Klemmenzustand 0,1</strong>: Einschaltempfehlung für verstärkten Betrieb (Betriebszustand 3 nach SG Ready bwp).</li>
-                      <li><strong>Klemmenzustand 1,1</strong>: Forcierter Anlaufbefehl (insofern dieser im Rahmen der Regeleinstellungen der Wärmepumpe möglich ist; Betriebszustand 4 nach SG Ready bwp).</li>
-                    </ul>
-                    <p>Der Communicator (z.B. Energiemanagementsystem) berücksichtigt die Gerätevorgaben zur Schaltfrequenz (Attribute maxLockTimeMintues und minRunTimeMinutes).</p>
-                    <p>„SG Ready“ ist ein Markenzeichen des Bundesverbands Wärmepumpe e. V.<br/>
-                       Weiterführende Informationen unter <a href="https://www.waermepumpe.de/normen-technik/sg-ready/">https://www.waermepumpe.de/normen-technik/sg-ready/</a>).</p>
-                  ]]>
-                </textElement>
-                <language>de</language>
-              </legibleDescription>
-              <legibleDescription>
-                <textElement>
-                  <![CDATA[
-                    <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
-                    <h4>Heat pump with four operation modes</h4>
-                    <p>Level 1 functional profile with 4 operation modes (SG Ready heat pumps). The operating states are
-                     defined from SG ready - "Bundesverband Wärmepumpe e.V. (bwp)"</p>
-                    <p>This functional profile only represents the SG Ready relay contacts: </p>
-                    <ul>
-                      <li><strong>switching state 1,0</strong>: EVU lock, contains usually a "hard" lock of maximum 2 hours (operation mode 1 from SG Ready bwp).</li>
-                      <li><strong>switching state 0,0</strong>: Heat pump in normal operation mode (operation mode 2 from SG Ready bwp).</li>
-                      <li><strong>switching state 0,1</strong>: Switch-on recommendations for increased operation (operation mode 3 from SG Ready bwp).</li>
-                      <li><strong>switching state 1,1</strong>: Forced start-up command (within the control limitations of the heat pump; operation mode 4 from SG Ready bwp).</li>
-                    </ul>      
-                   
-                    <p>The communicator (e.g. central energy management system) takes into account the unit specifications for the switching 
-                      frequency (attributes maxLockTimeMinutes and minRunTimeMinutes).</p>
-                    <p>"SG Ready" is a trademark of the German Heat Pump Association.</br>
-                        Further information: <a href="https://www.waermepumpe.de/normen-technik/sg-ready/">https://www.waermepumpe.de/normen-technik/sg-ready/</a>.</p>
-                  ]]>
-                </textElement>
-                <language>en</language>
-              </legibleDescription>
-          </functionalProfile>
-          <genericAttributeList>
-            <genericAttributeListElement>
-              <name>MaximumLockTime</name>
-              <dataType>
-                <float32/>
-              </dataType>
-              <value>120</value>
-              <unit>MINUTES</unit>
-            </genericAttributeListElement>
-            <genericAttributeListElement>
-              <name>MinimumRunTime</name>
-              <dataType>
-                <float32/>
-              </dataType>
-              <value>20</value>
-              <unit>MINUTES</unit>
-            </genericAttributeListElement>
-          </genericAttributeList>
-          <dataPointList>
             <dataPointListElement>
               <dataPoint>
                 <dataPointName>SGReadyInp1isON</dataPointName>
@@ -464,6 +385,290 @@
                 <registerType>HoldRegister</registerType>
                 <numberOfRegisters>1</numberOfRegisters>
               </modbusDataPointConfiguration>
+            </dataPointListElement>
+          </dataPointList>
+        </functionalProfileListElement>
+        <functionalProfileListElement>
+          <functionalProfile>
+            <functionalProfileName>EnergyMonitor</functionalProfileName>
+            <functionalProfileIdentification>
+              <specificationOwnerIdentification>0</specificationOwnerIdentification>
+              <functionalProfileCategory>HeatPumpControl</functionalProfileCategory>
+              <functionalProfileType>EnergyMonitor</functionalProfileType>
+              <levelOfOperation>2m</levelOfOperation>
+              <versionNumber>
+                <primaryVersionNumber>0</primaryVersionNumber>
+                <secondaryVersionNumber>3</secondaryVersionNumber>
+                <subReleaseVersionNumber>0</subReleaseVersionNumber>
+              </versionNumber>
+            </functionalProfileIdentification>
+            <alternativeNames>
+              <sLV1Name>EnergyMonitor</sLV1Name>
+            </alternativeNames>
+            <legibleDescription>
+              <textElement>
+                <![CDATA[	
+                  <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
+                  <p>Aufzeichnen der Warmepumpen-Betriebsdaten durch den CEM.</p>
+                  
+                  <p>Bemerkungen:</p>
+                  <ol>
+                    <li>Energiewerte, Laufzeiten und Anzahl Starts werden typischerweise 1x täglich abgefragt. Die Leistungsmessungen
+                        werden häufiger abgefragt und können zur Regelung dienen. Deshalb die Anforderung einer maximalen Abtastzeit.</li>
+                    <li>Die intern ermittelten Energiewerte ersetzen externe Zähler für Monitoring-Zwecke. Es wird erwünscht,
+                        dass der Hersteller Genauigkeitsangaben zu seinen intern ermittelten Werten macht. Dies ist eine wichtige
+                        Information für Monitoring-Systeme, um die Fehlertoleranz der energetischen Auswertungen abzuschätzen</li>
+                  </ol>
+                ]]>
+              </textElement>
+              <language>de</language>
+            </legibleDescription>
+            <programmerHints>
+              <textElement>
+                Some configuration may not support parts or all of the datapoints of this
+                functional profile. Such data points report a value of -32768
+              </textElement>
+              <language>en</language>
+            </programmerHints>
+          </functionalProfile>
+          <dataPointList>
+            <dataPointListElement>
+              <dataPoint>
+                <dataPointName>ActiveEnergyACheat</dataPointName>
+                <dataDirection>R</dataDirection>
+                <presenceLevel>O</presenceLevel>
+                <dataType>
+                  <float32 />
+                </dataType>
+                <unit>KILOWATT_HOURS</unit>
+                <alternativeNames>            
+                  <sLV1Name>ActiveEnergyACheat</sLV1Name>
+                  <manufName>VD HEIZEN SUMME alle WP</manufName>
+                </alternativeNames>
+                <legibleDescription>
+                  <textElement>
+                    Summe der aufgenommenen elektrischen Energie des Verdichters für das Heizen.
+                  </textElement>
+                  <language>de</language>
+                </legibleDescription>
+                <programmerHints>
+                  <textElement>
+                    Registers use decimal kWh and MWh values. Use layer6Deviation reading
+                    size 2 at once and multplicate / add values accordingly.
+                  </textElement>
+                  <language>en</language>
+                </programmerHints>
+              </dataPoint>
+              <modbusDataPointConfiguration>
+                <modbusDataType>
+                  <int16U />
+                </modbusDataType>
+                <address>3512</address>
+                <registerType>InputRegister</registerType>
+                <numberOfRegisters>2</numberOfRegisters>
+              </modbusDataPointConfiguration>
+              <modbusAttributes>
+                <scalingFactor>
+                  <multiplicator>1</multiplicator>
+                  <powerof10>0</powerof10>
+                </scalingFactor>
+                <layer6Deviation>2RegBase1000_L2H</layer6Deviation>
+              </modbusAttributes>
+            </dataPointListElement>
+            <dataPointListElement>
+              <dataPoint>
+                <dataPointName>ActiveEnergyACDomHotWater</dataPointName>
+                <dataDirection>R</dataDirection>
+                <presenceLevel>R</presenceLevel>
+                <dataType>
+                  <float32 />
+                </dataType>
+                <unit>KILOWATT_HOURS</unit>
+                <alternativeNames>            
+                  <sLV1Name>ActivelEnergyACdomWater</sLV1Name>
+                  <manufName>VD WARMWASSER  SUMME alle WP</manufName>
+                </alternativeNames>
+                <legibleDescription>
+                  <textElement>
+                    Summe der aufgenommenen elektrischen Energie für die Warmwasseraufbereitung
+                  </textElement>
+                  <language>de</language>
+                </legibleDescription>
+                <programmerHints>
+                  <textElement>Registers use decimal kWh and MWh values. Use layer6Deviation reading
+                    size 2 at once and multplicate / add values accordingly.</textElement>
+                  <language>en</language>
+                </programmerHints>
+              </dataPoint>
+              <modbusDataPointConfiguration>
+                <modbusDataType>
+                  <int16U />
+                </modbusDataType>
+                <address>3515</address>
+                <registerType>InputRegister</registerType>
+                <numberOfRegisters>2</numberOfRegisters>
+              </modbusDataPointConfiguration>
+              <modbusAttributes>
+                <scalingFactor>
+                  <multiplicator>1</multiplicator>
+                  <powerof10>0</powerof10>
+                </scalingFactor>
+                <layer6Deviation>2RegBase1000_L2H</layer6Deviation>
+              </modbusAttributes>
+            </dataPointListElement>
+            <dataPointListElement>
+              <dataPoint>
+                <dataPointName>ThermalEnergyHeat</dataPointName>
+                <dataDirection>R</dataDirection>
+                <presenceLevel>M</presenceLevel>
+                <dataType>
+                  <float32 />
+                </dataType>
+                <unit>KILOWATT_HOURS</unit>
+                <alternativeNames>            
+                  <sLV1Name>ThermalEnergyHeat</sLV1Name>
+                  <manufName>VD HEIZEN SUMME alle WP</manufName>
+                </alternativeNames>
+                <legibleDescription>
+                  <textElement>Summe der abgegebenen thermischen Energie für das Heizen.</textElement>
+                  <language>de</language>
+                </legibleDescription>
+                <programmerHints>
+                  <textElement>
+                    Registers use decimal kWh and MWh values. Use layer6Deviation reading
+                    size 2 at once and multplicate / add values accordingly.
+                  </textElement>
+                  <language>en</language>
+                </programmerHints>
+              </dataPoint>
+              <modbusDataPointConfiguration>
+                <modbusDataType>
+                  <int16U />
+                </modbusDataType>
+                <address>3502</address>
+                <registerType>InputRegister</registerType>
+                <numberOfRegisters>2</numberOfRegisters>
+              </modbusDataPointConfiguration>
+              <modbusAttributes>
+                <scalingFactor>
+                  <multiplicator>1</multiplicator>
+                  <powerof10>0</powerof10>
+                </scalingFactor>
+                <layer6Deviation>2RegBase1000_L2H</layer6Deviation>
+              </modbusAttributes>
+            </dataPointListElement>
+            <dataPointListElement>
+              <dataPoint>
+                <dataPointName>ThermalEnergyDomHotWater</dataPointName>
+                <dataDirection>R</dataDirection>
+                <presenceLevel>R</presenceLevel>
+                <dataType>
+                  <float32 />
+                </dataType>
+                <unit>KILOWATT_HOURS</unit>
+                <alternativeNames>               
+                  <sLV1Name>ThermalEnergyDomHotWater</sLV1Name>
+                  <manufName>VD WARMWASSER SUMME alle WP</manufName>
+                </alternativeNames>
+                <legibleDescription>
+                  <textElement>
+                    Summe der abgegebenen thermischen Energie für die Warmwasseraufbereitung.
+                  </textElement>
+                  <language>de</language>
+                </legibleDescription>
+                <programmerHints>
+                  <textElement>
+                    Registers use decimal kWh and MWh values. Use layer6Deviation reading
+                    size 2 at once and multplicate / add values accordingly.
+                  </textElement>
+                  <language>en</language>
+                </programmerHints>
+              </dataPoint>
+              <modbusDataPointConfiguration>
+                <modbusDataType>
+                  <int16U />
+                </modbusDataType>
+                <address>3505</address>
+                <registerType>InputRegister</registerType>
+                <numberOfRegisters>2</numberOfRegisters>
+              </modbusDataPointConfiguration>
+              <modbusAttributes>
+                <scalingFactor>
+                  <multiplicator>1</multiplicator>
+                  <powerof10>0</powerof10>
+                </scalingFactor>
+                <layer6Deviation>2RegBase1000_L2H</layer6Deviation>
+              </modbusAttributes>
+            </dataPointListElement>
+            <dataPointListElement>
+              <dataPoint>
+                <dataPointName>RuntimeHeating</dataPointName>
+                <dataDirection>R</dataDirection>
+                <presenceLevel>O</presenceLevel>
+                <dataType>
+                  <float32 />
+                </dataType>
+                <unit>HOURS</unit>
+                <alternativeNames>            
+                  <sLV1Name>RuntimeHeating</sLV1Name>
+                  <manufName>VD HEIZEN Laufzeit WP 1</manufName>
+                  <hpBwpName>Betriebsstunden Heizen</hpBwpName>
+                </alternativeNames>
+                <legibleDescription>
+                  <textElement>Summe der Laufzeit des Verdichters seit Inbetriebnahme.</textElement>
+                  <language>de</language>
+                  <uri>http://tempuri.org</uri>
+                </legibleDescription>
+              </dataPoint>
+              <modbusDataPointConfiguration>
+                <modbusDataType>
+                  <int16U />
+                </modbusDataType>
+                <address>3539</address>
+                <registerType>InputRegister</registerType>
+                <numberOfRegisters>1</numberOfRegisters>
+              </modbusDataPointConfiguration>
+              <modbusAttributes>
+                <scalingFactor>
+                  <multiplicator>1</multiplicator>
+                  <powerof10>0</powerof10>
+                </scalingFactor>
+              </modbusAttributes>
+            </dataPointListElement>
+            <dataPointListElement>
+              <dataPoint>
+                <dataPointName>RuntimeDomHotWater</dataPointName>
+                <dataDirection>R</dataDirection>
+                <presenceLevel>O</presenceLevel>
+                <dataType>
+                  <float32 />
+                </dataType>
+                <unit>HOURS</unit>
+                <alternativeNames>            
+                  <sLV1Name>RuntimeDomHotWater</sLV1Name>
+                  <manufName>VD WARMWASSER Laufzeit WP 1</manufName>
+                  <hpBwpName>Betriebsstunden Warmwasser</hpBwpName>
+                </alternativeNames>
+                <legibleDescription>
+                  <textElement>Summe der Laufzeit des Verdichters seit Inbetriebnahme.</textElement>
+                  <language>de</language>
+                  <uri>http://tempuri.org</uri>
+                </legibleDescription>
+              </dataPoint>
+              <modbusDataPointConfiguration>
+                <modbusDataType>
+                  <int16U />
+                </modbusDataType>
+                <address>3542</address>
+                <registerType>InputRegister</registerType>
+                <numberOfRegisters>1</numberOfRegisters>
+              </modbusDataPointConfiguration>
+              <modbusAttributes>
+                <scalingFactor>
+                  <multiplicator>1</multiplicator>
+                  <powerof10>0</powerof10>
+                </scalingFactor>
+              </modbusAttributes>
             </dataPointListElement>
           </dataPointList>
         </functionalProfileListElement>

@@ -278,6 +278,321 @@
             </dataPointListElement>
           </dataPointList>
         </functionalProfileListElement>
+        <functionalProfileListElement>
+          <functionalProfile>
+            <functionalProfileName>EnergyMonitor</functionalProfileName>
+            <functionalProfileIdentification>
+              <specificationOwnerIdentification>0</specificationOwnerIdentification>
+              <functionalProfileCategory>HeatPumpControl</functionalProfileCategory>
+              <functionalProfileType>EnergyMonitor</functionalProfileType>
+              <levelOfOperation>2m</levelOfOperation>
+              <versionNumber>
+                <primaryVersionNumber>0</primaryVersionNumber>
+                <secondaryVersionNumber>3</secondaryVersionNumber>
+                <subReleaseVersionNumber>0</subReleaseVersionNumber>
+              </versionNumber>
+            </functionalProfileIdentification>
+            <alternativeNames>
+              <sLV1Name>EnergyMonitor</sLV1Name>
+            </alternativeNames>
+            <legibleDescription>
+              <textElement>
+                <![CDATA[	
+                  <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
+                  <p>Aufzeichnen der Warmepumpen-Betriebsdaten durch den CEM.</p>
+                  
+                  <p>Bemerkungen:</p>
+                  <ol>
+                    <li>Energiewerte, Laufzeiten und Anzahl Starts werden typischerweise 1x täglich abgefragt. Die Leistungsmessungen
+                        werden häufiger abgefragt und können zur Regelung dienen. Deshalb die Anforderung einer maximalen Abtastzeit.</li>
+                    <li>Die intern ermittelten Energiewerte ersetzen externe Zähler für Monitoring-Zwecke. Es wird erwünscht,
+                        dass der Hersteller Genauigkeitsangaben zu seinen intern ermittelten Werten macht. Dies ist eine wichtige
+                        Information für Monitoring-Systeme, um die Fehlertoleranz der energetischen Auswertungen abzuschätzen</li>
+                  </ol>
+                ]]>
+              </textElement>
+              <language>de</language>
+            </legibleDescription>
+          </functionalProfile>
+          <dataPointList>
+            <dataPointListElement>
+              <dataPoint>
+                <dataPointName>ActiveEnergyACtot</dataPointName>
+                <dataDirection>R</dataDirection>
+                <presenceLevel>R</presenceLevel>
+                <dataType>
+                  <float32 />
+                </dataType>
+                <unit>KILOWATT_HOURS</unit>
+                <alternativeNames>
+                  <manufName>CTA_Energy_El_Tot</manufName>
+                </alternativeNames>
+                <legibleDescription>
+                  <textElement>
+                    Summe der aufgenommenen elektrischen Energie des Verdichters inkl. Hilfsaggregate total.
+                  </textElement>
+                  <language>de</language>
+                </legibleDescription>
+              </dataPoint>
+              <modbusDataPointConfiguration>
+                <modbusDataType>
+                  <int32U />
+                </modbusDataType>
+                <address>2074</address>
+                <registerType>InputRegister</registerType>
+                <numberOfRegisters>2</numberOfRegisters>
+              </modbusDataPointConfiguration>
+            </dataPointListElement>
+            <dataPointListElement>
+              <dataPoint>
+                <dataPointName>ActiveEnergyACheat</dataPointName>
+                <dataDirection>R</dataDirection>
+                <presenceLevel>R</presenceLevel>
+                <dataType>
+                  <float32 />
+                </dataType>
+                <unit>KILOWATT_HOURS</unit>
+                <alternativeNames>
+                  <manufName>CTA_Energy_El_Heat</manufName>
+                </alternativeNames>
+                <legibleDescription>
+                  <textElement>
+                    Summe der aufgenommenen elektrischen Energie des Verdichters für das Heizen.
+                  </textElement>
+                  <language>de</language>
+                </legibleDescription>
+              </dataPoint>
+              <modbusDataPointConfiguration>
+                <modbusDataType>
+                  <int32U />
+                </modbusDataType>
+                <address>2068</address>
+                <registerType>InputRegister</registerType>
+                <numberOfRegisters>2</numberOfRegisters>
+              </modbusDataPointConfiguration>
+            </dataPointListElement>
+            <dataPointListElement>
+              <dataPoint>
+                <dataPointName>ActiveEnergyACDomHotWater</dataPointName>
+                <dataDirection>R</dataDirection>
+                <presenceLevel>R</presenceLevel>
+                <dataType>
+                  <float32 />
+                </dataType>
+                <unit>KILOWATT_HOURS</unit>
+                <alternativeNames>
+                  <manufName>CTA_Energy_El_DW</manufName>
+                </alternativeNames>
+                <legibleDescription>
+                  <textElement>
+                    Summe der aufgenommenen elektrischen Energie des Verdichters für das
+                    Kühlen (nur bei aktiver Kühlung über Verdichter).
+                  </textElement>
+                  <language>de</language>
+                </legibleDescription>
+              </dataPoint>
+              <modbusDataPointConfiguration>
+                <modbusDataType>
+                  <int32U />
+                </modbusDataType>
+                <address>2070</address>
+                <registerType>InputRegister</registerType>
+                <numberOfRegisters>2</numberOfRegisters>
+              </modbusDataPointConfiguration>
+            </dataPointListElement>
+            <dataPointListElement>
+              <dataPoint>
+                <dataPointName>ThermalEnergyTot</dataPointName>
+                <dataDirection>R</dataDirection>
+                <presenceLevel>R</presenceLevel>
+                <dataType>
+                  <float32 />
+                </dataType>
+                <unit>KILOWATT_HOURS</unit>
+                <alternativeNames>
+                  <sLV1Name>ThermalEnergyTot</sLV1Name>
+                  <manufName>CTA_Energy_Q_Tot</manufName>
+                </alternativeNames>
+                <legibleDescription>
+                  <textElement>Summe der abgegebenen thermischen Energie total.</textElement>
+                  <language>de</language>
+                </legibleDescription>
+              </dataPoint>
+              <modbusDataPointConfiguration>
+                <modbusDataType>
+                  <int32U />
+                </modbusDataType>
+                <address>2060</address>
+                <registerType>InputRegister</registerType>
+                <numberOfRegisters>2</numberOfRegisters>
+              </modbusDataPointConfiguration>
+            </dataPointListElement>
+            <dataPointListElement>
+              <dataPoint>
+                <dataPointName>ThermalEnergyHeat</dataPointName>
+                <dataDirection>R</dataDirection>
+                <presenceLevel>M</presenceLevel>
+                <dataType>
+                  <float32 />
+                </dataType>
+                <unit>KILOWATT_HOURS</unit>
+                <alternativeNames>
+                  <sLV1Name>ThermalEnergyHeat</sLV1Name>
+                  <manufName>CTA_Energy_Q_Heat</manufName>
+                </alternativeNames>
+                <legibleDescription>
+                  <textElement>Summe der abgegebenen thermischen Energie für das Heizen.</textElement>
+                  <language>de</language>
+                </legibleDescription>
+              </dataPoint>
+              <modbusDataPointConfiguration>
+                <modbusDataType>
+                  <int32U />
+                </modbusDataType>
+                <address>2054</address>
+                <registerType>InputRegister</registerType>
+                <numberOfRegisters>2</numberOfRegisters>
+              </modbusDataPointConfiguration>
+            </dataPointListElement>
+            <dataPointListElement>
+              <dataPoint>
+                <dataPointName>ThermalEnergyDomHotWater</dataPointName>
+                <dataDirection>R</dataDirection>
+                <presenceLevel>R</presenceLevel>
+                <dataType>
+                  <float32 />
+                </dataType>
+                <unit>KILOWATT_HOURS</unit>
+                <alternativeNames>
+                  <sLV1Name>ThermalEnergyDomHotWater</sLV1Name>
+                  <manufName>CTA_Energy_Q_DW</manufName>
+                </alternativeNames>
+                <legibleDescription>
+                  <textElement>
+                    Summe der aufgenommenen thermischen Energie für das Kühlen (nur bei aktiver Kühlung über Verdichter).
+                  </textElement>
+                  <language>de</language>
+                </legibleDescription>
+              </dataPoint>
+              <modbusDataPointConfiguration>
+                <modbusDataType>
+                  <int32U />
+                </modbusDataType>
+                <address>2056</address>
+                <registerType>InputRegister</registerType>
+                <numberOfRegisters>2</numberOfRegisters>
+              </modbusDataPointConfiguration>
+            </dataPointListElement>
+            <dataPointListElement>
+              <dataPoint>
+                <dataPointName>ActPowerACtot</dataPointName>
+                <dataDirection>R</dataDirection>
+                <presenceLevel>O</presenceLevel>
+                <dataType>
+                  <float32 />
+                </dataType>
+                <unit>KILOWATT_HOURS</unit>
+                  <alternativeNames>
+                    <sLV1Name>ActPowerACtot</sLV1Name>
+                    <manufName>State_CompPower</manufName>
+                  </alternativeNames>
+                <legibleDescription>
+                  <textElement>Effektive elektrischen Aufnahmeleistung des Verdichters</textElement>
+                  <language>de</language>
+                </legibleDescription>
+              </dataPoint>
+              <modbusDataPointConfiguration>
+                <modbusDataType>
+                  <float32 />
+                </modbusDataType>
+                <address>2032</address>
+                <registerType>InputRegister</registerType>
+                <numberOfRegisters>2</numberOfRegisters>
+              </modbusDataPointConfiguration>
+            </dataPointListElement>
+            <dataPointListElement>
+              <dataPoint>
+                <dataPointName>RuntimeHeating</dataPointName>
+                <dataDirection>R</dataDirection>
+                <presenceLevel>O</presenceLevel>
+                <dataType>
+                  <float32 />
+                </dataType>
+                <unit>HOURS</unit>
+                <alternativeNames>
+                  <sLV1Name>RuntimeHeating</sLV1Name>
+                  <manufName>CTA_OperTime_Total_h</manufName>
+                </alternativeNames>
+                <legibleDescription>
+                  <textElement>Summe der Laufzeit des Verdichters seit Inbetriebnahme.</textElement>
+                  <language>de</language>
+                </legibleDescription>
+              </dataPoint>
+              <modbusDataPointConfiguration>
+                <modbusDataType>
+                  <float32 />
+                </modbusDataType>
+                <address>2090</address>
+                <registerType>InputRegister</registerType>
+                <numberOfRegisters>2</numberOfRegisters>
+              </modbusDataPointConfiguration>
+            </dataPointListElement>
+            <dataPointListElement>
+              <dataPoint>
+                <dataPointName>RuntimeCooling</dataPointName>
+                <dataDirection>R</dataDirection>
+                <presenceLevel>O</presenceLevel>
+                <dataType>
+                  <float32 />
+                </dataType>
+                <unit>HOURS</unit>
+                <alternativeNames>
+                  <sLV1Name>RuntimeCooling</sLV1Name>
+                  <manufName>CTA_OperTime_Cooling_h</manufName>
+                </alternativeNames>
+                <legibleDescription>
+                  <textElement>Summe der Laufzeit in der Kühlphase.</textElement>
+                  <language>de</language>
+                </legibleDescription>
+              </dataPoint>
+              <modbusDataPointConfiguration>
+                <modbusDataType>
+                  <int32U />
+                </modbusDataType>
+                <address>2092</address>
+                <registerType>InputRegister</registerType>
+                <numberOfRegisters>2</numberOfRegisters>
+              </modbusDataPointConfiguration>
+            </dataPointListElement>
+            <dataPointListElement>
+              <dataPoint>
+                <dataPointName>NrOfStartupsCompressor</dataPointName>
+                <dataDirection>R</dataDirection>
+                <presenceLevel>O</presenceLevel>
+                <dataType>
+                  <int32U />
+                </dataType>
+                <unit>NONE</unit>
+                <alternativeNames>
+                  <sLV1Name>NrOfStartupsCompressor</sLV1Name>
+                  <manufName>CTA_CompStartAttempts</manufName>
+                </alternativeNames>
+                <legibleDescription>
+                  <textElement>Anzahl Starts des Verdichters seit Inbetriebnahme.</textElement>
+                  <language>de</language>
+                </legibleDescription>
+              </dataPoint>
+              <modbusDataPointConfiguration>
+                <modbusDataType>
+                  <int32U />
+                </modbusDataType>
+                <address>2094</address>
+                <registerType>InputRegister</registerType>
+                <numberOfRegisters>2</numberOfRegisters>
+              </modbusDataPointConfiguration>
+            </dataPointListElement>
+          </dataPointList>
+        </functionalProfileListElement>
       </functionalProfileList>
     </modbusInterface>
   </interfaceList>
