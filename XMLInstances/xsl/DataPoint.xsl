@@ -7,31 +7,37 @@
         <div class="dataPoint">
             <table>
                 <colgroup>
-                    <col style="width:230px" />
-                    <col style="width:325px" />
-                    <col style="width:54px" />
-					<xsl:if test="/sgr:DeviceFrame">
-						<col style="width:119px" />
-						<col style="width:44px" />
-					</xsl:if>
-					<xsl:if test="not(/sgr:DeviceFrame)">
-						<col style="width:75px" />
-						<col style="width:44px" />
-						<col style="width:44px" />
-					</xsl:if>
+                    <col style="width:231px" />
+                    <xsl:choose>
+                        <xsl:when test="/sgr:DeviceFrame">
+                            <col style="width:368px" />
+                            <col style="width:54px" />
+    						<col style="width:75px" />
+    						<col style="width:44px" />
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <col style="width:324px" />
+                            <col style="width:54px" />
+                            <col style="width:75px" />
+                            <col style="width:44px" />
+                            <col style="width:44px" />
+                        </xsl:otherwise>
+                    </xsl:choose>
                 </colgroup>
                 <tr>
                     <th>Datapoint</th>
                     <th>Description</th>
                     <th>Unit</th>
                     <th>Type</th>
-					<xsl:if test="/sgr:DeviceFrame">
-						<th>RWP<sup>1)</sup></th>
-					</xsl:if>
-					<xsl:if test="not(/sgr:DeviceFrame)">
-						<th>MRO<sup>1)</sup></th>
-						<th>RWP<sup>2)</sup></th>
-					</xsl:if>
+                    <xsl:choose>
+                        <xsl:when test="/sgr:DeviceFrame">
+    						<th>RWP<sup>1)</sup></th>
+                        </xsl:when>
+                        <xsl:otherwise>
+    						<th>MRO<sup>1)</sup></th>
+    						<th>RWP<sup>2)</sup></th>
+                        </xsl:otherwise>
+                    </xsl:choose>
                 </tr>
                 <xsl:for-each select="sgr:dataPointListElement">
                     <xsl:apply-templates select="." />
