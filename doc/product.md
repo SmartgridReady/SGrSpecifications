@@ -72,7 +72,7 @@ Each device contains a list of functional profiles.
 Each functional profile instance contains a list of data points in accordance with the standardized functional profile.
 | Element     | Description |
 |-------------|-------------|
-| Data point | Data point of the standardized [functional profile](functionalProfile.md), containing name, description, units, data type, read/write, mandatory/recommended/optional information |
+| Data point | Data point of the standardized [functional profile](functionalProfile.md), containing name, description, units, data type, read/write information |
 | Interface Info| transport-service specific information on how to access the data point |
 | programmerHints   | optional, can occur once per language. Contains details for the programmer. |
 
