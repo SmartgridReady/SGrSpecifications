@@ -10,17 +10,28 @@
                     <col style="width:230px" />
                     <col style="width:325px" />
                     <col style="width:54px" />
-                    <col style="width:75px" />
-                    <col style="width:44px" />
-                    <col style="width:44px" />
+					<xsl:if test="/sgr:DeviceFrame">
+						<col style="width:119px" />
+						<col style="width:44px" />
+					</xsl:if>
+					<xsl:if test="not(/sgr:DeviceFrame)">
+						<col style="width:75px" />
+						<col style="width:44px" />
+						<col style="width:44px" />
+					</xsl:if>
                 </colgroup>
                 <tr>
                     <th>Datapoint</th>
                     <th>Description</th>
                     <th>Unit</th>
                     <th>Type</th>
-                    <th>MRO<sup>1)</sup></th>
-                    <th>RWP<sup>2)</sup></th>
+					<xsl:if test="/sgr:DeviceFrame">
+						<th>RWP<sup>1)</sup></th>
+					</xsl:if>
+					<xsl:if test="not(/sgr:DeviceFrame)">
+						<th>MRO<sup>1)</sup></th>
+						<th>RWP<sup>2)</sup></th>
+					</xsl:if>
                 </tr>
                 <xsl:for-each select="sgr:dataPointListElement">
                     <xsl:apply-templates select="." />
@@ -122,9 +133,11 @@
 
                 <xsl:apply-templates select="sgr:dataType" />
             </td>
-            <td>
-                <xsl:value-of select="sgr:presenceLevel" />
-            </td>
+				<xsl:if test="not(/sgr:DeviceFrame)">
+					<td>
+						<xsl:value-of select="sgr:presenceLevel" />
+					</td>
+				</xsl:if>
             <td>
                 <xsl:value-of select="sgr:dataDirection" />
             </td>
