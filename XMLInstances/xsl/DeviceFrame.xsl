@@ -87,8 +87,7 @@
             <tfoot><tr style="border:hidden;"><td>
                 <!-- Footer-->
                 <div class="documentfooter">
-				    <sup>1)</sup> M mandatory, R recommended, O optional<br/>
-					<sup>2)</sup> R read, W write, P persistent
+				    <sup>1)</sup> R read, W write, P persistent
 				</div>
             </td></tr></tfoot>
         </table>
@@ -109,10 +108,12 @@
                 <xsl:choose>
                     <xsl:when test="sgr:isLocalControl = 'true'">
                         <img src="/xsl/ressources/lan.png" alt="" width="16pt" height="16pt" />
-                        Local area </xsl:when>
+                        Local area
+                    </xsl:when>
                     <xsl:otherwise>
                         <img src="/xsl/ressources/cloud.png" alt="" width="16pt" height="16pt" />
-                        Cloud device </xsl:otherwise>
+                        Cloud device
+                     </xsl:otherwise>
                 </xsl:choose>
             </td>
         </tr>
