@@ -48,7 +48,7 @@
         <modbusInterfaceSelection>TCPIP</modbusInterfaceSelection>
         <modbusTcp>
           <port>502</port>
-          <address>192.168.1.51</address>
+          <address>DHCP</address>
           <slaveId>1</slaveId>
         </modbusTcp>
         <firstRegisterAddressIsOne>false</firstRegisterAddressIsOne>
@@ -303,7 +303,8 @@
                 <dataDirection>R</dataDirection>
                 <presenceLevel>M</presenceLevel>
                 <dataType>
-                  <int16U/>
+                	<boolean />
+                	
                 </dataType>
                 <unit>NONE</unit>
                 <alternativeNames>
@@ -401,7 +402,7 @@
                 	<sLV1Name>SupplyWaterTemp</sLV1Name>
                 	<manufName>7</manufName></alternativeNames>
                 <legibleDescription>
-                	<textElement>Wärmeerzeuger-Ist</textElement>
+                	<textElement>Wärmeerzeuger-Ist (Vorlauf)</textElement>
                 	<language>de</language>
                 </legibleDescription>
                 <legibleDescription>
@@ -612,7 +613,7 @@
                 <dataType>
                   <float32/>
                 </dataType>
-                <unit>KILOWATT_HOURS</unit>
+                <unit>KILOWATTS</unit>
                 <alternativeNames>
                   <sLV1Name>PowerCtrlStpt</sLV1Name>
                   <manufName>20069</manufName>
@@ -652,7 +653,7 @@
             <dataPointListElement>
               <dataPoint>
                 <dataPointName>ActSpeed</dataPointName>
-                <dataDirection>RW</dataDirection>
+                <dataDirection>R</dataDirection>
                 <presenceLevel>M</presenceLevel>
                 <dataType>
                   <float32/>
@@ -704,7 +705,7 @@
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
-                <dataPointName>ActPowerACtot</dataPointName>
+                <dataPointName>ActThermalPower</dataPointName>
                 <dataDirection>R</dataDirection>
                 <presenceLevel>M</presenceLevel>
                 <dataType>
@@ -1104,7 +1105,63 @@
                   <powerof10>-1</powerof10>
                 </scalingFactor>
               </modbusAttributes>
+            </dataPointListElement>            
+            
+            <dataPointListElement>
+              <dataPoint>
+                <dataPointName>SupplyWaterTempStptOffs</dataPointName>
+                <dataDirection>RW</dataDirection>
+                <presenceLevel>O</presenceLevel>
+                <dataType>
+                  <float32/>
+                </dataType>
+                <unit>DEGREES_CELSIUS</unit>
+                <alternativeNames>
+                  <sLV1Name>SupplyWaterTempStptOffs</sLV1Name>
+                  <manufName>7031</manufName>
+                </alternativeNames>
+                <legibleDescription>
+                  <textElement>
+                    SmartGrid Offset Raum-Sollw. Heizen
+                  </textElement>
+                  <language>de</language>
+                </legibleDescription>
+                <legibleDescription>
+                  <textElement>SmartGrid room setpoint offset heating
+                  </textElement>
+                  <language>en</language>
+                </legibleDescription>
+                <legibleDescription>
+                  <textElement>SmartGrid offset val. cons. local chauff
+                  </textElement>
+                  <language>fr</language>
+                </legibleDescription>
+                <legibleDescription>
+                  <textElement>SmartGrid offset val nom ambiente risc
+                  </textElement>
+                  <language>it</language>
+                </legibleDescription>
+                <programmerHints>
+                	<textElement>This data point does only work during operationModes manual (HC_MAN_HEAT ,HC_MAN_COOL )</textElement>
+                	<language>de</language>
+                </programmerHints>
+              </dataPoint>
+              <modbusDataPointConfiguration>
+                <modbusDataType>
+                  <int16/>
+                </modbusDataType>
+                <address>27528</address>                
+                <registerType>HoldRegister</registerType>
+                <numberOfRegisters>1</numberOfRegisters>
+              </modbusDataPointConfiguration>
+              <modbusAttributes>
+                <scalingFactor>
+                  <multiplicator>1</multiplicator>
+                  <powerof10>-1</powerof10>
+                </scalingFactor>
+              </modbusAttributes>
             </dataPointListElement>
+            
             <dataPointListElement>
               <dataPoint>
                 <dataPointName>ReturnSupplyWaterTemp</dataPointName>
@@ -1500,6 +1557,62 @@
                 </scalingFactor>
               </modbusAttributes>
             </dataPointListElement>
+                        
+            <dataPointListElement>
+              <dataPoint>
+                <dataPointName>SupplyWaterTempStptOffs</dataPointName>
+                <dataDirection>RW</dataDirection>
+                <presenceLevel>O</presenceLevel>
+                <dataType>
+                  <float32/>
+                </dataType>
+                <unit>DEGREES_CELSIUS</unit>
+                <alternativeNames>
+                  <sLV1Name>SupplyWaterTempStptOffs</sLV1Name>
+                  <manufName>7031</manufName>
+                </alternativeNames>
+                <legibleDescription>
+                  <textElement>
+                    SmartGrid Offset Raum-Sollw. Heizen
+                  </textElement>
+                  <language>de</language>
+                </legibleDescription>
+                <legibleDescription>
+                  <textElement>SmartGrid room setpoint offset heating
+                  </textElement>
+                  <language>en</language>
+                </legibleDescription>
+                <legibleDescription>
+                  <textElement>SmartGrid offset val. cons. local chauff
+                  </textElement>
+                  <language>fr</language>
+                </legibleDescription>
+                <legibleDescription>
+                  <textElement>SmartGrid offset val nom ambiente risc
+                  </textElement>
+                  <language>it</language>
+                </legibleDescription>
+                <programmerHints>
+                	<textElement>This data point does only work during operationModes manual (HC_MAN_HEAT ,HC_MAN_COOL )</textElement>
+                	<language>de</language>
+                </programmerHints>
+              </dataPoint>
+              <modbusDataPointConfiguration>
+                <modbusDataType>
+                  <int16/>
+                </modbusDataType>
+                <address>27529</address>                
+                <registerType>HoldRegister</registerType>
+                <numberOfRegisters>1</numberOfRegisters>
+              </modbusDataPointConfiguration>
+              <modbusAttributes>
+                <scalingFactor>
+                  <multiplicator>1</multiplicator>
+                  <powerof10>-1</powerof10>
+                </scalingFactor>
+              </modbusAttributes>
+            </dataPointListElement>
+            
             <dataPointListElement>
               <dataPoint>
                 <dataPointName>ReturnSupplyWaterTemp</dataPointName>
@@ -1905,6 +2018,64 @@
                 </scalingFactor>
               </modbusAttributes>
             </dataPointListElement>
+            
+                   
+            
+            <dataPointListElement>
+              <dataPoint>
+                <dataPointName>SupplyWaterTempStptOffs</dataPointName>
+                <dataDirection>RW</dataDirection>
+                <presenceLevel>O</presenceLevel>
+                <dataType>
+                  <float32/>
+                </dataType>
+                <unit>DEGREES_CELSIUS</unit>
+                <alternativeNames>
+                  <sLV1Name>SupplyWaterTempStptOffs</sLV1Name>
+                  <manufName>7031</manufName>
+                </alternativeNames>
+                <legibleDescription>
+                  <textElement>
+                    SmartGrid Offset Raum-Sollw. Heizen
+                  </textElement>
+                  <language>de</language>
+                </legibleDescription>
+                <legibleDescription>
+                  <textElement>SmartGrid room setpoint offset heating
+                  </textElement>
+                  <language>en</language>
+                </legibleDescription>
+                <legibleDescription>
+                  <textElement>SmartGrid offset val. cons. local chauff
+                  </textElement>
+                  <language>fr</language>
+                </legibleDescription>
+                <legibleDescription>
+                  <textElement>SmartGrid offset val nom ambiente risc
+                  </textElement>
+                  <language>it</language>
+                </legibleDescription>
+                <programmerHints>
+                	<textElement>This data point does only work during operationModes manual (HC_MAN_HEAT ,HC_MAN_COOL )</textElement>
+                	<language>de</language>
+                </programmerHints>
+              </dataPoint>
+              <modbusDataPointConfiguration>
+                <modbusDataType>
+                  <int16/>
+                </modbusDataType>
+                <address>27530</address>                
+                <registerType>HoldRegister</registerType>
+                <numberOfRegisters>1</numberOfRegisters>
+              </modbusDataPointConfiguration>
+              <modbusAttributes>
+                <scalingFactor>
+                  <multiplicator>1</multiplicator>
+                  <powerof10>-1</powerof10>
+                </scalingFactor>
+              </modbusAttributes>
+            </dataPointListElement>
+            
             <dataPointListElement>
               <dataPoint>
                 <dataPointName>ReturnSupplyWaterTemp</dataPointName>
