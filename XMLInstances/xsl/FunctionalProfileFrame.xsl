@@ -62,51 +62,6 @@
                     </table>
         
                     <xsl:apply-templates select="sgr:dataPointList" />
-        
-                    <xsl:if test="//sgr:genericAttributes">
-                        <div class="functionalProfile">
-                            <h2>Table of Attributes</h2>
-                            <!-- Generic Attributes -->
-                            <table>
-                                <colgroup>
-                                    <col style="width:230px" />
-                                    <col style="width:134px" />
-                                </colgroup>
-                                <tr>
-                                    <th>Attribute</th>
-                                    <th>Type</th>
-                                    <th>Description</th>
-                                </tr>
-
-                                <!--maxLatencyTime-->
-                                <xsl:if test="//sgr:maxLatencyTimeMs">
-                                    <tr class="genericDetails">
-                                        <td class="genericattribute">maxLatencyTimeMs</td>
-                                        <td>unsigned long</td>
-                                        <td>
-                                            <div>
-                                                <xsl:call-template name="SGrLanguageText">
-                                                    <xsl:with-param name="lang">en</xsl:with-param>
-                                                    <xsl:with-param name="value">Maximum time in milliseconds from capturing of measured value
-                                                                                 until ready at the product interface
-                                                                                 (i.e. analog-digital conversion time).</xsl:with-param>
-                                                </xsl:call-template>
-                                            </div>
-                                            <div>
-                                                <xsl:call-template name="SGrLanguageText">
-                                                    <xsl:with-param name="lang">de</xsl:with-param>
-                                                    <xsl:with-param name="value">Maximalzeit in Millisekunden for die Aufnahme der Messwerte bis zur Bereitstellung an der Produktschnittstelle
-                                                                                 (d.h. Analog-Digital-Umwandlungszeit).</xsl:with-param>
-                                                </xsl:call-template>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                </xsl:if>
- 
-                            </table>
-        
-                        </div>
-                    </xsl:if>
 
                     <xsl:if test="//sgr:genericAttributeList">
                         <div class="functionalProfile">
@@ -125,7 +80,8 @@
         
                                 <!--//sgr:attributeList-->
                                 <xsl:if test="//sgr:genericAttributeList">
-                                    <xsl:for-each select="//sgr:genericAttributeList/sgr:genericAttributeListElement">
+                                    <xsl:for-each select="//sgr:genericAttributeList/sgr:genericAttributeListElement[not(sgr:name=preceding::sgr:name)]">
+                                        <xsl:sort select="sgr:name"/>
                                         <tr class="genericDetails">
                                             <xsl:variable name="name" select="sgr:name"/> 
                                             <xsl:variable name="attribute" select="document(concat('../GenericAttributes/', $name, '.xml'))"/>
@@ -158,7 +114,7 @@
                                         </tr>
                                     </xsl:for-each>
                                 </xsl:if>
-        
+
                             </table>
                         </div>
                     </xsl:if>
