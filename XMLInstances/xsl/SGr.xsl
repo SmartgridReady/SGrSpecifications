@@ -73,7 +73,14 @@
 					<div>
 						<select name="language" id="language" title="Language"
 							onchange="document.body.className = this.value">
-							<option value="any">All Languages</option>
+                            <xsl:choose>
+                              <xsl:when test="/sgr:DeviceFrame">
+  	                            <option value="any">All Languages</option>
+                              </xsl:when>
+                              <xsl:otherwise>
+  	                            <option value="anyfp">All Languages</option>
+                              </xsl:otherwise>
+                            </xsl:choose>
 							<option value="en">English</option>
 							<option value="de">Deutsch</option>
                             <xsl:if test="/sgr:DeviceFrame">
