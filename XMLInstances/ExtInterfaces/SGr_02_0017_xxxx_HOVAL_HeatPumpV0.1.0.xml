@@ -7,19 +7,20 @@
   <manufacturerName>Hoval AG</manufacturerName>
   <specificationOwnerIdentification>0</specificationOwnerIdentification>
   <releaseNotes>
-    <state>Draft</state>
+    <state>Review</state>
   </releaseNotes>
   <deviceInformation>
     <legibleDescription>
-      <textElement>TODO: txt Hoval easy readible explanation in English</textElement>
-      <language>en</language>
-    </legibleDescription>
-    <legibleDescription>
-      <textElement>Hoval Wärmepumpen mit TopTronic(r) E in Kombination mit dem HovalConnect Modbus
+      <textElement>
+        Hoval Wärmepumpen mit TopTronic(r) E in Kombination mit dem HovalConnect Modbus
         Gateway und SmartGridready Anbindung ermöglichen umweltfreundliches Heizen und erfüllen bereits heute die
         gesetzlichen Vorgaben von morgen.
       </textElement>
       <language>de</language>
+    </legibleDescription>
+    <legibleDescription>
+      <textElement>TODO: txt Hoval easy readible explanation in English</textElement>
+      <language>en</language>
     </legibleDescription>
     <legibleDescription>
       <textElement>TODO: txt Hoval simple text en Francais</textElement>
@@ -31,8 +32,8 @@
     </legibleDescription>
     <deviceCategory>HeatPumpAppliance</deviceCategory>
     <isLocalControl>true</isLocalControl>
-    <softwareRevision>0.0.1</softwareRevision>
-    <hardwareRevision>0.0.1</hardwareRevision>
+    <softwareRevision>1.1.1.3050</softwareRevision>
+    <hardwareRevision>1.0.0</hardwareRevision>
     <brandName>TopTronic(r)</brandName>
     <powerSource>mains3Phase</powerSource>
     <nominalPower>nominalPower</nominalPower>
@@ -40,7 +41,7 @@
     </manufacturerSpecificationIdentification>
     <manufacturerLabel>Hoval Wärmepumpen mit HovalConnect Modbus</manufacturerLabel>
     <generalRemarks>generalRemarks</generalRemarks>
-    <levelOfOperation>2m</levelOfOperation>
+    <levelOfOperation>4m</levelOfOperation>
   </deviceInformation>
   <interfaceList>
     <modbusInterface>
@@ -57,11 +58,11 @@
       <functionalProfileList>
         <functionalProfileListElement>
           <functionalProfile>
-            <functionalProfileName>SG-ReadyStates_bwp</functionalProfileName>
+            <functionalProfileName>SG-ReadyStates</functionalProfileName>
             <functionalProfileIdentification>
               <specificationOwnerIdentification>0</specificationOwnerIdentification>
               <functionalProfileCategory>HeatPumpControl</functionalProfileCategory>
-              <functionalProfileType>SG-ReadyStates_bwp</functionalProfileType>
+              <functionalProfileType>SG-ReadyStates</functionalProfileType>
               <levelOfOperation>2m</levelOfOperation>
               <versionNumber>
                 <primaryVersionNumber>1</primaryVersionNumber>
@@ -171,23 +172,15 @@
                   <enum>
                     <enumEntry>
                       <literal>HP_LOCKED</literal>
-                      <ordinal>2</ordinal>
-                      <description>Gesperrt für maximal 2h</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>HP_NORMAL</literal>
-                      <ordinal>0</ordinal>
-                      <description>Normalbetrieb, optimiert auf den Kunden</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>HP_INTENSIFIED</literal>
-                      <ordinal>1</ordinal>
-                      <description>Verstärkter Betrieb</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>HP_FORCED</literal>
-                      <ordinal>3</ordinal>
-                      <description>Definitiver Anlaufbefehl</description>
                     </enumEntry>
                   </enum>
                 </dataType>
@@ -198,11 +191,21 @@
                   <hpBwpName>Betriebsmodus</hpBwpName>
                 </alternativeNames>
                 <legibleDescription>
-                  <textElement>Sets the override possibilities of the heat pump </textElement>
+                  <textElement>
+                    <![CDATA[
+                      <i>Festlegen der Übersteuerungsmoeglichkeiten der Wärmepumpe</i>
+                      </p>Smart Grid via system bus
+                    ]]>
+                  </textElement>
                   <language>en</language>
                 </legibleDescription>
                 <legibleDescription>
-                  <textElement>Festlegen der Übersteuerungsmoeglichkeiten der Wärmepumpe</textElement>
+                  <textElement>
+                    <![CDATA[
+                      <i>Sets the override possibilities of the heat pump</i>
+                      </p>Smart Grid über Systembus
+                    ]]>
+                  </textElement>
                   <language>de</language>
                 </legibleDescription>
                 <legibleDescription>
@@ -233,23 +236,15 @@
                   <enum>
                     <enumEntry>
                       <literal>HP_LOCKED</literal>
-                      <ordinal>2</ordinal>
-                      <description>Gesperrt für maximal 2h</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>HP_NORMAL</literal>
-                      <ordinal>0</ordinal>
-                      <description>Normalbetrieb, optimiert auf den Kunden</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>HP_INTENSIFIED</literal>
-                      <ordinal>1</ordinal>
-                      <description>Verstärkter Betrieb</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>HP_FORCED</literal>
-                      <ordinal>3</ordinal>
-                      <description>Definitiver Anlaufbefehl</description>
                     </enumEntry>
                   </enum>
                 </dataType>
@@ -259,11 +254,21 @@
                   <manufName>38012</manufName>
                 </alternativeNames>
                 <legibleDescription>
-                  <textElement>Feedback of the current running override possibility of the heat pump </textElement>
+                  <textElement>
+                    <![CDATA[
+                      <i>Feedback of the current running override possibility of the heat pump</i>
+                      </p>Smart Grid via system bus (Rücklesung)
+                    ]]>
+                  </textElement>
                   <language>en</language>
                 </legibleDescription>
                 <legibleDescription>
-                  <textElement>Rückmeldung der aktuellen laufenden Übersteuerungsmoeglichkeit der Wärmepumpe</textElement>
+                  <textElement>
+                    <![CDATA[
+                      <i>Rückmeldung der aktuellen laufenden Übersteuerungsmoeglichkeit der Wärmepumpe</i>
+                      </p>Smart Grid über Systembus
+                    ]]>
+                  </textElement>
                   <language>de</language>
                 </legibleDescription>
                 <legibleDescription>
@@ -313,8 +318,7 @@
                 <unit>NONE</unit>
                 <alternativeNames>
                   <sLV1Name>hovSGReadySrcSelect</sLV1Name>
-                  <manufName>38013</manufName>
-                </alternativeNames>
+                  <manufName>38013</manufName></alternativeNames>
                 <legibleDescription>
                   <textElement>Smart Grid function trigger
                   </textElement>
@@ -417,18 +421,29 @@
                 <dataPointName>ActiveEnergyACtot</dataPointName>
                 <dataDirection>R</dataDirection>
                 <dataType>
-                  <float32/>
+                  <float64/>
                 </dataType>
                 <unit>KILOWATT_HOURS</unit>
                 <alternativeNames>
                   <sLV1Name>ActiveEnergyACtot</sLV1Name>
-                  <manufName>23009</manufName></alternativeNames>
+                  <manufName>23009</manufName>
+                </alternativeNames>
                 <legibleDescription>
-                  <textElement>Eletrical energy WEZ kWh</textElement>
+                  <textElement>
+                    <![CDATA[
+                      <i>Total energy measurement</i>
+                      </p>Eletrical energy WEZ kWh.
+                    ]]>
+                  </textElement>
                   <language>en</language>
                 </legibleDescription>
                 <legibleDescription>
-                  <textElement>Elektrische Gesamtenergie WEZ kWh</textElement>
+                  <textElement>
+                    <![CDATA[
+                      <i>Erfassung der gesamten Wirkenergie</i>
+                      </p>Elektrische Gesamtenergie WEZ kWh.
+                    ]]>
+                  </textElement>
                   <language>de</language>
                 </legibleDescription>
                 <legibleDescription>
@@ -440,6 +455,14 @@
                   <language>it</language>
                 </legibleDescription>
               </dataPoint>
+              <!-- defined in FP but not defined here
+              <genericAttributeList>
+                <genericAttributeListElement>
+                  <name>Precision</name>
+                  <value>10</value>
+                </genericAttributeListElement>
+              </genericAttributeList>
+              -->
               <modbusDataPointConfiguration>
                 <modbusDataType>
                   <int32U/>
@@ -453,7 +476,7 @@
         </functionalProfileListElement>
         <functionalProfileListElement>
           <functionalProfile>
-            <functionalProfileName>ActivePowerACtot</functionalProfileName>
+            <functionalProfileName>AcivePowerACtot</functionalProfileName>
             <functionalProfileIdentification>
               <specificationOwnerIdentification>0</specificationOwnerIdentification>
               <functionalProfileCategory>Metering</functionalProfileCategory>
@@ -465,28 +488,6 @@
                 <subReleaseVersionNumber>0</subReleaseVersionNumber>
               </versionNumber>
             </functionalProfileIdentification>
-            <legibleDescription>
-              <textElement>
-                <![CDATA[ 
-                  <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
-                  <strong>Active Power Measurement</strong><br>
-                  Monitoring functional profile for power generators and consumers for reflecting the active power.
-                  
-                  <p>Knowing the precisionPercent of measurements is necessary and therefore specified as a mandatory attribute
-                     per data point. Thus, different measurement precisions can be defined for the data points.</p>
-                  
-                  <p>With this functional profile you can measure the total active power as well as the active power of
-                     the three individual phases. One of the following options must be implemented for fulfilling the functional profile:
-                  <ul>
-                    <li>Single-phase devices use the total active power data point (ActivePowerACtot)</li>
-                    <li>Three-phase devices without measurement of the total active power use the data points per phase (ActivePowerACL1, ActivePowerACL2, ActivePowerACL3)</li>
-                    <li>Three-phase devices with measurement of the total active power use all data points</li>
-                  </ul>
-                  </p>
-                ]]>     
-              </textElement>
-              <language>en</language>
-            </legibleDescription>
             <legibleDescription>
               <textElement>
                 <![CDATA[ 
@@ -512,6 +513,28 @@
               </textElement>
               <language>de</language>
             </legibleDescription>
+            <legibleDescription>
+              <textElement>
+                <![CDATA[ 
+                  <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
+                  <strong>Active Power Measurement</strong><br>
+                  Monitoring functional profile for power generators and consumers for reflecting the active power.
+                  
+                  <p>Knowing the precisionPercent of measurements is necessary and therefore specified as a mandatory attribute
+                     per data point. Thus, different measurement precisions can be defined for the data points.</p>
+                  
+                  <p>With this functional profile you can measure the total active power as well as the active power of
+                     the three individual phases. One of the following options must be implemented for fulfilling the functional profile:
+                  <ul>
+                    <li>Single-phase devices use the total active power data point (ActivePowerACtot)</li>
+                    <li>Three-phase devices without measurement of the total active power use the data points per phase (ActivePowerACL1, ActivePowerACL2, ActivePowerACL3)</li>
+                    <li>Three-phase devices with measurement of the total active power use all data points</li>
+                  </ul>
+                  </p>
+                ]]>     
+              </textElement>
+              <language>en</language>
+            </legibleDescription>
           </functionalProfile>
           <dataPointList>
             <dataPointListElement>
@@ -519,7 +542,7 @@
                 <dataPointName>ActivePowerACtot</dataPointName>
                 <dataDirection>R</dataDirection>
                 <dataType>
-                  <float32/>
+                  <float64/>
                 </dataType>
                 <unit>KILOWATTS</unit>
                 <alternativeNames>
@@ -527,11 +550,21 @@
                   <manufName>23002</manufName>
                 </alternativeNames>
                 <legibleDescription>
-                  <textElement>Eletrical power WEZ</textElement>
+                  <textElement>
+                    <![CDATA[
+                      <i>Total active power measurement</i>
+                      </p>Eletrical power WEZ.
+                    ]]>
+                  </textElement>
                   <language>en</language>
                 </legibleDescription>
                 <legibleDescription>
-                  <textElement>Aktuelle elektr. Leistungsaufnahme WEZ</textElement>
+                  <textElement>
+                    <![CDATA[
+                      <i>Erfassung der gesamten Wirkleistung</i>
+                      </p>Aktuelle elektr. Leistungsaufnahme WEZ.
+                    ]]>
+                  </textElement>
                   <language>de</language>
                 </legibleDescription>
                 <legibleDescription>
@@ -543,6 +576,14 @@
                   <language>it</language>
                 </legibleDescription>
               </dataPoint>
+              <!-- defined in FP but not defined here
+              <genericAttributeList>
+                <genericAttributeListElement>
+                  <name>Precision</name>
+                  <value>10</value>
+                </genericAttributeListElement>
+              </genericAttributeList>
+              -->
               <modbusDataPointConfiguration>
                 <modbusDataType>
                   <int32 />
@@ -559,7 +600,7 @@
               </modbusAttributes>
             </dataPointListElement>
           </dataPointList>
-        </functionalProfileListElement>
+       </functionalProfileListElement>
         <functionalProfileListElement>
           <functionalProfile>
             <functionalProfileName>EnergyMonitor</functionalProfileName>
@@ -579,7 +620,7 @@
             </alternativeNames>
             <legibleDescription>
               <textElement>
-                <![CDATA[	
+                <![CDATA[ 
                   <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
                   <p>Aufzeichnen der Warmepumpen-Betriebsdaten durch den CEM.</p>
                   
@@ -602,7 +643,7 @@
                 <dataPointName>ThermalEnergyTot</dataPointName>
                 <dataDirection>R</dataDirection>
                 <dataType>
-                  <float32/>
+                  <float64/>
                 </dataType>
                 <unit>KILOWATT_HOURS</unit>
                 <alternativeNames>
@@ -610,19 +651,27 @@
                   <manufName>29050</manufName>
                 </alternativeNames>
                 <legibleDescription>
-                  <textElement>Quantité de chaleur chauffage</textElement>
+                  <textElement>Quantité de chaleur chauffage
+                  </textElement>
                   <language>en</language>
                 </legibleDescription>
                 <legibleDescription>
-                  <textElement>Wärmemenge Heizen</textElement>
+                  <textElement>
+                    <![CDATA[
+                      <i>Summe der abgegebenen thermischen Energie total</i>
+                      </p>Wärmemenge Heizen.
+                    ]]>
+                  </textElement>
                   <language>de</language>
                 </legibleDescription>
                 <legibleDescription>
-                  <textElement>Heat quantity heating</textElement>
+                  <textElement>Heat quantity heating
+                  </textElement>
                   <language>fr</language>
                 </legibleDescription>
                 <legibleDescription>
-                  <textElement>Quantità di calore riscaldamento</textElement>
+                  <textElement>Quantità di calore riscaldamento
+                  </textElement>
                   <language>it</language>
                 </legibleDescription>
               </dataPoint>
@@ -640,7 +689,7 @@
                 <dataPointName>ThermalEnergyHeat</dataPointName>
                 <dataDirection>R</dataDirection>
                 <dataType>
-                  <float32/>
+                  <float64/>
                 </dataType>
                 <unit>KILOWATT_HOURS</unit>
                 <alternativeNames>
@@ -651,7 +700,12 @@
                   <language>en</language>
                 </legibleDescription>
                 <legibleDescription>
-                  <textElement>Wärmemenge Heizen</textElement>
+                  <textElement>
+                    <![CDATA[
+                      <i>Summe der abgegebenen thermischen Energie für das Heizen.</i>
+                      </p>Wärmemenge Heizen.
+                    ]]>
+                  </textElement>
                   <language>de</language>
                 </legibleDescription>
                 <legibleDescription>
@@ -677,7 +731,7 @@
                 <dataPointName>ThermalEnergyCool</dataPointName>
                 <dataDirection>R</dataDirection>
                 <dataType>
-                  <float32/>
+                  <float64/>
                 </dataType>
                 <unit>KILOWATT_HOURS</unit>
                 <alternativeNames>
@@ -691,16 +745,21 @@
                 </legibleDescription>
                 <legibleDescription>
                   <textElement>
-                    Kältemenge Kühlen: Summe der aufgenommenen thermischen Energie für das Kühlen (nur bei aktiver Kühlung über Verdichter).
+                    <![CDATA[
+                      <i>Summe der aufgenommenen thermischen Energie für das Kühlen (nur bei aktiver Kühlung über Verdichter).</i>
+                      </p>Kältemenge Kühlen: Summe der aufgenommenen thermischen Energie für das Kühlen (nur bei aktiver Kühlung über Verdichter)
+                    ]]>
                   </textElement>
                   <language>de</language>
                 </legibleDescription>
                 <legibleDescription>
-                  <textElement>Quant. refroid. Froid</textElement>
+                  <textElement>Quant. refroid. Froid
+                  </textElement>
                   <language>fr</language>
                 </legibleDescription>
                 <legibleDescription>
-                  <textElement>Quantità di freddo raffrescamento</textElement>
+                  <textElement>Quantità di freddo raffrescamento
+                  </textElement>
                   <language>it</language>
                 </legibleDescription>
               </dataPoint>
@@ -718,26 +777,34 @@
                 <dataPointName>ThermalEnergyDomHotWater</dataPointName>
                 <dataDirection>R</dataDirection>
                 <dataType>
-                  <float32/>
+                  <float64/>
                 </dataType>
                 <unit>KILOWATT_HOURS</unit>
                 <alternativeNames>
                   <sLV1Name>ThermalEnergyDomHotWater</sLV1Name>
                   <manufName>55</manufName></alternativeNames>
                 <legibleDescription>
-                  <textElement>Heat quantity DHW</textElement>
+                  <textElement>Heat quantity DHW
+                  </textElement>
                   <language>en</language>
                 </legibleDescription>
                 <legibleDescription>
-                  <textElement>Wärmemenge WW</textElement>
+                  <textElement>
+                    <![CDATA[
+                      <i>Summe der abgegebenen thermischen Energie für die Brauchwarmwasser-Erwärmung.</i>
+                      </p>Wärmemenge WW
+                    ]]>
+                  </textElement>
                   <language>de</language>
                 </legibleDescription>
                 <legibleDescription>
-                  <textElement>Quantité chaleur EC</textElement>
+                  <textElement>Quantité chaleur EC
+                  </textElement>
                   <language>fr</language>
                 </legibleDescription>
                 <legibleDescription>
-                  <textElement>Quantità di calore acqua calda</textElement>
+                  <textElement>Quantità di calore acqua calda
+                  </textElement>
                   <language>it</language>
                 </legibleDescription>
               </dataPoint>
@@ -755,14 +822,19 @@
                 <dataPointName>RuntimeCompressor</dataPointName>
                 <dataDirection>R</dataDirection>
                 <dataType>
-                  <float32/>
+                  <float64/>
                 </dataType>
                 <unit>HOURS</unit>
                 <alternativeNames>
                   <sLV1Name>RuntimeCompressor</sLV1Name>
                 </alternativeNames>
                 <legibleDescription>
-                  <textElement>Betriebsstunden Wärmeerzeuger: Summe der Laufzeit des Verdichters seit Inbetriebnahme.</textElement>
+                  <textElement>
+                    <![CDATA[
+                      <i>Summe der Laufzeit des Verdichters seit Inbetriebnahme.</i>
+                      </p>Betriebsstunden Wärmeerzeuger: Summe der Laufzeit des Verdichters seit Inbetriebnahme.
+                    ]]>
+                  </textElement>
                   <language>de</language>
                 </legibleDescription>
               </dataPoint>
@@ -774,19 +846,13 @@
                 <registerType>HoldRegister</registerType>
                 <numberOfRegisters>2</numberOfRegisters>
               </modbusDataPointConfiguration>
-              <modbusAttributes>
-                <scalingFactor>
-                  <multiplicator>1</multiplicator>
-                  <powerof10>0</powerof10>
-                </scalingFactor>
-              </modbusAttributes>
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
                 <dataPointName>NrOfStartupsCompressor</dataPointName>
                 <dataDirection>R</dataDirection>
                 <dataType>
-                  <int32U/>
+                  <float64/>
                 </dataType>
                 <unit>NONE</unit>
                 <alternativeNames>
@@ -799,7 +865,12 @@
                   <language>en</language>
                 </legibleDescription>
                 <legibleDescription>
-                  <textElement>Schaltzyklen Wärmeerzeuger: Anzahl Starts des Verdichters seit Inbetriebnahme.</textElement>
+                  <textElement>
+                    <![CDATA[
+                      <i>Anzahl Starts des Verdichters seit Inbetriebnahme.</i>
+                      </p>Schaltzyklen Wärmeerzeuger: Anzahl Starts des Verdichters seit Inbetriebnahme.
+                    ]]>
+                  </textElement>
                   <language>de</language>
                 </legibleDescription>
                 <legibleDescription>
@@ -821,12 +892,6 @@
                 <registerType>HoldRegister</registerType>
                 <numberOfRegisters>2</numberOfRegisters>
               </modbusDataPointConfiguration>
-              <modbusAttributes>
-                <scalingFactor>
-                  <multiplicator>1</multiplicator>
-                  <powerof10>0</powerof10>
-                </scalingFactor>
-              </modbusAttributes>
             </dataPointListElement>
           </dataPointList>
         </functionalProfileListElement>
