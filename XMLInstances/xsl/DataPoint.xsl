@@ -35,7 +35,7 @@
                         </xsl:when>
                         <xsl:otherwise>
     						<th>MRO<sup>1)</sup></th>
-    						<th>RWP<sup>2)</sup></th>
+    						<th>RWPC<sup>2)</sup></th>
                         </xsl:otherwise>
                     </xsl:choose>
                 </tr>
@@ -89,14 +89,36 @@
                     <xsl:apply-templates select="sgr:genericAttributes" />
 
                     <!-- transport service details-->
-                    <xsl:if test="sgr:modbusDataPointConfiguration">
-                        <xsl:apply-templates select="sgr:modbusDataPointConfiguration" />
-                        <xsl:apply-templates select="sgr:blockCacheIdentification" />
-                        <xsl:apply-templates select="sgr:modbusAttributes" />
-                    </xsl:if>
-                    <xsl:if test="sgr:restApiDataPointConfiguration">
-                        <xsl:apply-templates select="sgr:restApiDataPointConfiguration" />
-                    </xsl:if>
+                    <xsl:choose>
+                        <xsl:when test="sgr:modbusDataPointConfiguration">
+                            <xsl:if test="sgr:dataPoint/sgr:dataDirection = 'C'">
+                                <tr>
+                        			<td></td>
+                                    <td style="color:red"><b>Constant data points cannot have a configuration</b></td>
+                        		</tr>
+                            </xsl:if>
+                            <xsl:apply-templates select="sgr:modbusDataPointConfiguration" />
+                            <xsl:apply-templates select="sgr:blockCacheIdentification" />
+                            <xsl:apply-templates select="sgr:modbusAttributes" />
+                        </xsl:when>
+                        <xsl:when test="sgr:restApiDataPointConfiguration">
+                            <xsl:if test="sgr:dataPoint/sgr:dataDirection = 'C'">
+                                <tr>
+                                    <td></td>
+                                    <td style="color:red"><b>Constant data points cannot have a configuration</b></td>
+                                </tr>
+                            </xsl:if>
+                            <xsl:apply-templates select="sgr:restApiDataPointConfiguration" />
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:if test="sgr:dataPoint/sgr:dataDirection != 'C'">
+                                <tr>
+                                    <td></td>
+                                    <td style="color:red"><b>Non-constant data points must have a configuration</b></td>
+                                </tr>
+                            </xsl:if>
+                        </xsl:otherwise>
+                    </xsl:choose>
                 </table>
             </td>
         </tr>
