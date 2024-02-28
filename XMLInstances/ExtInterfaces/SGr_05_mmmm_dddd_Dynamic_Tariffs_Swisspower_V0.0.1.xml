@@ -13,31 +13,14 @@
     <deviceCategory>DeviceInformation</deviceCategory>
     <isLocalControl>false</isLocalControl>
     <softwareRevision>0.0.1</softwareRevision>
-    <manufacturerSpecificationIdentification>Example</manufacturerSpecificationIdentification>
+    <manufacturerSpecificationIdentification>SwisspowerDynamicTariffs</manufacturerSpecificationIdentification>
   </deviceInformation>
   <interfaceList>
     <restApiInterface>
       <restApiInterfaceDescription>
         <restApiInterfaceSelection>URI</restApiInterfaceSelection>
-        <restApiUri>{{baseUri}}</restApiUri>
-        <restApiAuthenticationMethod>BearerSecurityScheme</restApiAuthenticationMethod>
-        <restApiBearer>
-          <restApiServiceCall>
-            <requestHeader>
-              <header>
-                <headerName>Accept</headerName>
-                <value>application/json</value>
-              </header>
-            </requestHeader>
-            <requestMethod>POST</requestMethod>
-            <requestPath>/authentication</requestPath>
-            <requestBody>{"strategy": "local", "email": "{{username}}", "password": "{{password}}"}</requestBody>
-            <responseQuery>
-              <queryType>JMESPathExpression</queryType>
-              <query>accessToken</query>
-            </responseQuery>
-          </restApiServiceCall>
-        </restApiBearer>
+        <restApiUri>https://esit.code-fabrik.ch</restApiUri>
+        <restApiAuthenticationMethod>NoSecurityScheme</restApiAuthenticationMethod>
       </restApiInterfaceDescription>
       <functionalProfileList>
         <functionalProfileListElement>
@@ -93,6 +76,10 @@
           "description": "The tariff value",
           "type": "number"
         },
+        "unit": {
+          "description": "The tariff unit",
+          "type": "string"
+        }
         "required": [ "name", "tariff" ]
       }
     },
@@ -110,8 +97,8 @@
         "endTime":          "2023-11-17T00:15:00+01:00",
         "tariffs":
         [
-            { "name": "sunlight",  "tariff": 15.0 },
-            { "name": "moonlight", "tariff": 12.0 }
+            { "name": "sunlight",  "tariff": 15.0, "unit": "Rp/kWh" },
+            { "name": "moonlight", "tariff": 12.0, "unit": "Rp/kWh" }
         ]
     },
     {
@@ -119,8 +106,8 @@
         "endTime":          "2023-11-17T00:30:00+01:00",
         "tariffs":
         [
-            { "name": "sunlight",  "tariff": 17.0 },
-            { "name": "moonlight", "tariff": 14.0 }
+            { "name": "sunlight",  "tariff": 17.0, "unit": "Rp/kWh" },
+            { "name": "moonlight", "tariff": 14.0, "unit": "Rp/kWh" }
         ]
     },
     {
@@ -128,8 +115,8 @@
         "endTime":          "2023-11-17T00:45:00+01:00",
         "tariffs":
         [
-            { "name": "sunlight",  "tariff": 16.0 },
-            { "name": "moonlight", "tariff": 13.0 }
+            { "name": "sunlight",  "tariff": 16.0, "unit": "Rp/kWh" },
+            { "name": "moonlight", "tariff": 13.0, "unit": "Rp/kWh" }
         ]
     }
 ]
@@ -155,42 +142,20 @@
                       <p/>
                       Parameters of request in the product are
                       <ul>
+                        <li><strong>point</strong> - string - the point-id that identifies the consumer location</li>
                         <li><strong>start_time</strong> - date - the start date of the requested interval</li>
                         <li><strong>end_time</strong> - date - the end date of the requested interval</li>
-                        <li><strong>tariffs</strong> - string - comma-separated list of requested tariffs (optional)</li>
                       </ul>
                       <p/>
-                      The JMES queries for the elements of the result structure are
-<pre>
-&lt;json&gt;
-  &lt;array&gt;
-    &lt;elem&gt;
-      &lt;key&gt;startTime&lt;/key&gt;
-      &lt;date/&gt;
-      <span style="color:blue">&lt;query&gt;[*].start_time&lt;/query&gt;</span>
-    &lt;/elem&gt;
-    &lt;elem&gt;
-      &lt;key&gt;endTime&lt;/key&gt;
-      &lt;date/&gt;
-      <span style="color:blue">&lt;query&gt;[*].end_time&lt;/query&gt;</span>
-    &lt;/elem&gt;
-    &lt;array&gt;
-      &lt;name&gt;tariffs&lt;/name&gt;
-      &lt;elem&gt;
-        &lt;key&gt;tariff&lt;/key&gt;
-        &lt;string/&gt;
-        <span style="color:blue">&lt;query&gt;[*].tariffs[*].tariff&lt;/query&gt;</span>
-      &lt;/elem&gt;
-      &lt;elem&gt;
-        &lt;key&gt;value&lt;/key&gt;
-        &lt;number/&gt;
-        <span style="color:blue">&lt;query&gt;[*].tariffs[*].value&lt;/query&gt;</span>
-      &lt;/elem&gt;
-    &lt;/array&gt;
-  &lt;/array&gt;
-&lt;/json&gt;
-</pre>
-                    ]]>
+                      The JMES queries for the elements of the result structure are:
+                       <ul>
+                        <li><strong>start_time</strong>:     <span style="color:blue">[*].start_time</span></li>
+                        <li><strong>end_time</strong>:       <span style="color:blue">[*].end_time</span></li>
+                        <li><strong>tariffs.name</strong>:   <span style="color:blue">[*].tariffs[*].name</span></li>
+                        <li><strong>tariffs.tariff</strong>: <span style="color:blue">[*].tariffs[*].tariff</span></li>
+                        <li><strong>tariffs.unit</strong>:   <span style="color:blue">[*].tariffs[*].unit</span></li>
+                      </ul
+                  ]]>
                   </textElement>
                   <language>en</language>
                 </legibleDescription>
@@ -209,36 +174,16 @@
                     </header>
                   </requestHeader>
                   <requestMethod>GET</requestMethod>
-                  <requestPath>/tariffService?start_time={[startOfInterval]}&amp;end_time={[endOfInterval]}&amp;tariffs={[tariffNames]}</requestPath>
+                  <requestPath>/api/v1/tariffs?point={{point}}&amp;start_timestamp={{start_timestamp}}&amp;end_timestamp={{end_timestamp}}</requestPath>
                     <responseQuery>
-                    <queryType>JMESPathExpression</queryType>
-                    <json>
-                      <array>
-                        <elem>
-                          <key>startTime</key>
-                          <date/>
-                          <query>[*].start_time</query>
-                        </elem>
-                        <elem>
-                          <key>endTime</key>
-                          <date/>
-                          <query>[*].end_time</query>
-                        </elem>
-                        <array>
-                          <name>tariffs</name>
-                          <elem>
-                            <key>tariff</key>
-                            <string/>
-                            <query>[*].tariffs[*].tariff</query>
-                          </elem>
-                          <elem>
-                            <key>value</key>
-                            <number/>
-                            <query>[*].tariffs[*].value</query>
-                          </elem>
-                        </array>
-                      </array>
-                    </json>
+                    <queryType>JMESPathMapping</queryType>
+                    <jmesPathMappings>
+                      <mapping><from>prices[*].start_timestamp</from><to>[*].start_time</to></mapping>
+                      <mapping><from>prices[*].end_timestamp</from><to>[*].end_time</to></mapping>
+                      <mapping><from>prices[*].price</from><to>[*].tariffs[*].tariff</to><name>$standard</name></mapping>
+                      <mapping><from>$standard</from><to>[*].tariffs[*].name</to></mapping>
+                      <mapping><from>prices[*].unit</from><to>[*].tariffs[*].unit</to></mapping>
+                    </jmesPathMappings>
                   </responseQuery>
                 </restApiServiceCall>
               </restApiDataPointConfiguration>
