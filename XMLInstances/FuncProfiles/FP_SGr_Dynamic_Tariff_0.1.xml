@@ -79,8 +79,8 @@
         "endTime":          "2023-11-17T00:15:00+01:00",
         "tariffs":
         [
-            { "name": "sunlight",  "tariff": 15.0 },
-            { "name": "moonlight", "tariff": 12.0 }
+            { "name": "sunlight",  "tariff": 15.0, "unit": "Rp.kWh" },
+            { "name": "moonlight", "tariff": 12.0, "unit": "Rp.kWh" }
         ]
     },
     {
@@ -88,8 +88,8 @@
         "endTime":          "2023-11-17T00:30:00+01:00",
         "tariffs":
         [
-            { "name": "sunlight",  "tariff": 17.0 },
-            { "name": "moonlight", "tariff": 14.0 }
+            { "name": "sunlight",  "tariff": 17.0, "unit": "Rp.kWh" },
+            { "name": "moonlight", "tariff": 14.0, "unit": "Rp.kWh" }
         ]
     },
     {
@@ -97,8 +97,8 @@
         "endTime":          "2023-11-17T00:45:00+01:00",
         "tariffs":
         [
-            { "name": "sunlight",  "tariff": 16.0 },
-            { "name": "moonlight", "tariff": 13.0 }
+            { "name": "sunlight",  "tariff": 16.0, "unit": "Rp.kWh" },
+            { "name": "moonlight", "tariff": 13.0, "unit": "Rp.kWh" }
         ]
     }
 ]
@@ -166,32 +166,14 @@
               <li><strong>tariffNames</strong> - string - comma-separated list of requested tariffs (optional)</li>
             </ul>
             <p/>
-            Result structure is
-<pre>
-&lt;json&gt;
-  &lt;array&gt;
-    &lt;elem&gt;
-      &lt;key&gt;startTime&lt;/key&gt;
-      &lt;date/&gt;
-    &lt;/elem&gt;
-    &lt;elem&gt;
-      &lt;key&gt;endTime&lt;/key&gt;
-      &lt;date/&gt;
-    &lt;/elem&gt;
-    &lt;array&gt;
-      &lt;name&gt;tariffs&lt;/name&gt;
-      &lt;elem&gt;
-        &lt;key&gt;name&lt;/key&gt;
-        &lt;string/&gt;
-      &lt;/elem&gt;
-      &lt;elem&gt;
-        &lt;key&gt;tariff&lt;/key&gt;
-        &lt;number/&gt;
-      &lt;/elem&gt;
-    &lt;/array&gt;
-  &lt;/array&gt;
-&lt;/json&gt;
-</pre>
+            The JMES queries for the elements of the result structure are:
+            <ul>
+              <li><strong>start_time</strong>:     <span style="color:blue">[*].start_time</span></li>
+              <li><strong>end_time</strong>:       <span style="color:blue">[*].end_time</span></li>
+              <li><strong>tariffs.name</strong>:   <span style="color:blue">[*].tariffs[*].name</span></li>
+              <li><strong>tariffs.tariff</strong>: <span style="color:blue">[*].tariffs[*].tariff</span></li>
+              <li><strong>tariffs.unit</strong>:   <span style="color:blue">[*].tariffs[*].unit</span></li>
+            </ul>
           ]]>
           </textElement>
           <language>en</language>
