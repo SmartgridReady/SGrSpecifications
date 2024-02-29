@@ -82,6 +82,48 @@
                         </div>
         
                     </xsl:for-each>
+
+                    <xsl:if test="//sgr:configurationList">
+                        <div class="product">
+                            <h2>Table of Configurations</h2>
+                            <!-- Configurations -->
+                            <table>
+                                <colgroup>
+                                    <col style="width:230px" />
+                                    <col style="width:134px" />
+                                </colgroup>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Type</th>
+                                    <th>Description</th>
+                                </tr>
+        
+                                <xsl:for-each select="//sgr:configurationList/sgr:configurationListElement[not(sgr:name=preceding::sgr:name)]">
+                                    <xsl:sort select="sgr:name"/>
+                                    <tr class="genericDetails">
+                                        <td>
+                                            <xsl:value-of select="sgr:name"/> 
+                                        </td>
+                                        <td>
+                                            <xsl:apply-templates select="sgr:dataType" /> 
+                                        </td>
+                                        <td>
+                                            <xsl:for-each select="sgr:legibleDescription">
+                                                <div>
+                                                    <xsl:call-template name="SGrLanguageText">
+                                                        <xsl:with-param name="lang"><xsl:value-of select="sgr:language" /></xsl:with-param>
+                                                        <xsl:with-param name="value"><xsl:value-of select="sgr:textElement" /></xsl:with-param>
+                                                    </xsl:call-template>
+                                                </div>
+                                            </xsl:for-each>
+                                        </td>
+                                    </tr>
+                                </xsl:for-each>
+
+                            </table>
+                        </div>
+                    </xsl:if>
+
                 </div>
             </td></tr></tbody>
             <tfoot><tr style="border:hidden;"><td>
