@@ -12,11 +12,21 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
   <include schemaLocation="ModbusInterface.xsd" />
   <include schemaLocation="RestApiInterface.xsd" />
 
+  <complexType name="ConfigurationDescription">
+    <complexContent>
+      <extension base="sgr:LegibleDescription">
+        <sequence>
+          <element name="label" type="string" minOccurs="0" />
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+
   <complexType name="ConfigurationListElement">
     <sequence>
       <element name="name" type="string" />
       <element name="dataType" type="sgr:DataTypeProduct" />
-      <element name="legibleDescription" type="sgr:LegibleDescription" minOccurs="0" maxOccurs="4" />
+      <element name="configurationDescription" type="sgr:ConfigurationDescription" minOccurs="0" maxOccurs="4" />
     </sequence>
   </complexType>
 

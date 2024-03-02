@@ -99,7 +99,6 @@
                                 </tr>
         
                                 <xsl:for-each select="//sgr:configurationList/sgr:configurationListElement[not(sgr:name=preceding::sgr:name)]">
-                                    <xsl:sort select="sgr:name"/>
                                     <tr class="genericDetails">
                                         <td>
                                             <xsl:value-of select="sgr:name"/> 
@@ -108,11 +107,12 @@
                                             <xsl:apply-templates select="sgr:dataType" /> 
                                         </td>
                                         <td>
-                                            <xsl:for-each select="sgr:legibleDescription">
+                                            <xsl:for-each select="sgr:configurationDescription">
                                                 <div>
                                                     <xsl:call-template name="SGrLanguageText">
                                                         <xsl:with-param name="lang"><xsl:value-of select="sgr:language" /></xsl:with-param>
                                                         <xsl:with-param name="value"><xsl:value-of select="sgr:textElement" /></xsl:with-param>
+                                                        <xsl:with-param name="label"><xsl:value-of select="sgr:label" /></xsl:with-param>
                                                     </xsl:call-template>
                                                 </div>
                                             </xsl:for-each>

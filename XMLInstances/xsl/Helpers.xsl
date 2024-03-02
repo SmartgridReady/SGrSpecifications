@@ -298,6 +298,7 @@
     <xsl:template name="SGrLanguageText">
         <xsl:param name="lang" select="NONE" />
         <xsl:param name="value" select="NONE" />
+        <xsl:param name="label" select="NONE" />
         <xsl:attribute name="lang">
             <xsl:value-of select="$lang" />
         </xsl:attribute>
@@ -306,6 +307,10 @@
         </img>
         &#160;
         <span class="renderhtml">
+          <xsl:if test="$label != ''">
+            Label: <xsl:value-of select="$label" disable-output-escaping="yes" />
+            <br/>
+          </xsl:if>
           <xsl:value-of select="$value" disable-output-escaping="yes" />
         </span>
         <xsl:apply-templates select="sgr:uri" />
