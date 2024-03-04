@@ -15,6 +15,56 @@
     <softwareRevision>1.0.0</softwareRevision>
     <manufacturerSpecificationIdentification>CLEMAP</manufacturerSpecificationIdentification>
   </deviceInformation>
+  <configurationList>
+    <configurationListElement>
+      <name>sensor_id</name>
+      <dataType>
+        <string/>
+      </dataType>
+      <configurationDescription>
+        <textElement>Identification of the sensor.</textElement>
+        <language>en</language>
+        <label>Identification</label>
+      </configurationDescription>
+      <configurationDescription>
+        <textElement>Identifikation des Sensors.</textElement>
+        <language>de</language>
+        <label>Identifikation</label>
+      </configurationDescription>
+    </configurationListElement>
+    <configurationListElement>
+      <name>username</name>
+      <dataType>
+        <string/>
+      </dataType>
+      <configurationDescription>
+        <textElement>User name for accessing the device.</textElement>
+        <language>en</language>
+        <label>User Name</label>
+      </configurationDescription>
+      <configurationDescription>
+        <textElement>Benutzername für den Zugriff auf das Gerät.</textElement>
+        <language>de</language>
+        <label>Benutzername</label>
+      </configurationDescription>
+    </configurationListElement>
+    <configurationListElement>
+      <name>password</name>
+      <dataType>
+        <string/>
+      </dataType>
+      <configurationDescription>
+        <textElement>Password for accessing the device.</textElement>
+        <language>en</language>
+        <label>Password</label>
+      </configurationDescription>
+      <configurationDescription>
+        <textElement>Passwort für den Zugriff auf das Gerät.</textElement>
+        <language>de</language>
+        <label>Passwort</label>
+      </configurationDescription>
+    </configurationListElement>
+  </configurationList>
   <interfaceList>
     <restApiInterface>
       <restApiInterfaceDescription>
@@ -79,7 +129,7 @@
                     </header>
                   </requestHeader>
                   <requestMethod>GET</requestMethod>
-                  <requestPath>/digitaltwins/?sensor_id={sensor_id}</requestPath>
+                  <requestPath>/digitaltwins/?sensor_id={{sensor_id}}</requestPath>
                   <responseQuery>
                     <queryType>JMESPathExpression</queryType>
                     <query>sum([[0].ten_sec.p_l1,[0].ten_sec.p_l2,[0].ten_sec.p_l3])</query>
@@ -106,7 +156,7 @@
                     </header>
                   </requestHeader>
                   <requestMethod>GET</requestMethod>
-                  <requestPath>/digitaltwins/?sensor_id={sensor_id}</requestPath>
+                  <requestPath>/digitaltwins/?sensor_id={{sensor_id}}</requestPath>
                   <responseQuery>
                     <queryType>JMESPathExpression</queryType>
                     <query>[0].ten_sec.p_l1</query>
@@ -133,7 +183,7 @@
                     </header>
                   </requestHeader>
                   <requestMethod>GET</requestMethod>
-                  <requestPath>/digitaltwins/?sensor_id={sensor_id}</requestPath>
+                  <requestPath>/digitaltwins/?sensor_id={{sensor_id}}</requestPath>
                   <responseQuery>
                     <queryType>JMESPathExpression</queryType>
                     <query>[0].ten_sec.p_l2</query>
@@ -160,7 +210,7 @@
                     </header>
                   </requestHeader>
                   <requestMethod>GET</requestMethod>
-                  <requestPath>/digitaltwins/?sensor_id={sensor_id}</requestPath>
+                  <requestPath>/digitaltwins/?sensor_id={{sensor_id}}</requestPath>
                   <responseQuery>
                     <queryType>JMESPathExpression</queryType>
                     <query>[0].ten_sec.p_l3</query>
@@ -205,7 +255,7 @@
                     </header>
                   </requestHeader>
                   <requestMethod>GET</requestMethod>
-                  <requestPath>/digitaltwins/?sensor_id={sensor_id}</requestPath>
+                  <requestPath>/digitaltwins/?sensor_id={{sensor_id}}</requestPath>
                   <responseQuery>
                     <queryType>JMESPathExpression</queryType>
                     <query>sum([[0].ten_sec.q_l1,[0].ten_sec.q_l2,[0].ten_sec.q_l3])</query>
@@ -232,7 +282,7 @@
                     </header>
                   </requestHeader>
                   <requestMethod>GET</requestMethod>
-                  <requestPath>/digitaltwins/?sensor_id={sensor_id}</requestPath>
+                  <requestPath>/digitaltwins/?sensor_id={{sensor_id}}</requestPath>
                   <responseQuery>
                     <queryType>JMESPathExpression</queryType>
                     <query>[0].ten_sec.q_l1</query>
@@ -259,7 +309,7 @@
                     </header>
                   </requestHeader>
                   <requestMethod>GET</requestMethod>
-                  <requestPath>/digitaltwins/?sensor_id={sensor_id}</requestPath>
+                  <requestPath>/digitaltwins/?sensor_id={{sensor_id}}</requestPath>
                   <responseQuery>
                     <queryType>JMESPathExpression</queryType>
                     <query>[0].ten_sec.q_l2</query>
@@ -286,7 +336,7 @@
                     </header>
                   </requestHeader>
                   <requestMethod>GET</requestMethod>
-                  <requestPath>/digitaltwins/?sensor_id={sensor_id}</requestPath>
+                  <requestPath>/digitaltwins/?sensor_id={{sensor_id}}</requestPath>
                   <responseQuery>
                     <queryType>JMESPathExpression</queryType>
                     <query>[0].ten_sec.q_l3</query>
@@ -331,7 +381,7 @@
                     </header>
                   </requestHeader>
                   <requestMethod>GET</requestMethod>
-                  <requestPath>/digitaltwins/?sensor_id={sensor_id}</requestPath>
+                  <requestPath>/digitaltwins/?sensor_id={{sensor_id}}</requestPath>
                   <responseQuery>
                     <queryType>JMESPathExpression</queryType>
                     <query>sum([[0].one_min.avg_energy_l1,[0].one_min.avg_energy_l2,[0].one_min.avg_energy_l3])</query>
@@ -358,7 +408,7 @@
                     </header>
                   </requestHeader>
                   <requestMethod>GET</requestMethod>
-                  <requestPath>/digitaltwins/?sensor_id={sensor_id}</requestPath>
+                  <requestPath>/digitaltwins/?sensor_id={{sensor_id}}</requestPath>
                   <responseQuery>
                     <queryType>JMESPathExpression</queryType>
                     <query>[0].one_min.avg_energy_l1</query>
@@ -385,7 +435,7 @@
                     </header>
                   </requestHeader>
                   <requestMethod>GET</requestMethod>
-                  <requestPath>/digitaltwins/?sensor_id={sensor_id}</requestPath>
+                  <requestPath>/digitaltwins/?sensor_id={{sensor_id}}</requestPath>
                   <responseQuery>
                     <queryType>JMESPathExpression</queryType>
                     <query>[0].one_min.avg_energy_l2</query>
@@ -412,7 +462,7 @@
                     </header>
                   </requestHeader>
                   <requestMethod>GET</requestMethod>
-                  <requestPath>/digitaltwins/?sensor_id={sensor_id}</requestPath>
+                  <requestPath>/digitaltwins/?sensor_id={{sensor_id}}</requestPath>
                   <responseQuery>
                     <queryType>JMESPathExpression</queryType>
                     <query>[0].one_min.avg_energy_l3</query>
@@ -457,7 +507,7 @@
                     </header>
                   </requestHeader>
                   <requestMethod>GET</requestMethod>
-                  <requestPath>/digitaltwins/?sensor_id={sensor_id}</requestPath>
+                  <requestPath>/digitaltwins/?sensor_id={{sensor_id}}</requestPath>
                   <responseQuery>
                     <queryType>JMESPathExpression</queryType>
                     <query>sum([[0].one_min.v_l1,[0].one_min.v_l2,[0].one_min.v_l3])</query>
@@ -484,7 +534,7 @@
                     </header>
                   </requestHeader>
                   <requestMethod>GET</requestMethod>
-                  <requestPath>/digitaltwins/?sensor_id={sensor_id}</requestPath>
+                  <requestPath>/digitaltwins/?sensor_id={{sensor_id}}</requestPath>
                   <responseQuery>
                     <queryType>JMESPathExpression</queryType>
                     <query>[0].one_min.v_l1</query>
@@ -511,7 +561,7 @@
                     </header>
                   </requestHeader>
                   <requestMethod>GET</requestMethod>
-                  <requestPath>/digitaltwins/?sensor_id={sensor_id}</requestPath>
+                  <requestPath>/digitaltwins/?sensor_id={{sensor_id}}</requestPath>
                   <responseQuery>
                     <queryType>JMESPathExpression</queryType>
                     <query>[0].one_min.v_l2</query>
@@ -538,7 +588,7 @@
                     </header>
                   </requestHeader>
                   <requestMethod>GET</requestMethod>
-                  <requestPath>/digitaltwins/?sensor_id={sensor_id}</requestPath>
+                  <requestPath>/digitaltwins/?sensor_id={{sensor_id}}</requestPath>
                   <responseQuery>
                     <queryType>JMESPathExpression</queryType>
                     <query>[0].one_min.v_l3</query>
@@ -583,7 +633,7 @@
                     </header>
                   </requestHeader>
                   <requestMethod>GET</requestMethod>
-                  <requestPath>/digitaltwins/?sensor_id={sensor_id}</requestPath>
+                  <requestPath>/digitaltwins/?sensor_id={{sensor_id}}</requestPath>
                   <responseQuery>
                     <queryType>JMESPathExpression</queryType>
                     <query>sum([[0].one_min.i_l1,[0].one_min.i_l2,[0].one_min.i_l3])</query>
@@ -610,7 +660,7 @@
                     </header>
                   </requestHeader>
                   <requestMethod>GET</requestMethod>
-                  <requestPath>/digitaltwins/?sensor_id={sensor_id}</requestPath>
+                  <requestPath>/digitaltwins/?sensor_id={{sensor_id}}</requestPath>
                   <responseQuery>
                     <queryType>JMESPathExpression</queryType>
                     <query>[0].one_min.i_l1</query>
@@ -637,7 +687,7 @@
                     </header>
                   </requestHeader>
                   <requestMethod>GET</requestMethod>
-                  <requestPath>/digitaltwins/?sensor_id={sensor_id}</requestPath>
+                  <requestPath>/digitaltwins/?sensor_id={{sensor_id}}</requestPath>
                   <responseQuery>
                     <queryType>JMESPathExpression</queryType>
                     <query>[0].one_min.i_l2</query>
@@ -664,7 +714,7 @@
                     </header>
                   </requestHeader>
                   <requestMethod>GET</requestMethod>
-                  <requestPath>/digitaltwins/?sensor_id={sensor_id}</requestPath>
+                  <requestPath>/digitaltwins/?sensor_id={{sensor_id}}</requestPath>
                   <responseQuery>
                     <queryType>JMESPathExpression</queryType>
                     <query>[0].one_min.i_l3</query>
@@ -709,7 +759,7 @@
                     </header>
                   </requestHeader>
                   <requestMethod>GET</requestMethod>
-                  <requestPath>/digitaltwins/?sensor_id={sensor_id}</requestPath>
+                  <requestPath>/digitaltwins/?sensor_id={{sensor_id}}</requestPath>
                   <responseQuery>
                     <queryType>JMESPathExpression</queryType>
                     <query>sum([[0].one_min.s_l1,[0].one_min.s_l2,[0].one_min.s_l3])</query>
@@ -736,7 +786,7 @@
                     </header>
                   </requestHeader>
                   <requestMethod>GET</requestMethod>
-                  <requestPath>/digitaltwins/?sensor_id={sensor_id}</requestPath>
+                  <requestPath>/digitaltwins/?sensor_id={{sensor_id}}</requestPath>
                   <responseQuery>
                     <queryType>JMESPathExpression</queryType>
                     <query>[0].one_min.s_l1</query>
@@ -763,7 +813,7 @@
                     </header>
                   </requestHeader>
                   <requestMethod>GET</requestMethod>
-                  <requestPath>/digitaltwins/?sensor_id={sensor_id}</requestPath>
+                  <requestPath>/digitaltwins/?sensor_id={{sensor_id}}</requestPath>
                   <responseQuery>
                     <queryType>JMESPathExpression</queryType>
                     <query>[0].one_min.s_l2</query>
@@ -790,7 +840,7 @@
                     </header>
                   </requestHeader>
                   <requestMethod>GET</requestMethod>
-                  <requestPath>/digitaltwins/?sensor_id={sensor_id}</requestPath>
+                  <requestPath>/digitaltwins/?sensor_id={{sensor_id}}</requestPath>
                   <responseQuery>
                     <queryType>JMESPathExpression</queryType>
                     <query>[0].one_min.s_l3</query>
@@ -835,7 +885,7 @@
                     </header>
                   </requestHeader>
                   <requestMethod>GET</requestMethod>
-                  <requestPath>/digitaltwins/?sensor_id={sensor_id}</requestPath>
+                  <requestPath>/digitaltwins/?sensor_id={{sensor_id}}</requestPath>
                   <responseQuery>
                     <queryType>JMESPathExpression</queryType>
                     <query>sum([[0].one_min.pf_l1,[0].one_min.pf_l2,[0].one_min.pf_l3])</query>
@@ -862,7 +912,7 @@
                     </header>
                   </requestHeader>
                   <requestMethod>GET</requestMethod>
-                  <requestPath>/digitaltwins/?sensor_id={sensor_id}</requestPath>
+                  <requestPath>/digitaltwins/?sensor_id={{sensor_id}}</requestPath>
                   <responseQuery>
                     <queryType>JMESPathExpression</queryType>
                     <query>[0].one_min.pf_l1</query>
@@ -889,7 +939,7 @@
                     </header>
                   </requestHeader>
                   <requestMethod>GET</requestMethod>
-                  <requestPath>/digitaltwins/?sensor_id={sensor_id}</requestPath>
+                  <requestPath>/digitaltwins/?sensor_id={{sensor_id}}</requestPath>
                   <responseQuery>
                     <queryType>JMESPathExpression</queryType>
                     <query>[0].one_min.pf_l2</query>
@@ -916,7 +966,7 @@
                     </header>
                   </requestHeader>
                   <requestMethod>GET</requestMethod>
-                  <requestPath>/digitaltwins/?sensor_id={sensor_id}</requestPath>
+                  <requestPath>/digitaltwins/?sensor_id={{sensor_id}}</requestPath>
                   <responseQuery>
                     <queryType>JMESPathExpression</queryType>
                     <query>[0].one_min.pf_l3</query>
