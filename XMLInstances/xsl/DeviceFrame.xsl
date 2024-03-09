@@ -14,8 +14,12 @@
             <tbody><tr style="border:hidden;"><td>
                 <div class="product">
                     <h1>
-                        <xsl:value-of select="sgr:manufacturerName" /> - <xsl:value-of
-                            select="sgr:deviceName" />
+                        <xsl:value-of select="sgr:manufacturerName" /> -
+                        <xsl:value-of select="sgr:deviceName" />
+                        
+                        <xsl:if test="sgr:deviceInformation/sgr:levelOfOperation">
+                            (Level <xsl:value-of select="sgr:deviceInformation/sgr:levelOfOperation" />)
+                        </xsl:if>
                     </h1>
         
                     <xsl:apply-templates select="sgr:releaseNotes" />
@@ -36,7 +40,15 @@
                                 <xsl:value-of select="sgr:manufacturerName" />
                             </td>
                         </tr>
-        
+                        <xsl:if test="sgr:deviceInformation/sgr:versionNumber">
+                            <tr>
+                                <td>Version</td>
+                                <td>
+                                    <xsl:apply-templates select="sgr:deviceInformation/sgr:versionNumber" />
+                                </td>
+                            </tr>
+                        </xsl:if>
+
                         <tr>
                             <td class="noborder" />
                         </tr>
@@ -252,6 +264,16 @@
                 <td>Level</td>
                 <td>
                     <xsl:value-of select="sgr:levelOfOperation" />
+                </td>
+            </tr>
+        </xsl:if>
+
+        <!-- generalRemarks (1x opt) -->
+        <xsl:if test="sgr:generalRemarks">
+            <tr class="genericDetails">
+                <td>Author Remarks</td>
+                <td>
+                    <xsl:value-of select="sgr:generalRemarks" />
                 </td>
             </tr>
         </xsl:if>
