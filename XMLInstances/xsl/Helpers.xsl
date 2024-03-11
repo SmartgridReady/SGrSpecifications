@@ -306,13 +306,14 @@
             <xsl:attribute name="src" alt="Lang">/xsl/ressources/<xsl:value-of select="$lang" />.png</xsl:attribute>
         </img>
         &#160;
-        <span class="renderhtml">
           <xsl:if test="$label != ''">
-            Label: <xsl:value-of select="$label" disable-output-escaping="yes" />
-            <br/>
+              Label:
+              <span class="renderhtml">
+                  <xsl:value-of select="$label" disable-output-escaping="yes" />
+              </span>
+              <br/>
           </xsl:if>
           <xsl:value-of select="$value" disable-output-escaping="yes" />
-        </span>
         <xsl:apply-templates select="sgr:uri" />
     </xsl:template>
 
