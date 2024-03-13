@@ -25,21 +25,21 @@
     <functionalProfileIdentification>
       <specificationOwnerIdentification>0</specificationOwnerIdentification>
       <functionalProfileCategory>HeatPumpControl</functionalProfileCategory>
-      <functionalProfileType>BufferStorageCtrl</functionalProfileType>
-      <levelOfOperation>m</levelOfOperation>
+      <functionalProfileType>DomHotWaterCtrl</functionalProfileType>
+      <levelOfOperation>4m</levelOfOperation>
       <versionNumber>
         <primaryVersionNumber>0</primaryVersionNumber>
-        <secondaryVersionNumber>6</secondaryVersionNumber>
+        <secondaryVersionNumber>5</secondaryVersionNumber>
         <subReleaseVersionNumber>0</subReleaseVersionNumber>
       </versionNumber>
     </functionalProfileIdentification>
     <legibleDescription>
       <textElement>
-        Dieses Profil definiert die erweiterten Datenpunkte zum Grundprofil,
-        welche zur Steuerung eines Pufferspeichers zur Verfügung gestellt werden. Das
-        Pufferspeicher-Profil muss immer in Kombination mit dem Grundprofil der Wärmepumpe
-        (3.6.3) bewirtschaftet werden. Es können mehrere Pufferspeicher-Profile definiert
-        werden (oder auch gar kein Profil, wenn kein Pufferspeicher vorhanden).
+        Dieses Profil definiert die erweiterten Datenpunkte zum Grundprofil
+        "HeatPumpBase", welche zur Steuerung eines Brauchwarmwasserkreises zur Verfügung
+        gestellt werden. Das Brauchwarmwasser-Profil muss immer in Kombination mit dem
+        Grundprofil der Wärmepumpe bewirtschaftet werden. Es können mehrere
+        Brauchwarmwasser-Profile definiert werden.
       </textElement>
       <language>de</language>
     </legibleDescription>
@@ -47,7 +47,76 @@
   <dataPointList>
     <dataPointListElement>
       <dataPoint>
-        <dataPointName>HeatBufferTempStptOffs</dataPointName>
+        <dataPointName>DomHotWaterOpModeCmd</dataPointName>
+        <dataDirection>RW</dataDirection>
+        <presenceLevel>O</presenceLevel>
+        <dataType>
+          <enum/>
+        </dataType>
+        <unit>NONE</unit>
+        <legibleDescription>
+          <textElement>
+            <![CDATA[
+              Festlegen der Betriebsart für den Brauchwarmwasserkreis
+            ]]>
+          </textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>DomHotWaterOpState</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>O</presenceLevel>
+        <dataType>
+          <enum/>
+        </dataType>
+        <unit>NONE</unit>
+        <alternativeNames>
+          <hpBwpName>Warmwasserbereitung in Betrieb</hpBwpName>
+        </alternativeNames>
+        <legibleDescription>
+          <textElement>
+            <![CDATA[
+              Auslesen des aktuellen Status des Brauchwarmwasserkreises
+            ]]>
+          </textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>DomHotWaterTempStpt</dataPointName>
+        <dataDirection>RW</dataDirection>
+        <presenceLevel>M</presenceLevel>
+        <dataType>
+          <float64/>
+        </dataType>
+        <unit>DEGREES_CELSIUS</unit>
+        <alternativeNames>
+          <eebusName>Setpoint_DhwTemperature</eebusName>
+          <hpBwpName>Warmwassersolltemperatur</hpBwpName>
+          <en17609Name>Hot Water Setpoint Temperature</en17609Name>
+        </alternativeNames>
+        <legibleDescription>
+          <textElement>Setzen der Soll-Temperatur des Speichers für Warmwasser.</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+      <genericAttributeList>
+        <genericAttributeListElement>
+          <name>MinimumValue</name>
+        </genericAttributeListElement>
+        <genericAttributeListElement>
+          <name>MaximumValue</name>
+        </genericAttributeListElement>
+      </genericAttributeList>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>DomHotWaterTempStptOffset</dataPointName>
         <dataDirection>RW</dataDirection>
         <presenceLevel>R</presenceLevel>
         <dataType>
@@ -57,7 +126,7 @@
         <legibleDescription>
           <textElement>
             Relative Anhebung/Absenkung der Solltemperatur (+/-) für den
-            Heiz-Pufferspeicher.
+            Brauchwarmwasserspeicher. Eignet sich für eine Flexibilitätssteuerung.
           </textElement>
           <language>de</language>
         </legibleDescription>
@@ -73,18 +142,21 @@
     </dataPointListElement>
     <dataPointListElement>
       <dataPoint>
-        <dataPointName>ActBufferState</dataPointName>
-        <dataDirection>R</dataDirection>
+        <dataPointName>DomHotWaterTempStptComfort</dataPointName>
+        <dataDirection>RW</dataDirection>
         <presenceLevel>O</presenceLevel>
         <dataType>
-          <bitmap/>
+          <float64/>
         </dataType>
-        <unit>NONE</unit>
+        <unit>DEGREES_CELSIUS</unit>
+        <alternativeNames>
+          <eebusName>SetpointRangeMax_DhwTemperature</eebusName>
+          <hpBwpName>Warmwassertemperatur max</hpBwpName>
+          <en17609Name>Hot Water Setpoint Temperature Comfort</en17609Name>
+        </alternativeNames>
         <legibleDescription>
           <textElement>
-            <![CDATA[
-              Auslesen des aktuellen Status des Bufferspeichers (BitmapRegister)
-            ]]>
+            Setzen der Soll-Temperatur des Speichers für Warmwasser im Comfortbetrieb
           </textElement>
           <language>de</language>
         </legibleDescription>
@@ -92,92 +164,60 @@
     </dataPointListElement>
     <dataPointListElement>
       <dataPoint>
-        <dataPointName>ActHeatBufferTemp</dataPointName>
+        <dataPointName>DomHotWaterTempStptEco</dataPointName>
+        <dataDirection>RW</dataDirection>
+        <presenceLevel>O</presenceLevel>
+        <dataType>
+          <float64/>
+        </dataType>
+        <unit>DEGREES_CELSIUS</unit>
+        <alternativeNames>
+          <eebusName>SetpointRangeMin_DhwTemperature</eebusName>
+          <hpBwpName>Warmwassertemperatur min</hpBwpName>
+          <en17609Name>Hot Water Setpoint Temperature Eco</en17609Name>
+        </alternativeNames>
+        <legibleDescription>
+          <textElement>
+            Setzen der Soll-Temperatur des Speichers für Warmwasser im Ecobetrieb
+          </textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>DomHotWaterTempStptFb</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>O</presenceLevel>
+        <dataType>
+          <float64/>
+        </dataType>
+        <unit>DEGREES_CELSIUS</unit>
+        <legibleDescription>
+          <textElement>
+            Ruecklesen des gesetzten Soll-Temperatur des Speichers für Warmwasser.
+          </textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>ActDomHotWaterTemp</dataPointName>
         <dataDirection>R</dataDirection>
         <presenceLevel>M</presenceLevel>
         <dataType>
           <float64/>
         </dataType>
         <unit>DEGREES_CELSIUS</unit>
-        <legibleDescription>
-          <textElement>Aktuelle Ist-Temperatur des Heiz-Pufferspeichers oben</textElement>
-          <language>de</language>
-        </legibleDescription>
-      </dataPoint>
-    </dataPointListElement>
-    <dataPointListElement>
-      <dataPoint>
-        <dataPointName>ActHeatBufferTempUpper</dataPointName>
-        <dataDirection>R</dataDirection>
-        <presenceLevel>O</presenceLevel>
-        <dataType>
-          <float64/>
-        </dataType>
-        <unit>DEGREES_CELSIUS</unit>
-        <legibleDescription>
-          <textElement>Aktuelle Ist-Temperatur des Heiz-Pufferspeichers oben</textElement>
-          <language>de</language>
-        </legibleDescription>
-      </dataPoint>
-    </dataPointListElement>
-    <dataPointListElement>
-      <dataPoint>
-        <dataPointName>ActHeatBufferTempLower</dataPointName>
-        <dataDirection>R</dataDirection>
-        <presenceLevel>O</presenceLevel>
-        <dataType>
-          <float64/>
-        </dataType>
-        <unit>DEGREES_CELSIUS</unit>
+        <alternativeNames>
+          <eebusName>Measurement_DhwTemperature</eebusName>
+          <hpBwpName>Temperatur Warmwasser</hpBwpName>
+        </alternativeNames>
         <legibleDescription>
           <textElement>
-            Aktuelle Ist-Temperatur des Heiz-Pufferspeichers unten
+            Setzen der Soll-Temperatur des Speichers für Warmwasser im Eco Betrieb
           </textElement>
-          <language>de</language>
-        </legibleDescription>
-      </dataPoint>
-    </dataPointListElement>
-    <dataPointListElement>
-      <dataPoint>
-        <dataPointName>ActCoolBufferTemp</dataPointName>
-        <dataDirection>R</dataDirection>
-        <presenceLevel>O</presenceLevel>
-        <dataType>
-          <float64/>
-        </dataType>
-        <unit>DEGREES_CELSIUS</unit>
-        <legibleDescription>
-          <textElement>Aktuelle Ist-Temperatur des Kaelte-Pufferspeichers oben</textElement>
-          <language>de</language>
-        </legibleDescription>
-      </dataPoint>
-    </dataPointListElement>
-    <dataPointListElement>
-      <dataPoint>
-        <dataPointName>ActCoolBufferTempUpper</dataPointName>
-        <dataDirection>R</dataDirection>
-        <presenceLevel>O</presenceLevel>
-        <dataType>
-          <float64/>
-        </dataType>
-        <unit>DEGREES_CELSIUS</unit>
-        <legibleDescription>
-          <textElement>Aktuelle Ist-Temperatur des Kaelte-Pufferspeichers oben</textElement>
-          <language>de</language>
-        </legibleDescription>
-      </dataPoint>
-    </dataPointListElement>
-    <dataPointListElement>
-      <dataPoint>
-        <dataPointName>ActCoolBufferTempLower</dataPointName>
-        <dataDirection>R</dataDirection>
-        <presenceLevel>O</presenceLevel>
-        <dataType>
-          <float64/>
-        </dataType>
-        <unit>DEGREES_CELSIUS</unit>
-        <legibleDescription>
-          <textElement>Aktuelle Ist-Temperatur des Kaelte-Pufferspeichers unten</textElement>
           <language>de</language>
         </legibleDescription>
       </dataPoint>

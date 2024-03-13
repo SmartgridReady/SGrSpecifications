@@ -32,7 +32,7 @@
     </legibleDescription>
     <deviceCategory>HeatPumpAppliance</deviceCategory>
     <isLocalControl>true</isLocalControl>
-    <softwareRevision>1.1.1.3050</softwareRevision>
+    <softwareRevision>0.6.0</softwareRevision>
     <hardwareRevision>1.0.0</hardwareRevision>
     <brandName>TopTronic(r)</brandName>
     <powerSource>mains3Phase</powerSource>
@@ -71,8 +71,8 @@
               <levelOfOperation>4m</levelOfOperation>
               <versionNumber>
                 <primaryVersionNumber>0</primaryVersionNumber>
-                <secondaryVersionNumber>2</secondaryVersionNumber>
-                <subReleaseVersionNumber>1</subReleaseVersionNumber>
+                <secondaryVersionNumber>5</secondaryVersionNumber>
+                <subReleaseVersionNumber>0</subReleaseVersionNumber>
               </versionNumber>
             </functionalProfileIdentification>
             <alternativeNames>
@@ -80,17 +80,20 @@
             </alternativeNames>
             <legibleDescription>
               <textElement>
-                Das Profil definiert den Grundbaustein zur dynamischen Ansteuerung von Wärmepumpen
-                über eine variable Beeinflussung der Sollwerte nach SGr Level 4. Der Betrieb der
-                Wärmepumpe muss in sich sicher sein, unabhängig von den äusseren Vorgaben. Dieses
-                Grundprofil definiert die Datenpunkte, welche zur Steuerung des Gerätes «Wärmepumpe»
-                auf Level 4 grundsätzlich zur Verfügung gestellt werden und stellen die Version
-                einer
-                typischen EInfamilienhauswärmepumpe mit Aussentemperaturfühler dar. Für die
-                einzelnen
-                Heizkreise, Warmwasser, Pufferspeicher und das Energie-Monitoring sowie eine
-                Verdichterdrehzahl / Leistungsregelung werden separate Profile zur Verfügung
-                gestellt.
+                <![CDATA[
+                  Das Profil definiert den Grundbaustein zur dynamischen Ansteuerung von Wärmepumpen
+                  über eine Betriebsmodus gestützt Beeinflussung der Sollwerte nach SGr Stufe 2.
+                  </p>
+                  Der Betrieb der Wärmepumpe muss in sich sicher sein, unabhängig von den äusseren Vorgaben.
+                  </p>
+                  Dieses Grundprofil definiert die Datenpunkte, welche zur Steuerung des Gerätes «Wärmepumpe»
+                  mit zusätzlichen Stufe 4 Funktionsprofilen grundsätzlich zur Verfügung gestellt werden.
+                  Sie stellen die Version einer typischen Einfamilienhauswärmepumpe mit Aussentemperaturfühler dar.
+                  </p>
+                  Für die einzelnen Heizkreise, Warmwasser, Pufferspeicher und das Energie-Monitoring sowie eine
+                  Verdichterdrehzahl / Leistungsregelung
+                  können in weiteren Funktionsprofilen zur Verfügung gestellt werden.
+                ]]>         
               </textElement>
               <language>de</language>
             </legibleDescription>
@@ -98,36 +101,36 @@
           <dataPointList>
             <dataPointListElement>
               <dataPoint>
-                <dataPointName>hovHPOpModeCmd</dataPointName>
+                <dataPointName>HPOpModeCmd</dataPointName>
                 <dataDirection>RW</dataDirection>
                 <dataType>
                   <enum>
                     <enumEntry>
-                      <literal>HP_OFF</literal>
+                      <literal>HOV_HP_OFF</literal>
                       <ordinal>0</ordinal>
                       <description>Wärmeerzeuger aus</description>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HP_AUTOMATIC</literal>
+                      <literal>HOV_HP_AUTOMATIC</literal>
                       <ordinal>1</ordinal>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HP_RES1</literal>
+                      <literal>HOV_HP_RES1</literal>
                       <ordinal>2</ordinal>
                       <description>TODO: Wert 1 siehe Datenblatt</description>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HP_RES2</literal>
+                      <literal>HOV_HP_RES2</literal>
                       <ordinal>3</ordinal>
                       <description>TODO: Wert 2 siehe Datenblatt</description>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HP_MAN_HEAT</literal>
+                      <literal>HOV_HP_MAN_HEAT</literal>
                       <ordinal>4</ordinal>
                       <description>Manueller Heizbetrieb</description>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HP_MAN_COOL</literal>
+                      <literal>HOV_HP_MAN_COOL</literal>
                       <ordinal>5</ordinal>
                       <description>Manueller Kühlbetrieb</description>
                     </enumEntry>
@@ -135,25 +138,30 @@
                 </dataType>
                 <unit>NONE</unit>
                 <alternativeNames>
-                    <sLV1Name>hovHPOpModeCmd</sLV1Name>
-                    <manufName>9075</manufName></alternativeNames>
+                  <sLV1Name>hovHPOpModeCmd</sLV1Name>
+                  <manufName>9075</manufName>
+                </alternativeNames>
                 <legibleDescription>
-                  <textElement>Betriebswahl Wärmeerzeuger
+                  <textElement>
+                    Betriebswahl Wärmeerzeuger
                   </textElement>
                   <language>de</language>
                 </legibleDescription>
                 <legibleDescription>
-                  <textElement>Heat generator operation choice
+                  <textElement>
+                    Heat generator operation choice
                   </textElement>
                   <language>en</language>
                 </legibleDescription>
                 <legibleDescription>
-                  <textElement>Sélection fonct. générateur de chaleur
+                  <textElement>
+                    Sélection fonct. générateur de chaleur
                   </textElement>
                   <language>fr</language>
                 </legibleDescription>
                 <legibleDescription>
-                  <textElement>Selezione modo funz.to generatore calore
+                  <textElement>
+                    Selezione modo funz.to generatore calore
                   </textElement>
                   <language>it</language>
                 </legibleDescription>
@@ -175,88 +183,88 @@
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
-                <dataPointName>hovHPOpState</dataPointName>
+                <dataPointName>HPOpState</dataPointName>
                 <dataDirection>R</dataDirection>
                 <dataType>
                   <enum>
                     <enumEntry>
-                      <literal>HP_OFF</literal>
+                      <literal>HOV_HP_OFF</literal>
                       <ordinal>0</ordinal>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HP_HEATING</literal>
+                      <literal>HOV_HP_HEATING</literal>
                       <ordinal>1</ordinal>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HP_PREHEAT</literal>
+                      <literal>HOV_HP_PREHEAT</literal>
                       <ordinal>2</ordinal>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HP_LOCK_EXTERN</literal>
+                      <literal>HOV_HP_LOCK_EXTERN</literal>
                       <ordinal>3</ordinal>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HP_COOLING</literal>
+                      <literal>HOV_HP_COOLING</literal>
                       <ordinal>4</ordinal>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HP_PRECOOL</literal>
+                      <literal>HOV_HP_PRECOOL</literal>
                       <ordinal>5</ordinal>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HP_ALARM</literal>
+                      <literal>HOV_HP_ALARM</literal>
                       <ordinal>15</ordinal>
                     </enumEntry>
                     <enumEntry>
-                      <literal>EP_ERROR</literal>
+                      <literal>HOV_EP_ERROR</literal>
                       <ordinal>16</ordinal>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HP_BLOCKING</literal>
+                      <literal>HOV_HP_BLOCKING</literal>
                       <ordinal>17</ordinal>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HP_WFmax_SWITCHOFF</literal>
+                      <literal>HOV_HP_WFmax_SWITCHOFF</literal>
                       <ordinal>21</ordinal>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HP_WFset_SWITCHOFF</literal>
+                      <literal>HOV_HP_WFset_SWITCHOFF</literal>
                       <ordinal>22</ordinal>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HP_BIVALENCE_SWITCHOFF</literal>
+                      <literal>HOV_HP_BIVALENCE_SWITCHOFF</literal>
                       <ordinal>26</ordinal>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HP_MIN_OFF_TIME</literal>
+                      <literal>HOV_HP_MIN_OFF_TIME</literal>
                       <ordinal>27</ordinal>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HP_MIN_ON_TIME</literal>
+                      <literal>HOV_HP_MIN_ON_TIME</literal>
                       <ordinal>28</ordinal>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HP_TRAILING</literal>
+                      <literal>HOV_HP_TRAILING</literal>
                       <ordinal>32</ordinal>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HP_DELAY_AFTER_WE</literal>
+                      <literal>HOV_HP_DELAY_AFTER_WE</literal>
                       <ordinal>33</ordinal>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HP_TEMPERATURE_HIGH_OP</literal>
+                      <literal>HOV_HP_TEMPERATURE_HIGH_OP</literal>
                       <ordinal>34</ordinal>
                     </enumEntry>
                         <enumEntry>
-                      <literal>HP_MAN_OP_HEATING</literal>
+                      <literal>HOV_HP_MAN_OP_HEATING</literal>
                       <ordinal>43</ordinal>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HP_MAN_OP_DOM_HOT_WATER</literal>
+                      <literal>HOV_HP_MAN_OP_DOM_HOT_WATER</literal>
                       <ordinal>44</ordinal>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HP_MAN_OP_COOLING</literal>
+                      <literal>HOV_HP_MAN_OP_COOLING</literal>
                       <ordinal>45</ordinal>
                     </enumEntry>
                   </enum>
@@ -271,18 +279,15 @@
                   <language>de</language>
                 </legibleDescription>
                 <legibleDescription>
-                  <textElement>Status heat generator control
-                  </textElement>
+                  <textElement>Status heat generator control</textElement>
                   <language>en</language>
                 </legibleDescription>
                 <legibleDescription>
-                  <textElement>Statut régulation générateur de chaleur
-                  </textElement>
+                  <textElement>Statut régulation générateur de chaleur</textElement>
                   <language>fr</language>
                 </legibleDescription>
                 <legibleDescription>
-                  <textElement>Stato regolazione gen. di calore
-                  </textElement>
+                  <textElement>Stato regolazione gen. di calore</textElement>
                   <language>it</language>
                 </legibleDescription>
               </dataPoint>
@@ -306,7 +311,7 @@
                 <dataPointName>ErrorNrSGr</dataPointName>
                 <dataDirection>R</dataDirection>
                 <dataType>
-                  <int16U/>
+                  <boolean/>
                 </dataType>
                 <unit>NONE</unit>
                 <alternativeNames>
@@ -335,8 +340,9 @@
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
-                    <boolean>
-                        <falseValue>255</falseValue></boolean>                    
+                  <boolean>
+                  <falseValue>255</falseValue>
+                </boolean>                    
                 </modbusDataType>
                 <address>1534</address>                
                 <registerType>HoldRegister</registerType>
@@ -589,8 +595,8 @@
               <levelOfOperation>4m</levelOfOperation>
               <versionNumber>
                 <primaryVersionNumber>0</primaryVersionNumber>
-                <secondaryVersionNumber>2</secondaryVersionNumber>
-                <subReleaseVersionNumber>1</subReleaseVersionNumber>
+                <secondaryVersionNumber>5</secondaryVersionNumber>
+                <subReleaseVersionNumber>0</subReleaseVersionNumber>
               </versionNumber>
             </functionalProfileIdentification>
             <alternativeNames>
@@ -609,7 +615,7 @@
                 <dataType>
                   <float32/>
                 </dataType>
-                <unit>KILOWATT_HOURS</unit>
+                <unit>KILOWATTS</unit>
                 <alternativeNames>
                   <sLV1Name>PowerCtrlStpt</sLV1Name>
                   <manufName>20069</manufName>
@@ -754,8 +760,8 @@
               <levelOfOperation>4m</levelOfOperation>
               <versionNumber>
                 <primaryVersionNumber>0</primaryVersionNumber>
-                <secondaryVersionNumber>2</secondaryVersionNumber>
-                <subReleaseVersionNumber>1</subReleaseVersionNumber>
+                <secondaryVersionNumber>5</secondaryVersionNumber>
+                <subReleaseVersionNumber>0</subReleaseVersionNumber>
               </versionNumber>
             </functionalProfileIdentification>
             <alternativeNames>
@@ -775,42 +781,42 @@
           <dataPointList>
             <dataPointListElement>
               <dataPoint>
-                <dataPointName>hovHeatCoolCtrlOpModeCmd</dataPointName>
+                <dataPointName>HeatCoolCtrlOpModeCmd</dataPointName>
                 <dataDirection>RW</dataDirection>
                 <dataType>
                   <enum>
                     <enumEntry>
-                      <literal>HC_STANDBY</literal>
+                      <literal>HOV_HC_STANDBY</literal>
                       <ordinal>0</ordinal>
                       <description>Standbybetrieb</description>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HC_PLAN_W1</literal>
+                      <literal>HOV_HC_PLAN_W1</literal>
                       <ordinal>1</ordinal>
                       <description>Wochenplan 1</description>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HC_PLAN_W2</literal>
+                      <literal>HOV_HC_PLAN_W2</literal>
                       <ordinal>2</ordinal>
                       <description>Wochenplan 2</description>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HC_CONSTANT</literal>
+                      <literal>HOV_HC_CONSTANT</literal>
                       <ordinal>4</ordinal>
                       <description>Konstanter Betrieb</description>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HC_ECO</literal>
+                      <literal>HOV_HC_ECO</literal>
                       <ordinal>5</ordinal>
                       <description>Sparbetrieb</description>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HC_MAN_HEAT</literal>
+                      <literal>HOV_HC_MAN_HEAT</literal>
                       <ordinal>7</ordinal>
                       <description>Handbetrieb kühlen</description>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HC_MAN_COOL</literal>
+                      <literal>HOV_HC_MAN_COOL</literal>
                       <ordinal>8</ordinal>
                       <description>Handbetrieb heizen</description>
                     </enumEntry>
@@ -858,100 +864,100 @@
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
-                <dataPointName>hovHeatCoolOpState</dataPointName>
+                <dataPointName>HeatCoolCtrlOpState</dataPointName>
                 <dataDirection>R</dataDirection>
                 <dataType>
                   <enum>
                     <enumEntry>
-                      <literal>HC_OFF</literal>
+                      <literal>HOV_HC_OFF</literal>
                       <ordinal>0</ordinal>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HC_NORMAL_HEAT_OP</literal>
+                      <literal>HOV_HC_NORMAL_HEAT_OP</literal>
                       <ordinal>1</ordinal>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HC_COMFORT_HEAT_OP</literal>
+                      <literal>HOV_HC_COMFORT_HEAT_OP</literal>
                       <ordinal>2</ordinal>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HC_ECO_HEAT_OP</literal>
+                      <literal>HOV_HC_ECO_HEAT_OP</literal>
                       <ordinal>3</ordinal>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HC_DEFROST</literal>
+                      <literal>HOV_HC_DEFROST</literal>
                       <ordinal>4</ordinal>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HC_FORCED_OP</literal>
+                      <literal>HOV_HC_FORCED_OP</literal>
                       <ordinal>5</ordinal>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HC_FORCE_CURTAIL</literal>
+                      <literal>HOV_HC_FORCE_CURTAIL</literal>
                       <ordinal>6</ordinal>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HC_VACATION_OP</literal>
+                      <literal>HOV_HC_VACATION_OP</literal>
                       <ordinal>7</ordinal>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HC_PARTY_OP</literal>
+                      <literal>HOV_HC_PARTY_OP</literal>
                       <ordinal>8</ordinal>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HC_NORMAL_COOL_OP</literal>
+                      <literal>HOV_HC_NORMAL_COOL_OP</literal>
                       <ordinal>9</ordinal>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HC_COMFORT_COOL_OP</literal>
+                      <literal>HOV_HC_COMFORT_COOL_OP</literal>
                       <ordinal>10</ordinal>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HC_ECO_COOL_OP</literal>
+                      <literal>HOV_HC_ECO_COOL_OP</literal>
                       <ordinal>11</ordinal>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HC_ERROR</literal>
+                      <literal>HOV_HC_ERROR</literal>
                       <ordinal>12</ordinal>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HC_MANUAL_OP</literal>
+                      <literal>HOV_HC_MANUAL_OP</literal>
                       <ordinal>13</ordinal>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HC_COOL_PROT</literal>
+                      <literal>HOV_HC_COOL_PROT</literal>
                       <ordinal>14</ordinal>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HC_PARTY_COOL_OP</literal>
+                      <literal>HOV_HC_PARTY_COOL_OP</literal>
                       <ordinal>15</ordinal>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HC_DRY_HEATING</literal>
+                      <literal>HOV_HC_DRY_HEATING</literal>
                       <ordinal>16</ordinal>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HC_DRY_STATIONARY</literal>
+                      <literal>HOV_HC_DRY_STATIONARY</literal>
                       <ordinal>17</ordinal>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HC_DRY_COOLING</literal>
+                      <literal>HOV_HC_DRY_COOLING</literal>
                       <ordinal>18</ordinal>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HC_DRY_FINALIZING</literal>
+                      <literal>HOV_HC_DRY_FINALIZING</literal>
                       <ordinal>19</ordinal>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HC_COOLING_EXT_CMD</literal>
+                      <literal>HOV_HC_COOLING_EXT_CMD</literal>
                       <ordinal>22</ordinal>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HC_HEATING_EXT_CMD</literal>
+                      <literal>HOV_HC_HEATING_EXT_CMD</literal>
                       <ordinal>23</ordinal>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HC_INTENSIFIED_EXT</literal>
+                      <literal>HOV_HC_INTENSIFIED_EXT</literal>
                       <ordinal>24</ordinal>
                     </enumEntry>
                   </enum>
@@ -1155,8 +1161,8 @@
               <levelOfOperation>4m</levelOfOperation>
               <versionNumber>
                 <primaryVersionNumber>0</primaryVersionNumber>
-                <secondaryVersionNumber>2</secondaryVersionNumber>
-                <subReleaseVersionNumber>1</subReleaseVersionNumber>
+                <secondaryVersionNumber>5</secondaryVersionNumber>
+                <subReleaseVersionNumber>0</subReleaseVersionNumber>
               </versionNumber>
             </functionalProfileIdentification>
             <alternativeNames>
@@ -1175,36 +1181,36 @@
           <dataPointList>
             <dataPointListElement>
               <dataPoint>
-                <dataPointName>hovHeatCoolCtrlOpModeCmd</dataPointName>
+                <dataPointName>HeatCoolCtrlOpModeCmd</dataPointName>
                 <dataDirection>RW</dataDirection>
                 <dataType>
                   <enum>
                     <enumEntry>
-                      <literal>HC_STANDBY</literal>
+                      <literal>HOV_HC_STANDBY</literal>
                       <ordinal>0</ordinal>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HC_PLAN_W1</literal>
+                      <literal>HOV_HC_PLAN_W1</literal>
                       <ordinal>1</ordinal>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HC_PLAN_W2</literal>
+                      <literal>HOV_HC_PLAN_W2</literal>
                       <ordinal>2</ordinal>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HC_CONSTANT</literal>
+                      <literal>HOV_HC_CONSTANT</literal>
                       <ordinal>4</ordinal>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HC_ECO</literal>
+                      <literal>HOV_HC_ECO</literal>
                       <ordinal>5</ordinal>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HC_MAN_HEAT</literal>
+                      <literal>HOV_HC_MAN_HEAT</literal>
                       <ordinal>7</ordinal>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HC_MAN_COOL</literal>
+                      <literal>HOV_HC_MAN_COOL</literal>
                       <ordinal>8</ordinal>
                     </enumEntry>
                   </enum>
@@ -1251,100 +1257,100 @@
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
-                <dataPointName>hovHeatCoolOpState</dataPointName>
+                <dataPointName>HeatCoolCtrlOpState</dataPointName>
                 <dataDirection>R</dataDirection>
                 <dataType>
                   <enum>
                     <enumEntry>
-                      <literal>HC_OFF</literal>
+                      <literal>HOV_HC_OFF</literal>
                       <ordinal>0</ordinal>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HC_NORMAL_HEAT_OP</literal>
+                      <literal>HOV_HC_NORMAL_HEAT_OP</literal>
                       <ordinal>1</ordinal>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HC_COMFORT_HEAT_OP</literal>
+                      <literal>HOV_HC_COMFORT_HEAT_OP</literal>
                       <ordinal>2</ordinal>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HC_ECO_HEAT_OP</literal>
+                      <literal>HOV_HC_ECO_HEAT_OP</literal>
                       <ordinal>3</ordinal>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HC_DEFROST</literal>
+                      <literal>HOV_HC_DEFROST</literal>
                       <ordinal>4</ordinal>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HC_FORCED_OP</literal>
+                      <literal>HOV_HC_FORCED_OP</literal>
                       <ordinal>5</ordinal>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HC_FORCE_CURTAIL</literal>
+                      <literal>HOV_HC_FORCE_CURTAIL</literal>
                       <ordinal>6</ordinal>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HC_VACATION_OP</literal>
+                      <literal>HOV_HC_VACATION_OP</literal>
                       <ordinal>7</ordinal>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HC_PARTY_OP</literal>
+                      <literal>HOV_HC_PARTY_OP</literal>
                       <ordinal>8</ordinal>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HC_NORMAL_COOL_OP</literal>
+                      <literal>HOV_HC_NORMAL_COOL_OP</literal>
                       <ordinal>9</ordinal>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HC_COMFORT_COOL_OP</literal>
+                      <literal>HOV_HC_COMFORT_COOL_OP</literal>
                       <ordinal>10</ordinal>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HC_ECO_COOL_OP</literal>
+                      <literal>HOV_HC_ECO_COOL_OP</literal>
                       <ordinal>11</ordinal>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HC_ERROR</literal>
+                      <literal>HOV_HC_ERROR</literal>
                       <ordinal>12</ordinal>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HC_MANUAL_OP</literal>
+                      <literal>HOV_HC_MANUAL_OP</literal>
                       <ordinal>13</ordinal>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HC_COOL_PROT</literal>
+                      <literal>HOV_HC_COOL_PROT</literal>
                       <ordinal>14</ordinal>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HC_PARTY_COOL_OP</literal>
+                      <literal>HOV_HC_PARTY_COOL_OP</literal>
                       <ordinal>15</ordinal>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HC_DRY_HEATING</literal>
+                      <literal>HOV_HC_DRY_HEATING</literal>
                       <ordinal>16</ordinal>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HC_DRY_STATIONARY</literal>
+                      <literal>HOV_HC_DRY_STATIONARY</literal>
                       <ordinal>17</ordinal>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HC_DRY_COOLING</literal>
+                      <literal>HOV_HC_DRY_COOLING</literal>
                       <ordinal>18</ordinal>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HC_DRY_FINALIZING</literal>
+                      <literal>HOV_HC_DRY_FINALIZING</literal>
                       <ordinal>19</ordinal>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HC_COOLING_EXT_CMD</literal>
+                      <literal>HOV_HC_COOLING_EXT_CMD</literal>
                       <ordinal>22</ordinal>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HC_HEATING_EXT_CMD</literal>
+                      <literal>HOV_HC_HEATING_EXT_CMD</literal>
                       <ordinal>23</ordinal>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HC_INTENSIFIED_EXT</literal>
+                      <literal>HOV_HC_INTENSIFIED_EXT</literal>
                       <ordinal>24</ordinal>
                     </enumEntry>
                   </enum>
@@ -1545,8 +1551,8 @@
               <levelOfOperation>4m</levelOfOperation>
               <versionNumber>
                 <primaryVersionNumber>0</primaryVersionNumber>
-                <secondaryVersionNumber>2</secondaryVersionNumber>
-                <subReleaseVersionNumber>1</subReleaseVersionNumber>
+                <secondaryVersionNumber>5</secondaryVersionNumber>
+                <subReleaseVersionNumber>0</subReleaseVersionNumber>
               </versionNumber>
             </functionalProfileIdentification>
             <alternativeNames>
@@ -1566,42 +1572,42 @@
           <dataPointList>
             <dataPointListElement>
               <dataPoint>
-                <dataPointName>hovHeatCoolCtrlOpModeCmd</dataPointName>
+                <dataPointName>HeatCoolCtrlOpModeCmd</dataPointName>
                 <dataDirection>RW</dataDirection>
                 <dataType>
                   <enum>
                     <enumEntry>
-                      <literal>HC_STANDBY</literal>
+                      <literal>HOV_HC_STANDBY</literal>
                       <ordinal>0</ordinal>
                       <description>Standbybetrieb</description>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HC_PLAN_W1</literal>
+                      <literal>HOV_HC_PLAN_W1</literal>
                       <ordinal>1</ordinal>
                       <description>Wochenplan 1</description>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HC_PLAN_W2</literal>
+                      <literal>HOV_HC_PLAN_W2</literal>
                       <ordinal>2</ordinal>
                       <description>Wochenplan 2</description>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HC_CONSTANT</literal>
+                      <literal>HOV_HC_CONSTANT</literal>
                       <ordinal>4</ordinal>
                       <description>Konstanter Betrieb</description>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HC_ECO</literal>
+                      <literal>HOV_HC_ECO</literal>
                       <ordinal>5</ordinal>
                       <description>Sparbetrieb</description>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HC_MAN_HEAT</literal>
+                      <literal>HOV_HC_MAN_HEAT</literal>
                       <ordinal>7</ordinal>
                       <description>Handbetrieb kühlen</description>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HC_MAN_COOL</literal>
+                      <literal>HOV_HC_MAN_COOL</literal>
                       <ordinal>8</ordinal>
                       <description>Handbetrieb heizen</description>
                     </enumEntry>
@@ -1649,100 +1655,100 @@
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
-                <dataPointName>hovHeatCoolOpState</dataPointName>
+                <dataPointName>HeatCoolCtrlOpState</dataPointName>
                 <dataDirection>R</dataDirection>
                 <dataType>
                   <enum>
                     <enumEntry>
-                      <literal>HC_OFF</literal>
+                      <literal>HOV_HC_OFF</literal>
                       <ordinal>0</ordinal>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HC_NORMAL_HEAT_OP</literal>
+                      <literal>HOV_HC_NORMAL_HEAT_OP</literal>
                       <ordinal>1</ordinal>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HC_COMFORT_HEAT_OP</literal>
+                      <literal>HOV_HC_COMFORT_HEAT_OP</literal>
                       <ordinal>2</ordinal>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HC_ECO_HEAT_OP</literal>
+                      <literal>HOV_HC_ECO_HEAT_OP</literal>
                       <ordinal>3</ordinal>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HC_DEFROST</literal>
+                      <literal>HOV_HC_DEFROST</literal>
                       <ordinal>4</ordinal>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HC_FORCED_OP</literal>
+                      <literal>HOV_HC_FORCED_OP</literal>
                       <ordinal>5</ordinal>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HC_FORCE_CURTAIL</literal>
+                      <literal>HOV_HC_FORCE_CURTAIL</literal>
                       <ordinal>6</ordinal>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HC_VACATION_OP</literal>
+                      <literal>HOV_HC_VACATION_OP</literal>
                       <ordinal>7</ordinal>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HC_PARTY_OP</literal>
+                      <literal>HOV_HC_PARTY_OP</literal>
                       <ordinal>8</ordinal>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HC_NORMAL_COOL_OP</literal>
+                      <literal>HOV_HC_NORMAL_COOL_OP</literal>
                       <ordinal>9</ordinal>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HC_COMFORT_COOL_OP</literal>
+                      <literal>HOV_HC_COMFORT_COOL_OP</literal>
                       <ordinal>10</ordinal>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HC_ECO_COOL_OP</literal>
+                      <literal>HOV_HC_ECO_COOL_OP</literal>
                       <ordinal>11</ordinal>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HC_ERROR</literal>
+                      <literal>HOV_HC_ERROR</literal>
                       <ordinal>12</ordinal>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HC_MANUAL_OP</literal>
+                      <literal>HOV_HC_MANUAL_OP</literal>
                       <ordinal>13</ordinal>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HC_COOL_PROT</literal>
+                      <literal>HOV_HC_COOL_PROT</literal>
                       <ordinal>14</ordinal>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HC_PARTY_COOL_OP</literal>
+                      <literal>HOV_HC_PARTY_COOL_OP</literal>
                       <ordinal>15</ordinal>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HC_DRY_HEATING</literal>
+                      <literal>HOV_HC_DRY_HEATING</literal>
                       <ordinal>16</ordinal>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HC_DRY_STATIONARY</literal>
+                      <literal>HOV_HC_DRY_STATIONARY</literal>
                       <ordinal>17</ordinal>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HC_DRY_COOLING</literal>
+                      <literal>HOV_HC_DRY_COOLING</literal>
                       <ordinal>18</ordinal>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HC_DRY_FINALIZING</literal>
+                      <literal>HOV_HC_DRY_FINALIZING</literal>
                       <ordinal>19</ordinal>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HC_COOLING_EXT_CMD</literal>
+                      <literal>HOV_HC_COOLING_EXT_CMD</literal>
                       <ordinal>22</ordinal>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HC_HEATING_EXT_CMD</literal>
+                      <literal>HOV_HC_HEATING_EXT_CMD</literal>
                       <ordinal>23</ordinal>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HC_INTENSIFIED_EXT</literal>
+                      <literal>HOV_HC_INTENSIFIED_EXT</literal>
                       <ordinal>24</ordinal>
                     </enumEntry>
                   </enum>
@@ -1945,8 +1951,8 @@
               <levelOfOperation>4m</levelOfOperation>
               <versionNumber>
                 <primaryVersionNumber>0</primaryVersionNumber>
-                <secondaryVersionNumber>2</secondaryVersionNumber>
-                <subReleaseVersionNumber>1</subReleaseVersionNumber>
+                <secondaryVersionNumber>5</secondaryVersionNumber>
+                <subReleaseVersionNumber>0</subReleaseVersionNumber>
               </versionNumber>
             </functionalProfileIdentification>
             <alternativeNames>
@@ -1965,28 +1971,28 @@
           <dataPointList>
             <dataPointListElement>
               <dataPoint>
-                <dataPointName>hovDomHotWOpModeCmd</dataPointName>
+                <dataPointName>DomHotWaterOpModeCmd</dataPointName>
                 <dataDirection>RW</dataDirection>
                 <dataType>
                   <enum>
                     <enumEntry>
-                      <literal>DHW_STANDBY</literal>
+                      <literal>HOV_DHW_STANDBY</literal>
                       <ordinal>0</ordinal>
                     </enumEntry>
                     <enumEntry>
-                      <literal>DHW_SCHEDULE_1_OP</literal>
+                      <literal>HOV_DHW_SCHEDULE_1_OP</literal>
                       <ordinal>1</ordinal>
                     </enumEntry>
                     <enumEntry>
-                      <literal>DHW_SCHEDULE_2_OP</literal>
+                      <literal>HOV_DHW_SCHEDULE_2_OP</literal>
                       <ordinal>2</ordinal>
                     </enumEntry>
                     <enumEntry>
-                      <literal>DHW_CONST_OP</literal>
+                      <literal>HOV_DHW_CONST_OP</literal>
                       <ordinal>3</ordinal>
                     </enumEntry>
                     <enumEntry>
-                      <literal>DHW_ECO_OP</literal>
+                      <literal>HOV_DHW_ECO_OP</literal>
                       <ordinal>4</ordinal>
                     </enumEntry>
                   </enum>
@@ -2033,12 +2039,12 @@
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
-                <dataPointName>hovDomHotWState</dataPointName>
+                <dataPointName>DomHotWaterOpState</dataPointName>
                 <dataDirection>R</dataDirection>
                 <dataType>
                   <enum>
                     <enumEntry>
-                      <literal>DHW_OFF</literal>
+                      <literal>HOV_DHW_OFF</literal>
                       <ordinal>0</ordinal>
                     </enumEntry>
                     <enumEntry>
@@ -2126,7 +2132,7 @@
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
-                <dataPointName>DomHotWTempStptOffs</dataPointName>
+                <dataPointName>DomHotWaterTempStptOffs</dataPointName>
                 <dataDirection>RW</dataDirection>
                 <dataType>
                   <float32/>
@@ -2172,7 +2178,7 @@
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
-                <dataPointName>DomHotWTempStptComf</dataPointName>
+                <dataPointName>DomHotWaterTempStptComfort</dataPointName>
                 <dataDirection>RW</dataDirection>
                 <dataType>
                   <float32/>
@@ -2217,10 +2223,9 @@
                 <numberOfRegisters>1</numberOfRegisters>
               </modbusDataPointConfiguration>
             </dataPointListElement>
-
             <dataPointListElement>
               <dataPoint>
-                <dataPointName>DomHotWTempStptEco</dataPointName>
+                <dataPointName>DomHotWaterTempStptEco</dataPointName>
                 <dataDirection>RW</dataDirection>
                 <dataType>
                   <float32/>
@@ -2271,55 +2276,7 @@
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
-                <dataPointName>ActDomHotWTemp</dataPointName>
-                <dataDirection>R</dataDirection>
-                <dataType>
-                  <float32/>
-                </dataType>
-                <unit>DEGREES_CELSIUS</unit>
-                <alternativeNames>
-                  <sLV1Name>ActDomHotWTemp</sLV1Name>
-                  <manufName>4</manufName>
-                </alternativeNames>
-                <legibleDescription>
-                  <textElement>Warmwasser-Ist SF: Aktuelle Ist-Temperatur des Brauchwarmwasserspeichers</textElement>
-                  <language>de</language>
-                </legibleDescription>
-                <legibleDescription>
-                  <textElement>Hot water actual DHW
-                  </textElement>
-                  <language>en</language>
-                </legibleDescription>
-                <legibleDescription>
-                  <textElement>Eau chaude réelle ECS
-                  </textElement>
-                  <language>fr</language>
-                </legibleDescription>
-                <legibleDescription>
-                  <textElement>Acqua calda-effettivo ACS
-                  </textElement>
-                  <language>it</language>
-                </legibleDescription>
-              </dataPoint>
-              <modbusDataPointConfiguration>
-                <modbusDataType>
-                  <int16/>
-                </modbusDataType>
-                <address>1500</address>                
-                <registerType>HoldRegister</registerType>
-                <numberOfRegisters>1</numberOfRegisters>
-              </modbusDataPointConfiguration>
-              <modbusAttributes>
-                <scalingFactor>
-                  <multiplicator>1</multiplicator>
-                  <powerof10>-1</powerof10>
-                </scalingFactor>
-              </modbusAttributes>
-            </dataPointListElement>
-
-            <dataPointListElement>
-              <dataPoint>
-                <dataPointName>DomHotWTempStptFb</dataPointName>
+                <dataPointName>DomHotWaterTempStptFb</dataPointName>
                 <dataDirection>R</dataDirection>
                 <dataType>
                   <float32/>
@@ -2364,6 +2321,53 @@
                 </scalingFactor>
               </modbusAttributes>
             </dataPointListElement>
+            <dataPointListElement>
+              <dataPoint>
+                <dataPointName>ActDomHotWaterTemp</dataPointName>
+                <dataDirection>R</dataDirection>
+                <dataType>
+                  <float32/>
+                </dataType>
+                <unit>DEGREES_CELSIUS</unit>
+                <alternativeNames>
+                  <sLV1Name>ActDomHotWTemp</sLV1Name>
+                  <manufName>4</manufName>
+                </alternativeNames>
+                <legibleDescription>
+                  <textElement>Warmwasser-Ist SF: Aktuelle Ist-Temperatur des Brauchwarmwasserspeichers</textElement>
+                  <language>de</language>
+                </legibleDescription>
+                <legibleDescription>
+                  <textElement>Hot water actual DHW
+                  </textElement>
+                  <language>en</language>
+                </legibleDescription>
+                <legibleDescription>
+                  <textElement>Eau chaude réelle ECS
+                  </textElement>
+                  <language>fr</language>
+                </legibleDescription>
+                <legibleDescription>
+                  <textElement>Acqua calda-effettivo ACS
+                  </textElement>
+                  <language>it</language>
+                </legibleDescription>
+              </dataPoint>
+              <modbusDataPointConfiguration>
+                <modbusDataType>
+                  <int16/>
+                </modbusDataType>
+                <address>1500</address>                
+                <registerType>HoldRegister</registerType>
+                <numberOfRegisters>1</numberOfRegisters>
+              </modbusDataPointConfiguration>
+              <modbusAttributes>
+                <scalingFactor>
+                  <multiplicator>1</multiplicator>
+                  <powerof10>-1</powerof10>
+                </scalingFactor>
+              </modbusAttributes>
+            </dataPointListElement>
           </dataPointList>
         </functionalProfileListElement>
         <functionalProfileListElement>
@@ -2376,8 +2380,8 @@
               <levelOfOperation>4m</levelOfOperation>
               <versionNumber>
                 <primaryVersionNumber>0</primaryVersionNumber>
-                <secondaryVersionNumber>2</secondaryVersionNumber>
-                <subReleaseVersionNumber>1</subReleaseVersionNumber>
+                <secondaryVersionNumber>5</secondaryVersionNumber>
+                <subReleaseVersionNumber>0</subReleaseVersionNumber>
               </versionNumber>
             </functionalProfileIdentification>
             <alternativeNames>
@@ -2394,50 +2398,50 @@
           </functionalProfile>
           <dataPointList>
           <dataPointListElement>
-              <dataPoint>
-                <dataPointName>HeatBufferTempStptOffs</dataPointName>
-                <dataDirection>RW</dataDirection>
-                <dataType>
-                  <float32/>
-                </dataType>
-                <unit>DEGREES_CELSIUS</unit>
-                <alternativeNames>
-                  <sLV1Name>ActBufferTempStpt Offset</sLV1Name>
-                  <manufName>6050</manufName>
-                </alternativeNames>
-                <legibleDescription>
-                  <textElement>Smart-Grid (Offset) Puffer-Soll.Heizen</textElement>
-                  <language>de</language>
-                </legibleDescription>
-                <legibleDescription>
-                  <textElement>SmartGrid (offset) buffer stpt. heating
-                  </textElement>
-                  <language>en</language>
-                </legibleDescription>
-                <legibleDescription>
-                  <textElement>Val cons acc chauff (offset) Smart-Grid
-                  </textElement>
-                  <language>fr</language>
-                </legibleDescription>
-                <legibleDescription>
-                  <textElement>Smart-Grid (offset) accumulo-nom risc
-                  </textElement>
-                  <language>it</language>
-                </legibleDescription>
-              </dataPoint>
-              <modbusDataPointConfiguration>
-                <modbusDataType>
-                  <int16/>
-                </modbusDataType>
-                <address>28839</address>
-                <registerType>HoldRegister</registerType>
-                <numberOfRegisters>1</numberOfRegisters>
-              </modbusDataPointConfiguration>
-              <modbusAttributes>
-                <scalingFactor>
-                  <multiplicator>1</multiplicator>
-                  <powerof10>-1</powerof10>
-                </scalingFactor></modbusAttributes>
+            <dataPoint>
+              <dataPointName>HeatBufferTempStptOffs</dataPointName>
+              <dataDirection>RW</dataDirection>
+              <dataType>
+                <float32/>
+              </dataType>
+              <unit>DEGREES_CELSIUS</unit>
+              <alternativeNames>
+                <sLV1Name>ActBufferTempStpt Offset</sLV1Name>
+                <manufName>6050</manufName>
+              </alternativeNames>
+              <legibleDescription>
+                <textElement>Smart-Grid (Offset) Puffer-Soll.Heizen</textElement>
+                <language>de</language>
+              </legibleDescription>
+              <legibleDescription>
+                <textElement>SmartGrid (offset) buffer stpt. heating
+                </textElement>
+                <language>en</language>
+              </legibleDescription>
+              <legibleDescription>
+                <textElement>Val cons acc chauff (offset) Smart-Grid
+                </textElement>
+                <language>fr</language>
+              </legibleDescription>
+              <legibleDescription>
+                <textElement>Smart-Grid (offset) accumulo-nom risc
+                </textElement>
+                <language>it</language>
+              </legibleDescription>
+            </dataPoint>
+            <modbusDataPointConfiguration>
+              <modbusDataType>
+                <int16/>
+              </modbusDataType>
+              <address>28839</address>
+              <registerType>HoldRegister</registerType>
+              <numberOfRegisters>1</numberOfRegisters>
+            </modbusDataPointConfiguration>
+            <modbusAttributes>
+              <scalingFactor>
+                <multiplicator>1</multiplicator>
+                <powerof10>-1</powerof10>
+              </scalingFactor></modbusAttributes>
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
@@ -2488,44 +2492,44 @@
             </dataPointListElement>              
             <dataPointListElement>
               <dataPoint>
-                <dataPointName>hovActBufferState</dataPointName>
+                <dataPointName>ActBufferState</dataPointName>
                 <dataDirection>R</dataDirection>
                 <dataType>
                   <enum>
                     <enumEntry>
-                      <literal>BUF_OFF</literal>
+                      <literal>HOV_BUF_OFF</literal>
                       <ordinal>0</ordinal>
                     </enumEntry>
                     <enumEntry>
-                      <literal>BUF_REQ_PROTECTED</literal>
+                      <literal>HOV_BUF_REQ_PROTECTED</literal>
                       <ordinal>1</ordinal>
                     </enumEntry>
                     <enumEntry>
-                      <literal>BUF_REQ_ACTIVE</literal>
+                      <literal>HOV_BUF_REQ_ACTIVE</literal>
                       <ordinal>2</ordinal>
                     </enumEntry>
                     <enumEntry>
-                      <literal>BUF_REQ_FINALIZING</literal>
+                      <literal>HOV_BUF_REQ_FINALIZING</literal>
                       <ordinal>3</ordinal>
                     </enumEntry>
                     <enumEntry>
-                      <literal>BUF_REQ_DONE</literal>
+                      <literal>HOV_BUF_REQ_DONE</literal>
                       <ordinal>4</ordinal>
                     </enumEntry>
                     <enumEntry>
-                      <literal>BUF_FORCED</literal>
+                      <literal>HOV_BUF_FORCED</literal>
                       <ordinal>6</ordinal>
                     </enumEntry>
                     <enumEntry>
-                      <literal>BUF_SKIMMING</literal>
+                      <literal>HOV_BUF_SKIMMING</literal>
                       <ordinal>7</ordinal>
                     </enumEntry>
                     <enumEntry>
-                      <literal>BUF_INTENSIFIED_EXT</literal>
+                      <literal>HOV_BUF_INTENSIFIED_EXT</literal>
                       <ordinal>8</ordinal>
                     </enumEntry>
                     <enumEntry>
-                      <literal>BUF_FORCED_EXT</literal>
+                      <literal>HOV_BUF_FORCED_EXT</literal>
                       <ordinal>9</ordinal>
                     </enumEntry>
                   </enum>

@@ -17,12 +17,15 @@
           Über ein Tablet oder einen PC kann die Wärmepumpe bedient, Einstellungen
           vorgenommen und der Zugang zur SERVICEWELT freigeschaltet werden.
           Bei Bedarf kann über ein Smartphone auf die Heizungsanlage zugegriffen oder diese überprüft werden. 
-          <p>Die wichtigsten Merkmale</pl>
-          <li>Das Internet Service Gateway als Web-Schnittstelle</li>
-          <li>Anschließbar an den Router des Heimnetzwerks</li>
-          <li>Geräteeinstellung über eine integrierte Web-Oberfläche mit dem Standardbrowser</li>
-          <li>Kommunikation mit der STIEBEL ELTRON-Kundendienst-Zentrale</li>
-          <li>Möglichkeit zur Kontrolle der Anlage über eine Smartphone-„Web-App“</li>
+          <p/>
+          Die wichtigsten Merkmale
+          <ul>
+            <li>Das Internet Service Gateway als Web-Schnittstelle</li>
+            <li>Anschließbar an den Router des Heimnetzwerks</li>
+            <li>Geräteeinstellung über eine integrierte Web-Oberfläche mit dem Standardbrowser</li>
+            <li>Kommunikation mit der STIEBEL ELTRON-Kundendienst-Zentrale</li>
+            <li>Möglichkeit zur Kontrolle der Anlage über eine Smartphone-„Web-App“</li>
+          </ul>
         ]]>		
       </textElement>
       <language>de</language>
@@ -32,22 +35,25 @@
         <![CDATA[
           The internet service gateway (ISG) allows to control a heat pump using devices connected to a home network. 
           It allows connectivity via PC, laptop, or tablet at will. It allows access to a Local ISG homepage that shows heat pump data, including average heating temperatures and hot water consumption.
-          <p>Benefits:</pl>
-          <li>Convenient and easy adjustment of the heat pump via PC, laptop, or tablet</li>
-          <li>User-friendly operation via standard browser</li>
-          <li>User-friendly interface</li>
-          <li>Control of important functions</li>
-          <li>Internet connection to the SERVICE WORLD portal</li>
-          <li>Fault message on the SERVICE WORLD Directory * via SMS or e -mail</li>
-          <li>Data security through encrypted data transmission</li>
-          <li>Software updates of the ISG about the SERVICE WORLD portal</li>
+          <p/>
+          Benefits:
+          <ul>
+            <li>Convenient and easy adjustment of the heat pump via PC, laptop, or tablet</li>
+            <li>User-friendly operation via standard browser</li>
+            <li>User-friendly interface</li>
+            <li>Control of important functions</li>
+            <li>Internet connection to the SERVICE WORLD portal</li>
+            <li>Fault message on the SERVICE WORLD Directory via SMS or e -mail</li>
+            <li>Data security through encrypted data transmission</li>
+            <li>Software updates of the ISG about the SERVICE WORLD portal</li>
+          </ul>
         ]]>		
       </textElement>
       <language>en</language>
     </legibleDescription>
     <deviceCategory>HeatPumpAppliance</deviceCategory>
     <isLocalControl>true</isLocalControl>
-    <softwareRevision>1.0.0</softwareRevision>
+    <softwareRevision>0.6.0 / 4m</softwareRevision>
     <hardwareRevision>1.1.0</hardwareRevision>
     <brandName>ISG web</brandName>
     <powerSource>dc</powerSource>
@@ -88,68 +94,81 @@
               <specificationOwnerIdentification>0</specificationOwnerIdentification>
               <functionalProfileCategory>HeatPumpControl</functionalProfileCategory>
               <functionalProfileType>HeatPumpBase</functionalProfileType>
-              <levelOfOperation>2m</levelOfOperation>
+              <levelOfOperation>4m</levelOfOperation>
               <versionNumber>
                 <primaryVersionNumber>0</primaryVersionNumber>
-                <secondaryVersionNumber>9</secondaryVersionNumber>
-                <subReleaseVersionNumber>1</subReleaseVersionNumber>
+                <secondaryVersionNumber>6</secondaryVersionNumber>
+                <subReleaseVersionNumber>0</subReleaseVersionNumber>
               </versionNumber>
             </functionalProfileIdentification>
             <legibleDescription>
               <textElement>
-                Das Profil definiert den Grundbaustein zur dynamischen Ansteuerung von Wärmepumpen
-                über eine variable Beeinflussung der Sollwerte nach SGr Level 4. Der Betrieb der
-                Wärmepumpe muss in sich sicher sein, unabhängig von den äusseren Vorgaben. Dieses
-                Grundprofil definiert die Datenpunkte, welche zur Steuerung des Gerätes «Wärmepumpe»
-                auf Level 4 grundsätzlich zur Verfügung gestellt werden und stellen die Version
-                einer
-                typischen EInfamilienhauswärmepumpe miz Aussentemperaturfühler dar. Für die
-                einzelnen
-                Heizkreise, Warmwasser, Pufferspeicher und das Energie-Monitoring sowie eine
-                Verdichterdrehzahl / Leistungsregelung werden separate Profile zur Verfügung
-                gestellt.
+                <![CDATA[
+                  Das Profil definiert den Grundbaustein zur dynamischen Ansteuerung von Wärmepumpen
+                  über eine Betriebsmodus gestützt Beeinflussung der Sollwerte nach SGr Stufe 2.
+                  <p/>
+                  Der Betrieb der Wärmepumpe muss in sich sicher sein, unabhängig von den äusseren Vorgaben.
+                  <p/>
+                  Dieses Grundprofil definiert die Datenpunkte, welche zur Steuerung des Gerätes «Wärmepumpe»
+                  mit zusätzlichen Stufe 4 Funktionsprofilen grundsätzlich zur Verfügung gestellt werden.
+                  Sie stellen die Version einer typischen Einfamilienhauswärmepumpe mit Aussentemperaturfühler dar.
+                  <p/>
+                  Für die einzelnen Heizkreise, Warmwasser, Pufferspeicher und das Energie-Monitoring sowie eine
+                  Verdichterdrehzahl / Leistungsregelung
+                  können in weiteren Funktionsprofilen zur Verfügung gestellt werden.
+                ]]>         
               </textElement>
               <language>de</language>
             </legibleDescription>
             <programmerHints>
               <textElement>
-                Specified set values are assigned to each operating mode.
-                Operating modes are valid for all functional profiles except SG-Ready-bwp.
-                Via Modbus, operating modes and their corresponding set values
-                can be changed independently of one another.
-                In order to ensure that set values are changed immediately rather
-                than at the next change of operating mode, only one of the two
-                parameters (operating mode OR set value) should be changed via
-                Modbus, leaving the other parameter fixed:
-                - If the operating mode (e.g. comfort mode) is kept constant
-                but the corresponding set values are changed via Modbus,
-                the heat pump will run according to the new values as soon
-                as the change has been made.
-                - Conversely, with appropriately determined set values for
-                the relevant operating modes, the entire system with all its
-                set values can be switched to a different temperature
+                <![CDATA[
+                  Specified set values are assigned to each operating mode.
+                  Operating modes are valid for all functional profiles except SG-Ready-bwp.
+                  Via Modbus, operating modes and their corresponding set values
+                  can be changed independently of one another.
+                  <p/>
+                  In order to ensure that set values are changed immediately rather
+                  than at the next change of operating mode, only one of the two
+                  parameters (operating mode OR set value) should be changed via
+                  Modbus, leaving the other parameter fixed:
+                  <ul>
+                    <li>If the operating mode (e.g. comfort mode) is kept constant
+                        but the corresponding set values are changed via Modbus,
+                        the heat pump will run according to the new values as soon
+                        as the change has been made.</li>
+                    <li>Conversely, with appropriately determined set values for
+                        the relevant operating modes, the entire system with all its
+                        set values can be switched to a different temperature</li>
+                  </ul>
+                ]]>         
               </textElement>
               <language>en</language>
             </programmerHints>
             <programmerHints>
               <textElement>
-                Betriebsarten und Sollwerte
-                Jeder Betriebsart sind bestimmte Sollwerte zugeordnet.
-                Betriebsarten gelten fuer alle Funktionsprofile ausser SG-Ready-bwp.
-                Über Modbus können Betriebsarten und entsprechende Sollwerte
-                unabhängig voneinander verändert werden.
-                Damit Sollwertänderungen unmittelbar und nicht erst beim nächsten
-                Betriebsartwechsel umgesetzt werden, sollte nur einer der
-                beiden Parameter (Betriebsart ODER Sollwert) über Modbus verändert
-                werden, während der andere Parameter fest definiert wird.
-                -Wenn die Betriebsart (z. B. Komfortbetrieb) permanent beibehalten
-                wird, die korrespondierenden Sollwerte jedoch über
-                Modbus verändert werden, fährt die Wärmepumpe die neuen
-                Werte unmittelbar nach der Änderung an.
-                -Umgekehrt kann, bei sinnvoll festgelegten Sollwerten für die
-                relevanten Betriebsarten, durch einen Betriebsartwechsel die
-                gesamte Anlage mit sämtlichen Sollwerten auf ein anderes
-                Temperaturniveau geschaltet werden.
+                <![CDATA[
+                  Betriebsarten und Sollwerte
+                  Jeder Betriebsart sind bestimmte Sollwerte zugeordnet.
+                  Betriebsarten gelten fuer alle Funktionsprofile ausser SG-Ready-bwp.
+                  Über Modbus können Betriebsarten und entsprechende Sollwerte
+                  unabhängig voneinander verändert werden.
+                  <p/>
+                  Damit Sollwertänderungen unmittelbar und nicht erst beim nächsten
+                  Betriebsartwechsel umgesetzt werden, sollte nur einer der
+                  beiden Parameter (Betriebsart ODER Sollwert) über Modbus verändert
+                  werden, während der andere Parameter fest definiert wird.
+                  <ul>
+                    <li>Wenn die Betriebsart (z. B. Komfortbetrieb) permanent beibehalten
+                        wird, die korrespondierenden Sollwerte jedoch über
+                        Modbus verändert werden, fährt die Wärmepumpe die neuen
+                        Werte unmittelbar nach der Änderung an.</li>
+                    <li>Umgekehrt kann, bei sinnvoll festgelegten Sollwerten für die
+                        relevanten Betriebsarten, durch einen Betriebsartwechsel die
+                        gesamte Anlage mit sämtlichen Sollwerten auf ein anderes
+                        Temperaturniveau geschaltet werden.</li>
+                  </ul>
+                ]]>         
               </textElement>
               <language>de</language>
             </programmerHints>
@@ -157,47 +176,47 @@
           <dataPointList>
             <dataPointListElement>
               <dataPoint>
-                <dataPointName>stiHPOpModeCmd</dataPointName>
+                <dataPointName>HPOpModeCmd</dataPointName>
                 <dataDirection>RW</dataDirection>
                 <dataType>
                   <enum>
                     <enumEntry>
-                      <literal>WP_EMERG_OP</literal>
+                      <literal>STI_WP_EMERG_OP</literal>
                       <ordinal>0</ordinal>
                       <description>Notbetrieb</description>
                     </enumEntry>
                     <enumEntry>
-                      <literal>WP_READY</literal>
+                      <literal>STI_WP_READY</literal>
                       <ordinal>1</ordinal>
                       <description>Bereitschaft</description>
                     </enumEntry>
                     <enumEntry>
-                      <literal>WP_PROG_OP</literal>
+                      <literal>STI_WP_PROG_OP</literal>
                       <ordinal>2</ordinal>
                       <description>Programmbetrieb</description>
                     </enumEntry>
                     <enumEntry>
-                      <literal>WP_COMFORT_OP</literal>
+                      <literal>STI_WP_COMFORT_OP</literal>
                       <ordinal>3</ordinal>
                       <description>Komfortbetrieb</description>
                     </enumEntry>
                     <enumEntry>
-                      <literal>WP_ECO_OP</literal>
+                      <literal>STI_WP_ECO_OP</literal>
                       <ordinal>4</ordinal>
                       <description>Sparbetrieb</description>
                     </enumEntry>
                     <enumEntry>
-                      <literal>WP_DOM_WATER_OP</literal>
+                      <literal>STI_WP_DOM_WATER_OP</literal>
                       <ordinal>5</ordinal>
                       <description>Warmwassererzeugung</description>
                     </enumEntry>
                     <enumEntry>
-                      <literal>WP_COOL_ACTIVE_OP</literal>
+                      <literal>STI_WP_COOL_ACTIVE_OP</literal>
                       <ordinal>6</ordinal>
                       <description>Kühlen aktiv</description>
                     </enumEntry>
                     <enumEntry>
-                      <literal>WP_COOL_PASSIVE_OP</literal>
+                      <literal>STI_WP_COOL_PASSIVE_OP</literal>
                       <ordinal>7</ordinal>
                       <description>Kühlen passiv</description>
                     </enumEntry>
@@ -211,14 +230,15 @@
                 </alternativeNames>
                 <legibleDescription>
                   <textElement> 
-              <![CDATA[
-                <p>Grund-Betriebsart der Wärmepumpe</pl>
-                ]]>					
-              </textElement>
+                    <![CDATA[
+                      Grund-Betriebsart der Wärmepumpe
+                    ]]>					
+                  </textElement>
                   <language>de</language>
                 </legibleDescription>
                 <programmerHints>
-                  <textElement>enum 16: WP_READY=1, WP_PROG_OP=2, WP_COMFORT_OP=3, WP_ECO_OP=4,
+                  <textElement>
+                    enum 16: WP_READY=1, WP_PROG_OP=2, WP_COMFORT_OP=3, WP_ECO_OP=4,
                     WP_DOM_WATER_OP=5, WP_EEMERG_OP=0</textElement>
                   <language>en</language>
                 </programmerHints>
@@ -234,56 +254,56 @@
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
-                <dataPointName>stiHPOpState</dataPointName>
+                <dataPointName>HPOpState</dataPointName>
                 <dataDirection>R</dataDirection>
                 <dataType>
                   <bitmap>
                     <bitmapEntry>
-                      <literal>HP_1_PUMP_ON</literal>
+                      <literal>STI_HP_1_PUMP_ON</literal>
                       <hexMask>01</hexMask>
                     </bitmapEntry>
                     <bitmapEntry>
-                      <literal>HP_2_PUMP_ON</literal>
+                      <literal>STI_HP_2_PUMP_ON</literal>
                       <hexMask>02</hexMask>
                     </bitmapEntry>
                     <bitmapEntry>
-                      <literal>HEATUP_PROGRAM</literal>
+                      <literal>STI_HEATUP_PROGRAM</literal>
                       <hexMask>04</hexMask>
                     </bitmapEntry>
                     <bitmapEntry>
-                      <literal>NHZ_STAGES_RUNNING</literal>
+                      <literal>STI_NHZ_STAGES_RUNNING</literal>
                       <hexMask>08</hexMask>
                     </bitmapEntry>
                     <bitmapEntry>
-                      <literal>HP_IN_HEATING_MODE</literal>
+                      <literal>STI_HP_IN_HEATING_MODE</literal>
                       <hexMask>10</hexMask>
                     </bitmapEntry>
                     <bitmapEntry>
-                      <literal>HP_IN_DHW_MODE</literal>
+                      <literal>STI_HP_IN_DHW_MODE</literal>
                       <hexMask>20</hexMask>
                     </bitmapEntry>
                     <bitmapEntry>
-                      <literal>COMPRESSOR_RUNNING</literal>
+                      <literal>STI_COMPRESSOR_RUNNING</literal>
                       <hexMask>40</hexMask>
                     </bitmapEntry>
                     <bitmapEntry>
-                      <literal>SUMMER_MODE_ACTIVE</literal>
+                      <literal>STI_SUMMER_MODE_ACTIVE</literal>
                       <hexMask>80</hexMask>
                     </bitmapEntry>
                     <bitmapEntry>
-                      <literal>COOLING_MODE_ACTIVE</literal>
+                      <literal>STI_COOLING_MODE_ACTIVE</literal>
                       <hexMask>0100</hexMask>
                     </bitmapEntry>
                     <bitmapEntry>
-                      <literal>MIN_ONE_IWS_IN_DEFROST_MODE</literal>
+                      <literal>STI_MIN_ONE_IWS_IN_DEFROST_MODE</literal>
                       <hexMask>0200</hexMask>
                     </bitmapEntry>
                     <bitmapEntry>
-                      <literal>SILENT_MODE_1_ACTIVE</literal>
+                      <literal>STI_SILENT_MODE_1_ACTIVE</literal>
                       <hexMask>0400</hexMask>
                     </bitmapEntry>
                     <bitmapEntry>
-                      <literal>SILENT_MODE_2_ACTIVE</literal>
+                      <literal>STI_SILENT_MODE_2_ACTIVE</literal>
                       <hexMask>0800</hexMask>
                     </bitmapEntry>
                   </bitmap>
@@ -296,41 +316,47 @@
                 </alternativeNames>
                 <legibleDescription>
                   <textElement>            
-                <![CDATA[	
-                  <p>Auslesen des aktuellen Status der Wärmepumpe</p>
-                  <ol>
-                    <li><strong>HP_1_PUMP_ON:</strong> Waermepumpe 1 EIN</li>
-                    <li><strong>HP_2_PUMP_ON:</strong> Waermepumpe 2 EIN</li>
-                    <li><strong>HEATUP_PROGRAM:</strong> Aufheizprogramm aktiv</li>
-                    <li><strong>NHZ_STAGES_RUNNING:</strong> Nachheizung aktiv </li>
-                    <li><strong>HP_IN_HEATING_MODE:</strong> Waermepumpe heizt</li>
-                    <li><strong>HP_IN_DHW_MODE:</strong> Waermepumpe im Warmwassermode</li>
-                    <li><strong>COMPRESSOR_RUNNING:</strong> Kompressor laeuft</li>
-                    <li><strong>SUMMER_MODE_ACTIVE:</strong> Waermepumpe im Sommermodus</li>
-                    <li><strong>COOLING_MODE_ACTIVE:</strong> Waermepumpe kuehlt</li>   					
-                    <li><strong>MIN_ONE_IWS_IN_DEFROST_MODE:</strong> Waermepumpe im Gefrierschutzmode</li>
-                    <li><strong>SILENT_MODE_1_ACTIVE:</strong> reduziert</li>
-                    <li><strong>SILENT_MODE_2_ACTIVE:</strong> WP AUS </li>
-                  </ol>
-                ]]>
-              </textElement>
+                    <![CDATA[	
+                      Auslesen des aktuellen Status der Wärmepumpe<p/>
+                      <ol>
+                        <li><strong>STI_HP_1_PUMP_ON:</strong> Waermepumpe 1 EIN</li>
+                        <li><strong>STI_HP_2_PUMP_ON:</strong> Waermepumpe 2 EIN</li>
+                        <li><strong>STI_HEATUP_PROGRAM:</strong> Aufheizprogramm aktiv</li>
+                        <li><strong>STI_NHZ_STAGES_RUNNING:</strong> Nachheizung aktiv </li>
+                        <li><strong>STI_HP_IN_HEATING_MODE:</strong> Waermepumpe heizt</li>
+                        <li><strong>STI_HP_IN_DHW_MODE:</strong> Waermepumpe im Warmwassermode</li>
+                        <li><strong>STI_COMPRESSOR_RUNNING:</strong> Kompressor laeuft</li>
+                        <li><strong>STI_SUMMER_MODE_ACTIVE:</strong> Waermepumpe im Sommermodus</li>
+                        <li><strong>STI_COOLING_MODE_ACTIVE:</strong> Waermepumpe kuehlt</li>   					
+                        <li><strong>STI_MIN_ONE_IWS_IN_DEFROST_MODE:</strong> Waermepumpe im Gefrierschutzmode</li>
+                        <li><strong>STI_SILENT_MODE_1_ACTIVE:</strong> reduziert</li>
+                        <li><strong>STI_SILENT_MODE_2_ACTIVE:</strong> WP AUS </li>
+                      </ol>
+                    ]]>
+                  </textElement>
                   <language>de</language>
                 </legibleDescription>
                 <programmerHints>
                   <textElement>
-                    manufacturer Bit code status information mapped directly
-                    B0: HC 1 PUMP on
-                    B1: HC 2 PUMP on
-                    B2: HEAT-UP PROGRAM
-                    B3: NHZ STAGES RUNNING
-                    B4: HP IN HEATING MODE
-                    B5: HP IN DHW MODE
-                    B6: COMPRESSOR RUNNING
-                    B7: SUMMER MODE ACTIVE
-                    B8: COOLING MODE ACTIVE
-                    B9: MIN. ONE IWS IN DEFROST MODE
-                    B10: SILENT MODE 1 ACTIVE 0
-                    B11: SILENT MODE 2 ACTIVE (HP OFF)
+                    <![CDATA[ 
+                      Auslesen des aktuellen Status der Wärmepumpe<p/>
+                      <p/>
+                      manufacturer Bit code status information mapped directly</li>
+                      <ol>
+                        <li>B0: HC 1 PUMP on</li>
+                        <li>B1: HC 2 PUMP on</li>
+                        <li>B2: HEAT-UP PROGRAM</li>
+                        <li>B3: NHZ STAGES RUNNING</li>
+                        <li>B4: HP IN HEATING MODE</li>
+                        <li>B5: HP IN DHW MODE</li>
+                        <li>B6: COMPRESSOR RUNNING</li>
+                        <li>B7: SUMMER MODE ACTIVE</li>
+                        <li>B8: COOLING MODE ACTIVE</li>
+                        <li>B9: MIN. ONE IWS IN DEFROST MODE</li>
+                        <li>B10: SILENT MODE 1 ACTIVE 0</li>
+                        <li>B11: SILENT MODE 2 ACTIVE (HP OFF)</li>
+                      </ol>
+                    ]]>
                   </textElement>
                   <language>en</language>
                 </programmerHints>
@@ -496,9 +522,10 @@
                   <hpBwpName>Temperatur Wärmequelleneintritt</hpBwpName>
                 </alternativeNames>
                 <programmerHints>
-                  <textElement>Bei Luftwärmepumpen beträgt der Wert von InputRegister addr 536
-                    -3276.8
-                    °C (ungültig). Als Quelle kann in der Regel OutsideAirTemp genutzt werden.</textElement>
+                  <textElement>
+                    Bei Luftwärmepumpen beträgt der Wert von InputRegister addr 536 -3276.8
+                    °C (ungültig). Als Quelle kann in der Regel OutsideAirTemp genutzt werden.
+                  </textElement>
                   <language>de</language>
                 </programmerHints>
               </dataPoint>
@@ -529,20 +556,22 @@
               <levelOfOperation>4m</levelOfOperation>
               <versionNumber>
                 <primaryVersionNumber>0</primaryVersionNumber>
-                <secondaryVersionNumber>2</secondaryVersionNumber>
-                <subReleaseVersionNumber>1</subReleaseVersionNumber>
+                <secondaryVersionNumber>5</secondaryVersionNumber>
+                <subReleaseVersionNumber>0</subReleaseVersionNumber>
               </versionNumber>
             </functionalProfileIdentification>
             <alternativeNames>            
               <en17609Name>HeatCool Group</en17609Name>
             </alternativeNames>
             <legibleDescription>
-              <textElement>Dieses Profil definiert die erweiterten Datenpunkte zum Grundprofil
+              <textElement>
+                 Dieses Profil definiert die erweiterten Datenpunkte zum Grundprofil
                 "HeatPumpBase", welche zur Steuerung eines Heiz- oder Kühlkreises zur Verfügung
                 gestellt werden. Derselbe physikalische Kreislauf kann entweder für das Heizen oder
                 das Kühlen verwendet werden. Das Heiz-/Kühlkreisprofil muss immer in Kombination mit
                 dem Grundprofil der Wärmepumpe bewirtschaftet werden. Es können mehrere
-                Heiz-/Kühlkreisprofile definiert werden.</textElement>
+                Heiz-/Kühlkreisprofile definiert werden.
+              </textElement>
               <language>de</language>
             </legibleDescription>
           </functionalProfile>
@@ -625,7 +654,7 @@
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
-                <dataPointName>SupplyWaterTempStptComf</dataPointName>
+                <dataPointName>SupplyWaterTempStptComfort</dataPointName>
                 <dataDirection>RW</dataDirection>
                 <dataType>
                   <float32 />
@@ -634,7 +663,7 @@
                 <minimumValue>5.0</minimumValue>
                 <maximumValue>30.0</maximumValue>
                 <alternativeNames>            
-                  <sLV1Name>SupplyWaterTempStptComf</sLV1Name>
+                  <sLV1Name>SupplyWaterTempStptComfort</sLV1Name>
                   <manufName>KOMFORT TEMPERATUR HK 1</manufName>
                   <en17609Name>Supply Water Temperature Setpoint Comfort</en17609Name>
                 </alternativeNames>
@@ -705,8 +734,8 @@
               <levelOfOperation>4m</levelOfOperation>
               <versionNumber>
                 <primaryVersionNumber>0</primaryVersionNumber>
-                <secondaryVersionNumber>2</secondaryVersionNumber>
-                <subReleaseVersionNumber>1</subReleaseVersionNumber>
+                <secondaryVersionNumber>5</secondaryVersionNumber>
+                <subReleaseVersionNumber>0</subReleaseVersionNumber>
               </versionNumber>
             </functionalProfileIdentification>
             <alternativeNames>            
@@ -801,7 +830,7 @@
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
-                <dataPointName>SupplyWaterTempStptComf</dataPointName>
+                <dataPointName>SupplyWaterTempStptComfort</dataPointName>
                 <dataDirection>RW</dataDirection>
                 <dataType>
                   <float32 />
@@ -810,7 +839,7 @@
                 <minimumValue>5.0</minimumValue>
                 <maximumValue>30.0</maximumValue>
                 <alternativeNames>            
-                  <sLV1Name>SupplyWaterTempStptComf</sLV1Name>
+                  <sLV1Name>SupplyWaterTempStptComfort</sLV1Name>
                   <manufName>KOMFORT TEMPERATUR HK 2</manufName>
                   <en17609Name>Supply Water Temperature Setpoint Comfort</en17609Name>
                 </alternativeNames>
@@ -881,8 +910,8 @@
               <levelOfOperation>4m</levelOfOperation>
               <versionNumber>
                 <primaryVersionNumber>0</primaryVersionNumber>
-                <secondaryVersionNumber>2</secondaryVersionNumber>
-                <subReleaseVersionNumber>1</subReleaseVersionNumber>
+                <secondaryVersionNumber>5</secondaryVersionNumber>
+                <subReleaseVersionNumber>0</subReleaseVersionNumber>
               </versionNumber>
             </functionalProfileIdentification>
             <legibleDescription>
@@ -897,21 +926,23 @@
           <dataPointList>
             <dataPointListElement>
               <dataPoint>
-                <dataPointName>ActDomHotWaterTemp</dataPointName>
-                <dataDirection>R</dataDirection>
+                <dataPointName>DomHotWaterTempStptComfort</dataPointName>
+                <dataDirection>RW</dataDirection>
                 <dataType>
                   <float32 />
                 </dataType>
                 <unit>DEGREES_CELSIUS</unit>
+                <minimumValue>10.0</minimumValue>
+                <maximumValue>60.0</maximumValue>
                 <alternativeNames>            
-                  <sLV1Name>ActDomHotWaterTemp</sLV1Name>
-                  <manufName>ISTTEMPERATUR Warmwasser</manufName>
-                  <eebusName>Measurement_DhwTemperature</eebusName>
-                  <hpBwpName>Temperatur Warmwasser</hpBwpName>
-                  <en17609Name>Hot WaterTemperature</en17609Name>
+                  <sLV1Name>DomHotWTempStptComf</sLV1Name>
+                  <manufName>KOMFORT TEMPERATUR Warmwasser</manufName>
+                  <eebusName>Setpoint_DhwTemperature</eebusName>
+                  <hpBwpName>Warmwassertemperatur max</hpBwpName>
+                  <en17609Name>Hot Water Setpoint Temperature Comfort</en17609Name>
                 </alternativeNames>
                 <legibleDescription>
-                  <textElement>Aktuelle Ist-Temperatur des Brauchwarmwasserspeichers</textElement>
+                  <textElement>Setpoint für Brauchwarnwasserspeicher im Comfort-Betrieb</textElement>
                   <language>de</language>
                 </legibleDescription>
               </dataPoint>
@@ -919,8 +950,8 @@
                 <modbusDataType>
                   <int16 />
                 </modbusDataType>
-                <address>522</address>
-                <registerType>InputRegister</registerType>
+                <address>1510</address>
+                <registerType>HoldRegister</registerType>
                 <numberOfRegisters>1</numberOfRegisters>
               </modbusDataPointConfiguration>
               <modbusAttributes>
@@ -932,7 +963,44 @@
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
-                <dataPointName>DomHotWTempStptFb</dataPointName>
+                <dataPointName>DomHotWaterTempStptEco</dataPointName>
+                <dataDirection>RW</dataDirection>
+                <dataType>
+                  <float32 />
+                </dataType>
+                <unit>DEGREES_CELSIUS</unit>
+                <minimumValue>10.0</minimumValue>
+                <maximumValue>60.0</maximumValue>
+                <alternativeNames>            
+                  <sLV1Name>DomHotWTempStptEco</sLV1Name>
+                  <manufName>ECO TEMPERATUR Warmwasser</manufName>
+                  <eebusName>Setpoint_DhwTemperature</eebusName>
+                  <hpBwpName>Warmwassertemperatur min</hpBwpName>
+                  <en17609Name>Hot Water Setpoint Temperature Eco</en17609Name>
+                </alternativeNames>
+                <legibleDescription>
+                  <textElement>Setpoint für Brauchwarnwasserspeicher im ECO-Betrieb</textElement>
+                  <language>de</language>
+                </legibleDescription>
+              </dataPoint>
+              <modbusDataPointConfiguration>
+                <modbusDataType>
+                  <int16 />
+                </modbusDataType>
+                <address>1511</address>
+                <registerType>HoldRegister</registerType>
+                <numberOfRegisters>1</numberOfRegisters>
+              </modbusDataPointConfiguration>
+              <modbusAttributes>
+                <scalingFactor>
+                  <multiplicator>1</multiplicator>
+                  <powerof10>-1</powerof10>
+                </scalingFactor>
+              </modbusAttributes>
+            </dataPointListElement>
+            <dataPointListElement>
+              <dataPoint>
+                <dataPointName>DomHotWaterTempStptFb</dataPointName>
                 <dataDirection>R</dataDirection>
                 <dataType>
                   <float32 />
@@ -971,23 +1039,21 @@
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
-                <dataPointName>DomHotWTempStptComf</dataPointName>
-                <dataDirection>RW</dataDirection>
+                <dataPointName>ActDomHotWaterTemp</dataPointName>
+                <dataDirection>R</dataDirection>
                 <dataType>
                   <float32 />
                 </dataType>
                 <unit>DEGREES_CELSIUS</unit>
-                <minimumValue>10.0</minimumValue>
-                <maximumValue>60.0</maximumValue>
                 <alternativeNames>            
-                  <sLV1Name>DomHotWTempStptComf</sLV1Name>
-                  <manufName>KOMFORT TEMPERATUR Warmwasser</manufName>
-                  <eebusName>Setpoint_DhwTemperature</eebusName>
-                  <hpBwpName>Warmwassertemperatur max</hpBwpName>
-                  <en17609Name>Hot Water Setpoint Temperature Comfort</en17609Name>
+                  <sLV1Name>ActDomHotWaterTemp</sLV1Name>
+                  <manufName>ISTTEMPERATUR Warmwasser</manufName>
+                  <eebusName>Measurement_DhwTemperature</eebusName>
+                  <hpBwpName>Temperatur Warmwasser</hpBwpName>
+                  <en17609Name>Hot WaterTemperature</en17609Name>
                 </alternativeNames>
                 <legibleDescription>
-                  <textElement>Setpoint für Brauchwarnwasserspeicher im Comfort-Betrieb</textElement>
+                  <textElement>Aktuelle Ist-Temperatur des Brauchwarmwasserspeichers</textElement>
                   <language>de</language>
                 </legibleDescription>
               </dataPoint>
@@ -995,45 +1061,8 @@
                 <modbusDataType>
                   <int16 />
                 </modbusDataType>
-                <address>1510</address>
-                <registerType>HoldRegister</registerType>
-                <numberOfRegisters>1</numberOfRegisters>
-              </modbusDataPointConfiguration>
-              <modbusAttributes>
-                <scalingFactor>
-                  <multiplicator>1</multiplicator>
-                  <powerof10>-1</powerof10>
-                </scalingFactor>
-              </modbusAttributes>
-            </dataPointListElement>
-            <dataPointListElement>
-              <dataPoint>
-                <dataPointName>DomHotWTempStptEco</dataPointName>
-                <dataDirection>RW</dataDirection>
-                <dataType>
-                  <float32 />
-                </dataType>
-                <unit>DEGREES_CELSIUS</unit>
-                <minimumValue>10.0</minimumValue>
-                <maximumValue>60.0</maximumValue>
-                <alternativeNames>            
-                  <sLV1Name>DomHotWTempStptEco</sLV1Name>
-                  <manufName>ECO TEMPERATUR Warmwasser</manufName>
-                  <eebusName>Setpoint_DhwTemperature</eebusName>
-                  <hpBwpName>Warmwassertemperatur min</hpBwpName>
-                  <en17609Name>Hot Water Setpoint Temperature Eco</en17609Name>
-                </alternativeNames>
-                <legibleDescription>
-                  <textElement>Setpoint für Brauchwarnwasserspeicher im ECO-Betrieb</textElement>
-                  <language>de</language>
-                </legibleDescription>
-              </dataPoint>
-              <modbusDataPointConfiguration>
-                <modbusDataType>
-                  <int16 />
-                </modbusDataType>
-                <address>1511</address>
-                <registerType>HoldRegister</registerType>
+                <address>522</address>
+                <registerType>InputRegister</registerType>
                 <numberOfRegisters>1</numberOfRegisters>
               </modbusDataPointConfiguration>
               <modbusAttributes>
@@ -1055,8 +1084,8 @@
               <levelOfOperation>m</levelOfOperation>
               <versionNumber>
                 <primaryVersionNumber>0</primaryVersionNumber>
-                <secondaryVersionNumber>2</secondaryVersionNumber>
-                <subReleaseVersionNumber>1</subReleaseVersionNumber>
+                <secondaryVersionNumber>5</secondaryVersionNumber>
+                <subReleaseVersionNumber>0</subReleaseVersionNumber>
               </versionNumber>
             </functionalProfileIdentification>
             <legibleDescription>
@@ -1161,9 +1190,9 @@
                   <h4>Heat pump with 4 operation modes</h4>
                   <p>Level 2m functional profile for heat pumps with 4 operation modes (SG Ready heat pumps) which can be set via 
                   Modbus or RestAPI. In addition, the current operation status of the heat pump can be read. The operating states are
-                   defined from SG ready - "Bundesverband Wärmepumpe e.V. (bwp)". </p>
+                   defined from SG ready - "Bundesverband Wärmepumpe e.V. (bwp)". <p/>
                    
-                  <p> This functional profile can be used in two ways: </p>
+                  <p> This functional profile can be used in two ways: <p/>
                    
                   <ul>
                     <li> The operating modes are written and read directly via Modbus or RestAPI. </li>
@@ -1171,7 +1200,7 @@
                     but the mode is set via the relay contacts as in the standard application of SG Ready heat pumps.</li>        
                   </ul>
                        
-                  <p> The following operation modes can be written and read via the defined data point "SGReadyOpModeCmd": </p>
+                  <p> The following operation modes can be written and read via the defined data point "SGReadyOpModeCmd": <p/>
                   
                   <ul>
                     <li><strong>HP_LOCKED</strong>: Heat pump blocked - for example fixed blocking by time.</li>
@@ -1180,13 +1209,13 @@
                     <li><strong>HP_FORCED</strong>: Forced start-up command (as far as this is possible within the control settings of the heat pump).  </li>
                   </ul>
                   
-                  <p> Via the datapoint SGReadyState it is possible to check the currently running operation mode of the heat pump. </p>
+                  <p> Via the datapoint SGReadyState it is possible to check the currently running operation mode of the heat pump. <p/>
                   
                   <p> The communicator (e.g. central energy management system) takes into account the unit specifications for the switching 
                     frequency (attributes maxLockTimeMinutes and minRunTimeMinutes). The values can be set during declaration of the 
-                        heat pump. The standard values for SG Ready heat pumps are "Max. Lock Time" 120 minutes and "Min. Run Time" 20 minutes. </p>
+                        heat pump. The standard values for SG Ready heat pumps are "Max. Lock Time" 120 minutes and "Min. Run Time" 20 minutes. <p/>
                   
-                  <p> "SG Ready" is a trademark of the German Heat Pump Association. Further information at <a href="https://www.waermepumpe.de/normen-technik/sg-ready/">https://www.waermepumpe.de/normen-technik/sg-ready/</a>. </p>
+                  <p> "SG Ready" is a trademark of the German Heat Pump Association. Further information at <a href="https://www.waermepumpe.de/normen-technik/sg-ready/">https://www.waermepumpe.de/normen-technik/sg-ready/</a>. <p/>
                 ]]>
               </textElement>
               <language>en</language>
@@ -1197,8 +1226,8 @@
                   <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
                   <h4>Wärmepumpen mit 4 Betriebszuständen</h4>
                   <p>Stufe 2m Funktionsprofil für Wärmepumpen mit 4 Betriebszuständen (SG Ready Wärmepumpen), die über Modbus oder RestAPI gesetzt werden können. 
-                  Zusätzlich kann der aktuelle Betriebszustand der Wärmepumpe ausgelesen werden. Die Betriebszustände werden über SG Ready - Bundesverband Wärmepumpe e.V. (bwp) definiert. </p>
-                  <p>Dieses Funktionsprofil kann auf zwei Arten genutzt werden: </p>
+                  Zusätzlich kann der aktuelle Betriebszustand der Wärmepumpe ausgelesen werden. Die Betriebszustände werden über SG Ready - Bundesverband Wärmepumpe e.V. (bwp) definiert. <p/>
+                  <p>Dieses Funktionsprofil kann auf zwei Arten genutzt werden: <p/>
                   
                   <ul>
                     <li> Die Betriebszustände werden direkt über Modbus oder RestAPI gesetzt und ausgelesen. </li>
@@ -1206,20 +1235,20 @@
                     von SG Ready Wärmepumpen über die Klemmkontakte gesetzt. </li>        
                   </ul>
                   
-                 <p> Folgende Betriebszustände können über den Datenpunkt "SGReadyOpModeCmd" gesetzt und ausgelesen werden: </p>
+                 <p> Folgende Betriebszustände können über den Datenpunkt "SGReadyOpModeCmd" gesetzt und ausgelesen werden: <p/>
                   <ul>
                     <li><strong>HP_LOCKED</strong>: Wärmepumpe gesperrt - zum Beispiel fixe Sperre nach Uhrzeit.</li>
                     <li><strong>HP_NORMAL</strong>: Wärmepumpe im Normalbetrieb.</li>
                     <li><strong>HP_INTENSIFIED</strong>: Einschaltempfehlung für verstärkten Betrieb.</li>
                     <li><strong>HP_FORCED</strong>: Forcierter Anlaufbefehl (insofern dieser im Rahmen der Regeleinstellungen der Wärmepumpe möglich ist).</li>                  
                   </ul>
-                  <p> Über den Datenpunkt "SGReadyState" kann der aktuelle Betriebsmodus der Wärmepumpe ausgelesen werden. </p>
+                  <p> Über den Datenpunkt "SGReadyState" kann der aktuelle Betriebsmodus der Wärmepumpe ausgelesen werden. <p/>
                   
                   <p>Der Communicator (z.B. Energiemanagementsystem) berücksichtigt die Gerätevorgaben zur Schaltfrequenz (Attribute maxLockTimeMintues und minRunTimeMinutes.
                   Der Wert der Attribute kann bei der Deklaration gesetzt werden. Standardeinstellung von SG Ready Wärmepumpen nach bwp ist 
-                  "Max. Lock Time" 120 Minuten und "Min. Run Time" 20 Minuten.</p>
+                  "Max. Lock Time" 120 Minuten und "Min. Run Time" 20 Minuten.<p/>
                   <p>„SG Ready“ ist ein Markenzeichen des Bundesverbands Wärmepumpe e. V.<br/>
-                     Weiterführende Informationen unter <a href="https://www.waermepumpe.de/normen-technik/sg-ready/">https://www.waermepumpe.de/normen-technik/sg-ready/</a>.</p>
+                     Weiterführende Informationen unter <a href="https://www.waermepumpe.de/normen-technik/sg-ready/">https://www.waermepumpe.de/normen-technik/sg-ready/</a>.<p/>
                 ]]>
               </textElement>
               <language>de</language>
@@ -1308,7 +1337,7 @@
                   <textElement>
                     <![CDATA[
                       <i>Sets the override possibilities of the heat pump</i>
-                      </p>
+                      <p/>
                       “SG Ready” is a trade make of Bundesverband Wärmepumpe e. V.
                       It describes a feature on heat pumps with control technology that
                       allows them to be connected to a smart grid.
@@ -1342,7 +1371,7 @@
                   <textElement>
                     <![CDATA[
                       <i>Festlegen der Übersteuerungsmoeglichkeiten der Wärmepumpe</i>
-                      </p>
+                      <p/>
                       „SG Ready“ ist ein Markenzeichen des Bundesverbands Wärmepumpe
                       e. V.
                       Es bezeichnet eine Eigenschaft von Wärmepumpen, deren Regelungstechnik
@@ -1427,7 +1456,7 @@
                   <textElement>
                     <![CDATA[
                       <i>SG-ReadyState of the current operation</i>
-                      </p>Rückmeldung der aktuellen laufenden Übersteuerungsmoeglichkeit der Wärmepumpe
+                      <p/>Rückmeldung der aktuellen laufenden Übersteuerungsmoeglichkeit der Wärmepumpe
                     ]]>
                   </textElement>
                   <language>de</language>
@@ -1523,9 +1552,9 @@
               <textElement>
                 <![CDATA[ 
                   <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
-                  <p>Aufzeichnen der Warmepumpen-Betriebsdaten durch den CEM.</p>
+                  <p>Aufzeichnen der Warmepumpen-Betriebsdaten durch den CEM.<p/>
                   
-                  <p>Bemerkungen:</p>
+                  <p>Bemerkungen:<p/>
                   <ol>
                     <li>Energiewerte, Laufzeiten und Anzahl Starts werden typischerweise 1x täglich abgefragt. Die Leistungsmessungen
                         werden häufiger abgefragt und können zur Regelung dienen. Deshalb die Anforderung einer maximalen Abtastzeit.</li>
@@ -1562,7 +1591,7 @@
                   <textElement>
                     <![CDATA[
                       <i>Summe der aufgenommenen elektrischen Energie des Verdichters für das Heizen.</i>
-                      </p>Summe der aufgenommenen elektrischen Energie für das Heizen.
+                      <p/>Summe der aufgenommenen elektrischen Energie für das Heizen.
                     ]]>
                   </textElement>
                   <language>de</language>
@@ -1603,7 +1632,7 @@
                   <textElement>
                     <![CDATA[
                       <i>Summe der aufgenommenen elektrischen Energie des Verdichters für die Brauchwarmwasser-Erwärmung.</i>
-                      </p>Summe der aufgenommenen elektrischen Energie für die Warmwasseraufbereitung
+                      <p/>Summe der aufgenommenen elektrischen Energie für die Warmwasseraufbereitung
                     ]]>
                   </textElement>
                   <language>de</language>
@@ -1680,7 +1709,7 @@
                   <textElement>
                     <![CDATA[
                       <i>Summe der abgegebenen thermischen Energie für die Brauchwarmwasser-Erwärmung.</i>
-                      </p>Summe der abgegebenen thermischen Energie für die Warmwasseraufbereitung.
+                      <p/>Summe der abgegebenen thermischen Energie für die Warmwasseraufbereitung.
                     ]]>
                   </textElement>
                   <language>de</language>
@@ -1722,7 +1751,7 @@
                   <textElement>
                     <![CDATA[
                       <i>Summe der Laufzeit in der Heizphase.</i>
-                      </p>Summe der Laufzeit des Verdichters seit Inbetriebnahme.
+                      <p/>Summe der Laufzeit des Verdichters seit Inbetriebnahme.
                     ]]>
                   </textElement>
                   <language>de</language>
@@ -1757,7 +1786,7 @@
                   <textElement>
                     <![CDATA[
                       <i>Summe der Laufzeit in der Brauchwarmwasser-Phase.</i>
-                      </p>Summe der Laufzeit des Verdichters seit Inbetriebnahme.
+                      <p/>Summe der Laufzeit des Verdichters seit Inbetriebnahme.
                     ]]>
                   </textElement>
                   <language>de</language>

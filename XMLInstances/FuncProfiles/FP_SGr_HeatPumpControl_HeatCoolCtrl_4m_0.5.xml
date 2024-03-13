@@ -25,21 +25,25 @@
     <functionalProfileIdentification>
       <specificationOwnerIdentification>0</specificationOwnerIdentification>
       <functionalProfileCategory>HeatPumpControl</functionalProfileCategory>
-      <functionalProfileType>DomHotWaterCtrl</functionalProfileType>
-      <levelOfOperation>4</levelOfOperation>
+      <functionalProfileType>HeatCoolCtrl</functionalProfileType>
+      <levelOfOperation>4m</levelOfOperation>
       <versionNumber>
         <primaryVersionNumber>0</primaryVersionNumber>
-        <secondaryVersionNumber>6</secondaryVersionNumber>
+        <secondaryVersionNumber>5</secondaryVersionNumber>
         <subReleaseVersionNumber>0</subReleaseVersionNumber>
       </versionNumber>
     </functionalProfileIdentification>
+    <alternativeNames>
+      <en17609Name>HeatCool Group</en17609Name>
+    </alternativeNames>
     <legibleDescription>
       <textElement>
         Dieses Profil definiert die erweiterten Datenpunkte zum Grundprofil
-        "HeatPumpBase", welche zur Steuerung eines Brauchwarmwasserkreises zur Verfügung
-        gestellt werden. Das Brauchwarmwasser-Profil muss immer in Kombination mit dem
-        Grundprofil der Wärmepumpe bewirtschaftet werden. Es können mehrere
-        Brauchwarmwasser-Profile definiert werden.
+        "HeatPumpBase", welche zur Steuerung eines Heiz- oder Kühlkreises zur Verfügung
+        gestellt werden. Derselbe physikalische Kreislauf kann entweder für das Heizen oder
+        das Kühlen verwendet werden. Das Heiz-/Kühlkreisprofil muss immer in Kombination mit
+        dem Grundprofil der Wärmepumpe bewirtschaftet werden. Es können mehrere
+        Heiz-/Kühlkreisprofile definiert werden.
       </textElement>
       <language>de</language>
     </legibleDescription>
@@ -47,7 +51,7 @@
   <dataPointList>
     <dataPointListElement>
       <dataPoint>
-        <dataPointName>DomHotWaterOpModeCmd</dataPointName>
+        <dataPointName>HeatCoolCtrlOpModeCmd</dataPointName>
         <dataDirection>RW</dataDirection>
         <presenceLevel>O</presenceLevel>
         <dataType>
@@ -57,7 +61,7 @@
         <legibleDescription>
           <textElement>
             <![CDATA[
-              Festlegen der Betriebsart für den Brauchwarmwasserkreis
+              Festlegen der Betriebsart des Heiz-/Kühlkreises
             ]]>
           </textElement>
           <language>de</language>
@@ -66,57 +70,62 @@
     </dataPointListElement>
     <dataPointListElement>
       <dataPoint>
-        <dataPointName>DomHotWaterOpState</dataPointName>
+        <dataPointName>HeatCoolCtrlOpState</dataPointName>
+        <dataDirection>RW</dataDirection>
+        <presenceLevel>O</presenceLevel>
+        <dataType>
+          <bitmap/>
+        </dataType>
+        <unit>NONE</unit>
+        <legibleDescription>
+          <textElement>
+            <![CDATA[
+              Auslesen des aktuellen Status des Heiz-Kuehlkreises (BitmapRegister)
+            ]]>
+          </textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>SupplyWaterTemp</dataPointName>
         <dataDirection>R</dataDirection>
-        <presenceLevel>O</presenceLevel>
-        <dataType>
-          <enum/>
-        </dataType>
-        <unit>NONE</unit>
-        <alternativeNames>
-          <hpBwpName>Warmwasserbereitung in Betrieb</hpBwpName>
-        </alternativeNames>
-        <legibleDescription>
-          <textElement>
-            <![CDATA[
-              Auslesen des aktuellen Status des Brauchwarmwasserkreises
-            ]]>
-          </textElement>
-          <language>de</language>
-        </legibleDescription>
-      </dataPoint>
-    </dataPointListElement>
-    <dataPointListElement>
-      <dataPoint>
-        <dataPointName>DomHotWaterTempStpt</dataPointName>
-        <dataDirection>RW</dataDirection>
         <presenceLevel>M</presenceLevel>
         <dataType>
           <float64/>
         </dataType>
         <unit>DEGREES_CELSIUS</unit>
         <alternativeNames>
-          <eebusName>Setpoint_DhwTemperature</eebusName>
-          <hpBwpName>Warmwassersolltemperatur</hpBwpName>
-          <en17609Name>Hot Water Setpoint Temperature</en17609Name>
+          <en17609Name>Supply Water Temperature</en17609Name>
         </alternativeNames>
         <legibleDescription>
-          <textElement>Setzen der Soll-Temperatur des Speichers für Warmwasser.</textElement>
+          <textElement>Auslesen der aktuellen Ist-Temperatur des Vorlaufs des Heizkreises.</textElement>
           <language>de</language>
         </legibleDescription>
       </dataPoint>
-      <genericAttributeList>
-        <genericAttributeListElement>
-          <name>MinimumValue</name>
-        </genericAttributeListElement>
-        <genericAttributeListElement>
-          <name>MaximumValue</name>
-        </genericAttributeListElement>
-      </genericAttributeList>
     </dataPointListElement>
     <dataPointListElement>
       <dataPoint>
-        <dataPointName>DomHotWaterTempStptOffset</dataPointName>
+        <dataPointName>SupplyWaterTempStpt</dataPointName>
+        <dataDirection>RW</dataDirection>
+        <presenceLevel>R</presenceLevel>
+        <dataType>
+          <float64/>
+        </dataType>
+        <unit>DEGREES_CELSIUS</unit>
+        <alternativeNames>
+          <en17609Name>Supply Water Temperature Setpoint</en17609Name>
+        </alternativeNames>
+        <legibleDescription>
+          <textElement>Setzen der aktuellen Soll-Temperatur des Vorlaufs (Grundwert).</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>SupplyWaterTempStptOffs</dataPointName>
         <dataDirection>RW</dataDirection>
         <presenceLevel>R</presenceLevel>
         <dataType>
@@ -125,8 +134,9 @@
         <unit>DEGREES_CELSIUS</unit>
         <legibleDescription>
           <textElement>
-            Relative Anhebung/Absenkung der Solltemperatur (+/-) für den
-            Brauchwarmwasserspeicher. Eignet sich für eine Flexibilitätssteuerung.
+            Setzen der aktuellen Soll-Temperatur Differenz des Vorlaufs (Offset
+            zum Grundwert). Min / Max Val der zugelassenen Abweichung können im SGrAttribut
+            gesetzt werden
           </textElement>
           <language>de</language>
         </legibleDescription>
@@ -142,7 +152,7 @@
     </dataPointListElement>
     <dataPointListElement>
       <dataPoint>
-        <dataPointName>DomHotWaterTempStptComfort</dataPointName>
+        <dataPointName>SupplyWaterTempStptComfort</dataPointName>
         <dataDirection>RW</dataDirection>
         <presenceLevel>O</presenceLevel>
         <dataType>
@@ -150,13 +160,12 @@
         </dataType>
         <unit>DEGREES_CELSIUS</unit>
         <alternativeNames>
-          <eebusName>SetpointRangeMax_DhwTemperature</eebusName>
-          <hpBwpName>Warmwassertemperatur max</hpBwpName>
-          <en17609Name>Hot Water Setpoint Temperature Comfort</en17609Name>
+          <en17609Name>Supply Water Temperature Setpoint Comfort</en17609Name>
         </alternativeNames>
         <legibleDescription>
           <textElement>
-            Setzen der Soll-Temperatur des Speichers für Warmwasser im Comfortbetrieb
+            Setzen der aktuellen Soll-Temperatur des Vorlaufs fuer den
+            Komfortbetrieb (Grundwert).
           </textElement>
           <language>de</language>
         </legibleDescription>
@@ -164,7 +173,7 @@
     </dataPointListElement>
     <dataPointListElement>
       <dataPoint>
-        <dataPointName>DomHotWaterTempStptEco</dataPointName>
+        <dataPointName>SupplyWaterTempStptEco</dataPointName>
         <dataDirection>RW</dataDirection>
         <presenceLevel>O</presenceLevel>
         <dataType>
@@ -172,13 +181,12 @@
         </dataType>
         <unit>DEGREES_CELSIUS</unit>
         <alternativeNames>
-          <eebusName>SetpointRangeMin_DhwTemperature</eebusName>
-          <hpBwpName>Warmwassertemperatur min</hpBwpName>
-          <en17609Name>Hot Water Setpoint Temperature Eco</en17609Name>
+          <en17609Name>Supply Water Temperature Setpoint Eco</en17609Name>
         </alternativeNames>
         <legibleDescription>
           <textElement>
-            Setzen der Soll-Temperatur des Speichers für Warmwasser im Ecobetrieb
+            Setzen der aktuellen Soll-Temperatur des Vorlaufs fuer den
+            Ecobetrieb (Grundwert).
           </textElement>
           <language>de</language>
         </legibleDescription>
@@ -186,38 +194,18 @@
     </dataPointListElement>
     <dataPointListElement>
       <dataPoint>
-        <dataPointName>DomHotWaterTempStptFb</dataPointName>
+        <dataPointName>ReturnSupplyWaterTemp</dataPointName>
         <dataDirection>R</dataDirection>
         <presenceLevel>O</presenceLevel>
         <dataType>
           <float64/>
         </dataType>
         <unit>DEGREES_CELSIUS</unit>
-        <legibleDescription>
-          <textElement>
-            Ruecklesen des gesetzten Soll-Temperatur des Speichers für Warmwasser.
-          </textElement>
-          <language>de</language>
-        </legibleDescription>
-      </dataPoint>
-    </dataPointListElement>
-    <dataPointListElement>
-      <dataPoint>
-        <dataPointName>ActDomHotWaterTemp</dataPointName>
-        <dataDirection>R</dataDirection>
-        <presenceLevel>M</presenceLevel>
-        <dataType>
-          <float64/>
-        </dataType>
-        <unit>DEGREES_CELSIUS</unit>
         <alternativeNames>
-          <eebusName>Measurement_DhwTemperature</eebusName>
-          <hpBwpName>Temperatur Warmwasser</hpBwpName>
+          <en17609Name>Return Water Temperature Setpoint</en17609Name>
         </alternativeNames>
         <legibleDescription>
-          <textElement>
-            Setzen der Soll-Temperatur des Speichers für Warmwasser im Eco Betrieb
-          </textElement>
+          <textElement>Auslesen der aktuellen aktuellen-Temperatur des Rücklaufs.</textElement>
           <language>de</language>
         </legibleDescription>
       </dataPoint>

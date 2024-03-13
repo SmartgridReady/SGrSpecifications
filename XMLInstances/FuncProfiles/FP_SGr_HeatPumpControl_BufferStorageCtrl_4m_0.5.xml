@@ -25,32 +25,21 @@
     <functionalProfileIdentification>
       <specificationOwnerIdentification>0</specificationOwnerIdentification>
       <functionalProfileCategory>HeatPumpControl</functionalProfileCategory>
-      <functionalProfileType>PowerCtrl</functionalProfileType>
-      <levelOfOperation>4m</levelOfOperation>
+      <functionalProfileType>BufferStorageCtrl</functionalProfileType>
+      <levelOfOperation>m</levelOfOperation>
       <versionNumber>
         <primaryVersionNumber>0</primaryVersionNumber>
-        <secondaryVersionNumber>6</secondaryVersionNumber>
+        <secondaryVersionNumber>5</secondaryVersionNumber>
         <subReleaseVersionNumber>0</subReleaseVersionNumber>
       </versionNumber>
     </functionalProfileIdentification>
     <legibleDescription>
       <textElement>
-        <![CDATA[ 
-          Dieses Profil definiert die erweiterten Datenpunkte zum Grundprofil,
-          welche zur direkten Steuerung der Drehzahl oder Leistung der Wärmepumpe zur
-          Verfügung gestellt werden.
-          <p/>
-          Dieses Profil muss immer in Kombination mit dem
-          Grundprofil der Wärmepumpe (HeatPumpBase) bewirtschaftet werden. Es kann nur 1
-          Drehzahl-/Leistungsvorgabe-Profil pro Kompressor definiert werden (oder auch gar
-          kein Profil, wenn keine Drehzahl-/Leistungsvorgabe möglich ist).
-          Diese Vorgabe braucht eine doppelte Absicherung falscher Vorgaben durch den
-          WP-Hersteller und den CEM. Siehe auch Attribute minVal / maxVal.
-          <p/>
-          Der Communicator fragt zuerst den erlaubten Bereich und die Betriebsart ab und passt die
-          entsprechenden Wunschgrössen an. Die WP überwacht intern die vorgegebenen
-          Wunschgrössen und korrigiert, wenn aus Sicherheitsgründen notwendig
-        ]]>
+        Dieses Profil definiert die erweiterten Datenpunkte zum Grundprofil,
+        welche zur Steuerung eines Pufferspeichers zur Verfügung gestellt werden. Das
+        Pufferspeicher-Profil muss immer in Kombination mit dem Grundprofil der Wärmepumpe
+        (3.6.3) bewirtschaftet werden. Es können mehrere Pufferspeicher-Profile definiert
+        werden (oder auch gar kein Profil, wenn kein Pufferspeicher vorhanden).
       </textElement>
       <language>de</language>
     </legibleDescription>
@@ -58,87 +47,17 @@
   <dataPointList>
     <dataPointListElement>
       <dataPoint>
-        <dataPointName>PowerCtrlEnergyStpt</dataPointName>
-        <dataDirection>RW</dataDirection>
-        <presenceLevel>O</presenceLevel>
-        <dataType>
-          <float64/>
-        </dataType>
-        <unit>KILOWATT_HOURS</unit>
-        <legibleDescription>
-          <textElement>
-            Wunschvorgabe für verfügbare el. Leistung.
-          </textElement>
-          <language>de</language>
-        </legibleDescription>
-      </dataPoint>
-      <genericAttributeList>
-        <genericAttributeListElement>
-          <name>MinimumValue</name>
-        </genericAttributeListElement>
-        <genericAttributeListElement>
-          <name>MaximumValue</name>
-        </genericAttributeListElement>
-      </genericAttributeList>
-    </dataPointListElement>
-    <dataPointListElement>
-      <dataPoint>
-        <dataPointName>PowerCtrlPercentStpt</dataPointName>
-        <dataDirection>RW</dataDirection>
-        <presenceLevel>O</presenceLevel>
-        <dataType>
-          <float64/>
-        </dataType>
-        <unit>PERCENT</unit>
-        <legibleDescription>
-          <textElement>
-            Wunschvorgabe für die Verdichter-Drehzahl in Prozent (0% = aus,
-            100% = maximale Drehzahl). Erlaubter Bereich und Wirkung wird durch Attribute
-            näher beschrieben.
-          </textElement>
-          <language>de</language>
-        </legibleDescription>
-      </dataPoint>
-      <genericAttributeList>
-        <genericAttributeListElement>
-          <name>MinimumValue</name>
-        </genericAttributeListElement>
-        <genericAttributeListElement>
-          <name>MaximumValue</name>
-        </genericAttributeListElement>
-      </genericAttributeList>
-    </dataPointListElement>
-    <dataPointListElement>
-      <dataPoint>
-        <dataPointName>ActSpeed</dataPointName>
-        <dataDirection>R</dataDirection>
-        <presenceLevel>O</presenceLevel>
-        <dataType>
-          <float64/>
-        </dataType>
-        <unit>PERCENT</unit>
-        <legibleDescription>
-          <textElement>Effektive Drehzahl des Verdichters in Prozent</textElement>
-          <language>de</language>
-        </legibleDescription>
-      </dataPoint>
-    </dataPointListElement>
-    <dataPointListElement>
-      <dataPoint>
-        <dataPointName>PowerCtrlStpt</dataPointName>
+        <dataPointName>HeatBufferTempStptOffs</dataPointName>
         <dataDirection>RW</dataDirection>
         <presenceLevel>R</presenceLevel>
         <dataType>
           <float64/>
         </dataType>
-        <unit>KILOWATTS</unit>
-        <alternativeNames>
-          <hpBwpName>Soll-Aufnahmeleistung</hpBwpName>
-        </alternativeNames>
+        <unit>DEGREES_CELSIUS</unit>
         <legibleDescription>
           <textElement>
-            Wunschvorgabe für die elektrische Aufnahmeleistung des Verdichters
-            in Kilowatt (kW). Erlaubter Bereich und Wirkung wird durch Attribute näher beschrieben.
+            Relative Anhebung/Absenkung der Solltemperatur (+/-) für den
+            Heiz-Pufferspeicher.
           </textElement>
           <language>de</language>
         </legibleDescription>
@@ -154,22 +73,111 @@
     </dataPointListElement>
     <dataPointListElement>
       <dataPoint>
-        <dataPointName>ActPowerACtot</dataPointName>
+        <dataPointName>ActBufferState</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>O</presenceLevel>
+        <dataType>
+          <bitmap/>
+        </dataType>
+        <unit>NONE</unit>
+        <legibleDescription>
+          <textElement>
+            <![CDATA[
+              Auslesen des aktuellen Status des Bufferspeichers (BitmapRegister)
+            ]]>
+          </textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>ActHeatBufferTemp</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>M</presenceLevel>
+        <dataType>
+          <float64/>
+        </dataType>
+        <unit>DEGREES_CELSIUS</unit>
+        <legibleDescription>
+          <textElement>Aktuelle Ist-Temperatur des Heiz-Pufferspeichers oben</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>ActHeatBufferTempUpper</dataPointName>
         <dataDirection>R</dataDirection>
         <presenceLevel>O</presenceLevel>
         <dataType>
           <float64/>
         </dataType>
-        <unit>KILOWATTS</unit>
-        <alternativeNames>
-          <hpBwpName>Wärmeleistung</hpBwpName>
-        </alternativeNames>
+        <unit>DEGREES_CELSIUS</unit>
+        <legibleDescription>
+          <textElement>Aktuelle Ist-Temperatur des Heiz-Pufferspeichers oben</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>ActHeatBufferTempLower</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>O</presenceLevel>
+        <dataType>
+          <float64/>
+        </dataType>
+        <unit>DEGREES_CELSIUS</unit>
         <legibleDescription>
           <textElement>
-            Effektive elektrische Aufnahmeleistung des Verdichters in Kilowatt
-            (kW). Kann von Soll-Leistung abweichen aufgrund von Lebensdauerbeschränkungen,
-            Betriebsart, usw.
+            Aktuelle Ist-Temperatur des Heiz-Pufferspeichers unten
           </textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>ActCoolBufferTemp</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>O</presenceLevel>
+        <dataType>
+          <float64/>
+        </dataType>
+        <unit>DEGREES_CELSIUS</unit>
+        <legibleDescription>
+          <textElement>Aktuelle Ist-Temperatur des Kaelte-Pufferspeichers oben</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>ActCoolBufferTempUpper</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>O</presenceLevel>
+        <dataType>
+          <float64/>
+        </dataType>
+        <unit>DEGREES_CELSIUS</unit>
+        <legibleDescription>
+          <textElement>Aktuelle Ist-Temperatur des Kaelte-Pufferspeichers oben</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>ActCoolBufferTempLower</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>O</presenceLevel>
+        <dataType>
+          <float64/>
+        </dataType>
+        <unit>DEGREES_CELSIUS</unit>
+        <legibleDescription>
+          <textElement>Aktuelle Ist-Temperatur des Kaelte-Pufferspeichers unten</textElement>
           <language>de</language>
         </legibleDescription>
       </dataPoint>
