@@ -19,7 +19,7 @@
     </legibleDescription>
     <deviceCategory>HeatPumpAppliance</deviceCategory>
     <isLocalControl>true</isLocalControl>
-    <softwareRevision>2.1.0</softwareRevision>
+    <softwareRevision>0.6.0 / 4m</softwareRevision>
     <hardwareRevision>1.1.0</hardwareRevision>
     <brandName>OptiHeat Inverta</brandName>
     <powerSource>mains3Phase</powerSource>
@@ -64,16 +64,32 @@
             <functionalProfileIdentification>
               <specificationOwnerIdentification>0</specificationOwnerIdentification>
               <functionalProfileCategory>DeviceInformation</functionalProfileCategory>
-              <functionalProfileType>UNDEF</functionalProfileType>
+              <functionalProfileType>DeviceInformation</functionalProfileType>
               <levelOfOperation>4</levelOfOperation>
               <versionNumber>
                 <primaryVersionNumber>0</primaryVersionNumber>
-                <secondaryVersionNumber>2</secondaryVersionNumber>
-                <subReleaseVersionNumber>1</subReleaseVersionNumber>
+                <secondaryVersionNumber>1</secondaryVersionNumber>
+                <subReleaseVersionNumber>0</subReleaseVersionNumber>
               </versionNumber>
             </functionalProfileIdentification>
             <legibleDescription>
-              <textElement>Dieses Funktionsprofil ermöglicht das Handling von Datenpunkten, welche für das ganze Gerät gelten</textElement>
+              <textElement>
+                <![CDATA[
+                  Empty functional profile without data points that can be used for vendor specific
+                  information and data points. </br>
+                  It allows the handling of data points, which are valid for the whole device.
+                ]]>
+              </textElement>
+              <language>en</language>
+            </legibleDescription>
+            <legibleDescription>
+              <textElement>
+                <![CDATA[
+                  Leeres Funktionsprofil ohne Datenpunkte, das für herstellerspezifische
+                  Informationen und Datenpunkte benutzt werden kann. </br>
+                  Es ermöglicht das Handling von Datenpunkten, welche für das ganze Gerät gelten.
+                ]]>
+              </textElement>
               <language>de</language>
             </legibleDescription>
           </functionalProfile>
@@ -122,24 +138,29 @@
               <specificationOwnerIdentification>0</specificationOwnerIdentification>
               <functionalProfileCategory>HeatPumpControl</functionalProfileCategory>
               <functionalProfileType>HeatPumpBase</functionalProfileType>
-              <levelOfOperation>m</levelOfOperation>
+              <levelOfOperation>4m</levelOfOperation>
               <versionNumber>
                 <primaryVersionNumber>0</primaryVersionNumber>
-                <secondaryVersionNumber>1</secondaryVersionNumber>
-                <subReleaseVersionNumber>2</subReleaseVersionNumber>
+                <secondaryVersionNumber>5</secondaryVersionNumber>
+                <subReleaseVersionNumber>0</subReleaseVersionNumber>
               </versionNumber>
             </functionalProfileIdentification>
             <legibleDescription>
               <textElement>
-                Das Profil definiert den Grundbaustein zur dynamischen Ansteuerung
-                von Wärmepumpen über eine variable Beeinflussung der Sollwerte nach SGr Level 4.
-                Der Betrieb der Wärmepumpe muss in sich sicher sein, unabhängig von den äusseren
-                Vorgaben. Dieses Grundprofil definiert die Datenpunkte, welche zur Steuerung des
-                Gerätes «Wärmepumpe» auf Level 4 grundsätzlich zur Verfügung gestellt werden und
-                stellen die Version einer typischen EInfamilienhauswärmepumpe miz
-                Aussentemperaturfühler dar. Für die einzelnen Heizkreise, Warmwasser,
-                Pufferspeicher und das Energie-Monitoring sowie eine Verdichterdrehzahl /
-                Leistungsregelung werden separate Profile zur Verfügung gestellt.
+                <![CDATA[
+                  Das Profil definiert den Grundbaustein zur dynamischen Ansteuerung von Wärmepumpen
+                  über eine Betriebsmodus gestützt Beeinflussung der Sollwerte nach SGr Stufe 2.
+                  </p>
+                  Der Betrieb der Wärmepumpe muss in sich sicher sein, unabhängig von den äusseren Vorgaben.
+                  </p>
+                  Dieses Grundprofil definiert die Datenpunkte, welche zur Steuerung des Gerätes «Wärmepumpe»
+                  mit zusätzlichen Stufe 4 Funktionsprofilen grundsätzlich zur Verfügung gestellt werden.
+                  Sie stellen die Version einer typischen Einfamilienhauswärmepumpe mit Aussentemperaturfühler dar.
+                  </p>
+                  Für die einzelnen Heizkreise, Warmwasser, Pufferspeicher und das Energie-Monitoring sowie eine
+                  Verdichterdrehzahl / Leistungsregelung
+                  können in weiteren Funktionsprofilen zur Verfügung gestellt werden.
+                ]]>         
               </textElement>
               <language>de</language>
             </legibleDescription>
@@ -147,77 +168,77 @@
           <dataPointList>
             <dataPointListElement>
               <dataPoint>
-                <dataPointName>ctaHPOpModeCmdFb</dataPointName>
+                <dataPointName>HPOpModeCmdFb</dataPointName>
                 <dataDirection>R</dataDirection>
                 <dataType>
                   <enum>
                     <enumEntry>
-                      <literal>HP_STANDBY</literal>
+                      <literal>CTA_HP_STANDBY</literal>
                       <ordinal>1</ordinal>
                       <description>WP in Stand by Modus</description>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HP_HEATING_OP</literal>
+                      <literal>CTA_HP_HEATING_OP</literal>
                       <ordinal>2</ordinal>
                       <description>Heizbetrieb aktiv</description>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HP_EMERG_HEATING_ACTIVE</literal>
+                      <literal>CTA_HP_EMERG_HEATING_ACTIVE</literal>
                       <ordinal>3</ordinal>
                       <description>Notbetrieb Heizen aktiv</description>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HP_DOMHW_ACTIVE</literal>
+                      <literal>CTA_HP_DOMHW_ACTIVE</literal>
                       <ordinal>4</ordinal>
                       <description>TWW Ladung aktiv</description>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HP_OMHW_EMERG_ACTIVE</literal>
+                      <literal>CTA_HP_OMHW_EMERG_ACTIVE</literal>
                       <ordinal>5</ordinal>
                       <description>Notbetrieb TWW aktiv</description>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HP_ACTIVE_COOLING_OP</literal>
+                      <literal>CTA_HP_ACTIVE_COOLING_OP</literal>
                       <ordinal>6</ordinal>
                       <description>Aktivkühlbetrieb aktiv</description>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HP_MANUAL_OP</literal>
+                      <literal>CTA_HP_MANUAL_OP</literal>
                       <ordinal>7</ordinal>
                       <description>Manueller Betrieb</description>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HP_BUFFER_LOAD_ACTIVE</literal>
+                      <literal>CTA_HP_BUFFER_LOAD_ACTIVE</literal>
                       <ordinal>8</ordinal>
                       <description>Heizungsspeicher Ladebetrieb ein</description>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HP_EXTERNAL_CTRL</literal>
+                      <literal>CTA_HP_EXTERNAL_CTRL</literal>
                       <ordinal>9</ordinal>
                       <description>Externer Betrieb ein</description>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HP_DIRECT_DISTRIBUTION</literal>
+                      <literal>CTA_HP_DIRECT_DISTRIBUTION</literal>
                       <ordinal>10</ordinal>
-                      <description>Verteilkreis-ohne Puffer Betrieb</description>
+                      <description>Verteilkreis - ohne Puffer Betrieb</description>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HP_DEFROST_ACTIVE</literal>
+                      <literal>CTA_HP_DEFROST_ACTIVE</literal>
                       <ordinal>11</ordinal>
                       <description>Abtauvorgang aktiv</description>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HP_PASSIVE_COOLING_OP</literal>
+                      <literal>CTA_HP_PASSIVE_COOLING_OP</literal>
                       <ordinal>12</ordinal>
                       <description>Kältegeführter Betrieb (Prozesskühlen)</description>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HP_RESERVE</literal>
+                      <literal>CTA_HP_RESERVE</literal>
                       <ordinal>13</ordinal>
                       <description>Reserve</description>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HP_COMBINDED_BUFFER_LOADING</literal>
+                      <literal>CTA_HP_COMBINDED_BUFFER_LOADING</literal>
                       <ordinal>14</ordinal>
                       <description>TWW Legio mit El. Einsatz K6 und parallel Heizungsbetrieb (Pufferladung)</description>
                     </enumEntry>
@@ -244,47 +265,47 @@
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
-                <dataPointName>ctaHPOpState</dataPointName>
+                <dataPointName>HPOpState</dataPointName>
                 <dataDirection>R</dataDirection>
                 <dataType>
                   <enum>
                     <enumEntry>
-                      <literal>HP_STANDBY</literal>
+                      <literal>CTA_HP_STANDBY</literal>
                       <ordinal>1</ordinal>
                       <description>Stand by</description>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HP_ALARM_OFF</literal>
+                      <literal>CTA_HP_ALARM_OFF</literal>
                       <ordinal>2</ordinal>
                       <description>Alarm aus</description>
                     </enumEntry>            
                     <enumEntry>
-                      <literal>HP_MANUAL_OP</literal>
+                      <literal>CTA_HP_MANUAL_OP</literal>
                       <ordinal>7</ordinal>
                       <description>Manueller Betrieb</description>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HP_STARTING</literal>
+                      <literal>CTA_HP_STARTING</literal>
                       <ordinal>8</ordinal>
                       <description>Startphase</description>
                     </enumEntry>      
                     <enumEntry>
-                      <literal>HP_PRESSURE_DIFF</literal>
+                      <literal>CTA_HP_PRESSURE_DIFF</literal>
                       <ordinal>14</ordinal>
                       <description>Gesperrt aufgrund Druckdifferenz beim Start</description>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HP_HEATING</literal>
+                      <literal>CTA_HP_HEATING</literal>
                       <ordinal>16</ordinal>
                       <description>Heizbetrieb aktiv</description>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HP_COMP_START_ERR</literal>
+                      <literal>CTA_HP_COMP_START_ERR</literal>
                       <ordinal>17</ordinal>
                       <description>Start nach VD Startfehler</description>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HP_OFF_OUT_OFF_LIMITS</literal>
+                      <literal>CTA_HP_OFF_OUT_OFF_LIMITS</literal>
                       <ordinal>18</ordinal>
                       <description>Oel Rückführung aktiv></description>
                     </enumEntry>
@@ -311,10 +332,10 @@
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
-                <dataPointName>ErrorNrSGr</dataPointName>
+                <dataPointName>ErrorFlagSGr</dataPointName>
                 <dataDirection>R</dataDirection>
                 <dataType>
-                  <int16 />
+                  <boolean />
                 </dataType>
                 <unit>NONE</unit>
                 <alternativeNames>
@@ -322,8 +343,23 @@
                   <manufName>GlbAl</manufName>
                 </alternativeNames>
                 <legibleDescription>
-                  <textElement>Statusanzeige Aktiver Alarm 1=Aktiv (zeitverzögert 90s od. gemäss Einstellung)</textElement>
+                  <textElement>Fehlercode vom Automaten, reduziert auf Boolean: true = Fehler </textElement>
                   <language>de</language>
+                </legibleDescription>
+                <legibleDescription>
+                  <textElement>Error code from controller, reduced to boolean: true = error state
+                  </textElement>
+                  <language>en</language>
+                </legibleDescription>
+                <legibleDescription>
+                  <textElement>Code erreur automate: true = condition d'erreur
+                  </textElement>
+                  <language>fr</language>
+                </legibleDescription>
+                <legibleDescription>
+                  <textElement>Codice errore da unità automatica: ridotto a booleano: true = condizione di errore
+                  </textElement>
+                  <language>it</language>
                 </legibleDescription>
               </dataPoint>
               <modbusDataPointConfiguration>
@@ -462,8 +498,8 @@
               <levelOfOperation>4m</levelOfOperation>
               <versionNumber>
                 <primaryVersionNumber>0</primaryVersionNumber>
-                <secondaryVersionNumber>1</secondaryVersionNumber>
-                <subReleaseVersionNumber>2</subReleaseVersionNumber>
+                <secondaryVersionNumber>5</secondaryVersionNumber>
+                <subReleaseVersionNumber>0</subReleaseVersionNumber>
               </versionNumber>
             </functionalProfileIdentification>
             <legibleDescription>
@@ -477,7 +513,7 @@
           <dataPointList>
             <dataPointListElement>
               <dataPoint>
-                <dataPointName>PowerCtrlStpt</dataPointName>
+                <dataPointName>SpeedCtrlStpt</dataPointName>
                 <dataDirection>RWP</dataDirection>
                 <dataType>
                   <float32 />
@@ -540,7 +576,7 @@
                 <dataType>
                   <float32 />
                 </dataType>
-                <unit>KILOWATT_HOURS</unit>
+                <unit>KILOWATTS</unit>
                 <alternativeNames>
                     <sLV1Name>ActPowerACtot</sLV1Name>
                     <manufName>State_CompPower</manufName></alternativeNames>
@@ -572,8 +608,8 @@
               <levelOfOperation>4m</levelOfOperation>
               <versionNumber>
                 <primaryVersionNumber>0</primaryVersionNumber>
-                <secondaryVersionNumber>1</secondaryVersionNumber>
-                <subReleaseVersionNumber>2</subReleaseVersionNumber>
+                <secondaryVersionNumber>5</secondaryVersionNumber>
+                <subReleaseVersionNumber>0</subReleaseVersionNumber>
               </versionNumber>
             </functionalProfileIdentification>
             <legibleDescription>
@@ -591,37 +627,37 @@
           <dataPointList>
             <dataPointListElement>
               <dataPoint>
-                <dataPointName>ctaHCOpModeCmd</dataPointName>
+                <dataPointName>HeatCoolCtrlOpModeCmd</dataPointName>
                 <dataDirection>RWP</dataDirection>
                 <dataType>
                   <enum>
                     <enumEntry>
-                      <literal>HC_EXT_CTRL</literal>
+                      <literal>CTA_HC_EXT_CTRL</literal>
                       <ordinal>0</ordinal>
                       <description>Extern gesteuert</description>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HC_AUTO</literal>
+                      <literal>CTA_HC_AUTO</literal>
                       <ordinal>1</ordinal>
                       <description>Standby Betrieb</description>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HC_HEAT_COMF</literal>
+                      <literal>CTA_HC_HEAT_COMF</literal>
                       <ordinal>2</ordinal>
                       <description>Komfort Betrieb</description>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HC_HEAT_ECO</literal>
+                      <literal>CTA_HC_HEAT_ECO</literal>
                       <ordinal>3</ordinal>
                       <description>Reduzierter Betrieb</description>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HC_ANTIFREEZE</literal>
+                      <literal>CTA_HC_ANTIFREEZE</literal>
                       <ordinal>4</ordinal>
                       <description>Frostschutz / Aus</description>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HC_EMERGENCY_OP</literal>
+                      <literal>CTA_HC_EMERGENCY_OP</literal>
                       <ordinal>5</ordinal>
                       <description>Notbetrieb</description>
                     </enumEntry>
@@ -648,37 +684,37 @@
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
-                <dataPointName>ctaHCOpState</dataPointName>
+                <dataPointName>HeatCoolCtrlOpState</dataPointName>
                 <dataDirection>R</dataDirection>
                 <dataType>
                   <enum>
                     <enumEntry>
-                      <literal>HC_EXT_CTRL</literal>
+                      <literal>CTA_HC_EXT_CTRL</literal>
                       <ordinal>0</ordinal>
                       <description>Extern gesteuert</description>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HC_AUTO</literal>
+                      <literal>CTA_HC_AUTO</literal>
                       <ordinal>1</ordinal>
                       <description>Standby Betrieb</description>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HC_HEAT_COMF</literal>
+                      <literal>CTA_HC_HEAT_COMF</literal>
                       <ordinal>2</ordinal>
                       <description>Komfort Betrieb</description>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HC_HEAT_ECO</literal>
+                      <literal>CTA_HC_HEAT_ECO</literal>
                       <ordinal>3</ordinal>
                       <description>Reduzierter Betrieb</description>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HC_ANTIFREEZE</literal>
+                      <literal>CTA_HC_ANTIFREEZE</literal>
                       <ordinal>4</ordinal>
                       <description>Frostschutz / Aus</description>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HC_EMERGENCY_OP</literal>
+                      <literal>CTA_HC_EMERGENCY_OP</literal>
                       <ordinal>5</ordinal>
                       <description>Notbetrieb</description>
                     </enumEntry>
@@ -686,7 +722,7 @@
                 </dataType>
                 <unit>NONE</unit>
                 <alternativeNames>
-                  <sLV1Name>ctaHCOpState</sLV1Name>
+                  <sLV1Name>HCOpState</sLV1Name>
                   <manufName>CTA_HK1_Status_UsrSet</manufName>
                 </alternativeNames>
                 <legibleDescription>
@@ -825,8 +861,8 @@
               <levelOfOperation>4m</levelOfOperation>
               <versionNumber>
                 <primaryVersionNumber>0</primaryVersionNumber>
-                <secondaryVersionNumber>1</secondaryVersionNumber>
-                <subReleaseVersionNumber>2</subReleaseVersionNumber>
+                <secondaryVersionNumber>5</secondaryVersionNumber>
+                <subReleaseVersionNumber>0</subReleaseVersionNumber>
               </versionNumber>
             </functionalProfileIdentification>
             <legibleDescription>
@@ -844,37 +880,37 @@
           <dataPointList>
             <dataPointListElement>
               <dataPoint>
-                <dataPointName>ctaHCOpModeCmd</dataPointName>
+                <dataPointName>HeatCoolCtrlOpModeCmd</dataPointName>
                 <dataDirection>RWP</dataDirection>
                 <dataType>
                   <enum>
                     <enumEntry>
-                      <literal>HC_EXT_CTRL</literal>
+                      <literal>CTA_HC_EXT_CTRL</literal>
                       <ordinal>0</ordinal>
                       <description>Extern gesteuert</description>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HC_AUTO</literal>
+                      <literal>CTA_HC_AUTO</literal>
                       <ordinal>1</ordinal>
                       <description>Standby Betrieb</description>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HC_HEAT_COMF</literal>
+                      <literal>CTA_HC_HEAT_COMF</literal>
                       <ordinal>2</ordinal>
                       <description>Komfort Betrieb</description>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HC_HEAT_ECO</literal>
+                      <literal>CTA_HC_HEAT_ECO</literal>
                       <ordinal>3</ordinal>
                       <description>Reduzierter Betrieb</description>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HC_ANTIFREEZE</literal>
+                      <literal>CTA_HC_ANTIFREEZE</literal>
                       <ordinal>4</ordinal>
                       <description>Frostschutz / Aus</description>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HC_EMERGENCY_OP</literal>
+                      <literal>CTA_HC_EMERGENCY_OP</literal>
                       <ordinal>5</ordinal>
                       <description>Notbetrieb</description>
                     </enumEntry>
@@ -901,37 +937,37 @@
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
-                <dataPointName>ctaHCOpState</dataPointName>
+                <dataPointName>HeatCoolCtrlOpState</dataPointName>
                 <dataDirection>R</dataDirection>
                 <dataType>
                   <enum>
                     <enumEntry>
-                      <literal>HC_EXT_CTRL</literal>
+                      <literal>CTA_HC_EXT_CTRL</literal>
                       <ordinal>0</ordinal>
                       <description>Extern gesteuert</description>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HC_AUTO</literal>
+                      <literal>CTA_HC_AUTO</literal>
                       <ordinal>1</ordinal>
                       <description>Standby Betrieb</description>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HC_HEAT_COMF</literal>
+                      <literal>CTA_HC_HEAT_COMF</literal>
                       <ordinal>2</ordinal>
                       <description>Komfort Betrieb</description>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HC_HEAT_ECO</literal>
+                      <literal>CTA_HC_HEAT_ECO</literal>
                       <ordinal>3</ordinal>
                       <description>Reduzierter Betrieb</description>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HC_ANTIFREEZE</literal>
+                      <literal>CTA_HC_ANTIFREEZE</literal>
                       <ordinal>4</ordinal>
                       <description>Frostschutz / Aus</description>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HC_EMERGENCY_OP</literal>
+                      <literal>CTA_HC_EMERGENCY_OP</literal>
                       <ordinal>5</ordinal>
                       <description>Notbetrieb</description>
                     </enumEntry>
@@ -1010,7 +1046,7 @@
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
-                <dataPointName>ctaRemoteHCTempSetptEnable</dataPointName>
+                <dataPointName>RemoteHCTempSetptEnable</dataPointName>
                 <dataDirection>RW</dataDirection>
                 <dataType>
                   <boolean/>
@@ -1078,8 +1114,8 @@
               <levelOfOperation>4m</levelOfOperation>
               <versionNumber>
                 <primaryVersionNumber>0</primaryVersionNumber>
-                <secondaryVersionNumber>1</secondaryVersionNumber>
-                <subReleaseVersionNumber>2</subReleaseVersionNumber>
+                <secondaryVersionNumber>5</secondaryVersionNumber>
+                <subReleaseVersionNumber>0</subReleaseVersionNumber>
               </versionNumber>
             </functionalProfileIdentification>
             <legibleDescription>
@@ -1095,24 +1131,24 @@
           <dataPointList>
             <dataPointListElement>
               <dataPoint>
-                <dataPointName>ctaDomHotWOpModeCmd</dataPointName>
+                <dataPointName>DomHotWaterOpModeCmd</dataPointName>
                 <dataDirection>RWP</dataDirection>
                 <dataType>
                   <enum>
                     <enumEntry>
-                      <literal>DHW_ON</literal>
+                      <literal>CTA_DHW_ON</literal>
                       <ordinal>1</ordinal>
                     </enumEntry>
                     <enumEntry>
-                      <literal>DHW_OFF</literal>
+                      <literal>CTA_DHW_OFF</literal>
                       <ordinal>2</ordinal>
                     </enumEntry>
                     <enumEntry>
-                      <literal>DHW_PUSH</literal>
+                      <literal>CTA_DHW_PUSH</literal>
                       <ordinal>3</ordinal>
                     </enumEntry>
                     <enumEntry>
-                      <literal>DHW_EMERGENCY_OP</literal>
+                      <literal>CTA_DHW_EMERGENCY_OP</literal>
                       <ordinal>5</ordinal>
                     </enumEntry>
                   </enum>
@@ -1141,36 +1177,36 @@
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
-                <dataPointName>ctaDomHotWOpState</dataPointName>
+                <dataPointName>DomHotWaterOpState</dataPointName>
                 <dataDirection>R</dataDirection>
                 <dataType>
                   <enum>
                     <enumEntry>
-                      <literal>DHW_INACTIVE</literal>
+                      <literal>CTA_DHW_INACTIVE</literal>
                       <ordinal>0</ordinal>
                     </enumEntry>
                     <enumEntry>
-                      <literal>DHW_ON</literal>
+                      <literal>CTA_DHW_ON</literal>
                       <ordinal>1</ordinal>
                     </enumEntry>
                     <enumEntry>
-                      <literal>DHW_OFF</literal>
+                      <literal>CTA_DHW_OFF</literal>
                       <ordinal>2</ordinal>
                     </enumEntry>
                     <enumEntry>
-                      <literal>DHW_PUSH</literal>
+                      <literal>CTA_DHW_PUSH</literal>
                       <ordinal>3</ordinal>
                     </enumEntry>
                     <enumEntry>
-                      <literal>DHW_HOLIDAY_IS_SELECTED</literal>
+                      <literal>CTA_DHW_HOLIDAY_IS_SELECTED</literal>
                       <ordinal>4</ordinal>
                     </enumEntry>
                     <enumEntry>
-                      <literal>DHW_EMERGENCY_OP</literal>
+                      <literal>CTA_DHW_EMERGENCY_OP</literal>
                       <ordinal>5</ordinal>
                     </enumEntry>
                     <enumEntry>
-                      <literal>DHW_AUTOMATED_LEGIO_RUN</literal>
+                      <literal>CTA_DHW_AUTOMATED_LEGIO_RUN</literal>
                       <ordinal>6</ordinal>
                     </enumEntry>
                   </enum>
@@ -1199,7 +1235,7 @@
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
-                <dataPointName>DomHotWTempStpt</dataPointName>
+                <dataPointName>DomHotWaterTempStpt</dataPointName>
                 <dataDirection>RWP</dataDirection>
                 <dataType>
                   <float32 />
@@ -1227,7 +1263,7 @@
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
-                <dataPointName>ActDomHotWTemp</dataPointName>
+                <dataPointName>ActDomHotWaterTemp</dataPointName>
                 <dataDirection>R</dataDirection>
                 <dataType>
                   <float32 />
@@ -1263,8 +1299,8 @@
               <levelOfOperation>4m</levelOfOperation>
               <versionNumber>
                 <primaryVersionNumber>0</primaryVersionNumber>
-                <secondaryVersionNumber>1</secondaryVersionNumber>
-                <subReleaseVersionNumber>2</subReleaseVersionNumber>
+                <secondaryVersionNumber>5</secondaryVersionNumber>
+                <subReleaseVersionNumber>0</subReleaseVersionNumber>
               </versionNumber>
             </functionalProfileIdentification>
             <legibleDescription>
@@ -1663,6 +1699,13 @@
                   <language>de</language>
                 </legibleDescription>
               </dataPoint>
+              <!-- defined in FP but not defined here
+              <genericAttributeList>
+                <genericAttributeListElement>
+                  <name>Precision</name>
+                </genericAttributeListElement>
+              </genericAttributeList>
+              -->
               <modbusDataPointConfiguration>
                 <modbusDataType>
                   <int32U />
@@ -1671,13 +1714,6 @@
                 <registerType>InputRegister</registerType>
                 <numberOfRegisters>2</numberOfRegisters>
               </modbusDataPointConfiguration>
-              <!-- defined in FP but not defined here
-              <genericAttributeList>
-                <genericAttributeListElement>
-                  <name>Precision</name>
-                </genericAttributeListElement>
-              </genericAttributeList>
-              -->
             </dataPointListElement>
           </dataPointList>
         </functionalProfileListElement>
@@ -1770,6 +1806,13 @@
                   <language>en</language>
                 </legibleDescription>
               </dataPoint>
+              <!-- defined in FP but not defined here
+              <genericAttributeList>
+                <genericAttributeListElement>
+                  <name>Precision</name>
+                </genericAttributeListElement>
+              </genericAttributeList>
+              -->
               <modbusDataPointConfiguration>
                 <modbusDataType>
                   <float32 />
@@ -1778,13 +1821,6 @@
                 <registerType>InputRegister</registerType>
                 <numberOfRegisters>2</numberOfRegisters>
               </modbusDataPointConfiguration>
-              <!-- defined in FP but not defined here
-              <genericAttributeList>
-                <genericAttributeListElement>
-                  <name>Precision</name>
-                </genericAttributeListElement>
-              </genericAttributeList>
-              -->
             </dataPointListElement>
           </dataPointList>
         </functionalProfileListElement>

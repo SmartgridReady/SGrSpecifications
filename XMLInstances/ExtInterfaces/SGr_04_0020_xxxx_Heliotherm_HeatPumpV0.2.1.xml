@@ -159,18 +159,18 @@
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
-                <dataPointName>ErrorNrSGr</dataPointName>
+                <dataPointName>ErrorFlagSGr</dataPointName>
                 <dataDirection>R</dataDirection>
                 <dataType>
-                  <int16U />
+                  <boolean />
                 </dataType>
                 <unit>NONE</unit>
                 <legibleDescription>
-                  <textElement>?check: enum oder Bit-Array? Fehlerliste gem. Standard</textElement>
+                  <textElement>true wenn ein Fehler aufgetreten ist</textElement>
                   <language>de</language>
                 </legibleDescription>
                 <legibleDescription>
-                  <textElement>List of error codes not available in modbus doc</textElement>
+                  <textElement>true in case of Error state</textElement>
                   <language>en</language>
                 </legibleDescription>
               </dataPoint>
@@ -300,7 +300,7 @@
           <dataPointList>
             <dataPointListElement>
               <dataPoint>
-                <dataPointName>SpeedCtrlSetpt</dataPointName>
+                <dataPointName>SpeedCtrlPercentStpt</dataPointName>
                 <dataDirection>W</dataDirection>
                 <dataType>
                   <float64 />
@@ -363,12 +363,12 @@
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
-                <dataPointName>PowerCtrlSetpt</dataPointName>
+                <dataPointName>PowerCtrlStpt</dataPointName>
                 <dataDirection>R</dataDirection>
                 <dataType>
                   <float64 />
                 </dataType>
-                <unit>WATTS</unit>
+                <unit>KILOWATTS</unit>
                 <legibleDescription>
                   <textElement>
                     Effektive elektrischen Aufnahmeleistung des Verdichters
@@ -408,7 +408,7 @@
               <modbusAttributes>
                 <scalingFactor>
                   <multiplicator>1</multiplicator>
-                  <powerof10>0</powerof10>
+                  <powerof10>3</powerof10>
                 </scalingFactor>
               </modbusAttributes>
             </dataPointListElement>
@@ -516,7 +516,7 @@
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
-                <dataPointName>HeatCoolOpState</dataPointName>
+                <dataPointName>HeatCoolCtrlOpState</dataPointName>
                 <dataDirection>R</dataDirection>
                 <dataType>
                   <int16 />
@@ -711,7 +711,7 @@
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
-                <dataPointName>HeatCoolOpState</dataPointName>
+                <dataPointName>HeatCoolCtrlOpState</dataPointName>
                 <dataDirection>R</dataDirection>
                 <dataType>
                   <int16 />
