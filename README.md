@@ -51,6 +51,8 @@ Any changes on XML files of this repository are pushed through github actions to
 
 This section provides additional information about product types / groups
 
+| Product Type | Description |
+|-------|-------------|
 | [Heat Pump Appliances](doc/HeatPumpAppliances.md) | Heat pump appliances for heating and cooling. |
 
 ## Glossar (deutsch)
