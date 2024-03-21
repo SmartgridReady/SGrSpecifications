@@ -47,6 +47,12 @@ See https://library.smartgridready.ch.
 This repository contains the XML schema, as well as the device description XMLs and functional profile XMLs.
 Any changes on XML files of this repository are pushed through github actions to the SGr Library.
 
+## Product Types
+
+This section provides additional information about product types / groups
+
+| [Heat Pump Appliances](doc/HeatPumpAppliances.md) | Heat pump appliances for heating and cooling. |
+
 ## Glossar (deutsch)
 
 [Glossar](doc/Glossary.md)
