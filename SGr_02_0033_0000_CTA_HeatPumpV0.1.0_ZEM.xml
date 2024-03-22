@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="/xsl/SGr.xsl"?>
 <DeviceFrame xmlns="http://www.smartgridready.com/ns/V0/"
-             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-             xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/Product/Product.xsd">
-  <deviceName>HovalConnect WEZ</deviceName>
-  <manufacturerName>Hoval AG</manufacturerName>
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/Product/Product.xsd">
+  <deviceName>Optiheat Inverta</deviceName>
+  <manufacturerName>CTA AG</manufacturerName>
   <specificationOwnerIdentification>0</specificationOwnerIdentification>
   <releaseNotes>
     <state>Review</state>
@@ -12,42 +12,35 @@
   <deviceInformation>
     <legibleDescription>
       <textElement>
-        <![CDATA[
-          Produktbeschreibung für Hoval Wärmepumpen mit Steuerung TopTronic E in Kombination mit dem HovalConnect Modbus-Gateway
-          <br>Für mehr Informationen siehe <a href="https://github.com/SmartGridready/SGrSpecifications/blob/master/doc/HeatPumpAppliances.md#heat-pump-functional-profiles-in-hoval-product-eid">Hoval HeatPumpAppliance</a>
-        ]]>   
+        CTA Wärmepumpen mit Optiheat Inverta TWW 4esr, Eco 9e und Eco 17e und
+        SmartGridready Anbindung ermöglichen einen umweltfreundlichen Betrieb mit hohem Komfort.
       </textElement>
       <language>de</language>
     </legibleDescription>
-    <legibleDescription>
-      <textElement>TODO: txt Hoval easy readible explanation in English</textElement>
-      <language>en</language>
-    </legibleDescription>
-    <legibleDescription>
-      <textElement>TODO: txt Hoval simple text en Francais</textElement>
-      <language>fr</language>
-    </legibleDescription>
-    <legibleDescription>
-      <textElement>TODO: txt Hoval Semplice descrizione in italiano</textElement>
-      <language>it</language>
-    </legibleDescription>
     <deviceCategory>HeatPumpAppliance</deviceCategory>
     <isLocalControl>true</isLocalControl>
-    <softwareRevision>1.1.1.3050</softwareRevision>
-    <hardwareRevision>1.0.0</hardwareRevision>
-    <brandName>TopTronic(r)</brandName>
-    <powerSource>mains3Phase</powerSource>
-    <nominalPower>nominalPower</nominalPower>
-    <manufacturerSpecificationIdentification>manufacturerSpecificationIdentification
-    </manufacturerSpecificationIdentification>
-    <manufacturerLabel>Hoval Wärmepumpen mit HovalConnect Modbus</manufacturerLabel>
-    <generalRemarks>generalRemarks</generalRemarks>
+    <softwareRevision>2.1.0</softwareRevision>
+    <hardwareRevision>1.1.0</hardwareRevision>
+    <brandName>Optiheat Inverta</brandName>
+    <powerSource>mains 1Phase, 3Phase</powerSource>
+    <nominalPower>5 - 35 kW</nominalPower>
+    <manufacturerLabel>CTA OH Inverta Wärmepumpen</manufacturerLabel>
+    <generalRemarks>CTA/zem  IBT/cb</generalRemarks>
     <levelOfOperation>2m</levelOfOperation>
     <versionNumber>
       <primaryVersionNumber>0</primaryVersionNumber>
       <secondaryVersionNumber>1</secondaryVersionNumber>
       <subReleaseVersionNumber>0</subReleaseVersionNumber>
     </versionNumber>
+    <programmerHints>
+      <textElement>
+        This Gateway offers manufacturer specific control modes for HeatCoolCtrl and DomHotWaterCtrl.  
+        Manufacurer specific data points use the preamble cta.
+        Some data points support persistent memory functionality  (RWP) and limit data write operations to a couple 10'000 write cycles.
+      </textElement>
+      <language>en</language>
+      <uri>https://cta.ch/privatkunden/produkte</uri>
+    </programmerHints>
   </deviceInformation>
   <interfaceList>
     <modbusInterface>
@@ -55,11 +48,14 @@
         <modbusInterfaceSelection>TCPIP</modbusInterfaceSelection>
         <modbusTcp>
           <port>502</port>
-          <address>192.168.1.51</address>
+          <address>192.168.99.55</address>
           <slaveId>1</slaveId>
         </modbusTcp>
         <firstRegisterAddressIsOne>false</firstRegisterAddressIsOne>
-        <bitOrder>BigEndian</bitOrder>
+        <bitOrder>ChangeWordOrder</bitOrder>
+        <masterFunctionsSupportedList>
+          <masterFunctionsSupported>Primitives</masterFunctionsSupported>
+        </masterFunctionsSupportedList>
       </modbusInterfaceDescription>
       <functionalProfileList>
         <functionalProfileListElement>
@@ -76,10 +72,6 @@
                 <subReleaseVersionNumber>0</subReleaseVersionNumber>
               </versionNumber>
             </functionalProfileIdentification>
-            <alternativeNames>
-              <sLV1Name>SG-ReadyStates_bwp</sLV1Name>
-              <hpBwpName>sHPbwpName</hpBwpName>
-            </alternativeNames>
             <legibleDescription>
               <textElement>
                 <![CDATA[
@@ -110,7 +102,7 @@
                   
                   <p> The communicator (e.g. central energy management system) takes into account the unit specifications for the switching 
                     frequency (attributes maxLockTimeMinutes and minRunTimeMinutes). The values can be set during declaration of the 
-                        heat pump. The standard values for SG Ready heat pumps are "Max. Lock Time" 120 minutes and "Min. Run Time" 20 minutes. </p>
+                        heat pump. The standard values for the heat pumps are "Max. Lock Time" 20 minutes and "Min. Run Time" 3 minutes. </p>
                   
                   <p> "SG Ready" is a trademark of the German Heat Pump Association. Further information at <a href="https://www.waermepumpe.de/normen-technik/sg-ready/">https://www.waermepumpe.de/normen-technik/sg-ready/</a>. </p>
                 ]]>
@@ -142,9 +134,9 @@
                   <p> Über den Datenpunkt "SGReadyState" kann der aktuelle Betriebsmodus der Wärmepumpe ausgelesen werden. </p>
                   
                   <p>Der Communicator (z.B. Energiemanagementsystem) berücksichtigt die Gerätevorgaben zur Schaltfrequenz (Attribute maxLockTimeMintues und minRunTimeMinutes.
-                  Der Wert der Attribute kann bei der Deklaration gesetzt werden. Standardeinstellung von SG Ready Wärmepumpen nach bwp ist 
-                  "Max. Lock Time" 120 Minuten und "Min. Run Time" 20 Minuten.</p>
-                  <p>„SG Ready“ ist ein Markenzeichen des Bundesverbands Wärmepumpe e. V.<br>
+                  Der Wert der Attribute kann bei der Deklaration gesetzt werden. Standardeinstellung der Wärmepumpen ist 
+                  "Max. Lock Time" 20 Minuten und "Min. Run Time" 3 Minuten.</p>
+                  <p>„SG Ready“ ist ein Markenzeichen des Bundesverbands Wärmepumpe e. V.<br/>
                      Weiterführende Informationen unter <a href="https://www.waermepumpe.de/normen-technik/sg-ready/">https://www.waermepumpe.de/normen-technik/sg-ready/</a>.</p>
                 ]]>
               </textElement>
@@ -157,7 +149,7 @@
               <dataType>
                 <float32/>
               </dataType>
-              <value>120</value>
+              <value>20</value>
               <unit>MINUTES</unit>
             </genericAttributeListElement>
             <genericAttributeListElement>
@@ -165,7 +157,7 @@
               <dataType>
                 <float32/>
               </dataType>
-              <value>20</value>
+              <value>3</value>
               <unit>MINUTES</unit>
             </genericAttributeListElement>
           </genericAttributeList>
@@ -178,58 +170,57 @@
                   <enum>
                     <enumEntry>
                       <literal>HP_LOCKED</literal>
+                      <ordinal>1</ordinal>
                     </enumEntry>
                     <enumEntry>
                       <literal>HP_NORMAL</literal>
+                      <ordinal>2</ordinal>
                     </enumEntry>
                     <enumEntry>
                       <literal>HP_INTENSIFIED</literal>
+                      <ordinal>3</ordinal>
                     </enumEntry>
                     <enumEntry>
                       <literal>HP_FORCED</literal>
+                      <ordinal>4</ordinal>
                     </enumEntry>
                   </enum>
                 </dataType>
                 <unit>NONE</unit>
                 <alternativeNames>
                   <sLV1Name>SGReadyOpModeCmd</sLV1Name>
-                  <manufName>38012</manufName>
+                  <manufName>CTA_Ext_SG</manufName>
                   <hpBwpName>Betriebsmodus</hpBwpName>
                 </alternativeNames>
                 <legibleDescription>
-                  <textElement>
-                    <![CDATA[
-                      <i>Festlegen der Übersteuerungsmoeglichkeiten der Wärmepumpe</i>
-                      </p>Smart Grid via system bus
-                    ]]>
-                  </textElement>
+                  <textElement>Sets the override possibilities of the heat pump </textElement>
                   <language>en</language>
                 </legibleDescription>
                 <legibleDescription>
-                  <textElement>
-                    <![CDATA[
-                      <i>Sets the override possibilities of the heat pump</i>
-                      </p>Smart Grid über Systembus
-                    ]]>
-                  </textElement>
+                  <textElement>Festlegen der Übersteuerungsmoeglichkeiten der Wärmepumpe</textElement>
                   <language>de</language>
                 </legibleDescription>
-                <legibleDescription>
-                  <textElement>Smart Grid via bus de données
+                <programmerHints>
+                  <textElement>
+                    SG READY BETRIEBSZUSTAND 1: Die Anlage darf
+                    nicht starten. Nur der Frostschutz wird
+                    gewährleistet. 2: Normaler Betrieb der Anlage.
+                    Automatik- / Programmbetrieb gemäß BI der
+                    angeschlossenen Wärmepumpe 3: Forcierter Betrieb
+                    der Anlage mit erhöhten Werten für Heiz-
+                    und/oder Warmwassertemperatur 4: Sofortige
+                    Ansteuerung der Maximalwerte für Heiz- und
+                    Warmwassertemperatur. Max. 5 Schaltungen täglich 
+					für Zustände 3 und 4.
                   </textElement>
-                  <language>fr</language>
-                </legibleDescription>
-                <legibleDescription>
-                  <textElement>Smart Grid tramite bus di sistema
-                  </textElement>
-                  <language>it</language>
-                </legibleDescription>
+                  <language>de</language>
+                </programmerHints>
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
-                  <int16U/>
+                  <int16U />
                 </modbusDataType>
-                <address>27545</address>                
+                <address>1054</address>
                 <registerType>HoldRegister</registerType>
                 <numberOfRegisters>1</numberOfRegisters>
               </modbusDataPointConfiguration>
@@ -242,114 +233,42 @@
                   <enum>
                     <enumEntry>
                       <literal>HP_LOCKED</literal>
-                    </enumEntry>
-                    <enumEntry>
-                      <literal>HP_NORMAL</literal>
-                    </enumEntry>
-                    <enumEntry>
-                      <literal>HP_INTENSIFIED</literal>
-                    </enumEntry>
-                    <enumEntry>
-                      <literal>HP_FORCED</literal>
-                    </enumEntry>
-                  </enum>
-                </dataType>
-                <unit>NONE</unit>
-                <alternativeNames>
-                  <sLV1Name>SG-ReadyState</sLV1Name>
-                  <manufName>38012</manufName>
-                </alternativeNames>
-                <legibleDescription>
-                  <textElement>
-                    <![CDATA[
-                      <i>Feedback of the current running override possibility of the heat pump</i>
-                      </p>Smart Grid via system bus (Rücklesung)
-                    ]]>
-                  </textElement>
-                  <language>en</language>
-                </legibleDescription>
-                <legibleDescription>
-                  <textElement>
-                    <![CDATA[
-                      <i>Rückmeldung der aktuellen laufenden Übersteuerungsmoeglichkeit der Wärmepumpe</i>
-                      </p>Smart Grid über Systembus
-                    ]]>
-                  </textElement>
-                  <language>de</language>
-                </legibleDescription>
-                <legibleDescription>
-                  <textElement>Smart Grid via bus de données (Valeur de relecture)
-                  </textElement>
-                  <language>fr</language>
-                </legibleDescription>
-                <legibleDescription>
-                  <textElement>Smart Grid tramite bus di sistema (Valore di rilettura)
-                  </textElement>
-                  <language>it</language>
-                </legibleDescription>
-              </dataPoint>
-              <modbusDataPointConfiguration>
-                <modbusDataType>
-                  <int16U/>
-                </modbusDataType>
-                <address>27545</address>                
-                <registerType>HoldRegister</registerType>
-                <numberOfRegisters>1</numberOfRegisters>
-              </modbusDataPointConfiguration>
-            </dataPointListElement>
-            <dataPointListElement>
-              <dataPoint>
-                <dataPointName>hovSGReadySrcSelect</dataPointName>
-                <dataDirection>RW</dataDirection>
-                <dataType>
-                  <enum>
-                    <enumEntry>
-                      <literal>SGR_src_OFF</literal>
-                      <ordinal>0</ordinal>
-                    </enumEntry>
-                    <enumEntry>
-                      <literal>SRC_src_CONTACTS</literal>
                       <ordinal>1</ordinal>
                     </enumEntry>
                     <enumEntry>
-                      <literal>SRC_src_SysBUS</literal>
+                      <literal>HP_NORMAL</literal>
                       <ordinal>2</ordinal>
                     </enumEntry>
                     <enumEntry>
-                      <literal>SRC_src_DAMPED</literal>
+                      <literal>HP_INTENSIFIED</literal>
                       <ordinal>3</ordinal>
+                    </enumEntry>
+                    <enumEntry>
+                      <literal>HP_FORCED</literal>
+                      <ordinal>4</ordinal>
                     </enumEntry>
                   </enum>
                 </dataType>
                 <unit>NONE</unit>
                 <alternativeNames>
-                  <sLV1Name>hovSGReadySrcSelect</sLV1Name>
-                  <manufName>38013</manufName></alternativeNames>
+                  <sLV1Name>SGReadyState</sLV1Name>
+                  <manufName>CTA_Ext_SG</manufName>
+                  <hpBwpName>Statusmeldungen</hpBwpName>
+                </alternativeNames>
                 <legibleDescription>
-                  <textElement>Smart Grid function trigger
-                  </textElement>
+                  <textElement>Feedback of the current running override possibility of the heat pump </textElement>
                   <language>en</language>
                 </legibleDescription>
                 <legibleDescription>
-                  <textElement>Auslöser Smart Grid Funktion</textElement>
+                  <textElement>Rückmeldung der aktuellen laufenden Übersteuerungsmoeglichkeit der Wärmepumpe</textElement>
                   <language>de</language>
-                </legibleDescription>
-                <legibleDescription>
-                  <textElement>Déclencheur fonction Smart Grid
-                  </textElement>
-                  <language>fr</language>
-                </legibleDescription>
-                <legibleDescription>
-                  <textElement>Dispositivo attivaz. funzione Smart Grid
-                  </textElement>
-                  <language>it</language>
                 </legibleDescription>
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
-                  <int16U/>
+                  <int16U />
                 </modbusDataType>
-                <address>27546</address>                
+                <address>1054</address>
                 <registerType>HoldRegister</registerType>
                 <numberOfRegisters>1</numberOfRegisters>
               </modbusDataPointConfiguration>
@@ -372,7 +291,7 @@
             </functionalProfileIdentification>
             <legibleDescription>
               <textElement>
-                <![CDATA[ 
+                <![CDATA[
                   <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
                   <strong>Energy measurement</strong><br>
                   Monitoring functional profile for power generators and consumers for reflecting the energy balance.
@@ -431,50 +350,35 @@
                 </dataType>
                 <unit>KILOWATT_HOURS</unit>
                 <alternativeNames>
-                  <sLV1Name>ActiveEnergyACtot</sLV1Name>
-                  <manufName>23009</manufName>
+                  <manufName>CTA_Energy_El_Tot</manufName>
                 </alternativeNames>
                 <legibleDescription>
-                  <textElement>
-                    <![CDATA[
-                      <i>Total energy measurement</i>
-                      </p>Eletrical energy WEZ kWh.
-                    ]]>
-                  </textElement>
+                  <textElement>Total energy measurement</textElement>
                   <language>en</language>
                 </legibleDescription>
                 <legibleDescription>
                   <textElement>
                     <![CDATA[
                       <i>Erfassung der gesamten Wirkenergie</i>
-                      </p>Elektrische Gesamtenergie WEZ kWh.
+                      </p>Summe der aufgenommenen elektrischen Energie des Verdichters inkl. Hilfsaggregate total.
                     ]]>
                   </textElement>
                   <language>de</language>
-                </legibleDescription>
-                <legibleDescription>
-                  <textElement>Énergie électrique GdC kWh</textElement>
-                  <language>fr</language>
-                </legibleDescription>
-                <legibleDescription>
-                  <textElement>Energia elettrica kWh</textElement>
-                  <language>it</language>
                 </legibleDescription>
               </dataPoint>
               <!-- defined in FP but not defined here
               <genericAttributeList>
                 <genericAttributeListElement>
                   <name>Precision</name>
-                  <value>10</value>
                 </genericAttributeListElement>
               </genericAttributeList>
               -->
               <modbusDataPointConfiguration>
                 <modbusDataType>
-                  <int32U/>
+                  <int32U />
                 </modbusDataType>
-                <address>25613</address>                
-                <registerType>HoldRegister</registerType>
+                <address>2074</address>
+                <registerType>InputRegister</registerType>
                 <numberOfRegisters>2</numberOfRegisters>
               </modbusDataPointConfiguration>
             </dataPointListElement>
@@ -482,7 +386,7 @@
         </functionalProfileListElement>
         <functionalProfileListElement>
           <functionalProfile>
-            <functionalProfileName>AcivePowerACtot</functionalProfileName>
+            <functionalProfileName>ActPowerACtot</functionalProfileName>
             <functionalProfileIdentification>
               <specificationOwnerIdentification>0</specificationOwnerIdentification>
               <functionalProfileCategory>Metering</functionalProfileCategory>
@@ -552,61 +456,41 @@
                 </dataType>
                 <unit>KILOWATTS</unit>
                 <alternativeNames>
-                  <sLV1Name>ActivePowerACtot</sLV1Name>
-                  <manufName>23002</manufName>
+                  <sLV1Name>ActPowerACtot</sLV1Name>
+                  <manufName>State_CompPower</manufName>
                 </alternativeNames>
                 <legibleDescription>
                   <textElement>
                     <![CDATA[
-                      <i>Total active power measurement</i>
-                      </p>Eletrical power WEZ.
-                    ]]>
-                  </textElement>
-                  <language>en</language>
-                </legibleDescription>
-                <legibleDescription>
-                  <textElement>
-                    <![CDATA[
                       <i>Erfassung der gesamten Wirkleistung</i>
-                      </p>Aktuelle elektr. Leistungsaufnahme WEZ.
+                      </p>Effektive elektrischen Aufnahmeleistung des Verdichters.
                     ]]>
                   </textElement>
                   <language>de</language>
                 </legibleDescription>
                 <legibleDescription>
-                  <textElement>Puissance électrique</textElement>
-                  <language>fr</language>
-                </legibleDescription>
-                <legibleDescription>
-                  <textElement>Potenza elettrica</textElement>
-                  <language>it</language>
+                  <textElement>Total active power measurement</textElement>
+                  <language>en</language>
                 </legibleDescription>
               </dataPoint>
               <!-- defined in FP but not defined here
               <genericAttributeList>
                 <genericAttributeListElement>
                   <name>Precision</name>
-                  <value>10</value>
                 </genericAttributeListElement>
               </genericAttributeList>
               -->
               <modbusDataPointConfiguration>
                 <modbusDataType>
-                  <int32 />
+                  <float32 />
                 </modbusDataType>
-                <address>25611</address>                
-                <registerType>HoldRegister</registerType>
+                <address>2032</address>
+                <registerType>InputRegister</registerType>
                 <numberOfRegisters>2</numberOfRegisters>
               </modbusDataPointConfiguration>
-              <modbusAttributes>
-                <scalingFactor>
-                  <multiplicator>1</multiplicator>
-                  <powerof10>-2</powerof10>
-                </scalingFactor>
-              </modbusAttributes>
             </dataPointListElement>
           </dataPointList>
-       </functionalProfileListElement>
+        </functionalProfileListElement>
         <functionalProfileListElement>
           <functionalProfile>
             <functionalProfileName>EnergyMonitor</functionalProfileName>
@@ -646,6 +530,63 @@
           <dataPointList>
             <dataPointListElement>
               <dataPoint>
+                <dataPointName>ActiveEnergyACheat</dataPointName>
+                <dataDirection>R</dataDirection>
+                <dataType>
+                  <float64/>
+                </dataType>
+                <unit>KILOWATT_HOURS</unit>
+                <alternativeNames>
+                  <manufName>CTA_Energy_El_Heat</manufName>
+                </alternativeNames>
+                <legibleDescription>
+                  <textElement>
+                    Summe der aufgenommenen elektrischen Energie des Verdichters für das Heizen.
+                  </textElement>
+                  <language>de</language>
+                </legibleDescription>
+              </dataPoint>
+              <modbusDataPointConfiguration>
+                <modbusDataType>
+                  <int32U />
+                </modbusDataType>
+                <address>2068</address>
+                <registerType>InputRegister</registerType>
+                <numberOfRegisters>2</numberOfRegisters>
+              </modbusDataPointConfiguration>
+            </dataPointListElement>
+            <dataPointListElement>
+              <dataPoint>
+                <dataPointName>ActiveEnergyACDomHotWater</dataPointName>
+                <dataDirection>R</dataDirection>
+                <dataType>
+                  <float64/>
+                </dataType>
+                <unit>KILOWATT_HOURS</unit>
+                <alternativeNames>
+                  <manufName>CTA_Energy_El_DW</manufName>
+                </alternativeNames>
+                <legibleDescription>
+                  <textElement>
+                    <![CDATA[
+                      <i>Summe der aufgenommenen elektrischen Energie des Verdichters für die Brauchwarmwasser-Erwärmung.</i>
+                      </p>Summe der aufgenommenen elektrischen Energie des Verdichters für das Kühlen (nur bei aktiver Kühlung über Verdichter).
+                    ]]>
+                  </textElement>
+                  <language>de</language>
+                </legibleDescription>
+              </dataPoint>
+              <modbusDataPointConfiguration>
+                <modbusDataType>
+                  <int32U />
+                </modbusDataType>
+                <address>2070</address>
+                <registerType>InputRegister</registerType>
+                <numberOfRegisters>2</numberOfRegisters>
+              </modbusDataPointConfiguration>
+            </dataPointListElement>
+            <dataPointListElement>
+              <dataPoint>
                 <dataPointName>ThermalEnergyTot</dataPointName>
                 <dataDirection>R</dataDirection>
                 <dataType>
@@ -654,39 +595,19 @@
                 <unit>KILOWATT_HOURS</unit>
                 <alternativeNames>
                   <sLV1Name>ThermalEnergyTot</sLV1Name>
-                  <manufName>29050</manufName>
+                  <manufName>CTA_Energy_Q_Tot</manufName>
                 </alternativeNames>
                 <legibleDescription>
-                  <textElement>Quantité de chaleur chauffage
-                  </textElement>
-                  <language>en</language>
-                </legibleDescription>
-                <legibleDescription>
-                  <textElement>
-                    <![CDATA[
-                      <i>Summe der abgegebenen thermischen Energie total</i>
-                      </p>Wärmemenge Heizen.
-                    ]]>
-                  </textElement>
+                  <textElement>Summe der abgegebenen thermischen Energie total</textElement>
                   <language>de</language>
-                </legibleDescription>
-                <legibleDescription>
-                  <textElement>Heat quantity heating
-                  </textElement>
-                  <language>fr</language>
-                </legibleDescription>
-                <legibleDescription>
-                  <textElement>Quantità di calore riscaldamento
-                  </textElement>
-                  <language>it</language>
                 </legibleDescription>
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
-                  <int32U/>
+                  <int32U />
                 </modbusDataType>
-                <address>1505</address>                
-                <registerType>HoldRegister</registerType>
+                <address>2060</address>
+                <registerType>InputRegister</registerType>
                 <numberOfRegisters>2</numberOfRegisters>
               </modbusDataPointConfiguration>
             </dataPointListElement>
@@ -700,81 +621,19 @@
                 <unit>KILOWATT_HOURS</unit>
                 <alternativeNames>
                   <sLV1Name>ThermalEnergyHeat</sLV1Name>
-                  <manufName>47</manufName></alternativeNames>
-                <legibleDescription>
-                  <textElement>Heat quantity heating</textElement>
-                  <language>en</language>
-                </legibleDescription>
-                <legibleDescription>
-                  <textElement>
-                    <![CDATA[
-                      <i>Summe der abgegebenen thermischen Energie für das Heizen.</i>
-                      </p>Wärmemenge Heizen.
-                    ]]>
-                  </textElement>
-                  <language>de</language>
-                </legibleDescription>
-                <legibleDescription>
-                  <textElement>Quantité de chaleur chauffage</textElement>
-                  <language>fr</language>
-                </legibleDescription>
-                <legibleDescription>
-                  <textElement>Quantità di calore riscaldamento</textElement>
-                  <language>it</language>
-                </legibleDescription>
-              </dataPoint>
-              <modbusDataPointConfiguration>
-                <modbusDataType>
-                  <int32U/>
-                </modbusDataType>
-                <address>27484</address>                
-                <registerType>HoldRegister</registerType>
-                <numberOfRegisters>2</numberOfRegisters>
-              </modbusDataPointConfiguration>
-            </dataPointListElement>
-            <dataPointListElement>
-              <dataPoint>
-                <dataPointName>ThermalEnergyCool</dataPointName>
-                <dataDirection>R</dataDirection>
-                <dataType>
-                  <float64/>
-                </dataType>
-                <unit>KILOWATT_HOURS</unit>
-                <alternativeNames>
-                  <sLV1Name>ThermalEnergyCool</sLV1Name>
-                  <manufName>29052</manufName>
+                  <manufName>CTA_Energy_Q_Heat</manufName>
                 </alternativeNames>
                 <legibleDescription>
-                  <textElement>Cooling quantity
-                  </textElement>
-                  <language>en</language>
-                </legibleDescription>
-                <legibleDescription>
-                  <textElement>
-                    <![CDATA[
-                      <i>Summe der aufgenommenen thermischen Energie für das Kühlen (nur bei aktiver Kühlung über Verdichter).</i>
-                      </p>Kältemenge Kühlen: Summe der aufgenommenen thermischen Energie für das Kühlen (nur bei aktiver Kühlung über Verdichter)
-                    ]]>
-                  </textElement>
+                  <textElement>Summe der abgegebenen thermischen Energie für das Heizen.</textElement>
                   <language>de</language>
-                </legibleDescription>
-                <legibleDescription>
-                  <textElement>Quant. refroid. Froid
-                  </textElement>
-                  <language>fr</language>
-                </legibleDescription>
-                <legibleDescription>
-                  <textElement>Quantità di freddo raffrescamento
-                  </textElement>
-                  <language>it</language>
                 </legibleDescription>
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
-                  <int32U/>
+                  <int32U />
                 </modbusDataType>
-                <address>18733</address>                
-                <registerType>HoldRegister</registerType>
+                <address>2054</address>
+                <registerType>InputRegister</registerType>
                 <numberOfRegisters>2</numberOfRegisters>
               </modbusDataPointConfiguration>
             </dataPointListElement>
@@ -788,57 +647,45 @@
                 <unit>KILOWATT_HOURS</unit>
                 <alternativeNames>
                   <sLV1Name>ThermalEnergyDomHotWater</sLV1Name>
-                  <manufName>55</manufName></alternativeNames>
-                <legibleDescription>
-                  <textElement>Heat quantity DHW
-                  </textElement>
-                  <language>en</language>
-                </legibleDescription>
+                  <manufName>CTA_Energy_Q_DW</manufName>
+                </alternativeNames>
                 <legibleDescription>
                   <textElement>
                     <![CDATA[
                       <i>Summe der abgegebenen thermischen Energie für die Brauchwarmwasser-Erwärmung.</i>
-                      </p>Wärmemenge WW
+                      </p>Summe der aufgenommenen thermischen Energie für das Kühlen (nur bei aktiver Kühlung über Verdichter).
                     ]]>
                   </textElement>
                   <language>de</language>
                 </legibleDescription>
-                <legibleDescription>
-                  <textElement>Quantité chaleur EC
-                  </textElement>
-                  <language>fr</language>
-                </legibleDescription>
-                <legibleDescription>
-                  <textElement>Quantità di calore acqua calda
-                  </textElement>
-                  <language>it</language>
-                </legibleDescription>
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
-                  <int32U/>
+                  <int32U />
                 </modbusDataType>
-                <address>27488</address>                
-                <registerType>HoldRegister</registerType>
+                <address>2056</address>
+                <registerType>InputRegister</registerType>
                 <numberOfRegisters>2</numberOfRegisters>
               </modbusDataPointConfiguration>
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
-                <dataPointName>RuntimeCompressor</dataPointName>
+                <dataPointName>RuntimeHeating</dataPointName>
                 <dataDirection>R</dataDirection>
                 <dataType>
                   <float64/>
                 </dataType>
                 <unit>HOURS</unit>
                 <alternativeNames>
-                  <sLV1Name>RuntimeCompressor</sLV1Name>
+                  <sLV1Name>RuntimeHeating</sLV1Name>
+                  <manufName>CTA_OperTime_Heat_DW_h</manufName>
                 </alternativeNames>
                 <legibleDescription>
                   <textElement>
                     <![CDATA[
-                      <i>Summe der Laufzeit des Verdichters seit Inbetriebnahme.</i>
-                      </p>Betriebsstunden Wärmeerzeuger: Summe der Laufzeit des Verdichters seit Inbetriebnahme.
+                      <i>Summe der Laufzeit in der Heizphase.</i>
+                      </p>Summe der Laufzeit des Verdichters in Heiz- 
+					      und TWW Betrieb seit Inbetriebnahme.
                     ]]>
                   </textElement>
                   <language>de</language>
@@ -846,10 +693,36 @@
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
-                  <int32U/>
+                  <float32 />
                 </modbusDataType>
-                <address>1516</address>                
-                <registerType>HoldRegister</registerType>
+                <address>2096</address>
+                <registerType>InputRegister</registerType>
+                <numberOfRegisters>2</numberOfRegisters>
+              </modbusDataPointConfiguration>
+            </dataPointListElement>
+            <dataPointListElement>
+              <dataPoint>
+                <dataPointName>RuntimeCooling</dataPointName>
+                <dataDirection>R</dataDirection>
+                <dataType>
+                  <float64/>
+                </dataType>
+                <unit>HOURS</unit>
+                <alternativeNames>
+                  <sLV1Name>RuntimeCooling</sLV1Name>
+                  <manufName>CTA_OperTime_Cooling_h</manufName>
+                </alternativeNames>
+                <legibleDescription>
+                  <textElement>Summe der Laufzeit in der Kühlphase.</textElement>
+                  <language>de</language>
+                </legibleDescription>
+              </dataPoint>
+              <modbusDataPointConfiguration>
+                <modbusDataType>
+                  <int32U />
+                </modbusDataType>
+                <address>2092</address>
+                <registerType>InputRegister</registerType>
                 <numberOfRegisters>2</numberOfRegisters>
               </modbusDataPointConfiguration>
             </dataPointListElement>
@@ -863,39 +736,19 @@
                 <unit>NONE</unit>
                 <alternativeNames>
                   <sLV1Name>NrOfStartupsCompressor</sLV1Name>
-                  <manufName>2080</manufName>
+                  <manufName>CTA_CompStartAttempts</manufName>
                 </alternativeNames>
                 <legibleDescription>
-                  <textElement>Switching cycles heat generator
-                  </textElement>
-                  <language>en</language>
-                </legibleDescription>
-                <legibleDescription>
-                  <textElement>
-                    <![CDATA[
-                      <i>Anzahl Starts des Verdichters seit Inbetriebnahme.</i>
-                      </p>Schaltzyklen Wärmeerzeuger: Anzahl Starts des Verdichters seit Inbetriebnahme.
-                    ]]>
-                  </textElement>
+                  <textElement>Anzahl Starts des Verdichters seit Inbetriebnahme.</textElement>
                   <language>de</language>
-                </legibleDescription>
-                <legibleDescription>
-                  <textElement>Cycles commutation générateur de chaleur
-                  </textElement>
-                  <language>fr</language>
-                </legibleDescription>
-                <legibleDescription>
-                  <textElement>Cicli di attivazione gen. di calore
-                  </textElement>
-                  <language>it</language>
                 </legibleDescription>
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
-                  <int32U/>
+                  <int32U />
                 </modbusDataType>
-                <address>1518</address>                
-                <registerType>HoldRegister</registerType>
+                <address>2094</address>
+                <registerType>InputRegister</registerType>
                 <numberOfRegisters>2</numberOfRegisters>
               </modbusDataPointConfiguration>
             </dataPointListElement>

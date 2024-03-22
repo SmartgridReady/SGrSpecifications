@@ -68,5 +68,4 @@ The Hoval scheme corresponds to the general scheme above, but provides three Hea
 > 
 > - CHECK WITH MANUFACTURER IF TRUE !!
 
-
 ![Heat Pump Functional Profiles Scheme](HeatPumpFunctionalProflesHoval.png)
