@@ -64,10 +64,13 @@ This Sections shows the implementation of the functional profiles for heat pumps
 
 The Hoval scheme corresponds to the general scheme above, but provides three HeatCoolCtrl profiles to control different heating groups (“Mischgruppen”) with separate mixing valves. With each HeatCoolCtrl profile, the supply temperature of one group may be influenced. Both the BufferStorageCtrl an DomHotWaterCtrl provide a way to increase temperature in order to optimize self-consumption.
 
-<span style="color:red">In addition, Hoval provides a PowerCtrl profile with which the power consumption of the compressor may be directly controlled (or at least a desired power consumption may be set). The power may be controlled in all operation modes (state: March 2024).</span>
+$`\textcolor{red}{\text{In addition, Hoval provides a PowerCtrl profile with which the power consumption of the compressor may be directly controlled (or at least a desired power consumption may be set). The power may be controlled in all operation modes (state: March 2024).}}`$
 
-<span style="color:red">
+$`\textcolor{red}{\text{
+
 - CHECK WITH MANUFACTURER IF TRUE !!
-</span>
+
+}}`$
+
 
 ![Heat Pump Functional Profiles Scheme](HeatPumpFunctionalProflesHoval.png)
