@@ -12,7 +12,7 @@
   <deviceInformation>
     <legibleDescription>
       <textElement>
-      <![CDATA[
+        <![CDATA[
           Das Internet Service Gateway ISG web ist der Eintritt in die Servicewelt von STIEBEL ELTRON. 
           Über ein Tablet oder einen PC kann die Wärmepumpe bedient, Einstellungen
           vorgenommen und der Zugang zur SERVICEWELT freigeschaltet werden.
@@ -25,6 +25,7 @@
             <li>Kommunikation mit der STIEBEL ELTRON-Kundendienst-Zentrale</li>
             <li>Möglichkeit zur Kontrolle der Anlage über eine Smartphone-„Web-App“</li>
           </ul>
+          <br>Für mehr Informationen siehe <a href="https://github.com/SmartGridready/SGrSpecifications/blob/master/doc/HeatPumpAppliances.md#heat-pump-functional-profiles-in-stiebel-eltron-product-eid">Stiebel Eltron HeatPumpAppliance</a>
         ]]>		
       </textElement>
       <language>de</language>
@@ -95,22 +96,22 @@
               <levelOfOperation>4m</levelOfOperation>
               <versionNumber>
                 <primaryVersionNumber>0</primaryVersionNumber>
-                <secondaryVersionNumber>6</secondaryVersionNumber>
-                <subReleaseVersionNumber>0</subReleaseVersionNumber>
+                <secondaryVersionNumber>5</secondaryVersionNumber>
+                <subReleaseVersionNumber>1</subReleaseVersionNumber>
               </versionNumber>
             </functionalProfileIdentification>
             <legibleDescription>
               <textElement>
                 <![CDATA[
                   Das Profil definiert den Grundbaustein zur dynamischen Ansteuerung von Wärmepumpen
-                  über eine Betriebsmodus gestützt Beeinflussung der Sollwerte nach SGr Stufe 2.
+                  über eine Betriebsmodus-gestützte Beeinflussung der Sollwerte.
                   <p>Der Betrieb der Wärmepumpe muss in sich sicher sein, unabhängig von den äusseren Vorgaben.</p>
                   <p>Dieses Grundprofil definiert die Datenpunkte, welche zur Steuerung des Gerätes «Wärmepumpe»
-                  mit zusätzlichen Stufe 4 Funktionsprofilen grundsätzlich zur Verfügung gestellt werden.
+                  mit zusätzlichen Funktionsprofilen grundsätzlich zur Verfügung gestellt werden.
                   Sie stellen die Version einer typischen Einfamilienhauswärmepumpe mit Aussentemperaturfühler dar.</p>
                   <p>Für die einzelnen Heizkreise, Warmwasser, Pufferspeicher und das Energie-Monitoring sowie eine
                   Verdichterdrehzahl / Leistungsregelung
-                  können in weiteren Funktionsprofilen zur Verfügung gestellt werden.</p>
+                  können weitere Funktionsprofile zur Verfügung gestellt werden.</p>
                 ]]>         
               </textElement>
               <language>de</language>
@@ -332,7 +333,7 @@
                 <programmerHints>
                   <textElement>
                     <![CDATA[ 
-                      Auslesen des aktuellen Status der Wärmepumpe<br/>
+                      Auslesen des aktuellen Status der Wärmepumpe<br>
                       manufacturer Bit code status information mapped directly</li>
                       <ol>
                         <li>B0: HC 1 PUMP on</li>
@@ -557,12 +558,16 @@
             </alternativeNames>
             <legibleDescription>
               <textElement>
-                 Dieses Profil definiert die erweiterten Datenpunkte zum Grundprofil
-                "HeatPumpBase", welche zur Steuerung eines Heiz- oder Kühlkreises zur Verfügung
-                gestellt werden. Derselbe physikalische Kreislauf kann entweder für das Heizen oder
-                das Kühlen verwendet werden. Das Heiz-/Kühlkreisprofil muss immer in Kombination mit
-                dem Grundprofil der Wärmepumpe bewirtschaftet werden. Es können mehrere
-                Heiz-/Kühlkreisprofile definiert werden.
+                <![CDATA[
+                   Dieses Profil definiert die erweiterten Datenpunkte zum Grundprofil
+                  "HeatPumpBase", welche zur Steuerung eines Heiz- oder Kühlkreises zur Verfügung
+                  gestellt werden. Derselbe physikalische Kreislauf kann entweder für das Heizen oder
+                  das Kühlen verwendet werden. Das Heiz-/Kühlkreisprofil muss immer in Kombination mit
+                  dem Grundprofil der Wärmepumpe bewirtschaftet werden. Es können mehrere
+                  Heiz-/Kühlkreisprofile definiert werden.
+                  <p>HeatCoolCtrl_1 entspricht dem Ladekreis, mit welchem der Pufferspeicher geladen wird (falls vorhanden).
+                  Falls kein Pufferspeicher vorhanden ist, entspricht dieser auch dem Heizkreis ins Gebäude.</p>
+                ]]>         
               </textElement>
               <language>de</language>
             </legibleDescription>
@@ -734,12 +739,17 @@
               <en17609Name>HeatCool Group</en17609Name>
             </alternativeNames>
             <legibleDescription>
-              <textElement>Dieses Profil definiert die erweiterten Datenpunkte zum Grundprofil
-                "HeatPumpBase", welche zur Steuerung eines Heiz- oder Kühlkreises zur Verfügung
-                gestellt werden. Derselbe physikalische Kreislauf kann entweder für das Heizen oder
-                das Kühlen verwendet werden. Das Heiz-/Kühlkreisprofil muss immer in Kombination mit
-                dem Grundprofil der Wärmepumpe bewirtschaftet werden. Es können mehrere
-                Heiz-/Kühlkreisprofile definiert werden.</textElement>
+              <textElement>
+                <![CDATA[
+                  Dieses Profil definiert die erweiterten Datenpunkte zum Grundprofil
+                  "HeatPumpBase", welche zur Steuerung eines Heiz- oder Kühlkreises zur Verfügung
+                  gestellt werden. Derselbe physikalische Kreislauf kann entweder für das Heizen oder
+                  das Kühlen verwendet werden. Das Heiz-/Kühlkreisprofil muss immer in Kombination mit
+                  dem Grundprofil der Wärmepumpe bewirtschaftet werden. Es können mehrere
+                  Heiz-/Kühlkreisprofile definiert werden.
+                  <p>HeatCoolCtrl2 entspricht dem Entladekreis, mit welchem das Gebäude bedient wird (falls ein Pufferspeicher und Mischventil vorhanden ist).</p>
+                ]]>         
+              </textElement>
               <language>de</language>
             </legibleDescription>
           </functionalProfile>
@@ -907,11 +917,12 @@
               </versionNumber>
             </functionalProfileIdentification>
             <legibleDescription>
-              <textElement>Dieses Profil definiert die erweiterten Datenpunkte zum Grundprofil
+              <textElement>
+                Dieses Profil definiert die erweiterten Datenpunkte zum Grundprofil
                 "HeatPumpBase", welche zur Steuerung eines Brauchwarmwasserkreises zur Verfügung
                 gestellt werden. Das Brauchwarmwasser-Profil muss immer in Kombination mit dem
-                Grundprofil der Wärmepumpe bewirtschaftet werden. Es können mehrere
-                Brauchwarmwasser-Profile definiert werden.</textElement>
+                Grundprofil der Wärmepumpe bewirtschaftet werden.
+              </textElement>
               <language>de</language>
             </legibleDescription>
           </functionalProfile>
@@ -1081,7 +1092,10 @@
               </versionNumber>
             </functionalProfileIdentification>
             <legibleDescription>
-              <textElement>Die Puffertemperatur wird durch das SG-Ready Signal beeinflusst und kann vom Anwendungsprogrammierer nicht direkt verändert werden.
+              <textElement>
+                Der Pufferspeicher wird bei Stiebel Eltron über den Ladekreis geregelt (HeatCoolCtrl1).
+                Alternativ kann eine stufenweise Überhöhung über das Profil SG-ReadyStates erfolgen.
+                Die aktuellen Ist- und Sollwerte können nur ausgelesen werden.
               </textElement>
               <language>de</language>
             </legibleDescription>
@@ -1181,14 +1195,14 @@
                   <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
                   <h4>Heat pump with 4 operation modes</h4>
                   <p>Level 2m functional profile for heat pumps with 4 operation modes (SG Ready heat pumps) which can be set via 
-                  Modbus or RestAPI. In addition, the current operation status of the heat pump can be read. The operating states are
+                  Modbus. In addition, the current operation status of the heat pump can be read. The operating states are
                    defined from SG ready - "Bundesverband Wärmepumpe e.V. (bwp)". </p>
                    
                   <p> This functional profile can be used in two ways: </p>
                    
                   <ul>
-                    <li> The operating modes are written and read directly via Modbus or RestAPI. </li>
-                    <li> The relay contacts are mapped and implemented via Modbus or RestAPI for reading the operation mode, 
+                    <li> The operating modes are written and read directly via Modbus. </li>
+                    <li> The relay contacts are mapped and implemented via Modbus for reading the operation mode, 
                     but the mode is set via the relay contacts as in the standard application of SG Ready heat pumps.</li>        
                   </ul>
                        
@@ -1206,9 +1220,8 @@
                   <p> The communicator (e.g. central energy management system) takes into account the unit specifications for the switching 
                     frequency (attributes maxLockTimeMinutes and minRunTimeMinutes). The values can be set during declaration of the 
                         heat pump. The standard values for SG Ready heat pumps are "Max. Lock Time" 120 minutes and "Min. Run Time" 20 minutes. </p>
-                  
-                  <p> "SG Ready" is a trademark of the German Heat Pump Association. Further information
-                      at <a href="https://www.waermepumpe.de/normen-technik/sg-ready/">https://www.waermepumpe.de/normen-technik/sg-ready/</a>. </p>
+                  "SG Ready" is a trademark of the German Heat Pump Association.
+                  <br>Further information at <a href="https://www.waermepumpe.de/normen-technik/sg-ready/">https://www.waermepumpe.de/normen-technik/sg-ready/</a>.
                 ]]>
               </textElement>
               <language>en</language>
@@ -1218,13 +1231,13 @@
                 <![CDATA[    
                   <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
                   <h4>Wärmepumpen mit 4 Betriebszuständen</h4>
-                  <p>Stufe 2m Funktionsprofil für Wärmepumpen mit 4 Betriebszuständen (SG Ready Wärmepumpen), die über Modbus oder RestAPI gesetzt werden können. 
+                  <p>Stufe 2m Funktionsprofil für Wärmepumpen mit 4 Betriebszuständen (SG Ready Wärmepumpen), die über Modbus gesetzt werden können. 
                   Zusätzlich kann der aktuelle Betriebszustand der Wärmepumpe ausgelesen werden. Die Betriebszustände werden über SG Ready - Bundesverband Wärmepumpe e.V. (bwp) definiert. </p>
                   <p>Dieses Funktionsprofil kann auf zwei Arten genutzt werden: </p>
                   
                   <ul>
-                    <li> Die Betriebszustände werden direkt über Modbus oder RestAPI gesetzt und ausgelesen. </li>
-                    <li> Die Klemmkontakte werden gemappt und über Modbus oder RestAPI zum Auslesen des Betriebszustandes abgebildet. Der Zustand wird jedoch wie bei der Standard-Anwendung
+                    <li> Die Betriebszustände werden direkt über Modbus gesetzt und ausgelesen. </li>
+                    <li> Die Klemmkontakte werden gemappt und über Modbus zum Auslesen des Betriebszustandes abgebildet. Der Zustand wird jedoch wie bei der Standard-Anwendung
                     von SG Ready Wärmepumpen über die Klemmkontakte gesetzt. </li>        
                   </ul>
                   
@@ -1240,8 +1253,15 @@
                   <p>Der Communicator (z.B. Energiemanagementsystem) berücksichtigt die Gerätevorgaben zur Schaltfrequenz (Attribute maxLockTimeMintues und minRunTimeMinutes.
                   Der Wert der Attribute kann bei der Deklaration gesetzt werden. Standardeinstellung von SG Ready Wärmepumpen nach bwp ist 
                   "Max. Lock Time" 120 Minuten und "Min. Run Time" 20 Minuten.</p>
-                  <p>„SG Ready“ ist ein Markenzeichen des Bundesverbands Wärmepumpe e. V.<br/>
-                     Weiterführende Informationen unter <a href="https://www.waermepumpe.de/normen-technik/sg-ready/">https://www.waermepumpe.de/normen-technik/sg-ready/</a>.</p>
+                  „SG Ready“ ist ein Markenzeichen des Bundesverbands Wärmepumpe e. V.<br>
+                  Weiterführende Informationen unter <a href="https://www.waermepumpe.de/normen-technik/sg-ready/">https://www.waermepumpe.de/normen-technik/sg-ready/</a>.
+                  <br>
+                  <font color="red">Eigentlich müsste "Min. Lock Time" statt "Max. Lock Time" gesetzt sein.
+                                    Bei meinen Anwendungen habe ich "Min. Lock Time" und "Min. Run Time" jeweils auf 15 Min. gehabt.
+                                    Muss aber nochmals mit Stiebel Eltron geklärt werden. Vermutlich hat die WP sowieso einen internen Schutz,
+                                    und reagiert gar nicht auf zu schnelles Schalten. Es stellt sich also die Frage, ob dieser Aufwand über die
+                                    Attribute überhaupt getrieben werden muss bzw. wer dann die Garantie trägt, wenn sie nicht eingehalten werden
+                                    (ich plädiere für den WP-Hersteller, er muss seine Maschine schützen vor Fehlmanipulationen!)</font>
                 ]]>
               </textElement>
               <language>de</language>
@@ -1333,9 +1353,9 @@
                       <p>“SG Ready” is a trade make of Bundesverband Wärmepumpe e. V.
                       It describes a feature on heat pumps with control technology that
                       allows them to be connected to a smart grid.</p>
-                      <b>Operating states</b><br/>
+                      <b>Operating states</b><br>
                       Depending on the switching, the appliance can execute the following
-                      operating modes:<br/>
+                      operating modes:<br>
                       <ul>
                       <li>Operating state 1
                         <ul>
@@ -1380,9 +1400,9 @@
                       <p>„SG Ready“ ist ein Markenzeichen des Bundesverbands Wärmepumpe e. V.
                       Es bezeichnet eine Eigenschaft von Wärmepumpen, deren Regelungstechnik
                       die Einbindung in ein intelligentes Stromnetz</p>
-                      <b>Betriebszustände</b><br/>
+                      <b>Betriebszustände</b><br>
                       Je nach Beschaltung kann das Gerät folgende Betriebsmodi ausführen:
-                      <br/>
+                      <br>
                       <ul>
                       <li>Betriebszustand 1: Beschaltung (Eingang 2/Eingang 1): (1/0)
                         <ul>
@@ -1510,6 +1530,12 @@
                   <sLV1Name>SGReadyInp1isON</sLV1Name>
                   <manufName>SG READY EINGANG 1</manufName>
                 </alternativeNames>
+                <legibleDescription>
+                  <textElement>
+                    Ansteuerung bzw. Auslesen des Relais-Eingangs 1 für SG-Ready
+                  </textElement>
+                  <language>de</language>
+                </legibleDescription>
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
@@ -1532,6 +1558,12 @@
                   <sLV1Name>SGReadyInp2isON</sLV1Name>
                   <manufName>SG READY EINGANG 2</manufName>
                 </alternativeNames>
+                <legibleDescription>
+                  <textElement>
+                    Ansteuerung bzw. Auslesen des Relais-Eingangs 2 für SG-Ready
+                  </textElement>
+                  <language>de</language>
+                </legibleDescription>
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
@@ -1551,7 +1583,7 @@
               <specificationOwnerIdentification>0</specificationOwnerIdentification>
               <functionalProfileCategory>HeatPumpControl</functionalProfileCategory>
               <functionalProfileType>EnergyMonitor</functionalProfileType>
-              <levelOfOperation>2m</levelOfOperation>
+              <levelOfOperation>m</levelOfOperation>
               <versionNumber>
                 <primaryVersionNumber>0</primaryVersionNumber>
                 <secondaryVersionNumber>3</secondaryVersionNumber>
@@ -1571,9 +1603,7 @@
                   <ol>
                     <li>Energiewerte, Laufzeiten und Anzahl Starts werden typischerweise 1x täglich abgefragt. Die Leistungsmessungen
                         werden häufiger abgefragt und können zur Regelung dienen. Deshalb die Anforderung einer maximalen Abtastzeit.</li>
-                    <li>Die intern ermittelten Energiewerte ersetzen externe Zähler für Monitoring-Zwecke. Es wird erwünscht,
-                        dass der Hersteller Genauigkeitsangaben zu seinen intern ermittelten Werten macht. Dies ist eine wichtige
-                        Information für Monitoring-Systeme, um die Fehlertoleranz der energetischen Auswertungen abzuschätzen</li>
+                    <li>Die intern ermittelten Energiewerte sind i.d.R. berechnete Werte. Für eine exakte Messung werden externe, geeichte Zähler empfohlen.</li>
                   </ol>
                 ]]>
               </textElement>
@@ -1581,8 +1611,12 @@
             </legibleDescription>
             <programmerHints>
               <textElement>
-                Some configuration may not support parts or all of the datapoints of this
-                functional profile. Such data points report a value of -32768
+                <![CDATA[
+                  Some configuration may not support parts or all of the datapoints of this
+                  functional profile. Such data points report a value of -32768
+                  </br>
+                  <font color="red">Was ist das für ein Text?</font>
+                ]]>         
               </textElement>
               <language>en</language>
             </programmerHints>

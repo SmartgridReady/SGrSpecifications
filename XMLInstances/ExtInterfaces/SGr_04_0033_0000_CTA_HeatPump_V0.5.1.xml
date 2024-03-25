@@ -3,7 +3,7 @@
 <DeviceFrame xmlns="http://www.smartgridready.com/ns/V0/"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/Product/Product.xsd">
-  <deviceName>OptiHeat</deviceName>
+  <deviceName>Optiheat Inverta</deviceName>
   <manufacturerName>CTA AG</manufacturerName>
   <specificationOwnerIdentification>0</specificationOwnerIdentification>
   <releaseNotes>
@@ -12,8 +12,12 @@
   <deviceInformation>
     <legibleDescription>
       <textElement>
-        CTA Wärmepumpen mit OptiHeat Inverta(r)TWW 4esr, Eco 9e und Eco17a und
-        SmartGridready Anbindung ermöglichen umweltfreundliches Heizen.
+        <![CDATA[
+          Produktbeschreibung für die CTA Wärmepumpen OptiHeat Inverta TWW und Eco mit inverter-gesteuertem Verdichter
+          <p>CTA Wärmepumpen mit Optiheat Inverta TWW 4esr, Eco 9e und Eco 17e und
+          SmartGridready Anbindung ermöglichen einen umweltfreundlichen Betrieb mit hohem Komfort.</p>
+          Für mehr Informationen siehe <a href="https://github.com/SmartGridready/SGrSpecifications/blob/master/doc/HeatPumpAppliances.md#heat-pump-functional-profiles-in-cta-product-eid">CTA HeatPumpAppliance</a>
+        ]]>   
       </textElement>
       <language>de</language>
     </legibleDescription>
@@ -22,10 +26,10 @@
     <softwareRevision>2.1.0</softwareRevision>
     <hardwareRevision>1.1.0</hardwareRevision>
     <brandName>OptiHeat Inverta</brandName>
-    <powerSource>mains3Phase</powerSource>
+    <powerSource>mains1Phase, mains3Phase</powerSource>
     <nominalPower>5 - 35 kW</nominalPower>
     <manufacturerLabel>CTA OH Inverta Wärmepumpen</manufacturerLabel>
-    <generalRemarks>CTA/mz  IBT/cb</generalRemarks>
+    <generalRemarks>CTA/zem  IBT/cb</generalRemarks>
     <levelOfOperation>4m</levelOfOperation>
     <versionNumber>
       <primaryVersionNumber>0</primaryVersionNumber>
@@ -39,7 +43,7 @@
         Some data points support persistent memory functionality  (RWP) and limit data write operations to a couple 10'000 write cycles.
       </textElement>
       <language>en</language>
-      <uri>https://cta.ch/privatkunden/produkte/oh-i-eco-sw</uri>
+      <uri>https://cta.ch/privatkunden/produkte</uri>
     </programmerHints>
   </deviceInformation>
   <interfaceList>
@@ -68,8 +72,8 @@
               <levelOfOperation>4</levelOfOperation>
               <versionNumber>
                 <primaryVersionNumber>0</primaryVersionNumber>
-                <secondaryVersionNumber>1</secondaryVersionNumber>
-                <subReleaseVersionNumber>0</subReleaseVersionNumber>
+                <secondaryVersionNumber>5</secondaryVersionNumber>
+                <subReleaseVersionNumber>1</subReleaseVersionNumber>
               </versionNumber>
             </functionalProfileIdentification>
             <legibleDescription>
@@ -149,17 +153,14 @@
               <textElement>
                 <![CDATA[
                   Das Profil definiert den Grundbaustein zur dynamischen Ansteuerung von Wärmepumpen
-                  über eine Betriebsmodus gestützt Beeinflussung der Sollwerte nach SGr Stufe 2.
-                  </p>
-                  Der Betrieb der Wärmepumpe muss in sich sicher sein, unabhängig von den äusseren Vorgaben.
-                  </p>
-                  Dieses Grundprofil definiert die Datenpunkte, welche zur Steuerung des Gerätes «Wärmepumpe»
-                  mit zusätzlichen Stufe 4 Funktionsprofilen grundsätzlich zur Verfügung gestellt werden.
-                  Sie stellen die Version einer typischen Einfamilienhauswärmepumpe mit Aussentemperaturfühler dar.
-                  </p>
-                  Für die einzelnen Heizkreise, Warmwasser, Pufferspeicher und das Energie-Monitoring sowie eine
+                  über eine Betriebsmodus-gestützte Beeinflussung der Sollwerte.
+                  <p>Der Betrieb der Wärmepumpe muss in sich sicher sein, unabhängig von den äusseren Vorgaben.</p>
+                  <p>Dieses Grundprofil definiert die Datenpunkte, welche zur Steuerung des Gerätes «Wärmepumpe»
+                  mit zusätzlichen Funktionsprofilen grundsätzlich zur Verfügung gestellt werden.
+                  Sie stellen die Version einer typischen Einfamilienhauswärmepumpe mit Aussentemperaturfühler dar.</p>
+                  <p>Für die einzelnen Heizkreise, Warmwasser, Pufferspeicher und das Energie-Monitoring sowie eine
                   Verdichterdrehzahl / Leistungsregelung
-                  können in weiteren Funktionsprofilen zur Verfügung gestellt werden.
+                  können weitere Funktionsprofile zur Verfügung gestellt werden.</p>
                 ]]>         
               </textElement>
               <language>de</language>
@@ -190,12 +191,12 @@
                     <enumEntry>
                       <literal>CTA_HP_DOMHW_ACTIVE</literal>
                       <ordinal>4</ordinal>
-                      <description>TWW Ladung aktiv</description>
+                      <description>TWW (Trinkwarmwasser) Ladung aktiv</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>CTA_HP_OMHW_EMERG_ACTIVE</literal>
                       <ordinal>5</ordinal>
-                      <description>Notbetrieb TWW aktiv</description>
+                      <description>Notbetrieb TWW (Trinkwarmwasser) aktiv</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>CTA_HP_ACTIVE_COOLING_OP</literal>
@@ -317,7 +318,13 @@
                   <manufName>CTA_UnitStatus</manufName>
                 </alternativeNames>
                 <legibleDescription>
-                  <textElement>Status Code Kältekreis gem. Liste</textElement>
+                  <textElement>
+                    <![CDATA[
+                      Status Code Kältekreis gemäss Liste
+                      </br>
+                      <font color="red">Dies ist wohl ein interner Status des Kältekreises. Brauchen wir das überhaupt für die externe Ansteuerung?</font>
+                    ]]>         
+                  </textElement>
                   <language>de</language>
                 </legibleDescription>
               </dataPoint>
@@ -418,7 +425,7 @@
                   <manufName>CTA_B21_Temp</manufName>
                 </alternativeNames>
                 <legibleDescription>
-                  <textElement>Hz Vorlauftemperatur in °C</textElement>
+                  <textElement>Vorlauftemperatur in °C</textElement>
                   <language>de</language>
                 </legibleDescription>
               </dataPoint>
@@ -445,7 +452,7 @@
                 </alternativeNames>
                 <legibleDescription>
                   <textElement>
-                    Auslesen der aktuellen aktuellen-Temperatur des Rücklaufs. Hz
+                    Auslesen der aktuellen aktuellen-Temperatur des Rücklaufs.
                     Rücklauftemperatur in °C
                   </textElement>
                   <language>de</language>
@@ -473,7 +480,7 @@
                   <manufName>CTA_B91_Temp</manufName>
                 </alternativeNames>
                 <legibleDescription>
-                  <textElement>Auslesen der aktuellen Temperaturen der WP-Quelle (SoleWasser oder Luft)</textElement>
+                  <textElement>Auslesen der aktuellen Temperaturen der WP-Quelle (Sole-, Wasser- oder Luft-Eintrittstemperatur in die WP).</textElement>
                   <language>de</language>
                 </legibleDescription>
               </dataPoint>
@@ -528,7 +535,7 @@
                   <manufName>CTA_DWRequest</manufName>
                 </alternativeNames>
                 <legibleDescription>
-                  <textElement>VD-Drehzahl in % bei TWW Ladung (Empfehlung 38)</textElement>
+                  <textElement>VD-Drehzahl in % bei TWW (Trinkwarmwasser) Ladung (Empfehlung 38%. Es sollte jedenfalls nicht zu lange auf dem Maximum von 100% gefahren werden.)</textElement>
                   <language>de</language>
                 </legibleDescription>
               </dataPoint>
@@ -551,11 +558,15 @@
                 <unit>REVOLUTIONS_PER_MINUTE</unit>
                 <unitConversionMultiplicator>60.0</unitConversionMultiplicator>
                 <alternativeNames>
-                    <sLV1Name>ActSpeed</sLV1Name>
-                    <manufName>State_CompRPS</manufName></alternativeNames>
+                  <sLV1Name>ActSpeed</sLV1Name>
+                  <manufName>State_CompRPS</manufName></alternativeNames>
                 <legibleDescription>
                   <textElement>
-                    Effektive Drehzahl des Verdichters
+                    <![CDATA[
+                      Effektive Drehzahl des Verdichters
+                      </br>
+                      <font color="red">nochmals mit den Hersteller prüfen, ob hier wirklich rpm rauskommen. Bei der Vorgabe sind es ja %.</font>
+                    ]]>         
                   </textElement>
                   <language>de</language>
                 </legibleDescription>
@@ -614,12 +625,19 @@
             </functionalProfileIdentification>
             <legibleDescription>
               <textElement>
-                Dieses Profil definiert die erweiterten Datenpunkte zum Grundprofil "HeatPumpBase",
-                welche zur Steuerung eines Heiz- oder Kühlkreises zur Verfügung gestellt werden.
-                Derselbe physikalische Kreislauf kann entweder für das Heizen oder das Kühlen
-                verwendet werden. Das Heiz-/Kühlkreisprofil muss immer in Kombination mit dem
-                Grundprofil der Wärmepumpe bewirtschaftet werden. Es können mehrere
-                Heiz-/Kühlkreisprofile definiert werden.
+                <![CDATA[
+                  Dieses Profil definiert die erweiterten Datenpunkte zum Grundprofil "HeatPumpBase",
+                  welche zur Steuerung eines Heiz- oder Kühlkreises zur Verfügung gestellt werden.
+                  Derselbe physikalische Kreislauf kann entweder für das Heizen oder das Kühlen
+                  verwendet werden. Das Heiz-/Kühlkreisprofil muss immer in Kombination mit dem
+                  Grundprofil der Wärmepumpe bewirtschaftet werden. Es können mehrere
+                  Heiz-/Kühlkreisprofile definiert werden.
+                  <p>Es handelt sich dabei um die "Entladekreise", welche durch das Gebäude geführt werden.
+                  Entsprechende Mischventile sorgen dafür, dass verschiedene Temperaturniveaus eingestellt werden können</p>
+                  <font color="red">Ich vermisse hier den Datenpunkte für die Anhebung des Sollwerts über das Modbus-Register 1005 CTA_HK1_SetpointComfort.
+                                    Das wäre dann analog zu Stiebel Eltron. Name des Datenpunktes: SupplyWaterTempStptComfort. Mit diesem Datenpunkt könnte
+                                    man den Offset der Heizkurve verstellen, was sinnvoller ist als den absoluten Sollwert.</font>
+                ]]>         
               </textElement>
               <language>de</language>
             </legibleDescription>
@@ -669,7 +687,7 @@
                   <manufName>CTA_HK1_Status_UsrSet</manufName>
                 </alternativeNames>
                 <legibleDescription>
-                  <textElement>Auslesen des aktuellen Status des Heizkreises</textElement>
+                  <textElement>Setzen und Auslesen des aktuellen Status des Heizkreises</textElement>
                   <language>de</language>
                 </legibleDescription>
               </dataPoint>
@@ -726,7 +744,14 @@
                   <manufName>CTA_HK1_Status_UsrSet</manufName>
                 </alternativeNames>
                 <legibleDescription>
-                  <textElement>Auslesen des aktuellen Status des Heizkreises</textElement>
+                  <textElement>
+                    <![CDATA[
+                      Auslesen des aktuellen Status des Heizkreises
+                      </br>
+                      <font color="red">Braucht es diesen zusätzlichen Datenpunkt überhaupt? Der ist ja bereits abgedeckt durch den vorherigen.
+                                        Ev. aus Kompatibilitätsgründen für einheitliche FPs?</font>
+                    ]]>         
+                  </textElement>
                   <language>de</language>
                 </legibleDescription>
               </dataPoint>
@@ -752,7 +777,12 @@
                   <manufName>CTA_B21_Temp</manufName>
                 </alternativeNames>
                 <legibleDescription>
-                  <textElement>Auslesen der aktuellen aktuellen-Temperatur des Vorlaufs.</textElement>
+                  <textElement>
+                    <![CDATA[
+                      Auslesen der aktuellen aktuellen-Temperatur des Vorlaufs.
+                      <p>Es handelt sich dabei um die Vorlauftemperatur, welche ins Wärmeabgabesystem des Gebäudes geführt wird.</p>
+                    ]]>         
+                  </textElement>
                   <language>de</language>
                 </legibleDescription>
               </dataPoint>
@@ -778,7 +808,15 @@
                   <manufName>CTA_Ext_Heating_Setpoint</manufName>
                 </alternativeNames>
                 <legibleDescription>
-                  <textElement>Setzen der aktuellen Soll-Temperatur des Vorlaufs (Grundwert).</textElement>
+                  <textElement>
+                    <![CDATA[
+                      Setzen der aktuellen Soll-Temperatur des Vorlaufs (Grundwert).
+                      </br>
+                      <font color="red">Dieser Datenpunkt ist nur aktiv, wenn die Wärmepumpe extern gesteuert ist, z.B. über ein GA-System (Modbus Register 1000 CTA_Ext_Heating_Command auf 1).
+                                        Das ist aus meiner Sicht aber in einem EFH nie der Fall. Dort wird üblicherweise lokal gesteuert über den WP-Regler.
+                                        Ich würde diesen Datenpunkt deshalb hier weglassen.</font>
+                    ]]>         
+                  </textElement>
                   <language>de</language>
                 </legibleDescription>
               </dataPoint>
@@ -803,7 +841,13 @@
                   <sLV1Name>ctaRemoteHCTempSetptEnable</sLV1Name>
                   <manufName>CTA_Ext_Heating_Command</manufName></alternativeNames>
                 <legibleDescription>
-                  <textElement>true um den Datenpunkt HeatCoolCtrl.SupplyWaterTempStpt zu aktvieren</textElement>
+                  <textElement>
+                    <![CDATA[
+                      true um den Datenpunkt HeatCoolCtrl.SupplyWaterTempStpt zu aktvieren
+                      </br>
+                      <font color="red">dito, siehe oben</font>
+                    ]]>         
+                  </textElement>
                   <language>de</language>
                 </legibleDescription>
                 <programmerHints>
@@ -867,12 +911,17 @@
             </functionalProfileIdentification>
             <legibleDescription>
               <textElement>
-                Dieses Profil definiert die erweiterten Datenpunkte zum Grundprofil "HeatPumpBase",
-                welche zur Steuerung eines Heiz- oder Kühlkreises zur Verfügung gestellt werden.
-                Derselbe physikalische Kreislauf kann entweder für das Heizen oder das Kühlen
-                verwendet werden. Das Heiz-/Kühlkreisprofil muss immer in Kombination mit dem
-                Grundprofil der Wärmepumpe bewirtschaftet werden. Es können mehrere
-                Heiz-/Kühlkreisprofile definiert werden.
+                <![CDATA[
+                  Dieses Profil definiert die erweiterten Datenpunkte zum Grundprofil "HeatPumpBase",
+                  welche zur Steuerung eines Heiz- oder Kühlkreises zur Verfügung gestellt werden.
+                  Derselbe physikalische Kreislauf kann entweder für das Heizen oder das Kühlen
+                  verwendet werden. Das Heiz-/Kühlkreisprofil muss immer in Kombination mit dem
+                  Grundprofil der Wärmepumpe bewirtschaftet werden. Es können mehrere
+                  Heiz-/Kühlkreisprofile definiert werden.
+                  <p>Es handelt sich dabei um die "Entladekreise", welche durch das Gebäude geführt werden.
+                  Entsprechende Mischventile sorgen dafür, dass verschiedene Temperaturniveaus eingestellt werden können</p>
+                  <font color="red">leiche Bemerkungen wie oben beim HeatCoolCtrl_1.</font>
+                ]]>         
               </textElement>
               <language>de</language>
             </legibleDescription>
@@ -1161,7 +1210,8 @@
                 <legibleDescription>
                   <textElement>
                     Die Betriebsarten dieses Gerätes sind herstellerspezifisch:
-                    Ein- und ausschalten, einmaliger Leistungsstoss und  Notbetrieb TWW  
+                    Ein- und ausschalten, einmaliger Leistungsstoss und  Notbetrieb TWW (Trinkwarmwasser),
+                    einmaliges kurzes Aufheizen (Push)
                   </textElement>
                   <language>de</language>
                 </legibleDescription>
@@ -1304,7 +1354,7 @@
               </versionNumber>
             </functionalProfileIdentification>
             <legibleDescription>
-              <textElement>Bufferspeichersteuerung mittels Temperaturoffset.</textElement>
+              <textElement>Pufferspeicher-Steuerung mittels Anhebung und Absenkung des Sollwertes.</textElement>
               <language>de</language>
             </legibleDescription>
           </functionalProfile>
@@ -1352,7 +1402,7 @@
                     <sLV1Name>ActHeatBufferTemp</sLV1Name>
                     <manufName>CTA_B4_Temp</manufName></alternativeNames>
                 <legibleDescription>
-                  <textElement>Aktuelle Ist-Temperatur des Heiz-Pufferspeichers oben</textElement>
+                  <textElement>Aktuelle Ist-Temperatur des Heiz-Pufferspeichers (oben im Speicher gemessen)</textElement>
                   <language>de</language>
                 </legibleDescription>
               </dataPoint>
@@ -1377,7 +1427,7 @@
                   <sLV1Name>ActHeatBufferTempLower</sLV1Name>
                   <manufName>CTA_B41_Temp</manufName></alternativeNames>
                 <legibleDescription>
-                  <textElement>Aktuelle Ist-Temperatur des Heiz-Pufferspeichers unten</textElement>
+                  <textElement>Aktuelle Ist-Temperatur des Heiz-Pufferspeichers (unten im Speicher gemessen)</textElement>
                   <language>de</language>
                 </legibleDescription>
               </dataPoint>
@@ -1412,14 +1462,14 @@
                   <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
                   <h4>Heat pump with 4 operation modes</h4>
                   <p>Level 2m functional profile for heat pumps with 4 operation modes (SG Ready heat pumps) which can be set via 
-                  Modbus or RestAPI. In addition, the current operation status of the heat pump can be read. The operating states are
+                  Modbus. In addition, the current operation status of the heat pump can be read. The operating states are
                    defined from SG ready - "Bundesverband Wärmepumpe e.V. (bwp)". </p>
                    
                   <p> This functional profile can be used in two ways: </p>
                    
                   <ul>
-                    <li> The operating modes are written and read directly via Modbus or RestAPI. </li>
-                    <li> The relay contacts are mapped and implemented via Modbus or RestAPI for reading the operation mode, 
+                    <li> The operating modes are written and read directly via Modbus. </li>
+                    <li> The relay contacts are mapped and implemented via Modbus for reading the operation mode, 
                     but the mode is set via the relay contacts as in the standard application of SG Ready heat pumps.</li>        
                   </ul>
                        
@@ -1436,9 +1486,9 @@
                   
                   <p> The communicator (e.g. central energy management system) takes into account the unit specifications for the switching 
                     frequency (attributes maxLockTimeMinutes and minRunTimeMinutes). The values can be set during declaration of the 
-                        heat pump. The standard values for SG Ready heat pumps are "Max. Lock Time" 120 minutes and "Min. Run Time" 20 minutes. </p>
-                  
-                  <p> "SG Ready" is a trademark of the German Heat Pump Association. Further information at <a href="https://www.waermepumpe.de/normen-technik/sg-ready/">https://www.waermepumpe.de/normen-technik/sg-ready/</a>. </p>
+                        heat pump. The standard values for the heat pumps are "Max. Lock Time" 20 minutes and "Min. Run Time" 3 minutes. </p>
+                  "SG Ready" is a trademark of the German Heat Pump Association.
+                  <br>Further information at <a href="https://www.waermepumpe.de/normen-technik/sg-ready/">https://www.waermepumpe.de/normen-technik/sg-ready/</a>.
                 ]]>
               </textElement>
               <language>en</language>
@@ -1448,13 +1498,13 @@
                 <![CDATA[    
                   <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
                   <h4>Wärmepumpen mit 4 Betriebszuständen</h4>
-                  <p>Stufe 2m Funktionsprofil für Wärmepumpen mit 4 Betriebszuständen (SG Ready Wärmepumpen), die über Modbus oder RestAPI gesetzt werden können. 
+                  <p>Stufe 2m Funktionsprofil für Wärmepumpen mit 4 Betriebszuständen (SG Ready Wärmepumpen), die über Modbus gesetzt werden können. 
                   Zusätzlich kann der aktuelle Betriebszustand der Wärmepumpe ausgelesen werden. Die Betriebszustände werden über SG Ready - Bundesverband Wärmepumpe e.V. (bwp) definiert. </p>
                   <p>Dieses Funktionsprofil kann auf zwei Arten genutzt werden: </p>
                   
                   <ul>
-                    <li> Die Betriebszustände werden direkt über Modbus oder RestAPI gesetzt und ausgelesen. </li>
-                    <li> Die Klemmkontakte werden gemappt und über Modbus oder RestAPI zum Auslesen des Betriebszustandes abgebildet. Der Zustand wird jedoch wie bei der Standard-Anwendung
+                    <li> Die Betriebszustände werden direkt über Modbus gesetzt und ausgelesen. </li>
+                    <li> Die Klemmkontakte werden gemappt und über Modbus zum Auslesen des Betriebszustandes abgebildet. Der Zustand wird jedoch wie bei der Standard-Anwendung
                     von SG Ready Wärmepumpen über die Klemmkontakte gesetzt. </li>        
                   </ul>
                   
@@ -1468,10 +1518,10 @@
                   <p> Über den Datenpunkt "SGReadyState" kann der aktuelle Betriebsmodus der Wärmepumpe ausgelesen werden. </p>
                   
                   <p>Der Communicator (z.B. Energiemanagementsystem) berücksichtigt die Gerätevorgaben zur Schaltfrequenz (Attribute maxLockTimeMintues und minRunTimeMinutes.
-                  Der Wert der Attribute kann bei der Deklaration gesetzt werden. Standardeinstellung von SG Ready Wärmepumpen nach bwp ist 
-                  "Max. Lock Time" 120 Minuten und "Min. Run Time" 20 Minuten.</p>
-                  <p>„SG Ready“ ist ein Markenzeichen des Bundesverbands Wärmepumpe e. V.<br/>
-                     Weiterführende Informationen unter <a href="https://www.waermepumpe.de/normen-technik/sg-ready/">https://www.waermepumpe.de/normen-technik/sg-ready/</a>.</p>
+                  Der Wert der Attribute kann bei der Deklaration gesetzt werden. Standardeinstellung der Wärmepumpen ist 
+                  "Max. Lock Time" 20 Minuten und "Min. Run Time" 3 Minuten.</p>
+                  „SG Ready“ ist ein Markenzeichen des Bundesverbands Wärmepumpe e. V.<br>
+                  Weiterführende Informationen unter <a href="https://www.waermepumpe.de/normen-technik/sg-ready/">https://www.waermepumpe.de/normen-technik/sg-ready/</a>.
                 ]]>
               </textElement>
               <language>de</language>
@@ -1483,7 +1533,7 @@
               <dataType>
                 <float32/>
               </dataType>
-              <value>120</value>
+              <value>20</value>
               <unit>MINUTES</unit>
             </genericAttributeListElement>
             <genericAttributeListElement>
@@ -1491,7 +1541,7 @@
               <dataType>
                 <float32/>
               </dataType>
-              <value>20</value>
+              <value>3</value>
               <unit>MINUTES</unit>
             </genericAttributeListElement>
           </genericAttributeList>
@@ -1536,15 +1586,22 @@
                 </legibleDescription>
                 <programmerHints>
                   <textElement>
-                    SG READY BETRIEBSZUSTAND 1: Die Anlage darf
-                    nicht starten. Nur der Frostschutz wird
-                    gewährleistet. 2: Normaler Betrieb der Anlage.
-                    Automatik- / Programmbetrieb gemäß BI der
-                    angeschlossenen Wärmepumpe 3: Forcierter Betrieb
-                    der Anlage mit erhöhten Werten für Heiz-
-                    und/oder Warmwassertemperatur 4: Sofortige
-                    Ansteuerung der Maximalwerte für Heiz- und
-                    Warmwassertemperatur
+                    <![CDATA[
+                      SG READY BETRIEBSZUSTAND
+                      <ul>
+                        <li>1: Die Anlage darf nicht starten. Nur der Frostschutz wird gewährleistet.</li>
+                        <li>2: Normaler Betrieb der Anlage.
+                        Automatik- / Programmbetrieb gemäß BI der
+                        angeschlossenen Wärmepumpe</li>
+                        <li>3: Forcierter Betrieb
+                        der Anlage mit erhöhten Werten für Heiz-
+                        und/oder Warmwassertemperatur</li>
+                        <li>4: Sofortige
+                        Ansteuerung der Maximalwerte für Heiz- und
+                        Warmwassertemperatur</li>
+                      </ul>
+                      Max. 5 Schaltungen täglich für Zustände 3 und 4
+                    ]]> 
                   </textElement>
                   <language>de</language>
                 </programmerHints>
@@ -1655,7 +1712,7 @@
                   
                   <p>Die Datenaufnahme erfolgt typischerweise durch einen Energiemanager (oder eine Abrechnungssoftware).</p>
                   
-                  <p>Für Regelzwecke ist die Kenntnissder Messgenauigkeit zwingend und wird daher pro Datenpunkt als obligatorisches
+                  <p>Für Regelzwecke ist die Kenntnis der Messgenauigkeit zwingend und wird daher pro Datenpunkt als obligatorisches
                      Attribut angegeben. Somit ist es möglich unterschiedliche Messgenauigkeiten für die Datenpunkte
                      zu definieren.</p>
                   
@@ -1699,13 +1756,6 @@
                   <language>de</language>
                 </legibleDescription>
               </dataPoint>
-              <!-- defined in FP but not defined here
-              <genericAttributeList>
-                <genericAttributeListElement>
-                  <name>Precision</name>
-                </genericAttributeListElement>
-              </genericAttributeList>
-              -->
               <modbusDataPointConfiguration>
                 <modbusDataType>
                   <int32U />
@@ -1739,7 +1789,7 @@
                   Monitoring Funktionsprofil für Stromerzeuger und Stromverbraucher zur Kontrolle der Systemlast und/oder für regeltechnische 
                   Zwecke.
                   
-                  <p>Für Regelzwecke ist die Kenntnissder Messgenauigkeit zwingend und wird daher pro Datenpunkt als obligatorisches
+                  <p>Für Regelzwecke ist die Kenntnis der Messgenauigkeit zwingend und wird daher pro Datenpunkt als obligatorisches
                      Attribut angegeben. Somit ist es möglich unterschiedliche Messgenauigkeiten für die Datenpunkte
                      zu definieren.</p>
                   
@@ -1806,13 +1856,6 @@
                   <language>en</language>
                 </legibleDescription>
               </dataPoint>
-              <!-- defined in FP but not defined here
-              <genericAttributeList>
-                <genericAttributeListElement>
-                  <name>Precision</name>
-                </genericAttributeListElement>
-              </genericAttributeList>
-              -->
               <modbusDataPointConfiguration>
                 <modbusDataType>
                   <float32 />
@@ -1831,7 +1874,7 @@
               <specificationOwnerIdentification>0</specificationOwnerIdentification>
               <functionalProfileCategory>HeatPumpControl</functionalProfileCategory>
               <functionalProfileType>EnergyMonitor</functionalProfileType>
-              <levelOfOperation>2m</levelOfOperation>
+              <levelOfOperation>m</levelOfOperation>
               <versionNumber>
                 <primaryVersionNumber>0</primaryVersionNumber>
                 <secondaryVersionNumber>3</secondaryVersionNumber>
@@ -1851,10 +1894,8 @@
                   <ol>
                     <li>Energiewerte, Laufzeiten und Anzahl Starts werden typischerweise 1x täglich abgefragt. Die Leistungsmessungen
                         werden häufiger abgefragt und können zur Regelung dienen. Deshalb die Anforderung einer maximalen Abtastzeit.</li>
-                    <li>Die intern ermittelten Energiewerte ersetzen externe Zähler für Monitoring-Zwecke. Es wird erwünscht,
-                        dass der Hersteller Genauigkeitsangaben zu seinen intern ermittelten Werten macht. Dies ist eine wichtige
-                        Information für Monitoring-Systeme, um die Fehlertoleranz der energetischen Auswertungen abzuschätzen</li>
-                  </ol>
+                    <li>Die intern ermittelten Energiewerte sind i.d.R. berechnete Werte. Für eine exakte Messung werden externe, geeichte Zähler empfohlen.</li>
+                 </ol>
                 ]]>
               </textElement>
               <language>de</language>
@@ -2011,13 +2052,13 @@
                 <unit>HOURS</unit>
                 <alternativeNames>
                   <sLV1Name>RuntimeHeating</sLV1Name>
-                  <manufName>CTA_OperTime_Total_h</manufName>
+                  <manufName>CTA_OperTime_Heat_DW_h</manufName>
                 </alternativeNames>
                 <legibleDescription>
                   <textElement>
                     <![CDATA[
                       <i>Summe der Laufzeit in der Heizphase.</i>
-                      </p>Summe der Laufzeit des Verdichters seit Inbetriebnahme.
+                      <br>Summe der Laufzeit des Verdichters in Heiz- und TWW Betrieb seit Inbetriebnahme.
                     ]]>
                   </textElement>
                   <language>de</language>
@@ -2027,7 +2068,7 @@
                 <modbusDataType>
                   <float32 />
                 </modbusDataType>
-                <address>2090</address>
+                <address>2096</address>
                 <registerType>InputRegister</registerType>
                 <numberOfRegisters>2</numberOfRegisters>
               </modbusDataPointConfiguration>
