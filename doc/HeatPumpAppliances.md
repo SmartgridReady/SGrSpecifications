@@ -8,7 +8,7 @@ The low level profiles are listed on the left side, consisting of the level 1 an
 
 [https://www.waermepumpe.de/normen-technik/sg-ready/](https://www.waermepumpe.de/normen-technik/sg-ready/)
 
-Here a one-directional implementation on level 2 is implemented (with writing of the states only) and a bi-directional implementation on level 2m (with reading of the states also).
+Here, a one-directional implementation on level 2 is implemented (with writing of the states only) and a bi-directional implementation on level 2m (with reading of the states also).
 
 The energy monitoring profile is on level “m” and provides “read-only” data for monitoring purpose, such as energy data an run times. It may be used for Minergie® Monitoring or other applications.
 
