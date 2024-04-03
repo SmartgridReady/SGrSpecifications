@@ -80,9 +80,33 @@
     </dataPointListElement>
     <dataPointListElement>
       <dataPoint>
-        <dataPointName>HPOpState</dataPointName>
+        <dataPointName>HPOpStateAsEnum</dataPointName>
         <dataDirection>R</dataDirection>
-        <presenceLevel>M</presenceLevel>
+        <presenceLevel>R</presenceLevel>
+        <dataType>
+          <enum/>
+        </dataType>
+        <unit>NONE</unit>
+        <alternativeNames>
+          <hpBwpName>Aktive Funktion</hpBwpName>
+        </alternativeNames>
+        <legibleDescription>
+          <textElement> 
+            <![CDATA[
+              Auslesen des aktuellen Status der Wärmepumpe
+              <p>Die möglichen Werte des Enums sind herstellerspezifisch. Sie können der Produktbeschreibung entnommen werden.</p>
+              Ggf. sind die Werte auch oder nur als Bitmap verfügbar - siehe Datenpunkt HPOpStateAsBitmap.
+            ]]>         
+          </textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>HPOpStateAsBitmap</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>R</presenceLevel>
         <dataType>
           <bitmap/>
         </dataType>
@@ -94,8 +118,8 @@
           <textElement> 
             <![CDATA[
               Auslesen des aktuellen Status der Wärmepumpe
-              </p>Die möglichen Werte des Enums sind herstellerspezifisch.
-              Sie können der Produktbeschreibung entnommen werden.
+              <p>Die möglichen Werte der Bitmap sind herstellerspezifisch. Sie können der Produktbeschreibung entnommen werden.</p>
+              Ggf. sind die Werte auch oder nur als Enum verfügbar - siehe Datenpunkt HPOpStateAsEnum.
             ]]>         
           </textElement>
           <language>de</language>
