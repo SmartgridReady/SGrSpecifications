@@ -3,8 +3,8 @@
 <DeviceFrame xmlns="http://www.smartgridready.com/ns/V0/"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/Product/Product.xsd">
-  <deviceName>Initial ChargingStation</deviceName>
-  <manufacturerName>InitialManufacturer</manufacturerName>
+  <deviceName>Green Motion Home/Building</deviceName>
+  <manufacturerName>Eaton</manufacturerName>
   <specificationOwnerIdentification>0</specificationOwnerIdentification>
   <releaseNotes>
     <state>Draft</state>
@@ -27,7 +27,7 @@
     <versionNumber>
       <primaryVersionNumber>0</primaryVersionNumber>
       <secondaryVersionNumber>5</secondaryVersionNumber>
-      <subReleaseVersionNumber>0</subReleaseVersionNumber>
+      <subReleaseVersionNumber>2</subReleaseVersionNumber>
     </versionNumber>
   </deviceInformation>
   <interfaceList>
@@ -35,8 +35,8 @@
       <modbusInterfaceDescription>
         <modbusInterfaceSelection>TCPIP</modbusInterfaceSelection>
         <modbusTcp>
-          <port>0</port>
-          <address>0.0.0.0</address>
+          <port>502</port>
+          <address>192.168.1.55</address>
           <slaveId>1</slaveId>
         </modbusTcp>
         <firstRegisterAddressIsOne>false
@@ -312,73 +312,14 @@
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
-                  <int16U />
+                  <float32 />
                 </modbusDataType>
-                <address>0</address>
-                <registerType>HoldRegister</registerType>
-                <numberOfRegisters>1</numberOfRegisters>
+                <address>68</address>
+                <registerType>InputRegister</registerType>
+                <numberOfRegisters>2</numberOfRegisters>
               </modbusDataPointConfiguration>
             </dataPointListElement>
-            <dataPointListElement>
-              <dataPoint>
-                <dataPointName>maxReceiveTimeSec</dataPointName>
-                <dataDirection>RW</dataDirection>
-                <dataType>
-                  <int16U/>
-                </dataType>
-                <unit>SECONDS</unit>
-                <legibleDescription>
-                  <textElement>
-                    The 'maxReceiveTimeSec' parameter signifies the timeout for the 'stabilityFallback' attribute. If the EVSE does not receive communication within the specified 'maxReceiveTimeSec,' it will automatically limit the current to the 'Safe Current' value.
-                  </textElement>
-                  <language>en</language>
-                </legibleDescription>
-                <legibleDescription>
-                  <textElement>
-                    Timeout ...
-                  </textElement>
-                  <language>de</language>
-                </legibleDescription>
-              </dataPoint>
-              <modbusDataPointConfiguration>
-                <modbusDataType>
-                  <int16U />
-                </modbusDataType>
-                <address>0</address>
-                <registerType>HoldRegister</registerType>
-                <numberOfRegisters>1</numberOfRegisters>
-              </modbusDataPointConfiguration>
-            </dataPointListElement>
-            <dataPointListElement>
-              <dataPoint>
-                <dataPointName>HWCurrentLimit</dataPointName>
-                <dataDirection>R</dataDirection>
-                <dataType>
-                  <float32/>
-                </dataType>
-                <unit>AMPERES</unit>
-                <legibleDescription>
-                  <textElement>
-                    The maximum current allowed for the EVSE is determined by the electrical installation of the charging station and cannot be changed during operation.
-                  </textElement>
-                  <language>en</language>
-                </legibleDescription>
-                <legibleDescription>
-                  <textElement>
-                    Hardware current limit ...
-                  </textElement>
-                  <language>de</language>
-                </legibleDescription>
-              </dataPoint>
-              <modbusDataPointConfiguration>
-                <modbusDataType>
-                  <int16U />
-                </modbusDataType>
-                <address>0</address>
-                <registerType>HoldRegister</registerType>
-                <numberOfRegisters>1</numberOfRegisters>
-              </modbusDataPointConfiguration>
-            </dataPointListElement>
+
           </dataPointList>
         </functionalProfileListElement>
         <functionalProfileListElement>
@@ -448,7 +389,7 @@
                 <dataPointName>CurrentACL1</dataPointName>
                 <dataDirection>R</dataDirection>
                 <dataType>
-                  <float64/>
+                  <float32/>
                 </dataType>
                 <unit>AMPERES</unit>
                 <legibleDescription>
@@ -467,16 +408,16 @@
                     <float32/>
                   </dataType>
                   <value>0</value>
-                  <unit>PERCENT</unit>
+                  <unit>AMPERES</unit>
                 </genericAttributeListElement>
               </genericAttributeList>
               <modbusDataPointConfiguration>
                 <modbusDataType>
-                  <int16U />
+                  <float32 />
                 </modbusDataType>
-                <address>0</address>
-                <registerType>HoldRegister</registerType>
-                <numberOfRegisters>1</numberOfRegisters>
+                <address>155</address>
+                <registerType>InputRegister</registerType>
+                <numberOfRegisters>2</numberOfRegisters>
               </modbusDataPointConfiguration>
             </dataPointListElement>
             <dataPointListElement>
@@ -484,7 +425,7 @@
                 <dataPointName>CurrentACL2</dataPointName>
                 <dataDirection>R</dataDirection>
                 <dataType>
-                  <float64/>
+                  <float32/>
                 </dataType>
                 <unit>AMPERES</unit>
                 <legibleDescription>
@@ -508,11 +449,11 @@
               </genericAttributeList>
               <modbusDataPointConfiguration>
                 <modbusDataType>
-                  <int16U />
+                  <float32 />
                 </modbusDataType>
-                <address>0</address>
-                <registerType>HoldRegister</registerType>
-                <numberOfRegisters>1</numberOfRegisters>
+                <address>157</address>
+                <registerType>InputRegister</registerType>
+                <numberOfRegisters>2</numberOfRegisters>
               </modbusDataPointConfiguration>
             </dataPointListElement>
             <dataPointListElement>
@@ -520,7 +461,7 @@
                 <dataPointName>CurrentACL3</dataPointName>
                 <dataDirection>R</dataDirection>
                 <dataType>
-                  <float64/>
+                  <float32/>
                 </dataType>
                 <unit>AMPERES</unit>
                 <legibleDescription>
@@ -544,47 +485,11 @@
               </genericAttributeList>
               <modbusDataPointConfiguration>
                 <modbusDataType>
-                  <int16U />
+                  <float32 />
                 </modbusDataType>
-                <address>0</address>
-                <registerType>HoldRegister</registerType>
-                <numberOfRegisters>1</numberOfRegisters>
-              </modbusDataPointConfiguration>
-            </dataPointListElement>
-            <dataPointListElement>
-              <dataPoint>
-                <dataPointName>CurrentACN</dataPointName>
-                <dataDirection>R</dataDirection>
-                <dataType>
-                  <float64/>
-                </dataType>
-                <unit>AMPERES</unit>
-                <legibleDescription>
-                  <textElement>Erfassung des Stromes im Nullleiter</textElement>
-                  <language>de</language>
-                </legibleDescription>
-                <legibleDescription>
-                  <textElement>Current measurement of neutral conductor</textElement>
-                  <language>en</language>
-                </legibleDescription>
-              </dataPoint>
-              <genericAttributeList>
-                <genericAttributeListElement>
-                  <name>Precision</name>
-                  <dataType>
-                    <float32/>
-                  </dataType>
-                  <value>0</value>
-                  <unit>PERCENT</unit>
-                </genericAttributeListElement>
-              </genericAttributeList>
-              <modbusDataPointConfiguration>
-                <modbusDataType>
-                  <int16U />
-                </modbusDataType>
-                <address>0</address>
-                <registerType>HoldRegister</registerType>
-                <numberOfRegisters>1</numberOfRegisters>
+                <address>159</address>
+                <registerType>InputRegister</registerType>
+                <numberOfRegisters>2</numberOfRegisters>
               </modbusDataPointConfiguration>
             </dataPointListElement>
           </dataPointList>
@@ -823,76 +728,10 @@
           <dataPointList>
             <dataPointListElement>
               <dataPoint>
-                <dataPointName>VoltageACL1_L2</dataPointName>
+                <dataPointName>VoltageACL1</dataPointName>
                 <dataDirection>R</dataDirection>
                 <dataType>
-                  <float64/>
-                </dataType>
-                <unit>VOLTS</unit>
-                <legibleDescription>
-                  <textElement>Erfassung der Spannung zwischen Phase A-B</textElement>
-                  <language>de</language>
-                </legibleDescription>
-              </dataPoint>
-              <modbusDataPointConfiguration>
-                <modbusDataType>
-                  <int16U />
-                </modbusDataType>
-                <address>0</address>
-                <registerType>HoldRegister</registerType>
-                <numberOfRegisters>1</numberOfRegisters>
-              </modbusDataPointConfiguration>
-            </dataPointListElement>
-            <dataPointListElement>
-              <dataPoint>
-                <dataPointName>VoltageACL1_L3</dataPointName>
-                <dataDirection>R</dataDirection>
-                <dataType>
-                  <float64/>
-                </dataType>
-                <unit>VOLTS</unit>
-                <legibleDescription>
-                  <textElement>Erfassung der Spannung zwischen Phase A-C</textElement>
-                  <language>de</language>
-                </legibleDescription>
-              </dataPoint>
-              <modbusDataPointConfiguration>
-                <modbusDataType>
-                  <int16U />
-                </modbusDataType>
-                <address>0</address>
-                <registerType>HoldRegister</registerType>
-                <numberOfRegisters>1</numberOfRegisters>
-              </modbusDataPointConfiguration>
-            </dataPointListElement>
-            <dataPointListElement>
-              <dataPoint>
-                <dataPointName>VoltageACL2_L3</dataPointName>
-                <dataDirection>R</dataDirection>
-                <dataType>
-                  <float64/>
-                </dataType>
-                <unit>VOLTS</unit>
-                <legibleDescription>
-                  <textElement>Erfassung der Spannung zwischen Phase B-C</textElement>
-                  <language>de</language>
-                </legibleDescription>
-              </dataPoint>
-              <modbusDataPointConfiguration>
-                <modbusDataType>
-                  <int16U />
-                </modbusDataType>
-                <address>0</address>
-                <registerType>HoldRegister</registerType>
-                <numberOfRegisters>1</numberOfRegisters>
-              </modbusDataPointConfiguration>
-            </dataPointListElement>
-            <dataPointListElement>
-              <dataPoint>
-                <dataPointName>VoltageACL1_N</dataPointName>
-                <dataDirection>R</dataDirection>
-                <dataType>
-                  <float64/>
+                  <float32/>
                 </dataType>
                 <unit>VOLTS</unit>
                 <legibleDescription>
@@ -902,19 +741,19 @@
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
-                  <int16U />
+                  <float32 />
                 </modbusDataType>
-                <address>0</address>
-                <registerType>HoldRegister</registerType>
-                <numberOfRegisters>1</numberOfRegisters>
+                <address>147</address>
+                <registerType>InputRegister</registerType>
+                <numberOfRegisters>2</numberOfRegisters>
               </modbusDataPointConfiguration>
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
-                <dataPointName>VoltageACL2_N</dataPointName>
+                <dataPointName>VoltageACL2</dataPointName>
                 <dataDirection>R</dataDirection>
                 <dataType>
-                  <float64/>
+                  <float32/>
                 </dataType>
                 <unit>VOLTS</unit>
                 <legibleDescription>
@@ -924,19 +763,19 @@
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
-                  <int16U />
+                  <float32 />
                 </modbusDataType>
-                <address>0</address>
-                <registerType>HoldRegister</registerType>
-                <numberOfRegisters>1</numberOfRegisters>
+                <address>149</address>
+                <registerType>InputRegister</registerType>
+                <numberOfRegisters>2</numberOfRegisters>
               </modbusDataPointConfiguration>
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
-                <dataPointName>VoltageACL3_N</dataPointName>
+                <dataPointName>VoltageACL3</dataPointName>
                 <dataDirection>R</dataDirection>
                 <dataType>
-                  <float64/>
+                  <float32 />
                 </dataType>
                 <unit>VOLTS</unit>
                 <legibleDescription>
@@ -946,22 +785,22 @@
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
-                  <int16U />
+                  <float32 />
                 </modbusDataType>
-                <address>0</address>
-                <registerType>HoldRegister</registerType>
-                <numberOfRegisters>1</numberOfRegisters>
+                <address>149</address>
+                <registerType>InputRegister</registerType>
+                <numberOfRegisters>2</numberOfRegisters>
               </modbusDataPointConfiguration>
             </dataPointListElement>
           </dataPointList>
         </functionalProfileListElement>
         <functionalProfileListElement>
           <functionalProfile>
-            <functionalProfileName>ActivePowerAC</functionalProfileName>
+            <functionalProfileName>EnergyImport</functionalProfileName>
             <functionalProfileIdentification>
               <specificationOwnerIdentification>0</specificationOwnerIdentification>
               <functionalProfileCategory>Metering</functionalProfileCategory>
-              <functionalProfileType>ActivePowerAC</functionalProfileType>
+              <functionalProfileType>EnergyImportAC</functionalProfileType>
               <levelOfOperation>m</levelOfOperation>
               <versionNumber>
                 <primaryVersionNumber>1</primaryVersionNumber>
@@ -1020,12 +859,12 @@
           <dataPointList>
             <dataPointListElement>
               <dataPoint>
-                <dataPointName>ActivePowerACtot</dataPointName>
+                <dataPointName>TotalEnergyImport</dataPointName>
                 <dataDirection>R</dataDirection>
                 <dataType>
                   <float64/>
                 </dataType>
-                <unit>KILOWATTS</unit>
+                <unit>KILOWATT_HOURS</unit>
                 <legibleDescription>
                   <textElement>Erfassung der gesamten Wirkleistung</textElement>
                   <language>de</language>
@@ -1039,7 +878,7 @@
                 <genericAttributeListElement>
                   <name>Precision</name>
                   <dataType>
-                    <float32/>
+                    <int32U/>
                   </dataType>
                   <value>0</value>
                   <unit>PERCENT</unit>
@@ -1047,119 +886,11 @@
               </genericAttributeList>
               <modbusDataPointConfiguration>
                 <modbusDataType>
-                  <int16U />
+                  <int32U />
                 </modbusDataType>
-                <address>0</address>
-                <registerType>HoldRegister</registerType>
-                <numberOfRegisters>1</numberOfRegisters>
-              </modbusDataPointConfiguration>
-            </dataPointListElement>
-            <dataPointListElement>
-              <dataPoint>
-                <dataPointName>ActivePowerACL1</dataPointName>
-                <dataDirection>R</dataDirection>
-                <dataType>
-                  <float64/>
-                </dataType>
-                <unit>KILOWATTS</unit>
-                <legibleDescription>
-                  <textElement>Erfassung der Wirkleistung Phase 1</textElement>
-                  <language>de</language>
-                </legibleDescription>
-                <legibleDescription>
-                  <textElement>Active power measurement of phase 1</textElement>
-                  <language>en</language>
-                </legibleDescription>
-              </dataPoint>
-              <genericAttributeList>
-                <genericAttributeListElement>
-                  <name>Precision</name>
-                  <dataType>
-                    <float32/>
-                  </dataType>
-                  <value>0</value>
-                  <unit>PERCENT</unit>
-                </genericAttributeListElement>
-              </genericAttributeList>
-              <modbusDataPointConfiguration>
-                <modbusDataType>
-                  <int16U />
-                </modbusDataType>
-                <address>0</address>
-                <registerType>HoldRegister</registerType>
-                <numberOfRegisters>1</numberOfRegisters>
-              </modbusDataPointConfiguration>
-            </dataPointListElement>
-            <dataPointListElement>
-              <dataPoint>
-                <dataPointName>ActivePowerACL2</dataPointName>
-                <dataDirection>R</dataDirection>
-                <dataType>
-                  <float64/>
-                </dataType>
-                <unit>KILOWATTS</unit>
-                <legibleDescription>
-                  <textElement>Erfassung der Wirkleistung Phase 2</textElement>
-                  <language>de</language>
-                </legibleDescription>
-                <legibleDescription>
-                  <textElement>Active power measurement of phase 2</textElement>
-                  <language>en</language>
-                </legibleDescription>
-              </dataPoint>
-              <genericAttributeList>
-                <genericAttributeListElement>
-                  <name>Precision</name>
-                  <dataType>
-                    <float32/>
-                  </dataType>
-                  <value>0</value>
-                  <unit>PERCENT</unit>
-                </genericAttributeListElement>
-              </genericAttributeList>
-              <modbusDataPointConfiguration>
-                <modbusDataType>
-                  <int16U />
-                </modbusDataType>
-                <address>0</address>
-                <registerType>HoldRegister</registerType>
-                <numberOfRegisters>1</numberOfRegisters>
-              </modbusDataPointConfiguration>
-            </dataPointListElement>
-            <dataPointListElement>
-              <dataPoint>
-                <dataPointName>ActivePowerACL3</dataPointName>
-                <dataDirection>R</dataDirection>
-                <dataType>
-                  <float64/>
-                </dataType>
-                <unit>KILOWATTS</unit>
-                <legibleDescription>
-                  <textElement>Erfassung der Wirkleistung Phase 3</textElement>
-                  <language>de</language>
-                </legibleDescription>
-                <legibleDescription>
-                  <textElement>Active power measurement of phase 3</textElement>
-                  <language>en</language>
-                </legibleDescription>
-              </dataPoint>
-              <genericAttributeList>
-                <genericAttributeListElement>
-                  <name>Precision</name>
-                  <dataType>
-                    <float32/>
-                  </dataType>
-                  <value>0</value>
-                  <unit>PERCENT</unit>
-                </genericAttributeListElement>
-              </genericAttributeList>
-              <modbusDataPointConfiguration>
-                <modbusDataType>
-                  <int16U />
-                </modbusDataType>
-                <address>0</address>
-                <registerType>HoldRegister</registerType>
-                <numberOfRegisters>1</numberOfRegisters>
+                <address>135</address>
+                <registerType>InputRegister</registerType>
+                <numberOfRegisters>2</numberOfRegisters>
               </modbusDataPointConfiguration>
             </dataPointListElement>
           </dataPointList>
