@@ -32,7 +32,9 @@
     <legibleDescription>
       <textElement>
         <![CDATA[
-        The charging station's current limit is dynamically regulated by an external Energy Management System (EMS), with the value expressed in amps. This specific parameter is designed to be easily adjusted by an Energy Manager, allowing for efficient and tailored control of the charging process.
+          The charging station's current limit is dynamically regulated by an external Energy Management System (EMS),
+          with the value expressed in amps.
+          This specific parameter is designed to be easily adjusted by an Energy Manager, allowing for efficient and tailored control of the charging process.
         ]]>
       </textElement>
       <language>en</language>
@@ -46,31 +48,7 @@
       <language>de</language>
     </legibleDescription>
   </functionalProfile>
-  <genericAttributeList>
-    <genericAttributeListElement>
-      <name>StabilityFallback</name>
-    </genericAttributeListElement>
-  </genericAttributeList>
   <dataPointList>
-    <dataPointListElement>
-      <dataPoint>
-        <dataPointName>SafeCurrent</dataPointName>
-        <dataDirection>RW</dataDirection>
-        <presenceLevel>M</presenceLevel>
-        <dataType>
-          <float32/>
-        </dataType>
-        <unit>AMPERES</unit>
-        <legibleDescription>
-          <textElement>In the event of a communication interruption with the EMS, the EVSE automatically adjusts its current limit to the Safe Current value.</textElement>
-          <language>en</language>
-        </legibleDescription>
-        <legibleDescription>
-          <textElement>Zum Einstellen des Betriebsmodus</textElement>
-          <language>de</language>
-        </legibleDescription>
-      </dataPoint>
-    </dataPointListElement>
     <dataPointListElement>
       <dataPoint>
         <dataPointName>EMSCurrentLimit</dataPointName>
@@ -81,7 +59,13 @@
         </dataType>
         <unit>AMPERES</unit>
         <legibleDescription>
-          <textElement>The maximum current allowed for the charging station at this moment.</textElement>
+          <textElement>
+            <![CDATA[
+              The maximum current allowed for the charging station at this moment.
+              <p>If the device requires different datapoints for writing and reading, the data direction of this data point
+              can be changed to W and the data point <em>EMSCurrentLimitFeedback</em> can be used to define a datapoint for reading the maximum current.</p>
+            ]]>
+          </textElement>
           <language>en</language>
         </legibleDescription>
         <legibleDescription>
@@ -92,16 +76,122 @@
     </dataPointListElement>
     <dataPointListElement>
       <dataPoint>
-        <dataPointName>maxReceiveTimeSec</dataPointName>
+        <dataPointName>EMSCurrentLimitFeedback</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>O</presenceLevel>
+        <dataType>
+          <float32/>
+        </dataType>
+        <unit>AMPERES</unit>
+        <legibleDescription>
+          <textElement>
+            <![CDATA[
+              Reads the maximum current allowed for the charging station at this moment.
+              <p>This datapoint should only be used if the devices requires different datapoints to write and to read the maximum current.</p>
+            ]]>
+          </textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>Current limit ...</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>SafeCurrent</dataPointName>
         <dataDirection>RW</dataDirection>
-        <presenceLevel>M</presenceLevel>
+        <presenceLevel>R</presenceLevel>
+        <dataType>
+          <float32/>
+        </dataType>
+        <unit>AMPERES</unit>
+        <legibleDescription>
+          <textElement>
+            <![CDATA[
+              In the event of a communication interruption with the EMS, the EVSE automatically adjusts its current limit to the Safe Current value.
+              <p>If the device requires different datapoints for writing and reading, the data direction of this data point
+              can be changed to W and the data point <em>SafeCurrentFeedback</em> can be used to define a datapoint for reading the safe current.</p>
+              <p>This datapoint should only be used if the devices requires different datapoints to write and to read the safe current.</p>
+            ]]>
+          </textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>Zum Einstellen des Betriebsmodus</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>SafeCurrentFeedback</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>O</presenceLevel>
+        <dataType>
+          <float32/>
+        </dataType>
+        <unit>AMPERES</unit>
+        <legibleDescription>
+          <textElement>
+            <![CDATA[
+              Reads the current limit to the Safe Current value.
+              <p>This datapoint should only be used if the devices requires different datapoints to write and to read the safe current.</p>
+            ]]>
+          </textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>Zum Lesen des Betriebsmodus</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>MaxReceiveTimeSec</dataPointName>
+        <dataDirection>RW</dataDirection>
+        <presenceLevel>R</presenceLevel>
         <dataType>
           <int16U/>
         </dataType>
         <unit>SECONDS</unit>
         <legibleDescription>
           <textElement>
-            The 'maxReceiveTimeSec' parameter signifies the timeout for the 'stabilityFallback' attribute. If the EVSE does not receive communication within the specified 'maxReceiveTimeSec,' it will automatically limit the current to the 'Safe Current' value.
+            <![CDATA[
+              The <em>MaxReceiveTimeSec</em> datapoint signifies the timeout for the stability fallback.
+              If the EVSE does not receive communication within the specified <em>MaxReceiveTimeSec</em>', it will automatically limit the current to the <em>SafeCurrent</em> value.
+              <p>If the device requires different datapoints for writing and reading, the data direction of this data point
+              can be changed to W and the data point <em>MaxReceiveTimeSecFeedback</em> can be used to define a datapoint for reading the timeout.</p>
+              <p>This datapoint should only be used if the devices requires different datapoints to write and to read the timeout.</p>
+            ]]>
+          </textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>
+            Timeout ...
+          </textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>MaxReceiveTimeSecFeedback</dataPointName>
+        <dataDirection>R</dataDirection>
+        <presenceLevel>O</presenceLevel>
+        <dataType>
+          <int16U/>
+        </dataType>
+        <unit>SECONDS</unit>
+        <legibleDescription>
+          <textElement>
+            <![CDATA[
+              Reads the timeout for the stability fallback.
+              <p>This datapoint should only be used if the devices requires different datapoints to write and to read the timeout.</p>
+            ]]>
           </textElement>
           <language>en</language>
         </legibleDescription>
