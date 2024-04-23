@@ -65,7 +65,7 @@ SGr has attributes to denote the quality of the measured value. The presence of 
 
 | SGr Attribute | Data Type | Description | Example |
 |---------------|-----------|-------------|---------|
-| measuredValueSource | enum | Value source kind related to SGr level 6 applications. Potential values are measuredValue, calculatedValue, empiricalValue | measuredValue |
+| MeasuredValueSource | enum | Value source kind related to SGr level 6 applications. Potential values are measuredValue, calculatedValue, empiricalValue | measuredValue |
 
 ## Curtailment
 Various function profiles require boundaries to set points with respect to curtailment or home energy management systems.
@@ -73,9 +73,9 @@ Various function profiles require boundaries to set points with respect to curta
 
 | SGr Attribute | Data Type | Description | Example |
 |---------------|-----------|-------------|---------|
-| curtailment | float | Used in state-based reduction schemes. This value specifies the reduction in percent for the reduced operation mode. | 40% | 
-| minLoad | float |  Used in state-based reduction schemes. In locked mode the product will not reduce its load below this minimum value | 2 kW |
-| maxLockTimeMinutes | float | used in state-based reduction schemes. A reduction command to reduced or locked mode shall not be applied longer than this specified duration | 20 min |
-| minRunTimeMinutes | float | Used in state-based reduction schemes. When returning to normal mode the normal mode must be guaranteed for at least the specified duration | 15 min|
-| valueByTimeTableMinutes | float | Used for time tables to specify the temporal separation of data curve points | 1 min |
-| flexAssistance | sgr:FlexAssistance | Systems with more than One communicator need a definition of the priority of the commands / demands for a flexibility requirement. This element defines the kind of a such a command (serviceable for net (DSO), energy or system (TNO)) and its priority (SHALL / SHOULD / MAY) |
+| Curtailment | float | Used in state-based reduction schemes. This value specifies the reduction in percent for the reduced operation mode. | 40% | 
+| MimimumLoad | float |  Used in state-based reduction schemes. In locked mode the product will not reduce its load below this minimum value | 2 kW |
+| MaximumLockTime | float | used in state-based reduction schemes. A reduction command to reduced or locked mode shall not be applied longer than this specified duration | 20 min |
+| MinimumRunTime | float | Used in state-based reduction schemes. When returning to normal mode the normal mode must be guaranteed for at least the specified duration | 15 min|
+| ValueByTimeTable | float | Used for time tables to specify the temporal separation of data curve points | 1 min |
+| FlexAssistance | sgr:FlexAssistance | Systems with more than One communicator need a definition of the priority of the commands / demands for a flexibility requirement. This element defines the kind of a such a command (serviceable for net (DSO), energy or system (TNO)) and its priority (SHALL / SHOULD / MAY) |
