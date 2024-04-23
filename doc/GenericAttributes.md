@@ -15,13 +15,11 @@ These attributes are generally used to search for devices that fulfill a set of 
 
 | SGr Attribute | Data Type | Description | Example |
 |---------------|-----------|-------------|---------|
-| maxVal | float | upper range limit. | 200.0 |
-| minVal | float | lower range limit. | 0.0 |
-| measuredValueType | enum | MeasValueType: type of measurement. Possible values are "value", "min", max", "average", "stdDev" | value |
-| specialQualityRequirement | string | indicates Quality requirements fulfilled like formal certifications | METAS  |
-| precisionPercent | float | the precisionPercent of a measurement, calculation result or result of a controls process | 2.0% |
-| maxLatencyTimeMs | unsignedLong | Maximum time in milliseconds from capturing of measured value until ready at the product interface (i.e. analog-digital conversion time) | 10 ms |
-| sampleRateHz | unsignedLong | SampleRate in milliseconds | 200 ms |
+| MeasuredValueType | enum | MeasuredValueType: type of measurement. Possible values are "value", "min", max", "average", "stdDev" | value |
+| SpecialQualityRequirement | string | indicates Quality requirements fulfilled like formal certifications | METAS  |
+| Precision | float32 | the precision of a measurement, calculation result or result of a controls process | 2.0% |
+| MaximumLatencyTime | float | Maximum time in milliseconds from capturing of measured value until ready at the product interface (i.e. analog-digital conversion time) | 10 ms |
+| SampleRate | unsignedLong | SampleRate in milliseconds | 200 ms |
 
 ## Stability Fallback
 A consumer or a generating system receives the permit for a load change for a certain period of time. This time is always set to 0 each time a confirmation message is received (HeartBeat).

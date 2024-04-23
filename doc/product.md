@@ -76,3 +76,8 @@ Each functional profile instance contains a list of data points in accordance wi
 | Interface Info| transport-service specific information on how to access the data point |
 | programmerHints   | optional, can occur once per language. Contains details for the programmer. |
 
+### Constant Data Points
+
+Additional to the datapoints in the functional profile the product has the concept of constant datapoints that can implement the datapoint of the functional profile and that have a constant value.
+
+For this, the data direction "C" is possible in products. In this case, a value must be defined for the datapoint.
