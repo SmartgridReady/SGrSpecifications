@@ -127,35 +127,8 @@
               <textElement>
                 <![CDATA[ 
                   <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
-                  <strong>Messung der Stromstärke</strong><br>
-                  Monitoring Funktionsprofil für Stromerzeuger und Stromverbraucher zur Kontrolle der Systemlast und/oder für regeltechnische 
-                  Zwecke.
-                  
-                  <p>Für Regelzwecke ist die Kenntnis der Messgenauigkeit hilfreich - sie kann pro Datenpunkt als generisches
-                     Attribut angegeben werden. Somit ist es möglich unterschiedliche Messgenauigkeiten für die Datenpunkte
-                     zu definieren.</p>
-                  
-                  <p>Dieses Funktionsprofil erlaubt sowohl die Messung der Stromstärke auf einer Phase wie auch auf drei Phasen.
-                     Eine der folgenden Varianten muss bei der Implementierung des Funktionsprofiles umgesetzt werden:
-                  <ul>
-                    <li>Einphasige Geräte geben die Stromstärke über die erste Phase an (CurrentAC1)</li>
-                    <li>3-phasige Geräte geben die Stromstärke pro Phase an (CurrentAC1, CurrentAC2, CurrentAC3)</li>
-                  </ul>
-                  Die Implementierung der Messung der Stromstärke auf dem Nulleiter (CurrentACN) ist optional möglich.
-                  </p>
-                ]]> 
-              </textElement>
-              <language>de</language>
-            </legibleDescription>
-            <legibleDescription>
-              <textElement>
-                <![CDATA[ 
-                  <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
                   <strong>Current measurement</strong><br>
                   Monitoring functional profile for power generators and consumers for reflecting the current. 
-                  
-                  <p>Knowing the precision of measurements is useful - it can be specified as a mandatory attribute per data point.
-                     Thus, different measurement precisions can be defined for the data points. </p>
                   
                   <p>Dieses Funktionsprofil erlaubt sowohl die Messung der Stromstärke auf einer Phase wie auch auf drei Phasen.
                      Eine der folgenden Varianten muss bei der Implementierung des Funktionsprofiles umgesetzt werden:
@@ -165,9 +138,39 @@
                   </ul>
                   
                   <p>The implementation of a datapoint measuring the current on the neutral conductor is optional (via datapoint CurrentACN).</p>
+                  
+                  <p>Information necessary for configuring the interface or for defining use cases to the control the device can be specified during the declaration
+                     either for the entire device or for individual datapoints
+                     (see <a href="https://github.com/SmartGridready/SGrSpecifications/blob/master/doc/GenericAttributes.md#static-data-point-attributes">Generic Attributes</a>).
+                     </p>
                 ]]> 
               </textElement>
               <language>en</language>
+            </legibleDescription>
+            <legibleDescription>
+              <textElement>
+                <![CDATA[ 
+                  <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
+                  <strong>Messung der Stromstärke</strong><br>
+                  Monitoring Funktionsprofil für Stromerzeuger und Stromverbraucher zur Kontrolle der Systemlast und/oder für regeltechnische 
+                  Zwecke.
+                  
+                  <p>Dieses Funktionsprofil erlaubt sowohl die Messung der Stromstärke auf einer Phase wie auch auf drei Phasen.
+                     Eine der folgenden Varianten muss bei der Implementierung des Funktionsprofiles umgesetzt werden:
+                  <ul>
+                    <li>Einphasige Geräte geben die Stromstärke über die erste Phase an (CurrentAC1)</li>
+                    <li>3-phasige Geräte geben die Stromstärke pro Phase an (CurrentAC1, CurrentAC2, CurrentAC3)</li>
+                  </ul>
+                  Die Implementierung der Messung der Stromstärke auf dem Nulleiter (CurrentACN) ist optional möglich.
+                  </p>
+                  
+                  <p>Angaben, die für die Konfiguration der Schnittstelle oder für den Aufbau von Use-Cases zur Steuerung nötig sind können während der Deklaration
+                     für das gesamte Gerät oder für einzelne Datenpunkte angegeben werden
+                     (siehe <a href="https://github.com/SmartGridready/SGrSpecifications/blob/master/doc/GenericAttributes.md#static-data-point-attributes">Generische Attribute</a>).
+                     </p>
+                ]]> 
+              </textElement>
+              <language>de</language>
             </legibleDescription>
           </functionalProfile>
           <dataPointList>
@@ -274,9 +277,6 @@
                   
                   <p>Data is typically recorded by an energy manager (or a billing software).</p>
                   
-                  <p>Knowing the precision of measurements is useful - it can be specified as a mandatory attribute per data point.
-                     Thus, different measurement precisions can be defined for the data points. </p>
-                  
                   <p>With this functional profile you can measure the total energy as well as the energy of the three
                      individual phases. One of the following options must be implemented for fulfilling the functional profile:
                   <ul>
@@ -285,6 +285,11 @@
                     <li>Three-phase devices with measurement of the total energy all data points</li>
                   </ul>
                   </p>
+                  
+                  <p>Knowing the precision of measurements is useful - it can be specified as a attribute <em>precision</em> per data point or in general.
+                     Thus, different measurement precisions can be defined for the data points
+                     (see <a href="https://github.com/SmartGridready/SGrSpecifications/blob/master/doc/GenericAttributes.md#static-data-point-attributes">Precision</a>).
+                     </p>
                 ]]> 
               </textElement>
               <language>en</language>
@@ -298,10 +303,6 @@
                   
                   <p>Die Datenaufnahme erfolgt typischerweise durch einen Energiemanager (oder eine Abrechnungssoftware).</p>
                   
-                  <p>Für Regelzwecke ist die Kenntnis der Messgenauigkeit hilfreich - sie kann pro Datenpunkt als generisches
-                     Attribut angegeben werden. Somit ist es möglich unterschiedliche Messgenauigkeiten für die Datenpunkte
-                     zu definieren.</p>
-                  
                   <p>Dieses Funktionsprofil erlaubt sowohl die Messung der Gesamtenergie wie auch die Messung der Energie
                      der drei einzelnen Phasen. Eine der folgenden Varianten muss bei der Implementierung des Funktionsprofiles
                      umgesetzt werden:
@@ -311,6 +312,11 @@
                     <li>3-phasige Geräte mit Einzelphasen- und Gesamtenergiemessung geben alle Datenpunkte an</li>
                   </ul>
                   </p>
+                  
+                  <p>Für Regelzwecke ist die Kenntnis der Messgenauigkeit hilfreich - sie kann pro Datenpunkt oder generell als generisches
+                     Attribut <em>Precision</em> angegeben werden. Somit ist es möglich unterschiedliche Messgenauigkeiten für die Datenpunkte zu definieren
+                     (siehe <a href="https://github.com/SmartGridready/SGrSpecifications/blob/master/doc/GenericAttributes.md#static-data-point-attributes">Precision</a>).
+                     </p>
                 ]]> 
               </textElement>
               <language>de</language>
