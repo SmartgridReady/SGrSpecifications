@@ -76,6 +76,87 @@
     </dataPointListElement>
     <dataPointListElement>
       <dataPoint>
+        <dataPointName>EMSCurrentLimit.SmoothTransition_Window</dataPointName>
+        <dataDirection>RW</dataDirection>
+        <presenceLevel>R</presenceLevel>
+        <dataType>
+          <float32/>
+        </dataType>
+        <unit>SECONDS</unit>
+        <legibleDescription>
+          <textElement>
+            <![CDATA[
+              Sub datapoint defining the window for the smooth transition of the EMSCurrentLimit datapoint.
+              <p>Indicates a time window in which the new operating mode is started randomly. The time window begins with the start command of the operating mode. The value 0 means immediate.</p>
+              <p>This datapoint can be implemented in the device as constant datapoint if the value is constant or
+              as regular datapoint if it can be read from the device.</p>
+              See winTms in <a href="https://github.com/SmartGridready/SGrSpecifications/blob/master/doc/GenericAttributes.md#smooth-transition">Smooth Transition</a>
+            ]]>
+          </textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>Current limit ...</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>EMSCurrentLimit.SmoothTransition_Delay</dataPointName>
+        <dataDirection>RW</dataDirection>
+        <presenceLevel>R</presenceLevel>
+        <dataType>
+          <float32/>
+        </dataType>
+        <unit>SECONDS</unit>
+        <legibleDescription>
+          <textElement>
+            <![CDATA[
+              Sub datapoint defining the delay for the smooth transition of the EMSCurrentLimit datapoint.
+              <p>Specifies how quickly the changes should be made. The corresponding value is gradually changed from the old to the new value in the specified time.</p>
+              <p>This datapoint can be implemented in the device as constant datapoint if the value is constant or
+              as regular datapoint if it can be read from the device.</p>
+              See rmpTms in <a href="https://github.com/SmartGridready/SGrSpecifications/blob/master/doc/GenericAttributes.md#smooth-transition">Smooth Transition</a>
+            ]]>
+          </textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>Current limit ...</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>EMSCurrentLimit.SmoothTransition_Duration</dataPointName>
+        <dataDirection>RW</dataDirection>
+        <presenceLevel>R</presenceLevel>
+        <dataType>
+          <float32/>
+        </dataType>
+        <unit>SECONDS</unit>
+        <legibleDescription>
+          <textElement>
+            <![CDATA[
+              Sub datapoint defining the duration for the smooth transition of the EMSCurrentLimit datapoint.
+              <p>determines how long the operating mode should be active. When the time has elapsed, the operating mode is automatically terminated. If set to 0 (standard value), the operating mode remains active until a new command is received.</p>
+              <p>This datapoint can be implemented in the device as constant datapoint if the value is constant or
+              as regular datapoint if it can be read from the device.</p>
+              See rvrtTms in <a href="https://github.com/SmartGridready/SGrSpecifications/blob/master/doc/GenericAttributes.md#smooth-transition">Smooth Transition</a>
+            ]]>
+          </textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>Current limit ...</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
         <dataPointName>EMSCurrentLimitFeedback</dataPointName>
         <dataDirection>R</dataDirection>
         <presenceLevel>O</presenceLevel>
@@ -120,6 +201,87 @@
         </legibleDescription>
         <legibleDescription>
           <textElement>Zum Einstellen des Betriebsmodus</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>SafeCurrent.SmoothTransition_Window</dataPointName>
+        <dataDirection>RW</dataDirection>
+        <presenceLevel>R</presenceLevel>
+        <dataType>
+          <float32/>
+        </dataType>
+        <unit>SECONDS</unit>
+        <legibleDescription>
+          <textElement>
+            <![CDATA[
+              Sub datapoint defining the window for the smooth transition of the SafeCurrent datapoint.
+              <p>Indicates a time window in which the new operating mode is started randomly. The time window begins with the start command of the operating mode. The value 0 means immediate.</p>
+              <p>This datapoint can be implemented in the device as constant datapoint if the value is constant or
+              as regular datapoint if it can be read from the device.</p>
+              See winTms in <a href="https://github.com/SmartGridready/SGrSpecifications/blob/master/doc/GenericAttributes.md#smooth-transition">Smooth Transition</a>
+            ]]>
+          </textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>Window zum Einstellen des Betriebsmodus</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>SafeCurrent.SmoothTransition_Delay</dataPointName>
+        <dataDirection>RW</dataDirection>
+        <presenceLevel>R</presenceLevel>
+        <dataType>
+          <float32/>
+        </dataType>
+        <unit>SECONDS</unit>
+        <legibleDescription>
+          <textElement>
+            <![CDATA[
+              Sub datapoint defining the delay for the smooth transition of the SafeCurrent datapoint.
+              <p>Specifies how quickly the changes should be made. The corresponding value is gradually changed from the old to the new value in the specified time.</p>
+              <p>This datapoint can be implemented in the device as constant datapoint if the value is constant or
+              as regular datapoint if it can be read from the device.</p>
+              See rmpTms in <a href="https://github.com/SmartGridready/SGrSpecifications/blob/master/doc/GenericAttributes.md#smooth-transition">Smooth Transition</a>
+            ]]>
+          </textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>Delay zum Einstellen des Betriebsmodus</textElement>
+          <language>de</language>
+        </legibleDescription>
+      </dataPoint>
+    </dataPointListElement>
+    <dataPointListElement>
+      <dataPoint>
+        <dataPointName>SafeCurrent.SmoothTransition_Duration</dataPointName>
+        <dataDirection>RW</dataDirection>
+        <presenceLevel>R</presenceLevel>
+        <dataType>
+          <float32/>
+        </dataType>
+        <unit>SECONDS</unit>
+        <legibleDescription>
+          <textElement>
+            <![CDATA[
+              Sub datapoint defining the duration for the smooth transition of the SafeCurrent datapoint.
+              <p>determines how long the operating mode should be active. When the time has elapsed, the operating mode is automatically terminated. If set to 0 (standard value), the operating mode remains active until a new command is received.</p>
+              <p>This datapoint can be implemented in the device as constant datapoint if the value is constant or
+              as regular datapoint if it can be read from the device.</p>
+              See rvrtTms in <a href="https://github.com/SmartGridready/SGrSpecifications/blob/master/doc/GenericAttributes.md#smooth-transition">Smooth Transition</a>
+            ]]>
+          </textElement>
+          <language>en</language>
+        </legibleDescription>
+        <legibleDescription>
+          <textElement>Duration zum Einstellen des Betriebsmodus</textElement>
           <language>de</language>
         </legibleDescription>
       </dataPoint>
