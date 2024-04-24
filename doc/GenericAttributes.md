@@ -15,13 +15,11 @@ These attributes are generally used to search for devices that fulfill a set of 
 
 | SGr Attribute | Data Type | Description | Example |
 |---------------|-----------|-------------|---------|
-| maxVal | float | upper range limit. | 200.0 |
-| minVal | float | lower range limit. | 0.0 |
-| measuredValueType | enum | MeasValueType: type of measurement. Possible values are "value", "min", max", "average", "stdDev" | value |
-| specialQualityRequirement | string | indicates Quality requirements fulfilled like formal certifications | METAS  |
-| precisionPercent | float | the precisionPercent of a measurement, calculation result or result of a controls process | 2.0% |
-| maxLatencyTimeMs | unsignedLong | Maximum time in milliseconds from capturing of measured value until ready at the product interface (i.e. analog-digital conversion time) | 10 ms |
-| sampleRateHz | unsignedLong | SampleRate in milliseconds | 200 ms |
+| MeasuredValueType | enum | MeasuredValueType: type of measurement. Possible values are "value", "min", max", "average", "stdDev" | value |
+| SpecialQualityRequirement | string | indicates Quality requirements fulfilled like formal certifications | METAS  |
+| PrecisionPercent | float32 | the precision of a measurement, calculation result or result of a controls process | 2.0% |
+| MaximumLatencyTime | float | Maximum time in milliseconds from capturing of measured value until ready at the product interface (i.e. analog-digital conversion time) | 10 ms |
+| SampleRate | unsignedLong | SampleRate in milliseconds | 200 ms |
 
 ## Stability Fallback
 A consumer or a generating system receives the permit for a load change for a certain period of time. This time is always set to 0 each time a confirmation message is received (HeartBeat).
@@ -67,7 +65,7 @@ SGr has attributes to denote the quality of the measured value. The presence of 
 
 | SGr Attribute | Data Type | Description | Example |
 |---------------|-----------|-------------|---------|
-| measuredValueSource | enum | Value source kind related to SGr level 6 applications. Potential values are measuredValue, calculatedValue, empiricalValue | measuredValue |
+| MeasuredValueSource | enum | Value source kind related to SGr level 6 applications. Potential values are measuredValue, calculatedValue, empiricalValue | measuredValue |
 
 ## Curtailment
 Various function profiles require boundaries to set points with respect to curtailment or home energy management systems.
@@ -75,9 +73,9 @@ Various function profiles require boundaries to set points with respect to curta
 
 | SGr Attribute | Data Type | Description | Example |
 |---------------|-----------|-------------|---------|
-| curtailment | float | Used in state-based reduction schemes. This value specifies the reduction in percent for the reduced operation mode. | 40% | 
-| minLoad | float |  Used in state-based reduction schemes. In locked mode the product will not reduce its load below this minimum value | 2 kW |
-| maxLockTimeMinutes | float | used in state-based reduction schemes. A reduction command to reduced or locked mode shall not be applied longer than this specified duration | 20 min |
-| minRunTimeMinutes | float | Used in state-based reduction schemes. When returning to normal mode the normal mode must be guaranteed for at least the specified duration | 15 min|
-| valueByTimeTableMinutes | float | Used for time tables to specify the temporal separation of data curve points | 1 min |
-| flexAssistance | sgr:FlexAssistance | Systems with more than One communicator need a definition of the priority of the commands / demands for a flexibility requirement. This element defines the kind of a such a command (serviceable for net (DSO), energy or system (TNO)) and its priority (SHALL / SHOULD / MAY) |
+| Curtailment | float | Used in state-based reduction schemes. This value specifies the reduction in percent for the reduced operation mode. | 40% | 
+| MimimumLoad | float |  Used in state-based reduction schemes. In locked mode the product will not reduce its load below this minimum value | 2 kW |
+| MaximumLockTime | float | used in state-based reduction schemes. A reduction command to reduced or locked mode shall not be applied longer than this specified duration | 20 min |
+| MinimumRunTime | float | Used in state-based reduction schemes. When returning to normal mode the normal mode must be guaranteed for at least the specified duration | 15 min|
+| ValueByTimeTable | float | Used for time tables to specify the temporal separation of data curve points | 1 min |
+| FlexAssistance | sgr:FlexAssistance | Systems with more than One communicator need a definition of the priority of the commands / demands for a flexibility requirement. This element defines the kind of a such a command (serviceable for net (DSO), energy or system (TNO)) and its priority (SHALL / SHOULD / MAY) |

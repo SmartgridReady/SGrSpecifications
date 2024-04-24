@@ -31,19 +31,6 @@ All these values must be used identically in the product to match a functional p
 
 Additionally to this, the definition contains the description of a functional profile in English, German, French, and/or Italian language.
 
-### Generic Attributes
-
-The generic attributes (see [GenericAttributes](GenericAttributes.md)) contain static characteristics of the product. All generic attributes defined in the functional profile must also later be defined in product.
-
-The generic attributes are a list of elements defined by
-
-- name
-- data type
-- value
-- description
-
-The value of generic attributes is optional in the functional profile. The declared product must define the actual value.
-
 ### Datapoints
 
 The datapoints define dynamic values that can be read from or written to the product.
@@ -69,6 +56,14 @@ If no datapoint is mandatory in the functional profile, then at least one datapo
 in the product implementing this functional profile.
 
 Like the generic attributes for the functional profile also the datapoints can have local generic attributes.
+
+### Sub Datapoints
+
+Datapoints that are connected to other datapoints can be modeled as sub datapoints.
+
+The connection between data point and sub datapoint are defined with naming conventions. If e.g. a datapoint has the name "MainDatapoint" and is connected with a sub datapoint "SubDatapoint" the sub datapoint name has the name "MainDatapoint.SubDatapoint" - this means, the sub datapoint name is appended to the main datapoint name separated with a dot.
+
+An example for a sub datapoint is "Voltage.Precision" as the precision of the datapoint "Voltage".
 
 ## Using Functional Profiles for declaration 
 
