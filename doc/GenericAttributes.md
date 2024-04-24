@@ -17,7 +17,7 @@ These attributes are generally used to search for devices that fulfill a set of 
 |---------------|-----------|-------------|---------|
 | MeasuredValueType | enum | MeasuredValueType: type of measurement. Possible values are "value", "min", max", "average", "stdDev" | value |
 | SpecialQualityRequirement | string | indicates Quality requirements fulfilled like formal certifications | METAS  |
-| Precision | float32 | the precision of a measurement, calculation result or result of a controls process | 2.0% |
+| PrecisionPercent | float32 | the precision of a measurement, calculation result or result of a controls process | 2.0% |
 | MaximumLatencyTime | float | Maximum time in milliseconds from capturing of measured value until ready at the product interface (i.e. analog-digital conversion time) | 10 ms |
 | SampleRate | unsignedLong | SampleRate in milliseconds | 200 ms |
 
