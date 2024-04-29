@@ -53,6 +53,9 @@ With this control mode, the CEM directly controls the supply temperature setpoin
 
 This control mode is only used for building automation (BA) systems or special CEM systems which implement their own HVAC logic for large applications. Therefore, deep HVAC expert knowledge is required.
 
+#### Direct Supply Water Temperature Control vs. Indirect Comfort Control
+
+![Heating Curve](HeatingCurve.jpg)
 
 ## Heat Pump Functional Profiles in Stiebel Eltron Product (EID)
 
