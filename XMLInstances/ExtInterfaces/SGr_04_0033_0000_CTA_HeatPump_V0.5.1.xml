@@ -561,12 +561,15 @@
             <legibleDescription>
               <textElement>
                 <![CDATA[
-                  Dieses Profil definiert die erweiterten Datenpunkte zum Grundprofil "HeatPumpBase",
-                  welche zur Steuerung eines Heiz- oder Kühlkreises zur Verfügung gestellt werden.
-                  Derselbe physikalische Kreislauf kann entweder für das Heizen oder das Kühlen
-                  verwendet werden. Das Heiz-/Kühlkreisprofil muss immer in Kombination mit dem
-                  Grundprofil der Wärmepumpe bewirtschaftet werden. Es können mehrere
-                  Heiz-/Kühlkreisprofile definiert werden.
+                  Dieses Profil definiert die erweiterten Datenpunkte zum Grundprofil
+                  "HeatPumpBase", welche zur Steuerung eines Heiz- oder Kühlkreises zur Verfügung
+                  gestellt werden. Derselbe physikalische Kreislauf kann entweder für das Heizen oder
+                  das Kühlen verwendet werden. Das Heiz-/Kühlkreisprofil muss immer in Kombination mit
+                  dem Grundprofil der Wärmepumpe bewirtschaftet werden. Es können mehrere Heiz-/Kühlkreisprofile definiert werden.
+                  <p>Es ist eine direkte Regelung der Vorlauftemperatur oder indirekte Regelung der Komforttemperatur möglich - siehe dazu generelle Beschreibung in
+                  <a href="https://github.com/SmartGridready/SGrSpecifications/blob/master/doc/HeatPumpAppliances.md#heat-pump-appliances">HeatPumpAppliances</a>.</p>
+                  <p>Es ist eine direkte Regelung der Vorlauftemperatur oder indirekte Regelung der Komforttemperatur möglich - siehe dazu generelle Beschreibung in
+                  <a href="https://github.com/SmartGridready/SGrSpecifications/blob/master/doc/HeatPumpAppliances.md#heat-pump-appliances">HeatPumpAppliances</a>.</p>
                   <p>Es handelt sich dabei um die "Entladekreise", welche durch das Gebäude geführt werden.
                   Entsprechende Mischventile sorgen dafür, dass verschiedene Temperaturniveaus eingestellt werden können</p>
                   <font color="red">Ich vermisse hier den Datenpunkte für die Anhebung des Sollwerts über das Modbus-Register 1005 CTA_HK1_SetpointComfort.
@@ -745,7 +748,7 @@
                 <legibleDescription>
                   <textElement>
                     <![CDATA[
-                      Setzen der aktuellen Soll-Temperatur des Vorlaufs (Grundwert).
+                      Setzen der aktuellen Soll-Temperatur des Vorlaufs (direkte Regelung)
                       </br>
                       <font color="red">Dieser Datenpunkt ist nur aktiv, wenn die Wärmepumpe extern gesteuert ist, z.B. über ein GA-System (Modbus Register 1000 CTA_Ext_Heating_Command auf 1).
                                         Das ist aus meiner Sicht aber in einem EFH nie der Fall. Dort wird üblicherweise lokal gesteuert über den WP-Regler.
@@ -847,12 +850,13 @@
             <legibleDescription>
               <textElement>
                 <![CDATA[
-                  Dieses Profil definiert die erweiterten Datenpunkte zum Grundprofil "HeatPumpBase",
-                  welche zur Steuerung eines Heiz- oder Kühlkreises zur Verfügung gestellt werden.
-                  Derselbe physikalische Kreislauf kann entweder für das Heizen oder das Kühlen
-                  verwendet werden. Das Heiz-/Kühlkreisprofil muss immer in Kombination mit dem
-                  Grundprofil der Wärmepumpe bewirtschaftet werden. Es können mehrere
-                  Heiz-/Kühlkreisprofile definiert werden.
+                  Dieses Profil definiert die erweiterten Datenpunkte zum Grundprofil
+                  "HeatPumpBase", welche zur Steuerung eines Heiz- oder Kühlkreises zur Verfügung
+                  gestellt werden. Derselbe physikalische Kreislauf kann entweder für das Heizen oder
+                  das Kühlen verwendet werden. Das Heiz-/Kühlkreisprofil muss immer in Kombination mit
+                  dem Grundprofil der Wärmepumpe bewirtschaftet werden. Es können mehrere Heiz-/Kühlkreisprofile definiert werden.
+                  <p>Es ist eine direkte Regelung der Vorlauftemperatur oder indirekte Regelung der Komforttemperatur möglich - siehe dazu generelle Beschreibung in
+                  <a href="https://github.com/SmartGridready/SGrSpecifications/blob/master/doc/HeatPumpAppliances.md#heat-pump-appliances">HeatPumpAppliances</a>.</p>
                   <p>Es handelt sich dabei um die "Entladekreise", welche durch das Gebäude geführt werden.
                   Entsprechende Mischventile sorgen dafür, dass verschiedene Temperaturniveaus eingestellt werden können</p>
                   <font color="red">leiche Bemerkungen wie oben beim HeatCoolCtrl_1.</font>
@@ -1015,7 +1019,9 @@
                   <manufName>CTA_Ext_Heating_Setpoint_2 (?Reserve)</manufName>
                 </alternativeNames>
                 <legibleDescription>
-                  <textElement>Setzen der aktuellen Soll-Temperatur des Vorlaufs (Grundwert).</textElement>
+                  <textElement>
+                    Setzen der aktuellen Soll-Temperatur des Vorlaufs (direkte Regelung).
+                  </textElement>
                   <language>de</language>
                 </legibleDescription>
               </dataPoint>
@@ -1619,16 +1625,11 @@
             </alternativeNames>
             <legibleDescription>
               <textElement>
-                <![CDATA[ 
+                <![CDATA[	
                   <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
-                  <p>Aufzeichnen der Warmepumpen-Betriebsdaten durch den CEM.</p>
-                  
-                  <p>Bemerkungen:</p>
-                  <ol>
-                    <li>Energiewerte, Laufzeiten und Anzahl Starts werden typischerweise 1x täglich abgefragt. Die Leistungsmessungen
-                        werden häufiger abgefragt und können zur Regelung dienen. Deshalb die Anforderung einer maximalen Abtastzeit.</li>
-                    <li>Die intern ermittelten Energiewerte sind i.d.R. berechnete Werte. Für eine exakte Messung werden externe, geeichte Zähler empfohlen.</li>
-                 </ol>
+                  Dieses Profil dient dem Aufzeichnen von internen Daten aus der Wärmepumpe für Monitoring-Zwecke.
+                  <p>Bemerkung:<br>
+                  Die intern ermittelten Energiewerte sind i.d.R. berechnete Werte. Für eine exakte Messung werden externe, geeichte Zähler empfohlen.</p
                 ]]>
               </textElement>
               <language>de</language>

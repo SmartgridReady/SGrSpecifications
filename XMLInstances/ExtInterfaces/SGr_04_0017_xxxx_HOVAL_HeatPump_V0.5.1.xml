@@ -409,7 +409,7 @@
                     <sLV1Name>SupplyWaterTemp</sLV1Name>
                     <manufName>7</manufName></alternativeNames>
                 <legibleDescription>
-                    <textElement>Wärmeerzeuger-Ist</textElement>
+                    <textElement>Aktueller Istwert der Vorlauftemperatur.</textElement>
                     <language>de</language>
                 </legibleDescription>
                 <legibleDescription>
@@ -456,7 +456,9 @@
                   <manufName>9020</manufName>
                 </alternativeNames>
                 <legibleDescription>
-                  <textElement>Solltemperatur Handbetrieb: Setzen der aktuellen Soll-Temperatur des Vorlaufs (Grundwert).Wirkt nur für die OpMode "manuell"</textElement>
+                  <textElement>
+                    Sollwert der Vorlauftemperatur (für direkte Regelung im Modus "Handbetrieb" HOV_HP_MAN_HEAT/COOL)
+                  </textElement>
                   <language>de</language>
                 </legibleDescription>
                 <legibleDescription>
@@ -770,11 +772,15 @@
             </alternativeNames>
             <legibleDescription>
               <textElement>
-                Dieses Profil definiert die erweiterten Datenpunkte zum Grundprofil "HeatPumpBase", welche
-                zur Steuerung eines Heiz- oder Kühlkreises zur Verfügung gestellt werden. Derselbe physikalische
-                Kreislauf kann entweder für das Heizen oder das Kühlen verwendet werden. Das Heiz-/Kühlkreisprofil muss
-                immer in Kombination mit dem Grundprofil der Wärmepumpe bewirtschaftet werden. Es können mehrere
-                Heiz-/Kühlkreisprofile definiert werden.
+                <![CDATA[
+                  Dieses Profil definiert die erweiterten Datenpunkte zum Grundprofil
+                  "HeatPumpBase", welche zur Steuerung eines Heiz- oder Kühlkreises zur Verfügung
+                  gestellt werden. Derselbe physikalische Kreislauf kann entweder für das Heizen oder
+                  das Kühlen verwendet werden. Das Heiz-/Kühlkreisprofil muss immer in Kombination mit
+                  dem Grundprofil der Wärmepumpe bewirtschaftet werden. Es können mehrere Heiz-/Kühlkreisprofile definiert werden.
+                  <p>Es ist eine direkte Regelung der Vorlauftemperatur oder indirekte Regelung der Komforttemperatur möglich - siehe dazu generelle Beschreibung in
+                  <a href="https://github.com/SmartGridready/SGrSpecifications/blob/master/doc/HeatPumpAppliances.md#heat-pump-appliances">HeatPumpAppliances</a>.</p>
+                ]]>
               </textElement>
               <language>de</language>
             </legibleDescription>
@@ -1065,11 +1071,9 @@
                 <legibleDescription>
                   <textElement>
                     <![CDATA[
-                      Setzen der aktuellen Soll-Temperatur des Vorlaufs (Grundwert)
+                      Sollwert der Vorlauftemperatur (für direkte Regelung im Modus "Handbetrieb" HOV_HP_MAN_HEAT/COOL)
                       </br>
-                      <font color="red">Was heisst Grundwert? Müssen wir ev. Chris fragen, er hat das ja getestet. Oder den Hersteller.
-                                        Es ist entscheidend, ob es sich um den tatsächlichen Sollwert handelt oder nur der Fusspunkt der Heizkurve.
-                                        <br>Mit Hersteller klären. Offensichtlich wurde es noch nie getestet, sondern eine Selbstdeklaration.</font>
+                      <font color="red">Frage an Hersteller: Gibt es auch eine indirekte Ansteuerung der Komforttemperatur (SetpointComfort)?</font>
                     ]]>         
                   </textElement>
                   <language>de</language>
@@ -1176,11 +1180,16 @@
               <sLV1Name>HeatCoolCtrl</sLV1Name>
             </alternativeNames>
             <legibleDescription>
-              <textElement>Dieses Profil definiert die erweiterten Datenpunkte zum Grundprofil "HeatPumpBase", welche
-                zur Steuerung eines Heiz- oder Kühlkreises zur Verfügung gestellt werden. Derselbe physikalische
-                Kreislauf kann entweder für das Heizen oder das Kühlen verwendet werden. Das Heiz-/Kühlkreisprofil muss
-                immer in Kombination mit dem Grundprofil der Wärmepumpe bewirtschaftet werden. Es können mehrere
-                Heiz-/Kühlkreisprofile definiert werden.
+              <textElement>
+                <![CDATA[
+                  Dieses Profil definiert die erweiterten Datenpunkte zum Grundprofil
+                  "HeatPumpBase", welche zur Steuerung eines Heiz- oder Kühlkreises zur Verfügung
+                  gestellt werden. Derselbe physikalische Kreislauf kann entweder für das Heizen oder
+                  das Kühlen verwendet werden. Das Heiz-/Kühlkreisprofil muss immer in Kombination mit
+                  dem Grundprofil der Wärmepumpe bewirtschaftet werden. Es können mehrere Heiz-/Kühlkreisprofile definiert werden.
+                  <p>Es ist eine direkte Regelung der Vorlauftemperatur oder indirekte Regelung der Komforttemperatur möglich - siehe dazu generelle Beschreibung in
+                  <a href="https://github.com/SmartGridready/SGrSpecifications/blob/master/doc/HeatPumpAppliances.md#heat-pump-appliances">HeatPumpAppliances</a>.</p>
+                ]]>
               </textElement>
               <language>de</language>
             </legibleDescription>
@@ -1463,12 +1472,10 @@
                 <legibleDescription>
                   <textElement>
                     <![CDATA[
-                      Setzen der aktuellen Soll-Temperatur des Vorlaufs (Grundwert).
+                      Sollwert der Vorlauftemperatur (für direkte Regelung im Modus "Handbetrieb" HOV_HP_MAN_HEAT/COOL)
                       </br>
-                      <font color="red">Warum kommt hier jetzt "Handbetrieb"? Kann dieser Sollwert nicht immer gesetzt werden?
-                                        Bei HeatCoolCtrl1 steht dieser Satz nicht (wohl noch ein Relikt?).
-                                        <br>Klären: Solltemperatur Handbetrieb</font>
-                    ]]>     
+                      <font color="red">Frage an Hersteller: Gibt es auch eine indirekte Ansteuerung der Komforttemperatur (SetpointComfort)?</font>
+                    ]]>         
                   </textElement>
                   <language>de</language>
                 </legibleDescription>
@@ -1575,11 +1582,15 @@
             </alternativeNames>
             <legibleDescription>
               <textElement>
-                Dieses Profil definiert die erweiterten Datenpunkte zum Grundprofil "HeatPumpBase", welche
-                zur Steuerung eines Heiz- oder Kühlkreises zur Verfügung gestellt werden. Derselbe physikalische
-                Kreislauf kann entweder für das Heizen oder das Kühlen verwendet werden. Das Heiz-/Kühlkreisprofil muss
-                immer in Kombination mit dem Grundprofil der Wärmepumpe bewirtschaftet werden. Es können mehrere
-                Heiz-/Kühlkreisprofile definiert werden.
+                <![CDATA[
+                  Dieses Profil definiert die erweiterten Datenpunkte zum Grundprofil
+                  "HeatPumpBase", welche zur Steuerung eines Heiz- oder Kühlkreises zur Verfügung
+                  gestellt werden. Derselbe physikalische Kreislauf kann entweder für das Heizen oder
+                  das Kühlen verwendet werden. Das Heiz-/Kühlkreisprofil muss immer in Kombination mit
+                  dem Grundprofil der Wärmepumpe bewirtschaftet werden. Es können mehrere Heiz-/Kühlkreisprofile definiert werden.
+                  <p>Es ist eine direkte Regelung der Vorlauftemperatur oder indirekte Regelung der Komforttemperatur möglich - siehe dazu generelle Beschreibung in
+                  <a href="https://github.com/SmartGridready/SGrSpecifications/blob/master/doc/HeatPumpAppliances.md#heat-pump-appliances">HeatPumpAppliances</a>.</p>
+                ]]>
               </textElement>
               <language>de</language>
             </legibleDescription>
@@ -1870,10 +1881,10 @@
                 <legibleDescription>
                   <textElement>
                     <![CDATA[
-                      Setzen der aktuellen Soll-Temperatur des Vorlaufs (Grundwert).
-                      </br> 
-                      <font color="red">Fusspunkt oder effektiver Sollwert?
-                                        <br>Mit Hersteller klären.</font>
+                      Sollwert der Vorlauftemperatur (für direkte Regelung im Modus "Handbetrieb" HOV_HP_MAN_HEAT/COOL)
+                      <font color="red"><br>Fusspunkt oder effektiver Sollwert? Mit Hersteller klären.</font>
+                      </br>
+                      <font color="red">Frage an Hersteller: Gibt es auch eine indirekte Ansteuerung der Komforttemperatur (SetpointComfort)?</font>
                     ]]>         
                   </textElement>
                   <language>de</language>
@@ -2165,12 +2176,7 @@
                 <legibleDescription>
                     <textElement>
                       <![CDATA[
-                        Smart-Grid (Offset) WW-Sollwert
-                        </br>
-                        <font color="red">Was heisst SmartGrid (Offset)? Ich denke, das sollte wie folgt heissen:
-                                          "Offset für den Warmwasser-Sollwert. Mit diesem kann der tatsächliche Sollwert
-                                          nach oben (+) oder unten (-) geschoben werden."
-                                          <br>Mit Hersteller klären.</font>
+                        Offset für den Warmwasser-Sollwert. Mit diesem kann der tatsächliche Sollwert nach oben (+) oder nach unten (-) geschoben werden.
                       ]]>         
                     </textElement>
                     <language>de</language>
@@ -2221,11 +2227,7 @@
                 <legibleDescription>
                   <textElement>
                     <![CDATA[
-                      Normal-Warmwassertemperatur: Setzen des Wertes der Solltemperatur für den Brauchwarmwasserspeicher.
-                      </br>
-                      <font color="red">Was heisst Normal-Warmwassertemperatur?
-                                        Vorschlag: "Setzen des Warmwasser-Sollwertes für den Komfortbetrieb (HOV_DHW_CONST_OP)".
-                                        <br>Mit Hersteller klären.</font>
+                      Warmwasser-Sollwert für den Komfortbetrieb (HOV_DHW_CONST_OP)
                     ]]>         
                   </textElement>
                   <language>de</language>
@@ -2458,10 +2460,7 @@
               <legibleDescription>
                 <textElement>
                   <![CDATA[
-                    Smart-Grid (Offset) Puffer-Soll.Heizen
-                    </br>
-                    <font color="red">"Setzen und Auslesen des Offsets für die Solltemperatur des Pufferspeichers im Heizmodus (+ Anhebung, - Absenkung)"
-                                        <br>Mit Hersteller klären.</font>
+                    Offset für den Pufferspeicher-Sollwert im Heizmodus. Mit diesem kann der tatsächliche Sollwert nach oben (+) oder nach unten (-) geschoben werden.
                   ]]>         
                 </textElement>
                 <language>de</language>
@@ -2511,10 +2510,7 @@
                 <legibleDescription>
                   <textElement>
                     <![CDATA[
-                      Smart-Grid (Offset) Puffer-Soll.Kühlen
-                      </br>
-                      <font color="red">"Setzen und Auslesen des Offsets für die Solltemperatur des Pufferspeichers im Kühlmodus (+ Anhebung, - Absenkung)"
-                                        <br>Mit Hersteller klären.</font>
+                      Offset für den Pufferspeicher-Sollwert im Kühlmodus. Mit diesem kann der tatsächliche Sollwert nach oben (+) oder nach unten (-) geschoben werden.
                     ]]>
                   </textElement>
                   <language>de</language>
@@ -3246,16 +3242,11 @@
             </alternativeNames>
             <legibleDescription>
               <textElement>
-                <![CDATA[ 
+                <![CDATA[	
                   <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
-                  <p>Aufzeichnen der Warmepumpen-Betriebsdaten durch den CEM.</p>
-                  
-                  <p>Bemerkungen:</p>
-                  <ol>
-                    <li>Energiewerte, Laufzeiten und Anzahl Starts werden typischerweise 1x täglich abgefragt. Die Leistungsmessungen
-                        werden häufiger abgefragt und können zur Regelung dienen. Deshalb die Anforderung einer maximalen Abtastzeit.</li>
-                    <li>Die intern ermittelten Energiewerte sind i.d.R. berechnete Werte. Für eine exakte Messung werden externe, geeichte Zähler empfohlen.</li>
-                  </ol>
+                  Dieses Profil dient dem Aufzeichnen von internen Daten aus der Wärmepumpe für Monitoring-Zwecke.
+                  <p>Bemerkung:<br>
+                  Die intern ermittelten Energiewerte sind i.d.R. berechnete Werte. Für eine exakte Messung werden externe, geeichte Zähler empfohlen.</p
                 ]]>
               </textElement>
               <language>de</language>
