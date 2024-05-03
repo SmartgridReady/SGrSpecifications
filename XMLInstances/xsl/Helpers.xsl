@@ -215,8 +215,8 @@
 			<xsl:attribute name="lang">
 				<xsl:value-of select="sgr:language" />
 			</xsl:attribute>
-			<td colspan="2">
-                <div style="padding-top:0.3em;padding-bottom:0.3em;">
+			<td colspan="2" style="background-color:#E4E4E4">
+                <div style="padding-top:0.3em;padding-bottom:0.3em">
                     <img width="20px" height="14px">
                         <xsl:attribute name="src" alt="Lang">/xsl/ressources/<xsl:value-of select="sgr:language" />.png</xsl:attribute>
                     </img>&#160;
@@ -364,7 +364,7 @@
             <xsl:when test="$value = 'DEGREES_FAHRENHEIT'"><xsl:value-of select="$value" /></xsl:when>
             <xsl:when test="$value = 'DEGREES_FAHRENHEIT_PER_HOUR'"><xsl:value-of select="$value" /></xsl:when>
             <xsl:when test="$value = 'DEGREES_FAHRENHEIT_PER_MINUTE'"><xsl:value-of select="$value" /></xsl:when>
-            <xsl:when test="$value = 'DEGREES_KELVIN'"><xsl:value-of select="$value" /></xsl:when>
+            <xsl:when test="$value = 'DEGREES_KELVIN'">K</xsl:when>
             <xsl:when test="$value = 'DEGREES_KELVIN_PER_HOUR'"><xsl:value-of select="$value" /></xsl:when>
             <xsl:when test="$value = 'DEGREES_KELVIN_PER_MINUTE'"><xsl:value-of select="$value" /></xsl:when>
             <xsl:when test="$value = 'DEGREES_PHASE'"><xsl:value-of select="$value" /></xsl:when>

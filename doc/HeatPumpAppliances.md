@@ -34,6 +34,29 @@ The following Sections show some manufacturer specific implementations of the hy
 
 ![Heat Pump Functional Profiles Scheme](HeatPumpFunctionalProflesScheme.png)
 
+
+### HeatCoolCtrl functional profile
+
+In the HeatCoolCtrl profile the CEM may choose how to control the heat pump. There are the following two ways:
+
+#### Indirect Comfort Control (recommended for typical CEM applications).
+
+With this control mode, the CEM only sets the comfort setpoint (SetpointComfort, e.g. 20°C for room heating). The internal heat pump controller then calculates the supply water temperature setpoint from the heating curve and controls the mixing valve of the corresponding heating circuit . The heating curve is set during commissioning  from the HVAC specialist according to the building and heating system. Typically, the heat pump provides a comfort and eco setpoint at different temperature levels (SetpointComfort, SetpointEco). The comfort and eco setpoints may be switched by choosing the corresponding operation mode. In program/automatic mode, the heat pump itself switches the setpoints by an internally defined time schedule (e.g. for temperature lowering during the night).
+
+By increasing or decreasing the comfort (or eco) setpoint the amount of energy transferred to the building may be influenced by the CEM. This is an easy way to store thermal energy in the building mass. To stay in the comfort zone, the SetpointComfort signal should be controlled in a small range (e.g. 20°C - 23°C). Also the effect of energy storage depends on the heating distribution system and optional room control (which cannot be influenced by the HeatCoolCtrl profile). Once changed set points through the CEM stay changed unless the CEM sets the value back to the original value.
+
+The advantage of this control mode is the separation of the internal HVAC settings of the heat pump from external energy management. No internal parameters such as the gradient of the heat curve, heating/cooling limits, etc. will be changed. Therefore, no HVAC expert knowledge is required for control. The effect is the same as the end-user would change the desired comfort temperature at the interface of the heat pump controller.
+
+#### Direct Supply Water Temperature Control (for HVAC specialists or BA systems only).
+
+With this control mode, the CEM directly controls the supply temperature setpoint (SupplyWaterTempStpt, e.g. 35°C for a floor heating system). It bypasses the heat curve of the internal heat pump controller and therefore must implement the HVAC/building characteristics itself. The internal heat pump controller only controls the mixing valve of the corresponding heating circuit for the given setpoint. For this use case, the heat pump needs to be set to a special “direct control mode” (which is also called “external control” at some manufacturers).
+
+This control mode is only used for building automation (BA) systems or special CEM systems which implement their own HVAC logic for large applications. Therefore, deep HVAC expert knowledge is required.
+
+#### Direct Supply Water Temperature Control vs. Indirect Comfort Control
+
+![Heating Curve](HeatingCurve.jpg)
+
 ## Heat Pump Functional Profiles in Stiebel Eltron Product (EID)
 
 This section shows the implementation of the functional profiles for heat pumps of Stiebel Eltron®. Note that Stiebel Eltron heat pumps are controlled over an additional gateway, called “ISG” (internet service gateway). The ISG must be delivered with an appropriate software version providing Modbus communication:

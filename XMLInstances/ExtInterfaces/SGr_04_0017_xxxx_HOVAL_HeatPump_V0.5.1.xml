@@ -409,7 +409,7 @@
                     <sLV1Name>SupplyWaterTemp</sLV1Name>
                     <manufName>7</manufName></alternativeNames>
                 <legibleDescription>
-                    <textElement>Wärmeerzeuger-Ist</textElement>
+                    <textElement>Aktueller Istwert der Vorlauftemperatur.</textElement>
                     <language>de</language>
                 </legibleDescription>
                 <legibleDescription>
@@ -456,7 +456,9 @@
                   <manufName>9020</manufName>
                 </alternativeNames>
                 <legibleDescription>
-                  <textElement>Solltemperatur Handbetrieb: Setzen der aktuellen Soll-Temperatur des Vorlaufs (Grundwert).Wirkt nur für die OpMode "manuell"</textElement>
+                  <textElement>
+                    Sollwert der Vorlauftemperatur (für direkte Regelung im Modus "Handbetrieb" HOV_HP_MAN_HEAT/COOL)
+                  </textElement>
                   <language>de</language>
                 </legibleDescription>
                 <legibleDescription>
@@ -770,11 +772,15 @@
             </alternativeNames>
             <legibleDescription>
               <textElement>
-                Dieses Profil definiert die erweiterten Datenpunkte zum Grundprofil "HeatPumpBase", welche
-                zur Steuerung eines Heiz- oder Kühlkreises zur Verfügung gestellt werden. Derselbe physikalische
-                Kreislauf kann entweder für das Heizen oder das Kühlen verwendet werden. Das Heiz-/Kühlkreisprofil muss
-                immer in Kombination mit dem Grundprofil der Wärmepumpe bewirtschaftet werden. Es können mehrere
-                Heiz-/Kühlkreisprofile definiert werden.
+                <![CDATA[
+                  Dieses Profil definiert die erweiterten Datenpunkte zum Grundprofil
+                  "HeatPumpBase", welche zur Steuerung eines Heiz- oder Kühlkreises zur Verfügung
+                  gestellt werden. Derselbe physikalische Kreislauf kann entweder für das Heizen oder
+                  das Kühlen verwendet werden. Das Heiz-/Kühlkreisprofil muss immer in Kombination mit
+                  dem Grundprofil der Wärmepumpe bewirtschaftet werden. Es können mehrere Heiz-/Kühlkreisprofile definiert werden.
+                  <p>Es ist eine direkte Regelung der Vorlauftemperatur oder indirekte Regelung der Komforttemperatur möglich - siehe dazu generelle Beschreibung in
+                  <a href="https://github.com/SmartGridready/SGrSpecifications/blob/master/doc/HeatPumpAppliances.md#heat-pump-appliances">HeatPumpAppliances</a>.</p>
+                ]]>
               </textElement>
               <language>de</language>
             </legibleDescription>
@@ -1065,11 +1071,9 @@
                 <legibleDescription>
                   <textElement>
                     <![CDATA[
-                      Setzen der aktuellen Soll-Temperatur des Vorlaufs (Grundwert)
+                      Sollwert der Vorlauftemperatur (für direkte Regelung im Modus "Handbetrieb" HOV_HP_MAN_HEAT/COOL)
                       </br>
-                      <font color="red">Was heisst Grundwert? Müssen wir ev. Chris fragen, er hat das ja getestet. Oder den Hersteller.
-                                        Es ist entscheidend, ob es sich um den tatsächlichen Sollwert handelt oder nur der Fusspunkt der Heizkurve.
-                                        <br>Mit Hersteller klären. Offensichtlich wurde es noch nie getestet, sondern eine Selbstdeklaration.</font>
+                      <font color="red">Frage an Hersteller: Gibt es auch eine indirekte Ansteuerung der Komforttemperatur (SetpointComfort)?</font>
                     ]]>         
                   </textElement>
                   <language>de</language>
@@ -1176,11 +1180,16 @@
               <sLV1Name>HeatCoolCtrl</sLV1Name>
             </alternativeNames>
             <legibleDescription>
-              <textElement>Dieses Profil definiert die erweiterten Datenpunkte zum Grundprofil "HeatPumpBase", welche
-                zur Steuerung eines Heiz- oder Kühlkreises zur Verfügung gestellt werden. Derselbe physikalische
-                Kreislauf kann entweder für das Heizen oder das Kühlen verwendet werden. Das Heiz-/Kühlkreisprofil muss
-                immer in Kombination mit dem Grundprofil der Wärmepumpe bewirtschaftet werden. Es können mehrere
-                Heiz-/Kühlkreisprofile definiert werden.
+              <textElement>
+                <![CDATA[
+                  Dieses Profil definiert die erweiterten Datenpunkte zum Grundprofil
+                  "HeatPumpBase", welche zur Steuerung eines Heiz- oder Kühlkreises zur Verfügung
+                  gestellt werden. Derselbe physikalische Kreislauf kann entweder für das Heizen oder
+                  das Kühlen verwendet werden. Das Heiz-/Kühlkreisprofil muss immer in Kombination mit
+                  dem Grundprofil der Wärmepumpe bewirtschaftet werden. Es können mehrere Heiz-/Kühlkreisprofile definiert werden.
+                  <p>Es ist eine direkte Regelung der Vorlauftemperatur oder indirekte Regelung der Komforttemperatur möglich - siehe dazu generelle Beschreibung in
+                  <a href="https://github.com/SmartGridready/SGrSpecifications/blob/master/doc/HeatPumpAppliances.md#heat-pump-appliances">HeatPumpAppliances</a>.</p>
+                ]]>
               </textElement>
               <language>de</language>
             </legibleDescription>
@@ -1463,12 +1472,10 @@
                 <legibleDescription>
                   <textElement>
                     <![CDATA[
-                      Setzen der aktuellen Soll-Temperatur des Vorlaufs (Grundwert).
+                      Sollwert der Vorlauftemperatur (für direkte Regelung im Modus "Handbetrieb" HOV_HP_MAN_HEAT/COOL)
                       </br>
-                      <font color="red">Warum kommt hier jetzt "Handbetrieb"? Kann dieser Sollwert nicht immer gesetzt werden?
-                                        Bei HeatCoolCtrl1 steht dieser Satz nicht (wohl noch ein Relikt?).
-                                        <br>Klären: Solltemperatur Handbetrieb</font>
-                    ]]>     
+                      <font color="red">Frage an Hersteller: Gibt es auch eine indirekte Ansteuerung der Komforttemperatur (SetpointComfort)?</font>
+                    ]]>         
                   </textElement>
                   <language>de</language>
                 </legibleDescription>
@@ -1575,11 +1582,15 @@
             </alternativeNames>
             <legibleDescription>
               <textElement>
-                Dieses Profil definiert die erweiterten Datenpunkte zum Grundprofil "HeatPumpBase", welche
-                zur Steuerung eines Heiz- oder Kühlkreises zur Verfügung gestellt werden. Derselbe physikalische
-                Kreislauf kann entweder für das Heizen oder das Kühlen verwendet werden. Das Heiz-/Kühlkreisprofil muss
-                immer in Kombination mit dem Grundprofil der Wärmepumpe bewirtschaftet werden. Es können mehrere
-                Heiz-/Kühlkreisprofile definiert werden.
+                <![CDATA[
+                  Dieses Profil definiert die erweiterten Datenpunkte zum Grundprofil
+                  "HeatPumpBase", welche zur Steuerung eines Heiz- oder Kühlkreises zur Verfügung
+                  gestellt werden. Derselbe physikalische Kreislauf kann entweder für das Heizen oder
+                  das Kühlen verwendet werden. Das Heiz-/Kühlkreisprofil muss immer in Kombination mit
+                  dem Grundprofil der Wärmepumpe bewirtschaftet werden. Es können mehrere Heiz-/Kühlkreisprofile definiert werden.
+                  <p>Es ist eine direkte Regelung der Vorlauftemperatur oder indirekte Regelung der Komforttemperatur möglich - siehe dazu generelle Beschreibung in
+                  <a href="https://github.com/SmartGridready/SGrSpecifications/blob/master/doc/HeatPumpAppliances.md#heat-pump-appliances">HeatPumpAppliances</a>.</p>
+                ]]>
               </textElement>
               <language>de</language>
             </legibleDescription>
@@ -1870,10 +1881,10 @@
                 <legibleDescription>
                   <textElement>
                     <![CDATA[
-                      Setzen der aktuellen Soll-Temperatur des Vorlaufs (Grundwert).
-                      </br> 
-                      <font color="red">Fusspunkt oder effektiver Sollwert?
-                                        <br>Mit Hersteller klären.</font>
+                      Sollwert der Vorlauftemperatur (für direkte Regelung im Modus "Handbetrieb" HOV_HP_MAN_HEAT/COOL)
+                      <font color="red"><br>Fusspunkt oder effektiver Sollwert? Mit Hersteller klären.</font>
+                      </br>
+                      <font color="red">Frage an Hersteller: Gibt es auch eine indirekte Ansteuerung der Komforttemperatur (SetpointComfort)?</font>
                     ]]>         
                   </textElement>
                   <language>de</language>
@@ -2158,19 +2169,14 @@
                 <dataType>
                   <float32/>
                 </dataType>
-                <unit>DEGREES_CELSIUS</unit>
+                <unit>DEGREES_KELVIN</unit>
                 <alternativeNames>
                     <sLV1Name>DomHotWTempStptOffs</sLV1Name>
                     <manufName>5077</manufName></alternativeNames>
                 <legibleDescription>
                     <textElement>
                       <![CDATA[
-                        Smart-Grid (Offset) WW-Sollwert
-                        </br>
-                        <font color="red">Was heisst SmartGrid (Offset)? Ich denke, das sollte wie folgt heissen:
-                                          "Offset für den Warmwasser-Sollwert. Mit diesem kann der tatsächliche Sollwert
-                                          nach oben (+) oder unten (-) geschoben werden."
-                                          <br>Mit Hersteller klären.</font>
+                        Offset für den Warmwasser-Sollwert. Mit diesem kann der tatsächliche Sollwert nach oben (+) oder nach unten (-) geschoben werden.
                       ]]>         
                     </textElement>
                     <language>de</language>
@@ -2221,11 +2227,7 @@
                 <legibleDescription>
                   <textElement>
                     <![CDATA[
-                      Normal-Warmwassertemperatur: Setzen des Wertes der Solltemperatur für den Brauchwarmwasserspeicher.
-                      </br>
-                      <font color="red">Was heisst Normal-Warmwassertemperatur?
-                                        Vorschlag: "Setzen des Warmwasser-Sollwertes für den Komfortbetrieb (HOV_DHW_CONST_OP)".
-                                        <br>Mit Hersteller klären.</font>
+                      Warmwasser-Sollwert für den Komfortbetrieb (HOV_DHW_CONST_OP)
                     ]]>         
                   </textElement>
                   <language>de</language>
@@ -2450,7 +2452,7 @@
               <dataType>
                 <float32/>
               </dataType>
-              <unit>DEGREES_CELSIUS</unit>
+              <unit>DEGREES_KELVIN</unit>
               <alternativeNames>
                 <sLV1Name>ActBufferTempStpt Offset</sLV1Name>
                 <manufName>6050</manufName>
@@ -2458,10 +2460,7 @@
               <legibleDescription>
                 <textElement>
                   <![CDATA[
-                    Smart-Grid (Offset) Puffer-Soll.Heizen
-                    </br>
-                    <font color="red">"Setzen und Auslesen des Offsets für die Solltemperatur des Pufferspeichers im Heizmodus (+ Anhebung, - Absenkung)"
-                                        <br>Mit Hersteller klären.</font>
+                    Offset für den Pufferspeicher-Sollwert im Heizmodus. Mit diesem kann der tatsächliche Sollwert nach oben (+) oder nach unten (-) geschoben werden.
                   ]]>         
                 </textElement>
                 <language>de</language>
@@ -2503,7 +2502,7 @@
                 <dataType>
                   <float32/>
                 </dataType>
-                <unit>DEGREES_CELSIUS</unit>
+                <unit>DEGREES_KELVIN</unit>
                 <alternativeNames>
                   <sLV1Name>ActBufferTempStpt Offsetf</sLV1Name>
                   <manufName>6051</manufName>
@@ -2511,10 +2510,7 @@
                 <legibleDescription>
                   <textElement>
                     <![CDATA[
-                      Smart-Grid (Offset) Puffer-Soll.Kühlen
-                      </br>
-                      <font color="red">"Setzen und Auslesen des Offsets für die Solltemperatur des Pufferspeichers im Kühlmodus (+ Anhebung, - Absenkung)"
-                                        <br>Mit Hersteller klären.</font>
+                      Offset für den Pufferspeicher-Sollwert im Kühlmodus. Mit diesem kann der tatsächliche Sollwert nach oben (+) oder nach unten (-) geschoben werden.
                     ]]>
                   </textElement>
                   <language>de</language>
@@ -2997,9 +2993,9 @@
                   <p> Über den Datenpunkt "SGReadyState" kann der aktuelle Betriebsmodus der Wärmepumpe ausgelesen werden. </p>
                   
                   <p>Der Communicator (z.B. Energiemanagementsystem) berücksichtigt die Gerätevorgaben zur Schaltfrequenz (Attribute maxLockTimeMintues und minRunTimeMinutes.
-                  <font color="red">Der Wert der Attribute kann bei der Deklaration gesetzt werden. Standardeinstellung von SG Ready Wärmepumpen nach bwp ist 
-                  "Max. Lock Time" 120 Minuten und "Min. Run Time" 20 Minuten.
-                  <br>Mit Hersteller klären</font></p>
+                  <font color="red"><p>Der Wert der Attribute kann bei der Deklaration gesetzt werden. Standardeinstellung von SG Ready Wärmepumpen nach bwp ist 
+                  "Max. Lock Time" 120 Minuten und "Min. Run Time" 20 Minuten.</p>
+                  <p>Mit Hersteller klären</p></font>
                   „SG Ready“ ist ein Markenzeichen des Bundesverbands Wärmepumpe e. V.<br>
                   Weiterführende Informationen unter <a href="https://www.waermepumpe.de/normen-technik/sg-ready/">https://www.waermepumpe.de/normen-technik/sg-ready/</a>.
                 ]]>
@@ -3055,8 +3051,8 @@
                 <legibleDescription>
                   <textElement>
                     <![CDATA[
-                      <i>Festlegen der Übersteuerungsmoeglichkeiten der Wärmepumpe</i>
-                      <p>Setzen und Auslesen des Betriebszustandes nach SG-Ready bwp gemäss Definition oben.</p>
+                      Festlegen der Übersteuerungsmoeglichkeiten der Wärmepumpe
+                      <br>Setzen und Auslesen des Betriebszustandes nach SG-Ready bwp gemäss Definition oben.
                     ]]>
                   </textElement>
                   <language>en</language>
@@ -3064,8 +3060,8 @@
                 <legibleDescription>
                   <textElement>
                     <![CDATA[
-                      <i>Sets the override possibilities of the heat pump</i>
-                      </p>Smart Grid über Systembus
+                      Sets the override possibilities of the heat pump
+                      <br>Smart Grid über Systembus
                     ]]>
                   </textElement>
                   <language>de</language>
@@ -3118,10 +3114,8 @@
                 <legibleDescription>
                   <textElement>
                     <![CDATA[
-                      <font color="red">
-                      <i>Feedback of the current running override possibility of the heat pump</i>
-                      </p>Smart Grid via system bus (Rücklesung)
-                      </font>
+                      Feedback of the current running override possibility of the heat pump
+                      <br>Smart Grid via system bus (Rücklesung)
                     ]]>
                   </textElement>
                   <language>en</language>
@@ -3129,13 +3123,7 @@
                 <legibleDescription>
                   <textElement>
                     <![CDATA[
-                      <font color="red">
                       Rückmeldung der aktuellen laufenden Übersteuerungsmoeglichkeit der Wärmepumpe
-                      </br>
-                      Warum heisst er hier plötzlich SGReadyState (kommt aus dem Funktionsprofil)?
-                      Oben war doch OpModeCmd? Was ist der Unterschied dieser beiden Datenpunkte? Braucht es diesen überhaupt noch?
-                      <br>Mit Hersteller klären. 
-                      </font>
                     ]]>         
                   </textElement>
                   <language>de</language>
@@ -3143,9 +3131,7 @@
                 <legibleDescription>
                   <textElement>
                     <![CDATA[
-                      <font color="red">
                       Smart Grid via bus de données (Valeur de relecture)
-                      </font>
                     ]]>         
                   </textElement>
                   <language>fr</language>
@@ -3153,9 +3139,7 @@
                 <legibleDescription>
                   <textElement>
                     <![CDATA[
-                      <font color="red">
                       Smart Grid tramite bus di sistema (Valore di rilettura)
-                      </font>
                     ]]>         
                   </textElement>
                   <language>it</language>
@@ -3179,18 +3163,22 @@
                     <enumEntry>
                       <literal>SGR_src_OFF</literal>
                       <ordinal>0</ordinal>
+                      <description>SG-Ready deaktiviert</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>SRC_src_CONTACTS</literal>
                       <ordinal>1</ordinal>
+                      <description>SG-Ready über physische Schaltkontakte gesteuert</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>SRC_src_SysBUS</literal>
                       <ordinal>2</ordinal>
+                      <description>Ansteuerung mit der Quelle Bussystem etc.</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>SRC_src_DAMPED</literal>
                       <ordinal>3</ordinal>
+                      <description></description>
                     </enumEntry>
                   </enum>
                 </dataType>
@@ -3208,14 +3196,7 @@
                     <![CDATA[
                       Aktivierung der SG-Ready Funktion
                       </br>
-                      <font color="red">Diese Einträge müssten näher beschrieben werden. Vorschlag:
-                                        <ul>
-                                        <li>SRC_src_OFF = 0 (SG-Ready deaktiviert)</li>
-                                        <li>SRC_src_CONTACTS = 1 (SG-Ready über physische Schaltkontakte gesteuert)</li>
-                                        <li>SRC_src_SysBUS = 2 (SG-Ready über Modbus gesteuert?)</li>
-                                        <li>SRC_src_DAMPED = 3 (SG-Ready verzögert???)</li>
-                                        </ul>
-                                        Bitte mit Hersteller klären, insbesondere letzte beiden Einträge!</font>
+                      <font color="red">DAMPED: Bitte mit Hersteller klären!</font>
                     ]]>         
                   </textElement>
                   <language>de</language>
@@ -3244,69 +3225,29 @@
         </functionalProfileListElement>
         <functionalProfileListElement>
           <functionalProfile>
-            <functionalProfileName>ActiveEnergyACtot</functionalProfileName>
+            <functionalProfileName>EnergyMonitor</functionalProfileName>
             <functionalProfileIdentification>
               <specificationOwnerIdentification>0</specificationOwnerIdentification>
-              <functionalProfileCategory>Metering</functionalProfileCategory>
-              <functionalProfileType>ActiveEnergyAC</functionalProfileType>
+              <functionalProfileCategory>HeatPumpControl</functionalProfileCategory>
+              <functionalProfileType>EnergyMonitor</functionalProfileType>
               <levelOfOperation>m</levelOfOperation>
               <versionNumber>
-                <primaryVersionNumber>1</primaryVersionNumber>
-                <secondaryVersionNumber>0</secondaryVersionNumber>
+                <primaryVersionNumber>0</primaryVersionNumber>
+                <secondaryVersionNumber>5</secondaryVersionNumber>
                 <subReleaseVersionNumber>0</subReleaseVersionNumber>
               </versionNumber>
             </functionalProfileIdentification>
+            <alternativeNames>
+              <sLV1Name>EnergyMonitor</sLV1Name>
+            </alternativeNames>
             <legibleDescription>
               <textElement>
-                <![CDATA[ 
+                <![CDATA[	
                   <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
-                  <strong>Energy measurement</strong><br>
-                  Monitoring functional profile for power generators and consumers for reflecting the energy balance.
-                  
-                  <p>Data is typically recorded by an energy manager (or a billing software).</p>
-                  
-                  <p>Knowing the precisionPercent of measurements is necessary and therefore specified as a mandatory attribute per data point.
-                     Thus, different measurement precisions can be defined for the data points. </p>
-                  
-                  <p>With this functional profile you can measure the total energy as well as the energy of the three
-                     individual phases. One of the following options must be implemented for fulfilling the functional profile:
-                  <ul>
-                    <li>Single-phase devices use the total energy data point (ActiveEnergyACtot)</li>
-                    <li>Three-phase devices without measurement of the total energy use the data points per (ActiveEnergyACL1, ActiveEnergyACL2, ActiveEnergyACL3)</li>
-                    <li>Three-phase devices with measurement of the total energy all data points</li>
-                  </ul>
-                  </p>
-                ]]> 
-              </textElement>
-              <language>en</language>
-            </legibleDescription>
-            <legibleDescription>
-              <textElement>
-                <![CDATA[ 
-                  <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
-                  <strong>Messung der Wirkenergie</strong><br>
-                  Monitoring Funktionsprofil für Stromerzeuger und Stromverbraucher zur Bilanzierung der Energiemenge.
-                  
-                  <p>Die Datenaufnahme erfolgt typischerweise durch einen Energiemanager (oder eine Abrechnungssoftware).</p>
-                  
-                  <p>Für Regelzwecke ist die Kenntnis der Messgenauigkeit zwingend und wird daher pro Datenpunkt als obligatorisches
-                     Attribut angegeben. Somit ist es möglich unterschiedliche Messgenauigkeiten für die Datenpunkte
-                     zu definieren.</p>
-                  
-                  <p>Dieses Funktionsprofil erlaubt sowohl die Messung der Gesamtenergie wie auch die Messung der Energie
-                     der drei einzelnen Phasen. Eine der folgenden Varianten muss bei der Implementierung des Funktionsprofiles
-                     umgesetzt werden:
-                  <ul>
-                    <li>1-phasige Geräte geben die Gesamtenergie an (ActiveEnergyACtot)</li>
-                    <li>3-phasige Geräte ohne Gesamtenergiemessung geben die Energiemenge pro Phase an (ActiveEnergyACL1, ActiveEnergyACL2, ActiveEnergyACL3)</li>
-                    <li>3-phasige Geräte mit Einzelphasen- und Gesamtenergiemessung geben alle Datenpunkte an</li>
-                  </ul>
-                  </p>
-                  <font color="red">Die entscheidende Frage ist hier, ob ein geeichter Zähler (MID) in der Wärmepumpe verbaut ist oder nicht.
-                                    Wenn ja, kann dieser Datenpunkt tatsächlich für Abrechnungszwecke verwendet werden, sonst sicher nicht!
-                                    Beim Monitoring ist die Angabe der Genauigkeit entscheidend. Berechnete Werte reichen nach aktuellem Minergie-Reglement nicht!
-                                    <br>Mit Hersteller klären, ob ein Zähler eingebaut ist.</font>
-                ]]> 
+                  Dieses Profil dient dem Aufzeichnen von internen Daten aus der Wärmepumpe für Monitoring-Zwecke.
+                  <p>Bemerkung:<br>
+                  Die intern ermittelten Energiewerte sind i.d.R. berechnete Werte. Für eine exakte Messung werden externe, geeichte Zähler empfohlen.</p
+                ]]>
               </textElement>
               <language>de</language>
             </legibleDescription>
@@ -3327,7 +3268,7 @@
                 <legibleDescription>
                   <textElement>
                     <![CDATA[
-                      <i>Total energy measurement</i>
+                      Total energy measurement
                       </p>Eletrical energy WEZ kWh.
                     ]]>
                   </textElement>
@@ -3336,7 +3277,7 @@
                 <legibleDescription>
                   <textElement>
                     <![CDATA[
-                      <i>Erfassung der gesamten Wirkenergie</i>
+                      Erfassung der gesamten Wirkenergie
                       </p>Elektrische Gesamtenergie WEZ kWh.
                     ]]>
                   </textElement>
@@ -3360,163 +3301,6 @@
                 <numberOfRegisters>2</numberOfRegisters>
               </modbusDataPointConfiguration>
             </dataPointListElement>
-          </dataPointList>
-        </functionalProfileListElement>
-        <functionalProfileListElement>
-          <functionalProfile>
-            <functionalProfileName>AcivePowerACtot</functionalProfileName>
-            <functionalProfileIdentification>
-              <specificationOwnerIdentification>0</specificationOwnerIdentification>
-              <functionalProfileCategory>Metering</functionalProfileCategory>
-              <functionalProfileType>ActivePowerAC</functionalProfileType>
-              <levelOfOperation>m</levelOfOperation>
-              <versionNumber>
-                <primaryVersionNumber>1</primaryVersionNumber>
-                <secondaryVersionNumber>0</secondaryVersionNumber>
-                <subReleaseVersionNumber>0</subReleaseVersionNumber>
-              </versionNumber>
-            </functionalProfileIdentification>
-            <legibleDescription>
-              <textElement>
-                <![CDATA[ 
-                  <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
-                  <strong>Messung der Wirkleistung</strong><br>
-                  Monitoring Funktionsprofil für Stromerzeuger und Stromverbraucher zur Kontrolle der Systemlast und/oder für regeltechnische 
-                  Zwecke.
-                  
-                  <p>Für Regelzwecke ist die Kenntnis der Messgenauigkeit zwingend und wird daher pro Datenpunkt als obligatorisches
-                     Attribut angegeben. Somit ist es möglich unterschiedliche Messgenauigkeiten für die Datenpunkte
-                     zu definieren.</p>
-                  
-                  <p>Dieses Funktionsprofil erlaubt sowohl die Messung der Totalleistung wie auch die Leistung der drei
-                     einzelnen Phasen. Eine der folgenden Varianten muss bei der Implementierung des Funktionsprofiles
-                     umgesetzt werden:
-                  <ul>
-                    <li>Einphasige Geräte geben die Totalleistung an (ActivePowerACtot)</li>
-                    <li>3-phasige Geräte ohne Totalleistungsmessung geben die Leistung pro Phase an (ActivePowerACL1, ActivePowerACL2, ActivePowerACL3)</li>
-                    <li>3-phasige Geräte mit Einzelphasen- und Totalleistungsmessung geben alle Datenpunkte an</li>
-                  </ul>
-                  </p>
-                ]]>
-              </textElement>
-              <language>de</language>
-            </legibleDescription>
-            <legibleDescription>
-              <textElement>
-                <![CDATA[ 
-                  <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
-                  <strong>Active Power Measurement</strong><br>
-                  Monitoring functional profile for power generators and consumers for reflecting the active power.
-                  
-                  <p>Knowing the precisionPercent of measurements is necessary and therefore specified as a mandatory attribute
-                     per data point. Thus, different measurement precisions can be defined for the data points.</p>
-                  
-                  <p>With this functional profile you can measure the total active power as well as the active power of
-                     the three individual phases. One of the following options must be implemented for fulfilling the functional profile:
-                  <ul>
-                    <li>Single-phase devices use the total active power data point (ActivePowerACtot)</li>
-                    <li>Three-phase devices without measurement of the total active power use the data points per phase (ActivePowerACL1, ActivePowerACL2, ActivePowerACL3)</li>
-                    <li>Three-phase devices with measurement of the total active power use all data points</li>
-                  </ul>
-                  </p>
-                ]]>     
-              </textElement>
-              <language>en</language>
-            </legibleDescription>
-          </functionalProfile>
-          <dataPointList>
-            <dataPointListElement>
-              <dataPoint>
-                <dataPointName>ActivePowerACtot</dataPointName>
-                <dataDirection>R</dataDirection>
-                <dataType>
-                  <float64/>
-                </dataType>
-                <unit>KILOWATTS</unit>
-                <alternativeNames>
-                  <sLV1Name>ActivePowerACtot</sLV1Name>
-                  <manufName>23002</manufName>
-                </alternativeNames>
-                <legibleDescription>
-                  <textElement>
-                    <![CDATA[
-                      <i>Total active power measurement</i>
-                      <p>Eletrical power WEZ.</p>
-                    ]]>
-                  </textElement>
-                  <language>en</language>
-                </legibleDescription>
-                <legibleDescription>
-                  <textElement>
-                    <![CDATA[
-                      <i>Erfassung der gesamten Wirkleistung</i>
-                      <p>Aktuelle elektr. Leistungsaufnahme WEZ.</p>
-                      <font color="red">Wie wird die Wirkleistung erfasst? Über einen eingebauten Zähler?</font>
-                    ]]>
-                  </textElement>
-                  <language>de</language>
-                </legibleDescription>
-                <legibleDescription>
-                  <textElement>Puissance électrique</textElement>
-                  <language>fr</language>
-                </legibleDescription>
-                <legibleDescription>
-                  <textElement>Potenza elettrica</textElement>
-                  <language>it</language>
-                </legibleDescription>
-              </dataPoint>
-              <modbusDataPointConfiguration>
-                <modbusDataType>
-                  <int32 />
-                </modbusDataType>
-                <address>25611</address>                
-                <registerType>HoldRegister</registerType>
-                <numberOfRegisters>2</numberOfRegisters>
-              </modbusDataPointConfiguration>
-              <modbusAttributes>
-                <scalingFactor>
-                  <multiplicator>1</multiplicator>
-                  <powerof10>-2</powerof10>
-                </scalingFactor>
-              </modbusAttributes>
-            </dataPointListElement>
-          </dataPointList>
-       </functionalProfileListElement>
-        <functionalProfileListElement>
-          <functionalProfile>
-            <functionalProfileName>EnergyMonitor</functionalProfileName>
-            <functionalProfileIdentification>
-              <specificationOwnerIdentification>0</specificationOwnerIdentification>
-              <functionalProfileCategory>HeatPumpControl</functionalProfileCategory>
-              <functionalProfileType>EnergyMonitor</functionalProfileType>
-              <levelOfOperation>m</levelOfOperation>
-              <versionNumber>
-                <primaryVersionNumber>0</primaryVersionNumber>
-                <secondaryVersionNumber>3</secondaryVersionNumber>
-                <subReleaseVersionNumber>0</subReleaseVersionNumber>
-              </versionNumber>
-            </functionalProfileIdentification>
-            <alternativeNames>
-              <sLV1Name>EnergyMonitor</sLV1Name>
-            </alternativeNames>
-            <legibleDescription>
-              <textElement>
-                <![CDATA[ 
-                  <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
-                  <p>Aufzeichnen der Warmepumpen-Betriebsdaten durch den CEM.</p>
-                  
-                  <p>Bemerkungen:</p>
-                  <ol>
-                    <li>Energiewerte, Laufzeiten und Anzahl Starts werden typischerweise 1x täglich abgefragt. Die Leistungsmessungen
-                        werden häufiger abgefragt und können zur Regelung dienen. Deshalb die Anforderung einer maximalen Abtastzeit.</li>
-                    <li>Die intern ermittelten Energiewerte sind i.d.R. berechnete Werte. Für eine exakte Messung werden externe, geeichte Zähler empfohlen.</li>
-                  </ol>
-                ]]>
-              </textElement>
-              <language>de</language>
-            </legibleDescription>
-          </functionalProfile>
-          <dataPointList>
             <dataPointListElement>
               <dataPoint>
                 <dataPointName>ThermalEnergyTot</dataPointName>
@@ -3537,7 +3321,7 @@
                 <legibleDescription>
                   <textElement>
                     <![CDATA[
-                      <i>Summe der abgegebenen thermischen Energie total</i>
+                      Summe der abgegebenen thermischen Energie total
                       </p>Wärmemenge Heizen.
                     ]]>
                   </textElement>
@@ -3581,7 +3365,7 @@
                 <legibleDescription>
                   <textElement>
                     <![CDATA[
-                      <i>Summe der abgegebenen thermischen Energie für das Heizen.</i>
+                      Summe der abgegebenen thermischen Energie für das Heizen.
                       </p>Wärmemenge Heizen.
                     ]]>
                   </textElement>
@@ -3625,7 +3409,7 @@
                 <legibleDescription>
                   <textElement>
                     <![CDATA[
-                      <i>Summe der aufgenommenen thermischen Energie für das Kühlen (nur bei aktiver Kühlung über Verdichter).</i>
+                      Summe der aufgenommenen thermischen Energie für das Kühlen (nur bei aktiver Kühlung über Verdichter).
                       </p>Kältemenge Kühlen: Summe der aufgenommenen thermischen Energie für das Kühlen (nur bei aktiver Kühlung über Verdichter)
                     ]]>
                   </textElement>
@@ -3670,7 +3454,7 @@
                 <legibleDescription>
                   <textElement>
                     <![CDATA[
-                      <i>Summe der abgegebenen thermischen Energie für die Brauchwarmwasser-Erwärmung.</i>
+                      Summe der abgegebenen thermischen Energie für die Brauchwarmwasser-Erwärmung.
                       </p>Wärmemenge WW
                     ]]>
                   </textElement>
@@ -3698,6 +3482,61 @@
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
+                <dataPointName>ActivePowerACtot</dataPointName>
+                <dataDirection>R</dataDirection>
+                <dataType>
+                  <float64/>
+                </dataType>
+                <unit>KILOWATTS</unit>
+                <alternativeNames>
+                  <sLV1Name>ActivePowerACtot</sLV1Name>
+                  <manufName>23002</manufName>
+                </alternativeNames>
+                <legibleDescription>
+                  <textElement>
+                    <![CDATA[
+                      Total active power measurement
+                      <p>Eletrical power WEZ.</p>
+                    ]]>
+                  </textElement>
+                  <language>en</language>
+                </legibleDescription>
+                <legibleDescription>
+                  <textElement>
+                    <![CDATA[
+                      Erfassung der gesamten Wirkleistung
+                      <p>Aktuelle elektr. Leistungsaufnahme WEZ.</p>
+                      <font color="red">Wie wird die Wirkleistung erfasst? Über einen eingebauten Zähler?</font>
+                    ]]>
+                  </textElement>
+                  <language>de</language>
+                </legibleDescription>
+                <legibleDescription>
+                  <textElement>Puissance électrique</textElement>
+                  <language>fr</language>
+                </legibleDescription>
+                <legibleDescription>
+                  <textElement>Potenza elettrica</textElement>
+                  <language>it</language>
+                </legibleDescription>
+              </dataPoint>
+              <modbusDataPointConfiguration>
+                <modbusDataType>
+                  <int32 />
+                </modbusDataType>
+                <address>25611</address>                
+                <registerType>HoldRegister</registerType>
+                <numberOfRegisters>2</numberOfRegisters>
+              </modbusDataPointConfiguration>
+              <modbusAttributes>
+                <scalingFactor>
+                  <multiplicator>1</multiplicator>
+                  <powerof10>-2</powerof10>
+                </scalingFactor>
+              </modbusAttributes>
+            </dataPointListElement>
+            <dataPointListElement>
+              <dataPoint>
                 <dataPointName>RuntimeCompressor</dataPointName>
                 <dataDirection>R</dataDirection>
                 <dataType>
@@ -3710,7 +3549,7 @@
                 <legibleDescription>
                   <textElement>
                     <![CDATA[
-                      <i>Summe der Laufzeit des Verdichters seit Inbetriebnahme.</i>
+                      Summe der Laufzeit des Verdichters seit Inbetriebnahme.
                       </p>Betriebsstunden Wärmeerzeuger: Summe der Laufzeit des Verdichters seit Inbetriebnahme.
                     ]]>
                   </textElement>
@@ -3746,7 +3585,7 @@
                 <legibleDescription>
                   <textElement>
                     <![CDATA[
-                      <i>Anzahl Starts des Verdichters seit Inbetriebnahme.</i>
+                      Anzahl Starts des Verdichters seit Inbetriebnahme.
                       </p>Schaltzyklen Wärmeerzeuger: Anzahl Starts des Verdichters seit Inbetriebnahme.
                     ]]>
                   </textElement>
