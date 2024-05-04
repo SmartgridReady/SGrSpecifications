@@ -74,11 +74,18 @@
                                     <xsl:apply-templates select="sgr:timeSyncBlockNotification" />
                                 </xsl:if>
         
+                                <!-- Messaging Device -->
+                                <xsl:if test="sgr:messagingInterfaceDescription">
+                                    <h1 class="messagingattribute">Messaging Interface</h1>
+                                    <xsl:apply-templates select="sgr:messagingInterfaceDescription" />
+                                    <xsl:apply-templates select="sgr:messagingAttributes" />
+                                </xsl:if>
+        
                                 <!-- Rest Device -->
                                 <xsl:if test="sgr:restApiInterfaceDescription">
                                     <h1 class="restapiattribute">RestApi Interface</h1>
                                     <xsl:apply-templates
-                                        select="sgr:restApiInterface/sgr:restApiInterfaceDescription" />
+                                        select="sgr:restApiInterfaceDescription" />
                                 </xsl:if>
         
                                 <!-- Contact Device -->

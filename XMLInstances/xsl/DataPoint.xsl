@@ -102,6 +102,17 @@
                                 <xsl:apply-templates select="sgr:blockCacheIdentification" />
                                 <xsl:apply-templates select="sgr:modbusAttributes" />
                             </xsl:when>
+                            <xsl:when test="sgr:messagingDataPointConfiguration">
+                                <xsl:if test="sgr:dataPoint/sgr:dataDirection = 'C'">
+                                    <tr>
+                                  <td></td>
+                                        <td style="color:red"><b>Constant data points cannot have a configuration</b></td>
+                                </tr>
+                                </xsl:if>
+                                <xsl:apply-templates select="sgr:messagingDataPointConfiguration" />
+                                <xsl:apply-templates select="sgr:blockCacheIdentification" />
+                                <xsl:apply-templates select="sgr:messagingAttributes" />
+                            </xsl:when>
                             <xsl:when test="sgr:restApiDataPointConfiguration">
                                 <xsl:if test="sgr:dataPoint/sgr:dataDirection = 'C'">
                                     <tr>
