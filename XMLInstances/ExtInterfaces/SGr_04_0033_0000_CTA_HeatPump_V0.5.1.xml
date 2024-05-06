@@ -572,9 +572,8 @@
                   <a href="https://github.com/SmartGridready/SGrSpecifications/blob/master/doc/HeatPumpAppliances.md#heat-pump-appliances">HeatPumpAppliances</a>.</p>
                   <p>Es handelt sich dabei um die "Entladekreise", welche durch das Gebäude geführt werden.
                   Entsprechende Mischventile sorgen dafür, dass verschiedene Temperaturniveaus eingestellt werden können</p>
-                  <font color="red">Ich vermisse hier den Datenpunkte für die Anhebung des Sollwerts über das Modbus-Register 1005 CTA_HK1_SetpointComfort.
-                                    Das wäre dann analog zu Stiebel Eltron. Name des Datenpunktes: SupplyWaterTempSetpointComfort. Mit diesem Datenpunkt könnte
-                                    man den Offset der Heizkurve verstellen, was sinnvoller ist als den absoluten Sollwert.</font>
+                  <font color="red">Ich vermisse hier den Datenpunkte für die Festlegung des Komfortwerts über das Modbus-Register 1005 CTA_HK1_SetpointComfort.
+                                    Das wäre dann analog zu Stiebel Eltron. Name des Datenpunktes: SupplyWaterTempSetpointComfort.</font>
                 ]]>         
               </textElement>
               <language>de</language>
@@ -625,7 +624,12 @@
                   <manufName>CTA_HK1_Status_UsrSet</manufName>
                 </alternativeNames>
                 <legibleDescription>
-                  <textElement>Setzen und Auslesen des aktuellen Status des Heizkreises</textElement>
+                  <textElement>
+                    <![CDATA[
+                      Setzen und Auslesen der aktuellen Betriebsart des Heizkreises
+                      <p>Die Betriebsart CTA_HC_EXT_CTRL aktiviert die direkte Regelung der Vorlauftemperatur.</p>
+                    ]]>
+                  </textElement>
                   <language>de</language>
                 </legibleDescription>
               </dataPoint>
@@ -910,7 +914,12 @@
                   <manufName>CTA_HK2_Status_UsrSet</manufName>
                 </alternativeNames>
                 <legibleDescription>
-                  <textElement>Auslesen des aktuellen Status des Heizkreises</textElement>
+                  <textElement>
+                    <![CDATA[
+                      Setzen und Auslesen der aktuellen Betriebsart des Heizkreises
+                      <p>Die Betriebsart CTA_HC_EXT_CTRL aktiviert die direkte Regelung der Vorlauftemperatur.</p>
+                    ]]>
+                  </textElement>
                   <language>de</language>
                 </legibleDescription>
               </dataPoint>
@@ -1150,9 +1159,11 @@
                 </alternativeNames>
                 <legibleDescription>
                   <textElement>
-                    Die Betriebsarten dieses Gerätes sind herstellerspezifisch:
-                    Ein- und ausschalten, einmaliger Leistungsstoss und  Notbetrieb TWW (Trinkwarmwasser),
-                    einmaliges kurzes Aufheizen (Push)
+                    <![CDATA[
+                      Setzen und Auslesen der Betriebsart für die Brauchwarmwasserproduktion.
+                      <p>Ein- und ausschalten, einmaliger Leistungsstoss und  Notbetrieb TWW (Trinkwarmwasser),
+                      einmaliges kurzes Aufheizen (Push)</p>
+                    ]]>
                   </textElement>
                   <language>de</language>
                 </legibleDescription>
@@ -1209,8 +1220,11 @@
                 </alternativeNames>
                 <legibleDescription>
                   <textElement>
-                    Die Betriebsarten dieses Gerätes sind herstellerspezifisch:
-                    Ein- und ausschalten, einmaliger Leistungsstoss, Ferienschaltung (kann nur vor Ort gesetzt werden), Notbetrieb TWW, und (nicht setzbare) automatische Legionellenschaltung  
+                    <![CDATA[
+                      Auslesen des Status der Brauchwarmwasserproduktion.
+                      <p>Ein- und ausschalten, einmaliger Leistungsstoss, Ferienschaltung (kann nur vor Ort gesetzt werden), Notbetrieb TWW, und (nicht setzbare) automatische Legionellenschaltung</p>
+                      <font color="red">Beschreibung der einzelnen Einträge nochmals mit Hersteller prüfen!</font>
+                    ]]>
                   </textElement>
                   <language>de</language>
                 </legibleDescription>

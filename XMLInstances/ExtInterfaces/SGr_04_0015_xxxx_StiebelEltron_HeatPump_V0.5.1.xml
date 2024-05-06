@@ -106,6 +106,7 @@
                   Das Profil definiert den Grundbaustein zur dynamischen Ansteuerung von Wärmepumpen
                   über eine Betriebsmodus-gestützte Beeinflussung der Sollwerte.
                   <p>Der Betrieb der Wärmepumpe muss in sich sicher sein, unabhängig von den äusseren Vorgaben.</p>
+                  <p><font color="red">Diesen Punkt müssen wir mit den Herstellern nochmals diskutieren.</font></p>
                   <p>Dieses Grundprofil definiert die Datenpunkte, welche zur Steuerung des Gerätes «Wärmepumpe»
                   mit zusätzlichen Funktionsprofilen grundsätzlich zur Verfügung gestellt werden.
                   Sie stellen die Version einer typischen Einfamilienhauswärmepumpe mit Aussentemperaturfühler dar.</p>
@@ -225,7 +226,7 @@
                 <legibleDescription>
                   <textElement> 
                     <![CDATA[
-                      Grund-Betriebsart der Wärmepumpe
+                      Setzen und Auslesen der Grund-Betriebsart der Wärmepumpe
                     ]]>					
                   </textElement>
                   <language>de</language>
@@ -416,7 +417,7 @@
                   <en17609Name>Outside Air Temperature</en17609Name>
                 </alternativeNames>
                 <legibleDescription>
-                  <textElement>Aktuelle Aussentemperatur (gemessen über Aussenfühler)</textElement>
+                  <textElement>Auslesen der aktuellen Aussentemperatur (gemessen über Aussenfühler)</textElement>
                   <language>de</language>
                 </legibleDescription>
               </dataPoint>
@@ -449,6 +450,10 @@
                   <hpBwpName>Temperatur Vorlauf</hpBwpName>
                   <en17609Name>Supply Water Temperature</en17609Name>
                 </alternativeNames>
+                <legibleDescription>
+                  <textElement>Auslesen der aktuellen Temperatur des Vorlaufs.</textElement>
+                  <language>de</language>
+                </legibleDescription>
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
@@ -514,6 +519,10 @@
                   <manufName>Quellentemperatur</manufName>
                   <hpBwpName>Temperatur Wärmequelleneintritt</hpBwpName>
                 </alternativeNames>
+                <legibleDescription>
+                  <textElement>Auslesen der aktuellen Quellentemperatur.</textElement>
+                  <language>de</language>
+                </legibleDescription>
                 <programmerHints>
                   <textElement>
                     Bei Luftwärmepumpen beträgt der Wert von InputRegister addr 536 -3276.8
@@ -590,7 +599,7 @@
                   <en17609Name>Supply Water Temperature</en17609Name>
                 </alternativeNames>
                 <legibleDescription>
-                  <textElement>Auslesen der aktuellen aktuellen-Temperatur des Vorlaufs.</textElement>
+                  <textElement>Auslesen der aktuellen Temperatur des Vorlaufs.</textElement>
                   <language>de</language>
                 </legibleDescription>
               </dataPoint>
@@ -876,7 +885,7 @@
             <dataPointListElement>
               <dataPoint>
                 <dataPointName>SupplyWaterTempSetpointEco</dataPointName>
-                <dataDirection>R</dataDirection>
+                <dataDirection>RW</dataDirection>
                 <dataType>
                   <float32 />
                 </dataType>
@@ -955,7 +964,7 @@
                   <en17609Name>Hot Water Setpoint Temperature Comfort</en17609Name>
                 </alternativeNames>
                 <legibleDescription>
-                  <textElement>Setpoint für Brauchwarmwasserspeicher im Comfort-Betrieb</textElement>
+                  <textElement>Setzen und Auslesen des Sollwerts für Brauchwarmwasserspeicher im Comfort-Betrieb</textElement>
                   <language>de</language>
                 </legibleDescription>
               </dataPoint>
@@ -992,7 +1001,7 @@
                   <en17609Name>Hot Water Setpoint Temperature Eco</en17609Name>
                 </alternativeNames>
                 <legibleDescription>
-                  <textElement>Setpoint für Brauchwarmwasserspeicher im ECO-Betrieb</textElement>
+                  <textElement>Setzen und Auslesen des Sollwerts für Brauchwarmwasserspeicher im ECO-Betrieb</textElement>
                   <language>de</language>
                 </legibleDescription>
               </dataPoint>
@@ -1026,7 +1035,7 @@
                   <manufName>SOLLTEMPERATUR Warmwasser</manufName>
                 </alternativeNames>
                 <legibleDescription>
-                  <textElement>Aktuelle Setpoint Temperatur des Brauchwarmwasserspeichers</textElement>
+                  <textElement>Rücklesen des aktuellen Sollwerts der Temperatur des Brauchwarmwasserspeichers</textElement>
                   <language>de</language>
                 </legibleDescription>
                 <programmerHints>
@@ -1066,7 +1075,7 @@
                   <en17609Name>Hot WaterTemperature</en17609Name>
                 </alternativeNames>
                 <legibleDescription>
-                  <textElement>Aktuelle Ist-Temperatur des Brauchwarmwasserspeichers</textElement>
+                  <textElement>Auslesen der aktuellen Temperatur des Brauchwarmwasserspeichers</textElement>
                   <language>de</language>
                 </legibleDescription>
               </dataPoint>
@@ -1125,7 +1134,7 @@
                 </alternativeNames>
                 <legibleDescription>
                   <textElement>Rücklesen des gesetzten Wertes der Sollteperatur für
-                    denHeiz-Pufferspeicher.</textElement>
+                    den Heiz-Pufferspeicher.</textElement>
                   <language>de</language>
                 </legibleDescription>
                 <programmerHints>
@@ -1164,7 +1173,7 @@
                   <manufName>PUFFERISTTEMPERATUR</manufName>
                 </alternativeNames>
                 <legibleDescription>
-                  <textElement>aktuelle Speichertemperatur</textElement>
+                  <textElement>Auslesen der Speichertemperatur</textElement>
                   <language>de</language>
                 </legibleDescription>
               </dataPoint>
