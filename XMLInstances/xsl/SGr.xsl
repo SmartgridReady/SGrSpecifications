@@ -14,6 +14,7 @@
 	<xsl:include href="FunctionalProfileFrame.xsl" />
 
 	<xsl:include href="TransportServiceModbus.xsl" />
+    <xsl:include href="TransportServiceMessaging.xsl" />
 	<xsl:include href="TransportServiceRestApi.xsl" />
 	<xsl:include href="TransportServiceContactApi.xsl" />
 
