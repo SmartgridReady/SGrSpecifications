@@ -24,10 +24,20 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
       <enumeration value="256000" />
     </restriction>
   </simpleType>
+  <simpleType name="BaudRateParameter">
+    <restriction base="string">
+      <pattern value="\{\{.+\}\}|300|600|1200|2400|4800|5600|9600|14400|19200|38400|57600|115200|12800|230400|256000" />
+    </restriction>
+  </simpleType>
   <simpleType name="ByteLength">
     <restriction base="string">
       <enumeration value="7" />
       <enumeration value="8" />
+    </restriction>
+  </simpleType>
+  <simpleType name="ByteLengthParameter">
+    <restriction base="string">
+      <pattern value="\{\{.+\}\}|7|8" />
     </restriction>
   </simpleType>
   <simpleType name="Parity">
@@ -37,12 +47,22 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
       <enumeration value="NONE" />
     </restriction>
   </simpleType>
+  <simpleType name="ParityParameter">
+    <restriction base="string">
+      <pattern value="(\{\{.+\}\})|(^\d+$)|EVEN|ODD|NONE" />
+    </restriction>
+  </simpleType>
   <simpleType name="StopBitLength">
     <restriction base="string">
       <enumeration value="0" />
       <enumeration value="1" />
       <enumeration value="1.5" />
       <enumeration value="2" />
+    </restriction>
+  </simpleType>
+  <simpleType name="StopBitLengthParameter">
+    <restriction base="string">
+      <pattern value="(\{\{.+\}\})|0|1|1.5|2" />
     </restriction>
   </simpleType>
   <complexType name="SerialInterfaceCapability">

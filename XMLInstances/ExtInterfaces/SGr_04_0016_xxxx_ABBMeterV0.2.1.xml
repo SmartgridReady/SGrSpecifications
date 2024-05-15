@@ -80,7 +80,6 @@
       <dataType>
         <string/>
       </dataType>
-      <defaultValue></defaultValue>
       <configurationDescription>
         <textElement>The IP address when accessed via a TCP/IP RTU gateway.</textElement>
         <language>en</language>
@@ -104,7 +103,6 @@
       <dataType>
         <string/>
       </dataType>
-      <defaultValue></defaultValue>
       <configurationDescription>
         <textElement>The serial port name when accessed via serial port.</textElement>
         <language>en</language>
@@ -126,7 +124,10 @@
     <configurationListElement>
       <name>serial_databits</name>
       <dataType>
-        <enum/>
+        <enum>
+          <enumEntry><literal>7</literal></enumEntry>
+          <enumEntry><literal>8</literal></enumEntry>
+        </enum>
       </dataType>
       <defaultValue>8</defaultValue>
       <configurationDescription>
@@ -138,7 +139,10 @@
     <configurationListElement>
       <name>serial_stopbits</name>
       <dataType>
-        <enum/>
+        <enum>
+          <enumEntry><literal>0</literal></enumEntry>
+          <enumEntry><literal>1</literal></enumEntry>
+        </enum>
       </dataType>
       <defaultValue>1</defaultValue>
       <configurationDescription>
@@ -150,8 +154,12 @@
     <configurationListElement>
       <name>serial_parity</name>
       <dataType>
-        <enum/>
-      </dataType>
+        <enum>
+          <enumEntry><literal>EVEN</literal></enumEntry>
+          <enumEntry><literal>ODD</literal></enumEntry>
+          <enumEntry><literal>NONE</literal></enumEntry>
+        </enum>
+        </dataType>
       <defaultValue>NONE</defaultValue>
       <configurationDescription>
         <textElement>The parity when accessed via serial port.</textElement>

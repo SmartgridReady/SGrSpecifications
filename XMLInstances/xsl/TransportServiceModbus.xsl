@@ -32,6 +32,9 @@
                     Slave Adress:
                     <xsl:value-of select="sgr:modbusRtu/sgr:slaveAddr" />
                     <br />
+                    Port Name (COM):
+                    <xsl:value-of select="sgr:modbusRtu/sgr:portName" />
+                    <br />
                     Baud Rate:
                     <xsl:value-of select="sgr:modbusRtu/sgr:baudRateSelected" />
                     <br />
