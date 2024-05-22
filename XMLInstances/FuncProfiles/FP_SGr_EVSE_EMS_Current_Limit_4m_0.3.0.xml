@@ -47,7 +47,7 @@
         <![CDATA[
           Die Funktionsprofile ermöglichen es einem Controller, eine Strombegrenzung für ein Electric Vehicle Supply Equipment (EVSE) festzulegen.
           <p>Die Strombegrenzung der Ladestation wird dynamisch durch ein externes Energiemanagementsystem (EMS) geregelt, mit dem in Ampere ausgedrückten Wert.</p>
-          <p>Dieser spezifische Parameter kann von einem Energiemanager einfach angepasst werden und ermöglicht so eine effiziente und maßgeschneiderte Steuerung des Ladevorgangs.</p>
+          <p>Dieser spezifische Parameter kann von einem Energiemanager einfach angepasst werden und ermöglicht so eine effiziente und massgeschneiderte Steuerung des Ladevorgangs.</p>
           <p>Der obligatorische Datenpunkt EMSCurrentLimit ermöglicht eine Echtzeitüberwachung und Steuerung der Verbrauchsgrenze der Ladestation.</p>
           <p>Die SmoothTransition-Datenpunkte werden verwendet, um den Übergangsprozess nach dem Empfang eines neuen Grenzwerts durch die Ladestation zu spezifizieren.</p>
           <p>Dieses Funktionsprofil kann in Verbindung mit dem Funktionsprofil EVSE States verwendet werden.</p>
@@ -77,7 +77,13 @@
           <language>en</language>
         </legibleDescription>
         <legibleDescription>
-          <textElement>Current limit ...</textElement>
+          <textElement>
+            <![CDATA[
+              Der aktuell maximal zulässige Strom für die Ladestation.
+              <p>Wenn das Gerät unterschiedliche Datenpunkte zum Schreiben und Lesen benötigt, kann die Datenrichtung dieses Datenpunkts
+              in W geändert werden, und über den Datenpunkt <em>EMSCurrentLimitFeedback</em> kann ein Datenpunkt zum Auslesen des Maximalstroms definiert werden.</p>
+            ]]>
+          </textElement>
           <language>de</language>
         </legibleDescription>
       </dataPoint>
@@ -94,7 +100,7 @@
         <legibleDescription>
           <textElement>
             <![CDATA[
-              Sub datapoint defining the window for the smooth transition of the EMSCurrentLimit datapoint.
+              Sub datapoint defining the window for the smooth transition of the <em>EMSCurrentLimit</em> datapoint.
               <p>Indicates a time window in which the new operating mode is started randomly. The time window begins with the start command of the operating mode. The value 0 means immediate.</p>
               <p>This datapoint can be implemented in the device as constant datapoint if the value is constant or
               as regular datapoint if it can be read from the device.</p>
@@ -104,7 +110,14 @@
           <language>en</language>
         </legibleDescription>
         <legibleDescription>
-          <textElement>Current limit ...</textElement>
+          <textElement>
+            <![CDATA[
+              Unterdatenpunkt, der das Fenster für den reibungslosen Übergang des Datenpunkts <em>EMSCurrentLimit</em> definiert.
+              <p>Gibt ein Zeitfenster an, in dem der neue Betriebsmodus zufällig gestartet wird. Das Zeitfenster beginnt mit dem Startbefehl der Betriebsart. Der Wert 0 bedeutet sofort.</p>
+              <p>Dieser Datenpunkt kann im Gerät als konstanter Datenpunkt implementiert werden, wenn der Wert konstant ist oder als regulärer Datenpunkt, wenn er vom Gerät gelesen werden kann.</p>
+              Siehe winTms in <a href="https://github.com/SmartGridready/SGrSpecifications/blob/master/doc/GenericAttributes.md#smooth-transition">Smooth Transition</a>
+            ]]>
+          </textElement>
           <language>de</language>
         </legibleDescription>
       </dataPoint>
@@ -121,7 +134,7 @@
         <legibleDescription>
           <textElement>
             <![CDATA[
-              Sub datapoint defining the delay for the smooth transition of the EMSCurrentLimit datapoint.
+              Sub datapoint defining the delay for the smooth transition of the <em>EMSCurrentLimit</em> datapoint.
               <p>Specifies how quickly the changes should be made. The corresponding value is gradually changed from the old to the new value in the specified time.</p>
               <p>This datapoint can be implemented in the device as constant datapoint if the value is constant or
               as regular datapoint if it can be read from the device.</p>
@@ -131,7 +144,14 @@
           <language>en</language>
         </legibleDescription>
         <legibleDescription>
-          <textElement>Current limit ...</textElement>
+          <textElement>
+            <![CDATA[
+              Unterdatenpunkt, der die Verzögerung für den reibungslosen Übergang des Datenpunkts <em>EMSCurrentLimit</em> definiert.
+              <p>Gibt an, wie schnell die Änderungen vorgenommen werden sollen. Der entsprechende Wert wird in der angegebenen Zeit schrittweise vom alten auf den neuen Wert geändert.</p>
+              <p>Dieser Datenpunkt kann im Gerät als konstanter Datenpunkt implementiert werden, wenn der Wert konstant ist oder als regulärer Datenpunkt, wenn er vom Gerät gelesen werden kann.</p>
+              Siehe rmpTms in <a href="https://github.com/SmartGridready/SGrSpecifications/blob/master/doc/GenericAttributes.md#smooth-transition">Smooth Transition</a>
+            ]]>
+          </textElement>
           <language>de</language>
         </legibleDescription>
       </dataPoint>
@@ -148,7 +168,7 @@
         <legibleDescription>
           <textElement>
             <![CDATA[
-              Sub datapoint defining the duration for the smooth transition of the EMSCurrentLimit datapoint.
+              Sub datapoint defining the duration for the smooth transition of the <em>EMSCurrentLimit</em> datapoint.
               <p>determines how long the operating mode should be active. When the time has elapsed, the operating mode is automatically terminated. If set to 0 (standard value), the operating mode remains active until a new command is received.</p>
               <p>This datapoint can be implemented in the device as constant datapoint if the value is constant or
               as regular datapoint if it can be read from the device.</p>
@@ -158,7 +178,14 @@
           <language>en</language>
         </legibleDescription>
         <legibleDescription>
-          <textElement>Current limit ...</textElement>
+          <textElement>
+            <![CDATA[
+              Unterdatenpunkt, der die Dauer für den reibungslosen Übergang des Datenpunkts <em>EMSCurrentLimit</em> definiert.
+              <p>Bestimmt, wie lange der Betriebsmodus aktiv sein soll. Nach Ablauf der Zeit wird der Betriebsmodus automatisch beendet. Bei der Einstellung 0 (Standardwert) bleibt der Betriebsmodus aktiv, bis ein neuer Befehl empfangen wird.</p>
+              <p>Dieser Datenpunkt kann im Gerät als konstanter Datenpunkt implementiert werden, wenn der Wert konstant ist oder als regulärer Datenpunkt, wenn er vom Gerät gelesen werden kann.</p>
+              Siehe rvrtTms in <a href="https://github.com/SmartGridready/SGrSpecifications/blob/master/doc/GenericAttributes.md#smooth-transition">Smooth Transition</a>
+            ]]>
+          </textElement>
           <language>de</language>
         </legibleDescription>
       </dataPoint>
@@ -182,7 +209,12 @@
           <language>en</language>
         </legibleDescription>
         <legibleDescription>
-          <textElement>Current limit ...</textElement>
+          <textElement>
+            <![CDATA[
+              Liest den aktuell maximal zulässigen Strom für die Ladestation aus.
+              <p>Dieser Datenpunkt sollte nur verwendet werden, wenn die Geräte unterschiedliche Datenpunkte zum Schreiben und Lesen des maximalen Stroms benötigen.</p>
+            ]]>
+          </textElement>
           <language>de</language>
         </legibleDescription>
       </dataPoint>
@@ -208,7 +240,14 @@
           <language>en</language>
         </legibleDescription>
         <legibleDescription>
-          <textElement>Zum Einstellen des Betriebsmodus</textElement>
+          <textElement>
+            <![CDATA[
+              Im Falle eines Kommunikationsunterbruchs mit dem EMS passt die EVSE ihre Strombegrenzung automatisch an den sicheren Stromwert an.
+              <p>Wenn das Gerät unterschiedliche Datenpunkte zum Schreiben und Lesen benötigt, kann die Datenrichtung dieses Datenpunkts
+              in W geändert werden, und über den Datenpunkt <em>SafeCurrentFeedback</em> kann ein Datenpunkt zum Auslesen des sicheren Stroms definiert werden.</p>
+              <p>Dieser Datenpunkt sollte nur verwendet werden, wenn die Geräte zum Schreiben und Lesen des sicheren Stroms unterschiedliche Datenpunkte benötigen.</p>
+            ]]>
+          </textElement>
           <language>de</language>
         </legibleDescription>
       </dataPoint>
@@ -225,7 +264,7 @@
         <legibleDescription>
           <textElement>
             <![CDATA[
-              Sub datapoint defining the window for the smooth transition of the SafeCurrent datapoint.
+              Sub datapoint defining the window for the smooth transition of the <em>SafeCurrent</em> datapoint.
               <p>Indicates a time window in which the new operating mode is started randomly. The time window begins with the start command of the operating mode. The value 0 means immediate.</p>
               <p>This datapoint can be implemented in the device as constant datapoint if the value is constant or
               as regular datapoint if it can be read from the device.</p>
@@ -235,7 +274,14 @@
           <language>en</language>
         </legibleDescription>
         <legibleDescription>
-          <textElement>Window zum Einstellen des Betriebsmodus</textElement>
+          <textElement>
+            <![CDATA[
+              Unterdatenpunkt, der das Fenster für den reibungslosen Übergang des Datenpunkts <em>SafeCurrent</em> definiert.
+              <p>Gibt ein Zeitfenster an, in dem der neue Betriebsmodus zufällig gestartet wird. Das Zeitfenster beginnt mit dem Startbefehl der Betriebsart. Der Wert 0 bedeutet sofort.</p>
+              <p>Dieser Datenpunkt kann im Gerät als konstanter Datenpunkt implementiert werden, wenn der Wert konstant ist oder als regulärer Datenpunkt, wenn er vom Gerät gelesen werden kann.</p>
+              Siehe winTms in <a href="https://github.com/SmartGridready/SGrSpecifications/blob/master/doc/GenericAttributes.md#smooth-transition">Smooth Transition</a>
+            ]]>
+          </textElement>
           <language>de</language>
         </legibleDescription>
       </dataPoint>
@@ -252,7 +298,7 @@
         <legibleDescription>
           <textElement>
             <![CDATA[
-              Sub datapoint defining the delay for the smooth transition of the SafeCurrent datapoint.
+              Sub datapoint defining the delay for the smooth transition of the <em>SafeCurrent</em> datapoint.
               <p>Specifies how quickly the changes should be made. The corresponding value is gradually changed from the old to the new value in the specified time.</p>
               <p>This datapoint can be implemented in the device as constant datapoint if the value is constant or
               as regular datapoint if it can be read from the device.</p>
@@ -262,7 +308,14 @@
           <language>en</language>
         </legibleDescription>
         <legibleDescription>
-          <textElement>Delay zum Einstellen des Betriebsmodus</textElement>
+          <textElement>
+            <![CDATA[
+              Unterdatenpunkt, der die Verzögerung für den reibungslosen Übergang des Datenpunkts <em>SafeCurrent</em> definiert.
+              <p>Gibt an, wie schnell die Änderungen vorgenommen werden sollen. Der entsprechende Wert wird in der angegebenen Zeit schrittweise vom alten auf den neuen Wert geändert.</p>
+              <p>Dieser Datenpunkt kann im Gerät als konstanter Datenpunkt implementiert werden, wenn der Wert konstant ist oder als regulärer Datenpunkt, wenn er vom Gerät gelesen werden kann.</p>
+              Siehe rmpTms in <a href="https://github.com/SmartGridready/SGrSpecifications/blob/master/doc/GenericAttributes.md#smooth-transition">Smooth Transition</a>
+            ]]>
+          </textElement>
           <language>de</language>
         </legibleDescription>
       </dataPoint>
@@ -279,7 +332,7 @@
         <legibleDescription>
           <textElement>
             <![CDATA[
-              Sub datapoint defining the duration for the smooth transition of the SafeCurrent datapoint.
+              Sub datapoint defining the duration for the smooth transition of the <em>SafeCurrent</em> datapoint.
               <p>determines how long the operating mode should be active. When the time has elapsed, the operating mode is automatically terminated. If set to 0 (standard value), the operating mode remains active until a new command is received.</p>
               <p>This datapoint can be implemented in the device as constant datapoint if the value is constant or
               as regular datapoint if it can be read from the device.</p>
@@ -289,7 +342,14 @@
           <language>en</language>
         </legibleDescription>
         <legibleDescription>
-          <textElement>Duration zum Einstellen des Betriebsmodus</textElement>
+          <textElement>
+            <![CDATA[
+              Unterdatenpunkt, der die Dauer für den reibungslosen Übergang des Datenpunkts <em>SafeCurrent</em> definiert.
+              <p>Bestimmt, wie lange der Betriebsmodus aktiv sein soll. Nach Ablauf der Zeit wird der Betriebsmodus automatisch beendet. Bei der Einstellung 0 (Standardwert) bleibt der Betriebsmodus aktiv, bis ein neuer Befehl empfangen wird.</p>
+              <p>Dieser Datenpunkt kann im Gerät als konstanter Datenpunkt implementiert werden, wenn der Wert konstant ist oder als regulärer Datenpunkt, wenn er vom Gerät gelesen werden kann.</p>
+              Siehe rvrtTms in <a href="https://github.com/SmartGridready/SGrSpecifications/blob/master/doc/GenericAttributes.md#smooth-transition">Smooth Transition</a>
+            ]]>
+          </textElement>
           <language>de</language>
         </legibleDescription>
       </dataPoint>
@@ -367,7 +427,10 @@
         </legibleDescription>
         <legibleDescription>
           <textElement>
-            Timeout ...
+            <![CDATA[
+              Liest den Timeout für den Stabilitäts-Fallback.
+              <p>Dieser Datenpunkt sollte nur verwendet werden, wenn die Geräte unterschiedliche Datenpunkte zum Schreiben und Lesen des Timeouts benötigen.</p>
+            ]]>
           </textElement>
           <language>de</language>
         </legibleDescription>
@@ -390,7 +453,7 @@
         </legibleDescription>
         <legibleDescription>
           <textElement>
-            Hardware current limit ...
+            Der maximal zulässige Strom für die EVSE wird durch die elektrische Installation der Ladestation bestimmt und kann während des Betriebs nicht geändert werden.
           </textElement>
           <language>de</language>
         </legibleDescription>
