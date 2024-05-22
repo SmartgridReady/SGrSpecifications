@@ -50,7 +50,7 @@
         <xsl:apply-templates select="sgr:dataPoint" />
         <tr class="dataPointDetails">
             <td colspan="6" class="noborder">
-                <table style="margin-left:35px; width:737px;">
+                <table style="margin-left:35px; width:737px">
                     <colgroup>
                         <col style="width:194px" />
                     </colgroup>
@@ -138,10 +138,22 @@
     </xsl:template>
 
     <xsl:template match="sgr:dataPoint">
-        <!-- Renders a data point table row (dataPointName, unit, dataType, presenceLevel,
-        dataDirection) -->
-        <tr>
-            <td>
+        <!-- Renders a data point table row (dataPointName, unit, dataType, presenceLevel, dataDirection) -->
+        <xsl:variable name="dpname">
+            <xsl:value-of select="sgr:dataPointName" />
+        </xsl:variable>
+        <xsl:variable name="borderstyle">
+            <xsl:choose>
+                <xsl:when test="contains($dpname, '.')">
+                    solid 2px white
+                </xsl:when>
+                <xsl:otherwise>
+                    solid 1px
+                </xsl:otherwise>
+            </xsl:choose>
+        </xsl:variable>
+        <tr style="border-left: {$borderstyle}">
+            <td style="border-bottom: {$borderstyle}">
                 <xsl:value-of select="sgr:dataPointName" />
             </td>
             <td>
