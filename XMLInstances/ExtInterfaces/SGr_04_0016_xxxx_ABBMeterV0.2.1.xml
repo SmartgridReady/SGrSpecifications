@@ -3,7 +3,7 @@
 <DeviceFrame xmlns="http://www.smartgridready.com/ns/V0/"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/Product/Product.xsd">
-  <deviceName>betaABBMeterV0.1.2</deviceName>
+  <deviceName>betaABBMeterV0.2.1</deviceName>
   <manufacturerName>ABB</manufacturerName>
   <specificationOwnerIdentification>0</specificationOwnerIdentification>
   <releaseNotes>
@@ -62,6 +62,112 @@
       <subReleaseVersionNumber>1</subReleaseVersionNumber>
     </versionNumber>
   </deviceInformation>
+  <configurationList>
+    <configurationListElement>
+      <name>slave_id</name>
+      <dataType>
+        <int16/>
+      </dataType>
+      <defaultValue>1</defaultValue>
+      <configurationDescription>
+        <textElement>Modbus slave ID.</textElement>
+        <language>en</language>
+        <label>Modbus slave ID</label>
+      </configurationDescription>
+    </configurationListElement>
+    <configurationListElement>
+      <name>tcp_address</name>
+      <dataType>
+        <string/>
+      </dataType>
+      <configurationDescription>
+        <textElement>The IP address when accessed via a TCP/IP RTU gateway.</textElement>
+        <language>en</language>
+        <label>TCP/IP gateway address</label>
+      </configurationDescription>
+    </configurationListElement>
+    <configurationListElement>
+      <name>tcp_port</name>
+      <dataType>
+        <int32/>
+      </dataType>
+      <defaultValue>502</defaultValue>
+      <configurationDescription>
+        <textElement>The IP port when accessed via a TCP/IP RTU gateway.</textElement>
+        <language>en</language>
+        <label>TCP/IP gateway port</label>
+      </configurationDescription>
+    </configurationListElement>
+    <configurationListElement>
+      <name>serial_port</name>
+      <dataType>
+        <string/>
+      </dataType>
+      <configurationDescription>
+        <textElement>The serial port name when accessed via serial port.</textElement>
+        <language>en</language>
+        <label>Serial port name</label>
+      </configurationDescription>
+    </configurationListElement>
+    <configurationListElement>
+      <name>serial_baudrate</name>
+      <dataType>
+        <int32/>
+      </dataType>
+      <defaultValue>19200</defaultValue>
+      <configurationDescription>
+        <textElement>The baudrate when accessed via serial port.</textElement>
+        <language>en</language>
+        <label>Serial baudrate</label>
+      </configurationDescription>
+    </configurationListElement>
+    <configurationListElement>
+      <name>serial_databits</name>
+      <dataType>
+        <enum>
+          <enumEntry><literal>7</literal></enumEntry>
+          <enumEntry><literal>8</literal></enumEntry>
+        </enum>
+      </dataType>
+      <defaultValue>8</defaultValue>
+      <configurationDescription>
+        <textElement>The number of data bits when accessed via serial port.</textElement>
+        <language>en</language>
+        <label>Serial data bits</label>
+      </configurationDescription>
+    </configurationListElement>
+    <configurationListElement>
+      <name>serial_stopbits</name>
+      <dataType>
+        <enum>
+          <enumEntry><literal>0</literal></enumEntry>
+          <enumEntry><literal>1</literal></enumEntry>
+        </enum>
+      </dataType>
+      <defaultValue>1</defaultValue>
+      <configurationDescription>
+        <textElement>The number of stop bits when accessed via serial port.</textElement>
+        <language>en</language>
+        <label>Serial stop bits</label>
+      </configurationDescription>
+    </configurationListElement>
+    <configurationListElement>
+      <name>serial_parity</name>
+      <dataType>
+        <enum>
+          <enumEntry><literal>EVEN</literal></enumEntry>
+          <enumEntry><literal>ODD</literal></enumEntry>
+          <enumEntry><literal>NONE</literal></enumEntry>
+        </enum>
+        </dataType>
+      <defaultValue>NONE</defaultValue>
+      <configurationDescription>
+        <textElement>The parity when accessed via serial port.</textElement>
+        <language>en</language>
+        <label>Serial parity</label>
+      </configurationDescription>
+    </configurationListElement>
+  </configurationList>
   <genericAttributeList>
     <genericAttributeListElement>
       <name>SpecialQualityRequirement</name>
@@ -85,16 +191,17 @@
       <modbusInterfaceDescription>
         <modbusInterfaceSelection>RTU</modbusInterfaceSelection>
         <modbusTcp>
-          <port>520</port>
-          <address>1.1.1.1</address>
-          <slaveId>0</slaveId>
+          <port>{{tcp_port}}</port>
+          <address>{{tcp_address}}</address>
+          <slaveId>{{slave_id}}</slaveId>
         </modbusTcp>
         <modbusRtu>
-          <slaveAddr>1</slaveAddr>
-          <baudRateSelected>19200</baudRateSelected>
-          <byteLenSelected>8</byteLenSelected>
-          <paritySelected>EVEN</paritySelected>
-          <stopBitLenSelected>1</stopBitLenSelected>
+          <slaveAddr>{{slave_id}}</slaveAddr>
+          <portName>{{serial_port}}</portName>
+          <baudRateSelected>{{serial_baudrate}}</baudRateSelected>
+          <byteLenSelected>{{serial_databits}}</byteLenSelected>
+          <paritySelected>{{serial_parity}}</paritySelected>
+          <stopBitLenSelected>{{serial_stopbits}}</stopBitLenSelected>
           <serialInterfaceCapability>
             <baudRatesSupported>1200</baudRatesSupported>
             <baudRatesSupported>2400</baudRatesSupported>
@@ -110,7 +217,6 @@
             <paritySupported>EVEN</paritySupported>
             <paritySupported>NONE</paritySupported>
             <paritySupported>ODD</paritySupported>
-            <stopBitLenSupported>0</stopBitLenSupported>
             <stopBitLenSupported>1</stopBitLenSupported>
           </serialInterfaceCapability>
         </modbusRtu>
@@ -1176,7 +1282,7 @@
             <genericAttributeListElement>
               <name>SpecialQualityRequirement</name>
               <dataType>
-                <float32/>
+                <string/>
               </dataType>
               <value>2014/32/EU : MeasuRIng Instruments Directive, B(Cl.1)</value>
               <unit>NONE</unit>

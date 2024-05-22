@@ -108,12 +108,14 @@
                             <!-- Configurations -->
                             <table>
                                 <colgroup>
-                                    <col style="width:230px" />
-                                    <col style="width:134px" />
+                                    <col style="width:200px" />
+                                    <col style="width:80px" />
+                                    <col style="width:80px" />
                                 </colgroup>
                                 <tr>
                                     <th>Name</th>
                                     <th>Type</th>
+                                    <th>Default</th>
                                     <th>Description</th>
                                 </tr>
         
@@ -124,6 +126,9 @@
                                         </td>
                                         <td>
                                             <xsl:apply-templates select="sgr:dataType" /> 
+                                        </td>
+                                        <td>
+                                            <xsl:value-of select="sgr:defaultValue"/> 
                                         </td>
                                         <td>
                                             <xsl:for-each select="sgr:configurationDescription">
