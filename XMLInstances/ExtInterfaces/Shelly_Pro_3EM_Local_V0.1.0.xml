@@ -3,14 +3,14 @@
 <DeviceFrame xmlns="http://www.smartgridready.com/ns/V0/"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/Product/Product.xsd">
-	<deviceName>Shelly 3EM Local</deviceName>
+	<deviceName>Shelly Pro 3EM Local</deviceName>
 	<manufacturerName>Shelly</manufacturerName>
 	<specificationOwnerIdentification>0</specificationOwnerIdentification>
 	<releaseNotes>
 		<state>Draft</state>
 		<changeLog>
 			<version>0.1.0</version>
-			<date>2024-05-27</date>
+			<date>2024-05-28</date>
 			<author>Matthias Krebs, FHNW</author>
 			<comment>Draft for Testlab</comment>
 		</changeLog>
@@ -19,13 +19,12 @@
 		<legibleDescription>
 			<textElement>
 				<![CDATA[ 
-          Der Shelly 3EM ist ein 3-Phasen-Energiezähler mit schaltbarem Relais.
-          Die vorliegende EID ist auf die Ansteuerung via lokalem REST API ausgelegt.
-		  Das Relais ist noch nicht implementiert.
+          Der Shelly Pro 3EM ist ein 3-Phasen-Energiezähler.
+          Die vorliegende EID ist auf die Ansteuerung via lokalem JSON-RPC API ausgelegt.
         ]]>
 			</textElement>
 			<language>de</language>
-			<uri>https://www.shelly.com/de-ch/products/product-overview/shelly-3em-1</uri>
+			<uri>https://www.shelly.com/de-ch/products/product-overview/shelly-pro-3-em-120-a-1</uri>
 		</legibleDescription>
 		<deviceCategory>SubMeterElectricity</deviceCategory>
 		<isLocalControl>false</isLocalControl>
@@ -155,10 +154,10 @@
 										</header>
 									</requestHeader>
 									<requestMethod>GET</requestMethod>
-									<requestPath>/status</requestPath>
+									<requestPath>/rpc/EM.GetStatus?id=0</requestPath>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
-										<query>total_power</query>
+										<query>total_act_power</query>
 									</responseQuery>
 								</restApiServiceCall>
 							</restApiDataPointConfiguration>
@@ -190,10 +189,10 @@
 										</header>
 									</requestHeader>
 									<requestMethod>GET</requestMethod>
-									<requestPath>/emeter/0</requestPath>
+									<requestPath>/rpc/EM.GetStatus?id=0</requestPath>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
-										<query>power</query>
+										<query>a_act_power</query>
 									</responseQuery>
 								</restApiServiceCall>
 							</restApiDataPointConfiguration>
@@ -225,10 +224,10 @@
 										</header>
 									</requestHeader>
 									<requestMethod>GET</requestMethod>
-									<requestPath>/emeter/1</requestPath>
+									<requestPath>/rpc/EM.GetStatus?id=0</requestPath>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
-										<query>power</query>
+										<query>b_act_power</query>
 									</responseQuery>
 								</restApiServiceCall>
 							</restApiDataPointConfiguration>
@@ -260,10 +259,10 @@
 										</header>
 									</requestHeader>
 									<requestMethod>GET</requestMethod>
-									<requestPath>/emeter/2</requestPath>
+									<requestPath>/rpc/EM.GetStatus?id=0</requestPath>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
-										<query>power</query>
+										<query>c_act_power</query>
 									</responseQuery>
 								</restApiServiceCall>
 							</restApiDataPointConfiguration>
@@ -363,10 +362,10 @@
 										</header>
 									</requestHeader>
 									<requestMethod>GET</requestMethod>
-									<requestPath>/status</requestPath>
+									<requestPath>/rpc/EMData.GetStatus?id=0</requestPath>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
-										<query>sum([emeters[0].total,emeters[1].total,emeters[2].total])</query>
+										<query>total_act</query>
 									</responseQuery>
 								</restApiServiceCall>
 							</restApiDataPointConfiguration>
@@ -398,10 +397,10 @@
 										</header>
 									</requestHeader>
 									<requestMethod>GET</requestMethod>
-									<requestPath>/emeter/0</requestPath>
+									<requestPath>/rpc/EMData.GetStatus?id=0</requestPath>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
-										<query>total</query>
+										<query>a_total_act_energy</query>
 									</responseQuery>
 								</restApiServiceCall>
 							</restApiDataPointConfiguration>
@@ -433,10 +432,10 @@
 										</header>
 									</requestHeader>
 									<requestMethod>GET</requestMethod>
-									<requestPath>/emeter/1</requestPath>
+									<requestPath>/rpc/EMData.GetStatus?id=0</requestPath>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
-										<query>total</query>
+										<query>b_total_act_energy</query>
 									</responseQuery>
 								</restApiServiceCall>
 							</restApiDataPointConfiguration>
@@ -468,10 +467,10 @@
 										</header>
 									</requestHeader>
 									<requestMethod>GET</requestMethod>
-									<requestPath>/emeter/2</requestPath>
+									<requestPath>/rpc/EMData.GetStatus?id=0</requestPath>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
-										<query>total</query>
+										<query>c_total_act_energy</query>
 									</responseQuery>
 								</restApiServiceCall>
 							</restApiDataPointConfiguration>
@@ -523,10 +522,10 @@
 										</header>
 									</requestHeader>
 									<requestMethod>GET</requestMethod>
-									<requestPath>/emeter/0</requestPath>
+									<requestPath>/rpc/EM.GetStatus?id=0</requestPath>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
-										<query>voltage</query>
+										<query>a_voltage</query>
 									</responseQuery>
 								</restApiServiceCall>
 							</restApiDataPointConfiguration>
@@ -554,10 +553,10 @@
 										</header>
 									</requestHeader>
 									<requestMethod>GET</requestMethod>
-									<requestPath>/emeter/1</requestPath>
+									<requestPath>/rpc/EM.GetStatus?id=0</requestPath>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
-										<query>voltage</query>
+										<query>b_voltage</query>
 									</responseQuery>
 								</restApiServiceCall>
 							</restApiDataPointConfiguration>
@@ -585,10 +584,10 @@
 										</header>
 									</requestHeader>
 									<requestMethod>GET</requestMethod>
-									<requestPath>/emeter/2</requestPath>
+									<requestPath>/rpc/EM.GetStatus?id=0</requestPath>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
-										<query>voltage</query>
+										<query>c_voltage</query>
 									</responseQuery>
 								</restApiServiceCall>
 							</restApiDataPointConfiguration>
@@ -640,10 +639,10 @@
 										</header>
 									</requestHeader>
 									<requestMethod>GET</requestMethod>
-									<requestPath>/emeter/0</requestPath>
+									<requestPath>/rpc/EM.GetStatus?id=0</requestPath>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
-										<query>current</query>
+										<query>a_current</query>
 									</responseQuery>
 								</restApiServiceCall>
 							</restApiDataPointConfiguration>
@@ -671,10 +670,10 @@
 										</header>
 									</requestHeader>
 									<requestMethod>GET</requestMethod>
-									<requestPath>/emeter/1</requestPath>
+									<requestPath>/rpc/EM.GetStatus?id=0</requestPath>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
-										<query>current</query>
+										<query>b_current</query>
 									</responseQuery>
 								</restApiServiceCall>
 							</restApiDataPointConfiguration>
@@ -702,10 +701,10 @@
 										</header>
 									</requestHeader>
 									<requestMethod>GET</requestMethod>
-									<requestPath>/emeter/2</requestPath>
+									<requestPath>/rpc/EM.GetStatus?id=0</requestPath>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
-										<query>current</query>
+										<query>c_current</query>
 									</responseQuery>
 								</restApiServiceCall>
 							</restApiDataPointConfiguration>

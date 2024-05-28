@@ -3,14 +3,14 @@
 <DeviceFrame xmlns="http://www.smartgridready.com/ns/V0/"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/Product/Product.xsd">
-	<deviceName>Shelly 3EM Local</deviceName>
+	<deviceName>Shelly Pro 4PM Local</deviceName>
 	<manufacturerName>Shelly</manufacturerName>
 	<specificationOwnerIdentification>0</specificationOwnerIdentification>
 	<releaseNotes>
 		<state>Draft</state>
 		<changeLog>
 			<version>0.1.0</version>
-			<date>2024-05-27</date>
+			<date>2024-05-28</date>
 			<author>Matthias Krebs, FHNW</author>
 			<comment>Draft for Testlab</comment>
 		</changeLog>
@@ -19,13 +19,12 @@
 		<legibleDescription>
 			<textElement>
 				<![CDATA[ 
-          Der Shelly 3EM ist ein 3-Phasen-Energiezähler mit schaltbarem Relais.
-          Die vorliegende EID ist auf die Ansteuerung via lokalem REST API ausgelegt.
-		  Das Relais ist noch nicht implementiert.
+          Der Shelly Pro 4PM ist ein 1-phasiges 4-Kanal-Leistungsmessgerät.
+          Die vorliegende EID ist auf die Ansteuerung via lokalem JSON-RPC API ausgelegt.
         ]]>
 			</textElement>
 			<language>de</language>
-			<uri>https://www.shelly.com/de-ch/products/product-overview/shelly-3em-1</uri>
+			<uri>https://www.shelly.com/de-ch/products/product-overview/shelly-pro-4pm-1</uri>
 		</legibleDescription>
 		<deviceCategory>SubMeterElectricity</deviceCategory>
 		<isLocalControl>false</isLocalControl>
@@ -130,7 +129,7 @@
 					<dataPointList>
 						<dataPointListElement>
 							<dataPoint>
-								<dataPointName>ActivePowerACtot</dataPointName>
+								<dataPointName>ActivePowerACtot_1</dataPointName>
 								<dataDirection>R</dataDirection>
 								<dataType>
 									<float64 />
@@ -155,28 +154,28 @@
 										</header>
 									</requestHeader>
 									<requestMethod>GET</requestMethod>
-									<requestPath>/status</requestPath>
+									<requestPath>/rpc/Switch.GetStatus?id=0</requestPath>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
-										<query>total_power</query>
+										<query>apower</query>
 									</responseQuery>
 								</restApiServiceCall>
 							</restApiDataPointConfiguration>
 						</dataPointListElement>
 						<dataPointListElement>
 							<dataPoint>
-								<dataPointName>ActivePowerACL1</dataPointName>
+								<dataPointName>ActivePowerACtot_2</dataPointName>
 								<dataDirection>R</dataDirection>
 								<dataType>
 									<float64 />
 								</dataType>
 								<unit>WATTS</unit>
 								<legibleDescription>
-									<textElement>Erfassung der Wirkleistung Phase 1</textElement>
+									<textElement>Erfassung der gesamten Wirkleistung</textElement>
 									<language>de</language>
 								</legibleDescription>
 								<legibleDescription>
-									<textElement>Active power measurement of phase 1</textElement>
+									<textElement>Total active power measurement</textElement>
 									<language>en</language>
 								</legibleDescription>
 							</dataPoint>
@@ -190,28 +189,28 @@
 										</header>
 									</requestHeader>
 									<requestMethod>GET</requestMethod>
-									<requestPath>/emeter/0</requestPath>
+									<requestPath>/rpc/Switch.GetStatus?id=1</requestPath>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
-										<query>power</query>
+										<query>apower</query>
 									</responseQuery>
 								</restApiServiceCall>
 							</restApiDataPointConfiguration>
 						</dataPointListElement>
 						<dataPointListElement>
 							<dataPoint>
-								<dataPointName>ActivePowerACL2</dataPointName>
+								<dataPointName>ActivePowerACtot_3</dataPointName>
 								<dataDirection>R</dataDirection>
 								<dataType>
 									<float64 />
 								</dataType>
 								<unit>WATTS</unit>
 								<legibleDescription>
-									<textElement>Erfassung der Wirkleistung Phase 2</textElement>
+									<textElement>Erfassung der gesamten Wirkleistung</textElement>
 									<language>de</language>
 								</legibleDescription>
 								<legibleDescription>
-									<textElement>Active power measurement of phase 2</textElement>
+									<textElement>Total active power measurement</textElement>
 									<language>en</language>
 								</legibleDescription>
 							</dataPoint>
@@ -225,28 +224,28 @@
 										</header>
 									</requestHeader>
 									<requestMethod>GET</requestMethod>
-									<requestPath>/emeter/1</requestPath>
+									<requestPath>/rpc/Switch.GetStatus?id=2</requestPath>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
-										<query>power</query>
+										<query>apower</query>
 									</responseQuery>
 								</restApiServiceCall>
 							</restApiDataPointConfiguration>
 						</dataPointListElement>
 						<dataPointListElement>
 							<dataPoint>
-								<dataPointName>ActivePowerACL3</dataPointName>
+								<dataPointName>ActivePowerACtot_4</dataPointName>
 								<dataDirection>R</dataDirection>
 								<dataType>
 									<float64 />
 								</dataType>
 								<unit>WATTS</unit>
 								<legibleDescription>
-									<textElement>Erfassung der Wirkleistung Phase 3</textElement>
+									<textElement>Erfassung der gesamten Wirkleistung</textElement>
 									<language>de</language>
 								</legibleDescription>
 								<legibleDescription>
-									<textElement>Active power measurement of phase 3</textElement>
+									<textElement>Total active power measurement</textElement>
 									<language>en</language>
 								</legibleDescription>
 							</dataPoint>
@@ -260,10 +259,10 @@
 										</header>
 									</requestHeader>
 									<requestMethod>GET</requestMethod>
-									<requestPath>/emeter/2</requestPath>
+									<requestPath>/rpc/Switch.GetStatus?id=3</requestPath>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
-										<query>power</query>
+										<query>apower</query>
 									</responseQuery>
 								</restApiServiceCall>
 							</restApiDataPointConfiguration>
@@ -338,7 +337,7 @@
 					<dataPointList>
 						<dataPointListElement>
 							<dataPoint>
-								<dataPointName>ActiveEnergyACtot</dataPointName>
+								<dataPointName>ActiveEnergyACtot_1</dataPointName>
 								<dataDirection>R</dataDirection>
 								<dataType>
 									<float64/>
@@ -363,28 +362,28 @@
 										</header>
 									</requestHeader>
 									<requestMethod>GET</requestMethod>
-									<requestPath>/status</requestPath>
+									<requestPath>/rpc/Switch.GetStatus?id=0</requestPath>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
-										<query>sum([emeters[0].total,emeters[1].total,emeters[2].total])</query>
+										<query>aenergy.total</query>
 									</responseQuery>
 								</restApiServiceCall>
 							</restApiDataPointConfiguration>
 						</dataPointListElement>
 						<dataPointListElement>
 							<dataPoint>
-								<dataPointName>ActiveEnergyACL1</dataPointName>
+								<dataPointName>ActiveEnergyACtot_2</dataPointName>
 								<dataDirection>R</dataDirection>
 								<dataType>
 									<float64/>
 								</dataType>
 								<unit>WATT_HOURS</unit>
 								<legibleDescription>
-									<textElement>Erfassung der Wirkenergie Phase 1</textElement>
+									<textElement>Erfassung der gesamten Wirkenergie</textElement>
 									<language>de</language>
 								</legibleDescription>
 								<legibleDescription>
-									<textElement>Energy measurement of phase 1</textElement>
+									<textElement>Total energy measurement</textElement>
 									<language>en</language>
 								</legibleDescription>
 							</dataPoint>
@@ -398,28 +397,28 @@
 										</header>
 									</requestHeader>
 									<requestMethod>GET</requestMethod>
-									<requestPath>/emeter/0</requestPath>
+									<requestPath>/rpc/Switch.GetStatus?id=1</requestPath>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
-										<query>total</query>
+										<query>aenergy.total</query>
 									</responseQuery>
 								</restApiServiceCall>
 							</restApiDataPointConfiguration>
 						</dataPointListElement>
 						<dataPointListElement>
 							<dataPoint>
-								<dataPointName>ActiveEnergyACL2</dataPointName>
+								<dataPointName>ActiveEnergyACtot_3</dataPointName>
 								<dataDirection>R</dataDirection>
 								<dataType>
 									<float64/>
 								</dataType>
 								<unit>WATT_HOURS</unit>
 								<legibleDescription>
-									<textElement>Erfassung der Wirkenergie Phase 2</textElement>
+									<textElement>Erfassung der gesamten Wirkenergie</textElement>
 									<language>de</language>
 								</legibleDescription>
 								<legibleDescription>
-									<textElement>Energy measurement of phase 2</textElement>
+									<textElement>Total energy measurement</textElement>
 									<language>en</language>
 								</legibleDescription>
 							</dataPoint>
@@ -433,28 +432,28 @@
 										</header>
 									</requestHeader>
 									<requestMethod>GET</requestMethod>
-									<requestPath>/emeter/1</requestPath>
+									<requestPath>/rpc/Switch.GetStatus?id=2</requestPath>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
-										<query>total</query>
+										<query>aenergy.total</query>
 									</responseQuery>
 								</restApiServiceCall>
 							</restApiDataPointConfiguration>
 						</dataPointListElement>
 						<dataPointListElement>
 							<dataPoint>
-								<dataPointName>ActiveEnergyACL3</dataPointName>
+								<dataPointName>ActiveEnergyACtot_4</dataPointName>
 								<dataDirection>R</dataDirection>
 								<dataType>
 									<float64/>
 								</dataType>
 								<unit>WATT_HOURS</unit>
 								<legibleDescription>
-									<textElement>Erfassung der Wirkenergie Phase 3</textElement>
+									<textElement>Erfassung der gesamten Wirkenergie</textElement>
 									<language>de</language>
 								</legibleDescription>
 								<legibleDescription>
-									<textElement>Energy measurement of phase 3</textElement>
+									<textElement>Total energy measurement</textElement>
 									<language>en</language>
 								</legibleDescription>
 							</dataPoint>
@@ -468,10 +467,10 @@
 										</header>
 									</requestHeader>
 									<requestMethod>GET</requestMethod>
-									<requestPath>/emeter/2</requestPath>
+									<requestPath>/rpc/Switch.GetStatus?id=3</requestPath>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
-										<query>total</query>
+										<query>aenergy.total</query>
 									</responseQuery>
 								</restApiServiceCall>
 							</restApiDataPointConfiguration>
@@ -502,7 +501,7 @@
 					<dataPointList>
 						<dataPointListElement>
 							<dataPoint>
-								<dataPointName>VoltageACL1</dataPointName>
+								<dataPointName>VoltageACL1_1</dataPointName>
 								<dataDirection>R</dataDirection>
 								<dataType>
 									<float64 />
@@ -523,7 +522,7 @@
 										</header>
 									</requestHeader>
 									<requestMethod>GET</requestMethod>
-									<requestPath>/emeter/0</requestPath>
+									<requestPath>/rpc/Switch.GetStatus?id=0</requestPath>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
 										<query>voltage</query>
@@ -533,14 +532,14 @@
 						</dataPointListElement>
 						<dataPointListElement>
 							<dataPoint>
-								<dataPointName>VoltageACL2</dataPointName>
+								<dataPointName>VoltageACL1_2</dataPointName>
 								<dataDirection>R</dataDirection>
 								<dataType>
 									<float64 />
 								</dataType>
 								<unit>VOLTS</unit>
 								<legibleDescription>
-									<textElement>Spannung Phase 2</textElement>
+									<textElement>Spannung Phase 1</textElement>
 									<language>de</language>
 								</legibleDescription>
 							</dataPoint>
@@ -554,7 +553,7 @@
 										</header>
 									</requestHeader>
 									<requestMethod>GET</requestMethod>
-									<requestPath>/emeter/1</requestPath>
+									<requestPath>/rpc/Switch.GetStatus?id=1</requestPath>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
 										<query>voltage</query>
@@ -564,14 +563,14 @@
 						</dataPointListElement>
 						<dataPointListElement>
 							<dataPoint>
-								<dataPointName>VoltageACL3</dataPointName>
+								<dataPointName>VoltageACL1_3</dataPointName>
 								<dataDirection>R</dataDirection>
 								<dataType>
 									<float64 />
 								</dataType>
 								<unit>VOLTS</unit>
 								<legibleDescription>
-									<textElement>Spannung Phase 3</textElement>
+									<textElement>Spannung Phase 1</textElement>
 									<language>de</language>
 								</legibleDescription>
 							</dataPoint>
@@ -585,7 +584,38 @@
 										</header>
 									</requestHeader>
 									<requestMethod>GET</requestMethod>
-									<requestPath>/emeter/2</requestPath>
+									<requestPath>/rpc/Switch.GetStatus?id=2</requestPath>
+									<responseQuery>
+										<queryType>JMESPathExpression</queryType>
+										<query>voltage</query>
+									</responseQuery>
+								</restApiServiceCall>
+							</restApiDataPointConfiguration>
+						</dataPointListElement>
+						<dataPointListElement>
+							<dataPoint>
+								<dataPointName>VoltageACL1_4</dataPointName>
+								<dataDirection>R</dataDirection>
+								<dataType>
+									<float64 />
+								</dataType>
+								<unit>VOLTS</unit>
+								<legibleDescription>
+									<textElement>Spannung Phase 1</textElement>
+									<language>de</language>
+								</legibleDescription>
+							</dataPoint>
+							<restApiDataPointConfiguration>
+								<dataType>JSON_number</dataType>
+								<restApiServiceCall>
+									<requestHeader>
+										<header>
+											<headerName>Accept</headerName>
+											<value>application/json</value>
+										</header>
+									</requestHeader>
+									<requestMethod>GET</requestMethod>
+									<requestPath>/rpc/Switch.GetStatus?id=3</requestPath>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
 										<query>voltage</query>
@@ -619,7 +649,7 @@
 					<dataPointList>
 						<dataPointListElement>
 							<dataPoint>
-								<dataPointName>CurrentACL1</dataPointName>
+								<dataPointName>CurrentACL1_1</dataPointName>
 								<dataDirection>R</dataDirection>
 								<dataType>
 									<float64 />
@@ -640,7 +670,7 @@
 										</header>
 									</requestHeader>
 									<requestMethod>GET</requestMethod>
-									<requestPath>/emeter/0</requestPath>
+									<requestPath>/rpc/Switch.GetStatus?id=0</requestPath>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
 										<query>current</query>
@@ -650,14 +680,14 @@
 						</dataPointListElement>
 						<dataPointListElement>
 							<dataPoint>
-								<dataPointName>CurrentACL2</dataPointName>
+								<dataPointName>CurrentACL1_2</dataPointName>
 								<dataDirection>R</dataDirection>
 								<dataType>
 									<float64 />
 								</dataType>
 								<unit>AMPERES</unit>
 								<legibleDescription>
-									<textElement>Stromfluss Phase 2</textElement>
+									<textElement>Stromfluss Phase 1</textElement>
 									<language>de</language>
 								</legibleDescription>
 							</dataPoint>
@@ -671,7 +701,7 @@
 										</header>
 									</requestHeader>
 									<requestMethod>GET</requestMethod>
-									<requestPath>/emeter/1</requestPath>
+									<requestPath>/rpc/Switch.GetStatus?id=1</requestPath>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
 										<query>current</query>
@@ -681,14 +711,14 @@
 						</dataPointListElement>
 						<dataPointListElement>
 							<dataPoint>
-								<dataPointName>CurrentACL3</dataPointName>
+								<dataPointName>CurrentACL1_3</dataPointName>
 								<dataDirection>R</dataDirection>
 								<dataType>
 									<float64 />
 								</dataType>
 								<unit>AMPERES</unit>
 								<legibleDescription>
-									<textElement>Stromfluss Phase 3</textElement>
+									<textElement>Stromfluss Phase 1</textElement>
 									<language>de</language>
 								</legibleDescription>
 							</dataPoint>
@@ -702,7 +732,38 @@
 										</header>
 									</requestHeader>
 									<requestMethod>GET</requestMethod>
-									<requestPath>/emeter/2</requestPath>
+									<requestPath>/rpc/Switch.GetStatus?id=2</requestPath>
+									<responseQuery>
+										<queryType>JMESPathExpression</queryType>
+										<query>current</query>
+									</responseQuery>
+								</restApiServiceCall>
+							</restApiDataPointConfiguration>
+						</dataPointListElement>
+						<dataPointListElement>
+							<dataPoint>
+								<dataPointName>CurrentACL1_4</dataPointName>
+								<dataDirection>R</dataDirection>
+								<dataType>
+									<float64 />
+								</dataType>
+								<unit>AMPERES</unit>
+								<legibleDescription>
+									<textElement>Stromfluss Phase 1</textElement>
+									<language>de</language>
+								</legibleDescription>
+							</dataPoint>
+							<restApiDataPointConfiguration>
+								<dataType>JSON_number</dataType>
+								<restApiServiceCall>
+									<requestHeader>
+										<header>
+											<headerName>Accept</headerName>
+											<value>application/json</value>
+										</header>
+									</requestHeader>
+									<requestMethod>GET</requestMethod>
+									<requestPath>/rpc/Switch.GetStatus?id=3</requestPath>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
 										<query>current</query>
