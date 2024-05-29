@@ -7,7 +7,7 @@
   <manufacturerName>Eaton</manufacturerName>
   <specificationOwnerIdentification>0</specificationOwnerIdentification>
   <releaseNotes>
-    <state>Draft</state>
+    <state>Published</state>
   </releaseNotes>
   <deviceInformation>
     <legibleDescription>
@@ -49,9 +49,9 @@
     <manufacturerLabel>ManufacturerLabel</manufacturerLabel>
     <levelOfOperation>4m</levelOfOperation>
     <versionNumber>
-      <primaryVersionNumber>0</primaryVersionNumber>
-      <secondaryVersionNumber>5</secondaryVersionNumber>
-      <subReleaseVersionNumber>3</subReleaseVersionNumber>
+      <primaryVersionNumber>1</primaryVersionNumber>
+      <secondaryVersionNumber>0</secondaryVersionNumber>
+      <subReleaseVersionNumber>0</subReleaseVersionNumber>
     </versionNumber>
   </deviceInformation>
   <interfaceList>
@@ -88,9 +88,12 @@
             <legibleDescription>
               <textElement>
                 <![CDATA[
-                  The charging station's current limit is dynamically regulated by an external Energy Management System (EMS),
-                  with the value expressed in amps.
-                  This specific parameter is designed to be easily adjusted by an Energy Manager, allowing for efficient and tailored control of the charging process.
+                  The functional profile enables a controller to set a current limitation for an Electric Vehicle Supply Equipment (EVSE).
+                  <p>The charging station's current limit is dynamically regulated by an external Energy Management System (EMS), with the data point <em>EMSCurrentLimit</em> expressed in amps.
+                     This data point enables real-time monitoring and control of the consumption limit of the charging station.
+                     This specific parameter is designed to be easily adjusted by an Energy Manager, allowing for efficient and tailored control of the charging process.</p>
+                  <p>The SmoothTransition datapoints are utilized to specify the transition process following the reception of a new limit value by the charging station.</p>
+                  <p>This functional profile can be utilized in conjunction with the EVSE States functional profile.</p>
                 ]]>
               </textElement>
               <language>en</language>
@@ -98,8 +101,12 @@
             <legibleDescription>
               <textElement>
                 <![CDATA[
-                  Die Strombegrenzung der Ladestation wird dynamisch durch ein externes Energiemanagementsystem (EMS) mit dem in Ampere ausgedrückten Wert geregelt.
-                  Dieser spezifische Parameter kann von einem Energiemanager einfach angepasst werden und ermöglicht so eine effiziente und massgeschneiderte Steuerung des Ladevorgangs.
+                  Die Funktionsprofile ermöglichen es einem Controller, eine Strombegrenzung für ein Electric Vehicle Supply Equipment (EVSE) festzulegen.
+                  <p>Die Strombegrenzung der Ladestation wird dynamisch durch ein externes Energiemanagementsystem (EMS) über den Datenpunkt <em>EMSCurrentLimit</em> geregelt (in Ampere).
+                     Dieser Datenpunkt ermöglicht eine Echtzeitüberwachung und Steuerung der Verbrauchsgrenze der Ladestation.
+                     Dieser spezifische Parameter kann von einem Energiemanager einfach angepasst werden und ermöglicht so eine effiziente und massgeschneiderte Steuerung des Ladevorgangs.</p>
+                  <p>Die SmoothTransition-Unterdatenpunkte werden verwendet, um den Übergangsprozess nach dem Empfang eines neuen Grenzwerts durch die Ladestation zu spezifizieren.</p>
+                  <p>Dieses Funktionsprofil kann in Verbindung mit dem Funktionsprofil EVSE States verwendet werden.</p>
                 ]]>
               </textElement>
               <language>de</language>
@@ -115,11 +122,19 @@
                 </dataType>
                 <unit>AMPERES</unit>
                 <legibleDescription>
-                  <textElement>The maximum current allowed for the charging station at this moment.</textElement>
+                  <textElement>
+                    <![CDATA[
+                      The maximum current allowed for the charging station at this moment.
+                    ]]>
+                  </textElement>
                   <language>en</language>
                 </legibleDescription>
                 <legibleDescription>
-                  <textElement>Current limit ...</textElement>
+                  <textElement>
+                    <![CDATA[
+                      Der aktuell maximal zulässige Strom für die Ladestation.
+                    ]]>
+                  </textElement>
                   <language>de</language>
                 </legibleDescription>
               </dataPoint>
@@ -504,7 +519,11 @@
               <textElement>
                 <![CDATA[
                   <img src="ressources/cem_from_evse.svg" style="float:left; padding:0.3em;"/>
-                  <p> Level 2m functional profile for wallboxes (Electric Vehicle Supply Equipment "EVSE") that covers the following states
+                  Functional profile for reading the status of the connector of an electric vehicle charging station (EVSE).
+                  <p>The status of the connector indicates, for example, whether a car is connected to the charging station, if it is currently charging, or if the connector is not connected to the electric vehicle.
+                     The function profile refers to the states offered by the OCPP 1.6 protocol under ocppState.</p>
+                  <p>Knowing the status of the charging station allows an external controller to influence the charging of the car, for example, through the EMS_Current_Limit functional profile.</p>
+                  <p>The current state of the wallbox can be read using the data point ocppState with following values corresponding to the OCPP standard (Open Charge Point Protocol):</p>
                   <ol>
                     <li><strong>AVAILABLE</strong>: The charge point is operational and available for a new customer to start a charging session.</li>
                     <li><strong>CHARGING</strong>: A vehicle is currently charging.</li>
@@ -516,11 +535,33 @@
                     <li><strong>SUSPENDED_EV_SE</strong>: The charging process has been suspended due to some hardware limitations of the Electric Vehicle Supply Equipment (EVSE).</li>
                     <li><strong>SUSPENDED_EV</strong>: The charging process has been suspended due to some conditions on the vehicle side.</li>
                   </ol>
-                  <p>The current state of the wallbox can be read using the data point "ocppState."</p>
-                  The state corresponds to state information from the OCPP standard (Open Charge Point Protocol).
-	           ]]>
+                ]]>
               </textElement>
               <language>en</language>
+            </legibleDescription>
+            <legibleDescription>
+              <textElement>
+                <![CDATA[
+                  <img src="ressources/cem_from_evse.svg" style="float:left; padding:0.3em;"/>
+                  Funktionsprofil zum Auslesen des Status einer Elektrofahrzeug-Ladestation (EVSE).
+                  <p>Der Status der Ladestation zeigt beispielsweise an, ob ein Auto mit der Ladestation verbunden ist, ob es gerade lädt oder ob die Ladestation nicht mit dem Elektrofahrzeug verbunden ist.
+                     Das Funktionsprofil bezieht sich auf die Zustände, die das OCPP 1.6-Protokoll unter ocppState bietet.</p>
+                  <p>Durch die Kenntnis des Status der Ladestation kann ein externer Controller beispielsweise über das Funktionsprofil EMS_Current_Limit Einfluss auf das Laden des Fahrzeugs nehmen.</p>
+                  <p>Der aktuelle Zustand der Wallbox kann über den Datenpunkt ocppState mit folgenden Werten entsprechend dem OCPP-Standard (Open Charge Point Protocol) ausgelesen werden:</p>
+                  <ol>
+                    <li><strong>VERFÜGBAR</strong>: Die Ladestation ist betriebsbereit und steht einem neuen Kunden zum Starten einer Ladesitzung zur Verfügung.</li>
+                    <li><strong>LADEN</strong>: Ein Fahrzeug wird gerade aufgeladen.</li>
+                    <li><strong>VORBEREITUNG</strong>: Die Ladestation bereitet sich auf einen Ladevorgang vor, nachdem der Fahrer autorisiert wurde.</li>
+                    <li><strong>BEENDEN</strong>: Der Ladevorgang wird abgeschlossen (z. B. das Fahrzeug ist vollständig aufgeladen und die Sitzung wird beendet).</li>
+                    <li><strong>RESERVIERT</strong>: Die Ladestation wurde für einen bestimmten EV-Fahrer reserviert und ist für andere Benutzer nicht verfügbar.</li>
+                    <li><strong>NICHT VERFÜGBAR</strong>: Die Ladestation ist nicht in Betrieb und kann nicht zum Laden eines Fahrzeugs verwendet werden.</li>
+                    <li><strong>FEHLER</strong>: An der Ladestation liegt ein Fehler vor, der eine Wartung oder Reparatur erfordert.</li>
+                    <li><strong>SUSPENDED_EV_SE</strong>: Der Ladevorgang wurde aufgrund einiger Hardwareeinschränkungen der Electric Vehicle Supply Equipment (EVSE) unterbrochen.</li>
+                    <li><strong>SUSPENDED_EV</strong>: Der Ladevorgang wurde aufgrund einiger Bedingungen auf Fahrzeugseite unterbrochen.</li>
+                  </ol>
+                ]]>
+              </textElement>
+              <language>de</language>
             </legibleDescription>
           </functionalProfile>
           <dataPointList>
@@ -569,6 +610,22 @@
                   </enum>
                 </dataType>
                 <unit>NONE</unit>
+                <legibleDescription>
+                  <textElement>
+                    <![CDATA[
+                      Read the current state of the EVSE.
+                    ]]>
+                  </textElement>
+                  <language>en</language>
+                </legibleDescription>
+                <legibleDescription>
+                  <textElement>
+                    <![CDATA[
+                      Auslesen des aktuellen Zustands der Ladestation.
+                    ]]>
+                  </textElement>
+                  <language>de</language>
+                </legibleDescription>
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>

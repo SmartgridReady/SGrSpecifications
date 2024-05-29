@@ -3,7 +3,7 @@
 <FunctionalProfileFrame xmlns="http://www.smartgridready.com/ns/V0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/SGrIncluder.xsd">
   <releaseNotes>
-    <state>Review</state>
+    <state>Published</state>
     <changeLog>
       <version>0.1.0</version>
       <date>2023-11-21</date>
@@ -16,6 +16,12 @@
       <author>ag</author>
       <comment>Curtailment to EMS Current Limit</comment>
     </changeLog>
+    <changeLog>
+      <version>1.0.0</version>
+      <date>2025-05-29</date>
+      <author>ag</author>
+      <comment>Finalization and Publishing</comment>
+    </changeLog>
   </releaseNotes>
   <functionalProfile>
     <functionalProfileIdentification>
@@ -24,18 +30,18 @@
       <functionalProfileType>EMS_Current_Limit</functionalProfileType>
       <levelOfOperation>4m</levelOfOperation>
       <versionNumber>
-        <primaryVersionNumber>0</primaryVersionNumber>
-        <secondaryVersionNumber>3</secondaryVersionNumber>
+        <primaryVersionNumber>1</primaryVersionNumber>
+        <secondaryVersionNumber>0</secondaryVersionNumber>
         <subReleaseVersionNumber>0</subReleaseVersionNumber>
       </versionNumber>
     </functionalProfileIdentification>
     <legibleDescription>
       <textElement>
         <![CDATA[
-          The Functional Profiles enable a controller to set a current limitation for an Electric Vehicle Supply Equipment (EVSE).
-          <p>The charging station's current limit is dynamically regulated by an external Energy Management System (EMS), with the value expressed in amps.</p>
-          <p>This specific parameter is designed to be easily adjusted by an Energy Manager, allowing for efficient and tailored control of the charging process.</p>
-          <p>The mandatory data point EMSCurrentLimit enable real-time monitoring and control of the consumption limit of the charging station.</p> 
+          The functional profile enables a controller to set a current limitation for an Electric Vehicle Supply Equipment (EVSE).
+          <p>The charging station's current limit is dynamically regulated by an external Energy Management System (EMS), with the data point <em>EMSCurrentLimit</em> expressed in amps.
+             This data point enables real-time monitoring and control of the consumption limit of the charging station.
+             This specific parameter is designed to be easily adjusted by an Energy Manager, allowing for efficient and tailored control of the charging process.</p>
           <p>The SmoothTransition datapoints are utilized to specify the transition process following the reception of a new limit value by the charging station.</p>
           <p>This functional profile can be utilized in conjunction with the EVSE States functional profile.</p>
         ]]>
@@ -46,10 +52,10 @@
       <textElement>
         <![CDATA[
           Die Funktionsprofile ermöglichen es einem Controller, eine Strombegrenzung für ein Electric Vehicle Supply Equipment (EVSE) festzulegen.
-          <p>Die Strombegrenzung der Ladestation wird dynamisch durch ein externes Energiemanagementsystem (EMS) geregelt, mit dem in Ampere ausgedrückten Wert.</p>
-          <p>Dieser spezifische Parameter kann von einem Energiemanager einfach angepasst werden und ermöglicht so eine effiziente und massgeschneiderte Steuerung des Ladevorgangs.</p>
-          <p>Der obligatorische Datenpunkt EMSCurrentLimit ermöglicht eine Echtzeitüberwachung und Steuerung der Verbrauchsgrenze der Ladestation.</p>
-          <p>Die SmoothTransition-Datenpunkte werden verwendet, um den Übergangsprozess nach dem Empfang eines neuen Grenzwerts durch die Ladestation zu spezifizieren.</p>
+          <p>Die Strombegrenzung der Ladestation wird dynamisch durch ein externes Energiemanagementsystem (EMS) über den Datenpunkt <em>EMSCurrentLimit</em> geregelt (in Ampere).
+             Dieser Datenpunkt ermöglicht eine Echtzeitüberwachung und Steuerung der Verbrauchsgrenze der Ladestation.
+             Dieser spezifische Parameter kann von einem Energiemanager einfach angepasst werden und ermöglicht so eine effiziente und massgeschneiderte Steuerung des Ladevorgangs.</p>
+          <p>Die SmoothTransition-Unterdatenpunkte werden verwendet, um den Übergangsprozess nach dem Empfang eines neuen Grenzwerts durch die Ladestation zu spezifizieren.</p>
           <p>Dieses Funktionsprofil kann in Verbindung mit dem Funktionsprofil EVSE States verwendet werden.</p>
         ]]>
       </textElement>
@@ -112,7 +118,7 @@
         <legibleDescription>
           <textElement>
             <![CDATA[
-              Unterdatenpunkt, der das Fenster für den reibungslosen Übergang des Datenpunkts <em>EMSCurrentLimit</em> definiert.
+              Unterdatenpunkt, welcher das Fenster für den reibungslosen Übergang des Datenpunkts <em>EMSCurrentLimit</em> definiert.
               <p>Gibt ein Zeitfenster an, in dem der neue Betriebsmodus zufällig gestartet wird. Das Zeitfenster beginnt mit dem Startbefehl der Betriebsart. Der Wert 0 bedeutet sofort.</p>
               <p>Dieser Datenpunkt kann im Gerät als konstanter Datenpunkt implementiert werden, wenn der Wert konstant ist oder als regulärer Datenpunkt, wenn er vom Gerät gelesen werden kann.</p>
               Siehe winTms in <a href="https://github.com/SmartGridready/SGrSpecifications/blob/master/doc/GenericAttributes.md#smooth-transition">Smooth Transition</a>
