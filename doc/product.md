@@ -63,7 +63,7 @@ Depending on the type of root element a transport-service specific structure is 
 Each device contains a list of functional profiles.
 | Element     | Description |
 |-------------|-------------|
-| profileName | Instance name of the specified functional profile, containing Release Notes, Classification, Description |
+| profileName | Instance name of the functional profile entry - a device can include a specific functional profile more than once but with different profile instance names |
 | functionalProfile | Copy of the standardized [functional profile](functionalProfile.md) |
 | programmerHints   | optional, can occur once per language. Contains details for the programmer. |
 
