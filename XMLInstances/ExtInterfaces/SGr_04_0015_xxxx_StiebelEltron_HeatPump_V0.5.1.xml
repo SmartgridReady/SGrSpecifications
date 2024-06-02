@@ -15,7 +15,7 @@
         <![CDATA[
           Das Internet Service Gateway ISG web ist der Eintritt in die Servicewelt von STIEBEL ELTRON. 
           Über ein Tablet oder einen PC kann die Wärmepumpe bedient, Einstellungen
-          vorgenommen und der Zugang zur SERVICEWELT freigeschaltet werden.
+          vorgenommen und der Zugang zur SERVICEWELT (für Service-Techniker, Fachpartner) freigeschaltet werden.
           <p>Bei Bedarf kann über ein Smartphone auf die Heizungsanlage zugegriffen oder diese überprüft werden.</p> 
           Die wichtigsten Merkmale
           <ul>
@@ -23,7 +23,7 @@
             <li>Anschließbar an den Router des Heimnetzwerks</li>
             <li>Geräteeinstellung über eine integrierte Web-Oberfläche mit dem Standardbrowser</li>
             <li>Kommunikation mit der STIEBEL ELTRON-Kundendienst-Zentrale</li>
-            <li>Möglichkeit zur Kontrolle der Anlage über eine Smartphone-„Web-App“</li>
+            <li>Möglichkeit zur Kontrolle der Anlage über eine Smartphone-„MyStiebel App“ (für Endkunden)</li>
           </ul>
           <br>Für mehr Informationen siehe <a href="https://github.com/SmartGridready/SGrSpecifications/blob/master/doc/HeatPumpAppliances.md#heat-pump-functional-profiles-in-stiebel-eltron-product-eid">Stiebel Eltron HeatPumpAppliance</a>
         ]]>		
@@ -64,6 +64,14 @@
       <secondaryVersionNumber>5</secondaryVersionNumber>
       <subReleaseVersionNumber>1</subReleaseVersionNumber>
     </versionNumber>
+    <programmerHints>
+      <textElement>
+        <![CDATA[
+          <strong>Genereller Hinweis:</strong> Es kann sein, dass für spezifische Konfigurationen einzelne Modbus-Register ungültig sind. In diesem Fall wird der Wert -32768 zurückgeliefert.
+        ]]>         
+      </textElement>
+      <language>de</language>
+    </programmerHints>
   </deviceInformation>
   <interfaceList>
     <modbusInterface>
@@ -106,7 +114,6 @@
                   Das Profil definiert den Grundbaustein zur dynamischen Ansteuerung von Wärmepumpen
                   über eine Betriebsmodus-gestützte Beeinflussung der Sollwerte.
                   <p>Der Betrieb der Wärmepumpe muss in sich sicher sein, unabhängig von den äusseren Vorgaben.</p>
-                  <p><font color="red">Diesen Punkt müssen wir mit den Herstellern nochmals diskutieren.</font></p>
                   <p>Dieses Grundprofil definiert die Datenpunkte, welche zur Steuerung des Gerätes «Wärmepumpe»
                   mit zusätzlichen Funktionsprofilen grundsätzlich zur Verfügung gestellt werden.
                   Sie stellen die Version einer typischen Einfamilienhauswärmepumpe mit Aussentemperaturfühler dar.</p>
@@ -205,16 +212,6 @@
                       <ordinal>5</ordinal>
                       <description>Warmwassererzeugung</description>
                     </enumEntry>
-                    <enumEntry>
-                      <literal>STI_WP_COOL_ACTIVE_OP</literal>
-                      <ordinal>6</ordinal>
-                      <description>Kühlen aktiv</description>
-                    </enumEntry>
-                    <enumEntry>
-                      <literal>STI_WP_COOL_PASSIVE_OP</literal>
-                      <ordinal>7</ordinal>
-                      <description>Kühlen passiv</description>
-                    </enumEntry>
                   </enum>
                 </dataType>
                 <unit>NONE</unit>
@@ -227,16 +224,11 @@
                   <textElement> 
                     <![CDATA[
                       Setzen und Auslesen der Grund-Betriebsart der Wärmepumpe
+                      <p>Die Wärmepumpe entscheidet zwischen Heizen/Kühlen über Heiz-/Kühlgrenze</p>
                     ]]>					
                   </textElement>
                   <language>de</language>
                 </legibleDescription>
-                <programmerHints>
-                  <textElement>
-                    enum 16: WP_READY=1, WP_PROG_OP=2, WP_COMFORT_OP=3, WP_ECO_OP=4,
-                    WP_DOM_WATER_OP=5, WP_EEMERG_OP=0</textElement>
-                  <language>en</language>
-                </programmerHints>
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
