@@ -54,13 +54,31 @@
       <subReleaseVersionNumber>0</subReleaseVersionNumber>
     </versionNumber>
   </deviceInformation>
+  <configurationList>
+    <configurationListElement>
+      <name>ipaddress</name>
+      <dataType>
+        <string/>
+      </dataType>
+      <configurationDescription>
+        <textElement>IP address of the device</textElement>
+        <language>en</language>
+        <label>IP Address</label>
+      </configurationDescription>
+      <configurationDescription>
+        <textElement>IP-Adresse des Geräts.</textElement>
+        <language>de</language>
+        <label>IP Adresse</label>
+      </configurationDescription>
+    </configurationListElement>
+  </configurationList>
   <interfaceList>
     <modbusInterface>
       <modbusInterfaceDescription>
         <modbusInterfaceSelection>TCPIP</modbusInterfaceSelection>
         <modbusTcp>
           <port>502</port>
-          <address>192.168.1.55</address>
+          <address>{{ipaddress}}</address>
           <slaveId>1</slaveId>
         </modbusTcp>
         <firstRegisterAddressIsOne>false
