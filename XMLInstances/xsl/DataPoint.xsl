@@ -61,7 +61,10 @@
                         <tr class="genericDetails">
                             <td>Minimum Value</td>
                             <td>
-                                <xsl:value-of select="sgr:dataPoint/sgr:minimumValue" />&#160;<xsl:call-template name="SGrUnits"><xsl:with-param name="value" select="sgr:dataPoint/sgr:unit" /></xsl:call-template>
+                                <xsl:value-of select="sgr:dataPoint/sgr:minimumValue" />&#160;<xsl:call-template name="SGrUnits">
+                                    <xsl:with-param name="value" select="sgr:dataPoint/sgr:unit" />
+                                    <xsl:with-param name="none" select="'-'" />
+                                </xsl:call-template>
                             </td>
                         </tr>
                     </xsl:if>
@@ -70,7 +73,10 @@
                         <tr class="genericDetails">
                             <td>Maximum Value</td>
                             <td>
-                                <xsl:value-of select="sgr:dataPoint/sgr:maximumValue" />&#160;<xsl:call-template name="SGrUnits"><xsl:with-param name="value" select="sgr:dataPoint/sgr:unit" /></xsl:call-template>
+                                <xsl:value-of select="sgr:dataPoint/sgr:maximumValue" />&#160;<xsl:call-template name="SGrUnits">
+                                    <xsl:with-param name="value" select="sgr:dataPoint/sgr:unit" />
+                                    <xsl:with-param name="none" select="'-'" />
+                                </xsl:call-template>
                             </td>
                         </tr>
                     </xsl:if>
@@ -178,6 +184,7 @@
             <td>
                 <xsl:call-template name="SGrUnits">
                     <xsl:with-param name="value" select="sgr:unit" />
+                    <xsl:with-param name="none" select="'-'" />
                 </xsl:call-template>
             </td>
             <td>

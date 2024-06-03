@@ -100,15 +100,17 @@
         </tr>
 
         <!-- masterFunctionsSupported -->
-        <tr class="transportDetails">
-            <td class="modbusattribute">Supports</td>
-            <td>
-                <xsl:for-each select="sgr:masterFunctionsSupportedList/sgr:masterFunctionsSupported">
-                    <xsl:value-of select="." />
-                    <br />
-                </xsl:for-each>
-            </td>
-        </tr>
+        <xsl:if test="sgr:masterFunctionsSupportedList/sgr:masterFunctionsSupported">
+            <tr class="transportDetails">
+                <td class="modbusattribute">Supports</td>
+                <td>
+                    <xsl:for-each select="sgr:masterFunctionsSupportedList/sgr:masterFunctionsSupported">
+                        <xsl:value-of select="." />
+                        <br />
+                    </xsl:for-each>
+                </td>
+            </tr>
+        </xsl:if>
     </xsl:template>
 
     <!-- ModbusDataPointConfiguration -->
@@ -254,6 +256,8 @@
 
     <xsl:template match="sgr:modbusDataType">
         <xsl:choose>
+            <xsl:when test="sgr:boolean/sgr:falseValue">calculated boolean</xsl:when>
+            <xsl:when test="sgr:boolean/sgr:trueValue">calculated boolean</xsl:when>
             <xsl:when test="sgr:boolean">boolean</xsl:when>
             <xsl:when test="sgr:int8">byte</xsl:when>
             <xsl:when test="sgr:int16">short</xsl:when>

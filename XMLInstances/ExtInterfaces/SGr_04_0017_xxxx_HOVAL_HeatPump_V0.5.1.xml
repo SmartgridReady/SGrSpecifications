@@ -35,7 +35,7 @@
     <isLocalControl>true</isLocalControl>
     <softwareRevision>0.6.0</softwareRevision>
     <hardwareRevision>1.0.0</hardwareRevision>
-    <brandName>TopTronic(r)</brandName>
+    <brandName>TopTronic®E</brandName>
     <powerSource>mains3Phase</powerSource>
     <nominalPower>nominalPower</nominalPower>
     <manufacturerSpecificationIdentification>manufacturerSpecificationIdentification
@@ -48,14 +48,36 @@
       <secondaryVersionNumber>5</secondaryVersionNumber>
       <subReleaseVersionNumber>1</subReleaseVersionNumber>
     </versionNumber>
+    <programmerHints>
+      <textElement>TCP ist standardmässig auf DHCP eingestellt. Das sollte für den Betrieb auf eine statische IP-Adresse geändert werden.</textElement>
+      <language>de</language>
+    </programmerHints>
   </deviceInformation>
+  <configurationList>
+    <configurationListElement>
+      <name>address</name>
+      <dataType>
+        <string/>
+      </dataType>
+      <configurationDescription>
+        <textElement>IP address or DHCP name of the device</textElement>
+        <language>en</language>
+        <label>IP Address</label>
+      </configurationDescription>
+      <configurationDescription>
+        <textElement>IP-Adresse oder DHCP-Name des Geräts.</textElement>
+        <language>de</language>
+        <label>IP Adresse</label>
+      </configurationDescription>
+    </configurationListElement>
+  </configurationList>
   <interfaceList>
     <modbusInterface>
       <modbusInterfaceDescription>
         <modbusInterfaceSelection>TCPIP</modbusInterfaceSelection>
         <modbusTcp>
           <port>502</port>
-          <address>192.168.1.51</address>
+          <address>{{address}}</address>
           <slaveId>1</slaveId>
         </modbusTcp>
         <firstRegisterAddressIsOne>false</firstRegisterAddressIsOne>
@@ -114,16 +136,7 @@
                     <enumEntry>
                       <literal>HOV_HP_AUTOMATIC</literal>
                       <ordinal>1</ordinal>
-                    </enumEntry>
-                    <enumEntry>
-                      <literal>HOV_HP_RES1</literal>
-                      <ordinal>2</ordinal>
-                      <description>TODO: Wert 1 siehe Datenblatt</description>
-                    </enumEntry>
-                    <enumEntry>
-                      <literal>HOV_HP_RES2</literal>
-                      <ordinal>3</ordinal>
-                      <description>TODO: Wert 2 siehe Datenblatt</description>
+                      <description>Automatik-Betrieb</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>HOV_HP_MAN_HEAT</literal>
@@ -144,7 +157,10 @@
                 </alternativeNames>
                 <legibleDescription>
                   <textElement>
-                    Betriebswahl Wärmeerzeuger
+                    <![CDATA[
+                      Betriebswahl Wärmeerzeuger
+                      <p>Der Sollwert kann extern vorgegeben werden oder am Gerät selber (direct control). Direkte Vorgabe Vorlauf-Sollwert (ohne hinterlegter Heizkurve)</p>
+                    ]]>
                   </textElement>
                   <language>de</language>
                 </legibleDescription>
@@ -175,12 +191,6 @@
                 <registerType>HoldRegister</registerType>
                 <numberOfRegisters>1</numberOfRegisters>
               </modbusDataPointConfiguration>
-              <modbusAttributes>
-                <scalingFactor>
-                  <multiplicator>1</multiplicator>
-                  <powerof10>0</powerof10>
-                </scalingFactor>
-              </modbusAttributes>
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
@@ -191,82 +201,102 @@
                     <enumEntry>
                       <literal>HOV_HP_OFF</literal>
                       <ordinal>0</ordinal>
+                      <description>Abgeschaltet</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>HOV_HP_HEATING</literal>
                       <ordinal>1</ordinal>
+                      <description>Heizbetrieb</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>HOV_HP_PREHEAT</literal>
                       <ordinal>2</ordinal>
+                      <description>Vorlaufzeit Heizbetrieb</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>HOV_HP_LOCK_EXTERN</literal>
                       <ordinal>3</ordinal>
+                      <description>Extern gesperrt</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>HOV_HP_COOLING</literal>
                       <ordinal>4</ordinal>
+                      <description>Kühlbetrieb</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>HOV_HP_PRECOOL</literal>
                       <ordinal>5</ordinal>
+                      <description>Vorlaufzeit Kühlbetrieb</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>HOV_HP_ALARM</literal>
                       <ordinal>15</ordinal>
+                      <description>Alarm</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>HOV_EP_ERROR</literal>
                       <ordinal>16</ordinal>
+                      <description>Störung</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>HOV_HP_BLOCKING</literal>
                       <ordinal>17</ordinal>
+                      <description>Blockiert</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>HOV_HP_WFmax_SWITCHOFF</literal>
                       <ordinal>21</ordinal>
+                      <description>WFmax Abschaltung</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>HOV_HP_WFset_SWITCHOFF</literal>
                       <ordinal>22</ordinal>
+                      <description>WFsoll Abschaltung</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>HOV_HP_BIVALENCE_SWITCHOFF</literal>
                       <ordinal>26</ordinal>
+                      <description>Bivalenzabschaltung</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>HOV_HP_MIN_OFF_TIME</literal>
                       <ordinal>27</ordinal>
+                      <description>Warmwasser Ladesperre</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>HOV_HP_MIN_ON_TIME</literal>
                       <ordinal>28</ordinal>
+                      <description>Minimale Auszeit</description>
+                    </enumEntry>
+                    <enumEntry>
+                      <literal>HOV_HP_MIN_ON_TIME</literal>
+                      <ordinal>29</ordinal>
+                      <description>Minimale Auszeit</description>
+                    </enumEntry>
+                    <enumEntry>
+                      <literal>HOV_HP_HEAT</literal>
+                      <ordinal>30</ordinal>
+                      <description>Anheizen</description>
+                    </enumEntry>
+                    <enumEntry>
+                      <literal>HOV_HP_BURNOUT</literal>
+                      <ordinal>31</ordinal>
+                      <description>Ausbrand</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>HOV_HP_TRAILING</literal>
                       <ordinal>32</ordinal>
+                      <description>Nachlauf</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>HOV_HP_DELAY_AFTER_WE</literal>
                       <ordinal>33</ordinal>
+                      <description>Verzögerung Folge WE</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>HOV_HP_TEMPERATURE_HIGH_OP</literal>
                       <ordinal>34</ordinal>
-                    </enumEntry>
-                        <enumEntry>
-                      <literal>HOV_HP_MAN_OP_HEATING</literal>
-                      <ordinal>43</ordinal>
-                    </enumEntry>
-                    <enumEntry>
-                      <literal>HOV_HP_MAN_OP_DOM_HOT_WATER</literal>
-                      <ordinal>44</ordinal>
-                    </enumEntry>
-                    <enumEntry>
-                      <literal>HOV_HP_MAN_OP_COOLING</literal>
-                      <ordinal>45</ordinal>
+                      <description>Betrieb Übertemperatur</description>
                     </enumEntry>
                   </enum>
                 </dataType>
@@ -300,12 +330,6 @@
                 <registerType>HoldRegister</registerType>
                 <numberOfRegisters>1</numberOfRegisters>
               </modbusDataPointConfiguration>
-              <modbusAttributes>
-                <scalingFactor>
-                  <multiplicator>1</multiplicator>
-                  <powerof10>0</powerof10>
-                </scalingFactor>
-              </modbusAttributes>
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
@@ -320,30 +344,25 @@
                   <manufName>27</manufName>
                 </alternativeNames>
                 <legibleDescription>
-                  <textElement>Fehlercode vom Automaten, reduziert auf Boolean: true = Fehler </textElement>
+                  <textElement>Fehler oder Warnung aktiv</textElement>
                   <language>de</language>
                 </legibleDescription>
                 <legibleDescription>
-                  <textElement>Error code from controller, reduced to boolean: true = error state
-                  </textElement>
+                  <textElement>Error or warning active</textElement>
                   <language>en</language>
                 </legibleDescription>
                 <legibleDescription>
-                  <textElement>Code erreur automate: true = condition d'erreur
-                  </textElement>
+                  <textElement>Erreur ou avertissement actif</textElement>
                   <language>fr</language>
                 </legibleDescription>
                 <legibleDescription>
-                  <textElement>Codice errore da unità automatica: ridotto a booleano: true = condizione di errore
-                  </textElement>
+                  <textElement>Errore o avviso attivo</textElement>
                   <language>it</language>
                 </legibleDescription>
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
-                  <boolean>
-                  <falseValue>255</falseValue>
-                </boolean>                    
+                  <int8U/>                    
                 </modbusDataType>
                 <address>1534</address>                
                 <registerType>HoldRegister</registerType>
@@ -457,7 +476,10 @@
                 </alternativeNames>
                 <legibleDescription>
                   <textElement>
-                    Sollwert der Vorlauftemperatur (für direkte Regelung im Modus "Handbetrieb" HOV_HP_MAN_HEAT/COOL)
+                    <![CDATA[
+                      Sollwert der Vorlauftemperatur an Wärmepumpen Austritt (für direkte Regelung im Modus "Handbetrieb" HOV_HP_MAN_HEAT/COOL)
+                      </br>Hier nur direkte Regelung (wenn gewünscht).
+                    ]]>
                   </textElement>
                   <language>de</language>
                 </legibleDescription>
@@ -482,6 +504,174 @@
                   <int16/>
                 </modbusDataType>
                 <address>1562</address>                
+                <registerType>HoldRegister</registerType>
+                <numberOfRegisters>1</numberOfRegisters>
+              </modbusDataPointConfiguration>
+              <modbusAttributes>
+                <scalingFactor>
+                  <multiplicator>1</multiplicator>
+                  <powerof10>-1</powerof10>
+                </scalingFactor>
+              </modbusAttributes>
+            </dataPointListElement>
+            <dataPointListElement>
+              <dataPoint>
+                <dataPointName>SupplyWaterTempSetpointOffsetCooling</dataPointName>
+                <dataDirection>RW</dataDirection>
+                <dataType>
+                  <float32/>
+                </dataType>
+                <unit>DEGREES_KELVIN</unit>
+                <minimumValue>-60.0</minimumValue>
+                <maximumValue>0.0</maximumValue>
+                <alternativeNames>
+                  <sLV1Name>SupplyWaterTempStptOffsCool</sLV1Name>
+                  <manufName>7046</manufName>
+                </alternativeNames>
+                <legibleDescription>
+                  <textElement>Offset Raum-Sollwert Kühlen Heizkreis 1</textElement>
+                  <language>de</language>
+                </legibleDescription>
+                <programmerHints>
+                  <textElement>
+                    <![CDATA[
+                      Im Funktionsprofil <em>SG-ReadyStates</em> muss für den Datenpunkt
+                      <ul>
+                        <li><em>SGReadyOpModeCmd</em> der Wert <strong>HP_INTENSIFIED</strong></li>
+                        <li><em>hovSGReadySrcSelect</em> der Wert <strong>SRC_src_SysBUS</strong></li>
+                      </ul>
+                      aktiviert werden, damit die Temperatur-Offsets geschrieben werden können.
+                    ]]>
+                  </textElement>
+                  <language>de</language>
+                </programmerHints>
+              </dataPoint>
+              <modbusDataPointConfiguration>
+                <modbusDataType>
+                  <int16/>
+                </modbusDataType>
+                <address>27531</address>                
+                <registerType>HoldRegister</registerType>
+                <numberOfRegisters>1</numberOfRegisters>
+              </modbusDataPointConfiguration>
+              <modbusAttributes>
+                <scalingFactor>
+                  <multiplicator>1</multiplicator>
+                  <powerof10>-1</powerof10>
+                </scalingFactor>
+              </modbusAttributes>
+            </dataPointListElement>
+            <dataPointListElement>
+              <dataPoint>
+                <dataPointName>SupplyWaterTempSetpointOffsetHeating</dataPointName>
+                <dataDirection>RW</dataDirection>
+                <dataType>
+                  <float32/>
+                </dataType>
+                <unit>DEGREES_KELVIN</unit>
+                <minimumValue>0.0</minimumValue>
+                <maximumValue>12.0</maximumValue>
+                <alternativeNames>
+                  <sLV1Name>SupplyWaterTempStptOffsHeat</sLV1Name>
+                  <manufName>7031</manufName>
+                </alternativeNames>
+                <legibleDescription>
+                  <textElement>Offset Raum-Sollwert Heizen Heizkreis 1</textElement>
+                  <language>de</language>
+                </legibleDescription>
+                <programmerHints>
+                  <textElement>
+                    <![CDATA[
+                      Im Funktionsprofil <em>SG-ReadyStates</em> muss für den Datenpunkt
+                      <ul>
+                        <li><em>SGReadyOpModeCmd</em> der Wert <strong>HP_INTENSIFIED</strong></li>
+                        <li><em>hovSGReadySrcSelect</em> der Wert <strong>SRC_src_SysBUS</strong></li>
+                      </ul>
+                      aktiviert werden, damit die Temperatur-Offsets geschrieben werden können.
+                    ]]>
+                  </textElement>
+                  <language>de</language>
+                </programmerHints>
+              </dataPoint>
+              <modbusDataPointConfiguration>
+                <modbusDataType>
+                  <int16/>
+                </modbusDataType>
+                <address>27528</address>                
+                <registerType>HoldRegister</registerType>
+                <numberOfRegisters>1</numberOfRegisters>
+              </modbusDataPointConfiguration>
+              <modbusAttributes>
+                <scalingFactor>
+                  <multiplicator>1</multiplicator>
+                  <powerof10>-1</powerof10>
+                </scalingFactor>
+              </modbusAttributes>
+            </dataPointListElement>
+            <dataPointListElement>
+              <dataPoint>
+                <dataPointName>SupplyWaterTempSetpointComfort</dataPointName>
+                <dataDirection>RW</dataDirection>
+                <dataType>
+                  <float32 />
+                </dataType>
+                <unit>DEGREES_CELSIUS</unit>
+                <minimumValue>10.0</minimumValue>
+                <maximumValue>30.0</maximumValue>
+                <alternativeNames>
+                  <sLV1Name>SupplyWaterTempStptComfort</sLV1Name>
+                  <manufName>3051</manufName>
+                  <en17609Name>Supply Water Temperature Setpoint Comfort</en17609Name>
+                </alternativeNames>
+                <legibleDescription>
+                  <textElement>
+                    Setzen der aktuellen Normal-Raumtemperatur Heizbetrieb Heizkreis 1 (indirekte Regelung)
+                  </textElement>
+                  <language>de</language>
+                </legibleDescription>
+              </dataPoint>
+              <modbusDataPointConfiguration>
+                <modbusDataType>
+                  <int16 />
+                </modbusDataType>
+                <address>1481</address>
+                <registerType>HoldRegister</registerType>
+                <numberOfRegisters>1</numberOfRegisters>
+              </modbusDataPointConfiguration>
+              <modbusAttributes>
+                <scalingFactor>
+                  <multiplicator>1</multiplicator>
+                  <powerof10>-1</powerof10>
+                </scalingFactor>
+              </modbusAttributes>
+            </dataPointListElement>
+            <dataPointListElement>
+              <dataPoint>
+                <dataPointName>SupplyWaterTempSetpointtEco</dataPointName>
+                <dataDirection>RW</dataDirection>
+                <dataType>
+                  <float32/>
+                </dataType>
+                <unit>DEGREES_CELSIUS</unit>
+                <minimumValue>5.0</minimumValue>
+                <maximumValue>30.0</maximumValue>
+                <alternativeNames>            
+                  <sLV1Name>SupplyWaterTempStptEco</sLV1Name>
+                  <manufName>3053</manufName>
+                  <en17609Name>Supply Water Temperature Setpoint Eco</en17609Name>
+                </alternativeNames>
+                <legibleDescription>
+                  <textElement>
+                    Setzen der aktuellen Spar-Raumtemperatur Heizbetrieb Heizkreis 1 (indirekte Regelung)
+                  </textElement>
+                  <language>de</language>
+                </legibleDescription>
+              </dataPoint>
+              <modbusDataPointConfiguration>
+                <modbusDataType>
+                  <int16 />
+                </modbusDataType>
+                <address>1482</address>
                 <registerType>HoldRegister</registerType>
                 <numberOfRegisters>1</numberOfRegisters>
               </modbusDataPointConfiguration>
@@ -552,7 +742,7 @@
                   <manufName>1007</manufName>
                 </alternativeNames>
                 <legibleDescription>
-                  <textElement>Wärmeerzeuger-Soll (Rücklesewert)</textElement>
+                  <textElement>Tatsächlicher Vorlauf-Sollwert, unabhängig vom Betriebsmodus.</textElement>
                   <language>de</language>
                 </legibleDescription>
                 <legibleDescription>
@@ -579,12 +769,6 @@
                 <registerType>HoldRegister</registerType>
                 <numberOfRegisters>1</numberOfRegisters>
               </modbusDataPointConfiguration>
-              <modbusAttributes>
-                <scalingFactor>
-                  <multiplicator>1</multiplicator>
-                  <powerof10>-1</powerof10>
-                </scalingFactor>
-              </modbusAttributes>
             </dataPointListElement>
           </dataPointList>
         </functionalProfileListElement>
@@ -624,7 +808,7 @@
                   <manufName>20069</manufName>
                 </alternativeNames>
                 <legibleDescription>
-                  <textElement>Sollwert für die elektrische Leistungsaufnahme (Wunschvorgabe).</textElement>
+                  <textElement>Sollwert für die elektrische Leistungsaufnahme (Wunschvorgabe) wird intern über Kennlinie gesteuert.</textElement>
                   <language>de</language>
                 </legibleDescription>
                 <legibleDescription>
@@ -651,14 +835,14 @@
               <modbusAttributes>
                 <scalingFactor>
                   <multiplicator>1</multiplicator>
-                  <powerof10>0</powerof10>
+                  <powerof10>-2</powerof10>
                 </scalingFactor>
               </modbusAttributes>
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
                 <dataPointName>ActSpeed</dataPointName>
-                <dataDirection>RW</dataDirection>
+                <dataDirection>R</dataDirection>
                 <dataType>
                   <float32/>
                 </dataType>
@@ -694,18 +878,12 @@
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
-                  <int16/>
+                  <int8U/>
                 </modbusDataType>
                 <address>18726</address>                
                 <registerType>HoldRegister</registerType>
                 <numberOfRegisters>1</numberOfRegisters>
               </modbusDataPointConfiguration>
-              <modbusAttributes>
-                <scalingFactor>
-                  <multiplicator>1</multiplicator>
-                  <powerof10>0</powerof10>
-                </scalingFactor>
-              </modbusAttributes>
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
@@ -720,7 +898,7 @@
                   <manufName>29051</manufName>
                 </alternativeNames>
                 <legibleDescription>
-                  <textElement>Aktuelle elektrische Leistungsaufnahme</textElement>
+                  <textElement>Aktuelle effektive Leistungsaufnahme</textElement>
                   <language>de</language>
                 </legibleDescription>
                 <legibleDescription>
@@ -736,6 +914,16 @@
                   <language>it</language>
                 </legibleDescription>
               </dataPoint>
+              <genericAttributeList>
+                <genericAttributeListElement>
+                  <name>MeasuredValueSource</name>
+                  <dataType>
+                    <string/>
+                  </dataType>
+                  <value>calculatedValue</value>
+                  <unit>NONE</unit>
+                </genericAttributeListElement>
+              </genericAttributeList>
               <modbusDataPointConfiguration>
                 <modbusDataType>
                   <int32U/>
@@ -747,7 +935,7 @@
               <modbusAttributes>
                 <scalingFactor>
                   <multiplicator>1</multiplicator>
-                  <powerof10>0</powerof10>
+                  <powerof10>-1</powerof10>
                 </scalingFactor>
               </modbusAttributes>
             </dataPointListElement>
@@ -820,12 +1008,12 @@
                     <enumEntry>
                       <literal>HOV_HC_MAN_HEAT</literal>
                       <ordinal>7</ordinal>
-                      <description>Handbetrieb kühlen</description>
+                      <description>Handbetrieb heizen</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>HOV_HC_MAN_COOL</literal>
                       <ordinal>8</ordinal>
-                      <description>Handbetrieb heizen</description>
+                      <description>Handbetrieb kühlen</description>
                     </enumEntry>
                   </enum>
                 </dataType>
@@ -858,6 +1046,16 @@
                   </textElement>
                   <language>it</language>
                 </legibleDescription>
+                <programmerHints>
+                  <textElement>
+                    <![CDATA[
+                      Handbetrieb muss zuerst aktiviert werden, um die "manuelle Sollwertvorgabe" zu aktivieren. Dies entspricht "direct control".
+                      <p>Wochenplan und Sparbetrieb sind indirekte Regelung. Konstantbetrieb und Handbetrieb sind direkte Regelung Vorlauf.</p>
+                      <p>Wochenpläne sind auf WP hinterlegt und können nicht extern verändert werden.</p>
+                    ]]>
+                  </textElement>
+                  <language>de</language>
+                </programmerHints>
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
@@ -867,12 +1065,6 @@
                 <registerType>HoldRegister</registerType>
                 <numberOfRegisters>1</numberOfRegisters>
               </modbusDataPointConfiguration>
-              <modbusAttributes>
-                <scalingFactor>
-                  <multiplicator>1</multiplicator>
-                  <powerof10>0</powerof10>
-                </scalingFactor>
-              </modbusAttributes>
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
@@ -883,94 +1075,117 @@
                     <enumEntry>
                       <literal>HOV_HC_OFF</literal>
                       <ordinal>0</ordinal>
+                      <description>Abgeschaltet</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>HOV_HC_NORMAL_HEAT_OP</literal>
                       <ordinal>1</ordinal>
+                      <description>Normal Heizbetrieb</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>HOV_HC_COMFORT_HEAT_OP</literal>
                       <ordinal>2</ordinal>
+                      <description>Komfort Heizbetrieb</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>HOV_HC_ECO_HEAT_OP</literal>
                       <ordinal>3</ordinal>
+                      <description>Spar Heizbetrieb</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>HOV_HC_DEFROST</literal>
                       <ordinal>4</ordinal>
+                      <description>Frostbetrieb</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>HOV_HC_FORCED_OP</literal>
                       <ordinal>5</ordinal>
+                      <description>Zwangsabnahme (bei Zwang > +50%)</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>HOV_HC_FORCE_CURTAIL</literal>
                       <ordinal>6</ordinal>
+                      <description>Zwangsdrosselung  (bei Zwang &lt; -50%)</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>HOV_HC_VACATION_OP</literal>
                       <ordinal>7</ordinal>
+                      <description>Ferienbetrieb</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>HOV_HC_PARTY_OP</literal>
                       <ordinal>8</ordinal>
+                      <description>Partybetrieb</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>HOV_HC_NORMAL_COOL_OP</literal>
                       <ordinal>9</ordinal>
+                      <description>Normal Kühlbetrieb</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>HOV_HC_COMFORT_COOL_OP</literal>
                       <ordinal>10</ordinal>
+                      <description>Komfort Kühlbetrieb</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>HOV_HC_ECO_COOL_OP</literal>
                       <ordinal>11</ordinal>
+                      <description>Spar Kühlbetrieb</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>HOV_HC_ERROR</literal>
                       <ordinal>12</ordinal>
+                      <description>Störung</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>HOV_HC_MANUAL_OP</literal>
                       <ordinal>13</ordinal>
+                      <description>Handbetrieb</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>HOV_HC_COOL_PROT</literal>
                       <ordinal>14</ordinal>
+                      <description>Schutz Kühlbetrieb</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>HOV_HC_PARTY_COOL_OP</literal>
                       <ordinal>15</ordinal>
+                      <description>Partybetrieb Kühlen</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>HOV_HC_DRY_HEATING</literal>
                       <ordinal>16</ordinal>
+                      <description>Austrocknung Aufheizphase</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>HOV_HC_DRY_STATIONARY</literal>
                       <ordinal>17</ordinal>
+                      <description>Austrocknung Stationärphase</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>HOV_HC_DRY_COOLING</literal>
                       <ordinal>18</ordinal>
+                      <description>Austrocknung Abkühlphase</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>HOV_HC_DRY_FINALIZING</literal>
                       <ordinal>19</ordinal>
+                      <description>Austrocknung Endphase</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>HOV_HC_COOLING_EXT_CMD</literal>
                       <ordinal>22</ordinal>
+                      <description>Kühlbetrieb Extern/Konstantanforderung</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>HOV_HC_HEATING_EXT_CMD</literal>
                       <ordinal>23</ordinal>
+                      <description>Heizbetrieb Extern/Konstantanforderung</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>HOV_HC_INTENSIFIED_EXT</literal>
                       <ordinal>24</ordinal>
+                      <description>Vorzugsbetrieb SmartGrid</description>
                     </enumEntry>
                   </enum>
                 </dataType>
@@ -1001,18 +1216,12 @@
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
-                  <int16U/>
+                  <int8U/>
                 </modbusDataType>
                 <address>1501</address>                
                 <registerType>HoldRegister</registerType>
                 <numberOfRegisters>1</numberOfRegisters>
               </modbusDataPointConfiguration>
-              <modbusAttributes>
-                <scalingFactor>
-                  <multiplicator>1</multiplicator>
-                  <powerof10>0</powerof10>
-                </scalingFactor>
-              </modbusAttributes>
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
@@ -1071,14 +1280,12 @@
                 <unit>DEGREES_CELSIUS</unit>
                 <alternativeNames>
                   <sLV1Name>SupplyWaterTempStpt</sLV1Name>
-                  <manufName>9020</manufName>
+                  <manufName>7009</manufName>
                 </alternativeNames>
                 <legibleDescription>
                   <textElement>
                     <![CDATA[
                       Sollwert der Vorlauftemperatur (für direkte Regelung im Modus "Handbetrieb" HOV_HP_MAN_HEAT/COOL)
-                      </br>
-                      <font color="red">Frage an Hersteller: Gibt es auch eine indirekte Ansteuerung der Komforttemperatur (SetpointComfort)?</font>
                     ]]>         
                   </textElement>
                   <language>de</language>
@@ -1108,6 +1315,174 @@
                   <int16/>
                 </modbusDataType>
                 <address>1487</address>                
+                <registerType>HoldRegister</registerType>
+                <numberOfRegisters>1</numberOfRegisters>
+              </modbusDataPointConfiguration>
+              <modbusAttributes>
+                <scalingFactor>
+                  <multiplicator>1</multiplicator>
+                  <powerof10>-1</powerof10>
+                </scalingFactor>
+              </modbusAttributes>
+            </dataPointListElement>
+            <dataPointListElement>
+              <dataPoint>
+                <dataPointName>SupplyWaterTempSetpointOffsetCooling</dataPointName>
+                <dataDirection>RW</dataDirection>
+                <dataType>
+                  <float32/>
+                </dataType>
+                <unit>DEGREES_KELVIN</unit>
+                <minimumValue>-60.0</minimumValue>
+                <maximumValue>0.0</maximumValue>
+                <alternativeNames>
+                  <sLV1Name>SupplyWaterTempStptOffsCool</sLV1Name>
+                  <manufName>7046</manufName>
+                </alternativeNames>
+                <legibleDescription>
+                  <textElement>Offset Raum-Sollwert Kühlen Heizkreis 2</textElement>
+                  <language>de</language>
+                </legibleDescription>
+                <programmerHints>
+                  <textElement>
+                    <![CDATA[
+                      Im Funktionsprofil <em>SG-ReadyStates</em> muss für den Datenpunkt
+                      <ul>
+                        <li><em>SGReadyOpModeCmd</em> der Wert <strong>HP_INTENSIFIED</strong></li>
+                        <li><em>hovSGReadySrcSelect</em> der Wert <strong>SRC_src_SysBUS</strong></li>
+                      </ul>
+                      aktiviert werden, damit die Temperatur-Offsets geschrieben werden können.
+                    ]]>
+                  </textElement>
+                  <language>de</language>
+                </programmerHints>
+              </dataPoint>
+              <modbusDataPointConfiguration>
+                <modbusDataType>
+                  <int16/>
+                </modbusDataType>
+                <address>27532</address>                
+                <registerType>HoldRegister</registerType>
+                <numberOfRegisters>1</numberOfRegisters>
+              </modbusDataPointConfiguration>
+              <modbusAttributes>
+                <scalingFactor>
+                  <multiplicator>1</multiplicator>
+                  <powerof10>-1</powerof10>
+                </scalingFactor>
+              </modbusAttributes>
+            </dataPointListElement>
+            <dataPointListElement>
+              <dataPoint>
+                <dataPointName>SupplyWaterTempSetpointOffsetHeating</dataPointName>
+                <dataDirection>RW</dataDirection>
+                <dataType>
+                  <float32/>
+                </dataType>
+                <unit>DEGREES_KELVIN</unit>
+                <minimumValue>0.0</minimumValue>
+                <maximumValue>12.0</maximumValue>
+                <alternativeNames>
+                  <sLV1Name>SupplyWaterTempStptOffsHeat</sLV1Name>
+                  <manufName>7031</manufName>
+                </alternativeNames>
+                <legibleDescription>
+                  <textElement>Offset Raum-Sollwert Heizen Heizkreis 2</textElement>
+                  <language>de</language>
+                </legibleDescription>
+                <programmerHints>
+                  <textElement>
+                    <![CDATA[
+                      Im Funktionsprofil <em>SG-ReadyStates</em> muss für den Datenpunkt
+                      <ul>
+                        <li><em>SGReadyOpModeCmd</em> der Wert <strong>HP_INTENSIFIED</strong></li>
+                        <li><em>hovSGReadySrcSelect</em> der Wert <strong>SRC_src_SysBUS</strong></li>
+                      </ul>
+                      aktiviert werden, damit die Temperatur-Offsets geschrieben werden können.
+                    ]]>
+                  </textElement>
+                  <language>de</language>
+                </programmerHints>
+              </dataPoint>
+              <modbusDataPointConfiguration>
+                <modbusDataType>
+                  <int16/>
+                </modbusDataType>
+                <address>27529</address>                
+                <registerType>HoldRegister</registerType>
+                <numberOfRegisters>1</numberOfRegisters>
+              </modbusDataPointConfiguration>
+              <modbusAttributes>
+                <scalingFactor>
+                  <multiplicator>1</multiplicator>
+                  <powerof10>-1</powerof10>
+                </scalingFactor>
+              </modbusAttributes>
+            </dataPointListElement>
+            <dataPointListElement>
+              <dataPoint>
+                <dataPointName>SupplyWaterTempSetpointComfort</dataPointName>
+                <dataDirection>RW</dataDirection>
+                <dataType>
+                  <float32 />
+                </dataType>
+                <unit>DEGREES_CELSIUS</unit>
+                <minimumValue>10.0</minimumValue>
+                <maximumValue>30.0</maximumValue>
+                <alternativeNames>
+                  <sLV1Name>SupplyWaterTempStptComfort</sLV1Name>
+                  <manufName>3051</manufName>
+                  <en17609Name>Supply Water Temperature Setpoint Comfort</en17609Name>
+                </alternativeNames>
+                <legibleDescription>
+                  <textElement>
+                    Setzen der aktuellen Normal-Raumtemperatur Heizbetrieb Heizkreis 2 (indirekte Regelung)
+                  </textElement>
+                  <language>de</language>
+                </legibleDescription>
+              </dataPoint>
+              <modbusDataPointConfiguration>
+                <modbusDataType>
+                  <int16 />
+                </modbusDataType>
+                <address>1483</address>
+                <registerType>HoldRegister</registerType>
+                <numberOfRegisters>1</numberOfRegisters>
+              </modbusDataPointConfiguration>
+              <modbusAttributes>
+                <scalingFactor>
+                  <multiplicator>1</multiplicator>
+                  <powerof10>-1</powerof10>
+                </scalingFactor>
+              </modbusAttributes>
+            </dataPointListElement>
+            <dataPointListElement>
+              <dataPoint>
+                <dataPointName>SupplyWaterTempSetpointtEco</dataPointName>
+                <dataDirection>RW</dataDirection>
+                <dataType>
+                  <float32/>
+                </dataType>
+                <unit>DEGREES_CELSIUS</unit>
+                <minimumValue>5.0</minimumValue>
+                <maximumValue>30.0</maximumValue>
+                <alternativeNames>            
+                  <sLV1Name>SupplyWaterTempStptEco</sLV1Name>
+                  <manufName>3053</manufName>
+                  <en17609Name>Supply Water Temperature Setpoint Eco</en17609Name>
+                </alternativeNames>
+                <legibleDescription>
+                  <textElement>
+                    Setzen der aktuellen Spar-Raumtemperatur Heizbetrieb Heizkreis 2 (indirekte Regelung)
+                  </textElement>
+                  <language>de</language>
+                </legibleDescription>
+              </dataPoint>
+              <modbusDataPointConfiguration>
+                <modbusDataType>
+                  <int16 />
+                </modbusDataType>
+                <address>1484</address>
                 <registerType>HoldRegister</registerType>
                 <numberOfRegisters>1</numberOfRegisters>
               </modbusDataPointConfiguration>
@@ -1209,30 +1584,37 @@
                     <enumEntry>
                       <literal>HOV_HC_STANDBY</literal>
                       <ordinal>0</ordinal>
+                      <description>Standbybetrieb</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>HOV_HC_PLAN_W1</literal>
                       <ordinal>1</ordinal>
+                      <description>Wochenplan 1</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>HOV_HC_PLAN_W2</literal>
                       <ordinal>2</ordinal>
+                      <description>Wochenplan 2</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>HOV_HC_CONSTANT</literal>
                       <ordinal>4</ordinal>
+                      <description>Konstanter Betrieb</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>HOV_HC_ECO</literal>
                       <ordinal>5</ordinal>
+                      <description>Sparbetrieb</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>HOV_HC_MAN_HEAT</literal>
                       <ordinal>7</ordinal>
+                      <description>Handbetrieb heizen</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>HOV_HC_MAN_COOL</literal>
                       <ordinal>8</ordinal>
+                      <description>Handbetrieb kühlen</description>
                     </enumEntry>
                   </enum>
                 </dataType>
@@ -1274,12 +1656,6 @@
                 <registerType>HoldRegister</registerType>
                 <numberOfRegisters>1</numberOfRegisters>
               </modbusDataPointConfiguration>
-              <modbusAttributes>
-                <scalingFactor>
-                  <multiplicator>1</multiplicator>
-                  <powerof10>0</powerof10>
-                </scalingFactor>
-              </modbusAttributes>
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
@@ -1290,94 +1666,117 @@
                     <enumEntry>
                       <literal>HOV_HC_OFF</literal>
                       <ordinal>0</ordinal>
+                      <description>Abgeschaltet</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>HOV_HC_NORMAL_HEAT_OP</literal>
                       <ordinal>1</ordinal>
+                      <description>Normal Heizbetrieb</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>HOV_HC_COMFORT_HEAT_OP</literal>
                       <ordinal>2</ordinal>
+                      <description>Komfort Heizbetrieb</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>HOV_HC_ECO_HEAT_OP</literal>
                       <ordinal>3</ordinal>
+                      <description>Spar Heizbetrieb</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>HOV_HC_DEFROST</literal>
                       <ordinal>4</ordinal>
+                      <description>Frostbetrieb</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>HOV_HC_FORCED_OP</literal>
                       <ordinal>5</ordinal>
+                      <description>Zwangsabnahme (bei Zwang > +50%)</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>HOV_HC_FORCE_CURTAIL</literal>
                       <ordinal>6</ordinal>
+                      <description>Zwangsdrosselung  (bei Zwang &lt; -50%)</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>HOV_HC_VACATION_OP</literal>
                       <ordinal>7</ordinal>
+                      <description>Ferienbetrieb</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>HOV_HC_PARTY_OP</literal>
                       <ordinal>8</ordinal>
+                      <description>Partybetrieb</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>HOV_HC_NORMAL_COOL_OP</literal>
                       <ordinal>9</ordinal>
+                      <description>Normal Kühlbetrieb</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>HOV_HC_COMFORT_COOL_OP</literal>
                       <ordinal>10</ordinal>
+                      <description>Komfort Kühlbetrieb</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>HOV_HC_ECO_COOL_OP</literal>
                       <ordinal>11</ordinal>
+                      <description>Spar Kühlbetrieb</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>HOV_HC_ERROR</literal>
                       <ordinal>12</ordinal>
+                      <description>Störung</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>HOV_HC_MANUAL_OP</literal>
                       <ordinal>13</ordinal>
+                      <description>Handbetrieb</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>HOV_HC_COOL_PROT</literal>
                       <ordinal>14</ordinal>
+                      <description>Schutz Kühlbetrieb</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>HOV_HC_PARTY_COOL_OP</literal>
                       <ordinal>15</ordinal>
+                      <description>Partybetrieb Kühlen</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>HOV_HC_DRY_HEATING</literal>
                       <ordinal>16</ordinal>
+                      <description>Austrocknung Aufheizphase</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>HOV_HC_DRY_STATIONARY</literal>
                       <ordinal>17</ordinal>
+                      <description>Austrocknung Stationärphase</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>HOV_HC_DRY_COOLING</literal>
                       <ordinal>18</ordinal>
+                      <description>Austrocknung Abkühlphase</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>HOV_HC_DRY_FINALIZING</literal>
                       <ordinal>19</ordinal>
+                      <description>Austrocknung Endphase</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>HOV_HC_COOLING_EXT_CMD</literal>
                       <ordinal>22</ordinal>
+                      <description>Kühlbetrieb Extern/Konstantanforderung</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>HOV_HC_HEATING_EXT_CMD</literal>
                       <ordinal>23</ordinal>
+                      <description>Heizbetrieb Extern/Konstantanforderung</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>HOV_HC_INTENSIFIED_EXT</literal>
                       <ordinal>24</ordinal>
+                      <description>Vorzugsbetrieb SmartGrid</description>
                     </enumEntry>
                   </enum>
                 </dataType>
@@ -1408,18 +1807,12 @@
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
-                  <int16U/>
+                  <int8U/>
                 </modbusDataType>
                 <address>1502</address>                
                 <registerType>HoldRegister</registerType>
                 <numberOfRegisters>1</numberOfRegisters>
               </modbusDataPointConfiguration>
-              <modbusAttributes>
-                <scalingFactor>
-                  <multiplicator>1</multiplicator>
-                  <powerof10>0</powerof10>
-                </scalingFactor>
-              </modbusAttributes>
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
@@ -1477,14 +1870,12 @@
                 <unit>DEGREES_CELSIUS</unit>
                 <alternativeNames>
                   <sLV1Name>SupplyWaterTempStpt</sLV1Name>
-                  <manufName>9020</manufName>
+                  <manufName>7009</manufName>
                 </alternativeNames>
                 <legibleDescription>
                   <textElement>
                     <![CDATA[
                       Sollwert der Vorlauftemperatur (für direkte Regelung im Modus "Handbetrieb" HOV_HP_MAN_HEAT/COOL)
-                      </br>
-                      <font color="red">Frage an Hersteller: Gibt es auch eine indirekte Ansteuerung der Komforttemperatur (SetpointComfort)?</font>
                     ]]>         
                   </textElement>
                   <language>de</language>
@@ -1514,6 +1905,174 @@
                   <int16/>
                 </modbusDataType>
                 <address>1488</address>                
+                <registerType>HoldRegister</registerType>
+                <numberOfRegisters>1</numberOfRegisters>
+              </modbusDataPointConfiguration>
+              <modbusAttributes>
+                <scalingFactor>
+                  <multiplicator>1</multiplicator>
+                  <powerof10>-1</powerof10>
+                </scalingFactor>
+              </modbusAttributes>
+            </dataPointListElement>
+            <dataPointListElement>
+              <dataPoint>
+                <dataPointName>SupplyWaterTempSetpointOffsetCooling</dataPointName>
+                <dataDirection>RW</dataDirection>
+                <dataType>
+                  <float32/>
+                </dataType>
+                <unit>DEGREES_KELVIN</unit>
+                <minimumValue>-60.0</minimumValue>
+                <maximumValue>0.0</maximumValue>
+                <alternativeNames>
+                  <sLV1Name>SupplyWaterTempStptOffsCool</sLV1Name>
+                  <manufName>7046</manufName>
+                </alternativeNames>
+                <legibleDescription>
+                  <textElement>Offset Raum-Sollwert Kühlen Heizkreis 2</textElement>
+                  <language>de</language>
+                </legibleDescription>
+                <programmerHints>
+                  <textElement>
+                    <![CDATA[
+                      Im Funktionsprofil <em>SG-ReadyStates</em> muss für den Datenpunkt
+                      <ul>
+                        <li><em>SGReadyOpModeCmd</em> der Wert <strong>HP_INTENSIFIED</strong></li>
+                        <li><em>hovSGReadySrcSelect</em> der Wert <strong>SRC_src_SysBUS</strong></li>
+                      </ul>
+                      aktiviert werden, damit die Temperatur-Offsets geschrieben werden können.
+                    ]]>
+                  </textElement>
+                  <language>de</language>
+                </programmerHints>
+              </dataPoint>
+              <modbusDataPointConfiguration>
+                <modbusDataType>
+                  <int16/>
+                </modbusDataType>
+                <address>27533</address>                
+                <registerType>HoldRegister</registerType>
+                <numberOfRegisters>1</numberOfRegisters>
+              </modbusDataPointConfiguration>
+              <modbusAttributes>
+                <scalingFactor>
+                  <multiplicator>1</multiplicator>
+                  <powerof10>-1</powerof10>
+                </scalingFactor>
+              </modbusAttributes>
+            </dataPointListElement>
+            <dataPointListElement>
+              <dataPoint>
+                <dataPointName>SupplyWaterTempSetpointOffsetHeating</dataPointName>
+                <dataDirection>RW</dataDirection>
+                <dataType>
+                  <float32/>
+                </dataType>
+                <unit>DEGREES_KELVIN</unit>
+                <minimumValue>0.0</minimumValue>
+                <maximumValue>12.0</maximumValue>
+                <alternativeNames>
+                  <sLV1Name>SupplyWaterTempStptOffsHeat</sLV1Name>
+                  <manufName>7031</manufName>
+                </alternativeNames>
+                <legibleDescription>
+                  <textElement>Offset Raum-Sollwert Heizen Heizkreis 3</textElement>
+                  <language>de</language>
+                </legibleDescription>
+                <programmerHints>
+                  <textElement>
+                    <![CDATA[
+                      Im Funktionsprofil <em>SG-ReadyStates</em> muss für den Datenpunkt
+                      <ul>
+                        <li><em>SGReadyOpModeCmd</em> der Wert <strong>HP_INTENSIFIED</strong></li>
+                        <li><em>hovSGReadySrcSelect</em> der Wert <strong>SRC_src_SysBUS</strong></li>
+                      </ul>
+                      aktiviert werden, damit die Temperatur-Offsets geschrieben werden können.
+                    ]]>
+                  </textElement>
+                  <language>de</language>
+                </programmerHints>
+              </dataPoint>
+              <modbusDataPointConfiguration>
+                <modbusDataType>
+                  <int16/>
+                </modbusDataType>
+                <address>27530</address>                
+                <registerType>HoldRegister</registerType>
+                <numberOfRegisters>1</numberOfRegisters>
+              </modbusDataPointConfiguration>
+              <modbusAttributes>
+                <scalingFactor>
+                  <multiplicator>1</multiplicator>
+                  <powerof10>-1</powerof10>
+                </scalingFactor>
+              </modbusAttributes>
+            </dataPointListElement>
+            <dataPointListElement>
+              <dataPoint>
+                <dataPointName>SupplyWaterTempSetpointComfort</dataPointName>
+                <dataDirection>RW</dataDirection>
+                <dataType>
+                  <float32 />
+                </dataType>
+                <unit>DEGREES_CELSIUS</unit>
+                <minimumValue>10.0</minimumValue>
+                <maximumValue>30.0</maximumValue>
+                <alternativeNames>
+                  <sLV1Name>SupplyWaterTempStptComfort</sLV1Name>
+                  <manufName>3051</manufName>
+                  <en17609Name>Supply Water Temperature Setpoint Comfort</en17609Name>
+                </alternativeNames>
+                <legibleDescription>
+                  <textElement>
+                    Setzen der aktuellen Normal-Raumtemperatur Heizbetrieb Heizkreis 3 (indirekte Regelung)
+                  </textElement>
+                  <language>de</language>
+                </legibleDescription>
+              </dataPoint>
+              <modbusDataPointConfiguration>
+                <modbusDataType>
+                  <int16 />
+                </modbusDataType>
+                <address>1485</address>
+                <registerType>HoldRegister</registerType>
+                <numberOfRegisters>1</numberOfRegisters>
+              </modbusDataPointConfiguration>
+              <modbusAttributes>
+                <scalingFactor>
+                  <multiplicator>1</multiplicator>
+                  <powerof10>-1</powerof10>
+                </scalingFactor>
+              </modbusAttributes>
+            </dataPointListElement>
+            <dataPointListElement>
+              <dataPoint>
+                <dataPointName>SupplyWaterTempSetpointtEco</dataPointName>
+                <dataDirection>RW</dataDirection>
+                <dataType>
+                  <float32/>
+                </dataType>
+                <unit>DEGREES_CELSIUS</unit>
+                <minimumValue>5.0</minimumValue>
+                <maximumValue>30.0</maximumValue>
+                <alternativeNames>            
+                  <sLV1Name>SupplyWaterTempStptEco</sLV1Name>
+                  <manufName>3053</manufName>
+                  <en17609Name>Supply Water Temperature Setpoint Eco</en17609Name>
+                </alternativeNames>
+                <legibleDescription>
+                  <textElement>
+                    Setzen der aktuellen Spar-Raumtemperatur Heizbetrieb Heizkreis 3 (indirekte Regelung)
+                  </textElement>
+                  <language>de</language>
+                </legibleDescription>
+              </dataPoint>
+              <modbusDataPointConfiguration>
+                <modbusDataType>
+                  <int16 />
+                </modbusDataType>
+                <address>1486</address>
                 <registerType>HoldRegister</registerType>
                 <numberOfRegisters>1</numberOfRegisters>
               </modbusDataPointConfiguration>
@@ -1687,12 +2246,6 @@
                 <registerType>HoldRegister</registerType>
                 <numberOfRegisters>1</numberOfRegisters>
               </modbusDataPointConfiguration>
-              <modbusAttributes>
-                <scalingFactor>
-                  <multiplicator>1</multiplicator>
-                  <powerof10>0</powerof10>
-                </scalingFactor>
-              </modbusAttributes>
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
@@ -1703,94 +2256,117 @@
                     <enumEntry>
                       <literal>HOV_HC_OFF</literal>
                       <ordinal>0</ordinal>
+                      <description>Abgeschaltet</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>HOV_HC_NORMAL_HEAT_OP</literal>
                       <ordinal>1</ordinal>
+                      <description>Normal Heizbetrieb</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>HOV_HC_COMFORT_HEAT_OP</literal>
                       <ordinal>2</ordinal>
+                      <description>Komfort Heizbetrieb</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>HOV_HC_ECO_HEAT_OP</literal>
                       <ordinal>3</ordinal>
+                      <description>Spar Heizbetrieb</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>HOV_HC_DEFROST</literal>
                       <ordinal>4</ordinal>
+                      <description>Frostbetrieb</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>HOV_HC_FORCED_OP</literal>
                       <ordinal>5</ordinal>
+                      <description>Zwangsabnahme (bei Zwang > +50%)</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>HOV_HC_FORCE_CURTAIL</literal>
                       <ordinal>6</ordinal>
+                      <description>Zwangsdrosselung  (bei Zwang &lt; -50%)</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>HOV_HC_VACATION_OP</literal>
                       <ordinal>7</ordinal>
+                      <description>Ferienbetrieb</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>HOV_HC_PARTY_OP</literal>
                       <ordinal>8</ordinal>
+                      <description>Partybetrieb</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>HOV_HC_NORMAL_COOL_OP</literal>
                       <ordinal>9</ordinal>
+                      <description>Normal Kühlbetrieb</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>HOV_HC_COMFORT_COOL_OP</literal>
                       <ordinal>10</ordinal>
+                      <description>Komfort Kühlbetrieb</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>HOV_HC_ECO_COOL_OP</literal>
                       <ordinal>11</ordinal>
+                      <description>Spar Kühlbetrieb</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>HOV_HC_ERROR</literal>
                       <ordinal>12</ordinal>
+                      <description>Störung</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>HOV_HC_MANUAL_OP</literal>
                       <ordinal>13</ordinal>
+                      <description>Handbetrieb</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>HOV_HC_COOL_PROT</literal>
                       <ordinal>14</ordinal>
+                      <description>Schutz Kühlbetrieb</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>HOV_HC_PARTY_COOL_OP</literal>
                       <ordinal>15</ordinal>
+                      <description>Partybetrieb Kühlen</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>HOV_HC_DRY_HEATING</literal>
                       <ordinal>16</ordinal>
+                      <description>Austrocknung Aufheizphase</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>HOV_HC_DRY_STATIONARY</literal>
                       <ordinal>17</ordinal>
+                      <description>Austrocknung Stationärphase</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>HOV_HC_DRY_COOLING</literal>
                       <ordinal>18</ordinal>
+                      <description>Austrocknung Abkühlphase</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>HOV_HC_DRY_FINALIZING</literal>
                       <ordinal>19</ordinal>
+                      <description>Austrocknung Endphase</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>HOV_HC_COOLING_EXT_CMD</literal>
                       <ordinal>22</ordinal>
+                      <description>Kühlbetrieb Extern/Konstantanforderung</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>HOV_HC_HEATING_EXT_CMD</literal>
                       <ordinal>23</ordinal>
+                      <description>Heizbetrieb Extern/Konstantanforderung</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>HOV_HC_INTENSIFIED_EXT</literal>
                       <ordinal>24</ordinal>
+                      <description>Vorzugsbetrieb SmartGrid</description>
                     </enumEntry>
                   </enum>
                 </dataType>
@@ -1821,18 +2397,12 @@
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
-                  <int16U/>
+                  <int8U/>
                 </modbusDataType>
                 <address>1503</address>                
                 <registerType>HoldRegister</registerType>
                 <numberOfRegisters>1</numberOfRegisters>
               </modbusDataPointConfiguration>
-              <modbusAttributes>
-                <scalingFactor>
-                  <multiplicator>1</multiplicator>
-                  <powerof10>0</powerof10>
-                </scalingFactor>
-              </modbusAttributes>
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
@@ -1891,15 +2461,12 @@
                 <unit>DEGREES_CELSIUS</unit>
                 <alternativeNames>
                   <sLV1Name>SupplyWaterTempStpt</sLV1Name>
-                  <manufName>9020</manufName>
+                  <manufName>7009</manufName>
                 </alternativeNames>
                 <legibleDescription>
                   <textElement>
                     <![CDATA[
                       Sollwert der Vorlauftemperatur (für direkte Regelung im Modus "Handbetrieb" HOV_HP_MAN_HEAT/COOL)
-                      <font color="red"><br>Fusspunkt oder effektiver Sollwert? Mit Hersteller klären.</font>
-                      </br>
-                      <font color="red">Frage an Hersteller: Gibt es auch eine indirekte Ansteuerung der Komforttemperatur (SetpointComfort)?</font>
                     ]]>         
                   </textElement>
                   <language>de</language>
@@ -2025,22 +2592,27 @@
                     <enumEntry>
                       <literal>HOV_DHW_STANDBY</literal>
                       <ordinal>0</ordinal>
+                      <description>Standby</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>HOV_DHW_SCHEDULE_1_OP</literal>
                       <ordinal>1</ordinal>
+                      <description>Woche 1</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>HOV_DHW_SCHEDULE_2_OP</literal>
                       <ordinal>2</ordinal>
+                      <description>Woche 2</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>HOV_DHW_CONST_OP</literal>
                       <ordinal>3</ordinal>
+                      <description>Konstant</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>HOV_DHW_ECO_OP</literal>
                       <ordinal>4</ordinal>
+                      <description>Sparbetrieb</description>
                     </enumEntry>
                   </enum>
                 </dataType>
@@ -2077,12 +2649,6 @@
                 <registerType>HoldRegister</registerType>
                 <numberOfRegisters>1</numberOfRegisters>
               </modbusDataPointConfiguration>
-              <modbusAttributes>
-                <scalingFactor>
-                  <multiplicator>1</multiplicator>
-                  <powerof10>0</powerof10>
-                </scalingFactor>
-              </modbusAttributes>
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
@@ -2093,46 +2659,57 @@
                     <enumEntry>
                       <literal>HOV_DHW_OFF</literal>
                       <ordinal>0</ordinal>
+                      <description>Abgeschaltet</description>
                     </enumEntry>
                     <enumEntry>
-                      <literal>DHW_CHARGING</literal>
+                      <literal>HOV_DHW_CHARGING</literal>
                       <ordinal>1</ordinal>
+                      <description>Normal Ladebetrieb</description>
                     </enumEntry>
                     <enumEntry>
-                      <literal>DHW_CHARGE_COMF</literal>
+                      <literal>HOV_DHW_CHARGE_COMF</literal>
                       <ordinal>2</ordinal>
+                      <description>Komfort Ladebetrieb</description>
                     </enumEntry>
                     <enumEntry>
-                      <literal>DHW_FORCE_CURT_LOW</literal>
+                      <literal>HOV_DHW_FORCE_CURT_LOW</literal>
                       <ordinal>3</ordinal>
+                      <description>Zwangsdrosselung (bei E-Zwang &lt; -50%)</description>
                     </enumEntry>
                     <enumEntry>
-                      <literal>DHW_FORCE_CURT_HIGH</literal>
+                      <literal>HOV_DHW_FORCE_CURT_HIGH</literal>
                       <ordinal>4</ordinal>
+                      <description>Zwangsladung  (bei E-Zwang &gt; +50%)</description>
                     </enumEntry>
                     <enumEntry>
-                      <literal>DHW_ERROR</literal>
+                      <literal>HOV_DHW_ERROR</literal>
                       <ordinal>5</ordinal>
+                      <description>Störung</description>
                     </enumEntry>
                     <enumEntry>
-                      <literal>DHW_WITHDRAWING</literal>
+                      <literal>HOV_DHW_WITHDRAWING</literal>
                       <ordinal>6</ordinal>
+                      <description>WW-Entnahme (Entnahme von Trinkwarmwasser aktiv)</description>
                     </enumEntry>
                     <enumEntry>
-                      <literal>DHW_WARNING_ACTIVE</literal>
+                      <literal>HOV_DHW_WARNING_ACTIVE</literal>
                       <ordinal>7</ordinal>
+                      <description>Warnung</description>
                     </enumEntry>
                     <enumEntry>
-                      <literal>DHW_REDUCED</literal>
+                      <literal>HOV_DHW_REDUCED</literal>
                       <ordinal>8</ordinal>
+                      <description>Reduzierter Ladebetrieb</description>
                     </enumEntry>
                     <enumEntry>
-                      <literal>DHW_INTENSIFIED_EXT</literal>
+                      <literal>HOV_DHW_INTENSIFIED_EXT</literal>
                       <ordinal>12</ordinal>
+                      <description>Vorzugsbetrieb SmartGrid</description>
                     </enumEntry>
                     <enumEntry>
-                      <literal>DHW_FORCED_EXT</literal>
+                      <literal>HOV_DHW_FORCED_EXT</literal>
                       <ordinal>13</ordinal>
+                      <description>Abnahmezwang SmartGrid</description>
                     </enumEntry>
                   </enum>
                 </dataType>
@@ -2164,18 +2741,12 @@
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
-                  <int16U/>
+                  <int8U/>
                 </modbusDataType>
                 <address>1504</address>                
                 <registerType>HoldRegister</registerType>
                 <numberOfRegisters>1</numberOfRegisters>
               </modbusDataPointConfiguration>
-              <modbusAttributes>
-                <scalingFactor>
-                  <multiplicator>1</multiplicator>
-                  <powerof10>0</powerof10>
-                </scalingFactor>
-              </modbusAttributes>
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
@@ -2211,6 +2782,19 @@
                   </textElement>
                   <language>it</language>
                 </legibleDescription>
+                <programmerHints>
+                  <textElement>
+                    <![CDATA[
+                      Im Funktionsprofil <em>SG-ReadyStates</em> muss für den Datenpunkt
+                      <ul>
+                        <li><em>SGReadyOpModeCmd</em> der Wert <strong>HP_INTENSIFIED</strong></li>
+                        <li><em>hovSGReadySrcSelect</em> der Wert <strong>SRC_src_SysBUS</strong></li>
+                      </ul>
+                      aktiviert werden, damit die Temperatur-Offsets geschrieben werden können.
+                    ]]>
+                  </textElement>
+                  <language>de</language>
+                </programmerHints>
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
@@ -2275,6 +2859,12 @@
                 <registerType>HoldRegister</registerType>
                 <numberOfRegisters>1</numberOfRegisters>
               </modbusDataPointConfiguration>
+              <modbusAttributes>
+                <scalingFactor>
+                  <multiplicator>1</multiplicator>
+                  <powerof10>-1</powerof10>
+                </scalingFactor>
+              </modbusAttributes>
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
@@ -2292,9 +2882,6 @@
                   <textElement>
                     <![CDATA[
                       Spar-Warmwassertemperatur: Setzen des Wertes der Solltemperatur für den Brauchwarmwasserspeicher.
-                      </br>
-                      <font color="red">"Setzen des Warmwasser-Sollwertes für den Eco-Betrieb (HOV_DHW_ECO_OP)".
-                                        <br>Mit Hersteller klären.</font>
                     ]]>         
                   </textElement>
                   <language>de</language>
@@ -2327,12 +2914,6 @@
                 <registerType>HoldRegister</registerType>
                 <numberOfRegisters>1</numberOfRegisters>
               </modbusDataPointConfiguration>
-              <modbusAttributes>
-                <scalingFactor>
-                  <multiplicator>1</multiplicator>
-                  <powerof10>-2</powerof10>
-                </scalingFactor>
-              </modbusAttributes>
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
@@ -2495,6 +3076,19 @@
                 </textElement>
                 <language>it</language>
               </legibleDescription>
+                <programmerHints>
+                  <textElement>
+                    <![CDATA[
+                      Im Funktionsprofil <em>SG-ReadyStates</em> muss für den Datenpunkt
+                      <ul>
+                        <li><em>SGReadyOpModeCmd</em> der Wert <strong>HP_INTENSIFIED</strong></li>
+                        <li><em>hovSGReadySrcSelect</em> der Wert <strong>SRC_src_SysBUS</strong></li>
+                      </ul>
+                      aktiviert werden, damit die Temperatur-Offsets geschrieben werden können.
+                    ]]>
+                  </textElement>
+                  <language>de</language>
+                </programmerHints>
             </dataPoint>
             <modbusDataPointConfiguration>
               <modbusDataType>
@@ -2545,6 +3139,19 @@
                   </textElement>
                   <language>it</language>
                 </legibleDescription>
+                <programmerHints>
+                  <textElement>
+                    <![CDATA[
+                      Im Funktionsprofil <em>SG-ReadyStates</em> muss für den Datenpunkt
+                      <ul>
+                        <li><em>SGReadyOpModeCmd</em> der Wert <strong>HP_INTENSIFIED</strong></li>
+                        <li><em>hovSGReadySrcSelect</em> der Wert <strong>SRC_src_SysBUS</strong></li>
+                      </ul>
+                      aktiviert werden, damit die Temperatur-Offsets geschrieben werden können.
+                    ]]>
+                  </textElement>
+                  <language>de</language>
+                </programmerHints>
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
@@ -2570,38 +3177,47 @@
                     <enumEntry>
                       <literal>HOV_BUF_OFF</literal>
                       <ordinal>0</ordinal>
+                      <description>keine Anforderung, AUS</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>HOV_BUF_REQ_PROTECTED</literal>
                       <ordinal>1</ordinal>
+                      <description>Anforderung, Temp. tief, PLP aus (Entladeschutz)</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>HOV_BUF_REQ_ACTIVE</literal>
                       <ordinal>2</ordinal>
+                      <description>Anforderung, Ladung läuft</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>HOV_BUF_REQ_FINALIZING</literal>
                       <ordinal>3</ordinal>
+                      <description>Anforderung, Sollwert erfüllt, Nachlauf aktiv</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>HOV_BUF_REQ_DONE</literal>
                       <ordinal>4</ordinal>
+                      <description>Anforderung, Sollwert erfüllt</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>HOV_BUF_FORCED</literal>
                       <ordinal>6</ordinal>
+                      <description>Energiezwang</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>HOV_BUF_SKIMMING</literal>
                       <ordinal>7</ordinal>
+                      <description>Abschöpffunktion</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>HOV_BUF_INTENSIFIED_EXT</literal>
                       <ordinal>8</ordinal>
+                      <description>Vorzugsbetrieb SmartGrid</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>HOV_BUF_FORCED_EXT</literal>
                       <ordinal>9</ordinal>
+                      <description>Abnahmezwang Smart Grid</description>
                     </enumEntry>
                   </enum>
                 </dataType>
@@ -2632,18 +3248,12 @@
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
-                  <int16U/>
+                  <int8U/>
                 </modbusDataType>
                 <address>17384</address>                
                 <registerType>HoldRegister</registerType>
                 <numberOfRegisters>1</numberOfRegisters>
               </modbusDataPointConfiguration>
-              <modbusAttributes>
-                <scalingFactor>
-                  <multiplicator>1</multiplicator>
-                  <powerof10>0</powerof10>
-                </scalingFactor>
-              </modbusAttributes>
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
@@ -2694,7 +3304,7 @@
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
-                <dataPointName>ActHeatBufferTempUppper</dataPointName>
+                <dataPointName>ActBufferTempUppper</dataPointName>
                 <dataDirection>R</dataDirection>
                 <dataType>
                   <float32/>
@@ -2741,7 +3351,7 @@
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
-                <dataPointName>ActHeatBufferTempLower</dataPointName>
+                <dataPointName>ActBufferTempLower</dataPointName>
                 <dataDirection>R</dataDirection>
                 <dataType>
                   <float32/>
@@ -2966,19 +3576,22 @@
                   <p> The following operation modes can be written and read via the defined data point "SGReadyOpModeCmd": </p>
                   
                   <ul>
-                    <li><strong>HP_LOCKED</strong>: Heat pump blocked - for example fixed blocking by time.</li>
+                    <li><strong>HP_LOCKED</strong>: The operating state HP_LOCKED corresponds to an absolute lock.</li>
                     <li><strong>HP_NORMAL</strong>: Heat pump in normal operation. </li>
-                    <li><strong>HP_INTENSIFIED</strong>: Switch-on recommendations for increased operation.  </li>
-                    <li><strong>HP_FORCED</strong>: Forced start-up command (as far as this is possible within the control settings of the heat pump).  </li>
+                    <li><strong>HP_INTENSIFIED</strong>: With HP_INTENSIFIED, the temperature setpoints are increased according to the defined offsets (these can be specified via the profiles defined above).</li>
+                    <li><strong>HP_FORCED</strong>: With HP_FORCED, the maximum temperature will be set (buffer and hot water), if necessary using the electric element.
+                                                    This operating state is NOT recommended (service life and efficiency)</li>
                   </ul>
+                  
+                  <p>Recommendation for optimizing self-consumption: Switch between HP_NORMAL and HP_INTENSIFIED.
+                     You should not switch back and forth between the operating modes more often than every 30 minutes (service life of the heat pump).</p>
                   
                   <p> Via the datapoint SGReadyState it is possible to check the currently running operation mode of the heat pump. </p>
                   
-                  <p> The communicator (e.g. central energy management system) takes into account the unit specifications for the switching 
-                    frequency (attributes maxLockTimeMinutes and minRunTimeMinutes). The values can be set during declaration of the 
-                        heat pump. The standard values for SG Ready heat pumps are "Max. Lock Time" 120 minutes and "Min. Run Time" 20 minutes. </p>
-                  "SG Ready" is a trademark of the German Heat Pump Association.
+                  <p>"SG Ready" is a trademark of the German Heat Pump Association.
                   <br>Further information at <a href="https://www.waermepumpe.de/normen-technik/sg-ready/">https://www.waermepumpe.de/normen-technik/sg-ready/</a>.
+                  
+                  <p>The communicator (e.g. energy management system) takes into account the device specifications for the switching frequency according to bwp (link above).</p>
                 ]]>
               </textElement>
               <language>en</language>
@@ -3000,42 +3613,28 @@
                   
                  <p> Folgende Betriebszustände können über den Datenpunkt "SGReadyOpModeCmd" gesetzt und ausgelesen werden: </p>
                   <ul>
-                    <li><strong>HP_LOCKED</strong>: Wärmepumpe gesperrt - zum Beispiel fixe Sperre nach Uhrzeit.</li>
+                    <li><strong>HP_LOCKED</strong>: Der Betriebszustand HP_LOCKED entspricht einer absoluten Sperrung.</li>
                     <li><strong>HP_NORMAL</strong>: Wärmepumpe im Normalbetrieb.</li>
-                    <li><strong>HP_INTENSIFIED</strong>: Einschaltempfehlung für verstärkten Betrieb.</li>
-                    <li><strong>HP_FORCED</strong>: Forcierter Anlaufbefehl (insofern dieser im Rahmen der Regeleinstellungen der Wärmepumpe möglich ist).</li>                  
+                    <li><strong>HP_INTENSIFIED</strong>: Bei HP_INTENSIFIED werden die Temperatursollwerte gemäss den definierten Offsets angehoben
+                                                         (diese können über die oben definierten Profile vorgegeben werden).</li>
+                    <li><strong>HP_FORCED</strong>: Bei HP_FORCED wird auf Maximaltemperatur gefahren (Puffer und Warmwasser), wenn erforderlich durch den Elektroeinsatz.
+                                                    Dieser Betriebszustand wird NICHT empfohlen (Lebensdauer und Effizienz).</li>                  
                   </ul>
-                  <p> Über den Datenpunkt "SGReadyState" kann der aktuelle Betriebsmodus der Wärmepumpe ausgelesen werden. </p>
                   
-                  <p>Der Communicator (z.B. Energiemanagementsystem) berücksichtigt die Gerätevorgaben zur Schaltfrequenz (Attribute maxLockTimeMintues und minRunTimeMinutes.
-                  <font color="red"><p>Der Wert der Attribute kann bei der Deklaration gesetzt werden. Standardeinstellung von SG Ready Wärmepumpen nach bwp ist 
-                  "Max. Lock Time" 120 Minuten und "Min. Run Time" 20 Minuten.</p>
-                  <p>Mit Hersteller klären</p></font>
-                  „SG Ready“ ist ein Markenzeichen des Bundesverbands Wärmepumpe e. V.<br>
-                  Weiterführende Informationen unter <a href="https://www.waermepumpe.de/normen-technik/sg-ready/">https://www.waermepumpe.de/normen-technik/sg-ready/</a>.
+                  <p>Empfehlung für Eigenverbrauchsoptimierung: Zwischen <strong>HP_NORMAL</strong> und <strong>HP_INTENSIFIED</strong> schalten.
+                     Es sollte nicht häufiger als alle 30 Minuten zwischen den Betriebsmodi hin- und hergeschaltet werden (Lebensdauer der Wärmepumpe).</p>
+                  
+                  <p>Über den Datenpunkt "SGReadyState" kann der aktuelle Betriebsmodus der Wärmepumpe ausgelesen werden. </p>
+                  
+                  <p>„SG Ready“ ist ein Markenzeichen des Bundesverbands Wärmepumpe e. V.<br>
+                  Weiterführende Informationen unter <a href="https://www.waermepumpe.de/normen-technik/sg-ready/">https://www.waermepumpe.de/normen-technik/sg-ready/</a>.</p>
+
+                  <p>Der Communicator (z.B. Energiemanagementsystem) berücksichtigt die Gerätevorgaben zur Schaltfrequenz gemäss bwp (Link oben).</p>
                 ]]>
               </textElement>
               <language>de</language>
             </legibleDescription>
           </functionalProfile>
-          <genericAttributeList>
-            <genericAttributeListElement>
-              <name>MaximumLockTime</name>
-              <dataType>
-                <float32/>
-              </dataType>
-              <value>120</value>
-              <unit>MINUTES</unit>
-            </genericAttributeListElement>
-            <genericAttributeListElement>
-              <name>MinimumRunTime</name>
-              <dataType>
-                <float32/>
-              </dataType>
-              <value>20</value>
-              <unit>MINUTES</unit>
-            </genericAttributeListElement>
-          </genericAttributeList>
           <dataPointList>
             <dataPointListElement>
               <dataPoint>
@@ -3045,15 +3644,23 @@
                   <enum>
                     <enumEntry>
                       <literal>HP_LOCKED</literal>
+                      <ordinal>2</ordinal>
+                      <description>Gesperrt</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>HP_NORMAL</literal>
+                      <ordinal>0</ordinal>
+                      <description>Normalbetrieb</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>HP_INTENSIFIED</literal>
+                      <ordinal>1</ordinal>
+                      <description>Vorzugsbetrieb</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>HP_FORCED</literal>
+                      <ordinal>3</ordinal>
+                      <description>Abnahmezwang</description>
                     </enumEntry>
                   </enum>
                 </dataType>
@@ -3094,7 +3701,7 @@
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
-                  <int16U/>
+                  <int8U/>
                 </modbusDataType>
                 <address>27545</address>                
                 <registerType>HoldRegister</registerType>
@@ -3109,15 +3716,23 @@
                   <enum>
                     <enumEntry>
                       <literal>HP_LOCKED</literal>
+                      <ordinal>2</ordinal>
+                      <description>Gesperrt</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>HP_NORMAL</literal>
+                      <ordinal>0</ordinal>
+                      <description>Normalbetrieb</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>HP_INTENSIFIED</literal>
+                      <ordinal>1</ordinal>
+                      <description>Vorzugsbetrieb</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>HP_FORCED</literal>
+                      <ordinal>3</ordinal>
+                      <description>Abnahmezwang</description>
                     </enumEntry>
                   </enum>
                 </dataType>
@@ -3162,7 +3777,7 @@
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
-                  <int16U/>
+                  <int8U/>
                 </modbusDataType>
                 <address>27545</address>                
                 <registerType>HoldRegister</registerType>
@@ -3193,7 +3808,7 @@
                     <enumEntry>
                       <literal>SRC_src_DAMPED</literal>
                       <ordinal>3</ordinal>
-                      <description></description>
+                      <description>Verfügbare Leistung gedämpft</description>
                     </enumEntry>
                   </enum>
                 </dataType>
@@ -3210,8 +3825,6 @@
                   <textElement>
                     <![CDATA[
                       Aktivierung der SG-Ready Funktion
-                      </br>
-                      <font color="red">DAMPED: Bitte mit Hersteller klären!</font>
                     ]]>         
                   </textElement>
                   <language>de</language>
@@ -3226,10 +3839,14 @@
                   </textElement>
                   <language>it</language>
                 </legibleDescription>
+                <programmerHints>
+                  <textElement>Diese Funktion wird nicht benötigt für SmartGridready. Stattdessen kann über das Funktionsprofil "PowerCtrl" die Leistung vorgegeben werden.</textElement>
+                  <language>de</language>
+                </programmerHints>
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
-                  <int16U/>
+                  <int8U/>
                 </modbusDataType>
                 <address>27546</address>                
                 <registerType>HoldRegister</registerType>
@@ -3521,7 +4138,6 @@
                     <![CDATA[
                       Erfassung der gesamten Wirkleistung
                       <p>Aktuelle elektr. Leistungsaufnahme WEZ.</p>
-                      <font color="red">Wie wird die Wirkleistung erfasst? Über einen eingebauten Zähler?</font>
                     ]]>
                   </textElement>
                   <language>de</language>
@@ -3535,6 +4151,16 @@
                   <language>it</language>
                 </legibleDescription>
               </dataPoint>
+              <genericAttributeList>
+                <genericAttributeListElement>
+                  <name>MeasuredValueSource</name>
+                  <dataType>
+                    <string/>
+                  </dataType>
+                  <value>calculatedValue</value>
+                  <unit>NONE</unit>
+                </genericAttributeListElement>
+              </genericAttributeList>
               <modbusDataPointConfiguration>
                 <modbusDataType>
                   <int32 />
@@ -3560,6 +4186,7 @@
                 <unit>HOURS</unit>
                 <alternativeNames>
                   <sLV1Name>RuntimeCompressor</sLV1Name>
+                  <manufName>2081</manufName>
                 </alternativeNames>
                 <legibleDescription>
                   <textElement>

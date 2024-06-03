@@ -126,56 +126,6 @@
               </textElement>
               <language>de</language>
             </legibleDescription>
-            <programmerHints>
-              <textElement>
-                <![CDATA[
-                  Specified set values are assigned to each operating mode.
-                  Operating modes are valid for all functional profiles except SG-Ready-bwp.
-                  <p>Via Modbus, operating modes and their corresponding set values
-                  can be changed independently of one another.</p>
-                  In order to ensure that set values are changed immediately rather
-                  than at the next change of operating mode, only one of the two
-                  parameters (operating mode OR set value) should be changed via
-                  Modbus, leaving the other parameter fixed:
-                  <ul>
-                    <li>If the operating mode (e.g. comfort mode) is kept constant
-                        but the corresponding set values are changed via Modbus,
-                        the heat pump will run according to the new values as soon
-                        as the change has been made.</li>
-                    <li>Conversely, with appropriately determined set values for
-                        the relevant operating modes, the entire system with all its
-                        set values can be switched to a different temperature</li>
-                  </ul>
-                ]]>         
-              </textElement>
-              <language>en</language>
-            </programmerHints>
-            <programmerHints>
-              <textElement>
-                <![CDATA[
-                  Betriebsarten und Sollwerte
-                  Jeder Betriebsart sind bestimmte Sollwerte zugeordnet.
-                  Betriebsarten gelten fuer alle Funktionsprofile ausser SG-Ready-bwp.
-                  <p>Über Modbus können Betriebsarten und entsprechende Sollwerte
-                  unabhängig voneinander verändert werden.</p>
-                  Damit Sollwertänderungen unmittelbar und nicht erst beim nächsten
-                  Betriebsartwechsel umgesetzt werden, sollte nur einer der
-                  beiden Parameter (Betriebsart ODER Sollwert) über Modbus verändert
-                  werden, während der andere Parameter fest definiert wird.
-                  <ul>
-                    <li>Wenn die Betriebsart (z. B. Komfortbetrieb) permanent beibehalten
-                        wird, die korrespondierenden Sollwerte jedoch über
-                        Modbus verändert werden, fährt die Wärmepumpe die neuen
-                        Werte unmittelbar nach der Änderung an.</li>
-                    <li>Umgekehrt kann, bei sinnvoll festgelegten Sollwerten für die
-                        relevanten Betriebsarten, durch einen Betriebsartwechsel die
-                        gesamte Anlage mit sämtlichen Sollwerten auf ein anderes
-                        Temperaturniveau geschaltet werden.</li>
-                  </ul>
-                ]]>         
-              </textElement>
-              <language>de</language>
-            </programmerHints>
           </functionalProfile>
           <dataPointList>
             <dataPointListElement>
@@ -328,9 +278,25 @@
                 </legibleDescription>
                 <programmerHints>
                   <textElement>
-                    <![CDATA[ 
-                      Auslesen des aktuellen Status der Wärmepumpe<br>
-                      manufacturer Bit code status information mapped directly</li>
+                    <![CDATA[
+                      Specified set values are assigned to each operating mode.
+                      Operating modes are valid for all functional profiles except SG-Ready-bwp.
+                      <p>Via Modbus, operating modes and their corresponding set values
+                      can be changed independently of one another.</p>
+                      In order to ensure that set values are changed immediately rather
+                      than at the next change of operating mode, only one of the two
+                      parameters (operating mode OR set value) should be changed via
+                      Modbus, leaving the other parameter fixed:
+                      <ul>
+                        <li>If the operating mode (e.g. comfort mode) is kept constant
+                            but the corresponding set values are changed via Modbus,
+                            the heat pump will run according to the new values as soon
+                            as the change has been made.</li>
+                        <li>Conversely, with appropriately determined set values for
+                            the relevant operating modes, the entire system with all its
+                            set values can be switched to a different temperature</li>
+                      </ul>
+                      <p>manufacturer Bit code status information mapped directly</li></p>
                       <ul>
                         <li>B0: HC 1 PUMP on</li>
                         <li>B1: HC 2 PUMP on</li>
@@ -345,19 +311,38 @@
                         <li>B10: SILENT MODE 1 ACTIVE 0</li>
                         <li>B11: SILENT MODE 2 ACTIVE (HP OFF)</li>
                       </ul>
-                    ]]>
+                    ]]>         
                   </textElement>
                   <language>en</language>
                 </programmerHints>
                 <programmerHints>
                   <textElement>
-                    <![CDATA[ 
-                      Bei mehreren Heizkreisen
+                    <![CDATA[
+                      <p>Betriebsarten und Sollwerte</p>
+                      Jeder Betriebsart sind bestimmte Sollwerte zugeordnet.
+                      Betriebsarten gelten fuer alle Funktionsprofile ausser SG-Ready-bwp.
+                      <p>Über Modbus können Betriebsarten und entsprechende Sollwerte
+                      unabhängig voneinander verändert werden.</p>
+                      Damit Sollwertänderungen unmittelbar und nicht erst beim nächsten
+                      Betriebsartwechsel umgesetzt werden, sollte nur einer der
+                      beiden Parameter (Betriebsart ODER Sollwert) über Modbus verändert
+                      werden, während der andere Parameter fest definiert wird.
+                      <ul>
+                        <li>Wenn die Betriebsart (z. B. Komfortbetrieb) permanent beibehalten
+                            wird, die korrespondierenden Sollwerte jedoch über
+                            Modbus verändert werden, fährt die Wärmepumpe die neuen
+                            Werte unmittelbar nach der Änderung an.</li>
+                        <li>Umgekehrt kann, bei sinnvoll festgelegten Sollwerten für die
+                            relevanten Betriebsarten, durch einen Betriebsartwechsel die
+                            gesamte Anlage mit sämtlichen Sollwerten auf ein anderes
+                            Temperaturniveau geschaltet werden.</li>
+                      </ul>
+                      <p>Bei mehreren Heizkreisen</p>
                       <ul>
                         <li>ist <strong>STI_COMPRESSOR_RUNNING</strong> gesetzt, falls einer der Kompressoren läuft</li>
                         <li>ist <strong>STI_MIN_ONE_IWS_IN_DEFROST_MODE</strong> gesetzt, falls einer im Abtaumodus ist</li>
                       </ul>
-                    ]]>
+                    ]]>         
                   </textElement>
                   <language>de</language>
                 </programmerHints>
@@ -956,6 +941,12 @@
               </textElement>
               <language>de</language>
             </legibleDescription>
+            <programmerHints>
+              <textElement>
+                Das Zeitprogramm für das Umschalten des Eco- und Komfortbetriebs wird auf der Wärmepumpe oder über die ISG "Service Welt" eingestellt (Warmwasser Programm).
+              </textElement>
+              <language>de</language>
+              </programmerHints>
           </functionalProfile>
           <dataPointList>
             <dataPointListElement>
@@ -1124,9 +1115,7 @@
             </functionalProfileIdentification>
             <legibleDescription>
               <textElement>
-                Der Pufferspeicher wird bei Stiebel Eltron über den Ladekreis geregelt (HeatCoolCtrl1).
-                Alternativ kann eine stufenweise Überhöhung über das Profil SG-ReadyStates erfolgen.
-                Die aktuellen Ist- und Sollwerte können nur ausgelesen werden.
+                Der Pufferspeicher kann über HeatCoolCtrl_1 (Ladekreis) geregelt werden.
               </textElement>
               <language>de</language>
             </legibleDescription>
@@ -1253,11 +1242,10 @@
                   
                   <p> Via the datapoint SGReadyState it is possible to check the currently running operation mode of the heat pump. </p>
                   
-                  <p> The communicator (e.g. central energy management system) takes into account the unit specifications for the switching 
-                    frequency (attributes maxLockTimeMinutes and minRunTimeMinutes). The values can be set during declaration of the 
-                        heat pump. The standard values for SG Ready heat pumps are "Max. Lock Time" 120 minutes and "Min. Run Time" 20 minutes. </p>
-                  "SG Ready" is a trademark of the German Heat Pump Association.
+                  <p>"SG Ready" is a trademark of the German Heat Pump Association.
                   <br>Further information at <a href="https://www.waermepumpe.de/normen-technik/sg-ready/">https://www.waermepumpe.de/normen-technik/sg-ready/</a>.
+                  
+                  <p>The communicator (e.g. energy management system) takes into account the device specifications for the switching frequency according to bwp (link above).</p>
                 ]]>
               </textElement>
               <language>en</language>
@@ -1284,12 +1272,15 @@
                     <li><strong>HP_INTENSIFIED</strong>: Einschaltempfehlung für verstärkten Betrieb.</li>
                     <li><strong>HP_FORCED</strong>: Dieser Betriebsmodus sollte nur im Ausnahmefall benutzt werden. Die Wärmepumpe fährt auf maximale Temperatur, was eine höhere Belastung der Wärmepumpe zur Folge hat. Der Elektroeinsatz wird nicht aktiviert.</li>                  
                   </ul>
+                  
                   <p> Über den Datenpunkt "SGReadyState" kann der aktuelle Betriebsmodus der Wärmepumpe ausgelesen werden. </p>
                   
                   <p>„SG Ready“ ist ein Markenzeichen des Bundesverbands Wärmepumpe e. V.<br>
                   Weiterführende Informationen unter <a href="https://www.waermepumpe.de/normen-technik/sg-ready/">https://www.waermepumpe.de/normen-technik/sg-ready/</a>.</p>
 
                   <p>Der Communicator (z.B. Energiemanagementsystem) berücksichtigt die Gerätevorgaben zur Schaltfrequenz gemäss bwp (Link oben).</p>
+
+                  <p>Für den Fall der Eigenverbrauchsoptimierung wird empfohlen, nur die beiden Betriebszustände <strong>HP_LOCKED</strong> und <strong>HP_INTENSIFIED</strong> zu verwenden.</p>
                 ]]>
               </textElement>
               <language>de</language>
