@@ -245,8 +245,8 @@
     <!-- Data Types -->
     <xsl:template match="sgr:dataType">
         <xsl:choose>
-            <xsl:when test="sgr:boolean/sgr:falseValue">calculated boolean</xsl:when>
-            <xsl:when test="sgr:boolean/sgr:trueValue">calculated boolean</xsl:when>
+            <xsl:when test="sgr:boolean/sgr:falseValue">boolean (false=<xsl:value-of select="sgr:boolean/sgr:falseValue"/>)</xsl:when>
+            <xsl:when test="sgr:boolean/sgr:trueValue">boolean (true=<xsl:value-of select="sgr:boolean/sgr:trueValue"/>)</xsl:when>
             <xsl:when test="sgr:boolean">original boolean</xsl:when>
             <xsl:when test="sgr:int8">byte</xsl:when>
             <xsl:when test="sgr:int16">int16</xsl:when>
