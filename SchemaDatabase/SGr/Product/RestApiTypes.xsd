@@ -56,6 +56,25 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
     </restriction>
   </simpleType>
 
+  <complexType name="ValueMapping">
+    <annotation>
+      <documentation>Maps one value to another value</documentation>
+    </annotation>
+    <sequence>
+      <element name="from" type="string"/>
+      <element name="to" type="string"/>
+    </sequence>
+  </complexType>
+
+  <complexType name="RestApiValueMapping">
+    <annotation>
+      <documentation>Maps more values to other values</documentation>
+    </annotation>
+    <sequence>
+      <element name="mapping" type="sgr:ValueMapping" maxOccurs="unbounded" />
+    </sequence>
+  </complexType>
+  
   <complexType name="RestApiServiceCall">
     <sequence>
       <element name="requestHeader" type="sgr:HeaderList" minOccurs="0" />
@@ -63,6 +82,7 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
       <element name="requestPath" type="string" minOccurs="0" />
       <element name="requestBody" type="string" minOccurs="0" />
       <element name="responseQuery" type="sgr:ResponseQuery" minOccurs="0" />
+      <element name="valueMapping" type="sgr:RestApiValueMapping" minOccurs="0" />
     </sequence>
   </complexType>
 
