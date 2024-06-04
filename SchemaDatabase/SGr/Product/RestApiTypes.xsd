@@ -38,7 +38,17 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
     </annotation>    
     <sequence>
       <element name="dataType" type="sgr:RestApiDataType" />
-      <element name="restApiServiceCall" type="sgr:RestApiServiceCall" />
+      <choice>
+        <element name="restApiServiceCall" type="sgr:RestApiServiceCall"/>
+        <sequence>
+          <element name="restApiWriteServiceCall" type="sgr:RestApiServiceCall"/>
+          <element name="restApiReadServiceCall" type="sgr:RestApiServiceCall" minOccurs="0"/>
+        </sequence>
+        <sequence>
+          <element name="restApiReadServiceCall" type="sgr:RestApiServiceCall"/>
+          <element name="restApiWriteServiceCall" type="sgr:RestApiServiceCall" minOccurs="0"/>
+        </sequence>
+      </choice>
     </sequence>
   </complexType>
 
