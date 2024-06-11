@@ -761,7 +761,7 @@
 								<dataPointName>Relais</dataPointName>
 								<dataDirection>RW</dataDirection>
 								<dataType>
-									<float64 />
+									<boolean/>
 								</dataType>
 								<unit>NONE</unit>
 								<legibleDescription>
@@ -774,8 +774,8 @@
 								</legibleDescription>
 							</dataPoint>
 							<restApiDataPointConfiguration>
-								<dataType>JSON_number</dataType>
-								<restApiServiceCall>
+								<dataType>JSON_boolean</dataType>
+								<restApiReadServiceCall>
 									<requestHeader>
 										<header>
 											<headerName>Accept</headerName>
@@ -788,7 +788,31 @@
 										<queryType>JMESPathExpression</queryType>
 										<query>ison</query>
 									</responseQuery>
-								</restApiServiceCall>
+								</restApiReadServiceCall>
+								<restApiWriteServiceCall>
+									<requestHeader>
+										<header>
+											<headerName>Accept</headerName>
+											<value>application/json</value>
+										</header>
+									</requestHeader>
+									<requestMethod>GET</requestMethod>
+									<requestPath>/relay/0?turn={{value}}</requestPath>
+									<responseQuery>
+										<queryType>JMESPathExpression</queryType>
+										<query>ison</query>
+									</responseQuery>
+									<valueMapping>
+										<mapping>
+											<genericValue>false</genericValue>
+											<deviceValue>off</deviceValue>
+										</mapping>
+										<mapping>
+											<genericValue>true</genericValue>
+											<deviceValue>on</deviceValue>
+										</mapping>
+									</valueMapping>
+								</restApiWriteServiceCall>
 							</restApiDataPointConfiguration>
 						</dataPointListElement>
 					</dataPointList>

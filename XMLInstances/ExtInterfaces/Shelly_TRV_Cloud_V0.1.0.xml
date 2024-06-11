@@ -175,8 +175,8 @@
 									<float64 />
 								</dataType>
 								<unit>DEGREES_CELSIUS</unit>
-								<minimumValue>5</minimumValue>
-								<maximumValue>30</maximumValue>
+								<minimumValue>4</minimumValue>
+								<maximumValue>31</maximumValue>
 								<legibleDescription>
 									<textElement>Einstellung der Zieltemperatur</textElement>
 									<language>de</language>
@@ -188,7 +188,7 @@
 							</dataPoint>
 							<restApiDataPointConfiguration>
 								<dataType>JSON_number</dataType>
-								<restApiServiceCall>
+								<restApiReadServiceCall>
 									<requestHeader>
 										<header>
 											<headerName>Accept</headerName>
@@ -206,7 +206,26 @@
 										<queryType>JMESPathExpression</queryType>
 										<query>target_t.value</query>
 									</responseQuery>
-								</restApiServiceCall>
+								</restApiReadServiceCall>
+								<restApiWriteServiceCall>
+									<requestHeader>
+										<header>
+											<headerName>Accept</headerName>
+											<value>application/json</value>
+										</header>
+										<header>
+											<headerName>Content-Type</headerName>
+											<value>application/x-www-form-urlencoded</value>
+										</header>
+									</requestHeader>
+									<requestMethod>POST</requestMethod>
+									<requestPath>/device/thermostats/0</requestPath>
+									<requestBody>id={{deviceId}}&amp;auth_key={{authKey}}&amp;target_t={{value}}</requestBody>
+									<responseQuery>
+										<queryType>JMESPathExpression</queryType>
+										<query>target_t.value</query>
+									</responseQuery>
+								</restApiWriteServiceCall>
 							</restApiDataPointConfiguration>
 						</dataPointListElement>
 					</dataPointList>
