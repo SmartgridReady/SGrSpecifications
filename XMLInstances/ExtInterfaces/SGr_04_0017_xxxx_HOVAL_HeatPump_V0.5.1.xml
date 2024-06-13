@@ -35,7 +35,7 @@
     <isLocalControl>true</isLocalControl>
     <softwareRevision>0.6.0</softwareRevision>
     <hardwareRevision>1.0.0</hardwareRevision>
-    <brandName>TopTronic®E</brandName>
+    <brandName>TopTronic® E</brandName>
     <powerSource>mains3Phase</powerSource>
     <nominalPower>nominalPower</nominalPower>
     <manufacturerSpecificationIdentification>manufacturerSpecificationIdentification
@@ -271,17 +271,7 @@
                     <enumEntry>
                       <literal>HOV_HP_MIN_ON_TIME</literal>
                       <ordinal>29</ordinal>
-                      <description>Minimale Auszeit</description>
-                    </enumEntry>
-                    <enumEntry>
-                      <literal>HOV_HP_HEAT</literal>
-                      <ordinal>30</ordinal>
-                      <description>Anheizen</description>
-                    </enumEntry>
-                    <enumEntry>
-                      <literal>HOV_HP_BURNOUT</literal>
-                      <ordinal>31</ordinal>
-                      <description>Ausbrand</description>
+                      <description>Minimale Einzeit</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>HOV_HP_TRAILING</literal>
@@ -297,6 +287,21 @@
                       <literal>HOV_HP_TEMPERATURE_HIGH_OP</literal>
                       <ordinal>34</ordinal>
                       <description>Betrieb Übertemperatur</description>
+                    </enumEntry>
+                    <enumEntry>
+                      <literal>HOV_HP_MANUAL_HEATING</literal>
+                      <ordinal>42</ordinal>
+                      <description>Manueller-/Handbetrieb Heizen</description>
+                    </enumEntry>
+                    <enumEntry>
+                      <literal>HOV_HP_MANUAL_WARM_WATER</literal>
+                      <ordinal>43</ordinal>
+                      <description>Manueller-/Handbetrieb Warmwasser</description>
+                    </enumEntry>
+                    <enumEntry>
+                      <literal>HOV_HP_MANUAL_COOLING</literal>
+                      <ordinal>44</ordinal>
+                      <description>Manueller-/Handbetrieb Kühlen</description>
                     </enumEntry>
                   </enum>
                 </dataType>
@@ -606,175 +611,6 @@
         </functionalProfileListElement>
         <functionalProfileListElement>
           <functionalProfile>
-            <functionalProfileName>PowerCtrl</functionalProfileName>
-            <functionalProfileIdentification>
-              <specificationOwnerIdentification>0</specificationOwnerIdentification>
-              <functionalProfileCategory>HeatPumpControl</functionalProfileCategory>
-              <functionalProfileType>PowerCtrl</functionalProfileType>
-              <levelOfOperation>4m</levelOfOperation>
-              <versionNumber>
-                <primaryVersionNumber>0</primaryVersionNumber>
-                <secondaryVersionNumber>5</secondaryVersionNumber>
-                <subReleaseVersionNumber>0</subReleaseVersionNumber>
-              </versionNumber>
-            </functionalProfileIdentification>
-            <alternativeNames>
-              <sLV1Name>PowerCtrl</sLV1Name>
-            </alternativeNames>
-            <legibleDescription>
-              <textElement>Die externe Steuerung über die Kompressorleistung braucht eine spezielle Konfiguration ab Werk. Kontaktieren sie den Hersteller für weitere Angaben.</textElement>
-              <language>de</language>
-            </legibleDescription>
-          </functionalProfile>
-          <dataPointList>
-            <dataPointListElement>
-              <dataPoint>
-                <dataPointName>PowerCtrlSetpoint</dataPointName>
-                <dataDirection>RW</dataDirection>
-                <dataType>
-                  <float32/>
-                </dataType>
-                <unit>KILOWATTS</unit>
-                <alternativeNames>
-                  <sLV1Name>PowerCtrlStpt</sLV1Name>
-                  <manufName>20069</manufName>
-                </alternativeNames>
-                <legibleDescription>
-                  <textElement>Sollwert für die elektrische Leistungsaufnahme (Wunschvorgabe) wird intern über Kennlinie gesteuert.</textElement>
-                  <language>de</language>
-                </legibleDescription>
-                <legibleDescription>
-                  <textElement>Available electrical power, dampened</textElement>
-                  <language>en</language>
-                </legibleDescription>
-                <legibleDescription>
-                  <textElement>Puissance électrique disponible atténuée</textElement>
-                  <language>fr</language>
-                </legibleDescription>
-                <legibleDescription>
-                  <textElement>Potenza elettrica disponibile attenuata</textElement>
-                  <language>it</language>
-                </legibleDescription>
-              </dataPoint>
-              <modbusDataPointConfiguration>
-                <modbusDataType>
-                  <int16/>
-                </modbusDataType>
-                <address>27536</address>                
-                <registerType>HoldRegister</registerType>
-                <numberOfRegisters>1</numberOfRegisters>
-              </modbusDataPointConfiguration>
-              <modbusAttributes>
-                <scalingFactor>
-                  <multiplicator>1</multiplicator>
-                  <powerof10>-2</powerof10>
-                </scalingFactor>
-              </modbusAttributes>
-            </dataPointListElement>
-            <dataPointListElement>
-              <dataPoint>
-                <dataPointName>ActSpeed</dataPointName>
-                <dataDirection>R</dataDirection>
-                <dataType>
-                  <float32/>
-                </dataType>
-                <unit>PERCENT</unit>
-                <alternativeNames>
-                  <sLV1Name>ActSpeed</sLV1Name>
-                  <manufName>20052</manufName>
-                </alternativeNames>
-                <legibleDescription>
-                  <textElement>
-                    Aktuelle Drehzahl in % (100% entspricht der Maximaldrehzahl).
-                  </textElement>
-                  <language>de</language>
-                </legibleDescription>
-                <legibleDescription>
-                  <textElement>
-                    Modulation
-                  </textElement>
-                  <language>en</language>
-                </legibleDescription>
-                <legibleDescription>
-                  <textElement>
-                    Modulation
-                  </textElement>
-                  <language>fr</language>
-                </legibleDescription>
-                <legibleDescription>
-                  <textElement>
-                    Modulazione
-                  </textElement>
-                  <language>it</language>
-                </legibleDescription>
-              </dataPoint>
-              <modbusDataPointConfiguration>
-                <modbusDataType>
-                  <int8U/>
-                </modbusDataType>
-                <address>18726</address>                
-                <registerType>HoldRegister</registerType>
-                <numberOfRegisters>1</numberOfRegisters>
-              </modbusDataPointConfiguration>
-            </dataPointListElement>
-            <dataPointListElement>
-              <dataPoint>
-                <dataPointName>ActPowerACtot</dataPointName>
-                <dataDirection>R</dataDirection>
-                <dataType>
-                  <float32/>
-                </dataType>
-                <unit>KILOWATTS</unit>
-                <alternativeNames>
-                  <sLV1Name>ActPowerACtot</sLV1Name>
-                  <manufName>29051</manufName>
-                </alternativeNames>
-                <legibleDescription>
-                  <textElement>Aktuelle effektive Leistungsaufnahme</textElement>
-                  <language>de</language>
-                </legibleDescription>
-                <legibleDescription>
-                  <textElement>actual power output heating</textElement>
-                  <language>en</language>
-                </legibleDescription>
-                <legibleDescription>
-                  <textElement>Puissance actuelle chauffage</textElement>
-                  <language>fr</language>
-                </legibleDescription>
-                <legibleDescription>
-                  <textElement>Potenza attuale riscaldamento</textElement>
-                  <language>it</language>
-                </legibleDescription>
-              </dataPoint>
-              <genericAttributeList>
-                <genericAttributeListElement>
-                  <name>MeasuredValueSource</name>
-                  <dataType>
-                    <string/>
-                  </dataType>
-                  <value>calculatedValue</value>
-                  <unit>NONE</unit>
-                </genericAttributeListElement>
-              </genericAttributeList>
-              <modbusDataPointConfiguration>
-                <modbusDataType>
-                  <int32U/>
-                </modbusDataType>
-                <address>18731</address>                
-                <registerType>HoldRegister</registerType>
-                <numberOfRegisters>2</numberOfRegisters>
-              </modbusDataPointConfiguration>
-              <modbusAttributes>
-                <scalingFactor>
-                  <multiplicator>1</multiplicator>
-                  <powerof10>-1</powerof10>
-                </scalingFactor>
-              </modbusAttributes>
-            </dataPointListElement>
-          </dataPointList>
-        </functionalProfileListElement>
-        <functionalProfileListElement>
-          <functionalProfile>
             <functionalProfileName>HeatCoolCtrl_1</functionalProfileName>
             <functionalProfileIdentification>
               <specificationOwnerIdentification>0</specificationOwnerIdentification>
@@ -1016,9 +852,24 @@
                       <description>Heizbetrieb Extern/Konstantanforderung</description>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HOV_HC_INTENSIFIED_EXT</literal>
+                      <literal>HOV_HC_MISSING_HEAT_OP</literal>
                       <ordinal>24</ordinal>
-                      <description>Vorzugsbetrieb SmartGrid</description>
+                      <description>Abwesend Heizbetrieb</description>
+                    </enumEntry>
+                    <enumEntry>
+                      <literal>HOV_HC_MISSING_COOL_OP</literal>
+                      <ordinal>25</ordinal>
+                      <description>Abwesend Kühlbetrieb</description>
+                    </enumEntry>
+                    <enumEntry>
+                      <literal>HOV_HC_PREF_HEATING</literal>
+                      <ordinal>26</ordinal>
+                      <description>Vorzugsbetrieb Heizen</description>
+                    </enumEntry>
+                    <enumEntry>
+                      <literal>HOV_HC_PREF_COOLING</literal>
+                      <ordinal>27</ordinal>
+                      <description>Vorzugsbetrieb Kühlen</description>
                     </enumEntry>
                   </enum>
                 </dataType>
@@ -1194,7 +1045,7 @@
                 <modbusDataType>
                   <int16/>
                 </modbusDataType>
-                <address>27532</address>                
+                <address>27531</address>
                 <registerType>HoldRegister</registerType>
                 <numberOfRegisters>1</numberOfRegisters>
               </modbusDataPointConfiguration>
@@ -1608,9 +1459,24 @@
                       <description>Heizbetrieb Extern/Konstantanforderung</description>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HOV_HC_INTENSIFIED_EXT</literal>
+                      <literal>HOV_HC_MISSING_HEAT_OP</literal>
                       <ordinal>24</ordinal>
-                      <description>Vorzugsbetrieb SmartGrid</description>
+                      <description>Abwesend Heizbetrieb</description>
+                    </enumEntry>
+                    <enumEntry>
+                      <literal>HOV_HC_MISSING_COOL_OP</literal>
+                      <ordinal>25</ordinal>
+                      <description>Abwesend Kühlbetrieb</description>
+                    </enumEntry>
+                    <enumEntry>
+                      <literal>HOV_HC_PREF_HEATING</literal>
+                      <ordinal>26</ordinal>
+                      <description>Vorzugsbetrieb Heizen</description>
+                    </enumEntry>
+                    <enumEntry>
+                      <literal>HOV_HC_PREF_COOLING</literal>
+                      <ordinal>27</ordinal>
+                      <description>Vorzugsbetrieb Kühlen</description>
                     </enumEntry>
                   </enum>
                 </dataType>
@@ -2199,9 +2065,24 @@
                       <description>Heizbetrieb Extern/Konstantanforderung</description>
                     </enumEntry>
                     <enumEntry>
-                      <literal>HOV_HC_INTENSIFIED_EXT</literal>
+                      <literal>HOV_HC_MISSING_HEAT_OP</literal>
                       <ordinal>24</ordinal>
-                      <description>Vorzugsbetrieb SmartGrid</description>
+                      <description>Abwesend Heizbetrieb</description>
+                    </enumEntry>
+                    <enumEntry>
+                      <literal>HOV_HC_MISSING_COOL_OP</literal>
+                      <ordinal>25</ordinal>
+                      <description>Abwesend Kühlbetrieb</description>
+                    </enumEntry>
+                    <enumEntry>
+                      <literal>HOV_HC_PREF_HEATING</literal>
+                      <ordinal>26</ordinal>
+                      <description>Vorzugsbetrieb Heizen</description>
+                    </enumEntry>
+                    <enumEntry>
+                      <literal>HOV_HC_PREF_COOLING</literal>
+                      <ordinal>27</ordinal>
+                      <description>Vorzugsbetrieb Kühlen</description>
                     </enumEntry>
                   </enum>
                 </dataType>
@@ -3539,6 +3420,8 @@
                   
                   <p>Empfehlung für Eigenverbrauchsoptimierung: Zwischen <strong>HP_NORMAL</strong> und <strong>HP_INTENSIFIED</strong> schalten.
                      Es sollte nicht häufiger als alle 30 Minuten zwischen den Betriebsmodi hin- und hergeschaltet werden (Lebensdauer der Wärmepumpe).</p>
+                     
+                  <p>Hinweis: Wärmepumpenseitig ist die Konfiguration Variante 2 für "Smart Grid Aktivierung durch Systembus" zu setzen.</p>
                 ]]>
               </textElement>
               <language>de</language>
@@ -3749,13 +3632,15 @@
                   <language>it</language>
                 </legibleDescription>
                 <programmerHints>
-                  <textElement>Wenn SRC_src_SysBUS gesetzt ist, können sowohl das PowerCtrl-Profil wie auch die Temperatur-Offsets benutzt werden.</textElement>
+                  <textElement>Wenn SRC_src_SysBUS gesetzt ist, können <!-- sowohl das PowerCtrl-Profil wie auch --> die Temperatur-Offsets benutzt werden.</textElement>
                   <language>de</language>
                 </programmerHints>
-                <programmerHints>
-                  <textElement>Der Analog-Eingang (Einstellung SRC_src_DAMPED) wird nicht benötigt für SmartGridready. Stattdessen kann über das Funktionsprofil "PowerCtrl" die Leistung vorgegeben werden.</textElement>
-                  <language>de</language>
-                </programmerHints>
+                <!--
+                  <programmerHints>
+                    <textElement>Der Analog-Eingang (Einstellung SRC_src_DAMPED) wird nicht benötigt für SmartGridready. Stattdessen kann über das Funktionsprofil "PowerCtrl" die Leistung vorgegeben werden.</textElement>
+                    <language>de</language>
+                  </programmerHints>
+                -->
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>

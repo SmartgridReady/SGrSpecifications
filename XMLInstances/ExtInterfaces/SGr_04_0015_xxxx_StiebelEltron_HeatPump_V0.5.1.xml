@@ -23,7 +23,7 @@
             <li>Anschließbar an den Router des Heimnetzwerks</li>
             <li>Geräteeinstellung über eine integrierte Web-Oberfläche mit dem Standardbrowser</li>
             <li>Kommunikation mit der STIEBEL ELTRON-Kundendienst-Zentrale</li>
-            <li>Möglichkeit zur Kontrolle der Anlage über eine Smartphone-„MyStiebel App“ (für Endkunden)</li>
+            <li>Möglichkeit zur Kontrolle der Anlage über die Smartphone „MyStiebel App“ (für Endkunden)</li>
           </ul>
           <br>Für mehr Informationen siehe <a href="https://github.com/SmartGridready/SGrSpecifications/blob/master/doc/HeatPumpAppliances.md#heat-pump-functional-profiles-in-stiebel-eltron-product-eid">Stiebel Eltron HeatPumpAppliance</a>
           <p>Die vorliegende EID gilt für Wärmepumpen von Stiebel Eltron mit dem WPM4-Regler. Im Zweifelsfall bitte direkt beim Hersteller erkundigen.</p>
@@ -581,6 +581,7 @@
                   <a href="https://github.com/SmartGridready/SGrSpecifications/blob/master/doc/HeatPumpAppliances.md#heat-pump-appliances">HeatPumpAppliances</a>.</p>
                   <p>HeatCoolCtrl_1 entspricht bei Stiebel Eltron dem Ladekreis, mit welchem der Pufferspeicher geladen wird (falls vorhanden).
                   Falls kein Pufferspeicher vorhanden ist, entspricht dieser auch dem Heizkreis ins Gebäude.</p>
+                  <p>Je nach Systemaufbau verändert sich die Position des Messpunkts, was zu einer Abweichung von der ISTTEMPERATUR HK1/HK2 zur effektiven Rücklauftemperatur des jeweiligen Heizkreises führen kann.</p>
                 ]]>         
               </textElement>
               <language>de</language>
@@ -596,7 +597,7 @@
                 </dataType>
                 <unit>DEGREES_CELSIUS</unit>
                 <minimumValue>0.0</minimumValue>
-                <maximumValue>40.0</maximumValue>
+                <maximumValue>90.0</maximumValue>
                 <alternativeNames>            
                   <sLV1Name>SupplyWaterTemp</sLV1Name>
                   <manufName>ISTTEMPERATUR HK 1</manufName>
@@ -631,7 +632,7 @@
                 </dataType>
                 <unit>DEGREES_CELSIUS</unit>
                 <minimumValue>0.0</minimumValue>
-                <maximumValue>40.0</maximumValue>
+                <maximumValue>65.0</maximumValue>
                 <alternativeNames>            
                   <sLV1Name>SupplyWaterTempStptFb</sLV1Name>
                   <manufName>SOLLTEMPERATUR HK 1</manufName>
@@ -767,6 +768,7 @@
                   <p>Bei Stiebel Eltron ist nur eine indirekte Regelung der Komforttemperatur möglich - siehe dazu generelle Beschreibung in
                   <a href="https://github.com/SmartGridready/SGrSpecifications/blob/master/doc/HeatPumpAppliances.md#heat-pump-appliances">HeatPumpAppliances</a>.</p>
                   <p>HeatCoolCtrl_2 entspricht bei Stiebel Eltron dem Entladekreis, mit welchem das Gebäude bedient wird (falls ein Pufferspeicher und Mischventil vorhanden ist).</p>
+                  <p>Je nach Systemaufbau verändert sich die Position des Messpunkts, was zu einer Abweichung von der ISTTEMPERATUR HK1/HK2 zur effektiven Rücklauftemperatur des jeweiligen Heizkreises führen kann.</p>
                 ]]>         
               </textElement>
               <language>de</language>
@@ -1256,6 +1258,8 @@
                   <br>Further information at <a href="https://www.waermepumpe.de/normen-technik/sg-ready/">https://www.waermepumpe.de/normen-technik/sg-ready/</a>.
                   
                   <p>The communicator (e.g. energy management system) takes into account the device specifications for the switching frequency according to bwp (link above).</p>
+                  
+                  <p>In the case of self-consumption optimisation, it is recommended only to use the two operating states HP_NORMAL and HP_INTENSIFIED.</p>
                 ]]>
               </textElement>
               <language>en</language>
@@ -1290,7 +1294,7 @@
 
                   <p>Der Communicator (z.B. Energiemanagementsystem) berücksichtigt die Gerätevorgaben zur Schaltfrequenz gemäss bwp (Link oben).</p>
 
-                  <p>Für den Fall der Eigenverbrauchsoptimierung wird empfohlen, nur die beiden Betriebszustände <strong>HP_LOCKED</strong> und <strong>HP_INTENSIFIED</strong> zu verwenden.</p>
+                  <p>Für den Fall der Eigenverbrauchsoptimierung wird empfohlen, nur die beiden Betriebszustände <strong>HP_NORMAL</strong> und <strong>HP_INTENSIFIED</strong> zu verwenden.</p>
                 ]]>
               </textElement>
               <language>de</language>
