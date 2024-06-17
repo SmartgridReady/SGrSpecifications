@@ -68,6 +68,89 @@
       <subReleaseVersionNumber>2</subReleaseVersionNumber>
     </versionNumber>
   </deviceInformation>
+  <configurationList>
+    <configurationListElement>
+      <name>slave_id</name>
+      <dataType>
+        <int16/>
+      </dataType>
+      <defaultValue>1</defaultValue>
+      <configurationDescription>
+        <textElement>Modbus slave ID.</textElement>
+        <language>en</language>
+        <label>Modbus slave ID</label>
+      </configurationDescription>
+    </configurationListElement>
+    <configurationListElement>
+      <name>serial_port</name>
+      <dataType>
+        <string/>
+      </dataType>
+      <configurationDescription>
+        <textElement>The serial port name when accessed via serial port.</textElement>
+        <language>en</language>
+        <label>Serial port name</label>
+      </configurationDescription>
+    </configurationListElement>
+    <configurationListElement>
+      <name>serial_baudrate</name>
+      <dataType>
+        <int32/>
+      </dataType>
+      <defaultValue>9600</defaultValue>
+      <configurationDescription>
+        <textElement>The baudrate when accessed via serial port.</textElement>
+        <language>en</language>
+        <label>Serial baudrate</label>
+      </configurationDescription>
+    </configurationListElement>
+    <configurationListElement>
+      <name>serial_databits</name>
+      <dataType>
+        <enum>
+          <enumEntry><literal>7</literal></enumEntry>
+          <enumEntry><literal>8</literal></enumEntry>
+        </enum>
+      </dataType>
+      <defaultValue>8</defaultValue>
+      <configurationDescription>
+        <textElement>The number of data bits when accessed via serial port.</textElement>
+        <language>en</language>
+        <label>Serial data bits</label>
+      </configurationDescription>
+    </configurationListElement>
+    <configurationListElement>
+      <name>serial_stopbits</name>
+      <dataType>
+        <enum>
+          <enumEntry><literal>0</literal></enumEntry>
+          <enumEntry><literal>1</literal></enumEntry>
+        </enum>
+      </dataType>
+      <defaultValue>1</defaultValue>
+      <configurationDescription>
+        <textElement>The number of stop bits when accessed via serial port.</textElement>
+        <language>en</language>
+        <label>Serial stop bits</label>
+      </configurationDescription>
+    </configurationListElement>
+    <configurationListElement>
+      <name>serial_parity</name>
+      <dataType>
+        <enum>
+          <enumEntry><literal>EVEN</literal></enumEntry>
+          <enumEntry><literal>ODD</literal></enumEntry>
+          <enumEntry><literal>NONE</literal></enumEntry>
+        </enum>
+        </dataType>
+      <defaultValue>EVEN</defaultValue>
+      <configurationDescription>
+        <textElement>The parity when accessed via serial port.</textElement>
+        <language>en</language>
+        <label>Serial parity</label>
+      </configurationDescription>
+    </configurationListElement>
+  </configurationList>
   <genericAttributeList>
     <genericAttributeListElement>
       <name>SpecialQualityRequirement</name>
@@ -91,12 +174,12 @@
       <modbusInterfaceDescription>
         <modbusInterfaceSelection>RTU</modbusInterfaceSelection>
         <modbusRtu>
-          <slaveAddr>1</slaveAddr>
-          <portName>{{port_name}}</portName>
-          <baudRateSelected>9600</baudRateSelected>
-          <byteLenSelected>8</byteLenSelected>
-          <paritySelected>EVEN</paritySelected>
-          <stopBitLenSelected>1</stopBitLenSelected>
+          <slaveAddr>{{slave_id}}</slaveAddr>
+          <portName>{{serial_port}}</portName>
+          <baudRateSelected>{{serial_baudrate}}</baudRateSelected>
+          <byteLenSelected>{{serial_databits}}</byteLenSelected>
+          <paritySelected>{{serial_parity}}</paritySelected>
+          <stopBitLenSelected>{{serial_stopbits}}</stopBitLenSelected>
           <serialInterfaceCapability>
             <baudRatesSupported>1200</baudRatesSupported>
             <baudRatesSupported>2400</baudRatesSupported>
