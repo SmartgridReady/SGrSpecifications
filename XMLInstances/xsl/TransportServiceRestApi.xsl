@@ -103,6 +103,28 @@
 				<xsl:value-of select="sgr:requestPath" />
 			</td>
 		</tr>
+        <xsl:if test="sgr:requestQuery">
+            <tr class="transportDetails">
+                <td>Request Query</td>
+                <td>
+                    <xsl:for-each select="sgr:requestQuery/sgr:parameter">
+                        <xsl:value-of select="./sgr:name" /> = <xsl:value-of select="./sgr:value" />
+                        <br />
+                    </xsl:for-each>
+                </td>
+            </tr>   
+        </xsl:if>
+        <xsl:if test="sgr:requestForm">
+            <tr class="transportDetails">
+                <td>Request Form</td>
+                <td>
+                    <xsl:for-each select="sgr:requestForm/sgr:parameter">
+                        <xsl:value-of select="./sgr:name" /> = <xsl:value-of select="./sgr:value" />
+                        <br />
+                    </xsl:for-each>
+                </td>
+            </tr>   
+        </xsl:if>
         <xsl:if test="sgr:requestHeader">
             <tr class="transportDetails">
                 <td>Header</td>
@@ -126,6 +148,16 @@
 			<td>
 				<xsl:value-of select="sgr:responseQuery/sgr:queryType" /> &#160;
 				<xsl:value-of select="sgr:responseQuery/sgr:query" />
+                <xsl:if test="sgr:responseQuery/sgr:jmesPathMappings">
+                    <br />
+                    <xsl:for-each select="sgr:responseQuery/sgr:jmesPathMappings/sgr:mapping">
+                        <xsl:value-of select="./sgr:from" /> => <xsl:value-of select="./sgr:to" />
+                            <xsl:if test="./sgr:name">
+                                &#160;&#160;&#160;&#160;&#160;name: <xsl:value-of select="sgr:name" />
+                            </xsl:if>
+                        <br />
+                    </xsl:for-each>
+                </xsl:if>
 			</td>
 		</tr>     
 	</xsl:template>    

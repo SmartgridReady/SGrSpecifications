@@ -245,7 +245,9 @@
     <!-- Data Types -->
     <xsl:template match="sgr:dataType">
         <xsl:choose>
-            <xsl:when test="sgr:boolean">boolean</xsl:when>
+            <xsl:when test="sgr:boolean/sgr:falseValue">boolean (false=<xsl:value-of select="sgr:boolean/sgr:falseValue"/>)</xsl:when>
+            <xsl:when test="sgr:boolean/sgr:trueValue">boolean (true=<xsl:value-of select="sgr:boolean/sgr:trueValue"/>)</xsl:when>
+            <xsl:when test="sgr:boolean">original boolean</xsl:when>
             <xsl:when test="sgr:int8">byte</xsl:when>
             <xsl:when test="sgr:int16">int16</xsl:when>
             <xsl:when test="sgr:int32">int32</xsl:when>
@@ -320,6 +322,7 @@
     <!-- Units -->
     <xsl:template name="SGrUnits">
         <xsl:param name="value" select="NONE" />
+        <xsl:param name="none" select="NONE" />
         <xsl:choose>
             <xsl:when test="$value = 'AMPERE_SQUARE_METERS'">A m2</xsl:when>
             <xsl:when test="$value = 'AMPERES'">A</xsl:when>
@@ -512,7 +515,7 @@
             <xsl:when test="$value = 'WEBERS'"><xsl:value-of select="$value" /></xsl:when>
             <xsl:when test="$value = 'WEEKS'"><xsl:value-of select="$value" /></xsl:when>
             <xsl:when test="$value = 'YEARS'"><xsl:value-of select="$value" /></xsl:when>
-            <xsl:when test="$value = 'NONE'">-</xsl:when>
+            <xsl:when test="$value = 'NONE'"><xsl:value-of select="$none" /></xsl:when>
             <xsl:otherwise><xsl:value-of select="$value" /></xsl:otherwise>
         </xsl:choose>
     </xsl:template>

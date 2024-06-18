@@ -173,14 +173,24 @@
                       <headerName>Accept</headerName>
                       <value>application/json</value>
                     </header>
-                    <header>
-                      <headerName>Authentication</headerName>
-                      <value>Bearer {{bearerToken}}</value>
-                    </header>
                   </requestHeader>
                   <requestMethod>GET</requestMethod>
-                  <requestPath>/api/v1/tariffs?point={{point}}&amp;start_timestamp={{start_timestamp}}&amp;end_timestamp={{end_timestamp}}</requestPath>
-                    <responseQuery>
+                  <requestPath>/api/v1/tariffs</requestPath>
+                  <requestQuery>
+                    <parameter>
+                      <name>point</name>
+                      <value>{{point}}</value>
+                    </parameter>
+                    <parameter>
+                      <name>start_timestamp</name>
+                      <value>{{start_timestamp}}</value>
+                    </parameter>
+                    <parameter>
+                      <name>end_timestamp</name>
+                      <value>{{end_timestamp}}</value>
+                    </parameter>
+                  </requestQuery>
+                  <responseQuery>
                     <queryType>JMESPathMapping</queryType>
                     <jmesPathMappings>
                       <mapping><from>prices[*].start_timestamp</from><to>[*].start_time</to></mapping>

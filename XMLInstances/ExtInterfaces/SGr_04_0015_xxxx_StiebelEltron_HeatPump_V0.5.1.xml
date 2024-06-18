@@ -15,7 +15,7 @@
         <![CDATA[
           Das Internet Service Gateway ISG web ist der Eintritt in die Servicewelt von STIEBEL ELTRON. 
           Über ein Tablet oder einen PC kann die Wärmepumpe bedient, Einstellungen
-          vorgenommen und der Zugang zur SERVICEWELT freigeschaltet werden.
+          vorgenommen und der Zugang zur SERVICEWELT (für Service-Techniker, Fachpartner) freigeschaltet werden.
           <p>Bei Bedarf kann über ein Smartphone auf die Heizungsanlage zugegriffen oder diese überprüft werden.</p> 
           Die wichtigsten Merkmale
           <ul>
@@ -23,9 +23,10 @@
             <li>Anschließbar an den Router des Heimnetzwerks</li>
             <li>Geräteeinstellung über eine integrierte Web-Oberfläche mit dem Standardbrowser</li>
             <li>Kommunikation mit der STIEBEL ELTRON-Kundendienst-Zentrale</li>
-            <li>Möglichkeit zur Kontrolle der Anlage über eine Smartphone-„Web-App“</li>
+            <li>Möglichkeit zur Kontrolle der Anlage über die Smartphone „MyStiebel App“ (für Endkunden)</li>
           </ul>
           <br>Für mehr Informationen siehe <a href="https://github.com/SmartGridready/SGrSpecifications/blob/master/doc/HeatPumpAppliances.md#heat-pump-functional-profiles-in-stiebel-eltron-product-eid">Stiebel Eltron HeatPumpAppliance</a>
+          <p>Die vorliegende EID gilt für Wärmepumpen von Stiebel Eltron mit dem WPM4-Regler. Im Zweifelsfall bitte direkt beim Hersteller erkundigen.</p>
         ]]>		
       </textElement>
       <language>de</language>
@@ -46,6 +47,7 @@
             <li>Data security through encrypted data transmission</li>
             <li>Software updates of the ISG about the SERVICE WORLD portal</li>
           </ul>
+          <p>This EID applies to heat pumps from Stiebel Eltron with the WPM4 controller. In case of doubt, please contact the manufacturer directly.</p>
         ]]>		
       </textElement>
       <language>en</language>
@@ -64,6 +66,14 @@
       <secondaryVersionNumber>5</secondaryVersionNumber>
       <subReleaseVersionNumber>1</subReleaseVersionNumber>
     </versionNumber>
+    <programmerHints>
+      <textElement>
+        <![CDATA[
+          <strong>Genereller Hinweis:</strong> Es kann sein, dass für spezifische Konfigurationen einzelne Modbus-Register ungültig sind. In diesem Fall wird der Wert -32768 zurückgeliefert.
+        ]]>         
+      </textElement>
+      <language>de</language>
+    </programmerHints>
   </deviceInformation>
   <interfaceList>
     <modbusInterface>
@@ -106,7 +116,6 @@
                   Das Profil definiert den Grundbaustein zur dynamischen Ansteuerung von Wärmepumpen
                   über eine Betriebsmodus-gestützte Beeinflussung der Sollwerte.
                   <p>Der Betrieb der Wärmepumpe muss in sich sicher sein, unabhängig von den äusseren Vorgaben.</p>
-                  <p><font color="red">Diesen Punkt müssen wir mit den Herstellern nochmals diskutieren.</font></p>
                   <p>Dieses Grundprofil definiert die Datenpunkte, welche zur Steuerung des Gerätes «Wärmepumpe»
                   mit zusätzlichen Funktionsprofilen grundsätzlich zur Verfügung gestellt werden.
                   Sie stellen die Version einer typischen Einfamilienhauswärmepumpe mit Aussentemperaturfühler dar.</p>
@@ -117,56 +126,6 @@
               </textElement>
               <language>de</language>
             </legibleDescription>
-            <programmerHints>
-              <textElement>
-                <![CDATA[
-                  Specified set values are assigned to each operating mode.
-                  Operating modes are valid for all functional profiles except SG-Ready-bwp.
-                  <p>Via Modbus, operating modes and their corresponding set values
-                  can be changed independently of one another.</p>
-                  In order to ensure that set values are changed immediately rather
-                  than at the next change of operating mode, only one of the two
-                  parameters (operating mode OR set value) should be changed via
-                  Modbus, leaving the other parameter fixed:
-                  <ul>
-                    <li>If the operating mode (e.g. comfort mode) is kept constant
-                        but the corresponding set values are changed via Modbus,
-                        the heat pump will run according to the new values as soon
-                        as the change has been made.</li>
-                    <li>Conversely, with appropriately determined set values for
-                        the relevant operating modes, the entire system with all its
-                        set values can be switched to a different temperature</li>
-                  </ul>
-                ]]>         
-              </textElement>
-              <language>en</language>
-            </programmerHints>
-            <programmerHints>
-              <textElement>
-                <![CDATA[
-                  Betriebsarten und Sollwerte
-                  Jeder Betriebsart sind bestimmte Sollwerte zugeordnet.
-                  Betriebsarten gelten fuer alle Funktionsprofile ausser SG-Ready-bwp.
-                  <p>Über Modbus können Betriebsarten und entsprechende Sollwerte
-                  unabhängig voneinander verändert werden.</p>
-                  Damit Sollwertänderungen unmittelbar und nicht erst beim nächsten
-                  Betriebsartwechsel umgesetzt werden, sollte nur einer der
-                  beiden Parameter (Betriebsart ODER Sollwert) über Modbus verändert
-                  werden, während der andere Parameter fest definiert wird.
-                  <ul>
-                    <li>Wenn die Betriebsart (z. B. Komfortbetrieb) permanent beibehalten
-                        wird, die korrespondierenden Sollwerte jedoch über
-                        Modbus verändert werden, fährt die Wärmepumpe die neuen
-                        Werte unmittelbar nach der Änderung an.</li>
-                    <li>Umgekehrt kann, bei sinnvoll festgelegten Sollwerten für die
-                        relevanten Betriebsarten, durch einen Betriebsartwechsel die
-                        gesamte Anlage mit sämtlichen Sollwerten auf ein anderes
-                        Temperaturniveau geschaltet werden.</li>
-                  </ul>
-                ]]>         
-              </textElement>
-              <language>de</language>
-            </programmerHints>
           </functionalProfile>
           <dataPointList>
             <dataPointListElement>
@@ -205,16 +164,6 @@
                       <ordinal>5</ordinal>
                       <description>Warmwassererzeugung</description>
                     </enumEntry>
-                    <enumEntry>
-                      <literal>STI_WP_COOL_ACTIVE_OP</literal>
-                      <ordinal>6</ordinal>
-                      <description>Kühlen aktiv</description>
-                    </enumEntry>
-                    <enumEntry>
-                      <literal>STI_WP_COOL_PASSIVE_OP</literal>
-                      <ordinal>7</ordinal>
-                      <description>Kühlen passiv</description>
-                    </enumEntry>
                   </enum>
                 </dataType>
                 <unit>NONE</unit>
@@ -231,12 +180,6 @@
                   </textElement>
                   <language>de</language>
                 </legibleDescription>
-                <programmerHints>
-                  <textElement>
-                    enum 16: WP_READY=1, WP_PROG_OP=2, WP_COMFORT_OP=3, WP_ECO_OP=4,
-                    WP_DOM_WATER_OP=5, WP_EEMERG_OP=0</textElement>
-                  <language>en</language>
-                </programmerHints>
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
@@ -314,17 +257,17 @@
                     <![CDATA[	
                       Auslesen des aktuellen Status der Wärmepumpe
                       <ol>
-                        <li><strong>STI_HP_1_PUMP_ON:</strong> Waermepumpe 1 EIN</li>
-                        <li><strong>STI_HP_2_PUMP_ON:</strong> Waermepumpe 2 EIN</li>
+                        <li><strong>STI_HP_1_PUMP_ON:</strong> Heizkreis 1 Pumpe EIN</li>
+                        <li><strong>STI_HP_2_PUMP_ON:</strong> Heizkreis 2 Pumpe EIN</li>
                         <li><strong>STI_HEATUP_PROGRAM:</strong> Aufheizprogramm aktiv</li>
                         <li><strong>STI_NHZ_STAGES_RUNNING:</strong> Nachheizung aktiv </li>
-                        <li><strong>STI_HP_IN_HEATING_MODE:</strong> Waermepumpe heizt</li>
-                        <li><strong>STI_HP_IN_DHW_MODE:</strong> Waermepumpe im Warmwassermode</li>
-                        <li><strong>STI_COMPRESSOR_RUNNING:</strong> Kompressor laeuft</li>
-                        <li><strong>STI_SUMMER_MODE_ACTIVE:</strong> Waermepumpe im Sommermodus</li>
-                        <li><strong>STI_COOLING_MODE_ACTIVE:</strong> Waermepumpe kuehlt</li>   					
-                        <li><strong>STI_MIN_ONE_IWS_IN_DEFROST_MODE:</strong> Waermepumpe im Gefrierschutzmode</li>
-                        <li><strong>STI_SILENT_MODE_1_ACTIVE:</strong> reduziert</li>
+                        <li><strong>STI_HP_IN_HEATING_MODE:</strong> Wärmepumpe heizt</li>
+                        <li><strong>STI_HP_IN_DHW_MODE:</strong> Wärmepumpe im Warmwassermodus</li>
+                        <li><strong>STI_COMPRESSOR_RUNNING:</strong> Kompressor läuft</li>
+                        <li><strong>STI_SUMMER_MODE_ACTIVE:</strong> Wärmepumpe im Sommermodus</li>
+                        <li><strong>STI_COOLING_MODE_ACTIVE:</strong> Wärmepumpe kühlt</li>   					
+                        <li><strong>STI_MIN_ONE_IWS_IN_DEFROST_MODE:</strong> Wärmepumpe im Abtaumodus</li>
+                        <li><strong>STI_SILENT_MODE_1_ACTIVE:</strong> reduzierte Lüfterleistung</li>
                         <li><strong>STI_SILENT_MODE_2_ACTIVE:</strong> WP AUS </li>
                       </ol>
                     ]]>
@@ -332,11 +275,36 @@
                   <language>de</language>
                 </legibleDescription>
                 <programmerHints>
+                  <textElement>            
+                    <![CDATA[	
+                      Die Wärmepumpe entscheidet selbst, ob sie heizt, kühlt, oder im Sommermodus ist.
+                      Eine aktive Kühlung ist aktuell nur bei Luft-Wasser-Wärmepumpen möglich, Sole-Wasser-Wärmmepumpen können jedoch passiv kühlen.
+                    ]]>
+                  </textElement>
+                  <language>de</language>
+                </programmerHints>
+                <programmerHints>
                   <textElement>
-                    <![CDATA[ 
-                      Auslesen des aktuellen Status der Wärmepumpe<br>
-                      manufacturer Bit code status information mapped directly</li>
-                      <ol>
+                    <![CDATA[
+                      Specified set values are assigned to each operating mode.
+                      Operating modes are valid for all functional profiles except SG-Ready-bwp.
+                      <p>Via Modbus, operating modes and their corresponding set values
+                      can be changed independently of one another.</p>
+                      In order to ensure that set values are changed immediately rather
+                      than at the next change of operating mode, only one of the two
+                      parameters (operating mode OR set value) should be changed via
+                      Modbus, leaving the other parameter fixed:
+                      <ul>
+                        <li>If the operating mode (e.g. comfort mode) is kept constant
+                            but the corresponding set values are changed via Modbus,
+                            the heat pump will run according to the new values as soon
+                            as the change has been made.</li>
+                        <li>Conversely, with appropriately determined set values for
+                            the relevant operating modes, the entire system with all its
+                            set values can be switched to a different temperature</li>
+                      </ul>
+                      <p>manufacturer Bit code status information mapped directly</li></p>
+                      <ul>
                         <li>B0: HC 1 PUMP on</li>
                         <li>B1: HC 2 PUMP on</li>
                         <li>B2: HEAT-UP PROGRAM</li>
@@ -349,10 +317,41 @@
                         <li>B9: MIN. ONE IWS IN DEFROST MODE</li>
                         <li>B10: SILENT MODE 1 ACTIVE 0</li>
                         <li>B11: SILENT MODE 2 ACTIVE (HP OFF)</li>
-                      </ol>
-                    ]]>
+                      </ul>
+                    ]]>         
                   </textElement>
                   <language>en</language>
+                </programmerHints>
+                <programmerHints>
+                  <textElement>
+                    <![CDATA[
+                      <p>Betriebsarten und Sollwerte</p>
+                      Jeder Betriebsart sind bestimmte Sollwerte zugeordnet.
+                      Betriebsarten gelten fuer alle Funktionsprofile ausser SG-Ready-bwp.
+                      <p>Über Modbus können Betriebsarten und entsprechende Sollwerte
+                      unabhängig voneinander verändert werden.</p>
+                      Damit Sollwertänderungen unmittelbar und nicht erst beim nächsten
+                      Betriebsartwechsel umgesetzt werden, sollte nur einer der
+                      beiden Parameter (Betriebsart ODER Sollwert) über Modbus verändert
+                      werden, während der andere Parameter fest definiert wird.
+                      <ul>
+                        <li>Wenn die Betriebsart (z. B. Komfortbetrieb) permanent beibehalten
+                            wird, die korrespondierenden Sollwerte jedoch über
+                            Modbus verändert werden, fährt die Wärmepumpe die neuen
+                            Werte unmittelbar nach der Änderung an.</li>
+                        <li>Umgekehrt kann, bei sinnvoll festgelegten Sollwerten für die
+                            relevanten Betriebsarten, durch einen Betriebsartwechsel die
+                            gesamte Anlage mit sämtlichen Sollwerten auf ein anderes
+                            Temperaturniveau geschaltet werden.</li>
+                      </ul>
+                      <p>Bei mehreren Heizkreisen</p>
+                      <ul>
+                        <li>ist <strong>STI_COMPRESSOR_RUNNING</strong> gesetzt, falls einer der Kompressoren läuft</li>
+                        <li>ist <strong>STI_MIN_ONE_IWS_IN_DEFROST_MODE</strong> gesetzt, falls einer im Abtaumodus ist</li>
+                      </ul>
+                    ]]>         
+                  </textElement>
+                  <language>de</language>
                 </programmerHints>
               </dataPoint>
               <modbusDataPointConfiguration>
@@ -520,7 +519,12 @@
                   <hpBwpName>Temperatur Wärmequelleneintritt</hpBwpName>
                 </alternativeNames>
                 <legibleDescription>
-                  <textElement>Auslesen der aktuellen Quellentemperatur.</textElement>
+                  <textElement>
+                    <![CDATA[
+                      Auslesen der aktuellen Quellentemperatur.
+                      <p>Die Quellen-Temperatur ist nur bei Sole-Wasser-Wärmepumpen gültig.</p>
+                    ]]>         
+                  </textElement>
                   <language>de</language>
                 </legibleDescription>
                 <programmerHints>
@@ -573,10 +577,11 @@
                   gestellt werden. Derselbe physikalische Kreislauf kann entweder für das Heizen oder
                   das Kühlen verwendet werden. Das Heiz-/Kühlkreisprofil muss immer in Kombination mit
                   dem Grundprofil der Wärmepumpe bewirtschaftet werden. Es können mehrere Heiz-/Kühlkreisprofile definiert werden.
-                  <p>Es ist eine direkte Regelung der Vorlauftemperatur oder indirekte Regelung der Komforttemperatur möglich - siehe dazu generelle Beschreibung in
+                  <p>Bei Stiebel Eltron ist nur eine indirekte Regelung der Komforttemperatur möglich - siehe dazu generelle Beschreibung in
                   <a href="https://github.com/SmartGridready/SGrSpecifications/blob/master/doc/HeatPumpAppliances.md#heat-pump-appliances">HeatPumpAppliances</a>.</p>
-                  <p>HeatCoolCtrl_1 entspricht dem Ladekreis, mit welchem der Pufferspeicher geladen wird (falls vorhanden).
+                  <p>HeatCoolCtrl_1 entspricht bei Stiebel Eltron dem Ladekreis, mit welchem der Pufferspeicher geladen wird (falls vorhanden).
                   Falls kein Pufferspeicher vorhanden ist, entspricht dieser auch dem Heizkreis ins Gebäude.</p>
+                  <p>Je nach Systemaufbau verändert sich die Position des Messpunkts, was zu einer Abweichung von der ISTTEMPERATUR HK1/HK2 zur effektiven Rücklauftemperatur des jeweiligen Heizkreises führen kann.</p>
                 ]]>         
               </textElement>
               <language>de</language>
@@ -592,7 +597,7 @@
                 </dataType>
                 <unit>DEGREES_CELSIUS</unit>
                 <minimumValue>0.0</minimumValue>
-                <maximumValue>40.0</maximumValue>
+                <maximumValue>90.0</maximumValue>
                 <alternativeNames>            
                   <sLV1Name>SupplyWaterTemp</sLV1Name>
                   <manufName>ISTTEMPERATUR HK 1</manufName>
@@ -627,7 +632,7 @@
                 </dataType>
                 <unit>DEGREES_CELSIUS</unit>
                 <minimumValue>0.0</minimumValue>
-                <maximumValue>40.0</maximumValue>
+                <maximumValue>65.0</maximumValue>
                 <alternativeNames>            
                   <sLV1Name>SupplyWaterTempStptFb</sLV1Name>
                   <manufName>SOLLTEMPERATUR HK 1</manufName>
@@ -760,9 +765,10 @@
                   gestellt werden. Derselbe physikalische Kreislauf kann entweder für das Heizen oder
                   das Kühlen verwendet werden. Das Heiz-/Kühlkreisprofil muss immer in Kombination mit
                   dem Grundprofil der Wärmepumpe bewirtschaftet werden. Es können mehrere Heiz-/Kühlkreisprofile definiert werden.
-                  <p>Es ist eine direkte Regelung der Vorlauftemperatur oder indirekte Regelung der Komforttemperatur möglich - siehe dazu generelle Beschreibung in
+                  <p>Bei Stiebel Eltron ist nur eine indirekte Regelung der Komforttemperatur möglich - siehe dazu generelle Beschreibung in
                   <a href="https://github.com/SmartGridready/SGrSpecifications/blob/master/doc/HeatPumpAppliances.md#heat-pump-appliances">HeatPumpAppliances</a>.</p>
-                  <p>HeatCoolCtrl2 entspricht dem Entladekreis, mit welchem das Gebäude bedient wird (falls ein Pufferspeicher und Mischventil vorhanden ist).</p>
+                  <p>HeatCoolCtrl_2 entspricht bei Stiebel Eltron dem Entladekreis, mit welchem das Gebäude bedient wird (falls ein Pufferspeicher und Mischventil vorhanden ist).</p>
+                  <p>Je nach Systemaufbau verändert sich die Position des Messpunkts, was zu einer Abweichung von der ISTTEMPERATUR HK1/HK2 zur effektiven Rücklauftemperatur des jeweiligen Heizkreises führen kann.</p>
                 ]]>         
               </textElement>
               <language>de</language>
@@ -778,7 +784,7 @@
                 </dataType>
                 <unit>DEGREES_CELSIUS</unit>
                 <minimumValue>0.0</minimumValue>
-                <maximumValue>40.0</maximumValue>
+                <maximumValue>90.0</maximumValue>
                 <alternativeNames>            
                   <sLV1Name>SupplyWaterTemp</sLV1Name>
                   <manufName>ISTTEMPERATUR HK 2</manufName>
@@ -813,7 +819,7 @@
                 </dataType>
                 <unit>DEGREES_CELSIUS</unit>
                 <minimumValue>0.0</minimumValue>
-                <maximumValue>40.0</maximumValue>
+                <maximumValue>65.0</maximumValue>
                 <alternativeNames>            
                   <sLV1Name>SupplyWaterTempStptFb</sLV1Name>
                   <manufName>SOLLTEMPERATUR HK 2</manufName>
@@ -944,6 +950,12 @@
               </textElement>
               <language>de</language>
             </legibleDescription>
+            <programmerHints>
+              <textElement>
+                Das Zeitprogramm für das Umschalten des Eco- und Komfortbetriebs wird auf der Wärmepumpe oder über die ISG "Service Welt" eingestellt (Warmwasser Programm).
+              </textElement>
+              <language>de</language>
+              </programmerHints>
           </functionalProfile>
           <dataPointList>
             <dataPointListElement>
@@ -964,7 +976,7 @@
                   <en17609Name>Hot Water Setpoint Temperature Comfort</en17609Name>
                 </alternativeNames>
                 <legibleDescription>
-                  <textElement>Setzen und Auslesen des Sollwerts für Brauchwarmwasserspeicher im Comfort-Betrieb</textElement>
+                  <textElement>Setzen und Auslesen des Sollwerts für Brauchwarmwasserspeicher im Komfort-Betrieb</textElement>
                   <language>de</language>
                 </legibleDescription>
               </dataPoint>
@@ -1040,7 +1052,7 @@
                 </legibleDescription>
                 <programmerHints>
                   <textElement>This data point reflects the setting of program, comfort or economic
-                    mode depending on the HPOpModeCmd selected.</textElement>
+                    mode depending on the HPOpModeCmd selected in the HeatPumpBase profile.</textElement>
                   <language>en</language>
                 </programmerHints>
               </dataPoint>
@@ -1103,7 +1115,7 @@
               <specificationOwnerIdentification>0</specificationOwnerIdentification>
               <functionalProfileCategory>HeatPumpControl</functionalProfileCategory>
               <functionalProfileType>BufferStorageCtrl</functionalProfileType>
-              <levelOfOperation>4m</levelOfOperation>
+              <levelOfOperation>m</levelOfOperation>
               <versionNumber>
                 <primaryVersionNumber>0</primaryVersionNumber>
                 <secondaryVersionNumber>5</secondaryVersionNumber>
@@ -1112,9 +1124,10 @@
             </functionalProfileIdentification>
             <legibleDescription>
               <textElement>
-                Der Pufferspeicher wird bei Stiebel Eltron über den Ladekreis geregelt (HeatCoolCtrl1).
-                Alternativ kann eine stufenweise Überhöhung über das Profil SG-ReadyStates erfolgen.
-                Die aktuellen Ist- und Sollwerte können nur ausgelesen werden.
+                <![CDATA[
+                  Der Pufferspeicher kann über HeatCoolCtrl_1 (Ladekreis) geregelt werden.
+                  <p>Alternativ kann eine stufenweise Überhöhung über das Profil SG-ReadyStates erfolgen. Die aktuellen Ist- und Sollwerte können nur ausgelesen werden.</p>
+                ]]>
               </textElement>
               <language>de</language>
             </legibleDescription>
@@ -1138,8 +1151,13 @@
                   <language>de</language>
                 </legibleDescription>
                 <programmerHints>
-                  <textElement>The buffer temperature is influenced by the SG-Ready signal and
-                    cannot be changed directly by the application programmer.</textElement>
+                  <textElement>
+                    <![CDATA[
+                      The buffer temperature is influenced by the SG-Ready signal and
+                      cannot be changed directly by the application programmer.
+                      Minimum value is 0<sup>o</sup>C, maximum value is 90<sup>o</sup>C.
+                    ]]>
+                  </textElement>
                   <language>en</language>
                 </programmerHints>
               </dataPoint>
@@ -1228,19 +1246,20 @@
                   <p> The following operation modes can be written and read via the defined data point "SGReadyOpModeCmd": </p>
                   
                   <ul>
-                    <li><strong>HP_LOCKED</strong>: Heat pump blocked - for example fixed blocking by time.</li>
+                    <li><strong>HP_LOCKED</strong>: Heat pump in frost protection mode.</li>
                     <li><strong>HP_NORMAL</strong>: Heat pump in normal operation. </li>
                     <li><strong>HP_INTENSIFIED</strong>: Switch-on recommendations for increased operation.  </li>
-                    <li><strong>HP_FORCED</strong>: Forced start-up command (as far as this is possible within the control settings of the heat pump).  </li>
+                    <li><strong>HP_FORCED</strong>: This operating mode should only be used in exceptional cases. The heat pump runs at maximum temperature, which results in a higher load on the heat pump. The electric insert is not activated.</li>
                   </ul>
                   
                   <p> Via the datapoint SGReadyState it is possible to check the currently running operation mode of the heat pump. </p>
                   
-                  <p> The communicator (e.g. central energy management system) takes into account the unit specifications for the switching 
-                    frequency (attributes maxLockTimeMinutes and minRunTimeMinutes). The values can be set during declaration of the 
-                        heat pump. The standard values for SG Ready heat pumps are "Max. Lock Time" 120 minutes and "Min. Run Time" 20 minutes. </p>
-                  "SG Ready" is a trademark of the German Heat Pump Association.
+                  <p>"SG Ready" is a trademark of the German Heat Pump Association.
                   <br>Further information at <a href="https://www.waermepumpe.de/normen-technik/sg-ready/">https://www.waermepumpe.de/normen-technik/sg-ready/</a>.
+                  
+                  <p>The communicator (e.g. energy management system) takes into account the device specifications for the switching frequency according to bwp (link above).</p>
+                  
+                  <p>In the case of self-consumption optimisation, it is recommended only to use the two operating states HP_NORMAL and HP_INTENSIFIED.</p>
                 ]]>
               </textElement>
               <language>en</language>
@@ -1262,52 +1281,25 @@
                   
                  <p> Folgende Betriebszustände können über den Datenpunkt "SGReadyOpModeCmd" gesetzt und ausgelesen werden: </p>
                   <ul>
-                    <li><strong>HP_LOCKED</strong>: Wärmepumpe gesperrt - zum Beispiel fixe Sperre nach Uhrzeit.</li>
+                    <li><strong>HP_LOCKED</strong>: Wärmepumpe in Frostschutzmodus.</li>
                     <li><strong>HP_NORMAL</strong>: Wärmepumpe im Normalbetrieb.</li>
                     <li><strong>HP_INTENSIFIED</strong>: Einschaltempfehlung für verstärkten Betrieb.</li>
-                    <li><strong>HP_FORCED</strong>: Forcierter Anlaufbefehl (insofern dieser im Rahmen der Regeleinstellungen der Wärmepumpe möglich ist).</li>                  
+                    <li><strong>HP_FORCED</strong>: Dieser Betriebsmodus sollte nur im Ausnahmefall benutzt werden. Die Wärmepumpe fährt auf maximale Temperatur, was eine höhere Belastung der Wärmepumpe zur Folge hat. Der Elektroeinsatz wird nicht aktiviert.</li>                  
                   </ul>
+                  
                   <p> Über den Datenpunkt "SGReadyState" kann der aktuelle Betriebsmodus der Wärmepumpe ausgelesen werden. </p>
                   
-                  <p>Der Communicator (z.B. Energiemanagementsystem) berücksichtigt die Gerätevorgaben zur Schaltfrequenz (Attribute maxLockTimeMintues und minRunTimeMinutes.
-                  Der Wert der Attribute kann bei der Deklaration gesetzt werden. Standardeinstellung von SG Ready Wärmepumpen nach bwp ist 
-                  "Max. Lock Time" 120 Minuten und "Min. Run Time" 20 Minuten.</p>
-                  „SG Ready“ ist ein Markenzeichen des Bundesverbands Wärmepumpe e. V.<br>
-                  Weiterführende Informationen unter <a href="https://www.waermepumpe.de/normen-technik/sg-ready/">https://www.waermepumpe.de/normen-technik/sg-ready/</a>.
+                  <p>„SG Ready“ ist ein Markenzeichen des Bundesverbands Wärmepumpe e. V.<br>
+                  Weiterführende Informationen unter <a href="https://www.waermepumpe.de/normen-technik/sg-ready/">https://www.waermepumpe.de/normen-technik/sg-ready/</a>.</p>
 
-                  <font color="red"><p>Eigentlich müsste "Min. Lock Time" statt "Max. Lock Time" gesetzt sein.
-                                    Bei meinen Anwendungen habe ich "Min. Lock Time" und "Min. Run Time" jeweils auf 15 Min. gehabt.
-                                    Muss aber nochmals mit Stiebel Eltron geklärt werden. Vermutlich hat die WP sowieso einen internen Schutz,
-                                    und reagiert gar nicht auf zu schnelles Schalten. Es stellt sich also die Frage, ob dieser Aufwand über die
-                                    Attribute überhaupt getrieben werden muss bzw. wer dann die Garantie trägt, wenn sie nicht eingehalten werden
-                                    (ich plädiere für den WP-Hersteller, er muss seine Maschine schützen vor Fehlmanipulationen!)</p>
-                                    <p>Sobald bwp dabei, müssen Vorgaben übernommen werden.</p>
-                                    <p>Sind aber nur Wunschvorgaben, Hersteller könnte Werte anders setzen.
-                                    <br>--> mit Hersteller nochmals spezifisch anschauen (Lebensdauer! Störung!)</p>
-                                    </font>
+                  <p>Der Communicator (z.B. Energiemanagementsystem) berücksichtigt die Gerätevorgaben zur Schaltfrequenz gemäss bwp (Link oben).</p>
+
+                  <p>Für den Fall der Eigenverbrauchsoptimierung wird empfohlen, nur die beiden Betriebszustände <strong>HP_NORMAL</strong> und <strong>HP_INTENSIFIED</strong> zu verwenden.</p>
                 ]]>
               </textElement>
               <language>de</language>
             </legibleDescription>
           </functionalProfile>
-          <genericAttributeList>
-            <genericAttributeListElement>
-              <name>MaximumLockTime</name>
-              <dataType>
-                <float32/>
-              </dataType>
-              <value>120</value>
-              <unit>MINUTES</unit>
-            </genericAttributeListElement>
-            <genericAttributeListElement>
-              <name>MinimumRunTime</name>
-              <dataType>
-                <float32/>
-              </dataType>
-              <value>20</value>
-              <unit>MINUTES</unit>
-            </genericAttributeListElement>
-          </genericAttributeList>
           <dataPointList>
             <dataPointListElement>
               <dataPoint>
@@ -1661,10 +1653,15 @@
                 </legibleDescription>
                 <programmerHints>
                   <textElement>
-                    Registers use decimal kWh and MWh values. Use layer6Deviation reading
-                    size 2 at once and multplicate / add values accordingly.
+                    Registers use decimal kWh and MWh values. Use layer6Deviation reading size 2 at once and multplicate / add values accordingly.
                   </textElement>
                   <language>en</language>
+                </programmerHints>
+                <programmerHints>
+                  <textElement>
+                    Register 3513 wird mitgelesen und verrechnet.
+                  </textElement>
+                  <language>de</language>
                 </programmerHints>
               </dataPoint>
               <modbusDataPointConfiguration>
@@ -1707,6 +1704,12 @@
                   </textElement>
                   <language>en</language>
                 </programmerHints>
+                <programmerHints>
+                  <textElement>
+                    Register 3516 wird mitgelesen und verrechnet.
+                  </textElement>
+                  <language>de</language>
+                </programmerHints>
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
@@ -1742,6 +1745,12 @@
                     size 2 at once and multplicate / add values accordingly.
                   </textElement>
                   <language>en</language>
+                </programmerHints>
+                <programmerHints>
+                  <textElement>
+                    Register 3503 wird mitgelesen und verrechnet.
+                  </textElement>
+                  <language>de</language>
                 </programmerHints>
               </dataPoint>
               <modbusDataPointConfiguration>
@@ -1783,6 +1792,12 @@
                     size 2 at once and multplicate / add values accordingly.
                   </textElement>
                   <language>en</language>
+                </programmerHints>
+                <programmerHints>
+                  <textElement>
+                    Register 3506 wird mitgelesen und verrechnet.
+                  </textElement>
+                  <language>de</language>
                 </programmerHints>
               </dataPoint>
               <modbusDataPointConfiguration>
