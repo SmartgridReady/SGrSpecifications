@@ -791,7 +791,7 @@
                 <legibleDescription>
                   <textElement>
                     <![CDATA[
-                      Externe Steuerung der Wärmpumpe (direkte Regelung) aktivieren (<code>true<code>) oder deaktivieren (<code>false</code>).
+                      Externe Steuerung der Wärmpumpe (direkte Regelung) aktivieren (<code>true</code>) oder deaktivieren (<code>false</code>).
                     ]]>         
                   </textElement>
                   <language>de</language>
@@ -1092,7 +1092,7 @@
                 <legibleDescription>
                   <textElement>
                     <![CDATA[
-                      Externe Steuerung der Wärmpumpe (direkte Regelung) aktivieren (<code>true<code>) oder deaktivieren (<code>false</code>).
+                      Externe Steuerung der Wärmpumpe (direkte Regelung) aktivieren (<code>true</code>) oder deaktivieren (<code>false</code>).
                     ]]>         
                   </textElement>
                   <language>de</language>
@@ -1229,30 +1229,37 @@
                     <enumEntry>
                       <literal>CTA_DHW_INACTIVE</literal>
                       <ordinal>0</ordinal>
+                      <description>Inaktiv</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>CTA_DHW_ON</literal>
                       <ordinal>1</ordinal>
+                      <description>Eingeschaltet</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>CTA_DHW_OFF</literal>
                       <ordinal>2</ordinal>
+                      <description>Ausgeschaltet</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>CTA_DHW_PUSH</literal>
                       <ordinal>3</ordinal>
+                      <description>Kurzes Aufheizen</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>CTA_DHW_HOLIDAY_IS_SELECTED</literal>
                       <ordinal>4</ordinal>
+                      <description>Ferienprogramm gewählt</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>CTA_DHW_EMERGENCY_OP</literal>
                       <ordinal>5</ordinal>
+                      <description>Notbetrieb</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>CTA_DHW_AUTOMATED_LEGIO_RUN</literal>
                       <ordinal>6</ordinal>
+                      <description>Automatischer Legionellen-Modus</description>
                     </enumEntry>
                   </enum>
                 </dataType>
@@ -1265,7 +1272,6 @@
                   <textElement>
                     <![CDATA[
                       Auslesen des Status der Brauchwarmwasserproduktion.
-                      <p>Ein- und ausschalten, einmaliger Leistungsstoss, Ferienschaltung (kann nur vor Ort gesetzt werden), Notbetrieb TWW, und (nicht setzbare) automatische Legionellenschaltung</p>
                     ]]>
                   </textElement>
                   <language>de</language>
@@ -1282,7 +1288,7 @@
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
-                <dataPointName>DomHotWaterTempSetpoint</dataPointName>
+                <dataPointName>DomHotWaterTempSetpointComfort</dataPointName>
                 <dataDirection>RWP</dataDirection>
                 <dataType>
                   <float32 />
@@ -1399,7 +1405,7 @@
                     <sLV1Name>ActHeatBufferTemp</sLV1Name>
                     <manufName>CTA_B4_Temp</manufName></alternativeNames>
                 <legibleDescription>
-                  <textElement>Aktuelle Ist-Temperatur des Heiz-Pufferspeichers (oben im Speicher gemessen)</textElement>
+                  <textElement>Aktuelle Ist-Temperatur des Heiz-Pufferspeichers (oben im Speicher gemessen) (falls der Fühler nicht vorhanden ist, wird der Wert -99 zurückgeliefert)</textElement>
                   <language>de</language>
                 </legibleDescription>
               </dataPoint>
@@ -1521,6 +1527,8 @@
                   <p>Der Communicator (z.B. Energiemanagementsystem) berücksichtigt die Gerätevorgaben zur Schaltfrequenz (Attribute maxLockTimeMintues und minRunTimeMinutes.
                   Der Wert der Attribute kann bei der Deklaration gesetzt werden. Standardeinstellung der Wärmepumpen ist 
                   "Max. Lock Time" 20 Minuten und "Min. Run Time" 3 Minuten.</p>
+                  <p>Für die Verwendung zur Eigenverbrauchsoptimierung wird empfohlen, nur die Betriebszustände HP_NORMAL und HP_INTENSIFIED zu verwenden.
+                     Der Betriebsmodus HP_FORCED sollte nur in Ausnahmefällen verwendet werden, da er bei häufigem Einschalten zu Lebensdauerbeschränkungen des Verdichters führen kann.</p>
                   „SG Ready“ ist ein Markenzeichen des Bundesverbands Wärmepumpe e. V.<br>
                   Weiterführende Informationen unter <a href="https://www.waermepumpe.de/normen-technik/sg-ready/">https://www.waermepumpe.de/normen-technik/sg-ready/</a>.
                 ]]>

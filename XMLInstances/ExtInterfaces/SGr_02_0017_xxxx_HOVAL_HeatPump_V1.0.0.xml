@@ -1,0 +1,587 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/SGr.xsl"?>
+<DeviceFrame xmlns="http://www.smartgridready.com/ns/V0/"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/Product/Product.xsd">
+  <deviceName>HovalConnect WEZ</deviceName>
+  <manufacturerName>Hoval AG</manufacturerName>
+  <specificationOwnerIdentification>0</specificationOwnerIdentification>
+  <releaseNotes>
+    <state>Published</state>
+  </releaseNotes>
+  <deviceInformation>
+    <legibleDescription>
+      <textElement>
+        <![CDATA[
+          Produktbeschreibung für Hoval Wärmepumpen mit Steuerung TopTronic® E in Kombination mit dem HovalConnect Modbus-Gateway
+          <br>Für mehr Informationen siehe <a href="https://github.com/SmartGridready/SGrSpecifications/blob/master/doc/HeatPumpAppliances.md#heat-pump-functional-profiles-in-hoval-product-eid">Hoval HeatPumpAppliance</a>
+        ]]>   
+      </textElement>
+      <language>de</language>
+    </legibleDescription>
+    <deviceCategory>HeatPumpAppliance</deviceCategory>
+    <isLocalControl>true</isLocalControl>
+    <softwareRevision>0.6.0</softwareRevision>
+    <hardwareRevision>1.0.0</hardwareRevision>
+    <brandName>TopTronic® E</brandName>
+    <powerSource>mains3Phase</powerSource>
+    <nominalPower>nominalPower</nominalPower>
+    <manufacturerSpecificationIdentification>manufacturerSpecificationIdentification
+    </manufacturerSpecificationIdentification>
+    <manufacturerLabel>Hoval Wärmepumpen mit HovalConnect Modbus</manufacturerLabel>
+    <generalRemarks>generalRemarks</generalRemarks>
+    <levelOfOperation>2m</levelOfOperation>
+    <versionNumber>
+      <primaryVersionNumber>1</primaryVersionNumber>
+      <secondaryVersionNumber>0</secondaryVersionNumber>
+      <subReleaseVersionNumber>0</subReleaseVersionNumber>
+    </versionNumber>
+    <programmerHints>
+      <textElement>TCP ist standardmässig auf DHCP eingestellt. Das sollte für den Betrieb auf eine statische IP-Adresse geändert werden.</textElement>
+      <language>de</language>
+    </programmerHints>
+  </deviceInformation>
+  <configurationList>
+    <configurationListElement>
+      <name>address</name>
+      <dataType>
+        <string/>
+      </dataType>
+      <configurationDescription>
+        <textElement>IP address or DHCP name of the device</textElement>
+        <language>en</language>
+        <label>IP Address</label>
+      </configurationDescription>
+      <configurationDescription>
+        <textElement>IP-Adresse oder DHCP-Name des Geräts.</textElement>
+        <language>de</language>
+        <label>IP Adresse</label>
+      </configurationDescription>
+    </configurationListElement>
+  </configurationList>
+  <interfaceList>
+    <modbusInterface>
+      <modbusInterfaceDescription>
+        <modbusInterfaceSelection>TCPIP</modbusInterfaceSelection>
+        <modbusTcp>
+          <port>502</port>
+          <address>{{address}}</address>
+          <slaveId>1</slaveId>
+        </modbusTcp>
+        <firstRegisterAddressIsOne>false</firstRegisterAddressIsOne>
+        <bitOrder>BigEndian</bitOrder>
+      </modbusInterfaceDescription>
+      <functionalProfileList>
+        <functionalProfileListElement>
+          <functionalProfile>
+            <functionalProfileName>SG-ReadyStates</functionalProfileName>
+            <functionalProfileIdentification>
+              <specificationOwnerIdentification>0</specificationOwnerIdentification>
+              <functionalProfileCategory>HeatPumpControl</functionalProfileCategory>
+              <functionalProfileType>SG-ReadyStates</functionalProfileType>
+              <levelOfOperation>2m</levelOfOperation>
+              <versionNumber>
+                <primaryVersionNumber>1</primaryVersionNumber>
+                <secondaryVersionNumber>0</secondaryVersionNumber>
+                <subReleaseVersionNumber>0</subReleaseVersionNumber>
+              </versionNumber>
+            </functionalProfileIdentification>
+            <alternativeNames>
+              <sLV1Name>SG-ReadyStates_bwp</sLV1Name>
+              <hpBwpName>sHPbwpName</hpBwpName>
+            </alternativeNames>
+            <legibleDescription>
+              <textElement>                
+                <![CDATA[    
+                  <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
+                  <h4>Wärmepumpen mit 4 Betriebszuständen</h4>
+                  <p>Stufe 2m Funktionsprofil für Wärmepumpen mit 4 Betriebszuständen (SG Ready Wärmepumpen), die über Modbus gesetzt werden können. 
+                  Zusätzlich kann der aktuelle Betriebszustand der Wärmepumpe ausgelesen werden. Die Betriebszustände werden über SG Ready - Bundesverband Wärmepumpe e.V. (bwp) definiert. </p>
+                  <p>Dieses Funktionsprofil kann auf zwei Arten genutzt werden: </p>
+                  
+                  <ul>
+                    <li> Die Betriebszustände werden direkt über Modbus gesetzt und ausgelesen. </li>
+                    <li> Die Klemmkontakte werden gemappt und über Modbus zum Auslesen des Betriebszustandes abgebildet. Der Zustand wird jedoch wie bei der Standard-Anwendung
+                    von SG Ready Wärmepumpen über die Klemmkontakte gesetzt. </li>        
+                  </ul>
+                  
+                 <p> Folgende Betriebszustände können über den Datenpunkt "SGReadyOpModeCmd" gesetzt und ausgelesen werden: </p>
+                  <ul>
+                    <li><strong>HP_LOCKED</strong>: Der Betriebszustand HP_LOCKED entspricht einer absoluten Sperrung.</li>
+                    <li><strong>HP_NORMAL</strong>: Wärmepumpe im Normalbetrieb.</li>
+                    <li><strong>HP_INTENSIFIED</strong>: Einschaltempfehlung für verstärkten Betrieb.</li>
+                    <li><strong>HP_FORCED</strong>: Bei HP_FORCED wird auf Maximaltemperatur gefahren (Puffer und Warmwasser), wenn erforderlich durch den Elektroeinsatz.
+                                                    Dieser Betriebszustand wird NICHT empfohlen (Lebensdauer und Effizienz).</li>                  
+                  </ul>
+                  
+                  <p>Über den Datenpunkt "SGReadyState" kann der aktuelle Betriebsmodus der Wärmepumpe ausgelesen werden. </p>
+                  
+                  <p>„SG Ready“ ist ein Markenzeichen des Bundesverbands Wärmepumpe e. V.<br>
+                  Weiterführende Informationen unter <a href="https://www.waermepumpe.de/normen-technik/sg-ready/">https://www.waermepumpe.de/normen-technik/sg-ready/</a>.</p>
+
+                  <p>Der Communicator (z.B. Energiemanagementsystem) berücksichtigt die Gerätevorgaben zur Schaltfrequenz gemäss bwp (Link oben).</p>
+                  
+                  <p>Empfehlung für Eigenverbrauchsoptimierung: Zwischen <strong>HP_NORMAL</strong> und <strong>HP_INTENSIFIED</strong> schalten.
+                     Es sollte nicht häufiger als alle 30 Minuten zwischen den Betriebsmodi hin- und hergeschaltet werden (Lebensdauer der Wärmepumpe).</p>
+                     
+                  <p>Hinweis: Wärmepumpenseitig ist die Konfiguration Variante 2 für "Smart Grid Aktivierung durch Systembus" zu setzen.</p>
+                ]]>
+              </textElement>
+              <language>de</language>
+            </legibleDescription>
+          </functionalProfile>
+          <dataPointList>
+            <dataPointListElement>
+              <dataPoint>
+                <dataPointName>SGReadyOpModeCmd</dataPointName>
+                <dataDirection>RW</dataDirection>
+                <dataType>
+                  <enum>
+                    <enumEntry>
+                      <literal>HP_LOCKED</literal>
+                      <ordinal>2</ordinal>
+                      <description>Gesperrt</description>
+                    </enumEntry>
+                    <enumEntry>
+                      <literal>HP_NORMAL</literal>
+                      <ordinal>0</ordinal>
+                      <description>Normalbetrieb</description>
+                    </enumEntry>
+                    <enumEntry>
+                      <literal>HP_INTENSIFIED</literal>
+                      <ordinal>1</ordinal>
+                      <description>Vorzugsbetrieb</description>
+                    </enumEntry>
+                    <enumEntry>
+                      <literal>HP_FORCED</literal>
+                      <ordinal>3</ordinal>
+                      <description>Abnahmezwang</description>
+                    </enumEntry>
+                  </enum>
+                </dataType>
+                <unit>NONE</unit>
+                <alternativeNames>
+                  <sLV1Name>SGReadyOpModeCmd</sLV1Name>
+                  <manufName>38012</manufName>
+                  <hpBwpName>Betriebsmodus</hpBwpName>
+                </alternativeNames>
+                <legibleDescription>
+                  <textElement>
+                    <![CDATA[
+                      Festlegen der Übersteuerungsmoeglichkeiten der Wärmepumpe
+                      <br>Setzen und Auslesen des Betriebszustandes nach SG-Ready bwp gemäss Definition oben.
+                    ]]>
+                  </textElement>
+                  <language>de</language>
+                </legibleDescription>
+              </dataPoint>
+              <modbusDataPointConfiguration>
+                <modbusDataType>
+                  <int8U/>
+                </modbusDataType>
+                <address>27545</address>                
+                <registerType>HoldRegister</registerType>
+                <numberOfRegisters>1</numberOfRegisters>
+              </modbusDataPointConfiguration>
+            </dataPointListElement>
+            <dataPointListElement>
+              <dataPoint>
+                <dataPointName>SGReadyState</dataPointName>
+                <dataDirection>R</dataDirection>
+                <dataType>
+                  <enum>
+                    <enumEntry>
+                      <literal>HP_LOCKED</literal>
+                      <ordinal>2</ordinal>
+                      <description>Gesperrt</description>
+                    </enumEntry>
+                    <enumEntry>
+                      <literal>HP_NORMAL</literal>
+                      <ordinal>0</ordinal>
+                      <description>Normalbetrieb</description>
+                    </enumEntry>
+                    <enumEntry>
+                      <literal>HP_INTENSIFIED</literal>
+                      <ordinal>1</ordinal>
+                      <description>Vorzugsbetrieb</description>
+                    </enumEntry>
+                    <enumEntry>
+                      <literal>HP_FORCED</literal>
+                      <ordinal>3</ordinal>
+                      <description>Abnahmezwang</description>
+                    </enumEntry>
+                  </enum>
+                </dataType>
+                <unit>NONE</unit>
+                <alternativeNames>
+                  <sLV1Name>SG-ReadyState</sLV1Name>
+                  <manufName>38012</manufName>
+                </alternativeNames>
+                <legibleDescription>
+                  <textElement>
+                    <![CDATA[
+                      Rückmeldung der aktuellen laufenden Übersteuerungsmoeglichkeit der Wärmepumpe
+                    ]]>         
+                  </textElement>
+                  <language>de</language>
+                </legibleDescription>
+              </dataPoint>
+              <modbusDataPointConfiguration>
+                <modbusDataType>
+                  <int8U/>
+                </modbusDataType>
+                <address>27545</address>                
+                <registerType>HoldRegister</registerType>
+                <numberOfRegisters>1</numberOfRegisters>
+              </modbusDataPointConfiguration>
+            </dataPointListElement>
+            <dataPointListElement>
+              <dataPoint>
+                <dataPointName>hovSGReadySrcSelect</dataPointName>
+                <dataDirection>RW</dataDirection>
+                <dataType>
+                  <enum>
+                    <enumEntry>
+                      <literal>SGR_src_OFF</literal>
+                      <ordinal>0</ordinal>
+                      <description>SG-Ready deaktiviert</description>
+                    </enumEntry>
+                    <enumEntry>
+                      <literal>SRC_src_CONTACTS</literal>
+                      <ordinal>1</ordinal>
+                      <description>SG-Ready über physische Schaltkontakte gesteuert</description>
+                    </enumEntry>
+                    <enumEntry>
+                      <literal>SRC_src_SysBUS</literal>
+                      <ordinal>2</ordinal>
+                      <description>Ansteuerung über den Systembus</description>
+                    </enumEntry>
+                    <enumEntry>
+                      <literal>SRC_src_DAMPED</literal>
+                      <ordinal>3</ordinal>
+                      <description>Leistungsvorgabe über Analog-Eingang 0..10V (gefiltert).</description>
+                    </enumEntry>
+                  </enum>
+                </dataType>
+                <unit>NONE</unit>
+                <alternativeNames>
+                  <sLV1Name>hovSGReadySrcSelect</sLV1Name>
+                  <manufName>38013</manufName></alternativeNames>
+                <legibleDescription>
+                  <textElement>
+                    <![CDATA[
+                      Aktivierung der SG-Ready Funktion
+                    ]]>         
+                  </textElement>
+                  <language>de</language>
+                </legibleDescription>
+              </dataPoint>
+              <modbusDataPointConfiguration>
+                <modbusDataType>
+                  <int8U/>
+                </modbusDataType>
+                <address>27546</address>                
+                <registerType>HoldRegister</registerType>
+                <numberOfRegisters>1</numberOfRegisters>
+              </modbusDataPointConfiguration>
+            </dataPointListElement>
+          </dataPointList>
+        </functionalProfileListElement>
+        <functionalProfileListElement>
+          <functionalProfile>
+            <functionalProfileName>EnergyMonitor</functionalProfileName>
+            <functionalProfileIdentification>
+              <specificationOwnerIdentification>0</specificationOwnerIdentification>
+              <functionalProfileCategory>HeatPumpControl</functionalProfileCategory>
+              <functionalProfileType>EnergyMonitor</functionalProfileType>
+              <levelOfOperation>m</levelOfOperation>
+              <versionNumber>
+                <primaryVersionNumber>0</primaryVersionNumber>
+                <secondaryVersionNumber>5</secondaryVersionNumber>
+                <subReleaseVersionNumber>0</subReleaseVersionNumber>
+              </versionNumber>
+            </functionalProfileIdentification>
+            <alternativeNames>
+              <sLV1Name>EnergyMonitor</sLV1Name>
+            </alternativeNames>
+            <legibleDescription>
+              <textElement>
+                <![CDATA[	
+                  <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
+                  Dieses Profil dient dem Aufzeichnen von internen Daten aus der Wärmepumpe für Monitoring-Zwecke.
+                  <p>Bemerkung:<br>
+                  Die intern ermittelten Energiewerte sind i.d.R. berechnete Werte. Für eine exakte Messung werden externe, geeichte Zähler empfohlen.</p
+                ]]>
+              </textElement>
+              <language>de</language>
+            </legibleDescription>
+          </functionalProfile>
+          <dataPointList>
+            <dataPointListElement>
+              <dataPoint>
+                <dataPointName>ActiveEnergyACtot</dataPointName>
+                <dataDirection>R</dataDirection>
+                <dataType>
+                  <float64/>
+                </dataType>
+                <unit>KILOWATT_HOURS</unit>
+                <alternativeNames>
+                  <sLV1Name>ActiveEnergyACtot</sLV1Name>
+                  <manufName>23009</manufName>
+                </alternativeNames>
+                <legibleDescription>
+                  <textElement>
+                    <![CDATA[
+                      Erfassung der gesamten Wirkenergie
+                      </p>Elektrische Gesamtenergie WEZ kWh.
+                    ]]>
+                  </textElement>
+                  <language>de</language>
+                </legibleDescription>
+              </dataPoint>
+              <modbusDataPointConfiguration>
+                <modbusDataType>
+                  <int32U/>
+                </modbusDataType>
+                <address>25613</address>                
+                <registerType>HoldRegister</registerType>
+                <numberOfRegisters>2</numberOfRegisters>
+              </modbusDataPointConfiguration>
+            </dataPointListElement>
+            <dataPointListElement>
+              <dataPoint>
+                <dataPointName>ThermalEnergyTot</dataPointName>
+                <dataDirection>R</dataDirection>
+                <dataType>
+                  <float64/>
+                </dataType>
+                <unit>KILOWATT_HOURS</unit>
+                <alternativeNames>
+                  <sLV1Name>ThermalEnergyTot</sLV1Name>
+                  <manufName>29050</manufName>
+                </alternativeNames>
+                <legibleDescription>
+                  <textElement>
+                    <![CDATA[
+                      Summe der abgegebenen thermischen Energie total
+                      </p>Wärmemenge Heizen.
+                    ]]>
+                  </textElement>
+                  <language>de</language>
+                </legibleDescription>
+              </dataPoint>
+              <modbusDataPointConfiguration>
+                <modbusDataType>
+                  <int32U/>
+                </modbusDataType>
+                <address>1505</address>                
+                <registerType>HoldRegister</registerType>
+                <numberOfRegisters>2</numberOfRegisters>
+              </modbusDataPointConfiguration>
+            </dataPointListElement>
+            <dataPointListElement>
+              <dataPoint>
+                <dataPointName>ThermalEnergyHeat</dataPointName>
+                <dataDirection>R</dataDirection>
+                <dataType>
+                  <float64/>
+                </dataType>
+                <unit>KILOWATT_HOURS</unit>
+                <alternativeNames>
+                  <sLV1Name>ThermalEnergyHeat</sLV1Name>
+                  <manufName>47</manufName></alternativeNames>
+                <legibleDescription>
+                  <textElement>
+                    <![CDATA[
+                      Summe der abgegebenen thermischen Energie für das Heizen.
+                      </p>Wärmemenge Heizen.
+                    ]]>
+                  </textElement>
+                  <language>de</language>
+                </legibleDescription>
+              </dataPoint>
+              <modbusDataPointConfiguration>
+                <modbusDataType>
+                  <int32U/>
+                </modbusDataType>
+                <address>27484</address>                
+                <registerType>HoldRegister</registerType>
+                <numberOfRegisters>2</numberOfRegisters>
+              </modbusDataPointConfiguration>
+            </dataPointListElement>
+            <dataPointListElement>
+              <dataPoint>
+                <dataPointName>ThermalEnergyCool</dataPointName>
+                <dataDirection>R</dataDirection>
+                <dataType>
+                  <float64/>
+                </dataType>
+                <unit>KILOWATT_HOURS</unit>
+                <alternativeNames>
+                  <sLV1Name>ThermalEnergyCool</sLV1Name>
+                  <manufName>29052</manufName>
+                </alternativeNames>
+                <legibleDescription>
+                  <textElement>
+                    <![CDATA[
+                      Summe der aufgenommenen thermischen Energie für das Kühlen (nur bei aktiver Kühlung über Verdichter).
+                      </p>Kältemenge Kühlen: Summe der aufgenommenen thermischen Energie für das Kühlen (nur bei aktiver Kühlung über Verdichter)
+                    ]]>
+                  </textElement>
+                  <language>de</language>
+                </legibleDescription>
+              </dataPoint>
+              <modbusDataPointConfiguration>
+                <modbusDataType>
+                  <int32U/>
+                </modbusDataType>
+                <address>18733</address>                
+                <registerType>HoldRegister</registerType>
+                <numberOfRegisters>2</numberOfRegisters>
+              </modbusDataPointConfiguration>
+            </dataPointListElement>
+            <dataPointListElement>
+              <dataPoint>
+                <dataPointName>ThermalEnergyDomHotWater</dataPointName>
+                <dataDirection>R</dataDirection>
+                <dataType>
+                  <float64/>
+                </dataType>
+                <unit>KILOWATT_HOURS</unit>
+                <alternativeNames>
+                  <sLV1Name>ThermalEnergyDomHotWater</sLV1Name>
+                  <manufName>55</manufName></alternativeNames>
+                <legibleDescription>
+                  <textElement>
+                    <![CDATA[
+                      Summe der abgegebenen thermischen Energie für die Brauchwarmwasser-Erwärmung.
+                      </p>Wärmemenge WW
+                    ]]>
+                  </textElement>
+                  <language>de</language>
+                </legibleDescription>
+              </dataPoint>
+              <modbusDataPointConfiguration>
+                <modbusDataType>
+                  <int32U/>
+                </modbusDataType>
+                <address>27488</address>                
+                <registerType>HoldRegister</registerType>
+                <numberOfRegisters>2</numberOfRegisters>
+              </modbusDataPointConfiguration>
+            </dataPointListElement>
+            <dataPointListElement>
+              <dataPoint>
+                <dataPointName>ActivePowerACtot</dataPointName>
+                <dataDirection>R</dataDirection>
+                <dataType>
+                  <float64/>
+                </dataType>
+                <unit>KILOWATTS</unit>
+                <alternativeNames>
+                  <sLV1Name>ActivePowerACtot</sLV1Name>
+                  <manufName>23002</manufName>
+                </alternativeNames>
+                <legibleDescription>
+                  <textElement>
+                    <![CDATA[
+                      Erfassung der gesamten Wirkleistung
+                      <p>Aktuelle elektr. Leistungsaufnahme WEZ.</p>
+                    ]]>
+                  </textElement>
+                  <language>de</language>
+                </legibleDescription>
+              </dataPoint>
+              <genericAttributeList>
+                <genericAttributeListElement>
+                  <name>MeasuredValueSource</name>
+                  <dataType>
+                    <string/>
+                  </dataType>
+                  <value>calculatedValue</value>
+                  <unit>NONE</unit>
+                </genericAttributeListElement>
+              </genericAttributeList>
+              <modbusDataPointConfiguration>
+                <modbusDataType>
+                  <int32 />
+                </modbusDataType>
+                <address>25611</address>                
+                <registerType>HoldRegister</registerType>
+                <numberOfRegisters>2</numberOfRegisters>
+              </modbusDataPointConfiguration>
+              <modbusAttributes>
+                <scalingFactor>
+                  <multiplicator>1</multiplicator>
+                  <powerof10>-2</powerof10>
+                </scalingFactor>
+              </modbusAttributes>
+            </dataPointListElement>
+            <dataPointListElement>
+              <dataPoint>
+                <dataPointName>RuntimeCompressor</dataPointName>
+                <dataDirection>R</dataDirection>
+                <dataType>
+                  <float64/>
+                </dataType>
+                <unit>HOURS</unit>
+                <alternativeNames>
+                  <sLV1Name>RuntimeCompressor</sLV1Name>
+                  <manufName>2081</manufName>
+                </alternativeNames>
+                <legibleDescription>
+                  <textElement>
+                    <![CDATA[
+                      Summe der Laufzeit des Verdichters seit Inbetriebnahme.
+                      </p>Betriebsstunden Wärmeerzeuger: Summe der Laufzeit des Verdichters seit Inbetriebnahme.
+                    ]]>
+                  </textElement>
+                  <language>de</language>
+                </legibleDescription>
+              </dataPoint>
+              <modbusDataPointConfiguration>
+                <modbusDataType>
+                  <int32U/>
+                </modbusDataType>
+                <address>1516</address>                
+                <registerType>HoldRegister</registerType>
+                <numberOfRegisters>2</numberOfRegisters>
+              </modbusDataPointConfiguration>
+            </dataPointListElement>
+            <dataPointListElement>
+              <dataPoint>
+                <dataPointName>NoOfStartupsCompressor</dataPointName>
+                <dataDirection>R</dataDirection>
+                <dataType>
+                  <float64/>
+                </dataType>
+                <unit>NONE</unit>
+                <alternativeNames>
+                  <sLV1Name>NoOfStartupsCompressor</sLV1Name>
+                  <manufName>2080</manufName>
+                </alternativeNames>
+                <legibleDescription>
+                  <textElement>
+                    <![CDATA[
+                      Anzahl Starts des Verdichters seit Inbetriebnahme.
+                      </p>Schaltzyklen Wärmeerzeuger: Anzahl Starts des Verdichters seit Inbetriebnahme.
+                    ]]>
+                  </textElement>
+                  <language>de</language>
+                </legibleDescription>
+              </dataPoint>
+              <modbusDataPointConfiguration>
+                <modbusDataType>
+                  <int32U/>
+                </modbusDataType>
+                <address>1518</address>                
+                <registerType>HoldRegister</registerType>
+                <numberOfRegisters>2</numberOfRegisters>
+              </modbusDataPointConfiguration>
+            </dataPointListElement>
+          </dataPointList>
+        </functionalProfileListElement>
+      </functionalProfileList>
+    </modbusInterface>
+  </interfaceList>
+</DeviceFrame>
