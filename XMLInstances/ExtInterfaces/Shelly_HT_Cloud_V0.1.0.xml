@@ -10,7 +10,7 @@
 		<state>Draft</state>
 		<changeLog>
 			<version>0.1.0</version>
-			<date>2024-05-28</date>
+			<date>2024-06-18</date>
 			<author>Matthias Krebs, FHNW</author>
 			<comment>Draft for Testlab</comment>
 		</changeLog>
@@ -152,14 +152,19 @@
 											<headerName>Accept</headerName>
 											<value>application/json</value>
 										</header>
-										<header>
-											<headerName>Content-Type</headerName>
-											<value>application/x-www-form-urlencoded</value>
-										</header>
 									</requestHeader>
 									<requestMethod>POST</requestMethod>
 									<requestPath>/device/status</requestPath>
-									<requestBody>id={{deviceId}}&amp;auth_key={{authKey}}</requestBody>
+									<requestForm>
+										<parameter>
+											<name>id</name>
+											<value>{{deviceId}}</value>
+										</parameter>
+										<parameter>
+											<name>auth_key</name>
+											<value>{{authKey}}</value>
+										</parameter>
+									</requestForm>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
 										<query>tmp.value</query>
@@ -224,14 +229,19 @@
 											<headerName>Accept</headerName>
 											<value>application/json</value>
 										</header>
-										<header>
-											<headerName>Content-Type</headerName>
-											<value>application/x-www-form-urlencoded</value>
-										</header>
 									</requestHeader>
 									<requestMethod>POST</requestMethod>
 									<requestPath>/device/status</requestPath>
-									<requestBody>id={{deviceId}}&amp;auth_key={{authKey}}</requestBody>
+									<requestForm>
+										<parameter>
+											<name>id</name>
+											<value>{{deviceId}}</value>
+										</parameter>
+										<parameter>
+											<name>auth_key</name>
+											<value>{{authKey}}</value>
+										</parameter>
+									</requestForm>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
 										<query>hum.value</query>

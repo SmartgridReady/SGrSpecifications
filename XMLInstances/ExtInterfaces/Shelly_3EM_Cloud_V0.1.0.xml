@@ -10,7 +10,7 @@
 		<state>Draft</state>
 		<changeLog>
 			<version>0.1.0</version>
-			<date>2024-05-27</date>
+			<date>2024-06-18</date>
 			<author>Matthias Krebs, FHNW</author>
 			<comment>Draft for Testlab</comment>
 		</changeLog>
@@ -21,7 +21,6 @@
 				<![CDATA[ 
           Der Shelly 3EM ist ein 3-Phasen-Energiezähler mit schaltbarem Relais.
           Die vorliegende EID ist auf die Ansteuerung via Cloud REST API ausgelegt.
-          Das Relais kann bis auf Weiteres nur ausgelesen werden.
         ]]>
 			</textElement>
 			<language>de</language>
@@ -187,14 +186,19 @@
 											<headerName>Accept</headerName>
 											<value>application/json</value>
 										</header>
-										<header>
-											<headerName>Content-Type</headerName>
-											<value>application/x-www-form-urlencoded</value>
-										</header>
 									</requestHeader>
 									<requestMethod>POST</requestMethod>
 									<requestPath>/device/status</requestPath>
-									<requestBody>id={{deviceId}}&amp;auth_key={{authKey}}</requestBody>
+									<requestForm>
+										<parameter>
+											<name>id</name>
+											<value>{{deviceId}}</value>
+										</parameter>
+										<parameter>
+											<name>auth_key</name>
+											<value>{{authKey}}</value>
+										</parameter>
+									</requestForm>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
 										<query>total_power</query>
@@ -229,14 +233,19 @@
 											<headerName>Accept</headerName>
 											<value>application/json</value>
 										</header>
-										<header>
-											<headerName>Content-Type</headerName>
-											<value>application/x-www-form-urlencoded</value>
-										</header>
 									</requestHeader>
 									<requestMethod>POST</requestMethod>
 									<requestPath>/device/emeter/0</requestPath>
-									<requestBody>id={{deviceId}}&amp;auth_key={{authKey}}</requestBody>
+									<requestForm>
+										<parameter>
+											<name>id</name>
+											<value>{{deviceId}}</value>
+										</parameter>
+										<parameter>
+											<name>auth_key</name>
+											<value>{{authKey}}</value>
+										</parameter>
+									</requestForm>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
 										<query>power</query>
@@ -271,14 +280,19 @@
 											<headerName>Accept</headerName>
 											<value>application/json</value>
 										</header>
-										<header>
-											<headerName>Content-Type</headerName>
-											<value>application/x-www-form-urlencoded</value>
-										</header>
 									</requestHeader>
 									<requestMethod>POST</requestMethod>
 									<requestPath>/device/emeter/1</requestPath>
-									<requestBody>id={{deviceId}}&amp;auth_key={{authKey}}</requestBody>
+									<requestForm>
+										<parameter>
+											<name>id</name>
+											<value>{{deviceId}}</value>
+										</parameter>
+										<parameter>
+											<name>auth_key</name>
+											<value>{{authKey}}</value>
+										</parameter>
+									</requestForm>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
 										<query>power</query>
@@ -313,14 +327,19 @@
 											<headerName>Accept</headerName>
 											<value>application/json</value>
 										</header>
-										<header>
-											<headerName>Content-Type</headerName>
-											<value>application/x-www-form-urlencoded</value>
-										</header>
 									</requestHeader>
 									<requestMethod>POST</requestMethod>
 									<requestPath>/device/emeter/2</requestPath>
-									<requestBody>id={{deviceId}}&amp;auth_key={{authKey}}</requestBody>
+									<requestForm>
+										<parameter>
+											<name>id</name>
+											<value>{{deviceId}}</value>
+										</parameter>
+										<parameter>
+											<name>auth_key</name>
+											<value>{{authKey}}</value>
+										</parameter>
+									</requestForm>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
 										<query>power</query>
@@ -421,14 +440,19 @@
 											<headerName>Accept</headerName>
 											<value>application/json</value>
 										</header>
-										<header>
-											<headerName>Content-Type</headerName>
-											<value>application/x-www-form-urlencoded</value>
-										</header>
 									</requestHeader>
 									<requestMethod>POST</requestMethod>
 									<requestPath>/device/status</requestPath>
-									<requestBody>id={{deviceId}}&amp;auth_key={{authKey}}</requestBody>
+									<requestForm>
+										<parameter>
+											<name>id</name>
+											<value>{{deviceId}}</value>
+										</parameter>
+										<parameter>
+											<name>auth_key</name>
+											<value>{{authKey}}</value>
+										</parameter>
+									</requestForm>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
 										<query>sum([emeters[0].total,emeters[1].total,emeters[2].total])</query>
@@ -461,14 +485,19 @@
 											<headerName>Accept</headerName>
 											<value>application/json</value>
 										</header>
-										<header>
-											<headerName>Content-Type</headerName>
-											<value>application/x-www-form-urlencoded</value>
-										</header>
 									</requestHeader>
 									<requestMethod>POST</requestMethod>
 									<requestPath>/device/emeter/0</requestPath>
-									<requestBody>id={{deviceId}}&amp;auth_key={{authKey}}</requestBody>
+									<requestForm>
+										<parameter>
+											<name>id</name>
+											<value>{{deviceId}}</value>
+										</parameter>
+										<parameter>
+											<name>auth_key</name>
+											<value>{{authKey}}</value>
+										</parameter>
+									</requestForm>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
 										<query>total</query>
@@ -501,14 +530,19 @@
 											<headerName>Accept</headerName>
 											<value>application/json</value>
 										</header>
-										<header>
-											<headerName>Content-Type</headerName>
-											<value>application/x-www-form-urlencoded</value>
-										</header>
 									</requestHeader>
 									<requestMethod>POST</requestMethod>
 									<requestPath>/device/emeter/1</requestPath>
-									<requestBody>id={{deviceId}}&amp;auth_key={{authKey}}</requestBody>
+									<requestForm>
+										<parameter>
+											<name>id</name>
+											<value>{{deviceId}}</value>
+										</parameter>
+										<parameter>
+											<name>auth_key</name>
+											<value>{{authKey}}</value>
+										</parameter>
+									</requestForm>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
 										<query>total</query>
@@ -541,14 +575,19 @@
 											<headerName>Accept</headerName>
 											<value>application/json</value>
 										</header>
-										<header>
-											<headerName>Content-Type</headerName>
-											<value>application/x-www-form-urlencoded</value>
-										</header>
 									</requestHeader>
 									<requestMethod>POST</requestMethod>
 									<requestPath>/device/emeter/2</requestPath>
-									<requestBody>id={{deviceId}}&amp;auth_key={{authKey}}</requestBody>
+									<requestForm>
+										<parameter>
+											<name>id</name>
+											<value>{{deviceId}}</value>
+										</parameter>
+										<parameter>
+											<name>auth_key</name>
+											<value>{{authKey}}</value>
+										</parameter>
+									</requestForm>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
 										<query>total</query>
@@ -603,14 +642,19 @@
 											<headerName>Accept</headerName>
 											<value>application/json</value>
 										</header>
-										<header>
-											<headerName>Content-Type</headerName>
-											<value>application/x-www-form-urlencoded</value>
-										</header>
 									</requestHeader>
 									<requestMethod>POST</requestMethod>
 									<requestPath>/device/emeter/0</requestPath>
-									<requestBody>id={{deviceId}}&amp;auth_key={{authKey}}</requestBody>
+									<requestForm>
+										<parameter>
+											<name>id</name>
+											<value>{{deviceId}}</value>
+										</parameter>
+										<parameter>
+											<name>auth_key</name>
+											<value>{{authKey}}</value>
+										</parameter>
+									</requestForm>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
 										<query>voltage</query>
@@ -641,14 +685,19 @@
 											<headerName>Accept</headerName>
 											<value>application/json</value>
 										</header>
-										<header>
-											<headerName>Content-Type</headerName>
-											<value>application/x-www-form-urlencoded</value>
-										</header>
 									</requestHeader>
 									<requestMethod>POST</requestMethod>
 									<requestPath>/device/emeter/1</requestPath>
-									<requestBody>id={{deviceId}}&amp;auth_key={{authKey}}</requestBody>
+									<requestForm>
+										<parameter>
+											<name>id</name>
+											<value>{{deviceId}}</value>
+										</parameter>
+										<parameter>
+											<name>auth_key</name>
+											<value>{{authKey}}</value>
+										</parameter>
+									</requestForm>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
 										<query>voltage</query>
@@ -679,14 +728,19 @@
 											<headerName>Accept</headerName>
 											<value>application/json</value>
 										</header>
-										<header>
-											<headerName>Content-Type</headerName>
-											<value>application/x-www-form-urlencoded</value>
-										</header>
 									</requestHeader>
 									<requestMethod>POST</requestMethod>
 									<requestPath>/device/emeter/2</requestPath>
-									<requestBody>id={{deviceId}}&amp;auth_key={{authKey}}</requestBody>
+									<requestForm>
+										<parameter>
+											<name>id</name>
+											<value>{{deviceId}}</value>
+										</parameter>
+										<parameter>
+											<name>auth_key</name>
+											<value>{{authKey}}</value>
+										</parameter>
+									</requestForm>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
 										<query>voltage</query>
@@ -741,14 +795,19 @@
 											<headerName>Accept</headerName>
 											<value>application/json</value>
 										</header>
-										<header>
-											<headerName>Content-Type</headerName>
-											<value>application/x-www-form-urlencoded</value>
-										</header>
 									</requestHeader>
 									<requestMethod>POST</requestMethod>
 									<requestPath>/device/emeter/0</requestPath>
-									<requestBody>id={{deviceId}}&amp;auth_key={{authKey}}</requestBody>
+									<requestForm>
+										<parameter>
+											<name>id</name>
+											<value>{{deviceId}}</value>
+										</parameter>
+										<parameter>
+											<name>auth_key</name>
+											<value>{{authKey}}</value>
+										</parameter>
+									</requestForm>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
 										<query>current</query>
@@ -779,14 +838,19 @@
 											<headerName>Accept</headerName>
 											<value>application/json</value>
 										</header>
-										<header>
-											<headerName>Content-Type</headerName>
-											<value>application/x-www-form-urlencoded</value>
-										</header>
 									</requestHeader>
 									<requestMethod>POST</requestMethod>
 									<requestPath>/device/emeter/1</requestPath>
-									<requestBody>id={{deviceId}}&amp;auth_key={{authKey}}</requestBody>
+									<requestForm>
+										<parameter>
+											<name>id</name>
+											<value>{{deviceId}}</value>
+										</parameter>
+										<parameter>
+											<name>auth_key</name>
+											<value>{{authKey}}</value>
+										</parameter>
+									</requestForm>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
 										<query>current</query>
@@ -817,14 +881,19 @@
 											<headerName>Accept</headerName>
 											<value>application/json</value>
 										</header>
-										<header>
-											<headerName>Content-Type</headerName>
-											<value>application/x-www-form-urlencoded</value>
-										</header>
 									</requestHeader>
 									<requestMethod>POST</requestMethod>
 									<requestPath>/device/emeter/2</requestPath>
-									<requestBody>id={{deviceId}}&amp;auth_key={{authKey}}</requestBody>
+									<requestForm>
+										<parameter>
+											<name>id</name>
+											<value>{{deviceId}}</value>
+										</parameter>
+										<parameter>
+											<name>auth_key</name>
+											<value>{{authKey}}</value>
+										</parameter>
+									</requestForm>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
 										<query>current</query>
@@ -849,11 +918,11 @@
 							</versionNumber>
 						</functionalProfileIdentification>
 						<legibleDescription>
-							<textElement>Relais ein- oder ausschalten. Hinweis: Schreiben noch nicht unterstützt, benötigt Anpassung der Interface-Spezifikation!</textElement>
+							<textElement>Relais ein- oder ausschalten.</textElement>
 							<language>de</language>
 						</legibleDescription>
 						<legibleDescription>
-							<textElement>Switch relay on or off. Note: Write not supported yet, requires modification of the interface specification!</textElement>
+							<textElement>Switch relay on or off.</textElement>
 							<language>en</language>
 						</legibleDescription>
 					</functionalProfile>
@@ -883,14 +952,19 @@
 											<headerName>Accept</headerName>
 											<value>application/json</value>
 										</header>
-										<header>
-											<headerName>Content-Type</headerName>
-											<value>application/x-www-form-urlencoded</value>
-										</header>
 									</requestHeader>
 									<requestMethod>POST</requestMethod>
 									<requestPath>/device/relay/0</requestPath>
-									<requestBody>id={{deviceId}}&amp;auth_key={{authKey}}</requestBody>
+									<requestForm>
+										<parameter>
+											<name>id</name>
+											<value>{{deviceId}}</value>
+										</parameter>
+										<parameter>
+											<name>auth_key</name>
+											<value>{{authKey}}</value>
+										</parameter>
+									</requestForm>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
 										<query>ison</query>
@@ -902,14 +976,23 @@
 											<headerName>Accept</headerName>
 											<value>application/json</value>
 										</header>
-										<header>
-											<headerName>Content-Type</headerName>
-											<value>application/x-www-form-urlencoded</value>
-										</header>
 									</requestHeader>
 									<requestMethod>POST</requestMethod>
 									<requestPath>/device/relay/0</requestPath>
-									<requestBody>id={{deviceId}}&amp;auth_key={{authKey}}&amp;turn={{value}}</requestBody>
+									<requestForm>
+										<parameter>
+											<name>id</name>
+											<value>{{deviceId}}</value>
+										</parameter>
+										<parameter>
+											<name>auth_key</name>
+											<value>{{authKey}}</value>
+										</parameter>
+										<parameter>
+											<name>turn</name>
+											<value>{{value}}</value>
+										</parameter>
+									</requestForm>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
 										<query>ison</query>

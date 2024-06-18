@@ -3,7 +3,7 @@
 <DeviceFrame xmlns="http://www.smartgridready.com/ns/V0/"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/Product/Product.xsd">
-	<deviceName>Shelly TRV Local</deviceName>
+	<deviceName>Shelly 1 Local</deviceName>
 	<manufacturerName>Shelly</manufacturerName>
 	<specificationOwnerIdentification>0</specificationOwnerIdentification>
 	<releaseNotes>
@@ -19,14 +19,14 @@
 		<legibleDescription>
 			<textElement>
 				<![CDATA[ 
-          Der Shelly TRV ist ein steuerbarer Heizkörper-Thermostat.
+          Der Shelly 1 ist ein 1-kanaliges schaltbares Relais.
           Die vorliegende EID ist auf die Ansteuerung via lokalem REST API ausgelegt.
         ]]>
 			</textElement>
 			<language>de</language>
-			<uri>https://www.shelly.com/de-ch/products/product-overview/shelly-trv-1</uri>
+			<uri>https://www.shelly.com/de-ch/products/product-overview/shelly-1</uri>
 		</legibleDescription>
-		<deviceCategory>Generic</deviceCategory>
+		<deviceCategory>SubMeterElectricity</deviceCategory>
 		<isLocalControl>false</isLocalControl>
 		<softwareRevision>1.0.0</softwareRevision>
 		<hardwareRevision>1.0.0</hardwareRevision>
@@ -66,12 +66,12 @@
 			<functionalProfileList>
 				<functionalProfileListElement>
 					<functionalProfile>
-						<functionalProfileName>Thermostat</functionalProfileName>
+						<functionalProfileName>Relais</functionalProfileName>
 						<functionalProfileIdentification>
 							<specificationOwnerIdentification>0</specificationOwnerIdentification>
-							<functionalProfileCategory>HeatingCircuit</functionalProfileCategory>
-							<functionalProfileType>Thermostat</functionalProfileType>
-							<levelOfOperation>4m</levelOfOperation>
+							<functionalProfileCategory>Actuator</functionalProfileCategory>
+							<functionalProfileType>Relais</functionalProfileType>
+							<levelOfOperation>2m</levelOfOperation>
 							<versionNumber>
 								<primaryVersionNumber>0</primaryVersionNumber>
 								<secondaryVersionNumber>1</secondaryVersionNumber>
@@ -79,77 +79,34 @@
 							</versionNumber>
 						</functionalProfileIdentification>
 						<legibleDescription>
-							<textElement>
-								Ermöglicht die Steuerung der Zieltemperatur.
-							</textElement>
+							<textElement>Relais ein- oder ausschalten.</textElement>
 							<language>de</language>
 						</legibleDescription>
 						<legibleDescription>
-							<textElement>
-								Allows controlling the target temperature.
-							</textElement>
+							<textElement>Switch relay on or off.</textElement>
 							<language>en</language>
 						</legibleDescription>
 					</functionalProfile>
 					<dataPointList>
 						<dataPointListElement>
 							<dataPoint>
-								<dataPointName>Temperature</dataPointName>
-								<dataDirection>R</dataDirection>
-								<dataType>
-									<float64 />
-								</dataType>
-								<unit>DEGREES_CELSIUS</unit>
-								<minimumValue>-40</minimumValue>
-								<maximumValue>60</maximumValue>
-								<legibleDescription>
-									<textElement>Messung der Temperatur</textElement>
-									<language>de</language>
-								</legibleDescription>
-								<legibleDescription>
-									<textElement>Temperature measurement</textElement>
-									<language>en</language>
-								</legibleDescription>
-							</dataPoint>
-							<restApiDataPointConfiguration>
-								<dataType>JSON_number</dataType>
-								<restApiServiceCall>
-									<requestHeader>
-										<header>
-											<headerName>Accept</headerName>
-											<value>application/json</value>
-										</header>
-									</requestHeader>
-									<requestMethod>GET</requestMethod>
-									<requestPath>/thermostats/0</requestPath>
-									<responseQuery>
-										<queryType>JMESPathExpression</queryType>
-										<query>tmp.value</query>
-									</responseQuery>
-								</restApiServiceCall>
-							</restApiDataPointConfiguration>
-						</dataPointListElement>
-						<dataPointListElement>
-							<dataPoint>
-								<dataPointName>TargetTemperature</dataPointName>
+								<dataPointName>Relais</dataPointName>
 								<dataDirection>RW</dataDirection>
 								<dataType>
-									<float64 />
+									<boolean/>
 								</dataType>
-								<unit>DEGREES_CELSIUS</unit>
-								<minimumValue>4</minimumValue>
-								<maximumValue>31</maximumValue>
+								<unit>NONE</unit>
 								<legibleDescription>
-									<textElement>Einstellung der Zieltemperatur</textElement>
+									<textElement>Relais-Status</textElement>
 									<language>de</language>
 								</legibleDescription>
 								<legibleDescription>
-									<textElement>Setting of the target temperature</textElement>
+									<textElement>Relay state</textElement>
 									<language>en</language>
 								</legibleDescription>
 							</dataPoint>
 							<restApiDataPointConfiguration>
-								<dataType>JSON_number</dataType>
+								<dataType>JSON_boolean</dataType>
 								<restApiReadServiceCall>
 									<requestHeader>
 										<header>
@@ -158,10 +115,10 @@
 										</header>
 									</requestHeader>
 									<requestMethod>GET</requestMethod>
-									<requestPath>/thermostats/0</requestPath>
+									<requestPath>/relay/0</requestPath>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
-										<query>target_t.value</query>
+										<query>ison</query>
 									</responseQuery>
 								</restApiReadServiceCall>
 								<restApiWriteServiceCall>
@@ -172,17 +129,27 @@
 										</header>
 									</requestHeader>
 									<requestMethod>GET</requestMethod>
-									<requestPath>/thermostats/0</requestPath>
+									<requestPath>/relay/0</requestPath>
 									<requestQuery>
 										<parameter>
-											<name>target_t</name>
+											<name>turn</name>
 											<value>{{value}}</value>
 										</parameter>
 									</requestQuery>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
-										<query>target_t.value</query>
+										<query>ison</query>
 									</responseQuery>
+									<valueMapping>
+										<mapping>
+											<genericValue>false</genericValue>
+											<deviceValue>off</deviceValue>
+										</mapping>
+										<mapping>
+											<genericValue>true</genericValue>
+											<deviceValue>on</deviceValue>
+										</mapping>
+									</valueMapping>
 								</restApiWriteServiceCall>
 							</restApiDataPointConfiguration>
 						</dataPointListElement>
