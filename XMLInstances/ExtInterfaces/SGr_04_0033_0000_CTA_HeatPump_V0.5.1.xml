@@ -23,9 +23,9 @@
     </legibleDescription>
     <deviceCategory>HeatPumpAppliance</deviceCategory>
     <isLocalControl>true</isLocalControl>
-    <softwareRevision>2.1.0</softwareRevision>
-    <hardwareRevision>1.1.0</hardwareRevision>
-    <brandName>OptiHeat Inverta</brandName>
+    <softwareRevision>v1.12.1</softwareRevision>
+    <hardwareRevision>-</hardwareRevision>
+    <brandName>Optiheat Inverta</brandName>
     <powerSource>mains1Phase, mains3Phase</powerSource>
     <nominalPower>5 - 35 kW</nominalPower>
     <manufacturerLabel>CTA OH Inverta Wärmepumpen</manufacturerLabel>
@@ -46,13 +46,31 @@
       <uri>https://cta.ch/privatkunden/produkte</uri>
     </programmerHints>
   </deviceInformation>
+  <configurationList>
+    <configurationListElement>
+      <name>address</name>
+      <dataType>
+        <string/>
+      </dataType>
+      <configurationDescription>
+        <textElement>IP address or DHCP name of the device</textElement>
+        <language>en</language>
+        <label>IP Address</label>
+      </configurationDescription>
+      <configurationDescription>
+        <textElement>IP-Adresse oder DHCP-Name des Geräts.</textElement>
+        <language>de</language>
+        <label>IP Adresse</label>
+      </configurationDescription>
+    </configurationListElement>
+  </configurationList>
   <interfaceList>
     <modbusInterface>
       <modbusInterfaceDescription>
         <modbusInterfaceSelection>TCPIP</modbusInterfaceSelection>
         <modbusTcp>
           <port>502</port>
-          <address>192.168.99.55</address>
+          <address>{{address}}</address>
           <slaveId>1</slaveId>
         </modbusTcp>
         <firstRegisterAddressIsOne>false</firstRegisterAddressIsOne>
@@ -710,7 +728,7 @@
                 <modbusDataType>
                   <int32U />
                 </modbusDataType>
-                <address>2018</address>
+                <address>1003</address>
                 <registerType>HoldRegister</registerType>
                 <numberOfRegisters>2</numberOfRegisters>
               </modbusDataPointConfiguration>
@@ -725,7 +743,7 @@
                 <unit>DEGREES_CELSIUS</unit>
                 <alternativeNames>
                   <sLV1Name>SupplyWaterTemp</sLV1Name>
-                  <manufName>CTA_B21_Temp</manufName>
+                  <manufName>CTA_B1_Temp</manufName>
                 </alternativeNames>
                 <legibleDescription>
                   <textElement>
@@ -736,12 +754,16 @@
                   </textElement>
                   <language>de</language>
                 </legibleDescription>
+                <programmerHints>
+                  <textElement>Bei fehlendem Fühler wird ein Wert &lt;-90 zurückgegeben.</textElement>
+                  <language>de</language>
+                </programmerHints>
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
                   <float32 />
                 </modbusDataType>
-                <address>2002</address>
+                <address>2018</address>
                 <registerType>InputRegister</registerType>
                 <numberOfRegisters>2</numberOfRegisters>
               </modbusDataPointConfiguration>
@@ -756,7 +778,7 @@
                 <unit>DEGREES_CELSIUS</unit>
                 <alternativeNames>
                   <sLV1Name>SupplyWaterTempStpt</sLV1Name>
-                  <manufName>CTA_HK1_FlowSetpoint</manufName>
+                  <manufName>CTA_Ext_Heating_Setpoint</manufName>
                 </alternativeNames>
                 <legibleDescription>
                   <textElement>
@@ -1016,7 +1038,7 @@
                 <modbusDataType>
                   <int32U />
                 </modbusDataType>
-                <address>2020</address>
+                <address>1103</address>
                 <registerType>HoldRegister</registerType>
                 <numberOfRegisters>2</numberOfRegisters>
               </modbusDataPointConfiguration>
@@ -1031,18 +1053,22 @@
                 <unit>DEGREES_CELSIUS</unit>
                 <alternativeNames>
                   <sLV1Name>SupplyWaterTemp</sLV1Name>
-                  <manufName>CTA_B21_Temp</manufName>
+                  <manufName>CTA_B12_Temp</manufName>
                 </alternativeNames>
                 <legibleDescription>
                   <textElement>Auslesen der aktuellen Temperatur des Vorlaufs.</textElement>
                   <language>de</language>
                 </legibleDescription>
+                <programmerHints>
+                  <textElement>Bei fehlendem Fühler wird ein Wert &lt;-90 zurückgegeben.</textElement>
+                  <language>de</language>
+                </programmerHints>
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
                   <float32 />
                 </modbusDataType>
-                <address>2002</address>
+                <address>2020</address>
                 <registerType>InputRegister</registerType>
                 <numberOfRegisters>2</numberOfRegisters>
               </modbusDataPointConfiguration>
@@ -1057,7 +1083,7 @@
                 <unit>DEGREES_CELSIUS</unit>
                 <alternativeNames>
                   <sLV1Name>SupplyWaterTempStpt</sLV1Name>
-                  <manufName>CTA_HK2_FlowSetpoint</manufName>
+                  <manufName>CTA_Ext_Heating_Setpoint_HK2</manufName>
                 </alternativeNames>
                 <legibleDescription>
                   <textElement>
@@ -1088,7 +1114,7 @@
                 <unit>NONE</unit>
                 <alternativeNames>
                   <sLV1Name>ctaRemoteHCTempSetptEnable</sLV1Name>
-                  <manufName>CTA_Ext_Heating_Command</manufName></alternativeNames>
+                  <manufName>CTA_Ext_Heating_Command_HK2</manufName></alternativeNames>
                 <legibleDescription>
                   <textElement>
                     <![CDATA[
@@ -1123,7 +1149,7 @@
                 </dataType>
                 <unit>DEGREES_CELSIUS</unit>
                 <alternativeNames>
-                  <manufName>CTA_HK1_SetpointComfort</manufName></alternativeNames>
+                  <manufName>CTA_HK2_SetpointComfort</manufName></alternativeNames>
                 <legibleDescription>
                   <textElement>
                     <![CDATA[
@@ -1370,8 +1396,8 @@
                   <float32 />
                 </dataType>
                 <unit>DEGREES_KELVIN</unit>
-                <minimumValue>-50.0</minimumValue>
-                <maximumValue>50.0</maximumValue>
+                <minimumValue>-5.0</minimumValue>
+                <maximumValue>40.0</maximumValue>
                 <alternativeNames>
                   <sLV1Name>HeatBufferTempStptOffset</sLV1Name>
                   <manufName>CTA_CFG_Buffer_Overcharge_dT</manufName>
