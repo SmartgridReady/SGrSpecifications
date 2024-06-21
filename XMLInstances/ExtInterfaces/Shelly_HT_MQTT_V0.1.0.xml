@@ -3,7 +3,7 @@
 <DeviceFrame xmlns="http://www.smartgridready.com/ns/V0/"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/Product/Product.xsd">
-	<deviceName>Shelly H&amp;T Cloud</deviceName>
+	<deviceName>Shelly H&amp;T MQTT</deviceName>
 	<manufacturerName>Shelly</manufacturerName>
 	<specificationOwnerIdentification>0</specificationOwnerIdentification>
 	<releaseNotes>
@@ -20,7 +20,8 @@
 			<textElement>
 				<![CDATA[ 
           Der Shelly H&T ist ein batteriebetriebener Temperatur- und Luftfeuchtigkeitssensor.
-          Die vorliegende EID ist auf die Ansteuerung via Cloud REST API ausgelegt.
+          Die vorliegende EID ist auf die Ansteuerung via MQTT ausgelegt.
+		  Mit dem vorliegenden EID können Daten via MQTT-Topic "shellies/{device_id}/sensor/..." empfangen werden.
         ]]>
 			</textElement>
 			<language>de</language>
@@ -40,61 +41,106 @@
 	</deviceInformation>
 	<configurationList>
 		<configurationListElement>
-			<name>baseUri</name>
+			<name>broker_host</name>
 			<dataType>
 				<string/>
 			</dataType>
+			<defaultValue>localhost</defaultValue>
 			<configurationDescription>
-				<textElement>Base address for accessing the resource.</textElement>
+				<textElement>Message broker hostname or IP address.</textElement>
 				<language>en</language>
-				<label>Base URI</label>
+				<label>Broker Hostname</label>
 			</configurationDescription>
 			<configurationDescription>
-				<textElement>Basis-Adresse für Zugriffe auf die Ressource.</textElement>
+				<textElement>Message-Broker Hostname oder IP-Adresse.</textElement>
 				<language>de</language>
-				<label>Basis URI</label>
+				<label>Broker-Hostname</label>
 			</configurationDescription>
 		</configurationListElement>
 		<configurationListElement>
-			<name>deviceId</name>
+			<name>broker_port</name>
+			<dataType>
+				<int32/>
+			</dataType>
+			<defaultValue>1883</defaultValue>
+			<configurationDescription>
+				<textElement>Message broker TCP port.</textElement>
+				<language>en</language>
+				<label>Broker Port</label>
+			</configurationDescription>
+			<configurationDescription>
+				<textElement>Message-Broker TCP-Port.</textElement>
+				<language>de</language>
+				<label>Broker-Port</label>
+			</configurationDescription>
+		</configurationListElement>
+		<configurationListElement>
+			<name>broker_username</name>
 			<dataType>
 				<string/>
 			</dataType>
 			<configurationDescription>
-				<textElement>ID of the cloud device.</textElement>
+				<textElement>Message broker user name.</textElement>
+				<language>en</language>
+				<label>Broker User</label>
+			</configurationDescription>
+			<configurationDescription>
+				<textElement>Message-Broker User-Name.</textElement>
+				<language>de</language>
+				<label>Broker-User</label>
+			</configurationDescription>
+		</configurationListElement>
+		<configurationListElement>
+			<name>broker_password</name>
+			<dataType>
+				<string/>
+			</dataType>
+			<configurationDescription>
+				<textElement>Message broker password.</textElement>
+				<language>en</language>
+				<label>Broker Password</label>
+			</configurationDescription>
+			<configurationDescription>
+				<textElement>Message-Broker Passwort.</textElement>
+				<language>de</language>
+				<label>Broker-Passwort</label>
+			</configurationDescription>
+		</configurationListElement>
+		<configurationListElement>
+			<name>device_id</name>
+			<dataType>
+				<string/>
+			</dataType>
+			<defaultValue>shellyht</defaultValue>
+			<configurationDescription>
+				<textElement>Device identifier used in MQTT topic.</textElement>
 				<language>en</language>
 				<label>Device ID</label>
 			</configurationDescription>
 			<configurationDescription>
-				<textElement>ID des Cloud-Geräts.</textElement>
+				<textElement>Device-Identifier, in MQTT-Topic verwendet.</textElement>
 				<language>de</language>
-				<label>Geräte ID</label>
-			</configurationDescription>
-		</configurationListElement>
-		<configurationListElement>
-			<name>authKey</name>
-			<dataType>
-				<string/>
-			</dataType>
-			<configurationDescription>
-				<textElement>Cloud authentication key.</textElement>
-				<language>en</language>
-				<label>Authentication Key</label>
-			</configurationDescription>
-			<configurationDescription>
-				<textElement>Cloud-Authentifizierungs-Key.</textElement>
-				<language>de</language>
-				<label>Authentication Key</label>
+				<label>Device ID</label>
 			</configurationDescription>
 		</configurationListElement>
 	</configurationList>
 	<interfaceList>
-		<restApiInterface>
-			<restApiInterfaceDescription>
-				<restApiInterfaceSelection>URI</restApiInterfaceSelection>
-				<restApiUri>{{baseUri}}</restApiUri>
-				<restApiAuthenticationMethod>NoSecurityScheme</restApiAuthenticationMethod>
-			</restApiInterfaceDescription>
+		<messagingInterface>
+			<messagingInterfaceDescription>
+				<platform>MQTT5</platform>
+				<messageBrokerList>
+					<messageBrokerListElement>
+						<host>{{broker_host}}</host>
+						<port>{{broker_port}}</port>
+					</messageBrokerListElement>
+				</messageBrokerList>
+				<messageBrokerAuthentication>
+					<basicAuthentication>
+						<username>{{broker_username}}</username>
+						<password>{{broker_password}}</password>
+					</basicAuthentication>
+				</messageBrokerAuthentication>
+			</messagingInterfaceDescription>
 			<functionalProfileList>
 				<functionalProfileListElement>
 					<functionalProfile>
@@ -143,33 +189,18 @@
 									<language>en</language>
 								</legibleDescription>
 							</dataPoint>
-							<restApiDataPointConfiguration>
-								<dataType>JSON_number</dataType>
-								<restApiServiceCall>
-									<requestHeader>
-										<header>
-											<headerName>Accept</headerName>
-											<value>application/json</value>
-										</header>
-									</requestHeader>
-									<requestMethod>POST</requestMethod>
-									<requestPath>/device/status</requestPath>
-									<requestForm>
-										<parameter>
-											<name>id</name>
-											<value>{{deviceId}}</value>
-										</parameter>
-										<parameter>
-											<name>auth_key</name>
-											<value>{{authKey}}</value>
-										</parameter>
-									</requestForm>
+							<messagingDataPointConfiguration>
+								<messagingDataType>
+									<number/>
+								</messagingDataType>
+								<inMessage>
+									<topic>shellies/{{device_id}}/sensor/temperature</topic>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
-										<query>tmp.value</query>
+										<query></query>
 									</responseQuery>
-								</restApiServiceCall>
-							</restApiDataPointConfiguration>
+								</inMessage>
+							</messagingDataPointConfiguration>
 						</dataPointListElement>
 					</dataPointList>
 				</functionalProfileListElement>
@@ -220,37 +251,22 @@
 									<language>en</language>
 								</legibleDescription>
 							</dataPoint>
-							<restApiDataPointConfiguration>
-								<dataType>JSON_number</dataType>
-								<restApiServiceCall>
-									<requestHeader>
-										<header>
-											<headerName>Accept</headerName>
-											<value>application/json</value>
-										</header>
-									</requestHeader>
-									<requestMethod>POST</requestMethod>
-									<requestPath>/device/status</requestPath>
-									<requestForm>
-										<parameter>
-											<name>id</name>
-											<value>{{deviceId}}</value>
-										</parameter>
-										<parameter>
-											<name>auth_key</name>
-											<value>{{authKey}}</value>
-										</parameter>
-									</requestForm>
+							<messagingDataPointConfiguration>
+								<messagingDataType>
+									<number/>
+								</messagingDataType>
+								<inMessage>
+									<topic>shellies/{{device_id}}/sensor/humdity</topic>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
-										<query>hum.value</query>
+										<query></query>
 									</responseQuery>
-								</restApiServiceCall>
-							</restApiDataPointConfiguration>
+								</inMessage>
+							</messagingDataPointConfiguration>
 						</dataPointListElement>
 					</dataPointList>
 				</functionalProfileListElement>
 			</functionalProfileList>
-		</restApiInterface>
+		</messagingInterface>
 	</interfaceList>
 </DeviceFrame>
