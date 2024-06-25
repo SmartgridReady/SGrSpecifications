@@ -75,6 +75,40 @@
 			</configurationDescription>
 		</configurationListElement>
 		<configurationListElement>
+			<name>broker_tls</name>
+			<dataType>
+				<boolean/>
+			</dataType>
+			<defaultValue>true</defaultValue>
+			<configurationDescription>
+				<textElement>Message broker TLS.</textElement>
+				<language>en</language>
+				<label>Broker TLS</label>
+			</configurationDescription>
+			<configurationDescription>
+				<textElement>Message-Broker TLS.</textElement>
+				<language>de</language>
+				<label>Broker-TLS</label>
+			</configurationDescription>
+		</configurationListElement>
+		<configurationListElement>
+			<name>broker_tls_verify</name>
+			<dataType>
+				<boolean/>
+			</dataType>
+			<defaultValue>false</defaultValue>
+			<configurationDescription>
+				<textElement>Message broker TLS certificate verification.</textElement>
+				<language>en</language>
+				<label>Broker TLS Verification</label>
+			</configurationDescription>
+			<configurationDescription>
+				<textElement>Message-Broker TLS Zertifikatsprüfung.</textElement>
+				<language>de</language>
+				<label>Broker-TLS-Verifizierung</label>
+			</configurationDescription>
+		</configurationListElement>
+		<configurationListElement>
 			<name>broker_username</name>
 			<dataType>
 				<string/>
@@ -132,6 +166,8 @@
 					<messageBrokerListElement>
 						<host>{{broker_host}}</host>
 						<port>{{broker_port}}</port>
+						<tls>{{broker_tls}}</tls>
+						<tlsVerifyCertificate>{{broker_tls_verify}}</tlsVerifyCertificate>
 					</messageBrokerListElement>
 				</messageBrokerList>
 				<messageBrokerAuthentication>
