@@ -296,9 +296,9 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
         to a single interface (not redundant adresses RG1 and RG2) and information layer definitions </documentation>
     </annotation>
     <sequence>
-      <element name="port" type="unsignedInt" />
+      <element name="port" type="sgr:unsignedIntParameter" />
       <element name="address" type="sgr:ModbusIpAddress" />
-      <element name="slaveId" type="unsignedShort" />
+      <element name="slaveId" type="sgr:unsignedIntParameter" />
     </sequence>
   </complexType>
   <simpleType name="ModbusIpAddress">
@@ -420,13 +420,14 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
   <complexType name="ModbusRtu">
     <annotation>
       <documentation> Modbus RTU serial port configuration</documentation>
-    </annotation>    
+    </annotation>
     <sequence>
-      <element name="slaveAddr" type="unsignedShort" />
-      <element name="baudRateSelected" type="sgr:BaudRate" />
-      <element name="byteLenSelected" type="sgr:ByteLength" />
-      <element name="paritySelected" type="sgr:Parity" />
-      <element name="stopBitLenSelected" type="sgr:StopBitLength" />
+      <element name="slaveAddr" type="sgr:unsignedIntParameter" />
+      <element name="portName" type="string" />
+      <element name="baudRateSelected" type="sgr:BaudRateParameter" />
+      <element name="byteLenSelected" type="sgr:ByteLengthParameter" />
+      <element name="paritySelected" type="sgr:ParityParameter" />
+      <element name="stopBitLenSelected" type="sgr:StopBitLengthParameter" />
       <element name="serialInterfaceCapability" type="sgr:SerialInterfaceCapability" />
     </sequence>
   </complexType>

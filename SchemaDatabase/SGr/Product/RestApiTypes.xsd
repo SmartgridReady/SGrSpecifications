@@ -10,7 +10,7 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
   <complexType name="RestApiInterfaceDescription">
     <annotation>
       <documentation>Modbus interface properties</documentation>
-    </annotation>    
+    </annotation>
     <sequence>
       <element name="restApiInterfaceSelection" type="sgr:RestApiInterfaceSelection" />
       <element name="restApiUri" type="anyURI" minOccurs="1" />
@@ -24,7 +24,7 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
   <simpleType name="RestApiInterfaceSelection">
     <annotation>
       <documentation>Type of Rest Api interface</documentation>
-    </annotation>    
+    </annotation>
     <restriction base="string">
       <enumeration value="TCPV4" />
       <enumeration value="TCPV6" />
@@ -35,10 +35,20 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
   <complexType name="RestApiDataPointConfiguration">
     <annotation>
       <documentation>Detailed configuration for Rest api data point</documentation>
-    </annotation>    
+    </annotation>
     <sequence>
       <element name="dataType" type="sgr:RestApiDataType" />
-      <element name="restApiServiceCall" type="sgr:RestApiServiceCall" />
+      <choice>
+        <element name="restApiServiceCall" type="sgr:RestApiServiceCall"/>
+        <sequence>
+          <element name="restApiWriteServiceCall" type="sgr:RestApiServiceCall"/>
+          <element name="restApiReadServiceCall" type="sgr:RestApiServiceCall" minOccurs="0"/>
+        </sequence>
+        <sequence>
+          <element name="restApiReadServiceCall" type="sgr:RestApiServiceCall"/>
+          <element name="restApiWriteServiceCall" type="sgr:RestApiServiceCall" minOccurs="0"/>
+        </sequence>
+      </choice>
     </sequence>
   </complexType>
 
@@ -56,13 +66,35 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
     </restriction>
   </simpleType>
 
+  <complexType name="ValueMapping">
+    <annotation>
+      <documentation>Maps one value to another value</documentation>
+    </annotation>
+    <sequence>
+      <element name="genericValue" type="string"/>
+      <element name="deviceValue" type="string"/>
+    </sequence>
+  </complexType>
+
+  <complexType name="RestApiValueMapping">
+    <annotation>
+      <documentation>Maps from generic interface to device specific values.</documentation>
+    </annotation>
+    <sequence>
+      <element name="mapping" type="sgr:ValueMapping" maxOccurs="unbounded" />
+    </sequence>
+  </complexType>
+
   <complexType name="RestApiServiceCall">
     <sequence>
       <element name="requestHeader" type="sgr:HeaderList" minOccurs="0" />
       <element name="requestMethod" type="sgr:HttpMethod" />
       <element name="requestPath" type="string" minOccurs="0" />
+      <element name="requestQuery" type="sgr:ParameterList" minOccurs="0" />
+      <element name="requestForm" type="sgr:ParameterList" minOccurs="0" />
       <element name="requestBody" type="string" minOccurs="0" />
       <element name="responseQuery" type="sgr:ResponseQuery" minOccurs="0" />
+      <element name="valueMapping" type="sgr:RestApiValueMapping" minOccurs="0" />
     </sequence>
   </complexType>
 
@@ -74,12 +106,9 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
       <enumeration value="BasicSecurityScheme" />
       <enumeration value="DigestSecurityScheme" />
       <enumeration value="PskSecurityScheme" />
-      <enumeration value="OAuth1SecurityScheme" />
       <enumeration value="OAuth2SecurityScheme" />
       <enumeration value="HawkSecurityScheme" />
       <enumeration value="AwsSignatureSecurityScheme" />
-      <enumeration value="NtlmSecurityScheme" />
-      <enumeration value="AkamaiEdgeGridSecurityScheme" />
     </restriction>
   </simpleType>
 
@@ -118,5 +147,18 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
       <enumeration value="DELETE" />
     </restriction>
   </simpleType>
+
+  <complexType name="ParameterEntry">
+    <sequence>
+      <element name="name" type="string"/>
+      <element name="value" type="string"/>
+    </sequence>
+  </complexType>
+
+  <complexType name="ParameterList">
+    <sequence>
+      <element name="parameter" type="sgr:ParameterEntry" maxOccurs="unbounded" />
+    </sequence>
+  </complexType>
 
 </schema>

@@ -29,6 +29,7 @@
                 <xsl:apply-templates select="sgr:genericAttributes" />
                 <xsl:apply-templates select="sgr:genericAttributeList" />
                 <xsl:apply-templates select="sgr:modbusAttributes" />
+                <xsl:apply-templates select="sgr:messagingAttributes" />
             </table>
             
             <xsl:apply-templates select="sgr:dataPointList" />

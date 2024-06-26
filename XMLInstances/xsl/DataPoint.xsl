@@ -50,7 +50,7 @@
         <xsl:apply-templates select="sgr:dataPoint" />
         <tr class="dataPointDetails">
             <td colspan="6" class="noborder">
-                <table style="margin-left:35px; width:737px;">
+                <table style="margin-left:35px; width:737px">
                     <colgroup>
                         <col style="width:194px" />
                     </colgroup>
@@ -61,7 +61,10 @@
                         <tr class="genericDetails">
                             <td>Minimum Value</td>
                             <td>
-                                <xsl:value-of select="sgr:dataPoint/sgr:minimumValue" />&#160;<xsl:call-template name="SGrUnits"><xsl:with-param name="value" select="sgr:dataPoint/sgr:unit" /></xsl:call-template>
+                                <xsl:value-of select="sgr:dataPoint/sgr:minimumValue" />&#160;<xsl:call-template name="SGrUnits">
+                                    <xsl:with-param name="value" select="sgr:dataPoint/sgr:unit" />
+                                    <xsl:with-param name="none" select="'-'" />
+                                </xsl:call-template>
                             </td>
                         </tr>
                     </xsl:if>
@@ -70,7 +73,10 @@
                         <tr class="genericDetails">
                             <td>Maximum Value</td>
                             <td>
-                                <xsl:value-of select="sgr:dataPoint/sgr:maximumValue" />&#160;<xsl:call-template name="SGrUnits"><xsl:with-param name="value" select="sgr:dataPoint/sgr:unit" /></xsl:call-template>
+                                <xsl:value-of select="sgr:dataPoint/sgr:maximumValue" />&#160;<xsl:call-template name="SGrUnits">
+                                    <xsl:with-param name="value" select="sgr:dataPoint/sgr:unit" />
+                                    <xsl:with-param name="none" select="'-'" />
+                                </xsl:call-template>
                             </td>
                         </tr>
                     </xsl:if>
@@ -102,6 +108,17 @@
                                 <xsl:apply-templates select="sgr:blockCacheIdentification" />
                                 <xsl:apply-templates select="sgr:modbusAttributes" />
                             </xsl:when>
+                            <xsl:when test="sgr:messagingDataPointConfiguration">
+                                <xsl:if test="sgr:dataPoint/sgr:dataDirection = 'C'">
+                                    <tr>
+                                  <td></td>
+                                        <td style="color:red"><b>Constant data points cannot have a configuration</b></td>
+                                </tr>
+                                </xsl:if>
+                                <xsl:apply-templates select="sgr:messagingDataPointConfiguration" />
+                                <xsl:apply-templates select="sgr:blockCacheIdentification" />
+                                <xsl:apply-templates select="sgr:messagingAttributes" />
+                            </xsl:when>
                             <xsl:when test="sgr:restApiDataPointConfiguration">
                                 <xsl:if test="sgr:dataPoint/sgr:dataDirection = 'C'">
                                     <tr>
@@ -127,10 +144,22 @@
     </xsl:template>
 
     <xsl:template match="sgr:dataPoint">
-        <!-- Renders a data point table row (dataPointName, unit, dataType, presenceLevel,
-        dataDirection) -->
-        <tr>
-            <td>
+        <!-- Renders a data point table row (dataPointName, unit, dataType, presenceLevel, dataDirection) -->
+        <xsl:variable name="dpname">
+            <xsl:value-of select="sgr:dataPointName" />
+        </xsl:variable>
+        <xsl:variable name="borderstyle">
+            <xsl:choose>
+                <xsl:when test="contains($dpname, '.')">
+                    solid 2px white
+                </xsl:when>
+                <xsl:otherwise>
+                    solid 1px
+                </xsl:otherwise>
+            </xsl:choose>
+        </xsl:variable>
+        <tr style="border-left: {$borderstyle}">
+            <td style="border-bottom: {$borderstyle}">
                 <xsl:value-of select="sgr:dataPointName" />
             </td>
             <td>
@@ -155,6 +184,7 @@
             <td>
                 <xsl:call-template name="SGrUnits">
                     <xsl:with-param name="value" select="sgr:unit" />
+                    <xsl:with-param name="none" select="'-'" />
                 </xsl:call-template>
             </td>
             <td>

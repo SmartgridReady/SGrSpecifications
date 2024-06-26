@@ -18,13 +18,19 @@
                         <ul style="margin: 0">
                           <li>
                             <xsl:value-of select="sgr:name" />:
-                            <xsl:value-of select="sgr:value" />&#160;<xsl:call-template name="SGrUnits"><xsl:with-param name="value" select="sgr:unit" /></xsl:call-template>
+                            <xsl:value-of select="sgr:value" />&#160;<xsl:call-template name="SGrUnits">
+                              <xsl:with-param name="value" select="sgr:unit" />
+                              <xsl:with-param name="none" select="''" />
+                            </xsl:call-template>
                           </li>
                         </ul>
                       </xsl:for-each>
                     </xsl:when>
                     <xsl:otherwise>
-                      <xsl:value-of select="sgr:value" />&#160;<xsl:call-template name="SGrUnits"><xsl:with-param name="value" select="sgr:unit" /></xsl:call-template>
+                      <xsl:value-of select="sgr:value" />&#160;<xsl:call-template name="SGrUnits">
+                        <xsl:with-param name="value" select="sgr:unit" />
+                        <xsl:with-param name="none" select="''" />
+                      </xsl:call-template>
                     </xsl:otherwise>
                   </xsl:choose>
                 </td>

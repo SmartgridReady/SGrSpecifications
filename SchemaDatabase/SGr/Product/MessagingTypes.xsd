@@ -46,16 +46,10 @@ https://github.com/SmartgridReady/SGrSpecifications  -->
     <sequence>
       <element name="host" type="string" />
       <element name="port" type="string" />
+      <element name="tls" minOccurs="0" type="boolean" />
+      <element name="tlsVerifyCertificate" minOccurs="0" type="boolean" />
     </sequence>
   </complexType>
-
-  <simpleType name="MessageBrokerAuthenticationMethod">
-    <restriction base="string">
-      <enumeration value="NoSecurityScheme" />
-      <enumeration value="Basic" />
-      <enumeration value="ClientCertificate" />
-    </restriction>
-  </simpleType>
 
   <complexType name="MessageBrokerAuthenticationBasic">
     <sequence>

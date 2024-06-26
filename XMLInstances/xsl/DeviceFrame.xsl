@@ -74,11 +74,18 @@
                                     <xsl:apply-templates select="sgr:timeSyncBlockNotification" />
                                 </xsl:if>
         
+                                <!-- Messaging Device -->
+                                <xsl:if test="sgr:messagingInterfaceDescription">
+                                    <h1 class="messagingattribute">Messaging Interface</h1>
+                                    <xsl:apply-templates select="sgr:messagingInterfaceDescription" />
+                                    <xsl:apply-templates select="sgr:messagingAttributes" />
+                                </xsl:if>
+        
                                 <!-- Rest Device -->
                                 <xsl:if test="sgr:restApiInterfaceDescription">
                                     <h1 class="restapiattribute">RestApi Interface</h1>
                                     <xsl:apply-templates
-                                        select="sgr:restApiInterface/sgr:restApiInterfaceDescription" />
+                                        select="sgr:restApiInterfaceDescription" />
                                 </xsl:if>
         
                                 <!-- Contact Device -->
@@ -101,12 +108,14 @@
                             <!-- Configurations -->
                             <table>
                                 <colgroup>
-                                    <col style="width:230px" />
-                                    <col style="width:134px" />
+                                    <col style="width:200px" />
+                                    <col style="width:80px" />
+                                    <col style="width:80px" />
                                 </colgroup>
                                 <tr>
                                     <th>Name</th>
                                     <th>Type</th>
+                                    <th>Default</th>
                                     <th>Description</th>
                                 </tr>
         
@@ -117,6 +126,9 @@
                                         </td>
                                         <td>
                                             <xsl:apply-templates select="sgr:dataType" /> 
+                                        </td>
+                                        <td>
+                                            <xsl:value-of select="sgr:defaultValue"/> 
                                         </td>
                                         <td>
                                             <xsl:for-each select="sgr:configurationDescription">

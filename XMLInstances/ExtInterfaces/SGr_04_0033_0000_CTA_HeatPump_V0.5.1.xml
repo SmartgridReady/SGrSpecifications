@@ -23,9 +23,9 @@
     </legibleDescription>
     <deviceCategory>HeatPumpAppliance</deviceCategory>
     <isLocalControl>true</isLocalControl>
-    <softwareRevision>2.1.0</softwareRevision>
-    <hardwareRevision>1.1.0</hardwareRevision>
-    <brandName>OptiHeat Inverta</brandName>
+    <softwareRevision>v1.12.1</softwareRevision>
+    <hardwareRevision>-</hardwareRevision>
+    <brandName>Optiheat Inverta</brandName>
     <powerSource>mains1Phase, mains3Phase</powerSource>
     <nominalPower>5 - 35 kW</nominalPower>
     <manufacturerLabel>CTA OH Inverta Wärmepumpen</manufacturerLabel>
@@ -46,13 +46,31 @@
       <uri>https://cta.ch/privatkunden/produkte</uri>
     </programmerHints>
   </deviceInformation>
+  <configurationList>
+    <configurationListElement>
+      <name>address</name>
+      <dataType>
+        <string/>
+      </dataType>
+      <configurationDescription>
+        <textElement>IP address or DHCP name of the device</textElement>
+        <language>en</language>
+        <label>IP Address</label>
+      </configurationDescription>
+      <configurationDescription>
+        <textElement>IP-Adresse oder DHCP-Name des Geräts.</textElement>
+        <language>de</language>
+        <label>IP Adresse</label>
+      </configurationDescription>
+    </configurationListElement>
+  </configurationList>
   <interfaceList>
     <modbusInterface>
       <modbusInterfaceDescription>
         <modbusInterfaceSelection>TCPIP</modbusInterfaceSelection>
         <modbusTcp>
           <port>502</port>
-          <address>192.168.99.55</address>
+          <address>{{address}}</address>
           <slaveId>1</slaveId>
         </modbusTcp>
         <firstRegisterAddressIsOne>false</firstRegisterAddressIsOne>
@@ -89,9 +107,12 @@
             <legibleDescription>
               <textElement>
                 <![CDATA[
-                  Leeres Funktionsprofil ohne Datenpunkte, das für herstellerspezifische
-                  Informationen und Datenpunkte benutzt werden kann. </br>
-                  Es ermöglicht das Handling von Datenpunkten, welche für das ganze Gerät gelten.
+                  Die CTA Wärmepumpe unterstützt eine "externe Steuerung" oder "interne Steuerung".
+                  <ul>
+                  <li>Die externe Steuerung entspricht der direkten Regelung der Vorlauftemperatur. Dabei muss regelmässig eine Countdown-Variable gesetzt werden.</li>
+                  <li>Die interne Steuerung entspricht der indirekten Regelung über Vorgabe des Komfort-Wertes.</li>
+                  </ul>
+                  Generelle Bemerkung: Alle gelieferten Temperaturwerte &lt; -90<sup>o</sup> entsprechen nicht vorhandenen oder defekten Fühlern.
                 ]]>
               </textElement>
               <language>de</language>
@@ -103,7 +124,7 @@
                 <dataPointName>ctaRemoteCtrlTimeSec</dataPointName>
                 <dataDirection>RW</dataDirection>
                 <dataType>
-                  <int16U />
+                  <int16 />
                 </dataType>
                 <unit>SECONDS</unit>
                 <maximumValue>3000</maximumValue>
@@ -112,7 +133,13 @@
                   <manufName>CTA_Ext_Communication_Handler</manufName>
                 </alternativeNames>
                 <legibleDescription>
-                  <textElement>Countdown Variable in sec. Wenn 0, dann Ext. Kommunikation inaktiv., Max. Wert 3000</textElement>
+                  <textElement>
+                    <![CDATA[
+                      Countdown Variable in Sekunden für die "externe Steuerung".
+                      <p>Der Datenpunkt muss regelmässig gesetzt werden, um einen Verbindugsabbruch zu erkennen. Es kann ein beliebiger Wert in untenstehendem Wertebereich gesetzt werden.</p>
+                      Die Wärmepumpe zählt den Wert intern zurück. Wenn sie bei 0 angelangt ist, wird der Modus auf "interne Steuerung" umgeschaltet.
+                    ]]>
+                  </textElement>
                   <language>de</language>
                 </legibleDescription>
                 <programmerHints>
@@ -126,7 +153,7 @@
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
-                  <int16U/>
+                  <int16/>
                 </modbusDataType>
                 <address>990</address>
                 <registerType>HoldRegister</registerType>
@@ -379,7 +406,7 @@
                 </alternativeNames>
                 <legibleDescription>
                   <textElement>
-                    Auslesen der aktuellen aktuellen-Temperatur des Rücklaufs.
+                    Auslesen der aktuellen Temperatur des Rücklaufs.
                     Rücklauftemperatur in °C
                   </textElement>
                   <language>de</language>
@@ -439,7 +466,7 @@
             <legibleDescription>
               <textElement>
                 Die Leistungssteuerung steuert die Verdichterdrehzahl. Dieser Sollwert wird nur bei Trink-Warmwasserbedarf berücksichtigt.
-                Der Bedarf kann durch die Erhöhung des DomHotWTempStpt-Wertes erzeugt werden.
+                Der Bedarf kann durch die Erhöhung des DomHotWTempSetpoint-Wertes erzeugt werden.
               </textElement>              
               <language>de</language>
             </legibleDescription>
@@ -447,25 +474,21 @@
           <dataPointList>
             <dataPointListElement>
               <dataPoint>
-                <dataPointName>SpeedCtrlStpt</dataPointName>
+                <dataPointName>SpeedCtrlSetpoint</dataPointName>
                 <dataDirection>RWP</dataDirection>
                 <dataType>
                   <float32 />
                 </dataType>
                 <unit>PERCENT</unit>
-                <minimumValue>38.0</minimumValue>
+                <minimumValue>25.0</minimumValue>
                 <maximumValue>100.0</maximumValue>
-                <!-- TODO check whether this is needed
-                <unitConversionMultiplicator>2.0</unitConversionMultiplicator>
-                -->
                 <alternativeNames>
                   <manufName>CTA_DWRequest</manufName>
                 </alternativeNames>
                 <legibleDescription>
                   <textElement>
                     <![CDATA[
-                      <font color="red">VD-Drehzahl in % bei TWW (Trinkwarmwasser) Ladung (Empfehlung 38%. Es sollte jedenfalls nicht zu lange auf dem Maximum von 100% gefahren werden.)
-                      <br>Eher restriktiv deklarieren. Was kann CTA wirklich garantieren? (z.B. 50% - 80%)</font>
+                      Verdichter-Drehzahl in % bei TWW (Trinkwarmwasser) Ladung. Empfohlener Bereich: 30..80%
                     ]]>         
                   </textElement>
                   <language>de</language>
@@ -495,12 +518,7 @@
                 <legibleDescription>
                   <textElement>
                     <![CDATA[
-                      Effektive Drehzahl des Verdichters
-                      </br>
-                      <font color="red">nochmals mit den Hersteller prüfen, ob hier wirklich rpm rauskommen. Bei der Vorgabe sind es ja %.
-                      <br>Datenpunkt wird prinzipiell auf % gesetzt, sowohl schreiben und lesen
-	                  <br>Multiplier muss mit CTA geklärt werden
-                      </font>
+                      Effektive Drehzahl des Verdichters.
                     ]]>         
                   </textElement>
                   <language>de</language>
@@ -566,15 +584,13 @@
                   gestellt werden. Derselbe physikalische Kreislauf kann entweder für das Heizen oder
                   das Kühlen verwendet werden. Das Heiz-/Kühlkreisprofil muss immer in Kombination mit
                   dem Grundprofil der Wärmepumpe bewirtschaftet werden. Es können mehrere Heiz-/Kühlkreisprofile definiert werden.
-                  <p>Es ist eine direkte Regelung der Vorlauftemperatur oder indirekte Regelung der Komforttemperatur möglich - siehe dazu generelle Beschreibung in
-                  <a href="https://github.com/SmartGridready/SGrSpecifications/blob/master/doc/HeatPumpAppliances.md#heat-pump-appliances">HeatPumpAppliances</a>.</p>
-                  <p>Es ist eine direkte Regelung der Vorlauftemperatur oder indirekte Regelung der Komforttemperatur möglich - siehe dazu generelle Beschreibung in
-                  <a href="https://github.com/SmartGridready/SGrSpecifications/blob/master/doc/HeatPumpAppliances.md#heat-pump-appliances">HeatPumpAppliances</a>.</p>
+                  <p>Das vorliegende Profil betrachtet nur den Heizmodus.</p>
+                  <p>Bei der direkten Regelung wird die Wärmepumpe extern gesteuert (<code>ctaRemoteHCTempSetptEnable=true</code>) und die Vorlauftemperatur des Heizkreises vorgegeben <em>(SupplyWaterTempSetpoint</em>).
+                  Bei der indirekten Regelung wird die Komfort-Temperatur vorgegeben, was dem Fusspunkt der Heizkurve entspricht (SupplyWaterTempSetpointComfort).
+                  Dazu muss die Wärmepupumpe in den Komfort-Modus versetzt werden (<code>HeatCoolCtrlOpState=CTA_HC_HEAT_COMF</code>) &ndash;
+                  <a href="https://github.com/SmartGridready/SGrSpecifications/blob/master/doc/HeatPumpAppliances.md#heatcoolctrl-functional-profile">HeatPumpAppliances</a>.</p>
                   <p>Es handelt sich dabei um die "Entladekreise", welche durch das Gebäude geführt werden.
                   Entsprechende Mischventile sorgen dafür, dass verschiedene Temperaturniveaus eingestellt werden können</p>
-                  <font color="red">Ich vermisse hier den Datenpunkte für die Anhebung des Sollwerts über das Modbus-Register 1005 CTA_HK1_SetpointComfort.
-                                    Das wäre dann analog zu Stiebel Eltron. Name des Datenpunktes: SupplyWaterTempStptComfort. Mit diesem Datenpunkt könnte
-                                    man den Offset der Heizkurve verstellen, was sinnvoller ist als den absoluten Sollwert.</font>
                 ]]>         
               </textElement>
               <language>de</language>
@@ -625,7 +641,12 @@
                   <manufName>CTA_HK1_Status_UsrSet</manufName>
                 </alternativeNames>
                 <legibleDescription>
-                  <textElement>Setzen und Auslesen des aktuellen Status des Heizkreises</textElement>
+                  <textElement>
+                    <![CDATA[
+                      Setzen und Auslesen der aktuellen Betriebsart des Heizkreises
+                      <p>Die Betriebsart CTA_HC_EXT_CTRL aktiviert die direkte Regelung der Vorlauftemperatur.</p>
+                    ]]>
+                  </textElement>
                   <language>de</language>
                 </legibleDescription>
               </dataPoint>
@@ -674,24 +695,34 @@
                       <ordinal>5</ordinal>
                       <description>Notbetrieb</description>
                     </enumEntry>
+                    <enumEntry>
+                      <literal>CTA_HC_SUMMER_MODE</literal>
+                      <ordinal>6</ordinal>
+                      <description>Sommer-Betrieb</description>
+                    </enumEntry>
                   </enum>
                 </dataType>
                 <unit>NONE</unit>
                 <alternativeNames>
-                  <sLV1Name>HCOpState</sLV1Name>
+                  <sLV1Name>ctaHCOpState</sLV1Name>
                   <manufName>CTA_HK1_Status_UsrSet</manufName>
                 </alternativeNames>
                 <legibleDescription>
                   <textElement>
                     <![CDATA[
-                      Auslesen des aktuellen Status des Heizkreises
-                      </br>
-                      <font color="red">Braucht es diesen zusätzlichen Datenpunkt überhaupt? Der ist ja bereits abgedeckt durch den vorherigen.
-                                        Ev. aus Kompatibilitätsgründen für einheitliche FPs?</font>
+                      Auslesen der aktuellen Ist-Vorlauftemperatur des Heizkreises 1 (HK1).
                     ]]>         
                   </textElement>
                   <language>de</language>
                 </legibleDescription>
+                <programmerHints>
+                  <textElement>
+                    <![CDATA[
+                      Nur mit Mischgruppe, sonst Feedback "-99" undefiniert.
+                    ]]>         
+                  </textElement>
+                  <language>de</language>
+                </programmerHints>
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
@@ -712,30 +743,34 @@
                 <unit>DEGREES_CELSIUS</unit>
                 <alternativeNames>
                   <sLV1Name>SupplyWaterTemp</sLV1Name>
-                  <manufName>CTA_B21_Temp</manufName>
+                  <manufName>CTA_B1_Temp</manufName>
                 </alternativeNames>
                 <legibleDescription>
                   <textElement>
                     <![CDATA[
-                      Auslesen der aktuellen aktuellen-Temperatur des Vorlaufs.
+                      Auslesen der aktuellen Temperatur des Vorlaufs.
                       <p>Es handelt sich dabei um die Vorlauftemperatur, welche ins Wärmeabgabesystem des Gebäudes geführt wird.</p>
                     ]]>         
                   </textElement>
                   <language>de</language>
                 </legibleDescription>
+                <programmerHints>
+                  <textElement>Bei fehlendem Fühler wird ein Wert &lt;-90 zurückgegeben.</textElement>
+                  <language>de</language>
+                </programmerHints>
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
                   <float32 />
                 </modbusDataType>
-                <address>2002</address>
+                <address>2018</address>
                 <registerType>InputRegister</registerType>
                 <numberOfRegisters>2</numberOfRegisters>
               </modbusDataPointConfiguration>
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
-                <dataPointName>SupplyWaterTempStpt</dataPointName>
+                <dataPointName>SupplyWaterTempSetpoint</dataPointName>
                 <dataDirection>RW</dataDirection>
                 <dataType>
                   <float32 />
@@ -748,11 +783,8 @@
                 <legibleDescription>
                   <textElement>
                     <![CDATA[
-                      Setzen der aktuellen Soll-Temperatur des Vorlaufs (direkte Regelung)
-                      </br>
-                      <font color="red">Dieser Datenpunkt ist nur aktiv, wenn die Wärmepumpe extern gesteuert ist, z.B. über ein GA-System (Modbus Register 1000 CTA_Ext_Heating_Command auf 1).
-                                        Das ist aus meiner Sicht aber in einem EFH nie der Fall. Dort wird üblicherweise lokal gesteuert über den WP-Regler.
-                                        Ich würde diesen Datenpunkt deshalb hier weglassen.</font>
+                      Setzen des aktuellen Vorlauf-Sollwerts Heizkreis 1 (direkte Regelung)
+                      <p>Dieser Datenpunkt ist nur aktiv, wenn die Wärmepumpe extern gesteuert ist (<code>ctaRemoteHCTempSetptEnable=true</code>).</p>
                     ]]>         
                   </textElement>
                   <language>de</language>
@@ -769,7 +801,7 @@
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
-                <dataPointName>ctaRemoteHCTempSetptEnable</dataPointName>
+                <dataPointName>RemoteHCTempSetptEnable</dataPointName>
                 <dataDirection>RW</dataDirection>
                 <dataType>
                   <boolean/>
@@ -781,9 +813,7 @@
                 <legibleDescription>
                   <textElement>
                     <![CDATA[
-                      true um den Datenpunkt HeatCoolCtrl.SupplyWaterTempStpt zu aktvieren
-                      </br>
-                      <font color="red">dito, siehe oben</font>
+                      Externe Steuerung der Wärmpumpe (direkte Regelung) aktivieren (<code>true</code>) oder deaktivieren (<code>false</code>).
                     ]]>         
                   </textElement>
                   <language>de</language>
@@ -807,27 +837,36 @@
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
-                <dataPointName>ReturnSupplyWaterTemp</dataPointName>
-                <dataDirection>R</dataDirection>
+                <dataPointName>SupplyWaterTempSetpointComfort</dataPointName>
+                <dataDirection>RWP</dataDirection>
                 <dataType>
-                  <float32 />
+                  <float32/>
                 </dataType>
                 <unit>DEGREES_CELSIUS</unit>
                 <alternativeNames>
-                  <sLV1Name>ReturnSupplyWaterTemp</sLV1Name>
-                  <manufName>CTA_B71_Temp</manufName>
-                </alternativeNames>
+                  <manufName>CTA_HK1_SetpointComfort</manufName></alternativeNames>
                 <legibleDescription>
-                  <textElement>Auslesen der aktuellen aktuellen-Temperatur des Rücklaufs.</textElement>
+                  <textElement>
+                    <![CDATA[
+                      Komfort-Sollwert für die indirekte Regelung des Heizkreises 1 (HK1).
+                      <p>Ist nur aktiv, wenn Wärmepumpe intern gesteuert (<code>ctaRemoteHCTempStptEnable=false</code>).</p>
+                    ]]>         
+                  </textElement>
                   <language>de</language>
                 </legibleDescription>
+                <programmerHints>
+                  <textElement>
+                    Restriktion: Wert sollte nicht zu häufig verändert werden, maximal alle 20 Minuten.
+                  </textElement>
+                  <language>de</language>
+                </programmerHints>
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
                   <float32 />
                 </modbusDataType>
-                <address>2004</address>
-                <registerType>InputRegister</registerType>
+                <address>1005</address>
+                <registerType>HoldRegister</registerType>
                 <numberOfRegisters>2</numberOfRegisters>
               </modbusDataPointConfiguration>
             </dataPointListElement>
@@ -855,11 +894,13 @@
                   gestellt werden. Derselbe physikalische Kreislauf kann entweder für das Heizen oder
                   das Kühlen verwendet werden. Das Heiz-/Kühlkreisprofil muss immer in Kombination mit
                   dem Grundprofil der Wärmepumpe bewirtschaftet werden. Es können mehrere Heiz-/Kühlkreisprofile definiert werden.
-                  <p>Es ist eine direkte Regelung der Vorlauftemperatur oder indirekte Regelung der Komforttemperatur möglich - siehe dazu generelle Beschreibung in
-                  <a href="https://github.com/SmartGridready/SGrSpecifications/blob/master/doc/HeatPumpAppliances.md#heat-pump-appliances">HeatPumpAppliances</a>.</p>
+                  <p>Das vorliegende Profil betrachtet nur den Heizmodus.</p>
+                  <p>Bei der direkten Regelung wird die Wärmepumpe extern gesteuert (<code>ctaRemoteHCTempSetptEnable=true</code>) und die Vorlauftemperatur des Heizkreises vorgegeben <em>(SupplyWaterTempSetpoint</em>).
+                  Bei der indirekten Regelung wird die Komfort-Temperatur vorgegeben, was dem Fusspunkt der Heizkurve entspricht (SupplyWaterTempSetpointComfort).
+                  Dazu muss die Wärmepupumpe in den Komfort-Modus versetzt werden (<code>HeatCoolCtrlOpState=CTA_HC_HEAT_COMF</code>) &ndash;
+                  <a href="https://github.com/SmartGridready/SGrSpecifications/blob/master/doc/HeatPumpAppliances.md#heatcoolctrl-functional-profile">HeatPumpAppliances</a>.</p>
                   <p>Es handelt sich dabei um die "Entladekreise", welche durch das Gebäude geführt werden.
                   Entsprechende Mischventile sorgen dafür, dass verschiedene Temperaturniveaus eingestellt werden können</p>
-                  <font color="red">leiche Bemerkungen wie oben beim HeatCoolCtrl_1.</font>
                 ]]>         
               </textElement>
               <language>de</language>
@@ -910,7 +951,12 @@
                   <manufName>CTA_HK2_Status_UsrSet</manufName>
                 </alternativeNames>
                 <legibleDescription>
-                  <textElement>Auslesen des aktuellen Status des Heizkreises</textElement>
+                  <textElement>
+                    <![CDATA[
+                      Setzen und Auslesen der aktuellen Betriebsart des Heizkreises
+                      <p>Die Betriebsart CTA_HC_EXT_CTRL aktiviert die direkte Regelung der Vorlauftemperatur.</p>
+                    ]]>
+                  </textElement>
                   <language>de</language>
                 </legibleDescription>
               </dataPoint>
@@ -959,6 +1005,11 @@
                       <ordinal>5</ordinal>
                       <description>Notbetrieb</description>
                     </enumEntry>
+                    <enumEntry>
+                      <literal>CTA_HC_SUMMER_MODE</literal>
+                      <ordinal>6</ordinal>
+                      <description>Sommer-Betrieb</description>
+                    </enumEntry>
                   </enum>
                 </dataType>
                 <unit>NONE</unit>
@@ -967,9 +1018,21 @@
                   <manufName>CTA_HK2_Status_UsrSet</manufName>
                 </alternativeNames>
                 <legibleDescription>
-                  <textElement>Auslesen des aktuellen Status des Heizkreises</textElement>
+                  <textElement>
+                    <![CDATA[
+                      Auslesen der aktuellen Ist-Vorlauftemperatur des Heizkreises 2 (HK2).
+                    ]]>         
+                  </textElement>
                   <language>de</language>
                 </legibleDescription>
+                <programmerHints>
+                  <textElement>
+                    <![CDATA[
+                      Nur mit Mischgruppe, sonst Feedback "-99" undefiniert.
+                    ]]>         
+                  </textElement>
+                  <language>de</language>
+                </programmerHints>
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
@@ -990,25 +1053,29 @@
                 <unit>DEGREES_CELSIUS</unit>
                 <alternativeNames>
                   <sLV1Name>SupplyWaterTemp</sLV1Name>
-                  <manufName>CTA_B21_Temp</manufName>
+                  <manufName>CTA_B12_Temp</manufName>
                 </alternativeNames>
                 <legibleDescription>
-                  <textElement>Auslesen der aktuellen aktuellen-Temperatur des Vorlaufs.</textElement>
+                  <textElement>Auslesen der aktuellen Temperatur des Vorlaufs.</textElement>
                   <language>de</language>
                 </legibleDescription>
+                <programmerHints>
+                  <textElement>Bei fehlendem Fühler wird ein Wert &lt;-90 zurückgegeben.</textElement>
+                  <language>de</language>
+                </programmerHints>
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
                   <float32 />
                 </modbusDataType>
-                <address>2002</address>
+                <address>2020</address>
                 <registerType>InputRegister</registerType>
                 <numberOfRegisters>2</numberOfRegisters>
               </modbusDataPointConfiguration>
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
-                <dataPointName>SupplyWaterTempStpt</dataPointName>
+                <dataPointName>SupplyWaterTempSetpoint</dataPointName>
                 <dataDirection>RW</dataDirection>
                 <dataType>
                   <float32 />
@@ -1016,11 +1083,14 @@
                 <unit>DEGREES_CELSIUS</unit>
                 <alternativeNames>
                   <sLV1Name>SupplyWaterTempStpt</sLV1Name>
-                  <manufName>CTA_Ext_Heating_Setpoint_2 (?Reserve)</manufName>
+                  <manufName>CTA_Ext_Heating_Setpoint_HK2</manufName>
                 </alternativeNames>
                 <legibleDescription>
                   <textElement>
-                    Setzen der aktuellen Soll-Temperatur des Vorlaufs (direkte Regelung).
+                    <![CDATA[
+                      Setzen des aktuellen Vorlauf-Sollwerts Heizkreis 2 (direkte Regelung)
+                      <p>Dieser Datenpunkt ist nur aktiv, wenn die Wärmepumpe extern gesteuert ist (<code>ctaRemoteHCTempSetptEnable=true</code>).</p>
+                    ]]>         
                   </textElement>
                   <language>de</language>
                 </legibleDescription>
@@ -1044,9 +1114,13 @@
                 <unit>NONE</unit>
                 <alternativeNames>
                   <sLV1Name>ctaRemoteHCTempSetptEnable</sLV1Name>
-                  <manufName>CTA_Ext_Heating_Command_2 (?Reserve)</manufName></alternativeNames>
+                  <manufName>CTA_Ext_Heating_Command_HK2</manufName></alternativeNames>
                 <legibleDescription>
-                  <textElement>true um den Datenpunkt HeatCoolCtrl.SupplyWaterTempStpt zu aktvieren</textElement>
+                  <textElement>
+                    <![CDATA[
+                      Externe Steuerung der Wärmpumpe (direkte Regelung) aktivieren (<code>true</code>) oder deaktivieren (<code>false</code>).
+                    ]]>         
+                  </textElement>
                   <language>de</language>
                 </legibleDescription>
                 <programmerHints>
@@ -1068,27 +1142,36 @@
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
-                <dataPointName>ReturnSupplyWaterTemp</dataPointName>
-                <dataDirection>R</dataDirection>
+                <dataPointName>SupplyWaterTempSetpointComfort</dataPointName>
+                <dataDirection>RWP</dataDirection>
                 <dataType>
-                  <float32 />
+                  <float32/>
                 </dataType>
                 <unit>DEGREES_CELSIUS</unit>
                 <alternativeNames>
-                  <sLV1Name>ReturnSupplyWaterTemp</sLV1Name>
-                  <manufName>CTA_B71_Temp</manufName>
-                </alternativeNames>
+                  <manufName>CTA_HK2_SetpointComfort</manufName></alternativeNames>
                 <legibleDescription>
-                  <textElement>Auslesen der aktuellen aktuellen-Temperatur des Rücklaufs.</textElement>
+                  <textElement>
+                    <![CDATA[
+                      Komfort-Sollwert für die indirekte Regelung des Heizkreises 2 (HK2).
+                      <p>Ist nur aktiv, wenn Wärmepumpe intern gesteuert (<code>ctaRemoteHCTempStptEnable=false</code>).</p>
+                    ]]>         
+                  </textElement>
                   <language>de</language>
                 </legibleDescription>
+                <programmerHints>
+                  <textElement>
+                    Restriktion: Wert sollte nicht zu häufig verändert werden, maximal alle 20 Minuten.
+                  </textElement>
+                  <language>de</language>
+                </programmerHints>
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
                   <float32 />
                 </modbusDataType>
-                <address>2004</address>
-                <registerType>InputRegister</registerType>
+                <address>1105</address>
+                <registerType>HoldRegister</registerType>
                 <numberOfRegisters>2</numberOfRegisters>
               </modbusDataPointConfiguration>
             </dataPointListElement>
@@ -1137,10 +1220,6 @@
                       <literal>CTA_DHW_PUSH</literal>
                       <ordinal>3</ordinal>
                     </enumEntry>
-                    <enumEntry>
-                      <literal>CTA_DHW_EMERGENCY_OP</literal>
-                      <ordinal>5</ordinal>
-                    </enumEntry>
                   </enum>
                 </dataType>
                 <unit>NONE</unit>
@@ -1150,9 +1229,10 @@
                 </alternativeNames>
                 <legibleDescription>
                   <textElement>
-                    Die Betriebsarten dieses Gerätes sind herstellerspezifisch:
-                    Ein- und ausschalten, einmaliger Leistungsstoss und  Notbetrieb TWW (Trinkwarmwasser),
-                    einmaliges kurzes Aufheizen (Push)
+                    <![CDATA[
+                      Setzen und Auslesen der Betriebsart für die Brauchwarmwasserproduktion.
+                      <p>Ein- und Ausschalten sowie einmaliges kurzes Aufheizen (Push) des Trinkwasserkreises (TWW).</p>
+                    ]]>
                   </textElement>
                   <language>de</language>
                 </legibleDescription>
@@ -1175,30 +1255,37 @@
                     <enumEntry>
                       <literal>CTA_DHW_INACTIVE</literal>
                       <ordinal>0</ordinal>
+                      <description>Inaktiv</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>CTA_DHW_ON</literal>
                       <ordinal>1</ordinal>
+                      <description>Eingeschaltet</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>CTA_DHW_OFF</literal>
                       <ordinal>2</ordinal>
+                      <description>Ausgeschaltet</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>CTA_DHW_PUSH</literal>
                       <ordinal>3</ordinal>
+                      <description>Kurzes Aufheizen</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>CTA_DHW_HOLIDAY_IS_SELECTED</literal>
                       <ordinal>4</ordinal>
+                      <description>Ferienprogramm gewählt</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>CTA_DHW_EMERGENCY_OP</literal>
                       <ordinal>5</ordinal>
+                      <description>Notbetrieb</description>
                     </enumEntry>
                     <enumEntry>
                       <literal>CTA_DHW_AUTOMATED_LEGIO_RUN</literal>
                       <ordinal>6</ordinal>
+                      <description>Automatischer Legionellen-Modus</description>
                     </enumEntry>
                   </enum>
                 </dataType>
@@ -1209,8 +1296,9 @@
                 </alternativeNames>
                 <legibleDescription>
                   <textElement>
-                    Die Betriebsarten dieses Gerätes sind herstellerspezifisch:
-                    Ein- und ausschalten, einmaliger Leistungsstoss, Ferienschaltung (kann nur vor Ort gesetzt werden), Notbetrieb TWW, und (nicht setzbare) automatische Legionellenschaltung  
+                    <![CDATA[
+                      Auslesen des Status der Brauchwarmwasserproduktion.
+                    ]]>
                   </textElement>
                   <language>de</language>
                 </legibleDescription>
@@ -1226,7 +1314,7 @@
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
-                <dataPointName>DomHotWaterTempStpt</dataPointName>
+                <dataPointName>DomHotWaterTempSetpointComfort</dataPointName>
                 <dataDirection>RWP</dataDirection>
                 <dataType>
                   <float32 />
@@ -1302,14 +1390,14 @@
           <dataPointList>
             <dataPointListElement>
               <dataPoint>
-                <dataPointName>HeatBufferTempStptOffset</dataPointName>
+                <dataPointName>HeatBufferTempSetpointOffset</dataPointName>
                 <dataDirection>RWP</dataDirection>
                 <dataType>
                   <float32 />
                 </dataType>
                 <unit>DEGREES_KELVIN</unit>
-                <minimumValue>-50.0</minimumValue>
-                <maximumValue>50.0</maximumValue>
+                <minimumValue>-5.0</minimumValue>
+                <maximumValue>40.0</maximumValue>
                 <alternativeNames>
                   <sLV1Name>HeatBufferTempStptOffset</sLV1Name>
                   <manufName>CTA_CFG_Buffer_Overcharge_dT</manufName>
@@ -1343,7 +1431,7 @@
                     <sLV1Name>ActHeatBufferTemp</sLV1Name>
                     <manufName>CTA_B4_Temp</manufName></alternativeNames>
                 <legibleDescription>
-                  <textElement>Aktuelle Ist-Temperatur des Heiz-Pufferspeichers (oben im Speicher gemessen)</textElement>
+                  <textElement>Aktuelle Ist-Temperatur des Heiz-Pufferspeichers (oben im Speicher gemessen) (falls der Fühler nicht vorhanden ist, wird der Wert -99 zurückgeliefert)</textElement>
                   <language>de</language>
                 </legibleDescription>
               </dataPoint>
@@ -1371,6 +1459,10 @@
                   <textElement>Aktuelle Ist-Temperatur des Heiz-Pufferspeichers (unten im Speicher gemessen)</textElement>
                   <language>de</language>
                 </legibleDescription>
+                <programmerHints>
+                  <textElement>Dieser Fühler ist nicht immer vorhanden (liefert Wert "-99" zurück, wenn nicht vorhanden)</textElement>
+                  <language>de</language>
+                </programmerHints>
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
@@ -1461,6 +1553,8 @@
                   <p>Der Communicator (z.B. Energiemanagementsystem) berücksichtigt die Gerätevorgaben zur Schaltfrequenz (Attribute maxLockTimeMintues und minRunTimeMinutes.
                   Der Wert der Attribute kann bei der Deklaration gesetzt werden. Standardeinstellung der Wärmepumpen ist 
                   "Max. Lock Time" 20 Minuten und "Min. Run Time" 3 Minuten.</p>
+                  <p>Für die Verwendung zur Eigenverbrauchsoptimierung wird empfohlen, nur die Betriebszustände HP_NORMAL und HP_INTENSIFIED zu verwenden.
+                     Der Betriebsmodus HP_FORCED sollte nur in Ausnahmefällen verwendet werden, da er bei häufigem Einschalten zu Lebensdauerbeschränkungen des Verdichters führen kann.</p>
                   „SG Ready“ ist ein Markenzeichen des Bundesverbands Wärmepumpe e. V.<br>
                   Weiterführende Informationen unter <a href="https://www.waermepumpe.de/normen-technik/sg-ready/">https://www.waermepumpe.de/normen-technik/sg-ready/</a>.
                 ]]>
@@ -1878,40 +1972,14 @@
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
-                <dataPointName>RuntimeCooling</dataPointName>
-                <dataDirection>R</dataDirection>
-                <dataType>
-                  <float64/>
-                </dataType>
-                <unit>HOURS</unit>
-                <alternativeNames>
-                  <sLV1Name>RuntimeCooling</sLV1Name>
-                  <manufName>CTA_OperTime_Cooling_h</manufName>
-                </alternativeNames>
-                <legibleDescription>
-                  <textElement>Summe der Laufzeit in der Kühlphase.</textElement>
-                  <language>de</language>
-                </legibleDescription>
-              </dataPoint>
-              <modbusDataPointConfiguration>
-                <modbusDataType>
-                  <int32U />
-                </modbusDataType>
-                <address>2092</address>
-                <registerType>InputRegister</registerType>
-                <numberOfRegisters>2</numberOfRegisters>
-              </modbusDataPointConfiguration>
-            </dataPointListElement>
-            <dataPointListElement>
-              <dataPoint>
-                <dataPointName>NrOfStartupsCompressor</dataPointName>
+                <dataPointName>NoOfStartupsCompressor</dataPointName>
                 <dataDirection>R</dataDirection>
                 <dataType>
                   <float64/>
                 </dataType>
                 <unit>NONE</unit>
                 <alternativeNames>
-                  <sLV1Name>NrOfStartupsCompressor</sLV1Name>
+                  <sLV1Name>NoOfStartupsCompressor</sLV1Name>
                   <manufName>CTA_CompStartAttempts</manufName>
                 </alternativeNames>
                 <legibleDescription>
