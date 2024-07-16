@@ -3,7 +3,7 @@
 <DeviceFrame xmlns="http://www.smartgridready.com/ns/V0/"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/Product/Product.xsd">
-  <deviceName>betaABBMeterV0.1.2</deviceName>
+  <deviceName>betaABBMeterV0.3.0</deviceName>
   <manufacturerName>ABB</manufacturerName>
   <specificationOwnerIdentification>0</specificationOwnerIdentification>
   <releaseNotes>
@@ -55,8 +55,98 @@
     <softwareRevision>1.0.0</softwareRevision>
     <hardwareRevision>1.0.0</hardwareRevision>
     <brandName>B23</brandName>
-    <generalRemarks>generalRemarks</generalRemarks>
+    <levelOfOperation>m</levelOfOperation>
+    <generalRemarks>Standard Modbus RTU Variant</generalRemarks>
+    <versionNumber>
+      <primaryVersionNumber>0</primaryVersionNumber>
+      <secondaryVersionNumber>3</secondaryVersionNumber>
+      <subReleaseVersionNumber>0</subReleaseVersionNumber>
+    </versionNumber>
   </deviceInformation>
+  <configurationList>
+    <configurationListElement>
+      <name>slave_id</name>
+      <dataType>
+        <int16/>
+      </dataType>
+      <defaultValue>1</defaultValue>
+      <configurationDescription>
+        <textElement>Modbus slave ID.</textElement>
+        <language>en</language>
+        <label>Modbus slave ID</label>
+      </configurationDescription>
+    </configurationListElement>
+    <configurationListElement>
+      <name>serial_port</name>
+      <dataType>
+        <string/>
+      </dataType>
+      <defaultValue></defaultValue>
+      <configurationDescription>
+        <textElement>The serial port name when accessed via serial port.</textElement>
+        <language>en</language>
+        <label>Serial port name</label>
+      </configurationDescription>
+    </configurationListElement>
+    <configurationListElement>
+      <name>serial_baudrate</name>
+      <dataType>
+        <int32/>
+      </dataType>
+      <defaultValue>19200</defaultValue>
+      <configurationDescription>
+        <textElement>The baudrate when accessed via serial port.</textElement>
+        <language>en</language>
+        <label>Serial baudrate</label>
+      </configurationDescription>
+    </configurationListElement>
+    <configurationListElement>
+      <name>serial_databits</name>
+      <dataType>
+        <enum>
+          <enumEntry><literal>7</literal></enumEntry>
+          <enumEntry><literal>8</literal></enumEntry>
+        </enum>
+      </dataType>
+      <defaultValue>8</defaultValue>
+      <configurationDescription>
+        <textElement>The number of data bits when accessed via serial port.</textElement>
+        <language>en</language>
+        <label>Serial data bits</label>
+      </configurationDescription>
+    </configurationListElement>
+    <configurationListElement>
+      <name>serial_stopbits</name>
+      <dataType>
+        <enum>
+          <enumEntry><literal>0</literal></enumEntry>
+          <enumEntry><literal>1</literal></enumEntry>
+        </enum>
+      </dataType>
+      <defaultValue>1</defaultValue>
+      <configurationDescription>
+        <textElement>The number of stop bits when accessed via serial port.</textElement>
+        <language>en</language>
+        <label>Serial stop bits</label>
+      </configurationDescription>
+    </configurationListElement>
+    <configurationListElement>
+      <name>serial_parity</name>
+      <dataType>
+        <enum>
+          <enumEntry><literal>EVEN</literal></enumEntry>
+          <enumEntry><literal>ODD</literal></enumEntry>
+          <enumEntry><literal>NONE</literal></enumEntry>
+        </enum>
+        </dataType>
+      <defaultValue>NONE</defaultValue>
+      <configurationDescription>
+        <textElement>The parity when accessed via serial port.</textElement>
+        <language>en</language>
+        <label>Serial parity</label>
+      </configurationDescription>
+    </configurationListElement>
+  </configurationList>
   <genericAttributeList>
     <genericAttributeListElement>
       <name>SpecialQualityRequirement</name>
@@ -67,7 +157,7 @@
       <unit>NONE</unit>
     </genericAttributeListElement>
     <genericAttributeListElement>
-      <name>Precision</name>
+      <name>PrecisionPercent</name>
       <dataType>
         <float32/>
       </dataType>
@@ -79,18 +169,13 @@
     <modbusInterface>
       <modbusInterfaceDescription>
         <modbusInterfaceSelection>RTU</modbusInterfaceSelection>
-        <modbusTcp>
-          <port>520</port>
-          <address>1.1.1.1</address>
-          <slaveId>0</slaveId>
-        </modbusTcp>
         <modbusRtu>
-          <slaveAddr>1</slaveAddr>
-          <portName>COM1</portName>
-          <baudRateSelected>19200</baudRateSelected>
-          <byteLenSelected>8</byteLenSelected>
-          <paritySelected>EVEN</paritySelected>
-          <stopBitLenSelected>1</stopBitLenSelected>
+          <slaveAddr>{{slave_id}}</slaveAddr>
+          <portName>{{serial_port}}</portName>
+          <baudRateSelected>{{serial_baudrate}}</baudRateSelected>
+          <byteLenSelected>{{serial_databits}}</byteLenSelected>
+          <paritySelected>{{serial_parity}}</paritySelected>
+          <stopBitLenSelected>{{serial_stopbits}}</stopBitLenSelected>
           <serialInterfaceCapability>
             <baudRatesSupported>1200</baudRatesSupported>
             <baudRatesSupported>2400</baudRatesSupported>
@@ -118,13 +203,13 @@
             <functionalProfileName>VoltageAC</functionalProfileName>
             <functionalProfileIdentification>
               <specificationOwnerIdentification>0</specificationOwnerIdentification>
-              <functionalProfileCategory>SubMeterElectricity</functionalProfileCategory>
+              <functionalProfileCategory>Metering</functionalProfileCategory>
               <functionalProfileType>VoltageAC</functionalProfileType>
               <levelOfOperation>m</levelOfOperation>
               <versionNumber>
                 <primaryVersionNumber>0</primaryVersionNumber>
                 <secondaryVersionNumber>2</secondaryVersionNumber>
-                <subReleaseVersionNumber>3</subReleaseVersionNumber>
+                <subReleaseVersionNumber>2</subReleaseVersionNumber>
               </versionNumber>
             </functionalProfileIdentification>
             <legibleDescription>
@@ -135,14 +220,16 @@
           <dataPointList>
             <dataPointListElement>
               <dataPoint>
-                <dataPointName>VoltageL1</dataPointName>
+                <dataPointName>VoltageACL1_N</dataPointName>
                 <dataDirection>R</dataDirection>
                 <dataType>
                   <float64 />
                 </dataType>
                 <unit>VOLTS</unit>
+                <minimumValue>0</minimumValue>
+                <maximumValue>250</maximumValue>
                 <alternativeNames>
-                  <manufName>L1 Spannung</manufName>
+                  <manufName>L1 Spannung gegenüber Nulleiter</manufName>
                 </alternativeNames>
               </dataPoint>
               <modbusDataPointConfiguration>
@@ -162,14 +249,16 @@
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
-                <dataPointName>VoltageL2</dataPointName>
+                <dataPointName>VoltageACL2_N</dataPointName>
                 <dataDirection>R</dataDirection>
                 <dataType>
                   <float64 />
                 </dataType>
                 <unit>VOLTS</unit>
+                <minimumValue>0</minimumValue>
+                <maximumValue>250</maximumValue>
                 <alternativeNames>
-                  <manufName>L2 Spannung</manufName>
+                  <manufName>L2 Spannung gegenüber Nulleiter</manufName>
                 </alternativeNames>
               </dataPoint>
               <modbusDataPointConfiguration>
@@ -189,14 +278,16 @@
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
-                <dataPointName>VoltageL3</dataPointName>
+                <dataPointName>VoltageACL3_N</dataPointName>
                 <dataDirection>R</dataDirection>
                 <dataType>
                   <float64 />
                 </dataType>
                 <unit>VOLTS</unit>
+                <minimumValue>0</minimumValue>
+                <maximumValue>250</maximumValue>
                 <alternativeNames>
-                  <manufName>L3 Spannung</manufName>
+                  <manufName>L3 Spannung gegenüber Nulleiter</manufName>
                 </alternativeNames>
               </dataPoint>
               <modbusDataPointConfiguration>
@@ -216,12 +307,14 @@
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
-                <dataPointName>VoltageACL1-L2</dataPointName>
+                <dataPointName>VoltageACL1_L2</dataPointName>
                 <dataDirection>R</dataDirection>
                 <dataType>
                   <float64 />
                 </dataType>
                 <unit>VOLTS</unit>
+                <minimumValue>0</minimumValue>
+                <maximumValue>435</maximumValue>
                 <alternativeNames>
                   <manufName>L1-L2 Spannung</manufName>
                 </alternativeNames>
@@ -243,12 +336,14 @@
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
-                <dataPointName>VoltageACL1-L3</dataPointName>
+                <dataPointName>VoltageACL1_L3</dataPointName>
                 <dataDirection>R</dataDirection>
                 <dataType>
                   <float64 />
                 </dataType>
                 <unit>VOLTS</unit>
+                <minimumValue>0</minimumValue>
+                <maximumValue>435</maximumValue>
                 <alternativeNames>
                   <manufName>L1-L3 Spannung</manufName>
                 </alternativeNames>
@@ -270,12 +365,14 @@
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
-                <dataPointName>VoltageACL2-L3</dataPointName>
+                <dataPointName>VoltageACL2_L3</dataPointName>
                 <dataDirection>R</dataDirection>
                 <dataType>
                   <float64 />
                 </dataType>
                 <unit>VOLTS</unit>
+                <minimumValue>0</minimumValue>
+                <maximumValue>435</maximumValue>
                 <alternativeNames>
                   <manufName>L2-L3 Spannung</manufName>
                 </alternativeNames>
@@ -376,7 +473,9 @@
                 <dataType>
                   <float64 />
                 </dataType>
-                <unit>KILOWATT_HOURS</unit>
+                <unit>AMPERES</unit>
+                <minimumValue>0</minimumValue>
+                <maximumValue>65</maximumValue>
                 <legibleDescription>
                   <textElement>textElement</textElement>
                   <language>de</language>
@@ -404,7 +503,9 @@
                 <dataType>
                   <float64 />
                 </dataType>
-                <unit>KILOWATT_HOURS</unit>
+                <unit>AMPERES</unit>
+                <minimumValue>0</minimumValue>
+                <maximumValue>65</maximumValue>
                 <legibleDescription>
                   <textElement>textElement</textElement>
                   <language>de</language>
@@ -432,7 +533,9 @@
                 <dataType>
                   <float64 />
                 </dataType>
-                <unit>KILOWATT_HOURS</unit>
+                <unit>AMPERES</unit>
+                <minimumValue>0</minimumValue>
+                <maximumValue>65</maximumValue>
                 <legibleDescription>
                   <textElement>textElement</textElement>
                   <language>de</language>
@@ -460,7 +563,9 @@
                 <dataType>
                   <float64 />
                 </dataType>
-                <unit>KILOWATT_HOURS</unit>
+                <unit>AMPERES</unit>
+                <minimumValue>0</minimumValue>
+                <maximumValue>65</maximumValue>
                 <legibleDescription>
                   <textElement>textElement</textElement>
                   <language>de</language>
@@ -514,6 +619,8 @@
                   <float64 />
                 </dataType>
                 <unit>WATTS</unit>
+                <minimumValue>0</minimumValue>
+                <maximumValue>84825</maximumValue>
                 <legibleDescription>
                   <textElement>textElement</textElement>
                   <language>de</language>
@@ -542,6 +649,8 @@
                   <float64 />
                 </dataType>
                 <unit>WATTS</unit>
+                <minimumValue>0</minimumValue>
+                <maximumValue>28275</maximumValue>
                 <legibleDescription>
                   <textElement>textElement</textElement>
                   <language>de</language>
@@ -570,6 +679,8 @@
                   <float64 />
                 </dataType>
                 <unit>WATTS</unit>
+                <minimumValue>0</minimumValue>
+                <maximumValue>28275</maximumValue>
                 <legibleDescription>
                   <textElement>textElement</textElement>
                   <language>de</language>
@@ -598,6 +709,8 @@
                   <float64 />
                 </dataType>
                 <unit>WATTS</unit>
+                <minimumValue>0</minimumValue>
+                <maximumValue>28275</maximumValue>
                 <legibleDescription>
                   <textElement>textElement</textElement>
                   <language>de</language>
@@ -912,7 +1025,55 @@
               </versionNumber>
             </functionalProfileIdentification>
             <legibleDescription>
-              <textElement>Power</textElement>
+              <textElement>
+                <![CDATA[
+                  <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
+                  <strong>Energy measurement</strong><br>
+                  Monitoring functional profile for power generators and consumers for reflecting the energy balance.
+
+                  <p>Data is typically recorded by an energy manager (or a billing software).</p>
+
+                  <p>With this functional profile you can measure the total energy as well as the energy of the three
+                     individual phases. One of the following options must be implemented for fulfilling the functional profile:
+                  <ul>
+                    <li>Single-phase devices use the total energy data point (ActiveEnergyACtot)</li>
+                    <li>Three-phase devices without measurement of the total energy use the data points per (ActiveEnergyACL1, ActiveEnergyACL2, ActiveEnergyACL3)</li>
+                    <li>Three-phase devices with measurement of the total energy all data points</li>
+                  </ul>
+                  </p>
+
+                  <p>Information necessary for configuring the interface or for defining use cases to the control the device can be specified during the declaration
+                     either for the entire device or for individual datapoints
+                     (see <a href="https://github.com/SmartGridready/SGrSpecifications/blob/master/doc/GenericAttributes.md#static-data-point-attributes">Generic Attributes</a>).
+                     </p>
+                ]]>
+              </textElement>
+              <language>en</language>
+            </legibleDescription>
+            <legibleDescription>
+              <textElement>
+                <![CDATA[
+                  <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
+                  <strong>Messung der Wirkenergie</strong><br>
+                  Monitoring Funktionsprofil für Stromerzeuger und Stromverbraucher zur Bilanzierung der Energiemenge.
+
+                  <p>Die Datenaufnahme erfolgt typischerweise durch einen Energiemanager (oder eine Abrechnungssoftware).</p>
+
+                  <p>Dieses Funktionsprofil erlaubt sowohl die Messung der Gesamtenergie wie auch die Messung der Energie
+                     der drei einzelnen Phasen. Eine der folgenden Varianten muss bei der Implementierung des Funktionsprofiles
+                     umgesetzt werden:
+                  <ul>
+                    <li>1-phasige Geräte geben die Gesamtenergie an (ActiveEnergyACtot)</li>
+                    <li>3-phasige Geräte ohne Gesamtenergiemessung geben die Energiemenge pro Phase an (ActiveEnergyACL1, ActiveEnergyACL2, ActiveEnergyACL3)</li>
+                    <li>3-phasige Geräte mit Einzelphasen- und Gesamtenergiemessung geben alle Datenpunkte an</li>
+                  </ul>
+                  </p>
+
+                  <p>Angaben, die für die Konfiguration der Schnittstelle oder für den Aufbau von Use-Cases zur Steuerung nötig sind können während der Deklaration
+                     für das gesamte Gerät oder für einzelne Datenpunkte angegeben werden
+                     (siehe <a href="https://github.com/SmartGridready/SGrSpecifications/blob/master/doc/GenericAttributes.md#static-data-point-attributes">Generische Attribute</a>).
+                ]]>
+              </textElement>
               <language>de</language>
             </legibleDescription>
           </functionalProfile>
@@ -926,7 +1087,11 @@
                 </dataType>
                 <unit>KILOWATT_HOURS</unit>
                 <legibleDescription>
-                  <textElement>textElement</textElement>
+                  <textElement>Total energy measurement</textElement>
+                  <language>en</language>
+                </legibleDescription>
+                <legibleDescription>
+                  <textElement>Erfassung der gesamten Wirkenergie</textElement>
                   <language>de</language>
                 </legibleDescription>
               </dataPoint>
@@ -954,7 +1119,11 @@
                 </dataType>
                 <unit>KILOWATT_HOURS</unit>
                 <legibleDescription>
-                  <textElement>textElement</textElement>
+                  <textElement>Energy measurement of phase 1</textElement>
+                  <language>en</language>
+                </legibleDescription>
+                <legibleDescription>
+                  <textElement>Erfassung der Wirkenergie Phase 1</textElement>
                   <language>de</language>
                 </legibleDescription>
               </dataPoint>
@@ -982,7 +1151,11 @@
                 </dataType>
                 <unit>KILOWATT_HOURS</unit>
                 <legibleDescription>
-                  <textElement>textElement</textElement>
+                  <textElement>Energy measurement of phase 2</textElement>
+                  <language>en</language>
+                </legibleDescription>
+                <legibleDescription>
+                  <textElement>Erfassung der Wirkenergie Phase 2</textElement>
                   <language>de</language>
                 </legibleDescription>
               </dataPoint>
@@ -1010,7 +1183,11 @@
                 </dataType>
                 <unit>KILOWATT_HOURS</unit>
                 <legibleDescription>
-                  <textElement>textElement</textElement>
+                  <textElement>Energy measurement of phase 3</textElement>
+                  <language>en</language>
+                </legibleDescription>
+                <legibleDescription>
+                  <textElement>Erfassung der Wirkenergie Phase 3</textElement>
                   <language>de</language>
                 </legibleDescription>
               </dataPoint>
@@ -1045,6 +1222,16 @@
                 <subReleaseVersionNumber>2</subReleaseVersionNumber>
               </versionNumber>
             </functionalProfileIdentification>
+            <legibleDescription>
+              <textElement>
+                <![CDATA[
+                  <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
+                  Bilanzmessung Blindenergie: Die Datenaufnahme erfolgt typischerweise periodisch durch den CEM (oder eine Abrechnungssoftware), welche Messung aufnimmt und mit dem Zeitwert ergänzt.<br>
+                  Auch auf Seite der Netzbetreiber oder Aggregatoren braucht ein Energiewert zu Bilanzierungszwecken immer den Zeitstempel. Typische Nachbarprofile sind Communicator.
+                ]]>
+              </textElement>
+              <language>de</language>
+            </legibleDescription>
           </functionalProfile>
           <dataPointList>
             <dataPointListElement>
@@ -1055,6 +1242,10 @@
                   <float64 />
                 </dataType>
                 <unit>KILOWATT_HOURS</unit>
+                <legibleDescription>
+                  <textElement>Erfassung der gesamten Blindenergie</textElement>
+                  <language>de</language>
+                </legibleDescription>
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
@@ -1079,6 +1270,10 @@
                   <float64 />
                 </dataType>
                 <unit>KILOWATT_HOURS</unit>
+                <legibleDescription>
+                  <textElement>Erfassung der Blindenergie Phase 1</textElement>
+                  <language>de</language>
+                </legibleDescription>
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
@@ -1103,6 +1298,10 @@
                   <float64 />
                 </dataType>
                 <unit>KILOWATT_HOURS</unit>
+                <legibleDescription>
+                  <textElement>Erfassung der Blindenergie Phase 2</textElement>
+                  <language>de</language>
+                </legibleDescription>
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
@@ -1127,6 +1326,10 @@
                   <float64 />
                 </dataType>
                 <unit>KILOWATT_HOURS</unit>
+                <legibleDescription>
+                  <textElement>Erfassung der Blindenergie Phase 3</textElement>
+                  <language>de</language>
+                </legibleDescription>
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
@@ -1147,10 +1350,10 @@
         </functionalProfileListElement>
         <functionalProfileListElement>
           <functionalProfile>
-            <functionalProfileName>ActiveEnerBalanceAC</functionalProfileName>
+            <functionalProfileName>ActiveEnergyBalanceAC</functionalProfileName>
             <functionalProfileIdentification>
               <specificationOwnerIdentification>0</specificationOwnerIdentification>
-              <functionalProfileCategory>SubMeterElectricity</functionalProfileCategory>
+              <functionalProfileCategory>Metering</functionalProfileCategory>
               <functionalProfileType>ActiveEnergyBalanceAC</functionalProfileType>
               <levelOfOperation>m</levelOfOperation>
               <versionNumber>
@@ -1160,10 +1363,13 @@
               </versionNumber>
             </functionalProfileIdentification>
             <legibleDescription>
-              <textElement>Bilanzmessung Energie: Die Datenaufnahme erfolgt typischerweise
-                periodisch
-                durch den CEM (oder eine Abrechnungssoftware), welche Messung aufnimmt und mit dem
-                Zeitwert ergänzt.</textElement>
+              <textElement>
+                <![CDATA[
+                  <img src="ressources/fp_product_to_cem.svg" style="float:left; padding:0.3em;"/>
+                  Bilanzmessung Energie: Die Datenaufnahme erfolgt typischerweise periodisch durch den CEM (oder eine Abrechnungssoftware), welche Messung aufnimmt und mit dem Zeitwert ergänzt.
+                  Auch auf Seite der Netzbetreiber oder Aggregatoren braucht ein Energiewert zu Bilanzierungszwecken immer den Zeitstempel. Typische Nachbarprofile sind Communicator.
+                ]]>
+              </textElement>
               <language>de</language>
             </legibleDescription>
           </functionalProfile>
@@ -1171,7 +1377,7 @@
             <genericAttributeListElement>
               <name>SpecialQualityRequirement</name>
               <dataType>
-                <float32/>
+                <string/>
               </dataType>
               <value>2014/32/EU : MeasuRIng Instruments Directive, B(Cl.1)</value>
               <unit>NONE</unit>
@@ -1193,7 +1399,7 @@
               </dataPoint>
               <genericAttributeList>
                 <genericAttributeListElement>
-                  <name>Precision</name>
+                  <name>PrecisionPercent</name>
                   <dataType>
                     <float32/>
                   </dataType>
@@ -1231,7 +1437,7 @@
               </dataPoint>
               <genericAttributeList>
                 <genericAttributeListElement>
-                  <name>Precision</name>
+                  <name>PrecisionPercent</name>
                   <dataType>
                     <float32/>
                   </dataType>
@@ -1270,7 +1476,7 @@
               </dataPoint>
               <genericAttributeList>
                 <genericAttributeListElement>
-                  <name>Precision</name>
+                  <name>PrecisionPercent</name>
                   <dataType>
                     <float32/>
                   </dataType>
@@ -1297,13 +1503,11 @@
         </functionalProfileListElement>
         <functionalProfileListElement>
           <functionalProfile>
-            <functionalProfileName>ReactiveEnerBalanceAC</functionalProfileName>
+            <functionalProfileName>ReactiveEnergyBalanceAC</functionalProfileName>
             <functionalProfileIdentification>
               <specificationOwnerIdentification>0</specificationOwnerIdentification>
-              <functionalProfileCategory>SubMeterElectricity</functionalProfileCategory>
+              <functionalProfileCategory>Metering</functionalProfileCategory>
               <functionalProfileType>ReactiveEnergyBalanceAC</functionalProfileType>
-              <!--ReactiveEnerBalanceAC
-            must be added to FP family-->
               <levelOfOperation>m</levelOfOperation>
               <versionNumber>
                 <primaryVersionNumber>0</primaryVersionNumber>
@@ -1392,22 +1596,20 @@
             <functionalProfileName>PowerQuadrant</functionalProfileName>
             <functionalProfileIdentification>
               <specificationOwnerIdentification>0</specificationOwnerIdentification>
-              <functionalProfileCategory>SubMeterElectricity</functionalProfileCategory>
+              <functionalProfileCategory>Metering</functionalProfileCategory>
               <functionalProfileType>PowerQuadrant</functionalProfileType>
-              <!--PowerQuadrant
-            must be added to FP family-->
               <levelOfOperation>m</levelOfOperation>
               <versionNumber>
                 <primaryVersionNumber>0</primaryVersionNumber>
-                <secondaryVersionNumber>2</secondaryVersionNumber>
-                <subReleaseVersionNumber>1</subReleaseVersionNumber>
+                <secondaryVersionNumber>1</secondaryVersionNumber>
+                <subReleaseVersionNumber>2</subReleaseVersionNumber>
               </versionNumber>
             </functionalProfileIdentification>
           </functionalProfile>
           <dataPointList>
             <dataPointListElement>
               <dataPoint>
-                <dataPointName>PwrQuadACtot</dataPointName>
+                <dataPointName>PowerQuadrantACtot</dataPointName>
                 <dataDirection>R</dataDirection>
                 <dataType>
                   <float64 />
@@ -1425,7 +1627,7 @@
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
-                <dataPointName>PwrQuadACL1</dataPointName>
+                <dataPointName>PowerQuadrantACL1</dataPointName>
                 <dataDirection>R</dataDirection>
                 <dataType>
                   <float64 />
@@ -1443,7 +1645,7 @@
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
-                <dataPointName>PwrQuadACL2</dataPointName>
+                <dataPointName>PowerQuadrantACL2</dataPointName>
                 <dataDirection>R</dataDirection>
                 <dataType>
                   <float64 />
@@ -1461,7 +1663,7 @@
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
-                <dataPointName>PwrQuadACL3</dataPointName>
+                <dataPointName>PowerQuadrantACL3</dataPointName>
                 <dataDirection>R</dataDirection>
                 <dataType>
                   <float64 />
