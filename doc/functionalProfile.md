@@ -159,16 +159,16 @@ Functional profile descriptions should be structured as follows:
 
 # Attatchment
 ### Release Notes
-The release note section contains meta data that descibe history and current state of the functional profile
+The release note section contains meta data that describe history and current state of the functional profile
 
 | Element   | Description |
 |-----------|-------------|
 | state     | one of Draft, Review, Released, Revoked |
-| remarks   |  Optional, arbitrary text. Can be usefull e.g. during draft phase. |
-| changeLog | Optional, can occure multiple times. Contains release notes to the version concerned |
+| remarks   |  Optional, arbitrary text. Can be useful e.g. during draft phase. |
+| changeLog | Optional, can occur multiple times. Contains release notes to the version concerned |
 
 ### Descriptions
 | Element     | Description |
 |-------------|-------------|
 | alternativeNames  | a list of relevant namespaces list for to display names used in different standards like EEBUS, IEC6850,, SAREF4ENER etc. (see [AlternativeNames](AlternativeNames.md))|
-| legibleDescription | optional, can occure multiple times, but ideally just a once per language. Contains details concerning the intended use case of the functional profile. |
+| legibleDescription | optional, can occur multiple times, but ideally just a once per language. Contains details concerning the intended use case of the functional profile. |
