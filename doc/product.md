@@ -45,6 +45,7 @@ The release note section contains meta data that describe history and current st
 | Element | Description |
 | ------- | ----------- |
 | levelOfOperation | Level of control defining the complexity (see [LevelOfOperation](LevelOfOperation.md) ), and is defined by the highest level of the devices functional profile |
+| versionNumber | Version number of the Product Description (EID) - first two parts should be the same as in the file name |
 
 ### Descriptions
 | Element     | Description |
@@ -81,3 +82,17 @@ Each functional profile instance contains a list of data points in accordance wi
 Additional to the datapoints in the functional profile the product has the concept of constant datapoints that can implement the datapoint of the functional profile and that have a constant value.
 
 For this, the data direction "C" is possible in products. In this case, a value must be defined for the datapoint.
+
+## File Naming Schema
+File names for Products Definitions (EID's) should have the following file naming conventions:
+
+`SGr_[LevelOfOperation]_[ManufacturerId]_[DesclarationId]_[Manufacturer]_[ProductName]_[PrimaryVerion].[SecondaryVerion].xml`
+
+with
+
+- LevelOfOperation: As defined in [LevelOfOperation](LevelOfOperation.md) with 2 digits without `m` and with leading `0`
+- ManufacturerId: Maintained by the declaration office - `mmmm` if not yet known
+- DesclarationId: Maintained by the declaration office - `dddd` if not yet known
+- Manufacturer: Manufacturer name - short - if possible only one word
+- ProductName: Product name - short - if possible only one word
+- PrimaryVerion / SecondaryVerion: First two parts of the version of the Product Definitions (EID's) - same as [versionNumber](product.md#device-attributes)
