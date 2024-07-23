@@ -90,9 +90,13 @@ File names for Products Definitions (EID's) should have the following file namin
 
 with
 
-- LevelOfOperation: As defined in [LevelOfOperation](LevelOfOperation.md) with 2 digits without `m` and with leading `0`
-- ManufacturerId: Maintained by the declaration office - `mmmm` if not yet known
-- DesclarationId: Maintained by the declaration office - `dddd` if not yet known
-- Manufacturer: Manufacturer name - short - if possible only one word
-- ProductName: Product name - short - if possible only one word
-- PrimaryVerion / SecondaryVerion: First two parts of the version of the Product Definitions (EID's) - same as [versionNumber](product.md#device-attributes)
+- `LevelOfOperation`: As defined in [LevelOfOperation](LevelOfOperation.md) with 2 digits without `m` and with leading `0`
+- `ManufacturerId`: Maintained by the declaration office - `mmmm` if not yet known
+- `DesclarationId`: Maintained by the declaration office - `dddd` if not yet known
+- `Manufacturer`: Manufacturer name - short - if possible only one word
+- `ProductName`: Product name - short - if possible only one word
+- `PrimaryVerion` / `SecondaryVerion`: First two parts of the version of the Product Definitions (EID's) - same as [versionNumber](product.md#device-attributes)
+
+If there are more Product Definitions for one product with different interfaces, the interface can optionally be added as `Interface` with values `RestAPI`, `MQTT`, `Modbus`, `ModbusRTU`, `ModbusTCP`, ...
+
+`SGr_[LevelOfOperation]_[ManufacturerId]_[DesclarationId]_[Manufacturer]_[ProductName]_[Interface]_V[PrimaryVerion].[SecondaryVerion].xml`
