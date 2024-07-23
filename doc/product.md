@@ -86,7 +86,7 @@ For this, the data direction "C" is possible in products. In this case, a value 
 ## File Naming Schema
 File names for Products Definitions (EID's) should have the following file naming conventions:
 
-`SGr_[LevelOfOperation]_[ManufacturerId]_[DesclarationId]_[Manufacturer]_[ProductName]_[PrimaryVerion].[SecondaryVerion].xml`
+`SGr_[LevelOfOperation]_[ManufacturerId]_[DesclarationId]_[Manufacturer]_[ProductName]_V[PrimaryVerion].[SecondaryVerion].xml`
 
 with
 
