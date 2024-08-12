@@ -11,20 +11,8 @@
   </releaseNotes>
   <deviceInformation>
     <legibleDescription>
-      <textElement>Bitte leicht lesbarerGeraetebeschreibung einfügen</textElement>
-      <language>de</language>
-    </legibleDescription>
-    <legibleDescription>
-      <textElement>easy readible explanation in English</textElement>
+      <textElement>Product description for Helioterm Heat Pump with controller webControl 321 in combination with gateway Helioterm RCG</textElement>
       <language>en</language>
-    </legibleDescription>
-    <legibleDescription>
-      <textElement>simple text an Francais</textElement>
-      <language>fr</language>
-    </legibleDescription>
-    <legibleDescription>
-      <textElement>Semplice descrizione in italiano </textElement>
-      <language>it</language>
     </legibleDescription>
     <deviceCategory>HeatPumpAppliance</deviceCategory>
     <isLocalControl>true</isLocalControl>
@@ -39,17 +27,35 @@
     <levelOfOperation>4</levelOfOperation>
     <versionNumber>
       <primaryVersionNumber>0</primaryVersionNumber>
-      <secondaryVersionNumber>2</secondaryVersionNumber>
-      <subReleaseVersionNumber>1</subReleaseVersionNumber>
+      <secondaryVersionNumber>3</secondaryVersionNumber>
+      <subReleaseVersionNumber>0</subReleaseVersionNumber>
     </versionNumber>
   </deviceInformation>
+  <configurationList>
+    <configurationListElement>
+      <name>address</name>
+      <dataType>
+        <string/>
+      </dataType>
+      <configurationDescription>
+        <textElement>IP address or DHCP name of the device</textElement>
+        <language>en</language>
+        <label>IP Address</label>
+      </configurationDescription>
+      <configurationDescription>
+        <textElement>IP-Adresse oder DHCP-Name des Geräts.</textElement>
+        <language>de</language>
+        <label>IP Adresse</label>
+      </configurationDescription>
+    </configurationListElement>
+  </configurationList>
   <interfaceList>
     <modbusInterface>
       <modbusInterfaceDescription>
         <modbusInterfaceSelection>TCPIP</modbusInterfaceSelection>
         <modbusTcp>
           <port>502</port>
-          <address>192.168.1.51</address>
+          <address>{{address}}</address>
           <slaveId>1</slaveId>
         </modbusTcp>
         <firstRegisterAddressIsOne>true
@@ -92,19 +98,112 @@
             <dataPointListElement>
               <dataPoint>
                 <dataPointName>HPOpModeCmd</dataPointName>
-                <dataDirection>W</dataDirection>
+                <dataDirection>RW</dataDirection>
                 <dataType>
-                  <int16U />
+                  <enum>
+                    <enumEntry>
+                      <literal>HEL_HP_OFF</literal>
+                      <ordinal>0</ordinal>
+                      <description>Die Wärmepumpe läuft im frostsicheren Betrieb weiter, um ein Einfrieren der Anlage zu verhindern.</description>
+                    </enumEntry>
+                    <enumEntry>
+                      <literal>HEL_HP_AUTOMATIC</literal>
+                      <ordinal>1</ordinal>
+                      <description>Brauchwasserbereitung und Heizbetrieb mit Aufheiz- und Absenktemperatur lt. Zeitprogramm</description>
+                    </enumEntry>
+                    <enumEntry>
+                      <literal>HEL_HP_SUMMER_MODE</literal>
+                      <ordinal>3</ordinal>
+                      <description>Heizung im frostsicheren Betrieb; Brauchwasserbereitung laut Zeitprogramm.</description>
+                    </enumEntry>
+                    <enumEntry>
+                      <literal>HEL_HP_COOLING_OP</literal>
+                      <ordinal>2</ordinal>
+                      <description>(nur mit Kühlfunktion und WW) Heizungsanlage im Kühlbetrieb</description>
+                    </enumEntry>
+                    <enumEntry>
+                      <literal>HEL_HP_DURATION_OP</literal>
+                      <ordinal>4</ordinal>
+                      <description>Heizbetrieb und Brauchwasserbereitung unabhängig vom Zeitprogramm</description>
+                    </enumEntry>
+                    <enumEntry>
+                      <literal>HEL_HP_REDUCED_OP</literal>
+                      <ordinal>5</ordinal>
+                      <description>Heizung im Absenkbetrieb unabhängig vom Zeitprogramm</description>
+                    </enumEntry>
+                    <enumEntry>
+                      <literal>HEL_HP_VACATION_MODE</literal>
+                      <ordinal>6</ordinal>
+                      <description>Während dieser Zeit verhält sich die Wärmepumpe wie in der Betriebsart HEL_HP_OFF</description>
+                    </enumEntry>
+                    <enumEntry>
+                      <literal>HEL_HP_PARTY_MODE</literal>
+                      <ordinal>7</ordinal>
+                      <description>Im Partybetrieb verhält sich die Wärmepumpe wie im Dauerbetrieb, jedoch zeitlich beschränkt auf 2 Stunden. Die Heizung wird nicht durch die Heizgrenze begrenzt. Durch die Eingabe einer Mindest-Rücklauftemperatur kann man ggf. einen Heizbetrieb erzwingen. Nach Ablauf dieser Zeit stellt sich die Wärmepumpe wieder in die zuvor eingestellte Betriebsart zurück.</description>
+                    </enumEntry>
+                    <enumEntry>
+                      <literal>HEL_HP_OUTHEATING_MODE</literal>
+                      <ordinal>8</ordinal>
+                      <description>Diese Betriebsart bleibt auch bei Außentemperaturen > Heizgrenze, bis das Ausheizprogramm abgeschlossen ist. Ändert man während der Ausheizphase die Betriebsart, wird diese erst nach Ablauf der Ausheizphase aktiv.</description>
+                    </enumEntry>
+                    <enumEntry>
+                      <literal>HEL_HP_DSO_BLOCK</literal>
+                      <ordinal>9</ordinal>
+                      <description>Read-only. WP unter EVU sperre. Umwälzpumpen die trotz EVU-Sperre laufen sollen, müssen im Untermenü dafür freigegeben werden. Die Wärmepumpe ist dabei inaktiv.</description>
+                    </enumEntry>
+                    <enumEntry>
+                      <literal>HEL_HP_MAIN_SWITCH</literal>
+                      <ordinal>10</ordinal>
+                      <description>Hauptschalter: Die Wärmepumpe und Umwälzpumpen bleiben ausgeschalten.</description>
+                    </enumEntry>
+                  </enum>
                 </dataType>
                 <unit>NONE</unit>
                 <legibleDescription>
-                  <textElement>0=AUS, 1=Automatik, 2=Kühlen, 3=Sommer, 4=Dauerbetrieb, 5=Absenkung,
-                    6=Urlaub, 7=Party, 8=Ausheizen, 9=EVU Sperre, 10=Hauptschalter AUS</textElement>
-                  <language>de</language>
+                  <textElement>OPERATING MODE of heat pump. 8 to 10 only informational</textElement>
+                  <language>en</language>
                 </legibleDescription>
+              </dataPoint>
+              <modbusDataPointConfiguration>
+                <modbusDataType>
+                  <int16U />
+                </modbusDataType>
+                <address>100</address>
+                <registerType>HoldRegister</registerType>
+                <numberOfRegisters>1</numberOfRegisters>
+              </modbusDataPointConfiguration>
+            </dataPointListElement>
+            <dataPointListElement>
+              <dataPoint>
+                <dataPointName>HPOpStateAsEnum</dataPointName>
+                <dataDirection>R</dataDirection>
+                <dataType>
+                  <enum>
+                    <enumEntry>
+                      <literal>HEL_HP_OFF</literal>
+                      <ordinal>0</ordinal>
+                      <description>Die Wärmepumpe läuft im frostsicheren Betrieb weiter, um ein Einfrieren der Anlage zu verhindern.</description>
+                    </enumEntry>
+                    <enumEntry>
+                      <literal>HEL_HP_COOLING</literal>
+                      <ordinal>10</ordinal>
+                      <description>Brauchwasserbereitung und Heizbetrieb mit Aufheiz- und Absenktemperatur lt. Zeitprogramm</description>
+                    </enumEntry>
+                    <enumEntry>
+                      <literal>HEL_HP_HEATING</literal>
+                      <ordinal>20</ordinal>
+                      <description>Heizung im frostsicheren Betrieb; Brauchwasserbereitung laut Zeitprogramm.</description>
+                    </enumEntry>
+                    <enumEntry>
+                      <literal>HEL_HP_HOTWATER</literal>
+                      <ordinal>30</ordinal>
+                      <description>(nur mit Kühlfunktion und WW) Heizungsanlage im Kühlbetrieb</description>
+                    </enumEntry>
+                  </enum>
+                </dataType>
+                <unit>NONE</unit>
                 <legibleDescription>
-                  <textElement>0=off, 1=automatic, 2=Cooling, 3=Summer, 4=Continuous(?), 5=setback
-                    (?), 6=Vacation, 7=Party, 8=Ausheizen, 9=?, 10=?. 8 to 10 only informational</textElement>
+                  <textElement>OPERATING MODE of heat pump. 8 to 10 only informational</textElement>
                   <language>en</language>
                 </legibleDescription>
               </dataPoint>
@@ -112,50 +211,10 @@
                 <modbusDataType>
                   <int16 />
                 </modbusDataType>
-                <address>100</address>
+                <address>41</address>
                 <registerType>HoldRegister</registerType>
                 <numberOfRegisters>1</numberOfRegisters>
               </modbusDataPointConfiguration>
-              <modbusAttributes>
-                <scalingFactor>
-                  <multiplicator>1</multiplicator>
-                  <powerof10>0</powerof10>
-                </scalingFactor>
-              </modbusAttributes>
-            </dataPointListElement>
-            <dataPointListElement>
-              <dataPoint>
-                <dataPointName>HPOpState</dataPointName>
-                <dataDirection>R</dataDirection>
-                <dataType>
-                  <int16U />
-                </dataType>
-                <unit>NONE</unit>
-                <legibleDescription>
-                  <textElement>0=AUS, 1=Automatik, 2=Kühlen, 3=Sommer, 4=Dauerbetrieb, 5=Absenkung,
-                    6=Urlaub, 7=Party, 8=Ausheizen, 9=EVU Sperre, 10=Hauptschalter AUS</textElement>
-                  <language>de</language>
-                </legibleDescription>
-                <legibleDescription>
-                  <textElement>0=off, 1=automatic, 2=Cooling, 3=Summer, 4=Continuous(?), 5=setback
-                    (?), 6=Vacation, 7=Party, 8=Ausheizen, 9=?, 10=?</textElement>
-                  <language>en</language>
-                </legibleDescription>
-              </dataPoint>
-              <modbusDataPointConfiguration>
-                <modbusDataType>
-                  <int8U />
-                </modbusDataType>
-                <address>100</address>
-                <registerType>HoldRegister</registerType>
-                <numberOfRegisters>1</numberOfRegisters>
-              </modbusDataPointConfiguration>
-              <modbusAttributes>
-                <scalingFactor>
-                  <multiplicator>1</multiplicator>
-                  <powerof10>0</powerof10>
-                </scalingFactor>
-              </modbusAttributes>
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
@@ -176,18 +235,12 @@
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
-                  <int8U />
+                  <int16 />
                 </modbusDataType>
                 <address>26</address>
                 <registerType>InputRegister</registerType>
                 <numberOfRegisters>1</numberOfRegisters>
               </modbusDataPointConfiguration>
-              <modbusAttributes>
-                <scalingFactor>
-                  <multiplicator>1</multiplicator>
-                  <powerof10>0</powerof10>
-                </scalingFactor>
-              </modbusAttributes>
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
@@ -221,12 +274,16 @@
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
-                <dataPointName>FlowWaterTemp</dataPointName>
+                <dataPointName>SupplyWaterTemp</dataPointName>
                 <dataDirection>R</dataDirection>
                 <dataType>
                   <float64 />
                 </dataType>
                 <unit>DEGREES_CELSIUS</unit>
+                <legibleDescription>
+                    <textElement>Aktueller Istwert der Vorlauftemperatur.</textElement>
+                    <language>de</language>
+                </legibleDescription>
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
@@ -245,7 +302,7 @@
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
-                <dataPointName>ReturnFlowWaterTemp</dataPointName>
+                <dataPointName>ReturnSupplyWaterTemp</dataPointName>
                 <dataDirection>R</dataDirection>
                 <dataType>
                   <float64 />
@@ -271,7 +328,7 @@
         </functionalProfileListElement>
         <functionalProfileListElement>
           <functionalProfile>
-            <functionalProfileName>CompressorPwrCtrl</functionalProfileName>
+            <functionalProfileName>PowerCtrl</functionalProfileName>
             <functionalProfileIdentification>
               <specificationOwnerIdentification>0</specificationOwnerIdentification>
               <functionalProfileCategory>HeatPumpControl</functionalProfileCategory>
@@ -300,8 +357,8 @@
           <dataPointList>
             <dataPointListElement>
               <dataPoint>
-                <dataPointName>SpeedCtrlPercentStpt</dataPointName>
-                <dataDirection>W</dataDirection>
+                <dataPointName>SpeedCtrlSetpt</dataPointName>
+                <dataDirection>RW</dataDirection>
                 <dataType>
                   <float64 />
                 </dataType>
@@ -310,11 +367,20 @@
                 <maximumValue>60.0</maximumValue>
                 <legibleDescription>
                   <textElement>
-                    ?check: Adress durch cb? Absolute Vorgabe der Drehzahl in der gewählten
-                    Betriebsart
+                    Absolute Vorgabe der Drehzahl in der gewählten Betriebsart
                   </textElement>
                   <language>de</language>
                 </legibleDescription>
+                <programmerHints>
+                  <textElement>
+                    The register value is accepted if the PV mode is set to Off on the web interface of the RCG X
+                    and a request for external compressor speed specification (register 117) is pending. The compressor speed
+                    is limited by the web controller to a minimum and maximum so that the compressor cannot be damaged.
+                    be damaged. These limits are usually 15% and 60%  and can be set in the web controller.
+                    web controller.
+                  </textElement>
+                  <language>en</language>
+                </programmerHints>
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
@@ -357,42 +423,33 @@
               <modbusAttributes>
                 <scalingFactor>
                   <multiplicator>1</multiplicator>
-                  <powerof10>0</powerof10>
+                  <powerof10>-1</powerof10>
                 </scalingFactor>
               </modbusAttributes>
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
-                <dataPointName>PowerCtrlStpt</dataPointName>
-                <dataDirection>R</dataDirection>
+                <dataPointName>PowerCtrlSetpoint</dataPointName>
+                <dataDirection>RW</dataDirection>
                 <dataType>
                   <float64 />
                 </dataType>
                 <unit>KILOWATTS</unit>
                 <legibleDescription>
                   <textElement>
-                    Effektive elektrischen Aufnahmeleistung des Verdichters
-                  </textElement>
-                  <language>de</language>
-                </legibleDescription>
-                <legibleDescription>
-                  <textElement>
                     To allow setpoint control, register 117 for PV demand should be set to 1. Should
                     we create a PowerCtrlSetptEn ?. In RCG web interface, Menu item "Photovoltaics"
-                    >
-                    PV selection on > MODBUS (TCP or RTU). Also, in web controller, Main menu >
-                    "WNA"
-                    > FU External on > ON and Hot water > DHW preparation > Parameters > DHW Max to
+                    > PV selection on > MODBUS (TCP or RTU). Also, in web controller, Main menu >
+                    "WNA" > FU External on > ON and Hot water > DHW preparation > Parameters > DHW Max to
                     "53" Heating circuit > Parameter> Offset to "3"; Mixer1 and 2 > Parameter>
-                    Offset
-                    to "3".
+                    Offset to "3". On-site tests however showed that it was difficult to maintain 
+                    the required PV register to the required value 1 to accept power setpoints, even with continuous writing. After consultation with the installation technician, internal settings manipulation were done to fix this issue
                   </textElement>
                   <language>en</language>
                 </legibleDescription>
                 <programmerHints>
                   <textElement>
-                    For power setpoint control, register 117 for PV demand should be set to 1 and
-                    register 126 should not be written.
+                    For power setpoint control, PowerCtrlSetpointEnable ( register 117) for PV demand should be set to 1 and register 126 should not be written.
                   </textElement>
                   <language>en</language>
                 </programmerHints>
@@ -408,7 +465,37 @@
               <modbusAttributes>
                 <scalingFactor>
                   <multiplicator>1</multiplicator>
-                  <powerof10>3</powerof10>
+                  <powerof10>-3</powerof10>
+                </scalingFactor>
+              </modbusAttributes>
+            </dataPointListElement>
+            <dataPointListElement>
+              <dataPoint>
+                <dataPointName>PowerCtrlSetpointEnable</dataPointName>
+                <dataDirection>RW</dataDirection>
+                <dataType>
+                  <boolean/>
+                </dataType>
+                <unit>NONE</unit>
+                <legibleDescription>
+                  <textElement>
+                  If True, allows PowerCtrlSetpoint to be followed. If false, PowerCtrlSetpoint not followed
+                  </textElement>
+                  <language>en</language>
+                </legibleDescription>
+              </dataPoint>
+              <modbusDataPointConfiguration>
+                <modbusDataType>
+                  <int16 />
+                </modbusDataType>
+                <address>117</address>
+                <registerType>HoldRegister</registerType>
+                <numberOfRegisters>1</numberOfRegisters>
+              </modbusDataPointConfiguration>
+              <modbusAttributes>
+                <scalingFactor>
+                  <multiplicator>1</multiplicator>
+                  <powerof10>-3</powerof10>
                 </scalingFactor>
               </modbusAttributes>
             </dataPointListElement>
@@ -435,12 +522,6 @@
                 <registerType>InputRegister</registerType>
                 <numberOfRegisters>1</numberOfRegisters>
               </modbusDataPointConfiguration>
-              <modbusAttributes>
-                <scalingFactor>
-                  <multiplicator>1</multiplicator>
-                  <powerof10>0</powerof10>
-                </scalingFactor>
-              </modbusAttributes>
             </dataPointListElement>
           </dataPointList>
         </functionalProfileListElement>
@@ -481,77 +562,114 @@
           <dataPointList>
             <dataPointListElement>
               <dataPoint>
-                <dataPointName>HeatCoolCtrlOpModeCmd</dataPointName>
+                <dataPointName>HPOpModeCmd</dataPointName>
                 <dataDirection>RW</dataDirection>
                 <dataType>
-                  <int16 />
+                  <enum>
+                    <enumEntry>
+                      <literal>HEL_HP_OFF</literal>
+                      <ordinal>0</ordinal>
+                      <description>Die Wärmepumpe läuft im frostsicheren Betrieb weiter, um ein Einfrieren der Anlage zu verhindern.</description>
+                    </enumEntry>
+                    <enumEntry>
+                      <literal>HEL_HP_AUTOMATIC</literal>
+                      <ordinal>1</ordinal>
+                      <description>Brauchwasserbereitung und Heizbetrieb mit Aufheiz- und Absenktemperatur lt. Zeitprogramm</description>
+                    </enumEntry>
+                    <enumEntry>
+                      <literal>HEL_HP_SUMMER_MODE</literal>
+                      <ordinal>3</ordinal>
+                      <description>Heizung im frostsicheren Betrieb; Brauchwasserbereitung laut Zeitprogramm.</description>
+                    </enumEntry>
+                    <enumEntry>
+                      <literal>HEL_HP_COOLING_OP</literal>
+                      <ordinal>2</ordinal>
+                      <description>(nur mit Kühlfunktion und WW) Heizungsanlage im Kühlbetrieb</description>
+                    </enumEntry>
+                    <enumEntry>
+                      <literal>HEL_HP_DURATION_OP</literal>
+                      <ordinal>4</ordinal>
+                      <description>Heizbetrieb und Brauchwasserbereitung unabhängig vom Zeitprogramm</description>
+                    </enumEntry>
+                    <enumEntry>
+                      <literal>HEL_HP_REDUCED_OP</literal>
+                      <ordinal>5</ordinal>
+                      <description>Heizung im Absenkbetrieb unabhängig vom Zeitprogramm</description>
+                    </enumEntry>
+                    <enumEntry>
+                      <literal>HEL_HP_VACATION_MODE</literal>
+                      <ordinal>6</ordinal>
+                      <description>Während dieser Zeit verhält sich die Wärmepumpe wie in der Betriebsart HEL_HP_OFF</description>
+                    </enumEntry>
+                    <enumEntry>
+                      <literal>HEL_HP_PARTY_MODE</literal>
+                      <ordinal>7</ordinal>
+                      <description>Im Partybetrieb verhält sich die Wärmepumpe wie im Dauerbetrieb, jedoch zeitlich beschränkt auf 2 Stunden. Die Heizung wird nicht durch die Heizgrenze begrenzt. Durch die Eingabe einer Mindest-Rücklauftemperatur kann man ggf. einen Heizbetrieb erzwingen. Nach Ablauf dieser Zeit stellt sich die Wärmepumpe wieder in die zuvor eingestellte Betriebsart zurück.</description>
+                    </enumEntry>
+                    <enumEntry>
+                      <literal>HEL_HP_OUTHEATING_MODE</literal>
+                      <ordinal>8</ordinal>
+                      <description>Diese Betriebsart bleibt auch bei Außentemperaturen > Heizgrenze, bis das Ausheizprogramm abgeschlossen ist. Ändert man während der Ausheizphase die Betriebsart, wird diese erst nach Ablauf der Ausheizphase aktiv.</description>
+                    </enumEntry>
+                    <enumEntry>
+                      <literal>HEL_HP_DSO_BLOCK</literal>
+                      <ordinal>9</ordinal>
+                      <description>Read-only. WP unter EVU sperre. Umwälzpumpen die trotz EVU-Sperre laufen sollen, müssen im Untermenü dafür freigegeben werden. Die Wärmepumpe ist dabei inaktiv.</description>
+                    </enumEntry>
+                    <enumEntry>
+                      <literal>HEL_HP_MAIN_SWITCH</literal>
+                      <ordinal>10</ordinal>
+                      <description>Hauptschalter: Die Wärmepumpe und Umwälzpumpen bleiben ausgeschalten.</description>
+                    </enumEntry>
+                  </enum>
                 </dataType>
                 <unit>NONE</unit>
                 <legibleDescription>
-                  <textElement>Festlegen der Betriebsart des Heiz-/Kühlkreises 1 [Aus Bereitschaft,
-                    Programm, Komfort, Eco] </textElement>
-                  <language>de</language>
-                </legibleDescription>
-                <legibleDescription>
-                  <textElement>Control of the heating/cooling circle 1. Modes: 0=off, 1=automatic,
-                    2=Cooling, 3=Summer, 4=Continuous(?), 5=setback (?), 6=Vacation, 7=Party,
-                    8=Ausheizen, 9=?, 10=?. 8 to 10 only informational </textElement>
+                  <textElement>OPERATING MODE of heating circuit 1. 8 to 10 only informational</textElement>
                   <language>en</language>
                 </legibleDescription>
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
-                  <int16 />
+                  <int16U />
                 </modbusDataType>
                 <address>107</address>
                 <registerType>HoldRegister</registerType>
                 <numberOfRegisters>1</numberOfRegisters>
               </modbusDataPointConfiguration>
-              <modbusAttributes>
-                <scalingFactor>
-                  <multiplicator>1</multiplicator>
-                  <powerof10>0</powerof10>
-                </scalingFactor>
-              </modbusAttributes>
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
-                <dataPointName>HeatCoolCtrlOpState</dataPointName>
+                <dataPointName>SupplyWaterTemp</dataPointName>
                 <dataDirection>R</dataDirection>
                 <dataType>
-                  <int16 />
+                  <float64 />
                 </dataType>
-                <unit>NONE</unit>
+                <unit>DEGREES_CELSIUS</unit>
                 <legibleDescription>
-                  <textElement>Modes: 0=off, 1=automatic, 2=Cooling, 3=Summer, 4=Continuous(?),
-                    5=setback (?), 6=Vacation, 7=Party, 8=Ausheizen, 9=?, 10=?. 8 to 10 only
-                    informational</textElement>
-                  <language>de</language>
-                </legibleDescription>
-                <legibleDescription>
-                  <textElement>This seems redundant with previous registers for RW</textElement>
-                  <language>en</language>
+                    <textElement>Aktueller Istwert der Vorlauftemperatur.</textElement>
+                    <language>de</language>
                 </legibleDescription>
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
                   <int16 />
                 </modbusDataType>
-                <address>107</address>
-                <registerType>HoldRegister</registerType>
+                <address>12</address>
+                <registerType>InputRegister</registerType>
                 <numberOfRegisters>1</numberOfRegisters>
               </modbusDataPointConfiguration>
               <modbusAttributes>
                 <scalingFactor>
                   <multiplicator>1</multiplicator>
-                  <powerof10>0</powerof10>
+                  <powerof10>-1</powerof10>
                 </scalingFactor>
               </modbusAttributes>
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
-                <dataPointName>FlowWaterTempStpt</dataPointName>
-                <dataDirection>R</dataDirection>
+                <dataPointName>SupplyWaterTempSetpoint</dataPointName>
+                <dataDirection>RW</dataDirection>
                 <dataType>
                   <float64 />
                 </dataType>
@@ -562,7 +680,7 @@
                   <language>de</language>
                 </legibleDescription>
                 <legibleDescription>
-                  <textElement>Sets the supply temperature setpoint for heaqting loop 1</textElement>
+                  <textElement>Sets the supply temperature setpoint for heating loop 1</textElement>
                   <language>en</language>
                 </legibleDescription>
               </dataPoint>
@@ -583,7 +701,7 @@
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
-                <dataPointName>FlowWaterTempStptEn</dataPointName>
+                <dataPointName>FlowWaterTempSetpointEnable</dataPointName>
                 <dataDirection>R</dataDirection>
                 <dataType>
                   <boolean />
@@ -595,9 +713,7 @@
                   <language>de</language>
                 </legibleDescription>
                 <legibleDescription>
-                  <textElement>Activates following of supply temperature setpoint in register 109
-                    for
-                    heating loop 1. If 0, setpoint sent to register 109 is not applied. </textElement>
+                  <textElement>Activates following of supply temperature setpoint FlowWaterTempSetpoint in register 109 for  heating loop 1. If 0, setpoint sent to register 109 is not applied. </textElement>
                   <language>en</language>
                 </legibleDescription>
               </dataPoint>
@@ -609,16 +725,10 @@
                 <registerType>HoldRegister</registerType>
                 <numberOfRegisters>1</numberOfRegisters>
               </modbusDataPointConfiguration>
-              <modbusAttributes>
-                <scalingFactor>
-                  <multiplicator>1</multiplicator>
-                  <powerof10>0</powerof10>
-                </scalingFactor>
-              </modbusAttributes>
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
-                <dataPointName>ReturnFlowWaterTemp</dataPointName>
+                <dataPointName>ReturnSupplyWaterTemp</dataPointName>
                 <dataDirection>R</dataDirection>
                 <dataType>
                   <float64 />
@@ -679,80 +789,123 @@
             </legibleDescription>
           </functionalProfile>
           <dataPointList>
-            <dataPointListElement>
+          <dataPointListElement>
               <dataPoint>
-                <dataPointName>HeatCoolCtrlOpModeCmd</dataPointName>
+                <dataPointName>HPOpModeCmd</dataPointName>
                 <dataDirection>RW</dataDirection>
                 <dataType>
-                  <int16 />
+                  <enum>
+                    <enumEntry>
+                      <literal>HEL_HP_OFF</literal>
+                      <ordinal>0</ordinal>
+                      <description>Die Wärmepumpe läuft im frostsicheren Betrieb weiter, um ein Einfrieren der Anlage zu verhindern.</description>
+                    </enumEntry>
+                    <enumEntry>
+                      <literal>HEL_HP_AUTOMATIC</literal>
+                      <ordinal>1</ordinal>
+                      <description>Brauchwasserbereitung und Heizbetrieb mit Aufheiz- und Absenktemperatur lt. Zeitprogramm</description>
+                    </enumEntry>
+                    <enumEntry>
+                      <literal>HEL_HP_SUMMER_MODE</literal>
+                      <ordinal>3</ordinal>
+                      <description>Heizung im frostsicheren Betrieb; Brauchwasserbereitung laut Zeitprogramm.</description>
+                    </enumEntry>
+                    <enumEntry>
+                      <literal>HEL_HP_COOLING_OP</literal>
+                      <ordinal>2</ordinal>
+                      <description>(nur mit Kühlfunktion und WW) Heizungsanlage im Kühlbetrieb</description>
+                    </enumEntry>
+                    <enumEntry>
+                      <literal>HEL_HP_DURATION_OP</literal>
+                      <ordinal>4</ordinal>
+                      <description>Heizbetrieb und Brauchwasserbereitung unabhängig vom Zeitprogramm</description>
+                    </enumEntry>
+                    <enumEntry>
+                      <literal>HEL_HP_REDUCED_OP</literal>
+                      <ordinal>5</ordinal>
+                      <description>Heizung im Absenkbetrieb unabhängig vom Zeitprogramm</description>
+                    </enumEntry>
+                    <enumEntry>
+                      <literal>HEL_HP_VACATION_MODE</literal>
+                      <ordinal>6</ordinal>
+                      <description>Während dieser Zeit verhält sich die Wärmepumpe wie in der Betriebsart HEL_HP_OFF</description>
+                    </enumEntry>
+                    <enumEntry>
+                      <literal>HEL_HP_PARTY_MODE</literal>
+                      <ordinal>7</ordinal>
+                      <description>Im Partybetrieb verhält sich die Wärmepumpe wie im Dauerbetrieb, jedoch zeitlich beschränkt auf 2 Stunden. Die Heizung wird nicht durch die Heizgrenze begrenzt. Durch die Eingabe einer Mindest-Rücklauftemperatur kann man ggf. einen Heizbetrieb erzwingen. Nach Ablauf dieser Zeit stellt sich die Wärmepumpe wieder in die zuvor eingestellte Betriebsart zurück.</description>
+                    </enumEntry>
+                    <enumEntry>
+                      <literal>HEL_HP_OUTHEATING_MODE</literal>
+                      <ordinal>8</ordinal>
+                      <description>Diese Betriebsart bleibt auch bei Außentemperaturen > Heizgrenze, bis das Ausheizprogramm abgeschlossen ist. Ändert man während der Ausheizphase die Betriebsart, wird diese erst nach Ablauf der Ausheizphase aktiv.</description>
+                    </enumEntry>
+                    <enumEntry>
+                      <literal>HEL_HP_DSO_BLOCK</literal>
+                      <ordinal>9</ordinal>
+                      <description>Read-only. WP unter EVU sperre. Umwälzpumpen die trotz EVU-Sperre laufen sollen, müssen im Untermenü dafür freigegeben werden. Die Wärmepumpe ist dabei inaktiv.</description>
+                    </enumEntry>
+                    <enumEntry>
+                      <literal>HEL_HP_MAIN_SWITCH</literal>
+                      <ordinal>10</ordinal>
+                      <description>Hauptschalter: Die Wärmepumpe und Umwälzpumpen bleiben ausgeschalten.</description>
+                    </enumEntry>
+                  </enum>
                 </dataType>
                 <unit>NONE</unit>
                 <legibleDescription>
-                  <textElement>Festlegen der Betriebsart des Heiz-/Kühlkreises 2 Modes: 0=off,
-                    1=automatic, 2=Cooling, 3=Summer, 4=Continuous(?), 5=setback (?), 6=Vacation,
-                    7=Party, 8=Ausheizen, 9=?, 10=?. 8 to 10 only informational </textElement>
-                  <language>de</language>
-                </legibleDescription>
-              </dataPoint>
-              <modbusDataPointConfiguration>
-                <modbusDataType>
-                  <int16 />
-                </modbusDataType>
-                <address>112</address>
-                <registerType>HoldRegister</registerType>
-                <numberOfRegisters>1</numberOfRegisters>
-              </modbusDataPointConfiguration>
-              <modbusAttributes>
-                <scalingFactor>
-                  <multiplicator>1</multiplicator>
-                  <powerof10>0</powerof10>
-                </scalingFactor>
-              </modbusAttributes>
-            </dataPointListElement>
-            <dataPointListElement>
-              <dataPoint>
-                <dataPointName>HeatCoolCtrlOpState</dataPointName>
-                <dataDirection>R</dataDirection>
-                <dataType>
-                  <int16 />
-                </dataType>
-                <unit>NONE</unit>
-                <legibleDescription>
-                  <textElement>Auslesen des aktuellen Status des Heiz-/Kühlkreises 2 (Aus,
-                    Bereitschaft, Programm, Comfort, Eco)</textElement>
-                  <language>de</language>
-                </legibleDescription>
-                <legibleDescription>
-                  <textElement>This seems redundant with previous registers for W</textElement>
+                  <textElement>OPERATING MODE of heating circuit 2. 8 to 10 only informational</textElement>
                   <language>en</language>
                 </legibleDescription>
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
-                  <int16 />
+                  <int16U />
                 </modbusDataType>
                 <address>112</address>
                 <registerType>HoldRegister</registerType>
                 <numberOfRegisters>1</numberOfRegisters>
               </modbusDataPointConfiguration>
-              <modbusAttributes>
-                <scalingFactor>
-                  <multiplicator>1</multiplicator>
-                  <powerof10>0</powerof10>
-                </scalingFactor>
-              </modbusAttributes>
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
-                <dataPointName>FlowWaterTempStpt</dataPointName>
+                <dataPointName>SupplyWaterTemp</dataPointName>
                 <dataDirection>R</dataDirection>
                 <dataType>
                   <float64 />
                 </dataType>
                 <unit>DEGREES_CELSIUS</unit>
                 <legibleDescription>
-                  <textElement>Setzen der aktuellen Soll-Temperatur des Vorlaufs 2 (Grundwert).</textElement>
-                  <language>de</language>
+                    <textElement>Aktueller Istwert der Vorlauftemperatur.</textElement>
+                    <language>de</language>
+                </legibleDescription>
+              </dataPoint>
+              <modbusDataPointConfiguration>
+                <modbusDataType>
+                  <int16 />
+                </modbusDataType>
+                <address>12</address>
+                <registerType>InputRegister</registerType>
+                <numberOfRegisters>1</numberOfRegisters>
+              </modbusDataPointConfiguration>
+              <modbusAttributes>
+                <scalingFactor>
+                  <multiplicator>1</multiplicator>
+                  <powerof10>-1</powerof10>
+                </scalingFactor>
+              </modbusAttributes>
+            </dataPointListElement>
+            <dataPointListElement>
+              <dataPoint>
+                <dataPointName>FlowWaterTempSetpoint</dataPointName>
+                <dataDirection>R</dataDirection>
+                <dataType>
+                  <float64 />
+                </dataType>
+                <unit>DEGREES_CELSIUS</unit>
+                <legibleDescription>
+                  <textElement>Sets the supply temperature setpoint for heating loop 2. Only considered if FlowWaterTempSetpointEnable is True</textElement>
+                  <language>en</language>
                 </legibleDescription>
               </dataPoint>
               <modbusDataPointConfiguration>
@@ -772,14 +925,14 @@
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
-                <dataPointName>FlowWaterTempStptEn</dataPointName>
+                <dataPointName>FlowWaterTempSetpointEnable</dataPointName>
                 <dataDirection>R</dataDirection>
                 <dataType>
                   <boolean />
                 </dataType>
                 <unit>NONE</unit>
                 <legibleDescription>
-                  <textElement>Setzen der aktuellen Soll-Temperatur des Vorlaufs (Grundwert).</textElement>
+                  <textElement>Activates following of supply temperature setpoint FlowWaterTempSetpoint in register 114 for  heating loop 1. If 0, setpoint sent to register 114 is not applied. </textElement>
                   <language>de</language>
                 </legibleDescription>
               </dataPoint>
@@ -791,12 +944,6 @@
                 <registerType>HoldRegister</registerType>
                 <numberOfRegisters>1</numberOfRegisters>
               </modbusDataPointConfiguration>
-              <modbusAttributes>
-                <scalingFactor>
-                  <multiplicator>1</multiplicator>
-                  <powerof10>0</powerof10>
-                </scalingFactor>
-              </modbusAttributes>
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
@@ -861,7 +1008,7 @@
                 </dataType>
                 <unit>DEGREES_CELSIUS</unit>
                 <legibleDescription>
-                  <textElement>Domestic hot water tank temperature</textElement>
+                  <textElement>Aktueller Ist-Wert der Temperatur des Brauchwarmwasserspeichers</textElement>
                   <language>de</language>
                 </legibleDescription>
                 <legibleDescription>
@@ -871,7 +1018,7 @@
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
-                  <int16U />
+                  <int16 />
                 </modbusDataType>
                 <address>11</address>
                 <registerType>InputRegister</registerType>
@@ -886,7 +1033,7 @@
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
-                <dataPointName>DomHotWTempStpt</dataPointName>
+                <dataPointName>DomHotWaterTempSetpoint</dataPointName>
                 <dataDirection>W</dataDirection>
                 <dataType>
                   <float64 />
@@ -894,23 +1041,75 @@
                 <unit>DEGREES_CELSIUS</unit>
                 <legibleDescription>
                   <textElement>
-                    Domestic hot water temperature setpoint. Another register also available for
-                    minimum allowed temp
-                  </textElement>
-                  <language>de</language>
-                </legibleDescription>
-                <legibleDescription>
-                  <textElement>
-                    Domestic hot water temperature setpoint. also 133 work fo reading. Set 134 to 0
-                    to
-                    have effect by having temperature active.
+                    Domestic hot water temperature setpoint. ACtive if DomHotWaterTempSetpointEnable is True.
+                    there is another register (106) for minimum temperature setpoint
                   </textElement>
                   <language>en</language>
                 </legibleDescription>
               </dataPoint>
               <modbusDataPointConfiguration>
                 <modbusDataType>
-                  <int16U />
+                  <int16 />
+                </modbusDataType>
+                <address>105</address>
+                <registerType>HoldRegister</registerType>
+                <numberOfRegisters>1</numberOfRegisters>
+              </modbusDataPointConfiguration>
+              <modbusAttributes>
+                <scalingFactor>
+                  <multiplicator>1</multiplicator>
+                  <powerof10>-1</powerof10>
+                </scalingFactor>
+              </modbusAttributes>
+            </dataPointListElement>
+            <dataPointListElement>
+              <dataPoint>
+                <dataPointName>DomHotWaterTempSetpointFb</dataPointName>
+                <dataDirection>R</dataDirection>
+                <dataType>
+                  <float64 />
+                </dataType>
+                <unit>DEGREES_CELSIUS</unit>
+                <legibleDescription>
+                  <textElement>
+                    Domestic hot water temperature setpoint, read value
+                  </textElement>
+                  <language>en</language>
+                </legibleDescription>
+              </dataPoint>
+              <modbusDataPointConfiguration>
+                <modbusDataType>
+                  <int16 />
+                </modbusDataType>
+                <address>133</address>
+                <registerType>HoldRegister</registerType>
+                <numberOfRegisters>1</numberOfRegisters>
+              </modbusDataPointConfiguration>
+              <modbusAttributes>
+                <scalingFactor>
+                  <multiplicator>1</multiplicator>
+                  <powerof10>-1</powerof10>
+                </scalingFactor>
+              </modbusAttributes>
+            </dataPointListElement>
+            <dataPointListElement>
+              <dataPoint>
+                <dataPointName>DomHotWaterTempSetpointEnable</dataPointName>
+                <dataDirection>W</dataDirection>
+                <dataType>
+                  <boolean/>
+                </dataType>
+                <unit>NONE</unit>
+                <legibleDescription>
+                  <textElement>
+                    If True, DomHotWaterTempSetpoint ACtive.
+                  </textElement>
+                  <language>en</language>
+                </legibleDescription>
+              </dataPoint>
+              <modbusDataPointConfiguration>
+                <modbusDataType>
+                  <int16 />
                 </modbusDataType>
                 <address>105</address>
                 <registerType>HoldRegister</registerType>
@@ -947,24 +1146,17 @@
           <dataPointList>
             <dataPointListElement>
               <dataPoint>
-                <dataPointName>HeatWTempStptOffset</dataPointName>
-                <dataDirection>W</dataDirection>
+                <dataPointName>HeatBufferTempSetpoint</dataPointName>
+                <dataDirection>RW</dataDirection>
                 <dataType>
                   <float64 />
                 </dataType>
                 <unit>DEGREES_CELSIUS</unit>
                 <legibleDescription>
                   <textElement>
-                    Sollwerte der Solltemperatur (+/-) für den Heiz-Pufferspeicher.
-                  </textElement>
-                  <language>de</language>
-                </legibleDescription>
-                <legibleDescription>
-                  <textElement>
                     Setpoint for tank temperature. to be considered, depends on the WNA settings of
                     the heat pump which should be on Puffer Speicher mode. Otherwise, it will be
-                    used
-                    for return temperature setpoint setting
+                    used for return temperature setpoint setting.
                   </textElement>
                   <language>en</language>
                 </legibleDescription>
@@ -986,20 +1178,46 @@
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
-                <dataPointName>HeatWTempStptOffsetEn</dataPointName>
+                <dataPointName>HeatBufferTempSetpointFb</dataPointName>
+                <dataDirection>R</dataDirection>
+                <dataType>
+                  <float64 />
+                </dataType>
+                <unit>DEGREES_CELSIUS</unit>
+                <legibleDescription>
+                  <textElement>
+                    Setpoint for tank temperature reading.
+                  </textElement>
+                  <language>en</language>
+                </legibleDescription>
+              </dataPoint>
+              <modbusDataPointConfiguration>
+                <modbusDataType>
+                  <int16 />
+                </modbusDataType>
+                <address>131</address>
+                <registerType>HoldRegister</registerType>
+                <numberOfRegisters>1</numberOfRegisters>
+              </modbusDataPointConfiguration>
+              <modbusAttributes>
+                <scalingFactor>
+                  <multiplicator>1</multiplicator>
+                  <powerof10>-1</powerof10>
+                </scalingFactor>
+              </modbusAttributes>
+            </dataPointListElement>
+            <dataPointListElement>
+              <dataPoint>
+                <dataPointName>HeatBufferTempSetpointEnable</dataPointName>
                 <dataDirection>R</dataDirection>
                 <dataType>
                   <boolean />
                 </dataType>
                 <unit>NONE</unit>
                 <legibleDescription>
-                  <textElement>Wenn 1, setzen der aktuellen Soll-Temperatur des Vorlaufs
-                    (Grundwert).</textElement>
-                  <language>de</language>
-                </legibleDescription>
-                <legibleDescription>
-                  <textElement>When 1, activates setpoint for tank temperature. If 0, setpoint not
-                    applied </textElement>
+                  <textElement>When 1, activates following of setpoint HeatBufferTempSetpointOffset for tank temperature. 
+                      If 0, HeatBufferTempSetpointOffset not applied 
+                  </textElement>
                   <language>en</language>
                 </legibleDescription>
               </dataPoint>
@@ -1011,12 +1229,6 @@
                 <registerType>HoldRegister</registerType>
                 <numberOfRegisters>1</numberOfRegisters>
               </modbusDataPointConfiguration>
-              <modbusAttributes>
-                <scalingFactor>
-                  <multiplicator>1</multiplicator>
-                  <powerof10>0</powerof10>
-                </scalingFactor>
-              </modbusAttributes>
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
@@ -1194,12 +1406,6 @@
                 <registerType>InputRegister</registerType>
                 <numberOfRegisters>2</numberOfRegisters>
               </modbusDataPointConfiguration>
-              <modbusAttributes>
-                <scalingFactor>
-                  <multiplicator>1</multiplicator>
-                  <powerof10>0</powerof10>
-                </scalingFactor>
-              </modbusAttributes>
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
@@ -1223,16 +1429,10 @@
                 <registerType>InputRegister</registerType>
                 <numberOfRegisters>2</numberOfRegisters>
               </modbusDataPointConfiguration>
-              <modbusAttributes>
-                <scalingFactor>
-                  <multiplicator>1</multiplicator>
-                  <powerof10>0</powerof10>
-                </scalingFactor>
-              </modbusAttributes>
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
-                <dataPointName>ThermalEnergyDomWater</dataPointName>
+                <dataPointName>ThermalEnergyDomHotWater</dataPointName>
                 <dataDirection>R</dataDirection>
                 <dataType>
                   <float64 />
@@ -1252,12 +1452,6 @@
                 <registerType>InputRegister</registerType>
                 <numberOfRegisters>2</numberOfRegisters>
               </modbusDataPointConfiguration>
-              <modbusAttributes>
-                <scalingFactor>
-                  <multiplicator>1</multiplicator>
-                  <powerof10>0</powerof10>
-                </scalingFactor>
-              </modbusAttributes>
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
@@ -1280,12 +1474,6 @@
                 <registerType>InputRegister</registerType>
                 <numberOfRegisters>2</numberOfRegisters>
               </modbusDataPointConfiguration>
-              <modbusAttributes>
-                <scalingFactor>
-                  <multiplicator>1</multiplicator>
-                  <powerof10>0</powerof10>
-                </scalingFactor>
-              </modbusAttributes>
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
@@ -1308,41 +1496,6 @@
                 <registerType>InputRegister</registerType>
                 <numberOfRegisters>2</numberOfRegisters>
               </modbusDataPointConfiguration>
-              <modbusAttributes>
-                <scalingFactor>
-                  <multiplicator>1</multiplicator>
-                  <powerof10>-3</powerof10>
-                </scalingFactor>
-              </modbusAttributes>
-            </dataPointListElement>
-            <dataPointListElement>
-              <dataPoint>
-                <dataPointName>ThermalEnergyDomWater</dataPointName>
-                <dataDirection>R</dataDirection>
-                <dataType>
-                  <float64 />
-                </dataType>
-                <unit>KILOWATT_HOURS</unit>
-                <legibleDescription>
-                  <textElement>Summe der abgegebenen thermischen Energie für die
-                    Brauchwarmwasser-Erwärmung.</textElement>
-                  <language>de</language>
-                </legibleDescription>
-              </dataPoint>
-              <modbusDataPointConfiguration>
-                <modbusDataType>
-                  <int32U />
-                </modbusDataType>
-                <address>62</address>
-                <registerType>InputRegister</registerType>
-                <numberOfRegisters>2</numberOfRegisters>
-              </modbusDataPointConfiguration>
-              <modbusAttributes>
-                <scalingFactor>
-                  <multiplicator>1</multiplicator>
-                  <powerof10>0</powerof10>
-                </scalingFactor>
-              </modbusAttributes>
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
@@ -1365,12 +1518,6 @@
                 <registerType>InputRegister</registerType>
                 <numberOfRegisters>2</numberOfRegisters>
               </modbusDataPointConfiguration>
-              <modbusAttributes>
-                <scalingFactor>
-                  <multiplicator>1</multiplicator>
-                  <powerof10>0</powerof10>
-                </scalingFactor>
-              </modbusAttributes>
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
@@ -1397,16 +1544,10 @@
                 <modbusDataType>
                   <int32U />
                 </modbusDataType>
-                <address>68</address>
+                <address>74</address>
                 <registerType>InputRegister</registerType>
                 <numberOfRegisters>2</numberOfRegisters>
               </modbusDataPointConfiguration>
-              <modbusAttributes>
-                <scalingFactor>
-                  <multiplicator>1</multiplicator>
-                  <powerof10>0</powerof10>
-                </scalingFactor>
-              </modbusAttributes>
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
@@ -1425,16 +1566,10 @@
                 <modbusDataType>
                   <int32U />
                 </modbusDataType>
-                <address>68</address>
+                <address>44</address>
                 <registerType>InputRegister</registerType>
-                <numberOfRegisters>1</numberOfRegisters>
+                <numberOfRegisters>2</numberOfRegisters>
               </modbusDataPointConfiguration>
-              <modbusAttributes>
-                <scalingFactor>
-                  <multiplicator>1</multiplicator>
-                  <powerof10>0</powerof10>
-                </scalingFactor>
-              </modbusAttributes>
             </dataPointListElement>
             <dataPointListElement>
               <dataPoint>
@@ -1454,15 +1589,9 @@
                   <int32U />
                 </modbusDataType>
                 <address>42</address>
-                <registerType>HoldRegister</registerType>
+                <registerType>InputRegister</registerType>
                 <numberOfRegisters>2</numberOfRegisters>
               </modbusDataPointConfiguration>
-              <modbusAttributes>
-                <scalingFactor>
-                  <multiplicator>1</multiplicator>
-                  <powerof10>0</powerof10>
-                </scalingFactor>
-              </modbusAttributes>
             </dataPointListElement>
           </dataPointList>
         </functionalProfileListElement>
