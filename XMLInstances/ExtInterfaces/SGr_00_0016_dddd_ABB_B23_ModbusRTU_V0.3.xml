@@ -110,35 +110,6 @@
       </configurationDescription>
     </configurationListElement>
     <configurationListElement>
-      <name>serial_databits</name>
-      <dataType>
-        <enum>
-          <enumEntry><literal>7</literal></enumEntry>
-          <enumEntry><literal>8</literal></enumEntry>
-        </enum>
-      </dataType>
-      <defaultValue>8</defaultValue>
-      <configurationDescription>
-        <textElement>The number of data bits when accessed via serial port.</textElement>
-        <language>en</language>
-        <label>Serial data bits</label>
-      </configurationDescription>
-    </configurationListElement>
-    <configurationListElement>
-      <name>serial_stopbits</name>
-      <dataType>
-        <enum>
-          <enumEntry><literal>1</literal></enumEntry>
-        </enum>
-      </dataType>
-      <defaultValue>1</defaultValue>
-      <configurationDescription>
-        <textElement>The number of stop bits when accessed via serial port.</textElement>
-        <language>en</language>
-        <label>Serial stop bits</label>
-      </configurationDescription>
-    </configurationListElement>
-    <configurationListElement>
       <name>serial_parity</name>
       <dataType>
         <enum>
@@ -181,9 +152,9 @@
           <slaveAddr>{{slave_id}}</slaveAddr>
           <portName>{{serial_port}}</portName>
           <baudRateSelected>{{serial_baudrate}}</baudRateSelected>
-          <byteLenSelected>{{serial_databits}}</byteLenSelected>
+          <byteLenSelected>8</byteLenSelected>
           <paritySelected>{{serial_parity}}</paritySelected>
-          <stopBitLenSelected>{{serial_stopbits}}</stopBitLenSelected>
+          <stopBitLenSelected>1</stopBitLenSelected>
           <serialInterfaceCapability>
             <baudRatesSupported>1200</baudRatesSupported>
             <baudRatesSupported>2400</baudRatesSupported>
@@ -193,9 +164,7 @@
             <baudRatesSupported>38400</baudRatesSupported>
             <baudRatesSupported>57600</baudRatesSupported>
             <baudRatesSupported>115200</baudRatesSupported>
-            <baudRatesSupported>230400</baudRatesSupported>
             <byteLenSupported>8</byteLenSupported>
-            <byteLenSupported>7</byteLenSupported>
             <paritySupported>EVEN</paritySupported>
             <paritySupported>NONE</paritySupported>
             <paritySupported>ODD</paritySupported>
