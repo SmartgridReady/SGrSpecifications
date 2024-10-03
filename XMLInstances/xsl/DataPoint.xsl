@@ -31,11 +31,11 @@
                     <th>Type</th>
                     <xsl:choose>
                         <xsl:when test="/sgr:DeviceFrame">
-    						<th>RWP<sup>1)</sup></th>
+    						<th>RWPC<sup>1)</sup></th>
                         </xsl:when>
                         <xsl:otherwise>
     						<th>MRO<sup>1)</sup></th>
-    						<th>RWPC<sup>2)</sup></th>
+    						<th>RW<sup>2)</sup></th>
                         </xsl:otherwise>
                     </xsl:choose>
                 </tr>
