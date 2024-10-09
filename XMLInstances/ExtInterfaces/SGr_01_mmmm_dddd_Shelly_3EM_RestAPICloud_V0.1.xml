@@ -20,7 +20,7 @@
 			<textElement>
 				<![CDATA[ 
           Der Shelly 3EM ist ein 3-Phasen-Energiezähler mit schaltbarem Relais.
-          Die vorliegende EID ist auf die Ansteuerung via Cloud REST API ausgelegt.
+          Die vorliegende EID ist auf die Ansteuerung via Cloud REST API (Gen1) ausgelegt.
         ]]>
 			</textElement>
 			<language>de</language>
@@ -40,10 +40,11 @@
 	</deviceInformation>
 	<configurationList>
 		<configurationListElement>
-			<name>baseUri</name>
+			<name>base_uri</name>
 			<dataType>
 				<string/>
 			</dataType>
+			<defaultValue>https://shelly-01-eu.shelly.cloud</defaultValue>
 			<configurationDescription>
 				<textElement>Base address for accessing the resource.</textElement>
 				<language>en</language>
@@ -56,10 +57,11 @@
 			</configurationDescription>
 		</configurationListElement>
 		<configurationListElement>
-			<name>deviceId</name>
+			<name>device_id</name>
 			<dataType>
 				<string/>
 			</dataType>
+			<defaultValue>Shelly3EM</defaultValue>
 			<configurationDescription>
 				<textElement>ID of the cloud device.</textElement>
 				<language>en</language>
@@ -72,10 +74,11 @@
 			</configurationDescription>
 		</configurationListElement>
 		<configurationListElement>
-			<name>authKey</name>
+			<name>auth_key</name>
 			<dataType>
 				<string/>
 			</dataType>
+			<defaultValue></defaultValue>
 			<configurationDescription>
 				<textElement>Cloud authentication key.</textElement>
 				<language>en</language>
@@ -92,7 +95,7 @@
 		<restApiInterface>
 			<restApiInterfaceDescription>
 				<restApiInterfaceSelection>URI</restApiInterfaceSelection>
-				<restApiUri>{{baseUri}}</restApiUri>
+				<restApiUri>{{base_uri}}</restApiUri>
 				<restApiAuthenticationMethod>NoSecurityScheme</restApiAuthenticationMethod>
 			</restApiInterfaceDescription>
 			<functionalProfileList>
@@ -192,11 +195,11 @@
 									<requestForm>
 										<parameter>
 											<name>id</name>
-											<value>{{deviceId}}</value>
+											<value>{{device_id}}</value>
 										</parameter>
 										<parameter>
 											<name>auth_key</name>
-											<value>{{authKey}}</value>
+											<value>{{auth_key}}</value>
 										</parameter>
 									</requestForm>
 									<responseQuery>
@@ -239,11 +242,11 @@
 									<requestForm>
 										<parameter>
 											<name>id</name>
-											<value>{{deviceId}}</value>
+											<value>{{device_id}}</value>
 										</parameter>
 										<parameter>
 											<name>auth_key</name>
-											<value>{{authKey}}</value>
+											<value>{{auth_key}}</value>
 										</parameter>
 									</requestForm>
 									<responseQuery>
@@ -286,11 +289,11 @@
 									<requestForm>
 										<parameter>
 											<name>id</name>
-											<value>{{deviceId}}</value>
+											<value>{{device_id}}</value>
 										</parameter>
 										<parameter>
 											<name>auth_key</name>
-											<value>{{authKey}}</value>
+											<value>{{auth_key}}</value>
 										</parameter>
 									</requestForm>
 									<responseQuery>
@@ -333,11 +336,11 @@
 									<requestForm>
 										<parameter>
 											<name>id</name>
-											<value>{{deviceId}}</value>
+											<value>{{device_id}}</value>
 										</parameter>
 										<parameter>
 											<name>auth_key</name>
-											<value>{{authKey}}</value>
+											<value>{{auth_key}}</value>
 										</parameter>
 									</requestForm>
 									<responseQuery>
@@ -446,11 +449,11 @@
 									<requestForm>
 										<parameter>
 											<name>id</name>
-											<value>{{deviceId}}</value>
+											<value>{{device_id}}</value>
 										</parameter>
 										<parameter>
 											<name>auth_key</name>
-											<value>{{authKey}}</value>
+											<value>{{auth_key}}</value>
 										</parameter>
 									</requestForm>
 									<responseQuery>
@@ -491,11 +494,11 @@
 									<requestForm>
 										<parameter>
 											<name>id</name>
-											<value>{{deviceId}}</value>
+											<value>{{device_id}}</value>
 										</parameter>
 										<parameter>
 											<name>auth_key</name>
-											<value>{{authKey}}</value>
+											<value>{{auth_key}}</value>
 										</parameter>
 									</requestForm>
 									<responseQuery>
@@ -536,11 +539,11 @@
 									<requestForm>
 										<parameter>
 											<name>id</name>
-											<value>{{deviceId}}</value>
+											<value>{{device_id}}</value>
 										</parameter>
 										<parameter>
 											<name>auth_key</name>
-											<value>{{authKey}}</value>
+											<value>{{auth_key}}</value>
 										</parameter>
 									</requestForm>
 									<responseQuery>
@@ -581,11 +584,11 @@
 									<requestForm>
 										<parameter>
 											<name>id</name>
-											<value>{{deviceId}}</value>
+											<value>{{device_id}}</value>
 										</parameter>
 										<parameter>
 											<name>auth_key</name>
-											<value>{{authKey}}</value>
+											<value>{{auth_key}}</value>
 										</parameter>
 									</requestForm>
 									<responseQuery>
@@ -648,11 +651,11 @@
 									<requestForm>
 										<parameter>
 											<name>id</name>
-											<value>{{deviceId}}</value>
+											<value>{{device_id}}</value>
 										</parameter>
 										<parameter>
 											<name>auth_key</name>
-											<value>{{authKey}}</value>
+											<value>{{auth_key}}</value>
 										</parameter>
 									</requestForm>
 									<responseQuery>
@@ -691,11 +694,11 @@
 									<requestForm>
 										<parameter>
 											<name>id</name>
-											<value>{{deviceId}}</value>
+											<value>{{device_id}}</value>
 										</parameter>
 										<parameter>
 											<name>auth_key</name>
-											<value>{{authKey}}</value>
+											<value>{{auth_key}}</value>
 										</parameter>
 									</requestForm>
 									<responseQuery>
@@ -734,11 +737,11 @@
 									<requestForm>
 										<parameter>
 											<name>id</name>
-											<value>{{deviceId}}</value>
+											<value>{{device_id}}</value>
 										</parameter>
 										<parameter>
 											<name>auth_key</name>
-											<value>{{authKey}}</value>
+											<value>{{auth_key}}</value>
 										</parameter>
 									</requestForm>
 									<responseQuery>
@@ -801,11 +804,11 @@
 									<requestForm>
 										<parameter>
 											<name>id</name>
-											<value>{{deviceId}}</value>
+											<value>{{device_id}}</value>
 										</parameter>
 										<parameter>
 											<name>auth_key</name>
-											<value>{{authKey}}</value>
+											<value>{{auth_key}}</value>
 										</parameter>
 									</requestForm>
 									<responseQuery>
@@ -844,11 +847,11 @@
 									<requestForm>
 										<parameter>
 											<name>id</name>
-											<value>{{deviceId}}</value>
+											<value>{{device_id}}</value>
 										</parameter>
 										<parameter>
 											<name>auth_key</name>
-											<value>{{authKey}}</value>
+											<value>{{auth_key}}</value>
 										</parameter>
 									</requestForm>
 									<responseQuery>
@@ -887,11 +890,11 @@
 									<requestForm>
 										<parameter>
 											<name>id</name>
-											<value>{{deviceId}}</value>
+											<value>{{device_id}}</value>
 										</parameter>
 										<parameter>
 											<name>auth_key</name>
-											<value>{{authKey}}</value>
+											<value>{{auth_key}}</value>
 										</parameter>
 									</requestForm>
 									<responseQuery>
@@ -958,11 +961,11 @@
 									<requestForm>
 										<parameter>
 											<name>id</name>
-											<value>{{deviceId}}</value>
+											<value>{{device_id}}</value>
 										</parameter>
 										<parameter>
 											<name>auth_key</name>
-											<value>{{authKey}}</value>
+											<value>{{auth_key}}</value>
 										</parameter>
 									</requestForm>
 									<responseQuery>
@@ -982,11 +985,11 @@
 									<requestForm>
 										<parameter>
 											<name>id</name>
-											<value>{{deviceId}}</value>
+											<value>{{device_id}}</value>
 										</parameter>
 										<parameter>
 											<name>auth_key</name>
-											<value>{{authKey}}</value>
+											<value>{{auth_key}}</value>
 										</parameter>
 										<parameter>
 											<name>turn</name>

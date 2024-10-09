@@ -20,7 +20,7 @@
 			<textElement>
 				<![CDATA[ 
           Der Shelly Pro 3EM ist ein 3-Phasen-Energiezähler.
-          Die vorliegende EID ist auf die Ansteuerung via Cloud JSON-RPC API ausgelegt.
+          Die vorliegende EID ist auf die Ansteuerung via Cloud JSON-RPC API (Gen2) ausgelegt.
         ]]>
 			</textElement>
 			<language>de</language>
@@ -40,10 +40,11 @@
 	</deviceInformation>
 	<configurationList>
 		<configurationListElement>
-			<name>baseUri</name>
+			<name>base_uri</name>
 			<dataType>
 				<string/>
 			</dataType>
+			<defaultValue>https://shelly-01-eu.shelly.cloud</defaultValue>
 			<configurationDescription>
 				<textElement>Base address for accessing the resource.</textElement>
 				<language>en</language>
@@ -56,10 +57,11 @@
 			</configurationDescription>
 		</configurationListElement>
 		<configurationListElement>
-			<name>deviceId</name>
+			<name>device_id</name>
 			<dataType>
 				<string/>
 			</dataType>
+			<defaultValue>ShellyPro3EM</defaultValue>
 			<configurationDescription>
 				<textElement>ID of the cloud device.</textElement>
 				<language>en</language>
@@ -72,10 +74,11 @@
 			</configurationDescription>
 		</configurationListElement>
 		<configurationListElement>
-			<name>authKey</name>
+			<name>auth_key</name>
 			<dataType>
 				<string/>
 			</dataType>
+			<defaultValue></defaultValue>
 			<configurationDescription>
 				<textElement>Cloud authentication key.</textElement>
 				<language>en</language>
@@ -92,7 +95,7 @@
 		<restApiInterface>
 			<restApiInterfaceDescription>
 				<restApiInterfaceSelection>URI</restApiInterfaceSelection>
-				<restApiUri>{{baseUri}}/{{deviceId}}</restApiUri>
+				<restApiUri>{{base_uri}}</restApiUri>
 				<restApiAuthenticationMethod>NoSecurityScheme</restApiAuthenticationMethod>
 			</restApiInterfaceDescription>
 			<functionalProfileList>
@@ -188,7 +191,7 @@
 										</header>
 									</requestHeader>
 									<requestMethod>POST</requestMethod>
-									<requestPath>/rpc/EM.GetStatus</requestPath>
+									<requestPath>/{{device_id}}/rpc/EM.GetStatus</requestPath>
 									<requestForm>
 										<parameter>
 											<name>id</name>
@@ -196,7 +199,7 @@
 										</parameter>
 										<parameter>
 											<name>auth_key</name>
-											<value>{{authKey}}</value>
+											<value>{{auth_key}}</value>
 										</parameter>
 									</requestForm>
 									<responseQuery>
@@ -235,7 +238,7 @@
 										</header>
 									</requestHeader>
 									<requestMethod>POST</requestMethod>
-									<requestPath>/rpc/EM.GetStatus?id=0</requestPath>
+									<requestPath>/{{device_id}}/rpc/EM.GetStatus?id=0</requestPath>
 									<requestForm>
 										<parameter>
 											<name>id</name>
@@ -243,7 +246,7 @@
 										</parameter>
 										<parameter>
 											<name>auth_key</name>
-											<value>{{authKey}}</value>
+											<value>{{auth_key}}</value>
 										</parameter>
 									</requestForm>
 									<responseQuery>
@@ -282,7 +285,7 @@
 										</header>
 									</requestHeader>
 									<requestMethod>POST</requestMethod>
-									<requestPath>/rpc/EM.GetStatus</requestPath>
+									<requestPath>/{{device_id}}/rpc/EM.GetStatus</requestPath>
 									<requestForm>
 										<parameter>
 											<name>id</name>
@@ -290,7 +293,7 @@
 										</parameter>
 										<parameter>
 											<name>auth_key</name>
-											<value>{{authKey}}</value>
+											<value>{{auth_key}}</value>
 										</parameter>
 									</requestForm>
 									<responseQuery>
@@ -329,7 +332,7 @@
 										</header>
 									</requestHeader>
 									<requestMethod>POST</requestMethod>
-									<requestPath>/rpc/EM.GetStatus</requestPath>
+									<requestPath>/{{device_id}}/rpc/EM.GetStatus</requestPath>
 									<requestForm>
 										<parameter>
 											<name>id</name>
@@ -337,7 +340,7 @@
 										</parameter>
 										<parameter>
 											<name>auth_key</name>
-											<value>{{authKey}}</value>
+											<value>{{auth_key}}</value>
 										</parameter>
 									</requestForm>
 									<responseQuery>
@@ -442,7 +445,7 @@
 										</header>
 									</requestHeader>
 									<requestMethod>POST</requestMethod>
-									<requestPath>/rpc/EMData.GetStatus</requestPath>
+									<requestPath>/{{device_id}}/rpc/EMData.GetStatus</requestPath>
 									<requestForm>
 										<parameter>
 											<name>id</name>
@@ -450,7 +453,7 @@
 										</parameter>
 										<parameter>
 											<name>auth_key</name>
-											<value>{{authKey}}</value>
+											<value>{{auth_key}}</value>
 										</parameter>
 									</requestForm>
 									<responseQuery>
@@ -487,7 +490,7 @@
 										</header>
 									</requestHeader>
 									<requestMethod>POST</requestMethod>
-									<requestPath>/rpc/EMData.GetStatus</requestPath>
+									<requestPath>/{{device_id}}/rpc/EMData.GetStatus</requestPath>
 									<requestForm>
 										<parameter>
 											<name>id</name>
@@ -495,7 +498,7 @@
 										</parameter>
 										<parameter>
 											<name>auth_key</name>
-											<value>{{authKey}}</value>
+											<value>{{auth_key}}</value>
 										</parameter>
 									</requestForm>
 									<responseQuery>
@@ -532,7 +535,7 @@
 										</header>
 									</requestHeader>
 									<requestMethod>POST</requestMethod>
-									<requestPath>/rpc/EMData.GetStatus</requestPath>
+									<requestPath>/{{device_id}}/rpc/EMData.GetStatus</requestPath>
 									<requestForm>
 										<parameter>
 											<name>id</name>
@@ -540,7 +543,7 @@
 										</parameter>
 										<parameter>
 											<name>auth_key</name>
-											<value>{{authKey}}</value>
+											<value>{{auth_key}}</value>
 										</parameter>
 									</requestForm>
 									<responseQuery>
@@ -577,7 +580,7 @@
 										</header>
 									</requestHeader>
 									<requestMethod>POST</requestMethod>
-									<requestPath>/rpc/EMData.GetStatus</requestPath>
+									<requestPath>/{{device_id}}/rpc/EMData.GetStatus</requestPath>
 									<requestForm>
 										<parameter>
 											<name>id</name>
@@ -585,7 +588,7 @@
 										</parameter>
 										<parameter>
 											<name>auth_key</name>
-											<value>{{authKey}}</value>
+											<value>{{auth_key}}</value>
 										</parameter>
 									</requestForm>
 									<responseQuery>
@@ -644,7 +647,7 @@
 										</header>
 									</requestHeader>
 									<requestMethod>POST</requestMethod>
-									<requestPath>/rpc/EM.GetStatus</requestPath>
+									<requestPath>/{{device_id}}/rpc/EM.GetStatus</requestPath>
 									<requestForm>
 										<parameter>
 											<name>id</name>
@@ -652,7 +655,7 @@
 										</parameter>
 										<parameter>
 											<name>auth_key</name>
-											<value>{{authKey}}</value>
+											<value>{{auth_key}}</value>
 										</parameter>
 									</requestForm>
 									<responseQuery>
@@ -687,7 +690,7 @@
 										</header>
 									</requestHeader>
 									<requestMethod>POST</requestMethod>
-									<requestPath>/rpc/EM.GetStatus</requestPath>
+									<requestPath>/{{device_id}}/rpc/EM.GetStatus</requestPath>
 									<requestForm>
 										<parameter>
 											<name>id</name>
@@ -695,7 +698,7 @@
 										</parameter>
 										<parameter>
 											<name>auth_key</name>
-											<value>{{authKey}}</value>
+											<value>{{auth_key}}</value>
 										</parameter>
 									</requestForm>
 									<responseQuery>
@@ -730,7 +733,7 @@
 										</header>
 									</requestHeader>
 									<requestMethod>POST</requestMethod>
-									<requestPath>/rpc/EM.GetStatus</requestPath>
+									<requestPath>/{{device_id}}/rpc/EM.GetStatus</requestPath>
 									<requestForm>
 										<parameter>
 											<name>id</name>
@@ -738,7 +741,7 @@
 										</parameter>
 										<parameter>
 											<name>auth_key</name>
-											<value>{{authKey}}</value>
+											<value>{{auth_key}}</value>
 										</parameter>
 									</requestForm>
 									<responseQuery>
@@ -797,7 +800,7 @@
 										</header>
 									</requestHeader>
 									<requestMethod>POST</requestMethod>
-									<requestPath>/rpc/EM.GetStatus</requestPath>
+									<requestPath>/{{device_id}}/rpc/EM.GetStatus</requestPath>
 									<requestForm>
 										<parameter>
 											<name>id</name>
@@ -805,7 +808,7 @@
 										</parameter>
 										<parameter>
 											<name>auth_key</name>
-											<value>{{authKey}}</value>
+											<value>{{auth_key}}</value>
 										</parameter>
 									</requestForm>
 									<responseQuery>
@@ -840,7 +843,7 @@
 										</header>
 									</requestHeader>
 									<requestMethod>POST</requestMethod>
-									<requestPath>/rpc/EM.GetStatus</requestPath>
+									<requestPath>/{{device_id}}/rpc/EM.GetStatus</requestPath>
 									<requestForm>
 										<parameter>
 											<name>id</name>
@@ -848,7 +851,7 @@
 										</parameter>
 										<parameter>
 											<name>auth_key</name>
-											<value>{{authKey}}</value>
+											<value>{{auth_key}}</value>
 										</parameter>
 									</requestForm>
 									<responseQuery>
@@ -883,7 +886,7 @@
 										</header>
 									</requestHeader>
 									<requestMethod>POST</requestMethod>
-									<requestPath>/rpc/EM.GetStatus</requestPath>
+									<requestPath>/{{device_id}}/rpc/EM.GetStatus</requestPath>
 									<requestForm>
 										<parameter>
 											<name>id</name>
@@ -891,7 +894,7 @@
 										</parameter>
 										<parameter>
 											<name>auth_key</name>
-											<value>{{authKey}}</value>
+											<value>{{auth_key}}</value>
 										</parameter>
 									</requestForm>
 									<responseQuery>
@@ -926,7 +929,7 @@
 										</header>
 									</requestHeader>
 									<requestMethod>POST</requestMethod>
-									<requestPath>/rpc/EM.GetStatus</requestPath>
+									<requestPath>/{{device_id}}/rpc/EM.GetStatus</requestPath>
 									<requestForm>
 										<parameter>
 											<name>id</name>
@@ -934,7 +937,7 @@
 										</parameter>
 										<parameter>
 											<name>auth_key</name>
-											<value>{{authKey}}</value>
+											<value>{{auth_key}}</value>
 										</parameter>
 									</requestForm>
 									<responseQuery>
