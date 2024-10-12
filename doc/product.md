@@ -83,6 +83,18 @@ Additional to the datapoints in the functional profile the product has the conce
 
 For this, the data direction "C" is possible in products. In this case, a value must be defined for the datapoint.
 
+### Generic Attributes
+SGr allows to associate attributes to a data point. See [GenericAttributes](GenericAttributes.md) for details.
+
+The generic attributes (see [GenericAttributes](GenericAttributes.md)) contain static characteristics of the product.
+
+The generic attributes are a list of elements defined by
+
+- name
+- data type
+- value
+- description
+
 ## File Naming Schema
 File names for Products Definitions (EID's) should have the following file naming conventions:
 
