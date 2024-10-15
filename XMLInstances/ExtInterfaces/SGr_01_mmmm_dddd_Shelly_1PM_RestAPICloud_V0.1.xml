@@ -183,7 +183,7 @@
 							</dataPoint>
 							<restApiDataPointConfiguration>
 								<dataType>JSON_number</dataType>
-								<restApiServiceCall>
+								<restApiReadServiceCall>
 									<requestHeader>
 										<header>
 											<headerName>Accept</headerName>
@@ -204,9 +204,9 @@
 									</requestForm>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
-										<query>meters[0].power</query>
+										<query>data.device_status.meters[0].power</query>
 									</responseQuery>
-								</restApiServiceCall>
+								</restApiReadServiceCall>
 							</restApiDataPointConfiguration>
 						</dataPointListElement>
 					</dataPointList>
@@ -297,7 +297,7 @@
 							</dataPoint>
 							<restApiDataPointConfiguration>
 								<dataType>JSON_number</dataType>
-								<restApiServiceCall>
+								<restApiReadServiceCall>
 									<requestHeader>
 										<header>
 											<headerName>Accept</headerName>
@@ -318,9 +318,9 @@
 									</requestForm>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
-										<query>meters[0].total</query>
+										<query>data.device_status.meters[0].total</query>
 									</responseQuery>
-								</restApiServiceCall>
+								</restApiReadServiceCall>
 							</restApiDataPointConfiguration>
 						</dataPointListElement>
 					</dataPointList>
@@ -376,7 +376,7 @@
 										</header>
 									</requestHeader>
 									<requestMethod>POST</requestMethod>
-									<requestPath>/device/relay/0</requestPath>
+									<requestPath>/device/status</requestPath>
 									<requestForm>
 										<parameter>
 											<name>id</name>
@@ -389,7 +389,7 @@
 									</requestForm>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
-										<query>ison</query>
+										<query>data.device_status.relays[0].ison</query>
 									</responseQuery>
 								</restApiReadServiceCall>
 								<restApiWriteServiceCall>
@@ -400,7 +400,7 @@
 										</header>
 									</requestHeader>
 									<requestMethod>POST</requestMethod>
-									<requestPath>/device/relay/0</requestPath>
+									<requestPath>/device/relay/control</requestPath>
 									<requestForm>
 										<parameter>
 											<name>id</name>
@@ -411,14 +411,14 @@
 											<value>{{auth_key}}</value>
 										</parameter>
 										<parameter>
+											<name>channel</name>
+											<value>1</value>
+										</parameter>
+										<parameter>
 											<name>turn</name>
 											<value>{{value}}</value>
 										</parameter>
 									</requestForm>
-									<responseQuery>
-										<queryType>JMESPathExpression</queryType>
-										<query>ison</query>
-									</responseQuery>
 									<valueMapping>
 										<mapping>
 											<genericValue>false</genericValue>

@@ -150,7 +150,7 @@
 										</header>
 									</requestHeader>
 									<requestMethod>POST</requestMethod>
-									<requestPath>/device/relay/0</requestPath>
+									<requestPath>/device/status</requestPath>
 									<requestForm>
 										<parameter>
 											<name>id</name>
@@ -163,7 +163,7 @@
 									</requestForm>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
-										<query>ison</query>
+										<query>data.device_status.relays[0].ison</query>
 									</responseQuery>
 								</restApiReadServiceCall>
 								<restApiWriteServiceCall>
@@ -174,7 +174,7 @@
 										</header>
 									</requestHeader>
 									<requestMethod>POST</requestMethod>
-									<requestPath>/device/relay/0</requestPath>
+									<requestPath>/device/relay/control</requestPath>
 									<requestForm>
 										<parameter>
 											<name>id</name>
@@ -185,14 +185,14 @@
 											<value>{{auth_key}}</value>
 										</parameter>
 										<parameter>
+											<name>channel</name>
+											<value>1</value>
+										</parameter>
+										<parameter>
 											<name>turn</name>
 											<value>{{value}}</value>
 										</parameter>
 									</requestForm>
-									<responseQuery>
-										<queryType>JMESPathExpression</queryType>
-										<query>ison</query>
-									</responseQuery>
 									<valueMapping>
 										<mapping>
 											<genericValue>false</genericValue>

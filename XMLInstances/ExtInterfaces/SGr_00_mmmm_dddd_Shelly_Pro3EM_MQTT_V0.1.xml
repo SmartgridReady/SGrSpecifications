@@ -21,8 +21,8 @@
 				<![CDATA[ 
           Der Shelly Pro 3EM ist ein 3-Phasen-Energiezähler.
           Die vorliegende EID ist auf die Ansteuerung via MQTT ausgelegt.
-		  Mit dem vorliegenden EID können Daten via MQTT-Topic "shellies/{device_id}/rpc" abgefragt
-		  und via MQTT-Topic "shellies/{device_id}/rpc-response/..." empfangen werden.
+		  Mit dem vorliegenden EID können Daten via MQTT-Topic "shellies/{device_id}/status" empfangen werden.
+          In der Firmware muss MQTT Control aktiviert sein und RPC via MQTT deaktiviert.
           Siehe https://shelly-api-docs.shelly.cloud/gen2/ComponentsAndServices/Mqtt/#step-8-send-request-and-receive-response
         ]]>
 			</textElement>
@@ -31,7 +31,7 @@
 		</legibleDescription>
 		<deviceCategory>SubMeterElectricity</deviceCategory>
 		<isLocalControl>false</isLocalControl>
-		<softwareRevision>1.0.0</softwareRevision>
+		<softwareRevision>1.4.3</softwareRevision>
 		<hardwareRevision>1.0.0</hardwareRevision>
 		<manufacturerSpecificationIdentification>Shelly</manufacturerSpecificationIdentification>
 		<levelOfOperation>m</levelOfOperation>
@@ -145,21 +145,20 @@
 			</configurationDescription>
 		</configurationListElement>
 		<configurationListElement>
-			<name>device_id</name>
+			<name>topic_prefix</name>
 			<dataType>
 				<string/>
 			</dataType>
-			<defaultValue>ShellyPro3EM</defaultValue>
-			<defaultValue>pro3em</defaultValue>
+			<defaultValue>shellies/ShellyPro3EM</defaultValue>
 			<configurationDescription>
-				<textElement>Device identifier used in MQTT topic.</textElement>
+				<textElement>MQTT topic prefix.</textElement>
 				<language>en</language>
-				<label>Device ID</label>
+				<label>Topic Prefix</label>
 			</configurationDescription>
 			<configurationDescription>
-				<textElement>Device-Identifier, in MQTT-Topic verwendet.</textElement>
+				<textElement>MQTT-Topic-Präfix.</textElement>
 				<language>de</language>
-				<label>Device ID</label>
+				<label>Topic-Präfix</label>
 			</configurationDescription>
 		</configurationListElement>
 	</configurationList>
@@ -269,12 +268,8 @@
 								<messagingDataType>
 									<number/>
 								</messagingDataType>
-								<readCmdMessage>
-									<topic>shellies/{{device_id}}/rpc</topic>
-									<template>{ "id": 0, "src": "shellies/{{device_id}}/rpc-response/activepower_ac_tot", "method": "EM.GetStatus" }</template>
-								</readCmdMessage>
 								<inMessage>
-									<topic>shellies/{{device_id}}/rpc-response/activepower_ac_tot/rpc</topic>
+									<topic>{{topic_prefix}}/status/em:0</topic>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
 										<query>total_act_power</query>
@@ -305,12 +300,8 @@
 								<messagingDataType>
 									<number/>
 								</messagingDataType>
-								<readCmdMessage>
-									<topic>shellies/{{device_id}}/rpc</topic>
-									<template>{ "id": 0, "src": "shellies/{{device_id}}/rpc-response/activepower_ac_l1", "method": "EM.GetStatus" }</template>
-								</readCmdMessage>
 								<inMessage>
-									<topic>shellies/{{device_id}}/rpc-response/activepower_ac_l1/rpc</topic>
+									<topic>{{topic_prefix}}/status/em:0</topic>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
 										<query>a_act_power</query>
@@ -337,17 +328,12 @@
 									<language>en</language>
 								</legibleDescription>
 							</dataPoint>
-
 							<messagingDataPointConfiguration>
 								<messagingDataType>
 									<number/>
 								</messagingDataType>
-								<readCmdMessage>
-									<topic>shellies/{{device_id}}/rpc</topic>
-									<template>{ "id": 0, "src": "shellies/{{device_id}}/rpc-response/activepower_ac_l2", "method": "EM.GetStatus" }</template>
-								</readCmdMessage>
 								<inMessage>
-									<topic>shellies/{{device_id}}/rpc-response/activepower_ac_l2/rpc</topic>
+									<topic>{{topic_prefix}}/status/em:0</topic>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
 										<query>b_act_power</query>
@@ -378,12 +364,8 @@
 								<messagingDataType>
 									<number/>
 								</messagingDataType>
-								<readCmdMessage>
-									<topic>shellies/{{device_id}}/rpc</topic>
-									<template>{ "id": 0, "src": "shellies/{{device_id}}/rpc-response/activepower_ac_l3", "method": "EM.GetStatus" }</template>
-								</readCmdMessage>
 								<inMessage>
-									<topic>shellies/{{device_id}}/rpc-response/activepower_ac_l3/rpc</topic>
+									<topic>{{topic_prefix}}/status/em:0</topic>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
 										<query>c_act_power</query>
@@ -480,12 +462,8 @@
 								<messagingDataType>
 									<number/>
 								</messagingDataType>
-								<readCmdMessage>
-									<topic>shellies/{{device_id}}/rpc</topic>
-									<template>{ "id": 0, "src": "shellies/{{device_id}}/rpc-response/activeenergy_ac_tot", "method": "EMData.GetStatus" }</template>
-								</readCmdMessage>
 								<inMessage>
-									<topic>shellies/{{device_id}}/rpc-response/activeenergy_ac_tot/rpc</topic>
+									<topic>{{topic_prefix}}/status/emdata:0</topic>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
 										<query>total_act</query>
@@ -514,12 +492,8 @@
 								<messagingDataType>
 									<number/>
 								</messagingDataType>
-								<readCmdMessage>
-									<topic>shellies/{{device_id}}/rpc</topic>
-									<template>{ "id": 0, "src": "shellies/{{device_id}}/rpc-response/activeenergy_ac_l1", "method": "EMData.GetStatus" }</template>
-								</readCmdMessage>
 								<inMessage>
-									<topic>shellies/{{device_id}}/rpc-response/activeenergy_ac_l1/rpc</topic>
+									<topic>{{topic_prefix}}/status/emdata:0</topic>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
 										<query>a_total_act_energy</query>
@@ -548,12 +522,8 @@
 								<messagingDataType>
 									<number/>
 								</messagingDataType>
-								<readCmdMessage>
-									<topic>shellies/{{device_id}}/rpc</topic>
-									<template>{ "id": 0, "src": "shellies/{{device_id}}/rpc-response/activeenergy_ac_l2", "method": "EMData.GetStatus" }</template>
-								</readCmdMessage>
 								<inMessage>
-									<topic>shellies/{{device_id}}/rpc-response/activeenergy_ac_l2/rpc</topic>
+									<topic>{{topic_prefix}}/status/emdata:0</topic>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
 										<query>b_total_act_energy</query>
@@ -582,12 +552,8 @@
 								<messagingDataType>
 									<number/>
 								</messagingDataType>
-								<readCmdMessage>
-									<topic>shellies/{{device_id}}/rpc</topic>
-									<template>{ "id": 0, "src": "shellies/{{device_id}}/rpc-response/activeenergy_ac_l3", "method": "EMData.GetStatus" }</template>
-								</readCmdMessage>
 								<inMessage>
-									<topic>shellies/{{device_id}}/rpc-response/activeenergy_ac_l3/rpc</topic>
+									<topic>{{topic_prefix}}/status/emdata:0</topic>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
 										<query>c_total_act_energy</query>
@@ -638,12 +604,8 @@
 								<messagingDataType>
 									<number/>
 								</messagingDataType>
-								<readCmdMessage>
-									<topic>shellies/{{device_id}}/rpc</topic>
-									<template>{ "id": 0, "src": "shellies/{{device_id}}/rpc-response/voltage_ac_l1_n", "method": "EM.GetStatus" }</template>
-								</readCmdMessage>
 								<inMessage>
-									<topic>shellies/{{device_id}}/rpc-response/voltage_ac_l1_n/rpc</topic>
+									<topic>{{topic_prefix}}/status/em:0</topic>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
 										<query>a_voltage</query>
@@ -670,12 +632,8 @@
 								<messagingDataType>
 									<number/>
 								</messagingDataType>
-								<readCmdMessage>
-									<topic>shellies/{{device_id}}/rpc</topic>
-									<template>{ "id": 0, "src": "shellies/{{device_id}}/rpc-response/voltage_ac_l2_n", "method": "EM.GetStatus" }</template>
-								</readCmdMessage>
 								<inMessage>
-									<topic>shellies/{{device_id}}/rpc-response/voltage_ac_l2_n/rpc</topic>
+									<topic>{{topic_prefix}}/status/em:0</topic>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
 										<query>b_voltage</query>
@@ -702,12 +660,8 @@
 								<messagingDataType>
 									<number/>
 								</messagingDataType>
-								<readCmdMessage>
-									<topic>shellies/{{device_id}}/rpc</topic>
-									<template>{ "id": 0, "src": "shellies/{{device_id}}/rpc-response/voltage_ac_l3_n", "method": "EM.GetStatus" }</template>
-								</readCmdMessage>
 								<inMessage>
-									<topic>shellies/{{device_id}}/rpc-response/voltage_ac_l3_n/rpc</topic>
+									<topic>{{topic_prefix}}/status/em:0</topic>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
 										<query>c_voltage</query>
@@ -758,12 +712,8 @@
 								<messagingDataType>
 									<number/>
 								</messagingDataType>
-								<readCmdMessage>
-									<topic>shellies/{{device_id}}/rpc</topic>
-									<template>{ "id": 0, "src": "shellies/{{device_id}}/rpc-response/current_ac_l1", "method": "EM.GetStatus" }</template>
-								</readCmdMessage>
 								<inMessage>
-									<topic>shellies/{{device_id}}/rpc-response/current_ac_l1/rpc</topic>
+									<topic>{{topic_prefix}}/status/em:0</topic>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
 										<query>a_current</query>
@@ -790,12 +740,8 @@
 								<messagingDataType>
 									<number/>
 								</messagingDataType>
-								<readCmdMessage>
-									<topic>shellies/{{device_id}}/rpc</topic>
-									<template>{ "id": 0, "src": "shellies/{{device_id}}/rpc-response/current_ac_l2", "method": "EM.GetStatus" }</template>
-								</readCmdMessage>
 								<inMessage>
-									<topic>shellies/{{device_id}}/rpc-response/current_ac_l2/rpc</topic>
+									<topic>{{topic_prefix}}/status/em:0</topic>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
 										<query>b_current</query>
@@ -822,47 +768,11 @@
 								<messagingDataType>
 									<number/>
 								</messagingDataType>
-								<readCmdMessage>
-									<topic>shellies/{{device_id}}/rpc</topic>
-									<template>{ "id": 0, "src": "shellies/{{device_id}}/rpc-response/current_ac_l3", "method": "EM.GetStatus" }</template>
-								</readCmdMessage>
 								<inMessage>
-									<topic>shellies/{{device_id}}/rpc-response/current_ac_l3/rpc</topic>
+									<topic>{{topic_prefix}}/status/em:0</topic>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
 										<query>c_current</query>
-									</responseQuery>
-								</inMessage>
-							</messagingDataPointConfiguration>
-						</dataPointListElement>
-						<dataPointListElement>
-							<dataPoint>
-								<dataPointName>CurrentACN</dataPointName>
-								<dataDirection>R</dataDirection>
-								<dataType>
-									<float64 />
-								</dataType>
-								<unit>AMPERES</unit>
-								<minimumValue>0</minimumValue>
-								<maximumValue>120</maximumValue>
-								<legibleDescription>
-									<textElement>Stromfluss Nulleiter</textElement>
-									<language>de</language>
-								</legibleDescription>
-							</dataPoint>
-							<messagingDataPointConfiguration>
-								<messagingDataType>
-									<number/>
-								</messagingDataType>
-								<readCmdMessage>
-									<topic>shellies/{{device_id}}/rpc</topic>
-									<template>{ "id": 0, "src": "shellies/{{device_id}}/rpc-response/current_ac_n", "method": "EM.GetStatus" }</template>
-								</readCmdMessage>
-								<inMessage>
-									<topic>shellies/{{device_id}}/rpc-response/current_ac_n/rpc</topic>
-									<responseQuery>
-										<queryType>JMESPathExpression</queryType>
-										<query>n_current</query>
 									</responseQuery>
 								</inMessage>
 							</messagingDataPointConfiguration>

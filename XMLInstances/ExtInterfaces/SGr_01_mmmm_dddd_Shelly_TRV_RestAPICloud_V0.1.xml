@@ -21,6 +21,7 @@
 				<![CDATA[ 
           Der Shelly TRV ist ein steuerbarer Heizkörper-Thermostat.
           Die vorliegende EID ist auf die Ansteuerung via Cloud REST API ausgelegt.
+          Das Setzen der Zieltemperatur ist via Cloud nicht möglich.
         ]]>
 			</textElement>
 			<language>de</language>
@@ -148,7 +149,7 @@
 							</dataPoint>
 							<restApiDataPointConfiguration>
 								<dataType>JSON_number</dataType>
-								<restApiServiceCall>
+								<restApiReadServiceCall>
 									<requestHeader>
 										<header>
 											<headerName>Accept</headerName>
@@ -156,7 +157,7 @@
 										</header>
 									</requestHeader>
 									<requestMethod>POST</requestMethod>
-									<requestPath>/device/thermostats/0</requestPath>
+									<requestPath>/device/status</requestPath>
 									<requestForm>
 										<parameter>
 											<name>id</name>
@@ -169,15 +170,15 @@
 									</requestForm>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
-										<query>tmp.value</query>
+										<query>data.device_status.thermostats[0].tmp.value</query>
 									</responseQuery>
-								</restApiServiceCall>
+								</restApiReadServiceCall>
 							</restApiDataPointConfiguration>
 						</dataPointListElement>
 						<dataPointListElement>
 							<dataPoint>
 								<dataPointName>TargetTemperature</dataPointName>
-								<dataDirection>RW</dataDirection>
+								<dataDirection>R</dataDirection>
 								<dataType>
 									<float64 />
 								</dataType>
@@ -203,7 +204,7 @@
 										</header>
 									</requestHeader>
 									<requestMethod>POST</requestMethod>
-									<requestPath>/device/thermostats/0</requestPath>
+									<requestPath>/device/status</requestPath>
 									<requestForm>
 										<parameter>
 											<name>id</name>
@@ -216,37 +217,9 @@
 									</requestForm>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
-										<query>target_t.value</query>
+										<query>data.device_status.thermostats[0].target_t.value</query>
 									</responseQuery>
 								</restApiReadServiceCall>
-								<restApiWriteServiceCall>
-									<requestHeader>
-										<header>
-											<headerName>Accept</headerName>
-											<value>application/json</value>
-										</header>
-									</requestHeader>
-									<requestMethod>POST</requestMethod>
-									<requestPath>/device/thermostats/0</requestPath>
-									<requestForm>
-										<parameter>
-											<name>id</name>
-											<value>{{device_id}}</value>
-										</parameter>
-										<parameter>
-											<name>auth_key</name>
-											<value>{{auth_key}}</value>
-										</parameter>
-										<parameter>
-											<name>target_t</name>
-											<value>{{value}}</value>
-										</parameter>
-									</requestForm>
-									<responseQuery>
-										<queryType>JMESPathExpression</queryType>
-										<query>target_t.value</query>
-									</responseQuery>
-								</restApiWriteServiceCall>
 							</restApiDataPointConfiguration>
 						</dataPointListElement>
 					</dataPointList>

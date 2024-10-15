@@ -28,7 +28,7 @@
 		</legibleDescription>
 		<deviceCategory>SubMeterElectricity</deviceCategory>
 		<isLocalControl>false</isLocalControl>
-		<softwareRevision>1.0.0</softwareRevision>
+		<softwareRevision>1.4.2</softwareRevision>
 		<hardwareRevision>1.0.0</hardwareRevision>
 		<manufacturerSpecificationIdentification>Shelly</manufacturerSpecificationIdentification>
 		<levelOfOperation>1m</levelOfOperation>
@@ -183,7 +183,7 @@
 							</dataPoint>
 							<restApiDataPointConfiguration>
 								<dataType>JSON_number</dataType>
-								<restApiServiceCall>
+								<restApiReadServiceCall>
 									<requestHeader>
 										<header>
 											<headerName>Accept</headerName>
@@ -191,11 +191,11 @@
 										</header>
 									</requestHeader>
 									<requestMethod>POST</requestMethod>
-									<requestPath>/{{device_id}}/rpc/Switch.GetStatus</requestPath>
+									<requestPath>/device/status</requestPath>
 									<requestForm>
 										<parameter>
 											<name>id</name>
-											<value>0</value>
+											<value>{{device_id}}</value>
 										</parameter>
 										<parameter>
 											<name>auth_key</name>
@@ -204,9 +204,9 @@
 									</requestForm>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
-										<query>apower</query>
+										<query>data.device_status.switch:0.apower</query>
 									</responseQuery>
-								</restApiServiceCall>
+								</restApiReadServiceCall>
 							</restApiDataPointConfiguration>
 						</dataPointListElement>
 					</dataPointList>
@@ -295,7 +295,7 @@
 							</dataPoint>
 							<restApiDataPointConfiguration>
 								<dataType>JSON_number</dataType>
-								<restApiServiceCall>
+								<restApiReadServiceCall>
 									<requestHeader>
 										<header>
 											<headerName>Accept</headerName>
@@ -303,11 +303,11 @@
 										</header>
 									</requestHeader>
 									<requestMethod>POST</requestMethod>
-									<requestPath>/{{device_id}}/rpc/Switch.GetStatus</requestPath>
+									<requestPath>/device/status</requestPath>
 									<requestForm>
 										<parameter>
 											<name>id</name>
-											<value>1</value>
+											<value>{{device_id}}</value>
 										</parameter>
 										<parameter>
 											<name>auth_key</name>
@@ -316,9 +316,9 @@
 									</requestForm>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
-										<query>apower</query>
+										<query>data.device_status.switch:1.apower</query>
 									</responseQuery>
-								</restApiServiceCall>
+								</restApiReadServiceCall>
 							</restApiDataPointConfiguration>
 						</dataPointListElement>
 					</dataPointList>
@@ -407,7 +407,7 @@
 							</dataPoint>
 							<restApiDataPointConfiguration>
 								<dataType>JSON_number</dataType>
-								<restApiServiceCall>
+								<restApiReadServiceCall>
 									<requestHeader>
 										<header>
 											<headerName>Accept</headerName>
@@ -415,11 +415,11 @@
 										</header>
 									</requestHeader>
 									<requestMethod>POST</requestMethod>
-									<requestPath>/{{device_id}}/rpc/Switch.GetStatus</requestPath>
+									<requestPath>/device/status</requestPath>
 									<requestForm>
 										<parameter>
 											<name>id</name>
-											<value>2</value>
+											<value>{{device_id}}</value>
 										</parameter>
 										<parameter>
 											<name>auth_key</name>
@@ -428,9 +428,9 @@
 									</requestForm>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
-										<query>apower</query>
+										<query>data.device_status.switch:2.apower</query>
 									</responseQuery>
-								</restApiServiceCall>
+								</restApiReadServiceCall>
 							</restApiDataPointConfiguration>
 						</dataPointListElement>
 					</dataPointList>
@@ -519,7 +519,7 @@
 							</dataPoint>
 							<restApiDataPointConfiguration>
 								<dataType>JSON_number</dataType>
-								<restApiServiceCall>
+								<restApiReadServiceCall>
 									<requestHeader>
 										<header>
 											<headerName>Accept</headerName>
@@ -527,11 +527,11 @@
 										</header>
 									</requestHeader>
 									<requestMethod>POST</requestMethod>
-									<requestPath>/{{device_id}}/rpc/Switch.GetStatus</requestPath>
+									<requestPath>/device/status</requestPath>
 									<requestForm>
 										<parameter>
 											<name>id</name>
-											<value>3</value>
+											<value>{{device_id}}</value>
 										</parameter>
 										<parameter>
 											<name>auth_key</name>
@@ -540,9 +540,9 @@
 									</requestForm>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
-										<query>apower</query>
+										<query>data.device_status.switch:3.apower</query>
 									</responseQuery>
-								</restApiServiceCall>
+								</restApiReadServiceCall>
 							</restApiDataPointConfiguration>
 						</dataPointListElement>
 					</dataPointList>
@@ -632,7 +632,7 @@
 							</dataPoint>
 							<restApiDataPointConfiguration>
 								<dataType>JSON_number</dataType>
-								<restApiServiceCall>
+								<restApiReadServiceCall>
 									<requestHeader>
 										<header>
 											<headerName>Accept</headerName>
@@ -640,11 +640,11 @@
 										</header>
 									</requestHeader>
 									<requestMethod>POST</requestMethod>
-									<requestPath>/{{device_id}}/rpc/Switch.GetStatus</requestPath>
+									<requestPath>/device/status</requestPath>
 									<requestForm>
 										<parameter>
 											<name>id</name>
-											<value>0</value>
+											<value>{{device_id}}</value>
 										</parameter>
 										<parameter>
 											<name>auth_key</name>
@@ -653,9 +653,9 @@
 									</requestForm>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
-										<query>aenergy.total</query>
+										<query>data.device_status.switch:0.aenergy.total</query>
 									</responseQuery>
-								</restApiServiceCall>
+								</restApiReadServiceCall>
 							</restApiDataPointConfiguration>
 						</dataPointListElement>
 					</dataPointList>
@@ -745,7 +745,7 @@
 							</dataPoint>
 							<restApiDataPointConfiguration>
 								<dataType>JSON_number</dataType>
-								<restApiServiceCall>
+								<restApiReadServiceCall>
 									<requestHeader>
 										<header>
 											<headerName>Accept</headerName>
@@ -753,11 +753,11 @@
 										</header>
 									</requestHeader>
 									<requestMethod>POST</requestMethod>
-									<requestPath>/{{device_id}}/rpc/Switch.GetStatus</requestPath>
+									<requestPath>/device/status</requestPath>
 									<requestForm>
 										<parameter>
 											<name>id</name>
-											<value>1</value>
+											<value>{{device_id}}</value>
 										</parameter>
 										<parameter>
 											<name>auth_key</name>
@@ -766,9 +766,9 @@
 									</requestForm>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
-										<query>aenergy.total</query>
+										<query>data.device_status.switch:1.aenergy.total</query>
 									</responseQuery>
-								</restApiServiceCall>
+								</restApiReadServiceCall>
 							</restApiDataPointConfiguration>
 						</dataPointListElement>
 					</dataPointList>
@@ -858,7 +858,7 @@
 							</dataPoint>
 							<restApiDataPointConfiguration>
 								<dataType>JSON_number</dataType>
-								<restApiServiceCall>
+								<restApiReadServiceCall>
 									<requestHeader>
 										<header>
 											<headerName>Accept</headerName>
@@ -866,11 +866,11 @@
 										</header>
 									</requestHeader>
 									<requestMethod>POST</requestMethod>
-									<requestPath>/{{device_id}}/rpc/Switch.GetStatus</requestPath>
+									<requestPath>/device/status</requestPath>
 									<requestForm>
 										<parameter>
 											<name>id</name>
-											<value>2</value>
+											<value>{{device_id}}</value>
 										</parameter>
 										<parameter>
 											<name>auth_key</name>
@@ -879,9 +879,9 @@
 									</requestForm>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
-										<query>aenergy.total</query>
+										<query>data.device_status.switch:2.aenergy.total</query>
 									</responseQuery>
-								</restApiServiceCall>
+								</restApiReadServiceCall>
 							</restApiDataPointConfiguration>
 						</dataPointListElement>
 					</dataPointList>
@@ -971,7 +971,7 @@
 							</dataPoint>
 							<restApiDataPointConfiguration>
 								<dataType>JSON_number</dataType>
-								<restApiServiceCall>
+								<restApiReadServiceCall>
 									<requestHeader>
 										<header>
 											<headerName>Accept</headerName>
@@ -979,11 +979,11 @@
 										</header>
 									</requestHeader>
 									<requestMethod>POST</requestMethod>
-									<requestPath>/{{device_id}}/rpc/Switch.GetStatus</requestPath>
+									<requestPath>/device/status</requestPath>
 									<requestForm>
 										<parameter>
 											<name>id</name>
-											<value>3</value>
+											<value>{{device_id}}</value>
 										</parameter>
 										<parameter>
 											<name>auth_key</name>
@@ -992,9 +992,9 @@
 									</requestForm>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
-										<query>aenergy.total</query>
+										<query>data.device_status.switch:3.aenergy.total</query>
 									</responseQuery>
-								</restApiServiceCall>
+								</restApiReadServiceCall>
 							</restApiDataPointConfiguration>
 						</dataPointListElement>
 					</dataPointList>
@@ -1038,7 +1038,7 @@
 							</dataPoint>
 							<restApiDataPointConfiguration>
 								<dataType>JSON_number</dataType>
-								<restApiServiceCall>
+								<restApiReadServiceCall>
 									<requestHeader>
 										<header>
 											<headerName>Accept</headerName>
@@ -1046,11 +1046,11 @@
 										</header>
 									</requestHeader>
 									<requestMethod>POST</requestMethod>
-									<requestPath>/{{device_id}}/rpc/Switch.GetStatus</requestPath>
+									<requestPath>/device/status</requestPath>
 									<requestForm>
 										<parameter>
 											<name>id</name>
-											<value>0</value>
+											<value>{{device_id}}</value>
 										</parameter>
 										<parameter>
 											<name>auth_key</name>
@@ -1059,9 +1059,9 @@
 									</requestForm>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
-										<query>voltage</query>
+										<query>data.device_status.switch:0.voltage</query>
 									</responseQuery>
-								</restApiServiceCall>
+								</restApiReadServiceCall>
 							</restApiDataPointConfiguration>
 						</dataPointListElement>
 					</dataPointList>
@@ -1105,7 +1105,7 @@
 							</dataPoint>
 							<restApiDataPointConfiguration>
 								<dataType>JSON_number</dataType>
-								<restApiServiceCall>
+								<restApiReadServiceCall>
 									<requestHeader>
 										<header>
 											<headerName>Accept</headerName>
@@ -1113,11 +1113,11 @@
 										</header>
 									</requestHeader>
 									<requestMethod>POST</requestMethod>
-									<requestPath>/{{device_id}}/rpc/Switch.GetStatus</requestPath>
+									<requestPath>/device/status</requestPath>
 									<requestForm>
 										<parameter>
 											<name>id</name>
-											<value>1</value>
+											<value>{{device_id}}</value>
 										</parameter>
 										<parameter>
 											<name>auth_key</name>
@@ -1126,9 +1126,9 @@
 									</requestForm>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
-										<query>voltage</query>
+										<query>data.device_status.switch:1.voltage</query>
 									</responseQuery>
-								</restApiServiceCall>
+								</restApiReadServiceCall>
 							</restApiDataPointConfiguration>
 						</dataPointListElement>
 					</dataPointList>
@@ -1172,7 +1172,7 @@
 							</dataPoint>
 							<restApiDataPointConfiguration>
 								<dataType>JSON_number</dataType>
-								<restApiServiceCall>
+								<restApiReadServiceCall>
 									<requestHeader>
 										<header>
 											<headerName>Accept</headerName>
@@ -1180,11 +1180,11 @@
 										</header>
 									</requestHeader>
 									<requestMethod>POST</requestMethod>
-									<requestPath>/{{device_id}}/rpc/Switch.GetStatus</requestPath>
+									<requestPath>/device/status</requestPath>
 									<requestForm>
 										<parameter>
 											<name>id</name>
-											<value>2</value>
+											<value>{{device_id}}</value>
 										</parameter>
 										<parameter>
 											<name>auth_key</name>
@@ -1193,9 +1193,9 @@
 									</requestForm>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
-										<query>voltage</query>
+										<query>data.device_status.switch:2.voltage</query>
 									</responseQuery>
-								</restApiServiceCall>
+								</restApiReadServiceCall>
 							</restApiDataPointConfiguration>
 						</dataPointListElement>
 					</dataPointList>
@@ -1239,7 +1239,7 @@
 							</dataPoint>
 							<restApiDataPointConfiguration>
 								<dataType>JSON_number</dataType>
-								<restApiServiceCall>
+								<restApiReadServiceCall>
 									<requestHeader>
 										<header>
 											<headerName>Accept</headerName>
@@ -1247,11 +1247,11 @@
 										</header>
 									</requestHeader>
 									<requestMethod>POST</requestMethod>
-									<requestPath>/{{device_id}}/rpc/Switch.GetStatus</requestPath>
+									<requestPath>/device/status</requestPath>
 									<requestForm>
 										<parameter>
 											<name>id</name>
-											<value>3</value>
+											<value>{{device_id}}</value>
 										</parameter>
 										<parameter>
 											<name>auth_key</name>
@@ -1260,9 +1260,9 @@
 									</requestForm>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
-										<query>voltage</query>
+										<query>data.device_status.switch:3.voltage</query>
 									</responseQuery>
-								</restApiServiceCall>
+								</restApiReadServiceCall>
 							</restApiDataPointConfiguration>
 						</dataPointListElement>
 					</dataPointList>
@@ -1306,7 +1306,7 @@
 							</dataPoint>
 							<restApiDataPointConfiguration>
 								<dataType>JSON_number</dataType>
-								<restApiServiceCall>
+								<restApiReadServiceCall>
 									<requestHeader>
 										<header>
 											<headerName>Accept</headerName>
@@ -1314,11 +1314,11 @@
 										</header>
 									</requestHeader>
 									<requestMethod>POST</requestMethod>
-									<requestPath>/{{device_id}}/rpc/Switch.GetStatus</requestPath>
+									<requestPath>/device/status</requestPath>
 									<requestForm>
 										<parameter>
 											<name>id</name>
-											<value>0</value>
+											<value>{{device_id}}</value>
 										</parameter>
 										<parameter>
 											<name>auth_key</name>
@@ -1327,9 +1327,9 @@
 									</requestForm>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
-										<query>current</query>
+										<query>data.device_status.switch:0.current</query>
 									</responseQuery>
-								</restApiServiceCall>
+								</restApiReadServiceCall>
 							</restApiDataPointConfiguration>
 						</dataPointListElement>
 					</dataPointList>
@@ -1373,7 +1373,7 @@
 							</dataPoint>
 							<restApiDataPointConfiguration>
 								<dataType>JSON_number</dataType>
-								<restApiServiceCall>
+								<restApiReadServiceCall>
 									<requestHeader>
 										<header>
 											<headerName>Accept</headerName>
@@ -1381,11 +1381,11 @@
 										</header>
 									</requestHeader>
 									<requestMethod>POST</requestMethod>
-									<requestPath>/{{device_id}}/rpc/Switch.GetStatus</requestPath>
+									<requestPath>/device/status</requestPath>
 									<requestForm>
 										<parameter>
 											<name>id</name>
-											<value>1</value>
+											<value>{{device_id}}</value>
 										</parameter>
 										<parameter>
 											<name>auth_key</name>
@@ -1394,9 +1394,9 @@
 									</requestForm>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
-										<query>current</query>
+										<query>data.device_status.switch:1.current</query>
 									</responseQuery>
-								</restApiServiceCall>
+								</restApiReadServiceCall>
 							</restApiDataPointConfiguration>
 						</dataPointListElement>
 					</dataPointList>
@@ -1440,7 +1440,7 @@
 							</dataPoint>
 							<restApiDataPointConfiguration>
 								<dataType>JSON_number</dataType>
-								<restApiServiceCall>
+								<restApiReadServiceCall>
 									<requestHeader>
 										<header>
 											<headerName>Accept</headerName>
@@ -1448,11 +1448,11 @@
 										</header>
 									</requestHeader>
 									<requestMethod>POST</requestMethod>
-									<requestPath>/{{device_id}}/rpc/Switch.GetStatus</requestPath>
+									<requestPath>/device/status</requestPath>
 									<requestForm>
 										<parameter>
 											<name>id</name>
-											<value>2</value>
+											<value>{{device_id}}</value>
 										</parameter>
 										<parameter>
 											<name>auth_key</name>
@@ -1461,9 +1461,9 @@
 									</requestForm>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
-										<query>current</query>
+										<query>data.device_status.switch:2.current</query>
 									</responseQuery>
-								</restApiServiceCall>
+								</restApiReadServiceCall>
 							</restApiDataPointConfiguration>
 						</dataPointListElement>
 					</dataPointList>
@@ -1507,7 +1507,7 @@
 							</dataPoint>
 							<restApiDataPointConfiguration>
 								<dataType>JSON_number</dataType>
-								<restApiServiceCall>
+								<restApiReadServiceCall>
 									<requestHeader>
 										<header>
 											<headerName>Accept</headerName>
@@ -1515,11 +1515,11 @@
 										</header>
 									</requestHeader>
 									<requestMethod>POST</requestMethod>
-									<requestPath>/{{device_id}}/rpc/Switch.GetStatus</requestPath>
+									<requestPath>/device/status</requestPath>
 									<requestForm>
 										<parameter>
 											<name>id</name>
-											<value>3</value>
+											<value>{{device_id}}</value>
 										</parameter>
 										<parameter>
 											<name>auth_key</name>
@@ -1528,9 +1528,9 @@
 									</requestForm>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
-										<query>current</query>
+										<query>data.device_status.switch:3.current</query>
 									</responseQuery>
-								</restApiServiceCall>
+								</restApiReadServiceCall>
 							</restApiDataPointConfiguration>
 						</dataPointListElement>
 					</dataPointList>
@@ -1586,11 +1586,11 @@
 										</header>
 									</requestHeader>
 									<requestMethod>POST</requestMethod>
-									<requestPath>/{{device_id}}/rpc/Switch.GetStatus</requestPath>
+									<requestPath>/device/status</requestPath>
 									<requestForm>
 										<parameter>
 											<name>id</name>
-											<value>0</value>
+											<value>{{device_id}}</value>
 										</parameter>
 										<parameter>
 											<name>auth_key</name>
@@ -1599,7 +1599,7 @@
 									</requestForm>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
-										<query>output</query>
+										<query>data.device_status.switch:0.output</query>
 									</responseQuery>
 								</restApiReadServiceCall>
 								<restApiWriteServiceCall>
@@ -1610,21 +1610,35 @@
 										</header>
 									</requestHeader>
 									<requestMethod>POST</requestMethod>
-									<requestPath>/{{device_id}}/rpc/Switch.Set</requestPath>
+									<requestPath>/device/relay/control</requestPath>
 									<requestForm>
 										<parameter>
 											<name>id</name>
-											<value>0</value>
+											<value>{{device_id}}</value>
 										</parameter>
 										<parameter>
 											<name>auth_key</name>
 											<value>{{auth_key}}</value>
 										</parameter>
 										<parameter>
-											<name>on</name>
+											<name>channel</name>
+											<value>1</value>
+										</parameter>
+										<parameter>
+											<name>turn</name>
 											<value>{{value}}</value>
 										</parameter>
 									</requestForm>
+									<valueMapping>
+										<mapping>
+											<genericValue>false</genericValue>
+											<deviceValue>off</deviceValue>
+										</mapping>
+										<mapping>
+											<genericValue>true</genericValue>
+											<deviceValue>on</deviceValue>
+										</mapping>
+									</valueMapping>
 								</restApiWriteServiceCall>
 							</restApiDataPointConfiguration>
 						</dataPointListElement>
@@ -1681,11 +1695,11 @@
 										</header>
 									</requestHeader>
 									<requestMethod>POST</requestMethod>
-									<requestPath>/{{device_id}}/rpc/Switch.GetStatus</requestPath>
+									<requestPath>/device/status</requestPath>
 									<requestForm>
 										<parameter>
 											<name>id</name>
-											<value>1</value>
+											<value>{{device_id}}</value>
 										</parameter>
 										<parameter>
 											<name>auth_key</name>
@@ -1694,7 +1708,7 @@
 									</requestForm>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
-										<query>output</query>
+										<query>data.device_status.switch:1.output</query>
 									</responseQuery>
 								</restApiReadServiceCall>
 								<restApiWriteServiceCall>
@@ -1705,21 +1719,35 @@
 										</header>
 									</requestHeader>
 									<requestMethod>POST</requestMethod>
-									<requestPath>/{{device_id}}/rpc/Switch.Set</requestPath>
+									<requestPath>/device/relay/control</requestPath>
 									<requestForm>
 										<parameter>
 											<name>id</name>
-											<value>1</value>
+											<value>{{device_id}}</value>
 										</parameter>
 										<parameter>
 											<name>auth_key</name>
 											<value>{{auth_key}}</value>
 										</parameter>
 										<parameter>
-											<name>on</name>
+											<name>channel</name>
+											<value>2</value>
+										</parameter>
+										<parameter>
+											<name>turn</name>
 											<value>{{value}}</value>
 										</parameter>
 									</requestForm>
+									<valueMapping>
+										<mapping>
+											<genericValue>false</genericValue>
+											<deviceValue>off</deviceValue>
+										</mapping>
+										<mapping>
+											<genericValue>true</genericValue>
+											<deviceValue>on</deviceValue>
+										</mapping>
+									</valueMapping>
 								</restApiWriteServiceCall>
 							</restApiDataPointConfiguration>
 						</dataPointListElement>
@@ -1776,11 +1804,11 @@
 										</header>
 									</requestHeader>
 									<requestMethod>POST</requestMethod>
-									<requestPath>/{{device_id}}/rpc/Switch.GetStatus</requestPath>
+									<requestPath>/device/status</requestPath>
 									<requestForm>
 										<parameter>
 											<name>id</name>
-											<value>2</value>
+											<value>{{device_id}}</value>
 										</parameter>
 										<parameter>
 											<name>auth_key</name>
@@ -1789,7 +1817,7 @@
 									</requestForm>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
-										<query>output</query>
+										<query>data.device_status.switch:2.output</query>
 									</responseQuery>
 								</restApiReadServiceCall>
 								<restApiWriteServiceCall>
@@ -1800,21 +1828,35 @@
 										</header>
 									</requestHeader>
 									<requestMethod>POST</requestMethod>
-									<requestPath>/{{device_id}}/rpc/Switch.Set</requestPath>
+									<requestPath>/device/relay/control</requestPath>
 									<requestForm>
 										<parameter>
 											<name>id</name>
-											<value>2</value>
+											<value>{{device_id}}</value>
 										</parameter>
 										<parameter>
 											<name>auth_key</name>
 											<value>{{auth_key}}</value>
 										</parameter>
 										<parameter>
-											<name>on</name>
+											<name>channel</name>
+											<value>3</value>
+										</parameter>
+										<parameter>
+											<name>turn</name>
 											<value>{{value}}</value>
 										</parameter>
 									</requestForm>
+									<valueMapping>
+										<mapping>
+											<genericValue>false</genericValue>
+											<deviceValue>off</deviceValue>
+										</mapping>
+										<mapping>
+											<genericValue>true</genericValue>
+											<deviceValue>on</deviceValue>
+										</mapping>
+									</valueMapping>
 								</restApiWriteServiceCall>
 							</restApiDataPointConfiguration>
 						</dataPointListElement>
@@ -1871,11 +1913,11 @@
 										</header>
 									</requestHeader>
 									<requestMethod>POST</requestMethod>
-									<requestPath>/{{device_id}}/rpc/Switch.GetStatus</requestPath>
+									<requestPath>/device/status</requestPath>
 									<requestForm>
 										<parameter>
 											<name>id</name>
-											<value>3</value>
+											<value>{{device_id}}</value>
 										</parameter>
 										<parameter>
 											<name>auth_key</name>
@@ -1884,7 +1926,7 @@
 									</requestForm>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
-										<query>output</query>
+										<query>data.device_status.switch:3.output</query>
 									</responseQuery>
 								</restApiReadServiceCall>
 								<restApiWriteServiceCall>
@@ -1895,21 +1937,35 @@
 										</header>
 									</requestHeader>
 									<requestMethod>POST</requestMethod>
-									<requestPath>/{{device_id}}/rpc/Switch.Set</requestPath>
+									<requestPath>/device/relay/control</requestPath>
 									<requestForm>
 										<parameter>
 											<name>id</name>
-											<value>3</value>
+											<value>{{device_id}}</value>
 										</parameter>
 										<parameter>
 											<name>auth_key</name>
 											<value>{{auth_key}}</value>
 										</parameter>
 										<parameter>
-											<name>on</name>
+											<name>channel</name>
+											<value>4</value>
+										</parameter>
+										<parameter>
+											<name>turn</name>
 											<value>{{value}}</value>
 										</parameter>
 									</requestForm>
+									<valueMapping>
+										<mapping>
+											<genericValue>false</genericValue>
+											<deviceValue>off</deviceValue>
+										</mapping>
+										<mapping>
+											<genericValue>true</genericValue>
+											<deviceValue>on</deviceValue>
+										</mapping>
+									</valueMapping>
 								</restApiWriteServiceCall>
 							</restApiDataPointConfiguration>
 						</dataPointListElement>

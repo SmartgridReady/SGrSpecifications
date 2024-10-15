@@ -28,7 +28,7 @@
 		</legibleDescription>
 		<deviceCategory>SubMeterElectricity</deviceCategory>
 		<isLocalControl>false</isLocalControl>
-		<softwareRevision>1.0.0</softwareRevision>
+		<softwareRevision>1.14.0</softwareRevision>
 		<hardwareRevision>1.0.0</hardwareRevision>
 		<manufacturerSpecificationIdentification>Shelly</manufacturerSpecificationIdentification>
 		<levelOfOperation>1m</levelOfOperation>
@@ -183,7 +183,7 @@
 							</dataPoint>
 							<restApiDataPointConfiguration>
 								<dataType>JSON_number</dataType>
-								<restApiServiceCall>
+								<restApiReadServiceCall>
 									<requestHeader>
 										<header>
 											<headerName>Accept</headerName>
@@ -204,9 +204,9 @@
 									</requestForm>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
-										<query>total_power</query>
+										<query>data.device_status.total_power</query>
 									</responseQuery>
-								</restApiServiceCall>
+								</restApiReadServiceCall>
 							</restApiDataPointConfiguration>
 						</dataPointListElement>
 						<dataPointListElement>
@@ -230,7 +230,7 @@
 							</dataPoint>
 							<restApiDataPointConfiguration>
 								<dataType>JSON_number</dataType>
-								<restApiServiceCall>
+								<restApiReadServiceCall>
 									<requestHeader>
 										<header>
 											<headerName>Accept</headerName>
@@ -238,7 +238,7 @@
 										</header>
 									</requestHeader>
 									<requestMethod>POST</requestMethod>
-									<requestPath>/device/emeter/0</requestPath>
+									<requestPath>/device/status</requestPath>
 									<requestForm>
 										<parameter>
 											<name>id</name>
@@ -251,9 +251,9 @@
 									</requestForm>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
-										<query>power</query>
+										<query>data.device_status.emeters[0].power</query>
 									</responseQuery>
-								</restApiServiceCall>
+								</restApiReadServiceCall>
 							</restApiDataPointConfiguration>
 						</dataPointListElement>
 						<dataPointListElement>
@@ -277,7 +277,7 @@
 							</dataPoint>
 							<restApiDataPointConfiguration>
 								<dataType>JSON_number</dataType>
-								<restApiServiceCall>
+								<restApiReadServiceCall>
 									<requestHeader>
 										<header>
 											<headerName>Accept</headerName>
@@ -285,7 +285,7 @@
 										</header>
 									</requestHeader>
 									<requestMethod>POST</requestMethod>
-									<requestPath>/device/emeter/1</requestPath>
+									<requestPath>/device/status</requestPath>
 									<requestForm>
 										<parameter>
 											<name>id</name>
@@ -298,9 +298,9 @@
 									</requestForm>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
-										<query>power</query>
+										<query>data.device_status.emeters[1].power</query>
 									</responseQuery>
-								</restApiServiceCall>
+								</restApiReadServiceCall>
 							</restApiDataPointConfiguration>
 						</dataPointListElement>
 						<dataPointListElement>
@@ -324,7 +324,7 @@
 							</dataPoint>
 							<restApiDataPointConfiguration>
 								<dataType>JSON_number</dataType>
-								<restApiServiceCall>
+								<restApiReadServiceCall>
 									<requestHeader>
 										<header>
 											<headerName>Accept</headerName>
@@ -332,7 +332,7 @@
 										</header>
 									</requestHeader>
 									<requestMethod>POST</requestMethod>
-									<requestPath>/device/emeter/2</requestPath>
+									<requestPath>/device/status</requestPath>
 									<requestForm>
 										<parameter>
 											<name>id</name>
@@ -345,9 +345,9 @@
 									</requestForm>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
-										<query>power</query>
+										<query>data.device_status.emeters[2].power</query>
 									</responseQuery>
-								</restApiServiceCall>
+								</restApiReadServiceCall>
 							</restApiDataPointConfiguration>
 						</dataPointListElement>
 					</dataPointList>
@@ -437,7 +437,7 @@
 							</dataPoint>
 							<restApiDataPointConfiguration>
 								<dataType>JSON_number</dataType>
-								<restApiServiceCall>
+								<restApiReadServiceCall>
 									<requestHeader>
 										<header>
 											<headerName>Accept</headerName>
@@ -458,9 +458,9 @@
 									</requestForm>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
-										<query>sum([emeters[0].total,emeters[1].total,emeters[2].total])</query>
+										<query>sum(data.device_status.emeters[0].total,data.device_status.emeters[1].total,data.device_status.emeters[2].total])</query>
 									</responseQuery>
-								</restApiServiceCall>
+								</restApiReadServiceCall>
 							</restApiDataPointConfiguration>
 						</dataPointListElement>
 						<dataPointListElement>
@@ -482,7 +482,7 @@
 							</dataPoint>
 							<restApiDataPointConfiguration>
 								<dataType>JSON_number</dataType>
-								<restApiServiceCall>
+								<restApiReadServiceCall>
 									<requestHeader>
 										<header>
 											<headerName>Accept</headerName>
@@ -490,7 +490,7 @@
 										</header>
 									</requestHeader>
 									<requestMethod>POST</requestMethod>
-									<requestPath>/device/emeter/0</requestPath>
+									<requestPath>/device/status</requestPath>
 									<requestForm>
 										<parameter>
 											<name>id</name>
@@ -503,9 +503,9 @@
 									</requestForm>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
-										<query>total</query>
+										<query>data.device_status.emeters[0].total</query>
 									</responseQuery>
-								</restApiServiceCall>
+								</restApiReadServiceCall>
 							</restApiDataPointConfiguration>
 						</dataPointListElement>
 						<dataPointListElement>
@@ -527,7 +527,7 @@
 							</dataPoint>
 							<restApiDataPointConfiguration>
 								<dataType>JSON_number</dataType>
-								<restApiServiceCall>
+								<restApiReadServiceCall>
 									<requestHeader>
 										<header>
 											<headerName>Accept</headerName>
@@ -535,7 +535,7 @@
 										</header>
 									</requestHeader>
 									<requestMethod>POST</requestMethod>
-									<requestPath>/device/emeter/1</requestPath>
+									<requestPath>/device/status</requestPath>
 									<requestForm>
 										<parameter>
 											<name>id</name>
@@ -548,9 +548,9 @@
 									</requestForm>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
-										<query>total</query>
+										<query>data.device_status.emeters[1].total</query>
 									</responseQuery>
-								</restApiServiceCall>
+								</restApiReadServiceCall>
 							</restApiDataPointConfiguration>
 						</dataPointListElement>
 						<dataPointListElement>
@@ -572,7 +572,7 @@
 							</dataPoint>
 							<restApiDataPointConfiguration>
 								<dataType>JSON_number</dataType>
-								<restApiServiceCall>
+								<restApiReadServiceCall>
 									<requestHeader>
 										<header>
 											<headerName>Accept</headerName>
@@ -580,7 +580,7 @@
 										</header>
 									</requestHeader>
 									<requestMethod>POST</requestMethod>
-									<requestPath>/device/emeter/2</requestPath>
+									<requestPath>/device/status</requestPath>
 									<requestForm>
 										<parameter>
 											<name>id</name>
@@ -593,9 +593,9 @@
 									</requestForm>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
-										<query>total</query>
+										<query>data.device_status.emeters[2].total</query>
 									</responseQuery>
-								</restApiServiceCall>
+								</restApiReadServiceCall>
 							</restApiDataPointConfiguration>
 						</dataPointListElement>
 					</dataPointList>
@@ -639,7 +639,7 @@
 							</dataPoint>
 							<restApiDataPointConfiguration>
 								<dataType>JSON_number</dataType>
-								<restApiServiceCall>
+								<restApiReadServiceCall>
 									<requestHeader>
 										<header>
 											<headerName>Accept</headerName>
@@ -647,7 +647,7 @@
 										</header>
 									</requestHeader>
 									<requestMethod>POST</requestMethod>
-									<requestPath>/device/emeter/0</requestPath>
+									<requestPath>/device/status</requestPath>
 									<requestForm>
 										<parameter>
 											<name>id</name>
@@ -660,9 +660,9 @@
 									</requestForm>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
-										<query>voltage</query>
+										<query>data.device_status.emeters[0].voltage</query>
 									</responseQuery>
-								</restApiServiceCall>
+								</restApiReadServiceCall>
 							</restApiDataPointConfiguration>
 						</dataPointListElement>
 						<dataPointListElement>
@@ -682,7 +682,7 @@
 							</dataPoint>
 							<restApiDataPointConfiguration>
 								<dataType>JSON_number</dataType>
-								<restApiServiceCall>
+								<restApiReadServiceCall>
 									<requestHeader>
 										<header>
 											<headerName>Accept</headerName>
@@ -690,7 +690,7 @@
 										</header>
 									</requestHeader>
 									<requestMethod>POST</requestMethod>
-									<requestPath>/device/emeter/1</requestPath>
+									<requestPath>/device/status</requestPath>
 									<requestForm>
 										<parameter>
 											<name>id</name>
@@ -703,9 +703,9 @@
 									</requestForm>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
-										<query>voltage</query>
+										<query>data.device_status.emeters[1].voltage</query>
 									</responseQuery>
-								</restApiServiceCall>
+								</restApiReadServiceCall>
 							</restApiDataPointConfiguration>
 						</dataPointListElement>
 						<dataPointListElement>
@@ -725,7 +725,7 @@
 							</dataPoint>
 							<restApiDataPointConfiguration>
 								<dataType>JSON_number</dataType>
-								<restApiServiceCall>
+								<restApiReadServiceCall>
 									<requestHeader>
 										<header>
 											<headerName>Accept</headerName>
@@ -733,7 +733,7 @@
 										</header>
 									</requestHeader>
 									<requestMethod>POST</requestMethod>
-									<requestPath>/device/emeter/2</requestPath>
+									<requestPath>/device/status</requestPath>
 									<requestForm>
 										<parameter>
 											<name>id</name>
@@ -746,9 +746,9 @@
 									</requestForm>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
-										<query>voltage</query>
+										<query>data.device_status.emeters[2].voltage</query>
 									</responseQuery>
-								</restApiServiceCall>
+								</restApiReadServiceCall>
 							</restApiDataPointConfiguration>
 						</dataPointListElement>
 					</dataPointList>
@@ -792,7 +792,7 @@
 							</dataPoint>
 							<restApiDataPointConfiguration>
 								<dataType>JSON_number</dataType>
-								<restApiServiceCall>
+								<restApiReadServiceCall>
 									<requestHeader>
 										<header>
 											<headerName>Accept</headerName>
@@ -800,7 +800,7 @@
 										</header>
 									</requestHeader>
 									<requestMethod>POST</requestMethod>
-									<requestPath>/device/emeter/0</requestPath>
+									<requestPath>/device/status</requestPath>
 									<requestForm>
 										<parameter>
 											<name>id</name>
@@ -813,9 +813,9 @@
 									</requestForm>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
-										<query>current</query>
+										<query>data.device_status.emeters[0].current</query>
 									</responseQuery>
-								</restApiServiceCall>
+								</restApiReadServiceCall>
 							</restApiDataPointConfiguration>
 						</dataPointListElement>
 						<dataPointListElement>
@@ -835,7 +835,7 @@
 							</dataPoint>
 							<restApiDataPointConfiguration>
 								<dataType>JSON_number</dataType>
-								<restApiServiceCall>
+								<restApiReadServiceCall>
 									<requestHeader>
 										<header>
 											<headerName>Accept</headerName>
@@ -843,7 +843,7 @@
 										</header>
 									</requestHeader>
 									<requestMethod>POST</requestMethod>
-									<requestPath>/device/emeter/1</requestPath>
+									<requestPath>/device/status</requestPath>
 									<requestForm>
 										<parameter>
 											<name>id</name>
@@ -856,9 +856,9 @@
 									</requestForm>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
-										<query>current</query>
+										<query>data.device_status.emeters[1].current</query>
 									</responseQuery>
-								</restApiServiceCall>
+								</restApiReadServiceCall>
 							</restApiDataPointConfiguration>
 						</dataPointListElement>
 						<dataPointListElement>
@@ -878,7 +878,7 @@
 							</dataPoint>
 							<restApiDataPointConfiguration>
 								<dataType>JSON_number</dataType>
-								<restApiServiceCall>
+								<restApiReadServiceCall>
 									<requestHeader>
 										<header>
 											<headerName>Accept</headerName>
@@ -886,7 +886,7 @@
 										</header>
 									</requestHeader>
 									<requestMethod>POST</requestMethod>
-									<requestPath>/device/emeter/2</requestPath>
+									<requestPath>/device/status</requestPath>
 									<requestForm>
 										<parameter>
 											<name>id</name>
@@ -899,9 +899,9 @@
 									</requestForm>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
-										<query>current</query>
+										<query>data.device_status.emeters[2].current</query>
 									</responseQuery>
-								</restApiServiceCall>
+								</restApiReadServiceCall>
 							</restApiDataPointConfiguration>
 						</dataPointListElement>
 					</dataPointList>
@@ -957,7 +957,7 @@
 										</header>
 									</requestHeader>
 									<requestMethod>POST</requestMethod>
-									<requestPath>/device/relay/0</requestPath>
+									<requestPath>/device/status</requestPath>
 									<requestForm>
 										<parameter>
 											<name>id</name>
@@ -970,7 +970,7 @@
 									</requestForm>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
-										<query>ison</query>
+										<query>data.device_status.relays[0].ison</query>
 									</responseQuery>
 								</restApiReadServiceCall>
 								<restApiWriteServiceCall>
@@ -981,7 +981,7 @@
 										</header>
 									</requestHeader>
 									<requestMethod>POST</requestMethod>
-									<requestPath>/device/relay/0</requestPath>
+									<requestPath>/device/relay/control</requestPath>
 									<requestForm>
 										<parameter>
 											<name>id</name>
@@ -992,14 +992,14 @@
 											<value>{{auth_key}}</value>
 										</parameter>
 										<parameter>
+											<name>channel</name>
+											<value>1</value>
+										</parameter>
+										<parameter>
 											<name>turn</name>
 											<value>{{value}}</value>
 										</parameter>
 									</requestForm>
-									<responseQuery>
-										<queryType>JMESPathExpression</queryType>
-										<query>ison</query>
-									</responseQuery>
 									<valueMapping>
 										<mapping>
 											<genericValue>false</genericValue>
