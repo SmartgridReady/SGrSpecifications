@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="/xsl/SGr.xsl"?>
 <DeviceFrame xmlns="http://www.smartgridready.com/ns/V0/"
-             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/Product/Product.xsd">
   <deviceName>Example for Dynamic Tariffs</deviceName>
   <manufacturerName>Example</manufacturerName>
@@ -159,7 +159,7 @@
                         <li><strong>tariffs.tariff</strong>: <span style="color:blue">[*].tariffs[*].tariff</span></li>
                         <li><strong>tariffs.unit</strong>:   <span style="color:blue">[*].tariffs[*].unit</span></li>
                       </ul>
-                  ]]>
+                    ]]>
                   </textElement>
                   <language>en</language>
                 </legibleDescription>
@@ -188,15 +188,10 @@
                   <responseQuery>
                     <queryType>JMESPathMapping</queryType>
                     <jmesPathMappings>
-                      <mapping><from>[*].start_timestamp</from><to>[*].start_time</to></mapping>
-                      <mapping><from>[*].end_timestamp</from><to>[*].end_time</to></mapping>
-                      <mapping><from>[*].vario_grid</from><to>[*].tariffs[*].tariff</to><name>$vario_grid</name></mapping>
-                      <mapping><from>[*].vario_plus</from><to>[*].tariffs[*].tariff</to><name>$vario_plus</name></mapping>
-                      <mapping><from>[*].dt_plus</from><to>[*].tariffs[*].tariff</to><name>$dt_plus</name></mapping>
-                      <mapping><from>[*].unit</from><to>[*].tariffs[*].unit</to></mapping>
-                      <mapping><from>$vario_grid</from><to>[*].tariffs[*].name</to></mapping>
-                      <mapping><from>$vario_plus</from><to>[*].tariffs[*].name</to></mapping>
-                      <mapping><from>$dt_plus</from><to>[*].tariffs[*].name</to></mapping>
+                      <mapping><from>[*].start_timestamp</from><to>[*].start_timestamp</to></mapping>
+                      <mapping><from>[*].end_timestamp</from><to>[*].end_timestamp</to></mapping>
+                      <mapping><from>[*].vario_grid</from><to>[*].integrated[*].value</to></mapping>
+                      <mapping><from>[*].unit</from><to>[*].integrated[*].unit</to></mapping>
                     </jmesPathMappings>
                   </responseQuery>
                 </restApiServiceCall>

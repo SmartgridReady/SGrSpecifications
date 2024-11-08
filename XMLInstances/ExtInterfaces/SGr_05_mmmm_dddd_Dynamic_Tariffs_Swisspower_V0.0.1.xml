@@ -24,7 +24,7 @@
     <restApiInterface>
       <restApiInterfaceDescription>
         <restApiInterfaceSelection>URI</restApiInterfaceSelection>
-        <restApiUri>https://esit.code-fabrik.ch</restApiUri>
+        <restApiUri>https://esit-test.code-fabrik.ch</restApiUri>
         <restApiAuthenticationMethod>NoSecurityScheme</restApiAuthenticationMethod>
       </restApiInterfaceDescription>
       <functionalProfileList>
@@ -173,13 +173,17 @@
                       <headerName>Accept</headerName>
                       <value>application/json</value>
                     </header>
+					<header>
+					  <headerName>Authorization</headerName>
+					  <value>Bearer {{token}}</value>
+					</header>
                   </requestHeader>
                   <requestMethod>GET</requestMethod>
-                  <requestPath>/api/v1/tariffs</requestPath>
+                  <requestPath>/api/v1/metering_code</requestPath>
                   <requestQuery>
                     <parameter>
-                      <name>point</name>
-                      <value>{{point}}</value>
+                      <name>metering_code</name>
+                      <value>{{metering_code}}</value>
                     </parameter>
                     <parameter>
                       <name>start_timestamp</name>
@@ -191,14 +195,8 @@
                     </parameter>
                   </requestQuery>
                   <responseQuery>
-                    <queryType>JMESPathMapping</queryType>
-                    <jmesPathMappings>
-                      <mapping><from>prices[*].start_timestamp</from><to>[*].start_time</to></mapping>
-                      <mapping><from>prices[*].end_timestamp</from><to>[*].end_time</to></mapping>
-                      <mapping><from>prices[*].price</from><to>[*].tariffs[*].tariff</to><name>$standard</name></mapping>
-                      <mapping><from>$standard</from><to>[*].tariffs[*].name</to></mapping>
-                      <mapping><from>prices[*].unit</from><to>[*].tariffs[*].unit</to></mapping>
-                    </jmesPathMappings>
+                    <queryType>JMESPathExpression</queryType>
+                    <query>prices</query>
                   </responseQuery>
                 </restApiServiceCall>
               </restApiDataPointConfiguration>
