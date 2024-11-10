@@ -3,42 +3,60 @@
 ## Use case
 
 A product description contains information about the device, its supported functional profiles, and how
-the data points of the functional profiles can be accessed through the transport layer.
+the data points of the functional profiles can be accessed through the communication interface.
 
 This allows potential controllers to easily integrate, implement, or access any SmartGridready certified product
-through a standardized set of functionality, and thereby greatly simplifies scale-up to support a wide range of products.
+through a standardized set of functionalities, and thereby greatly simplifies scale-up to support a wide range of products.
 
 ## General Structure
 
-The schema of the product description is structured on three levels:
-- Device information concerning manufacturer and product data, and the basic configuration of the transport layer
-- A list of supported functional profiles
-- A list of data points (as defined in the respective functional profile definition) together with transport layer details on how to access the individual data point
+The schema of the product description (EID, External interface definition) is structured on four levels:
+- Device information concerning manufacturer and product data, and the basic configuration of the communication interface.
+- A list of communication interfaces (e.g. Contacts, RESTfulJSon, Modbus, Messaging). Although it is in principle possible to define more than one communication interface in one product description if a device supports more than one type of communication, it is recommended to separate them into separate product descriptions.
+- A list of supported functional profiles. The functional profiles must have the same content as those defined in the list of functional profiles. (see [Functional Profile Structure](functionalProfile.md), [List of Functional Profiles](https://library.smartgridready.ch/FunctionalProfileTemplate)).
+- A list of data points (as defined in the respective functional profile definition) together with communication interface details defining how to access the individual data point.
 
 The figure below shows the entity relation model of the product description.
 
 ![Product Entity Relation](product.drawio.png)
 
-# Device Elements
+## Device Elements
 
 ### Release Notes
-The release note section contains meta data that describe history and current state of the functional profile
+
+### Device Identification
+| Element          | Description |
+|------------------|-------------|
+| deviceName       | name of the device |
+| manufacturerName | name of the manufacturer |
+| specificationOwnerIdentification | Owner of the declaration (normally identical to manufacturer, but different for 3rd party declarations) |
+
+The release note section contains meta data that describe the history and the current state of the functional profile
 
 | Element   | Description |
 |-----------|-------------|
 | state     | one of `Draft`, `Review`, `Released`, `Revoked` |
 | remarks   | optional, arbitrary text. Can be useful e.g. during draft phase. |
-| changeLog | optional, can occurs multiple times. Contains release notes to the version concerned |
+| changeLog | optional, can occurs multiple times. Contains release notes to the version with version, date, author, and comment |
 
 ### Device Information
 | Element          | Description |
 |------------------|-------------|
-| Name             | device Name |
-| Manufacturer     | manufacturer |
-| specificationOwnerIdentification | Owner of the declaration (normally identical to manufacturer, but different for 3rd party declarations) |
-| Type             | local or cloud device |
-| DeviceCategory   | device Category |
-| SoftwareRevision | software revision of device |
+| alternativeNames  | a list of relevant name spaces list for to display names used in different standards like EEBUS, IEC6850, SAREF4ENER etc. (see [AlternativeNames](AlternativeNames.md))|
+(AlternativeNames.md) |
+| legibleDescription | can occur once per language. Contains details concerning the intended use case of the functional profile. |
+| deviceCategory        | type of the device - see [Device Category](deviceCategory.md) |
+| isLocalControl   | Value `false` means "is cloud control device", indicating that this service is based on cloud. `true` indicates that services are provided within the range of the local area. |
+| softwareRevision | software version information for this product declaration |
+| hardwareRevision | hardware version information for this product declaration |
+| brandName | branding information |
+| powerSource | power supply type |
+| manufacturerSpecificationIdentification | manufacturers specification identifier |
+| manufacturerLabel | manufacturers label of the device |
+| generalRemarks | remarks and non disclaimer statements |
+| levelOfOperation | level of control defining the complexity (see [LevelOfOperation](LevelOfOperation.md) ), and is defined by the highest level of the devices functional profile |
+| versionNumber | version number of the Product Description (EID) - first two parts should be the same as in the file name |
+| programmerHints | additional device-specific implementation hints for this device |
 
 ### Configuration
 Values in the product definition can contain place holders e.g. for IP addresses, device ID's, ...
@@ -63,20 +81,8 @@ Each configurationDescription element contains
 | language         | the language |
 | label | short label to be displayed during the configuration of the device |
 
-### Device Attributes
+## Transport Service
 
-| Element | Description |
-| ------- | ----------- |
-| levelOfOperation | level of control defining the complexity (see [LevelOfOperation](LevelOfOperation.md) ), and is defined by the highest level of the devices functional profile |
-| versionNumber | version number of the Product Description (EID) - first two parts should be the same as in the file name |
-
-### Descriptions
-| Element     | Description |
-|-------------|-------------|
-| alternativeNames  | a list of relevant name spaces list for to display names used in different standards like EEBUS, IEC6850, SAREF4ENER etc. (see [AlternativeNames](AlternativeNames.md))|
-| legibleDescription | optional, can occur once per language. Contains details concerning the intended use case of the functional profile. |
-
-### Transport Service
 | Element     | Description |
 |-------------|-------------|
 | transportService | one of Generic|Contacts|Modbus|RESTfulJSON |
