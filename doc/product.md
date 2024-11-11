@@ -262,6 +262,14 @@ Furthermore, the specific `modbusAttributes` like those [above](product.md#modbu
 
 ### Additional values for Messaging interface
 
+Each Modbus data point requires additional information in a `messagingDataPointConfiguration` with
+
+| Element     | Description |
+|-------------|-------------|
+| messagingDataType     | the messaging data type as one of `number`, `string`, `JSON_array`, and `JSON_object`  |
+| readCmdMessage | out message with `topic` and `template` |
+| writeCmdMessage | out message with `topic` and `template`  |
+| inMessage | in message with `topic`, `filter` and `responseQuery`  |
 
 ## Generic Attributes
 SGr allows to associate attributes to a data point. See [GenericAttributes](GenericAttributes.md) for details.
