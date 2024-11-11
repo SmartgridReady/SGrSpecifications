@@ -3,8 +3,8 @@
 <DeviceFrame xmlns="http://www.smartgridready.com/ns/V0/"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/Product/Product.xsd">
-  <deviceName>Example for Dynamic Tariffs</deviceName>
-  <manufacturerName>Example</manufacturerName>
+  <deviceName>Swisspower Dynamic Tariffs</deviceName>
+  <manufacturerName>Swisspower</manufacturerName>
   <specificationOwnerIdentification>0</specificationOwnerIdentification>
   <releaseNotes>
     <state>Draft</state>
@@ -43,91 +43,117 @@
               </versionNumber>
             </functionalProfileIdentification>
             <legibleDescription>
-              <textElement>
-                <![CDATA[
-                  The dynamic tariff structure offers a price that can change every 15 minutes.
-                  <p/>The function profile contains all the necessary information to retrieve a series of data points with information on tariff values every 15 minutes.
-                  <p/>The prices are available on an online interface (WEB-API), which an energy management system will use to plan the operation of various devices
-                  <p/><img src="ressources/dynamic_tariff.svg"/>
-                  <p/>This functional profile can only be provided by products with rest API interface.
-                  <p/>The request for the tariffs defines the start time and end time of the interval the tariffs should be returned for.
-                      Each entry in the resulting tariff list contains also the start time and end time of the sub intervals together with a list of entries with tariff name and tariff value.
-                  <p/>The schema for the JSon created by the Rest API is
+		      <textElement>
+		        <![CDATA[
+		          The dynamic tariff structure offers a price that can change every 15 minutes.
+		          <p/>The function profile contains all the necessary information to retrieve a series of data points with information on tariff values every 15 minutes.
+		          <p/>The prices are available on an online interface (WEB-API), which an energy management system will use to plan the operation of various devices
+		          <p/><img src="ressources/dynamic_tariff.svg"/>
+		          <p/>This functional profile can only be provided by products with rest API interface.
+		          <p/>The request for the tariffs defines the start time and end time of the interval the tariffs should be returned for.
+		              Each entry in the resulting tariff list contains also the start time and end time of the sub intervals together with a list of entries with tariff unit and tariff value as well as an optional tariff name.
+		          <p/>The schema for the JSon created by the Rest API is
 
 <pre style="color:blue">
 {
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title":   "Tariffs",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Generated schema for Root",
   "description": "JSon schema for the delivery of tariffs",
   "type": "array",
   "items": {
-    "startTime": {
-      "description": "Start time if the tariff interval",
-      "type": "string"
-    },
-    "endTime": {
-      "description": "Emd time if the tariff interval",
-      "type": "string"
-    },
-    "tariffs": {
-      "description": "List of tariffs in that interval",
-      "type": "array",
-      "items": {
-        "name": {
-          "description": "The tariff name",
-          "type": "string"
-        },
-        "tariff": {
-          "description": "The tariff value",
-          "type": "number"
-        },
-        "unit": {
-          "description": "The tariff unit",
-          "type": "string"
+    "type": "object",
+    "properties": {
+      "start_timestamp": {
+        "description": "Start time if the tariff interval",
+        "type": "string"
+      },
+      "end_timestamp": {
+        "description": "End time if the tariff interval",
+        "type": "string"
+      },
+      "integrated": {
+        "description": "List of tariffs in that interval",
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "component": {
+              "description": "The optional type of the tariff",
+              "type": "string"
+            },
+            "unit": {
+              "description": "The tariff unit for the price",
+              "type": "string"
+            },
+            "value": {
+              "description": "The tariff price value",
+              "type": "number"
+            }
+          },
+          "propertyNames": {
+            "type": "string",
+            "pattern": "^(component|unit|value)$"
+          },
+          "required": [
+            "unit",
+            "value"
+          ]
         }
-        "required": [ "name", "tariff" ]
       }
     },
-    "required": [ "startTime", "endTime", "tariffs" ]
+    "propertyNames": {
+      "type": "string",
+      "pattern": "^(start_timestamp|end_timestamp|integrated)$"
+    },
+    "required": [
+      "start_timestamp",
+      "end_timestamp",
+      "integrated"
+    ]
   }
 }
 </pre>
 
-                    <p/>An example JSon is:
+          <p/>An example JSon is:
 
 <pre style="color:blue">
 [
     {
-        "startTime":        "2023-11-17T00:00:00+01:00",
-        "endTime":          "2023-11-17T00:15:00+01:00",
-        "tariffs":
-        [
-            { "name": "sunlight",  "tariff": 15.0, "unit": "Rp/kWh" },
-            { "name": "moonlight", "tariff": 12.0, "unit": "Rp/kWh" }
+        "start_timestamp": "2024-01-01T00:00:00+02:00",
+        "end_timestamp": "2024-01-01T00:15:00+02:00",
+        "integrated": [
+            {
+                "component": "work",
+                "unit": "CHF/kWh",
+                "value": 0.4925
+            }
         ]
     },
     {
-        "startTime":        "2023-11-17T00:15:00+01:00",
-        "endTime":          "2023-11-17T00:30:00+01:00",
-        "tariffs":
-        [
-            { "name": "sunlight",  "tariff": 17.0, "unit": "Rp/kWh" },
-            { "name": "moonlight", "tariff": 14.0, "unit": "Rp/kWh" }
-        ]
+        "start_timestamp": "2024-01-01T00:15:00+02:00",
+        "end_timestamp": "2024-01-01T00:30:00+02:00",        
+        "integrated": [
+            {
+                "component": "work",
+                "unit": "CHF/kWh",
+                "value": 0.491133
+            }
+        ]       
     },
-    {
-        "startTime":        "2023-11-17T00:30:00+01:00",
-        "endTime":          "2023-11-17T00:45:00+01:00",
-        "tariffs":
-        [
-            { "name": "sunlight",  "tariff": 16.0, "unit": "Rp/kWh" },
-            { "name": "moonlight", "tariff": 13.0, "unit": "Rp/kWh" }
-        ]
-    }
+    {    "start_timestamp": "2024-01-01T00:30:00+02:00",
+        "end_timestamp": "2024-01-01T00:45:00+02:00",
+        "integrated": [
+            {
+                "component": "work",
+                "unit": "CHF/kWh",
+                "value": 0.486722
+            }
+        ]        
+    } 
 ]
 </pre>
-                ]]>
-              </textElement>
+		        ]]>
+		      </textElement>
               <language>en</language>
             </legibleDescription>
           </functionalProfile>
@@ -147,19 +173,12 @@
                       <p/>
                       Parameters of request in the product are
                       <ul>
-                        <li><strong>point</strong> - string - the point-id that identifies the consumer location</li>
+                        <li><strong>metering_code</strong> - string - the metering code identifies the consumer location</li>
                         <li><strong>start_time</strong> - date - the start date of the requested interval</li>
                         <li><strong>end_time</strong> - date - the end date of the requested interval</li>
                       </ul>
-                      <p/>
-                      The JMES queries for the elements of the result structure are:
-                       <ul>
-                        <li><strong>start_time</strong>:     <span style="color:blue">[*].start_time</span></li>
-                        <li><strong>end_time</strong>:       <span style="color:blue">[*].end_time</span></li>
-                        <li><strong>tariffs.name</strong>:   <span style="color:blue">[*].tariffs[*].name</span></li>
-                        <li><strong>tariffs.tariff</strong>: <span style="color:blue">[*].tariffs[*].tariff</span></li>
-                        <li><strong>tariffs.unit</strong>:   <span style="color:blue">[*].tariffs[*].unit</span></li>
-                      </ul
+                      There is no reformatting of the JSon output - the Swisspower tariff is the base format for the tariff
+                      functional profile.
                   ]]>
                   </textElement>
                   <language>en</language>
