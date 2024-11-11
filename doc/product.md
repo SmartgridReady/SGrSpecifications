@@ -154,19 +154,24 @@ Furthermore, the Modbus interface has the following additional properties contai
 | sunssf      | Sunpec specific attribute |
 | pollingLatencyMs      | The time for a master slave communication cycle in ms |
 | accessProtection      | Access protection (for future use) |
-| layer6Deviation      | Special handling of the interface value |
+| layer6Deviation      | Special handling of the interface value if that contains more than one value in one register |
 
 ## Functional Profiles
+
 Each device contains a list of functional profiles.
+
 | Element     | Description |
 |-------------|-------------|
 | profileName | instance name of the functional profile entry - a device can include a specific functional profile more than once but with different profile instance names |
 | functionalProfile | copy of the standardized [functional profile](functionalProfile.md) |
 | programmerHints   | optional, can occur once per language. Contains details for the programmer. |
 
-
 ## Data Points
+
 Each functional profile instance contains a list of data points in accordance with the standardized functional profile.
+
+A data point contains almost the same information as the data point within a [functional profile](functionalProfile.md#data-points).
+
 | Element     | Description |
 |-------------|-------------|
 | Data point | data point of the standardized [functional profile](functionalProfile.md), containing name, description, units, data type, read/write information |
@@ -183,7 +188,7 @@ Additional to the data points in the functional profile the product has the conc
 
 For this, the data direction `C` is possible in products. In this case, a value must be defined for the data point.
 
-### Generic Attributes
+## Generic Attributes
 SGr allows to associate attributes to a data point. See [GenericAttributes](GenericAttributes.md) for details.
 
 The generic attributes (see [GenericAttributes](GenericAttributes.md)) contain static characteristics of the product.
