@@ -22,14 +22,15 @@ The figure below shows the entity relation model of the product description.
 
 ## Device Elements
 
-### Release Notes
-
 ### Device Identification
+
 | Element          | Description |
 |------------------|-------------|
 | deviceName       | name of the device |
 | manufacturerName | name of the manufacturer |
 | specificationOwnerIdentification | Owner of the declaration (normally identical to manufacturer, but different for 3rd party declarations) |
+
+### Release Notes
 
 The release note section contains meta data that describe the history and the current state of the functional profile
 
@@ -40,6 +41,7 @@ The release note section contains meta data that describe the history and the cu
 | changeLog | optional, can occurs multiple times. Contains release notes to the version with version, date, author, and comment |
 
 ### Device Information
+
 | Element          | Description |
 |------------------|-------------|
 | alternativeNames  | a list of relevant name spaces list for to display names used in different standards like EEBUS, IEC6850, SAREF4ENER etc. (see [AlternativeNames](AlternativeNames.md))|
@@ -59,6 +61,7 @@ The release note section contains meta data that describe the history and the cu
 | programmerHints | additional device-specific implementation hints for this device |
 
 ### Configuration
+
 Values in the product definition can contain place holders e.g. for IP addresses, device ID's, ...
 These place holders are keys enclosed with double braces `{{}}`. The values for the keys must be provided during the instantiation of the product.
 
