@@ -103,7 +103,7 @@ Depending on the type of root element a transport-service specific structure is 
 
 ### Contacts Communication Interface
 
-The contacts interface has the following properties
+The contacts interface has the following properties contained in a `contactInterfaceDescription`
 
 | Element          | Description |
 |------------------|-------------|
@@ -114,7 +114,7 @@ Usually, a product description with contacts is only for documentation, as the a
 
 ### Rest API Communication Interface
 
-The RestAPI interface has the following properties
+The RestAPI interface has the following properties contained in a `restApiInterfaceDescription`
 
 | Element          | Description |
 |------------------|-------------|
@@ -125,8 +125,36 @@ The RestAPI interface has the following properties
 | restApiBasic | User name and password for authentication |
 | restApiVerifyCertificate | Indicates whether a certificate is required |
 
+### Modbus Communication Interface
 
+The Modbus interface has the following properties contained in a `modbusInterfaceDescription`
 
+| Element          | Description |
+|------------------|-------------|
+| modbusInterfaceSelection      | Type of Rest Modbus interface as one of `RTU`, `TCPIP`, `UDPIP`, `RTU-ASCII`, `TCPIP-ASCII`, `UDPIP-ASCII` |
+| modbusTcp | Contains for TCP the connection properties `port`, `address` (IP-Address), and `slaveId` |
+| modbusRtu | Contains for TCP the serial connection properties `slaveAddr`, `portName`, `"baudRateSelected"`, `byteLenSelected`, `paritySelected`, `stopBitLenSelected`, and `serialInterfaceCapability` |
+| firstRegisterAddressIsOne | Address of the first register |
+
+The `serialInterfaceCapability` defines the possible values for the communication settings
+
+| Element          | Description |
+|------------------|-------------|
+| baudRatesSupported      | List of baud rates supported by the device |
+| byteLenSupported      | List of byte lengths supported by the device |
+| paritySupported      | List of parities supported by the device |
+| stopBitLenSupported      | List of stop bits supported by the device |
+
+Furthermore, the Modbus interface has the following additional properties contained in a `modbusAttributes`
+
+| Element          | Description |
+|------------------|-------------|
+| scalingFactor      | Factor with `multiplicator` and `powerof10` for the adjustment of device values to the generic values from the function profile (this can also be defined separately for each data point) |
+| stepByIncrement      | Step for increment - used to skip illegal values (for future use) |
+| sunssf      | Sunpec specific attribute |
+| pollingLatencyMs      | The time for a master slave communication cycle in ms |
+| accessProtection      | Access protection (for future use) |
+| layer6Deviation      | Special handling of the interface value |
 
 ## Functional Profiles
 Each device contains a list of functional profiles.
