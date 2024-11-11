@@ -84,13 +84,49 @@ Each configurationDescription element contains
 | language         | the language |
 | label | short label to be displayed during the configuration of the device |
 
-## Transport Service
+## Communication Interface
 
-| Element     | Description |
+Although it is possible to define a list of communication interfaces for future use, it is strongly recommended to
+define one product description for each communication interface the product supports.
+(Also the current support libraries do not support multiple communication interfaces.)
+
+Currently supported communication interfaces are
+
+| Interface     | Description |
 |-------------|-------------|
-| transportService | one of Generic|Contacts|Modbus|RESTfulJSON |
+| contactInterface | product with physical contacts | 
+| restApiInterface | product with a RESTfulJSON interface | 
+| modbusInterface | product with a Modbus interfacee | 
+| messagingInterface | product with a messaging interface (e.g. MQTT) |
 
-Depending on the type of root element a transport-service specific structure is present, describing the device-specific transport-service configuration
+Depending on the type of root element a transport-service specific structure is present, describing the device-specific communication interface configuration
+
+### Contacts Communication Interface
+
+The contacts interface has the following properties
+
+| Element          | Description |
+|------------------|-------------|
+| numberOfContacts      | number of contacts |
+| contactStabilisationTimeMs | Time in milliseconds until a contact has reached a stable state after switching |
+
+Usually, a product description with contacts is only for documentation, as the access to contacts from a communicator is not possible.
+
+### Rest API Communication Interface
+
+The RestAPI interface has the following properties
+
+| Element          | Description |
+|------------------|-------------|
+| restApiInterfaceSelection      | Type of Rest Api interface as one of `TCPV4`, `TCPV6`, `URI` |
+| restApiUri | Address of the RestAPI server |
+| restApiAuthenticationMethod | Authentication method as one of `NoSecurityScheme`, `BearerSecurityScheme`, `ApiKeySecurityScheme`, `BasicSecurityScheme` `DigestSecurityScheme`, `PskSecurityScheme`, `OAuth2SecurityScheme`, `HawkSecurityScheme`, `AwsSignatureSecurityScheme` |
+| restApiBearer | Service calls for authentication |
+| restApiBasic | User name and password for authentication |
+| restApiVerifyCertificate | Indicates whether a certificate is required |
+
+
+
 
 ## Functional Profiles
 Each device contains a list of functional profiles.
