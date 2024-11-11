@@ -156,6 +156,17 @@ Furthermore, the Modbus interface has the following additional properties contai
 | accessProtection      | Access protection (for future use) |
 | layer6Deviation      | Special handling of the interface value if that contains more than one value in one register |
 
+### Messaging Communication Interface
+
+The Messaging interface has the following properties contained in a `messagingInterfaceDescription`
+
+| Element          | Description |
+|------------------|-------------|
+| platform      | type of the messaging platform as one of `MQTT5`, `Kafka` |
+| messageBrokerList | contains a list of message brokers each with `host`, `port`, and optional `tls` and `tlsVerifyCertificate` |
+| clientId | client identifier |
+| messageBrokerAuthentication | either `basicAuthentication` with `username` and `password` or `clientCertificateAuthentication` with `keystorePath`, `keystorePassword`, `truststorePath` and `truststorePassword` |
+
 ## Functional Profiles
 
 Each device contains a list of functional profiles.
@@ -174,9 +185,21 @@ A data point contains almost the same information as the data point within a [fu
 
 | Element     | Description |
 |-------------|-------------|
-| Data point | data point of the standardized [functional profile](functionalProfile.md), containing name, description, units, data type, read/write information |
-| Interface Info| transport-service specific information on how to access the data point |
-| programmerHints   | optional, can occur once per language. Contains details for the programmer. |
+| dataPointName | name of the data point (unique on functional profile) |
+| dataDirection | a data direction defining whether the data can be `R` read,  `W` written, `WR` read and written, or whether the data is [`C` constant](#constant-data-points) |
+| dataType | generic data type - same as in functional profile description |
+| value   | constant value of the data point - only for [constant data points](#constant-data-points) |
+| unit | the unit of the value |
+| arrayLength | Optional, if present the data point is an array of specified length |
+| minimumValue | minimum possible value (if standard libraries are used, smaller values result in an exception) |
+| maximumValue | minimum possible value (if standard libraries are used, bigger values result in an exception) |
+| unitConversionMultiplicator | factor for converting the device value into the value of the generic unit |
+| alternativeNames  | a list of relevant name spaces list for to display names used in different standards like EEBUS, IEC6850, SAREF4ENER etc. (see [AlternativeNames](AlternativeNames.md))|
+(AlternativeNames.md) |
+| legibleDescription | can occur once per language. Contains details concerning the intended use case of the functional profile. |
+| programmerHints | additional device-specific implementation hints for this device |
+
+Additionally to these attributes, the data point can have additional attributes corresponding to the communication interface - see below.
 
 ### Sub Data Points
 
@@ -187,6 +210,58 @@ Data Points that are defined as Sub Data Points are handled in the same way as t
 Additional to the data points in the functional profile the product has the concept of constant data points that can implement the data point of the functional profile and that have a constant value.
 
 For this, the data direction `C` is possible in products. In this case, a value must be defined for the data point.
+
+### Additional values for Contacts interface
+
+There are no additional attributes for the contacts communication interface.
+
+### Additional values for RESTfulJSon interface
+
+Each RESTfulJSon data point requires additional information in a `restApiDataPointConfiguration` with
+
+| Element     | Description |
+|-------------|-------------|
+| dataType     | RestAPI data type as one of `JSON_number`, `JSON_string`, `JSON_boolean`, `JSON_object`, and `JSON_array`  |
+| restApiServiceCall     | general service call |
+| restApiReadServiceCall | service call for writing a value to the data point |
+| restApiWriteServiceCall | service call for reading a value to the data point |
+
+The data point can either use a `restApiServiceCall` or a `restApiReadServiceCall` and a `restApiWriteServiceCall`.
+
+The structure of the service call is
+
+| Element     | Description |
+|-------------|-------------|
+| requestHeader     | a list of header entries with `headerName` and `value`  |
+| requestMethod | the request method as one of `GET`, `POST`, `PUT`, `PATCH`, or `DELETE` |
+| requestPath | the request path |
+| requestQuery | the request query as list of parameters |
+| requestForm | the request form as list of parameters |
+| requestBody | the request body |
+| responseQuery | the response query with a JMES path mapping |
+| valueMapping | the mapping to map a response to the generic JSon |
+
+### Additional values for Modbus interface
+
+Each Modbus data point requires additional information in a `modbusDataPointConfiguration` with
+
+| Element     | Description |
+|-------------|-------------|
+| modbusDataType     | the Modbus data type as one of `boolean`, `int8`, `int16`, `int32`, `int64`, `int8U`, `int16U`, `int32U`, `int64U`, `float32`, `float64`, `dateTime`, `string`, `enum`, and `bitmap`  |
+| address | the register number |
+| bitRank | the bit rank used to define a bit address for coils and discreteInput |
+| registerType | the register type as one of `Coil`, `DiscreteInput`, `InputRegister`, or `HoldRegister` |
+| timeToLiveMs | block cache time in milliseconds |
+| requestBody | the request body |
+| responseQuery | the response query with a JMES path mapping |
+| valueMapping | the mapping to map a response to the generic JSon |
+
+Additionally, a `blockCacheIdentification` to handle reading of more than one register and holding them in a cache until `timeToLiveMs` is expired.
+
+Furthermore, the specific `modbusAttributes` like those [above](product.md#modbus-communication-interface).
+
+### Additional values for Messaging interface
+
 
 ## Generic Attributes
 SGr allows to associate attributes to a data point. See [GenericAttributes](GenericAttributes.md) for details.
