@@ -6,7 +6,7 @@ This document structures the process for the life-cycle of functional profiles.
 ## States
 A functional profile cycles through the following states:
 
-![SGr Functional Profile Process](functionalProfile_process.png)
+![SGr Functional Profile Process](functionalProfile_process.drawio.png)
 
 | Action           | Description | Next State |
 |------------------|-------------|------------|
