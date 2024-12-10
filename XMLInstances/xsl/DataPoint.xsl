@@ -129,11 +129,13 @@
                                 <xsl:apply-templates select="sgr:restApiDataPointConfiguration" />
                             </xsl:when>
                             <xsl:otherwise>
-                                <xsl:if test="sgr:dataPoint/sgr:dataDirection != 'C'">
-                                    <tr>
-                                        <td></td>
-                                        <td style="color:red"><b>Non-constant data points must have a configuration</b></td>
-                                    </tr>
+                                <xsl:if test="not(/sgr:DeviceFrame/sgr:interfaceList/sgr:contactInterface)">
+	                                <xsl:if test="sgr:dataPoint/sgr:dataDirection != 'C'">
+	                                    <tr>
+	                                        <td></td>
+	                                        <td style="color:red"><b>Non-constant data points must have a configuration</b></td>
+	                                    </tr>
+	                                </xsl:if>
                                 </xsl:if>
                             </xsl:otherwise>
                         </xsl:choose>
