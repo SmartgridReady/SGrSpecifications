@@ -16,7 +16,7 @@
     </legibleDescription>
     <deviceCategory>HeatPumpAppliance</deviceCategory>
     <isLocalControl>true</isLocalControl>
-    <softwareRevision>1.0.0</softwareRevision>
+    <softwareRevision>3.0.97</softwareRevision>
     <hardwareRevision>1.1.0</hardwareRevision>
     <brandName>Heliotherm</brandName>
     <powerSource>mains3Phase</powerSource>
@@ -30,6 +30,19 @@
       <secondaryVersionNumber>2</secondaryVersionNumber>
       <subReleaseVersionNumber>1</subReleaseVersionNumber>
     </versionNumber>
+    <programmerHints>
+    	<textElement>Voraussetzungen
+
+Das Dokument richtet sich an Personen die mit der Spezifikation und dem Betrieb des Modbus-Protokolls
+vertraut sind (z.B. Systemintegratoren). Da über Modbus auch die komplette Steuerung der Wärmepumpe
+möglich ist, wird entsprechendes hydraulisches bzw. regeltechnisches Wissen zum Betrieb von Wärme-
+Pumpen zwingend vorausgesetzt!
+
+Durch die Steuerung der Wärmepumpe via Modbus wird in einem gewissen Maße die Eigenintelligenz
+der Wärmepumpe „überschrieben“. Somit obliegt dem Integrator die Verantwortung einen problemlosen
+Betrieb zu gewährleisten!</textElement>
+    	<language>de</language>
+    </programmerHints>
   </deviceInformation>
   <configurationList>
     <configurationListElement>
@@ -357,7 +370,7 @@
           <dataPointList>
             <dataPointListElement>
               <dataPoint>
-                <dataPointName>SpeedCtrlSetpt</dataPointName>
+                <dataPointName>SpeedCtrlStpt</dataPointName>
                 <dataDirection>RW</dataDirection>
                 <dataType>
                   <float64 />
@@ -520,7 +533,7 @@
                 </modbusDataType>
                 <address>70</address>
                 <registerType>InputRegister</registerType>
-                <numberOfRegisters>1</numberOfRegisters>
+                <numberOfRegisters>2</numberOfRegisters>
               </modbusDataPointConfiguration>
             </dataPointListElement>
           </dataPointList>
@@ -702,7 +715,7 @@
             <dataPointListElement>
               <dataPoint>
                 <dataPointName>SupplyWaterTempSetpointEnable</dataPointName>
-                <dataDirection>R</dataDirection>
+                <dataDirection>RW</dataDirection>
                 <dataType>
                   <boolean />
                 </dataType>
@@ -743,7 +756,7 @@
                 <modbusDataType>
                   <int16 />
                 </modbusDataType>
-                <address>12</address>
+                <address>13</address>
                 <registerType>InputRegister</registerType>
                 <numberOfRegisters>1</numberOfRegisters>
               </modbusDataPointConfiguration>
@@ -898,7 +911,7 @@
             <dataPointListElement>
               <dataPoint>
                 <dataPointName>SupplyWaterTempSetpoint</dataPointName>
-                <dataDirection>R</dataDirection>
+                <dataDirection>RW</dataDirection>
                 <dataType>
                   <float64 />
                 </dataType>
@@ -926,7 +939,7 @@
             <dataPointListElement>
               <dataPoint>
                 <dataPointName>SupplyWaterTempSetpointEnable</dataPointName>
-                <dataDirection>R</dataDirection>
+                <dataDirection>RW</dataDirection>
                 <dataType>
                   <boolean />
                 </dataType>
@@ -1002,7 +1015,7 @@
            <dataPointListElement>
               <dataPoint>
                 <dataPointName>DomHotWaterTempSetpoint</dataPointName>
-                <dataDirection>W</dataDirection>
+                <dataDirection>RW</dataDirection>
                 <dataType>
                   <float64 />
                 </dataType>
@@ -1063,7 +1076,7 @@
             <dataPointListElement>
               <dataPoint>
                 <dataPointName>DomHotWaterTempSetpointEnable</dataPointName>
-                <dataDirection>W</dataDirection>
+                <dataDirection>RW</dataDirection>
                 <dataType>
                   <boolean/>
                 </dataType>
@@ -1209,7 +1222,7 @@
             <dataPointListElement>
               <dataPoint>
                 <dataPointName>HeatBufferTempSetpointEnable</dataPointName>
-                <dataDirection>R</dataDirection>
+                <dataDirection>RW</dataDirection>
                 <dataType>
                   <boolean />
                 </dataType>
