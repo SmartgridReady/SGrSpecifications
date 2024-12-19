@@ -52,10 +52,6 @@
                <string/>
              </elem>
              <elem>
-               <key>HouseNumber</key>
-               <string/>
-             </elem>
-             <elem>
                <key>ZipCode</key>
                <string/>
              </elem>
@@ -79,11 +75,7 @@
   "type": "object",
   "properties": {
     "Street": {
-      "description": "Strasse",
-      "type": "string"
-    },
-    "HouseNumber": {
-      "description": "Hausnummer",
+      "description": "Strasse und Hausnummer",
       "type": "string"
     },
     "ZipCode": {
@@ -96,9 +88,9 @@
     }
   },
   "required": [
-    "street",
-    "postalCode",
-    "city"
+    "Street",
+    "ZipCode",
+    "City"
   ]
 }
 </pre></font>
@@ -106,10 +98,9 @@
 JSon-Beispiel:
 <font size="2"><pre style="color:blue">
 {
-  "street": "Irgendeinestrasse",
-  "houseNumber": "33a",
-  "postalCode": 8000,
-  "city": "Zuerich"
+  "Street": "Irgendeinestrasse 99",
+  "ZipCode": 8000,
+  "City": "Zuerich"
 }
 </pre></font>
 
@@ -420,8 +411,9 @@ JSon-Beispiel:
     }
   },
   "required": [
-    "Value",
-    "Duration"
+    "Voltage1",
+    "Voltage2",
+    "Voltage3"
   ]
 }
 </pre></font>
@@ -449,11 +441,11 @@ JSon-Beispiel:
         <dataType>
           <json>
              <elem>
-               <key>Maximum</key>
+               <key>MaximumPowerKw</key>
                <number/>
              </elem>
              <elem>
-               <key>Duration</key>
+               <key>DurationInMinutes</key>
                <number/>
              </elem>
           </json>
@@ -472,18 +464,18 @@ JSon-Beispiel:
   "title": "Einschränkung mit Maximum und Dauer",
   "type": "object",
   "properties": {
-    "Maximum": {
+    "MaximumPowerKw": {
       "description": "Maximalwert in Kilowatt",
       "type": "number"
     },
-    "Duration": {
+    "DurationInMinutes": {
       "description": "Dauer der Beschränkung in Minuten",
       "type": "number"
     }
   },
   "required": [
-    "Value",
-    "Duration"
+    "MaximumPowerKw",
+    "DurationInMinutes"
   ]
 }
 </pre></font>
@@ -491,7 +483,7 @@ JSon-Beispiel:
 JSon-Beispiel:
 <font size="2"><pre style="color:blue">
 {
-  "Maximum": 10,
+  "MaximumPowerKw": 10,
   "Duration": 30
 }
 </pre></font>
@@ -525,11 +517,11 @@ JSon-Beispiel:
         <dataType>
           <json>
              <elem>
-               <key>Maximum</key>
+               <key>MaximumPowerKw</key>
                <number/>
              </elem>
              <elem>
-               <key>Duration</key>
+               <key>DurationInMinutes</key>
                <number/>
              </elem>
           </json>
@@ -548,18 +540,18 @@ JSon-Beispiel:
   "title": "Einschränkung mit Maximum und Dauer",
   "type": "object",
   "properties": {
-    "Maximum": {
+    "MaximumPowerKw": {
       "description": "Maximalwert in Kilowatt",
       "type": "number"
     },
-    "Duration": {
+    "DurationInMinutes": {
       "description": "Dauer der Beschränkung in Minuten",
       "type": "number"
     }
   },
   "required": [
-    "Value",
-    "Duration"
+    "MaximumPowerKw",
+    "DurationInMinutes"
   ]
 }
 </pre></font>
@@ -567,7 +559,7 @@ JSon-Beispiel:
 JSon-Beispiel:
 <font size="2"><pre style="color:blue">
 {
-  "Maximum": 10,
+  "MaximumPowerKw": 10,
   "Duration": 30
 }
 </pre></font>
