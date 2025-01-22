@@ -3,7 +3,7 @@
 <DeviceFrame xmlns="http://www.smartgridready.com/ns/V0/"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/Product/Product.xsd">
-	<deviceName>Shelly Pro 3EM MQTT</deviceName>
+	<deviceName>Shelly Pro 3EM Local</deviceName>
 	<manufacturerName>Shelly</manufacturerName>
 	<specificationOwnerIdentification>0</specificationOwnerIdentification>
 	<releaseNotes>
@@ -20,16 +20,14 @@
 			<textElement>
 				<![CDATA[ 
           Der Shelly Pro 3EM ist ein 3-Phasen-Energiezähler.
-          Die vorliegende EID ist auf die Ansteuerung via MQTT ausgelegt.
-		  Mit der vorliegenden EID können Daten via MQTT-Topic "{topic_prefix}/status" empfangen werden.
-          In der Firmware muss MQTT Control aktiviert sein und RPC via MQTT deaktiviert.
+          Die vorliegende EID ist auf die Ansteuerung via lokalem JSON-RPC API (Gen2) mit Basic-Authentication ausgelegt.
         ]]>
 			</textElement>
 			<language>de</language>
 			<uri>https://kb.shelly.cloud/knowledge-base/shelly-pro-3em</uri>
 		</legibleDescription>
 		<deviceCategory>SubMeterElectricity</deviceCategory>
-		<isLocalControl>false</isLocalControl>
+		<isLocalControl>true</isLocalControl>
 		<softwareRevision>1.4.3</softwareRevision>
 		<hardwareRevision>1.0.0</hardwareRevision>
 		<manufacturerSpecificationIdentification>Shelly</manufacturerSpecificationIdentification>
@@ -43,144 +41,68 @@
 	</deviceInformation>
 	<configurationList>
 		<configurationListElement>
-			<name>broker_host</name>
+			<name>base_uri</name>
 			<dataType>
 				<string />
 			</dataType>
-			<defaultValue>localhost</defaultValue>
+			<defaultValue>http://192.168.33.1</defaultValue>
 			<configurationDescription>
-				<textElement>Message broker hostname or IP address.</textElement>
+				<textElement>Base address for accessing the resource.</textElement>
 				<language>en</language>
-				<label>Broker Hostname</label>
+				<label>Base URI</label>
 			</configurationDescription>
 			<configurationDescription>
-				<textElement>Message-Broker Hostname oder IP-Adresse.</textElement>
+				<textElement>Basis-Adresse für Zugriffe auf die Ressource.</textElement>
 				<language>de</language>
-				<label>Broker-Hostname</label>
+				<label>Basis URI</label>
 			</configurationDescription>
 		</configurationListElement>
 		<configurationListElement>
-			<name>broker_port</name>
-			<dataType>
-				<int32 />
-			</dataType>
-			<defaultValue>1883</defaultValue>
-			<configurationDescription>
-				<textElement>Message broker TCP port.</textElement>
-				<language>en</language>
-				<label>Broker Port</label>
-			</configurationDescription>
-			<configurationDescription>
-				<textElement>Message-Broker TCP-Port.</textElement>
-				<language>de</language>
-				<label>Broker-Port</label>
-			</configurationDescription>
-		</configurationListElement>
-		<configurationListElement>
-			<name>broker_tls</name>
-			<dataType>
-				<boolean />
-			</dataType>
-			<defaultValue>false</defaultValue>
-			<configurationDescription>
-				<textElement>Message broker TLS.</textElement>
-				<language>en</language>
-				<label>Broker TLS</label>
-			</configurationDescription>
-			<configurationDescription>
-				<textElement>Message-Broker TLS.</textElement>
-				<language>de</language>
-				<label>Broker-TLS</label>
-			</configurationDescription>
-		</configurationListElement>
-		<configurationListElement>
-			<name>broker_tls_verify</name>
-			<dataType>
-				<boolean />
-			</dataType>
-			<defaultValue>false</defaultValue>
-			<configurationDescription>
-				<textElement>Message broker TLS certificate verification.</textElement>
-				<language>en</language>
-				<label>Broker TLS Verification</label>
-			</configurationDescription>
-			<configurationDescription>
-				<textElement>Message-Broker TLS Zertifikatsprüfung.</textElement>
-				<language>de</language>
-				<label>Broker-TLS-Verifizierung</label>
-			</configurationDescription>
-		</configurationListElement>
-		<configurationListElement>
-			<name>broker_username</name>
+			<name>username</name>
 			<dataType>
 				<string />
 			</dataType>
-			<defaultValue></defaultValue>
+			<defaultValue>admin</defaultValue>
 			<configurationDescription>
-				<textElement>Message broker user name.</textElement>
+				<textElement>User name for accessing the device.</textElement>
 				<language>en</language>
-				<label>Broker User</label>
+				<label>User Name</label>
 			</configurationDescription>
 			<configurationDescription>
-				<textElement>Message-Broker User-Name.</textElement>
+				<textElement>Benutzername für den Zugriff auf das Gerät.</textElement>
 				<language>de</language>
-				<label>Broker-User</label>
+				<label>Benutzername</label>
 			</configurationDescription>
 		</configurationListElement>
 		<configurationListElement>
-			<name>broker_password</name>
+			<name>password</name>
 			<dataType>
 				<string />
 			</dataType>
-			<defaultValue></defaultValue>
+			<defaultValue>password</defaultValue>
 			<configurationDescription>
-				<textElement>Message broker password.</textElement>
+				<textElement>Password for accessing the device.</textElement>
 				<language>en</language>
-				<label>Broker Password</label>
+				<label>Password</label>
 			</configurationDescription>
 			<configurationDescription>
-				<textElement>Message-Broker Passwort.</textElement>
+				<textElement>Passwort für den Zugriff auf das Gerät.</textElement>
 				<language>de</language>
-				<label>Broker-Passwort</label>
-			</configurationDescription>
-		</configurationListElement>
-		<configurationListElement>
-			<name>topic_prefix</name>
-			<dataType>
-				<string />
-			</dataType>
-			<defaultValue>shellies/ShellyPro3EM</defaultValue>
-			<configurationDescription>
-				<textElement>MQTT topic prefix.</textElement>
-				<language>en</language>
-				<label>Topic Prefix</label>
-			</configurationDescription>
-			<configurationDescription>
-				<textElement>MQTT-Topic-Präfix.</textElement>
-				<language>de</language>
-				<label>Topic-Präfix</label>
+				<label>Passwort</label>
 			</configurationDescription>
 		</configurationListElement>
 	</configurationList>
 	<interfaceList>
-		<messagingInterface>
-			<messagingInterfaceDescription>
-				<platform>MQTT5</platform>
-				<messageBrokerList>
-					<messageBrokerListElement>
-						<host>{{broker_host}}</host>
-						<port>{{broker_port}}</port>
-						<tls>{{broker_tls}}</tls>
-						<tlsVerifyCertificate>{{broker_tls_verify}}</tlsVerifyCertificate>
-					</messageBrokerListElement>
-				</messageBrokerList>
-				<messageBrokerAuthentication>
-					<basicAuthentication>
-						<username>{{broker_username}}</username>
-						<password>{{broker_password}}</password>
-					</basicAuthentication>
-				</messageBrokerAuthentication>
-			</messagingInterfaceDescription>
+		<restApiInterface>
+			<restApiInterfaceDescription>
+				<restApiInterfaceSelection>URI</restApiInterfaceSelection>
+				<restApiUri>{{base_uri}}</restApiUri>
+				<restApiAuthenticationMethod>BasicSecurityScheme</restApiAuthenticationMethod>
+				<restApiBasic>
+					<restBasicUsername>{{username}}</restBasicUsername>
+					<restBasicPassword>{{password}}</restBasicPassword>
+				</restApiBasic>
+			</restApiInterfaceDescription>
 			<functionalProfileList>
 				<functionalProfileListElement>
 					<functionalProfile>
@@ -252,9 +174,10 @@
 								<dataType>
 									<float64 />
 								</dataType>
-								<unit>WATTS</unit>
+								<unit>KILOWATTS</unit>
 								<minimumValue>0</minimumValue>
-								<maximumValue>90000</maximumValue>
+								<maximumValue>90</maximumValue>
+								<unitConversionMultiplicator>0.001</unitConversionMultiplicator>
 								<legibleDescription>
 									<textElement>Erfassung der gesamten Wirkleistung</textElement>
 									<language>de</language>
@@ -264,18 +187,29 @@
 									<language>en</language>
 								</legibleDescription>
 							</dataPoint>
-							<messagingDataPointConfiguration>
-								<messagingDataType>
-									<number />
-								</messagingDataType>
-								<inMessage>
-									<topic>{{topic_prefix}}/status/em:0</topic>
+							<restApiDataPointConfiguration>
+								<dataType>JSON_number</dataType>
+								<restApiReadServiceCall>
+									<requestHeader>
+										<header>
+											<headerName>Accept</headerName>
+											<value>application/json</value>
+										</header>
+									</requestHeader>
+									<requestMethod>GET</requestMethod>
+									<requestPath>/rpc/EM.GetStatus</requestPath>
+									<requestQuery>
+										<parameter>
+											<name>id</name>
+											<value>0</value>
+										</parameter>
+									</requestQuery>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
 										<query>total_act_power</query>
 									</responseQuery>
-								</inMessage>
-							</messagingDataPointConfiguration>
+								</restApiReadServiceCall>
+							</restApiDataPointConfiguration>
 						</dataPointListElement>
 						<dataPointListElement>
 							<dataPoint>
@@ -284,9 +218,10 @@
 								<dataType>
 									<float64 />
 								</dataType>
-								<unit>WATTS</unit>
+								<unit>KILOWATTS</unit>
 								<minimumValue>0</minimumValue>
-								<maximumValue>30000</maximumValue>
+								<maximumValue>30</maximumValue>
+								<unitConversionMultiplicator>0.001</unitConversionMultiplicator>
 								<legibleDescription>
 									<textElement>Erfassung der Wirkleistung Phase 1</textElement>
 									<language>de</language>
@@ -296,18 +231,29 @@
 									<language>en</language>
 								</legibleDescription>
 							</dataPoint>
-							<messagingDataPointConfiguration>
-								<messagingDataType>
-									<number />
-								</messagingDataType>
-								<inMessage>
-									<topic>{{topic_prefix}}/status/em:0</topic>
+							<restApiDataPointConfiguration>
+								<dataType>JSON_number</dataType>
+								<restApiReadServiceCall>
+									<requestHeader>
+										<header>
+											<headerName>Accept</headerName>
+											<value>application/json</value>
+										</header>
+									</requestHeader>
+									<requestMethod>GET</requestMethod>
+									<requestPath>/rpc/EM.GetStatus</requestPath>
+									<requestQuery>
+										<parameter>
+											<name>id</name>
+											<value>0</value>
+										</parameter>
+									</requestQuery>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
 										<query>a_act_power</query>
 									</responseQuery>
-								</inMessage>
-							</messagingDataPointConfiguration>
+								</restApiReadServiceCall>
+							</restApiDataPointConfiguration>
 						</dataPointListElement>
 						<dataPointListElement>
 							<dataPoint>
@@ -316,9 +262,10 @@
 								<dataType>
 									<float64 />
 								</dataType>
-								<unit>WATTS</unit>
+								<unit>KILOWATTS</unit>
 								<minimumValue>0</minimumValue>
-								<maximumValue>30000</maximumValue>
+								<maximumValue>30</maximumValue>
+								<unitConversionMultiplicator>0.001</unitConversionMultiplicator>
 								<legibleDescription>
 									<textElement>Erfassung der Wirkleistung Phase 2</textElement>
 									<language>de</language>
@@ -328,18 +275,29 @@
 									<language>en</language>
 								</legibleDescription>
 							</dataPoint>
-							<messagingDataPointConfiguration>
-								<messagingDataType>
-									<number />
-								</messagingDataType>
-								<inMessage>
-									<topic>{{topic_prefix}}/status/em:0</topic>
+							<restApiDataPointConfiguration>
+								<dataType>JSON_number</dataType>
+								<restApiReadServiceCall>
+									<requestHeader>
+										<header>
+											<headerName>Accept</headerName>
+											<value>application/json</value>
+										</header>
+									</requestHeader>
+									<requestMethod>GET</requestMethod>
+									<requestPath>/rpc/EM.GetStatus</requestPath>
+									<requestQuery>
+										<parameter>
+											<name>id</name>
+											<value>0</value>
+										</parameter>
+									</requestQuery>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
 										<query>b_act_power</query>
 									</responseQuery>
-								</inMessage>
-							</messagingDataPointConfiguration>
+								</restApiReadServiceCall>
+							</restApiDataPointConfiguration>
 						</dataPointListElement>
 						<dataPointListElement>
 							<dataPoint>
@@ -348,9 +306,10 @@
 								<dataType>
 									<float64 />
 								</dataType>
-								<unit>WATTS</unit>
+								<unit>KILOWATTS</unit>
 								<minimumValue>0</minimumValue>
-								<maximumValue>30000</maximumValue>
+								<maximumValue>30</maximumValue>
+								<unitConversionMultiplicator>0.001</unitConversionMultiplicator>
 								<legibleDescription>
 									<textElement>Erfassung der Wirkleistung Phase 3</textElement>
 									<language>de</language>
@@ -360,18 +319,29 @@
 									<language>en</language>
 								</legibleDescription>
 							</dataPoint>
-							<messagingDataPointConfiguration>
-								<messagingDataType>
-									<number />
-								</messagingDataType>
-								<inMessage>
-									<topic>{{topic_prefix}}/status/em:0</topic>
+							<restApiDataPointConfiguration>
+								<dataType>JSON_number</dataType>
+								<restApiReadServiceCall>
+									<requestHeader>
+										<header>
+											<headerName>Accept</headerName>
+											<value>application/json</value>
+										</header>
+									</requestHeader>
+									<requestMethod>GET</requestMethod>
+									<requestPath>/rpc/EM.GetStatus</requestPath>
+									<requestQuery>
+										<parameter>
+											<name>id</name>
+											<value>0</value>
+										</parameter>
+									</requestQuery>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
 										<query>c_act_power</query>
 									</responseQuery>
-								</inMessage>
-							</messagingDataPointConfiguration>
+								</restApiReadServiceCall>
+							</restApiDataPointConfiguration>
 						</dataPointListElement>
 					</dataPointList>
 				</functionalProfileListElement>
@@ -448,7 +418,8 @@
 								<dataType>
 									<float64 />
 								</dataType>
-								<unit>WATT_HOURS</unit>
+								<unit>KILOWATT_HOURS</unit>
+								<unitConversionMultiplicator>0.001</unitConversionMultiplicator>
 								<legibleDescription>
 									<textElement>Erfassung der gesamten Wirkenergie</textElement>
 									<language>de</language>
@@ -458,18 +429,29 @@
 									<language>en</language>
 								</legibleDescription>
 							</dataPoint>
-							<messagingDataPointConfiguration>
-								<messagingDataType>
-									<number />
-								</messagingDataType>
-								<inMessage>
-									<topic>{{topic_prefix}}/status/emdata:0</topic>
+							<restApiDataPointConfiguration>
+								<dataType>JSON_number</dataType>
+								<restApiReadServiceCall>
+									<requestHeader>
+										<header>
+											<headerName>Accept</headerName>
+											<value>application/json</value>
+										</header>
+									</requestHeader>
+									<requestMethod>GET</requestMethod>
+									<requestPath>/rpc/EMData.GetStatus</requestPath>
+									<requestQuery>
+										<parameter>
+											<name>id</name>
+											<value>0</value>
+										</parameter>
+									</requestQuery>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
 										<query>total_act</query>
 									</responseQuery>
-								</inMessage>
-							</messagingDataPointConfiguration>
+								</restApiReadServiceCall>
+							</restApiDataPointConfiguration>
 						</dataPointListElement>
 						<dataPointListElement>
 							<dataPoint>
@@ -478,7 +460,8 @@
 								<dataType>
 									<float64 />
 								</dataType>
-								<unit>WATT_HOURS</unit>
+								<unit>KILOWATT_HOURS</unit>
+								<unitConversionMultiplicator>0.001</unitConversionMultiplicator>
 								<legibleDescription>
 									<textElement>Erfassung der Wirkenergie Phase 1</textElement>
 									<language>de</language>
@@ -488,18 +471,29 @@
 									<language>en</language>
 								</legibleDescription>
 							</dataPoint>
-							<messagingDataPointConfiguration>
-								<messagingDataType>
-									<number />
-								</messagingDataType>
-								<inMessage>
-									<topic>{{topic_prefix}}/status/emdata:0</topic>
+							<restApiDataPointConfiguration>
+								<dataType>JSON_number</dataType>
+								<restApiReadServiceCall>
+									<requestHeader>
+										<header>
+											<headerName>Accept</headerName>
+											<value>application/json</value>
+										</header>
+									</requestHeader>
+									<requestMethod>GET</requestMethod>
+									<requestPath>/rpc/EMData.GetStatus</requestPath>
+									<requestQuery>
+										<parameter>
+											<name>id</name>
+											<value>0</value>
+										</parameter>
+									</requestQuery>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
 										<query>a_total_act_energy</query>
 									</responseQuery>
-								</inMessage>
-							</messagingDataPointConfiguration>
+								</restApiReadServiceCall>
+							</restApiDataPointConfiguration>
 						</dataPointListElement>
 						<dataPointListElement>
 							<dataPoint>
@@ -508,7 +502,8 @@
 								<dataType>
 									<float64 />
 								</dataType>
-								<unit>WATT_HOURS</unit>
+								<unit>KILOWATT_HOURS</unit>
+								<unitConversionMultiplicator>0.001</unitConversionMultiplicator>
 								<legibleDescription>
 									<textElement>Erfassung der Wirkenergie Phase 2</textElement>
 									<language>de</language>
@@ -518,18 +513,29 @@
 									<language>en</language>
 								</legibleDescription>
 							</dataPoint>
-							<messagingDataPointConfiguration>
-								<messagingDataType>
-									<number />
-								</messagingDataType>
-								<inMessage>
-									<topic>{{topic_prefix}}/status/emdata:0</topic>
+							<restApiDataPointConfiguration>
+								<dataType>JSON_number</dataType>
+								<restApiReadServiceCall>
+									<requestHeader>
+										<header>
+											<headerName>Accept</headerName>
+											<value>application/json</value>
+										</header>
+									</requestHeader>
+									<requestMethod>GET</requestMethod>
+									<requestPath>/rpc/EMData.GetStatus</requestPath>
+									<requestQuery>
+										<parameter>
+											<name>id</name>
+											<value>0</value>
+										</parameter>
+									</requestQuery>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
 										<query>b_total_act_energy</query>
 									</responseQuery>
-								</inMessage>
-							</messagingDataPointConfiguration>
+								</restApiReadServiceCall>
+							</restApiDataPointConfiguration>
 						</dataPointListElement>
 						<dataPointListElement>
 							<dataPoint>
@@ -538,7 +544,8 @@
 								<dataType>
 									<float64 />
 								</dataType>
-								<unit>WATT_HOURS</unit>
+								<unit>KILOWATT_HOURS</unit>
+								<unitConversionMultiplicator>0.001</unitConversionMultiplicator>
 								<legibleDescription>
 									<textElement>Erfassung der Wirkenergie Phase 3</textElement>
 									<language>de</language>
@@ -548,18 +555,29 @@
 									<language>en</language>
 								</legibleDescription>
 							</dataPoint>
-							<messagingDataPointConfiguration>
-								<messagingDataType>
-									<number />
-								</messagingDataType>
-								<inMessage>
-									<topic>{{topic_prefix}}/status/emdata:0</topic>
+							<restApiDataPointConfiguration>
+								<dataType>JSON_number</dataType>
+								<restApiReadServiceCall>
+									<requestHeader>
+										<header>
+											<headerName>Accept</headerName>
+											<value>application/json</value>
+										</header>
+									</requestHeader>
+									<requestMethod>GET</requestMethod>
+									<requestPath>/rpc/EMData.GetStatus</requestPath>
+									<requestQuery>
+										<parameter>
+											<name>id</name>
+											<value>0</value>
+										</parameter>
+									</requestQuery>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
 										<query>c_total_act_energy</query>
 									</responseQuery>
-								</inMessage>
-							</messagingDataPointConfiguration>
+								</restApiReadServiceCall>
+							</restApiDataPointConfiguration>
 						</dataPointListElement>
 					</dataPointList>
 				</functionalProfileListElement>
@@ -593,25 +611,36 @@
 									<float64 />
 								</dataType>
 								<unit>VOLTS</unit>
-								<minimumValue>0</minimumValue>
-								<maximumValue>250</maximumValue>
+								<minimumValue>100</minimumValue>
+								<maximumValue>260</maximumValue>
 								<legibleDescription>
 									<textElement>Spannung Phase 1 gegenüber Nulleiter</textElement>
 									<language>de</language>
 								</legibleDescription>
 							</dataPoint>
-							<messagingDataPointConfiguration>
-								<messagingDataType>
-									<number />
-								</messagingDataType>
-								<inMessage>
-									<topic>{{topic_prefix}}/status/em:0</topic>
+							<restApiDataPointConfiguration>
+								<dataType>JSON_number</dataType>
+								<restApiReadServiceCall>
+									<requestHeader>
+										<header>
+											<headerName>Accept</headerName>
+											<value>application/json</value>
+										</header>
+									</requestHeader>
+									<requestMethod>GET</requestMethod>
+									<requestPath>/rpc/EM.GetStatus</requestPath>
+									<requestQuery>
+										<parameter>
+											<name>id</name>
+											<value>0</value>
+										</parameter>
+									</requestQuery>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
 										<query>a_voltage</query>
 									</responseQuery>
-								</inMessage>
-							</messagingDataPointConfiguration>
+								</restApiReadServiceCall>
+							</restApiDataPointConfiguration>
 						</dataPointListElement>
 						<dataPointListElement>
 							<dataPoint>
@@ -621,25 +650,36 @@
 									<float64 />
 								</dataType>
 								<unit>VOLTS</unit>
-								<minimumValue>0</minimumValue>
-								<maximumValue>250</maximumValue>
+								<minimumValue>100</minimumValue>
+								<maximumValue>260</maximumValue>
 								<legibleDescription>
 									<textElement>Spannung Phase 2 gegenüber Nulleiter</textElement>
 									<language>de</language>
 								</legibleDescription>
 							</dataPoint>
-							<messagingDataPointConfiguration>
-								<messagingDataType>
-									<number />
-								</messagingDataType>
-								<inMessage>
-									<topic>{{topic_prefix}}/status/em:0</topic>
+							<restApiDataPointConfiguration>
+								<dataType>JSON_number</dataType>
+								<restApiReadServiceCall>
+									<requestHeader>
+										<header>
+											<headerName>Accept</headerName>
+											<value>application/json</value>
+										</header>
+									</requestHeader>
+									<requestMethod>GET</requestMethod>
+									<requestPath>/rpc/EM.GetStatus</requestPath>
+									<requestQuery>
+										<parameter>
+											<name>id</name>
+											<value>0</value>
+										</parameter>
+									</requestQuery>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
 										<query>b_voltage</query>
 									</responseQuery>
-								</inMessage>
-							</messagingDataPointConfiguration>
+								</restApiReadServiceCall>
+							</restApiDataPointConfiguration>
 						</dataPointListElement>
 						<dataPointListElement>
 							<dataPoint>
@@ -649,25 +689,36 @@
 									<float64 />
 								</dataType>
 								<unit>VOLTS</unit>
-								<minimumValue>0</minimumValue>
-								<maximumValue>250</maximumValue>
+								<minimumValue>100</minimumValue>
+								<maximumValue>260</maximumValue>
 								<legibleDescription>
 									<textElement>Spannung Phase 3 gegenüber Nulleiter</textElement>
 									<language>de</language>
 								</legibleDescription>
 							</dataPoint>
-							<messagingDataPointConfiguration>
-								<messagingDataType>
-									<number />
-								</messagingDataType>
-								<inMessage>
-									<topic>{{topic_prefix}}/status/em:0</topic>
+							<restApiDataPointConfiguration>
+								<dataType>JSON_number</dataType>
+								<restApiReadServiceCall>
+									<requestHeader>
+										<header>
+											<headerName>Accept</headerName>
+											<value>application/json</value>
+										</header>
+									</requestHeader>
+									<requestMethod>GET</requestMethod>
+									<requestPath>/rpc/EM.GetStatus</requestPath>
+									<requestQuery>
+										<parameter>
+											<name>id</name>
+											<value>0</value>
+										</parameter>
+									</requestQuery>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
 										<query>c_voltage</query>
 									</responseQuery>
-								</inMessage>
-							</messagingDataPointConfiguration>
+								</restApiReadServiceCall>
+							</restApiDataPointConfiguration>
 						</dataPointListElement>
 					</dataPointList>
 				</functionalProfileListElement>
@@ -708,18 +759,29 @@
 									<language>de</language>
 								</legibleDescription>
 							</dataPoint>
-							<messagingDataPointConfiguration>
-								<messagingDataType>
-									<number />
-								</messagingDataType>
-								<inMessage>
-									<topic>{{topic_prefix}}/status/em:0</topic>
+							<restApiDataPointConfiguration>
+								<dataType>JSON_number</dataType>
+								<restApiReadServiceCall>
+									<requestHeader>
+										<header>
+											<headerName>Accept</headerName>
+											<value>application/json</value>
+										</header>
+									</requestHeader>
+									<requestMethod>GET</requestMethod>
+									<requestPath>/rpc/EM.GetStatus</requestPath>
+									<requestQuery>
+										<parameter>
+											<name>id</name>
+											<value>0</value>
+										</parameter>
+									</requestQuery>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
 										<query>a_current</query>
 									</responseQuery>
-								</inMessage>
-							</messagingDataPointConfiguration>
+								</restApiReadServiceCall>
+							</restApiDataPointConfiguration>
 						</dataPointListElement>
 						<dataPointListElement>
 							<dataPoint>
@@ -736,18 +798,29 @@
 									<language>de</language>
 								</legibleDescription>
 							</dataPoint>
-							<messagingDataPointConfiguration>
-								<messagingDataType>
-									<number />
-								</messagingDataType>
-								<inMessage>
-									<topic>{{topic_prefix}}/status/em:0</topic>
+							<restApiDataPointConfiguration>
+								<dataType>JSON_number</dataType>
+								<restApiReadServiceCall>
+									<requestHeader>
+										<header>
+											<headerName>Accept</headerName>
+											<value>application/json</value>
+										</header>
+									</requestHeader>
+									<requestMethod>GET</requestMethod>
+									<requestPath>/rpc/EM.GetStatus</requestPath>
+									<requestQuery>
+										<parameter>
+											<name>id</name>
+											<value>0</value>
+										</parameter>
+									</requestQuery>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
 										<query>b_current</query>
 									</responseQuery>
-								</inMessage>
-							</messagingDataPointConfiguration>
+								</restApiReadServiceCall>
+							</restApiDataPointConfiguration>
 						</dataPointListElement>
 						<dataPointListElement>
 							<dataPoint>
@@ -764,22 +837,33 @@
 									<language>de</language>
 								</legibleDescription>
 							</dataPoint>
-							<messagingDataPointConfiguration>
-								<messagingDataType>
-									<number />
-								</messagingDataType>
-								<inMessage>
-									<topic>{{topic_prefix}}/status/em:0</topic>
+							<restApiDataPointConfiguration>
+								<dataType>JSON_number</dataType>
+								<restApiReadServiceCall>
+									<requestHeader>
+										<header>
+											<headerName>Accept</headerName>
+											<value>application/json</value>
+										</header>
+									</requestHeader>
+									<requestMethod>GET</requestMethod>
+									<requestPath>/rpc/EM.GetStatus</requestPath>
+									<requestQuery>
+										<parameter>
+											<name>id</name>
+											<value>0</value>
+										</parameter>
+									</requestQuery>
 									<responseQuery>
 										<queryType>JMESPathExpression</queryType>
 										<query>c_current</query>
 									</responseQuery>
-								</inMessage>
-							</messagingDataPointConfiguration>
+								</restApiReadServiceCall>
+							</restApiDataPointConfiguration>
 						</dataPointListElement>
 					</dataPointList>
 				</functionalProfileListElement>
 			</functionalProfileList>
-		</messagingInterface>
+		</restApiInterface>
 	</interfaceList>
 </DeviceFrame>

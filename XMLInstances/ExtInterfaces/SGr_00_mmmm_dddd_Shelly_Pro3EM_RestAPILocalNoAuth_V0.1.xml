@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="/xsl/SGr.xsl"?>
 <DeviceFrame xmlns="http://www.smartgridready.com/ns/V0/"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/Product/Product.xsd">
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/Product/Product.xsd">
 	<deviceName>Shelly Pro 3EM Local</deviceName>
 	<manufacturerName>Shelly</manufacturerName>
 	<specificationOwnerIdentification>0</specificationOwnerIdentification>
@@ -10,9 +10,9 @@
 		<state>Draft</state>
 		<changeLog>
 			<version>0.1.0</version>
-			<date>2024-10-16</date>
+			<date>2025-01-22</date>
 			<author>Matthias Krebs, FHNW</author>
-			<comment>Draft for Testlab</comment>
+			<comment>Draft for Declaration</comment>
 		</changeLog>
 	</releaseNotes>
 	<deviceInformation>
@@ -20,11 +20,11 @@
 			<textElement>
 				<![CDATA[ 
           Der Shelly Pro 3EM ist ein 3-Phasen-Energiezähler.
-          Die vorliegende EID ist auf die Ansteuerung via lokalem JSON-RPC API (Gen2) ausgelegt.
+          Die vorliegende EID ist auf die Ansteuerung via lokalem JSON-RPC API (Gen2) ohne Authentifizierung ausgelegt.
         ]]>
 			</textElement>
 			<language>de</language>
-			<uri>https://www.shelly.com/de-ch/products/product-overview/shelly-pro-3-em-120-a-1</uri>
+			<uri>https://kb.shelly.cloud/knowledge-base/shelly-pro-3em</uri>
 		</legibleDescription>
 		<deviceCategory>SubMeterElectricity</deviceCategory>
 		<isLocalControl>true</isLocalControl>
@@ -43,7 +43,7 @@
 		<configurationListElement>
 			<name>base_uri</name>
 			<dataType>
-				<string/>
+				<string />
 			</dataType>
 			<defaultValue>http://192.168.33.1</defaultValue>
 			<configurationDescription>
@@ -136,9 +136,10 @@
 								<dataType>
 									<float64 />
 								</dataType>
-								<unit>WATTS</unit>
+								<unit>KILOWATTS</unit>
 								<minimumValue>0</minimumValue>
-								<maximumValue>90000</maximumValue>
+								<maximumValue>90</maximumValue>
+								<unitConversionMultiplicator>0.001</unitConversionMultiplicator>
 								<legibleDescription>
 									<textElement>Erfassung der gesamten Wirkleistung</textElement>
 									<language>de</language>
@@ -179,9 +180,10 @@
 								<dataType>
 									<float64 />
 								</dataType>
-								<unit>WATTS</unit>
+								<unit>KILOWATTS</unit>
 								<minimumValue>0</minimumValue>
-								<maximumValue>30000</maximumValue>
+								<maximumValue>30</maximumValue>
+								<unitConversionMultiplicator>0.001</unitConversionMultiplicator>
 								<legibleDescription>
 									<textElement>Erfassung der Wirkleistung Phase 1</textElement>
 									<language>de</language>
@@ -222,9 +224,10 @@
 								<dataType>
 									<float64 />
 								</dataType>
-								<unit>WATTS</unit>
+								<unit>KILOWATTS</unit>
 								<minimumValue>0</minimumValue>
-								<maximumValue>30000</maximumValue>
+								<maximumValue>30</maximumValue>
+								<unitConversionMultiplicator>0.001</unitConversionMultiplicator>
 								<legibleDescription>
 									<textElement>Erfassung der Wirkleistung Phase 2</textElement>
 									<language>de</language>
@@ -265,9 +268,10 @@
 								<dataType>
 									<float64 />
 								</dataType>
-								<unit>WATTS</unit>
+								<unit>KILOWATTS</unit>
 								<minimumValue>0</minimumValue>
-								<maximumValue>30000</maximumValue>
+								<maximumValue>30</maximumValue>
+								<unitConversionMultiplicator>0.001</unitConversionMultiplicator>
 								<legibleDescription>
 									<textElement>Erfassung der Wirkleistung Phase 3</textElement>
 									<language>de</language>
@@ -374,9 +378,10 @@
 								<dataPointName>ActiveEnergyACtot</dataPointName>
 								<dataDirection>R</dataDirection>
 								<dataType>
-									<float64/>
+									<float64 />
 								</dataType>
-								<unit>WATT_HOURS</unit>
+								<unit>KILOWATT_HOURS</unit>
+								<unitConversionMultiplicator>0.001</unitConversionMultiplicator>
 								<legibleDescription>
 									<textElement>Erfassung der gesamten Wirkenergie</textElement>
 									<language>de</language>
@@ -415,9 +420,10 @@
 								<dataPointName>ActiveEnergyACL1</dataPointName>
 								<dataDirection>R</dataDirection>
 								<dataType>
-									<float64/>
+									<float64 />
 								</dataType>
-								<unit>WATT_HOURS</unit>
+								<unit>KILOWATT_HOURS</unit>
+								<unitConversionMultiplicator>0.001</unitConversionMultiplicator>
 								<legibleDescription>
 									<textElement>Erfassung der Wirkenergie Phase 1</textElement>
 									<language>de</language>
@@ -456,9 +462,10 @@
 								<dataPointName>ActiveEnergyACL2</dataPointName>
 								<dataDirection>R</dataDirection>
 								<dataType>
-									<float64/>
+									<float64 />
 								</dataType>
-								<unit>WATT_HOURS</unit>
+								<unit>KILOWATT_HOURS</unit>
+								<unitConversionMultiplicator>0.001</unitConversionMultiplicator>
 								<legibleDescription>
 									<textElement>Erfassung der Wirkenergie Phase 2</textElement>
 									<language>de</language>
@@ -497,9 +504,10 @@
 								<dataPointName>ActiveEnergyACL3</dataPointName>
 								<dataDirection>R</dataDirection>
 								<dataType>
-									<float64/>
+									<float64 />
 								</dataType>
-								<unit>WATT_HOURS</unit>
+								<unit>KILOWATT_HOURS</unit>
+								<unitConversionMultiplicator>0.001</unitConversionMultiplicator>
 								<legibleDescription>
 									<textElement>Erfassung der Wirkenergie Phase 3</textElement>
 									<language>de</language>
@@ -565,8 +573,8 @@
 									<float64 />
 								</dataType>
 								<unit>VOLTS</unit>
-								<minimumValue>0</minimumValue>
-								<maximumValue>250</maximumValue>
+								<minimumValue>100</minimumValue>
+								<maximumValue>260</maximumValue>
 								<legibleDescription>
 									<textElement>Spannung Phase 1 gegenüber Nulleiter</textElement>
 									<language>de</language>
@@ -604,8 +612,8 @@
 									<float64 />
 								</dataType>
 								<unit>VOLTS</unit>
-								<minimumValue>0</minimumValue>
-								<maximumValue>250</maximumValue>
+								<minimumValue>100</minimumValue>
+								<maximumValue>260</maximumValue>
 								<legibleDescription>
 									<textElement>Spannung Phase 2 gegenüber Nulleiter</textElement>
 									<language>de</language>
@@ -643,8 +651,8 @@
 									<float64 />
 								</dataType>
 								<unit>VOLTS</unit>
-								<minimumValue>0</minimumValue>
-								<maximumValue>250</maximumValue>
+								<minimumValue>100</minimumValue>
+								<maximumValue>260</maximumValue>
 								<legibleDescription>
 									<textElement>Spannung Phase 3 gegenüber Nulleiter</textElement>
 									<language>de</language>
