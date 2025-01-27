@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="/xsl/SGr.xsl"?>
 <DeviceFrame xmlns="http://www.smartgridready.com/ns/V0/"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/Product/Product.xsd">
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/Product/Product.xsd">
 	<deviceName>Shelly Pro 4PM MQTT</deviceName>
 	<manufacturerName>Shelly</manufacturerName>
 	<specificationOwnerIdentification>0</specificationOwnerIdentification>
@@ -29,7 +29,7 @@
         ]]>
 			</textElement>
 			<language>de</language>
-			<uri>https://www.shelly.com/de-ch/products/product-overview/shelly-pro-4pm-1</uri>
+			<uri>https://kb.shelly.cloud/knowledge-base/shelly-pro-4pm</uri>
 		</legibleDescription>
 		<deviceCategory>SubMeterElectricity</deviceCategory>
 		<isLocalControl>false</isLocalControl>
@@ -48,7 +48,7 @@
 		<configurationListElement>
 			<name>broker_host</name>
 			<dataType>
-				<string/>
+				<string />
 			</dataType>
 			<defaultValue>localhost</defaultValue>
 			<configurationDescription>
@@ -65,7 +65,7 @@
 		<configurationListElement>
 			<name>broker_port</name>
 			<dataType>
-				<int32/>
+				<int32 />
 			</dataType>
 			<defaultValue>1883</defaultValue>
 			<configurationDescription>
@@ -82,7 +82,7 @@
 		<configurationListElement>
 			<name>broker_tls</name>
 			<dataType>
-				<boolean/>
+				<boolean />
 			</dataType>
 			<defaultValue>false</defaultValue>
 			<configurationDescription>
@@ -99,7 +99,7 @@
 		<configurationListElement>
 			<name>broker_tls_verify</name>
 			<dataType>
-				<boolean/>
+				<boolean />
 			</dataType>
 			<defaultValue>false</defaultValue>
 			<configurationDescription>
@@ -116,7 +116,7 @@
 		<configurationListElement>
 			<name>broker_username</name>
 			<dataType>
-				<string/>
+				<string />
 			</dataType>
 			<defaultValue></defaultValue>
 			<configurationDescription>
@@ -133,7 +133,7 @@
 		<configurationListElement>
 			<name>broker_password</name>
 			<dataType>
-				<string/>
+				<string />
 			</dataType>
 			<defaultValue></defaultValue>
 			<configurationDescription>
@@ -150,7 +150,7 @@
 		<configurationListElement>
 			<name>topic_prefix</name>
 			<dataType>
-				<string/>
+				<string />
 			</dataType>
 			<defaultValue>shellies/ShellyPro3EM</defaultValue>
 			<configurationDescription>
@@ -185,6 +185,78 @@
 				</messageBrokerAuthentication>
 			</messagingInterfaceDescription>
 			<functionalProfileList>
+				<functionalProfileListElement>
+					<functionalProfile>
+						<functionalProfileName>DeviceInformation</functionalProfileName>
+						<functionalProfileIdentification>
+							<specificationOwnerIdentification>0</specificationOwnerIdentification>
+							<functionalProfileCategory>DeviceInformation</functionalProfileCategory>
+							<functionalProfileType>DeviceInformation</functionalProfileType>
+							<levelOfOperation>m</levelOfOperation>
+							<versionNumber>
+								<primaryVersionNumber>0</primaryVersionNumber>
+								<secondaryVersionNumber>1</secondaryVersionNumber>
+								<subReleaseVersionNumber>1</subReleaseVersionNumber>
+							</versionNumber>
+						</functionalProfileIdentification>
+						<legibleDescription>
+							<textElement>
+								<![CDATA[
+          Functional profile used to read a device ID used to identify a device. <p>
+          Further on, this functional profile that can be used for vendor specific information and data points. <p>
+          It allows the handling of data points, which are valid for the whole device.
+        ]]>
+							</textElement>
+							<language>en</language>
+						</legibleDescription>
+						<legibleDescription>
+							<textElement>
+								<![CDATA[
+          Funktionsprofil zum Auslesen einer Geräte ID zur Identifikation des Geräts. <p>
+          Weiterhin kann das Funktionsprofil für herstellerspezifische Informationen und Datenpunkte benutzt werden. <p>
+          Es ermöglicht das Handling von Datenpunkten, welche für das ganze Gerät gelten.
+        ]]>
+							</textElement>
+							<language>de</language>
+						</legibleDescription>
+					</functionalProfile>
+					<dataPointList>
+						<dataPointListElement>
+							<dataPoint>
+								<dataPointName>DeviceId</dataPointName>
+								<dataDirection>R</dataDirection>
+								<dataType>
+									<string />
+								</dataType>
+								<unit>NONE</unit>
+								<legibleDescription>
+									<textElement>Read the device ID.</textElement>
+									<language>en</language>
+								</legibleDescription>
+								<legibleDescription>
+									<textElement>Auslesen der Geräte ID.</textElement>
+									<language>de</language>
+								</legibleDescription>
+							</dataPoint>
+							<messagingDataPointConfiguration>
+								<messagingDataType>
+									<string />
+								</messagingDataType>
+								<readCmdMessage>
+									<topic>{{topic_prefix}}/command</topic>
+									<template>status_update</template>
+								</readCmdMessage>
+								<inMessage>
+									<topic>{{topic_prefix}}/status/sys</topic>
+									<responseQuery>
+										<queryType>JMESPathExpression</queryType>
+										<query>mac</query>
+									</responseQuery>
+								</inMessage>
+							</messagingDataPointConfiguration>
+						</dataPointListElement>
+					</dataPointList>
+				</functionalProfileListElement>
 				<functionalProfileListElement>
 					<functionalProfile>
 						<functionalProfileName>ActivePowerAC_1</functionalProfileName>
@@ -255,9 +327,10 @@
 								<dataType>
 									<float64 />
 								</dataType>
-								<unit>WATTS</unit>
+								<unit>KILOWATTS</unit>
 								<minimumValue>0</minimumValue>
-								<maximumValue>4000</maximumValue>
+								<maximumValue>4</maximumValue>
+								<unitConversionMultiplicator>0.001</unitConversionMultiplicator>
 								<legibleDescription>
 									<textElement>Erfassung der gesamten Wirkleistung</textElement>
 									<language>de</language>
@@ -269,7 +342,7 @@
 							</dataPoint>
 							<messagingDataPointConfiguration>
 								<messagingDataType>
-									<number/>
+									<number />
 								</messagingDataType>
 								<inMessage>
 									<topic>{{topic_prefix}}/status/switch:0</topic>
@@ -352,9 +425,10 @@
 								<dataType>
 									<float64 />
 								</dataType>
-								<unit>WATTS</unit>
+								<unit>KILOWATTS</unit>
 								<minimumValue>0</minimumValue>
-								<maximumValue>4000</maximumValue>
+								<maximumValue>4</maximumValue>
+								<unitConversionMultiplicator>0.001</unitConversionMultiplicator>
 								<legibleDescription>
 									<textElement>Erfassung der gesamten Wirkleistung</textElement>
 									<language>de</language>
@@ -366,7 +440,7 @@
 							</dataPoint>
 							<messagingDataPointConfiguration>
 								<messagingDataType>
-									<number/>
+									<number />
 								</messagingDataType>
 								<inMessage>
 									<topic>{{topic_prefix}}/status/switch:1</topic>
@@ -449,9 +523,10 @@
 								<dataType>
 									<float64 />
 								</dataType>
-								<unit>WATTS</unit>
+								<unit>KILOWATTS</unit>
 								<minimumValue>0</minimumValue>
-								<maximumValue>4000</maximumValue>
+								<maximumValue>4</maximumValue>
+								<unitConversionMultiplicator>0.001</unitConversionMultiplicator>
 								<legibleDescription>
 									<textElement>Erfassung der gesamten Wirkleistung</textElement>
 									<language>de</language>
@@ -463,7 +538,7 @@
 							</dataPoint>
 							<messagingDataPointConfiguration>
 								<messagingDataType>
-									<number/>
+									<number />
 								</messagingDataType>
 								<inMessage>
 									<topic>{{topic_prefix}}/status/switch:2</topic>
@@ -546,9 +621,10 @@
 								<dataType>
 									<float64 />
 								</dataType>
-								<unit>WATTS</unit>
+								<unit>KILOWATTS</unit>
 								<minimumValue>0</minimumValue>
-								<maximumValue>4000</maximumValue>
+								<maximumValue>4</maximumValue>
+								<unitConversionMultiplicator>0.001</unitConversionMultiplicator>
 								<legibleDescription>
 									<textElement>Erfassung der gesamten Wirkleistung</textElement>
 									<language>de</language>
@@ -560,7 +636,7 @@
 							</dataPoint>
 							<messagingDataPointConfiguration>
 								<messagingDataType>
-									<number/>
+									<number />
 								</messagingDataType>
 								<inMessage>
 									<topic>{{topic_prefix}}/status/switch:3</topic>
@@ -644,9 +720,10 @@
 								<dataPointName>ActiveEnergyACtot</dataPointName>
 								<dataDirection>R</dataDirection>
 								<dataType>
-									<float64/>
+									<float64 />
 								</dataType>
-								<unit>WATT_HOURS</unit>
+								<unit>KILOWATT_HOURS</unit>
+								<unitConversionMultiplicator>0.001</unitConversionMultiplicator>
 								<legibleDescription>
 									<textElement>Erfassung der gesamten Wirkenergie</textElement>
 									<language>de</language>
@@ -658,7 +735,7 @@
 							</dataPoint>
 							<messagingDataPointConfiguration>
 								<messagingDataType>
-									<number/>
+									<number />
 								</messagingDataType>
 								<inMessage>
 									<topic>{{topic_prefix}}/status/switch:0</topic>
@@ -742,9 +819,10 @@
 								<dataPointName>ActiveEnergyACtot</dataPointName>
 								<dataDirection>R</dataDirection>
 								<dataType>
-									<float64/>
+									<float64 />
 								</dataType>
-								<unit>WATT_HOURS</unit>
+								<unit>KILOWATT_HOURS</unit>
+								<unitConversionMultiplicator>0.001</unitConversionMultiplicator>
 								<legibleDescription>
 									<textElement>Erfassung der gesamten Wirkenergie</textElement>
 									<language>de</language>
@@ -756,7 +834,7 @@
 							</dataPoint>
 							<messagingDataPointConfiguration>
 								<messagingDataType>
-									<number/>
+									<number />
 								</messagingDataType>
 								<inMessage>
 									<topic>{{topic_prefix}}/status/switch:1</topic>
@@ -840,9 +918,10 @@
 								<dataPointName>ActiveEnergyACtot</dataPointName>
 								<dataDirection>R</dataDirection>
 								<dataType>
-									<float64/>
+									<float64 />
 								</dataType>
-								<unit>WATT_HOURS</unit>
+								<unit>KILOWATT_HOURS</unit>
+								<unitConversionMultiplicator>0.001</unitConversionMultiplicator>
 								<legibleDescription>
 									<textElement>Erfassung der gesamten Wirkenergie</textElement>
 									<language>de</language>
@@ -854,7 +933,7 @@
 							</dataPoint>
 							<messagingDataPointConfiguration>
 								<messagingDataType>
-									<number/>
+									<number />
 								</messagingDataType>
 								<inMessage>
 									<topic>{{topic_prefix}}/status/switch:2</topic>
@@ -938,9 +1017,10 @@
 								<dataPointName>ActiveEnergyACtot</dataPointName>
 								<dataDirection>R</dataDirection>
 								<dataType>
-									<float64/>
+									<float64 />
 								</dataType>
-								<unit>WATT_HOURS</unit>
+								<unit>KILOWATT_HOURS</unit>
+								<unitConversionMultiplicator>0.001</unitConversionMultiplicator>
 								<legibleDescription>
 									<textElement>Erfassung der gesamten Wirkenergie</textElement>
 									<language>de</language>
@@ -952,7 +1032,7 @@
 							</dataPoint>
 							<messagingDataPointConfiguration>
 								<messagingDataType>
-									<number/>
+									<number />
 								</messagingDataType>
 								<inMessage>
 									<topic>{{topic_prefix}}/status/switch:3</topic>
@@ -1004,7 +1084,7 @@
 							</dataPoint>
 							<messagingDataPointConfiguration>
 								<messagingDataType>
-									<number/>
+									<number />
 								</messagingDataType>
 								<inMessage>
 									<topic>{{topic_prefix}}/status/switch:0</topic>
@@ -1056,7 +1136,7 @@
 							</dataPoint>
 							<messagingDataPointConfiguration>
 								<messagingDataType>
-									<number/>
+									<number />
 								</messagingDataType>
 								<inMessage>
 									<topic>{{topic_prefix}}/status/switch:1</topic>
@@ -1108,7 +1188,7 @@
 							</dataPoint>
 							<messagingDataPointConfiguration>
 								<messagingDataType>
-									<number/>
+									<number />
 								</messagingDataType>
 								<inMessage>
 									<topic>{{topic_prefix}}/status/switch:2</topic>
@@ -1160,7 +1240,7 @@
 							</dataPoint>
 							<messagingDataPointConfiguration>
 								<messagingDataType>
-									<number/>
+									<number />
 								</messagingDataType>
 								<inMessage>
 									<topic>{{topic_prefix}}/status/switch:3</topic>
@@ -1212,7 +1292,7 @@
 							</dataPoint>
 							<messagingDataPointConfiguration>
 								<messagingDataType>
-									<number/>
+									<number />
 								</messagingDataType>
 								<inMessage>
 									<topic>{{topic_prefix}}/status/switch:0</topic>
@@ -1264,7 +1344,7 @@
 							</dataPoint>
 							<messagingDataPointConfiguration>
 								<messagingDataType>
-									<number/>
+									<number />
 								</messagingDataType>
 								<inMessage>
 									<topic>{{topic_prefix}}/status/switch:1</topic>
@@ -1316,7 +1396,7 @@
 							</dataPoint>
 							<messagingDataPointConfiguration>
 								<messagingDataType>
-									<number/>
+									<number />
 								</messagingDataType>
 								<inMessage>
 									<topic>{{topic_prefix}}/status/switch:2</topic>
@@ -1368,7 +1448,7 @@
 							</dataPoint>
 							<messagingDataPointConfiguration>
 								<messagingDataType>
-									<number/>
+									<number />
 								</messagingDataType>
 								<inMessage>
 									<topic>{{topic_prefix}}/status/switch:3</topic>
@@ -1410,7 +1490,7 @@
 								<dataPointName>Relais</dataPointName>
 								<dataDirection>R</dataDirection>
 								<dataType>
-									<boolean/>
+									<boolean />
 								</dataType>
 								<unit>NONE</unit>
 								<legibleDescription>
@@ -1424,7 +1504,7 @@
 							</dataPoint>
 							<messagingDataPointConfiguration>
 								<messagingDataType>
-									<string/>
+									<string />
 								</messagingDataType>
 								<inMessage>
 									<topic>{{topic_prefix}}/status/switch:0</topic>
@@ -1466,7 +1546,7 @@
 								<dataPointName>Relais</dataPointName>
 								<dataDirection>R</dataDirection>
 								<dataType>
-									<boolean/>
+									<boolean />
 								</dataType>
 								<unit>NONE</unit>
 								<legibleDescription>
@@ -1480,7 +1560,7 @@
 							</dataPoint>
 							<messagingDataPointConfiguration>
 								<messagingDataType>
-									<string/>
+									<string />
 								</messagingDataType>
 								<inMessage>
 									<topic>{{topic_prefix}}/status/switch:1</topic>
@@ -1522,7 +1602,7 @@
 								<dataPointName>Relais</dataPointName>
 								<dataDirection>R</dataDirection>
 								<dataType>
-									<boolean/>
+									<boolean />
 								</dataType>
 								<unit>NONE</unit>
 								<legibleDescription>
@@ -1536,7 +1616,7 @@
 							</dataPoint>
 							<messagingDataPointConfiguration>
 								<messagingDataType>
-									<string/>
+									<string />
 								</messagingDataType>
 								<inMessage>
 									<topic>{{topic_prefix}}/status/switch:2</topic>
@@ -1578,7 +1658,7 @@
 								<dataPointName>Relais</dataPointName>
 								<dataDirection>R</dataDirection>
 								<dataType>
-									<boolean/>
+									<boolean />
 								</dataType>
 								<unit>NONE</unit>
 								<legibleDescription>
@@ -1592,7 +1672,7 @@
 							</dataPoint>
 							<messagingDataPointConfiguration>
 								<messagingDataType>
-									<string/>
+									<string />
 								</messagingDataType>
 								<inMessage>
 									<topic>{{topic_prefix}}/status/switch:3</topic>
