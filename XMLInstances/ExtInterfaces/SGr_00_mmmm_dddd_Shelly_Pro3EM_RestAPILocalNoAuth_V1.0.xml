@@ -3,25 +3,30 @@
 <DeviceFrame xmlns="http://www.smartgridready.com/ns/V0/"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.smartgridready.com/ns/V0/ ../../SchemaDatabase/SGr/Product/Product.xsd">
-  <deviceName>Shelly Pro 3EM Cloud</deviceName>
+  <deviceName>Shelly Pro 3EM Local</deviceName>
   <manufacturerName>Shelly</manufacturerName>
   <specificationOwnerIdentification>0</specificationOwnerIdentification>
   <releaseNotes>
-    <state>Draft</state>
+    <state>Published</state>
     <changeLog>
       <version>0.1.0</version>
       <date>2025-01-22</date>
       <author>Matthias Krebs, FHNW</author>
       <comment>Draft for Declaration</comment>
     </changeLog>
+    <changeLog>
+      <version>1.0.0</version>
+      <date>2025-02-10</date>
+      <author>Matthias Krebs, FHNW</author>
+      <comment>Prepare for Declaration</comment>
+    </changeLog>
   </releaseNotes>
   <deviceInformation>
     <legibleDescription>
       <textElement>
-        <![CDATA[ 
+        <![CDATA[
           <p>The Shelly Pro 3EM is a 3-phase energy meter.</p>
-          <p>This EID is intended to be used with the cloud REST API.</p>
-          <p>Authentication requires a cloud API key.</p>
+          <p>This EID is intended to be used with the local JSON-RPC API (Gen2) with no authentication.</p>
         ]]>
       </textElement>
       <language>en</language>
@@ -29,24 +34,23 @@
     </legibleDescription>
     <legibleDescription>
       <textElement>
-        <![CDATA[ 
+        <![CDATA[
           <p>Der Shelly Pro 3EM ist ein 3-Phasen-Energiezähler.</p>
-          <p>Die vorliegende EID ist auf die Ansteuerung via Cloud REST API ausgelegt.</p>
-          <p>Die Authentifizierung erfolgt mit Cloud-API-Key.</p>
+          <p>Die vorliegende EID ist auf die Ansteuerung via lokalem JSON-RPC API (Gen2) ohne Authentifizierung ausgelegt.</p>
         ]]>
       </textElement>
       <language>de</language>
       <uri>https://kb.shelly.cloud/knowledge-base/shelly-pro-3em</uri>
     </legibleDescription>
     <deviceCategory>SubMeterElectricity</deviceCategory>
-    <isLocalControl>false</isLocalControl>
+    <isLocalControl>true</isLocalControl>
     <softwareRevision>1.4.3</softwareRevision>
     <hardwareRevision>1.0.0</hardwareRevision>
     <manufacturerSpecificationIdentification>Shelly</manufacturerSpecificationIdentification>
     <levelOfOperation>m</levelOfOperation>
     <versionNumber>
-      <primaryVersionNumber>0</primaryVersionNumber>
-      <secondaryVersionNumber>1</secondaryVersionNumber>
+      <primaryVersionNumber>1</primaryVersionNumber>
+      <secondaryVersionNumber>0</secondaryVersionNumber>
       <subReleaseVersionNumber>0</subReleaseVersionNumber>
     </versionNumber>
     <testState>Verified</testState>
@@ -57,7 +61,7 @@
       <dataType>
         <string />
       </dataType>
-      <defaultValue>https://shelly-01-eu.shelly.cloud</defaultValue>
+      <defaultValue>http://192.168.33.1</defaultValue>
       <configurationDescription>
         <textElement>Base address for accessing the resource.</textElement>
         <language>en</language>
@@ -67,40 +71,6 @@
         <textElement>Basis-Adresse für Zugriffe auf die Ressource.</textElement>
         <language>de</language>
         <label>Basis URI</label>
-      </configurationDescription>
-    </configurationListElement>
-    <configurationListElement>
-      <name>device_id</name>
-      <dataType>
-        <string />
-      </dataType>
-      <defaultValue>000000000000</defaultValue>
-      <configurationDescription>
-        <textElement>ID of the cloud device.</textElement>
-        <language>en</language>
-        <label>Device ID</label>
-      </configurationDescription>
-      <configurationDescription>
-        <textElement>ID des Cloud-Geräts.</textElement>
-        <language>de</language>
-        <label>Geräte ID</label>
-      </configurationDescription>
-    </configurationListElement>
-    <configurationListElement>
-      <name>auth_key</name>
-      <dataType>
-        <string />
-      </dataType>
-      <defaultValue></defaultValue>
-      <configurationDescription>
-        <textElement>Cloud authentication key.</textElement>
-        <language>en</language>
-        <label>Authentication Key</label>
-      </configurationDescription>
-      <configurationDescription>
-        <textElement>Cloud-Authentifizierungs-Key.</textElement>
-        <language>de</language>
-        <label>Authentication Key</label>
       </configurationDescription>
     </configurationListElement>
   </configurationList>
@@ -174,66 +144,11 @@
                       <value>application/json</value>
                     </header>
                   </requestHeader>
-                  <requestMethod>POST</requestMethod>
-                  <requestPath>/device/status</requestPath>
-                  <requestForm>
-                    <parameter>
-                      <name>id</name>
-                      <value>{{device_id}}</value>
-                    </parameter>
-                    <parameter>
-                      <name>auth_key</name>
-                      <value>{{auth_key}}</value>
-                    </parameter>
-                  </requestForm>
+                  <requestMethod>GET</requestMethod>
+                  <requestPath>/rpc/Sys.GetStatus</requestPath>
                   <responseQuery>
                     <queryType>JMESPathExpression</queryType>
-                    <query>data.device_status.id</query>
-                  </responseQuery>
-                </restApiReadServiceCall>
-              </restApiDataPointConfiguration>
-            </dataPointListElement>
-            <dataPointListElement>
-              <dataPoint>
-                <dataPointName>Online</dataPointName>
-                <dataDirection>R</dataDirection>
-                <dataType>
-                  <boolean />
-                </dataType>
-                <unit>NONE</unit>
-                <legibleDescription>
-                  <textElement>Verbindung zur Cloud</textElement>
-                  <language>de</language>
-                </legibleDescription>
-                <legibleDescription>
-                  <textElement>Cloud Connection</textElement>
-                  <language>en</language>
-                </legibleDescription>
-              </dataPoint>
-              <restApiDataPointConfiguration>
-                <dataType>JSON_boolean</dataType>
-                <restApiReadServiceCall>
-                  <requestHeader>
-                    <header>
-                      <headerName>Accept</headerName>
-                      <value>application/json</value>
-                    </header>
-                  </requestHeader>
-                  <requestMethod>POST</requestMethod>
-                  <requestPath>/device/status</requestPath>
-                  <requestForm>
-                    <parameter>
-                      <name>id</name>
-                      <value>{{device_id}}</value>
-                    </parameter>
-                    <parameter>
-                      <name>auth_key</name>
-                      <value>{{auth_key}}</value>
-                    </parameter>
-                  </requestForm>
-                  <responseQuery>
-                    <queryType>JMESPathExpression</queryType>
-                    <query>data.online</query>
+                    <query>mac</query>
                   </responseQuery>
                 </restApiReadServiceCall>
               </restApiDataPointConfiguration>
@@ -332,21 +247,17 @@
                       <value>application/json</value>
                     </header>
                   </requestHeader>
-                  <requestMethod>POST</requestMethod>
-                  <requestPath>/device/status</requestPath>
-                  <requestForm>
+                  <requestMethod>GET</requestMethod>
+                  <requestPath>/rpc/EM.GetStatus</requestPath>
+                  <requestQuery>
                     <parameter>
                       <name>id</name>
-                      <value>{{device_id}}</value>
+                      <value>0</value>
                     </parameter>
-                    <parameter>
-                      <name>auth_key</name>
-                      <value>{{auth_key}}</value>
-                    </parameter>
-                  </requestForm>
+                  </requestQuery>
                   <responseQuery>
                     <queryType>JMESPathExpression</queryType>
-                    <query>data.device_status."em:0".total_act_power</query>
+                    <query>total_act_power</query>
                   </responseQuery>
                 </restApiReadServiceCall>
               </restApiDataPointConfiguration>
@@ -380,21 +291,17 @@
                       <value>application/json</value>
                     </header>
                   </requestHeader>
-                  <requestMethod>POST</requestMethod>
-                  <requestPath>/device/status</requestPath>
-                  <requestForm>
+                  <requestMethod>GET</requestMethod>
+                  <requestPath>/rpc/EM.GetStatus</requestPath>
+                  <requestQuery>
                     <parameter>
                       <name>id</name>
-                      <value>{{device_id}}</value>
+                      <value>0</value>
                     </parameter>
-                    <parameter>
-                      <name>auth_key</name>
-                      <value>{{auth_key}}</value>
-                    </parameter>
-                  </requestForm>
+                  </requestQuery>
                   <responseQuery>
                     <queryType>JMESPathExpression</queryType>
-                    <query>data.device_status."em:0".a_act_power</query>
+                    <query>a_act_power</query>
                   </responseQuery>
                 </restApiReadServiceCall>
               </restApiDataPointConfiguration>
@@ -428,21 +335,17 @@
                       <value>application/json</value>
                     </header>
                   </requestHeader>
-                  <requestMethod>POST</requestMethod>
-                  <requestPath>/device/status</requestPath>
-                  <requestForm>
+                  <requestMethod>GET</requestMethod>
+                  <requestPath>/rpc/EM.GetStatus</requestPath>
+                  <requestQuery>
                     <parameter>
                       <name>id</name>
-                      <value>{{device_id}}</value>
+                      <value>0</value>
                     </parameter>
-                    <parameter>
-                      <name>auth_key</name>
-                      <value>{{auth_key}}</value>
-                    </parameter>
-                  </requestForm>
+                  </requestQuery>
                   <responseQuery>
                     <queryType>JMESPathExpression</queryType>
-                    <query>data.device_status."em:0".b_act_power</query>
+                    <query>b_act_power</query>
                   </responseQuery>
                 </restApiReadServiceCall>
               </restApiDataPointConfiguration>
@@ -476,21 +379,17 @@
                       <value>application/json</value>
                     </header>
                   </requestHeader>
-                  <requestMethod>POST</requestMethod>
-                  <requestPath>/device/status</requestPath>
-                  <requestForm>
+                  <requestMethod>GET</requestMethod>
+                  <requestPath>/rpc/EM.GetStatus</requestPath>
+                  <requestQuery>
                     <parameter>
                       <name>id</name>
-                      <value>{{device_id}}</value>
+                      <value>0</value>
                     </parameter>
-                    <parameter>
-                      <name>auth_key</name>
-                      <value>{{auth_key}}</value>
-                    </parameter>
-                  </requestForm>
+                  </requestQuery>
                   <responseQuery>
                     <queryType>JMESPathExpression</queryType>
-                    <query>data.device_status."em:0".c_act_power</query>
+                    <query>c_act_power</query>
                   </responseQuery>
                 </restApiReadServiceCall>
               </restApiDataPointConfiguration>
@@ -590,21 +489,17 @@
                       <value>application/json</value>
                     </header>
                   </requestHeader>
-                  <requestMethod>POST</requestMethod>
-                  <requestPath>/device/status</requestPath>
-                  <requestForm>
+                  <requestMethod>GET</requestMethod>
+                  <requestPath>/rpc/EMData.GetStatus</requestPath>
+                  <requestQuery>
                     <parameter>
                       <name>id</name>
-                      <value>{{device_id}}</value>
+                      <value>0</value>
                     </parameter>
-                    <parameter>
-                      <name>auth_key</name>
-                      <value>{{auth_key}}</value>
-                    </parameter>
-                  </requestForm>
+                  </requestQuery>
                   <responseQuery>
                     <queryType>JMESPathExpression</queryType>
-                    <query>data.device_status."emdata:0".total_act</query>
+                    <query>total_act</query>
                   </responseQuery>
                 </restApiReadServiceCall>
               </restApiDataPointConfiguration>
@@ -636,21 +531,17 @@
                       <value>application/json</value>
                     </header>
                   </requestHeader>
-                  <requestMethod>POST</requestMethod>
-                  <requestPath>/device/status</requestPath>
-                  <requestForm>
+                  <requestMethod>GET</requestMethod>
+                  <requestPath>/rpc/EMData.GetStatus</requestPath>
+                  <requestQuery>
                     <parameter>
                       <name>id</name>
-                      <value>{{device_id}}</value>
+                      <value>0</value>
                     </parameter>
-                    <parameter>
-                      <name>auth_key</name>
-                      <value>{{auth_key}}</value>
-                    </parameter>
-                  </requestForm>
+                  </requestQuery>
                   <responseQuery>
                     <queryType>JMESPathExpression</queryType>
-                    <query>data.device_status."emdata:0".a_total_act_energy</query>
+                    <query>a_total_act_energy</query>
                   </responseQuery>
                 </restApiReadServiceCall>
               </restApiDataPointConfiguration>
@@ -682,21 +573,17 @@
                       <value>application/json</value>
                     </header>
                   </requestHeader>
-                  <requestMethod>POST</requestMethod>
-                  <requestPath>/device/status</requestPath>
-                  <requestForm>
+                  <requestMethod>GET</requestMethod>
+                  <requestPath>/rpc/EMData.GetStatus</requestPath>
+                  <requestQuery>
                     <parameter>
                       <name>id</name>
-                      <value>{{device_id}}</value>
+                      <value>0</value>
                     </parameter>
-                    <parameter>
-                      <name>auth_key</name>
-                      <value>{{auth_key}}</value>
-                    </parameter>
-                  </requestForm>
+                  </requestQuery>
                   <responseQuery>
                     <queryType>JMESPathExpression</queryType>
-                    <query>data.device_status."emdata:0".b_total_act_energy</query>
+                    <query>b_total_act_energy</query>
                   </responseQuery>
                 </restApiReadServiceCall>
               </restApiDataPointConfiguration>
@@ -728,21 +615,17 @@
                       <value>application/json</value>
                     </header>
                   </requestHeader>
-                  <requestMethod>POST</requestMethod>
-                  <requestPath>/device/status</requestPath>
-                  <requestForm>
+                  <requestMethod>GET</requestMethod>
+                  <requestPath>/rpc/EMData.GetStatus</requestPath>
+                  <requestQuery>
                     <parameter>
                       <name>id</name>
-                      <value>{{device_id}}</value>
+                      <value>0</value>
                     </parameter>
-                    <parameter>
-                      <name>auth_key</name>
-                      <value>{{auth_key}}</value>
-                    </parameter>
-                  </requestForm>
+                  </requestQuery>
                   <responseQuery>
                     <queryType>JMESPathExpression</queryType>
-                    <query>data.device_status."emdata:0".c_total_act_energy</query>
+                    <query>c_total_act_energy</query>
                   </responseQuery>
                 </restApiReadServiceCall>
               </restApiDataPointConfiguration>
@@ -842,21 +725,17 @@
                       <value>application/json</value>
                     </header>
                   </requestHeader>
-                  <requestMethod>POST</requestMethod>
-                  <requestPath>/device/status</requestPath>
-                  <requestForm>
+                  <requestMethod>GET</requestMethod>
+                  <requestPath>/rpc/EMData.GetStatus</requestPath>
+                  <requestQuery>
                     <parameter>
                       <name>id</name>
-                      <value>{{device_id}}</value>
+                      <value>0</value>
                     </parameter>
-                    <parameter>
-                      <name>auth_key</name>
-                      <value>{{auth_key}}</value>
-                    </parameter>
-                  </requestForm>
+                  </requestQuery>
                   <responseQuery>
                     <queryType>JMESPathExpression</queryType>
-                    <query>data.device_status."emdata:0".total_act_ret</query>
+                    <query>total_act_ret</query>
                   </responseQuery>
                 </restApiReadServiceCall>
               </restApiDataPointConfiguration>
@@ -888,21 +767,17 @@
                       <value>application/json</value>
                     </header>
                   </requestHeader>
-                  <requestMethod>POST</requestMethod>
-                  <requestPath>/device/status</requestPath>
-                  <requestForm>
+                  <requestMethod>GET</requestMethod>
+                  <requestPath>/rpc/EMData.GetStatus</requestPath>
+                  <requestQuery>
                     <parameter>
                       <name>id</name>
-                      <value>{{device_id}}</value>
+                      <value>0</value>
                     </parameter>
-                    <parameter>
-                      <name>auth_key</name>
-                      <value>{{auth_key}}</value>
-                    </parameter>
-                  </requestForm>
+                  </requestQuery>
                   <responseQuery>
                     <queryType>JMESPathExpression</queryType>
-                    <query>data.device_status."emdata:0".a_total_act_ret_energy</query>
+                    <query>a_total_act_ret_energy</query>
                   </responseQuery>
                 </restApiReadServiceCall>
               </restApiDataPointConfiguration>
@@ -934,21 +809,17 @@
                       <value>application/json</value>
                     </header>
                   </requestHeader>
-                  <requestMethod>POST</requestMethod>
-                  <requestPath>/device/status</requestPath>
-                  <requestForm>
+                  <requestMethod>GET</requestMethod>
+                  <requestPath>/rpc/EMData.GetStatus</requestPath>
+                  <requestQuery>
                     <parameter>
                       <name>id</name>
-                      <value>{{device_id}}</value>
+                      <value>0</value>
                     </parameter>
-                    <parameter>
-                      <name>auth_key</name>
-                      <value>{{auth_key}}</value>
-                    </parameter>
-                  </requestForm>
+                  </requestQuery>
                   <responseQuery>
                     <queryType>JMESPathExpression</queryType>
-                    <query>data.device_status."emdata:0".b_total_act_ret_energy</query>
+                    <query>b_total_act_ret_energy</query>
                   </responseQuery>
                 </restApiReadServiceCall>
               </restApiDataPointConfiguration>
@@ -980,21 +851,17 @@
                       <value>application/json</value>
                     </header>
                   </requestHeader>
-                  <requestMethod>POST</requestMethod>
-                  <requestPath>/device/status</requestPath>
-                  <requestForm>
+                  <requestMethod>GET</requestMethod>
+                  <requestPath>/rpc/EMData.GetStatus</requestPath>
+                  <requestQuery>
                     <parameter>
                       <name>id</name>
-                      <value>{{device_id}}</value>
+                      <value>0</value>
                     </parameter>
-                    <parameter>
-                      <name>auth_key</name>
-                      <value>{{auth_key}}</value>
-                    </parameter>
-                  </requestForm>
+                  </requestQuery>
                   <responseQuery>
                     <queryType>JMESPathExpression</queryType>
-                    <query>data.device_status."emdata:0".c_total_act_ret_energy</query>
+                    <query>c_total_act_energy</query>
                   </responseQuery>
                 </restApiReadServiceCall>
               </restApiDataPointConfiguration>
@@ -1047,21 +914,17 @@
                       <value>application/json</value>
                     </header>
                   </requestHeader>
-                  <requestMethod>POST</requestMethod>
-                  <requestPath>/device/status</requestPath>
-                  <requestForm>
+                  <requestMethod>GET</requestMethod>
+                  <requestPath>/rpc/EM.GetStatus</requestPath>
+                  <requestQuery>
                     <parameter>
                       <name>id</name>
-                      <value>{{device_id}}</value>
+                      <value>0</value>
                     </parameter>
-                    <parameter>
-                      <name>auth_key</name>
-                      <value>{{auth_key}}</value>
-                    </parameter>
-                  </requestForm>
+                  </requestQuery>
                   <responseQuery>
                     <queryType>JMESPathExpression</queryType>
-                    <query>data.device_status."em:0".a_voltage</query>
+                    <query>a_voltage</query>
                   </responseQuery>
                 </restApiReadServiceCall>
               </restApiDataPointConfiguration>
@@ -1090,21 +953,17 @@
                       <value>application/json</value>
                     </header>
                   </requestHeader>
-                  <requestMethod>POST</requestMethod>
-                  <requestPath>/device/status</requestPath>
-                  <requestForm>
+                  <requestMethod>GET</requestMethod>
+                  <requestPath>/rpc/EM.GetStatus</requestPath>
+                  <requestQuery>
                     <parameter>
                       <name>id</name>
-                      <value>{{device_id}}</value>
+                      <value>0</value>
                     </parameter>
-                    <parameter>
-                      <name>auth_key</name>
-                      <value>{{auth_key}}</value>
-                    </parameter>
-                  </requestForm>
+                  </requestQuery>
                   <responseQuery>
                     <queryType>JMESPathExpression</queryType>
-                    <query>data.device_status."em:0".b_voltage</query>
+                    <query>b_voltage</query>
                   </responseQuery>
                 </restApiReadServiceCall>
               </restApiDataPointConfiguration>
@@ -1133,21 +992,17 @@
                       <value>application/json</value>
                     </header>
                   </requestHeader>
-                  <requestMethod>POST</requestMethod>
-                  <requestPath>/device/status</requestPath>
-                  <requestForm>
+                  <requestMethod>GET</requestMethod>
+                  <requestPath>/rpc/EM.GetStatus</requestPath>
+                  <requestQuery>
                     <parameter>
                       <name>id</name>
-                      <value>{{device_id}}</value>
+                      <value>0</value>
                     </parameter>
-                    <parameter>
-                      <name>auth_key</name>
-                      <value>{{auth_key}}</value>
-                    </parameter>
-                  </requestForm>
+                  </requestQuery>
                   <responseQuery>
                     <queryType>JMESPathExpression</queryType>
-                    <query>data.device_status."em:0".c_voltage</query>
+                    <query>c_voltage</query>
                   </responseQuery>
                 </restApiReadServiceCall>
               </restApiDataPointConfiguration>
@@ -1200,21 +1055,17 @@
                       <value>application/json</value>
                     </header>
                   </requestHeader>
-                  <requestMethod>POST</requestMethod>
-                  <requestPath>/device/status</requestPath>
-                  <requestForm>
+                  <requestMethod>GET</requestMethod>
+                  <requestPath>/rpc/EM.GetStatus</requestPath>
+                  <requestQuery>
                     <parameter>
                       <name>id</name>
-                      <value>{{device_id}}</value>
+                      <value>0</value>
                     </parameter>
-                    <parameter>
-                      <name>auth_key</name>
-                      <value>{{auth_key}}</value>
-                    </parameter>
-                  </requestForm>
+                  </requestQuery>
                   <responseQuery>
                     <queryType>JMESPathExpression</queryType>
-                    <query>data.device_status."em:0".a_current</query>
+                    <query>a_current</query>
                   </responseQuery>
                 </restApiReadServiceCall>
               </restApiDataPointConfiguration>
@@ -1243,21 +1094,17 @@
                       <value>application/json</value>
                     </header>
                   </requestHeader>
-                  <requestMethod>POST</requestMethod>
-                  <requestPath>/device/status</requestPath>
-                  <requestForm>
+                  <requestMethod>GET</requestMethod>
+                  <requestPath>/rpc/EM.GetStatus</requestPath>
+                  <requestQuery>
                     <parameter>
                       <name>id</name>
-                      <value>{{device_id}}</value>
+                      <value>0</value>
                     </parameter>
-                    <parameter>
-                      <name>auth_key</name>
-                      <value>{{auth_key}}</value>
-                    </parameter>
-                  </requestForm>
+                  </requestQuery>
                   <responseQuery>
                     <queryType>JMESPathExpression</queryType>
-                    <query>data.device_status."em:0".b_current</query>
+                    <query>b_current</query>
                   </responseQuery>
                 </restApiReadServiceCall>
               </restApiDataPointConfiguration>
@@ -1286,21 +1133,17 @@
                       <value>application/json</value>
                     </header>
                   </requestHeader>
-                  <requestMethod>POST</requestMethod>
-                  <requestPath>/device/status</requestPath>
-                  <requestForm>
+                  <requestMethod>GET</requestMethod>
+                  <requestPath>/rpc/EM.GetStatus</requestPath>
+                  <requestQuery>
                     <parameter>
                       <name>id</name>
-                      <value>{{device_id}}</value>
+                      <value>0</value>
                     </parameter>
-                    <parameter>
-                      <name>auth_key</name>
-                      <value>{{auth_key}}</value>
-                    </parameter>
-                  </requestForm>
+                  </requestQuery>
                   <responseQuery>
                     <queryType>JMESPathExpression</queryType>
-                    <query>data.device_status."em:0".c_current</query>
+                    <query>c_current</query>
                   </responseQuery>
                 </restApiReadServiceCall>
               </restApiDataPointConfiguration>
